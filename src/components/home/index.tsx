@@ -1,14 +1,22 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import './index.module.scss';
+import { Layout } from 'antd';
+const { Content } = Layout;
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
-    <div>
-      <div>Home</div>
-      <Link href='/enroll'>Enroll</Link>
-    </div>
+    <Layout>
+      <Content className='container'>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+      </Content>
+    </Layout>
   )
 }
 
