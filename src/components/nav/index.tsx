@@ -53,40 +53,46 @@ const Nav: React.FC = () => {
     console.log(e.key);
   };
   return (
-    <Header className={styles.header}>
-      <Space className={styles.space}>
-        <Image
-          src="/logo/logo.svg"
-          alt="logo"
-          preview={false}
-          width={120}
-          height={40}
-        />
-        <Menu
-          mode="horizontal"
-          selectedKeys={[pathname]}
-          items={menuItems}
-        />
-        <Search
-          placeholder="input search text"
-          onSearch={onSearch}
-          enterButton
-          className={styles.search}
-        />
+    <Layout className={styles.headerContainer}>
+      <Header className={styles.header}>
+        <Space className={styles.space}>
+          <Space>
+            <Image
+              src="/logo/logo.svg"
+              alt="logo"
+              preview={false}
+              width={120}
+              height={40}
+            />
+            <Menu
+              mode="horizontal"
+              selectedKeys={[pathname]}
+              items={menuItems}
+            />
+          </Space>
+          <Space>
+            <Search
+              placeholder="input search text"
+              onSearch={onSearch}
+              enterButton
+              className={styles.search}
+            />
 
-        <Dropdown
-          menu={{
-            items,
-            onClick: handleMenuClick,
-          }}
-          className={styles.dropDown}
-        >
-          <a onClick={(e) => e.preventDefault()}>
-            <TranslationOutlined />
-          </a>
-        </Dropdown>
-      </Space>
-    </Header>
+            <Dropdown
+              menu={{
+                items,
+                onClick: handleMenuClick,
+              }}
+              className={styles.dropDown}
+            >
+              <a onClick={(e) => e.preventDefault()}>
+                <TranslationOutlined />
+              </a>
+            </Dropdown>
+          </Space>
+        </Space>
+      </Header>
+    </Layout>
   )
 };
 

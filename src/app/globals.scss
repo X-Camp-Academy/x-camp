@@ -16,12 +16,3 @@ body {
   margin: 0;
   background-color: #fff;
 }
-
-.container {
-  background-color: #f6f9ff;
-  margin: 0 auto;
-  width: 1200px;
-  @media screen and (max-width: 1440px) {
-    width: 1200px;
-  }
-}

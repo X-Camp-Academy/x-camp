@@ -1,0 +1,9 @@
+.homeContainer {
+  position: relative;
+  top: 100px;
+  width: 100%;
+  margin: 0 auto;
+  @media screen and (max-width: 1200px) {
+    width: 1200px;
+  }
+}
