@@ -4,7 +4,18 @@ import './index.module.scss';
 
 const Enroll = () => {
   return (
-    <div>注册课程页面</div>
+    <div>注册课程页面
+
+
+<span className="text_38">
+</span>
+
+
+
+    </div>
+
+
+   
   )
 }
 

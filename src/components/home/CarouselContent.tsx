@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Carousel, Space, Button, Card, Form, Input } from 'antd';
+import { Carousel, Button, Card, Image, Form, Input } from 'antd';
 import styles from './CarouselContent.module.scss';
 
 const CarouselContent: React.FC = () => {
@@ -20,12 +20,21 @@ const CarouselContent: React.FC = () => {
               <p>Make&nbsp;a&nbsp;programming&nbsp;learning&nbsp;plan&nbsp;and&nbsp;</p>
               <p>course&nbsp;schedule&nbsp;consultation</p>
             </div>
-            <button className={styles.joinUs}>JOIN US</button>
+            <Button shape='round' className={styles.joinUs}>JOIN US</Button>
             <p className={styles.date}>*Every&nbsp;Tuesday&nbsp;6:30pm-7:30pm&nbsp;PT</p>
           </div>
           <Card
             title="Free Consultation"
-            extra={<a href="#">More</a>}
+            extra={
+              <Image
+                src="/image/think.png"
+                alt="logo"
+                preview={false}
+                width={60}
+                height={50}
+                style={{ marginTop: 6 }}
+              />
+            }
             className={styles.carouselRight}
             headStyle={{
               color: '#fff',
