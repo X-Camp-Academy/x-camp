@@ -26,7 +26,7 @@ const About = () => {
     <div className={styles.aboutContainer}>
       <div className={styles.about}>
         <Space direction='vertical' align='center' className={styles.aboutTop}>
-          <h1><span style={{ color: '#D36B13' }}>About&nbsp;</span>X-Camp</h1>
+          <h1><span style={{ color: '#D36B13' }}>About </span>X-Camp</h1>
           <p>Focusing on mastery of data structures and algorithms, X-Camp Academy is a Silicon Valley based institute offers coding classes for middle and high school students to achieve success at contests like USACO and beyond. Check our recent <span style={{ color: '#D36B13' }}>USACO classes</span></p>
         </Space>
         <Row gutter={16}>

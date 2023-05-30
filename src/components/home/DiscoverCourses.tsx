@@ -1,7 +1,9 @@
 'use client';
-import React from 'react';
-import { Space, Row, Col, Card, Image } from 'antd';
+import React, { useEffect } from 'react';
+import { Space, Grid, Row, Col, Card, Image } from 'antd';
 import styles from './DiscoverCourses.module.scss';
+
+const { useBreakpoint } = Grid;
 
 const DiscoverCourses = () => {
   const imageUrls = [
@@ -30,12 +32,22 @@ const DiscoverCourses = () => {
       bgc: '#D36B13'
     }
   ];
+  const screens = useBreakpoint();
+  
+  useEffect(() => {
+    console.log(screens);
+  }, [screens]);
   return (
     <div
       className={styles.discoverCourses}
     >
       <h1>Discover Our Courses</h1>
-      <Row className={styles.cards} gutter={16}>
+      <Row 
+        className={styles.cards} 
+        gutter={16}
+        justify='center'
+        align='middle'
+      >
         {
           imageUrls.map(item => {
             return (
@@ -45,6 +57,10 @@ const DiscoverCourses = () => {
                     backgroundColor: item?.bgc,
                     borderRadius: 8,
                     paddingTop: 0,
+                    // display: 'flex',
+                    // flexDirection: 'column',
+                    // justifyContent: 'center',
+                    // alignItems: 'center'
                   }}
                 >
                   <div>

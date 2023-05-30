@@ -4,7 +4,7 @@ import { Carousel, Button, Card, Image, Form, Input } from 'antd';
 import styles from './CarouselContent.module.scss';
 
 const CarouselContent: React.FC = () => {
-  const onFinish = (values) => {
+  const onFinish = (values: any) => {
     console.log(values);
   }
   return (
@@ -16,12 +16,12 @@ const CarouselContent: React.FC = () => {
           <div className={styles.carouselLeft}>
             <h1>X-Camp Online Open House</h1>
             <div className={styles.description}>
-              <p>Evaluate student's programming level</p>
-              <p>Make&nbsp;a&nbsp;programming&nbsp;learning&nbsp;plan&nbsp;and&nbsp;</p>
-              <p>course&nbsp;schedule&nbsp;consultation</p>
+              <p>{"Evaluate student's programming level"}</p>
+              <p>Make a programming learning plan and </p>
+              <p>course schedule consultation</p>
             </div>
             <Button shape='round' className={styles.joinUs}>JOIN US</Button>
-            <p className={styles.date}>*Every&nbsp;Tuesday&nbsp;6:30pm-7:30pm&nbsp;PT</p>
+            <p className={styles.date}>*Every Tuesday 6:30pm-7:30pm PT</p>
           </div>
           <Card
             title="Free Consultation"
