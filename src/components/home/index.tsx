@@ -8,6 +8,7 @@ import styles from './index.module.scss';
 const CarouselContent = dynamic(() => import('./CarouselContent'));
 const DiscoverCourses = dynamic(() => import('./DiscoverCourses'));
 const AboutXCamp = dynamic(() => import('./AboutXCamp'));
+const FoundingTeam = dynamic(() => import('./FoundingTeam'));
 const { Content } = Layout;
 
 const Home: React.FC = () => {
@@ -16,7 +17,7 @@ const Home: React.FC = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#fabb07',
+          colorPrimary: '#FFAD11',
         }
       }}
     >
@@ -25,6 +26,7 @@ const Home: React.FC = () => {
           <CarouselContent />
           <DiscoverCourses />
           <AboutXCamp />
+          <FoundingTeam />
         </Content>
       </Layout>
     </ConfigProvider>

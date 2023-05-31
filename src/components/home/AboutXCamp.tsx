@@ -6,27 +6,27 @@ import styles from './AboutXCamp.module.scss';
 const AboutXCamp: React.FC = () => {
   const aboutContents = [
     {
-      icon: '/image/Faculty-icon.png',
+      icon: '/image/home/Faculty-icon.png',
       title: 'Faculty',
       desc: 'X-Camp teachers are composed of senior engineers from leading tech companies and contestants from international and national level informatic contests like IOI, ICPC, USACO.'
     },
     {
-      icon: '/image/Achievement-icon.png',
+      icon: '/image/home/Achievement-icon.png',
       title: 'Achievement',
       desc: 'More than 100 X-Camp students have been qualified for USACO Silver division and above; including 25 in the Platinum division and 5 selected in the US Camp, out of which 4 were fresh from the'
     },
     {
-      icon: '/image/Community-icon.png',
+      icon: '/image/home/Community-icon.png',
       title: 'Community',
       desc: 'We are a community dedicated to inspiring and cultivating the next generation of Computer Science and Artificial Intelligence talent.'
     },
   ];
   return (
-    <div className={styles.aboutContainer}>
-      <div className={styles.about}>
-        <Space direction='vertical' align='center' className={styles.aboutTop}>
-          <h1><span style={{ color: '#D36B13' }}>About </span>X-Camp</h1>
-          <p>Focusing on mastery of data structures and algorithms, X-Camp Academy is a Silicon Valley based institute offers coding classes for middle and high school students to achieve success at contests like USACO and beyond. Check our recent <span style={{ color: '#D36B13' }}>USACO classes</span></p>
+    <div className={styles.aboutXCampContainer}>
+      <div className={styles.aboutXCamp}>
+        <Space direction='vertical' align='center' className={styles.aboutXCampTop}>
+          <h1 style={{ color: '#444444' }}><span style={{ color: '#D46B14' }}>About </span>X-Camp</h1>
+          <p>Focusing on mastery of data structures and algorithms, X-Camp Academy is a Silicon Valley based institute offers coding classes for middle and high school students to achieve success at contests like USACO and beyond. Check our recent <span style={{ color: '#D46B14' }}>USACO classes</span></p>
         </Space>
         <Row
           className={styles.cards}
@@ -57,7 +57,7 @@ const AboutXCamp: React.FC = () => {
                         />
                         <span className={styles.cardTitle}>{item?.title}</span>
                       </Space>
-                      <p>{item?.desc}</p>
+                      <p className={styles.cardDesc}>{item?.desc}</p>
                     </Space>
                   </Card>
                 </Col>

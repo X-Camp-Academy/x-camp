@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { Space, Row, Col, Card, Image } from 'antd';
-import { useMobile } from '@/utils';
+import { Row, Col, Card, Image } from 'antd';
 import styles from './DiscoverCourses.module.scss';
 
 const DiscoverCourses = () => {
@@ -9,29 +8,28 @@ const DiscoverCourses = () => {
     {
       title: 'Python Beginner',
       desc: 'Suitable for Year 6+',
-      url: '/image/Course-1.png',
-      bgc: '#D9D9D9'
+      url: '/image/home/Course-1.png',
+      bgc: '#D8D8D8'
     },
     {
       title: 'C++ Knowledge',
       desc: 'Suitable for Year 7+',
-      url: '/image/Course-2.png',
-      bgc: '#FED600'
+      url: '/image/home/Course-2.png',
+      bgc: '#FFD600'
     },
     {
       title: 'USACO Grandmaster',
       desc: 'Suitable for Year 7+',
-      url: '/image/Course-3.png',
-      bgc: '#FEAD10'
+      url: '/image/home/Course-3.png',
+      bgc: '#FFAD11'
     },
     {
       title: 'APCS',
       desc: 'Suitable for Year 7+',
-      url: '/image/Course-4.png',
-      bgc: '#D36B13'
+      url: '/image/home/Course-4.png',
+      bgc: '#D46B14'
     }
   ];
-  const isMobile = useMobile();
   return (
     <div
       className={styles.discoverCourses}
@@ -48,7 +46,7 @@ const DiscoverCourses = () => {
             return (
               <Col key={item?.url} xs={24} md={12} lg={6}>
                 <Card
-                  bodyStyle={isMobile ? {
+                  bodyStyle={{
                     backgroundColor: item?.bgc,
                     borderRadius: 8,
                     paddingTop: 0,
@@ -56,22 +54,18 @@ const DiscoverCourses = () => {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center'
-                  } : {
-                    backgroundColor: item?.bgc,
-                    borderRadius: 8,
-                    paddingTop: 0,
                   }}
                 >
-                  <div>
+                  <div className={styles.cardTop}>
                     <h1>{item?.title}</h1>
                     <p>{item?.desc}</p>
                   </div>
                   <Image
                     src={item?.url}
-                    alt="logo"
+                    alt="image"
                     preview={false}
-                    width={225}
-                    height={225}
+                    width={200}
+                    height={200}
                   />
                 </Card>
               </Col>

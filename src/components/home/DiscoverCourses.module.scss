@@ -1,13 +1,30 @@
 .discoverCourses {
-  width: 1200px;
+  width: 1440px;
   margin: 0 auto;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  h1 {
+    color: #172142;
+    font-size: 36px;
+    font-weight: bold;
+  }
   .cards {
     width: 100%;
     margin-top: 20px;
+    .cardTop {
+      h1 {
+        color: #172142;
+        font-size: 24px;
+        font-weight: 600;
+      }
+      P {
+        color: #172142;
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-.aboutContainer {
+.aboutXCampContainer {
   width: 100%;
   margin-top: 40px;
   display: flex;
@@ -6,26 +6,37 @@
   align-items: center;
   justify-content: space-between;
   background-color: #ffeddf;
-  .about {
-    width: 1200px;
-    margin: 0 auto;
-    .aboutTop {
+  .aboutXCamp {
+    width: 1440px;
+    margin: 0 auto 40px;
+    .aboutXCampTop {
       text-align: center;
       margin: auto 220px 20px 220px;
-      p {
+      h1 {
+        font-size: 36px;
         font-weight: 600;
+      }
+      p {
+        color: #172142;
+        font-size: 18px;
+        font-weight: 500;
       }
     }
     .cards {
       width: 100%;
       .cardIcon {
-        box-shadow: 0 0 5px #fabb07;
+        box-shadow: 0 0 5px #ffad11;
         border-radius: 5px;
       }
       .cardTitle {
-        color: #fabb07;
-        font-size: 20px;
-        font-weight: bolder;
+        color: #ffad11;
+        font-size: 24px;
+        font-weight: 600;
+      }
+      .cardDesc {
+        color: #666666;
+        font-size: 16px;
+        font-weight: 500;
       }
     }
   }

@@ -55,7 +55,7 @@ const Nav: React.FC = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#fabb07',
+          colorPrimary: '#FFAD11',
         },
       }}
     >

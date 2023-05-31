@@ -1,50 +1,57 @@
-$color: #fabb07;
+$color: #FFAD11;
 
 .carouselContainer {
   width: 100%;
   height: 500px;
-  background-image: url("/image/carousel-bg.jpg");
+  background-image: url("/image/home/carousel-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  .space {
-    display: flex!important;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 50px;
-    .carouselLeft {
-      h1 {
-        color: #d46b14;
-        font-size: 36px;
-        font-weight: bolder;
-      }
-      .description {
-        p {
-          color: #fabb07;
-          font-size: 20px;
+  .carousel {
+    width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+    .carouselItem {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 50px;
+      padding-left: 50px;
+      padding-right: 50px;
+      .carouselLeft {
+        h1 {
+          color: #D46B14;
+          font-size: 36px;
+          font-weight: bolder;
+        }
+        .description {
+          p {
+            color: $color;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 10px 0;
+          }
+        }
+        .joinUs {
+          color: #fff;
+          font-size: 24px;
+          padding: 4px 24px;
+          height: auto;
           font-weight: 600;
-          margin: 10px 0;
+          margin-top: 20px;
+          background-color: $color;
+        }
+        .date {
+          color: #172A88;
+          font-weight: bolder;
+          margin-top: 20px;
         }
       }
-      .joinUs {
-        color: #fff;
-        font-size: 24px;
-        padding: 4px 24px;
-        height: auto;
-        font-weight: 600;
-        margin-top: 20px;
-        background-color: $color;
-      }
-      .date {
-        color: #172550;
-        font-weight: bolder;
-        margin-top: 20px;
-      }
-    }
-    .carouselRight {
-      width: 300px;
-      .submit {
-        width: 100%;
-        padding: auto 20px;
+      .carouselRight {
+        width: 300px;
+        .submit {
+          width: 100%;
+          padding: auto 20px;
+        }
       }
     }
   }
