@@ -1,12 +1,11 @@
 'use client';
-import React, { useEffect } from 'react';
-import { Space, Grid, Row, Col, Card, Image } from 'antd';
+import React from 'react';
+import { Space, Row, Col, Card, Image } from 'antd';
+import { useMobile } from '@/utils';
 import styles from './DiscoverCourses.module.scss';
 
-const { useBreakpoint } = Grid;
-
 const DiscoverCourses = () => {
-  const imageUrls = [
+  const courseCards = [
     {
       title: 'Python Beginner',
       desc: 'Suitable for Year 6+',
@@ -32,35 +31,35 @@ const DiscoverCourses = () => {
       bgc: '#D36B13'
     }
   ];
-  const screens = useBreakpoint();
-  
-  useEffect(() => {
-    console.log(screens);
-  }, [screens]);
+  const isMobile = useMobile();
   return (
     <div
       className={styles.discoverCourses}
     >
       <h1>Discover Our Courses</h1>
-      <Row 
-        className={styles.cards} 
+      <Row
+        className={styles.cards}
         gutter={16}
         justify='center'
         align='middle'
       >
         {
-          imageUrls.map(item => {
+          courseCards.map(item => {
             return (
               <Col key={item?.url} xs={24} md={12} lg={6}>
                 <Card
-                  bodyStyle={{
+                  bodyStyle={isMobile ? {
                     backgroundColor: item?.bgc,
                     borderRadius: 8,
                     paddingTop: 0,
-                    // display: 'flex',
-                    // flexDirection: 'column',
-                    // justifyContent: 'center',
-                    // alignItems: 'center'
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  } : {
+                    backgroundColor: item?.bgc,
+                    borderRadius: 8,
+                    paddingTop: 0,
                   }}
                 >
                   <div>
@@ -80,7 +79,7 @@ const DiscoverCourses = () => {
           })
         }
       </Row>
-    </div>
+    </div >
   )
 }
 

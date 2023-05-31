@@ -16,5 +16,17 @@
         font-weight: 600;
       }
     }
+    .cards {
+      width: 100%;
+      .cardIcon {
+        box-shadow: 0 0 5px #fabb07;
+        border-radius: 5px;
+      }
+      .cardTitle {
+        color: #fabb07;
+        font-size: 20px;
+        font-weight: bolder;
+      }
+    }
   }
 }

@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 
 const CarouselContent = dynamic(() => import('./CarouselContent'));
 const DiscoverCourses = dynamic(() => import('./DiscoverCourses'));
-const About = dynamic(() => import('./About'));
+const AboutXCamp = dynamic(() => import('./AboutXCamp'));
 const { Content } = Layout;
 
 const Home: React.FC = () => {
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
         <Content>
           <CarouselContent />
           <DiscoverCourses />
-          <About />
+          <AboutXCamp />
         </Content>
       </Layout>
     </ConfigProvider>

@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
 import { Space, Row, Col, Card, Image } from 'antd';
-import styles from './About.module.scss';
+import styles from './AboutXCamp.module.scss';
 
-const About = () => {
+const AboutXCamp: React.FC = () => {
   const aboutContents = [
     {
       icon: '/image/Faculty-icon.png',
@@ -21,7 +21,6 @@ const About = () => {
       desc: 'We are a community dedicated to inspiring and cultivating the next generation of Computer Science and Artificial Intelligence talent.'
     },
   ];
-
   return (
     <div className={styles.aboutContainer}>
       <div className={styles.about}>
@@ -29,16 +28,21 @@ const About = () => {
           <h1><span style={{ color: '#D36B13' }}>About </span>X-Camp</h1>
           <p>Focusing on mastery of data structures and algorithms, X-Camp Academy is a Silicon Valley based institute offers coding classes for middle and high school students to achieve success at contests like USACO and beyond. Check our recent <span style={{ color: '#D36B13' }}>USACO classes</span></p>
         </Space>
-        <Row gutter={16}>
+        <Row
+          className={styles.cards}
+          gutter={16}
+          justify='center'
+          align='middle'
+        >
           {
             aboutContents.map(item => {
               return (
                 <Col key={item?.icon} xs={24} lg={8}>
                   <Card
+                    hoverable
                     bodyStyle={{
                       borderRadius: 8,
-                      paddingTop: 0,
-                      height: 200,
+                      height: 220,
                     }}
                   >
                     <Space direction='vertical'>
@@ -47,8 +51,9 @@ const About = () => {
                           src={item?.icon}
                           alt="icon"
                           preview={false}
-                          width={56}
-                          height={56}
+                          width={50}
+                          height={50}
+                          className={styles.cardIcon}
                         />
                         <span className={styles.cardTitle}>{item?.title}</span>
                       </Space>
@@ -61,8 +66,8 @@ const About = () => {
           }
         </Row>
       </div>
-    </div>
+    </div >
   )
 }
 
-export default About;
+export default AboutXCamp;
