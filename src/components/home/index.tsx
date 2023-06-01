@@ -9,6 +9,10 @@ const CarouselContent = dynamic(() => import('./CarouselContent'));
 const DiscoverCourses = dynamic(() => import('./DiscoverCourses'));
 const AboutXCamp = dynamic(() => import('./AboutXCamp'));
 const FoundingTeam = dynamic(() => import('./FoundingTeam'));
+const WeSupport = dynamic(() => import('./WeSupport'));
+const StudentProjects = dynamic(() => import('./StudentProjects'));
+const FacultyPartners = dynamic(() => import('./FacultyPartners'));
+const Comments = dynamic(() => import('./Comments'));
 const { Content } = Layout;
 
 const Home: React.FC = () => {
@@ -27,6 +31,10 @@ const Home: React.FC = () => {
           <DiscoverCourses />
           <AboutXCamp />
           <FoundingTeam />
+          <WeSupport />
+          <StudentProjects />
+          <FacultyPartners />
+          <Comments />
         </Content>
       </Layout>
     </ConfigProvider>

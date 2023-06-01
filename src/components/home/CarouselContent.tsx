@@ -1,7 +1,10 @@
 'use client';
 import React from 'react';
-import { Carousel, Button, Card, Image, Form, Input } from 'antd';
+import { Carousel, Space, Button, Card, Image, Form, Input, Typography } from 'antd';
+
 import styles from './CarouselContent.module.scss';
+
+const { Title, Paragraph, Text } = Typography;
 
 const CarouselContent: React.FC = () => {
   const onFinish = (values: any) => {
@@ -12,16 +15,22 @@ const CarouselContent: React.FC = () => {
       <div className={styles.carousel}>
         <Carousel autoplay dots>
           <div className={styles.carouselItem}>
-            <div className={styles.carouselLeft}>
-              <h1>X-Camp Online Open House</h1>
-              <div className={styles.description}>
-                <p>{"Evaluate student's programming level"}</p>
-                <p>Make a programming learning plan and </p>
-                <p>course schedule consultation</p>
-              </div>
+            <Space direction='vertical' className={styles.carouselLeft}>
+              <Title className={styles.title}>X-Camp Online Open House</Title>
+              <Space direction='vertical'>
+                <Text className={styles.text}>
+                  {"Evaluate student's programming level"}
+                </Text>
+                <Text className={styles.text}>
+                  Make a programming learning plan and
+                </Text>
+                <Text className={styles.text}>
+                  course schedule consultation
+                </Text>
+              </Space>
               <Button shape='round' className={styles.joinUs}>JOIN US</Button>
-              <p className={styles.date}>*Every Tuesday 6:30pm-7:30pm PT</p>
-            </div>
+              <Text className={styles.date}>*Every Tuesday 6:30pm-7:30pm PT</Text>
+            </Space>
             <Card
               title="Free Consultation"
               extra={

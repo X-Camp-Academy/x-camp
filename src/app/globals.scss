@@ -1,12 +1,12 @@
 // 设置全局 滚动条样式 样式
 *::-webkit-scrollbar {
-  content: '';
+  content: "";
   width: 7px;
   height: 7px;
 }
 
 *::-webkit-scrollbar-thumb {
-  content: '';
+  content: "";
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 5px #9b9ba3;
   background: rgba(152, 155, 163, 0.5);
@@ -15,4 +15,7 @@
 body {
   margin: 0;
   background-color: #fff;
+  font-family: Poppins, Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }

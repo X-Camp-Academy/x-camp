@@ -1,4 +1,4 @@
-$color: #FFAD11;
+$color: #ffad11;
 
 .carouselContainer {
   width: 100%;
@@ -7,7 +7,7 @@ $color: #FFAD11;
   background-repeat: no-repeat;
   background-size: cover;
   .carousel {
-    width: 1440px;
+    width: 1280px;
     height: 100%;
     margin: 0 auto;
     .carouselItem {
@@ -18,31 +18,31 @@ $color: #FFAD11;
       padding-left: 50px;
       padding-right: 50px;
       .carouselLeft {
-        h1 {
-          color: #D46B14;
+        .title {
+          color: #d46b14;
           font-size: 36px;
           font-weight: bolder;
         }
-        .description {
-          p {
-            color: $color;
-            font-size: 20px;
-            font-weight: 600;
-            margin: 10px 0;
-          }
+        .text {
+          color: $color;
+          font-size: 28px;
+          font-weight: 500;
+          line-height: 42px;
         }
         .joinUs {
           color: #fff;
-          font-size: 24px;
-          padding: 4px 24px;
+          font-size: 26px;
+          padding: 13px 60px;
           height: auto;
           font-weight: 600;
           margin-top: 20px;
           background-color: $color;
         }
         .date {
-          color: #172A88;
-          font-weight: bolder;
+          color: #172a88;
+          font-size: 20px;
+          line-height: 46px;
+          font-weight: 600;
           margin-top: 20px;
         }
       }

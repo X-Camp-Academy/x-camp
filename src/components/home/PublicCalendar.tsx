@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Space, Row, Col, Card, Image } from 'antd';
+import { Space, Row, Col, Card, Image, Typography } from 'antd';
 import styles from './PublicCalendar.module.scss';
 
 const PublicCalendar: React.FC = () => {
