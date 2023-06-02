@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ConfigProvider, Layout, Space, Image, Menu, Input, Dropdown } from 'antd';
@@ -43,13 +43,16 @@ const items: MenuProps['items'] = [
 ];
 
 const Nav: React.FC = () => {
+  const [current, setCurrent] = useState('/');
   const pathname = usePathname();
   const { Search } = Input;
-  console.log(pathname);
+
 
   const onSearch = (value: string) => console.log(value);
   const handleMenuClick: MenuProps['onClick'] = (e) => {
     console.log(e.key);
+    console.log(pathname);
+    setCurrent(e.key);
   };
   return (
     <ConfigProvider
@@ -67,13 +70,14 @@ const Nav: React.FC = () => {
                 src="/logo/logo.svg"
                 alt="logo"
                 preview={false}
-                width={120}
-                height={40}
+                width={105}
+                height={30}
               />
               <Menu
                 mode="horizontal"
-                selectedKeys={[pathname]}
+                selectedKeys={[current]}
                 items={menuItems}
+                onClick={handleMenuClick}
               />
             </Space>
             <Space>

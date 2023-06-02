@@ -7,23 +7,24 @@
   box-shadow: 2px 2px 2px #adadad;
   z-index: 100;
   .header {
-    width: 1280px;
-    margin: 0 auto!important;
-    height: 80px;
-    line-height: 80px;
+    width: 1440px;
+    margin: 0 auto;
+    padding-left: 65px;
+    padding-right: 65px;
+    height: 72px;
+    line-height: 72px;
     background-color: #fff;
-    a {
-      color: #242424;
-    }
     .space {
       width: 100%;
       height: 100%;
-      justify-content: space-between;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
       .search {
         vertical-align: middle;
       }
       .dropDown {
+        color: #242424;
         font-size: 24px;
         vertical-align: middle;
       }

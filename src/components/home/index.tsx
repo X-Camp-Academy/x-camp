@@ -13,6 +13,9 @@ const WeSupport = dynamic(() => import('./WeSupport'));
 const StudentProjects = dynamic(() => import('./StudentProjects'));
 const FacultyPartners = dynamic(() => import('./FacultyPartners'));
 const Comments = dynamic(() => import('./Comments'));
+const QuickAssessment = dynamic(() => import('../footer/QuickAssessment'));
+const CopyRight = dynamic(() => import('../footer/CopyRight'));
+const SubscribeNewsletter = dynamic(() => import('../footer/SubscribeNewsletter'));
 const { Content } = Layout;
 
 const Home: React.FC = () => {
@@ -35,6 +38,9 @@ const Home: React.FC = () => {
           <StudentProjects />
           <FacultyPartners />
           <Comments />
+          <QuickAssessment />
+          <CopyRight />
+          <SubscribeNewsletter />
         </Content>
       </Layout>
     </ConfigProvider>
