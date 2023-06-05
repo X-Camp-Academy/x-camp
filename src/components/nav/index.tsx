@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ConfigProvider, Layout, Space, Image, Menu, Input, Dropdown } from 'antd';
-import type { MenuProps } from 'antd';
+import { ConfigProvider, Layout, Space, Image, Menu, Input, Button, Dropdown, MenuProps } from 'antd';
 import { TranslationOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
 
@@ -64,7 +63,7 @@ const Nav: React.FC = () => {
     >
       <Layout className={styles.headerContainer}>
         <Header className={styles.header}>
-          <Space className={styles.space}>
+          <Space align='center' className={styles.space}>
             <Space>
               <Image
                 src="/logo/logo.svg"
@@ -80,13 +79,17 @@ const Nav: React.FC = () => {
                 onClick={handleMenuClick}
               />
             </Space>
-            <Space>
+            <Space size={24}>
               <Search
-                placeholder="input search text"
+                placeholder="Search"
                 onSearch={onSearch}
                 enterButton
                 className={styles.search}
               />
+              <Space>
+                <Link href='/' className={styles.logIn}>Log In</Link>
+                <Button type="primary" className={styles.signUp}>Sign Up</Button>
+              </Space>
               <Dropdown
                 menu={{
                   items,

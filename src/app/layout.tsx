@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import './globals.scss';
-import './public.scss';
 
 const Nav = dynamic(() => import('@/components/nav'));
 

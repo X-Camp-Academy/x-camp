@@ -11,7 +11,7 @@ const StudentProjects: React.FC = () => {
   return (
     <div className={styles.studentProjects}>
       <Space direction='vertical' size={24} align='center'>
-        <Title className={styles.title}><Title style={{ color: '#D46B14', display: 'inline' }}>Student</Title> Projects</Title>
+        <Title className={styles.title}><Text style={{ color: '#D46B14', display: 'inline' }}>Student</Text> Projects</Title>
         <Paragraph className={styles.paragraph}>
           X-Camp has its own Art of Python Programming contest 4.0 award and other projects and event every quarter to inspire students . It is a
           <Text className={styles.paragraphText} style={{ color: '#D46B14' }}> great opportunity </Text>
