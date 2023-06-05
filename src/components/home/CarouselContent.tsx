@@ -56,6 +56,7 @@ const CarouselContent: React.FC = () => {
                 <Form.Item
                   name="username"
                   rules={[{ required: true, message: 'Please input your username!' }]}
+                  style={{ marginBottom: 36 }}
                 >
                   <Input placeholder='孩子昵称' />
                 </Form.Item>
@@ -63,6 +64,7 @@ const CarouselContent: React.FC = () => {
                 <Form.Item
                   name="grade"
                   rules={[{ required: true, message: 'Please input your grade!' }]}
+                  style={{ marginBottom: 36 }}
                 >
                   <Input placeholder='孩子年级' />
                 </Form.Item>
@@ -70,6 +72,7 @@ const CarouselContent: React.FC = () => {
                 <Form.Item
                   name="email"
                   rules={[{ required: true, message: 'Please input your email!' }]}
+                  style={{ marginBottom: 36 }}
                 >
                   <Input type="email" placeholder='E-mail' />
                 </Form.Item>
@@ -77,6 +80,7 @@ const CarouselContent: React.FC = () => {
                 <Form.Item
                   name="number"
                   rules={[{ required: true, message: 'Please input your number!' }]}
+                  style={{ marginBottom: 36 }}
                 >
                   <Input placeholder='wechat ID/Phone Number' />
                 </Form.Item>

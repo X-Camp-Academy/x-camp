@@ -1,7 +1,9 @@
 'use client';
 import React from 'react';
-import { Row, Col, Card, Image } from 'antd';
+import { Typography, Row, Col, Card, Space, Image } from 'antd';
 import styles from './DiscoverCourses.module.scss';
+
+const { Title, Paragraph, Text } = Typography;
 
 const DiscoverCourses = () => {
   const courseCards = [
@@ -31,10 +33,8 @@ const DiscoverCourses = () => {
     }
   ];
   return (
-    <div
-      className={styles.discoverCourses}
-    >
-      <h1>Discover Our Courses</h1>
+    <div className={styles.discoverCourses}>
+      <Title className={styles.title}>Discover Our Courses</Title>
       <Row
         className={styles.cards}
         gutter={16}
@@ -49,17 +49,17 @@ const DiscoverCourses = () => {
                   bodyStyle={{
                     backgroundColor: item?.bgc,
                     borderRadius: 8,
-                    paddingTop: 0,
+                    paddingBottom: 0,
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center'
                   }}
                 >
-                  <div className={styles.cardTop}>
-                    <h1>{item?.title}</h1>
-                    <p>{item?.desc}</p>
-                  </div>
+                  <Space direction='vertical' className={styles.cardTop}>
+                    <Title className={styles.cardTitle}>{item?.title}</Title>
+                    <Paragraph className={styles.cardParagraph}>{item?.desc}</Paragraph>
+                  </Space>
                   <Image
                     src={item?.url}
                     alt="image"

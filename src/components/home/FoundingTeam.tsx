@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
-import { Space, Tag, Button, Image } from 'antd';
+import { Space, Tag, Button, Image, Typography } from 'antd';
 import styles from './FoundingTeam.module.scss';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+
+const { Title, Paragraph, Text } = Typography;
 
 const FoundingTeam = () => {
   const founders = [
@@ -25,18 +27,18 @@ const FoundingTeam = () => {
   return (
     <div className={styles.FoundingTeam}>
       <Space direction='vertical' align='center'>
-        <h1>Founding Team</h1>
-        <Space size={96}>
-          <div className={styles.founderLeft}>
-            <h2>{initialFounder.name}</h2>
-            <div>
+        <Title className={styles.title}>Founding Team</Title>
+        <Space>
+          <Space direction='vertical' className={styles.founderLeft}>
+            <Title level={2} className={styles.name}>{initialFounder.name}</Title>
+            <Space>
               {
                 initialFounder.tags.map(item => {
-                  return <Tag key={item} color="#FFAD11" className={styles.founderTag}>{item}</Tag>
+                  return <Tag key={item} color="#FFAD11" className={styles.tags}>{item}</Tag>
                 })
               }
-            </div>
-            <p>{initialFounder.desc}</p>
+            </Space>
+            <Paragraph className={styles.paragraph}>{initialFounder.desc}</Paragraph>
             <Space>
               <Button type="primary" ghost={true} shape="circle">
                 <LeftOutlined />
@@ -45,7 +47,7 @@ const FoundingTeam = () => {
                 <RightOutlined />
               </Button>
             </Space>
-          </div>
+          </Space>
 
           <Space>
             <Image

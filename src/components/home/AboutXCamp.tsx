@@ -1,14 +1,16 @@
 'use client';
 import React from 'react';
-import { Space, Row, Col, Card, Image } from 'antd';
+import { Space, Row, Col, Card, Image, Typography } from 'antd';
 import styles from './AboutXCamp.module.scss';
 
+
+const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
   const aboutContents = [
     {
       icon: '/image/home/Faculty-icon.png',
       title: 'Faculty',
-      desc: 'X-Camp teachers are composed of senior engineers from leading tech companies and contestants from international and national level informatic contests like IOI, ICPC, USACO.'
+      desc: 'aaaacccccgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggcccccccccdddddddddddddddddddddddcccccccccccccccccccccccccccccccccccccccccccccaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X-Camp teachers are composed of senior engineers from leading tech companies and contestants from international and national level informatic contests like IOI, ICPC, USACO.'
     },
     {
       icon: '/image/home/Achievement-icon.png',
@@ -25,8 +27,8 @@ const AboutXCamp: React.FC = () => {
     <div className={styles.aboutXCampContainer}>
       <div className={styles.aboutXCamp}>
         <Space direction='vertical' align='center' className={styles.aboutXCampTop}>
-          <h1 style={{ color: '#444444' }}><span style={{ color: '#D46B14' }}>About </span>X-Camp</h1>
-          <p>Focusing on mastery of data structures and algorithms, X-Camp Academy is a Silicon Valley based institute offers coding classes for middle and high school students to achieve success at contests like USACO and beyond. Check our recent <span style={{ color: '#D46B14' }}>USACO classes</span></p>
+          <Title className={styles.title}><Text className={styles.titleText}>About </Text>X-Camp</Title>
+          <Paragraph className={styles.paragraph}>Focusing on mastery of data structures and algorithms, X-Camp Academy is a Silicon Valley based institute offers coding classes for middle and high school students to achieve success at contests like USACO and beyond. Check our recent <Text className={styles.paragraphText}>USACO classes</Text></Paragraph>
         </Space>
         <Row
           className={styles.cards}
@@ -38,11 +40,11 @@ const AboutXCamp: React.FC = () => {
             aboutContents.map(item => {
               return (
                 <Col key={item?.icon} xs={24} lg={8}>
-                  <Card
-                    hoverable
+                  <Card 
+                    className={styles.card}
                     bodyStyle={{
                       borderRadius: 8,
-                      height: 220,
+                      padding: 42
                     }}
                   >
                     <Space direction='vertical'>
@@ -55,9 +57,14 @@ const AboutXCamp: React.FC = () => {
                           height={50}
                           className={styles.cardIcon}
                         />
-                        <span className={styles.cardTitle}>{item?.title}</span>
+                        <Title className={styles.cardTitle}>{item?.title}</Title>
                       </Space>
-                      <p className={styles.cardDesc}>{item?.desc}</p>
+                      <Paragraph
+                        ellipsis={{ rows: 5 }}
+                        className={styles.cardParagraph}
+                      >
+                        {item?.desc}
+                      </Paragraph>
                     </Space>
                   </Card>
                 </Col>
