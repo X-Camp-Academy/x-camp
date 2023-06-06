@@ -1,0 +1,39 @@
+.faculty {
+  width: 1440px;
+  margin: 0 auto;
+  margin-top: 70px;
+  padding-left: 200px;
+  padding-right: 200px;
+  .title {
+    color: #d46b14;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 54px;
+  }
+  .paragraph {
+    color: #172142;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 34px;
+    text-align: center;
+    margin: auto 10px 48px 10px;
+  }
+  .row {
+    .name {
+      color: #172142;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 34px;
+    }
+    .description {
+      color: #666666;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+    .button {
+      color: #d46b14;
+      border-color: #d46b14;
+    }
+  }
+}

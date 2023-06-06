@@ -1,57 +1,60 @@
 'use client';
 import React from 'react';
 import { Space, Typography, Row, Col, Card, Image, Button } from 'antd';
-import styles from './FacultyPartners.module.scss';
-import { SwapLeftOutlined, SwapRightOutlined } from '@ant-design/icons';
+import styles from './Partners.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
-const { Meta } = Card;
 
-const FacultyPartners: React.FC = () => {
+const Partners: React.FC = () => {
   return (
-    <div className={styles.facultyPartners}>
-      <Space direction='vertical' size={24} align='center'>
-        <Title className={styles.title}>
-          Faculty & Partners
-        </Title>
+    <div className={styles.partners}>
+      <Space direction='vertical' align='center'>
+        <Title className={styles.title}>Partners</Title>
         <Paragraph className={styles.paragraph}>
           X-Camp has its own Art of Python Programming contest 4.0 award and other projects and event every quarter to inspire students . It is a great opportunity for students to showcase what they have learned from classes .
         </Paragraph>
-        <Space size={20}>
+        <Space>
           <Image
             alt=""
-            src='/image/home/Calico.png'
+            src='/image/home/partners-1.png'
             preview={false}
-            width={220}
-            height={60}
+            width={224}
+            height={64}
           />
           <Image
             alt=""
-            src='/image/home/Calico.png'
+            src='/image/home/partners-2.png'
             preview={false}
-            width={220}
-            height={60}
+            width={226}
+            height={64}
           />
           <Image
             alt=""
-            src='/image/home/Calico.png'
+            src='/image/home/partners-3.png'
             preview={false}
-            width={220}
-            height={60}
+            width={200}
+            height={64}
           />
           <Image
             alt=""
-            src='/image/home/Calico.png'
+            src='/image/home/partners-4.png'
             preview={false}
-            width={220}
-            height={60}
+            width={80}
+            height={64}
           />
           <Image
             alt=""
-            src='/image/home/Calico.png'
+            src='/image/home/partners-5.png'
             preview={false}
-            width={220}
-            height={60}
+            width={168}
+            height={64}
+          />
+          <Image
+            alt=""
+            src='/image/home/partners-6.png'
+            preview={false}
+            width={216}
+            height={64}
           />
         </Space>
       </Space>
@@ -59,4 +62,4 @@ const FacultyPartners: React.FC = () => {
   )
 }
 
-export default FacultyPartners;
+export default Partners;

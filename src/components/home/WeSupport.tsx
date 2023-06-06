@@ -20,7 +20,7 @@ const WeSupport: React.FC = () => {
           >
           </iframe>
         </div>
-        <Space direction='vertical'>
+        <Space direction='vertical' size={24}>
           <Title className={styles.title}>We support</Title>
           <Paragraph className={styles.paragraph}>{"X-Camp's programming courses support the three most mainstream and popular programming languages, including Intro to Python, Intro to Java (APCS), Beginner / Intermediate / Advanced level C++, for students in grades 5-12th."}</Paragraph>
           <Space size={24}>
@@ -29,21 +29,21 @@ const WeSupport: React.FC = () => {
               alt="image"
               preview={false}
               width={160}
-              height={100}
+              height={90}
             />
             <Image
               src='/image/home/Course-2.png'
               alt="image"
               preview={false}
               width={160}
-              height={100}
+              height={90}
             />
             <Image
               src='/image/home/Course-3.png'
               alt="image"
               preview={false}
               width={160}
-              height={100}
+              height={90}
             />
           </Space>
         </Space>
