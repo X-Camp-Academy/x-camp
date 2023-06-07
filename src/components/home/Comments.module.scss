@@ -5,19 +5,23 @@
   .comments {
     width: 1440px;
     margin: 0 auto;
-    padding: 120px 65px;
-  }
-  .row {
-    .cardTitle {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 30px;
-    }
-    .cardParagraph {
-      color: #666666;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
+    padding-top: 100px;
+    padding-left: 65px;
+    padding-right: 65px;
+    padding-bottom: 120px;
+    .col {
+      margin-top: 20px;
+      .cardTitle {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 30px;
+      }
+      .cardParagraph {
+        color: #666666;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+      }
     }
   }
 }

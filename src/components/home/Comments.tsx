@@ -39,12 +39,11 @@ const Comments: React.FC = () => {
           gutter={40}
           justify='center'
           align='middle'
-          className={styles.row}
         >
           {
             comments.map((item, index) => {
               return (
-                <Col key={index} xs={24} lg={8}>
+                <Col key={index} xs={24} lg={8} className={styles.col}>
                   <div style={computedStyle(index)}>
                     <Card>
                       <Space direction='vertical'>

@@ -72,7 +72,7 @@ const CopyRight: React.FC = () => {
                   <Image
                     alt=''
                     preview={false}
-                    src='/image/home/wechat.png'
+                    src='/image/home/we-chat.png'
                     width={28}
                     height={28}
                   />
@@ -81,7 +81,7 @@ const CopyRight: React.FC = () => {
                   <Image
                     alt=''
                     preview={false}
-                    src='/image/home/smallredbook.png'
+                    src='/image/home/small-red-book.png'
                     width={28}
                     height={28}
                   />

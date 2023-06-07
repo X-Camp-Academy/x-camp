@@ -50,7 +50,7 @@ const Faculty: React.FC = () => {
           {
             facultyData.map((item, index) => {
               return (
-                <Col key={index} xs={24} lg={8}>
+                <Col key={index} xs={8} sm={8} md={8} lg={8}>
                   <div style={computedStyle(index)}>
                     <Card
                       bodyStyle={{

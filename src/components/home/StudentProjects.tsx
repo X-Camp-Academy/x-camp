@@ -19,61 +19,70 @@ const StudentProjects: React.FC = () => {
           <Text className={styles.paragraphText}> great opportunity </Text>
           for students to showcase what they have learned from classes .
         </Paragraph>
-        <Space>
-          <iframe
-            width="600"
-            height="350"
-            src="https://www.youtube.com/embed/vXCwYuJxFX8"
-            title="X-Camp Academy Intro - 2023"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          >
-          </iframe>
-          <Space>
-            <Card
-              className={styles.card}
-              cover={
-                <iframe
-                  src="https://www.youtube.com/embed/vXCwYuJxFX8"
-                  title="X-Camp Academy Intro - 2023"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                >
-                </iframe>
-              }
+
+        <Row>
+          <Col xs={24} sm={24} md={24} lg={12}>
+            <iframe
+              width="100%"
+              height="350"
+              src="https://www.youtube.com/embed/vXCwYuJxFX8"
+              title="X-Camp Academy Intro - 2023"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
             >
-              <Meta
-                title="The Viper Game"
-                description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
-                className={styles.cardMeta}
-              />
-              <Button type="primary" shape="circle" className={styles.cardButton}>
-                <SwapLeftOutlined />
-              </Button>
-            </Card>
-            <Card
-              className={styles.card}
-              cover={
-                <iframe
-                  src="https://www.youtube.com/embed/vXCwYuJxFX8"
-                  title="X-Camp Academy Intro - 2023"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
+            </iframe>
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={12}>
+            <Row gutter={16}>
+              <Col xs={12} sm={12} md={12} lg={12}>
+                <Card
+                  className={styles.card}
+                  cover={
+                    <iframe
+                      src="https://www.youtube.com/embed/vXCwYuJxFX8"
+                      title="X-Camp Academy Intro - 2023"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    >
+                    </iframe>
+                  }
                 >
-                </iframe>
-              }
-            >
-              <Meta
-                title="The Viper Game"
-                description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
-                className={styles.cardMeta}
-              />
-              <Button type="primary" shape="circle" ghost className={styles.cardButton}>
-                <SwapRightOutlined />
-              </Button>
-            </Card>
-          </Space>
-        </Space>
+                  <Meta
+                    title="The Viper Game"
+                    description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
+                    className={styles.cardMeta}
+                  />
+                  <Button type="primary" shape="circle" className={styles.cardButton}>
+                    <SwapLeftOutlined />
+                  </Button>
+                </Card>
+              </Col>
+              <Col xs={12} sm={12} md={12} lg={12}>
+                <Card
+                  className={styles.card}
+                  cover={
+                    <iframe
+                      src="https://www.youtube.com/embed/vXCwYuJxFX8"
+                      title="X-Camp Academy Intro - 2023"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    >
+                    </iframe>
+                  }
+                >
+                  <Meta
+                    title="The Viper Game"
+                    description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
+                    className={styles.cardMeta}
+                  />
+                  <Button type="primary" shape="circle" ghost className={styles.cardButton}>
+                    <SwapRightOutlined />
+                  </Button>
+                </Card>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </Space>
     </div >
   )
