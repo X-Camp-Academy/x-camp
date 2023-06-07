@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Carousel, Space, Button, Card, Image, Form, Input, Typography } from 'antd';
+import { Carousel, Space, Button, Card, Image, Form, Input, Typography, Row, Col } from 'antd';
 
 import styles from './CarouselContent.module.scss';
 
@@ -14,10 +14,10 @@ const CarouselContent: React.FC = () => {
     <div className={styles.carouselContainer}>
       <div className={styles.carousel}>
         <Carousel autoplay dots>
-          <div className={styles.carouselItem}>
+          <Space className={styles.carouselSpace}>
             <Space direction='vertical' className={styles.carouselLeft}>
               <Title className={styles.title}>X-Camp Online Open House</Title>
-              <Space direction='vertical'>
+              <Space direction='vertical' className={styles.texts}>
                 <Text className={styles.text}>
                   {"Evaluate student's programming level"}
                 </Text>
@@ -28,9 +28,10 @@ const CarouselContent: React.FC = () => {
                   course schedule consultation
                 </Text>
               </Space>
-              <Button shape='round' className={styles.joinUs}>JOIN US</Button>
+              <Button className={styles.joinUs}>JOIN US</Button>
               <Text className={styles.date}>*Every Tuesday 6:30pm-7:30pm PT</Text>
             </Space>
+
             <Card
               title="Free Consultation"
               extra={
@@ -40,23 +41,31 @@ const CarouselContent: React.FC = () => {
                   preview={false}
                   width={60}
                   height={50}
-                  style={{ marginTop: 6 }}
+                  style={{ marginTop: 26 }}
                 />
               }
-              className={styles.carouselRight}
               headStyle={{
                 color: '#fff',
+                fontSize: 20,
+                fontWeight: 'normal',
+                height: 64,
+                lineHeight: 36,
                 backgroundColor: '#FFAD11',
               }}
+              bodyStyle={{
+                paddingTop: 36,
+                paddingBottom: 16
+              }}
+              className={styles.carouselRight}
             >
               <Form
                 name="basic"
                 onFinish={onFinish}
+                className={styles.form}
               >
                 <Form.Item
                   name="username"
                   rules={[{ required: true, message: 'Please input your username!' }]}
-                  style={{ marginBottom: 36 }}
                 >
                   <Input placeholder='孩子昵称' />
                 </Form.Item>
@@ -64,7 +73,6 @@ const CarouselContent: React.FC = () => {
                 <Form.Item
                   name="grade"
                   rules={[{ required: true, message: 'Please input your grade!' }]}
-                  style={{ marginBottom: 36 }}
                 >
                   <Input placeholder='孩子年级' />
                 </Form.Item>
@@ -72,7 +80,6 @@ const CarouselContent: React.FC = () => {
                 <Form.Item
                   name="email"
                   rules={[{ required: true, message: 'Please input your email!' }]}
-                  style={{ marginBottom: 36 }}
                 >
                   <Input type="email" placeholder='E-mail' />
                 </Form.Item>
@@ -80,7 +87,6 @@ const CarouselContent: React.FC = () => {
                 <Form.Item
                   name="number"
                   rules={[{ required: true, message: 'Please input your number!' }]}
-                  style={{ marginBottom: 36 }}
                 >
                   <Input placeholder='wechat ID/Phone Number' />
                 </Form.Item>
@@ -96,7 +102,7 @@ const CarouselContent: React.FC = () => {
                 </Form.Item>
               </Form>
             </Card>
-          </div>
+          </Space>
         </Carousel>
       </div>
     </div>

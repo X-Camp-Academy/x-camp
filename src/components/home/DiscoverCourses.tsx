@@ -10,25 +10,25 @@ const DiscoverCourses = () => {
     {
       title: 'Python Beginner',
       desc: 'Suitable for Year 6+',
-      url: '/image/home/Course-1.png',
+      url: '/image/home/course-1.png',
       bgc: '#D8D8D8'
     },
     {
       title: 'C++ Knowledge',
       desc: 'Suitable for Year 7+',
-      url: '/image/home/Course-2.png',
+      url: '/image/home/course-2.png',
       bgc: '#FFD600'
     },
     {
       title: 'USACO Grandmaster',
       desc: 'Suitable for Year 7+',
-      url: '/image/home/Course-3.png',
+      url: '/image/home/course-3.png',
       bgc: '#FFAD11'
     },
     {
       title: 'APCS',
       desc: 'Suitable for Year 7+',
-      url: '/image/home/Course-4.png',
+      url: '/image/home/course-4.png',
       bgc: '#D46B14'
     }
   ];
@@ -44,8 +44,9 @@ const DiscoverCourses = () => {
         {
           courseCards.map(item => {
             return (
-              <Col key={item?.url} xs={24} md={12} lg={6}>
+              <Col key={item?.url} xs={12} sm={12} md={12} lg={6}>
                 <Card
+                className={styles.card}
                   bodyStyle={{
                     backgroundColor: item?.bgc,
                     borderRadius: 8,
@@ -56,7 +57,7 @@ const DiscoverCourses = () => {
                     alignItems: 'center'
                   }}
                 >
-                  <Space direction='vertical' className={styles.cardTop}>
+                  <Space direction='vertical'>
                     <Title className={styles.cardTitle}>{item?.title}</Title>
                     <Paragraph className={styles.cardParagraph}>{item?.desc}</Paragraph>
                   </Space>

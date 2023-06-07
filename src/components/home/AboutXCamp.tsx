@@ -8,17 +8,17 @@ const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
   const aboutContents = [
     {
-      icon: '/image/home/Faculty-icon.png',
+      icon: '/image/home/faculty-icon.png',
       title: 'Faculty',
       desc: 'aaaacccccgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggcccccccccdddddddddddddddddddddddcccccccccccccccccccccccccccccccccccccccccccccaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X-Camp teachers are composed of senior engineers from leading tech companies and contestants from international and national level informatic contests like IOI, ICPC, USACO.'
     },
     {
-      icon: '/image/home/Achievement-icon.png',
+      icon: '/image/home/achievement-icon.png',
       title: 'Achievement',
       desc: 'More than 100 X-Camp students have been qualified for USACO Silver division and above; including 25 in the Platinum division and 5 selected in the US Camp, out of which 4 were fresh from the'
     },
     {
-      icon: '/image/home/Community-icon.png',
+      icon: '/image/home/community-icon.png',
       title: 'Community',
       desc: 'We are a community dedicated to inspiring and cultivating the next generation of Computer Science and Artificial Intelligence talent.'
     },
@@ -44,7 +44,7 @@ const AboutXCamp: React.FC = () => {
                     className={styles.card}
                     bodyStyle={{
                       borderRadius: 8,
-                      padding: 42
+                      padding: 40,
                     }}
                   >
                     <Space direction='vertical'>

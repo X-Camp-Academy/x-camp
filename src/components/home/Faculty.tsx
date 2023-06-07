@@ -12,22 +12,22 @@ const Faculty: React.FC = () => {
     {
       name: 'Ryan',
       description: '10+ years programming language',
-      avatar: '/image/home/Ryan.png'
+      avatar: '/image/home/ryan.png'
     },
     {
       name: 'Ryan',
       description: '10+ years programming language',
-      avatar: '/image/home/Ryan.png'
+      avatar: '/image/home/ryan.png'
     },
     {
       name: 'Ryan',
       description: '10+ years programming language',
-      avatar: '/image/home/Ryan.png'
+      avatar: '/image/home/ryan.png'
     },
   ]
   const computedStyle = (index: number) => {
     const defaultStyle = {
-      borderRadius: 9,
+      borderRadius: 10,
       paddingBottom: 6,
     };
     const colors = ['#D46B14', '#FFAD11', '#FFD600'];
@@ -51,11 +51,9 @@ const Faculty: React.FC = () => {
             facultyData.map((item, index) => {
               return (
                 <Col key={index} xs={24} lg={8}>
-                  <div style={computedStyle(index)} className={styles.cardContainer}>
+                  <div style={computedStyle(index)}>
                     <Card
                       bodyStyle={{
-                        borderRadius: 8,
-                        paddingTop: 18,
                         paddingBottom: 0,
                       }}
                     >

@@ -1,14 +1,20 @@
 .partners {
   width: 1440px;
   margin: 0 auto;
-  margin-top: 120px;
-  padding-left: 175px;
+  margin-top: 140px;
+  padding-left: 160px;
   padding-right: 155px;
   .title {
+    width: 242px;
+    height: 72px;
+    text-align: center;
     color: #D46B14;
     font-size: 36px;
     font-weight: 600;
-    line-height: 54px;
+    line-height: 72px;
+    background-image: url("/image/home/partners-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .paragraph {
     color: #172142;
@@ -16,6 +22,6 @@
     font-weight: 500;
     line-height: 34px;
     text-align: center;
-    margin: auto 20px 60px 20px;
+    margin: auto 40px 56px 40px;
   }
 }

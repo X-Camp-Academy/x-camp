@@ -25,25 +25,25 @@ const WeSupport: React.FC = () => {
           <Paragraph className={styles.paragraph}>{"X-Camp's programming courses support the three most mainstream and popular programming languages, including Intro to Python, Intro to Java (APCS), Beginner / Intermediate / Advanced level C++, for students in grades 5-12th."}</Paragraph>
           <Space size={24}>
             <Image
-              src='/image/home/Course-1.png'
+              src='/image/home/we-support-1.png'
               alt="image"
               preview={false}
-              width={160}
-              height={90}
+              width={164}
+              height={100}
             />
             <Image
-              src='/image/home/Course-2.png'
+              src='/image/home/we-support-2.png'
               alt="image"
               preview={false}
-              width={160}
-              height={90}
+              width={164}
+              height={100}
             />
             <Image
-              src='/image/home/Course-3.png'
+              src='/image/home/we-support-3.png'
               alt="image"
               preview={false}
-              width={160}
-              height={90}
+              width={164}
+              height={100}
             />
           </Space>
         </Space>
