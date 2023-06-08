@@ -1,8 +1,9 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Space, Typography, Row, Col, Card, Image, Button } from 'antd';
 import styles from './Faculty.module.scss';
 import { LeftOutlined, RightOutlined, SwapLeftOutlined, SwapRightOutlined } from '@ant-design/icons';
+import { useSize } from 'ahooks';
 
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
@@ -34,6 +35,11 @@ const Faculty: React.FC = () => {
 
     return { ...defaultStyle, backgroundColor: colors[index % 3] };
   }
+
+  const ref = useRef(null);
+  const size = useSize(ref);
+  console.log(size);
+  
   return (
     <div className={styles.faculty}>
       <Space direction='vertical' align='center'>
@@ -46,11 +52,18 @@ const Faculty: React.FC = () => {
           gutter={40}
           justify='center'
           align='middle'
+          ref={ref}
         >
           {
             facultyData.map((item, index) => {
               return (
-                <Col key={index} xs={{ span: 8, offset: 8 }} sm={{ span: 8, offset: 8 }} md={{ span: 8, offset: 8 }} lg={{ span: 8 }}>
+                <Col
+                  key={index}
+                  xs={{ span: 24 }}
+                  sm={{ span: 24 }}
+                  md={{ span: 24 }}
+                  lg={{ span: 8 }}
+                >
                   <div style={computedStyle(index)}>
                     <Card
                       bodyStyle={{
