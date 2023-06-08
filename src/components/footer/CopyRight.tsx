@@ -93,7 +93,7 @@ const CopyRight: React.FC = () => {
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={12}>
-            <Space size={96} align='start' className={styles.spaceRight}>
+            <Space align='start' className={styles.spaceRight}>
               <Space direction='vertical'>
                 <Text className={styles.text}>X-Camp Academy</Text>
                 <Link href={'/'}>Achievements</Link>

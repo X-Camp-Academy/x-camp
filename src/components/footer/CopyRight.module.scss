@@ -10,6 +10,7 @@
       justify-content: space-between;
       align-items: center;
       .spaceLeft {
+        width: 100%;
         .paragraph {
           color: #172142;
           font-size: 14px;
@@ -21,6 +22,8 @@
         }
       }
       .spaceRight {
+        width: 100%;
+        justify-content: space-between;
         .text {
           color: #172142;
           font-size: 16px;
