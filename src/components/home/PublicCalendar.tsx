@@ -103,7 +103,7 @@ const PublicCalendar: React.FC = () => {
             </Space>
           </Col>
           <Col xs={24} sm={24} md={24} lg={10}>
-            <Space size={48}  direction='vertical' className={styles.colSpace}>
+            <Space size={48} direction='vertical' className={styles.colSpace}>
               <Calendar fullscreen={false} onPanelChange={onPanelChange} />
               <Space direction='vertical' className={styles.calendarSpace}>
                 <Space className={styles.spaceDate}>

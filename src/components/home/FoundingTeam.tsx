@@ -33,38 +33,38 @@ const FoundingTeam = () => {
     <div className={styles.FoundingTeam}>
       <Space direction='vertical' align='center'>
         <Title className={styles.title}>Founding Team</Title>
-        <Row gutter={64}>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Space direction='vertical' className={styles.founderLeft} >
-              <Title className={styles.name}>{initialFounder.name}</Title>
-              <Space>
-                {
-                  initialFounder.tags.map(item => {
-                    return <Tag key={item} color="#FFAD11" className={styles.tags}>{item}</Tag>
-                  })
-                }
-              </Space>
-              <Paragraph className={styles.paragraph}>{initialFounder.desc}</Paragraph>
-              <Space>
-                <Button type="primary" ghost={true} shape="circle">
-                  <LeftOutlined />
-                </Button>
-                <Button type="primary" shape="circle">
-                  <RightOutlined />
-                </Button>
-              </Space>
+        <Space size={64}>
+          <Space direction='vertical' className={styles.founderLeft} >
+            <Title className={styles.name}>{initialFounder.name}</Title>
+            <Space>
+              {
+                initialFounder.tags.map(item => {
+                  return <Tag key={item} color="#FFAD11" className={styles.tags}>{item}</Tag>
+                })
+              }
             </Space>
-          </Col>
+            <Paragraph className={styles.paragraph}>{initialFounder.desc}</Paragraph>
+            <Space>
+              <Button type="primary" ghost={true} shape="circle">
+                <LeftOutlined />
+              </Button>
+              <Button type="primary" shape="circle">
+                <RightOutlined />
+              </Button>
+            </Space>
+          </Space>
 
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Space className={styles.founderRight}>
-              <Image
-                src={initialFounder?.bigImg}
-                alt="image"
-                preview={false}
-                width={380}
-                height={430}
-              />
+          <Space className={styles.founderRight}>
+            <Image
+              src={initialFounder?.bigImg}
+              alt="image"
+              preview={false}
+              width={380}
+              height={430}
+            />
+
+            {
+              !isMobile &&
               <Image
                 src={initialFounder?.smallImg}
                 alt="image"
@@ -72,9 +72,9 @@ const FoundingTeam = () => {
                 width={250}
                 height={430}
               />
-            </Space>
-          </Col>
-        </Row>
+            }
+          </Space>
+        </Space>
       </Space>
     </div>
   )

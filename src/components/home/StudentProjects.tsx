@@ -25,7 +25,7 @@ const StudentProjects: React.FC = () => {
             <iframe
               width="100%"
               height="350"
-              src="https://www.youtube.com/embed/vXCwYuJxFX8"
+              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
               title="X-Camp Academy Intro - 2023"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -39,7 +39,7 @@ const StudentProjects: React.FC = () => {
                   className={styles.card}
                   cover={
                     <iframe
-                      src="https://www.youtube.com/embed/vXCwYuJxFX8"
+                      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
                       title="X-Camp Academy Intro - 2023"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
@@ -62,7 +62,7 @@ const StudentProjects: React.FC = () => {
                   className={styles.card}
                   cover={
                     <iframe
-                      src="https://www.youtube.com/embed/vXCwYuJxFX8"
+                      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
                       title="X-Camp Academy Intro - 2023"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
