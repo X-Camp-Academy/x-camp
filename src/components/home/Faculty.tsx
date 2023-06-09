@@ -1,10 +1,15 @@
-'use client';
-import React, { useRef } from 'react';
-import { Space, Typography, Row, Col, Card, Image, Button } from 'antd';
-import styles from './Faculty.module.scss';
-import { LeftOutlined, RightOutlined, SwapLeftOutlined, SwapRightOutlined } from '@ant-design/icons';
-import { useSize } from 'ahooks';
-import { addAnimatePulse, removeAnimatePulse } from '@/utils';
+"use client";
+import React, { useRef } from "react";
+import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
+import styles from "./Faculty.module.scss";
+import {
+  LeftOutlined,
+  RightOutlined,
+  SwapLeftOutlined,
+  SwapRightOutlined,
+} from "@ant-design/icons";
+import { useSize } from "ahooks";
+import { addAnimatePulse, removeAnimatePulse } from "@/utils";
 
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
@@ -12,21 +17,22 @@ const { Meta } = Card;
 const Faculty: React.FC = () => {
   const facultyData = [
     {
-      name: 'Ryan',
-      description: '10+ years programming language',
-      avatar: '/image/home/ryan.png'
+      name: "Ryan",
+      description: "10+ years programming language",
+      avatar: "/image/home/ryan.png",
     },
     {
-      name: 'Ryan',
-      description: '10+ years programming language',
-      avatar: '/image/home/ryan.png'
+      name: "Ryan",
+      description: "10+ years programming language",
+      avatar: "/image/home/ryan.png",
     },
     {
-      name: 'Ryan',
-      description: '10+ years programming language',
-      avatar: '/image/home/ryan.png'
+      name: "Ryan",
+      description: "10+ years programming language",
+      avatar: "/image/home/ryan.png",
     },
   ];
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const refs = facultyData.map(() => useRef<HTMLDivElement>(null));
 
   const computedStyle = (index: number) => {
@@ -34,10 +40,10 @@ const Faculty: React.FC = () => {
       borderRadius: 10,
       paddingBottom: 6,
     };
-    const colors = ['#D46B14', '#FFAD11', '#FFD600'];
+    const colors = ["#D46B14", "#FFAD11", "#FFD600"];
 
     return { ...defaultStyle, backgroundColor: colors[index % 3] };
-  }
+  };
 
   const ref = useRef(null);
   const size = useSize(ref);
@@ -45,70 +51,77 @@ const Faculty: React.FC = () => {
 
   return (
     <div className={styles.faculty}>
-      <Space direction='vertical' align='center'>
+      <Space direction="vertical" align="center">
         <Title className={styles.title}>Faculty</Title>
         <Paragraph className={styles.paragraph}>
-          X-Camp has its own Art of Python Programming contest 4.0 award and other projects and event every quarter to inspire students . It is a great opportunity for students to showcase what they have learned from classes .
+          X-Camp has its own Art of Python Programming contest 4.0 award and
+          other projects and event every quarter to inspire students . It is a
+          great opportunity for students to showcase what they have learned from
+          classes .
         </Paragraph>
         <Row
           className={styles.row}
           gutter={40}
-          justify='center'
-          align='middle'
+          justify="center"
+          align="middle"
           ref={ref}
         >
-          {
-            facultyData.map((item, index) => {
-              return (
-                <Col
-                  key={index}
-                  xs={{ span: 24 }}
-                  sm={{ span: 24 }}
-                  md={{ span: 24 }}
-                  lg={{ span: 8 }}
+          {facultyData.map((item, index) => {
+            return (
+              <Col
+                key={index}
+                xs={{ span: 24 }}
+                sm={{ span: 24 }}
+                md={{ span: 24 }}
+                lg={{ span: 8 }}
+              >
+                <div
+                  ref={refs[index]}
+                  onMouseEnter={() => addAnimatePulse(refs, index)}
+                  onMouseLeave={() => removeAnimatePulse(refs, index)}
+                  style={computedStyle(index)}
                 >
-                  <div
-                    ref={refs[index]}
-                    onMouseEnter={() => addAnimatePulse(refs, index)}
-                    onMouseLeave={() => removeAnimatePulse(refs, index)}
-                    style={computedStyle(index)}
+                  <Card
+                    bodyStyle={{
+                      paddingBottom: 0,
+                    }}
                   >
-                    <Card
-                      bodyStyle={{
-                        paddingBottom: 0,
-                      }}
-                    >
-                      <Space>
-                        <Space direction='vertical'>
-                          <Text className={styles.name}>{item?.name}</Text>
-                          <Paragraph
-                            ellipsis={{ rows: 5 }}
-                            className={styles.description}
-                          >
-                            {item?.description}
-                          </Paragraph>
-                          <Button type="primary" size="small" ghost={true} shape="circle" className={styles.button}>
-                            <RightOutlined />
-                          </Button>
-                        </Space>
-                        <Image
-                          src={item?.avatar}
-                          alt="avatar"
-                          preview={false}
-                          width={150}
-                          height={155}
-                        />
+                    <Space>
+                      <Space direction="vertical">
+                        <Text className={styles.name}>{item?.name}</Text>
+                        <Paragraph
+                          ellipsis={{ rows: 5 }}
+                          className={styles.description}
+                        >
+                          {item?.description}
+                        </Paragraph>
+                        <Button
+                          type="primary"
+                          size="small"
+                          ghost={true}
+                          shape="circle"
+                          className={styles.button}
+                        >
+                          <RightOutlined />
+                        </Button>
                       </Space>
-                    </Card>
-                  </div>
-                </Col>
-              )
-            })
-          }
+                      <Image
+                        src={item?.avatar}
+                        alt="avatar"
+                        preview={false}
+                        width={150}
+                        height={155}
+                      />
+                    </Space>
+                  </Card>
+                </div>
+              </Col>
+            );
+          })}
         </Row>
       </Space>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
 export default Faculty;
