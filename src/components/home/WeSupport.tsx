@@ -1,11 +1,14 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Space, Typography, Row, Col, Card, Image } from 'antd';
+import { addAnimatePulse, removeAnimatePulse } from '@/utils';
 import styles from './WeSupport.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 
 const WeSupport: React.FC = () => {
+  const images = ['/image/home/we-support-1.png', '/image/home/we-support-2.png', '/image/home/we-support-3.png']
+  const refs = Array.from({ length: images.length }, () => useRef<HTMLDivElement>(null));
   return (
     <div className={styles.weSupport}>
       <Row gutter={[24, 24]}>
@@ -31,27 +34,26 @@ const WeSupport: React.FC = () => {
 
             <Col xs={{ span: 24, order: 1 }} sm={{ span: 24, order: 1 }} md={{ span: 24, order: 1 }} lg={{ span: 24, order: 2 }}>
               <Space size={24}>
-                <Image
-                  src='/image/home/we-support-1.png'
-                  alt="image"
-                  preview={false}
-                  width={164}
-                  height={100}
-                />
-                <Image
-                  src='/image/home/we-support-2.png'
-                  alt="image"
-                  preview={false}
-                  width={164}
-                  height={100}
-                />
-                <Image
-                  src='/image/home/we-support-3.png'
-                  alt="image"
-                  preview={false}
-                  width={164}
-                  height={100}
-                />
+                {
+                  images.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        ref={refs[index]}
+                        onMouseEnter={() => addAnimatePulse(refs, index)}
+                        onMouseLeave={() => removeAnimatePulse(refs, index)}
+                      >
+                        <Image
+                          src={item}
+                          alt="image"
+                          preview={false}
+                          width={164}
+                          height={100}
+                        />
+                      </div>
+                    )
+                  })
+                }
               </Space>
             </Col>
           </Row>

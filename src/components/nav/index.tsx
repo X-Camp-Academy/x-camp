@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ConfigProvider, Layout, Space, Image, Menu, Input, Button, Dropdown, MenuProps } from 'antd';
-import { TranslationOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, CaretUpOutlined, TranslationOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
 
 
@@ -14,20 +14,24 @@ const menuItems: MenuProps['items'] = [
     key: '/',
   },
   {
-    label: <Link href='/courses'>Courses</Link>,
+    label: <Link href='/courses'>
+      Courses
+      <CaretUpOutlined />
+      <CaretDownOutlined />
+    </Link>,
     key: 'courses',
   },
   {
-    label: <Link href='/contests'>Contests</Link>,
-    key: 'contests',
+    label: <Link href='/resources'>Resources</Link>,
+    key: 'resources',
   },
   {
     label: <Link href='/about-us'>About Us</Link>,
     key: 'about-us',
   },
   {
-    label: <Link href='/contact-us'>Contact Us</Link>,
-    key: 'contact-us',
+    label: <Link href='/'>Evaluation</Link>,
+    key: 'evaluation',
   },
 ];
 const items: MenuProps['items'] = [
@@ -77,6 +81,11 @@ const Nav: React.FC = () => {
                 selectedKeys={[current]}
                 items={menuItems}
                 onClick={handleMenuClick}
+                style={{
+                  color: '#172142',
+                  fontSize: 16,
+                  fontWeight: 500,
+                }}
               />
             </Space>
             <Space size={24}>

@@ -1,7 +1,9 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Typography, Row, Col, Card, Space, Image } from 'antd';
+import 'animate.css';
 import styles from './DiscoverCourses.module.scss';
+import { addAnimatePulse, removeAnimatePulse } from '@/utils';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -32,9 +34,22 @@ const DiscoverCourses = () => {
       bgc: '#D46B14'
     }
   ];
+
+
+  const refs = Array.from({ length: courseCards.length }, () => useRef<HTMLDivElement>(null));
+
   return (
     <div className={styles.discoverCourses}>
-      <Title className={styles.title}>Discover Our Courses</Title>
+      {/* animate__bounceInLeft
+      animate__fadeInLeft
+
+      animate__fadeInTopLeft
+      animate__fadeInBottomLeft
+      animate__lightSpeedInLeft
+
+      animate__zoomInLeft
+      animate__slideInLeft */}
+      <Title className={`{styles.title} animate__animated animate__backInLeft`}>Discover Our Courses</Title>
       <Row
         className={styles.cards}
         gutter={16}
@@ -42,11 +57,20 @@ const DiscoverCourses = () => {
         align='middle'
       >
         {
-          courseCards.map(item => {
+          courseCards.map((item, index) => {
             return (
-              <Col key={item?.url} xs={12} sm={12} md={12} lg={6}>
+              <Col
+                key={item?.url}
+                xs={12}
+                sm={12}
+                md={12}
+                lg={6}
+              >
                 <Card
-                className={styles.card}
+                  ref={refs[index]}
+                  onMouseEnter={() => addAnimatePulse(refs, index)}
+                  onMouseLeave={() => removeAnimatePulse(refs, index)}
+                  className={styles.card}
                   bodyStyle={{
                     backgroundColor: item?.bgc,
                     borderRadius: 8,

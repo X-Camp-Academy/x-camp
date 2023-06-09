@@ -4,6 +4,7 @@ import { Space, Typography, Row, Col, Card, Image, Button } from 'antd';
 import styles from './Faculty.module.scss';
 import { LeftOutlined, RightOutlined, SwapLeftOutlined, SwapRightOutlined } from '@ant-design/icons';
 import { useSize } from 'ahooks';
+import { addAnimatePulse, removeAnimatePulse } from '@/utils';
 
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
@@ -25,7 +26,9 @@ const Faculty: React.FC = () => {
       description: '10+ years programming language',
       avatar: '/image/home/ryan.png'
     },
-  ]
+  ];
+  const refs = facultyData.map(() => useRef<HTMLDivElement>(null));
+
   const computedStyle = (index: number) => {
     const defaultStyle = {
       borderRadius: 10,
@@ -39,7 +42,7 @@ const Faculty: React.FC = () => {
   const ref = useRef(null);
   const size = useSize(ref);
   console.log(size);
-  
+
   return (
     <div className={styles.faculty}>
       <Space direction='vertical' align='center'>
@@ -64,7 +67,12 @@ const Faculty: React.FC = () => {
                   md={{ span: 24 }}
                   lg={{ span: 8 }}
                 >
-                  <div style={computedStyle(index)}>
+                  <div
+                    ref={refs[index]}
+                    onMouseEnter={() => addAnimatePulse(refs, index)}
+                    onMouseLeave={() => removeAnimatePulse(refs, index)}
+                    style={computedStyle(index)}
+                  >
                     <Card
                       bodyStyle={{
                         paddingBottom: 0,
