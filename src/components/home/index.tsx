@@ -29,10 +29,10 @@ const Home: React.FC = () => {
         }
       }}
     >
-      {/* <Layout className={styles.homeContainer}>
+      <Layout className={styles.homeContainer}>
         <Content>
           <CarouselContent />
-          <DiscoverCourses />
+          {/* <DiscoverCourses />
           <AboutXCamp />
           <FoundingTeam />
           <WeSupport />
@@ -42,9 +42,9 @@ const Home: React.FC = () => {
           <Partners />
           <Comments />
           <CopyRight />
-          <SubscribeNewsletter />
+          <SubscribeNewsletter /> */}
         </Content>
-      </Layout> */}
+      </Layout>
     </ConfigProvider>
   )
 }

@@ -6,6 +6,7 @@ import { ConfigProvider, Layout, Space, Image, Menu, Input, Button, Dropdown, Me
 import { CaretDownOutlined, CaretUpOutlined, TranslationOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
 import { resetRem } from '@/utils/public';
+import { useMobile } from '@/utils';
 
 
 const { Header } = Layout;
@@ -50,7 +51,7 @@ const Nav: React.FC = () => {
   const [current, setCurrent] = useState('/');
   const pathname = usePathname();
   const { Search } = Input;
-
+  const isMobile = useMobile();
 
   const onSearch = (value: string) => console.log(value);
   const handleMenuClick: MenuProps['onClick'] = (e) => {
@@ -59,11 +60,11 @@ const Nav: React.FC = () => {
     setCurrent(e.key);
   };
 
-  useEffect(() => {
-    if (window) {
-      resetRem();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window) {
+  //     resetRem();
+  //   }
+  // }, []);
   return (
     <ConfigProvider
       theme={{
@@ -80,20 +81,19 @@ const Nav: React.FC = () => {
                 src="/logo/logo.svg"
                 alt="logo"
                 preview={false}
-                width={'5rem'}
-                height={'100%'}
+                className={styles.image}
               />
-              <Menu
-                mode="horizontal"
-                selectedKeys={[current]}
-                items={menuItems}
-                onClick={handleMenuClick}
-                style={{
-                  color: '#172142',
-                  fontSize: 4.33,
-                  fontWeight: 500,
-                }}
-              />
+              {
+                !isMobile &&
+                <Menu
+                  mode="horizontal"
+                  selectedKeys={[current]}
+                  items={menuItems}
+                  onClick={handleMenuClick}
+                  className={styles.menu}
+                />
+              }
+
             </Space>
             <Space>
               <Search
@@ -102,21 +102,38 @@ const Nav: React.FC = () => {
                 enterButton
                 className={styles.search}
               />
-              <Space>
-                <Link href='/' className={styles.logIn}>Log In</Link>
-                <Button type="primary" className={styles.signUp}>Sign Up</Button>
-              </Space>
-              <Dropdown
-                menu={{
-                  items,
-                  onClick: handleMenuClick,
-                }}
-                className={styles.dropDown}
-              >
-                <a onClick={(e) => e.preventDefault()}>
-                  <TranslationOutlined />
-                </a>
-              </Dropdown>
+              {
+                !isMobile &&
+                <>
+                  <Space>
+                    <Link href='/' className={styles.logIn}>Log In</Link>
+                    <Button type="primary" className={styles.signUp}>Sign Up</Button>
+                  </Space>
+                  <Dropdown
+                    menu={{
+                      items,
+                      onClick: handleMenuClick,
+                    }}
+                    className={styles.dropDown}
+                  >
+                    <a onClick={(e) => e.preventDefault()}>
+                      <TranslationOutlined />
+                    </a>
+                  </Dropdown>
+                </>
+              }
+
+
+              {
+                isMobile &&
+                <Menu
+                  mode="horizontal"
+                  selectedKeys={[current]}
+                  items={menuItems}
+                  onClick={handleMenuClick}
+                  className={styles.menu}
+                />
+              }
             </Space>
           </Space>
         </Header>

@@ -13,7 +13,7 @@ export const useMobile = () => {
   const screens = useBreakpoint();
   const breakpoints = Object.entries(screens)?.filter(screen => !!screen[1])?.map(screen => screen[0]);
   // 屏幕 < 992px
-  const isMobile = !breakpoints?.includes('lg');
+  const isMobile = !breakpoints?.includes('md');
   return isMobile;
 };
 
