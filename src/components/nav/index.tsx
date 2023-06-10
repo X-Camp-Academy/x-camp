@@ -1,10 +1,11 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ConfigProvider, Layout, Space, Image, Menu, Input, Button, Dropdown, MenuProps } from 'antd';
 import { CaretDownOutlined, CaretUpOutlined, TranslationOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
+import { resetRem } from '@/utils/public';
 
 
 const { Header } = Layout;
@@ -57,6 +58,12 @@ const Nav: React.FC = () => {
     console.log(pathname);
     setCurrent(e.key);
   };
+
+  useEffect(() => {
+    if (window) {
+      resetRem();
+    }
+  }, []);
   return (
     <ConfigProvider
       theme={{
@@ -73,8 +80,8 @@ const Nav: React.FC = () => {
                 src="/logo/logo.svg"
                 alt="logo"
                 preview={false}
-                width={105}
-                height={30}
+                width={'5rem'}
+                height={'100%'}
               />
               <Menu
                 mode="horizontal"
@@ -83,12 +90,12 @@ const Nav: React.FC = () => {
                 onClick={handleMenuClick}
                 style={{
                   color: '#172142',
-                  fontSize: 16,
+                  fontSize: 4.33,
                   fontWeight: 500,
                 }}
               />
             </Space>
-            <Space size={24}>
+            <Space>
               <Search
                 placeholder="Search"
                 onSearch={onSearch}

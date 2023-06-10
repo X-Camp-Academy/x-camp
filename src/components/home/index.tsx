@@ -29,7 +29,7 @@ const Home: React.FC = () => {
         }
       }}
     >
-      <Layout className={styles.homeContainer}>
+      {/* <Layout className={styles.homeContainer}>
         <Content>
           <CarouselContent />
           <DiscoverCourses />
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
           <CopyRight />
           <SubscribeNewsletter />
         </Content>
-      </Layout>
+      </Layout> */}
     </ConfigProvider>
   )
 }
