@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { ConfigProvider, Layout, Space, Image, Menu, Input, Button, Dropdown, MenuProps } from 'antd';
 import { CaretDownOutlined, CaretUpOutlined, TranslationOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
-import { resetRem } from '@/utils/public';
 import { useMobile } from '@/utils';
 
 
@@ -60,11 +59,6 @@ const Nav: React.FC = () => {
     setCurrent(e.key);
   };
 
-  // useEffect(() => {
-  //   if (window) {
-  //     resetRem();
-  //   }
-  // }, []);
   return (
     <ConfigProvider
       theme={{
@@ -74,7 +68,7 @@ const Nav: React.FC = () => {
       }}
     >
       <Layout className={styles.headerContainer}>
-        <Header className={styles.header}>
+        <Header className={`${styles.header} container`}>
           <Space align='center' className={styles.space}>
             <Space>
               <Image
@@ -127,7 +121,7 @@ const Nav: React.FC = () => {
               {
                 isMobile &&
                 <Menu
-                  mode="horizontal"
+                  mode="inline"
                   selectedKeys={[current]}
                   items={menuItems}
                   onClick={handleMenuClick}

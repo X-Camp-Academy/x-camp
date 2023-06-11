@@ -14,15 +14,3 @@ export const getTransResult = (
   if (lang == "zh") return zhText ? zhText : enText;
   else return enText ? enText : zhText;
 };
-
-export const resetRem = () => {
-  const baseSize = 16;
-  function setRem() {
-    const scale = document.documentElement.clientWidth / 1440;
-    document.documentElement.style.fontSize = baseSize * scale + "px";
-  }
-  setRem();
-  window.onresize = function () {
-    setRem();
-  };
-};

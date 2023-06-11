@@ -7,12 +7,8 @@
   right: 0;
   background-color: #fff;
   box-shadow: 2px 2px 2px #adadad;
-  z-index: 1000;
+  z-index: 100;
   .header {
-    width: 1440px;
-    margin: 0 auto;
-    padding-left: 65px;
-    padding-right: 65px;
     height: 72px;
     line-height: 72px;
     background-color: #fff;
@@ -21,66 +17,44 @@
       height: 100%;
       justify-content: space-between;
       align-items: center;
+      @media screen and (max-width: 768px) {
+        width: auto;
+        justify-content: space-between;
+        align-items: center;
+      }
       .image {
         width: 105px;
-        height: 100%;
+        height: 2rem;
       }
       .menu {
         color: $text-color;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 500;
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
       }
       .search {
         display: block;
+        @media screen and (max-width: 768px) {
+          width: 20rem;
+        }
       }
       .logIn {
         color: $text-color;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 500;
-        line-height: 22px;
+        line-height: 1.375rem;
       }
       .signUp {
         color: #fff;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 500;
-        line-height: 22px;
+        line-height: 1.375rem;
       }
       .dropDown {
         color: $text-color;
-        font-size: 24px;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .headerContainer {
-    .header {
-      width: 100%;
-      padding-left: 20px;
-      padding-right: 20px;
-      .space {
-        display: flex;
-        justify-content: space-between;
-        .image {
-          height: 2rem;
-        }
-        .menu {
-          display: none;
-        }
-        .search {
-          width: 10rem;
-          margin-bottom: 10px;
-        }
-        .logIn,
-        .signUp,
-        .dropDown {
-          font-size: 14px;
-        }
-
-        .logIn, .signUp {
-          display: none;
-        }
+        font-size: 1.5rem;
       }
     }
   }

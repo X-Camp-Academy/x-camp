@@ -2,164 +2,81 @@
 
 .carouselContainer {
   width: 100%;
-  height: 576px;
+  height: 40rem;
   background-image: url("/image/home/carousel-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   .carousel {
-    width: 1440px;
     height: 100%;
     margin: 0 auto;
     .carouselSpace {
       display: flex !important;
       justify-content: space-between;
       align-items: center;
-      margin-top: 42px;
-      padding-left: 50px;
-      padding-right: 50px;
+      margin-top: 2.625rem;
+      padding-left: 2.8125rem;
+      padding-right: 2.8125rem;
       .carouselLeft {
         .title {
           color: #d46b14;
-          font-size: 48px;
+          font-size: 3rem;
           font-weight: 900;
-          line-height: 58px;
+          line-height: 3.625rem;
         }
         .texts {
-          margin-left: 32px;
+          margin-left: 2rem;
           .text {
             color: $primary-color;
-            font-size: 28px;
+            font-size: 1.75rem;
             font-weight: 500;
-            line-height: 42px;
+            line-height: 2.625rem;
           }
         }
         .joinUs {
           height: auto;
           color: #fff;
-          font-size: 26px;
-          padding: 12px 60px;
+          font-size: 1.625rem;
+          padding: .75rem 3.75rem;
           font-weight: 600;
-          line-height: 46px;
-          margin-top: 24px;
-          margin-left: 32px;
-          margin-bottom: 8px;
-          border-radius: 32px;
+          line-height: 2.875rem;
+          margin-top: 1.5rem;
+          margin-left: 2rem;
+          margin-bottom: .5rem;
+          border-radius: 2rem;
           background-color: $primary-color;
         }
         .date {
           color: #172a88;
-          font-size: 20px;
-          line-height: 46px;
+          font-size: 1.25rem;
+          line-height: 2.875rem;
           font-weight: 600;
-          margin-left: 32px;
+          margin-left: 2rem;
         }
       }
       .carouselRight {
-        width: 420px;
-        box-shadow: 0px 9px 25px -4px rgba(212,107,20,0.4);
+        width: 26.25rem;
+        box-shadow: 0rem .5625rem 1.5625rem -0.25rem rgba(212,107,20,0.4);
+        @media (max-width: 768px) {
+          width: 100%;
+          margin-top: 5rem;
+        }
         .form {
-          margin-left: 10px;
-          margin-right: 10px;
+          margin-left: .625rem;
+          margin-right: .625rem;
           input {
             width: 100%;
-            height: 46px;
+            height: 2.875rem;
           }
           .submit {
-            width: 354px;
-            height: 48px;
-            font-size: 16px;
+            width: 22.125rem;
+            height: 3rem;
+            font-size: 1rem;
             font-weight: 400;
-            line-height: 24px;
+            line-height: 1.5rem;
           }
         }
       }
     }
   }
-}
-
-
-@media screen and (max-width: 768px) {
-  .carouselContainer {
-    width: 100%;
-    height: 576px;
-    background-image: url("/image/home/carousel-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    .carousel {
-      width: 100%;
-      height: 100%;
-      margin: 0 auto;
-      .carouselSpace {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 42px;
-        padding-left: 20px;
-        padding-right: 20px;
-        .carouselLeft {
-          text-align: center;
-          .title {
-            color: #d46b14;
-            font-size: 36px;
-            font-weight: 900;
-            line-height: 44px;
-          }
-          .texts {
-            margin-left: 32px;
-            text-align: center;
-            .text {
-              color: $primary-color;
-              font-size: 28px;
-              font-weight: 500;
-              line-height: 42px;
-              text-align: center;
-            }
-          }
-          .joinUs {
-            height: auto;
-            color: #fff;
-            font-size: 36px;
-            padding: 12px 60px;
-            font-weight: 600;
-            line-height: 46px;
-            margin-top: 24px;
-            margin-left: 32px;
-            margin-bottom: 8px;
-            border-radius: 32px;
-            background-color: $primary-color;
-          }
-          .date {
-            color: #172a88;
-            font-size: 16px;
-            line-height: 46px;
-            font-weight: 600;
-            margin-left: 32px;
-          }
-        }
-        .carouselRight {
-          width: 100%;
-          margin-top: 20px;
-          text-align: center;
-          box-shadow: 0px 9px 25px -4px rgba(212,107,20,0.4);
-          .form {
-            margin-left: 10px;
-            margin-right: 10px;
-            input {
-              width: 100%;
-              height: 46px;
-            }
-            .submit {
-              width: 354px;
-              height: 48px;
-              font-size: 16px;
-              font-weight: 400;
-              line-height: 24px;
-            }
-          }
-        }
-      }
-    }
-  }
-  
 }
 

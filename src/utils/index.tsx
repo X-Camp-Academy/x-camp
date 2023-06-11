@@ -1,5 +1,5 @@
-import { Grid } from 'antd';
 import { RefObject } from 'react';
+import { Grid } from 'antd';
 
 /**
  * xs 屏幕 < 576px
@@ -16,16 +16,6 @@ export const useMobile = () => {
   const isMobile = !breakpoints?.includes('md');
   return isMobile;
 };
-
-
-// const addAnimatePulse = (refs: React.RefObject<HTMLDivElement>[], index: number) => {
-//   (refs[index]?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__pulse');
-// }
-
-// const removeAnimatePulse = (refs: React.RefObject<HTMLDivElement>[], index: number) => {
-//   (refs[index]?.current as HTMLDivElement)?.classList?.remove('animate__animated', 'animate__pulse');
-// }
-
 
 /**
  * 添加动画效果

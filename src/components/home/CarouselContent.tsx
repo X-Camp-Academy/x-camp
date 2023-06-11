@@ -12,7 +12,7 @@ const CarouselContent: React.FC = () => {
   }
   return (
     <div className={styles.carouselContainer}>
-      <div className={styles.carousel}>
+      <div className={`${styles.carousel} container`}>
         <Carousel autoplay dots>
           <Row className={styles.carouselSpace}>
             <Col xs={24} sm={24} md={24} lg={16}>
