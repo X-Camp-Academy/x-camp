@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -16,8 +16,11 @@ import {
 import {
   CaretDownOutlined,
   CaretUpOutlined,
+  MenuFoldOutlined,
   TranslationOutlined,
+  UnorderedListOutlined,
 } from "@ant-design/icons";
+import "animate.css";
 import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
 
@@ -63,6 +66,7 @@ const items: MenuProps["items"] = [
 
 const Nav: React.FC = () => {
   const [current, setCurrent] = useState("/");
+  const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
   const { Search } = Input;
   const isMobile = useMobile();
@@ -74,6 +78,12 @@ const Nav: React.FC = () => {
     setCurrent(e.key);
   };
 
+  const ref = useRef<HTMLDivElement>(null);
+  const onShowMenuChange = () => {
+    setShowMenu(!showMenu);
+    // animate__slideOutRight
+    // (ref?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__slideInRight');
+  }
   return (
     <ConfigProvider
       theme={{
@@ -92,15 +102,13 @@ const Nav: React.FC = () => {
                 preview={false}
                 className={styles.image}
               />
-              {!isMobile && (
-                <Menu
-                  mode="horizontal"
-                  selectedKeys={[current]}
-                  items={menuItems}
-                  onClick={handleMenuClick}
-                  className={styles.menu}
-                />
-              )}
+              <Menu
+                mode="horizontal"
+                selectedKeys={[current]}
+                items={menuItems}
+                onClick={handleMenuClick}
+                className={styles.menu}
+              />
             </Space>
             <Space>
               <Search
@@ -119,31 +127,50 @@ const Nav: React.FC = () => {
                       Sign Up
                     </Button>
                   </Space>
-                  <Dropdown
-                    menu={{
-                      items,
-                      onClick: handleMenuClick,
-                    }}
-                    className={styles.dropDown}
-                  >
-                    <a onClick={(e) => e.preventDefault()}>
-                      <TranslationOutlined />
-                    </a>
-                  </Dropdown>
                 </>
               )}
+              <Dropdown
+                menu={{
+                  items,
+                  onClick: handleMenuClick,
+                }}
+                className={styles.dropDown}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <TranslationOutlined />
+                </a>
+              </Dropdown>
 
               {isMobile && (
-                <Menu
-                  mode="inline"
-                  selectedKeys={[current]}
-                  items={menuItems}
-                  onClick={handleMenuClick}
-                  className={styles.menu}
-                />
+                <Button type="primary" onClick={() => setShowMenu(!showMenu)}>
+                  <UnorderedListOutlined />
+                </Button>
               )}
             </Space>
           </Space>
+          {showMenu && (
+            <Space
+              direction="vertical"
+              size={0}
+              ref={ref}
+              className={`${styles.showMenu} animate__animated animate__slideInRight`}
+            >
+              <Button
+                type="primary"
+                className={styles.button}
+                onClick={onShowMenuChange}
+              >
+                <UnorderedListOutlined />
+              </Button>
+              <Menu
+                mode="vertical"
+                selectedKeys={[current]}
+                items={menuItems}
+                onClick={handleMenuClick}
+                className={styles.mobileMenu}
+              />
+            </Space>
+          )}
         </Header>
       </Layout>
     </ConfigProvider>

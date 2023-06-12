@@ -6,7 +6,7 @@ module.exports = {
       propList: ["*"],
       selectorBlackList: [],
       replace: true,
-      mediaQuery: true,
+      mediaQuery: false,
       minPixelValue: 0,
       exclude: /node_modules/i
     },
