@@ -4,11 +4,12 @@ import { Space, Row, Col, Card, Image, Typography, Button, Calendar } from 'antd
 import type { CalendarMode } from 'antd/es/calendar/generateCalendar';
 import type { Dayjs } from 'dayjs';
 import styles from './PublicCalendar.module.scss';
+import dayjs from 'dayjs';
 
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
-  const onPanelChange = (value: Dayjs, mode: CalendarMode) => {
+  const onPanelChange = (value: any, mode: CalendarMode) => {
     console.log(value.format('YYYY-MM-DD'), mode);
   };
 

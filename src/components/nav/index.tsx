@@ -1,59 +1,74 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ConfigProvider, Layout, Space, Image, Menu, Input, Button, Dropdown, MenuProps } from 'antd';
-import { CaretDownOutlined, CaretUpOutlined, TranslationOutlined } from '@ant-design/icons';
-import styles from './index.module.scss';
-import { useMobile } from '@/utils';
-
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  ConfigProvider,
+  Layout,
+  Space,
+  Image,
+  Menu,
+  Input,
+  Button,
+  Dropdown,
+  MenuProps,
+} from "antd";
+import {
+  CaretDownOutlined,
+  CaretUpOutlined,
+  TranslationOutlined,
+} from "@ant-design/icons";
+import styles from "./index.module.scss";
+import { useMobile } from "@/utils";
 
 const { Header } = Layout;
-const menuItems: MenuProps['items'] = [
+const menuItems: MenuProps["items"] = [
   {
-    label: <Link href='/'>Home</Link>,
-    key: '/',
+    label: <Link href="/">Home</Link>,
+    key: "/",
   },
   {
-    label: <Link href='/courses'>
-      Courses
-      <CaretUpOutlined />
-      <CaretDownOutlined />
-    </Link>,
-    key: 'courses',
+    label: (
+      <Link href="/courses">
+        Courses
+        <CaretUpOutlined />
+        <CaretDownOutlined />
+      </Link>
+    ),
+    key: "courses",
   },
   {
-    label: <Link href='/resources'>Resources</Link>,
-    key: 'resources',
+    label: <Link href="/resources">Resources</Link>,
+    key: "resources",
   },
   {
-    label: <Link href='/about-us'>About Us</Link>,
-    key: 'about-us',
+    label: <Link href="/about-us">About Us</Link>,
+    key: "about-us",
   },
   {
-    label: <Link href='/'>Evaluation</Link>,
-    key: 'evaluation',
+    label: <Link href="/">Evaluation</Link>,
+    key: "evaluation",
   },
 ];
-const items: MenuProps['items'] = [
+const items: MenuProps["items"] = [
   {
-    key: 'en',
-    label: 'English',
+    key: "en",
+    label: "English",
   },
   {
-    key: 'zh',
-    label: '中文',
+    key: "zh",
+    label: "中文",
   },
 ];
 
 const Nav: React.FC = () => {
-  const [current, setCurrent] = useState('/');
+  const [current, setCurrent] = useState("/");
   const pathname = usePathname();
   const { Search } = Input;
   const isMobile = useMobile();
 
   const onSearch = (value: string) => console.log(value);
-  const handleMenuClick: MenuProps['onClick'] = (e) => {
+  const handleMenuClick: MenuProps["onClick"] = (e) => {
     console.log(e.key);
     console.log(pathname);
     setCurrent(e.key);
@@ -63,13 +78,13 @@ const Nav: React.FC = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
+          colorPrimary: "#FFAD11",
         },
       }}
     >
       <Layout className={styles.headerContainer}>
         <Header className={`${styles.header} container`}>
-          <Space align='center' className={styles.space}>
+          <Space align="center" className={styles.space}>
             <Space>
               <Image
                 src="/logo/logo.svg"
@@ -77,8 +92,7 @@ const Nav: React.FC = () => {
                 preview={false}
                 className={styles.image}
               />
-              {
-                !isMobile &&
+              {!isMobile && (
                 <Menu
                   mode="horizontal"
                   selectedKeys={[current]}
@@ -86,8 +100,7 @@ const Nav: React.FC = () => {
                   onClick={handleMenuClick}
                   className={styles.menu}
                 />
-              }
-
+              )}
             </Space>
             <Space>
               <Search
@@ -96,12 +109,15 @@ const Nav: React.FC = () => {
                 enterButton
                 className={styles.search}
               />
-              {
-                !isMobile &&
+              {!isMobile && (
                 <>
                   <Space>
-                    <Link href='/' className={styles.logIn}>Log In</Link>
-                    <Button type="primary" className={styles.signUp}>Sign Up</Button>
+                    <Link href="/" className={styles.logIn}>
+                      Log In
+                    </Link>
+                    <Button type="primary" className={styles.signUp}>
+                      Sign Up
+                    </Button>
                   </Space>
                   <Dropdown
                     menu={{
@@ -115,11 +131,9 @@ const Nav: React.FC = () => {
                     </a>
                   </Dropdown>
                 </>
-              }
+              )}
 
-
-              {
-                isMobile &&
+              {isMobile && (
                 <Menu
                   mode="inline"
                   selectedKeys={[current]}
@@ -127,13 +141,13 @@ const Nav: React.FC = () => {
                   onClick={handleMenuClick}
                   className={styles.menu}
                 />
-              }
+              )}
             </Space>
           </Space>
         </Header>
       </Layout>
     </ConfigProvider>
-  )
+  );
 };
 
 export default Nav;
