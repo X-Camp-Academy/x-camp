@@ -66,6 +66,7 @@ const items: MenuProps["items"] = [
 
 const Nav: React.FC = () => {
   const [current, setCurrent] = useState("/");
+  const [menu, setMenu] = useState<MenuProps["items"]>([]);
   const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
   const { Search } = Input;
@@ -83,7 +84,12 @@ const Nav: React.FC = () => {
     setShowMenu(!showMenu);
     // animate__slideOutRight
     // (ref?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__slideInRight');
-  }
+  };
+  useEffect(() => {
+    console.log(isMobile);
+
+    setMenu(menuItems);
+  }, [isMobile]);
   return (
     <ConfigProvider
       theme={{
@@ -102,13 +108,15 @@ const Nav: React.FC = () => {
                 preview={false}
                 className={styles.image}
               />
-              <Menu
-                mode="horizontal"
-                selectedKeys={[current]}
-                items={menuItems}
-                onClick={handleMenuClick}
-                className={styles.menu}
-              />
+              {!isMobile && ( // 缓存原因需要强制销毁重建组件
+                <Menu
+                  mode="horizontal"
+                  selectedKeys={[current]}
+                  items={menu}
+                  onClick={handleMenuClick}
+                  className={styles.menu}
+                />
+              )}
             </Space>
             <Space>
               <Search

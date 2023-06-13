@@ -63,3 +63,10 @@ html {
     max-width: 1320px;
   }
 }
+
+.ant-carousel .slick-dots li button {
+  background-color: #333!important;
+}
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: #ffad11!important;
+}
