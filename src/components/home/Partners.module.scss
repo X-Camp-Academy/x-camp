@@ -1,9 +1,5 @@
 .partners {
-  width: 1440px;
-  margin: 0 auto;
   margin-top: 140px;
-  padding-left: 160px;
-  padding-right: 155px;
   .title {
     width: 242px;
     height: 72px;
@@ -22,6 +18,10 @@
     font-weight: 500;
     line-height: 34px;
     text-align: center;
-    margin: auto 40px 56px 40px;
+    // margin: auto 40px 56px 40px;
+  }
+  .image {
+    width: 224px;
+    height: 64px;
   }
 }

@@ -1,9 +1,5 @@
 .studentProjects {
-  width: 1440px;
-  margin: 0 auto;
   margin-top: 70px;
-  padding-left: 65px;
-  padding-right: 65px;
   .title {
     color: #172142;
     font-size: 36px;
@@ -27,7 +23,6 @@
     margin: auto 132px 80px 132px;
   }
   .card {
-    height: 350px;
     border-radius: 0;
     position: relative;
     .cardMeta {
@@ -46,7 +41,7 @@
     }
     .cardButton {
       position: absolute;
-      right: 20px;
+      right: 8px;
       bottom: 30px;
     }
   }

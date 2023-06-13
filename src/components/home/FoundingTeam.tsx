@@ -66,7 +66,7 @@ const FoundingTeam = () => {
                 src={initialFounder?.bigImg}
                 alt="image"
                 preview={false}
-                width={380}
+                width={isMobile ? "100%" : 380}
                 height={430}
               />
 

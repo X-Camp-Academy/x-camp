@@ -9,7 +9,7 @@ import {
   SwapRightOutlined,
 } from "@ant-design/icons";
 import { useSize } from "ahooks";
-import { addAnimatePulse, removeAnimatePulse } from "@/utils";
+import { addAnimatePulse, removeAnimatePulse, useMobile } from "@/utils";
 
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
@@ -39,6 +39,7 @@ const Faculty: React.FC = () => {
     const defaultStyle = {
       borderRadius: 10,
       paddingBottom: 6,
+      marginTop: 48,
     };
     const colors = ["#D46B14", "#FFAD11", "#FFD600"];
 
@@ -48,9 +49,10 @@ const Faculty: React.FC = () => {
   const ref = useRef(null);
   const size = useSize(ref);
   console.log(size);
+  const isMobile = useMobile();
 
   return (
-    <div className={styles.faculty}>
+    <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>Faculty</Title>
         <Paragraph className={styles.paragraph}>
@@ -61,7 +63,7 @@ const Faculty: React.FC = () => {
         </Paragraph>
         <Row
           className={styles.row}
-          gutter={40}
+          gutter={isMobile ? 0 : 40}
           justify="center"
           align="middle"
           ref={ref}
