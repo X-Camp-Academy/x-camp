@@ -67,7 +67,8 @@ const items: MenuProps["items"] = [
 const Nav: React.FC = () => {
   const [current, setCurrent] = useState("/");
   const [menu, setMenu] = useState<MenuProps["items"]>([]);
-  const [showMenu, setShowMenu] = useState(false);
+  const initialShowMenu = false;
+  const [showMenu, setShowMenu] = useState(initialShowMenu);
   const pathname = usePathname();
   const { Search } = Input;
   const isMobile = useMobile();
@@ -90,6 +91,10 @@ const Nav: React.FC = () => {
 
     setMenu(menuItems);
   }, [isMobile]);
+
+  useEffect(() => {
+    setShowMenu(initialShowMenu);
+  }, [initialShowMenu]);
   return (
     <ConfigProvider
       theme={{
@@ -159,7 +164,6 @@ const Nav: React.FC = () => {
           {showMenu && (
             <Space
               direction="vertical"
-              size={0}
               ref={ref}
               className={`${styles.showMenu} animate__animated animate__slideInRight`}
             >

@@ -24,7 +24,7 @@ const AboutXCamp: React.FC = () => {
     },
   ];
   return (
-    <div className={styles.aboutXCampContainer}>
+    <div className={`${styles.aboutXCampContainer} container`}>
       <div className={styles.aboutXCamp}>
         <Space direction='vertical' align='center' className={styles.aboutXCampTop}>
           <Title className={styles.title}><Text className={styles.titleText}>About </Text>X-Camp</Title>
@@ -39,7 +39,7 @@ const AboutXCamp: React.FC = () => {
           {
             aboutContents.map(item => {
               return (
-                <Col key={item?.icon} xs={24} lg={8}>
+                <Col key={item?.icon} xs={24} sm={24} md={24} lg={8}>
                   <Card 
                     className={styles.card}
                     bodyStyle={{

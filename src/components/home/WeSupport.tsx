@@ -18,7 +18,7 @@ const WeSupport: React.FC = () => {
     useRef<HTMLDivElement>(null)
   );
   return (
-    <div className={styles.weSupport}>
+    <div className={`${styles.weSupport} container`}>
       <Row gutter={[24, 24]}>
         <Col
           xs={{ span: 24, order: 2 }}
@@ -64,26 +64,33 @@ const WeSupport: React.FC = () => {
               md={{ span: 24, order: 1 }}
               lg={{ span: 24, order: 2 }}
             >
-              <Space size={24}>
+              <Row gutter={24}>
                 {images.map((item, index) => {
                   return (
-                    <div
+                    <Col
+                      xs={{ span: 24 }}
+                      sm={{ span: 24 }}
+                      md={{ span: 24 }}
+                      lg={{ span: 8 }}
                       key={index}
-                      ref={refs[index]}
-                      onMouseEnter={() => addAnimatePulse(refs, index)}
-                      onMouseLeave={() => removeAnimatePulse(refs, index)}
                     >
-                      <Image
-                        src={item}
-                        alt="image"
-                        preview={false}
-                        width={164}
-                        height={100}
-                      />
-                    </div>
+                      <div
+                        ref={refs[index]}
+                        onMouseEnter={() => addAnimatePulse(refs, index)}
+                        onMouseLeave={() => removeAnimatePulse(refs, index)}
+                      >
+                        <Image
+                          src={item}
+                          alt="image"
+                          preview={false}
+                          width={164}
+                          height={100}
+                        />
+                      </div>
+                    </Col>
                   );
                 })}
-              </Space>
+              </Row>
             </Col>
           </Row>
         </Col>

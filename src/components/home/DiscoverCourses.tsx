@@ -41,7 +41,7 @@ const DiscoverCourses: React.FC = () => {
   );
 
   return (
-    <div className={styles.discoverCourses}>
+    <div className={`${styles.discoverCourses} container`}>
       {/* animate__bounceInLeft
       animate__fadeInLeft
 
@@ -57,7 +57,7 @@ const DiscoverCourses: React.FC = () => {
       <Row className={styles.cards} gutter={16} justify="center" align="middle">
         {courseCards.map((item, index) => {
           return (
-            <Col key={item?.url} xs={12} sm={12} md={12} lg={6}>
+            <Col key={item?.url} xs={24} sm={24} md={12} lg={6}>
               <Card
                 ref={refs[index]}
                 onMouseEnter={() => addAnimatePulse(refs, index)}
