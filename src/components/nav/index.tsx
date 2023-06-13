@@ -135,19 +135,19 @@ const Nav: React.FC = () => {
                       Sign Up
                     </Button>
                   </Space>
+                  <Dropdown
+                    menu={{
+                      items,
+                      onClick: handleMenuClick,
+                    }}
+                    className={styles.dropDown}
+                  >
+                    <a onClick={(e) => e.preventDefault()}>
+                      <TranslationOutlined />
+                    </a>
+                  </Dropdown>
                 </>
               )}
-              <Dropdown
-                menu={{
-                  items,
-                  onClick: handleMenuClick,
-                }}
-                className={styles.dropDown}
-              >
-                <a onClick={(e) => e.preventDefault()}>
-                  <TranslationOutlined />
-                </a>
-              </Dropdown>
 
               {isMobile && (
                 <Button type="primary" onClick={() => setShowMenu(!showMenu)}>
