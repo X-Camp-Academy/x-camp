@@ -12,34 +12,20 @@
     height: 72px;
     line-height: 72px;
     background-color: #fff;
-    @media (max-width: 768px) {
-      height: 144px;
-      line-height: 144px;
-    }
     .space {
       width: 100%;
       height: 100%;
       position: relative;
       justify-content: space-between;
       align-items: center;
-      @media (max-width: 768px) {
-        width: 100%;
-      }
       .image {
         width: 105px;
         height: 32px;
-        @media (max-width: 768px) {
-          width: 188px;
-          height: 64px;
-        }
       }
       .menu {
         color: $text-color;
         font-size: 16px;
         font-weight: 500;
-        @media screen and (max-width: 768px) {
-          display: none;
-        }
       }
       .search {
         width: 100%;
@@ -60,9 +46,6 @@
       .dropDown {
         color: $text-color;
         font-size: 24px;
-        @media screen and (max-width: 768px) {
-          font-size: 48px;
-        }
       }
     }
     .showMenu {
