@@ -25,7 +25,7 @@ const StudentProjects: React.FC = () => {
           <Col xs={24} sm={24} md={24} lg={12}>
             <iframe
               width="100%"
-              height="350"
+              height="100%"
               src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
               title="X-Camp Academy Intro - 2023"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -38,7 +38,7 @@ const StudentProjects: React.FC = () => {
                 <Card
                   className={styles.card}
                   bodyStyle={{
-                    padding: 48,
+                    padding: 40,
                   }}
                   cover={
                     <iframe
@@ -50,7 +50,7 @@ const StudentProjects: React.FC = () => {
                     ></iframe>
                   }
                 >
-                  <Space direction="vertical" size={32}>
+                  <Space direction="vertical" size={24}>
                     <Meta
                       title="The Viper Game"
                       description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
@@ -70,7 +70,7 @@ const StudentProjects: React.FC = () => {
                 <Card
                   className={styles.card}
                   bodyStyle={{
-                    padding: 48,
+                    padding: 40,
                   }}
                   cover={
                     <iframe
@@ -82,7 +82,7 @@ const StudentProjects: React.FC = () => {
                     ></iframe>
                   }
                 >
-                  <Space direction="vertical" size={32}>
+                  <Space direction="vertical" size={24}>
                     <Meta
                       title="The Viper Game"
                       description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"

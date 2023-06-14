@@ -38,10 +38,15 @@ const Comments: React.FC = () => {
   return (
     <div className={`${styles.commentsContainer} container`}>
       <div className={styles.comments}>
-        <Row gutter={40} justify="center" align="middle">
+        <Row
+          gutter={40}
+          justify="center"
+          align="middle"
+          style={{ marginLeft: 0, marginRight: 0 }}
+        >
           {comments.map((item, index) => {
             return (
-              <Col key={index} xs={24} lg={8} className={styles.col}>
+              <Col key={index} xs={24} sm={24} md={8} className={styles.col}>
                 <div style={computedStyle(index)}>
                   <Card>
                     <Space direction="vertical">

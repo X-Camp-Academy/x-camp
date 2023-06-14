@@ -66,9 +66,7 @@ const items: MenuProps["items"] = [
 
 const Nav: React.FC = () => {
   const [current, setCurrent] = useState("/");
-  const [menu, setMenu] = useState<MenuProps["items"]>([]);
-  const initialShowMenu = false;
-  const [showMenu, setShowMenu] = useState(initialShowMenu);
+  const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
   const { Search } = Input;
   const isMobile = useMobile();
@@ -81,20 +79,16 @@ const Nav: React.FC = () => {
   };
 
   const ref = useRef<HTMLDivElement>(null);
-  const onShowMenuChange = () => {
-    setShowMenu(!showMenu);
-    // animate__slideOutRight
-    // (ref?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__slideInRight');
-  };
   useEffect(() => {
-    console.log(isMobile);
+    if (showMenu) {
+      (ref?.current as HTMLDivElement)?.classList?.add(
+        "animate__animated",
+        "animate__slideInRight"
+      );
+    } else {
+    }
+  }, [showMenu]);
 
-    setMenu(menuItems);
-  }, [isMobile]);
-
-  useEffect(() => {
-    setShowMenu(initialShowMenu);
-  }, [initialShowMenu]);
   return (
     <ConfigProvider
       theme={{
@@ -117,7 +111,7 @@ const Nav: React.FC = () => {
                 <Menu
                   mode="horizontal"
                   selectedKeys={[current]}
-                  items={menu}
+                  items={menuItems}
                   onClick={handleMenuClick}
                   className={styles.menu}
                 />
@@ -155,22 +149,29 @@ const Nav: React.FC = () => {
               )}
 
               {isMobile && (
-                <Button type="primary" onClick={() => setShowMenu(!showMenu)}>
+                <Button type="primary" onClick={() => setShowMenu(true)}>
                   <UnorderedListOutlined />
                 </Button>
               )}
             </Space>
           </Space>
           {showMenu && (
-            <Space
-              direction="vertical"
-              ref={ref}
-              className={`${styles.showMenu} animate__animated animate__slideInRight`}
-            >
+            <Space ref={ref} direction="vertical" className={styles.showMenu}>
               <Button
                 type="primary"
                 className={styles.button}
-                onClick={onShowMenuChange}
+                onClick={() => {
+                  (ref?.current as HTMLDivElement)?.classList?.remove(
+                    "animate__slideInRight"
+                  );
+                  (ref?.current as HTMLDivElement)?.classList?.add(
+                    "animate__animated",
+                    "animate__slideOutRight"
+                  );
+                  setTimeout(() => {
+                    setShowMenu(false);
+                  }, 1000);
+                }}
               >
                 <UnorderedListOutlined />
               </Button>

@@ -40,12 +40,9 @@ const Home: React.FC = () => {
           <PublicCalendar />
           <StudentProjects />
           <Partners />
-          
           <Comments />
-
-          
-          {/* <CopyRight />
-          <SubscribeNewsletter /> */}
+          <CopyRight />
+          <SubscribeNewsletter />
         </Content>
       </Layout>
     </ConfigProvider>
