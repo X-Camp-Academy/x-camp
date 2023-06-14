@@ -9,6 +9,9 @@
     font-size: 36px;
     font-weight: bold;
     line-height: 54px;
+    @media (max-width: 768px) {
+      transform: scale(2);
+    }
   }
   .cards {
     width: 100%;

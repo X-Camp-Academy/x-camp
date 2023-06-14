@@ -51,7 +51,7 @@ const DiscoverCourses: React.FC = () => {
 
       animate__zoomInLeft
       animate__slideInLeft */}
-      <Title className={`{styles.title} animate__animated animate__backInLeft`}>
+      <Title className={`${styles.title} animate__animated animate__backInLeft`}>
         Discover Our Courses
       </Title>
       <Row className={styles.cards} gutter={16} justify="center" align="middle">
