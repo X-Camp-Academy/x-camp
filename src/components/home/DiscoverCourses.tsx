@@ -51,10 +51,12 @@ const DiscoverCourses: React.FC = () => {
 
       animate__zoomInLeft
       animate__slideInLeft */}
-      <Title className={`${styles.title} animate__animated animate__backInLeft`}>
+      <Title
+        className={`${styles.title} animate__animated animate__backInLeft`}
+      >
         Discover Our Courses
       </Title>
-      <Row className={styles.cards} gutter={16} justify="center" align="middle">
+      <Row className={styles.row} gutter={16} justify="center" align="middle">
         {courseCards.map((item, index) => {
           return (
             <Col key={item?.url} xs={24} sm={24} md={12} lg={6}>
@@ -83,8 +85,7 @@ const DiscoverCourses: React.FC = () => {
                   src={item?.url}
                   alt="image"
                   preview={false}
-                  width={200}
-                  height={200}
+                  className={styles.cardImage}
                 />
               </Card>
             </Col>

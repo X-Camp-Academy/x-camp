@@ -34,5 +34,16 @@
     margin-top: 60px;
     display: flex;
     justify-content: center;
+    .bigImg {
+      width: 380px;
+      height: 430px;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    .smallImg {
+      width: 250px;
+      height: 430px;
+    }
   }
 }

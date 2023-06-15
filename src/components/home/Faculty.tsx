@@ -63,7 +63,7 @@ const Faculty: React.FC = () => {
         </Paragraph>
         <Row
           className={styles.row}
-          gutter={isMobile ? 0 : 40}
+          gutter={40}
           justify="center"
           align="middle"
           ref={ref}
@@ -111,8 +111,7 @@ const Faculty: React.FC = () => {
                         src={item?.avatar}
                         alt="avatar"
                         preview={false}
-                        width={150}
-                        height={155}
+                        className={styles.cardImage}
                       />
                     </Space>
                   </Card>

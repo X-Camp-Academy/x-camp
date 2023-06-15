@@ -112,8 +112,8 @@ const Nav: React.FC = () => {
                   mode="horizontal"
                   selectedKeys={[current]}
                   items={menuItems}
-                  onClick={handleMenuClick}
                   className={styles.menu}
+                  onClick={handleMenuClick}
                 />
               )}
             </Space>
@@ -179,8 +179,8 @@ const Nav: React.FC = () => {
                 mode="vertical"
                 selectedKeys={[current]}
                 items={menuItems}
-                onClick={handleMenuClick}
                 className={styles.mobileMenu}
+                onClick={handleMenuClick}
               />
             </Space>
           )}

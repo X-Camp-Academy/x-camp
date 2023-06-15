@@ -25,26 +25,26 @@ const CarouselContent: React.FC = () => {
     console.log(values);
   };
 
+  const carouselImages = [
+    "/image/home/carousel-1-en.png",
+    "/image/home/carousel-2-en.png",
+  ];
+
   return (
-    <div className={styles.carouselContainer}>
-      <div className={`container`}>
-        <Row className={styles.row}>
+    <div className={styles.bannerContainer}>
+      <div className={`${styles.banner} container`}>
+        <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={16}>
-            <Carousel autoplay={false} dots={{ className: styles.dots }}>
-              <Image
-                alt="carousel"
-                preview={false}
-                height={isMobile ? 200 : 400}
-                src={"/image/home/carousel-1-en.png"}
-                className={styles.image}
-              />
-              <Image
-                alt="carousel"
-                preview={false}
-                height={isMobile ? 200 : 400}
-                src={"/image/home/carousel-2-en.png"}
-                className={styles.image}
-              />
+            <Carousel autoplay={false} dots={{ className: styles.carouselDots }}>
+              {carouselImages.map((item) => (
+                <Image
+                  key={item}
+                  alt="carousel"
+                  preview={false}
+                  src={item}
+                  className={styles.carouselImage}
+                />
+              ))}
             </Carousel>
           </Col>
 

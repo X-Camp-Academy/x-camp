@@ -85,8 +85,7 @@ const WeSupport: React.FC = () => {
                           src={item}
                           alt="image"
                           preview={false}
-                          width={164}
-                          height={100}
+                          className={styles.image}
                         />
                       </div>
                     </Col>

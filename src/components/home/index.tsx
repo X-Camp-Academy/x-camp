@@ -32,13 +32,16 @@ const Home: React.FC = () => {
       <Layout className={styles.homeContainer}>
         <Content>
           <CarouselContent />
-          {/* <DiscoverCourses />
+          <DiscoverCourses />
           <AboutXCamp />
           <FoundingTeam />
           <WeSupport />
           <Faculty />
+
+
           <PublicCalendar />
-          <StudentProjects />
+
+          {/* <StudentProjects />
           <Partners />
           <Comments />
           <CopyRight />

@@ -15,7 +15,9 @@ const WithLayout = ({ children }: Props) => {
    */
   const importPackage = (retry: number) => {
     if (window) {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000); // antd和next13出现闪烁问题
     } else {
       setTimeout(() => importPackage(retry - 1), 100);
     }

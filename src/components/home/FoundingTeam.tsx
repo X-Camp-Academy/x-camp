@@ -27,7 +27,7 @@ const FoundingTeam = () => {
   const initialFounder = founders[0];
 
   const isMobile = useMobile();
-  console.log(isMobile);
+  // console.log(isMobile);
 
   return (
     <div className={`${styles.FoundingTeam} container`}>
@@ -66,8 +66,7 @@ const FoundingTeam = () => {
                 src={initialFounder?.bigImg}
                 alt="image"
                 preview={false}
-                width={isMobile ? "100%" : 380}
-                height={430}
+                className={styles.bigImg}
               />
 
               {!isMobile && (
@@ -75,8 +74,7 @@ const FoundingTeam = () => {
                   src={initialFounder?.smallImg}
                   alt="image"
                   preview={false}
-                  width={250}
-                  height={430}
+                  className={styles.smallImg}
                 />
               )}
             </Space>
