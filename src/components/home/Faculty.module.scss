@@ -14,8 +14,11 @@
     text-align: center;
   }
   .row {
-    margin-left: 0!important;
-    margin-right: 0!important;
+    width: 100%;
+    @media (max-width: 768px) {
+      margin-left: 0!important;
+      margin-right: 0!important;
+    }
     .name {
       color: #172142;
       font-size: 20px;

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Space, Tag, Button, Image, Typography, Row, Col } from "antd";
 import styles from "./FoundingTeam.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -24,11 +24,50 @@ const FoundingTeam = () => {
       smallImg: "/image/home/charlie-small.png",
     },
   ];
-  const initialFounder = founders[0];
-
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile();
-  // console.log(isMobile);
+  const [current, setCurrent] = useState(0);
+  const [founder, setFounder] = useState(founders[current]);
 
+  const removeAnimate = () => {
+    const refs = [leftRef, rightRef];
+    refs.forEach((ref) => {
+      (ref?.current as HTMLDivElement)?.classList?.remove(
+        "animate__animated",
+        "animate__fadeInLeft",
+        "animate__fadeInRight"
+      );
+    });
+  };
+  const onChange = () => {
+    if (current) {
+      removeAnimate();
+      setCurrent(0);
+      (leftRef?.current as HTMLDivElement)?.classList?.add(
+        "animate__animated",
+        "animate__fadeInRight"
+      );
+      (rightRef?.current as HTMLDivElement)?.classList?.add(
+        "animate__animated",
+        "animate__fadeInLeft"
+      );
+    } else {
+      removeAnimate();
+      setCurrent(1);
+      (leftRef?.current as HTMLDivElement)?.classList?.add(
+        "animate__animated",
+        "animate__fadeInLeft"
+      );
+      (rightRef?.current as HTMLDivElement)?.classList?.add(
+        "animate__animated",
+        "animate__fadeInRight"
+      );
+    }
+  };
+  useEffect(() => {
+    setFounder(founders[current]);
+  }, [current]);
   return (
     <div className={`${styles.FoundingTeam} container`}>
       <Space direction="vertical" align="center">
@@ -36,9 +75,9 @@ const FoundingTeam = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={10}>
             <Space direction="vertical" className={styles.founderLeft}>
-              <Title className={styles.name}>{initialFounder.name}</Title>
+              <Title className={styles.name}>{founder.name}</Title>
               <Space>
-                {initialFounder.tags.map((item) => {
+                {founder.tags.map((item) => {
                   return (
                     <Tag key={item} color="#FFAD11" className={styles.tags}>
                       {item}
@@ -46,14 +85,22 @@ const FoundingTeam = () => {
                   );
                 })}
               </Space>
-              <Paragraph className={styles.paragraph}>
-                {initialFounder.desc}
-              </Paragraph>
+              <Paragraph className={styles.paragraph}>{founder.desc}</Paragraph>
               <Space>
-                <Button type="primary" ghost={true} shape="circle">
+                <Button
+                  type="primary"
+                  ghost={current === 0}
+                  shape="circle"
+                  onClick={onChange}
+                >
                   <LeftOutlined />
                 </Button>
-                <Button type="primary" shape="circle">
+                <Button
+                  type="primary"
+                  ghost={current !== 0}
+                  shape="circle"
+                  onClick={onChange}
+                >
                   <RightOutlined />
                 </Button>
               </Space>
@@ -62,20 +109,24 @@ const FoundingTeam = () => {
 
           <Col xs={24} sm={24} md={24} lg={14}>
             <Space className={styles.founderRight}>
-              <Image
-                src={initialFounder?.bigImg}
-                alt="image"
-                preview={false}
-                className={styles.bigImg}
-              />
-
-              {!isMobile && (
+              <div ref={leftRef}>
                 <Image
-                  src={initialFounder?.smallImg}
+                  src={founder?.bigImg}
                   alt="image"
                   preview={false}
-                  className={styles.smallImg}
+                  className={styles.bigImg}
                 />
+              </div>
+
+              {!isMobile && (
+                <div ref={rightRef}>
+                  <Image
+                    src={founder?.smallImg}
+                    alt="image"
+                    preview={false}
+                    className={styles.smallImg}
+                  />
+                </div>
               )}
             </Space>
           </Col>

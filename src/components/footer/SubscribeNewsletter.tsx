@@ -11,14 +11,14 @@ const SubscribeNewsletter: React.FC = () => {
   return (
     <div className={styles.subscribeNewsletterContainer}>
       <div className={`${styles.subscribeNewsletter} container`}>
-        <Space align="end" className={styles.space}>
+        <Space align="end" size={isMobile ? 8 : 120} className={styles.space}>
           <Image
             alt=""
             src="/image/home/course-4.png"
             preview={false}
             className={styles.image}
           />
-          <Space className={styles.right}>
+          <Space className={styles.right} size={isMobile ? 8 : 32}>
             {!isMobile && (
               <Text className={styles.text}>
                 抢先一步，免费领取奥林匹克编程大礼包

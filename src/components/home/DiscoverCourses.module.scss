@@ -12,8 +12,10 @@
   }
   .row {
     width: 100%;
-    margin-left: 0!important;
-    margin-right: 0!important;
+    @media (max-width: 768px) {
+      margin-left: 0!important;
+      margin-right: 0!important;
+    }
     .card {
       margin-top: 42px;
       .cardTitle {
