@@ -13,6 +13,8 @@
     background-size: cover;
     @media (max-width: 768px) {
       width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
     }
   }
   .paragraph {
@@ -30,20 +32,23 @@
     width: 224px;
     height: 64px;
     @media (max-width: 768px) {
-      width: 136px;
+      width: 30vw;
       height: 48px;
     }
   }
   .bottomLeftImage {
     width: 80px;
     height: 64px;
-
+    @media (max-width: 768px) {
+      width: 16vw;
+      height: 48px;
+    }
   }
   .bottomCenterImage {
     width: 168px;
     height: 64px;
     @media (max-width: 768px) {
-      width: 136px;
+      width: 30vw;
       height: 48px;
     }
   }
@@ -51,7 +56,7 @@
     width: 216px;
     height: 64px;
     @media (max-width: 768px) {
-      width: 136px;
+      width: 30vw;
       height: 48px;
     }
   }

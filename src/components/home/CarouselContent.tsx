@@ -35,13 +35,17 @@ const CarouselContent: React.FC = () => {
       <div className={`${styles.banner} container`}>
         <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={16}>
-            <Carousel autoplay={false} dots={{ className: styles.carouselDots }}>
+            <Carousel
+              autoplay={false}
+              dots={{ className: styles.carouselDots }}
+            >
               {carouselImages.map((item) => (
                 <Image
                   key={item}
                   alt="carousel"
                   preview={false}
                   src={item}
+                  height={isMobile ? 300 : 432}
                   className={styles.carouselImage}
                 />
               ))}
