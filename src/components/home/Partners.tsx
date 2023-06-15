@@ -31,7 +31,7 @@ const Partners: React.FC = () => {
     <div className={`${styles.partners} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>Partners</Title>
-        
+
         <Paragraph className={styles.paragraph}>
           X-Camp has its own Art of Python Programming contest 4.0 award and
           other projects and event every quarter to inspire students . It is a
@@ -39,7 +39,7 @@ const Partners: React.FC = () => {
           classes .
         </Paragraph>
 
-        <Row>
+        <Row >
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space>
               {topImages.map((item) => (
@@ -53,7 +53,7 @@ const Partners: React.FC = () => {
               ))}
             </Space>
           </Col>
-          <Col xs={24} sm={24} md={24} lg={12}>
+          <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
             <Space>
               {bottomImages.map((item, index) => (
                 <Image
