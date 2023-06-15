@@ -34,8 +34,8 @@ const menuItems: MenuProps["items"] = [
     label: (
       <Link href="/courses">
         Courses
-        <CaretUpOutlined />
-        <CaretDownOutlined />
+        {/* <CaretUpOutlined />
+        <CaretDownOutlined /> */}
       </Link>
     ),
     key: "courses",
