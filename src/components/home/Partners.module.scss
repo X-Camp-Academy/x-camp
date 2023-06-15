@@ -11,6 +11,9 @@
     background-image: url("/image/home/partners-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
   .paragraph {
     color: #172142;
@@ -18,22 +21,38 @@
     font-weight: 500;
     line-height: 34px;
     text-align: center;
-    // margin: auto 40px 56px 40px;
+    margin: auto 40px 56px 40px;
+    @media (max-width: 768px) {
+      margin: auto auto 40px;
+    }
   }
   .topImage {
     width: 224px;
     height: 64px;
+    @media (max-width: 768px) {
+      width: 136px;
+      height: 48px;
+    }
   }
   .bottomLeftImage {
     width: 80px;
     height: 64px;
+
   }
   .bottomCenterImage {
     width: 168px;
     height: 64px;
+    @media (max-width: 768px) {
+      width: 136px;
+      height: 48px;
+    }
   }
   .bottomRightImage {
     width: 216px;
     height: 64px;
+    @media (max-width: 768px) {
+      width: 136px;
+      height: 48px;
+    }
   }
 }

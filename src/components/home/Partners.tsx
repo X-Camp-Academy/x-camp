@@ -31,12 +31,14 @@ const Partners: React.FC = () => {
     <div className={`${styles.partners} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>Partners</Title>
+        
         <Paragraph className={styles.paragraph}>
           X-Camp has its own Art of Python Programming contest 4.0 award and
           other projects and event every quarter to inspire students . It is a
           great opportunity for students to showcase what they have learned from
           classes .
         </Paragraph>
+
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space>

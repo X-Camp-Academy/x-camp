@@ -10,7 +10,7 @@
   .subscribeNewsletter {
     height: 86px;
     @media (max-width: 768px) {
-      height: 120px;
+      height: 64px;
     }
     .space {
       width: 100%;
@@ -18,9 +18,16 @@
       .image {
         width: 150px;
         height: 150px;
+        @media (max-width: 768px) {
+          width: 80px;
+          height: 80px;
+        }
       }
       .right {
         margin-bottom: 22px;
+        @media (max-width: 768px) {
+          margin-bottom: 0;
+        }
         .text {
           display: inline-block;
           font-size: 18px;
@@ -33,7 +40,7 @@
           border-radius: 24px;
           border: 1px solid #ffad11;
           @media (max-width: 768px) {
-            height: 64px;
+            height: 40px;
             border-radius: 48px;
             width: 100%;
           }
@@ -48,8 +55,9 @@
           padding: 8px 28px;
           background-color: #ffad11;
           @media (max-width: 768px) {
-            line-height: 48px;
-            padding: 8px 24px;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 10px 8px;
             border-radius: 36px;
           }
         }

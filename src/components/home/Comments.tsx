@@ -36,14 +36,9 @@ const Comments: React.FC = () => {
     return { ...defaultStyle, backgroundColor: colors[index % 3] };
   };
   return (
-    <div className={`${styles.commentsContainer} container`}>
-      <div className={styles.comments}>
-        <Row
-          gutter={40}
-          justify="center"
-          align="middle"
-          style={{ marginLeft: 0, marginRight: 0 }}
-        >
+    <div className={styles.commentsContainer}>
+      <div className={`${styles.comments} container`}>
+        <Row gutter={40} justify="center" align="middle" className={styles.row}>
           {comments.map((item, index) => {
             return (
               <Col key={index} xs={24} sm={24} md={8} className={styles.col}>

@@ -9,17 +9,16 @@ const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
   return (
-    <div className={`${styles.copyRightContainer} container`}>
-      <div className={styles.copyRight}>
-        <Row className={styles.row}>
+    <div className={styles.copyRightContainer}>
+      <div className={`${styles.copyRight} container`}>
+        <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space direction="vertical" className={styles.spaceLeft}>
               <Image
                 alt=""
                 src="/image/home/footer-logo-1.png"
                 preview={false}
-                width={96}
-                height={96}
+                className={styles.image}
               />
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
@@ -39,8 +38,7 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/youtube.png"
-                      width={28}
-                      height={28}
+                      className={styles.icon}
                     />
                   </Link>
                   <Link href="/">
@@ -48,8 +46,7 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/facebook.png"
-                      width={28}
-                      height={28}
+                      className={styles.icon}
                     />
                   </Link>
                   <Link href="/">
@@ -57,8 +54,7 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/linkedin.png"
-                      width={28}
-                      height={28}
+                      className={styles.icon}
                     />
                   </Link>
                   <Link href="/">
@@ -66,8 +62,7 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/twitter.png"
-                      width={28}
-                      height={28}
+                      className={styles.icon}
                     />
                   </Link>
                   <Link href="/">
@@ -75,8 +70,7 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/we-chat.png"
-                      width={28}
-                      height={28}
+                      className={styles.icon}
                     />
                   </Link>
                   <Link href="/">
@@ -84,8 +78,7 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/small-red-book.png"
-                      width={28}
-                      height={28}
+                      className={styles.icon}
                     />
                   </Link>
                 </Space>

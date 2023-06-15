@@ -3,11 +3,13 @@ import React from "react";
 import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
 import styles from "./StudentProjects.module.scss";
 import { SwapLeftOutlined, SwapRightOutlined } from "@ant-design/icons";
+import { useMobile } from "@/utils";
 
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
 
 const StudentProjects: React.FC = () => {
+  const isMobile = useMobile();
   return (
     <div className={`${styles.studentProjects} container`}>
       <Space direction="vertical" align="center">
@@ -21,7 +23,7 @@ const StudentProjects: React.FC = () => {
           for students to showcase what they have learned fProm classes .
         </Paragraph>
 
-        <Row>
+        <Row gutter={16} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12}>
             <iframe
               width="100%"
@@ -32,74 +34,83 @@ const StudentProjects: React.FC = () => {
               allowFullScreen
             ></iframe>
           </Col>
+
           <Col xs={24} sm={24} md={24} lg={12}>
-            <Row>
-              <Col xs={12} sm={12} md={12} lg={12}>
-                <Card
-                  className={styles.card}
-                  bodyStyle={{
-                    padding: 40,
-                  }}
-                  cover={
-                    <iframe
-                      width="100%"
-                      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      title="X-Camp Academy Intro - 2023"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    ></iframe>
-                  }
-                >
-                  <Space direction="vertical" size={24}>
-                    <Meta
-                      title="The Viper Game"
-                      description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
-                      className={styles.cardMeta}
-                    />
-                    <Button
-                      type="primary"
-                      shape="circle"
-                      className={styles.cardButton}
-                    >
-                      <SwapLeftOutlined />
-                    </Button>
-                  </Space>
-                </Card>
-              </Col>
-              <Col xs={12} sm={12} md={12} lg={12}>
-                <Card
-                  className={styles.card}
-                  bodyStyle={{
-                    padding: 40,
-                  }}
-                  cover={
-                    <iframe
-                      width="100%"
-                      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                      title="X-Camp Academy Intro - 2023"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    ></iframe>
-                  }
-                >
-                  <Space direction="vertical" size={24}>
-                    <Meta
-                      title="The Viper Game"
-                      description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
-                      className={styles.cardMeta}
-                    />
-                    <Button
-                      type="primary"
-                      shape="circle"
-                      ghost
-                      className={styles.cardButton}
-                    >
-                      <SwapRightOutlined />
-                    </Button>
-                  </Space>
-                </Card>
-              </Col>
-            </Row>
+            <Space direction="horizontal">
+              <Card
+                className={styles.card}
+                bodyStyle={
+                  isMobile
+                    ? {
+                        padding: 8,
+                      }
+                    : {
+                        padding: 40,
+                      }
+                }
+                cover={
+                  <iframe
+                    width="100%"
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                    title="X-Camp Academy Intro - 2023"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                }
+              >
+                <Space direction="vertical" size={24}>
+                  <Meta
+                    title="The Viper Game"
+                    description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
+                    className={styles.cardMeta}
+                  />
+                  <Button
+                    type="primary"
+                    shape="circle"
+                    className={styles.cardButton}
+                  >
+                    <SwapLeftOutlined />
+                  </Button>
+                </Space>
+              </Card>
+              <Card
+                className={styles.card}
+                bodyStyle={
+                  isMobile
+                    ? {
+                        padding: 8,
+                      }
+                    : {
+                        padding: 40,
+                      }
+                }
+                cover={
+                  <iframe
+                    width="100%"
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                    title="X-Camp Academy Intro - 2023"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                }
+              >
+                <Space direction="vertical" size={24}>
+                  <Meta
+                    title="The Viper Game"
+                    description="Chengry H. Zenan L. and Eric G. Second Place, Art of Programming"
+                    className={styles.cardMeta}
+                  />
+                  <Button
+                    type="primary"
+                    shape="circle"
+                    ghost
+                    className={styles.cardButton}
+                  >
+                    <SwapRightOutlined />
+                  </Button>
+                </Space>
+              </Card>
+            </Space>
           </Col>
         </Row>
       </Space>

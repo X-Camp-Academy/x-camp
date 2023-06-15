@@ -37,15 +37,12 @@ const Home: React.FC = () => {
           <FoundingTeam />
           <WeSupport />
           <Faculty />
-
-
           <PublicCalendar />
-
-          {/* <StudentProjects />
+          <StudentProjects />
           <Partners />
           <Comments />
           <CopyRight />
-          <SubscribeNewsletter /> */}
+          <SubscribeNewsletter />
         </Content>
       </Layout>
     </ConfigProvider>
