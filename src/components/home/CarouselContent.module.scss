@@ -2,39 +2,39 @@
 
 .bannerContainer {
   width: 100%;
-  background-image: url("/image/home/carousel-bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   .banner {
-    padding-top: 56px;
-    padding-bottom: 56px;
+    position: relative;
     .carouselDots {
-      bottom: -56px;
-      .carouselImage {
-        width: 100%;
-        height: 432px!important;
-      }
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    .card {
-      width: 100%;
-      border: none!important;
-      box-shadow: 0px 9px 25px -4px rgba(212, 107, 20, 0.4);
-      @media (max-width: 768px) {
-        margin-top: 80px;
-      }
-      .form {
-        margin-left: 10px;
-        margin-right: 10px;
-        input {
-          width: 100%;
-          height: 46px;
+    .cardFrom {
+      position: absolute;
+      width: 30%;
+      right: 64px;
+      top: 48px;
+      .card {
+        width: 100%;
+        border: none !important;
+        box-shadow: 0px 9px 25px -4px rgba(212, 107, 20, 0.4);
+        @media (max-width: 768px) {
+          margin-top: 80px;
         }
-        .submit {
-          width: 100%;
-          height: 48px;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
+        .form {
+          margin-left: 10px;
+          margin-right: 10px;
+          input {
+            width: 100%;
+            height: 46px;
+          }
+          .submit {
+            width: 100%;
+            height: 48px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+          }
         }
       }
     }
