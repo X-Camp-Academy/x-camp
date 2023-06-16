@@ -4,7 +4,8 @@ import { LocalStateProvider } from "@/utils/local-state";
 import WithIntl from "@/hoc/WithIntl";
 import WithLayout from "@/hoc/WithLayout";
 
-const Nav = dynamic(() => import("@/components/nav"));
+const Nav = dynamic(() => import("@/components/common/nav"));
+const BackTop = dynamic(() => import("@/components/common/back-top"));
 
 export default function RootLayout({
   children,
@@ -22,6 +23,7 @@ export default function RootLayout({
           <body>
             <Nav />
             <WithLayout>{children}</WithLayout>
+            <BackTop />
           </body>
         </html>
       </WithIntl>

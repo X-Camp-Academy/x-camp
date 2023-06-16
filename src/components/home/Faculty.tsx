@@ -36,14 +36,29 @@ const Faculty: React.FC = () => {
   const refs = facultyData.map(() => useRef<HTMLDivElement>(null));
 
   const computedStyle = (index: number) => {
-    const defaultStyle = {
+    const cardDefaultStyle = {
       borderRadius: 10,
       paddingBottom: 6,
       marginTop: 48,
     };
+    const iconDefaultStyle = {
+      color: "#d46b14",
+      borderColor: "#d46b14",
+    };
     const colors = ["#D46B14", "#FFAD11", "#FFD600"];
-
-    return { ...defaultStyle, backgroundColor: colors[index % 3] };
+    const cardStyle = {
+      ...cardDefaultStyle,
+      backgroundColor: colors[index % 3],
+    };
+    const iconStyle = {
+      ...iconDefaultStyle,
+      color: colors[index % 3],
+      borderColor: colors[index % 3],
+    };
+    return {
+      cardStyle,
+      iconStyle,
+    };
   };
 
   const ref = useRef(null);
@@ -81,7 +96,7 @@ const Faculty: React.FC = () => {
                   ref={refs[index]}
                   onMouseEnter={() => addAnimatePulse(refs, index)}
                   onMouseLeave={() => removeAnimatePulse(refs, index)}
-                  style={computedStyle(index)}
+                  style={computedStyle(index)?.cardStyle}
                 >
                   <Card
                     bodyStyle={{
@@ -102,11 +117,14 @@ const Faculty: React.FC = () => {
                           size="small"
                           ghost={true}
                           shape="circle"
-                          className={styles.button}
+                          style={computedStyle(index)?.iconStyle}
                         >
                           <RightOutlined />
                         </Button>
                       </Space>
+
+                      
+
                       <Image
                         src={item?.avatar}
                         alt="avatar"

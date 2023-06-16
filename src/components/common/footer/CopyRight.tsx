@@ -14,12 +14,16 @@ const CopyRight: React.FC = () => {
         <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space direction="vertical" className={styles.spaceLeft}>
-              <Image
-                alt=""
-                src="/image/home/footer-logo-1.png"
-                preview={false}
-                className={styles.image}
-              />
+              <Space>
+                <Image
+                  alt=""
+                  src="/image/home/footer-logo-1.png"
+                  preview={false}
+                  className={styles.image}
+                />
+                <Text className={styles.text}>Let’s change the world with coding!</Text>
+              </Space>
+
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
                   <PhoneOutlined />

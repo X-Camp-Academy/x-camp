@@ -1,32 +1,33 @@
-'use client';
-import React from 'react';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { ConfigProvider, Layout } from 'antd';
-import styles from './index.module.scss';
+"use client";
+import React from "react";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { ConfigProvider, Layout } from "antd";
+import styles from "./index.module.scss";
 
-const CarouselContent = dynamic(() => import('./CarouselContent'));
-const DiscoverCourses = dynamic(() => import('./DiscoverCourses'));
-const AboutXCamp = dynamic(() => import('./AboutXCamp'));
-const FoundingTeam = dynamic(() => import('./FoundingTeam'));
-const WeSupport = dynamic(() => import('./WeSupport'));
-const Faculty = dynamic(() => import('./Faculty'));
-const PublicCalendar = dynamic(() => import('./PublicCalendar'));
-const StudentProjects = dynamic(() => import('./StudentProjects'));
-const Partners = dynamic(() => import('./Partners'));
-const Comments = dynamic(() => import('./Comments'));
-const CopyRight = dynamic(() => import('../footer/CopyRight'));
-const SubscribeNewsletter = dynamic(() => import('../footer/SubscribeNewsletter'));
+const CarouselContent = dynamic(() => import("./CarouselContent"));
+const DiscoverCourses = dynamic(() => import("./DiscoverCourses"));
+const AboutXCamp = dynamic(() => import("./AboutXCamp"));
+const FoundingTeam = dynamic(() => import("./FoundingTeam"));
+const WeSupport = dynamic(() => import("./WeSupport"));
+const Faculty = dynamic(() => import("./Faculty"));
+const PublicCalendar = dynamic(() => import("./PublicCalendar"));
+const StudentProjects = dynamic(() => import("./StudentProjects"));
+const Partners = dynamic(() => import("./Partners"));
+const Comments = dynamic(() => import("./Comments"));
+const CopyRight = dynamic(() => import("../common/footer/CopyRight"));
+const SubscribeNewsletter = dynamic(
+  () => import("../common/footer/SubscribeNewsletter")
+);
 const { Content } = Layout;
 
 const Home: React.FC = () => {
-
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
-        }
+          colorPrimary: "#FFAD11",
+        },
       }}
     >
       <Layout className={styles.homeContainer}>
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
         </Content>
       </Layout>
     </ConfigProvider>
-  )
-}
+  );
+};
 
 export default Home;

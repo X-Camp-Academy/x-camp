@@ -5,6 +5,27 @@
   .comments {
     padding-top: 100px;
     padding-bottom: 120px;
+    padding-left: 100px;
+    padding-right: 100px;
+    position: relative;
+    @media (max-width: 768px) {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+    .prev {
+      background-color: #d46b14;
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .next {
+      background-color: #d46b14;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
     .row {
       @media (max-width: 768px) {
         margin-left: 0 !important;
