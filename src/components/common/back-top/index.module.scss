@@ -10,6 +10,9 @@
   border-radius: 8px;
   cursor: pointer;
   z-index: 1000;
+  @media (max-width: 768px) {
+    right: 24px;
+  }
   .icon {
     color: #fff;
     font-size: 28px;

@@ -23,6 +23,7 @@ import {
 import "animate.css";
 import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
+import { useUpdate } from "ahooks";
 
 const { Header } = Layout;
 const menuItems: MenuProps["items"] = [
@@ -88,6 +89,22 @@ const Nav: React.FC = () => {
     } else {
     }
   }, [showMenu]);
+  const update = useUpdate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 处理页面伸缩事件的逻辑
+      console.log("页面伸缩事件发生了");
+    };
+
+    // 添加页面伸缩事件监听器
+    window.addEventListener("resize", handleResize);
+
+    // 在组件销毁时移除事件监听器
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <ConfigProvider
@@ -114,6 +131,7 @@ const Nav: React.FC = () => {
                   items={menuItems}
                   className={styles.menu}
                   onClick={handleMenuClick}
+                  onResize={update}
                 />
               )}
             </Space>

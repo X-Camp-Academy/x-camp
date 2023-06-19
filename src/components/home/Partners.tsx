@@ -39,9 +39,9 @@ const Partners: React.FC = () => {
           classes .
         </Paragraph>
 
-        <Row >
+        <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
-            <Space>
+            <Space className={styles.space}>
               {topImages.map((item) => (
                 <Image
                   key={item}
@@ -54,7 +54,7 @@ const Partners: React.FC = () => {
             </Space>
           </Col>
           <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
-            <Space>
+            <Space className={styles.space}>
               {bottomImages.map((item, index) => (
                 <Image
                   key={index}

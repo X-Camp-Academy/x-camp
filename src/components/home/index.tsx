@@ -13,6 +13,7 @@ const WeSupport = dynamic(() => import("./WeSupport"));
 const Faculty = dynamic(() => import("./Faculty"));
 const PublicCalendar = dynamic(() => import("./PublicCalendar"));
 const StudentProjects = dynamic(() => import("./StudentProjects"));
+const XAlumni = dynamic(() => import("./XAlumni"));
 const Partners = dynamic(() => import("./Partners"));
 const Comments = dynamic(() => import("./Comments"));
 const CopyRight = dynamic(() => import("../common/footer/CopyRight"));
@@ -40,6 +41,7 @@ const Home: React.FC = () => {
           <Faculty />
           <PublicCalendar />
           <StudentProjects />
+          <XAlumni />
           <Partners />
           <Comments />
           <CopyRight />

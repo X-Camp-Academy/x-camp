@@ -14,6 +14,7 @@ import {
 import styles from "./Comments.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
+import { useMobile } from "@/utils";
 
 const { Title, Text, Paragraph } = Typography;
 const Comments: React.FC = () => {
@@ -55,6 +56,7 @@ const Comments: React.FC = () => {
     carouselRef?.current?.next();
   };
 
+  const isMobile = useMobile();
   return (
     <div className={styles.commentsContainer}>
       <div className={`${styles.comments} container`}>
@@ -80,11 +82,17 @@ const Comments: React.FC = () => {
                     key={index}
                     xs={24}
                     sm={24}
-                    md={8}
+                    md={24}
+                    lg={8}
                     className={styles.col}
                   >
                     <div style={computedStyle(index)}>
-                      <Card>
+                      <Card
+                        bodyStyle={{
+                          borderWidth: 2,
+                        }}
+                        className={styles.colCard}
+                      >
                         <Space direction="vertical">
                           <Text className={styles.cardTitle}>
                             {item?.title}
@@ -99,6 +107,8 @@ const Comments: React.FC = () => {
                   </Col>
                 );
               })}
+
+              {}
             </Row>
           </div>
           <div>
@@ -114,11 +124,17 @@ const Comments: React.FC = () => {
                     key={index}
                     xs={24}
                     sm={24}
-                    md={8}
+                    md={24}
+                    lg={8}
                     className={styles.col}
                   >
                     <div style={computedStyle(index)}>
-                      <Card>
+                      <Card
+                        bodyStyle={{
+                          borderWidth: 2,
+                        }}
+                        className={styles.colCard}
+                      >
                         <Space direction="vertical">
                           <Text className={styles.cardTitle}>
                             {item?.title}
@@ -133,6 +149,8 @@ const Comments: React.FC = () => {
                   </Col>
                 );
               })}
+
+              {}
             </Row>
           </div>
         </Carousel>

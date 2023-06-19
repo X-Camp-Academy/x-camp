@@ -13,15 +13,20 @@ const CopyRight: React.FC = () => {
       <div className={`${styles.copyRight} container`}>
         <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={24} lg={12}>
-            <Space direction="vertical" className={styles.spaceLeft}>
-              <Space>
+            <Space direction="vertical" className={styles.spaceLeft} size={48}>
+              <Space direction="vertical">
                 <Image
                   alt=""
                   src="/image/home/footer-logo-1.png"
                   preview={false}
                   className={styles.image}
                 />
-                <Text className={styles.text}>Let’s change the world with coding!</Text>
+                <Image
+                  alt="slogan"
+                  className={styles.slogan}
+                  preview={false}
+                  src="/image/home/footer-slogan.png"
+                />
               </Space>
 
               <Space direction="vertical">
