@@ -1,0 +1,24 @@
+.topBannerContainer {
+  width: 100%;
+  padding-bottom: 100px;
+  background-color: #ffad11;
+  .col {
+    margin-top: 100px;
+  }
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #d46b14;
+    line-height: 64px;
+  }
+  .paragraph {
+    font-size: 24px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 42px;
+  }
+  .image {
+    width: 422px;
+    height: 262px;
+  }
+}

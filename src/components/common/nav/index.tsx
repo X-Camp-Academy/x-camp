@@ -46,7 +46,7 @@ const menuItems: MenuProps["items"] = [
     key: "resources",
   },
   {
-    label: <Link href="/about-us">About Us</Link>,
+    label: <Link href="/about-us/introduction">About Us</Link>,
     key: "about-us",
   },
   {
