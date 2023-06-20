@@ -28,13 +28,12 @@ const TopBanner: React.FC = () => {
           >
             <Image
               alt="image"
-              src="/image/about-us/introduction/carousel-bg.png"
+              src="/image/about-us/introduction/top-banner.png"
               preview={false}
               className={styles.image}
             />
           </Col>
         </Row>
-        <Space></Space>
       </div>
     </div>
   );

@@ -1,0 +1,48 @@
+.facultyCoach {
+  padding-top: 88px;
+  padding-bottom: 136px;
+  .title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #d46b14;
+    line-height: 48px;
+  }
+  .titleParagraph {
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 36px;
+  }
+  .row {
+    text-align: center;
+    @media (max-width: 768px) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    .avatar {
+      width: 220px;
+      height: 220px;
+      @media (max-width: 992px) {
+        width: 96px;
+        height: 96px;
+      }
+    }
+    .name {
+      font-size: 36px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 54px;
+      @media (max-width: 768px) {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+    .description {
+      color: #666666;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+    }
+  }
+}
