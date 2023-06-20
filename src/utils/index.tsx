@@ -1,5 +1,5 @@
-import { RefObject } from 'react';
-import { Grid } from 'antd';
+import { RefObject } from "react";
+import { Grid } from "antd";
 
 /**
  * xs 屏幕 < 576px
@@ -11,9 +11,11 @@ import { Grid } from 'antd';
 export const useMobile = () => {
   const { useBreakpoint } = Grid;
   const screens = useBreakpoint();
-  const breakpoints = Object.entries(screens)?.filter(screen => !!screen[1])?.map(screen => screen[0]);
+  const breakpoints = Object.entries(screens)
+    ?.filter((screen) => !!screen[1])
+    ?.map((screen) => screen[0]);
   // 屏幕 < 992px
-  const isMobile = !breakpoints?.includes('md');
+  const isMobile = !breakpoints?.includes("md");
   return isMobile;
 };
 
@@ -21,11 +23,20 @@ export const useMobile = () => {
  * 添加动画效果
  * @returns
  */
-export const addAnimatePulse = (ref: RefObject<HTMLDivElement> | Array<RefObject<HTMLDivElement>>, index: number) => {
+export const addAnimatePulse = (
+  ref: RefObject<HTMLDivElement> | Array<RefObject<HTMLDivElement>>,
+  index: number
+) => {
   if (Array.isArray(ref)) {
-    (ref[index]?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__pulse');
+    (ref[index]?.current as HTMLDivElement)?.classList?.add(
+      "animate__animated",
+      "animate__pulse"
+    );
   } else {
-    (ref?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__pulse');
+    (ref?.current as HTMLDivElement)?.classList?.add(
+      "animate__animated",
+      "animate__pulse"
+    );
   }
 };
 
@@ -33,10 +44,19 @@ export const addAnimatePulse = (ref: RefObject<HTMLDivElement> | Array<RefObject
  * 移除动画效果
  * @returns
  */
-export const removeAnimatePulse = (ref: RefObject<HTMLDivElement> | Array<RefObject<HTMLDivElement>>, index: number) => {
+export const removeAnimatePulse = (
+  ref: RefObject<HTMLDivElement> | Array<RefObject<HTMLDivElement>>,
+  index: number
+) => {
   if (Array.isArray(ref)) {
-    (ref[index]?.current as HTMLDivElement)?.classList?.remove('animate__animated', 'animate__pulse');
+    (ref[index]?.current as HTMLDivElement)?.classList?.remove(
+      "animate__animated",
+      "animate__pulse"
+    );
   } else {
-    (ref?.current as HTMLDivElement)?.classList?.remove('animate__animated', 'animate__pulse');
+    (ref?.current as HTMLDivElement)?.classList?.remove(
+      "animate__animated",
+      "animate__pulse"
+    );<p></p>
   }
 };

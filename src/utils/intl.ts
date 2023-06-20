@@ -1,10 +1,10 @@
-import { useCallback } from 'react';
-import { useIntl } from 'react-intl';
-import type zh_CN from '@/lang/zh_CN.json';
-import type en_US from '@/lang/en_US.json';
+import { useCallback } from "react";
+import { useIntl } from "react-intl";
+import type zh_CN from "@/lang/zh_CN.json";
+import type en_US from "@/lang/en_US.json";
 
-export const LANG_ZH_CN = 'zh';
-export const LANG_EN_US = 'en';
+export const LANG_ZH_CN = "zh";
+export const LANG_EN_US = "en";
 export const DEFAULT_LANG = LANG_ZH_CN;
 
 export type LangType = typeof LANG_ZH_CN | typeof LANG_EN_US;

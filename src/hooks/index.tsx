@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 /**
  * 控制组件是否挂载、是否可见的 Hook
@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
  */
 export const useDelayedMount = (
   show: boolean,
-  delay: number,
+  delay: number
 ): [boolean, boolean] => {
   const [mount, setMount] = useState(show);
   const [visible, setVisible] = useState(show);
