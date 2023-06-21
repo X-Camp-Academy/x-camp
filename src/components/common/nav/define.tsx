@@ -112,7 +112,7 @@ export const menuItems: XStarMenuItemType[] = [
     ],
   },
   {
-    label: <Link href="/about-us">About Us</Link>,
+    label: <Link href="/">About Us</Link>,
     key: "about-us",
     dropdown: {
       left: {
