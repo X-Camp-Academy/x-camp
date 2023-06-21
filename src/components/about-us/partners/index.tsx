@@ -6,6 +6,7 @@ import styles from "./index.module.scss";
 const { Content } = Layout;
 const TopBanner = dynamic(() => import("./top-banner"));
 const PartnersIntroduction = dynamic(() => import("./partners-introduction"));
+const Comments = dynamic(() => import("@/components/home/Comments"));
 
 const Partners = () => {
   return (
@@ -20,6 +21,7 @@ const Partners = () => {
         <Content>
           <TopBanner />
           <PartnersIntroduction />
+          <Comments className={styles.comments} />
         </Content>
       </Layout>
     </ConfigProvider>
