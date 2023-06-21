@@ -19,21 +19,24 @@
       margin-left: 0!important;
       margin-right: 0!important;
     }
-    .name {
-      color: #172142;
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 34px;
-    }
-    .description {
-      color: #666666;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 20px;
-    }
-    .cardImage {
-      width: 150px;
-      height: 155px;
-    }
+    .cardContainer {
+      margin-top: 48px;
+      .name {
+        color: #172142;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 34px;
+      }
+      .description {
+        color: #666666;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      .cardImage {
+        width: 150px;
+        height: 155px;
+      }
+    } 
   }
 }

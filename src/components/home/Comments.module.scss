@@ -24,10 +24,8 @@
       transform: translateY(-50%);
     }
     .row {
-      @media (max-width: 768px) {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-      }
+      margin-left: 0 !important;
+      margin-right: 0 !important;
       .col {
         margin-top: 20px;
         margin-bottom: 20px;

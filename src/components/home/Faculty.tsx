@@ -1,18 +1,11 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
 import styles from "./Faculty.module.scss";
-import {
-  LeftOutlined,
-  RightOutlined,
-  SwapLeftOutlined,
-  SwapRightOutlined,
-} from "@ant-design/icons";
-import { useSize } from "ahooks";
-import { addAnimatePulse, removeAnimatePulse, useMobile } from "@/utils";
+import { RightOutlined } from "@ant-design/icons";
+import ColorfulCard from "../common/colorful-card";
 
 const { Title, Paragraph, Text } = Typography;
-const { Meta } = Card;
 
 const Faculty: React.FC = () => {
   const facultyData = [
@@ -32,39 +25,20 @@ const Faculty: React.FC = () => {
       avatar: "/image/home/ryan.png",
     },
   ];
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const refs = facultyData.map(() => useRef<HTMLDivElement>(null));
 
   const computedStyle = (index: number) => {
-    const cardDefaultStyle = {
-      borderRadius: 10,
-      paddingBottom: 6,
-      marginTop: 48,
-    };
     const iconDefaultStyle = {
       color: "#d46b14",
       borderColor: "#d46b14",
     };
     const colors = ["#D46B14", "#FFAD11", "#FFD600"];
-    const cardStyle = {
-      ...cardDefaultStyle,
-      backgroundColor: colors[index % 3],
-    };
     const iconStyle = {
       ...iconDefaultStyle,
       color: colors[index % 3],
       borderColor: colors[index % 3],
     };
-    return {
-      cardStyle,
-      iconStyle,
-    };
+    return iconStyle;
   };
-
-  const ref = useRef(null);
-  const size = useSize(ref);
-  console.log(size);
-  const isMobile = useMobile();
 
   return (
     <div className={`${styles.faculty} container`}>
@@ -76,13 +50,7 @@ const Faculty: React.FC = () => {
           great opportunity for students to showcase what they have learned from
           classes .
         </Paragraph>
-        <Row
-          className={styles.row}
-          gutter={40}
-          justify="center"
-          align="middle"
-          ref={ref}
-        >
+        <Row className={styles.row} gutter={40} justify="center" align="middle">
           {facultyData.map((item, index) => {
             return (
               <Col
@@ -92,11 +60,10 @@ const Faculty: React.FC = () => {
                 md={{ span: 24 }}
                 lg={{ span: 8 }}
               >
-                <div
-                  ref={refs[index]}
-                  onMouseEnter={() => addAnimatePulse(refs, index)}
-                  onMouseLeave={() => removeAnimatePulse(refs, index)}
-                  style={computedStyle(index)?.cardStyle}
+                <ColorfulCard
+                  gap="bottom"
+                  index={index}
+                  className={styles.cardContainer}
                 >
                   <Card
                     bodyStyle={{
@@ -117,7 +84,7 @@ const Faculty: React.FC = () => {
                           size="small"
                           ghost={true}
                           shape="circle"
-                          style={computedStyle(index)?.iconStyle}
+                          style={computedStyle(index)}
                         >
                           <RightOutlined />
                         </Button>
@@ -130,7 +97,7 @@ const Faculty: React.FC = () => {
                       />
                     </Space>
                   </Card>
-                </div>
+                </ColorfulCard>
               </Col>
             );
           })}

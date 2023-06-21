@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
@@ -16,6 +15,7 @@ const StudentProjects = dynamic(() => import("./StudentProjects"));
 const XAlumni = dynamic(() => import("./XAlumni"));
 const Partners = dynamic(() => import("./Partners"));
 const Comments = dynamic(() => import("./Comments"));
+
 const { Content } = Layout;
 
 const Home: React.FC = () => {
