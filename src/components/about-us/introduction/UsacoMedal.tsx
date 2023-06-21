@@ -48,9 +48,9 @@ const UsacoMedal: React.FC = () => {
             className={index === 3 ? styles.col4 : styles.col}
           >
             <ColorfulCard
-              gap="bottom"
+              border="bottom"
               index={index}
-              three={false}
+              total={4}
               className={styles.cardContainer}
             >
               <Card>

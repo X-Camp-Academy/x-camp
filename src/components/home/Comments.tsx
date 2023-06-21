@@ -77,7 +77,7 @@ const Comments: React.FC = () => {
                     lg={8}
                     className={styles.col}
                   >
-                    <ColorfulCard gap="top" index={index} animate={false}>
+                    <ColorfulCard border="top" index={index} animate={false}>
                       <Card
                         bodyStyle={{
                           borderWidth: 2,
@@ -119,7 +119,7 @@ const Comments: React.FC = () => {
                     lg={8}
                     className={styles.col}
                   >
-                    <ColorfulCard gap="top" index={index} animate={false}>
+                    <ColorfulCard border="top" index={index} animate={false}>
                       <Card
                         bodyStyle={{
                           borderWidth: 2,

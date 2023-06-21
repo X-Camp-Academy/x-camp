@@ -61,7 +61,7 @@ const Faculty: React.FC = () => {
                 lg={{ span: 8 }}
               >
                 <ColorfulCard
-                  gap="bottom"
+                  border="bottom"
                   index={index}
                   className={styles.cardContainer}
                 >

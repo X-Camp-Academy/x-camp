@@ -85,7 +85,7 @@ const XAlumni: React.FC = () => {
                     lg={8}
                     className={styles.col}
                   >
-                    <ColorfulCard gap="top" index={index} animate={false}>
+                    <ColorfulCard border="top" index={index} animate={false}>
                       <Card>
                         <Space direction="vertical" align="center">
                           <Avatar src={item.avatar} className={styles.avatar} />
@@ -121,7 +121,7 @@ const XAlumni: React.FC = () => {
                     lg={8}
                     className={styles.col}
                   >
-                    <ColorfulCard gap="top" index={index} animate={false}>
+                    <ColorfulCard border="top" index={index} animate={false}>
                       <Card>
                         <Space direction="vertical">
                           <Avatar src={item.avatar} className={styles.avatar} />
