@@ -5,8 +5,6 @@ import {
   Row,
   Col,
   Card,
-  Image,
-  Rate,
   Typography,
   Carousel,
   Button,
@@ -16,6 +14,7 @@ import styles from "./XAlumni.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import { useMobile } from "@/utils";
+import ColorfulCard from "../common/colorful-card";
 
 const { Title, Text, Paragraph } = Typography;
 const XAlumni: React.FC = () => {
@@ -40,15 +39,6 @@ const XAlumni: React.FC = () => {
     },
   ];
   const carouselRef = useRef<CarouselRef>(null);
-  const computedStyle = (index: number) => {
-    const defaultStyle = {
-      borderRadius: 10,
-      paddingTop: 6,
-    };
-    const colors = ["#D46B14", "#FFAD11", "#FFD600"];
-
-    return { ...defaultStyle, backgroundColor: colors[index % 3] };
-  };
 
   const onPrev = () => {
     carouselRef?.current?.prev();
@@ -95,7 +85,7 @@ const XAlumni: React.FC = () => {
                     lg={8}
                     className={styles.col}
                   >
-                    <div style={computedStyle(index)}>
+                    <ColorfulCard gap="top" index={index} animate={false}>
                       <Card>
                         <Space direction="vertical" align="center">
                           <Avatar src={item.avatar} className={styles.avatar} />
@@ -108,7 +98,7 @@ const XAlumni: React.FC = () => {
                           </Paragraph>
                         </Space>
                       </Card>
-                    </div>
+                    </ColorfulCard>
                   </Col>
                 );
               })}
@@ -131,7 +121,7 @@ const XAlumni: React.FC = () => {
                     lg={8}
                     className={styles.col}
                   >
-                    <div style={computedStyle(index)}>
+                    <ColorfulCard gap="top" index={index} animate={false}>
                       <Card>
                         <Space direction="vertical">
                           <Avatar src={item.avatar} className={styles.avatar} />
@@ -144,7 +134,7 @@ const XAlumni: React.FC = () => {
                           </Paragraph>
                         </Space>
                       </Card>
-                    </div>
+                    </ColorfulCard>
                   </Col>
                 );
               })}
