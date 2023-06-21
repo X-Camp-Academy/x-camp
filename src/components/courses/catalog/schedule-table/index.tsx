@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './index.module.scss';
 import { Button, Col, Form, Input, Row, Select, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import { useMobile } from '@/utils';
 interface ScheduleData {
   class: string;
   courseTitle: string;
@@ -13,6 +14,7 @@ interface ScheduleData {
   fee: string;
 }
 const ScheduleTable = () => {
+  const isMobile = useMobile();
   const data: ScheduleData[] = [
     {
       class: 'CS100P',
@@ -144,9 +146,9 @@ const ScheduleTable = () => {
               md={12}
               lg={4}
               xl={4}
-              style={{ marginTop: 'auto' }}
+              style={{ marginTop: isMobile ? '20px' : 'auto' }}
             >
-              <Form.Item noStyle>
+              <Form.Item>
                 <Button
                   type={'primary'}
                   htmlType={'submit'}
@@ -161,6 +163,7 @@ const ScheduleTable = () => {
         <Table
           className={styles.table}
           dataSource={data}
+          scroll={{ x: 'max-content' }}
           columns={columns}
           rowKey={'title'}
         />
