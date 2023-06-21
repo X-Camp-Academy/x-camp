@@ -5,6 +5,7 @@ import styles from './index.module.scss';
 import { Content } from 'antd/es/layout/layout';
 import TopBanner from './TopBanner';
 import USACOMedal from './USACOMedal';
+import ArtOfProgrammingResults from './ArtOfProgrammingResults';
 import dynamic from "next/dynamic";
 
 const Achievements: React.FC = () => {
@@ -20,6 +21,7 @@ const Achievements: React.FC = () => {
         <Content>
           <TopBanner />
           <USACOMedal/>
+          <ArtOfProgrammingResults/>
         </Content>
       </Layout>
     </ConfigProvider>

@@ -1,4 +1,4 @@
-import { Space, Row, Col, Card, Image, Typography, Carousel, Button, Rate} from "antd";
+import { Space, Row, Col, Card, Image, Typography, Carousel, Button, Rate, List } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import { LeftCircleTwoTone, RightCircleTwoTone } from "@ant-design/icons";
 import { getTwoToneColor, setTwoToneColor } from '@ant-design/icons';
@@ -6,7 +6,7 @@ import styles from './TimeLine.module.scss'
 import React, { useRef } from "react";
 const { Title, Paragraph, Text } = Typography;
 import Link from "next/link";
-import AchievementCard from "./AchievementCard";
+import ColorfulCard from "@/components/common/colorful-card";
 
 const TimeLine: React.FC = () => {
 
@@ -22,28 +22,28 @@ const TimeLine: React.FC = () => {
                 <div className={styles.listContainer}>
                     <ul className={styles.timeList}>
                         <li className={styles.timeListItem}>
-                            <span>In the 20/21 season</span>
-                            <p className={styles.timeListDetail}>
+                            <Title className={styles.timeListTitle}>In the 20/21 season</Title>
+                            <Paragraph className={styles.timeListDetail}>
                                 one student made it to the USACO US Camp (USACO Finalist).
-                            </p>
+                            </Paragraph>
                         </li>
                         <li className={styles.timeListItem}>
-                            <span>In the 21/22 season</span>
-                            <p className={styles.timeListDetail}>
+                            <Title className={styles.timeListTitle}>In the 21/22 season</Title>
+                            <Paragraph className={styles.timeListDetail}>
                                 four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).
-                            </p>
+                            </Paragraph>
                         </li>
                         <li className={styles.timeListItem}>
-                            <span>In the last 22/23 season</span>
-                            <p className={styles.timeListDetail}>
+                            <Title className={styles.timeListTitle}>In the last 22/23 season</Title>
+                            <Paragraph className={styles.timeListDetail}>
                                 six person-time entered the top ten in the United States, and seven student individuals have been selected for the USACO US Camp (USACO Finalist).
-                            </p>
+                            </Paragraph>
                         </li>
                         <li className={styles.timeListItem}>
-                            <span>The latest data for USACO 23 Season</span>
-                            <p className={styles.timeListDetail}>
+                            <Title className={styles.timeListTitle}>The latest data for USACO 23 Season</Title>
+                            <Paragraph className={styles.timeListDetail}>
                                 Includes 46 students who advanced from the Bronze to the Gold Division, 16 students who advanced from the Silver to the Gold Division, and 10 students who advanced from the Gold to the Platinum Division.
-                            </p>
+                            </Paragraph>
                         </li>
                     </ul>
                 </div>
@@ -55,10 +55,46 @@ const TimeLine: React.FC = () => {
 
 
                 <div className={styles.achievementCardContainer}>
-                    <AchievementCard  style={{ borderBottomColor:'#FFD600' }} title="200+" text="USACO Silver and above"></AchievementCard>
-                    <AchievementCard  style={{ borderBottomColor:'#FFD600' }} title="200+" text="USACO Silver and above"></AchievementCard>
-                    <AchievementCard  style={{ borderBottomColor:'#FFD600' }} title="200+" text="USACO Silver and above"></AchievementCard>
-                    <AchievementCard  style={{ borderBottomColor:'#FFD600' }} title="200+" text="USACO Silver and above"></AchievementCard>
+                    <ColorfulCard border="bottom" index={1} className={styles.cardItem}>
+                        <Card style={{padding:'20px'}}>
+                            <Space direction="vertical" align="center">
+                                <Text className={styles.title} style={{color:'#00A0E9'}}>
+                                200+
+                                </Text>
+                                <Text className={styles.text}>{'USACO Silver and above'}</Text>
+                            </Space>
+                        </Card>
+                    </ColorfulCard>
+                    <ColorfulCard border="bottom" index={2} className={styles.cardItem}>
+                        <Card style={{padding:'20px'}}>
+                            <Space direction="vertical" align="center">
+                                <Text className={styles.title} style={{color:'#FFD600'}}>
+                                30
+                                </Text>
+                                <Text className={styles.text}>{'USACO Platinum'}</Text>
+                            </Space>
+                        </Card>
+                    </ColorfulCard>
+                    <ColorfulCard border="bottom" index={1} className={styles.cardItem}>
+                        <Card style={{padding:'20px'}}>
+                            <Space direction="vertical" align="center">
+                                <Text className={styles.title} style={{color:'#FFAD11'}}>
+                                    12
+                                </Text>
+                                <Text className={styles.text}>{'USACO Finalist'}</Text>
+                            </Space>
+                        </Card>
+                    </ColorfulCard>
+                    <ColorfulCard border="bottom" index={3} className={styles.cardItem}>
+                        <Card style={{padding:'20px'}}>
+                            <Space direction="vertical" align="center">
+                                <Text className={styles.title} style={{color:'#D46B14'}}>
+                                    1
+                                </Text>
+                                <Text className={styles.text}>{'USACO Team'}</Text>
+                            </Space>
+                        </Card>
+                    </ColorfulCard>
                 </div>
             </div>
 
