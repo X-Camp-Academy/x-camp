@@ -24,7 +24,6 @@ const TopBanner: React.FC = () => {
                 alt="image"
                 src="/image/about-us/introduction/charlie.png"
                 preview={false}
-                className={styles.image}
               />
             </Col>
             <Col xs={24} sm={24} md={24} lg={16}>
@@ -63,7 +62,7 @@ const TopBanner: React.FC = () => {
                 alt="image"
                 src="/image/about-us/introduction/yuan.png"
                 preview={false}
-                className={styles.image}
+                className={styles.founderImage}
               />
             </Col>
             <Col xs={24} sm={24} md={24} lg={16}>
