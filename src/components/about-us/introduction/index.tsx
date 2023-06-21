@@ -1,15 +1,6 @@
 "use client";
 import React from "react";
-import {
-  Space,
-  Row,
-  Col,
-  Card,
-  Image,
-  Typography,
-  ConfigProvider,
-  Layout,
-} from "antd";
+import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 

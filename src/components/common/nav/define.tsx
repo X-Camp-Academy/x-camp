@@ -148,7 +148,7 @@ export const menuItems: XStarMenuItemType[] = [
         key: "join-us",
       },
       {
-        label: <Link href="/">Partners</Link>,
+        label: <Link href="/about-us/partners">Partners</Link>,
         key: "partners",
       },
       {
