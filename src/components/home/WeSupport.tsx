@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { Space, Typography, Row, Col, Card, Image } from "antd";
-import { addAnimatePulse, removeAnimatePulse } from "@/utils";
+import { addAnimatePulse, removeAnimatePulse, useMobile } from "@/utils";
 import styles from "./WeSupport.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
@@ -17,14 +17,14 @@ const WeSupport: React.FC = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useRef<HTMLDivElement>(null)
   );
+  const isMobile = useMobile();
   return (
     <div className={`${styles.weSupport} container`}>
       <Row>
         <Col
           xs={{ span: 24, order: 2 }}
           sm={{ span: 24, order: 2 }}
-          md={{ span: 24, order: 2 }}
-          lg={{ span: 12, order: 1 }}
+          md={{ span: 12, order: 1 }}
         >
           <div className={styles.video}>
             <iframe
@@ -40,15 +40,13 @@ const WeSupport: React.FC = () => {
         <Col
           xs={{ span: 24, order: 1 }}
           sm={{ span: 24, order: 1 }}
-          md={{ span: 24, order: 1 }}
-          lg={{ span: 11, order: 2, offset: 1 }}
+          md={{ span: 11, order: 2, offset: 1 }}
         >
           <Row>
             <Col
               xs={{ span: 24, order: 2 }}
               sm={{ span: 24, order: 2 }}
-              md={{ span: 24, order: 2 }}
-              lg={{ span: 24, order: 1 }}
+              md={{ span: 24, order: 1 }}
             >
               <Space size={24} direction="vertical">
                 <Title className={styles.title}>We support</Title>
@@ -63,39 +61,31 @@ const WeSupport: React.FC = () => {
             <Col
               xs={{ span: 24, order: 1 }}
               sm={{ span: 24, order: 1 }}
-              md={{ span: 24, order: 1 }}
-              lg={{ span: 24, order: 2 }}
+              md={{ span: 24, order: 2 }}
             >
-              <Row>
+              <Space className={styles.imageSpace}>
                 {images.map((item, index) => {
                   return (
-                    <Col
-                      xs={{ span: 24 }}
-                      sm={{ span: 24 }}
-                      md={{ span: 24 }}
-                      lg={{ span: 8 }}
+                    <div
                       key={index}
+                      ref={refs[index]}
+                      onMouseEnter={() => addAnimatePulse(refs, index)}
+                      onMouseLeave={() => removeAnimatePulse(refs, index)}
                     >
-                      <div
-                        ref={refs[index]}
-                        onMouseEnter={() => addAnimatePulse(refs, index)}
-                        onMouseLeave={() => removeAnimatePulse(refs, index)}
-                      >
-                        <Image
-                          src={item}
-                          alt="image"
-                          preview={false}
-                          className={styles.image}
-                        />
-                      </div>
-                    </Col>
+                      <Image
+                        src={item}
+                        alt="image"
+                        preview={false}
+                        className={styles.image}
+                      />
+                    </div>
                   );
                 })}
-              </Row>
+              </Space>
             </Col>
           </Row>
         </Col>
-      </Row>
+      </Row><p></p>
     </div>
   );
 };

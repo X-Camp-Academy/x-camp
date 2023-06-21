@@ -40,8 +40,9 @@ const FoundingTeam = () => {
       );
     });
   };
-  const onChange = () => {
-    if (current) {
+
+  const onPrev = () => {
+    if (current === 1) {
       removeAnimate();
       setCurrent(0);
       (leftRef?.current as HTMLDivElement)?.classList?.add(
@@ -52,7 +53,10 @@ const FoundingTeam = () => {
         "animate__animated",
         "animate__fadeInLeft"
       );
-    } else {
+    }
+  };
+  const onNext = () => {
+    if (current === 0) {
       removeAnimate();
       setCurrent(1);
       (leftRef?.current as HTMLDivElement)?.classList?.add(
@@ -71,11 +75,37 @@ const FoundingTeam = () => {
   return (
     <div className={`${styles.FoundingTeam} container`}>
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>Founding Team</Title>
+        <Title className={styles.title}>
+          Founding Team
+          <Text className={styles.text}></Text>
+        </Title>
         <Row>
           <Col xs={24} sm={24} md={24} lg={10}>
             <Space direction="vertical" className={styles.founderLeft}>
-              <Title className={styles.name}>{founder.name}</Title>
+              <Title className={styles.name}>
+                {founder.name}
+                {isMobile && (
+                  <Space className={styles.buttons}>
+                    <Button
+                      type="primary"
+                      ghost={current === 0}
+                      shape="circle"
+                      onClick={onPrev}
+                    >
+                      <LeftOutlined />
+                    </Button>
+                    <Button
+                      type="primary"
+                      ghost={current !== 0}
+                      shape="circle"
+                      onClick={onNext}
+                    >
+                      <RightOutlined />
+                    </Button>
+                  </Space>
+                )}
+              </Title>
+
               <Space>
                 {founder.tags.map((item) => {
                   return (
@@ -86,24 +116,26 @@ const FoundingTeam = () => {
                 })}
               </Space>
               <Paragraph className={styles.paragraph}>{founder.desc}</Paragraph>
-              <Space>
-                <Button
-                  type="primary"
-                  ghost={current === 0}
-                  shape="circle"
-                  onClick={onChange}
-                >
-                  <LeftOutlined />
-                </Button>
-                <Button
-                  type="primary"
-                  ghost={current !== 0}
-                  shape="circle"
-                  onClick={onChange}
-                >
-                  <RightOutlined />
-                </Button>
-              </Space>
+              {!isMobile && (
+                <Space className={styles.buttons}>
+                  <Button
+                    type="primary"
+                    ghost={current === 0}
+                    shape="circle"
+                    onClick={onPrev}
+                  >
+                    <LeftOutlined />
+                  </Button>
+                  <Button
+                    type="primary"
+                    ghost={current !== 0}
+                    shape="circle"
+                    onClick={onNext}
+                  >
+                    <RightOutlined />
+                  </Button>
+                </Space>
+              )}
             </Space>
           </Col>
 

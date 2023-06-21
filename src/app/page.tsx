@@ -1,14 +1,12 @@
-import Home from '@/components/home';
+import Home from "@/components/home";
 
 export const metadata = {
-  title: 'X-Camp Academy',
-  description: 'X-Camp Academy | Programming and Education news from X-Camp',
-}
+  title: "X-Camp Academy",
+  description: "X-Camp Academy | Programming and Education news from X-Camp",
+};
 
 const Page: React.FC = () => {
-  return (
-    <Home />
-  )
-}
+  return <Home />;
+};
 
 export default Page;

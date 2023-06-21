@@ -122,9 +122,6 @@ const Faculty: React.FC = () => {
                           <RightOutlined />
                         </Button>
                       </Space>
-
-                      
-
                       <Image
                         src={item?.avatar}
                         alt="avatar"

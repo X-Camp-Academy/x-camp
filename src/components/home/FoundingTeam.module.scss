@@ -1,11 +1,20 @@
 .FoundingTeam {
   margin-top: 50px;
   padding-bottom: 80px;
+  position: relative;
   .title {
     color: #172142;
     font-size: 36px;
     font-weight: 600;
     line-height: 54px;
+    .text {
+      display: block;
+      width: 200px;
+      height: 22px;
+      background-image: url("/image/home/founding-team-bg.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
   }
   .founderLeft {
     margin-top: 60px;
@@ -28,6 +37,17 @@
       text-align: left;
       font-weight: 400;
       line-height: 34px;
+    }
+    .buttons {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 999;
+      @media (max-width: 768px) {
+        position: static;
+        float: right;
+        margin-top: -8px;
+      }
     }
   }
   .founderRight {
