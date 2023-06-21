@@ -23,40 +23,20 @@ export const useMobile = () => {
  * 添加动画效果
  * @returns
  */
-export const addAnimatePulse = (
-  ref: RefObject<HTMLDivElement> | Array<RefObject<HTMLDivElement>>,
-  index: number
-) => {
-  if (Array.isArray(ref)) {
-    (ref[index]?.current as HTMLDivElement)?.classList?.add(
-      "animate__animated",
-      "animate__pulse"
-    );
-  } else {
-    (ref?.current as HTMLDivElement)?.classList?.add(
-      "animate__animated",
-      "animate__pulse"
-    );
-  }
+export const addAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
+  (ref?.current as HTMLDivElement)?.classList?.add(
+    "animate__animated",
+    "animate__pulse"
+  );
 };
 
 /**
  * 移除动画效果
  * @returns
  */
-export const removeAnimatePulse = (
-  ref: RefObject<HTMLDivElement> | Array<RefObject<HTMLDivElement>>,
-  index: number
-) => {
-  if (Array.isArray(ref)) {
-    (ref[index]?.current as HTMLDivElement)?.classList?.remove(
-      "animate__animated",
-      "animate__pulse"
-    );
-  } else {
-    (ref?.current as HTMLDivElement)?.classList?.remove(
-      "animate__animated",
-      "animate__pulse"
-    );<p></p>
-  }
+export const removeAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
+  (ref?.current as HTMLDivElement)?.classList?.remove(
+    "animate__animated",
+    "animate__pulse"
+  );
 };
