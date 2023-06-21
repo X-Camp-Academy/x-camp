@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { Space, Typography, Row, Col, Card, Image } from "antd";
-import { addAnimatePulse, removeAnimatePulse, useMobile } from "@/utils";
+import { addAllAnimatePulse, removeAllAnimatePulse, useMobile } from "@/utils";
 import styles from "./WeSupport.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
@@ -69,8 +69,8 @@ const WeSupport: React.FC = () => {
                     <div
                       key={index}
                       ref={refs[index]}
-                      onMouseEnter={() => addAnimatePulse(refs, index)}
-                      onMouseLeave={() => removeAnimatePulse(refs, index)}
+                      onMouseEnter={() => addAllAnimatePulse(refs, index)}
+                      onMouseLeave={() => removeAllAnimatePulse(refs, index)}
                     >
                       <Image
                         src={item}
