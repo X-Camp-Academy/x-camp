@@ -1,0 +1,64 @@
+.menuItem {
+  user-select: none;
+  white-space: nowrap;
+  padding: 0 10px 4px 10px;
+  transition: border-color 0.3s;
+  border-bottom: transparent 2px solid;
+
+  &:hover {
+    border-bottom: #ffad11 2px solid;
+
+    ~ .dropdown {
+      opacity: 1;
+      transition-delay: 0s;
+      visibility: visible;
+    }
+
+    .icon {
+      color: #ffad11;
+      transform: rotate(180deg);
+    }
+
+    a {
+      color: #ffad11;
+    }
+  }
+
+  .icon {
+    font-size: 12px;
+    margin-left: 2px;
+    transition: all 0.5s ease 0s;
+  }
+
+  a {
+    color: rgba(0, 0, 0, 0.88);
+  }
+}
+
+.selectedItem {
+  border-bottom: #ffad11 2px solid;
+}
+
+.dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0s 0.3s;
+
+  &:hover {
+    visibility: visible;
+    opacity: 1 !important;
+
+    ~ .menuItem {
+      background-color: #000;
+
+      .icon {
+        color: #ffad11;
+        transform: rotate(180deg);
+      }
+
+      a {
+        color: #ffad11;
+      }
+    }
+  }
+}

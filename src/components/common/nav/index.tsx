@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -13,47 +13,15 @@ import {
   Dropdown,
   MenuProps,
 } from "antd";
-import {
-  CaretDownOutlined,
-  CaretUpOutlined,
-  MenuFoldOutlined,
-  TranslationOutlined,
-  UnorderedListOutlined,
-} from "@ant-design/icons";
+import { TranslationOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import "animate.css";
 import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
 import { useUpdate } from "ahooks";
+import { removeDropdown, menuItems } from "./define";
+import XStarMenu from "./x-star-menu";
 
 const { Header } = Layout;
-const menuItems: MenuProps["items"] = [
-  {
-    label: <Link href="/">Home</Link>,
-    key: "/",
-  },
-  {
-    label: (
-      <Link href="/courses">
-        Courses
-        {/* <CaretUpOutlined />
-        <CaretDownOutlined /> */}
-      </Link>
-    ),
-    key: "courses",
-  },
-  {
-    label: <Link href="/resources">Resources</Link>,
-    key: "resources",
-  },
-  {
-    label: <Link href="/about-us/introduction">About Us</Link>,
-    key: "about-us",
-  },
-  {
-    label: <Link href="/">Evaluation</Link>,
-    key: "evaluation",
-  },
-];
 const items: MenuProps["items"] = [
   {
     key: "en",
@@ -74,6 +42,7 @@ const Nav: React.FC = () => {
 
   const onSearch = (value: string) => console.log(value);
   const handleMenuClick: MenuProps["onClick"] = (e) => {
+    console.log(e);
     console.log(e.key);
     console.log(pathname);
     setCurrent(e.key);
@@ -106,6 +75,11 @@ const Nav: React.FC = () => {
     };
   }, []);
 
+  const mobileMenuItems: MenuProps["items"] = useMemo(() => {
+    // 手机端则去除dropdown
+    return isMobile ? removeDropdown(menuItems) : menuItems;
+  }, [menuItems, isMobile]);
+
   return (
     <ConfigProvider
       theme={{
@@ -125,13 +99,15 @@ const Nav: React.FC = () => {
                 className={styles.image}
               />
               {!isMobile && ( // 缓存原因需要强制销毁重建组件
-                <Menu
-                  mode="horizontal"
-                  selectedKeys={[current]}
+                <XStarMenu
+                  selectedKey={current}
                   items={menuItems}
                   className={styles.menu}
-                  onClick={handleMenuClick}
-                  onResize={update}
+                  // onResize={update}
+                  onClick={(key) => {
+                    console.log(key)
+                    setCurrent(key)
+                  }}
                 />
               )}
             </Space>
@@ -196,7 +172,7 @@ const Nav: React.FC = () => {
               <Menu
                 mode="vertical"
                 selectedKeys={[current]}
-                items={menuItems}
+                items={mobileMenuItems}
                 className={styles.mobileMenu}
                 onClick={handleMenuClick}
               />
