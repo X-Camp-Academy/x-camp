@@ -16,10 +16,6 @@ const StudentProjects = dynamic(() => import("./StudentProjects"));
 const XAlumni = dynamic(() => import("./XAlumni"));
 const Partners = dynamic(() => import("./Partners"));
 const Comments = dynamic(() => import("./Comments"));
-const CopyRight = dynamic(() => import("../common/footer/CopyRight"));
-const SubscribeNewsletter = dynamic(
-  () => import("../common/footer/SubscribeNewsletter")
-);
 const { Content } = Layout;
 
 const Home: React.FC = () => {
@@ -44,8 +40,6 @@ const Home: React.FC = () => {
           <XAlumni />
           <Partners />
           <Comments />
-          <CopyRight />
-          <SubscribeNewsletter />
         </Content>
       </Layout>
     </ConfigProvider>
