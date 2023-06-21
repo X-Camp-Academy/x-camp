@@ -85,9 +85,12 @@ const Nav: React.FC = () => {
               {!isMobile && ( // 缓存原因需要强制销毁重建组件
                 <XStarMenu
                   selectedKey={current}
-                  items={menuItems as XStarMenuItemType[]}
+                  items={menuItems}
                   className={styles.menu}
-                  onClick={(key) => setCurrent(key)}
+                  onClick={(key) => {
+                    console.log(key)
+                    setCurrent(key)
+                  }}
                 />
               )}
             </Space>
