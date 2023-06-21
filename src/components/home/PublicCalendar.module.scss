@@ -11,10 +11,20 @@
       font-weight: 600;
       line-height: 54px;
       text-align: center;
+      position: relative;
     }
     .titleText {
       @extend .title;
       color: #d46b14;
+      display: inline-block;
+      width: 200px;
+      height: 22px;
+      background-image: url("/image/home/founding-team-bg.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      @media (max-width: 768px) {
+        width: auto;
+      }
     }
     .colSpace {
       margin-top: 62px;

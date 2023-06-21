@@ -17,11 +17,11 @@ import { TranslationOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import "animate.css";
 import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
-import XStarMenu, { XStarMenuItemType } from "./x-star-menu";
-import { menuItems, removeDropdown } from "./define";
+import { useUpdate } from "ahooks";
+import { removeDropdown, menuItems } from "./define";
+import XStarMenu from "./x-star-menu";
 
 const { Header } = Layout;
-
 const items: MenuProps["items"] = [
   {
     key: "en",
@@ -58,6 +58,22 @@ const Nav: React.FC = () => {
     } else {
     }
   }, [showMenu]);
+  const update = useUpdate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 处理页面伸缩事件的逻辑
+      console.log("页面伸缩事件发生了");
+    };
+
+    // 添加页面伸缩事件监听器
+    window.addEventListener("resize", handleResize);
+
+    // 在组件销毁时移除事件监听器
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const mobileMenuItems: MenuProps["items"] = useMemo(() => {
     // 手机端则去除dropdown
@@ -87,6 +103,7 @@ const Nav: React.FC = () => {
                   selectedKey={current}
                   items={menuItems}
                   className={styles.menu}
+                  // onResize={update}
                   onClick={(key) => {
                     console.log(key)
                     setCurrent(key)

@@ -21,8 +21,21 @@
     font-weight: 500;
     line-height: 34px;
   }
-  .image {
-    width: 164px;
-    height: 100px;
+
+  .imageSpace {
+    @media (max-width: 768px) {
+      height: 110px;
+      background: #e7e7e7;
+      border-radius: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .image {
+      width: 164px;
+      height: 100px;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
   }
 }
