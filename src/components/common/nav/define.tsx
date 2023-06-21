@@ -124,7 +124,7 @@ export const menuItems: XStarMenuItemType[] = [
     },
     children: [
       {
-        label: <Link href="/">Introduction</Link>,
+        label: <Link href="/about-us/introduction">Introduction</Link>,
         key: "introduction",
       },
       {
