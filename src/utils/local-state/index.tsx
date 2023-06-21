@@ -70,4 +70,3 @@ export const useLocalState = <T extends keyof LocalState>(key: T) => {
     (value?: LocalState[T]) => set(key, value),
   ] as const;
 };
-<p></p>

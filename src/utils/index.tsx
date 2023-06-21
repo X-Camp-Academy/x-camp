@@ -40,3 +40,31 @@ export const removeAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
     "animate__pulse"
   );
 };
+
+/**
+ * 添加动画效果
+ * @returns
+ */
+export const addAllAnimatePulse = (
+  ref: Array<RefObject<HTMLDivElement>>,
+  index: number
+) => {
+  (ref[index]?.current as HTMLDivElement)?.classList?.add(
+    "animate__animated",
+    "animate__pulse"
+  );
+};
+
+/**
+ * 移除动画效果
+ * @returns
+ */
+export const removeAllAnimatePulse = (
+  ref: Array<RefObject<HTMLDivElement>>,
+  index: number
+) => {
+  (ref[index]?.current as HTMLDivElement)?.classList?.remove(
+    "animate__animated",
+    "animate__pulse"
+  );
+};
