@@ -1,91 +1,202 @@
 .USACOMedalContainer {
-    width: 100%;
-    
-    .container {
-        padding: 56px 120px;
+  width: 100%;
+  .container {
+    padding: 56px 120px;
 
-        @media (max-width: 768px) {
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-
-        .title {
-            font-size: 48px;
-            font-family: Poppins-SemiBold, Poppins;
-            font-weight: 600;
-            color: #D46B14;
-            line-height: 48px;
-        }
-
-        .intro {
-            font-size: 18px;
-            font-family: Poppins-Regular, Poppins;
-            font-weight: 400;
-            color: #172142;
-            line-height: 34px;
-        }
-
-        .medalIntro {
-            padding: 50px;
-            position: relative;
-
-            @media (max-width: 768px) {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-
-            .col {
-                margin-top: 20px;
-                margin-bottom: 20px;
-                text-align: center;
-
-                .image {
-                    width: 100%;
-                    border-radius: 251px;
-                }
-
-                .cardTitle {
-                    font-size: 36px;
-                    font-weight: 600;
-                    color: #172142;
-                    line-height: 54px;
-                }
-
-                .cardParagraph {
-                    font-size: 18px;
-                    font-weight: 500;
-                    color: #172142;
-                    line-height: 30px;
-                }
-            }
-        }
-
-        .prev {
-            border: none;
-            border-radius: 40px;
-            background-color: #F5F5F5;
-            width: 28px;
-            color: #D46B14;
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .next {
-            border: none;
-            border-radius: 40px;
-            background-color: #F5F5F5;
-            width: 28px;
-            color: #D46B14;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-
-
+    @media (max-width: 768px) {
+      padding-left: 30px;
+      padding-right: 30px;
     }
 
+    .title {
+      font-size: 48px;
+      font-family: Poppins-SemiBold, Poppins;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 48px;
+    }
+
+    .intro {
+      font-size: 18px;
+      font-family: Poppins-Regular, Poppins;
+      font-weight: 400;
+      color: #172142;
+      line-height: 34px;
+    }
+
+    .medalIntro {
+      padding: 50px;
+      position: relative;
+
+      @media (max-width: 768px) {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      .col {
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 40px;
+
+        .image {
+          //width: 100%;
+          padding: 20px;
+          border-radius: 50%;
+        }
+
+        .cardTitle {
+          font-size: 36px;
+          font-weight: 600;
+          color: #172142;
+          line-height: 54px;
+        }
+
+        .cardParagraph {
+          font-size: 18px;
+          font-weight: 500;
+          color: #172142;
+          line-height: 30px;
+        }
+      }
+    }
+
+    .prev {
+      border: none;
+      border-radius: 40px;
+      background-color: #f5f5f5;
+      width: 28px;
+      color: #d46b14;
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .next {
+      border: none;
+      border-radius: 40px;
+      background-color: #f5f5f5;
+      width: 28px;
+      color: #d46b14;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .timeLine {
+        //padding: 0 30px;
+      .title {
+        font-size: 36px;
+        font-family: Poppins-SemiBold, Poppins;
+        font-weight: 600;
+        color: #d46b14;
+        line-height: 48px;
+      }
+
+      .intro {
+        font-size: 21px;
+        font-family: Poppins-Medium, Poppins;
+        font-weight: 500;
+        color: #172142;
+        line-height: 40px;
+
+        
+      }
+
+      .listContainer {
+        padding: 40px;
+        background: url("/logo/x-camp-logo.png") no-repeat;
+        margin-right: 0;
+        background-position: right bottom;
+
+        .timeListItem {
+          position: relative;
+          margin-bottom: 20px;
+          /* 添加相对定位 */
+
+          .timeListTitle {
+            font-size: 24px;
+            font-family: Poppins-SemiBold, Poppins;
+            font-weight: 600;
+            color: #d46b14;
+            line-height: 48px;
+            position: relative;
+            left: -20px;
+
+            
+          }
+
+          .timeListTitle::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #d46b14;
+            position: relative;
+            //top: 1px;
+            left: -20px;
+            margin-right: 5px;
+            border: 3px solid #ffad11;
+          }
+        }
+
+        .timeListDetail {
+          color: #172142;
+          font-size: 21px;
+          line-height: 48px;
+
+          
+        }
+      }
+
+      .download {
+        display: flex;
+        align-items: center;
+
+        .downloadText {
+          font-size: 21px;
+          font-family: Poppins-Medium, Poppins;
+          font-weight: 500;
+          color: #d46b14;
+          line-height: 40px;
+          margin-left: 8px;
+
+        }
+
+
+      }
+
+      .row {
+        @media (max-width: 768px) {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        .col {
+          width: 100%;
+          height: 320px;
+        }
+        .cardItem {
+          border-radius: 10px;
+          padding-bottom: 6px;
+          text-align: center;
+          margin-top: 64px;
+          .title {
+            font-size: 72px;
+            font-weight: 600;
+            line-height: 100px;
+          }
+
+          .text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #172142;
+            line-height: 32px;
+          }
+        }
+      }
+    }
+  }
 }

@@ -3,10 +3,11 @@ import React from 'react';
 import { Space, Row, Col, Card, Image, ConfigProvider, Layout } from 'antd';
 import styles from './index.module.scss';
 import { Content } from 'antd/es/layout/layout';
-import TopBanner from './TopBanner';
-import USACOMedal from './USACOMedal';
-import ArtOfProgrammingResults from './ArtOfProgrammingResults';
+
 import dynamic from "next/dynamic";
+const TopBanner = dynamic(() => import("@/components/about-us/achievements/TopBanner"))
+const USACOMedal = dynamic(() => import("@/components/about-us/achievements/USACOMedal"))
+const ArtOfProgrammingResults = dynamic(() => import("@/components/about-us/achievements/ArtOfProgrammingResults"))
 
 const Achievements: React.FC = () => {
   return (
