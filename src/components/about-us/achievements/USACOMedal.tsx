@@ -10,7 +10,7 @@ import {
   List,
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
-import { LeftCircleTwoTone, RightCircleTwoTone } from "@ant-design/icons";
+import { LeftCircleTwoTone, RightCircleTwoTone, setTwoToneColor } from "@ant-design/icons";
 import styles from "./USACOMedal.module.scss";
 import React, { useRef } from "react";
 import Link from "next/link";
@@ -19,7 +19,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const USACOMedal: React.FC = () => {
   const carouselEL = useRef<CarouselRef>(null);
-
+  setTwoToneColor('#D46B14');
   const comments = [
     [
       {
@@ -114,7 +114,7 @@ const USACOMedal: React.FC = () => {
   return (
     <>
       <div className={styles.USACOMedalContainer}>
-        <div className={styles.container}>
+        <div className={`${styles.USACOMedal} container`}>
           <Space direction="vertical" align="start">
             <Title className={styles.title}>USACO Medal</Title>
             <Text className={styles.intro}>
@@ -199,7 +199,7 @@ const USACOMedal: React.FC = () => {
           </div>
 
           <div className={styles.timeLineContainer}>
-            <div className={`${styles.timeLine} container`}>
+            <div className={styles.timeLine}>
               <Space direction="vertical" align="start">
                 <Title className={styles.title}>Timeline</Title>
                 <Text className={styles.intro}>

@@ -1,7 +1,7 @@
 .USACOMedalContainer {
   width: 100%;
-  .container {
-    padding: 56px 120px;
+  .USACOMedal {
+    padding: 56px 0px;
 
     @media (max-width: 768px) {
       padding-left: 30px;
@@ -109,7 +109,6 @@
         background: url("/logo/x-camp-logo.png") no-repeat;
         margin-right: 0;
         background-position: right bottom;
-
         .timeListItem {
           position: relative;
           margin-bottom: 20px;

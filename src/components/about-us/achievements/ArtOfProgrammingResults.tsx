@@ -24,7 +24,7 @@ const ArtOfProgrammingResults: React.FC = () => {
   return (
     <>
       <div className={styles.ArtOfProgrammingResultsContainer}>
-        <div className={styles.container}>
+        <div className={`${styles.ArtOfProgrammingResults} container`}>
           <Title className={styles.firstTitle}>
             Art of Programming Results
           </Title>
