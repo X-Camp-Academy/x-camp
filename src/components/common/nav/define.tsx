@@ -28,7 +28,7 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <Link href="/">Online Classes</Link>,
+          label: <Link href="/courses">Online Classes</Link>,
           key: 'online-classes',
         },
         {
