@@ -1,12 +1,6 @@
 "use client";
 import React from "react";
 import {
-  Space,
-  Row,
-  Col,
-  Card,
-  Image,
-  Typography,
   ConfigProvider,
   Layout,
 } from "antd";

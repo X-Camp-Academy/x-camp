@@ -67,7 +67,7 @@ const TopBanner: React.FC = () => {
             </Col>
             <Col xs={24} sm={24} md={24} lg={16}>
               <Space direction="vertical" className={styles.descriptionSpace}>
-                <Title className={styles.name}>Charlie</Title>
+                <Title className={styles.name}>Yuan</Title>
                 <Tag color="#FFAD11" className={styles.tag}>
                   Co-founder of X-Camp Academy
                 </Tag>

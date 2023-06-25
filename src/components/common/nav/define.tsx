@@ -164,7 +164,7 @@ export const useMenuItems = () => {
           key: 'qa',
         },
         {
-          label: <Link href="/">X-Alumni</Link>,
+          label: <Link href="/about-us/x-alumni">X-Alumni</Link>,
           key: 'x-alumni',
         },
         {
