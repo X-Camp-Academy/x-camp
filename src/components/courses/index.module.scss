@@ -1,0 +1,60 @@
+.courses {
+  width: 100%;
+  position: relative;
+  top: 72px;
+  margin: 0 auto;
+
+  .title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #D46B14;
+    line-height: 64px;
+    position: relative;
+    display: inline;
+    z-index: 1;
+
+    &::after {
+      position: absolute;
+      content: '';
+      right: -40px;
+      z-index: -1;
+      bottom: 5px;
+      width: 149px;
+      height: 16px;
+      background: #FFAD11;
+      border-radius: 8px;
+    }
+  }
+
+
+  :global(.ant-collapse-expand-icon) {
+    height: 60px !important;
+    color: #D46B14;
+  }
+
+  :global(.ant-collapse-expand-icon>span) {
+    font-size: 24px !important;
+  }
+
+  .panelTitle {
+    font-size: 36px;
+    font-weight: 600;
+    color: #172A88;
+  }
+
+  .colorfulCard {
+    width: 418px;
+
+
+    .card {
+      height: 286px;
+
+      .cardTitle {
+        font-size: 24px;
+        font-weight: 600;
+        color: #172142;
+      }
+    }
+  }
+
+}

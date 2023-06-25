@@ -1,10 +1,12 @@
-import Courses from '@/components/courses';
+import CourseCatalog from '@/components/courses/catalog';
 
 export const metadata = {
   title: 'X-Camp Academy',
   description: 'X-Camp Academy | Programming and Education news from X-Camp',
 };
 
-export default function Page() {
-  return <Courses />;
-}
+const Page = () => {
+  return <CourseCatalog />;
+};
+
+export default Page;
