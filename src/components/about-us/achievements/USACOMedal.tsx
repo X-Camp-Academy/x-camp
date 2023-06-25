@@ -260,7 +260,7 @@ const USACOMedal: React.FC = () => {
                         className={styles.cardItem}
                         total={4}
                       >
-                        <Card bodyStyle={{ padding: 40 }}>
+                        <Card>
                           <Space direction="vertical">
                             <Text
                               className={styles.title}
