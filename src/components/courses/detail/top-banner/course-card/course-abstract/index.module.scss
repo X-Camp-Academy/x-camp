@@ -1,0 +1,25 @@
+@import "@/styles/variables";
+
+.left {
+  .title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #d46b14;
+    line-height: 56px;
+    margin: 0;
+  }
+
+  .abstract {
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 36px;
+  }
+}
+
+.right {
+  width: 420px;
+  height: 310px;
+  background: $primary-color;
+  border-radius: 8px;
+}

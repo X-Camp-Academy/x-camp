@@ -1,0 +1,23 @@
+@import "@/styles/variables";
+
+.topBanner {
+  width: 100%;
+  height: 494px;
+  padding-bottom: 64px;
+  background-image: url("/image/home/carousel-filled-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .content {
+    .breadcrumb {
+      padding-top: 36px;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 48px;
+    }
+  }
+}
