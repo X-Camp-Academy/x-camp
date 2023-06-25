@@ -38,7 +38,7 @@ const Courses = () => {
       <Layout className={styles.courses}>
         <Content>
           <TopBanner />
-          <div className="container">
+          <div className={`${styles.classContainer} container`}>
             {classesData.map((item) => {
               return (
                 <>
