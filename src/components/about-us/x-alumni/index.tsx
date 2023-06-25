@@ -4,10 +4,12 @@ import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 
+
 const Banner = dynamic(() => import("./Banner"));
 const Map = dynamic(() => import("./Map"));
 const Stories = dynamic(() => import("./Stories"));
 const UpcomingEvents = dynamic(() => import("./UpcomingEvents"));
+const Comments = dynamic(() => import("@/components/home/Comments"));
 const { Content } = Layout;
 
 const XAlumni: React.FC = () => {
@@ -25,6 +27,7 @@ const XAlumni: React.FC = () => {
           <Map />
           <Stories />
           <UpcomingEvents />
+          <Comments />
         </Content>
       </Layout>
     </ConfigProvider>
