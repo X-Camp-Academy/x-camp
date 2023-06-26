@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { Typography, Row, Col, Card, Space, Image } from "antd";
 import "animate.css";
 import styles from "./DiscoverCourses.module.scss";
-import { addAllAnimatePulse, removeAllAnimatePulse } from "@/utils";
+import { addAnimatePulse, removeAnimatePulse } from "@/utils";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -62,8 +62,8 @@ const DiscoverCourses: React.FC = () => {
             <Col key={item?.url} xs={24} sm={24} md={12} lg={6}>
               <Card
                 ref={refs[index]}
-                onMouseEnter={() => addAllAnimatePulse(refs, index)}
-                onMouseLeave={() => removeAllAnimatePulse(refs, index)}
+                onMouseEnter={() => addAnimatePulse(refs[index])}
+                onMouseLeave={() => removeAnimatePulse(refs[index])}
                 className={styles.card}
                 bodyStyle={{
                   backgroundColor: item?.bgc,
