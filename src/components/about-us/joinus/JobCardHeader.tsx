@@ -23,7 +23,7 @@ const JobCardHeader: React.FC = () => {
     <>
       <Card
         className={styles.cardContainer}
-        style={isExpland ? { borderRadius: 0 } : { borderRadius: 10 }}
+        style={isExpland ? { borderRadius: '10px 10px 0 0'} : { borderRadius: 10 }}
         onClick={handlerExpland}
       >
         <Row>
