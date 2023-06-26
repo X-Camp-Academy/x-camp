@@ -24,7 +24,10 @@ const CampIntro = () => {
             X-Camp students have been qualified for USACO Silver division and above, including 30 in the 
             Platinum division and 12 selected in the US Camp, out of which 7 were fresh from the 2023 
             season. 1 student selected for US EGOI Team`}</div>
-          <UsacoMedal />
+          <div className={styles.medal}>
+            <UsacoMedal />
+          </div>
+
           <div className={styles.question}>{'Camp Introduction'}</div>
           <div
             className={styles.answer}
