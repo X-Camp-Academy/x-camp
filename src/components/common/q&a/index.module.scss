@@ -1,0 +1,43 @@
+.collapse
+{
+    margin:24px 0;
+    padding:  0 0 0 6px;
+    border: none;
+    
+   
+    .panel
+    {
+        background: white;
+        border: none;
+        padding: 0 40px;
+        font-size: 18px;
+        :global(.ant-collapse-header){
+            min-height: 108px;
+            display: flex;
+            width: 100%;
+            align-items: center;
+        }
+
+        
+    }
+    .questionAndAnswerIcon
+    {
+        width: 40px;
+        height: 40px;
+        font-size: 21px;
+        border-radius: 8px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        
+    }
+    .question {
+        color:#FFAD11;
+        background-color: #FFEDDF;
+    }
+    .answer{
+        color:#00A0E9;
+        background-color: #009fe933;
+    }
+}

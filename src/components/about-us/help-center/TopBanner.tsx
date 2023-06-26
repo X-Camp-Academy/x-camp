@@ -12,11 +12,11 @@ const TopBanner: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={14} className={styles.col}>
             <Space direction="vertical">
-              <Title className={styles.title}>X-Camp Academy</Title>
+              <Title className={styles.title}>Help Center & QA</Title>
               <Paragraph className={styles.paragraph}>
-                A Silicon Valley based coding institute, offers programming
-                classes to 5-12th grade students from beginner to USACO US Camp
-                level.
+                {
+                  "X-Camp Academy focuses on improving the coding abilities and problem-solving skills of our students. We strive to teach not only persistence in analytical thought, but also genuine curiosity whilst facing new challenges."
+                }
               </Paragraph>
             </Space>
           </Col>
