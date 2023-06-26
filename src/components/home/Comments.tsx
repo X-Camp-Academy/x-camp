@@ -16,9 +16,16 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import { useMobile } from "@/utils";
 import ColorfulCard from "../common/colorful-card";
+import classNames from "classnames/bind";
 
 const { Title, Text, Paragraph } = Typography;
-const Comments: React.FC = () => {
+
+const cx = classNames.bind(styles);
+interface Props {
+  className?: string;
+}
+
+const Comments = ({ className = "" }: Props) => {
   const comments = [
     {
       title: "parent of 201A",
@@ -67,8 +74,8 @@ const Comments: React.FC = () => {
   };
 
   return (
-    <div className={styles.commentsContainer}>
-      <div className={`${styles.comments} container`}>
+    <div className={cx(className, styles.commentsContainer)}>
+      <div className={cx(styles.comments, "container")}>
         <Button
           type="primary"
           shape="circle"
