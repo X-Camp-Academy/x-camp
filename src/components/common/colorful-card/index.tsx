@@ -1,6 +1,7 @@
 "use client";
 import React, { ReactNode, useRef } from "react";
 import { addAnimatePulse, removeAnimatePulse } from "@/utils";
+import styles from "./index.module.scss";
 
 interface Props {
   border: "top" | "bottom";
@@ -23,7 +24,6 @@ const ColorfulCard: React.FC<Props> = ({
   const fourColors = ["#00A0E9", ...threeColors];
   const computedStyle = (border: "top" | "bottom", index: number) => {
     const defaultStyle = {
-      overflow: 'hidden',
       borderRadius: 10,
       paddingTop: border === "top" ? 6 : 0,
       paddingBottom: border === "bottom" ? 6 : 0,
@@ -36,15 +36,15 @@ const ColorfulCard: React.FC<Props> = ({
   };
 
   return (
-    <div
-      ref={animate ? ref : null}
-      style={computedStyle(border, index)}
-      onMouseEnter={() => addAnimatePulse(ref)}
-      onMouseLeave={() => removeAnimatePulse(ref)}
-      className={className}
-    >
-      {children}
-    </div>
+      <div
+        ref={animate ? ref : null}
+        style={computedStyle(border, index)}
+        onMouseEnter={() => addAnimatePulse(ref)}
+        onMouseLeave={() => removeAnimatePulse(ref)}
+        className={className}
+      >
+        {children}
+      </div>
   );
 };
 
