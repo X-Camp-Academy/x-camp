@@ -1,6 +1,6 @@
-import { Space, Row, Col, Card, Image, Typography, Button } from "antd";
+import { Space, Row, Col, Image, Typography, Button } from "antd";
 import styles from './TopBanner.module.scss';
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const TopBanner: React.FC = () => {
     return (

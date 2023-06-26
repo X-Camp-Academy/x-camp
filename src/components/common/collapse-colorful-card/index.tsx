@@ -1,9 +1,6 @@
 "use client";
-import React, { ReactNode, useRef } from "react";
+import React, { ReactNode, useRef, useState } from "react";
 import { Collapse } from "antd";
-import { ClockCircleOutlined, BranchesOutlined, DownCircleOutlined } from '@ant-design/icons';
-const { Panel } = Collapse;
-import { addAnimatePulse, removeAnimatePulse } from "@/utils";
 
 interface Props {
   border: "top" | "bottom";
@@ -24,13 +21,21 @@ const CollapseColorfulCard: React.FC<Props> = ({
   const ref = useRef<HTMLDivElement>(null);
   const threeColors = ["#D46B14", "#FFAD11", "#FFD600"];
   const fourColors = ["#00A0E9", ...threeColors];
+  
+  const [isExpland, setIsExpland] = useState<boolean>(false);
+  const handlerExpland = () => {
+    setIsExpland(!isExpland);
+    
+  }
   const computedStyle = (border: "top" | "bottom", index: number) => {
     const defaultStyle = {
-      padding : 0,
+      padding: 0,
       borderRadius: 10,
       paddingTop: border === "top" ? 6 : 0,
       paddingBottom: border === "bottom" ? 6 : 0,
     };
+
+
     return {
       ...defaultStyle,
       backgroundColor:
@@ -38,27 +43,16 @@ const CollapseColorfulCard: React.FC<Props> = ({
     };
   };
 
+
+
   return (
     <>
-      {/*       <div
-        ref={animate ? ref : null}
-        style={computedStyle(border, index)}
-        onMouseEnter={() => addAnimatePulse(ref)}
-        onMouseLeave={() => removeAnimatePulse(ref)}
-        className={className}
-      >
-        {children}
-      </div> */}
-
       <Collapse
         ref={animate ? ref : null}
-        style={computedStyle(border, index)}
-        
+        style={{...computedStyle(border, index), }}
         className={className}
+        onChange={handlerExpland}
         ghost={true}
-        expandIcon={()=>{
-          return <></>
-        }}
       >
         {children}
       </Collapse>

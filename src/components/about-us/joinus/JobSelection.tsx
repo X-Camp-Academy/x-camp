@@ -1,13 +1,11 @@
-import { Space, Row, Col, Card, Image, Typography, Button, Collapse } from "antd";
+import { Typography, Button } from "antd";
 import styles from './JobSelection.module.scss';
 import { useState } from "react";
 import JobCard from "./JobCard";
-import ColorfulCard from "@/components/common/colorful-card";
-const { Title, Paragraph, Text } = Typography;
 
 const JobSelection: React.FC = () => {
 
-    const [selectedButton, setSelectedButton] = useState<string>("");
+    const [selectedButton, setSelectedButton] = useState<string>("Part Time");
 
     const handleButtonClick = (buttonText: string) => {
         setSelectedButton(buttonText);
@@ -17,7 +15,7 @@ const JobSelection: React.FC = () => {
         <>
             <div className={styles.jobSelectionContainer}>
                 <div className={`${styles.jobSelection} container`}>
-                    <Space direction="horizontal" size="large" align="center">
+                    <div className={styles.btnContainer}>
                         <Button className={`${styles.choiceBtn} ${selectedButton === "Part Time" ? styles.selectedBtn : ""
                             }`} onClick={() => handleButtonClick("Part Time")}>Part Time
                         </Button>
@@ -27,18 +25,31 @@ const JobSelection: React.FC = () => {
                         <Button className={`${styles.choiceBtn} ${selectedButton === "X-Tutor" ? styles.selectedBtn : ""
                             }`} onClick={() => handleButtonClick("X-Tutor")}>X-Tutor
                         </Button>
-                    </Space>
-
-                    <div className={styles.jobCardContainer}>
-                    <JobCard index={1}></JobCard>
-                        {/* <Collapse className={styles.collapseCard}>
-                            <Collapse.Panel collapsible="header" header={<JobCard index={1} />} key={1}>
-                                <div>12334</div>
-                            </Collapse.Panel>
-
-                        </Collapse> */}
-
                     </div>
+
+                    {selectedButton === 'Part Time' ? (
+                        <div className={styles.jobCardContainer}>
+                            <JobCard index={1}></JobCard>
+                            <JobCard index={2}></JobCard>
+                            <JobCard index={3}></JobCard>
+                        </div>
+                    ) : (<></>)}
+
+                    {selectedButton === 'Full Time' ? (
+                        <div className={styles.jobCardContainer}>
+                            <JobCard index={2}></JobCard>
+                            <JobCard index={1}></JobCard>
+                            <JobCard index={3}></JobCard>
+                        </div>
+                    ) : (<></>)}
+
+                    {selectedButton === 'X-Tutor' ? (
+                        <div className={styles.jobCardContainer}>
+                            <JobCard index={3}></JobCard>
+                            <JobCard index={2}></JobCard>
+                            <JobCard index={1}></JobCard>
+                        </div>
+                    ) : (<></>)}
                 </div>
             </div>
         </>

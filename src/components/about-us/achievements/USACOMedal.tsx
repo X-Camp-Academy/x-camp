@@ -135,10 +135,9 @@ const USACOMedal: React.FC = () => {
             ></Button>
 
             <Carousel ref={carouselEL} dots={false}>
-              {comments.map((page, index) => {
+              {comments?.map((page, index) => {
                 return (
-                  // eslint-disable-next-line react/jsx-key
-                  <div>
+                  <div key={index}>
                     <Row
                       gutter={40}
                       justify="center"
@@ -244,7 +243,7 @@ const USACOMedal: React.FC = () => {
               </Link>
 
               <Row className={styles.row} gutter={16}>
-                {cardData.map((item) => {
+                {cardData?.map((item) => {
                   return (
                     <Col
                       key={item.number}

@@ -2,21 +2,23 @@ import { Space, Row, Col, Card, Image, Typography, Button, Divider, List, Collap
 import { ClockCircleOutlined, BranchesOutlined, DownCircleOutlined } from '@ant-design/icons';
 import styles from './JobCardHeader.module.scss';
 import { useState } from "react";
-import ColorfulCard from "@/components/common/colorful-card";
-import CollapseColorfulCard from "@/components/common/collapse-colorful-card";
-const { Title, Paragraph, Text } = Typography;
-const { Panel } = Collapse;
+const { Title, Text } = Typography;
 
 const JobCardHeader: React.FC = () => {
+
+    const [isExpland, setIsExpland] = useState<boolean>(false);
+    const handlerExpland = () => {
+        setIsExpland(!isExpland);
+    }
     return (
         <>
-            <Card className={styles.cardContainer}>
+            <Card className={`${styles.cardContainer} ${isExpland ? styles.explandBorder : ''}`} onClick={handlerExpland}>
                 <Row>
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <Title className={styles.JobCardTitle}>
                             Admissions Counselor
                         </Title>
-                        <Button icon={<DownCircleOutlined />}></Button>
+                        <Button className={`${styles.explandBtn} ${isExpland ? styles.explandIcon : ''}`} icon={<DownCircleOutlined />} ></Button>
                     </div>
                 </Row>
                 <Row>

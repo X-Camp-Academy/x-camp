@@ -1,18 +1,24 @@
-
-
-
 .cardContainer {
-    padding: 20px 30px;
+    padding: 0px 30px;
+    border: none;
+    transition: all 0.3s ease;
+    background-color: #FFFFFF;
 
     .JobCardTitle {
         font-size: 24px;
-
+        text-align: left;
         font-weight: 600;
         color: #172142;
         line-height: 36px;
     }
 
+    .explandBtn {
+        border: none;
+        color: #FFAD11;
+    }
+
     .JobCardDescription {
+        text-align: left;
         font-size: 18px;
         font-family: Poppins-Regular, Poppins;
         font-weight: 400;
@@ -26,6 +32,11 @@
         display: flex;
         justify-content: space-between;
 
+        @media (max-width: 768px) {
+            display: block;
+
+        }
+
         .iconBox {
             display: flex;
 
@@ -36,6 +47,7 @@
                 font-weight: 400;
                 color: #666666;
                 line-height: 28px;
+
             }
         }
 
@@ -50,7 +62,22 @@
             font-weight: 500;
             color: #FFFFFF;
             line-height: 24px;
+
+            @media (max-width: 768px) {
+                margin: 20px auto;
+                margin-bottom: 0;
+
+            }
         }
 
     }
+
+    .explandIcon{
+        transform: rotateX(180deg);
+    }
+
+    .explandBorder{
+        border-radius: 10px;
+    }
+
 }

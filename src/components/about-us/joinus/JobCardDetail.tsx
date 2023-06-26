@@ -1,11 +1,6 @@
-import { Space, Row, Col, Card, Image, Typography, Button, Divider, List, Collapse } from "antd";
-import { ClockCircleOutlined, BranchesOutlined, DownCircleOutlined } from '@ant-design/icons';
+import { Space,  Typography, Divider, List } from "antd";
 import styles from './JobCardDetail.module.scss';
-import { useState } from "react";
-import ColorfulCard from "@/components/common/colorful-card";
-import CollapseColorfulCard from "@/components/common/collapse-colorful-card";
-const { Title, Paragraph, Text } = Typography;
-const { Panel } = Collapse;
+const { Title } = Typography;
 
 
 const JobCardDetail: React.FC = () => {
