@@ -13,38 +13,4 @@
     color: #172142;
     line-height: 42px;
   }
-  .row {
-    @media (max-width: 768px) {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-    .col {
-      width: 100%;
-      height: 320px;
-    }
-    .col4 {
-      width: 100%;
-      height: 320px;
-      background-image: url("/image/about-us/introduction/x-camp-logo.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    .cardContainer {
-      border-radius: 10px;
-      padding-bottom: 6px;
-      text-align: center;
-      margin-top: 64px;
-      .count {
-        font-size: 72px;
-        font-weight: 600;
-        line-height: 100px;
-      }
-      .cardTitle {
-        font-size: 18px;
-        font-weight: 600;
-        color: #172142;
-        line-height: 32px;
-      }
-    }
-  }
 }
