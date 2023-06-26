@@ -7,6 +7,25 @@
   .classContainer {
     padding-top: 50px;
 
+    :global(.ant-collapse) {
+      border-block-start: none
+    }
+
+    .changeBtn {
+      width: 64px;
+      height: 64px;
+      background: #FFAD11;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon {
+        font-size: 24px;
+        color: #fff
+      }
+    }
+
     .title {
       font-size: 48px;
       font-weight: 600;

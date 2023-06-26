@@ -28,7 +28,7 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <Link href="/courses">Online Classes</Link>,
+          label: <Link href="/courses#classify0">Online Classes</Link>,
           key: 'online-classes',
         },
         {
@@ -36,7 +36,7 @@ export const useMenuItems = () => {
           key: 'in-person-campus',
         },
         {
-          label: <Link href="/">Enhancement Classes</Link>,
+          label: <Link href="/courses#classify3">Enhancement Classes</Link>,
           key: 'enhancement-classes',
         },
         {
@@ -44,7 +44,7 @@ export const useMenuItems = () => {
           key: '100-prob-challenge',
         },
         {
-          label: <Link href="/">APCS Classes</Link>,
+          label: <Link href="/courses#classify5">APCS Classes</Link>,
           key: 'apcs-classes',
         },
         {
