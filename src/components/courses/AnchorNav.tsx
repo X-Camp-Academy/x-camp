@@ -3,7 +3,6 @@ import styles from './AnchorNav.module.scss';
 import { Space } from 'antd';
 import { classesData } from './define';
 import { useScroll } from 'ahooks';
-import { useRouter } from 'next/navigation';
 const AnchorNav = () => {
   /**
    * 将对应组件滚动到视口
@@ -15,7 +14,7 @@ const AnchorNav = () => {
       block: 'start',
     });
   };
-  const scroll = useScroll(document);
+  const scroll = useScroll(() => document.getElementsByClassName('body')[0]);
   useEffect(() => {
     // 获取所有锚点元素
     const elements = document.getElementsByClassName('classify');
