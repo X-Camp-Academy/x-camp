@@ -5,6 +5,17 @@
   transition: border-color 0.3s;
   border-bottom: transparent 2px solid;
 
+  &:has(~ .dropdown:hover) {
+    .icon {
+      color: #ffad11;
+      transform: rotate(180deg);
+    }
+
+    a {
+      color: #ffad11;
+    }
+  }
+
   &:hover {
     border-bottom: #ffad11 2px solid;
 
@@ -47,18 +58,5 @@
   &:hover {
     visibility: visible;
     opacity: 1 !important;
-
-    ~ .menuItem {
-      background-color: #000;
-
-      .icon {
-        color: #ffad11;
-        transform: rotate(180deg);
-      }
-
-      a {
-        color: #ffad11;
-      }
-    }
   }
 }
