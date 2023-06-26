@@ -15,7 +15,14 @@ Creative group projects to connect all and inspire love in coding.
 Final presentation for the project.`}
         </p>
       </div>
-      <div className={styles.right}></div>
+      <div className={styles.right}>
+        <div className={styles.title}>{"One-Time Payment"}</div>
+        <div className={styles.price}>{"$1580"}</div>
+        <div className={styles.btn}>{"Sign Up Now"}</div>
+        <div className={styles.tip}>
+          {"$50 discount only applicable for bundle course"}
+        </div>
+      </div>
     </Space>
   );
 };

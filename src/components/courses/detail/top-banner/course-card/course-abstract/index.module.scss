@@ -20,6 +20,46 @@
 .right {
   width: 420px;
   height: 310px;
-  background: $primary-color;
+  background: #ffeddf;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30px 40px;
+
+  .title {
+    font-size: 21px;
+    font-weight: bold;
+    color: #d46b14;
+    line-height: 34px;
+  }
+
+  .price {
+    font-size: 48px;
+    font-weight: 600;
+    color: #d46b14;
+    line-height: 70px;
+  }
+
+  .btn {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 36px;
+    width: 270px;
+    height: 64px;
+    background: #d46b14;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tip {
+    font-size: 14px;
+    font-weight: 400;
+    color: #d46b14;
+    line-height: 21px;
+  }
 }
