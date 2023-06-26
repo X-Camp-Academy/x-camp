@@ -1,0 +1,33 @@
+.jobSelectionContainer {
+    margin-bottom: 500px;
+
+    .jobSelection {
+
+        padding: 50px 40px;
+        text-align: center;
+
+        .choiceBtn {
+            margin: 0 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 60px;
+            font-size: 24px;
+            
+            font-weight: 600;
+            color: #FFAD11;
+            line-height: 36px;
+        }
+
+        .selectedBtn{
+            background-color: #FFAD11;
+            color: #FFFFFF;
+        }
+
+        .jobCardContainer{
+            .collapseCard{
+                width: 100%;
+            }
+        }
+    }
+}
