@@ -66,77 +66,79 @@ const XAlumni: React.FC = () => {
           </Paragraph>
         </Space>
 
-        <Button
-          type="primary"
-          shape="circle"
-          className={styles.prev}
-          onClick={onPrev}
-        >
-          <LeftOutlined />
-        </Button>
+        <div className={styles.carouselContainer}>
+          <Button
+            type="primary"
+            shape="circle"
+            className={styles.prev}
+            onClick={onPrev}
+          >
+            <LeftOutlined />
+          </Button>
 
-        <Carousel
-          ref={carouselRef}
-          slidesToShow={3}
-          slidesToScroll={1}
-          swipeToSlide={true}
-          infinite={false}
-          responsive={[
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 3,
+          <Carousel
+            ref={carouselRef}
+            slidesToShow={3}
+            slidesToScroll={1}
+            swipeToSlide={true}
+            infinite={false}
+            responsive={[
+              {
+                breakpoint: 992,
+                settings: {
+                  slidesToShow: 3,
+                },
               },
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2,
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 2,
+                },
               },
-            },
-            {
-              breakpoint: 576,
-              settings: {
-                slidesToShow: 1,
+              {
+                breakpoint: 576,
+                settings: {
+                  slidesToShow: 1,
+                },
               },
-            },
-          ]}
-          dots={{ className: styles.carouselDots }}
-        >
-          {alumniData.map((item, index) => {
-            return (
-              <ColorfulCard
-                key={index}
-                border="top"
-                index={index}
-                animate={false}
-                className={styles.card}
-              >
-                <Card>
-                  <Space direction="vertical" align="center">
-                    <Avatar src={item.avatar} className={styles.avatar} />
-                    <Text className={styles.cardTitle}>{item?.name}</Text>
-                    <Paragraph
-                      ellipsis={isMobile ? { rows: 3 } : { rows: 5 }}
-                      className={styles.cardParagraph}
-                    >
-                      {item?.description}
-                    </Paragraph>
-                  </Space>
-                </Card>
-              </ColorfulCard>
-            );
-          })}
-        </Carousel>
+            ]}
+            dots={{ className: styles.carouselDots }}
+          >
+            {alumniData.map((item, index) => {
+              return (
+                <ColorfulCard
+                  key={index}
+                  border="top"
+                  index={index}
+                  animate={false}
+                  className={styles.card}
+                >
+                  <Card>
+                    <Space direction="vertical" align="center">
+                      <Avatar src={item.avatar} className={styles.avatar} />
+                      <Text className={styles.cardTitle}>{item?.name}</Text>
+                      <Paragraph
+                        ellipsis={isMobile ? { rows: 3 } : { rows: 5 }}
+                        className={styles.cardParagraph}
+                      >
+                        {item?.description}
+                      </Paragraph>
+                    </Space>
+                  </Card>
+                </ColorfulCard>
+              );
+            })}
+          </Carousel>
 
-        <Button
-          type="primary"
-          shape="circle"
-          className={styles.next}
-          onClick={onNext}
-        >
-          <RightOutlined />
-        </Button>
+          <Button
+            type="primary"
+            shape="circle"
+            className={styles.next}
+            onClick={onNext}
+          >
+            <RightOutlined />
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -3,12 +3,8 @@
   margin-top: 100px;
   background-color: #ffeddf;
   .xalumni {
-    position: relative;
     text-align: center;
-    padding: 100px 100px 120px;
-    @media (max-width: 768px) {
-      padding: 50px 50px 60px;
-    }
+    padding: 100px 15px 120px;
     .title {
       font-size: 36px;
       font-weight: 600;
@@ -21,56 +17,60 @@
       color: #172142;
       line-height: 34px;
     }
-    .carouselDots {
-      bottom: -72px;
-      @media (max-width: 768px) {
-        bottom: -48px;
-      }
-    }
-    .prev {
-      background-color: #d46b14;
-      position: absolute;
-      left: 15px;
-      top: 60%;
-      transform: translateY(-50%);
-    }
-    .next {
-      background-color: #d46b14;
-      position: absolute;
-      right: 15px;
-      top: 60%;
-      transform: translateY(-50%);
-    }
 
-
-    .card {
-      margin-top: 20px;
-      margin-left: 15px;
-      margin-right: 15px;
-      .avatar {
-        width: 220px;
-        height: 220px;
-        @media (max-width: 992px) {
-          width: 96px;
-          height: 96px;
-        }
+    .carouselContainer {
+      position: relative;
+      .prev {
+        background-color: #d46b14;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
       }
-      .cardTitle {
-        font-size: 36px;
-        font-weight: 600;
-        color: #172142;
-        line-height: 54px;
+      .next {
+        background-color: #d46b14;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .carouselDots {
+        bottom: -72px;
         @media (max-width: 768px) {
-          font-size: 24px;
-          line-height: 32px;
+          bottom: -48px;
         }
       }
-      .cardParagraph {
-        color: #666666;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        text-align: left;
+
+      .card {
+        margin-top: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
+        .avatar {
+          width: 220px;
+          height: 220px;
+          @media (max-width: 992px) {
+            width: 96px;
+            height: 96px;
+          }
+        }
+        .cardTitle {
+          font-size: 36px;
+          font-weight: 600;
+          color: #172142;
+          line-height: 54px;
+          @media (max-width: 768px) {
+            font-size: 24px;
+            line-height: 32px;
+          }
+        }
+        .cardParagraph {
+          color: #666666;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          text-align: left;
+        }
       }
     }
   }
