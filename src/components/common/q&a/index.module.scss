@@ -4,21 +4,22 @@
     padding:  0 0 0 6px;
     border: none;
     
-   
     .panel
     {
         background: white;
         border: none;
-        padding: 0 40px;
+        padding: 20px 40px;
         font-size: 18px;
         :global(.ant-collapse-header){
-            min-height: 108px;
+            min-height: 88px;
             display: flex;
             width: 100%;
             align-items: center;
         }
-
-        
+        :global(.ant-collapse-content)
+        {
+            border-top:2px solid #FFAD11;
+        }
     }
     .questionAndAnswerIcon
     {
@@ -29,8 +30,6 @@
         align-items: center;
         display: flex;
         justify-content: center;
-
-        
     }
     .question {
         color:#FFAD11;

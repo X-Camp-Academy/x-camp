@@ -4,6 +4,7 @@ import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import QAPart from "./QAPart";
+import ContactUs from "./ContactUs";
 
 const TopBanner = dynamic(() => import("./TopBanner"));
 const Comments = dynamic(() => import("@/components/home/Comments"));
@@ -22,6 +23,7 @@ const HelpCenter: React.FC = () => {
         <Content>
           <TopBanner />
           <QAPart />
+          <ContactUs />
           <Comments />
         </Content>
       </Layout>
