@@ -1,6 +1,7 @@
 "use client";
 import React, { ReactNode, useRef } from "react";
 import { addAnimatePulse, removeAnimatePulse } from "@/utils";
+import styles from "./index.module.scss";
 
 interface Props {
   border: "top" | "bottom";
@@ -35,15 +36,15 @@ const ColorfulCard: React.FC<Props> = ({
   };
 
   return (
-    <div
-      ref={animate ? ref : null}
-      style={computedStyle(border, index)}
-      onMouseEnter={() => addAnimatePulse(ref)}
-      onMouseLeave={() => removeAnimatePulse(ref)}
-      className={className}
-    >
-      {children}
-    </div>
+      <div
+        ref={animate ? ref : null}
+        style={computedStyle(border, index)}
+        onMouseEnter={() => addAnimatePulse(ref)}
+        onMouseLeave={() => removeAnimatePulse(ref)}
+        className={className}
+      >
+        {children}
+      </div>
   );
 };
 

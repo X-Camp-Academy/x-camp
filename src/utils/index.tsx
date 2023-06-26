@@ -26,7 +26,8 @@ export const useMobile = () => {
 export const addAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
   (ref?.current as HTMLDivElement)?.classList?.add(
     "animate__animated",
-    "animate__pulse"
+    "animate__pulse",
+    "fixHoverCard"
   );
 };
 
@@ -39,4 +40,35 @@ export const removeAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
     "animate__animated",
     "animate__pulse"
   );
+};
+
+/**
+ * 添加动画效果
+ * @returns
+ */
+export const addAllAnimatePulse = (
+  refs: Array<RefObject<HTMLDivElement>>,
+  index: number
+) => {
+  (refs[index]?.current as HTMLDivElement)?.classList?.add(
+    "animate__animated",
+    "animate__pulse",
+    "fixHoverCard"
+  );
+};
+
+/**
+ * 移除动画效果
+ * @returns
+ */
+export const removeAllAnimatePulse = (
+  refs: Array<RefObject<HTMLDivElement>>,
+  index: number
+) => {
+  refs.forEach((ref) => {
+    (ref?.current as HTMLDivElement)?.classList?.remove(
+      "animate__animated",
+      "animate__pulse"
+    );
+  });
 };

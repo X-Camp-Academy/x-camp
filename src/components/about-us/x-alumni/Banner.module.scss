@@ -1,0 +1,21 @@
+.bannerContainer {
+  width: 100%;
+  background-image: url("/image/about-us/x-alumni/x-campers.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 128px;
+  text-align: center;
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #d46b14;
+    line-height: 64px;
+  }
+  .paragraph {
+    font-size: 24px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 42px;
+  }
+}
