@@ -28,3 +28,9 @@
 .catalogActive {
   background-color: #D46B14;
 }
+
+@media (max-width: 768px) {
+  .nav {
+    display: none !important;
+  }
+}
