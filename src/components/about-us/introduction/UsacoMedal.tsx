@@ -2,7 +2,7 @@
 import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from "./UsacoMedal.module.scss";
-import ColorfulCard from "@/components/common/colorful-card";
+import UsacoCards from "@/components/common/usaco-cards";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -37,34 +37,7 @@ const UsacoMedal: React.FC = () => {
         Over the past five years of USACO results
       </Paragraph>
 
-      <Row gutter={16} className={styles.row}>
-        {cardsData.map((item, index) => (
-          <Col
-            key={index}
-            xs={24}
-            sm={24}
-            md={12}
-            lg={6}
-            className={index === 3 ? styles.col4 : styles.col}
-          >
-            <ColorfulCard
-              border="bottom"
-              index={index}
-              total={4}
-              className={styles.cardContainer}
-            >
-              <Card>
-                <Space direction="vertical">
-                  <Text className={styles.count} style={{ color: item?.color }}>
-                    {item?.count}
-                  </Text>
-                  <Text className={styles.cardTitle}>{item?.title}</Text>
-                </Space>
-              </Card>
-            </ColorfulCard>
-          </Col>
-        ))}
-      </Row>
+      <UsacoCards />
     </div>
   );
 };

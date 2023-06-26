@@ -26,6 +26,7 @@ import AnchorNav from './AnchorNav';
 const { Panel } = Collapse;
 const { Content } = Layout;
 const { Title } = Typography;
+
 const Courses = () => {
   const router = useRouter();
 

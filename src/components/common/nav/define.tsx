@@ -32,7 +32,7 @@ export const useMenuItems = () => {
           key: "online-classes",
         },
         {
-          label: <Link href="/">In-person Campus</Link>,
+          label: <Link href="/courses/camps">In-person Campus</Link>,
           key: "in-person-campus",
         },
         {

@@ -45,6 +45,24 @@ const Comments = ({ className = "" }: Props) => {
       comment:
         "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
     },
+    {
+      title: "parent of 201D",
+      rate: 5,
+      comment:
+        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
+    },
+    {
+      title: "parent of 201E",
+      rate: 5,
+      comment:
+        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
+    },
+    {
+      title: "parent of 201F",
+      rate: 5,
+      comment:
+        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
+    },
   ];
   const carouselRef = useRef<CarouselRef>(null);
 
@@ -66,89 +84,57 @@ const Comments = ({ className = "" }: Props) => {
         >
           <LeftOutlined />
         </Button>
-        <Carousel ref={carouselRef} dots={false}>
-          <div>
-            <Row
-              gutter={40}
-              justify="center"
-              align="middle"
-              className={styles.row}
-            >
-              {comments.map((item, index) => {
-                return (
-                  <Col
-                    key={index}
-                    xs={24}
-                    sm={24}
-                    md={24}
-                    lg={8}
-                    className={styles.col}
-                  >
-                    <ColorfulCard border="top" index={index} animate={false}>
-                      <Card
-                        bodyStyle={{
-                          borderWidth: 2,
-                        }}
-                        className={styles.colCard}
-                      >
-                        <Space direction="vertical">
-                          <Text className={styles.cardTitle}>
-                            {item?.title}
-                          </Text>
-                          <Rate disabled defaultValue={item?.rate} />
-                          <Paragraph className={styles.cardParagraph}>
-                            {item?.comment}
-                          </Paragraph>
-                        </Space>
-                      </Card>
-                    </ColorfulCard>
-                  </Col>
-                );
-              })}
-
-              {}
-            </Row>
-          </div>
-          <div>
-            <Row
-              gutter={40}
-              justify="center"
-              align="middle"
-              className={styles.row}
-            >
-              {comments.map((item, index) => {
-                return (
-                  <Col
-                    key={index}
-                    xs={24}
-                    sm={24}
-                    md={24}
-                    lg={8}
-                    className={styles.col}
-                  >
-                    <ColorfulCard border="top" index={index} animate={false}>
-                      <Card
-                        bodyStyle={{
-                          borderWidth: 2,
-                        }}
-                        className={styles.colCard}
-                      >
-                        <Space direction="vertical">
-                          <Text className={styles.cardTitle}>
-                            {item?.title}
-                          </Text>
-                          <Rate disabled defaultValue={item?.rate} />
-                          <Paragraph className={styles.cardParagraph}>
-                            {item?.comment}
-                          </Paragraph>
-                        </Space>
-                      </Card>
-                    </ColorfulCard>
-                  </Col>
-                );
-              })}
-            </Row>
-          </div>
+        <Carousel
+          ref={carouselRef}
+          dots={false}
+          slidesToShow={3}
+          slidesToScroll={1}
+          swipeToSlide={true}
+          infinite={false}
+          responsive={[
+            {
+              breakpoint: 992,
+              settings: {
+                slidesToShow: 3,
+              },
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+              },
+            },
+            {
+              breakpoint: 576,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ]}
+        >
+          {comments.map((item, index) => {
+            return (
+              <ColorfulCard
+                key={index}
+                border="top"
+                index={index}
+                animate={false}
+                className={styles.cardContainer}
+              >
+                <Card className={styles.card} bodyStyle={{
+                  borderWidth: 2,
+                }}>
+                  <Space direction="vertical">
+                    <Text className={styles.cardTitle}>{item?.title}</Text>
+                    <Rate disabled defaultValue={item?.rate} />
+                    <Paragraph className={styles.cardParagraph}>
+                      {item?.comment}
+                    </Paragraph>
+                  </Space>
+                </Card>
+              </ColorfulCard>
+            );
+          })}
         </Carousel>
         <Button
           type="primary"
