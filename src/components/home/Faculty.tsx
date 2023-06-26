@@ -1,26 +1,51 @@
 "use client";
-import React from "react";
-import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
+import React, { useRef } from "react";
+import {
+  Space,
+  Typography,
+  Row,
+  Col,
+  Card,
+  Image,
+  Button,
+  Carousel,
+} from "antd";
 import styles from "./Faculty.module.scss";
-import { RightOutlined } from "@ant-design/icons";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ColorfulCard from "../common/colorful-card";
+import { CarouselRef } from "antd/es/carousel";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
   const facultyData = [
     {
-      name: "Ryan",
+      name: "Ryan1",
       description: "10+ years programming language",
       avatar: "/image/home/ryan.png",
     },
     {
-      name: "Ryan",
+      name: "Ryan2",
       description: "10+ years programming language",
       avatar: "/image/home/ryan.png",
     },
     {
-      name: "Ryan",
+      name: "Ryan3",
+      description: "10+ years programming language",
+      avatar: "/image/home/ryan.png",
+    },
+    {
+      name: "Ryan4",
+      description: "10+ years programming language",
+      avatar: "/image/home/ryan.png",
+    },
+    {
+      name: "Ryan5",
+      description: "10+ years programming language",
+      avatar: "/image/home/ryan.png",
+    },
+    {
+      name: "Ryan6",
       description: "10+ years programming language",
       avatar: "/image/home/ryan.png",
     },
@@ -40,6 +65,15 @@ const Faculty: React.FC = () => {
     return iconStyle;
   };
 
+  const carouselRef = useRef<CarouselRef>(null);
+
+  const onPrev = () => {
+    carouselRef?.current?.prev();
+  };
+  const onNext = () => {
+    carouselRef?.current?.next();
+  };
+
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
@@ -50,59 +84,98 @@ const Faculty: React.FC = () => {
           great opportunity for students to showcase what they have learned from
           classes .
         </Paragraph>
-        <Row className={styles.row} gutter={40} justify="center" align="middle">
+      </Space>
+
+      <div className={styles.carouselContainer}>
+        <Button
+          type="primary"
+          shape="circle"
+          className={styles.prev}
+          onClick={onPrev}
+        >
+          <LeftOutlined />
+        </Button>
+        <Carousel
+          ref={carouselRef}
+          slidesToShow={3}
+          slidesToScroll={1}
+          swipeToSlide={true}
+          infinite={false}
+          responsive={[
+            {
+              breakpoint: 992,
+              settings: {
+                slidesToShow: 3,
+              },
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+              },
+            },
+            {
+              breakpoint: 576,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ]}
+          dots={false}
+        >
           {facultyData.map((item, index) => {
             return (
-              <Col
+              <ColorfulCard
                 key={index}
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 24 }}
-                lg={{ span: 8 }}
+                border="bottom"
+                index={index}
+                className={styles.cardContainer}
               >
-                <ColorfulCard
-                  border="bottom"
-                  index={index}
-                  className={styles.cardContainer}
+                <Card
+                  bodyStyle={{
+                    paddingBottom: 0,
+                  }}
                 >
-                  <Card
-                    bodyStyle={{
-                      paddingBottom: 0,
-                    }}
-                  >
-                    <Space>
-                      <Space direction="vertical">
-                        <Text className={styles.name}>{item?.name}</Text>
-                        <Paragraph
-                          ellipsis={{ rows: 5 }}
-                          className={styles.description}
-                        >
-                          {item?.description}
-                        </Paragraph>
-                        <Button
-                          type="primary"
-                          size="small"
-                          ghost={true}
-                          shape="circle"
-                          style={computedStyle(index)}
-                        >
-                          <RightOutlined />
-                        </Button>
-                      </Space>
-                      <Image
-                        src={item?.avatar}
-                        alt="avatar"
-                        preview={false}
-                        className={styles.cardImage}
-                      />
+                  <Space>
+                    <Space direction="vertical">
+                      <Text className={styles.name}>{item?.name}</Text>
+                      <Paragraph
+                        ellipsis={{ rows: 5 }}
+                        className={styles.description}
+                      >
+                        {item?.description}
+                      </Paragraph>
+                      <Button
+                        type="primary"
+                        size="small"
+                        ghost={true}
+                        shape="circle"
+                        style={computedStyle(index)}
+                      >
+                        <RightOutlined />
+                      </Button>
                     </Space>
-                  </Card>
-                </ColorfulCard>
-              </Col>
+                    <Image
+                      src={item?.avatar}
+                      alt="avatar"
+                      preview={false}
+                      className={styles.cardImage}
+                    />
+                  </Space>
+                </Card>
+              </ColorfulCard>
             );
           })}
-        </Row>
-      </Space>
+        </Carousel>
+        <Button
+          type="primary"
+          shape="circle"
+          className={styles.next}
+          onClick={onNext}
+        >
+          <RightOutlined />
+        </Button>
+      </div>
     </div>
   );
 };
