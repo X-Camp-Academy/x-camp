@@ -22,11 +22,6 @@ const CollapseColorfulCard: React.FC<Props> = ({
   const threeColors = ["#D46B14", "#FFAD11", "#FFD600"];
   const fourColors = ["#00A0E9", ...threeColors];
   
-  const [isExpland, setIsExpland] = useState<boolean>(false);
-  const handlerExpland = () => {
-    setIsExpland(!isExpland);
-    
-  }
   const computedStyle = (border: "top" | "bottom", index: number) => {
     const defaultStyle = {
       padding: 0,
@@ -49,9 +44,8 @@ const CollapseColorfulCard: React.FC<Props> = ({
     <>
       <Collapse
         ref={animate ? ref : null}
-        style={{...computedStyle(border, index), }}
+        style={{...computedStyle(border, index)}}
         className={className}
-        onChange={handlerExpland}
         ghost={true}
       >
         {children}

@@ -1,13 +1,12 @@
 .ColorfulCardContainer {
     margin-bottom: 30px;
-    
-
     :global(.ant-collapse-expand-icon) {
         display: none !important;
     }
 
     :global(.ant-collapse-header) {
         padding: 0 !important;
+
     }
 
     :global(.ant-collapse-content-box) {

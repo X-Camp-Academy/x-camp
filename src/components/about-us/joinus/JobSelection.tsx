@@ -1,4 +1,4 @@
-import { Typography, Button } from "antd";
+import { Button } from "antd";
 import styles from './JobSelection.module.scss';
 import { useState } from "react";
 import JobCard from "./JobCard";
