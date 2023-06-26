@@ -21,25 +21,37 @@ const XAlumni: React.FC = () => {
   const alumniData = [
     {
       avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan",
+      name: "Ryan1",
       description:
         "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
     },
     {
       avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan",
+      name: "Ryan2",
       description:
         "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
     },
     {
       avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan",
+      name: "Ryan3",
       description:
         "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
     },
     {
       avatar: "/image/home/alumni-ryan.png",
-      name: "Ryans",
+      name: "Ryan4",
+      description:
+        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
+    },
+    {
+      avatar: "/image/home/alumni-ryan.png",
+      name: "Ryan5",
+      description:
+        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
+    },
+    {
+      avatar: "/image/home/alumni-ryan.png",
+      name: "Ryan6",
       description:
         "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
     },
@@ -111,7 +123,7 @@ const XAlumni: React.FC = () => {
                   border="top"
                   index={index}
                   animate={false}
-                  className={styles.card}
+                  className={styles.cardContainer}
                 >
                   <Card>
                     <Space direction="vertical" align="center">

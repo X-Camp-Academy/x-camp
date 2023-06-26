@@ -20,12 +20,15 @@
 
     .carouselContainer {
       position: relative;
+      padding-left: 45px;
+      padding-right: 45px;
       .prev {
         background-color: #d46b14;
         position: absolute;
         left: 0;
         top: 50%;
         transform: translateY(-50%);
+        z-index: 999;
       }
       .next {
         background-color: #d46b14;
@@ -33,16 +36,12 @@
         right: 0;
         top: 50%;
         transform: translateY(-50%);
+        z-index: 999;
       }
-
       .carouselDots {
         bottom: -72px;
-        @media (max-width: 768px) {
-          bottom: -48px;
-        }
       }
-
-      .card {
+      .cardContainer {
         margin-top: 20px;
         margin-left: 15px;
         margin-right: 15px;
