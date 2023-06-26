@@ -28,9 +28,9 @@ const AnchorNav = () => {
       );
       if (rect.top == 0) {
         const firstElement = document.getElementsByClassName(
-          `#${elements[0].id}`
+          `catalogs-${elements[0].id}`
         );
-        firstElement[0].classList.add(styles.catalogActive);
+        firstElement[0]?.classList.add(styles.catalogActive);
       }
       // 如果当前锚点不在容器内，则为其对应的所有锚点元素添加 .anchorItemInactive 类名，并移除 .anchorItemActive 类名
       if (rect?.top >= clientHeight || rect?.bottom < 0) {
