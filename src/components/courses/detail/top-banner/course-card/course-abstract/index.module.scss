@@ -1,65 +1,90 @@
 @import "@/styles/variables";
 
-.left {
-  .title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #d46b14;
-    line-height: 56px;
-    margin: 0;
+.abstract {
+  @media (max-width: 992px) {
+    flex-direction: column;
   }
 
-  .abstract {
-    font-size: 18px;
-    font-weight: 500;
-    color: #172142;
-    line-height: 36px;
-  }
-}
+  .left {
+    .title {
+      font-size: 36px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 56px;
+      margin: 0;
 
-.right {
-  width: 420px;
-  height: 310px;
-  background: #ffeddf;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  padding: 30px 40px;
+      @media (max-width: 1140px) {
+        font-size: 24px;
+        line-height: 40px;
+      }
+    }
 
-  .title {
-    font-size: 21px;
-    font-weight: bold;
-    color: #d46b14;
-    line-height: 34px;
-  }
+    .abstract {
+      font-size: 18px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 36px;
 
-  .price {
-    font-size: 48px;
-    font-weight: 600;
-    color: #d46b14;
-    line-height: 70px;
+      @media (max-width: 1140px) {
+        font-size: 16px;
+        line-height: 30px;
+      }
+    }
   }
 
-  .btn {
-    font-size: 24px;
-    font-weight: 500;
-    color: #ffffff;
-    line-height: 36px;
-    width: 270px;
-    height: 64px;
-    background: #d46b14;
-    border-radius: 12px;
+  .right {
+    width: 420px;
+    height: 310px;
+    background: #ffeddf;
+    border-radius: 8px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-  }
+    justify-content: space-around;
+    padding: 30px 40px;
 
-  .tip {
-    font-size: 14px;
-    font-weight: 400;
-    color: #d46b14;
-    line-height: 21px;
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+
+    .title {
+      font-size: 21px;
+      font-weight: bold;
+      color: #d46b14;
+      line-height: 34px;
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 70px;
+    }
+
+    .btn {
+      font-size: 24px;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 36px;
+      width: 270px;
+      height: 64px;
+      background: #d46b14;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .tip {
+      font-size: 14px;
+      font-weight: 400;
+      color: #d46b14;
+      line-height: 21px;
+    }
   }
 }
