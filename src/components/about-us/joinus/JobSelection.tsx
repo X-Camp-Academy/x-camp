@@ -27,29 +27,29 @@ const JobSelection: React.FC = () => {
                         </Button>
                     </div>
 
-                    {selectedButton === 'Part Time' ? (
+                    {selectedButton === 'Part Time' && (
                         <div className={styles.jobCardContainer}>
                             <JobCard index={1}></JobCard>
                             <JobCard index={2}></JobCard>
                             <JobCard index={3}></JobCard>
                         </div>
-                    ) : (<></>)}
+                    )}
 
-                    {selectedButton === 'Full Time' ? (
+                    {selectedButton === 'Full Time' && (
                         <div className={styles.jobCardContainer}>
                             <JobCard index={2}></JobCard>
                             <JobCard index={1}></JobCard>
                             <JobCard index={3}></JobCard>
                         </div>
-                    ) : (<></>)}
+                    )}
 
-                    {selectedButton === 'X-Tutor' ? (
+                    {selectedButton === 'X-Tutor' && (
                         <div className={styles.jobCardContainer}>
                             <JobCard index={3}></JobCard>
                             <JobCard index={2}></JobCard>
                             <JobCard index={1}></JobCard>
                         </div>
-                    ) : (<></>)}
+                    )}
                 </div>
             </div>
         </>
