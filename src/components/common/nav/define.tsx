@@ -166,8 +166,8 @@ export const useMenuItems = () => {
           key: 'news',
         },
         {
-          label: <Link href="/">QA</Link>,
-          key: 'qa',
+          label: <Link href="/about-us/help-center">QA</Link>,
+          key: 'help-center',
         },
         {
           label: <Link href="/about-us/x-alumni">X-Alumni</Link>,
