@@ -1,0 +1,37 @@
+.cardListContainer {
+    background-color: #FFFFFF;
+    padding: 35px;
+    .cardListTitle {
+        text-align: left;
+        font-size: 21px;
+
+        font-weight: 600;
+        color: #172142;
+        line-height: 30px;
+    }
+
+    .cardList {
+
+        .cardListItem {
+            .listItemCircle {
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: #FFAD11;
+                margin-right: 8px;
+            }
+
+            .cardText {
+                font-size: 16px;
+                font-family: Poppins-Regular, Poppins;
+                font-weight: 400;
+                color: #666666;
+                line-height: 30px;
+                //text-align: left;
+            }
+        }
+    }
+
+
+}

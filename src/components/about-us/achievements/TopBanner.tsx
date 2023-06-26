@@ -2,6 +2,7 @@ import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from './TopBanner.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
+
 const TopBanner: React.FC = () => {
     return (
         <div className={styles.topBannerContainer}>

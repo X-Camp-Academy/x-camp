@@ -1,0 +1,56 @@
+
+
+
+.cardContainer {
+    padding: 20px 30px;
+
+    .JobCardTitle {
+        font-size: 24px;
+
+        font-weight: 600;
+        color: #172142;
+        line-height: 36px;
+    }
+
+    .JobCardDescription {
+        font-size: 18px;
+        font-family: Poppins-Regular, Poppins;
+        font-weight: 400;
+        color: #666666;
+        line-height: 28px;
+    }
+
+    .iconsButtonRow {
+        width: 100%;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+
+        .iconBox {
+            display: flex;
+
+            .iconText {
+                margin-left: 10px;
+                font-size: 18px;
+                font-family: Poppins-Regular, Poppins;
+                font-weight: 400;
+                color: #666666;
+                line-height: 28px;
+            }
+        }
+
+        .applyBtn {
+            display: flex;
+            align-items: center;
+            padding: 25px 36px;
+            background: #FFAD11;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: Poppins-Medium, Poppins;
+            font-weight: 500;
+            color: #FFFFFF;
+            line-height: 24px;
+        }
+
+    }
+}
