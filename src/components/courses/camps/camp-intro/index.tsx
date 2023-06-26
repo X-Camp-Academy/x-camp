@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styles from './index.module.scss';
 import UsacoMedal from '@/components/about-us/introduction/UsacoMedal';
+import UsacoCards from '@/components/common/usaco-cards';
 const CampIntro = () => {
   return (
     <div className={styles.campIntro}>
@@ -24,10 +25,10 @@ const CampIntro = () => {
             X-Camp students have been qualified for USACO Silver division and above, including 30 in the 
             Platinum division and 12 selected in the US Camp, out of which 7 were fresh from the 2023 
             season. 1 student selected for US EGOI Team`}</div>
-          <div className={styles.medal}>
-            <UsacoMedal />
+          <div className={styles.usacoTitle}>
+            {'USACO Spotlight in last 5 years'}
           </div>
-
+          <UsacoCards />
           <div className={styles.question}>{'Camp Introduction'}</div>
           <div
             className={styles.answer}

@@ -4,6 +4,8 @@ import React from 'react';
 import styles from './index.module.scss';
 import TopBanner from './top-banner';
 import UsacoIntro from './introduction';
+import RelateResources from './relate-resources';
+import Comments from '@/components/home/Comments';
 const { Content } = Layout;
 
 const UsacoLiveSolutions = () => {
@@ -19,6 +21,8 @@ const UsacoLiveSolutions = () => {
         <Content>
           <TopBanner />
           <UsacoIntro />
+          <RelateResources />
+          <Comments className={styles.comments} />
         </Content>
       </Layout>
     </ConfigProvider>

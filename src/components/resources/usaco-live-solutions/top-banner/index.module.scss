@@ -28,3 +28,13 @@
     }
   }
 }
+
+@media (max-width:768px) {
+  .banner {
+    padding: 20px 20px;
+
+    .description {
+      width: auto !important;
+    }
+  }
+}
