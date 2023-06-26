@@ -1,0 +1,13 @@
+@import "@/styles/variables";
+
+.introduction {
+  width: 100%;
+  padding: 50px 0;
+
+  .description {
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 34px;
+  }
+}

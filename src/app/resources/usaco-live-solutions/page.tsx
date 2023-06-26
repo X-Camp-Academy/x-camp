@@ -1,4 +1,4 @@
-import CourseDetail from '@/components/courses/detail';
+import UsacoLiveSolutions from '@/components/resources/usaco-live-solutions';
 import React from 'react';
 
 export const metadata = {
@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const Page = () => {
-  return <CourseDetail />;
+  return <UsacoLiveSolutions />;
 };
 
 export default Page;
