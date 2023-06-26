@@ -36,7 +36,6 @@ const ColorfulCard: React.FC<Props> = ({
   };
 
   return (
-    <div className={styles.container}>
       <div
         ref={animate ? ref : null}
         style={computedStyle(border, index)}
@@ -46,7 +45,6 @@ const ColorfulCard: React.FC<Props> = ({
       >
         {children}
       </div>
-    </div>
   );
 };
 
