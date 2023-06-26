@@ -74,7 +74,11 @@ export const useMenuItems = () => {
           key: 'weekly-open-house',
         },
         {
-          label: <Link href="/">USACo Live solution</Link>,
+          label: (
+            <Link href="/resources/usaco-live-solutions">
+              USACo Live solution
+            </Link>
+          ),
           key: 'usaco-live-solution',
         },
         {
