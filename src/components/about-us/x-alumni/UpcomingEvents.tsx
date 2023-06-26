@@ -30,14 +30,14 @@ const UpcomingEvents: React.FC = () => {
           {[1, 2, 3].map((item, index) => (
             <Col key={index} xs={24} sm={24} md={8}>
               <ColorfulCard border="bottom" index={index}>
-                <Card
-                >
+                <Card>
                   <Space direction="vertical">
                     <Text className={styles.cardMonth}>JUN</Text>
                     <Text className={styles.cardDay}>10</Text>
                     <Paragraph className={styles.cardParagraph}>
-                      USACO Director Brian Dean's Q&A Session - Webinar
-                      Recording
+                      {
+                        "USACO Director Brian Dean's Q&A Session - Webinar Recording"
+                      }
                     </Paragraph>
                     <Space direction="vertical">
                       <Text className={styles.cardText}>
@@ -63,14 +63,14 @@ const UpcomingEvents: React.FC = () => {
           {[1, 2, 3].map((item, index) => (
             <Col key={index} xs={24} sm={24} md={8}>
               <ColorfulCard border="bottom" index={index}>
-                <Card
-                >
+                <Card>
                   <Space direction="vertical">
                     <Text className={styles.cardMonth}>JUN</Text>
                     <Text className={styles.cardDay}>10</Text>
                     <Paragraph className={styles.cardParagraph}>
-                      USACO Director Brian Dean's Q&A Session - Webinar
-                      Recording
+                      {
+                        "USACO Director Brian Dean's Q&A Session - Webinar Recording"
+                      }
                     </Paragraph>
                     <Space direction="vertical">
                       <Text className={styles.cardText}>
