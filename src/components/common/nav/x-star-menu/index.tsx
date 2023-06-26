@@ -1,6 +1,5 @@
 import React from "react";
 import { Space } from "antd";
-import styles from "./index.module.scss";
 import XStarMenuItem from "./menu-item";
 
 export interface XStarMenuItemType {
