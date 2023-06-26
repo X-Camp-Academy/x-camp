@@ -1,9 +1,13 @@
 "use client";
-import React, { useState } from "react";
-import styles from "./index.module.scss";
+import React from "react";
+import { useScroll } from "ahooks";
 import { VerticalAlignTopOutlined } from "@ant-design/icons";
+import styles from "./index.module.scss";
 
 const BackTop: React.FC = () => {
+  const scroll = useScroll(document);
+  console.log(scroll);
+
   const scrollToTop = () => {
     // 获取根元素
     const rootElement = document.documentElement || document.body;
@@ -13,9 +17,12 @@ const BackTop: React.FC = () => {
   };
 
   return (
-    <div className={styles.backTop} onClick={scrollToTop}>
-      <VerticalAlignTopOutlined className={styles.icon} />
-    </div>
+    scroll &&
+    scroll?.top > 500 && (
+      <div className={styles.backTop} onClick={scrollToTop}>
+        <VerticalAlignTopOutlined className={styles.icon} />
+      </div>
+    )
   );
 };
 
