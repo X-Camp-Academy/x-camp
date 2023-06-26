@@ -26,7 +26,8 @@ export const useMobile = () => {
 export const addAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
   (ref?.current as HTMLDivElement)?.classList?.add(
     "animate__animated",
-    "animate__pulse"
+    "animate__pulse",
+    "fixHoverCard"
   );
 };
 
@@ -46,12 +47,13 @@ export const removeAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
  * @returns
  */
 export const addAllAnimatePulse = (
-  ref: Array<RefObject<HTMLDivElement>>,
+  refs: Array<RefObject<HTMLDivElement>>,
   index: number
 ) => {
-  (ref[index]?.current as HTMLDivElement)?.classList?.add(
+  (refs[index]?.current as HTMLDivElement)?.classList?.add(
     "animate__animated",
-    "animate__pulse"
+    "animate__pulse",
+    "fixHoverCard"
   );
 };
 
@@ -60,11 +62,13 @@ export const addAllAnimatePulse = (
  * @returns
  */
 export const removeAllAnimatePulse = (
-  ref: Array<RefObject<HTMLDivElement>>,
+  refs: Array<RefObject<HTMLDivElement>>,
   index: number
 ) => {
-  (ref[index]?.current as HTMLDivElement)?.classList?.remove(
-    "animate__animated",
-    "animate__pulse"
-  );
+  refs.forEach((ref) => {
+    (ref?.current as HTMLDivElement)?.classList?.remove(
+      "animate__animated",
+      "animate__pulse"
+    );
+  });
 };
