@@ -1,10 +1,10 @@
-import { Space } from "antd";
+import { Button, Space } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 
 const CourseAbstract = () => {
   return (
-    <Space>
+    <Space className={styles.abstract}>
       <div className={styles.left}>
         <div className={styles.title}>{"CS100P+CS101P:"}</div>
         <div className={styles.title}>{"Introduce"}</div>
@@ -18,7 +18,9 @@ Final presentation for the project.`}
       <div className={styles.right}>
         <div className={styles.title}>{"One-Time Payment"}</div>
         <div className={styles.price}>{"$1580"}</div>
-        <div className={styles.btn}>{"Sign Up Now"}</div>
+        <Button type="primary" className={styles.btn}>
+          {"Sign Up Now"}
+        </Button>
         <div className={styles.tip}>
           {"$50 discount only applicable for bundle course"}
         </div>
