@@ -1,14 +1,15 @@
 .loader {
   position: relative;
-  width: 20vw;
-  height: 20vw;
+  width: 86px;
+  height: 20px;
+  margin: auto;
 }
 
 .loadingSquare {
   position: absolute;
   top: 0px;
-  width: 3.6vw;
-  height: 3.6vw;
+  width: 20px;
+  height: 20px;
 }
 
 .loadingSquare:nth-child(1) {
@@ -17,17 +18,17 @@
 }
 
 .loadingSquare:nth-child(2) {
-  left: 5.2vw;
+  left: 22px;
   animation: square2 1.5s linear forwards infinite;
 }
 
 .loadingSquare:nth-child(3) {
-  left: 10.4vw;
+  left: 44px;
   animation: square3 1.5s linear forwards infinite;
 }
 
 .loadingSquare:nth-child(4) {
-  left: 15.6vw;
+  left: 66px;
   animation: square4 1.5s linear forwards infinite;
 }
 
@@ -36,24 +37,20 @@
     background-color: #096dd9;
     transform: translate(0px, 0px);
   }
-
   9.09091% {
     background-color: #096dd9;
-    transform: translate(0px, -5.2vw);
+    transform: translate(0px, -22px);
   }
-
   18.18182% {
     background-color: #022679;
-    transform: translate(5.2vw, -5.2vw);
+    transform: translate(22px, -22px);
   }
-
   27.27273% {
-    transform: translate(5.2vw, 0px);
+    transform: translate(22px, 0px);
   }
-
   100% {
     background-color: #022679;
-    transform: translate(5.2vw, 0px);
+    transform: translate(22px, 0px);
   }
 }
 
@@ -62,28 +59,23 @@
     background-color: #022679;
     transform: translate(0px, 0px);
   }
-
   18.18182% {
     transform: translate(0px, 0px);
   }
-
   27.27273% {
     background-color: #022679;
-    transform: translate(0px, 5.2vw);
+    transform: translate(0px, 22px);
   }
-
   36.36364% {
     background-color: #f57712;
-    transform: translate(5.2vw, 5.2vw);
+    transform: translate(22px, 22px);
   }
-
   45.45455% {
-    transform: translate(5.2vw, 0px);
+    transform: translate(22px, 0px);
   }
-
   100% {
     background-color: #f57712;
-    transform: translate(5.2vw, 0px);
+    transform: translate(22px, 0px);
   }
 }
 
@@ -92,28 +84,23 @@
     background-color: #f57712;
     transform: translate(0px, 0px);
   }
-
   36.36364% {
     transform: translate(0px, 0px);
   }
-
   45.45455% {
     background-color: #f57712;
-    transform: translate(0px, -5.2vw);
+    transform: translate(0px, -22px);
   }
-
   54.54545% {
     background-color: #ffd600;
-    transform: translate(5.2vw, -5.2vw);
+    transform: translate(22px, -22px);
   }
-
   63.63636% {
-    transform: translate(5.2vw, 0px);
+    transform: translate(22px, 0px);
   }
-
   100% {
     background-color: #ffd600;
-    transform: translate(5.2vw, 0px);
+    transform: translate(22px, 0px);
   }
 }
 
@@ -122,31 +109,25 @@
     background-color: #ffd600;
     transform: translate(0px, 0px);
   }
-
   54.54545% {
     transform: translate(0px, 0px);
   }
-
   63.63636% {
     background-color: #ffd600;
-    transform: translate(0px, 5.2vw);
+    transform: translate(0px, 22px);
   }
-
   72.72727% {
     background-color: #f57712;
   }
-
   81.81818% {
     background-color: #022679;
   }
-
   90.90909% {
     background-color: #096dd9;
-    transform: translate(-15.6vw, 5.2vw);
+    transform: translate(-66px, 22px);
   }
-
   100% {
     background-color: #096dd9;
-    transform: translate(-15.6vw, 0px);
+    transform: translate(-66px, 0px);
   }
 }
