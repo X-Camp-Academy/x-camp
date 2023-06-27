@@ -1,0 +1,53 @@
+.formContainer {
+    .basicInfoContainer {
+        margin-top: 30px;
+    }
+
+    .title {
+        font-size: 21px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 30px;
+    }
+
+    .description {
+       padding-top: 25px;
+        font-size: 18px;
+        font-weight: 400;
+        color: #172142;
+    }
+
+    .inputInfo {
+        background: #FFFFFF;
+        border-radius: 8px;
+        border: 1px solid #FFAD11;
+    }
+
+    .upBtn {
+        display: flex;
+        align-items: center;
+        padding: 25px 50px;
+        border: none;
+        background: #FFAD11;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 24px;
+    }
+
+    .problem {
+        font-size: 21px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 36px;
+    }
+
+    .acceptText {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 400;
+        color: #172142;
+        line-height: 34px;
+    }
+}
