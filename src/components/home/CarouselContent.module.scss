@@ -37,12 +37,15 @@
       .button {
         padding: 24px 48px;
         background: #ffad11;
-        border: none;
         border-radius: 36px;
         font-size: 26px;
         font-weight: 600;
         color: #ffffff;
+        border: 1px solid #ffad11;
         cursor: pointer;
+        &:hover {
+          @extend .hoverButton;
+        }
       }
       .date {
         font-size: 21px;
@@ -76,7 +79,7 @@
       .extraImage {
         width: 60px;
         height: 50px;
-        margin-top: 26px;
+        margin-top: 12px;
         @media (max-width: 768px) {
           width: 72px;
           height: 56px;
@@ -96,6 +99,9 @@
           font-size: 16px;
           font-weight: 400;
           line-height: 24px;
+          &:hover {
+            @extend .hoverButton;
+          }
         }
       }
     }

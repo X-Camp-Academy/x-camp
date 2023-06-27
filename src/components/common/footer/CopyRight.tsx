@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from "./CopyRight.module.scss";
 import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
@@ -8,6 +8,44 @@ import Link from "next/link";
 const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
+  const icons = [
+    {
+      src: "/image/home/youtube.png",
+      hoverSrc: "/image/home/youtube-hover.png",
+    },
+    {
+      src: "/image/home/facebook.png",
+      hoverSrc: "/image/home/facebook-hover.png",
+    },
+    {
+      src: "/image/home/linkedin.png",
+      hoverSrc: "/image/home/linkedin-hover.png",
+    },
+    {
+      src: "/image/home/twitter.png",
+      hoverSrc: "/image/home/twitter-hover.png",
+    },
+    {
+      src: "/image/home/we-chat.png",
+      hoverSrc: "/image/home/we-chat-hover.png",
+    },
+    {
+      src: "/image/home/small-red-book.png",
+      hoverSrc: "/image/home/small-red-book-hover.png",
+    },
+  ];
+  const cloneSource = icons.map((item) => item.src);
+  const [source, setSource] = useState(cloneSource);
+  const onMouseOver = (index: number) => {
+    const data = JSON.parse(JSON.stringify(source));
+    data[index] = icons[index].hoverSrc;
+    setSource(data);
+  };
+  const onMouseLeave = (index: number) => {
+    const data = JSON.parse(JSON.stringify(source));
+    data[index] = icons[index].src;
+    setSource(data);
+  };
   return (
     <div className={styles.copyRightContainer}>
       <div className={`${styles.copyRight} container`}>
@@ -43,60 +81,22 @@ const CopyRight: React.FC = () => {
                 </Paragraph>
 
                 <Space>
-                  <Link href="/">
-                    <Image
-                      alt=""
-                      preview={false}
-                      src="/image/home/youtube.png"
-                      width={28}
-                      height={28}
-                    />
-                  </Link>
-                  <Link href="/">
-                    <Image
-                      alt=""
-                      preview={false}
-                      src="/image/home/facebook.png"
-                      width={28}
-                      height={28}
-                    />
-                  </Link>
-                  <Link href="/">
-                    <Image
-                      alt=""
-                      preview={false}
-                      src="/image/home/linkedin.png"
-                      width={28}
-                      height={28}
-                    />
-                  </Link>
-                  <Link href="/">
-                    <Image
-                      alt=""
-                      preview={false}
-                      src="/image/home/twitter.png"
-                      width={28}
-                      height={28}
-                    />
-                  </Link>
-                  <Link href="/">
-                    <Image
-                      alt=""
-                      preview={false}
-                      src="/image/home/we-chat.png"
-                      width={28}
-                      height={28}
-                    />
-                  </Link>
-                  <Link href="/">
-                    <Image
-                      alt=""
-                      preview={false}
-                      src="/image/home/small-red-book.png"
-                      width={28}
-                      height={28}
-                    />
-                  </Link>
+                  {icons.map((_, index) => (
+                    <Link
+                      key={index}
+                      href="/"
+                      onMouseOver={() => onMouseOver(index)}
+                      onMouseLeave={() => onMouseLeave(index)}
+                    >
+                      <Image
+                        alt=""
+                        src={source[index]}
+                        preview={false}
+                        width={28}
+                        height={28}
+                      />
+                    </Link>
+                  ))}
                 </Space>
               </Space>
             </Space>
