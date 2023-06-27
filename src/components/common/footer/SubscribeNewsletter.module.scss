@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .subscribeNewsletterContainer {
   position: fixed;
   bottom: 0;
@@ -61,6 +63,9 @@
             padding: 10px 6px;
             line-height: 20px;
             border-radius: 24px;
+          }
+          &:hover {
+            @extend .hoverButton;
           }
         }
       }

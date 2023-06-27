@@ -34,9 +34,8 @@ const FoundingTeam = () => {
     const refs = [leftRef, rightRef];
     refs.forEach((ref) => {
       (ref?.current as HTMLDivElement)?.classList?.remove(
-        "animate__animated",
-        "animate__fadeInLeft",
-        "animate__fadeInRight"
+        styles.scaleBig,
+        styles.scaleSmall
       );
     });
   };
@@ -45,28 +44,16 @@ const FoundingTeam = () => {
     if (current === 1) {
       removeAnimate();
       setCurrent(0);
-      (leftRef?.current as HTMLDivElement)?.classList?.add(
-        "animate__animated",
-        "animate__fadeInRight"
-      );
-      (rightRef?.current as HTMLDivElement)?.classList?.add(
-        "animate__animated",
-        "animate__fadeInLeft"
-      );
+      (leftRef?.current as HTMLDivElement)?.classList?.add(styles.scaleBig);
+      (rightRef?.current as HTMLDivElement)?.classList?.add(styles.scaleSmall);
     }
   };
   const onNext = () => {
     if (current === 0) {
       removeAnimate();
       setCurrent(1);
-      (leftRef?.current as HTMLDivElement)?.classList?.add(
-        "animate__animated",
-        "animate__fadeInLeft"
-      );
-      (rightRef?.current as HTMLDivElement)?.classList?.add(
-        "animate__animated",
-        "animate__fadeInRight"
-      );
+      (leftRef?.current as HTMLDivElement)?.classList?.add(styles.scaleSmall);
+      (rightRef?.current as HTMLDivElement)?.classList?.add(styles.scaleBig);
     }
   };
   useEffect(() => {
