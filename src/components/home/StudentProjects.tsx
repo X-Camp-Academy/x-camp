@@ -2,7 +2,7 @@
 import React from "react";
 import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
 import styles from "./StudentProjects.module.scss";
-import { SwapLeftOutlined, SwapRightOutlined } from "@ant-design/icons";
+import { RightCircleOutlined, RightOutlined, SwapLeftOutlined, SwapRightOutlined } from "@ant-design/icons";
 import { useMobile } from "@/utils";
 
 const { Title, Paragraph, Text } = Typography;
@@ -58,6 +58,8 @@ const StudentProjects: React.FC = () => {
                   ></iframe>
                 }
               >
+
+
                 <Space direction="vertical" size={24}>
                   <Meta
                     title="The Viper Game"
@@ -69,7 +71,7 @@ const StudentProjects: React.FC = () => {
                     shape="circle"
                     className={styles.cardButton}
                   >
-                    <SwapLeftOutlined />
+                    <RightOutlined />
                   </Button>
                 </Space>
               </Card>
@@ -103,10 +105,9 @@ const StudentProjects: React.FC = () => {
                   <Button
                     type="primary"
                     shape="circle"
-                    ghost
                     className={styles.cardButton}
                   >
-                    <SwapRightOutlined />
+                    <RightOutlined />
                   </Button>
                 </Space>
               </Card>

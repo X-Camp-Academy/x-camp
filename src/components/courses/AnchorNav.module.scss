@@ -1,0 +1,42 @@
+.nav {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.catalog {
+  display: block;
+  cursor: pointer;
+  width: 228px;
+  height: 48px;
+  background: #FFAD11;
+  border-radius: 12px 0px 0px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 24px;
+  padding: 11px 24px;
+}
+
+.catalog:hover {
+  color: #fff;
+  background-color: #D46B14;
+}
+
+.catalogActive {
+  background-color: #D46B14;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .catalog {
+    width: 245px;
+  }
+}

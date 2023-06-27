@@ -1,0 +1,30 @@
+.topBanner {
+  height: 494px;
+  width: 100%;
+  background-image: url("/image/home/carousel-filled-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .content {
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+
+    .title {
+      font-size: 48px;
+      font-weight: bold;
+      color: #D46B14;
+    }
+
+    .text {
+      font-size: 24px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 48px;
+
+      ul {
+        margin-top: 0;
+      }
+    }
+  }
+}

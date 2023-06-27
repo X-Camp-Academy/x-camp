@@ -23,9 +23,10 @@ const CopyRight: React.FC = () => {
                 />
                 <Image
                   alt="slogan"
-                  className={styles.slogan}
                   preview={false}
                   src="/image/home/footer-slogan.png"
+                  width={220}
+                  height={24}
                 />
               </Space>
 
@@ -47,7 +48,8 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/youtube.png"
-                      className={styles.icon}
+                      width={28}
+                      height={28}
                     />
                   </Link>
                   <Link href="/">
@@ -55,7 +57,8 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/facebook.png"
-                      className={styles.icon}
+                      width={28}
+                      height={28}
                     />
                   </Link>
                   <Link href="/">
@@ -63,7 +66,8 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/linkedin.png"
-                      className={styles.icon}
+                      width={28}
+                      height={28}
                     />
                   </Link>
                   <Link href="/">
@@ -71,7 +75,8 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/twitter.png"
-                      className={styles.icon}
+                      width={28}
+                      height={28}
                     />
                   </Link>
                   <Link href="/">
@@ -79,7 +84,8 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/we-chat.png"
-                      className={styles.icon}
+                      width={28}
+                      height={28}
                     />
                   </Link>
                   <Link href="/">
@@ -87,7 +93,8 @@ const CopyRight: React.FC = () => {
                       alt=""
                       preview={false}
                       src="/image/home/small-red-book.png"
-                      className={styles.icon}
+                      width={28}
+                      height={28}
                     />
                   </Link>
                 </Space>
