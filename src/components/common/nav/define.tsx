@@ -140,7 +140,7 @@ export const useMenuItems = () => {
           key: 'contact-us',
         },
         {
-          label: <Link href="/">Achievements</Link>,
+          label: <Link href="/about-us/achievements">Achievements</Link>,
           key: 'achievements',
         },
         {
@@ -148,7 +148,7 @@ export const useMenuItems = () => {
           key: 'faculty&coach',
         },
         {
-          label: <Link href="/">Join Us</Link>,
+          label: <Link href="/about-us/joinus">Join Us</Link>,
           key: 'join-us',
         },
         {

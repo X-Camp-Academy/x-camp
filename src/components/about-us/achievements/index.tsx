@@ -6,7 +6,7 @@ import { Content } from 'antd/es/layout/layout';
 
 import dynamic from "next/dynamic";
 const TopBanner = dynamic(() => import("@/components/about-us/achievements/TopBanner"))
-const USACOMedal = dynamic(() => import("@/components/about-us/achievements/USACOMedal"))
+const USACOWinners = dynamic(() => import("@/components/about-us/achievements/USACOWinners"))
 const ArtOfProgrammingResults = dynamic(() => import("@/components/about-us/achievements/ArtOfProgrammingResults"))
 
 const Achievements: React.FC = () => {
@@ -21,7 +21,7 @@ const Achievements: React.FC = () => {
       <Layout className={styles.introductionContainer}>
         <Content>
           <TopBanner />
-          <USACOMedal/>
+          <USACOWinners/>
           <ArtOfProgrammingResults/>
         </Content>
       </Layout>

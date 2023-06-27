@@ -11,7 +11,7 @@ import {
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import { LeftCircleTwoTone, RightCircleTwoTone, setTwoToneColor } from "@ant-design/icons";
-import styles from "./USACOMedal.module.scss";
+import styles from "./USACOWinners.module.scss";
 import React, { useRef } from "react";
 import Link from "next/link";
 import ColorfulCard from "@/components/common/colorful-card";
