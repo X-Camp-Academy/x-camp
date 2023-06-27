@@ -7,6 +7,7 @@
 
   .courseCard {
     width: 100%;
+    padding-bottom: 50px;
 
     .cardContent {
       padding: 56px;
@@ -21,6 +22,18 @@
       @media (max-width: 768px) {
         padding: 20px;
       }
+
+    }
+  }
+
+  .video {
+    width: 100%;
+    margin-bottom: 50px;
+    height: 675px;
+
+    .videoBox {
+      width: 100%;
+      border-radius: 12px;
     }
   }
 }
