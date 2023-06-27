@@ -4,14 +4,14 @@ import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 
+const ContactCard = dynamic(() => import("./ContactCard"));
 const TopBanner = dynamic(() => import("./TopBanner"));
 const Comments = dynamic(() => import("@/components/home/Comments"));
-const QAPart = dynamic(() => import("./QAPart"));
-const ContactUs = dynamic(() => import("./ContactUs"));
-
+const QuestionForm = dynamic(() => import("./QuestionForm"));
+const AddressMap = dynamic(() => import("./AddressMap"));
 const { Content } = Layout;
 
-const HelpCenter: React.FC = () => {
+const ContactUsContent: React.FC = () => {
   return (
     <ConfigProvider
       theme={{
@@ -23,8 +23,9 @@ const HelpCenter: React.FC = () => {
       <Layout className={styles.QAContainer}>
         <Content>
           <TopBanner />
-          <QAPart />
-          <ContactUs />
+          <ContactCard />
+          <QuestionForm />
+          <AddressMap />
           <Comments />
         </Content>
       </Layout>
@@ -32,4 +33,4 @@ const HelpCenter: React.FC = () => {
   );
 };
 
-export default HelpCenter;
+export default ContactUsContent;

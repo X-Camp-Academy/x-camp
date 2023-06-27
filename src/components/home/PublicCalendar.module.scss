@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .publicCalendarContainer {
   width: 100%;
   margin-top: 100px;
@@ -120,6 +122,9 @@
       font-weight: 500;
       line-height: 22px;
       margin-top: 20px;
+      &:hover {
+        @extend .hoverButton;
+      }
     }
     .calendarSpace {
       width: 100%;

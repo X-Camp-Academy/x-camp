@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import { Space, Row, Col, Card, Image, Typography } from "antd";
+import { Typography } from "antd";
 import styles from "./QAPart.module.scss";
 import QACard from "@/components/common/q&a";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Text } = Typography;
 
 const QAPart: React.FC = () => {
   const QAData = [
