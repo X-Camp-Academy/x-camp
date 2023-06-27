@@ -1,0 +1,51 @@
+.qaContent {
+  padding-bottom: 6.25rem;
+
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #d46b14;
+    line-height: 64px;
+  }
+
+  .card
+  {
+    margin-top: 24px;
+    width: 100%;
+    text-align: center;
+
+    :global(.ant-form-item .ant-form-item-label)
+    {
+      font-weight: bold;
+    }
+
+    :global(.ant-input)
+    {
+      border:1px solid #FFAD11;
+      padding: 10px;
+    }
+    .formTitle{
+      font-size: 36px;
+      font-weight: bold;
+      color: #d46b14;
+
+    }
+    .formTextArea{
+      width: 100%;
+      outline: none;
+    }
+    .formButton 
+    {
+      width: 100%;
+      height: 56px;
+      background: #FFAD11;
+      border-radius: 8px;
+      border: none;
+
+      font-size: 16px;
+      font-weight: 500;
+      color: #FFFFFF;
+      line-height: 24px;
+    }
+  }
+}
