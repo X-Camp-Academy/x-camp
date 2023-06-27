@@ -22,6 +22,7 @@ const TopBanner: React.FC = () => {
                                 src="/image/home/course-1.png"
                                 preview={false}
                                 className={styles.image}
+                                //
                             />
                         </Space>
                     </Col>
