@@ -8,6 +8,7 @@ const ContactCard = dynamic(() => import("./ContactCard"));
 const TopBanner = dynamic(() => import("./TopBanner"));
 const Comments = dynamic(() => import("@/components/home/Comments"));
 const QuestionForm = dynamic(() => import("./QuestionForm"));
+const AddressMap = dynamic(() => import("./AddressMap"));
 const { Content } = Layout;
 
 const ContactUsContent: React.FC = () => {
@@ -24,6 +25,7 @@ const ContactUsContent: React.FC = () => {
           <TopBanner />
           <ContactCard />
           <QuestionForm />
+          <AddressMap />
           <Comments />
         </Content>
       </Layout>
