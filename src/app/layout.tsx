@@ -1,12 +1,14 @@
-import "./globals.scss";
-import dynamic from "next/dynamic";
-import { LocalStateProvider } from "@/utils/local-state";
-import WithIntl from "@/hoc/WithIntl";
-import WithLayout from "@/hoc/WithLayout";
+import './globals.scss';
+import dynamic from 'next/dynamic';
+import { LocalStateProvider } from '@/utils/local-state';
+import WithIntl from '@/hoc/WithIntl';
+import WithLayout from '@/hoc/WithLayout';
 
-const Nav = dynamic(() => import("@/components/common/nav"));
-const Footer = dynamic(() => import("@/components/common/footer"));
-//const BackTop = dynamic(() => import("@/components/common/back-top"));
+const Nav = dynamic(() => import('@/components/common/nav'));
+const Footer = dynamic(() => import('@/components/common/footer'));
+const BackTop = dynamic(() => import('@/components/common/back-top'), {
+  ssr: false,
+});
 
 export default function RootLayout({
   children,
@@ -25,7 +27,7 @@ export default function RootLayout({
             <Nav />
             <WithLayout>{children}</WithLayout>
             <Footer />
-            {/* <BackTop /> */}
+            <BackTop />
           </body>
         </html>
       </WithIntl>

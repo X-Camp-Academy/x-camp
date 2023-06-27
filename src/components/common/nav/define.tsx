@@ -1,143 +1,149 @@
-import { MenuProps } from "antd";
-import Link from "next/link";
-import { XStarMenuItemType } from "./x-star-menu";
-import { useRouter } from "next/navigation";
+import { MenuProps } from 'antd';
+import Link from 'next/link';
+import { XStarMenuItemType } from './x-star-menu';
+import { useRouter } from 'next/navigation';
 
 export const useMenuItems = () => {
   const router = useRouter();
   const menuItems: XStarMenuItemType[] = [
     {
       label: <Link href="/">Home</Link>,
-      key: "/",
+      key: '/',
     },
     {
       label: <a>Courses</a>,
-      key: "courses",
+      key: 'courses',
       dropdown: {
         left: {
-          title: "X-Camp Class Road Map",
+          title: 'X-Camp Class Road Map',
           description:
-            "学习路线简介学习路线简介学习路线简介学习路线简介学习路线简介学习路线简介",
-          btn: "Find My Class",
+            '学习路线简介学习路线简介学习路线简介学习路线简介学习路线简介学习路线简介',
+          btn: 'Find My Class',
         },
         right: {
-          title: "Course Catalog",
-          description: "List of all courses in X-Camp 2023",
-          action: () => router.push("/courses/catalog"),
+          title: 'Course Catalog',
+          description: 'List of all courses in X-Camp 2023',
+          action: () => router.push('/courses/catalog'),
         },
       },
       children: [
         {
           label: <Link href="/courses#classify0">Online Classes</Link>,
-          key: "online-classes",
+          key: 'online-classes',
         },
         {
           label: <Link href="/courses/camps">In-person Campus</Link>,
-          key: "in-person-campus",
+          key: 'in-person-campus',
         },
         {
           label: <Link href="/courses#classify3">Enhancement Classes</Link>,
-          key: "enhancement-classes",
+          key: 'enhancement-classes',
         },
         {
           label: <Link href="/">100 Prob Challenge</Link>,
-          key: "100-prob-challenge",
+          key: '100-prob-challenge',
         },
         {
           label: <Link href="/courses#classify5">APCS Classes</Link>,
-          key: "apcs-classes",
+          key: 'apcs-classes',
         },
         {
           label: <Link href="/">X-Tutors</Link>,
-          key: "x-tutors",
+          key: 'x-tutors',
         },
       ],
     },
     {
-      label: <Link href="/resources">Resources</Link>,
-      key: "resources",
+      label: <Link href="/">Resources</Link>,
+      key: 'resources',
       dropdown: {
         left: {
-          title: "X-Camp School Calendar",
+          title: 'X-Camp School Calendar',
           description:
-            "X-Camp学校日历展示本年度的开学和结束课程时间,教育论坛和比赛等",
-          btn: "View Calendar",
+            'X-Camp学校日历展示本年度的开学和结束课程时间,教育论坛和比赛等',
+          btn: 'View Calendar',
         },
       },
       children: [
         {
           label: <Link href="/">Weekly Education Forum</Link>,
-          key: "weekly-education-forum",
+          key: 'weekly-education-forum',
         },
         {
-          label: <Link href="/">Weekly Open House</Link>,
-          key: "weekly-open-house",
+          label: (
+            <Link href="/resources/weekly-open-house">Weekly Open House</Link>
+          ),
+          key: 'weekly-open-house',
         },
         {
-          label: <Link href="/">USACo Live solution</Link>,
-          key: "usaco-live-solution",
+          label: (
+            <Link href="/resources/usaco-live-solutions">
+              USACo Live solution
+            </Link>
+          ),
+          key: 'usaco-live-solution',
         },
         {
           label: <Link href="/">Contests</Link>,
-          key: "contests",
+          key: 'contests',
         },
         {
           label: <Link href="/">Turing cup</Link>,
-          key: "turing-cup",
+          key: 'turing-cup',
         },
         {
           label: <Link href="/">X-Cup</Link>,
-          key: "x-cup",
+          key: 'x-cup',
         },
         {
           label: <Link href="/">Teamscode</Link>,
-          key: "teamscode",
+          key: 'teamscode',
         },
         {
           label: <Link href="/">Art of Programming</Link>,
-          key: "art-of-programming",
+          key: 'art-of-programming',
         },
         {
           label: <Link href="/">USACO</Link>,
-          key: "usaco",
+          key: 'usaco',
         },
         {
           label: <Link href="/">ACSL</Link>,
-          key: "acsl",
+          key: 'acsl',
         },
         {
           label: <Link href="/">Calico</Link>,
-          key: "calico",
+          key: 'calico',
         },
         {
           label: <Link href="/">Proco</Link>,
-          key: "proco",
+          key: 'proco',
         },
       ],
     },
     {
       label: <Link href="/">About Us</Link>,
-      key: "about-us",
+      key: 'about-us',
       dropdown: {
         left: {
-          title: "X-Camp School Calendar",
+          title: 'X-Camp School Calendar',
           description:
-            "X-Camp学校日历展示本年度的开学和结束课程时间,教育论坛和比赛等",
-          btn: "View Calendar",
+            'X-Camp学校日历展示本年度的开学和结束课程时间,教育论坛和比赛等',
+          btn: 'View Calendar',
         },
       },
       children: [
         {
           label: <Link href="/about-us/introduction">Introduction</Link>,
-          key: "introduction",
+          key: 'introduction',
         },
         {
           label: <Link href="/">School Calendar</Link>,
-          key: "school-calendar",
+          key: 'school-calendar',
         },
         {
           label: <Link href="/">Contact Us</Link>,
-          key: "contact-us",
+          key: 'contact-us',
         },
         {
           label: <Link href="/about-us/achievements">Achievements</Link>,
@@ -145,7 +151,7 @@ export const useMenuItems = () => {
         },
         {
           label: <Link href="/">Faculty&Coach</Link>,
-          key: "faculty&coach",
+          key: 'faculty&coach',
         },
         {
           label: <Link href="/about-us/join-us">Join Us</Link>,
@@ -153,29 +159,29 @@ export const useMenuItems = () => {
         },
         {
           label: <Link href="/">Partners</Link>,
-          key: "partners",
+          key: 'partners',
         },
         {
           label: <Link href="/">News</Link>,
-          key: "news",
+          key: 'news',
         },
         {
           label: <Link href="/about-us/help-center">QA</Link>,
-          key: "help-center",
+          key: 'help-center',
         },
         {
           label: <Link href="/about-us/x-alumni">X-Alumni</Link>,
-          key: "x-alumni",
+          key: 'x-alumni',
         },
         {
           label: <Link href="/">Current Student Referral Program</Link>,
-          key: "current-student-referral-program",
+          key: 'current-student-referral-program',
         },
       ],
     },
     {
       label: <Link href="/">Evaluation</Link>,
-      key: "evaluation",
+      key: 'evaluation',
     },
   ];
   return menuItems;
