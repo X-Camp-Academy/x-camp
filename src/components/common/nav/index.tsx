@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   ConfigProvider,
   Layout,
@@ -17,11 +16,11 @@ import { TranslationOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import "animate.css";
 import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
-import { useUpdate } from "ahooks";
 import { removeDropdown, useMenuItems } from "./define";
 import XStarMenu from "./x-star-menu";
 
 const { Header } = Layout;
+const { Search } = Input;
 const items: MenuProps["items"] = [
   {
     key: "en",
@@ -36,14 +35,12 @@ const items: MenuProps["items"] = [
 const Nav: React.FC = () => {
   const [current, setCurrent] = useState("/");
   const [showMenu, setShowMenu] = useState(false);
-  const pathname = usePathname();
-  const { Search } = Input;
   const isMobile = useMobile();
   const menuItems = useMenuItems();
 
   const onSearch = (value: string) => console.log(value);
-  const handleMenuClick: MenuProps["onClick"] = (e) => {
-    setCurrent(e.key);
+  const onChangeLanguage: MenuProps["onClick"] = (e) => {
+    console.log(e.key);
   };
 
   const ref = useRef<HTMLDivElement>(null);
@@ -54,29 +51,33 @@ const Nav: React.FC = () => {
         "animate__slideInRight"
       );
     } else {
+      (ref?.current as HTMLDivElement)?.classList?.remove(
+        "animate__animated",
+        "animate__slideInRight"
+      );
     }
   }, [showMenu]);
-  const update = useUpdate();
-
-  useEffect(() => {
-    const handleResize = () => {
-      // 处理页面伸缩事件的逻辑
-      console.log("页面伸缩事件发生了");
-    };
-
-    // 添加页面伸缩事件监听器
-    window.addEventListener("resize", handleResize);
-
-    // 在组件销毁时移除事件监听器
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const mobileMenuItems: MenuProps["items"] = useMemo(() => {
     // 手机端则去除dropdown
     return isMobile ? removeDropdown(menuItems) : menuItems;
   }, [menuItems, isMobile]);
+
+  const [openKeys, setOpenKeys] = useState([""]);
+
+  const rootSubmenuKeys = ["courses", "resources", "about-us"];
+
+  const setCurrentKey = (key: string) => {
+    setCurrent(key);
+  };
+  const onOpenMobileMenuChange: MenuProps["onOpenChange"] = (keys) => {
+    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+    if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
+      setOpenKeys(keys);
+    } else {
+      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    }
+  };
 
   return (
     <ConfigProvider
@@ -101,11 +102,7 @@ const Nav: React.FC = () => {
                   selectedKey={current}
                   items={menuItems}
                   className={styles.menu}
-                  // onResize={update}
-                  onClick={(key) => {
-                    console.log(key);
-                    setCurrent(key);
-                  }}
+                  onClick={setCurrentKey}
                 />
               )}
             </Space>
@@ -129,7 +126,7 @@ const Nav: React.FC = () => {
                   <Dropdown
                     menu={{
                       items,
-                      onClick: handleMenuClick,
+                      onClick: onChangeLanguage,
                     }}
                     className={styles.dropDown}
                   >
@@ -147,7 +144,7 @@ const Nav: React.FC = () => {
               )}
             </Space>
           </Space>
-          {showMenu && (
+          {isMobile && showMenu && (
             <Space ref={ref} direction="vertical" className={styles.showMenu}>
               <Button
                 type="primary"
@@ -168,11 +165,12 @@ const Nav: React.FC = () => {
                 <UnorderedListOutlined />
               </Button>
               <Menu
-                mode="vertical"
+                mode="inline"
+                openKeys={openKeys}
                 selectedKeys={[current]}
+                onOpenChange={onOpenMobileMenuChange}
                 items={mobileMenuItems}
-                className={styles.mobileMenu}
-                onClick={handleMenuClick}
+                onClick={({ key }) => setCurrentKey(key)}
               />
             </Space>
           )}
