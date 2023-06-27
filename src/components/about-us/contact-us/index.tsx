@@ -4,8 +4,7 @@ import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 
-import ContactCard from "./ContactCard";
-
+const ContactCard = dynamic(() => import("./ContactCard"));
 const TopBanner = dynamic(() => import("./TopBanner"));
 const Comments = dynamic(() => import("@/components/home/Comments"));
 const QuestionForm = dynamic(() => import("./QuestionForm"));
