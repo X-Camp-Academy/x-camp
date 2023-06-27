@@ -1,0 +1,47 @@
+.content {
+  width: 100%;
+  background-color: #ffeddf;
+  padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 30px 0;
+  }
+
+  .cards {
+    .card {
+      width: 100%;
+      background: #ffffff;
+      border-radius: 8px 8px 12px 12px;
+      padding: 24px;
+
+      img {
+        width: 100%;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 32px;
+      }
+
+      .description {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 400;
+        color: #666666;
+        line-height: 28px;
+
+        .icon {
+          margin-right: 4px;
+        }
+
+        .btn {
+          color: #ffad11;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
