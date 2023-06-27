@@ -12,7 +12,7 @@ const TopBanner = dynamic(() => import("./TopBanner"));
 const ReferralProgramMain = dynamic(() => import("./ReferralProgramMain"))
 const GetCredit = dynamic(() => import("./GetCredit"))
 const ReferralFAQ = dynamic(() => import("./ReferralFAQ"))
-
+const Comments = dynamic(() => import("@/components/home/Comments"))
 
 
 const StudentRecommend: React.FC = () => {
@@ -30,6 +30,7 @@ const StudentRecommend: React.FC = () => {
                     <ReferralProgramMain />
                     <GetCredit />
                     <ReferralFAQ />
+                    <Comments />
                 </Content>
             </Layout>
         </ConfigProvider>
