@@ -25,7 +25,7 @@ export default function RootLayout({
             <Nav />
             <WithLayout>{children}</WithLayout>
             <Footer />
-{/*             <BackTop /> */}
+            {/* <BackTop /> */}
           </body>
         </html>
       </WithIntl>

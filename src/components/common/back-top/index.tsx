@@ -24,6 +24,6 @@ import styles from "./index.module.scss";
       </div>
     )
   );
-};
+}; */
 
-export default BackTop; */
+//export default BackTop;
