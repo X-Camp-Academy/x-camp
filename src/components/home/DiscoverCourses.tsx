@@ -1,11 +1,12 @@
 "use client";
 import React, { useRef } from "react";
 import { Typography, Row, Col, Card, Space, Image } from "antd";
+import Texty from "rc-texty";
 import "animate.css";
 import styles from "./DiscoverCourses.module.scss";
 import { addAnimatePulse, removeAnimatePulse } from "@/utils";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const DiscoverCourses: React.FC = () => {
   const courseCards = [
@@ -42,20 +43,15 @@ const DiscoverCourses: React.FC = () => {
 
   return (
     <div className={`${styles.discoverCourses} container`}>
-      {/* animate__bounceInLeft
-      animate__fadeInLeft
-
-      animate__fadeInTopLeft
-      animate__fadeInBottomLeft
-      animate__lightSpeedInLeft
-
-      animate__zoomInLeft
-      animate__slideInLeft */}
-      <Title
-        className={`${styles.title} animate__animated animate__backInLeft`}
+      <Texty
+        duration={100}
+        type={"left"}
+        interval={20}
+        className={styles.title}
       >
         Discover Our Courses
-      </Title>
+      </Texty>
+
       <Row className={styles.row} gutter={16} justify="center" align="middle">
         {courseCards.map((item, index) => {
           return (
