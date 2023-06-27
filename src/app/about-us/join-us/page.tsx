@@ -1,4 +1,4 @@
-import JoinUs from '@/components/about-us/joinus';
+import JoinUs from '@/components/about-us/join-us';
 
 export const metadata = {
   title: "X-Camp Academy",

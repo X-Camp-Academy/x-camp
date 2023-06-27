@@ -42,10 +42,11 @@ const JoinUsFaculty: React.FC = () => {
                             gutter={16}
                         >
 
-                            {imgUrlTwoList.map((item, index) => {
+                            {imgUrlTwoList?.map((item, index) => {
                                 return (
                                     <Col span={8}
-                                        offset={3}>
+                                        offset={3}
+                                        key={index}>
                                         <Image
                                             alt="image"
                                             src={item.url}
@@ -60,9 +61,10 @@ const JoinUsFaculty: React.FC = () => {
                             gutter={16}
                             style={{ marginTop: '20px' }}
                         >
-                            {imgUrlThreeList.map((item, index) => {
+                            {imgUrlThreeList?.map((item, index) => {
                                 return (
-                                    <Col span={8}>
+                                    <Col span={8}
+                                        key={index}>
                                         <Image
                                             alt="image"
                                             src={item.url}

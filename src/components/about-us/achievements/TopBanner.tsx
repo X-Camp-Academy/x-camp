@@ -1,6 +1,6 @@
-import { Space, Row, Col, Card, Image, Typography } from "antd";
+import { Space, Row, Col, Image, Typography } from "antd";
 import styles from './TopBanner.module.scss';
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 
 const TopBanner: React.FC = () => {
@@ -12,7 +12,7 @@ const TopBanner: React.FC = () => {
                         <Space direction="vertical">
                             <Title className={styles.title}>Achievements</Title>
                             <Paragraph className={styles.paragraph}>
-                                Since X-Camp was established, USACO has achieved remarkable results as our students' side project on their learning journey.
+                                {"Since X-Camp was established, USACO has achieved remarkable results as our students' side project on their learning journey."}
                             </Paragraph>
                         </Space>
                     </Col>

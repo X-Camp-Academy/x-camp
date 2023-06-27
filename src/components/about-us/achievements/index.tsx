@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Space, Row, Col, Card, Image, ConfigProvider, Layout } from 'antd';
+import { ConfigProvider, Layout } from 'antd';
 import styles from './index.module.scss';
 import { Content } from 'antd/es/layout/layout';
 

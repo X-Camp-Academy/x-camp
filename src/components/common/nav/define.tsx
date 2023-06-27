@@ -148,7 +148,7 @@ export const useMenuItems = () => {
           key: 'faculty&coach',
         },
         {
-          label: <Link href="/about-us/joinus">Join Us</Link>,
+          label: <Link href="/about-us/join-us">Join Us</Link>,
           key: 'join-us',
         },
         {
