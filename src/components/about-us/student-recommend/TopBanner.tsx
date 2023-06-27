@@ -11,7 +11,7 @@ const TopBanner: React.FC = () => {
                         <Space direction="vertical">
                             <Title className={styles.title}>Referral Program</Title>
                             <Paragraph className={styles.paragraph}>
-                            Encourage your friend's kids AND your kid's friends to join our coding program. Earn 
+                            {"Encourage your friend's kids AND your kid's friends to join our coding program. Earn "}
                             </Paragraph>
                         </Space>
                     </Col>

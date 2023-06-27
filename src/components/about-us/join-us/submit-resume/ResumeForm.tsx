@@ -54,6 +54,7 @@ const ResumeForm: React.FC = () => {
                             <Form.Item
                                 name={item.name}
                                 rules={[{ required: true }]}
+                                key={index}
                             >
                                 <Input placeholder={item.placeholder} className={styles.inputInfo} />
                             </Form.Item>
