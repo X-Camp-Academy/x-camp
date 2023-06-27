@@ -4,7 +4,7 @@ import { useScroll } from "ahooks";
 import { VerticalAlignTopOutlined } from "@ant-design/icons";
 import styles from "./index.module.scss";
 
-const BackTop: React.FC = () => {
+/* const BackTop: React.FC = () => {
   const scroll = useScroll(document);
   console.log(scroll);
 
@@ -26,4 +26,4 @@ const BackTop: React.FC = () => {
   );
 };
 
-export default BackTop;
+export default BackTop; */
