@@ -1,0 +1,79 @@
+.content {
+  width: 100%;
+  padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 30px 0;
+  }
+
+  .cards {
+    .card {
+      background: #ffffff;
+      border-radius: 8px 8px 12px 12px;
+      padding: 48px 36px;
+
+      @media (max-width: 768px) {
+        padding: 24px 18px;
+      }
+
+      .date {
+        @media (max-width: 768px) {
+          display: flex;
+        }
+
+        .month {
+          font-size: 24px;
+          font-weight: 600;
+          color: #666666;
+        }
+
+        .day {
+          font-size: 80px;
+          font-weight: 600;
+          color: #172142;
+
+          @media (max-width: 768px) {
+            font-size: 24px;
+            margin-left: 10px;
+          }
+        }
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 36px;
+        margin: 24px 0;
+
+        @media (max-width: 768px) {
+          margin: 12px 0;
+        }
+
+        .btn {
+          color: #ffad11;
+          font-size: 18px;
+        }
+      }
+
+      .descriptions {
+        :global {
+          .ant-descriptions-row > td {
+            padding-bottom: 8px;
+          }
+
+          .ant-descriptions-item-label::after {
+            content: "";
+          }
+          .ant-descriptions-item-label {
+            align-items: center;
+          }
+          .ant-descriptions-item-content {
+            align-items: center;
+            color: #666666;
+          }
+        }
+      }
+    }
+  }
+}

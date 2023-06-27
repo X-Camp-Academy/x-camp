@@ -1,0 +1,54 @@
+.panel {
+  :global(.ant-collapse-header) {
+    align-items: center !important;
+  }
+
+  .title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #d46b14;
+    line-height: 64px;
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+      line-height: 48px;
+    }
+  }
+
+  .description {
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 34px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  .changeBtn {
+    width: 64px;
+    height: 64px;
+    background: #ffad11;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    .icon {
+      font-size: 24px;
+      color: #fff;
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+      }
+    }
+  }
+}
