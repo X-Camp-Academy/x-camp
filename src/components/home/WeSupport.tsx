@@ -85,7 +85,7 @@ const WeSupport: React.FC = () => {
             </Col>
           </Row>
         </Col>
-      </Row><p></p>
+      </Row>
     </div>
   );
 };
