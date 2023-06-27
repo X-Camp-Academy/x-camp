@@ -5,7 +5,7 @@ import styles from "./ContactCard.module.scss";
 import { LaptopOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import ColorfulCard from "@/components/common/colorful-card";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const ContactCard: React.FC = () => {
   const contactInfo = [

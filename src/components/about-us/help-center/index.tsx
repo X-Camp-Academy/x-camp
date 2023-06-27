@@ -3,11 +3,12 @@ import React from "react";
 import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
-import QAPart from "./QAPart";
-import ContactUs from "./ContactUs";
 
 const TopBanner = dynamic(() => import("./TopBanner"));
 const Comments = dynamic(() => import("@/components/home/Comments"));
+const QAPart = dynamic(() => import("./QAPart"));
+const ContactUs = dynamic(() => import("./ContactUs"));
+
 const { Content } = Layout;
 
 const HelpCenter: React.FC = () => {

@@ -20,5 +20,9 @@
   .image {
     width: 422px;
     height: 262px;
+
+    @media (max-width: 768px) {
+      display: none;
+  }
   }
 }

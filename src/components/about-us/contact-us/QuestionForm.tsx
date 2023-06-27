@@ -5,7 +5,7 @@ import styles from "./QuestionForm.module.scss";
 import QACard from "@/components/common/q&a";
 
 const { TextArea } = Input;
-const { Title, Paragraph, Text } = Typography;
+const { Title } = Typography;
 
 const QAPart: React.FC = () => {
   const QAData = [

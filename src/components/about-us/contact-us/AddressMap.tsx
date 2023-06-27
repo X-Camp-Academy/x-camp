@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Row, Col, Card, Typography } from "antd";
+import { Row, Col, Typography } from "antd";
 import styles from "./AddressMap.module.scss";
 import { useMobile } from "@/utils";
 
@@ -16,7 +16,7 @@ const AddressMap: React.FC = () => {
           xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 24 }}
-          lg={{ span: 12 }}
+          lg={{ span: 10 }}
         >
           <Title>X-Camp Academy</Title>
           <br />
@@ -33,14 +33,14 @@ const AddressMap: React.FC = () => {
           xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 24 }}
-          lg={{ span: 12 }}
+          lg={{ span: 14 }}
         >
           <iframe
             title="Google Maps"
             aria-label="Google Maps"
             src="https://www.google.com/maps/d/embed?mid=1kV6Z3Mv3d8Z-1rtLqP9rXmX3QPh_ivth&ehbc=2E312F"
-            width={isMobile ? "100%" : 640}
-            height={isMobile ? "400" : 480}
+            width={"100%"}
+            height={isMobile ? 400 : 480}
           />
         </Col>
       </Row>
