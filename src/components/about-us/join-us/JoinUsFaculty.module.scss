@@ -1,0 +1,45 @@
+.joinUsFacultyContainer {
+    @media (max-width: 768px){
+       padding: 20px;
+    }
+    .joinUsFaculty {
+        display: flex;
+        @media (max-width: 768px){
+            display: block;
+        }
+
+        .xCampIntro {
+            .logo {
+                width: 40%;
+            }
+
+            .introText {
+                margin-top: 30px;
+                font-size: 18px;
+                font-weight: 500;
+                color: #172142;
+                line-height: 34px;
+            }
+
+            .introBtn {
+                display: flex;
+                align-items: center;
+                padding: 30px 52px;
+                background: #FFAD11;
+                border-radius: 12px;
+                font-size: 24px;
+                font-weight: 500;
+                color: #FFFFFF;
+                line-height: 36px;
+            }
+        }
+
+        .facultyImgs {
+            padding: 30px;
+            width: 100%;
+            @media (max-width: 768px){
+                padding: 30px;
+            }
+        }
+    }
+}

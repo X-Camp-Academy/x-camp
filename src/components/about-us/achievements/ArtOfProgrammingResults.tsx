@@ -1,6 +1,6 @@
-import { Space, Row, Col, Card, Image, Typography, List } from "antd";
+import { Card, Typography, List } from "antd";
 import styles from "./ArtOfProgrammingResults.module.scss";
-import React, { useRef } from "react";
+import React from "react";
 const { Title, Paragraph, Text } = Typography;
 
 const ArtOfProgrammingResults: React.FC = () => {
