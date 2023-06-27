@@ -10,8 +10,14 @@ interface Props {
   question: string;
   answer: string;
   index: number;
+  className?: string;
 }
-const QACard: React.FC<Props> = ({ question, answer, index }) => {
+const QACard: React.FC<Props> = ({
+  question,
+  answer,
+  index,
+  className = "",
+}) => {
   const threeColors = ["#FFD600", "#FFAD11", "#D46B14"];
   const computedStyle = (index: number) => {
     const defaultStyle = {
@@ -32,7 +38,7 @@ const QACard: React.FC<Props> = ({ question, answer, index }) => {
           style={{ color: "#FFAD11", fontSize: 24 }}
         />
       )}
-      className={styles.collapse}
+      className={`${styles.collapse} ${className}`}
       style={computedStyle(index)}
     >
       <Panel
