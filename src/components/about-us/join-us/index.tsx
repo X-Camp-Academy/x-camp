@@ -1,17 +1,20 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import {
+  ConfigProvider,
+  Layout,
+} from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 
 const TopBanner = dynamic(() => import("./TopBanner"));
-const Comments = dynamic(() => import("@/components/home/Comments"));
-const QAPart = dynamic(() => import("./QAPart"));
-const ContactUs = dynamic(() => import("./ContactUs"));
+const JobSelection = dynamic(() => import("./JobSelection"));
+const JoinUsFaculty = dynamic(() => import("./JoinUsFaculty"));
+const WhyWorkWithUs = dynamic(() => import("./WhyWorkWithUs"));
 
 const { Content } = Layout;
 
-const HelpCenter: React.FC = () => {
+const JoinUs: React.FC = () => {
   return (
     <ConfigProvider
       theme={{
@@ -20,16 +23,16 @@ const HelpCenter: React.FC = () => {
         },
       }}
     >
-      <Layout className={styles.QAContainer}>
+      <Layout className={styles.joinUsContainer}>
         <Content>
           <TopBanner />
-          <QAPart />
-          <ContactUs />
-          <Comments />
+          <JobSelection />
+          <JoinUsFaculty />
+          <WhyWorkWithUs/>
         </Content>
       </Layout>
     </ConfigProvider>
   );
 };
 
-export default HelpCenter;
+export default JoinUs;

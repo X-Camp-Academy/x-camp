@@ -11,7 +11,7 @@ import {
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import { LeftCircleTwoTone, RightCircleTwoTone, setTwoToneColor } from "@ant-design/icons";
-import styles from "./USACOMedal.module.scss";
+import styles from "./USACOWinners.module.scss";
 import React, { useRef } from "react";
 import Link from "next/link";
 import ColorfulCard from "@/components/common/colorful-card";
@@ -135,10 +135,9 @@ const USACOMedal: React.FC = () => {
             ></Button>
 
             <Carousel ref={carouselEL} dots={false}>
-              {comments.map((page, index) => {
+              {comments?.map((page, index) => {
                 return (
-                  // eslint-disable-next-line react/jsx-key
-                  <div>
+                  <div key={index}>
                     <Row
                       gutter={40}
                       justify="center"
@@ -244,7 +243,7 @@ const USACOMedal: React.FC = () => {
               </Link>
 
               <Row className={styles.row} gutter={16}>
-                {cardData.map((item) => {
+                {cardData?.map((item) => {
                   return (
                     <Col
                       key={item.number}
