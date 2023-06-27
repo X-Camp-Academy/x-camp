@@ -6,7 +6,7 @@ import WithLayout from "@/hoc/WithLayout";
 
 const Nav = dynamic(() => import("@/components/common/nav"));
 const Footer = dynamic(() => import("@/components/common/footer"));
-const BackTop = dynamic(() => import("@/components/common/back-top"));
+//const BackTop = dynamic(() => import("@/components/common/back-top"));
 
 export default function RootLayout({
   children,
@@ -25,7 +25,7 @@ export default function RootLayout({
             <Nav />
             <WithLayout>{children}</WithLayout>
             <Footer />
-            <BackTop />
+            {/* <BackTop /> */}
           </body>
         </html>
       </WithIntl>
