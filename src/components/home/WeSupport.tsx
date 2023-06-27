@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { Space, Typography, Row, Col, Card, Image } from "antd";
+import { Space, Typography, Row, Col, Card, Image, Carousel } from "antd";
 import { addAllAnimatePulse, removeAllAnimatePulse, useMobile } from "@/utils";
 import styles from "./WeSupport.module.scss";
 
@@ -10,6 +10,7 @@ const WeSupport: React.FC = () => {
   const images = [
     "/image/home/we-support-1.png",
     "/image/home/we-support-2.png",
+    "/image/home/we-support-3.png",
     "/image/home/we-support-3.png",
   ];
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -63,7 +64,7 @@ const WeSupport: React.FC = () => {
               sm={{ span: 24, order: 1 }}
               md={{ span: 24, order: 2 }}
             >
-              <Space className={styles.imageSpace}>
+              <Carousel autoplay={true} slidesToShow={3} infinite={true} dots={false}>
                 {images.map((item, index) => {
                   return (
                     <div
@@ -71,17 +72,17 @@ const WeSupport: React.FC = () => {
                       ref={refs[index]}
                       onMouseEnter={() => addAllAnimatePulse(refs, index)}
                       onMouseLeave={() => removeAllAnimatePulse(refs, index)}
+                      className={styles.imageBox}
                     >
                       <Image
                         src={item}
                         alt="image"
                         preview={false}
-                        className={styles.image}
                       />
                     </div>
                   );
                 })}
-              </Space>
+              </Carousel>
             </Col>
           </Row>
         </Col>

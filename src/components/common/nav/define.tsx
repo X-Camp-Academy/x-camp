@@ -1,4 +1,3 @@
-import { MenuProps } from "antd";
 import Link from "next/link";
 import { XStarMenuItemType } from "./x-star-menu";
 import { useRouter } from "next/navigation";
@@ -150,7 +149,11 @@ export const useMenuItems = () => {
           key: "contact-us",
         },
         {
-          label: <Link href="/">Achievements</Link>,
+          label: <Link href="/about-us/contact-us">Contact Us</Link>,
+          key: "contact-us",
+        },
+        {
+          label: <Link href="/about-us/achievements">Achievements</Link>,
           key: "achievements",
         },
         {
@@ -158,7 +161,7 @@ export const useMenuItems = () => {
           key: "faculty&coach",
         },
         {
-          label: <Link href="/">Join Us</Link>,
+          label: <Link href="/about-us/join-us">Join Us</Link>,
           key: "join-us",
         },
         {
@@ -166,7 +169,7 @@ export const useMenuItems = () => {
           key: "partners",
         },
         {
-          label: <Link href="/">News</Link>,
+          label: <Link href="/about-us/news">News</Link>,
           key: "news",
         },
         {

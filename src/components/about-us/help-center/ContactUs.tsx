@@ -2,6 +2,7 @@
 import React from "react";
 import { Typography, Button, Space } from "antd";
 import styles from "./ContactUs.module.scss";
+import Link from "next/link";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -22,8 +23,9 @@ const ContactUs: React.FC = () => {
               }
             </strong>
           </Paragraph>
-
-          <Button className={styles.button}>Contact Us</Button>
+          <Link href="/about-us/contact-us">
+            <Button className={styles.button}>Contact Us</Button>
+          </Link>
         </Space>
       </div>
     </div>
