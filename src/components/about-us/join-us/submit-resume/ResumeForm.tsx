@@ -1,7 +1,4 @@
 import {
-    Space,
-    Row,
-    Card,
     Typography,
     Divider,
     Form,
@@ -9,26 +6,27 @@ import {
     Input,
     Radio
 } from "antd";
-import {
-    ClockCircleOutlined,
-    BranchesOutlined,
-    DownCircleOutlined,
-} from "@ant-design/icons";
 import styles from "./ResumeForm.module.scss";
-import React, { useState } from "react";
-import JobCardHeader from "../JobCardHeader";
-import JobCardDetail from "../JobCardDetail";
-import Link from "next/link";
+import React from "react";
 const { Title, Text, Paragraph } = Typography;
 
 const ResumeForm: React.FC = () => {
 
-    const basicInfoFormItem = [
+    const requiredInfoFormItem = [
         { name: 'firstName', placeholder: 'First Name *' },
         { name: 'lastName', placeholder: 'Last Name *' },
         { name: 'email', placeholder: 'Email *' },
         { name: 'phone', placeholder: 'Phone *' },
+    ]
 
+    const upLoadFormData = [
+        { title: 'Resume/CV*', btnText: 'Upload File' },
+        { title: 'Cover Letter', btnText: 'Upload File' },
+    ]
+
+    const RadioData = [
+        { text: 'This position is located in Mountain View, CA. Are you able to commute to the office and/or are you willing to relocate?*' },
+        { text: 'Are you currently or were you previously an Alphabet employee, contractor, or intern?*' }
     ]
 
     const [form] = Form.useForm();
@@ -43,13 +41,13 @@ const ResumeForm: React.FC = () => {
                 size="large"
                 className={styles.formContainer}
             >
-                
+
                 <Title className={styles.title}>Apply Now</Title>
                 <Text className={styles.description}>Fields marked with * are required</Text>
 
 
                 <div className={styles.basicInfoContainer}>
-                    {basicInfoFormItem?.map((item, index) => {
+                    {requiredInfoFormItem?.map((item, index) => {
                         return (
                             <Form.Item
                                 name={item.name}
@@ -62,15 +60,14 @@ const ResumeForm: React.FC = () => {
                     })}
                 </div>
 
-                <Form.Item>
-                    <Title className={styles.title}>Resume/CV*</Title>
-                    <Button className={styles.upBtn}>Upload File</Button>
-                </Form.Item>
-
-                <Form.Item>
-                    <Title className={styles.title}>Cover Letter</Title>
-                    <Button className={styles.upBtn}>Upload File</Button>
-                </Form.Item>
+                {upLoadFormData?.map((item, index) => {
+                    return (
+                        <Form.Item key={index}>
+                            <Title className={styles.title}>{item.title}</Title>
+                            <Button className={styles.upBtn}>{item.btnText}</Button>
+                        </Form.Item>
+                    )
+                })}
 
 
                 <Form.Item
@@ -85,27 +82,20 @@ const ResumeForm: React.FC = () => {
                     <Input placeholder="Website" className={styles.inputInfo} />
                 </Form.Item>
 
-                <Form.Item>
-                    <div style={{ marginBottom: 20 }}>
-                        <Text className={styles.problem}>This position is located in Mountain View, CA. Are you able to commute to the office and/or are you willing to relocate?*</Text>
-                    </div>
+                {RadioData?.map((item, index) => {
+                    return (
+                        <Form.Item key={index}>
+                            <div style={{ marginBottom: 20 }}>
+                                <Text className={styles.problem}>{item.text}</Text>
+                            </div>
 
-                    <Radio.Group >
-                        <Radio value="1" className={styles.problem}> Yes </Radio>
-                        <Radio value="0" className={styles.problem}> No </Radio>
-                    </Radio.Group>
-                </Form.Item>
-
-                <Form.Item>
-                    <div style={{ marginBottom: 20 }}>
-                        <Text className={styles.problem}>Are you currently or were you previously an Alphabet employee, contractor, or intern?*</Text>
-                    </div>
-
-                    <Radio.Group>
-                        <Radio value="1" className={styles.problem}> Yes </Radio>
-                        <Radio value="0" className={styles.problem}> No </Radio>
-                    </Radio.Group>
-                </Form.Item>
+                            <Radio.Group>
+                                <Radio value="1" className={styles.problem}> Yes </Radio>
+                                <Radio value="0" className={styles.problem}> No </Radio>
+                            </Radio.Group>
+                        </Form.Item>
+                    )
+                })}
 
                 <Form.Item>
                     <Text className={styles.title}>Application consent for X</Text>

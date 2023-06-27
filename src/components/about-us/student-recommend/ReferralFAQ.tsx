@@ -1,10 +1,8 @@
-import { Space, Row, Col, Image, Typography, Button, Card, List, Avatar } from "antd";
+import { Typography } from "antd";
 import styles from './ReferralFAQ.module.scss';
 import React from "react";
-import ColorfulCard from "@/components/common/colorful-card";
 import QACard from "@/components/common/q&a";
-import Link from "next/link";
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 
 const ReferralFAQ: React.FC = () => {
     const QAData = [
@@ -30,19 +28,19 @@ const ReferralFAQ: React.FC = () => {
         <>
             <div className={styles.ReferralFAQContainer}>
                 <div className={`${styles.ReferralFAQ} container`}>
-                    
-                        <Title className={styles.title}>Referral FAQs</Title>
-                        <div className={styles.cardContent}>
-                            {QAData.map((item, index) => (
-                                <QACard
-                                    key={"referral" + index}
-                                    question={item.question}
-                                    answer={item.answer}
-                                    index={index}
-                                    className={styles.qaCard}
-                                />
-                            ))}
-                        </div>
+
+                    <Title className={styles.title}>Referral FAQs</Title>
+                    <div className={styles.cardContent}>
+                        {QAData.map((item, index) => (
+                            <QACard
+                                key={"referral" + index}
+                                question={item.question}
+                                answer={item.answer}
+                                index={index}
+                                className={styles.qaCard}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </>

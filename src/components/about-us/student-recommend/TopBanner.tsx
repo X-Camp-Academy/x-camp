@@ -1,4 +1,4 @@
-import { Space, Row, Col, Image, Typography, Button } from "antd";
+import { Space, Row, Col, Image, Typography } from "antd";
 import styles from './TopBanner.module.scss';
 const { Title, Paragraph } = Typography;
 

@@ -1,4 +1,4 @@
-import { Space, Row, Col, Image, Typography, Button, Card } from "antd";
+import { Space, Image, Typography, Card } from "antd";
 import styles from './ReferralProgramMain.module.scss';
 import React from "react";
 import ColorfulCard from "@/components/common/colorful-card";
