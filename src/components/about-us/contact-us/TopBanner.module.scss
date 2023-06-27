@@ -2,6 +2,8 @@
   width: 100%;
   padding-bottom: 100px;
   background-color: #ffad11;
+  position:relative;
+ 
   .col {
     margin-top: 100px;
   }
@@ -18,11 +20,12 @@
     line-height: 42px;
   }
   .image {
-    width: 422px;
-    height: 262px;
-
+    position: absolute;
+    width: 300px;
+    bottom: -100px;
+    left: 60%;
     @media (max-width: 768px) {
-      display: none;
-  }
-  }
+        display: none;
+    }
+}
 }
