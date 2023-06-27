@@ -1,7 +1,7 @@
-'use client';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+"use client";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   ConfigProvider,
   Layout,
@@ -12,29 +12,29 @@ import {
   Button,
   Dropdown,
   MenuProps,
-} from 'antd';
-import { TranslationOutlined, UnorderedListOutlined } from '@ant-design/icons';
-import 'animate.css';
-import styles from './index.module.scss';
-import { useMobile } from '@/utils';
-import { useUpdate } from 'ahooks';
-import { removeDropdown, useMenuItems } from './define';
-import XStarMenu from './x-star-menu';
+} from "antd";
+import { TranslationOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import "animate.css";
+import styles from "./index.module.scss";
+import { useMobile } from "@/utils";
+import { useUpdate } from "ahooks";
+import { removeDropdown, useMenuItems } from "./define";
+import XStarMenu from "./x-star-menu";
 
 const { Header } = Layout;
-const items: MenuProps['items'] = [
+const items: MenuProps["items"] = [
   {
-    key: 'en',
-    label: 'English',
+    key: "en",
+    label: "English",
   },
   {
-    key: 'zh',
-    label: '中文',
+    key: "zh",
+    label: "中文",
   },
 ];
 
 const Nav: React.FC = () => {
-  const [current, setCurrent] = useState('/');
+  const [current, setCurrent] = useState("/");
   const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
   const { Search } = Input;
@@ -42,10 +42,7 @@ const Nav: React.FC = () => {
   const menuItems = useMenuItems();
 
   const onSearch = (value: string) => console.log(value);
-  const handleMenuClick: MenuProps['onClick'] = (e) => {
-    console.log(e);
-    console.log(e.key);
-    console.log(pathname);
+  const handleMenuClick: MenuProps["onClick"] = (e) => {
     setCurrent(e.key);
   };
 
@@ -53,8 +50,8 @@ const Nav: React.FC = () => {
   useEffect(() => {
     if (showMenu) {
       (ref?.current as HTMLDivElement)?.classList?.add(
-        'animate__animated',
-        'animate__slideInRight'
+        "animate__animated",
+        "animate__slideInRight"
       );
     } else {
     }
@@ -64,19 +61,19 @@ const Nav: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       // 处理页面伸缩事件的逻辑
-      console.log('页面伸缩事件发生了');
+      console.log("页面伸缩事件发生了");
     };
 
     // 添加页面伸缩事件监听器
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // 在组件销毁时移除事件监听器
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  const mobileMenuItems: MenuProps['items'] = useMemo(() => {
+  const mobileMenuItems: MenuProps["items"] = useMemo(() => {
     // 手机端则去除dropdown
     return isMobile ? removeDropdown(menuItems) : menuItems;
   }, [menuItems, isMobile]);
@@ -85,7 +82,7 @@ const Nav: React.FC = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
+          colorPrimary: "#FFAD11",
         },
       }}
     >
@@ -157,11 +154,11 @@ const Nav: React.FC = () => {
                 className={styles.button}
                 onClick={() => {
                   (ref?.current as HTMLDivElement)?.classList?.remove(
-                    'animate__slideInRight'
+                    "animate__slideInRight"
                   );
                   (ref?.current as HTMLDivElement)?.classList?.add(
-                    'animate__animated',
-                    'animate__slideOutRight'
+                    "animate__animated",
+                    "animate__slideOutRight"
                   );
                   setTimeout(() => {
                     setShowMenu(false);
