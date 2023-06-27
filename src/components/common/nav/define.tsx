@@ -65,7 +65,11 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <Link href="/">Weekly Education Forum</Link>,
+          label: (
+            <Link href="/resources/weekly-education-forum">
+              Weekly Education Forum
+            </Link>
+          ),
           key: "weekly-education-forum",
         },
         {
@@ -83,7 +87,7 @@ export const useMenuItems = () => {
           key: "usaco-live-solution",
         },
         {
-          label: <Link href="/">Contests</Link>,
+          label: <Link href="/resources/contests">Contests</Link>,
           key: "contests",
         },
         {
@@ -139,6 +143,10 @@ export const useMenuItems = () => {
         {
           label: <Link href="/">School Calendar</Link>,
           key: "school-calendar",
+        },
+        {
+          label: <Link href="/">Contact Us</Link>,
+          key: "contact-us",
         },
         {
           label: <Link href="/about-us/contact-us">Contact Us</Link>,
