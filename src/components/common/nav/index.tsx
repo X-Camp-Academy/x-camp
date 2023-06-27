@@ -144,7 +144,7 @@ const Nav: React.FC = () => {
               )}
             </Space>
           </Space>
-          {showMenu && (
+          {isMobile && showMenu && (
             <Space ref={ref} direction="vertical" className={styles.showMenu}>
               <Button
                 type="primary"
