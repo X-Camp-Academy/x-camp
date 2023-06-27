@@ -1,0 +1,25 @@
+.qaContent {
+  margin-top: 1rem;
+  padding-bottom: 6.25rem;
+
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #d46b14;
+    line-height: 64px;
+    margin:0 0 40px 0;
+  }
+
+  .card
+  {
+    margin-top: 24px;
+    width: 100%;
+    text-align: center;
+    .formTitle{
+      font-size: 36px;
+      font-weight: bold;
+      color: #d46b14;
+
+    }
+  }
+}
