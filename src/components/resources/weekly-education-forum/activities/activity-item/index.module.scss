@@ -1,0 +1,59 @@
+.content {
+  width: 100%;
+  padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 30px 0;
+  }
+
+  .cards {
+    .card {
+      background: #ffffff;
+      border-radius: 8px 8px 12px 12px;
+
+      img {
+        width: 100%;
+      }
+
+      .cardContent {
+        padding: 36px;
+
+        @media (max-width: 768px) {
+          padding: 24px;
+        }
+
+        .title {
+          font-size: 24px;
+          font-weight: 600;
+          color: #172142;
+          line-height: 32px;
+
+          .btn {
+            color: #ffad11;
+            font-size: 18px;
+          }
+        }
+
+        .description {
+          display: flex;
+          justify-content: space-between;
+          font-size: 16px;
+          font-weight: 400;
+          color: #666666;
+          line-height: 28px;
+
+          .icon {
+            margin-right: 4px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
