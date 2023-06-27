@@ -1,0 +1,47 @@
+@import "@/styles/variables";
+
+.description {
+  font-size: 18px;
+  font-weight: 500;
+  color: #172142;
+  line-height: 34px;
+  margin-bottom: 40px;
+}
+
+.title {
+  color: #d46b14;
+  font-size: 18px;
+  line-height: 40px;
+  font-weight: 600;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #d46b14;
+    border: 2px solid $primary-color;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.time {
+  font-size: 18px;
+  font-weight: 500;
+  color: #172142;
+  line-height: 34px;
+  margin-left: 24px;
+}
+
+.link {
+  font-size: 18px;
+  color: $primary-color;
+  text-decoration: underline;
+  margin-left: 24px;
+
+  &:hover {
+    color: $primary-color;
+    opacity: 0.8;
+  }
+}
