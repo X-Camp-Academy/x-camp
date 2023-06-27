@@ -1,0 +1,53 @@
+.contactUs
+{
+   
+    .card{
+      background-color: #FFAD11;
+      border-radius: 12px;
+      padding:60px 50px;
+      position:relative;
+      .circleRight
+      {
+        position: absolute;
+        width: 180px;
+        height: 90px;
+        background-color: #ffffff32;
+        border-radius: 0 0 100px 100px;
+        right:20px;
+        top:0;
+      }
+
+      .circleLeft
+      {
+        position: absolute;
+        width: 180px;
+        height: 90px;
+        background-color: #ffffff32;
+        border-radius: 100px 100px 0 0 ;
+        left:0px;
+        bottom:0;
+      }
+      
+      .title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #D46B14;
+        line-height: 48px;
+       
+      }
+      .button
+      {
+          width: 288px;
+          height: 64px;
+          background: #D46B14;
+          border-radius: 12px;
+          border: 0;
+          font-size: 24px;
+          font-weight: 500;
+          color: #FFAD11;
+          line-height: 36px;
+      }
+    }
+    
+      
+}

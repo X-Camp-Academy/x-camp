@@ -54,7 +54,7 @@ export const useMenuItems = () => {
       ],
     },
     {
-      label: <Link href="/resources">Resources</Link>,
+      label: <Link href="/">Resources</Link>,
       key: 'resources',
       dropdown: {
         left: {
@@ -70,11 +70,17 @@ export const useMenuItems = () => {
           key: 'weekly-education-forum',
         },
         {
-          label: <Link href="/">Weekly Open House</Link>,
+          label: (
+            <Link href="/resources/weekly-open-house">Weekly Open House</Link>
+          ),
           key: 'weekly-open-house',
         },
         {
-          label: <Link href="/">USACo Live solution</Link>,
+          label: (
+            <Link href="/resources/usaco-live-solutions">
+              USACo Live solution
+            </Link>
+          ),
           key: 'usaco-live-solution',
         },
         {
@@ -160,8 +166,8 @@ export const useMenuItems = () => {
           key: 'news',
         },
         {
-          label: <Link href="/">QA</Link>,
-          key: 'qa',
+          label: <Link href="/about-us/help-center">QA</Link>,
+          key: 'help-center',
         },
         {
           label: <Link href="/about-us/x-alumni">X-Alumni</Link>,

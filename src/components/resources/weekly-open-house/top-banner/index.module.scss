@@ -1,0 +1,37 @@
+@import "@/styles/variables";
+
+.banner {
+  width: 100%;
+  height: 488px;
+  background-color: $primary-color;
+  padding: 76px 174px;
+
+  .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      font-size: 48px;
+      font-weight: bold;
+      color: #d46b14;
+      line-height: 64px;
+    }
+
+    .description {
+      font-size: 24px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 42px;
+    }
+
+    .btn {
+      background-color: #d46b14;
+      color: $primary-color;
+      width: 270px;
+      height: 64px;
+      font-size: 24px;
+    }
+  }
+}
