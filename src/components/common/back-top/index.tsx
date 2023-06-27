@@ -16,13 +16,12 @@ const BackTop: React.FC = () => {
     rootElement.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  return (
-    scroll &&
-    scroll?.top > 500 && (
-      <div className={styles.backTop} onClick={scrollToTop}>
-        <VerticalAlignTopOutlined className={styles.icon} />
-      </div>
-    )
+  return scroll && scroll?.top > 500 ? (
+    <div className={styles.backTop} onClick={scrollToTop}>
+      <VerticalAlignTopOutlined className={styles.icon} />
+    </div>
+  ) : (
+    <></>
   );
 };
 
