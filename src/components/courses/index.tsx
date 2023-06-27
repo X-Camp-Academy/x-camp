@@ -22,7 +22,9 @@ import ColorfulCard from '../common/colorful-card';
 import { useRouter } from 'next/navigation';
 import { classesData } from './define';
 import Comments from '../home/Comments';
-import AnchorNav from './AnchorNav';
+// import AnchorNav from './AnchorNav';
+import dynamic from 'next/dynamic';
+const AnchorNav = dynamic(() => import('./AnchorNav'), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 const { Title } = Typography;
@@ -149,9 +151,8 @@ const Courses = () => {
                         })}
                       </>
                     </Panel>
-
-                    <Divider className={styles.divider} />
                   </Collapse>
+                  <Divider className={styles.divider} />
                 </div>
               );
             })}
