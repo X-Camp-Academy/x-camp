@@ -88,7 +88,7 @@ export const useMenuItems = () => {
           key: "usaco-live-solution",
         },
         {
-          label: <Link href="/">Contests</Link>,
+          label: <Link href="/resources/contests">Contests</Link>,
           key: "contests",
         },
         {
