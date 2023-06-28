@@ -1,3 +1,4 @@
+@import "@/styles/variables";
 .calendarContent {
   width: 100%;
 
@@ -15,10 +16,28 @@
       background: url("/logo/x-camp-logo.png") no-repeat;
       margin-right: 0;
       background-position: right bottom;
-      
+      position: relative;
+
+      .bookButton 
+      {
+        position: absolute;
+        right:20px;
+        width: 80px;
+        height: 80px;
+        background: #D46B14;
+        top:0;
+        border-radius: 8px;
+        border: none;
+        font-size: 40px;
+        font-weight: 500;
+        color: #FFFFFF;
+        line-height: 24px;
+  
+        &:hover {
+          @extend .hoverButton;
+        }
+      }
     }
-}
-
-
+  }
    
 }
