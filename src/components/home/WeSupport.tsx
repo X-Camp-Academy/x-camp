@@ -1,10 +1,10 @@
 "use client";
 import React, { useRef } from "react";
-import { Space, Typography, Row, Col, Card, Image, Carousel } from "antd";
-import { addAllAnimatePulse, removeAllAnimatePulse, useMobile } from "@/utils";
+import { Space, Typography, Row, Col, Image, Carousel } from "antd";
+import { addAnimate, removeAnimate } from "@/utils";
 import styles from "./WeSupport.module.scss";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const WeSupport: React.FC = () => {
   const images = [
@@ -13,12 +13,10 @@ const WeSupport: React.FC = () => {
     "/image/home/we-support-3.png",
     "/image/home/we-support-3.png",
   ];
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const refs = Array.from({ length: images.length }, () =>
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useRef<HTMLDivElement>(null)
   );
-  const isMobile = useMobile();
   return (
     <div className={`${styles.weSupport} container`}>
       <Row>
@@ -64,21 +62,22 @@ const WeSupport: React.FC = () => {
               sm={{ span: 24, order: 1 }}
               md={{ span: 24, order: 2 }}
             >
-              <Carousel autoplay={true} slidesToShow={3} infinite={true} dots={false}>
+              <Carousel
+                autoplay={true}
+                slidesToShow={3}
+                infinite={true}
+                dots={false}
+              >
                 {images.map((item, index) => {
                   return (
                     <div
                       key={index}
                       ref={refs[index]}
-                      onMouseEnter={() => addAllAnimatePulse(refs, index)}
-                      onMouseLeave={() => removeAllAnimatePulse(refs, index)}
+                      onMouseEnter={() => addAnimate(refs[index])}
+                      onMouseLeave={() => removeAnimate(refs[index])}
                       className={styles.imageBox}
                     >
-                      <Image
-                        src={item}
-                        alt="image"
-                        preview={false}
-                      />
+                      <Image src={item} alt="image" preview={false} />
                     </div>
                   );
                 })}
