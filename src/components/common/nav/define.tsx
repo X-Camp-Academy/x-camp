@@ -141,7 +141,7 @@ export const useMenuItems = () => {
           key: "introduction",
         },
         {
-          label: <Link href="/">School Calendar</Link>,
+          label: <Link href="/about-us/calendar">School Calendar</Link>,
           key: "school-calendar",
         },
         {
