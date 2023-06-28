@@ -23,7 +23,6 @@ const ColorfulCard: React.FC<Props> = ({
   className = "",
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const animateName = "hvr-float";
   const threeColors = ["#D46B14", "#FFAD11", "#FFD600"];
   const fourColors = ["#00A0E9", ...threeColors];
   const computedStyle = (
@@ -56,8 +55,8 @@ const ColorfulCard: React.FC<Props> = ({
     <div
       ref={animate ? ref : null}
       style={computedStyle(border, index, reverse)}
-      onMouseEnter={() => addAnimate(ref, animateName)}
-      onMouseLeave={() => removeAnimate(ref, animateName)}
+      onMouseEnter={() => addAnimate(ref)}
+      onMouseLeave={() => removeAnimate(ref)}
       className={className}
     >
       {children}
