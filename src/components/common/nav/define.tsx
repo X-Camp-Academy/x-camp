@@ -141,7 +141,7 @@ export const useMenuItems = () => {
           key: "introduction",
         },
         {
-          label: <Link href="/">School Calendar</Link>,
+          label: <Link href="/about-us/calendar">School Calendar</Link>,
           key: "school-calendar",
         },
         {
@@ -181,8 +181,8 @@ export const useMenuItems = () => {
           key: "x-alumni",
         },
         {
-          label: <Link href="/">Current Student Referral Program</Link>,
-          key: "current-student-referral-program",
+          label: <Link href="/about-us/student-recommend">Current Student Referral Program</Link>,
+          key: 'current-student-referral-program',
         },
       ],
     },

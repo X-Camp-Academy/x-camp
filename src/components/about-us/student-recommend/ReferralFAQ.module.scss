@@ -1,0 +1,29 @@
+.ReferralFAQContainer {
+    .ReferralFAQ {
+        width: 70%;
+
+        .title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 600;
+            color: #D46B14;
+            line-height: 64px;
+        }
+
+        .cardContent {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .qaCard {
+                width: 100%;
+                margin: 24px 0;
+            }
+        }
+    }
+
+    :global(.ant-collapse-item) {
+        padding: 0px 25px;
+    }
+}
