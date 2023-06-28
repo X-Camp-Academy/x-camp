@@ -181,8 +181,8 @@ export const useMenuItems = () => {
           key: "x-alumni",
         },
         {
-          label: <Link href="/">Current Student Referral Program</Link>,
-          key: "current-student-referral-program",
+          label: <Link href="/about-us/student-recommend">Current Student Referral Program</Link>,
+          key: 'current-student-referral-program',
         },
       ],
     },

@@ -12,9 +12,10 @@ import {
 } from "@ant-design/icons";
 import styles from "./JobCardHeader.module.scss";
 import { useState } from "react";
+import Link from "next/link";
 const { Title, Text } = Typography;
 
-const JobCardHeader: React.FC = () => {
+const JobCardHeader: React.FC<{ showExplandBtn?: boolean }> = ({ showExplandBtn = true }) => {
   const [isExpland, setIsExpland] = useState<boolean>(false);
   const handlerExpland = () => {
     setIsExpland(!isExpland);
@@ -23,7 +24,7 @@ const JobCardHeader: React.FC = () => {
     <>
       <Card
         className={styles.cardContainer}
-        style={isExpland ? { borderRadius: '10px 10px 0 0'} : { borderRadius: 10 }}
+        style={isExpland ? { borderRadius: '10px 10px 0 0' } : { borderRadius: 10 }}
         onClick={handlerExpland}
       >
         <Row>
@@ -36,12 +37,14 @@ const JobCardHeader: React.FC = () => {
             }}
           >
             <Title className={styles.JobCardTitle}>Admissions Counselor</Title>
-            <Button
-              className={`${styles.explandBtn} ${
-                isExpland ? styles.explandIcon : ""
-              }`}
-              icon={<DownCircleOutlined />}
-            ></Button>
+            {showExplandBtn && (
+              <Button
+                className={`${styles.explandBtn} ${isExpland ? styles.explandIcon : ""
+                  }`}
+                icon={<DownCircleOutlined />}
+              ></Button>
+            )}
+
           </div>
         </Row>
         <Row>
@@ -65,7 +68,10 @@ const JobCardHeader: React.FC = () => {
                 <Text className={styles.iconText}>remote</Text>
               </div>
             </div>
-            <Button className={styles.applyBtn}>Apply Now</Button>
+            {showExplandBtn && (
+              <Link className={styles.applyBtn} href="/about-us/join-us/submit-resume">Apply Now</Link>
+            )}
+
           </Space>
         </Row>
       </Card>
