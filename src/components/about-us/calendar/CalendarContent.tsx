@@ -1,4 +1,4 @@
-import { Button, Timeline, Typography } from "antd";
+import { Button, Typography } from "antd";
 
 import React from "react";
 
