@@ -4,7 +4,7 @@ import { Typography, Row, Col, Card, Space, Image } from "antd";
 import Texty from "rc-texty";
 import "animate.css";
 import styles from "./DiscoverCourses.module.scss";
-import { addAnimatePulse, removeAnimatePulse } from "@/utils";
+import { addAnimate, removeAnimate } from "@/utils";
 
 const { Title, Paragraph } = Typography;
 
@@ -58,8 +58,8 @@ const DiscoverCourses: React.FC = () => {
             <Col key={item?.url} xs={24} sm={24} md={12} lg={6}>
               <Card
                 ref={refs[index]}
-                onMouseEnter={() => addAnimatePulse(refs[index])}
-                onMouseLeave={() => removeAnimatePulse(refs[index])}
+                onMouseEnter={() => addAnimate(refs[index])}
+                onMouseLeave={() => removeAnimate(refs[index])}
                 className={styles.card}
                 bodyStyle={{
                   backgroundColor: item?.bgc,

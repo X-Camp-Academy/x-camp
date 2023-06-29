@@ -1,0 +1,49 @@
+.content {
+  width: 100%;
+  padding: 130px 50px;
+
+  .top,
+  .bottom {
+    .title {
+      font-size: 48px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 48px;
+    }
+
+    .description {
+      font-size: 21px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 40px;
+      margin: 40px 0 32px 0;
+    }
+  }
+
+  .intro {
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 48px;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #d46b14;
+        border: 2px solid #ffad11;
+        margin-right: 10px;
+      }
+    }
+
+    .description {
+      margin-left: 24px;
+      font-size: 21px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 40px;
+    }
+  }
+}
