@@ -1,0 +1,79 @@
+.content {
+  width: 100%;
+
+  .divider {
+    background-color: #ffad11;
+    height: 2px;
+    margin: 0;
+  }
+
+  .contest {
+    padding: 100px 0;
+
+    @media (max-width: 992px) {
+      padding: 50px 0;
+    }
+
+    @media (max-width: 768px) {
+      padding: 20px 0 30px 0;
+    }
+
+    .title {
+      font-size: 48px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 64px;
+
+      @media (max-width: 992px) {
+        font-size: 36px;
+      }
+    }
+
+    .intro {
+      display: flex;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .left {
+        .description {
+          font-size: 18px;
+          font-weight: 500;
+          color: #172142;
+          line-height: 34px;
+          margin: 32px 0 24px 0;
+
+          @media (max-width: 992px) {
+            font-size: 16px;
+            margin: 16px 0 12px 0;
+          }
+        }
+
+        .link {
+          font-size: 18px;
+          font-weight: 400;
+          color: #d46b14;
+          line-height: 34px;
+        }
+      }
+
+      .right {
+        padding-left: 36px;
+
+        @media (max-width: 768px) {
+          padding-left: 0;
+          padding-top: 20px;
+          margin: 0 auto;
+        }
+
+        img {
+          width: 366px;
+          height: 248px;
+          background: #ffeddf;
+          border-radius: 12px;
+        }
+      }
+    }
+  }
+}

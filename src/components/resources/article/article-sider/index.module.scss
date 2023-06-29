@@ -1,0 +1,113 @@
+.content {
+    width: 100%;
+    background-color: #F5F5F5;
+    padding: 30px;
+
+    .calendarContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .activityCalendar {
+            padding: 10px;
+
+            :global(.ant-picker-panel) {
+                border-top: 1px solid #FFAD11;
+                width: 100%;
+            }
+        }
+    }
+
+    .inDayAcyvityContainer {
+        margin-top: 30px;
+
+        .calendarSpace {
+            width: 100%;
+            position: relative;
+
+            .spaceDate {
+                width: 100%;
+
+                .text {
+                    color: #000000;
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: 25px;
+                }
+
+                .line {
+                    position: absolute;
+                    width: calc(100% - 72px);
+                    height: 2px;
+                    border: 1px solid #ffad11;
+                    right: 0;
+                }
+            }
+
+            .calendarItem {
+                width: 100%;
+                margin-top: 24px;
+
+                .itemDate {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: rgba(0, 0, 0, 0.45);
+                    line-height: 20px;
+                    font-weight: 400;
+                }
+
+                .itemParagraph {
+                    width: 100%;
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: rgba(0, 0, 0, 0.88);
+                    line-height: 26px;
+                }
+
+                .itemLine {
+                    width: 100%;
+                    height: 2px;
+                    border: 1px solid #ffad11;
+                }
+            }
+        }
+    }
+
+    .activityCardContainer {
+        margin-top: 20px;
+
+        .card {
+            border: none;
+            margin-bottom: 20px;
+
+            :global(.ant-image) {
+                display: block;
+            }
+
+            .title {
+                font-size: 24px;
+                font-weight: 600;
+                color: #172142;
+                line-height: 32px;
+            }
+
+            .description {
+                padding: 10px;
+                font-size: 18px;
+                font-weight: 400;
+                color: #666666;
+                line-height: 28px;
+
+
+            }
+
+
+
+
+            .btn {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
