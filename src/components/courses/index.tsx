@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   Anchor,
   Card,
@@ -8,35 +8,38 @@ import {
   Layout,
   Space,
   Typography,
-} from 'antd';
-import React from 'react';
-import styles from './index.module.scss';
-import TopBanner from './catalog/top-banner';
+} from "antd";
+import React from "react";
+import styles from "./index.module.scss";
+import TopBanner from "./catalog/top-banner";
 import {
   CaretRightOutlined,
   ClockCircleOutlined,
   DownOutlined,
   RightCircleOutlined,
-} from '@ant-design/icons';
-import ColorfulCard from '../common/colorful-card';
-import { useRouter } from 'next/navigation';
-import { classesData } from './define';
-import Comments from '../home/Comments';
+} from "@ant-design/icons";
+import ColorfulCard from "../common/colorful-card";
+import { useRouter, useSearchParams } from "next/navigation";
+import { classesData } from "./define";
+import Comments from "../home/Comments";
 // import AnchorNav from './AnchorNav';
-import dynamic from 'next/dynamic';
-const AnchorNav = dynamic(() => import('./AnchorNav'), { ssr: false });
+import dynamic from "next/dynamic";
+const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 const { Title } = Typography;
 
 const Courses = () => {
   const router = useRouter();
+  const params = useSearchParams();
+  const courseId = params?.get("courseId");
+  console.log("courseId", courseId);
 
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
+          colorPrimary: "#FFAD11",
         },
       }}
     >
@@ -47,14 +50,14 @@ const Courses = () => {
             {classesData.map((item, index) => {
               return (
                 <div
-                  className={'classify'}
-                  id={'classify' + index}
+                  className={"classify"}
+                  id={"classify" + index}
                   key={item.title}
                 >
                   <Collapse
-                    defaultActiveKey={'classifyCollapse' + index}
+                    defaultActiveKey={"classifyCollapse" + index}
                     ghost
-                    expandIconPosition={'end'}
+                    expandIconPosition={"end"}
                     expandIcon={({ isActive }) => (
                       <div className={styles.changeBtn}>
                         <DownOutlined
@@ -65,7 +68,7 @@ const Courses = () => {
                     )}
                   >
                     <Panel
-                      key={'classifyCollapse' + index}
+                      key={"classifyCollapse" + index}
                       header={<div className={styles.title}>{item.title}</div>}
                     >
                       <>
@@ -92,13 +95,13 @@ const Courses = () => {
                               >
                                 <Space
                                   size={27}
-                                  style={{ width: '100%', flexWrap: 'wrap' }}
+                                  style={{ width: "100%", flexWrap: "wrap" }}
                                 >
                                   {v.children.map((g, index) => {
                                     return (
                                       <ColorfulCard
                                         key={g.id}
-                                        border={'bottom'}
+                                        border={"bottom"}
                                         index={index}
                                         animate={false}
                                         className={styles.colorfulCard}
@@ -107,13 +110,13 @@ const Courses = () => {
                                           <Space
                                             direction="vertical"
                                             style={{
-                                              height: '100%',
-                                              justifyContent: 'space-between',
+                                              height: "100%",
+                                              justifyContent: "space-between",
                                             }}
                                           >
                                             <Title className={styles.cardTitle}>
                                               {
-                                                'CS100P: Python Intro with Creative Projects'
+                                                "CS100P: Python Intro with Creative Projects"
                                               }
                                             </Title>
                                             <ul className={styles.list}>
@@ -128,7 +131,7 @@ const Courses = () => {
                                                 size={5}
                                               >
                                                 <ClockCircleOutlined />
-                                                <span>{'10 weeks'}</span>
+                                                <span>{"10 weeks"}</span>
                                               </Space>
                                               <RightCircleOutlined
                                                 onClick={() =>
