@@ -2,8 +2,6 @@
 import React, { useRef } from "react";
 import {
   Space,
-  Row,
-  Col,
   Card,
   Typography,
   Carousel,
@@ -122,7 +120,6 @@ const XAlumni: React.FC = () => {
                   key={index}
                   border="top"
                   index={index}
-                  animate={false}
                   className={styles.cardContainer}
                 >
                   <Card>

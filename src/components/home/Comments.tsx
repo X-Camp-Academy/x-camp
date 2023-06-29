@@ -1,24 +1,13 @@
 "use client";
 import React, { useRef } from "react";
-import {
-  Space,
-  Row,
-  Col,
-  Card,
-  Image,
-  Rate,
-  Typography,
-  Carousel,
-  Button,
-} from "antd";
+import { Space, Card, Rate, Typography, Carousel, Button } from "antd";
 import styles from "./Comments.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import { useMobile } from "@/utils";
 import ColorfulCard from "../common/colorful-card";
 import classNames from "classnames/bind";
 
-const { Title, Text, Paragraph } = Typography;
+const { Text, Paragraph } = Typography;
 
 const cx = classNames.bind(styles);
 interface Props {
@@ -118,12 +107,14 @@ const Comments = ({ className = "" }: Props) => {
                 key={index}
                 border="top"
                 index={index}
-                animate={false}
                 className={styles.cardContainer}
               >
-                <Card className={styles.card} bodyStyle={{
-                  borderWidth: 2,
-                }}>
+                <Card
+                  className={styles.card}
+                  bodyStyle={{
+                    borderWidth: 2,
+                  }}
+                >
                   <Space direction="vertical">
                     <Text className={styles.cardTitle}>{item?.title}</Text>
                     <Rate disabled defaultValue={item?.rate} />

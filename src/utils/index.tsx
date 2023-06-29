@@ -14,61 +14,32 @@ export const useMobile = () => {
   const breakpoints = Object.entries(screens)
     ?.filter((screen) => !!screen[1])
     ?.map((screen) => screen[0]);
-  // 屏幕 < 992px
   const isMobile = !breakpoints?.includes("md");
   return isMobile;
 };
 
 /**
  * 添加动画效果
+ * ref dom节点
+ * name 动画名
  * @returns
  */
-export const addAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
-  (ref?.current as HTMLDivElement)?.classList?.add(
-    "animate__animated",
-    "animate__pulse",
-    "fixHoverCard"
-  );
+export const addAnimate = (
+  ref: RefObject<HTMLDivElement>,
+  name: string = "hvr-float"
+) => {
+  (ref?.current as HTMLDivElement)?.classList?.add(name);
 };
 
 /**
  * 移除动画效果
+ * ref dom节点、
+ * name 动画名
  * @returns
  */
-export const removeAnimatePulse = (ref: RefObject<HTMLDivElement>) => {
-  (ref?.current as HTMLDivElement)?.classList?.remove(
-    "animate__animated",
-    "animate__pulse"
-  );
-};
-
-/**
- * 添加动画效果
- * @returns
- */
-export const addAllAnimatePulse = (
-  refs: Array<RefObject<HTMLDivElement>>,
-  index: number
+export const removeAnimate = (
+  ref: RefObject<HTMLDivElement>,
+  name: string = "hvr-float"
 ) => {
-  (refs[index]?.current as HTMLDivElement)?.classList?.add(
-    "animate__animated",
-    "animate__pulse",
-    "fixHoverCard"
-  );
-};
-
-/**
- * 移除动画效果
- * @returns
- */
-export const removeAllAnimatePulse = (
-  refs: Array<RefObject<HTMLDivElement>>,
-  index: number
-) => {
-  refs.forEach((ref) => {
-    (ref?.current as HTMLDivElement)?.classList?.remove(
-      "animate__animated",
-      "animate__pulse"
-    );
-  });
+  (ref?.current as HTMLDivElement)?.classList?.remove(name);
 };
