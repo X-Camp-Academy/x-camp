@@ -36,7 +36,6 @@ const UsacoMedal: React.FC = () => {
       <Paragraph className={styles.paragraph}>
         Over the past five years of USACO results
       </Paragraph>
-
       <UsacoCards />
     </div>
   );

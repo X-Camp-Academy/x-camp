@@ -136,7 +136,7 @@ const Faculty: React.FC = () => {
                     paddingBottom: 0,
                   }}
                 >
-                  <Space>
+                  <Space align="center">
                     <Space direction="vertical">
                       <Text className={styles.name}>{item?.name}</Text>
                       <Paragraph

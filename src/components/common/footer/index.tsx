@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import dynamic from "next/dynamic";
 import { ConfigProvider, Layout } from "antd";
+import dynamic from "next/dynamic";
 import styles from "./index.module.scss";
 
 const CopyRight = dynamic(() => import("./CopyRight"));

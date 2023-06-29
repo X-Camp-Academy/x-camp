@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { Space, Row, Col, Card, Image, Typography } from "antd";
-import styles from "./CopyRight.module.scss";
+import { Space, Row, Col, Image, Typography } from "antd";
 import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import styles from "./CopyRight.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -34,17 +34,16 @@ const CopyRight: React.FC = () => {
       hoverSrc: "/image/home/small-red-book-hover.png",
     },
   ];
-  const cloneSource = icons.map((item) => item.src);
-  const [source, setSource] = useState(cloneSource);
+  const source = icons.map((icon) => icon.src);
+  const [imageSrc, setImageSrc] = useState(source);
   const onMouseOver = (index: number) => {
-    const data = JSON.parse(JSON.stringify(source));
-    data[index] = icons[index].hoverSrc;
-    setSource(data);
+    const newImageSrc = [...imageSrc];
+    newImageSrc[index] = icons[index].hoverSrc;
+    setImageSrc(newImageSrc);
   };
-  const onMouseLeave = (index: number) => {
-    const data = JSON.parse(JSON.stringify(source));
-    data[index] = icons[index].src;
-    setSource(data);
+  const onMouseLeave = () => {
+    const newImageSrc = [...source];
+    setImageSrc(newImageSrc);
   };
   return (
     <div className={styles.copyRightContainer}>
@@ -82,18 +81,15 @@ const CopyRight: React.FC = () => {
 
                 <Space>
                   {icons.map((_, index) => (
-                    <Link
-                      key={index}
-                      href="/"
-                      onMouseOver={() => onMouseOver(index)}
-                      onMouseLeave={() => onMouseLeave(index)}
-                    >
+                    <Link href={"/"} key={index}>
                       <Image
                         alt=""
-                        src={source[index]}
+                        src={imageSrc[index]}
                         preview={false}
                         width={28}
                         height={28}
+                        onMouseOver={() => onMouseOver(index)}
+                        onMouseLeave={onMouseLeave}
                       />
                     </Link>
                   ))}
