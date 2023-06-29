@@ -18,6 +18,9 @@ import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
 import { removeDropdown, useMenuItems } from "./define";
 import XStarMenu from "./x-star-menu";
+import { usePathname } from "next/navigation";
+import { useAuth } from "@/hoc/with-auth/define";
+import DropdownUserMenu from "../dropdown-user-menu";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -37,6 +40,7 @@ const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();
   const menuItems = useMenuItems();
+  const pathName = usePathname();
 
   const onSearch = (value: string) => console.log(value);
   const onChangeLanguage: MenuProps["onClick"] = (e) => {
@@ -79,6 +83,9 @@ const Nav: React.FC = () => {
     }
   };
 
+  const { user, logout } = useAuth();
+  console.log(user, 11);
+
   return (
     <ConfigProvider
       theme={{
@@ -115,14 +122,18 @@ const Nav: React.FC = () => {
               />
               {!isMobile && (
                 <>
-                  <Space>
-                    <Link href="/" className={styles.logIn}>
-                      Log In
-                    </Link>
-                    <Button type="primary" className={styles.signUp}>
-                      Sign Up
-                    </Button>
-                  </Space>
+                  {user ? (
+                    <DropdownUserMenu user={user} logout={logout} />
+                  ) : (
+                    <Space>
+                      <Link href={"/login"} className={styles.logIn}>
+                        Log In
+                      </Link>
+                      <Button type="primary" className={styles.signUp}>
+                        Sign Up
+                      </Button>
+                    </Space>
+                  )}
                   <Dropdown
                     menu={{
                       items,
