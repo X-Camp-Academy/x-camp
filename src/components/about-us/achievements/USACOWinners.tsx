@@ -15,6 +15,7 @@ import styles from "./USACOWinners.module.scss";
 import React, { useRef } from "react";
 import Link from "next/link";
 import ColorfulCard from "@/components/common/colorful-card";
+import UsacoCards from "@/components/common/usaco-cards";
 const { Title, Paragraph, Text } = Typography;
 
 const USACOMedal: React.FC = () => {
@@ -63,32 +64,6 @@ const USACOMedal: React.FC = () => {
     ],
   ];
 
-  const cardData = [
-    {
-      number: "200+",
-      numberColor: "#00A0E9",
-      text: "USACO Silver and above",
-      borderColorIndex: 4,
-    },
-    {
-      number: "30",
-      numberColor: "#FFD600",
-      text: "USACO Platinum",
-      borderColorIndex: 3,
-    },
-    {
-      number: "12",
-      numberColor: "#FFAD11",
-      text: "USACO Finalist",
-      borderColorIndex: 2,
-    },
-    {
-      number: "1",
-      numberColor: "#D46B14",
-      text: "USACO Team",
-      borderColorIndex: 1,
-    },
-  ];
 
   const listData = [
     {
@@ -242,7 +217,9 @@ const USACOMedal: React.FC = () => {
                 </Text>
               </Link>
 
-              <Row className={styles.row} gutter={16}>
+              <UsacoCards />
+
+              {/* <Row className={styles.row} gutter={16}>
                 {cardData?.map((item) => {
                   return (
                     <Col
@@ -274,7 +251,9 @@ const USACOMedal: React.FC = () => {
                     </Col>
                   );
                 })}
-              </Row>
+              </Row> */}
+
+
             </div>
           </div>
         </div>
