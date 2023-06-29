@@ -19,6 +19,7 @@ import { useMobile } from "@/utils";
 import { removeDropdown, useMenuItems } from "./define";
 import XStarMenu from "./x-star-menu";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/hoc/with-auth/define";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -80,6 +81,9 @@ const Nav: React.FC = () => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
+
+  const { user, logout } = useAuth();
+  console.log(user);
 
   return (
     <ConfigProvider

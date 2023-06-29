@@ -1,8 +1,10 @@
+"use client";
 import React, { useContext, useRef } from "react";
 import Axios, { AxiosInstance } from "axios";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { LangKey, useFormatMessage } from "@/store/intl";
+import { LangKey, useFormatMessage } from "@/utils/intl";
+
 const server = process.env.NEXT_PUBLIC_API_SERVER;
 /**
  * Client 上下文，保存不同种类的 Client
@@ -12,9 +14,7 @@ const ClientContext = React.createContext<Record<string, BaseAxiosClient>>({});
 /**
  * Client 上下文 Provider，用 useRef 创建保存 Client 的对象
  */
-export const WithClient: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const WithClient = ({ children }: { children: React.ReactNode }) => {
   const clients = useRef<Record<string, BaseAxiosClient>>({});
 
   return (

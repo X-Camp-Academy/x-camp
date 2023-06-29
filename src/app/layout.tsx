@@ -1,12 +1,14 @@
-import './globals.scss';
-import dynamic from 'next/dynamic';
-import { LocalStateProvider } from '@/utils/local-state';
-import WithIntl from '@/hoc/WithIntl';
-import WithLayout from '@/hoc/WithLayout';
+import "./globals.scss";
+import dynamic from "next/dynamic";
+import { LocalStateProvider } from "@/utils/local-state";
+import WithIntl from "@/hoc/WithIntl";
+import WithLayout from "@/hoc/WithLayout";
+import { WithAuth } from "@/hoc/with-auth";
+import { WithClient } from "@/apis/BaseAxiosClient";
 
-const Nav = dynamic(() => import('@/components/common/nav'));
-const Footer = dynamic(() => import('@/components/common/footer'));
-const BackTop = dynamic(() => import('@/components/common/back-top'), {
+const Nav = dynamic(() => import("@/components/common/nav"));
+const Footer = dynamic(() => import("@/components/common/footer"));
+const BackTop = dynamic(() => import("@/components/common/back-top"), {
   ssr: false,
 });
 
@@ -18,18 +20,22 @@ export default function RootLayout({
   return (
     <LocalStateProvider>
       <WithIntl>
-        <html lang="en">
-          <meta
-            name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"
-          ></meta>
-          <body>
-            <Nav />
-            <WithLayout>{children}</WithLayout>
-            <Footer />
-            <BackTop />
-          </body>
-        </html>
+        {/* <WithAuth>
+          <WithClient> */}
+            <html lang="en">
+              <meta
+                name="viewport"
+                content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"
+              ></meta>
+              <body>
+                <Nav />
+                <WithLayout>{children}</WithLayout>
+                <Footer />
+                <BackTop />
+              </body>
+            </html>
+          {/* </WithClient>
+        </WithAuth> */}
       </WithIntl>
     </LocalStateProvider>
   );
