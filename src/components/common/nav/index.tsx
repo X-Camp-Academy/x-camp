@@ -18,6 +18,7 @@ import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
 import { removeDropdown, useMenuItems } from "./define";
 import XStarMenu from "./x-star-menu";
+import { usePathname } from "next/navigation";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -37,6 +38,7 @@ const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();
   const menuItems = useMenuItems();
+  const pathName = usePathname();
 
   const onSearch = (value: string) => console.log(value);
   const onChangeLanguage: MenuProps["onClick"] = (e) => {
@@ -116,7 +118,7 @@ const Nav: React.FC = () => {
               {!isMobile && (
                 <>
                   <Space>
-                    <Link href="/" className={styles.logIn}>
+                    <Link href={"/login"} className={styles.logIn}>
                       Log In
                     </Link>
                     <Button type="primary" className={styles.signUp}>
