@@ -20,6 +20,7 @@ import { removeDropdown, useMenuItems } from "./define";
 import XStarMenu from "./x-star-menu";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/hoc/with-auth/define";
+import DropdownUserMenu from "../dropdown-user-menu";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -83,7 +84,7 @@ const Nav: React.FC = () => {
   };
 
   const { user, logout } = useAuth();
-  console.log(user);
+  console.log(user, 11);
 
   return (
     <ConfigProvider
@@ -121,14 +122,18 @@ const Nav: React.FC = () => {
               />
               {!isMobile && (
                 <>
-                  <Space>
-                    <Link href={"/login"} className={styles.logIn}>
-                      Log In
-                    </Link>
-                    <Button type="primary" className={styles.signUp}>
-                      Sign Up
-                    </Button>
-                  </Space>
+                  {user ? (
+                    <DropdownUserMenu user={user} logout={logout} />
+                  ) : (
+                    <Space>
+                      <Link href={"/login"} className={styles.logIn}>
+                        Log In
+                      </Link>
+                      <Button type="primary" className={styles.signUp}>
+                        Sign Up
+                      </Button>
+                    </Space>
+                  )}
                   <Dropdown
                     menu={{
                       items,

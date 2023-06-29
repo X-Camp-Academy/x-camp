@@ -18,25 +18,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <LocalStateProvider>
-      <WithIntl>
-        {/* <WithAuth>
-          <WithClient> */}
-            <html lang="en">
-              <meta
-                name="viewport"
-                content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"
-              ></meta>
-              <body>
+    <html lang="en">
+      <meta
+        name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"
+      ></meta>
+      <body>
+        <LocalStateProvider>
+          <WithIntl>
+            <WithAuth>
+              <WithClient>
                 <Nav />
                 <WithLayout>{children}</WithLayout>
                 <Footer />
                 <BackTop />
-              </body>
-            </html>
-          {/* </WithClient>
-        </WithAuth> */}
-      </WithIntl>
-    </LocalStateProvider>
+              </WithClient>
+            </WithAuth>
+          </WithIntl>
+        </LocalStateProvider>
+      </body>
+    </html>
   );
 }
