@@ -1,6 +1,6 @@
 "use client";
 import React, { LegacyRef, useEffect, useRef, useState } from "react";
-import { Typography, Button, Space, Segmented } from "antd";
+import { Typography, Segmented } from "antd";
 import * as echarts from "echarts";
 import worldJson from "./world.json";
 import usaJson from "./usa.json";
