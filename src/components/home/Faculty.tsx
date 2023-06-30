@@ -1,15 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import {
-  Space,
-  Typography,
-  Row,
-  Col,
-  Card,
-  Image,
-  Button,
-  Carousel,
-} from "antd";
+import { Space, Typography, Card, Image, Button, Carousel } from "antd";
 import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ColorfulCard from "../common/colorful-card";

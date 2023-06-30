@@ -1,36 +1,20 @@
 "use client";
-import {
-  Anchor,
-  Card,
-  Collapse,
-  ConfigProvider,
-  Divider,
-  Layout,
-  Space,
-  Typography,
-} from "antd";
+import { Collapse, ConfigProvider, Divider, Layout, Space } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
-import {
-  CaretRightOutlined,
-  ClockCircleOutlined,
-  DownOutlined,
-  RightCircleOutlined,
-} from "@ant-design/icons";
-import ColorfulCard from "../common/colorful-card";
-import { useRouter, useSearchParams } from "next/navigation";
+import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
+import { useSearchParams } from "next/navigation";
 import { classesData } from "./define";
 import Comments from "../home/Comments";
 // import AnchorNav from './AnchorNav';
 import dynamic from "next/dynamic";
+import ClassCard from "../common/class-card";
 const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
-const { Title } = Typography;
 
 const Courses = () => {
-  const router = useRouter();
   const params = useSearchParams();
   const courseId = params?.get("courseId");
   console.log("courseId", courseId);
@@ -99,52 +83,18 @@ const Courses = () => {
                                 >
                                   {v.children.map((g, index) => {
                                     return (
-                                      <ColorfulCard
+                                      <ClassCard
                                         key={g.id}
                                         border={"bottom"}
                                         index={index}
                                         animate={false}
-                                        className={styles.colorfulCard}
-                                      >
-                                        <Card className={styles.card}>
-                                          <Space
-                                            direction="vertical"
-                                            style={{
-                                              height: "100%",
-                                              justifyContent: "space-between",
-                                            }}
-                                          >
-                                            <Title className={styles.cardTitle}>
-                                              {
-                                                "CS100P: Python Intro with Creative Projects"
-                                              }
-                                            </Title>
-                                            <ul className={styles.list}>
-                                              <li>
-                                                6th+ Graders. No prior coding
-                                                expected…
-                                              </li>
-                                            </ul>
-                                            <Space className={styles.bottom}>
-                                              <Space
-                                                className={styles.week}
-                                                size={5}
-                                              >
-                                                <ClockCircleOutlined />
-                                                <span>{"10 weeks"}</span>
-                                              </Space>
-                                              <RightCircleOutlined
-                                                onClick={() =>
-                                                  router.push(
-                                                    `/courses/detail/${g.id}`
-                                                  )
-                                                }
-                                                className={styles.link}
-                                              />
-                                            </Space>
-                                          </Space>
-                                        </Card>
-                                      </ColorfulCard>
+                                        title="CS100P: Python Intro with Creative Projects"
+                                        list={[
+                                          "6th+ Graders. No prior coding expected…",
+                                        ]}
+                                        time="10 weeks"
+                                        href={`/courses/detail?courseId=${g.id}`}
+                                      />
                                     );
                                   })}
                                 </Space>

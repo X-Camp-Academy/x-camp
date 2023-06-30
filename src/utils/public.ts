@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * 选择语言
  * @param lang 语言
