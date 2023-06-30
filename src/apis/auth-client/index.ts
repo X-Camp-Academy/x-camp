@@ -14,12 +14,12 @@ export interface LogoutResponse {
 }
 
 export class AuthClient extends BaseAxiosClient {
-  async GetUserInfo() {
+  async getUserInfo() {
     const data: GetUserInfoResponse = await this.get("/getUser", {});
     return data;
   }
 
-  async Logout() {
+  async logout() {
     const data: LogoutResponse = await this.get("/logout", {});
     return data;
   }

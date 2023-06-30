@@ -18,9 +18,9 @@ import styles from "./index.module.scss";
 import { useMobile } from "@/utils";
 import { removeDropdown, useMenuItems } from "./define";
 import XStarMenu from "./x-star-menu";
-import { usePathname } from "next/navigation";
 import { useAuth } from "@/hoc/with-auth/define";
 import DropdownUserMenu from "../dropdown-user-menu";
+import { apiConfig } from "@/config/indx";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -35,12 +35,12 @@ const items: MenuProps["items"] = [
   },
 ];
 
-const Nav: React.FC = () => {
+const Nav = () => {
   const [current, setCurrent] = useState("/");
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();
   const menuItems = useMenuItems();
-  const pathName = usePathname();
+  const { xydApi } = apiConfig;
 
   const onSearch = (value: string) => console.log(value);
   const onChangeLanguage: MenuProps["onClick"] = (e) => {
@@ -84,7 +84,6 @@ const Nav: React.FC = () => {
   };
 
   const { user, logout } = useAuth();
-  console.log(user, 11);
 
   return (
     <ConfigProvider
@@ -113,7 +112,7 @@ const Nav: React.FC = () => {
                 />
               )}
             </Space>
-            <Space>
+            <Space size={"middle"}>
               <Search
                 placeholder="Search"
                 onSearch={onSearch}
@@ -123,23 +122,29 @@ const Nav: React.FC = () => {
               {!isMobile && (
                 <>
                   {user ? (
-                    <DropdownUserMenu user={user} logout={logout} />
-                  ) : (
-                    <Space>
-                      <Link href={"/login"} className={styles.logIn}>
-                        Log In
-                      </Link>
-                      <Button type="primary" className={styles.signUp}>
-                        Sign Up
+                    <Space size={12}>
+                      <DropdownUserMenu
+                        user={user}
+                        logout={logout}
+                      />
+                      <Button
+                        type="primary"
+                        onClick={() => window.open(`${xydApi}/courses`)}
+                      >
+                        {"To Study"}
                       </Button>
                     </Space>
+                  ) : (
+                    <Button type="primary" href="/login">
+                      Login / Register
+                    </Button>
                   )}
                   <Dropdown
                     menu={{
                       items,
                       onClick: onChangeLanguage,
                     }}
-                    className={styles.dropDown}
+                    className={styles.langDropDown}
                   >
                     <a onClick={(e) => e.preventDefault()}>
                       <TranslationOutlined />
@@ -147,7 +152,6 @@ const Nav: React.FC = () => {
                   </Dropdown>
                 </>
               )}
-
               {isMobile && (
                 <Button type="primary" onClick={() => setShowMenu(true)}>
                   <UnorderedListOutlined />
