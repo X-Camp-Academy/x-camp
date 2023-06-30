@@ -11,16 +11,22 @@ import {
   Typography,
   Row,
   Col,
+  message,
 } from "antd";
-import { useMobile } from "@/utils";
+
 import styles from "./CarouselContent.module.scss";
+import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
+import { openClassEmailRequest } from "@/apis/send-email-client";
 
 const { Title, Paragraph, Text } = Typography;
 
 const CarouselContent: React.FC = () => {
-  const isMobile = useMobile();
-  const onFinish = (values: any) => {
-    console.log(values);
+  const { data, runAsync: sendMailToUser } = useSendOpenClassEmail();
+  const onFinish = async (values: openClassEmailRequest) => {
+    await sendMailToUser(values);
+    if (data?.code == 0) {
+      message.success("已将公开课信息发送至您的邮箱，请注意查收！");
+    }
   };
 
   const carouselImages = [
@@ -112,11 +118,11 @@ const CarouselContent: React.FC = () => {
         >
           <Form name="basic" onFinish={onFinish} className={styles.form}>
             <Form.Item
-              name="username"
+              name="name"
               rules={[
                 {
                   required: true,
-                  message: "Please input your username!",
+                  message: "Please input child's name!",
                 },
               ]}
             >
@@ -128,7 +134,7 @@ const CarouselContent: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your grade!",
+                  message: "Please input child's grade!",
                 },
               ]}
             >
@@ -148,7 +154,7 @@ const CarouselContent: React.FC = () => {
             </Form.Item>
 
             <Form.Item
-              name="number"
+              name="phone"
               rules={[
                 {
                   required: true,
@@ -165,7 +171,7 @@ const CarouselContent: React.FC = () => {
                 htmlType="submit"
                 className={styles.submit}
               >
-                免费预约公开课（每周二）
+                {"免费预约公开课（每周二）"}
               </Button>
             </Form.Item>
           </Form>

@@ -1,17 +1,18 @@
 import { useRequest } from "ahooks";
 import { message } from "antd";
-import { openClassEmailRequest, useSenEmailCLient } from ".";
+import { openClassEmailRequest, useSendEmailClient } from ".";
 
 export const useSendOpenClassEmail = () => {
-  const client = useSenEmailCLient();
+  const client = useSendEmailClient();
   return useRequest(
     async (req: openClassEmailRequest) => {
-      return await client.sendOpenClassEmail(req);
+      const resp = await client.sendOpenClassEmail(req);
+      return resp;
     },
     {
       manual: true,
       onError: (error: any) => {
-        message.error(error);
+        console.log(error);
       },
     }
   );

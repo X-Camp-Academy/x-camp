@@ -2,9 +2,10 @@ import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 import { userFilledInfo } from "./define";
 
 export interface openClassEmailRequest {
-  code: number;
-  msg: string;
-  data: userFilledInfo;
+  name: string;
+  email: string;
+  grade: string;
+  phone: string; //手机或wechatID
 }
 
 export interface openClassEmailResponse {
@@ -13,7 +14,9 @@ export interface openClassEmailResponse {
 }
 
 export class SendEmailClient extends BaseAxiosClient {
-  async sendOpenClassEmail(req: openClassEmailRequest) {
+  async sendOpenClassEmail(
+    req: openClassEmailRequest
+  ): Promise<openClassEmailResponse> {
     const data: openClassEmailResponse = await this.post(
       "/openClassEmail",
       req,
@@ -23,5 +26,5 @@ export class SendEmailClient extends BaseAxiosClient {
   }
 }
 
-export const useSenEmailCLient = () =>
+export const useSendEmailClient = () =>
   useClient("sendEmail", SendEmailClient, "/v1");
