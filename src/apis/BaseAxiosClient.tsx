@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { LangKey, useFormatMessage } from "@/utils/intl";
 
-const server = process.env.NEXT_PUBLIC_API_SERVER;
 /**
  * Client 上下文，保存不同种类的 Client
  */
@@ -36,12 +35,14 @@ export interface ConstructorProps {
  * @param type Client 类型（一个标识 Client 的字符串）
  * @param ClientClass Client 类
  * @param baseURL Axios 基地址
+ * @param server 服务器请求地址，默认为env中的API_SERVER
  * @returns Client
  */
 export const useClient = <T extends BaseAxiosClient>(
   type: string,
   ClientClass: new (props: ConstructorProps) => T,
-  baseURL = ""
+  baseURL = "",
+  server = process.env.NEXT_PUBLIC_API_SERVER
 ): T => {
   const clients = useContext(ClientContext);
 

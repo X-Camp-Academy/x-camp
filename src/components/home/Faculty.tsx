@@ -5,10 +5,13 @@ import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ColorfulCard from "../common/colorful-card";
 import { CarouselRef } from "antd/es/carousel";
+import { useGetFaculty } from "@/apis/strapi-client/strapi";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
+  const { data } = useGetFaculty();
+  console.log(data)
   const facultyData = [
     {
       name: "Ryan1",
