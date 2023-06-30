@@ -1,21 +1,21 @@
-'use client';
-import { ConfigProvider, Layout, Space } from 'antd';
-import React from 'react';
-import styles from './index.module.scss';
-import TopBanner from './top-banner';
-import CampIntro from './camp-intro';
-import CampCarousel from './camp-carousel';
-import CourseAbstract from '../detail/top-banner/course-card/course-abstract';
-import ColorfulCard from '@/components/common/colorful-card';
-import CampFAQS from './camp-faqs';
-import Comments from '@/components/home/Comments';
+"use client";
+import { ConfigProvider, Layout, Space } from "antd";
+import React from "react";
+import styles from "./index.module.scss";
+import TopBanner from "./top-banner";
+import CampIntro from "./camp-intro";
+import CampCarousel from "./camp-carousel";
+import CourseAbstract from "../detail/top-banner/course-card/course-abstract";
+import ColorfulCard from "@/components/common/colorful-card";
+import CampFAQS from "./camp-faqs";
+import Comments from "@/components/home/Comments";
 const { Content } = Layout;
 const CourseCamps = () => {
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
+          colorPrimary: "#FFAD11",
         },
       }}
     >
@@ -26,7 +26,7 @@ const CourseCamps = () => {
           <CampCarousel />
           <div className={styles.courseCard}>
             <div className="container">
-              <ColorfulCard border={'bottom'} index={1} animate={false}>
+              <ColorfulCard border={"bottom"} index={1} animate={false}>
                 <div className={styles.cardContent}>
                   <CourseAbstract />
                 </div>
@@ -43,7 +43,7 @@ const CourseCamps = () => {
               </video>
             </div>
           </div>
-          <CampFAQS />
+          <CampFAQS title="Camps FAQs" />
           <Comments />
         </Content>
       </Layout>
