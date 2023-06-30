@@ -37,7 +37,12 @@ const ContactCard: React.FC = () => {
             md={{ span: 24 }}
             lg={{ span: 8 }}
           >
-            <ColorfulCard border={"top"} index={index} key={index}>
+            <ColorfulCard
+              border={"top"}
+              index={index}
+              key={index}
+              animate={false}
+            >
               <Card className={styles.card}>
                 <Space direction="vertical">
                   <Space align="center">

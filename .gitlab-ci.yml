@@ -1,0 +1,64 @@
+image: node:16.14
+
+stages:
+  - install
+  - lint
+  - build
+
+install:
+  stage: install
+  script:
+    - yarn config set registry https://registry.npmmirror.com
+    - yarn config set disturl https://npmmirror.com/mirrors/node/
+    - yarn config set sass_binary_site https://npmmirror.com/mirrors/node-sass/
+    - yarn config set sharp_binary_host https://npmmirror.com/mirrors/sharp
+    - yarn config set sharp_libvips_binary_host https://npmmirror.com/mirrors/sharp-libvips
+    - yarn install
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+    policy: pull-push
+
+lint:
+  stage: lint
+  script:
+    - yarn lint
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+    policy: pull
+  allow_failure: true
+
+build-image:
+  stage: build
+  image: docker:19.03.12
+  services:
+    - name: docker:19.03.12-dind
+      command: ['--mtu=1450']
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ''
+    HTTP_PROXY: http://proxy.turingstar.internal:8008/
+    HTTPS_PROXY: http://proxy.turingstar.internal:8008/
+    NO_PROXY: 'localhost,127.0.0.1,.aliyuncs.com,.turingstar.com.cn,docker'
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker pull $CI_REGISTRY_IMAGE/builder:$CI_COMMIT_REF_NAME || docker pull $CI_REGISTRY_IMAGE/builder:master || true
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME || true
+    - docker build --target builder
+      --cache-from $CI_REGISTRY_IMAGE/builder:$CI_COMMIT_REF_NAME
+      --tag $CI_REGISTRY_IMAGE/builder:$CI_COMMIT_REF_NAME .
+    - docker build
+      --cache-from $CI_REGISTRY_IMAGE/builder:$CI_COMMIT_REF_NAME
+      --cache-from $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+      --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+      --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY_IMAGE/builder:$CI_COMMIT_REF_NAME
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  only:
+    - main
+    - tags
