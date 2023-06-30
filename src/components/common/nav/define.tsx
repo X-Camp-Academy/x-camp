@@ -30,21 +30,22 @@ export const useMenuItems = () => {
           label: <Link href="/courses#classify0">Online Classes</Link>,
           key: "online-classes",
         },
-        {
-          label: <Link href="/courses/camps">In-person Campus</Link>,
-          key: "in-person-campus",
-        },
-        {
-          label: <Link href="/courses#classify3">Enhancement Classes</Link>,
-          key: "enhancement-classes",
-        },
+
         {
           label: <Link href="/">100 Prob Challenge</Link>,
           key: "100-prob-challenge",
         },
         {
+          label: <Link href="/courses/camps">In-person Campus</Link>,
+          key: "in-person-campus",
+        },
+        {
           label: <Link href="/courses#classify5">APCS Classes</Link>,
           key: "apcs-classes",
+        },
+        {
+          label: <Link href="/courses#classify3">Enhancement Classes</Link>,
+          key: "enhancement-classes",
         },
         {
           label: <Link href="/">X-Tutors</Link>,
