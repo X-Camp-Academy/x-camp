@@ -5,6 +5,7 @@ export type ApiConfig = {
   baseApi: string;
   clientId: string;
   strapiServer: string;
+  xydApi: string;
 };
 
 export const apiConfig: ApiConfig = {
@@ -17,4 +18,5 @@ export const apiConfig: ApiConfig = {
   baseApi: process.env.NEXT_PUBLIC_BASE_API || "https://www-new.x-camp.academy",
   strapiServer:
     process.env.NEXT_PUBLIC_STRAPI_SERVER || "https://strapi.turingstar.com.cn",
+  xydApi: process.env.NEXT_PUBLIC_XYD || "https://www.xinyoudui.com",
 };

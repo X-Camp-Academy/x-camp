@@ -1,23 +1,20 @@
 export interface UserInfo {
-  id: number;
-  CreateAt: string;
-  UpdatedAt: string;
-  DeletedAt: string;
-  userName: string;
-  password: string;
-  realName: string;
-  phone: string;
-  email: string;
-  wechatOpenid: string;
-  signature: string;
-  gender: number;
-  school: string;
-  birthday: string;
-  province: string;
-  city: string;
-  area: string;
   address: string;
-  postcode: string;
+  area: string;
   awards: string;
+  birthday: string;
+  city: string;
+  email: string;
+  gender: number;
+  id: number;
+  password: string;
+  phone: string;
+  postcode: string;
+  province: string;
+  real_name: string;
   resource: string[];
+  school: string;
+  signature: string;
+  user_name: string;
+  wechat_openid: string;
 }

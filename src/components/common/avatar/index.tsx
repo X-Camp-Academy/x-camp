@@ -2,17 +2,20 @@ import React, { useMemo } from "react";
 import { Tooltip, Avatar } from "antd";
 import type { AvatarProps } from "antd";
 import randomColor from "randomcolor";
+import { UserInfo } from "@/apis/auth-client/define";
 
 interface RealNameAvatarProps extends AvatarProps {
-  user: { realName?: string; userName?: string } | null | undefined;
+  user: UserInfo | null;
+  tooltip?: boolean;
 }
 
 const RealNameAvatar: React.FC<RealNameAvatarProps> = ({
   style,
   user,
+  tooltip = true,
   ...props
 }) => {
-  const name = user?.realName?.trim() || user?.userName?.trim() || "Unknown";
+  const name = user?.real_name?.trim() || user?.user_name?.trim() || "Unknown";
 
   const background = useMemo(
     () =>
@@ -25,8 +28,8 @@ const RealNameAvatar: React.FC<RealNameAvatarProps> = ({
   );
 
   return (
-    <Tooltip title={name}>
-      <Avatar style={{ background, ...style }} {...props}>
+    <Tooltip title={name} open={tooltip}>
+      <Avatar style={{ background, userSelect: "none", ...style }} {...props}>
         {name[0].toUpperCase()}
       </Avatar>
     </Tooltip>

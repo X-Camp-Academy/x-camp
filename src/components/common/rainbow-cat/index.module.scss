@@ -1,8 +1,25 @@
-.dot {
-  font-family: simsun; /* 固定字体避免设置的宽度无效 */
-  display: inline-block;
-  overflow: hidden;
-  animation: dot 0.8s infinite step-start;
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-bottom: 10px;
+  }
+
+  span {
+    font-size: 14px;
+  }
+  
+  .dot {
+    font-family: simsun; /* 固定字体避免设置的宽度无效 */
+    display: inline-block;
+    overflow: hidden;
+    animation: dot 0.8s infinite step-start;
+    margin-left: 10px;
+  }
 }
 
 @keyframes dot {

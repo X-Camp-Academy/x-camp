@@ -89,6 +89,7 @@ export class BaseAxiosClient {
 
   codeMessage: Record<string, number> = {
     SUCCESS: 200,
+    GRPC_SUCCESS: 0,
     ACCESS_DENIED: 403,
     NOT_FOUND: 404,
   };
@@ -103,7 +104,10 @@ export class BaseAxiosClient {
     this.axios.interceptors.response.use(
       (resp) => {
         const { data } = resp;
-        if (data.code !== this.codeMessage.SUCCESS) {
+        if (
+          data.code !== this.codeMessage.SUCCESS &&
+          data.code !== this.codeMessage.GRPC_SUCCESS
+        ) {
           this.handleUnknownError(data);
         }
         return resp;

@@ -3,22 +3,14 @@ import React, { useState, useEffect, useCallback } from "react";
 import { message } from "antd";
 import { useRequest } from "ahooks";
 import { useFormatMessage } from "../../utils/intl";
-import { apiConfig } from "@/config/indx";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useAuthClient } from "@/apis/auth-client";
 import { RainbowCat } from "@/components/common/rainbow-cat";
 import { AuthContext } from "./define";
 
 export const WithAuth = ({ children }: { children: React.ReactNode }) => {
-  const { baseApi } = apiConfig;
   const [initialized, setInitialized] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
   const client = useAuthClient();
-  const params = useSearchParams();
   const t = useFormatMessage();
-  //罗列需要登录鉴权的页面
-  const requireAuth = pathname !== "/" && pathname !== "/login";
 
   const {
     data: user,
@@ -27,29 +19,18 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   } = useRequest(
     async () => {
       try {
-        const resp = await client.GetUserInfo();
-        if (!requireAuth) {
-          // message.success({ content: t('Has_Logged'), key: 'authMsg' });
-          if (params) {
-            location.replace(`${baseApi}/oauth/authorize?${params}`);
-          } else {
-            router.replace((pathname + params) as any);
-          }
-        }
+        const resp = await client.getUserInfo();
         if (resp?.data) {
           // 登陆成功以后就删除登录之前保存的path
           localStorage.removeItem("no_login_data");
         }
         return resp?.data;
       } catch (error: any) {
-        if (requireAuth) {
-          message.error({ content: error.message, key: "authMsg" });
-          router.replace(`/login?${params}` as any);
-        }
+        message.error({ content: JSON.stringify(error), key: "authMsg" });
         return null;
       }
     },
-    { refreshDeps: [requireAuth], throttleWait: 1000 }
+    { throttleWait: 1000 }
   );
 
   useEffect(() => {
@@ -76,7 +57,7 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
     // 清除local storage
     localStorage.removeItem("codeInfo");
     try {
-      await client.Logout();
+      await client.logout();
       if (!(await refreshAsync())) {
         message.success({ content: "退出成功", key: "authMsg" });
       } else {
