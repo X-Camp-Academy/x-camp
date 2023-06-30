@@ -153,7 +153,7 @@ export const useMenuItems = () => {
           key: "achievements",
         },
         {
-          label: <Link href="/">Faculty&Coach</Link>,
+          label: <Link href="/about-us/introduction">Faculty&Coach</Link>,
           key: "faculty&coach",
         },
         {
@@ -161,7 +161,7 @@ export const useMenuItems = () => {
           key: "join-us",
         },
         {
-          label: <Link href="/">Partners</Link>,
+          label: <Link href="/about-us/partners">Partners</Link>,
           key: "partners",
         },
         {
