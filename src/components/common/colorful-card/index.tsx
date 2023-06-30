@@ -3,7 +3,7 @@ import React, { ReactNode, useRef } from "react";
 import { addAnimate, removeAnimate } from "@/utils";
 import "hover.css";
 
-interface Props {
+export interface ColorfulCardProps {
   border: "top" | "bottom";
   index: number;
   children: ReactNode;
@@ -13,7 +13,7 @@ interface Props {
   className?: string;
 }
 
-const ColorfulCard: React.FC<Props> = ({
+const ColorfulCard: React.FC<ColorfulCardProps> = ({
   border = "top",
   index = 0,
   children = null,

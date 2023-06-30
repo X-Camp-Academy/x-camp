@@ -1,0 +1,39 @@
+.colorfulCard {
+  width: 380px;
+
+  .card {
+    :global(.ant-card-body) {
+      height: 286px;
+    }
+
+    .cardTitle {
+      font-size: 24px;
+      font-weight: 600;
+      color: #172142;
+      margin-bottom: 0;
+    }
+
+    .list {
+      li {
+        font-size: 18px;
+        font-weight: 400;
+        color: #172142;
+      }
+    }
+
+    .bottom {
+      justify-content: space-between;
+      width: 100%;
+
+      .week {
+        font-size: 18px;
+        font-weight: 400;
+        color: #666666;
+      }
+
+      .link {
+        color: #ffad11;
+      }
+    }
+  }
+}
