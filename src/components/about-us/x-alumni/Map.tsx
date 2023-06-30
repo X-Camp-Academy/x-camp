@@ -1,19 +1,22 @@
 "use client";
-import React, { LegacyRef, useEffect, useRef } from "react";
-import { Typography } from "antd";
+import React, { LegacyRef, useEffect, useRef, useState } from "react";
+import { Typography, Segmented } from "antd";
 import * as echarts from "echarts";
 import worldJson from "./world.json";
 import usaJson from "./usa.json";
 import styles from "./Map.module.scss";
+import { SegmentedValue } from "antd/es/segmented";
 
 const { Title, Text } = Typography;
 
 const Map: React.FC = () => {
-  const dom = useRef<HTMLDivElement>();
+  const [current, setCurrent] = useState<SegmentedValue>("World");
+  const worldDOM = useRef<HTMLDivElement>();
+  const usaDOM = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    if (dom.current) {
-      const mapChart = echarts.init(dom.current);
+    if (worldDOM.current) {
+      const mapChart = echarts.init(worldDOM.current);
 
       echarts.registerMap("world", JSON.stringify(worldJson));
 
@@ -28,11 +31,7 @@ const Map: React.FC = () => {
           min: 0,
           max: 1000,
           inRange: {
-            color: [
-              "#D46B14",
-              "#FFAD11",
-              "#FFD600",
-            ],
+            color: ["#D46B14", "#FFAD11", "#FFD600"],
           },
           text: ["High", "Low"],
           calculable: true,
@@ -48,727 +47,850 @@ const Map: React.FC = () => {
                 show: true,
               },
             },
-            data: [{
-              name: 'Afghanistan',
-              value: 111
-            },
+            data: [
               {
-                name: 'Angola',
-                value: 205
+                name: "Afghanistan",
+                value: 111,
               },
               {
-                name: 'Albania',
-                value: 3150.143
+                name: "Angola",
+                value: 205,
               },
               {
-                name: 'United Arab Emirates',
-                value: 8441.537
+                name: "Albania",
+                value: 3150.143,
               },
               {
-                name: 'Argentina',
-                value: 40374.224
+                name: "United Arab Emirates",
+                value: 8441.537,
               },
               {
-                name: 'Armenia',
-                value: 2963.496
+                name: "Argentina",
+                value: 40374.224,
               },
               {
-                name: 'French Southern and Antarctic Lands',
-                value: 268.065
+                name: "Armenia",
+                value: 2963.496,
               },
               {
-                name: 'Australia',
-                value: 22404.488
+                name: "French Southern and Antarctic Lands",
+                value: 268.065,
               },
               {
-                name: 'Austria',
-                value: 8401.924
+                name: "Australia",
+                value: 22404.488,
               },
               {
-                name: 'Azerbaijan',
-                value: 9094.718
+                name: "Austria",
+                value: 8401.924,
               },
               {
-                name: 'Burundi',
-                value: 9232.753
+                name: "Azerbaijan",
+                value: 9094.718,
               },
               {
-                name: 'Belgium',
-                value: 10941.288
+                name: "Burundi",
+                value: 9232.753,
               },
               {
-                name: 'Benin',
-                value: 9509.798
+                name: "Belgium",
+                value: 10941.288,
               },
               {
-                name: 'Burkina Faso',
-                value: 15540.284
+                name: "Benin",
+                value: 9509.798,
               },
               {
-                name: 'Bangladesh',
-                value: 151125.475
+                name: "Burkina Faso",
+                value: 15540.284,
               },
               {
-                name: 'Bulgaria',
-                value: 7389.175
+                name: "Bangladesh",
+                value: 151125.475,
               },
               {
-                name: 'The Bahamas',
-                value: 66402.316
+                name: "Bulgaria",
+                value: 7389.175,
               },
               {
-                name: 'Bosnia and Herzegovina',
-                value: 3845.929
+                name: "The Bahamas",
+                value: 66402.316,
               },
               {
-                name: 'Belarus',
-                value: 9491.07
+                name: "Bosnia and Herzegovina",
+                value: 3845.929,
               },
               {
-                name: 'Belize',
-                value: 308.595
+                name: "Belarus",
+                value: 9491.07,
               },
               {
-                name: 'Bermuda',
-                value: 64.951
+                name: "Belize",
+                value: 308.595,
               },
               {
-                name: 'Bolivia',
-                value: 716.939
+                name: "Bermuda",
+                value: 64.951,
               },
               {
-                name: 'Brazil',
-                value: 195210.154
+                name: "Bolivia",
+                value: 716.939,
               },
               {
-                name: 'Brunei',
-                value: 27.223
+                name: "Brazil",
+                value: 195210.154,
               },
               {
-                name: 'Bhutan',
-                value: 716.939
+                name: "Brunei",
+                value: 27.223,
               },
               {
-                name: 'Botswana',
-                value: 1969.341
+                name: "Bhutan",
+                value: 716.939,
               },
               {
-                name: 'Central African Republic',
-                value: 4349.921
+                name: "Botswana",
+                value: 1969.341,
               },
               {
-                name: 'Canada',
-                value: 34126.24
+                name: "Central African Republic",
+                value: 4349.921,
               },
               {
-                name: 'Switzerland',
-                value: 7830.534
+                name: "Canada",
+                value: 34126.24,
               },
               {
-                name: 'Chile',
-                value: 17150.76
+                name: "Switzerland",
+                value: 7830.534,
               },
               {
-                name: 'China',
-                value: 1359821.465
+                name: "Chile",
+                value: 17150.76,
               },
               {
-                name: 'Ivory Coast',
-                value: 60508.978
+                name: "China",
+                value: 1359821.465,
               },
               {
-                name: 'Cameroon',
-                value: 20624.343
+                name: "Ivory Coast",
+                value: 60508.978,
               },
               {
-                name: 'Democratic Republic of the Congo',
-                value: 62191.161
+                name: "Cameroon",
+                value: 20624.343,
               },
               {
-                name: 'Republic of the Congo',
-                value: 3573.024
+                name: "Democratic Republic of the Congo",
+                value: 62191.161,
               },
               {
-                name: 'Colombia',
-                value: 46444.798
+                name: "Republic of the Congo",
+                value: 3573.024,
               },
               {
-                name: 'Costa Rica',
-                value: 4669.685
+                name: "Colombia",
+                value: 46444.798,
               },
               {
-                name: 'Cuba',
-                value: 11281.768
+                name: "Costa Rica",
+                value: 4669.685,
               },
               {
-                name: 'Northern Cyprus',
-                value: 1.468
+                name: "Cuba",
+                value: 11281.768,
               },
               {
-                name: 'Cyprus',
-                value: 1103.685
+                name: "Northern Cyprus",
+                value: 1.468,
               },
               {
-                name: 'Czech Republic',
-                value: 10553.701
+                name: "Cyprus",
+                value: 1103.685,
               },
               {
-                name: 'Germany',
-                value: 83017.404
+                name: "Czech Republic",
+                value: 10553.701,
               },
               {
-                name: 'Djibouti',
-                value: 834.036
+                name: "Germany",
+                value: 83017.404,
               },
               {
-                name: 'Denmark',
-                value: 5550.959
+                name: "Djibouti",
+                value: 834.036,
               },
               {
-                name: 'Dominican Republic',
-                value: 10016.797
+                name: "Denmark",
+                value: 5550.959,
               },
               {
-                name: 'Algeria',
-                value: 37062.82
+                name: "Dominican Republic",
+                value: 10016.797,
               },
               {
-                name: 'Ecuador',
-                value: 15001.072
+                name: "Algeria",
+                value: 37062.82,
               },
               {
-                name: 'Egypt',
-                value: 78075.705
+                name: "Ecuador",
+                value: 15001.072,
               },
               {
-                name: 'Eritrea',
-                value: 5741.159
+                name: "Egypt",
+                value: 78075.705,
               },
               {
-                name: 'Spain',
-                value: 46182.038
+                name: "Eritrea",
+                value: 5741.159,
               },
               {
-                name: 'Estonia',
-                value: 1298.533
+                name: "Spain",
+                value: 46182.038,
               },
               {
-                name: 'Ethiopia',
-                value: 87095.281
+                name: "Estonia",
+                value: 1298.533,
               },
               {
-                name: 'Finland',
-                value: 5367.693
+                name: "Ethiopia",
+                value: 87095.281,
               },
               {
-                name: 'Fiji',
-                value: 860.559
+                name: "Finland",
+                value: 5367.693,
               },
               {
-                name: 'Falkland Islands',
-                value: 49.581
+                name: "Fiji",
+                value: 860.559,
               },
               {
-                name: 'France',
-                value: 63230.866
+                name: "Falkland Islands",
+                value: 49.581,
               },
               {
-                name: 'Gabon',
-                value: 1556.222
+                name: "France",
+                value: 63230.866,
               },
               {
-                name: 'United Kingdom',
-                value: 62066.35
+                name: "Gabon",
+                value: 1556.222,
               },
               {
-                name: 'Georgia',
-                value: 4388.674
+                name: "United Kingdom",
+                value: 62066.35,
               },
               {
-                name: 'Ghana',
-                value: 24262.901
+                name: "Georgia",
+                value: 4388.674,
               },
               {
-                name: 'Guinea',
-                value: 10876.033
+                name: "Ghana",
+                value: 24262.901,
               },
               {
-                name: 'Gambia',
-                value: 1680.64
+                name: "Guinea",
+                value: 10876.033,
               },
               {
-                name: 'Guinea Bissau',
-                value: 10876.033
+                name: "Gambia",
+                value: 1680.64,
               },
               {
-                name: 'Equatorial Guinea',
-                value: 696.167
+                name: "Guinea Bissau",
+                value: 10876.033,
               },
               {
-                name: 'Greece',
-                value: 11109.999
+                name: "Equatorial Guinea",
+                value: 696.167,
               },
               {
-                name: 'Greenland',
-                value: 56.546
+                name: "Greece",
+                value: 11109.999,
               },
               {
-                name: 'Guatemala',
-                value: 14341.576
+                name: "Greenland",
+                value: 56.546,
               },
               {
-                name: 'French Guiana',
-                value: 231.169
+                name: "Guatemala",
+                value: 14341.576,
               },
               {
-                name: 'Guyana',
-                value: 786.126
+                name: "French Guiana",
+                value: 231.169,
               },
               {
-                name: 'Honduras',
-                value: 7621.204
+                name: "Guyana",
+                value: 786.126,
               },
               {
-                name: 'Croatia',
-                value: 4338.027
+                name: "Honduras",
+                value: 7621.204,
               },
               {
-                name: 'Haiti',
-                value: 9896.4
+                name: "Croatia",
+                value: 4338.027,
               },
               {
-                name: 'Hungary',
-                value: 10014.633
+                name: "Haiti",
+                value: 9896.4,
               },
               {
-                name: 'Indonesia',
-                value: 240676.485
+                name: "Hungary",
+                value: 10014.633,
               },
               {
-                name: 'India',
-                value: 12054.648
+                name: "Indonesia",
+                value: 240676.485,
               },
               {
-                name: 'Ireland',
-                value: 4467.561
+                name: "India",
+                value: 12054.648,
               },
               {
-                name: 'Iran',
-                value: 240676.485
+                name: "Ireland",
+                value: 4467.561,
               },
               {
-                name: 'Iraq',
-                value: 30962.38
+                name: "Iran",
+                value: 240676.485,
               },
               {
-                name: 'Iceland',
-                value: 318.042
+                name: "Iraq",
+                value: 30962.38,
               },
               {
-                name: 'Israel',
-                value: 7420.368
+                name: "Iceland",
+                value: 318.042,
               },
               {
-                name: 'Italy',
-                value: 60508.978
+                name: "Israel",
+                value: 7420.368,
               },
               {
-                name: 'Jamaica',
-                value: 2741.485
+                name: "Italy",
+                value: 60508.978,
               },
               {
-                name: 'Jordan',
-                value: 6454.554
+                name: "Jamaica",
+                value: 2741.485,
               },
               {
-                name: 'Japan',
-                value: 127352.833
+                name: "Jordan",
+                value: 6454.554,
               },
               {
-                name: 'Kazakhstan',
-                value: 15921.127
+                name: "Japan",
+                value: 127352.833,
               },
               {
-                name: 'Kenya',
-                value: 40909.194
+                name: "Kazakhstan",
+                value: 15921.127,
               },
               {
-                name: 'Kyrgyzstan',
-                value: 5334.223
+                name: "Kenya",
+                value: 40909.194,
               },
               {
-                name: 'Cambodia',
-                value: 14364.931
+                name: "Kyrgyzstan",
+                value: 5334.223,
               },
               {
-                name: 'South Korea',
-                value: 51452.352
+                name: "Cambodia",
+                value: 14364.931,
               },
               {
-                name: 'Kosovo',
-                value: 97.743
+                name: "South Korea",
+                value: 51452.352,
               },
               {
-                name: 'Kuwait',
-                value: 2991.58
+                name: "Kosovo",
+                value: 97.743,
               },
               {
-                name: 'Laos',
-                value: 6395.713
+                name: "Kuwait",
+                value: 2991.58,
               },
               {
-                name: 'Lebanon',
-                value: 4341.092
+                name: "Laos",
+                value: 6395.713,
               },
               {
-                name: 'Liberia',
-                value: 3957.99
+                name: "Lebanon",
+                value: 4341.092,
               },
               {
-                name: 'Libya',
-                value: 6040.612
+                name: "Liberia",
+                value: 3957.99,
               },
               {
-                name: 'Sri Lanka',
-                value: 20758.779
+                name: "Libya",
+                value: 6040.612,
               },
               {
-                name: 'Lesotho',
-                value: 2008.921
+                name: "Sri Lanka",
+                value: 20758.779,
               },
               {
-                name: 'Lithuania',
-                value: 3068.457
+                name: "Lesotho",
+                value: 2008.921,
               },
               {
-                name: 'Luxembourg',
-                value: 507.885
+                name: "Lithuania",
+                value: 3068.457,
               },
               {
-                name: 'Latvia',
-                value: 2090.519
+                name: "Luxembourg",
+                value: 507.885,
               },
               {
-                name: 'Morocco',
-                value: 31642.36
+                name: "Latvia",
+                value: 2090.519,
               },
               {
-                name: 'Moldova',
-                value: 103.619
+                name: "Morocco",
+                value: 31642.36,
               },
               {
-                name: 'Madagascar',
-                value: 21079.532
+                name: "Moldova",
+                value: 103.619,
               },
               {
-                name: 'Mexico',
-                value: 117886.404
+                name: "Madagascar",
+                value: 21079.532,
               },
               {
-                name: 'Macedonia',
-                value: 507.885
+                name: "Mexico",
+                value: 117886.404,
               },
               {
-                name: 'Mali',
-                value: 13985.961
+                name: "Macedonia",
+                value: 507.885,
               },
               {
-                name: 'Myanmar',
-                value: 51931.231
+                name: "Mali",
+                value: 13985.961,
               },
               {
-                name: 'Montenegro',
-                value: 620.078
+                name: "Myanmar",
+                value: 51931.231,
               },
               {
-                name: 'Mongolia',
-                value: 2712.738
+                name: "Montenegro",
+                value: 620.078,
               },
               {
-                name: 'Mozambique',
-                value: 23967.265
+                name: "Mongolia",
+                value: 2712.738,
               },
               {
-                name: 'Mauritania',
-                value: 3609.42
+                name: "Mozambique",
+                value: 23967.265,
               },
               {
-                name: 'Malawi',
-                value: 15013.694
+                name: "Mauritania",
+                value: 3609.42,
               },
               {
-                name: 'Malaysia',
-                value: 28275.835
+                name: "Malawi",
+                value: 15013.694,
               },
               {
-                name: 'Namibia',
-                value: 2178.967
+                name: "Malaysia",
+                value: 28275.835,
               },
               {
-                name: 'New Caledonia',
-                value: 246.379
+                name: "Namibia",
+                value: 2178.967,
               },
               {
-                name: 'Niger',
-                value: 15893.746
+                name: "New Caledonia",
+                value: 246.379,
               },
               {
-                name: 'Nigeria',
-                value: 159707.78
+                name: "Niger",
+                value: 15893.746,
               },
               {
-                name: 'Nicaragua',
-                value: 5822.209
+                name: "Nigeria",
+                value: 159707.78,
               },
               {
-                name: 'Netherlands',
-                value: 16615.243
+                name: "Nicaragua",
+                value: 5822.209,
               },
               {
-                name: 'Norway',
-                value: 4891.251
+                name: "Netherlands",
+                value: 16615.243,
               },
               {
-                name: 'Nepal',
-                value: 26846.016
+                name: "Norway",
+                value: 4891.251,
               },
               {
-                name: 'New Zealand',
-                value: 4368.136
+                name: "Nepal",
+                value: 26846.016,
               },
               {
-                name: 'Oman',
-                value: 2802.768
+                name: "New Zealand",
+                value: 4368.136,
               },
               {
-                name: 'Pakistan',
-                value: 173149.306
+                name: "Oman",
+                value: 2802.768,
               },
               {
-                name: 'Panama',
-                value: 3678.128
+                name: "Pakistan",
+                value: 173149.306,
               },
               {
-                name: 'Peru',
-                value: 29262.83
+                name: "Panama",
+                value: 3678.128,
               },
               {
-                name: 'Philippines',
-                value: 93444.322
+                name: "Peru",
+                value: 29262.83,
               },
               {
-                name: 'Papua New Guinea',
-                value: 6858.945
+                name: "Philippines",
+                value: 93444.322,
               },
               {
-                name: 'Poland',
-                value: 38198.754
+                name: "Papua New Guinea",
+                value: 6858.945,
               },
               {
-                name: 'Puerto Rico',
-                value: 3709.671
+                name: "Poland",
+                value: 38198.754,
               },
               {
-                name: 'North Korea',
-                value: 1.468
+                name: "Puerto Rico",
+                value: 3709.671,
               },
               {
-                name: 'Portugal',
-                value: 10589.792
+                name: "North Korea",
+                value: 1.468,
               },
               {
-                name: 'Paraguay',
-                value: 6459.721
+                name: "Portugal",
+                value: 10589.792,
               },
               {
-                name: 'Qatar',
-                value: 1749.713
+                name: "Paraguay",
+                value: 6459.721,
               },
               {
-                name: 'Romania',
-                value: 21861.476
+                name: "Qatar",
+                value: 1749.713,
               },
               {
-                name: 'Russia',
-                value: 21861.476
+                name: "Romania",
+                value: 21861.476,
               },
               {
-                name: 'Rwanda',
-                value: 10836.732
+                name: "Russia",
+                value: 21861.476,
               },
               {
-                name: 'Western Sahara',
-                value: 514.648
+                name: "Rwanda",
+                value: 10836.732,
               },
               {
-                name: 'Saudi Arabia',
-                value: 27258.387
+                name: "Western Sahara",
+                value: 514.648,
               },
               {
-                name: 'Sudan',
-                value: 35652.002
+                name: "Saudi Arabia",
+                value: 27258.387,
               },
               {
-                name: 'South Sudan',
-                value: 9940.929
+                name: "Sudan",
+                value: 35652.002,
               },
               {
-                name: 'Senegal',
-                value: 12950.564
+                name: "South Sudan",
+                value: 9940.929,
               },
               {
-                name: 'Solomon Islands',
-                value: 526.447
+                name: "Senegal",
+                value: 12950.564,
               },
               {
-                name: 'Sierra Leone',
-                value: 5751.976
+                name: "Solomon Islands",
+                value: 526.447,
               },
               {
-                name: 'El Salvador',
-                value: 6218.195
+                name: "Sierra Leone",
+                value: 5751.976,
               },
               {
-                name: 'Somaliland',
-                value: 9636.173
+                name: "El Salvador",
+                value: 6218.195,
               },
               {
-                name: 'Somalia',
-                value: 9636.173
+                name: "Somaliland",
+                value: 9636.173,
               },
               {
-                name: 'Republic of Serbia',
-                value: 3573.024
+                name: "Somalia",
+                value: 9636.173,
               },
               {
-                name: 'Suriname',
-                value: 524.96
+                name: "Republic of Serbia",
+                value: 3573.024,
               },
               {
-                name: 'Slovakia',
-                value: 5433.437
+                name: "Suriname",
+                value: 524.96,
               },
               {
-                name: 'Slovenia',
-                value: 2054.232
+                name: "Slovakia",
+                value: 5433.437,
               },
               {
-                name: 'Sweden',
-                value: 9382.297
+                name: "Slovenia",
+                value: 2054.232,
               },
               {
-                name: 'Swaziland',
-                value: 1193.148
+                name: "Sweden",
+                value: 9382.297,
               },
               {
-                name: 'Syria',
-                value: 7830.534
+                name: "Swaziland",
+                value: 1193.148,
               },
               {
-                name: 'Chad',
-                value: 11720.781
+                name: "Syria",
+                value: 7830.534,
               },
               {
-                name: 'Togo',
-                value: 6306.014
+                name: "Chad",
+                value: 11720.781,
               },
               {
-                name: 'Thailand',
-                value: 66402.316
+                name: "Togo",
+                value: 6306.014,
               },
               {
-                name: 'Tajikistan',
-                value: 7627.326
+                name: "Thailand",
+                value: 66402.316,
               },
               {
-                name: 'Turkmenistan',
-                value: 5041.995
+                name: "Tajikistan",
+                value: 7627.326,
               },
               {
-                name: 'East Timor',
-                value: 10016.797
+                name: "Turkmenistan",
+                value: 5041.995,
               },
               {
-                name: 'Trinidad and Tobago',
-                value: 1328.095
+                name: "East Timor",
+                value: 10016.797,
               },
               {
-                name: 'Tunisia',
-                value: 10631.83
+                name: "Trinidad and Tobago",
+                value: 1328.095,
               },
               {
-                name: 'Turkey',
-                value: 72137.546
+                name: "Tunisia",
+                value: 10631.83,
               },
               {
-                name: 'United Republic of Tanzania',
-                value: 44973.33
+                name: "Turkey",
+                value: 72137.546,
               },
               {
-                name: 'Uganda',
-                value: 33987.213
+                name: "United Republic of Tanzania",
+                value: 44973.33,
               },
               {
-                name: 'Ukraine',
-                value: 46050.22
+                name: "Uganda",
+                value: 33987.213,
               },
               {
-                name: 'Uruguay',
-                value: 3371.982
+                name: "Ukraine",
+                value: 46050.22,
               },
               {
-                name: 'United States of America',
-                value: 312247.116
+                name: "Uruguay",
+                value: 3371.982,
               },
               {
-                name: 'Uzbekistan',
-                value: 27769.27
+                name: "United States of America",
+                value: 312247.116,
               },
               {
-                name: 'Venezuela',
-                value: 236.299
+                name: "Uzbekistan",
+                value: 27769.27,
               },
               {
-                name: 'Vietnam',
-                value: 89047.397
+                name: "Venezuela",
+                value: 236.299,
               },
               {
-                name: 'Vanuatu',
-                value: 236.299
+                name: "Vietnam",
+                value: 89047.397,
               },
               {
-                name: 'West Bank',
-                value: 13.565
+                name: "Vanuatu",
+                value: 236.299,
               },
               {
-                name: 'Yemen',
-                value: 22763.008
+                name: "West Bank",
+                value: 13.565,
               },
               {
-                name: 'South Africa',
-                value: 51452.352
+                name: "Yemen",
+                value: 22763.008,
               },
               {
-                name: 'Zambia',
-                value: 13216.985
+                name: "South Africa",
+                value: 51452.352,
               },
               {
-                name: 'Zimbabwe',
-                value: 13076.978
-              }
+                name: "Zambia",
+                value: 13216.985,
+              },
+              {
+                name: "Zimbabwe",
+                value: 13076.978,
+              },
             ],
           },
         ],
       };
       mapChart.setOption(options);
     }
-  }, []);
+  }, [current]);
+  useEffect(() => {
+    if (usaDOM.current) {
+      const mapChart = echarts.init(usaDOM.current);
+
+      echarts.registerMap("USA", JSON.stringify(usaJson), {
+        Alaska: {
+          left: -131,
+          top: 25,
+          width: 15,
+        },
+        Hawaii: {
+          left: -110,
+          top: 28,
+          width: 5,
+        },
+        "Puerto Rico": {
+          left: -76,
+          top: 26,
+          width: 2,
+        },
+      });
+
+      const options = {
+        tooltip: {
+          trigger: "item",
+          showDelay: 0,
+          transitionDuration: 0.2,
+        },
+        visualMap: {
+          left: "right",
+          min: 500000,
+          max: 38000000,
+          inRange: {
+            color: ["#D46B14", "#FFAD11", "#FFD600"],
+          },
+          text: ["High", "Low"],
+          calculable: true,
+        },
+        series: [
+          {
+            name: "USA PopEstimates",
+            type: "map",
+            roam: true,
+            map: "USA",
+            emphasis: {
+              label: {
+                show: true,
+              },
+            },
+            data: [
+              { name: "Alabama", value: 4822023 },
+              { name: "Alaska", value: 731449 },
+              { name: "Arizona", value: 6553255 },
+              { name: "Arkansas", value: 2949131 },
+              { name: "California", value: 38041430 },
+              { name: "Colorado", value: 5187582 },
+              { name: "Connecticut", value: 3590347 },
+              { name: "Delaware", value: 917092 },
+              { name: "District of Columbia", value: 632323 },
+              { name: "Florida", value: 19317568 },
+              { name: "Georgia", value: 9919945 },
+              { name: "Hawaii", value: 1392313 },
+              { name: "Idaho", value: 1595728 },
+              { name: "Illinois", value: 12875255 },
+              { name: "Indiana", value: 6537334 },
+              { name: "Iowa", value: 3074186 },
+              { name: "Kansas", value: 2885905 },
+              { name: "Kentucky", value: 4380415 },
+              { name: "Louisiana", value: 4601893 },
+              { name: "Maine", value: 1329192 },
+              { name: "Maryland", value: 5884563 },
+              { name: "Massachusetts", value: 6646144 },
+              { name: "Michigan", value: 9883360 },
+              { name: "Minnesota", value: 5379139 },
+              { name: "Mississippi", value: 2984926 },
+              { name: "Missouri", value: 6021988 },
+              { name: "Montana", value: 1005141 },
+              { name: "Nebraska", value: 1855525 },
+              { name: "Nevada", value: 2758931 },
+              { name: "New Hampshire", value: 1320718 },
+              { name: "New Jersey", value: 8864590 },
+              { name: "New Mexico", value: 2085538 },
+              { name: "New York", value: 19570261 },
+              { name: "North Carolina", value: 9752073 },
+              { name: "North Dakota", value: 699628 },
+              { name: "Ohio", value: 11544225 },
+              { name: "Oklahoma", value: 3814820 },
+              { name: "Oregon", value: 3899353 },
+              { name: "Pennsylvania", value: 12763536 },
+              { name: "Rhode Island", value: 1050292 },
+              { name: "South Carolina", value: 4723723 },
+              { name: "South Dakota", value: 833354 },
+              { name: "Tennessee", value: 6456243 },
+              { name: "Texas", value: 26059203 },
+              { name: "Utah", value: 2855287 },
+              { name: "Vermont", value: 626011 },
+              { name: "Virginia", value: 8185867 },
+              { name: "Washington", value: 6897012 },
+              { name: "West Virginia", value: 1855413 },
+              { name: "Wisconsin", value: 5726398 },
+              { name: "Wyoming", value: 576412 },
+              { name: "Puerto Rico", value: 3667084 },
+            ],
+          },
+        ],
+      };
+      mapChart.setOption(options);
+    }
+  }, [current]);
+  const onChange = (value: SegmentedValue) => {
+    setCurrent(value);
+  };
   return (
     <div className={`${styles.map} container`}>
+      <Segmented
+        options={["World", "USA"]}
+        onChange={onChange}
+        className={styles.button}
+      />
+
       <Title className={styles.title}>We are one big family</Title>
       <Text className={styles.text}>All X-Campers, All Together</Text>
       <div
-        ref={dom as LegacyRef<HTMLDivElement>}
+        ref={
+          current === "World"
+            ? (worldDOM as LegacyRef<HTMLDivElement>)
+            : (usaDOM as LegacyRef<HTMLDivElement>)
+        }
         className={styles.mapContainer}
       ></div>
     </div>
