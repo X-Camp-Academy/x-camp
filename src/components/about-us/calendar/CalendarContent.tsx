@@ -5,7 +5,7 @@ import React from "react";
 const { Title } = Typography;
 import styles from "./CalendarContent.module.scss";
 import { ScheduleOutlined } from "@ant-design/icons";
-import TimelineComponent from "@/components/common/TimeLine";
+import TimelineComponent from "@/components/common/timeline";
 
 const CalendarContent: React.FC = () => {
   interface Item {
