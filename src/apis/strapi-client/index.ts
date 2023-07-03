@@ -1,10 +1,11 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
+import { LangType } from "@/utils/intl";
 import {
+  GetAboutUsAchievementsAwardRequest,
+  GetAboutUsAchievementsAwardResponse,
   GetFacultyRequest,
   GetFacultyResponse,
-  GetXAlumniRequest,
-  GetXAlumniResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -66,6 +67,17 @@ export class StrapiClient extends BaseAxiosClient {
     );
     return res;
   }
+
+  async getAboutUsAchievementsAward(
+    params: GetAboutUsAchievementsAwardRequest
+  ): Promise<GetAboutUsAchievementsAwardResponse> {
+    const res = await this.get(
+      "/xc-about-us-achievements-awards" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+  
   async getXAlumni(params: GetXAlumniRequest): Promise<GetXAlumniResponse> {
     const res: GetXAlumniResponse = await this.get(
       "/xc-x-alumnis" + getParamsStringify(params),

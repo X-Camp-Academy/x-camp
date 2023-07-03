@@ -1,19 +1,12 @@
-export interface BaseResponse {
-  code: number;
-  msg: string;
-  meta?: {
-    pagination?: {
-      page?: number;
-      pageCount?: number;
-      pageSize?: number;
-      total?: number;
-    };
-  };
-}
+import {
+  StrapiRequest,
+  StrapiResponse,
+  strapiPublicFields,
+} from './strapiDefine';
 
 export interface GetFacultyRequest {}
 
-export interface GetFacultyResponse extends BaseResponse {
+export interface GetFacultyResponse {
   data: {
     titleZh: string;
     titleEn: string;
@@ -23,16 +16,15 @@ export interface GetFacultyResponse extends BaseResponse {
     order: number;
   }[];
 }
-
-export interface GetXAlumniRequest {}
-
-export interface GetXAlumniResponse extends BaseResponse {
-  data: {
-    titleZh: string;
-    titleEn: string;
-    descriptionZh: string;
-    descriptionEn: string;
-    img: string;
-    order: number;
-  }[];
+export interface GetAboutUsAchievementsAward extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  avatar: string;
+  order: number;
 }
+export type GetAboutUsAchievementsAwardRequest =
+  StrapiRequest<GetAboutUsAchievementsAward>;
+export type GetAboutUsAchievementsAwardResponse =
+  StrapiResponse<GetAboutUsAchievementsAward>;
