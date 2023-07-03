@@ -18,3 +18,15 @@ export interface UserInfo {
   user_name: string;
   wechat_openid: string;
 }
+
+export interface GetUserInfoResponse {
+  code: number;
+  msg: string;
+  data: UserInfo;
+}
+
+export interface LogoutResponse {
+  code: number;
+  msg: string;
+  data: string;
+}
