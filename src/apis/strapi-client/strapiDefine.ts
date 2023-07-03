@@ -19,7 +19,7 @@ export interface FilterType<T> {
   $notContainsi?: T;
   $null?: boolean;
   $notNull?: boolean;
-  // $between?: T; // 不知 该用什么类型 
+  // $between?: T; // 不知 该用什么类型
   // $startsWith?: T; // 不知 该用什么类型
   // $endsWith?: T; // 不知 该用什么类型
   // $or	Joins the filters in an "or" expression
@@ -68,9 +68,19 @@ export interface StrapiRequest<Fields extends strapiPublicFields> {
   // sort  目前需要通过继承的方式手动 继承
   pagination?: Pagination; // 分页
 }
-
+export interface StrapiResponseDataItem<T> {
+  attributes: T;
+  id: number;
+}
 //   strapi 公共响应
 export interface StrapiResponse<Fields extends strapiPublicFields> {
-  data: Array<Fields> | Fields;
-  total?: number;
+  data: Array<StrapiResponseDataItem<Fields>> | StrapiResponseDataItem<Fields>;
+  meta?: {
+    pagination?: {
+      page?: number;
+      pageCount?: number;
+      pageSize?: number;
+      total?: number;
+    };
+  };
 }
