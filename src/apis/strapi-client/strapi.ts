@@ -4,6 +4,10 @@ import { useHandleError } from "@/utils/error";
 import { useRequest } from "ahooks";
 import { GetFacultyRequest, GetFacultyResponse } from "./define";
 
+/**
+ *
+ * @returns 获取Faculty
+ */
 export const useGetFaculty = () => {
   const client = useStrapiClient();
   const lang = useLang();
@@ -21,10 +25,8 @@ export const useGetFaculty = () => {
       defaultParams: [
         {
           populate: "*",
-          sort: ["updatedAt:desc"],
         },
       ],
-
       onError: handleError,
     }
   );

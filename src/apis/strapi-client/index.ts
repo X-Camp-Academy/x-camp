@@ -16,7 +16,7 @@ type Target = `XC-Faculty`;
  */
 export const getStrapiUrl = (lang: LangType, target: Target, id?: number) => {
   const strapiMap = {
-    "XC-Faculty": "/api/xc-faculty",
+    "XC-Faculty": "/xc-faculties",
   };
   return strapiMap[target] + (id || id === 0 ? "/" + id : "");
 };
@@ -85,4 +85,4 @@ export class StrapiClient extends BaseAxiosClient {
 }
 
 export const useStrapiClient = () =>
-  useClient("auth", StrapiClient, "/v1", strapiServer);
+  useClient("strapi", StrapiClient, "/api", strapiServer);

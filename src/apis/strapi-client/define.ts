@@ -6,5 +6,12 @@ export interface BaseResponse {
 export interface GetFacultyRequest {}
 
 export interface GetFacultyResponse extends BaseResponse {
-  data: {};
+  data: {
+    titleZh: string;
+    titleEn: string;
+    descriptionZh: string;
+    descriptionEn: string;
+    img: string;
+    order: number;
+  }[];
 }
