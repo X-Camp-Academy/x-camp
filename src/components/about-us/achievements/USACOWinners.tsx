@@ -106,7 +106,7 @@ const USACOMedal: React.FC = () => {
               onClick={() => {
                 carouselEL?.current?.prev();
               }}
-              icon={<LeftCircleTwoTone />}
+              icon={<LeftCircleTwoTone style={{fontSize:25}}/>}
             ></Button>
 
             <Carousel ref={carouselEL} dots={false}>
@@ -143,6 +143,7 @@ const USACOMedal: React.FC = () => {
                                   <Image
                                     alt="image"
                                     src={item.src}
+                                    preview={false}
                                     className={styles.image}
                                   ></Image>
                                   <Title className={styles.cardTitle}>
@@ -168,7 +169,7 @@ const USACOMedal: React.FC = () => {
               onClick={() => {
                 carouselEL?.current?.next();
               }}
-              icon={<RightCircleTwoTone />}
+              icon={<RightCircleTwoTone style={{fontSize:25}}/>}
             ></Button>
           </div>
 
@@ -211,6 +212,7 @@ const USACOMedal: React.FC = () => {
                 <Image
                   alt="download"
                   src="/image/about-us/achievement/download-outlined.png"
+                  preview={false}
                 ></Image>
                 <Text className={styles.downloadText}>
                   Download our free USACO Intro Package

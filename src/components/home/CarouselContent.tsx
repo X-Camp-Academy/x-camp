@@ -21,12 +21,9 @@ import { openClassEmailRequest } from "@/apis/send-email-client";
 const { Title, Paragraph, Text } = Typography;
 
 const CarouselContent: React.FC = () => {
-  const { data, runAsync: sendMailToUser } = useSendOpenClassEmail();
+  const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
-    if (data?.code == 0) {
-      message.success("已将公开课信息发送至您的邮箱，请注意查收！");
-    }
   };
 
   const carouselImages = [
@@ -144,6 +141,7 @@ const CarouselContent: React.FC = () => {
             <Form.Item
               name="email"
               rules={[
+                { type: "email" },
                 {
                   required: true,
                   message: "Please input your email!",
