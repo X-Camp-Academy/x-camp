@@ -1,17 +1,5 @@
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
-import { UserInfo } from "./define";
-
-export interface GetUserInfoResponse {
-  code: number;
-  msg: string;
-  data: UserInfo;
-}
-
-export interface LogoutResponse {
-  code: number;
-  msg: string;
-  data: string;
-}
+import { GetUserInfoResponse, LogoutResponse } from "./define";
 
 export class AuthClient extends BaseAxiosClient {
   async getUserInfo() {
