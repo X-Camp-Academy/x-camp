@@ -1,6 +1,7 @@
 import { message } from "antd";
 import { useFormatMessage } from "./intl";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
+
 const codeMessage: Record<string, number> = {
   ACCESS_DENIED: 403,
   NOT_FOUND: 404,
@@ -34,7 +35,7 @@ export const useHandleError = (
     },
     [codeMessage.NOT_FOUND]: () => {
       message.error({ content: t("404"), key });
-      isRedirect && router.push("/404");
+      isRedirect && notFound();
     },
     // 额外的自定义处理,这是一个使用样例
     // 823: () => {
