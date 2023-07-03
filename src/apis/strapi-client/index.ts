@@ -1,7 +1,12 @@
-import { apiConfig } from "@/config/indx";
-import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
-import { LangType } from "@/utils/intl";
-import { GetFacultyRequest, GetFacultyResponse } from "./define";
+import { apiConfig } from '@/config/indx';
+import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
+import { LangType } from '@/utils/intl';
+import {
+  GetAboutUsAchievementsAwardRequest,
+  GetAboutUsAchievementsAwardResponse,
+  GetFacultyRequest,
+  GetFacultyResponse,
+} from './define';
 
 const { strapiServer } = apiConfig;
 
@@ -40,8 +45,8 @@ export const getParamsStringify: (params: any) => string = (params) => {
         keyStack.pop();
       }
     } else {
-      let str = "";
-      str = keyStack.map((item) => `[${item}]`).join("") + "=" + params;
+      let str = '';
+      str = keyStack.map((item) => `[${item}]`).join('') + '=' + params;
       strArr.push(str);
     }
 
@@ -51,13 +56,23 @@ export const getParamsStringify: (params: any) => string = (params) => {
     const strArr = deep(params[key]);
     paramStrArr = [...paramStrArr, ...strArr.map((item) => key + item)];
   }
-  return paramStrArr.length > 0 ? "?" + paramStrArr.join("&") : "";
+  return paramStrArr.length > 0 ? '?' + paramStrArr.join('&') : '';
 };
 
 export class StrapiClient extends BaseAxiosClient {
   async getFaculty(params: GetFacultyRequest): Promise<GetFacultyResponse> {
     const res: GetFacultyResponse = await this.get(
-      "/xc-faculties" + getParamsStringify(params),
+      '/xc-faculties' + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getAboutUsAchievementsAward(
+    params: GetAboutUsAchievementsAwardRequest
+  ): Promise<GetAboutUsAchievementsAwardResponse> {
+    const res = await this.get(
+      '/xc-about-us-achievements-awards' + getParamsStringify(params),
       {}
     );
     return res;
@@ -66,9 +81,9 @@ export class StrapiClient extends BaseAxiosClient {
 
 export const useStrapiClient = () =>
   useClient(
-    "strapi",
+    'strapi',
     StrapiClient,
-    "/api",
+    '/api',
     { withCredentials: false },
     strapiServer
   );
