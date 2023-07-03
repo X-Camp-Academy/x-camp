@@ -30,7 +30,6 @@ export const useMenuItems = () => {
           label: <Link href="/courses#classify0">Online Classes</Link>,
           key: "online-classes",
         },
-
         {
           label: <Link href="/">100 Prob Challenge</Link>,
           key: "100-prob-challenge",
@@ -48,7 +47,11 @@ export const useMenuItems = () => {
           key: "enhancement-classes",
         },
         {
-          label: <Link href="/">X-Tutors</Link>,
+          label: (
+            <a href="https://x-tutors.org/" target="_blank">
+              X-Tutors
+            </a>
+          ),
           key: "x-tutors",
         },
       ],
@@ -74,10 +77,26 @@ export const useMenuItems = () => {
           key: "weekly-education-forum",
         },
         {
+          label: <Link href="/">Turing cup</Link>,
+          key: "turing-cup",
+        },
+        {
+          label: <Link href="/">USACO</Link>,
+          key: "usaco",
+        },
+        {
           label: (
             <Link href="/resources/weekly-open-house">Weekly Open House</Link>
           ),
           key: "weekly-open-house",
+        },
+        {
+          label: <Link href="/">X-Cup</Link>,
+          key: "x-cup",
+        },
+        {
+          label: <Link href="/">ACSL</Link>,
+          key: "acsl",
         },
         {
           label: (
@@ -88,36 +107,21 @@ export const useMenuItems = () => {
           key: "usaco-live-solution",
         },
         {
-          label: <Link href="/resources/contests">Contests</Link>,
-          key: "contests",
-        },
-        {
-          label: <Link href="/">Turing cup</Link>,
-          key: "turing-cup",
-        },
-        {
-          label: <Link href="/">X-Cup</Link>,
-          key: "x-cup",
-        },
-        {
           label: <Link href="/">Teamscode</Link>,
           key: "teamscode",
         },
         {
-          label: <Link href="/">Art of Programming</Link>,
-          key: "art-of-programming",
-        },
-        {
-          label: <Link href="/">USACO</Link>,
-          key: "usaco",
-        },
-        {
-          label: <Link href="/">ACSL</Link>,
-          key: "acsl",
-        },
-        {
           label: <Link href="/">Calico</Link>,
           key: "calico",
+        },
+        {
+          label: <Link href="/resources/contests">Contests</Link>,
+          key: "contests",
+        },
+
+        {
+          label: <Link href="/">Art of Programming</Link>,
+          key: "art-of-programming",
         },
         {
           label: <Link href="/">Proco</Link>,
