@@ -23,3 +23,16 @@ export interface GetFacultyResponse extends BaseResponse {
     order: number;
   }[];
 }
+
+export interface GetXAlumniRequest {}
+
+export interface GetXAlumniResponse extends BaseResponse {
+  data: {
+    titleZh: string;
+    titleEn: string;
+    descriptionZh: string;
+    descriptionEn: string;
+    img: string;
+    order: number;
+  }[];
+}
