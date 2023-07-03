@@ -1,25 +1,9 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 import { LangType } from "@/utils/intl";
+import { GetFacultyRequest, GetFacultyResponse } from "./define";
 
 const { strapiServer } = apiConfig;
-
-/**
- * Strapi中的表名，本项目所涉及的表均以XC-开头
- */
-type Target = `XC-Faculty`;
-
-/**
- * @description 获取 请求中文内容或者英文内容的url地址
- * @param {LangType} lang  zh: 中文内容  en:英文内容
- * @param {Target}  target 请求的目标
- */
-export const getStrapiUrl = (lang: LangType, target: Target, id?: number) => {
-  const strapiMap = {
-    "XC-Faculty": "/xc-faculties",
-  };
-  return strapiMap[target] + (id || id === 0 ? "/" + id : "");
-};
 
 /**
  * @description 将params转换为strapi filter识别的类型
@@ -71,15 +55,11 @@ export const getParamsStringify: (params: any) => string = (params) => {
 };
 
 export class StrapiClient extends BaseAxiosClient {
-  async getList(params: any, lang: LangType, target: Target, id?: number) {
-    const res = this.get(
-      getStrapiUrl(lang, target, id) + getParamsStringify(params),
+  async getFaculty(params: GetFacultyRequest): Promise<GetFacultyResponse> {
+    const res: GetFacultyResponse = await this.get(
+      "/xc-faculties" + getParamsStringify(params),
       {}
     );
-    return res;
-  }
-  async postList(params: any, lang: LangType, target: Target, id?: number) {
-    const res = this.post(getStrapiUrl(lang, target, id), params, {});
     return res;
   }
 }

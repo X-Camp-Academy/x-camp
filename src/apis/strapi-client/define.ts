@@ -1,6 +1,14 @@
 export interface BaseResponse {
   code: number;
   msg: string;
+  meta?: {
+    pagination?: {
+      page?: number;
+      pageCount?: number;
+      pageSize?: number;
+      total?: number;
+    };
+  };
 }
 
 export interface GetFacultyRequest {}

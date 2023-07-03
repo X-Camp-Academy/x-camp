@@ -53,7 +53,6 @@ export const useClient = <T extends BaseAxiosClient>(
   const t = useFormatMessage();
 
   if (!clients[type]) {
-    console.log(config);
     clients[type] = new ClientClass({
       baseURL: `${server}${baseURL}`,
       ...config,
