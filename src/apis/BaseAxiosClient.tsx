@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useRef } from "react";
-import Axios, { AxiosInstance } from "axios";
+import Axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { LangKey, useFormatMessage } from "@/utils/intl";
@@ -28,6 +28,7 @@ export const WithClient = ({ children }: { children: React.ReactNode }) => {
  */
 export interface ConstructorProps {
   baseURL: string;
+  config?: AxiosRequestConfig;
 }
 
 /**
@@ -35,6 +36,7 @@ export interface ConstructorProps {
  * @param type Client 类型（一个标识 Client 的字符串）
  * @param ClientClass Client 类
  * @param baseURL Axios 基地址
+ * @param config AxiosRequestConfig
  * @param server 服务器请求地址，默认为env中的API_SERVER
  * @returns Client
  */
@@ -42,6 +44,7 @@ export const useClient = <T extends BaseAxiosClient>(
   type: string,
   ClientClass: new (props: ConstructorProps) => T,
   baseURL = "",
+  config: AxiosRequestConfig = {},
   server = process.env.NEXT_PUBLIC_API_SERVER
 ): T => {
   const clients = useContext(ClientContext);
@@ -50,8 +53,10 @@ export const useClient = <T extends BaseAxiosClient>(
   const t = useFormatMessage();
 
   if (!clients[type]) {
+    console.log(config);
     clients[type] = new ClientClass({
       baseURL: `${server}${baseURL}`,
+      ...config,
     });
   }
   clients[type].t = t;
@@ -96,11 +101,12 @@ export class BaseAxiosClient {
   };
 
   constructor(props: ConstructorProps) {
-    const { baseURL } = props;
+    const { baseURL, ...config } = props;
     this.axios = Axios.create({
       baseURL,
       headers: {},
-      withCredentials: true,
+      withCredentials: true, // 默认需要鉴权
+      ...config,
     });
     this.axios.interceptors.response.use(
       (resp) => {

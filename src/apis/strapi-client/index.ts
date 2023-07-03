@@ -85,4 +85,10 @@ export class StrapiClient extends BaseAxiosClient {
 }
 
 export const useStrapiClient = () =>
-  useClient("strapi", StrapiClient, "/api", strapiServer);
+  useClient(
+    "strapi",
+    StrapiClient,
+    "/api",
+    { withCredentials: false },
+    strapiServer
+  );
