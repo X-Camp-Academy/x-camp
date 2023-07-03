@@ -1,19 +1,23 @@
 import {
+  StrapiImg,
   StrapiRequest,
   StrapiResponse,
   strapiPublicFields,
-} from './strapiDefine';
+} from "./strapiDefine";
 
 export interface GetFacultyRequest {}
 
 export interface GetFacultyResponse {
   data: {
-    titleZh: string;
-    titleEn: string;
-    descriptionZh: string;
-    descriptionEn: string;
-    img: string;
-    order: number;
+    attributes: {
+      titleZh: string;
+      titleEn: string;
+      descriptionZh: string;
+      descriptionEn: string;
+      img: StrapiImg;
+      order: number;
+    };
+    id: number;
   }[];
 }
 export interface GetAboutUsAchievementsAward extends strapiPublicFields {

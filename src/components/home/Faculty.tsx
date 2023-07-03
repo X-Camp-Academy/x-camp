@@ -6,12 +6,16 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ColorfulCard from "../common/colorful-card";
 import { CarouselRef } from "antd/es/carousel";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/utils/intl";
+import { StrapiImg } from "@/apis/strapi-client/strapiDefine";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
+  const lang = useLang();
   const { data } = useGetFaculty();
-  console.log(data)
+  console.log(lang);
   const facultyData = [
     {
       name: "Ryan1",
@@ -68,6 +72,9 @@ const Faculty: React.FC = () => {
     carouselRef?.current?.next();
   };
 
+  const getImgUrl = (img: StrapiImg) => {
+    return img?.data?.attributes?.url;
+  };
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
@@ -87,6 +94,7 @@ const Faculty: React.FC = () => {
           className={styles.prev}
           onClick={onPrev}
         >
+          {}
           <LeftOutlined />
         </Button>
         <Carousel
@@ -117,49 +125,60 @@ const Faculty: React.FC = () => {
           ]}
           dots={false}
         >
-          {facultyData.map((item, index) => {
-            return (
-              <ColorfulCard
-                key={index}
-                border="bottom"
-                index={index}
-                className={styles.cardContainer}
-              >
-                <Card
-                  bodyStyle={{
-                    paddingBottom: 0,
-                  }}
+          {data &&
+            data.map((item, index) => {
+              return (
+                <ColorfulCard
+                  key={item?.id}
+                  border="bottom"
+                  index={index}
+                  className={styles.cardContainer}
                 >
-                  <Space align="center">
-                    <Space direction="vertical">
-                      <Text className={styles.name}>{item?.name}</Text>
-                      <Paragraph
-                        ellipsis={{ rows: 5 }}
-                        className={styles.description}
-                      >
-                        {item?.description}
-                      </Paragraph>
-                      <Button
-                        type="primary"
-                        size="small"
-                        ghost={true}
-                        shape="circle"
-                        style={computedStyle(index)}
-                      >
-                        <RightOutlined />
-                      </Button>
+                  <Card
+                    bodyStyle={{
+                      paddingBottom: 0,
+                    }}
+                  >
+                    <Space align="center">
+                      <Space direction="vertical">
+                        <Text className={styles.name}>
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.titleZh,
+                            item?.attributes?.titleEn
+                          )}
+                        </Text>
+                        <Paragraph
+                          ellipsis={{ rows: 5 }}
+                          className={styles.description}
+                        >
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.descriptionZh,
+                            item?.attributes?.descriptionEn
+                          )}
+                        </Paragraph>
+                        <Button
+                          type="primary"
+                          size="small"
+                          ghost={true}
+                          shape="circle"
+                          style={computedStyle(index)}
+                        >
+                          <RightOutlined />
+                        </Button>
+                      </Space>
+                      <Image
+                        src={getImgUrl(item?.attributes?.img)}
+                        alt="avatar"
+                        preview={false}
+                        className={styles.cardImage}
+                      />
                     </Space>
-                    <Image
-                      src={item?.avatar}
-                      alt="avatar"
-                      preview={false}
-                      className={styles.cardImage}
-                    />
-                  </Space>
-                </Card>
-              </ColorfulCard>
-            );
-          })}
+                  </Card>
+                </ColorfulCard>
+              );
+            })}
         </Carousel>
         <Button
           type="primary"
