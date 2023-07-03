@@ -141,6 +141,7 @@ const CarouselContent: React.FC = () => {
             <Form.Item
               name="email"
               rules={[
+                { type: "email" },
                 {
                   required: true,
                   message: "Please input your email!",
