@@ -15,15 +15,7 @@ const XAlumni = () => {
   const lang = useLang();
   const t = useFormatMessage();
   const { data: xAlumni } = useGetXAlumni();
-  console.log(xAlumni);
-  const alumniData = [
-    {
-      avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan1",
-      description:
-        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
-    },
-  ];
+
   const carouselRef = useRef<CarouselRef>(null);
 
   const onPrev = () => {
@@ -83,6 +75,7 @@ const XAlumni = () => {
             dots={{ className: styles.carouselDots }}
           >
             {xAlumni?.map((item, index) => {
+              console.log(item);
               return (
                 <ColorfulCard
                   key={index}
@@ -92,9 +85,16 @@ const XAlumni = () => {
                 >
                   <Card>
                     <Space direction="vertical" align="center">
-                      <Avatar src={item?.img} className={styles.avatar} />
+                      <Avatar
+                        src={item?.attributes?.img?.data?.[0]?.attributes?.url}
+                        className={styles.avatar}
+                      />
                       <Text className={styles.cardTitle}>
-                        {getTransResult(lang, item?.titleZh, item?.titleEn)}
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
                       </Text>
                       <Paragraph
                         ellipsis={isMobile ? { rows: 3 } : { rows: 5 }}
@@ -102,8 +102,8 @@ const XAlumni = () => {
                       >
                         {getTransResult(
                           lang,
-                          item?.descriptionZh,
-                          item?.descriptionEn
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
                         )}
                       </Paragraph>
                     </Space>

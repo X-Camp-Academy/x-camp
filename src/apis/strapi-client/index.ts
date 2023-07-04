@@ -6,6 +6,8 @@ import {
   GetAboutUsAchievementsAwardResponse,
   GetFacultyRequest,
   GetFacultyResponse,
+  GetXAlumniRequest,
+  GetXAlumniResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;

@@ -5,6 +5,8 @@ import {
   GetAboutUsAchievementsAwardRequest,
   GetFacultyRequest,
   GetFacultyResponse,
+  GetXAlumniRequest,
+  GetXAlumniResponse,
 } from "./define";
 import { isArray } from "lodash";
 /**
@@ -17,7 +19,7 @@ export const useGetFaculty = () => {
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
-      return res?.data;
+      return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
@@ -61,9 +63,9 @@ export const useGetXAlumni = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params) => {
+    async (params: GetXAlumniRequest) => {
       const res: GetXAlumniResponse = await client.getXAlumni(params);
-      return res?.data;
+      return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
