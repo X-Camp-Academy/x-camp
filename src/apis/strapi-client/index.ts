@@ -6,6 +6,8 @@ import {
   GetAboutUsAchievementsAwardResponse,
   GetFacultyRequest,
   GetFacultyResponse,
+  GetHomeStudentProjectsRequest,
+  GetHomeStudentProjectsResponse,
 } from './define';
 
 const { strapiServer } = apiConfig;
@@ -63,6 +65,14 @@ export class StrapiClient extends BaseAxiosClient {
   async getFaculty(params: GetFacultyRequest): Promise<GetFacultyResponse> {
     const res: GetFacultyResponse = await this.get(
       '/xc-faculties' + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getHomeStudentProjects(params: GetHomeStudentProjectsRequest): Promise<GetHomeStudentProjectsResponse> {
+    const res: GetHomeStudentProjectsResponse = await this.get(
+      '/xc-home-student-projects' + getParamsStringify(params),
       {}
     );
     return res;

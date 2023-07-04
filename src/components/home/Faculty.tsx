@@ -15,39 +15,6 @@ const { Title, Paragraph, Text } = Typography;
 const Faculty: React.FC = () => {
   const lang = useLang();
   const { data } = useGetFaculty();
-  console.log(lang);
-  const facultyData = [
-    {
-      name: "Ryan1",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan2",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan3",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan4",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan5",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan6",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-  ];
 
   const computedStyle = (index: number) => {
     const iconDefaultStyle = {
@@ -125,60 +92,55 @@ const Faculty: React.FC = () => {
           ]}
           dots={false}
         >
-          {data &&
-            data.map((item, index) => {
-              return (
-                <ColorfulCard
-                  key={item?.id}
-                  border="bottom"
-                  index={index}
-                  className={styles.cardContainer}
-                >
-                  <Card
-                    bodyStyle={{
-                      paddingBottom: 0,
-                    }}
-                  >
-                    <Space align="center">
-                      <Space direction="vertical">
-                        <Text className={styles.name}>
-                          {getTransResult(
-                            lang,
-                            item?.attributes?.titleZh,
-                            item?.attributes?.titleEn
-                          )}
-                        </Text>
-                        <Paragraph
-                          ellipsis={{ rows: 5 }}
-                          className={styles.description}
-                        >
-                          {getTransResult(
-                            lang,
-                            item?.attributes?.descriptionZh,
-                            item?.attributes?.descriptionEn
-                          )}
-                        </Paragraph>
-                        <Button
-                          type="primary"
-                          size="small"
-                          ghost={true}
-                          shape="circle"
-                          style={computedStyle(index)}
-                        >
-                          <RightOutlined />
-                        </Button>
-                      </Space>
-                      <Image
-                        src={getImgUrl(item?.attributes?.img)}
-                        alt="avatar"
-                        preview={false}
-                        className={styles.cardImage}
-                      />
+          {data?.map((item, index) => {
+            return (
+              <ColorfulCard
+                key={item?.id}
+                border="bottom"
+                index={index}
+                className={styles.cardContainer}
+              >
+                <Card>
+                  <Space align="center">
+                    <Space direction="vertical">
+                      <Text className={styles.name}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Text>
+                      <Paragraph
+                        ellipsis={{ rows: 5 }}
+                        className={styles.description}
+                      >
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
+                        )}
+                      </Paragraph>
+                      <Button
+                        type="primary"
+                        size="small"
+                        ghost={true}
+                        shape="circle"
+                        style={computedStyle(index)}
+                      >
+                        <RightOutlined />
+                      </Button>
                     </Space>
-                  </Card>
-                </ColorfulCard>
-              );
-            })}
+                    <Image
+                      src={getImgUrl(item?.attributes?.img)}
+                      alt="avatar"
+                      preview={false}
+                      className={styles.cardImage}
+                    />
+                  </Space>
+                </Card>
+              </ColorfulCard>
+            );
+          })}
         </Carousel>
         <Button
           type="primary"

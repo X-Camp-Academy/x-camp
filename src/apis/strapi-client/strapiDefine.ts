@@ -74,7 +74,7 @@ export interface StrapiResponseDataItem<T> {
 }
 //   strapi 公共响应
 export interface StrapiResponse<Fields extends strapiPublicFields> {
-  data: Array<StrapiResponseDataItem<Fields>> | StrapiResponseDataItem<Fields>;
+  data: Array<StrapiResponseDataItem<Fields>>;
   meta?: {
     pagination?: {
       page?: number;

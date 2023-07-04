@@ -5,6 +5,7 @@ import {
   GetAboutUsAchievementsAwardRequest,
   GetFacultyRequest,
   GetFacultyResponse,
+  GetHomeStudentProjectsRequest,
 } from './define';
 import { isArray } from 'lodash';
 /**
@@ -17,7 +18,7 @@ export const useGetFaculty = () => {
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
-      return res?.data;
+      return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
@@ -40,6 +41,29 @@ export const useGetAboutUsAchievementsAward = () => {
   return useRequest(
     async (params: GetAboutUsAchievementsAwardRequest) => {
       const res = await client.getAboutUsAchievementsAward(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*',
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Achievements Usaco Medal
+ */
+export const useGetHomeStudentProjects = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetHomeStudentProjectsRequest) => {
+      const res = await client.getHomeStudentProjects(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
