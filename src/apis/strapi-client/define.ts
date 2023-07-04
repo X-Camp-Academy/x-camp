@@ -75,7 +75,7 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  categoryZh: AboutUsJoinUsCategory;
+  category: AboutUsJoinUsCategory;
   place: AboutUsJoinUsPlace;
   contentZh: string;
   contentEn: string;

@@ -17,7 +17,7 @@ const JobSelection: React.FC = () => {
       populate: "*",
       sort: ["order:desc"],
       filters: {
-        categoryZh: {
+        category: {
           $eq: category,
         },
       },

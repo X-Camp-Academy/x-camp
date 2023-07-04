@@ -128,7 +128,7 @@ export const useGetResourcesContest = () => {
  *
  * @returns 获取关于我们目录下的Join Us
  */
-export const useGetAboutUsJoinUs = (categoryZh: AboutUsJoinUsCategory) => {
+export const useGetAboutUsJoinUs = (category: AboutUsJoinUsCategory) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
@@ -144,8 +144,8 @@ export const useGetAboutUsJoinUs = (categoryZh: AboutUsJoinUsCategory) => {
           populate: "*",
           sort: ["order:desc"],
           filters: {
-            categoryZh: {
-              $eq: categoryZh,
+            category: {
+              $eq: category,
             },
           },
         },
