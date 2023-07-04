@@ -8,88 +8,48 @@ import {
   Carousel,
   Button,
   List,
-} from 'antd';
-import { CarouselRef } from 'antd/es/carousel';
+} from "antd";
+import { CarouselRef } from "antd/es/carousel";
 import {
   LeftCircleTwoTone,
   RightCircleTwoTone,
   setTwoToneColor,
-} from '@ant-design/icons';
-import styles from './USACOWinners.module.scss';
-import React, { useRef } from 'react';
-import Link from 'next/link';
-import ColorfulCard from '@/components/common/colorful-card';
-import UsacoCards from '@/components/common/usaco-cards';
-import { useGetAboutUsAchievementsAward } from '@/apis/strapi-client/strapi';
+} from "@ant-design/icons";
+import styles from "./USACOWinners.module.scss";
+import React, { useRef } from "react";
+import Link from "next/link";
+import ColorfulCard from "@/components/common/colorful-card";
+import UsacoCards from "@/components/common/usaco-cards";
+import { useGetAboutUsAchievementsAward } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/utils/intl";
 const { Title, Paragraph, Text } = Typography;
 
 const USACOMedal: React.FC = () => {
+  const lang = useLang();
   const carouselEL = useRef<CarouselRef>(null);
-  setTwoToneColor('#D46B14');
+  setTwoToneColor("#D46B14");
   const { data: awards } = useGetAboutUsAchievementsAward();
-  console.log(awards);
-  const comments = [
-    [
-      {
-        src: '/image/home/charlie-big.png',
-        title: 'Michael',
-        comment: '2023 US Camp',
-        borderColorIndex: 3,
-      },
-      {
-        src: '/image/home/charlie-big.png',
-        title: 'Michael',
-        comment: '2023 US Camp',
-        borderColorIndex: 2,
-      },
-      {
-        src: '/image/home/charlie-big.png',
-        title: 'Michael',
-        comment: '2023 US Camp',
-        borderColorIndex: 1,
-      },
-    ],
-    [
-      {
-        src: '/image/home/charlie-big.png',
-        title: 'Michael',
-        comment: '2023 US Camp',
-        borderColorIndex: 3,
-      },
-      {
-        src: '/image/home/charlie-big.png',
-        title: 'Michael',
-        comment: '2023 US Camp',
-        borderColorIndex: 2,
-      },
-      {
-        src: '/image/home/charlie-big.png',
-        title: 'Michael',
-        comment: '2023 US Camp',
-        borderColorIndex: 1,
-      },
-    ],
-  ];
 
   const listData = [
     {
-      title: 'In the 20/21 season',
-      content: 'one student made it to the USACO US Camp (USACO Finalist).',
+      title: "In the 20/21 season",
+      content: "one student made it to the USACO US Camp (USACO Finalist).",
     },
     {
-      title: 'In the 21/22 season',
+      title: "In the 21/22 season",
       content:
-        'four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).',
+        "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
     },
     {
-      title: 'In the last 22/23 season',
+      title: "In the last 22/23 season",
       content:
-        'seven students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).',
+        "seven students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
     },
     {
-      title: 'The latest data for USACO 23 Season',
+      title: "The latest data for USACO 23 Season",
       content:
-        'Includes 46 students who advanced from the Bronze to the Gold Division, 16 students who advanced from the Silver to the GoldDivision, and 10 students who advanced from the Gold to the Platinum Division.',
+        "Includes 46 students who advanced from the Bronze to the Gold Division, 16 students who advanced from the Silver to the GoldDivision, and 10 students who advanced from the Gold to the Platinum Division.",
     },
   ];
   return (
@@ -116,7 +76,7 @@ const USACOMedal: React.FC = () => {
             ></Button>
 
             <Carousel ref={carouselEL} dots={false}>
-              {comments?.map((page, index) => {
+              {awards?.map((page, index) => {
                 return (
                   <div key={index}>
                     <Row
@@ -125,7 +85,7 @@ const USACOMedal: React.FC = () => {
                       align="middle"
                       className={styles.row}
                     >
-                      {page.map((item, index) => {
+                      {page?.map((item, index) => {
                         return (
                           <Col
                             key={index}
@@ -137,7 +97,8 @@ const USACOMedal: React.FC = () => {
                           >
                             <ColorfulCard
                               border="bottom"
-                              index={item.borderColorIndex}
+                              index={index}
+                              animate={false}
                             >
                               <Card
                                 bodyStyle={{
@@ -148,15 +109,26 @@ const USACOMedal: React.FC = () => {
                                 <Space direction="vertical">
                                   <Image
                                     alt="image"
-                                    src={item.src}
+                                    src={
+                                      item?.attributes?.avatar?.data?.attributes
+                                        ?.url
+                                    }
                                     preview={false}
                                     className={styles.image}
-                                  ></Image>
+                                  />
                                   <Title className={styles.cardTitle}>
-                                    {item?.title}
+                                    {getTransResult(
+                                      lang,
+                                      item?.attributes?.titleZh,
+                                      item?.attributes?.titleEn
+                                    )}
                                   </Title>
                                   <Text className={styles.cardText}>
-                                    {item?.comment}
+                                    {getTransResult(
+                                      lang,
+                                      item?.attributes?.descriptionZh,
+                                      item?.attributes?.descriptionEn
+                                    )}
                                   </Text>
                                 </Space>
                               </Card>

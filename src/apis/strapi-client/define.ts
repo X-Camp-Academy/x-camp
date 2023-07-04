@@ -23,7 +23,7 @@ export interface GetAboutUsAchievementsAward extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  avatar: string;
+  avatar: StrapiMedia;
   order: number;
 }
 

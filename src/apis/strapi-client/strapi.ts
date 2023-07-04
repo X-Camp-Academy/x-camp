@@ -3,6 +3,7 @@ import { useHandleError } from "@/utils/error";
 import { useRequest } from "ahooks";
 import {
   AboutUsJoinUsCategory,
+  GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
@@ -14,6 +15,7 @@ import {
   GetXAlumniResponse,
 } from "./define";
 import { isArray } from "lodash";
+import { StrapiResponseDataItem } from "./strapiDefine";
 /**
  *
  * @returns 获取Faculty
@@ -47,7 +49,18 @@ export const useGetAboutUsAchievementsAward = () => {
   return useRequest(
     async (params: GetAboutUsAchievementsAwardRequest) => {
       const res = await client.getAboutUsAchievementsAward(params);
-      return isArray(res?.data) ? res.data : [];
+
+      function groupArray(
+        arr: StrapiResponseDataItem<GetAboutUsAchievementsAward>[]
+      ) {
+        const result: StrapiResponseDataItem<GetAboutUsAchievementsAward>[][] =
+          [];
+        for (let i = 0; i < arr.length; i += 3) {
+          result.push(arr.slice(i, i + 3));
+        }
+        return result;
+      }
+      return isArray(res?.data) ? groupArray(res.data) : [];
     },
     {
       defaultParams: [
