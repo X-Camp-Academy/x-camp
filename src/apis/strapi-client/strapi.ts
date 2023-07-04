@@ -13,6 +13,7 @@ import {
   GetResourcesContestResponse,
   GetXAlumniRequest,
   GetXAlumniResponse,
+  GetTestimonyRequest,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
@@ -148,6 +149,26 @@ export const useGetAboutUsJoinUs = (category: AboutUsJoinUsCategory) => {
               $eq: category,
             },
           },
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+export const useGetTestimony = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetTestimonyRequest) => {
+      const res = await client.getTestimony(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
         },
       ],
       manual: true,

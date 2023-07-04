@@ -5,5 +5,6 @@
     "404": "Sorry, the page you are trying to access does not exist.",
     "500": "The server has run into an internal error. Please try again later.",
     "X_ALUMNI": "X-Alumni",
-    "X_ALUMNI_INTRODUCTION": "Since its inception, X-Camp has had over 1,000 students and is currently enrolling over 500+ students in 250+ schools around the world. If you would like to find your classmates, please contact us!"
+    "X_ALUMNI_INTRODUCTION": "Since its inception, X-Camp has had over 1,000 students and is currently enrolling over 500+ students in 250+ schools around the world. If you would like to find your classmates, please contact us!",
+    "ToStudy": "To Study"
 }

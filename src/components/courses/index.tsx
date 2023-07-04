@@ -6,7 +6,7 @@ import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
 import { useSearchParams } from "next/navigation";
 import { classesData } from "./define";
-import Comments from "../home/Comments";
+import Testimony from "../home/Testimony";
 // import AnchorNav from './AnchorNav';
 import dynamic from "next/dynamic";
 import ClassCard from "../common/class-card";
@@ -110,7 +110,7 @@ const Courses = () => {
               );
             })}
           </div>
-          <Comments />
+          <Testimony />
           <AnchorNav />
         </Content>
       </Layout>

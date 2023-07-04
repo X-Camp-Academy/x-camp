@@ -1,8 +1,8 @@
 "use client";
 import React, { ReactNode, useContext } from "react";
 import { useLocalStorageState } from "ahooks";
-import { LangType } from "../intl";
 
+type LangType = "zh" | "en";
 /**
  * 默认本地状态
  */

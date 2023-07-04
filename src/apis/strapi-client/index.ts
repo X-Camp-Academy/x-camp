@@ -1,6 +1,5 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
-import { LangType } from "@/utils/intl";
 import {
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAchievementsAwardResponse,
@@ -12,6 +11,8 @@ import {
   GetResourcesContestResponse,
   GetXAlumniRequest,
   GetXAlumniResponse,
+  GetTestimonyRequest,
+  GetTestimonyResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -107,6 +108,16 @@ export class StrapiClient extends BaseAxiosClient {
   ): Promise<GetAboutUsJoinUsResponse> {
     const res: GetAboutUsJoinUsResponse = await this.get(
       "/xc-about-us-join-uses" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getTestimony(
+    params: GetTestimonyRequest
+  ): Promise<GetTestimonyResponse> {
+    const res = await this.get(
+      "/xc-testimonies" + getParamsStringify(params),
       {}
     );
     return res;

@@ -2,15 +2,16 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { message } from "antd";
 import { useRequest } from "ahooks";
-import { useFormatMessage } from "../../utils/intl";
+
 import { useAuthClient } from "@/apis/auth-client";
 import { RainbowCat } from "@/components/common/rainbow-cat";
 import { AuthContext } from "./define";
+import { useLang } from "../with-intl/define";
 
 export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   const [initialized, setInitialized] = useState(false);
   const client = useAuthClient();
-  const t = useFormatMessage();
+  const { format: t } = useLang();
 
   const {
     data: user,

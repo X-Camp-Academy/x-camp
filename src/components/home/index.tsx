@@ -3,6 +3,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 
 const CarouselContent = dynamic(() => import("./CarouselContent"));
 const DiscoverCourses = dynamic(() => import("./DiscoverCourses"));
@@ -14,11 +15,12 @@ const PublicCalendar = dynamic(() => import("./PublicCalendar"));
 const StudentProjects = dynamic(() => import("./StudentProjects"));
 const XAlumni = dynamic(() => import("./XAlumni"));
 const Partners = dynamic(() => import("./Partners"));
-const Comments = dynamic(() => import("./Comments"));
+const Testimony = dynamic(() => import("./Testimony"));
 
 const { Content } = Layout;
 
 const Home: React.FC = () => {
+  const { data } = useGetTestimony();
   return (
     <ConfigProvider
       theme={{
@@ -39,7 +41,7 @@ const Home: React.FC = () => {
           <StudentProjects />
           <XAlumni />
           <Partners />
-          <Comments />
+          <Testimony testimonyData={data} />
         </Content>
       </Layout>
     </ConfigProvider>

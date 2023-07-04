@@ -1,5 +1,5 @@
+import { useLang } from "@/hoc/with-intl/define";
 import { message } from "antd";
-import { useFormatMessage } from "./intl";
 import { notFound, useRouter } from "next/navigation";
 
 const codeMessage: Record<string, number> = {
@@ -25,7 +25,7 @@ export const useHandleError = (
   isRedirect = true,
   errorCodeParameter: Partial<ErrorCodeParameter> = {}
 ): ErrorHandler => {
-  const t = useFormatMessage();
+  const { format: t } = useLang();
   const router = useRouter();
   const key = "error";
   const errorMap: Record<number, () => void> = {

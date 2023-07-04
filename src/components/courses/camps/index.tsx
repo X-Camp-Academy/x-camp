@@ -8,7 +8,7 @@ import CampCarousel from "./camp-carousel";
 import CourseAbstract from "../detail/top-banner/course-card/course-abstract";
 import ColorfulCard from "@/components/common/colorful-card";
 import CampFAQS from "./camp-faqs";
-import Comments from "@/components/home/Comments";
+import Testimony from "@/components/home/Testimony";
 const { Content } = Layout;
 const CourseCamps = () => {
   return (
@@ -44,7 +44,7 @@ const CourseCamps = () => {
             </div>
           </div>
           <CampFAQS title="Camps FAQs" />
-          <Comments />
+          <Testimony />
         </Content>
       </Layout>
     </ConfigProvider>

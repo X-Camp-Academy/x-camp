@@ -1,7 +1,7 @@
 import "./globals.scss";
 import dynamic from "next/dynamic";
 import { LocalStateProvider } from "@/utils/local-state";
-import WithIntl from "@/hoc/WithIntl";
+
 import WithLayout from "@/hoc/WithLayout";
 import { WithAuth } from "@/hoc/with-auth";
 import { WithClient } from "@/apis/BaseAxiosClient";
@@ -9,6 +9,9 @@ import { WithClient } from "@/apis/BaseAxiosClient";
 const Nav = dynamic(() => import("@/components/common/nav"));
 const Footer = dynamic(() => import("@/components/common/footer"));
 const BackTop = dynamic(() => import("@/components/common/back-top"), {
+  ssr: false,
+});
+const WithIntl = dynamic(() => import("@/hoc/with-intl"), {
   ssr: false,
 });
 
