@@ -10,14 +10,35 @@ import Comments from "../home/Comments";
 // import AnchorNav from './AnchorNav';
 import dynamic from "next/dynamic";
 import ClassCard from "../common/class-card";
+import {
+  useGetCourseLevelType,
+  useGetCourses,
+} from "@/apis/strapi-client/strapi";
 const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 
 const Courses = () => {
-  const params = useSearchParams();
-  const courseId = params?.get("courseId");
-  console.log("courseId", courseId);
+  const { data: courseLevelType } = useGetCourseLevelType();
+  const { data: courses } = useGetCourses();
+  const courseLevelTypeMap = new Map();
+  courseLevelType?.forEach(item => {
+    const key = item?.attributes?.type;
+    courseLevelTypeMap.set(key, []);
+  });
+  
+  courses?.forEach(item => {
+    const key = item?.attributes?.courseLevelType?.data?.attributes?.type;
+    const value = courseLevelTypeMap.get(key);
+    value?.push(item);
+    courseLevelTypeMap.set(key, value);
+  });
+
+
+
+  console.log(courses);
+  console.log(courseLevelTypeMap);
+
 
   return (
     <ConfigProvider
@@ -30,6 +51,9 @@ const Courses = () => {
       <Layout className={styles.courses}>
         <Content>
           <TopBanner />
+
+
+          
           <div className={`${styles.classContainer} container`}>
             {classesData.map((item, index) => {
               return (
@@ -110,6 +134,8 @@ const Courses = () => {
               );
             })}
           </div>
+
+
           <Comments />
           <AnchorNav />
         </Content>

@@ -1,14 +1,20 @@
-import { apiConfig } from '@/config/indx';
-import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
-import { LangType } from '@/utils/intl';
+import { apiConfig } from "@/config/indx";
+import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
+import { LangType } from "@/utils/intl";
 import {
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAchievementsAwardResponse,
+  GetCourseDetailRequest,
+  GetCourseDetailResponse,
+  GetCourseLevelTypeRequest,
+  GetCourseLevelTypeResponse,
+  GetCoursesRequest,
+  GetCoursesResponse,
   GetFacultyRequest,
   GetFacultyResponse,
   GetHomeStudentProjectsRequest,
   GetHomeStudentProjectsResponse,
-} from './define';
+} from "./define";
 
 const { strapiServer } = apiConfig;
 
@@ -47,8 +53,8 @@ export const getParamsStringify: (params: any) => string = (params) => {
         keyStack.pop();
       }
     } else {
-      let str = '';
-      str = keyStack.map((item) => `[${item}]`).join('') + '=' + params;
+      let str = "";
+      str = keyStack.map((item) => `[${item}]`).join("") + "=" + params;
       strArr.push(str);
     }
 
@@ -58,21 +64,23 @@ export const getParamsStringify: (params: any) => string = (params) => {
     const strArr = deep(params[key]);
     paramStrArr = [...paramStrArr, ...strArr.map((item) => key + item)];
   }
-  return paramStrArr.length > 0 ? '?' + paramStrArr.join('&') : '';
+  return paramStrArr.length > 0 ? "?" + paramStrArr.join("&") : "";
 };
 
 export class StrapiClient extends BaseAxiosClient {
   async getFaculty(params: GetFacultyRequest): Promise<GetFacultyResponse> {
     const res: GetFacultyResponse = await this.get(
-      '/xc-faculties' + getParamsStringify(params),
+      "/xc-faculties" + getParamsStringify(params),
       {}
     );
     return res;
   }
 
-  async getHomeStudentProjects(params: GetHomeStudentProjectsRequest): Promise<GetHomeStudentProjectsResponse> {
+  async getHomeStudentProjects(
+    params: GetHomeStudentProjectsRequest
+  ): Promise<GetHomeStudentProjectsResponse> {
     const res: GetHomeStudentProjectsResponse = await this.get(
-      '/xc-home-student-projects' + getParamsStringify(params),
+      "/xc-home-student-projects" + getParamsStringify(params),
       {}
     );
     return res;
@@ -82,7 +90,35 @@ export class StrapiClient extends BaseAxiosClient {
     params: GetAboutUsAchievementsAwardRequest
   ): Promise<GetAboutUsAchievementsAwardResponse> {
     const res = await this.get(
-      '/xc-about-us-achievements-awards' + getParamsStringify(params),
+      "/xc-about-us-achievements-awards" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getCourseLevelType(
+    params: GetCourseLevelTypeRequest
+  ): Promise<GetCourseLevelTypeResponse> {
+    const res: GetCourseLevelTypeResponse = await this.get(
+      "/xc-course-level-types" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getCourses(params: GetCoursesRequest): Promise<GetCoursesResponse> {
+    const res: GetCoursesResponse = await this.get(
+      "/xc-courses" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getCourseDetail(
+    params: GetCourseDetailRequest
+  ): Promise<GetCourseDetailResponse> {
+    const res: GetCourseDetailResponse = await this.get(
+      "/xc-classes" + getParamsStringify(params),
       {}
     );
     return res;
@@ -91,9 +127,9 @@ export class StrapiClient extends BaseAxiosClient {
 
 export const useStrapiClient = () =>
   useClient(
-    'strapi',
+    "strapi",
     StrapiClient,
-    '/api',
+    "/api",
     { withCredentials: false },
     strapiServer
   );
