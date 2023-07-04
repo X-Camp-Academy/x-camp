@@ -85,7 +85,7 @@ export interface StrapiResponse<Fields extends strapiPublicFields> {
   };
 }
 
-export interface StrapiImgAttributes {
+export interface StrapiMediaAttributes {
   attributes: {
     alternativeText: string;
     caption: string;
@@ -119,10 +119,10 @@ export interface StrapiImgAttributes {
   id: number;
 }
 
-export interface StrapiImg {
-  data: StrapiImgAttributes;
+export interface StrapiMedia {
+  data: StrapiMediaAttributes;
 }
 
-export interface StrapiImgs {
-  data: StrapiImgAttributes[];
+export interface StrapiMedias {
+  data: StrapiMediaAttributes[];
 }

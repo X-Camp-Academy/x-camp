@@ -1,59 +1,20 @@
 "use client";
 import React, { useRef } from "react";
-import {
-  Space,
-  Card,
-  Typography,
-  Carousel,
-  Button,
-  Avatar,
-} from "antd";
+import { Space, Card, Typography, Carousel, Button, Avatar } from "antd";
 import styles from "./XAlumni.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import { useMobile } from "@/utils";
 import ColorfulCard from "../common/colorful-card";
+import { useGetXAlumni } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Text, Paragraph } = Typography;
-const XAlumni: React.FC = () => {
-  const alumniData = [
-    {
-      avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan1",
-      description:
-        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
-    },
-    {
-      avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan2",
-      description:
-        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
-    },
-    {
-      avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan3",
-      description:
-        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
-    },
-    {
-      avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan4",
-      description:
-        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
-    },
-    {
-      avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan5",
-      description:
-        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
-    },
-    {
-      avatar: "/image/home/alumni-ryan.png",
-      name: "Ryan6",
-      description:
-        "Ryan is a computer science student and artificial intelligence researcher in Massachusetts. He has been programming for more than 10 years in a variety of programming languages including Clojure, Java, C++ and Python. With experience in software development and competitive programming, Ryan loves guiding people in understanding new concepts for themselves with a wide range of uses.",
-    },
-  ];
+const XAlumni = () => {
+  const { lang, format: t } = useLang();
+  const { data: xAlumni } = useGetXAlumni();
+
   const carouselRef = useRef<CarouselRef>(null);
 
   const onPrev = () => {
@@ -68,11 +29,9 @@ const XAlumni: React.FC = () => {
     <div className={styles.xalumniContainer}>
       <div className={`${styles.xalumni} container`}>
         <Space direction="vertical">
-          <Title className={styles.title}>X-Alumni</Title>
+          <Title className={styles.title}>{t("X_ALUMNI")}</Title>
           <Paragraph className={styles.paragraph}>
-            Since its inception, X-Camp has had over 1,000 students and is
-            currently enrolling over 500+ students in 250+ schools around the
-            world. If you would like to find your classmates, please contact us!
+            {t("X_ALUMNI_INTRODUCTION")}
           </Paragraph>
         </Space>
 
@@ -114,7 +73,8 @@ const XAlumni: React.FC = () => {
             ]}
             dots={{ className: styles.carouselDots }}
           >
-            {alumniData.map((item, index) => {
+            {xAlumni?.map((item, index) => {
+              console.log(item);
               return (
                 <ColorfulCard
                   key={index}
@@ -124,13 +84,26 @@ const XAlumni: React.FC = () => {
                 >
                   <Card>
                     <Space direction="vertical" align="center">
-                      <Avatar src={item.avatar} className={styles.avatar} />
-                      <Text className={styles.cardTitle}>{item?.name}</Text>
+                      <Avatar
+                        src={item?.attributes?.img?.data?.[0]?.attributes?.url}
+                        className={styles.avatar}
+                      />
+                      <Text className={styles.cardTitle}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Text>
                       <Paragraph
                         ellipsis={isMobile ? { rows: 3 } : { rows: 5 }}
                         className={styles.cardParagraph}
                       >
-                        {item?.description}
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
+                        )}
                       </Paragraph>
                     </Space>
                   </Card>

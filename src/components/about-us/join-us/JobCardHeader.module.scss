@@ -1,80 +1,75 @@
 .cardContainer {
-    padding: 0px 35px;
+  padding: 0px 35px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 0;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+
+  .jobCardTitle {
+    font-size: 24px;
+    text-align: left;
+    font-weight: 600;
+    color: #172142;
+    line-height: 36px;
+  }
+
+  .expandBtn {
     border: none;
-    background-color: #FFFFFF;
-    border-radius: 0;
+    color: #ffad11;
+  }
 
-    @media (max-width: 768px){
-        padding: 0 20px;
+  .jobCardDescription {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 28px;
+  }
+
+  .iconsButtonRow {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      display: block;
     }
 
-    .JobCardTitle {
-        font-size: 24px;
-        text-align: left;
-        font-weight: 600;
-        color: #172142;
-        line-height: 36px;
-    }
+    .iconBox {
+      display: flex;
 
-    .explandBtn {
-        border: none;
-        color: #FFAD11;
-    }
-
-    .JobCardDescription {
-        text-align: left;
+      .iconText {
+        margin-left: 10px;
         font-size: 18px;
         font-weight: 400;
         color: #666666;
         line-height: 28px;
+      }
     }
 
-    .iconsButtonRow {
-        width: 100%;
-        padding: 20px 0;
-        display: flex;
-        justify-content: space-between;
+    .applyBtn {
+      display: flex;
+      align-items: center;
+      padding: 20px 36px;
+      background: #ffad11;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 24px;
 
-        @media (max-width: 768px) {
-            display: block;
-
-        }
-
-        .iconBox {
-            display: flex;
-
-            .iconText {
-                margin-left: 10px;
-                font-size: 18px;
-                font-weight: 400;
-                color: #666666;
-                line-height: 28px;
-
-            }
-        }
-
-        .applyBtn {
-            display: flex;
-            align-items: center;
-            padding: 20px 36px;
-            background: #FFAD11;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 500;
-            color: #FFFFFF;
-            line-height: 24px;
-
-            @media (max-width: 768px) {
-                margin: 20px auto;
-                margin-bottom: 0;
-
-            }
-        }
-
+      @media (max-width: 768px) {
+        margin: 20px auto;
+        margin-bottom: 0;
+      }
     }
+  }
 
-    .explandIcon{
-        transform: rotateX(180deg);
-    }
-
+  .expandIcon {
+    transform: rotateX(180deg);
+  }
 }

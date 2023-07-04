@@ -7,9 +7,12 @@ import Testimony from "@/components/home/Testimony";
 import Introduction from "./introduction";
 import WhyContest from "./why-contest";
 import MonthlyContest from "./monthly-contest";
+import { useGetResourcesContest } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const Contests = () => {
+  const { data: resourcesContest } = useGetResourcesContest();
+
   return (
     <ConfigProvider
       theme={{
@@ -22,7 +25,7 @@ const Contests = () => {
         <Content>
           <TopBanner />
           <MonthlyContest />
-          <Introduction />
+          <Introduction data={resourcesContest} />
           <WhyContest />
           <Testimony className={styles.comments} />
         </Content>

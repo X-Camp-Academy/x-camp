@@ -1,11 +1,16 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
-
 import {
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAchievementsAwardResponse,
+  GetAboutUsJoinUsRequest,
+  GetAboutUsJoinUsResponse,
   GetFacultyRequest,
   GetFacultyResponse,
+  GetResourcesContestRequest,
+  GetResourcesContestResponse,
+  GetXAlumniRequest,
+  GetXAlumniResponse,
   GetTestimonyRequest,
   GetTestimonyResponse,
 } from "./define";
@@ -75,6 +80,34 @@ export class StrapiClient extends BaseAxiosClient {
   ): Promise<GetAboutUsAchievementsAwardResponse> {
     const res = await this.get(
       "/xc-about-us-achievements-awards" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getXAlumni(params: GetXAlumniRequest): Promise<GetXAlumniResponse> {
+    const res: GetXAlumniResponse = await this.get(
+      "/xc-x-alumnis" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getResourcesContest(
+    params: GetResourcesContestRequest
+  ): Promise<GetResourcesContestResponse> {
+    const res: GetResourcesContestResponse = await this.get(
+      "/xc-resources-contests" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getAboutUsJoinUs(
+    params: GetAboutUsJoinUsRequest
+  ): Promise<GetAboutUsJoinUsResponse> {
+    const res: GetAboutUsJoinUsResponse = await this.get(
+      "/xc-about-us-join-uses" + getParamsStringify(params),
       {}
     );
     return res;
