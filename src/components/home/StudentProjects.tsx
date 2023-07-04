@@ -11,7 +11,7 @@ import {
 import { useMobile } from "@/utils";
 import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
-import { useLang } from "@/utils/intl";
+import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
 const { Title, Paragraph, Text } = Typography;
@@ -19,7 +19,7 @@ const { Meta } = Card;
 
 const StudentProjects: React.FC = () => {
   const isMobile = useMobile();
-  const lang = useLang();
+  const { lang } = useLang();
 
   const { data } = useGetHomeStudentProjects();
 
@@ -91,9 +91,7 @@ const StudentProjects: React.FC = () => {
                           item?.attributes?.titleEn
                         )}
                         description={
-                          <Paragraph
-                            ellipsis={{ rows: 5 }}
-                          >
+                          <Paragraph ellipsis={{ rows: 5 }}>
                             {getTransResult(
                               lang,
                               item?.attributes?.descriptionZh,

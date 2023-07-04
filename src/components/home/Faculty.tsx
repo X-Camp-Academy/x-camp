@@ -7,13 +7,13 @@ import ColorfulCard from "../common/colorful-card";
 import { CarouselRef } from "antd/es/carousel";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
-import { useLang } from "@/utils/intl";
-import { StrapiImg } from "@/apis/strapi-client/strapiDefine";
+import { useLang } from "@/hoc/with-intl/define";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
-  const lang = useLang();
+  const { lang } = useLang();
   const { data } = useGetFaculty();
 
   const computedStyle = (index: number) => {
@@ -39,7 +39,7 @@ const Faculty: React.FC = () => {
     carouselRef?.current?.next();
   };
 
-  const getImgUrl = (img: StrapiImg) => {
+  const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
   };
   return (
