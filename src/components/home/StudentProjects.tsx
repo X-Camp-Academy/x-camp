@@ -12,7 +12,7 @@ import { useMobile } from "@/utils";
 import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/utils/intl";
-import { StrapiImg } from "@/apis/strapi-client/strapiDefine";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
@@ -27,7 +27,7 @@ const StudentProjects: React.FC = () => {
     (a, b) => b?.attributes?.order - a?.attributes?.order
   );
 
-  const getMediaUrl = (media: StrapiImg) => {
+  const getMediaUrl = (media: StrapiMedia) => {
     return media?.data?.attributes?.url;
   };
   return (
