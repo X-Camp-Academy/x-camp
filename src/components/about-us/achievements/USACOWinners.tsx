@@ -22,11 +22,12 @@ import ColorfulCard from "@/components/common/colorful-card";
 import UsacoCards from "@/components/common/usaco-cards";
 import { useGetAboutUsAchievementsAward } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
-import { useLang } from "@/utils/intl";
+import { useLang } from "@/hoc/with-intl/define";
+
 const { Title, Paragraph, Text } = Typography;
 
 const USACOMedal: React.FC = () => {
-  const lang = useLang();
+  const { lang } = useLang();
   const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor("#D46B14");
   const { data: awards } = useGetAboutUsAchievementsAward();

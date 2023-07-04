@@ -10,16 +10,16 @@ import Link from "next/link";
 import { GetAboutUsJoinUs } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
-import { useLang } from "@/utils/intl";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title, Text } = Typography;
 
 interface Props {
-  data: StrapiResponseDataItem<GetAboutUsJoinUs>;
+  data: StrapiResponseDataItem<GetAboutUsJoinUs> | undefined;
   showExpandBtn?: boolean;
 }
 
 const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
-  const lang = useLang();
+  const { lang } = useLang();
   const [isExpand, setIsExpand] = useState<boolean>(false);
   const handlerExpand = () => {
     setIsExpand(!isExpand);
@@ -56,7 +56,7 @@ const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
                   isExpand ? styles.expandIcon : ""
                 }`}
                 icon={<DownCircleOutlined />}
-              ></Button>
+              />
             )}
           </div>
         </Row>
@@ -78,17 +78,21 @@ const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
             <div className={styles.iconBox}>
               <div>
                 <ClockCircleOutlined style={{ color: "#666666" }} />
-                <Text className={styles.iconText}>{data?.attributes?.category}</Text>
+                <Text className={styles.iconText}>
+                  {data?.attributes?.category}
+                </Text>
               </div>
               <div style={{ marginLeft: 20 }}>
                 <BranchesOutlined style={{ color: "#666666" }} />
-                <Text className={styles.iconText}>{data?.attributes?.place}</Text>
+                <Text className={styles.iconText}>
+                  {data?.attributes?.place}
+                </Text>
               </div>
             </div>
             {showExpandBtn && (
               <Link
                 className={styles.applyBtn}
-                href="/about-us/join-us/submit-resume"
+                href={`/about-us/join-us/submit-resume/${data?.id}`}
               >
                 Apply Now
               </Link>

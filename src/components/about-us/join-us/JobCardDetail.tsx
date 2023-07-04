@@ -5,7 +5,7 @@ import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 const { Title } = Typography;
 
 interface Props {
-  data: StrapiResponseDataItem<GetAboutUsJoinUs>;
+  data: StrapiResponseDataItem<GetAboutUsJoinUs> | undefined;
 }
 
 const JobCardDetail = ({ data }: Props) => {

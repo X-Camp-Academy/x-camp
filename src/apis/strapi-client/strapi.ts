@@ -129,7 +129,7 @@ export const useGetResourcesContest = () => {
  *
  * @returns 获取关于我们目录下的Join Us
  */
-export const useGetAboutUsJoinUs = (category: AboutUsJoinUsCategory) => {
+export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
@@ -140,6 +140,7 @@ export const useGetAboutUsJoinUs = (category: AboutUsJoinUsCategory) => {
       return isArray(res?.data) ? res.data : [];
     },
     {
+      manual: true,
       defaultParams: [
         {
           populate: "*",

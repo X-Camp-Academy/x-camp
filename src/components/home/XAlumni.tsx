@@ -8,12 +8,11 @@ import { useMobile } from "@/utils";
 import ColorfulCard from "../common/colorful-card";
 import { useGetXAlumni } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
-import { useFormatMessage, useLang } from "@/utils/intl";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Text, Paragraph } = Typography;
 const XAlumni = () => {
-  const lang = useLang();
-  const t = useFormatMessage();
+  const { lang, format: t } = useLang();
   const { data: xAlumni } = useGetXAlumni();
 
   const carouselRef = useRef<CarouselRef>(null);

@@ -4,14 +4,14 @@ import { Divider } from "antd";
 import { GetResourcesContest } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
-import { useLang } from "@/utils/intl";
+import { useLang } from "@/hoc/with-intl/define";
 
 interface Props {
   data: StrapiResponseDataItem<GetResourcesContest>[] | undefined;
 }
 
 const Introduction = ({ data }: Props) => {
-  const lang = useLang();
+  const { lang } = useLang();
   const items = [
     {
       title: "Art of Programming",
