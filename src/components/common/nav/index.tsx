@@ -22,20 +22,14 @@ import { useAuth } from "@/hoc/with-auth/define";
 import DropdownUserMenu from "../dropdown-user-menu";
 import { apiConfig } from "@/config/indx";
 
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+
 const { Header } = Layout;
 const { Search } = Input;
-const items: MenuProps["items"] = [
-  {
-    key: "en",
-    label: "English",
-  },
-  {
-    key: "zh",
-    label: "中文",
-  },
-];
 
 const Nav = () => {
+  const { format: t, toggle, lang } = useLang();
   const [current, setCurrent] = useState("/");
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();
@@ -43,9 +37,6 @@ const Nav = () => {
   const { xydApi } = apiConfig;
 
   const onSearch = (value: string) => console.log(value);
-  const onChangeLanguage: MenuProps["onClick"] = (e) => {
-    console.log(e.key);
-  };
 
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -123,15 +114,12 @@ const Nav = () => {
                 <>
                   {user ? (
                     <Space size={12}>
-                      <DropdownUserMenu
-                        user={user}
-                        logout={logout}
-                      />
+                      <DropdownUserMenu user={user} logout={logout} />
                       <Button
                         type="primary"
                         onClick={() => window.open(`${xydApi}/courses`)}
                       >
-                        {"To Study"}
+                        {t("ToStudy")}
                       </Button>
                     </Space>
                   ) : (
@@ -139,17 +127,14 @@ const Nav = () => {
                       Login / Register
                     </Button>
                   )}
-                  <Dropdown
-                    menu={{
-                      items,
-                      onClick: onChangeLanguage,
-                    }}
-                    className={styles.langDropDown}
+
+                  <Button
+                    type="link"
+                    icon={<TranslationOutlined style={{ fontSize: 20 }} />}
+                    onClick={toggle}
                   >
-                    <a onClick={(e) => e.preventDefault()}>
-                      <TranslationOutlined />
-                    </a>
-                  </Dropdown>
+                    {getTransResult(lang, "中文", "English")}
+                  </Button>
                 </>
               )}
               {isMobile && (

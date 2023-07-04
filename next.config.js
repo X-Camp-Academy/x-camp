@@ -5,6 +5,7 @@ const nextConfig = {
     typedRoutes: true,
   },
   output: "export",
+  swcMinify: true,
 };
 
 module.exports = nextConfig;

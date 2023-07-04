@@ -5,7 +5,7 @@ import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 
 const TopBanner = dynamic(() => import("./TopBanner"));
-const Comments = dynamic(() => import("@/components/home/Comments"));
+const Testimony = dynamic(() => import("@/components/home/Testimony"));
 const QAPart = dynamic(() => import("./QAPart"));
 const ContactUs = dynamic(() => import("./ContactUs"));
 
@@ -25,7 +25,7 @@ const HelpCenter: React.FC = () => {
           <TopBanner />
           <QAPart />
           <ContactUs />
-          <Comments />
+          <Testimony />
         </Content>
       </Layout>
     </ConfigProvider>

@@ -1,19 +1,26 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
-import { LangType } from "@/utils/intl";
 import {
-  GetAboutUsAchievementsAwardRequest,
-  GetAboutUsAchievementsAwardResponse,
   GetCourseDetailRequest,
   GetCourseDetailResponse,
   GetCourseLevelTypeRequest,
   GetCourseLevelTypeResponse,
   GetCoursesRequest,
   GetCoursesResponse,
-  GetFacultyRequest,
-  GetFacultyResponse,
   GetHomeStudentProjectsRequest,
   GetHomeStudentProjectsResponse,
+  GetAboutUsAchievementsAwardRequest,
+  GetAboutUsAchievementsAwardResponse,
+  GetAboutUsJoinUsRequest,
+  GetAboutUsJoinUsResponse,
+  GetFacultyRequest,
+  GetFacultyResponse,
+  GetResourcesContestRequest,
+  GetResourcesContestResponse,
+  GetXAlumniRequest,
+  GetXAlumniResponse,
+  GetTestimonyRequest,
+  GetTestimonyResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -106,9 +113,27 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
+  async getXAlumni(params: GetXAlumniRequest): Promise<GetXAlumniResponse> {
+    const res: GetXAlumniResponse = await this.get(
+      "/xc-x-alumnis" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
   async getCourses(params: GetCoursesRequest): Promise<GetCoursesResponse> {
     const res: GetCoursesResponse = await this.get(
       "/xc-courses" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getResourcesContest(
+    params: GetResourcesContestRequest
+  ): Promise<GetResourcesContestResponse> {
+    const res: GetResourcesContestResponse = await this.get(
+      "/xc-resources-contests" + getParamsStringify(params),
       {}
     );
     return res;
@@ -119,6 +144,26 @@ export class StrapiClient extends BaseAxiosClient {
   ): Promise<GetCourseDetailResponse> {
     const res: GetCourseDetailResponse = await this.get(
       "/xc-classes" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+  
+  async getAboutUsJoinUs(
+    params: GetAboutUsJoinUsRequest
+  ): Promise<GetAboutUsJoinUsResponse> {
+    const res: GetAboutUsJoinUsResponse = await this.get(
+      "/xc-about-us-join-uses" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getTestimony(
+    params: GetTestimonyRequest
+  ): Promise<GetTestimonyResponse> {
+    const res = await this.get(
+      "/xc-testimonies" + getParamsStringify(params),
       {}
     );
     return res;
