@@ -3,9 +3,16 @@ import styles from "./JobCard.module.scss";
 import JobCardHeader from "./JobCardHeader";
 import JobCardDetail from "./JobCardDetail";
 import CollapseColorfulCard from "@/components/common/collapse-colorful-card";
+import { GetAboutUsJoinUs } from "@/apis/strapi-client/define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 const { Panel } = Collapse;
 
-const JobCard: React.FC<{ index: number }> = ({ index }) => {
+interface Props {
+  index: number;
+  data: StrapiResponseDataItem<GetAboutUsJoinUs>;
+}
+
+const JobCard = ({ index, data }: Props) => {
   return (
     <>
       <CollapseColorfulCard
@@ -14,11 +21,11 @@ const JobCard: React.FC<{ index: number }> = ({ index }) => {
         className={styles.ColorfulCardContainer}
       >
         <Panel
-          header={<JobCardHeader></JobCardHeader>}
+          header={<JobCardHeader data={data} />}
           key={index}
           showArrow={false}
         >
-          <JobCardDetail></JobCardDetail>
+          <JobCardDetail data={data} />
         </Panel>
       </CollapseColorfulCard>
     </>
