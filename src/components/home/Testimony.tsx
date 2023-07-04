@@ -1,58 +1,28 @@
 "use client";
 import React, { useRef } from "react";
 import { Space, Card, Rate, Typography, Carousel, Button } from "antd";
-import styles from "./Comments.module.scss";
+import styles from "./Testimony.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import ColorfulCard from "../common/colorful-card";
 import classNames from "classnames/bind";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+
+import { getTransResult } from "@/utils/public";
+
+import { GetTestimony } from "@/apis/strapi-client/define";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Text, Paragraph } = Typography;
 
 const cx = classNames.bind(styles);
 interface Props {
   className?: string;
+  testimonyData?: StrapiResponseDataItem<GetTestimony>[];
 }
 
-const Comments = ({ className = "" }: Props) => {
-  const comments = [
-    {
-      title: "parent of 201A",
-      rate: 4,
-      comment:
-        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
-    },
-    {
-      title: "parent of 201B",
-      rate: 5,
-      comment:
-        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
-    },
-    {
-      title: "parent of 201C",
-      rate: 5,
-      comment:
-        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
-    },
-    {
-      title: "parent of 201D",
-      rate: 5,
-      comment:
-        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
-    },
-    {
-      title: "parent of 201E",
-      rate: 5,
-      comment:
-        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
-    },
-    {
-      title: "parent of 201F",
-      rate: 5,
-      comment:
-        "Our goal for the kid is to develop problem solving skills, prepare as career skills X-Camp has good curriculum and professional staff…",
-    },
-  ];
+const Testimony = ({ className = "", testimonyData }: Props) => {
+  const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
 
   const onPrev = () => {
@@ -101,7 +71,8 @@ const Comments = ({ className = "" }: Props) => {
             },
           ]}
         >
-          {comments.map((item, index) => {
+          {testimonyData?.map((item, index) => {
+            const comment = item?.attributes;
             return (
               <ColorfulCard
                 key={index}
@@ -115,11 +86,27 @@ const Comments = ({ className = "" }: Props) => {
                     borderWidth: 2,
                   }}
                 >
-                  <Space direction="vertical">
-                    <Text className={styles.cardTitle}>{item?.title}</Text>
-                    <Rate disabled defaultValue={item?.rate} />
-                    <Paragraph className={styles.cardParagraph}>
-                      {item?.comment}
+                  <Space direction="vertical" style={{ width: "100%" }}>
+                    <Text className={styles.cardTitle}>
+                      {getTransResult(lang, comment.titleZh, comment.titleEn)}
+                    </Text>
+                    <Rate disabled defaultValue={comment.score} />
+                    <Paragraph
+                      className={styles.cardParagraph}
+                      ellipsis={{
+                        rows: 4,
+                        tooltip: getTransResult(
+                          lang,
+                          comment.descriptionZh,
+                          comment.descriptionEn
+                        ),
+                      }}
+                    >
+                      {getTransResult(
+                        lang,
+                        comment.descriptionZh,
+                        comment.descriptionEn
+                      )}
                     </Paragraph>
                   </Space>
                 </Card>
@@ -140,4 +127,4 @@ const Comments = ({ className = "" }: Props) => {
   );
 };
 
-export default Comments;
+export default Testimony;

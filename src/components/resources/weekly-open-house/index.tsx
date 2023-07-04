@@ -3,7 +3,7 @@ import { ConfigProvider, Layout, Space } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./top-banner";
-import Comments from "@/components/home/Comments";
+import Testimony from "@/components/home/Testimony";
 import JoinWay from "./join-way";
 import Introduction from "./introduction";
 import AppointmentCard from "./appointment-card";
@@ -26,7 +26,7 @@ const WeeklyOpenHouse = () => {
             <Introduction />
             <AppointmentCard />
           </Space>
-          <Comments />
+          <Testimony />
         </Content>
       </Layout>
     </ConfigProvider>

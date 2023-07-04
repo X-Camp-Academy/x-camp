@@ -1,12 +1,13 @@
-import { useStrapiClient } from '.';
-import { useHandleError } from '@/utils/error';
-import { useRequest } from 'ahooks';
+import { useStrapiClient } from ".";
+import { useHandleError } from "@/utils/error";
+import { useRequest } from "ahooks";
 import {
   GetAboutUsAchievementsAwardRequest,
   GetFacultyRequest,
   GetFacultyResponse,
-} from './define';
-import { isArray } from 'lodash';
+  GetTestimonyRequest,
+} from "./define";
+import { isArray } from "lodash";
 /**
  *
  * @returns 获取Faculty
@@ -22,7 +23,7 @@ export const useGetFaculty = () => {
     {
       defaultParams: [
         {
-          populate: '*',
+          populate: "*",
         },
       ],
       onError: handleError,
@@ -45,7 +46,27 @@ export const useGetAboutUsAchievementsAward = () => {
     {
       defaultParams: [
         {
-          populate: '*',
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+export const useGetTestimony = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetTestimonyRequest) => {
+      const res = await client.getTestimony(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
         },
       ],
       onError: handleError,
