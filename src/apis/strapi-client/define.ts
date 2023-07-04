@@ -1,5 +1,6 @@
 import {
-  StrapiImg,
+  StrapiMedia,
+  StrapiMedias,
   StrapiRequest,
   StrapiResponse,
   strapiPublicFields,
@@ -36,9 +37,50 @@ export interface GetXAlumni extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  img: StrapiImg;
+  img: StrapiMedias;
   order: number;
 }
 
 export type GetXAlumniRequest = StrapiRequest<GetXAlumni>;
 export type GetXAlumniResponse = StrapiResponse<GetXAlumni>;
+
+export interface GetResourcesContest extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  linkEn: string;
+  linkZh: string;
+  order: number;
+  imgZh: StrapiMedia;
+  imgEn: StrapiMedia;
+}
+
+export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
+export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
+
+export enum AboutUsJoinUsCategory {
+  PartTime = "Part Time",
+  FullTime = "Full Time",
+  XTutor = "X-Tutor",
+}
+
+export enum AboutUsJoinUsPlace {
+  Remote = "Remote",
+  OnSite = "On Site",
+}
+
+export interface GetAboutUsJoinUs extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  categoryZh: AboutUsJoinUsCategory;
+  place: AboutUsJoinUsPlace;
+  contentZh: string;
+  contentEn: string;
+  order: number;
+}
+
+export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
+export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;

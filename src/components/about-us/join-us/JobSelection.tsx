@@ -1,59 +1,59 @@
 import { Button } from "antd";
-import styles from './JobSelection.module.scss';
-import { useState } from "react";
+import styles from "./JobSelection.module.scss";
+import { useEffect, useState } from "react";
 import JobCard from "./JobCard";
+import { useGetAboutUsJoinUs } from "@/apis/strapi-client/strapi";
+import { AboutUsJoinUsCategory } from "@/apis/strapi-client/define";
 
 const JobSelection: React.FC = () => {
+  const [category, setCategory] = useState<AboutUsJoinUsCategory>(
+    AboutUsJoinUsCategory.PartTime
+  );
+  const { data: aboutUsJoinUs, runAsync: getAboutUsJoinUs } =
+    useGetAboutUsJoinUs(category);
 
-    const [selectedButton, setSelectedButton] = useState<string>("Part Time");
+  useEffect(() => {
+    getAboutUsJoinUs({
+      populate: "*",
+      filters: {
+        categoryZh: {
+          $eq: category,
+        },
+      },
+    });
+  }, [category]);
 
-    const handleButtonClick = (buttonText: string) => {
-        setSelectedButton(buttonText);
-    };
+  return (
+    <>
+      <div className={styles.jobSelectionContainer}>
+        <div className={`${styles.jobSelection} container`}>
+          <div className={styles.btnContainer}>
+            {[
+              AboutUsJoinUsCategory.PartTime,
+              AboutUsJoinUsCategory.FullTime,
+              AboutUsJoinUsCategory.XTutor,
+            ]?.map((v) => (
+              <Button
+                key={v}
+                className={`${styles.choiceBtn} ${
+                  category === v ? styles.selectedBtn : ""
+                }`}
+                onClick={() => setCategory(v)}
+              >
+                {v}
+              </Button>
+            ))}
+          </div>
 
-    return (
-        <>
-            <div className={styles.jobSelectionContainer}>
-                <div className={`${styles.jobSelection} container`}>
-                    <div className={styles.btnContainer}>
-                        <Button className={`${styles.choiceBtn} ${selectedButton === "Part Time" ? styles.selectedBtn : ""
-                            }`} onClick={() => handleButtonClick("Part Time")}>Part Time
-                        </Button>
-                        <Button className={`${styles.choiceBtn} ${selectedButton === "Full Time" ? styles.selectedBtn : ""
-                            }`} onClick={() => handleButtonClick("Full Time")}>Full Time
-                        </Button>
-                        <Button className={`${styles.choiceBtn} ${selectedButton === "X-Tutor" ? styles.selectedBtn : ""
-                            }`} onClick={() => handleButtonClick("X-Tutor")}>X-Tutor
-                        </Button>
-                    </div>
-
-                    {selectedButton === 'Part Time' && (
-                        <div className={styles.jobCardContainer}>
-                            <JobCard index={1}></JobCard>
-                            <JobCard index={2}></JobCard>
-                            <JobCard index={3}></JobCard>
-                        </div>
-                    )}
-
-                    {selectedButton === 'Full Time' && (
-                        <div className={styles.jobCardContainer}>
-                            <JobCard index={2}></JobCard>
-                            <JobCard index={1}></JobCard>
-                            <JobCard index={3}></JobCard>
-                        </div>
-                    )}
-
-                    {selectedButton === 'X-Tutor' && (
-                        <div className={styles.jobCardContainer}>
-                            <JobCard index={3}></JobCard>
-                            <JobCard index={2}></JobCard>
-                            <JobCard index={1}></JobCard>
-                        </div>
-                    )}
-                </div>
-            </div>
-        </>
-    )
-}
+          <div className={styles.jobCardContainer}>
+            {aboutUsJoinUs?.map((v, index) => (
+              <JobCard key={index} index={index} data={v} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default JobSelection;
