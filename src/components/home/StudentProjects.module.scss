@@ -29,32 +29,38 @@
   .row {
     width: 100%;
     @media (max-width: 768px) {
-      margin-left: 0!important;
-      margin-right: 0!important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
-    .card {
-      border-radius: 0;
-      position: relative;
-      .cardMeta {
-        .ant-card-meta-title {
-          font-size: 24px;
-          font-weight: 600;
-          line-height: 54px;
+    .cardContainer {
+      
+      display: flex;
+      justify-content: space-between;
+      .card {
+        width: 50%;
+        border-radius: 0;
+        position: relative;
+        .cardMeta {
+          .ant-card-meta-title {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 54px;
+          }
+          .ant-card-meta-description {
+            color: #666666;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+          }
         }
-        .ant-card-meta-description {
-          color: #666666;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 24px;
-          text-align: left;
-        }
-      }
-      .cardButton {
-        position: absolute;
-        right: 8px;
-        bottom: 24px;
-        @media (max-width: 768px) {
-          bottom: 0px;
+        .cardButton {
+          position: absolute;
+          right: 8px;
+          bottom: 24px;
+          @media (max-width: 768px) {
+            bottom: 0px;
+          }
         }
       }
     }

@@ -8,9 +8,13 @@ import UsacoMedal from "@/components/about-us/introduction/UsacoMedal";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
 import CampFAQS from "../camps/camp-faqs";
 import ProgressionClasses from "./progression-classes";
+import { useGetCourseDetail } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const CourseDetail = () => {
+  const { data } = useGetCourseDetail();
+  console.log(data);
+  
   return (
     <ConfigProvider
       theme={{
