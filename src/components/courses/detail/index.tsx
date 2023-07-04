@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 import { ConfigProvider, Layout } from "antd";
-import Comments from "@/components/home/Comments";
+import Testimony from "@/components/home/Testimony";
 import TopBanner from "./top-banner";
 import UsacoMedal from "@/components/about-us/introduction/UsacoMedal";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
@@ -26,7 +26,7 @@ const CourseDetail = () => {
           <FacultyCoach />
           <ProgressionClasses />
           <CampFAQS title="Course FAQs" />
-          <Comments className={styles.comments} />
+          <Testimony className={styles.comments} />
         </Content>
       </Layout>
     </ConfigProvider>

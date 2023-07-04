@@ -2,7 +2,7 @@
 import React from "react";
 import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
-import Comments from "@/components/home/Comments";
+import Testimony from "@/components/home/Testimony";
 import TopBanner from "./top-banner";
 import UpcomingEvents from "./upcoming-events";
 import RecentActivities from "./recent-activities";
@@ -24,7 +24,7 @@ const WeeklyEducationForum = () => {
           <UpcomingEvents />
           <RecentActivities />
           <Activities />
-          <Comments />
+          <Testimony />
         </Content>
       </Layout>
     </ConfigProvider>

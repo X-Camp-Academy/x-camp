@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 
 const ContactCard = dynamic(() => import("./ContactCard"));
 const TopBanner = dynamic(() => import("./TopBanner"));
-const Comments = dynamic(() => import("@/components/home/Comments"));
+const Testimony = dynamic(() => import("@/components/home/Testimony"));
 const QuestionForm = dynamic(() => import("./QuestionForm"));
 const AddressMap = dynamic(() => import("./AddressMap"));
 const { Content } = Layout;
@@ -26,7 +26,7 @@ const ContactUsContent: React.FC = () => {
           <ContactCard />
           <QuestionForm />
           <AddressMap />
-          <Comments />
+          <Testimony />
         </Content>
       </Layout>
     </ConfigProvider>

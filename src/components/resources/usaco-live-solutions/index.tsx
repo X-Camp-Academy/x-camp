@@ -1,11 +1,11 @@
-'use client';
-import { ConfigProvider, Layout } from 'antd';
-import React from 'react';
-import styles from './index.module.scss';
-import TopBanner from './top-banner';
-import UsacoIntro from './introduction';
-import RelateResources from './relate-resources';
-import Comments from '@/components/home/Comments';
+"use client";
+import { ConfigProvider, Layout } from "antd";
+import React from "react";
+import styles from "./index.module.scss";
+import TopBanner from "./top-banner";
+import UsacoIntro from "./introduction";
+import RelateResources from "./relate-resources";
+import Testimony from "@/components/home/Testimony";
 const { Content } = Layout;
 
 const UsacoLiveSolutions = () => {
@@ -13,7 +13,7 @@ const UsacoLiveSolutions = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
+          colorPrimary: "#FFAD11",
         },
       }}
     >
@@ -22,7 +22,7 @@ const UsacoLiveSolutions = () => {
           <TopBanner />
           <UsacoIntro />
           <RelateResources />
-          <Comments className={styles.comments} />
+          <Testimony className={styles.comments} />
         </Content>
       </Layout>
     </ConfigProvider>
