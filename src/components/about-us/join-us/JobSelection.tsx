@@ -15,6 +15,7 @@ const JobSelection: React.FC = () => {
   useEffect(() => {
     getAboutUsJoinUs({
       populate: "*",
+      sort: ["order:desc"],
       filters: {
         categoryZh: {
           $eq: category,

@@ -66,6 +66,7 @@ export const useGetAboutUsAchievementsAward = () => {
       defaultParams: [
         {
           populate: "*",
+          sort: ["order:desc"],
         },
       ],
       onError: handleError,
@@ -89,6 +90,7 @@ export const useGetXAlumni = () => {
       defaultParams: [
         {
           populate: "*",
+          sort: ["order:desc"],
         },
       ],
       onError: handleError,
@@ -114,6 +116,7 @@ export const useGetResourcesContest = () => {
       defaultParams: [
         {
           populate: "*",
+          sort: ["order:desc"],
         },
       ],
       onError: handleError,
@@ -139,6 +142,7 @@ export const useGetAboutUsJoinUs = (categoryZh: AboutUsJoinUsCategory) => {
       defaultParams: [
         {
           populate: "*",
+          sort: ["order:desc"],
           filters: {
             categoryZh: {
               $eq: categoryZh,
