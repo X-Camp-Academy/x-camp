@@ -1,6 +1,14 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 import {
+  GetCourseDetailRequest,
+  GetCourseDetailResponse,
+  GetCourseLevelTypeRequest,
+  GetCourseLevelTypeResponse,
+  GetCoursesRequest,
+  GetCoursesResponse,
+  GetHomeStudentProjectsRequest,
+  GetHomeStudentProjectsResponse,
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAchievementsAwardResponse,
   GetAboutUsJoinUsRequest,
@@ -75,6 +83,16 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
+  async getHomeStudentProjects(
+    params: GetHomeStudentProjectsRequest
+  ): Promise<GetHomeStudentProjectsResponse> {
+    const res: GetHomeStudentProjectsResponse = await this.get(
+      "/xc-home-student-projects" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
   async getAboutUsAchievementsAward(
     params: GetAboutUsAchievementsAwardRequest
   ): Promise<GetAboutUsAchievementsAwardResponse> {
@@ -85,9 +103,27 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
+  async getCourseLevelType(
+    params: GetCourseLevelTypeRequest
+  ): Promise<GetCourseLevelTypeResponse> {
+    const res: GetCourseLevelTypeResponse = await this.get(
+      "/xc-course-level-types" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
   async getXAlumni(params: GetXAlumniRequest): Promise<GetXAlumniResponse> {
     const res: GetXAlumniResponse = await this.get(
       "/xc-x-alumnis" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getCourses(params: GetCoursesRequest): Promise<GetCoursesResponse> {
+    const res: GetCoursesResponse = await this.get(
+      "/xc-courses" + getParamsStringify(params),
       {}
     );
     return res;
@@ -103,6 +139,16 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
+  async getCourseDetail(
+    params: GetCourseDetailRequest
+  ): Promise<GetCourseDetailResponse> {
+    const res: GetCourseDetailResponse = await this.get(
+      "/xc-classes" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+  
   async getAboutUsJoinUs(
     params: GetAboutUsJoinUsRequest
   ): Promise<GetAboutUsJoinUsResponse> {

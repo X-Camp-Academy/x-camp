@@ -33,7 +33,7 @@ export const addAnimate = (
 
 /**
  * 移除动画效果
- * ref dom节点、
+ * ref dom节点
  * name 动画名
  * @returns
  */

@@ -7,13 +7,17 @@ import {
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
+  GetCourseDetailRequest,
+  GetCourseLevelTypeRequest,
+  GetCoursesRequest,
   GetFacultyRequest,
   GetFacultyResponse,
+  GetHomeStudentProjectsRequest,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
+  GetTestimonyRequest,
   GetXAlumniRequest,
   GetXAlumniResponse,
-  GetTestimonyRequest,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
@@ -163,6 +167,98 @@ export const useGetTestimony = () => {
   return useRequest(
     async (params: GetTestimonyRequest) => {
       const res = await client.getTestimony(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Achievements Usaco Medal
+ */
+export const useGetHomeStudentProjects = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetHomeStudentProjectsRequest) => {
+      const res = await client.getHomeStudentProjects(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Achievements Usaco Medal
+ */
+export const useGetCourseLevelType = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetCourseLevelTypeRequest) => {
+      const res = await client.getCourseLevelType(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Achievements Usaco Medal
+ */
+export const useGetCourses = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetCoursesRequest) => {
+      const res = await client.getCourses(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Achievements Usaco Medal
+ */
+export const useGetCourseDetail = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetCourseDetailRequest) => {
+      const res = await client.getCourseDetail(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
