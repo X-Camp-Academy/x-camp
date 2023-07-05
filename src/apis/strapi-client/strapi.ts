@@ -13,6 +13,8 @@ import {
   GetFacultyRequest,
   GetFacultyResponse,
   GetHomeStudentProjectsRequest,
+  GetIntroductionFacultyCoachRequest,
+  GetIntroductionFacultyCoachResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
   GetTestimonyRequest,
@@ -42,6 +44,29 @@ export const useGetFaculty = () => {
       onError: handleError,
     }
   );
+};
+
+/**
+ *
+ * @returns 获取Introduction页面下的Faculty
+ */
+export const useGetIntroductionFacultyCoach = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetIntroductionFacultyCoachRequest) => {
+      const res: GetIntroductionFacultyCoachResponse = await client.getIntroductionFacultyCoach(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  )
 };
 
 /**

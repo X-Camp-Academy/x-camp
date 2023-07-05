@@ -17,6 +17,18 @@ export interface GetFaculty extends strapiPublicFields {
 export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
+export interface GetIntroductionFacultyCoach extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  img: StrapiMedia;
+}
+export type GetIntroductionFacultyCoachRequest =
+  StrapiRequest<GetIntroductionFacultyCoach>;
+export type GetIntroductionFacultyCoachResponse =
+  StrapiResponse<GetIntroductionFacultyCoach>;
+
 export interface GetHomeStudentProjects extends strapiPublicFields {
   titleZh: string;
   titleEn: string;

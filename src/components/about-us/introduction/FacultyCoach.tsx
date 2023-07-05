@@ -1,12 +1,53 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Space, Row, Col, Card, Image, Typography, Tag, Avatar } from "antd";
+import { useGetIntroductionFacultyCoach } from "@/apis/strapi-client/strapi";
 import styles from "./FacultyCoach.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
+import { GetIntroductionFacultyCoachResponse } from "@/apis/strapi-client/define";
 
 const { Title, Paragraph, Text } = Typography;
 
+
 const FacultyCoach: React.FC = () => {
-  const facultyData = [
+  const { lang } = useLang();
+
+  const [facultyData, setFacultyData] = useState<GetIntroductionFacultyCoachResponse[][]>();
+  const { data } = useGetIntroductionFacultyCoach();
+
+  const formatFacultyData = (facultyData: GetIntroductionFacultyCoachResponse[]) => {
+    const resultData: GetIntroductionFacultyCoachResponse[][] = [];
+    let threeData: GetIntroductionFacultyCoachResponse[] = [];
+    let lastIndex = 0;
+    facultyData.forEach((item, index) => {
+      if (index - lastIndex === 2) {
+        lastIndex = index;
+        threeData.push(item);
+        resultData.push(threeData);
+        threeData = [];
+      } else {
+        threeData.push(item);
+      }
+    });
+
+    if (threeData.length > 0) {
+      resultData.push(threeData);
+    }
+
+    return resultData;
+  };
+
+  useEffect(() => {
+    if (data) {
+      setFacultyData(formatFacultyData(data));
+      console.log(facultyData);
+
+    }
+  }, [data])
+
+
+
+  /* const facultyData = [
     [
       {
         name: "Michael",
@@ -67,7 +108,7 @@ const FacultyCoach: React.FC = () => {
           "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
       },
     ],
-  ];
+  ]; */
 
   const computedStyle = (index: number) => {
     const defaultStyle = {
@@ -94,7 +135,7 @@ const FacultyCoach: React.FC = () => {
           </Paragraph>
         </Space>
 
-        {facultyData.map((faculty, facultyIndex) => (
+        {facultyData?.map((faculty, facultyIndex) => (
           <Row
             key={facultyIndex}
             justify="center"
@@ -102,7 +143,9 @@ const FacultyCoach: React.FC = () => {
             gutter={48}
             className={styles.row}
           >
-            {faculty.map((item, index) => (
+
+            {faculty.map((item:GetIntroductionFacultyCoachResponse, index) => (
+              
               <Col
                 key={index}
                 xs={{ span: 24 }}
@@ -113,13 +156,13 @@ const FacultyCoach: React.FC = () => {
                 <div style={computedStyle(index)}>
                   <Card>
                     <Space direction="vertical">
-                      <Avatar src={item.avatar} className={styles.avatar} />
+                      <Avatar src={item.attributes.avatar.data.attributes.url} className={styles.avatar} />
                       <Text className={styles.name}>{item?.name}</Text>
                       <Paragraph
                         ellipsis={{ rows: 5 }}
                         className={styles.description}
                       >
-                        {item?.description}
+                        {item.attributes.descriptionZh}
                       </Paragraph>
                     </Space>
                   </Card>
