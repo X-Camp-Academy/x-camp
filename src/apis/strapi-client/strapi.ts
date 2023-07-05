@@ -5,6 +5,7 @@ import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
+  GetAboutUsAlumniMapRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
   GetCourseDetailRequest,
@@ -182,7 +183,7 @@ export const useGetTestimony = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Home Student Projects
  */
 export const useGetHomeStudentProjects = () => {
   const client = useStrapiClient();
@@ -205,7 +206,7 @@ export const useGetHomeStudentProjects = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Course Level Type
  */
 export const useGetCourseLevelType = () => {
   const client = useStrapiClient();
@@ -228,7 +229,7 @@ export const useGetCourseLevelType = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Courses
  */
 export const useGetCourses = () => {
   const client = useStrapiClient();
@@ -251,7 +252,7 @@ export const useGetCourses = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Course Detail
  */
 export const useGetCourseDetail = () => {
   const client = useStrapiClient();
@@ -269,6 +270,29 @@ export const useGetCourseDetail = () => {
         },
       ],
       manual: true,
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Alumni Map
+ */
+export const useGetAboutUsAlumniMap = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetAboutUsAlumniMapRequest) => {
+      const res = await client.getAboutUsAlumniMap(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
       onError: handleError,
     }
   );

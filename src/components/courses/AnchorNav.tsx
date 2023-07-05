@@ -4,9 +4,6 @@ import { Space } from 'antd';
 import { classesData } from './define';
 import { useScroll } from 'ahooks';
 const AnchorNav = () => {
-  /**
-   * 将对应组件滚动到视口
-   */
   const scrollToComponent = (id: string) => {
     const component = document.getElementById(id);
     component?.scrollIntoView({

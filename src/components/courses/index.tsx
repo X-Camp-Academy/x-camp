@@ -4,10 +4,8 @@ import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
-import { useSearchParams } from "next/navigation";
 import { classesData } from "./define";
 import Testimony from "../home/Testimony";
-// import AnchorNav from './AnchorNav';
 import dynamic from "next/dynamic";
 import ClassCard from "../common/class-card";
 import {
@@ -18,27 +16,46 @@ const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 
+interface ClassesProps {
+  title: string;
+  children: {
+    header: string;
+    children: {
+      id: number;
+      title: string;
+      desc: string;
+      duration: string;
+    }[];
+  }[];
+}
+
 const Courses = () => {
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses();
+
+  const courseLevelTypeData = courseLevelType?.map(
+    (item) => item?.attributes?.type
+  );
+
   const courseLevelTypeMap = new Map();
-  courseLevelType?.forEach(item => {
-    const key = item?.attributes?.type;
-    courseLevelTypeMap.set(key, []);
+  courseLevelTypeData?.forEach((item) => {
+    courseLevelTypeMap.set(item, []);
   });
-  
-  courses?.forEach(item => {
+
+  courses?.forEach((item) => {
     const key = item?.attributes?.courseLevelType?.data?.attributes?.type;
     const value = courseLevelTypeMap.get(key);
     value?.push(item);
     courseLevelTypeMap.set(key, value);
   });
 
+  courseLevelTypeMap.forEach((value, key) => {
+    // 在这里对每个键值对执行操作
+    // console.log(key, value);
+  });
 
-
+  // console.log(courses);
   console.log(courses);
-  console.log(courseLevelTypeMap);
-
 
   return (
     <ConfigProvider
@@ -52,8 +69,6 @@ const Courses = () => {
         <Content>
           <TopBanner />
 
-
-          
           <div className={`${styles.classContainer} container`}>
             {classesData.map((item, index) => {
               return (
@@ -134,6 +149,7 @@ const Courses = () => {
               );
             })}
           </div>
+
           <Testimony />
           <AnchorNav />
         </Content>
