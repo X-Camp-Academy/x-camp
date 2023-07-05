@@ -17,7 +17,6 @@ const ArtOfProgrammingResults = dynamic(
 
 const Achievements = () => {
   const { data: projectsDemo } = useGetProjectsDemo();
-  console.log(projectsDemo);
 
   return (
     <ConfigProvider

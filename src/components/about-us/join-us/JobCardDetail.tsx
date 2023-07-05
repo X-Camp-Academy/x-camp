@@ -2,6 +2,10 @@ import { Space, Typography, Divider, List } from "antd";
 import styles from "./JobCardDetail.module.scss";
 import { GetAboutUsJoinUs } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { XStarViewer } from "@/utils/x-star-editor-beta";
+import { viewerVideoPlugin } from "@/utils/x-star-editor-beta/plugins/viewer-video";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title } = Typography;
 
 interface Props {
@@ -9,6 +13,7 @@ interface Props {
 }
 
 const JobCardDetail = ({ data }: Props) => {
+  const { lang } = useLang();
   const ResponsibilitiesListData = [
     {
       text: "Collect students’ applications, evaluate and make suggestions and recommendations",
@@ -58,7 +63,16 @@ const JobCardDetail = ({ data }: Props) => {
       <div className={styles.cardListContainer}>
         <Divider style={{ borderColor: "#FFAD11" }} />
         <div style={{ marginTop: "50px" }}>
-          <Title className={styles.cardListTitle}>Responsibilities</Title>
+          <XStarViewer
+            className={styles.viewer}
+            value={getTransResult(
+              lang,
+              data?.attributes?.contentZh,
+              data?.attributes?.contentEn
+            )}
+            plugins={[viewerVideoPlugin()]}
+          />
+          {/* <Title className={styles.cardListTitle}>Responsibilities</Title>
           <List
             dataSource={ResponsibilitiesListData}
             split={false}
@@ -73,41 +87,7 @@ const JobCardDetail = ({ data }: Props) => {
                 </Space>
               </List.Item>
             )}
-          />
-
-          <Title className={styles.cardListTitle}>Qualifications</Title>
-          <List
-            dataSource={qualificationsListData}
-            split={false}
-            className={styles.cardList}
-            renderItem={(item) => (
-              <List.Item className={styles.cardListItem}>
-                <Space>
-                  <i className={styles.listItemCircle}></i>
-                  <Typography className={styles.cardText}>
-                    {item.text}
-                  </Typography>
-                </Space>
-              </List.Item>
-            )}
-          />
-
-          <Title className={styles.cardListTitle}>Other Information</Title>
-          <List
-            dataSource={otherInformationListData}
-            split={false}
-            className={styles.cardList}
-            renderItem={(item) => (
-              <List.Item className={styles.cardListItem}>
-                <Space>
-                  <i className={styles.listItemCircle}></i>
-                  <Typography className={styles.cardText}>
-                    {item.text}
-                  </Typography>
-                </Space>
-              </List.Item>
-            )}
-          />
+          /> */}
         </div>
       </div>
     </>
