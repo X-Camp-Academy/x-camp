@@ -109,3 +109,16 @@ export interface GetProjectsDemo extends strapiPublicFields {
 
 export type GetProjectsDemoRequest = StrapiRequest<GetProjectsDemo>;
 export type GetProjectsDemoResponse = StrapiResponse<GetProjectsDemo>;
+
+export interface GetAchievementsTimeLine extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  order: number;
+}
+
+export type GetAchievementsTimeLineRequest =
+  StrapiRequest<GetAchievementsTimeLine>;
+export type GetAchievementsTimeLineResponse =
+  StrapiResponse<GetAchievementsTimeLine>;

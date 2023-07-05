@@ -15,6 +15,7 @@ import {
   GetXAlumniResponse,
   GetTestimonyRequest,
   GetProjectsDemoRequest,
+  GetAchievementsTimeLineRequest,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
@@ -198,6 +199,30 @@ export const useGetProjectsDemo = () => {
             lang === "zh" ? "categoryZh" : "categoryEn"
           )
         : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取关于我们目录下的achievements的Time Line
+ */
+export const useGetAchievementsTimeLine = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetAchievementsTimeLineRequest) => {
+      const res = await client.getAchievementsTimeLine(params);
+      return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [

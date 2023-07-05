@@ -20,7 +20,10 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import ColorfulCard from "@/components/common/colorful-card";
 import UsacoCards from "@/components/common/usaco-cards";
-import { useGetAboutUsAchievementsAward } from "@/apis/strapi-client/strapi";
+import {
+  useGetAboutUsAchievementsAward,
+  useGetAchievementsTimeLine,
+} from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 
@@ -31,6 +34,7 @@ const USACOMedal: React.FC = () => {
   const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor("#D46B14");
   const { data: awards } = useGetAboutUsAchievementsAward();
+  const { data: timeLine } = useGetAchievementsTimeLine();
 
   const listData = [
     {
@@ -166,19 +170,27 @@ const USACOMedal: React.FC = () => {
 
               <div className={styles.listContainer}>
                 <List
-                  dataSource={listData}
+                  dataSource={timeLine}
                   split={false}
                   renderItem={(item) => (
                     <List.Item className={styles.timeListItem}>
                       <List.Item.Meta
                         title={
                           <Text className={styles.timeListTitle}>
-                            {item.title}
+                            {getTransResult(
+                              lang,
+                              item?.attributes?.titleZh,
+                              item?.attributes?.titleEn
+                            )}
                           </Text>
                         }
                         description={
                           <Paragraph className={styles.timeListDetail}>
-                            {item.content}
+                            {getTransResult(
+                              lang,
+                              item?.attributes?.descriptionZh,
+                              item?.attributes?.descriptionEn
+                            )}
                           </Paragraph>
                         }
                       />

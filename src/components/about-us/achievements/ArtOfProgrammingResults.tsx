@@ -12,11 +12,6 @@ interface Props {
 }
 
 const ArtOfProgrammingResults = ({ data }: Props) => {
-  // const data = [
-  //   { title: "Leo Lin, Andrew Chen and George Sun", src: "/" },
-  //   { title: "Leo Lin, Andrew Chen and George Sun", src: "/" },
-  //   { title: "Leo Lin, Andrew Chen and George Sun", src: "/" },
-  // ];
   const { lang } = useLang();
 
   const listData = [
