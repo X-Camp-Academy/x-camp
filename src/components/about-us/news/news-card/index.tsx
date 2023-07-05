@@ -20,9 +20,9 @@ const NewsCard = () => {
 
   /*   const { data } = useGetNewEvent();
     console.log(data); */
-  const { data: NewEventData, runAsync: NewEventRunAsync } = useGetNewEvent();
+  const { data: NewEventData, runAsync: NewEventRunAsync } = useGetNewEvent(NewEventCategory.News);
 
-  useEffect(() => {
+/*   useEffect(() => {
     NewEventRunAsync({
       populate: "*",
       sort: ["order:desc"],
@@ -32,9 +32,7 @@ const NewsCard = () => {
         },
       },
     });
-    console.log(NewEventData);
-    
-  },[]);
+  },[]); */
 
   return (
     <div className={styles.content}>

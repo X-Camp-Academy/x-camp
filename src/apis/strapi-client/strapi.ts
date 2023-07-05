@@ -24,6 +24,7 @@ import {
   GetTestimonyRequest,
   GetXAlumniRequest,
   GetXAlumniResponse,
+  NewEventCategory,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
@@ -53,7 +54,7 @@ export const useGetFaculty = () => {
 /**
  * @return 获取NewEvent
  */
-export const useGetNewEvent = () => {
+export const useGetNewEvent = (tag:NewEventCategory) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
@@ -65,6 +66,12 @@ export const useGetNewEvent = () => {
       defaultParams: [
         {
           populate: "*",
+          sort: ["order:desc"],
+          filters: {
+            tags: {
+              $eq: tag,
+            }
+          }
         },
       ],
       onError: handleError,
