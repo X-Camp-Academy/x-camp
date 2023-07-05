@@ -77,8 +77,16 @@ const FacultyCoach: React.FC = () => {
                         )
                       }</Text>
                       <Paragraph
-                        ellipsis={{ rows: 5 }}
+                        ellipsis={{
+                          rows: 3,
+                          tooltip: getTransResult(
+                            lang,
+                            item?.attributes?.descriptionZh,
+                            item?.attributes?.descriptionEn
+                          )
+                        }}
                         className={styles.description}
+
                       >
                         {
                           getTransResult(
