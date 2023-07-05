@@ -16,7 +16,8 @@ const Map: React.FC = () => {
   const worldDOM = useRef<HTMLDivElement>();
   const usaDOM = useRef<HTMLDivElement>();
   console.log(data);
-  
+  // const mapData = data && data[0];
+  // const { world: worldData, usa: usaData } = data?;
   useEffect(() => {
     if (worldDOM.current) {
       const mapChart = echarts.init(worldDOM.current);

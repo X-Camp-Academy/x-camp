@@ -285,7 +285,7 @@ export const useGetAboutUsAlumniMap = () => {
   return useRequest(
     async (params: GetAboutUsAlumniMapRequest) => {
       const res = await client.getAboutUsAlumniMap(params);
-      return isArray(res?.data) ? res.data : [];
+      return res?.data;
     },
     {
       defaultParams: [

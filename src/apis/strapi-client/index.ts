@@ -175,7 +175,7 @@ export class StrapiClient extends BaseAxiosClient {
     params: GetAboutUsAlumniMapRequest
   ): Promise<GetAboutUsAlumniMapResponse> {
     const res = await this.get(
-      "/xc-about-us-alumni-maps" + getParamsStringify(params),
+      "/xc-about-us-alumni-map" + getParamsStringify(params),
       {}
     );
     return res;
