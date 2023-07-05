@@ -6,9 +6,12 @@ import TopBanner from "./top-banner";
 import UsacoIntro from "./introduction";
 import RelateResources from "./relate-resources";
 import Testimony from "@/components/home/Testimony";
+import { useGetResourcesLiveSolution } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const UsacoLiveSolutions = () => {
+  const { data: resourcesLiveSolution } = useGetResourcesLiveSolution();
+
   return (
     <ConfigProvider
       theme={{
@@ -20,7 +23,7 @@ const UsacoLiveSolutions = () => {
       <Layout className={styles.usacoLiveSolutions}>
         <Content>
           <TopBanner />
-          <UsacoIntro />
+          <UsacoIntro data={resourcesLiveSolution} />
           <RelateResources />
           <Testimony className={styles.comments} />
         </Content>

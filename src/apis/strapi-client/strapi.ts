@@ -16,6 +16,7 @@ import {
   GetTestimonyRequest,
   GetProjectsDemoRequest,
   GetAchievementsTimeLineRequest,
+  GetResourcesLiveSolutionRequest,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
@@ -223,6 +224,32 @@ export const useGetAchievementsTimeLine = () => {
     async (params: GetAchievementsTimeLineRequest) => {
       const res = await client.getAchievementsTimeLine(params);
       return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取Resources目录下的Live Solution
+ */
+export const useGetResourcesLiveSolution = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetResourcesLiveSolutionRequest) => {
+      const res = await client.getResourcesLiveSolution(params);
+      return isArray(res?.data)
+        ? classifyByAttribution(res.data, "category")
+        : [];
     },
     {
       defaultParams: [

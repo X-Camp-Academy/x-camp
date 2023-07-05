@@ -17,6 +17,8 @@ import {
   GetProjectsDemoResponse,
   GetAchievementsTimeLineRequest,
   GetAchievementsTimeLineResponse,
+  GetResourcesLiveSolutionRequest,
+  GetResourcesLiveSolutionResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -142,6 +144,16 @@ export class StrapiClient extends BaseAxiosClient {
   ): Promise<GetAchievementsTimeLineResponse> {
     const res = await this.get(
       "/xc-about-us-achievements-time-lines" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getResourcesLiveSolution(
+    params: GetResourcesLiveSolutionRequest
+  ): Promise<GetResourcesLiveSolutionResponse> {
+    const res = await this.get(
+      "/xc-resources-live-solutions" + getParamsStringify(params),
       {}
     );
     return res;

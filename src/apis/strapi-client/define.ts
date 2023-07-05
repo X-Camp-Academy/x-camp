@@ -122,3 +122,17 @@ export type GetAchievementsTimeLineRequest =
   StrapiRequest<GetAchievementsTimeLine>;
 export type GetAchievementsTimeLineResponse =
   StrapiResponse<GetAchievementsTimeLine>;
+
+export interface GetResourcesLiveSolution extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  date: string;
+  category: string;
+  video: StrapiMedia;
+  order: number;
+}
+
+export type GetResourcesLiveSolutionRequest =
+  StrapiRequest<GetResourcesLiveSolution>;
+export type GetResourcesLiveSolutionResponse =
+  StrapiResponse<GetResourcesLiveSolution>;
