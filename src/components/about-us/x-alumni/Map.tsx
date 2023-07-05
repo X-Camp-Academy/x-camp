@@ -6,14 +6,17 @@ import worldJson from "./world.json";
 import usaJson from "./usa.json";
 import styles from "./Map.module.scss";
 import { SegmentedValue } from "antd/es/segmented";
+import { useGetAboutUsAlumniMap } from "@/apis/strapi-client/strapi";
 
 const { Title, Text } = Typography;
 
 const Map: React.FC = () => {
+  const { data } = useGetAboutUsAlumniMap();
   const [current, setCurrent] = useState<SegmentedValue>("World");
   const worldDOM = useRef<HTMLDivElement>();
   const usaDOM = useRef<HTMLDivElement>();
-
+  console.log(data);
+  
   useEffect(() => {
     if (worldDOM.current) {
       const mapChart = echarts.init(worldDOM.current);

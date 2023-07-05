@@ -168,7 +168,15 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
   order: number;
 }
 
+export interface GetAboutUsAlumniMap extends strapiPublicFields {
+  world: any;
+  usa: any;
+}
+
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
 export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
 export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
+
+export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
+export type GetAboutUsAlumniMapResponse = StrapiResponse<GetAboutUsAlumniMap>;

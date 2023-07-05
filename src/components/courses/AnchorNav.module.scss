@@ -9,7 +9,6 @@
 .catalog {
   display: block;
   cursor: pointer;
-  width: 228px;
   height: 48px;
   background: #FFAD11;
   border-radius: 12px 0px 0px 12px;
@@ -35,8 +34,3 @@
   }
 }
 
-@media (min-width: 1400px) {
-  .catalog {
-    width: 245px;
-  }
-}
