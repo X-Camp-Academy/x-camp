@@ -9,9 +9,9 @@ import Testimony from "../home/Testimony";
 import dynamic from "next/dynamic";
 import ClassCard from "../common/class-card";
 import {
-  useGetClasses,
   useGetCourseLevelType,
   useGetCourses,
+  useGetClasses
 } from "@/apis/strapi-client/strapi";
 import { GetCourses } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
@@ -19,18 +19,6 @@ const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 
-interface ClassesProps {
-  title: string;
-  children: {
-    header: string;
-    children: {
-      id: number;
-      title: string;
-      desc: string;
-      duration: string;
-    }[];
-  }[];
-}
 
 const Courses: React.FC = () => {
   const { data: courseLevelType } = useGetCourseLevelType();
@@ -55,6 +43,18 @@ const Courses: React.FC = () => {
     );
   };
 
+  const onlineCourses = courses?.filter((item) => item?.attributes?.isCamp);
+  const complexCourses = COURSE_TYPES.slice(0, 3).map(item => {
+    return {
+      bigTitle: item,
+      children: courseLevelTypeData?.map(levelType => {
+        return {
+          smallTitle: levelType,
+          children: getDataByCourseLevelType(onlineCourses, levelType)
+        }
+      })
+    }
+  })
   const campsCourses = courses?.filter((item) => item?.attributes?.isCamp);
   const campsCoursesData = courseLevelTypeData?.map((levelType) => {
     return {
@@ -65,14 +65,14 @@ const Courses: React.FC = () => {
 
   console.log(campsCoursesData);
 
-  const singleLayerCourses = COURSE_TYPES.slice(3).map((item) => {
+  const simpleCourses = COURSE_TYPES.slice(3).map((item) => {
     return {
       title: item,
       children: getDataByCourseLevelType(courses, item),
     };
   });
 
-  console.log(singleLayerCourses);
+  console.log(simpleCourses);
 
   // 初始化所有分类的value
   const courseLevelTypeMap = new Map();
