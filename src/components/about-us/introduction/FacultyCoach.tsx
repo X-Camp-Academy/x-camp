@@ -4,7 +4,6 @@ import { Space, Row, Col, Card, Image, Typography, Tag, Avatar } from "antd";
 import { useGetIntroductionFacultyCoach } from "@/apis/strapi-client/strapi";
 import styles from "./FacultyCoach.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
-import { GetIntroductionFacultyCoachResponse } from "@/apis/strapi-client/define";
 import { getTransResult } from "@/utils/public";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
@@ -86,7 +85,6 @@ const FacultyCoach: React.FC = () => {
                           )
                         }}
                         className={styles.description}
-
                       >
                         {
                           getTransResult(

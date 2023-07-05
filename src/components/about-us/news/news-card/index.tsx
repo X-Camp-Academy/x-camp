@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import { news } from "./define";
 import ColorfulCard from "@/components/common/colorful-card";
@@ -8,9 +8,34 @@ import {
   PercentageOutlined,
   RightCircleOutlined,
 } from "@ant-design/icons";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { NewEventCategory } from "@/apis/strapi-client/define";
 const { Title, Paragraph, Text } = Typography;
 
 const NewsCard = () => {
+
+  /*   const [category, setCategory] = useState<NewEventCategory>(
+      NewEventCategory.News
+    ); */
+
+  /*   const { data } = useGetNewEvent();
+    console.log(data); */
+  const { data: NewEventData, runAsync: NewEventRunAsync } = useGetNewEvent();
+
+  useEffect(() => {
+    NewEventRunAsync({
+      populate: "*",
+      sort: ["order:desc"],
+      filters: {
+        tags: {
+          $eq: NewEventCategory.News,
+        },
+      },
+    });
+    console.log(NewEventData);
+    
+  },[]);
+
   return (
     <div className={styles.content}>
       <div className={"container"}>

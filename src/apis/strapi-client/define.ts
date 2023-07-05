@@ -29,6 +29,25 @@ export type GetIntroductionFacultyCoachRequest =
 export type GetIntroductionFacultyCoachResponse =
   StrapiResponse<GetIntroductionFacultyCoach>;
 
+export enum NewEventCategory {
+  News = "News",
+  Event = "Event",
+  Activity = "Activity",
+}
+
+export interface GetNewEvent extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  dateTime: string;
+  tags: NewEventCategory;
+  order: number;
+  img: StrapiMedia;
+}
+export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
+export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
+
 export interface GetHomeStudentProjects extends strapiPublicFields {
   titleZh: string;
   titleEn: string;

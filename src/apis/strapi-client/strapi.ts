@@ -17,6 +17,8 @@ import {
   GetIntroductionFacultyCoach,
   GetIntroductionFacultyCoachRequest,
   GetIntroductionFacultyCoachResponse,
+  GetNewEventRequest,
+  GetNewEventResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
   GetTestimonyRequest,
@@ -49,6 +51,28 @@ export const useGetFaculty = () => {
 };
 
 /**
+ * @return 获取NewEvent
+ */
+export const useGetNewEvent = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetNewEventRequest) => {
+      const res: GetNewEventResponse = await client.getNewEvent(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
  *
  * @returns 获取Introduction页面下的FacultyCoach
  */
@@ -57,7 +81,8 @@ export const useGetIntroductionFacultyCoach = () => {
   const handleError = useHandleError();
   return useRequest(
     async (params: GetIntroductionFacultyCoachRequest) => {
-      const res: GetIntroductionFacultyCoachResponse = await client.getIntroductionFacultyCoach(params);
+      const res: GetIntroductionFacultyCoachResponse =
+        await client.getIntroductionFacultyCoach(params);
 
       function groupArray(
         arr: StrapiResponseDataItem<GetIntroductionFacultyCoach>[]
@@ -70,7 +95,6 @@ export const useGetIntroductionFacultyCoach = () => {
         return result;
       }
 
-
       return isArray(res?.data) ? groupArray(res.data) : [];
     },
     {
@@ -81,7 +105,7 @@ export const useGetIntroductionFacultyCoach = () => {
       ],
       onError: handleError,
     }
-  )
+  );
 };
 
 /**
