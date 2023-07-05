@@ -4,14 +4,17 @@ import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
-import { classesData } from "./define";
+import { COURSE_TYPES, classesData } from "./define";
 import Testimony from "../home/Testimony";
 import dynamic from "next/dynamic";
 import ClassCard from "../common/class-card";
 import {
+  useGetClasses,
   useGetCourseLevelType,
   useGetCourses,
 } from "@/apis/strapi-client/strapi";
+import { GetCourses } from "@/apis/strapi-client/define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -29,14 +32,49 @@ interface ClassesProps {
   }[];
 }
 
-const Courses = () => {
+const Courses: React.FC = () => {
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses();
-
+  const { data: classes } = useGetClasses();
+  // 获取所有的courseLevelType分类
   const courseLevelTypeData = courseLevelType?.map(
     (item) => item?.attributes?.type
   );
 
+  console.log(courseLevelTypeData);
+  
+  // 第二次分类
+  // 根据已经过滤的courses或者原始的课程直接进行二层过滤
+  const getDataByCourseLevelType = (
+    courses: StrapiResponseDataItem<GetCourses>[] | undefined,
+    type: string
+  ) => {
+    return courses?.filter(
+      (item) =>
+        item?.attributes?.courseLevelType?.data?.attributes?.type === type
+    );
+  };
+
+  const campsCourses = courses?.filter((item) => item?.attributes?.isCamp);
+  const campsCoursesData = courseLevelTypeData?.map((levelType) => {
+    return {
+      bigTitle: levelType,
+      children: getDataByCourseLevelType(campsCourses, levelType),
+    };
+  });
+
+  console.log(campsCoursesData);
+
+  const singleLayerCourses = COURSE_TYPES.slice(3).map((item) => {
+    return {
+      title: item,
+      children: getDataByCourseLevelType(courses, item),
+    };
+  });
+
+  console.log(singleLayerCourses);
+
+  // 初始化所有分类的value
   const courseLevelTypeMap = new Map();
   courseLevelTypeData?.forEach((item) => {
     courseLevelTypeMap.set(item, []);
@@ -49,13 +87,29 @@ const Courses = () => {
     courseLevelTypeMap.set(key, value);
   });
 
+  // 根据course自身的属性第一次分类
+
+  // console.log(campsCourse);
+
+  // console.log(courseLevelTypeMap);
+  const repeatSort = ["Online Courses", "In-person Classes", "Camps"];
+  const allData = COURSE_TYPES.slice(2)?.map((item) => {
+    if (repeatSort.includes(item)) {
+    } else {
+      return {
+        bigTitle: item,
+        children: courseLevelTypeMap.get(item),
+      };
+    }
+  });
+
   courseLevelTypeMap.forEach((value, key) => {
     // 在这里对每个键值对执行操作
     // console.log(key, value);
   });
-
+  const getCourseLevelType = () => {};
   // console.log(courses);
-  console.log(courses);
+  // console.log(courseLevelTypeMap);
 
   return (
     <ConfigProvider

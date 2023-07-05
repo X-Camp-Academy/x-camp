@@ -100,7 +100,11 @@ export interface GetCourses extends strapiPublicFields {
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
 
-export interface GetCourseDetail extends strapiPublicFields {}
+export interface GetClasses extends strapiPublicFields {}
+
+export type GetClassesRequest = StrapiRequest<GetClasses>;
+export type GetClassesResponse = StrapiResponse<GetClasses>;
+
 export interface GetXAlumni extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -147,8 +151,6 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
   video: StrapiMedia;
   order: number;
 }
-export type GetCourseDetailRequest = StrapiRequest<GetCourses>;
-export type GetCourseDetailResponse = StrapiResponse<GetCourses>;
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
   category: AboutUsJoinUsCategory;

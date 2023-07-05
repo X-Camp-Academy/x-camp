@@ -1,8 +1,6 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 import {
-  GetCourseDetailRequest,
-  GetCourseDetailResponse,
   GetCourseLevelTypeRequest,
   GetCourseLevelTypeResponse,
   GetCoursesRequest,
@@ -23,6 +21,8 @@ import {
   GetTestimonyResponse,
   GetAboutUsAlumniMapRequest,
   GetAboutUsAlumniMapResponse,
+  GetClassesRequest,
+  GetClassesResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -141,10 +141,10 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getCourseDetail(
-    params: GetCourseDetailRequest
-  ): Promise<GetCourseDetailResponse> {
-    const res: GetCourseDetailResponse = await this.get(
+  async getClasses(
+    params: GetClassesRequest
+  ): Promise<GetClassesResponse> {
+    const res: GetClassesResponse = await this.get(
       "/xc-classes" + getParamsStringify(params),
       {}
     );
