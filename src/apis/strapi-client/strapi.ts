@@ -1,10 +1,11 @@
-import { useStrapiClient } from ".";
-import { useHandleError } from "@/utils/error";
-import { useRequest } from "ahooks";
+import { useStrapiClient } from '.';
+import { useHandleError } from '@/utils/error';
+import { useRequest } from 'ahooks';
 import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
+  GetAboutUsIntroArticleRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
   GetCourseDetailRequest,
@@ -18,9 +19,9 @@ import {
   GetTestimonyRequest,
   GetXAlumniRequest,
   GetXAlumniResponse,
-} from "./define";
-import { isArray } from "lodash";
-import { StrapiResponseDataItem } from "./strapiDefine";
+} from './define';
+import { isArray } from 'lodash';
+import { StrapiResponseDataItem } from './strapiDefine';
 /**
  *
  * @returns 获取Faculty
@@ -36,7 +37,7 @@ export const useGetFaculty = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -70,8 +71,8 @@ export const useGetAboutUsAchievementsAward = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -94,8 +95,8 @@ export const useGetXAlumni = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -120,8 +121,8 @@ export const useGetResourcesContest = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -147,8 +148,8 @@ export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
       manual: true,
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: {
             category: {
               $eq: category,
@@ -172,7 +173,7 @@ export const useGetTestimony = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -195,7 +196,7 @@ export const useGetHomeStudentProjects = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -218,7 +219,7 @@ export const useGetCourseLevelType = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -241,7 +242,7 @@ export const useGetCourses = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -264,11 +265,35 @@ export const useGetCourseDetail = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       manual: true,
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Intro Article
+ */
+export const useGetAboutUsIntroArticle = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetAboutUsIntroArticleRequest) => {
+      const res = await client.getAboutUsIntroArticle(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*',
+          sort: ['order:desc'],
+        },
+      ],
       onError: handleError,
     }
   );

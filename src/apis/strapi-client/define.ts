@@ -4,7 +4,7 @@ import {
   StrapiRequest,
   StrapiResponse,
   strapiPublicFields,
-} from "./strapiDefine";
+} from './strapiDefine';
 
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
@@ -127,14 +127,14 @@ export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
 export enum AboutUsJoinUsCategory {
-  PartTime = "Part Time",
-  FullTime = "Full Time",
-  XTutor = "X-Tutor",
+  PartTime = 'Part Time',
+  FullTime = 'Full Time',
+  XTutor = 'X-Tutor',
 }
 
 export enum AboutUsJoinUsPlace {
-  Remote = "Remote",
-  OnSite = "On Site",
+  Remote = 'Remote',
+  OnSite = 'On Site',
 }
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
@@ -160,3 +160,18 @@ export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
 export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
 export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
+
+export interface GetAboutUsIntroArticle extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  order: number;
+  img1: StrapiMedia;
+  img2: StrapiMedia;
+  img3: StrapiMedia;
+}
+export type GetAboutUsIntroArticleRequest =
+  StrapiRequest<GetAboutUsIntroArticle>;
+export type GetAboutUsIntroArticleResponse =
+  StrapiResponse<GetAboutUsIntroArticle>;
