@@ -22,7 +22,7 @@ export interface GetIntroductionFacultyCoach extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  img: StrapiMedia;
+  avatar: StrapiMedia;
 }
 export type GetIntroductionFacultyCoachRequest =
   StrapiRequest<GetIntroductionFacultyCoach>;
