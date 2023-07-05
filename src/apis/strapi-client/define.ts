@@ -3,6 +3,8 @@ import {
   StrapiMedias,
   StrapiRequest,
   StrapiResponse,
+  StrapiResponseDataItem,
+  StrapiResponseSingleDataItem,
   strapiPublicFields,
 } from "./strapiDefine";
 
@@ -155,10 +157,16 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
   contentEn: string;
   order: number;
 }
+interface MapProps {
+  data: {
+    name: string;
+    value: string;
+  }[];
+}
 
 export interface GetAboutUsAlumniMap extends strapiPublicFields {
-  world: any;
-  usa: any;
+  world: MapProps;
+  usa: MapProps;
 }
 
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
@@ -167,4 +175,5 @@ export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
 export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
 
 export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
-export type GetAboutUsAlumniMapResponse = StrapiResponse<GetAboutUsAlumniMap>;
+export type GetAboutUsAlumniMapResponse =
+  StrapiResponseSingleDataItem<GetAboutUsAlumniMap>;

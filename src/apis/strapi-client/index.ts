@@ -150,7 +150,7 @@ export class StrapiClient extends BaseAxiosClient {
     );
     return res;
   }
-  
+
   async getAboutUsJoinUs(
     params: GetAboutUsJoinUsRequest
   ): Promise<GetAboutUsJoinUsResponse> {
