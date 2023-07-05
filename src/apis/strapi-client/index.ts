@@ -13,6 +13,8 @@ import {
   GetXAlumniResponse,
   GetTestimonyRequest,
   GetTestimonyResponse,
+  GetProjectsDemoRequest,
+  GetProjectsDemoResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -118,6 +120,16 @@ export class StrapiClient extends BaseAxiosClient {
   ): Promise<GetTestimonyResponse> {
     const res = await this.get(
       "/xc-testimonies" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getProjectsDemo(
+    params: GetProjectsDemoRequest
+  ): Promise<GetProjectsDemoResponse> {
+    const res = await this.get(
+      "/xc-about-us-achievements-projects-demos" + getParamsStringify(params),
       {}
     );
     return res;

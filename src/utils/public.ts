@@ -16,3 +16,28 @@ export const getTransResult = (
   if (lang == "zh") return zhText ? zhText : enText;
   else return enText ? enText : zhText;
 };
+
+/**
+ * 将扁平化数据根据某个字段分类
+ */
+export const classifyByAttribution = <T extends any[]>(
+  data: T,
+  field: string
+): T[] => {
+  const groupedData: T[] = [];
+
+  data.forEach((item) => {
+    const fieldValue = item?.attributes?.[field];
+    const index = groupedData?.findIndex(
+      (group) => group[0]?.attributes?.[field] === fieldValue
+    );
+
+    if (index === -1) {
+      groupedData.push([item] as T);
+    } else {
+      groupedData[index].push(item);
+    }
+  });
+
+  return groupedData;
+};

@@ -94,5 +94,18 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
 
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
+
 export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
 export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
+
+export interface GetProjectsDemo extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  categoryZh: string;
+  categoryEn: string;
+  url: StrapiMedia;
+  order: number;
+}
+
+export type GetProjectsDemoRequest = StrapiRequest<GetProjectsDemo>;
+export type GetProjectsDemoResponse = StrapiResponse<GetProjectsDemo>;

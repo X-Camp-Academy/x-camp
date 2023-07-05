@@ -14,9 +14,12 @@ import {
   GetXAlumniRequest,
   GetXAlumniResponse,
   GetTestimonyRequest,
+  GetProjectsDemoRequest,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
+import { classifyByAttribution, getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 /**
  *
  * @returns 获取Faculty
@@ -173,6 +176,36 @@ export const useGetTestimony = () => {
         },
       ],
       manual: true,
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取关于我们目录下的achievements的Projects Demo
+ */
+export const useGetProjectsDemo = () => {
+  const client = useStrapiClient();
+  const { lang } = useLang();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetProjectsDemoRequest) => {
+      const res = await client.getProjectsDemo(params);
+      return isArray(res?.data)
+        ? classifyByAttribution(
+            res.data,
+            lang === "zh" ? "categoryZh" : "categoryEn"
+          )
+        : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+        },
+      ],
       onError: handleError,
     }
   );

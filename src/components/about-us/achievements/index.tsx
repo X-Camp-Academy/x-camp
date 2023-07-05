@@ -1,15 +1,24 @@
-'use client';
-import React from 'react';
-import { ConfigProvider, Layout } from 'antd';
-import styles from './index.module.scss';
-import { Content } from 'antd/es/layout/layout';
-
+"use client";
+import React from "react";
+import { ConfigProvider, Layout } from "antd";
+import styles from "./index.module.scss";
+import { Content } from "antd/es/layout/layout";
 import dynamic from "next/dynamic";
-const TopBanner = dynamic(() => import("@/components/about-us/achievements/TopBanner"))
-const USACOWinners = dynamic(() => import("@/components/about-us/achievements/USACOWinners"))
-const ArtOfProgrammingResults = dynamic(() => import("@/components/about-us/achievements/ArtOfProgrammingResults"))
+import { useGetProjectsDemo } from "@/apis/strapi-client/strapi";
+const TopBanner = dynamic(
+  () => import("@/components/about-us/achievements/TopBanner")
+);
+const USACOWinners = dynamic(
+  () => import("@/components/about-us/achievements/USACOWinners")
+);
+const ArtOfProgrammingResults = dynamic(
+  () => import("@/components/about-us/achievements/ArtOfProgrammingResults")
+);
 
-const Achievements: React.FC = () => {
+const Achievements = () => {
+  const { data: projectsDemo } = useGetProjectsDemo();
+  console.log(projectsDemo);
+
   return (
     <ConfigProvider
       theme={{
@@ -21,12 +30,12 @@ const Achievements: React.FC = () => {
       <Layout className={styles.introductionContainer}>
         <Content>
           <TopBanner />
-          <USACOWinners/>
-          <ArtOfProgrammingResults/>
+          <USACOWinners />
+          <ArtOfProgrammingResults data={projectsDemo} />
         </Content>
       </Layout>
     </ConfigProvider>
-  )
-}
+  );
+};
 
 export default Achievements;
