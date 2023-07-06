@@ -6,12 +6,14 @@ import Testimony from "@/components/home/Testimony";
 import TopBanner from "./top-banner";
 import UsacoMedal from "@/components/about-us/introduction/UsacoMedal";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
-import CampFAQS from "../camps/camp-faqs";
 import ProgressionClasses from "./progression-classes";
 import {
   useGetCourseDetail,
+  useGetFaq,
   useGetTestimony,
 } from "@/apis/strapi-client/strapi";
+import { FaqCategory } from "@/apis/strapi-client/define";
+import Faqs from "@/components/common/faqs";
 const { Content } = Layout;
 
 const CourseDetail = () => {
@@ -21,6 +23,11 @@ const CourseDetail = () => {
   const { data: testimonyData } = useGetTestimony();
 
   console.log(data);
+
+  const { data: faq } = useGetFaq({
+    ready: true,
+    category: FaqCategory.CoursesQA,
+  });
 
   return (
     <ConfigProvider
@@ -36,7 +43,7 @@ const CourseDetail = () => {
           <UsacoMedal />
           <FacultyCoach />
           <ProgressionClasses />
-          <CampFAQS title="Course FAQs" />
+          <Faqs title="Course FAQs" data={faq} />
           <Testimony
             className={styles.comments}
             testimonyData={testimonyData}
