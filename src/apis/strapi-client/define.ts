@@ -36,6 +36,9 @@ export enum NewEventCategory {
 }
 
 export interface GetNewEvent extends strapiPublicFields {
+
+
+
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
@@ -43,8 +46,16 @@ export interface GetNewEvent extends strapiPublicFields {
   dateTime: string;
   tags: NewEventCategory;
   order: number;
+  editor: string;
   img: StrapiMedia;
+
+
+
 }
+/* export interface GetNewEventRequest extends StrapiRequest<GetNewEvent>{
+  current?:number;
+  pageSize?:number;
+} */
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
 

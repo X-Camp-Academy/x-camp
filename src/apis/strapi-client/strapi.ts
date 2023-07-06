@@ -1,6 +1,6 @@
 import { useStrapiClient } from ".";
 import { useHandleError } from "@/utils/error";
-import { useRequest } from "ahooks";
+import { usePagination, useRequest } from "ahooks";
 import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
@@ -54,13 +54,22 @@ export const useGetFaculty = () => {
 /**
  * @return 获取NewEvent
  */
-export const useGetNewEvent = (tag:NewEventCategory) => {
+export const useGetNewEvent = ({
+  tag,
+  current,
+  pageSize,
+}: {
+  tag: NewEventCategory;
+  current: number;
+  pageSize: number;
+}) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
+
   return useRequest(
     async (params: GetNewEventRequest) => {
       const res: GetNewEventResponse = await client.getNewEvent(params);
-      return isArray(res?.data) ? res.data : [];
+      return res;
     },
     {
       defaultParams: [
@@ -70,8 +79,12 @@ export const useGetNewEvent = (tag:NewEventCategory) => {
           filters: {
             tags: {
               $eq: tag,
-            }
-          }
+            },
+          },
+          pagination: {
+            page: current,
+            pageSize,
+          },
         },
       ],
       onError: handleError,
