@@ -18,7 +18,7 @@ const { Text, Paragraph } = Typography;
 const cx = classNames.bind(styles);
 interface Props {
   className?: string;
-  testimonyData?: StrapiResponseDataItem<GetTestimony>[];
+  testimonyData?: StrapiResponseDataItem<GetTestimony>[] | undefined;
 }
 
 const Testimony = ({ className = "", testimonyData }: Props) => {

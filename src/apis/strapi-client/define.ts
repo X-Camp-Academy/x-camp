@@ -44,9 +44,11 @@ export interface GetTestimony extends strapiPublicFields {
   titleEn: string;
   score: number;
   order: number;
-  tags: JSON;
   descriptionZh: string;
   descriptionEn: string;
+  courseId: string;
+  pageName: string;
+  eventId: string;
 }
 
 export type GetAboutUsAchievementsAwardRequest =

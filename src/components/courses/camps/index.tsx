@@ -18,7 +18,7 @@ import { FaqCategory } from "@/apis/strapi-client/define";
 const { Content } = Layout;
 const CourseCamps = () => {
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+  const { data: testimonyData } = useGetTestimony({ ready: true });
   const { data: courses } = useGetCourses("true");
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),

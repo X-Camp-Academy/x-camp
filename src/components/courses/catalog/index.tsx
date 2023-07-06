@@ -9,7 +9,7 @@ import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 const CourseCatalog = () => {
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+  const { data: testimonyData } = useGetTestimony({ ready: true });
   return (
     <ConfigProvider
       theme={{
