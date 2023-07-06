@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Button, Col, Row, Space, Typography } from "antd";
 import ColorfulCard from "@/components/common/colorful-card";
 import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
-import { NewEventCategory } from "@/apis/strapi-client/define";
+import { NewEventCategory, ActivityCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
@@ -14,7 +14,11 @@ const RecentActivities = () => {
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Activity);
 
+  //activityTag: SchoolLifeSharing, CodingEducation, CareerPath, Research
+  const [activityTag, setActivityTag] = useState<ActivityCategory>(ActivityCategory.SchoolLifeSharing);
+
   const { data: newEventData } = useGetNewEvent({
+    activityTag,
     tag,
     current,
     pageSize

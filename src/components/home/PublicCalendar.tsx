@@ -24,6 +24,9 @@ const { Title, Paragraph, Text } = Typography;
 const PublicCalendar: React.FC = () => {
   const { lang } = useLang();
   const isMobile = useMobile();
+
+  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Thur"];
+
   const onPanelChange = (value: any, mode: CalendarMode) => {
     console.log(value.format("YYYY-MM-DD"), mode);
   };
@@ -37,7 +40,20 @@ const PublicCalendar: React.FC = () => {
     current,
     pageSize
   });
-  console.log(newEventData);
+
+  const getMonth = (date: string) => {
+    return new Date(date).getMonth() + 1;
+  }
+
+  const getDate = (date: string) => {
+    return new Date(date).getDate();
+  }
+
+  const getWeekDay = (date: string) => {
+    return weekdays[new Date(date).getDay()];
+  }
+
+
 
 
   return (
@@ -55,9 +71,9 @@ const PublicCalendar: React.FC = () => {
                   <div className={styles.activeCard} key={item.id}>
                     <Space size={72} align="center" className={styles.cardContent}>
                       <Space direction="vertical" className={styles.contentLeft}>
-                        <Text className={styles.text}>FRI</Text>
-                        <Text className={styles.text}>10</Text>
-                        <Text className={styles.text}>Jun</Text>
+                        <Text className={styles.text}>{getWeekDay(item.attributes?.datetime)}</Text>
+                        <Text className={styles.text}>{getDate(item.attributes?.datetime)}</Text>
+                        <Text className={styles.text}>{getMonth(item.attributes?.datetime)}</Text>
                       </Space>
                       <Space direction="vertical" className={styles.contentRight}>
                         <Text className={styles.paragraph}>
@@ -193,6 +209,6 @@ const PublicCalendar: React.FC = () => {
       </div>
     </div>
   );
-};
+  };
 
-export default PublicCalendar;
+  export default PublicCalendar;

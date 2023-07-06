@@ -34,17 +34,21 @@ export enum NewEventCategory {
   Event = "Events",
   Activity = "Activity",
 }
-
+export enum ActivityCategory {
+  SchoolLifeSharing = "School life's sharing",
+  CodingEducation = "Coding Education",
+  CareerPath = "Career Path",
+  Research = "Research"
+}
 export interface GetNewEvent extends strapiPublicFields {
-
-
 
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  dateTime: string;
+  datetime: string;
   tags: NewEventCategory;
+  activityCategory: ActivityCategory;
   order: number;
   editor: string;
   img: StrapiMedia;
@@ -52,10 +56,6 @@ export interface GetNewEvent extends strapiPublicFields {
 
 
 }
-/* export interface GetNewEventRequest extends StrapiRequest<GetNewEvent>{
-  current?:number;
-  pageSize?:number;
-} */
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
 
