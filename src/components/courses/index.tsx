@@ -11,6 +11,7 @@ import ClassCard from "../common/class-card";
 import {
   useGetCourseLevelType,
   useGetCourses,
+  useGetTestimony,
 } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
@@ -90,6 +91,9 @@ const Courses: React.FC = () => {
   });
   console.log(allCourses);
   
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   return (
     <ConfigProvider
       theme={{
@@ -101,6 +105,7 @@ const Courses: React.FC = () => {
       <Layout className={styles.courses}>
         <Content>
           <TopBanner />
+
           <div className={`${styles.classContainer} container`}>
             {allCourses?.map((item, index) => {
               return (
@@ -197,7 +202,7 @@ const Courses: React.FC = () => {
               );
             })}
           </div>
-          <Testimony />
+          <Testimony testimonyData={testimonyData} />
           <AnchorNav />
         </Content>
       </Layout>

@@ -1,5 +1,5 @@
 "use client";
-import { ConfigProvider, Layout, Space } from "antd";
+import { ConfigProvider, Layout } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./top-banner";
@@ -7,10 +7,25 @@ import CampIntro from "./camp-intro";
 import CampCarousel from "./camp-carousel";
 import CourseAbstract from "../detail/top-banner/course-card/course-abstract";
 import ColorfulCard from "@/components/common/colorful-card";
-import CampFAQS from "./camp-faqs";
 import Testimony from "@/components/home/Testimony";
+import Faqs from "@/components/common/faqs";
+import {
+  useGetCourses,
+  useGetFaq,
+  useGetTestimony,
+} from "@/apis/strapi-client/strapi";
+import { FaqCategory } from "@/apis/strapi-client/define";
 const { Content } = Layout;
 const CourseCamps = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+  const { data: courses } = useGetCourses("true");
+  const { data: faq } = useGetFaq({
+    ready: Boolean(courses),
+    category: FaqCategory.CoursesQA,
+    courseId: courses?.map((v) => String(v?.id)),
+  });
+
   return (
     <ConfigProvider
       theme={{
@@ -43,8 +58,8 @@ const CourseCamps = () => {
               </video>
             </div>
           </div>
-          <CampFAQS title="Camps FAQs" />
-          <Testimony />
+          <Faqs title="Camps FAQs" data={faq} />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

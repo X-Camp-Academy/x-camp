@@ -20,7 +20,9 @@ const Testimony = dynamic(() => import("./Testimony"));
 const { Content } = Layout;
 
 const Home: React.FC = () => {
-  const { data } = useGetTestimony();
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   return (
     <ConfigProvider
       theme={{
@@ -41,7 +43,7 @@ const Home: React.FC = () => {
           <StudentProjects />
           <XAlumni />
           <Partners />
-          <Testimony testimonyData={data} />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>
