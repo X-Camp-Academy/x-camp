@@ -7,36 +7,11 @@ import { useGetFaq } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 const QAPart = () => {
   const { lang } = useLang();
-  const { data: faq } = useGetFaq({ category: true, courseId: ["1", "2"] });
-
-  const QAData = [
-    {
-      question:
-        "How can I refer friends.How can I refer friends.How can I refer friends.How can I refer friends",
-      answer:
-        "I don't know it. But you can ask for your parents.I don't know it. But you can ask for your parents.I don't know it. But you can ask for your parents.",
-    },
-    {
-      question: "How can I refer friends",
-      answer: "I don't know it. But you can ask for your parents.",
-    },
-    {
-      question: "How can I refer friends",
-      answer: "I don't know it. But you can ask for your parents.",
-    },
-    {
-      question: "How can I refer friends",
-      answer: "I don't know it. But you can ask for your parents.",
-    },
-    {
-      question: "How can I refer friends",
-      answer: "I don't know it. But you can ask for your parents.",
-    },
-  ];
+  const { data: faq } = useGetFaq({ ready: true, isClassify: true });
 
   return (
     <div className={`${styles.qaContent} container`}>

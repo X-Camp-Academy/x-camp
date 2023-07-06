@@ -23,6 +23,7 @@ import {
   GetResourcesLiveSolutionRequest,
   GetFaqRequest,
   GetFaq,
+  FaqCategory,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
@@ -241,7 +242,7 @@ export const useGetCourseLevelType = () => {
  *
  * @returns 获取AboutUs Achievements Usaco Medal
  */
-export const useGetCourses = () => {
+export const useGetCourses = (isCamp?: string) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
@@ -253,6 +254,11 @@ export const useGetCourses = () => {
       defaultParams: [
         {
           populate: "*",
+          filters: {
+            isCamp: {
+              $eq: isCamp,
+            },
+          },
         },
       ],
       onError: handleError,
@@ -370,26 +376,31 @@ export const useGetResourcesLiveSolution = () => {
  * @returns 获取Faq
  */
 export const useGetFaq = <
-  T extends boolean,
+  T extends boolean = false,
   R = T extends true
     ? StrapiResponseDataItem<GetFaq>[][]
     : StrapiResponseDataItem<GetFaq>[]
 >({
+  ready,
+  isClassify,
   category,
   courseId,
   pageName,
   eventId,
 }: {
-  category?: T;
-  courseId?: string[];
-  pageName?: string[];
-  eventId?: string[];
+  ready: boolean; // 是否发请求，用于等待其他请求
+  isClassify?: T; // 是否分组
+  category?: FaqCategory; // 类别
+  courseId?: string[]; // 被用在哪些course 以英文逗号连接的字符串
+  pageName?: string[]; // 被用在哪些page 以英文逗号连接的字符串
+  eventId?: string[]; // 被用在哪些event 以英文逗号连接的字符串
 }) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest<R, [GetFaqRequest]>(
     async (params) => {
       const res = await client.getFaq(params);
+      console.log(courseId);
       let data = res?.data;
       // 根据courseId, pageName, eventId做筛选，根据category做分类
       if (courseId && courseId?.length > 0) {
@@ -401,7 +412,7 @@ export const useGetFaq = <
       if (eventId && eventId?.length > 0) {
         data = filterByAttribution(data, "eventId", eventId);
       }
-      if (category === true) {
+      if (isClassify) {
         return classifyByAttribution(data, "category") as R;
       } else {
         return data as R;
@@ -412,8 +423,14 @@ export const useGetFaq = <
         {
           populate: "*",
           sort: ["order:desc"],
+          filters: {
+            category: {
+              $eq: category,
+            },
+          },
         },
       ],
+      ready: ready,
       onError: handleError,
     }
   );

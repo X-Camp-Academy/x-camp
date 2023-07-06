@@ -201,12 +201,17 @@ export type GetResourcesLiveSolutionRequest =
 export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
+export enum FaqCategory {
+  ReferralQA = "Referral QA",
+  CoursesQA = "Courses QA",
+}
+
 export interface GetFaq extends strapiPublicFields {
   questionZh: string;
   questionEn: string;
   answerZh: string;
   answerEn: string;
-  category: string;
+  category: FaqCategory;
   order: number;
   courseId: string;
   pageName: string;
