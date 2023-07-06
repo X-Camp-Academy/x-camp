@@ -3,7 +3,6 @@ import {
   StrapiMedias,
   StrapiRequest,
   StrapiResponse,
-  StrapiResponseDataItem,
   StrapiResponseSingleDataItem,
   strapiPublicFields,
 } from "./strapiDefine";
@@ -73,20 +72,22 @@ interface CourseLevelType {
     };
   };
 }
+
 export interface GetCourses extends strapiPublicFields {
+  classMode: string;
   classLang: string;
   classRoomLang: string;
   courseCode: string;
   courseLevelType: CourseLevelType;
   courseLongDescriptionEn: string;
   courseLongDescriptionZh: string;
-  courseShortDescriptionEn: string;
-  courseShortDescriptionZh: string;
+  courseShortDescriptionEn: string[];
+  courseShortDescriptionZh: string[];
   courseTitleEn: string;
   courseTitleZh: string;
   createdAt: string;
   isCamp: string;
-  lessonNum: string;
+  lessonNum: number;
   media: StrapiMedias;
   order: number;
   publishedAt: string;
@@ -96,6 +97,11 @@ export interface GetCourses extends strapiPublicFields {
   tuitionRMB: number;
   tuitionUSD: number;
   updatedAt: string;
+  frequency: string;
+  schoolYear: string;
+  schoolQuarter: string;
+  registerLink: string;
+  bundleRegisterLink: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

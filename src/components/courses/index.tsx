@@ -4,113 +4,92 @@ import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
-import { COURSE_TYPES, classesData } from "./define";
+import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
 import dynamic from "next/dynamic";
 import ClassCard from "../common/class-card";
 import {
   useGetCourseLevelType,
   useGetCourses,
-  useGetClasses
 } from "@/apis/strapi-client/strapi";
-import { GetCourses } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 
-
 const Courses: React.FC = () => {
+  const { lang } = useLang();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses();
-  const { data: classes } = useGetClasses();
+
+  const getLangResult = (
+    lang: "zh" | "en",
+    zhData: string[],
+    enData: string[]
+  ) => {
+    if (zhData === null && enData === null) {
+      return [];
+    } else {
+      if (lang === "zh") {
+        return zhData ? zhData : enData;
+      } else {
+        return enData ? enData : zhData;
+      }
+    }
+  };
+
   // 获取所有的courseLevelType分类
   const courseLevelTypeData = courseLevelType?.map(
     (item) => item?.attributes?.type
   );
 
-  console.log(courseLevelTypeData);
-  
-  // 第二次分类
-  // 根据已经过滤的courses或者原始的课程直接进行二层过滤
-  const getDataByCourseLevelType = (
-    courses: StrapiResponseDataItem<GetCourses>[] | undefined,
-    type: string
-  ) => {
-    return courses?.filter(
-      (item) =>
-        item?.attributes?.courseLevelType?.data?.attributes?.type === type
-    );
+  const getOnlineInPersonIsCamp = (type: string) => {
+    switch (type) {
+      case "Online Courses":
+        return courses?.filter(
+          (item) => item?.attributes?.classMode === "Online Live"
+        );
+      case "In-person Classes":
+        return courses?.filter(
+          (item) => item?.attributes?.classMode === "In-person"
+        );
+      case "is Camp":
+        return courses?.filter((item) => item?.attributes?.isCamp);
+      default:
+        return courses;
+    }
   };
 
-  const onlineCourses = courses?.filter((item) => item?.attributes?.isCamp);
-  const complexCourses = COURSE_TYPES.slice(0, 3).map(item => {
+  const generateCourses = (
+    courseType: string,
+    primaryData: string[] | undefined
+  ) => {
+    const filteredCourses = getOnlineInPersonIsCamp(courseType);
     return {
-      bigTitle: item,
-      children: courseLevelTypeData?.map(levelType => {
+      primaryTitle: courseType,
+      children: primaryData?.map((levelType) => {
         return {
-          smallTitle: levelType,
-          children: getDataByCourseLevelType(onlineCourses, levelType)
-        }
-      })
-    }
-  })
-  const campsCourses = courses?.filter((item) => item?.attributes?.isCamp);
-  const campsCoursesData = courseLevelTypeData?.map((levelType) => {
-    return {
-      bigTitle: levelType,
-      children: getDataByCourseLevelType(campsCourses, levelType),
+          secondaryTitle: levelType,
+          children: filteredCourses?.filter( // 根据第一次分类过滤的courses或者原始的课程直接进行二层过滤
+            (filteredCourse) =>
+              filteredCourse?.attributes?.courseLevelType?.data?.attributes
+                ?.type === levelType
+          ),
+        };
+      }),
     };
-  });
+  };
 
-  console.log(campsCoursesData);
-
-  const simpleCourses = COURSE_TYPES.slice(3).map((item) => {
-    return {
-      title: item,
-      children: getDataByCourseLevelType(courses, item),
-    };
-  });
-
-  console.log(simpleCourses);
-
-  // 初始化所有分类的value
-  const courseLevelTypeMap = new Map();
-  courseLevelTypeData?.forEach((item) => {
-    courseLevelTypeMap.set(item, []);
-  });
-
-  courses?.forEach((item) => {
-    const key = item?.attributes?.courseLevelType?.data?.attributes?.type;
-    const value = courseLevelTypeMap.get(key);
-    value?.push(item);
-    courseLevelTypeMap.set(key, value);
-  });
-
-  // 根据course自身的属性第一次分类
-
-  // console.log(campsCourse);
-
-  // console.log(courseLevelTypeMap);
-  const repeatSort = ["Online Courses", "In-person Classes", "Camps"];
-  const allData = COURSE_TYPES.slice(2)?.map((item) => {
-    if (repeatSort.includes(item)) {
+  const allCourses = COURSE_TYPES.map((courseType, index) => {
+    if (index < 3) {
+      return generateCourses(courseType, courseLevelTypeData);
     } else {
-      return {
-        bigTitle: item,
-        children: courseLevelTypeMap.get(item),
-      };
+      return generateCourses(courseType, [courseType]);
     }
   });
-
-  courseLevelTypeMap.forEach((value, key) => {
-    // 在这里对每个键值对执行操作
-    // console.log(key, value);
-  });
-  const getCourseLevelType = () => {};
-  // console.log(courses);
-  // console.log(courseLevelTypeMap);
-
+  console.log(allCourses);
+  
   return (
     <ConfigProvider
       theme={{
@@ -122,14 +101,13 @@ const Courses: React.FC = () => {
       <Layout className={styles.courses}>
         <Content>
           <TopBanner />
-
           <div className={`${styles.classContainer} container`}>
-            {classesData.map((item, index) => {
+            {allCourses?.map((item, index) => {
               return (
                 <div
                   className={"classify"}
                   id={"classify" + index}
-                  key={item.title}
+                  key={item?.primaryTitle}
                 >
                   <Collapse
                     defaultActiveKey={"classifyCollapse" + index}
@@ -146,14 +124,16 @@ const Courses: React.FC = () => {
                   >
                     <Panel
                       key={"classifyCollapse" + index}
-                      header={<div className={styles.title}>{item.title}</div>}
+                      header={
+                        <div className={styles.title}>{item?.primaryTitle}</div>
+                      }
                     >
                       <>
-                        {item.children.map((v) => {
+                        {item?.children?.map((v) => {
                           return (
                             <Collapse
-                              key={v.header}
-                              defaultActiveKey={v.header}
+                              key={v?.secondaryTitle}
+                              defaultActiveKey={v?.secondaryTitle}
                               ghost
                               style={{ marginBottom: 30 }}
                               expandIcon={({ isActive }) => (
@@ -163,10 +143,10 @@ const Courses: React.FC = () => {
                               )}
                             >
                               <Panel
-                                key={v.header}
+                                key={v?.secondaryTitle}
                                 header={
                                   <div className={styles.panelTitle}>
-                                    {v.header}
+                                    {v?.secondaryTitle}
                                   </div>
                                 }
                               >
@@ -174,19 +154,33 @@ const Courses: React.FC = () => {
                                   size={27}
                                   style={{ width: "100%", flexWrap: "wrap" }}
                                 >
-                                  {v.children.map((g, index) => {
+                                  {v?.children?.map((g, index) => {
                                     return (
                                       <ClassCard
-                                        key={g.id}
+                                        key={g?.id}
                                         border={"bottom"}
                                         index={index}
                                         animate={false}
-                                        title="CS100P: Python Intro with Creative Projects"
-                                        list={[
-                                          "6th+ Graders. No prior coding expected…",
-                                        ]}
-                                        time="10 weeks"
-                                        href={`/courses/detail?courseId=${g.id}`}
+                                        title={`${
+                                          g?.attributes?.courseCode
+                                        }: ${getTransResult(
+                                          lang,
+                                          g?.attributes?.courseTitleZh,
+                                          g?.attributes?.courseTitleEn
+                                        )}`}
+                                        list={getLangResult(
+                                          lang,
+                                          g?.attributes
+                                            ?.courseShortDescriptionZh,
+                                          g?.attributes
+                                            ?.courseShortDescriptionEn
+                                        )}
+                                        time={`${g.attributes?.lessonNum} ${
+                                          g?.attributes?.frequency === "Weekly"
+                                            ? "weeks"
+                                            : "days"
+                                        }`}
+                                        href={`/courses/detail?courseId=${g?.id}`}
                                       />
                                     );
                                   })}
@@ -203,7 +197,6 @@ const Courses: React.FC = () => {
               );
             })}
           </div>
-
           <Testimony />
           <AnchorNav />
         </Content>

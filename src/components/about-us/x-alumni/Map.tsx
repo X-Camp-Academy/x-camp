@@ -16,6 +16,7 @@ const Map: React.FC = () => {
   const worldDOM = useRef<HTMLDivElement>();
   const usaDOM = useRef<HTMLDivElement>();
 
+  
   useEffect(() => {
     if (worldDOM.current) {
       const mapChart = echarts.init(worldDOM.current);
@@ -49,7 +50,7 @@ const Map: React.FC = () => {
                 show: true,
               },
             },
-            data: data?.world?.data || [],
+            data: data?.world || [],
           },
         ],
       };
@@ -105,7 +106,7 @@ const Map: React.FC = () => {
                 show: true,
               },
             },
-            data: data?.usa?.data || [],
+            data: data?.usa || [],
           },
         ],
       };

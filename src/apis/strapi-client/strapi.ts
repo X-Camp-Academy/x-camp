@@ -268,7 +268,6 @@ export const useGetClasses = () => {
           populate: "*",
         },
       ],
-      manual: true,
       onError: handleError,
     }
   );
