@@ -7,9 +7,13 @@ import TopBanner from "./top-banner";
 import UpcomingEvents from "./upcoming-events";
 import RecentActivities from "./recent-activities";
 import Activities from "./activities";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const WeeklyEducationForum = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   return (
     <ConfigProvider
       theme={{
@@ -24,7 +28,7 @@ const WeeklyEducationForum = () => {
           <UpcomingEvents />
           <RecentActivities />
           <Activities />
-          <Testimony />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

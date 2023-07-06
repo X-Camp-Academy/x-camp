@@ -5,8 +5,11 @@ import { ConfigProvider, Layout } from "antd";
 import TopBanner from "./top-banner";
 import ScheduleTable from "./schedule-table";
 import Testimony from "@/components/home/Testimony";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 const CourseCatalog = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
   return (
     <ConfigProvider
       theme={{
@@ -19,7 +22,7 @@ const CourseCatalog = () => {
         <Content>
           <TopBanner />
           <ScheduleTable />
-          <Testimony />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

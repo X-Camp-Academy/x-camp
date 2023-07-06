@@ -7,13 +7,21 @@ import TopBanner from "./top-banner";
 import UsacoMedal from "@/components/about-us/introduction/UsacoMedal";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
 import ProgressionClasses from "./progression-classes";
-import { useGetCourseDetail, useGetFaq } from "@/apis/strapi-client/strapi";
+import {
+  useGetCourseDetail,
+  useGetFaq,
+  useGetTestimony,
+} from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import Faqs from "@/components/common/faqs";
 const { Content } = Layout;
 
 const CourseDetail = () => {
   const { data } = useGetCourseDetail();
+
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   console.log(data);
 
   const { data: faq } = useGetFaq({
@@ -36,7 +44,10 @@ const CourseDetail = () => {
           <FacultyCoach />
           <ProgressionClasses />
           <Faqs title="Course FAQs" data={faq} />
-          <Testimony className={styles.comments} />
+          <Testimony
+            className={styles.comments}
+            testimonyData={testimonyData}
+          />
         </Content>
       </Layout>
     </ConfigProvider>

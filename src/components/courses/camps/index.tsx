@@ -9,10 +9,16 @@ import CourseAbstract from "../detail/top-banner/course-card/course-abstract";
 import ColorfulCard from "@/components/common/colorful-card";
 import Testimony from "@/components/home/Testimony";
 import Faqs from "@/components/common/faqs";
-import { useGetCourses, useGetFaq } from "@/apis/strapi-client/strapi";
+import {
+  useGetCourses,
+  useGetFaq,
+  useGetTestimony,
+} from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 const { Content } = Layout;
 const CourseCamps = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
   const { data: courses } = useGetCourses("true");
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
@@ -53,7 +59,7 @@ const CourseCamps = () => {
             </div>
           </div>
           <Faqs title="Camps FAQs" data={faq} />
-          <Testimony />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

@@ -49,7 +49,7 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
           slidesToShow={3}
           slidesToScroll={1}
           swipeToSlide={true}
-          infinite={false}
+          infinite={true}
           responsive={[
             {
               breakpoint: 992,

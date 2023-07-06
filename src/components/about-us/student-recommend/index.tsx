@@ -5,6 +5,7 @@ import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import { useGetFaq } from "@/apis/strapi-client/strapi";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const TopBanner = dynamic(() => import("./TopBanner"));
@@ -19,6 +20,8 @@ const StudentRecommend: React.FC = () => {
     category: FaqCategory.ReferralQA,
   });
 
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
   return (
     <ConfigProvider
       theme={{
@@ -33,7 +36,7 @@ const StudentRecommend: React.FC = () => {
           <ReferralProgramMain />
           <GetCredit />
           <Faq title={FaqCategory.ReferralQA} data={faq} />
-          <Testimony />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>
