@@ -31,7 +31,7 @@ export type GetIntroductionFacultyCoachResponse =
 
 export enum NewEventCategory {
   News = "News",
-  Event = "Event",
+  Event = "Events",
   Activity = "Activity",
 }
 

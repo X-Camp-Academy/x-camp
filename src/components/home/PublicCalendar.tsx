@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Space,
   Row,
@@ -15,14 +15,30 @@ import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
 import dayjs from "dayjs";
 import { useMobile } from "@/utils";
-
+import { NewEventCategory } from "@/apis/strapi-client/define";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
+  const { lang } = useLang();
   const isMobile = useMobile();
   const onPanelChange = (value: any, mode: CalendarMode) => {
     console.log(value.format("YYYY-MM-DD"), mode);
   };
+
+  const pageSize = 4;
+  const [current, setCurrent] = useState<number>(1);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
+
+  const { data: newEventData } = useGetNewEvent({
+    tag,
+    current,
+    pageSize
+  });
+  console.log(newEventData);
+
 
   return (
     <div className={styles.publicCalendarContainer}>
@@ -34,7 +50,31 @@ const PublicCalendar: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={14}>
             <Space direction="vertical" className={styles.colSpace}>
-              <div className={styles.activeCard}>
+              {newEventData?.data.map((item, index) => {
+                return (
+                  <div className={styles.activeCard} key={item.id}>
+                    <Space size={72} align="center" className={styles.cardContent}>
+                      <Space direction="vertical" className={styles.contentLeft}>
+                        <Text className={styles.text}>FRI</Text>
+                        <Text className={styles.text}>10</Text>
+                        <Text className={styles.text}>Jun</Text>
+                      </Space>
+                      <Space direction="vertical" className={styles.contentRight}>
+                        <Text className={styles.paragraph}>
+                          {getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}
+                        </Text>
+                        {!isMobile && (
+                          <Text className={styles.paragraph}>
+                            {`- ${getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}`}
+                          </Text>
+                        )}
+                        <Text className={styles.date}>4:00PM - 8:00PM PST</Text>
+                      </Space>
+                    </Space>
+                  </div>
+                )
+              })}
+              {/*               <div className={styles.activeCard}>
                 <Space size={72} align="center" className={styles.cardContent}>
                   <Space direction="vertical" className={styles.contentLeft}>
                     <Text className={styles.text}>FRI</Text>
@@ -114,7 +154,7 @@ const PublicCalendar: React.FC = () => {
                     <Text className={styles.date}>4:00PM - 8:00PM PST</Text>
                   </Space>
                 </Space>
-              </div>
+              </div> */}
               <Button className={styles.button}>Subscribe to Calendar</Button>
             </Space>
           </Col>

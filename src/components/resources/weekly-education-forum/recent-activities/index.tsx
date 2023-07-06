@@ -1,11 +1,31 @@
 import XCollapse from "@/components/common/collapse";
 import styles from "./index.module.scss";
-import React from "react";
-import { Button, Col, Row, Space } from "antd";
+import React, { useState } from "react";
+import { Button, Col, Row, Space, Typography } from "antd";
 import ColorfulCard from "@/components/common/colorful-card";
 import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
+import { NewEventCategory } from "@/apis/strapi-client/define";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
 const RecentActivities = () => {
+
+  const pageSize = 3;
+  const [current, setCurrent] = useState<number>(1);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Activity);
+
+  const { data: newEventData } = useGetNewEvent({
+    tag,
+    current,
+    pageSize
+  });
+
+  const getImgUrl = (img: StrapiMedia) => {
+    return img?.data?.attributes?.url;
+  };
+
+  
+
   return (
     <div className={styles.content}>
       <div className="container">
@@ -16,21 +36,23 @@ const RecentActivities = () => {
           }}
         >
           <Row className={styles.cards} gutter={[32, 32]}>
-            {[1, 2, 3]?.map((v, index) => (
+            {newEventData?.data?.map((v, index) => (
               <Col key={index} md={24} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card}>
                     <img
-                      src="/image/about-us/introduction/top-banner.png"
-                      alt=""
+                      src={getImgUrl(v?.attributes?.img)}
+                      alt="img"
                     />
                     <div className={styles.title}>
-                      {"2023 Spring APCS Class series are now"}
+                      {v?.attributes?.titleZh}
                     </div>
                     <div className={styles.description}>
                       <div>
                         <AlignRightOutlined className={styles.icon} />
-                        {"Coding Education"}
+                        
+                        {v?.attributes?.descriptionZh}
+                        
                       </div>
                       <Button
                         type="link"

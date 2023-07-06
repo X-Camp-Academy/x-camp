@@ -10,23 +10,23 @@ import {
 } from "@ant-design/icons";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { NewEventCategory } from "@/apis/strapi-client/define";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 const { Title, Paragraph, Text } = Typography;
 
 
 const NewsCard = () => {
 
 
-  const pageSize = 1;
-  const [current, setCurrent] = useState(1);
+  const pageSize = 3;
+  const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.News);
 
 
   const { data: newEventData, run } = useGetNewEvent({
-    tag: NewEventCategory.News,
+    tag,
     current,
     pageSize
   });
-  console.log(newEventData);
 
   const paginationOnChange = (page: number) => {
     setCurrent(page);
@@ -45,6 +45,10 @@ const NewsCard = () => {
     });
   }
 
+  const getImgUrl = (img: StrapiMedia) => {
+    return img?.data?.attributes?.url;
+  };
+
 
 
   return (
@@ -61,7 +65,7 @@ const NewsCard = () => {
               >
                 <div className={styles.card}>
                   <div className={styles.img}>
-                    <img src={item.attributes.img.data.attributes.url} alt="img" style={{ width: "100%" }} />
+                    <img src={getImgUrl(item?.attributes?.img)} alt="img" style={{ width: "100%" }} />
                   </div>
                   <div className={styles.cardContent}>
                     <Title className={styles.cardTitle}>{item?.attributes?.titleZh}</Title>
