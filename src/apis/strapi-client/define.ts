@@ -175,11 +175,6 @@ export type GetProjectsDemoRequest = StrapiRequest<GetProjectsDemo>;
 export type GetProjectsDemoResponse = StrapiResponse<GetProjectsDemo>;
 
 export interface GetAchievementsTimeLine extends strapiPublicFields {
-  img1: StrapiMedia;
-  img2: StrapiMedia;
-  img3: StrapiMedia;
-}
-export interface GetAboutUsIntroArticle extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
@@ -191,6 +186,21 @@ export type GetAchievementsTimeLineRequest =
   StrapiRequest<GetAchievementsTimeLine>;
 export type GetAchievementsTimeLineResponse =
   StrapiResponse<GetAchievementsTimeLine>;
+
+export interface GetAboutUsIntroArticle extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  order: number;
+  img1: StrapiMedia;
+  img2: StrapiMedia;
+  img3: StrapiMedia;
+}
+export type GetAboutUsIntroArticleRequest =
+  StrapiRequest<GetAboutUsIntroArticle>;
+export type GetAboutUsIntroArticleResponse =
+  StrapiResponse<GetAboutUsIntroArticle>;
 
 export interface GetResourcesLiveSolution extends strapiPublicFields {
   titleZh: string;
@@ -225,8 +235,3 @@ export interface GetFaq extends strapiPublicFields {
 
 export type GetFaqRequest = StrapiRequest<GetFaq>;
 export type GetFaqResponse = StrapiResponse<GetFaq>;
-
-export type GetAboutUsIntroArticleRequest =
-  StrapiRequest<GetAboutUsIntroArticle>;
-export type GetAboutUsIntroArticleResponse =
-  StrapiResponse<GetAboutUsIntroArticle>;

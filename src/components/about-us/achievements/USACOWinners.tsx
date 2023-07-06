@@ -36,27 +36,6 @@ const USACOMedal: React.FC = () => {
   const { data: awards } = useGetAboutUsAchievementsAward();
   const { data: timeLine } = useGetAchievementsTimeLine();
 
-  const listData = [
-    {
-      title: "In the 20/21 season",
-      content: "one student made it to the USACO US Camp (USACO Finalist).",
-    },
-    {
-      title: "In the 21/22 season",
-      content:
-        "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-    },
-    {
-      title: "In the last 22/23 season",
-      content:
-        "seven students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-    },
-    {
-      title: "The latest data for USACO 23 Season",
-      content:
-        "Includes 46 students who advanced from the Bronze to the Gold Division, 16 students who advanced from the Silver to the GoldDivision, and 10 students who advanced from the Gold to the Platinum Division.",
-    },
-  ];
   return (
     <>
       <div className={styles.USACOMedalContainer}>
