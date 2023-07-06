@@ -9,8 +9,12 @@ import CourseAbstract from "../detail/top-banner/course-card/course-abstract";
 import ColorfulCard from "@/components/common/colorful-card";
 import CampFAQS from "./camp-faqs";
 import Testimony from "@/components/home/Testimony";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 const CourseCamps = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   return (
     <ConfigProvider
       theme={{
@@ -44,7 +48,7 @@ const CourseCamps = () => {
             </div>
           </div>
           <CampFAQS title="Camps FAQs" />
-          <Testimony />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

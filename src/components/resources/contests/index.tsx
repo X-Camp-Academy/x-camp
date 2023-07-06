@@ -7,11 +7,16 @@ import Testimony from "@/components/home/Testimony";
 import Introduction from "./introduction";
 import WhyContest from "./why-contest";
 import MonthlyContest from "./monthly-contest";
-import { useGetResourcesContest } from "@/apis/strapi-client/strapi";
+import {
+  useGetResourcesContest,
+  useGetTestimony,
+} from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const Contests = () => {
   const { data: resourcesContest } = useGetResourcesContest();
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
 
   return (
     <ConfigProvider
@@ -27,7 +32,10 @@ const Contests = () => {
           <MonthlyContest />
           <Introduction data={resourcesContest} />
           <WhyContest />
-          <Testimony className={styles.comments} />
+          <Testimony
+            className={styles.comments}
+            testimonyData={testimonyData}
+          />
         </Content>
       </Layout>
     </ConfigProvider>

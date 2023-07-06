@@ -6,9 +6,13 @@ import TopBanner from "./top-banner";
 import UsacoIntro from "./introduction";
 import RelateResources from "./relate-resources";
 import Testimony from "@/components/home/Testimony";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const UsacoLiveSolutions = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   return (
     <ConfigProvider
       theme={{
@@ -22,7 +26,10 @@ const UsacoLiveSolutions = () => {
           <TopBanner />
           <UsacoIntro />
           <RelateResources />
-          <Testimony className={styles.comments} />
+          <Testimony
+            className={styles.comments}
+            testimonyData={testimonyData}
+          />
         </Content>
       </Layout>
     </ConfigProvider>

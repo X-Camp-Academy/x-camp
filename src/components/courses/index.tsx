@@ -11,6 +11,7 @@ import ClassCard from "../common/class-card";
 import {
   useGetCourseLevelType,
   useGetCourses,
+  useGetTestimony,
 } from "@/apis/strapi-client/strapi";
 const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
@@ -39,8 +40,11 @@ const Courses = () => {
 
   const courseLevelTypeMap = new Map();
   courseLevelTypeData?.forEach((item) => {
-    courseLevelTypeMap.set(item, []);
-  });
+    courseLevelTypeMap.set(item, []);})
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
+
 
   courses?.forEach((item) => {
     const key = item?.attributes?.courseLevelType?.data?.attributes?.type;
@@ -56,6 +60,8 @@ const Courses = () => {
 
   // console.log(courses);
   console.log(courses);
+  console.log(courses);
+  console.log(courseLevelTypeMap);
 
   return (
     <ConfigProvider
@@ -150,7 +156,7 @@ const Courses = () => {
             })}
           </div>
 
-          <Testimony />
+          <Testimony testimonyData={testimonyData} />
           <AnchorNav />
         </Content>
       </Layout>
