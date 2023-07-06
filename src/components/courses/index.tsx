@@ -23,7 +23,8 @@ const Courses: React.FC = () => {
   const { lang } = useLang();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses();
-
+  console.log(courses);
+  
   const getLangResult = (
     lang: "zh" | "en",
     zhData: string[],
@@ -185,7 +186,7 @@ const Courses: React.FC = () => {
                                             ? "weeks"
                                             : "days"
                                         }`}
-                                        href={`/courses/detail?courseId=${g?.id}`}
+                                        href={`/courses/detail?/${g?.id}`}
                                       />
                                     );
                                   })}

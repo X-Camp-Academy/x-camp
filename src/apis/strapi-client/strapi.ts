@@ -28,7 +28,7 @@ import {
   GetAboutUsIntroArticleRequest,
 } from "./define";
 import { isArray } from "lodash";
-import { StrapiResponseDataItem } from "./strapiDefine";
+import { AndOrFilters, FilterFields, StrapiResponseDataItem } from "./strapiDefine";
 import { classifyByAttribution, filterByAttribution } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 /**
@@ -240,9 +240,10 @@ export const useGetCourseLevelType = () => {
  *
  * @returns 获取Courses
  */
-export const useGetCourses = (isCamp?: string) => {
+export const useGetCourses = (params?: any) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
+
   return useRequest(
     async (params: GetCoursesRequest) => {
       const res = await client.getCourses(params);
@@ -252,11 +253,7 @@ export const useGetCourses = (isCamp?: string) => {
       defaultParams: [
         {
           populate: "*",
-          filters: {
-            isCamp: {
-              $eq: isCamp,
-            },
-          },
+          filters: params ?? {},
           sort: ["order:desc"],
         },
       ],
