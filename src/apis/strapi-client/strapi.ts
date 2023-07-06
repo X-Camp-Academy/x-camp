@@ -21,10 +21,16 @@ import {
   GetProjectsDemoRequest,
   GetAchievementsTimeLineRequest,
   GetResourcesLiveSolutionRequest,
+  GetFaqRequest,
+  GetFaq,
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
-import { classifyByAttribution, getTransResult } from "@/utils/public";
+import {
+  classifyByAttribution,
+  filterByAttribution,
+  getTransResult,
+} from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 /**
  *
@@ -346,6 +352,60 @@ export const useGetResourcesLiveSolution = () => {
       return isArray(res?.data)
         ? classifyByAttribution(res.data, "category")
         : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取Faq
+ */
+export const useGetFaq = <
+  T extends boolean,
+  R = T extends true
+    ? StrapiResponseDataItem<GetFaq>[][]
+    : StrapiResponseDataItem<GetFaq>[]
+>({
+  category,
+  courseId,
+  pageName,
+  eventId,
+}: {
+  category?: T;
+  courseId?: string[];
+  pageName?: string[];
+  eventId?: string[];
+}) => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest<R, [GetFaqRequest]>(
+    async (params) => {
+      const res = await client.getFaq(params);
+      let data = res?.data;
+      // 根据courseId, pageName, eventId做筛选，根据category做分类
+      if (courseId && courseId?.length > 0) {
+        data = filterByAttribution(data, "courseId", courseId);
+      }
+      if (pageName && pageName?.length > 0) {
+        data = filterByAttribution(data, "pageName", pageName);
+      }
+      if (eventId && eventId?.length > 0) {
+        data = filterByAttribution(data, "eventId", eventId);
+      }
+      if (category === true) {
+        return classifyByAttribution(data, "category") as R;
+      } else {
+        return data as R;
+      }
     },
     {
       defaultParams: [

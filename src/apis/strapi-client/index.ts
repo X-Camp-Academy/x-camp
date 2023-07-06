@@ -27,6 +27,8 @@ import {
   GetAchievementsTimeLineResponse,
   GetResourcesLiveSolutionRequest,
   GetResourcesLiveSolutionResponse,
+  GetFaqRequest,
+  GetFaqResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -154,7 +156,7 @@ export class StrapiClient extends BaseAxiosClient {
     );
     return res;
   }
-  
+
   async getAboutUsJoinUs(
     params: GetAboutUsJoinUsRequest
   ): Promise<GetAboutUsJoinUsResponse> {
@@ -202,6 +204,11 @@ export class StrapiClient extends BaseAxiosClient {
       "/xc-resources-live-solutions" + getParamsStringify(params),
       {}
     );
+    return res;
+  }
+
+  async getFaq(params: GetFaqRequest): Promise<GetFaqResponse> {
+    const res = await this.get("/xc-faqs" + getParamsStringify(params), {});
     return res;
   }
 }

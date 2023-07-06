@@ -200,3 +200,18 @@ export type GetResourcesLiveSolutionRequest =
   StrapiRequest<GetResourcesLiveSolution>;
 export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
+
+export interface GetFaq extends strapiPublicFields {
+  questionZh: string;
+  questionEn: string;
+  answerZh: string;
+  answerEn: string;
+  category: string;
+  order: number;
+  courseId: string;
+  pageName: string;
+  eventId: string;
+}
+
+export type GetFaqRequest = StrapiRequest<GetFaq>;
+export type GetFaqResponse = StrapiResponse<GetFaq>;
