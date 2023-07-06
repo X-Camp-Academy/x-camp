@@ -186,16 +186,16 @@ export const useGetTestimony = ({
   return useRequest(
     async (params: GetTestimonyRequest) => {
       const res = await client.getTestimony(params);
-      let data = res?.data;
+      let data = [];
       // 根据courseId, pageName, eventId做筛选，根据category做分类
       if (courseId && courseId?.length > 0) {
-        data = filterByAttribution(data, "courseId", courseId);
+        data.push(...filterByAttribution(res?.data, "courseId", courseId));
       }
       if (pageName && pageName?.length > 0) {
-        data = filterByAttribution(data, "pageName", pageName);
+        data.push(...filterByAttribution(res?.data, "pageName", pageName));
       }
       if (eventId && eventId?.length > 0) {
-        data = filterByAttribution(data, "eventId", eventId);
+        data.push(...filterByAttribution(res?.data, "eventId", eventId));
       }
       return data;
     },
@@ -443,19 +443,19 @@ export const useGetFaq = <
   return useRequest<R, [GetFaqRequest]>(
     async (params) => {
       const res = await client.getFaq(params);
-      let data = res?.data;
+      let data = [];
       // 根据courseId, pageName, eventId做筛选，根据category做分类
       if (courseId && courseId?.length > 0) {
-        data = filterByAttribution(data, "courseId", courseId);
+        data.push(...filterByAttribution(res?.data, "courseId", courseId));
       }
       if (pageName && pageName?.length > 0) {
-        data = filterByAttribution(data, "pageName", pageName);
+        data.push(...filterByAttribution(res?.data, "pageName", pageName));
       }
       if (eventId && eventId?.length > 0) {
-        data = filterByAttribution(data, "eventId", eventId);
+        data.push(...filterByAttribution(res?.data, "eventId", eventId));
       }
       if (isClassify) {
-        return classifyByAttribution(data, "category") as R;
+        return classifyByAttribution(res?.data, "category") as R;
       } else {
         return data as R;
       }

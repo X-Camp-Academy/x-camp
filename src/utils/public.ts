@@ -57,7 +57,11 @@ export const filterByAttribution = <T extends { attributes: any }>(
   const filteredData: T[] = data?.filter((item) => {
     const fieldValue = item?.attributes?.[attribution];
     const formattedFieldValue: string[] = fieldValue?.split(",") ?? [];
-    if (values?.some((value) => formattedFieldValue?.includes(value))) {
+    if (
+      formattedFieldValue?.length === 0 ||
+      values?.some((value) => formattedFieldValue?.includes(value))
+    ) {
+      // 这一项空的没填，或者填的内容分割之后在values中则留下
       return true;
     }
     return false;
