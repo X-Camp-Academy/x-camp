@@ -5,6 +5,7 @@ import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
+  GetAboutUsIntroArticleRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
   GetCourseDetailRequest,
@@ -27,11 +28,7 @@ import {
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
-import {
-  classifyByAttribution,
-  filterByAttribution,
-  getTransResult,
-} from "@/utils/public";
+import { classifyByAttribution, filterByAttribution } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 /**
  *
@@ -259,6 +256,7 @@ export const useGetCourses = (isCamp?: string) => {
               $eq: isCamp,
             },
           },
+          sort: ["order:desc"],
         },
       ],
       onError: handleError,
@@ -331,6 +329,29 @@ export const useGetAchievementsTimeLine = () => {
   return useRequest(
     async (params: GetAchievementsTimeLineRequest) => {
       const res = await client.getAchievementsTimeLine(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Intro Article
+ */
+export const useGetAboutUsIntroArticle = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetAboutUsIntroArticleRequest) => {
+      const res = await client.getAboutUsIntroArticle(params);
       return isArray(res?.data) ? res.data : [];
     },
     {

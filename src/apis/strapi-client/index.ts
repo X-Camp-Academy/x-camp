@@ -29,6 +29,8 @@ import {
   GetResourcesLiveSolutionResponse,
   GetFaqRequest,
   GetFaqResponse,
+  GetAboutUsIntroArticleRequest,
+  GetAboutUsIntroArticleResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -172,6 +174,16 @@ export class StrapiClient extends BaseAxiosClient {
   ): Promise<GetTestimonyResponse> {
     const res = await this.get(
       "/xc-testimonies" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getAboutUsIntroArticle(
+    params: GetAboutUsIntroArticleRequest
+  ): Promise<GetAboutUsIntroArticleResponse> {
+    const res = await this.get(
+      "/xc-about-us-introduction-articles" + getParamsStringify(params),
       {}
     );
     return res;
