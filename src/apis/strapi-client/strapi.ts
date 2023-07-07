@@ -80,23 +80,25 @@ export const useGetNewEvent = ({
           populate: "*",
           sort: ["order:desc"],
           filters: {
-           /*  $and: [
+            /* $and: [
               {
                 tags: {
                   $eq: tag,
                 },
-              },
-              {
                 activityCategory: {
                   $eq: activityTag,
                 },
               },
             ], */
+
+            tags: {
+              $eq: tag,
+            },
           },
           pagination: {
             page: current,
             pageSize,
-          }
+          },
         },
       ],
       onError: handleError,

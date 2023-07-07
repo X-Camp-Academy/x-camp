@@ -14,7 +14,6 @@ const FacultyCoach: React.FC = () => {
   const { lang } = useLang();
 
   const { data: facultyCoachData } = useGetIntroductionFacultyCoach();
-  console.log(facultyCoachData);
 
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;

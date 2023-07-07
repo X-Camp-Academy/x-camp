@@ -25,7 +25,7 @@ const PublicCalendar: React.FC = () => {
   const { lang } = useLang();
   const isMobile = useMobile();
 
-  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Thur"];
+  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 
   const onPanelChange = (value: any, mode: CalendarMode) => {
     console.log(value.format("YYYY-MM-DD"), mode);
@@ -67,6 +67,7 @@ const PublicCalendar: React.FC = () => {
           <Col xs={24} sm={24} md={24} lg={14}>
             <Space direction="vertical" className={styles.colSpace}>
               {newEventData?.data.map((item, index) => {
+                if(item.attributes?.datetime)
                 return (
                   <div className={styles.activeCard} key={item.id}>
                     <Space size={72} align="center" className={styles.cardContent}>

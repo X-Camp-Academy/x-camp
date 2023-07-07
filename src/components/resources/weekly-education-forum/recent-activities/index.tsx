@@ -7,18 +7,17 @@ import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
 import { NewEventCategory, ActivityCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+import dayjs from "dayjs";
 
 const RecentActivities = () => {
 
-  const pageSize = 3;
+  const pageSize = 25;
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Activity);
-
-  //activityTag: SchoolLifeSharing, CodingEducation, CareerPath, Research
-  const [activityTag, setActivityTag] = useState<ActivityCategory>(ActivityCategory.SchoolLifeSharing);
-
+  const { lang } = useLang();
   const { data: newEventData } = useGetNewEvent({
-    activityTag,
     tag,
     current,
     pageSize
@@ -28,7 +27,11 @@ const RecentActivities = () => {
     return img?.data?.attributes?.url;
   };
 
-  
+  const RecentActivities = newEventData?.data.filter((item, index) => {
+    return item?.attributes?.datetime && (new Date(item?.attributes?.datetime)).getTime() - new Date().getTime() > 0;
+  })
+
+
 
   return (
     <div className={styles.content}>
@@ -40,23 +43,23 @@ const RecentActivities = () => {
           }}
         >
           <Row className={styles.cards} gutter={[32, 32]}>
-            {newEventData?.data?.map((v, index) => (
+            {RecentActivities?.slice(0, 3).map((v, index) => (
               <Col key={index} md={24} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card}>
                     <img
-                      src={getImgUrl(v?.attributes?.img)}
+                      src={getImgUrl(v.attributes.img)}
                       alt="img"
                     />
                     <div className={styles.title}>
-                      {v?.attributes?.titleZh}
+                      {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
                     </div>
                     <div className={styles.description}>
                       <div>
                         <AlignRightOutlined className={styles.icon} />
-                        
-                        {v?.attributes?.descriptionZh}
-                        
+
+                        {getTransResult(lang, v?.attributes.descriptionZh, v?.attributes.descriptionEn)}
+
                       </div>
                       <Button
                         type="link"
