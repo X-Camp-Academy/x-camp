@@ -1,6 +1,6 @@
-"use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
+'use client';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 import {
   ConfigProvider,
   Layout,
@@ -11,61 +11,69 @@ import {
   Button,
   Dropdown,
   MenuProps,
-} from "antd";
-import { TranslationOutlined, UnorderedListOutlined } from "@ant-design/icons";
-import "animate.css";
-import styles from "./index.module.scss";
-import { useMobile } from "@/utils";
-import { removeDropdown, useMenuItems } from "./define";
-import XStarMenu from "./x-star-menu";
-import { useAuth } from "@/hoc/with-auth/define";
-import DropdownUserMenu from "../dropdown-user-menu";
-import { apiConfig } from "@/config/indx";
+} from 'antd';
+import { TranslationOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import 'animate.css';
+import styles from './index.module.scss';
+import { useMobile } from '@/utils';
+import { removeDropdown, useMenuItems } from './define';
+import XStarMenu from './x-star-menu';
+import { useAuth } from '@/hoc/with-auth/define';
+import DropdownUserMenu from '../dropdown-user-menu';
+import { apiConfig } from '@/config/indx';
 
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from '@/utils/public';
+import { useLang } from '@/hoc/with-intl/define';
+import { useParams, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const { Header } = Layout;
 const { Search } = Input;
 
 const Nav = () => {
   const { format: t, toggle, lang } = useLang();
-  const [current, setCurrent] = useState("/");
+  const pathname = usePathname();
+  const url = new URL(window.location.href);
+  const hash = url.hash; // 获取哈希部分
+  const [current, setCurrent] = useState(pathname + hash);
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();
   const menuItems = useMenuItems();
   const { xydApi } = apiConfig;
-
   const onSearch = (value: string) => console.log(value);
 
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    setCurrent(pathname + hash);
+  }, [pathname, hash]);
+
+  useEffect(() => {
     if (showMenu) {
       (ref?.current as HTMLDivElement)?.classList?.add(
-        "animate__animated",
-        "animate__slideInRight"
+        'animate__animated',
+        'animate__slideInRight'
       );
     } else {
       (ref?.current as HTMLDivElement)?.classList?.remove(
-        "animate__animated",
-        "animate__slideInRight"
+        'animate__animated',
+        'animate__slideInRight'
       );
     }
   }, [showMenu]);
 
-  const mobileMenuItems: MenuProps["items"] = useMemo(() => {
+  const mobileMenuItems: MenuProps['items'] = useMemo(() => {
     // 手机端则去除dropdown
     return isMobile ? removeDropdown(menuItems) : menuItems;
   }, [menuItems, isMobile]);
 
-  const [openKeys, setOpenKeys] = useState([""]);
+  const [openKeys, setOpenKeys] = useState(['']);
 
-  const rootSubmenuKeys = ["courses", "resources", "about-us"];
+  const rootSubmenuKeys = ['courses', 'resources', 'about-us'];
 
   const setCurrentKey = (key: string) => {
     setCurrent(key);
   };
-  const onOpenMobileMenuChange: MenuProps["onOpenChange"] = (keys) => {
+  const onOpenMobileMenuChange: MenuProps['onOpenChange'] = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
     if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
       setOpenKeys(keys);
@@ -80,7 +88,7 @@ const Nav = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#FFAD11",
+          colorPrimary: '#FFAD11',
         },
       }}
     >
@@ -103,7 +111,7 @@ const Nav = () => {
                 />
               )}
             </Space>
-            <Space size={"middle"}>
+            <Space size={'middle'}>
               <Search
                 placeholder="Search"
                 onSearch={onSearch}
@@ -119,7 +127,7 @@ const Nav = () => {
                         type="primary"
                         onClick={() => window.open(`${xydApi}/courses`)}
                       >
-                        {t("ToStudy")}
+                        {t('ToStudy')}
                       </Button>
                     </Space>
                   ) : (
@@ -133,7 +141,7 @@ const Nav = () => {
                     icon={<TranslationOutlined style={{ fontSize: 20 }} />}
                     onClick={toggle}
                   >
-                    {getTransResult(lang, "中文", "English")}
+                    {getTransResult(lang, '中文', 'English')}
                   </Button>
                 </>
               )}
@@ -151,11 +159,11 @@ const Nav = () => {
                 className={styles.button}
                 onClick={() => {
                   (ref?.current as HTMLDivElement)?.classList?.remove(
-                    "animate__slideInRight"
+                    'animate__slideInRight'
                   );
                   (ref?.current as HTMLDivElement)?.classList?.add(
-                    "animate__animated",
-                    "animate__slideOutRight"
+                    'animate__animated',
+                    'animate__slideOutRight'
                   );
                   setTimeout(() => {
                     setShowMenu(false);
