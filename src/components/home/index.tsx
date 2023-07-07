@@ -23,7 +23,7 @@ const Home = () => {
   //获取师生评价数据
   const { data: testimonyData } = useGetTestimony({
     ready: true,
-    pageName: ["/home"],
+    pageName: ["/home/"], // 因为首页的路由是空字符串，约定用/home/表示
   });
 
   return (
