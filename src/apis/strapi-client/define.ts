@@ -3,6 +3,7 @@ import {
   StrapiMedias,
   StrapiRequest,
   StrapiResponse,
+  StrapiResponseSingleDataItem,
   strapiPublicFields,
 } from "./strapiDefine";
 
@@ -116,34 +117,56 @@ interface CourseLevelType {
     };
   };
 }
+
+export interface GetClasses extends strapiPublicFields {
+  classCode: string;
+  startTime: string;
+  endTime: string;
+  isFull: boolean;
+  timeZone: string;
+  location: string;
+  order: number;
+}
+
+export type GetClassesRequest = StrapiRequest<GetClasses>;
+export type GetClassesResponse = StrapiResponse<GetClasses>;
+
 export interface GetCourses extends strapiPublicFields {
+  classMode: string;
   classLang: string;
   classRoomLang: string;
   courseCode: string;
+  classes: {
+    data: {
+      id: number;
+      attributes: GetClasses;
+    }[];
+  };
   courseLevelType: CourseLevelType;
   courseLongDescriptionEn: string;
   courseLongDescriptionZh: string;
-  courseShortDescriptionEn: string;
-  courseShortDescriptionZh: string;
+  courseShortDescriptionEn: string[];
+  courseShortDescriptionZh: string[];
   courseTitleEn: string;
   courseTitleZh: string;
-  createdAt: string;
-  isCamp: string;
-  lessonNum: string;
+  isCamp: boolean;
+  lessonNum: number;
   media: StrapiMedias;
   order: number;
-  publishedAt: string;
   recommendedClasses: Array<number>;
   recommendedLowerGrade: number;
   recommendedUpperGrade: number;
   tuitionRMB: number;
   tuitionUSD: number;
-  updatedAt: string;
+  frequency: string;
+  schoolYear: string;
+  schoolQuarter: string;
+  registerLink: string;
+  bundleRegisterLink: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
 
-export interface GetCourseDetail extends strapiPublicFields {}
 export interface GetXAlumni extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -190,8 +213,6 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
   video: StrapiMedia;
   order: number;
 }
-export type GetCourseDetailRequest = StrapiRequest<GetCourses>;
-export type GetCourseDetailResponse = StrapiResponse<GetCourses>;
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
   category: AboutUsJoinUsCategory;
@@ -200,16 +221,97 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
   contentEn: string;
   order: number;
 }
+interface MapProps {
+  data: {
+    name: string;
+    value: string;
+  }[];
+}
 
 export interface GetAboutUsAlumniMap extends strapiPublicFields {
-  world: any;
-  usa: any;
+  world: MapProps;
+  usa: MapProps;
 }
 
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
+
 export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
 export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
 
 export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
-export type GetAboutUsAlumniMapResponse = StrapiResponse<GetAboutUsAlumniMap>;
+export type GetAboutUsAlumniMapResponse =
+  StrapiResponseSingleDataItem<GetAboutUsAlumniMap>;
+export interface GetProjectsDemo extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  categoryZh: string;
+  categoryEn: string;
+  url: StrapiMedia;
+  order: number;
+}
+
+export type GetProjectsDemoRequest = StrapiRequest<GetProjectsDemo>;
+export type GetProjectsDemoResponse = StrapiResponse<GetProjectsDemo>;
+
+export interface GetAchievementsTimeLine extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  order: number;
+}
+
+export type GetAchievementsTimeLineRequest =
+  StrapiRequest<GetAchievementsTimeLine>;
+export type GetAchievementsTimeLineResponse =
+  StrapiResponse<GetAchievementsTimeLine>;
+
+export interface GetAboutUsIntroArticle extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  order: number;
+  img1: StrapiMedia;
+  img2: StrapiMedia;
+  img3: StrapiMedia;
+}
+export type GetAboutUsIntroArticleRequest =
+  StrapiRequest<GetAboutUsIntroArticle>;
+export type GetAboutUsIntroArticleResponse =
+  StrapiResponse<GetAboutUsIntroArticle>;
+
+export interface GetResourcesLiveSolution extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  date: string;
+  category: string;
+  video: StrapiMedia;
+  order: number;
+}
+
+export type GetResourcesLiveSolutionRequest =
+  StrapiRequest<GetResourcesLiveSolution>;
+export type GetResourcesLiveSolutionResponse =
+  StrapiResponse<GetResourcesLiveSolution>;
+
+export enum FaqCategory {
+  ReferralQA = "Referral QA",
+  CoursesQA = "Courses QA",
+}
+
+export interface GetFaq extends strapiPublicFields {
+  questionZh: string;
+  questionEn: string;
+  answerZh: string;
+  answerEn: string;
+  category: FaqCategory;
+  order: number;
+  courseId: string;
+  pageName: string;
+  eventId: string;
+}
+
+export type GetFaqRequest = StrapiRequest<GetFaq>;
+export type GetFaqResponse = StrapiResponse<GetFaq>;

@@ -6,21 +6,34 @@ import Testimony from "@/components/home/Testimony";
 import TopBanner from "./top-banner";
 import UsacoMedal from "@/components/about-us/introduction/UsacoMedal";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
-import CampFAQS from "../camps/camp-faqs";
 import ProgressionClasses from "./progression-classes";
-import {
-  useGetCourseDetail,
-  useGetTestimony,
-} from "@/apis/strapi-client/strapi";
+import { useGetClasses, useGetCourses } from "@/apis/strapi-client/strapi";
+import { useGetFaq, useGetTestimony } from "@/apis/strapi-client/strapi";
+import { FaqCategory } from "@/apis/strapi-client/define";
+import Faqs from "@/components/common/faqs";
+import { useParams } from "next/navigation";
+import CourseClassesContext from "./CourseClasses";
 const { Content } = Layout;
 
 const CourseDetail = () => {
-  const { data } = useGetCourseDetail();
+  const params = useParams();
+  console.log(params);
+  const { data: coursesData } = useGetCourses({
+    id: { $eq: Number(params?.courseId) },
+  });
+  // console.log(coursesData);
 
+  const { data } = useGetClasses();
   //获取师生评价数据
   const { data: testimonyData } = useGetTestimony();
 
-  console.log(data);
+  // console.log(data);
+
+  const { data: faq } = useGetFaq({
+    ready: true,
+    category: FaqCategory.CoursesQA,
+  });
+  // StrapiResponseDataItem<GetCourses>
 
   return (
     <ConfigProvider
@@ -32,11 +45,15 @@ const CourseDetail = () => {
     >
       <Layout className={styles.courseDetail}>
         <Content>
-          <TopBanner />
+          <CourseClassesContext.Provider
+            value={coursesData ? coursesData[0] : undefined}
+          >
+            <TopBanner />
+          </CourseClassesContext.Provider>
           <UsacoMedal />
           <FacultyCoach />
           <ProgressionClasses />
-          <CampFAQS title="Course FAQs" />
+          <Faqs title="Course FAQs" data={faq} />
           <Testimony
             className={styles.comments}
             testimonyData={testimonyData}

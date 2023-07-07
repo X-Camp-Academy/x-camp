@@ -3,7 +3,7 @@ import { Card, Space, Button, Typography } from "antd";
 import React from "react";
 import ColorfulCard, { ColorfulCardProps } from "../colorful-card";
 import styles from "./index.module.scss";
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 
 type ClassCardProps = Omit<ColorfulCardProps, "children"> & {
   index: number;
@@ -26,6 +26,7 @@ const ClassCard = ({ index, href, title, list, time }: ClassCardProps) => {
         <Space
           direction="vertical"
           style={{
+            width: "100%",
             height: "100%",
             justifyContent: "space-between",
           }}

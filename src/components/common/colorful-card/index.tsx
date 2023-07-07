@@ -38,10 +38,10 @@ const ColorfulCard: React.FC<ColorfulCardProps> = ({
     const getBackGroundColor = (total: number, reverse: boolean) => {
       return total === 3
         ? reverse
-          ? threeColors.reverse()[index % 3]
+          ? threeColors?.reverse()[index % 3]
           : threeColors[index % 3]
         : reverse
-        ? fourColors.reverse()[index % 4]
+        ? fourColors?.reverse()[index % 4]
         : fourColors[index % 4];
     };
 

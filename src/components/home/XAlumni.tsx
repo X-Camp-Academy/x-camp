@@ -74,7 +74,6 @@ const XAlumni = () => {
             dots={{ className: styles.carouselDots }}
           >
             {xAlumni?.map((item, index) => {
-              console.log(item);
               return (
                 <ColorfulCard
                   key={index}

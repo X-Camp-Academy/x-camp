@@ -85,6 +85,14 @@ export interface StrapiResponse<Fields extends strapiPublicFields> {
   };
 }
 
+// 单个记录的响应
+export interface StrapiResponseSingleDataItem<T> {
+  data: {
+    attributes: T;
+    id: number;
+  };
+}
+
 export interface StrapiMediaAttributes {
   attributes: {
     alternativeText: string;

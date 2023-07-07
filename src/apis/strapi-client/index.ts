@@ -1,8 +1,6 @@
 import { apiConfig } from "@/config/indx";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 import {
-  GetCourseDetailRequest,
-  GetCourseDetailResponse,
   GetCourseLevelTypeRequest,
   GetCourseLevelTypeResponse,
   GetCoursesRequest,
@@ -27,6 +25,18 @@ import {
   GetAboutUsAlumniMapResponse,
   GetNewEventRequest,
   GetNewEventResponse,
+  GetClassesRequest,
+  GetClassesResponse,
+  GetProjectsDemoRequest,
+  GetProjectsDemoResponse,
+  GetAchievementsTimeLineRequest,
+  GetAchievementsTimeLineResponse,
+  GetResourcesLiveSolutionRequest,
+  GetResourcesLiveSolutionResponse,
+  GetFaqRequest,
+  GetFaqResponse,
+  GetAboutUsIntroArticleRequest,
+  GetAboutUsIntroArticleResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -161,16 +171,14 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getCourseDetail(
-    params: GetCourseDetailRequest
-  ): Promise<GetCourseDetailResponse> {
-    const res: GetCourseDetailResponse = await this.get(
+  async getClasses(params: GetClassesRequest): Promise<GetClassesResponse> {
+    const res: GetClassesResponse = await this.get(
       "/xc-classes" + getParamsStringify(params),
       {}
     );
     return res;
   }
-  
+
   async getAboutUsJoinUs(
     params: GetAboutUsJoinUsRequest
   ): Promise<GetAboutUsJoinUsResponse> {
@@ -195,9 +203,54 @@ export class StrapiClient extends BaseAxiosClient {
     params: GetAboutUsAlumniMapRequest
   ): Promise<GetAboutUsAlumniMapResponse> {
     const res = await this.get(
-      "/xc-about-us-alumni-maps" + getParamsStringify(params),
+      "/xc-about-us-alumni-map" + getParamsStringify(params),
       {}
     );
+    return res;
+  }
+
+  async getAboutUsIntroArticle(
+    params: GetAboutUsIntroArticleRequest
+  ): Promise<GetAboutUsIntroArticleResponse> {
+    const res = await this.get(
+      "/xc-about-us-introduction-articles" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getProjectsDemo(
+    params: GetProjectsDemoRequest
+  ): Promise<GetProjectsDemoResponse> {
+    const res = await this.get(
+      "/xc-about-us-achievements-projects-demos" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getAchievementsTimeLine(
+    params: GetAchievementsTimeLineRequest
+  ): Promise<GetAchievementsTimeLineResponse> {
+    const res = await this.get(
+      "/xc-about-us-achievements-time-lines" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getResourcesLiveSolution(
+    params: GetResourcesLiveSolutionRequest
+  ): Promise<GetResourcesLiveSolutionResponse> {
+    const res = await this.get(
+      "/xc-resources-live-solutions" + getParamsStringify(params),
+      {}
+    );
+    return res;
+  }
+
+  async getFaq(params: GetFaqRequest): Promise<GetFaqResponse> {
+    const res = await this.get("/xc-faqs" + getParamsStringify(params), {});
     return res;
   }
 }

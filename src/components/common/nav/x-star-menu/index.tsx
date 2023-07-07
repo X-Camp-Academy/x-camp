@@ -1,6 +1,6 @@
-import React from "react";
-import { Space } from "antd";
-import XStarMenuItem from "./menu-item";
+import React, { useMemo } from 'react';
+import { Space } from 'antd';
+import XStarMenuItem from './menu-item';
 
 export interface XStarMenuItemType {
   label: JSX.Element | string;
@@ -10,7 +10,7 @@ export interface XStarMenuItemType {
     left?: {
       title?: string;
       description?: string;
-      btn?: string;
+      btn?: React.ReactNode;
       action?: VoidFunction;
     };
     right?: {
@@ -28,7 +28,7 @@ interface Props {
   onClick?: (selectedKey: string) => void;
 }
 
-const XStarMenu = ({ items, className = "", selectedKey, onClick }: Props) => {
+const XStarMenu = ({ items, className = '', selectedKey, onClick }: Props) => {
   const renderMenuItems = (
     menuItems: XStarMenuItemType[]
   ): React.ReactNode[] => {
@@ -38,7 +38,7 @@ const XStarMenu = ({ items, className = "", selectedKey, onClick }: Props) => {
           <XStarMenuItem
             key={menuItem.key}
             menuItem={menuItem}
-            selected={selectedKey === menuItem?.key}
+            selected={selectedKey?.includes(menuItem?.key)}
           >
             {renderMenuItems(menuItem?.children)}
           </XStarMenuItem>
