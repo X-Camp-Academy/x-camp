@@ -1,52 +1,64 @@
-"use client";
-import React from "react";
-import { Space, Row, Col, Card, Image, Typography } from "antd";
-import styles from "./Results.module.scss";
+'use client';
+import React from 'react';
+import { Space, Row, Col, Card, Image, Typography } from 'antd';
+import styles from './Results.module.scss';
+import { useGetAboutUsIntroArticle } from '@/apis/strapi-client/strapi';
+import { getTransResult } from '@/utils/public';
+import { useLang } from '@/hoc/with-intl/define';
 
 const { Title, Paragraph, Text } = Typography;
 
 const Results: React.FC = () => {
-  const resultsData = [
-    {
-      title: "Art of Programming Results",
-      description:
-        "X-Camp has created an Art of Python Programming contest every quarter to inspire students that are new to Python. It is a great opportunity for students to showcase what they have learned from classes by creating fun projects, and get rewarded!",
-      images: [
-        "/image/about-us/introduction/top-banner.png",
-        "/image/about-us/introduction/top-banner.png",
-        "/image/about-us/introduction/top-banner.png",
-      ],
-    },
-    {
-      title: "Algorithms Project Results",
-      description:
-        "X-Camp has created an Art of Python Programming contest every quarter to inspire students that are new to Python. It is a great opportunity for students to showcase what they have learned from classes by creating fun projects, and get rewarded!",
-      images: [
-        "/image/about-us/introduction/top-banner.png",
-        "/image/about-us/introduction/top-banner.png",
-        "/image/about-us/introduction/top-banner.png",
-      ],
-    },
-  ];
+  const { lang } = useLang();
+  const { data: introArticle } = useGetAboutUsIntroArticle();
   return (
     <div className="container">
-      {resultsData.map((item, index) => (
-        <Space key={index} direction="vertical" size={16} className={styles.space}>
-          <Title className={styles.title}>{item?.title}</Title>
+      {introArticle?.map((item, index) => (
+        <Space
+          key={index}
+          direction="vertical"
+          size={16}
+          className={styles.space}
+        >
+          <Title className={styles.title}>
+            {getTransResult(
+              lang,
+              item?.attributes?.titleZh,
+              item?.attributes?.titleEn
+            )}
+          </Title>
           <Paragraph className={styles.paragraph}>
-            {item?.description}
+            {getTransResult(
+              lang,
+              item?.attributes?.descriptionZh,
+              item?.attributes?.descriptionEn
+            )}
           </Paragraph>
           <Row gutter={16} className={styles.row}>
-            {item?.images?.map((image, index) => (
-              <Col key={index} xs={24} sm={24} md={8}>
-                <Image
-                  alt="image"
-                  src={image}
-                  preview={false}
-                  className={styles.image}
-                />
-              </Col>
-            ))}
+            <Col xs={24} sm={24} md={8}>
+              <Image
+                alt="image"
+                src={item?.attributes?.img1?.data?.attributes?.url}
+                preview={false}
+                className={styles.image}
+              />
+            </Col>
+            <Col xs={24} sm={24} md={8}>
+              <Image
+                alt="image"
+                src={item?.attributes?.img2?.data?.attributes?.url}
+                preview={false}
+                className={styles.image}
+              />
+            </Col>
+            <Col xs={24} sm={24} md={8}>
+              <Image
+                alt="image"
+                src={item?.attributes?.img3?.data?.attributes?.url}
+                preview={false}
+                className={styles.image}
+              />
+            </Col>
           </Row>
         </Space>
       ))}

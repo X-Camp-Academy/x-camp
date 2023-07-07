@@ -1,12 +1,22 @@
-import React from 'react';
-import styles from './index.module.scss';
-import { Collapse, Divider, Space } from 'antd';
-import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
+import React from "react";
+import styles from "./index.module.scss";
+import { Collapse, Divider, Space } from "antd";
+import { ClockCircleOutlined, DownOutlined } from "@ant-design/icons";
+import { GetResourcesLiveSolution } from "@/apis/strapi-client/define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
 const { Panel } = Collapse;
-const UsacoIntro = () => {
+
+interface Props {
+  data: StrapiResponseDataItem<GetResourcesLiveSolution>[][] | undefined;
+}
+
+const UsacoIntro = ({ data }: Props) => {
+  const { lang } = useLang();
   return (
     <div className={styles.introduction}>
-      <div className={'container'}>
+      <div className={"container"}>
         <div
           className={styles.description}
         >{`In 2023 newest season, X-Camp hosts the first-ever USACO Live Solutions event
@@ -14,17 +24,13 @@ const UsacoIntro = () => {
           and ICPC World Finalists. They meticulously dissect the competition problems from the 
           USACO Bronze, Silver, and Gold levels, providing in-depth explanations and unraveling 
           the intricacies.`}</div>
-        {[
-          'X-Camp USACO Gold',
-          'X-Camp USACO Silver',
-          'X-Camp USACO Bronze',
-        ].map((item, index) => {
+        {data?.map((v, index) => {
           return (
-            <div key={'video' + index}>
+            <div key={"video" + index}>
               <Collapse
                 ghost
                 defaultActiveKey={index}
-                expandIconPosition={'end'}
+                expandIconPosition={"end"}
                 expandIcon={({ isActive }) => (
                   <div className={styles.changeBtn}>
                     <DownOutlined
@@ -36,29 +42,37 @@ const UsacoIntro = () => {
               >
                 <Panel
                   key={index}
-                  header={<div className={styles.title}>{item}</div>}
+                  header={
+                    <div className={styles.title}>
+                      {v?.[0]?.attributes?.category}
+                    </div>
+                  }
                 >
                   <Space className={styles.videoPane}>
-                    {[1, 2, 3].map((item) => {
+                    {v?.map((g) => {
                       return (
                         <Space
-                          direction={'vertical'}
+                          direction={"vertical"}
                           className={styles.videoPanel}
-                          key={'panel' + item}
+                          key={"panel" + g}
                         >
                           <video controls className={styles.videoBox}>
                             <source
-                              src="https://media.strapi.turingstar.com.cn/production/2023/5/_2cd2122d99.mp4?updated_at=2023-05-14T08:17:12.234Z"
+                              src={g?.attributes?.video?.data?.attributes?.url}
                               type="video/mp4"
                             />
                           </video>
                           <div className={styles.videoTitle}>
-                            {'USACO 2023 Feb Gold Problem 3 Live Solution'}
+                            {getTransResult(
+                              lang,
+                              g?.attributes?.titleZh,
+                              g?.attributes?.titleEn
+                            )}
                           </div>
                           <Space>
                             <ClockCircleOutlined className={styles.icon} />
                             <div className={styles.videoDate}>
-                              {'2023-04-10'}
+                              {g?.attributes?.date}
                             </div>
                           </Space>
                         </Space>
@@ -71,14 +85,14 @@ const UsacoIntro = () => {
             </div>
           );
         })}
-        <div className={styles.title}>{'X-Camp More USACO Solutions'}</div>
+        <div className={styles.title}>{"X-Camp More USACO Solutions"}</div>
         <a
           href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
           className={styles.link}
-          target={'_blank'}
+          target={"_blank"}
         >
           {
-            'https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT'
+            "https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
           }
         </a>
       </div>

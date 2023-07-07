@@ -124,6 +124,7 @@ const Nav = () => {
                     <Space size={12}>
                       <DropdownUserMenu user={user} logout={logout} />
                       <Button
+                        className={styles.study}
                         type="primary"
                         onClick={() => window.open(`${xydApi}/courses`)}
                       >
@@ -135,14 +136,10 @@ const Nav = () => {
                       Login / Register
                     </Button>
                   )}
-
-                  <Button
-                    type="link"
-                    icon={<TranslationOutlined style={{ fontSize: 20 }} />}
-                    onClick={toggle}
-                  >
-                    {getTransResult(lang, '中文', 'English')}
-                  </Button>
+                  <div onClick={toggle} className={styles.intl}>
+                    <div className={styles.img} />
+                    <span>{getTransResult(lang, '中文', 'English')}</span>
+                  </div>
                 </>
               )}
               {isMobile && (

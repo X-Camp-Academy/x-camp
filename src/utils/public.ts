@@ -16,3 +16,51 @@ export const getTransResult = (
   if (lang == "zh") return zhText ? zhText : enText;
   else return enText ? enText : zhText;
 };
+
+/**
+ * 将扁平化数据根据某个字段分类
+ */
+export const classifyByAttribution = <T extends { attributes: any }>(
+  data: T[],
+  field: string
+): T[][] => {
+  const groupedData: T[][] = [];
+
+  data.forEach((item) => {
+    const fieldValue = item?.attributes?.[field];
+    const index = groupedData?.findIndex(
+      (group) => group[0]?.attributes?.[field] === fieldValue
+    );
+
+    if (index === -1) {
+      groupedData.push([item]);
+    } else {
+      groupedData[index].push(item);
+    }
+  });
+
+  return groupedData;
+};
+
+/**
+ *
+ * @param data 数据源
+ * @param attribution 要筛选的属性
+ * @param values 筛选的属性值
+ * @returns
+ */
+export const filterByAttribution = <T extends { attributes: any }>(
+  data: T[],
+  attribution: keyof T["attributes"] & string,
+  values: string[]
+): T[] => {
+  const filteredData: T[] = data?.filter((item) => {
+    const fieldValue = item?.attributes?.[attribution];
+    const formattedFieldValue: string[] = fieldValue?.split(",") ?? [];
+    if (values?.some((value) => formattedFieldValue?.includes(value))) {
+      return true;
+    }
+    return false;
+  });
+  return filteredData;
+};

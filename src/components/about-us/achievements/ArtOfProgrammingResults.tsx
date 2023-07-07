@@ -1,14 +1,18 @@
 import { Card, Typography, List } from "antd";
 import styles from "./ArtOfProgrammingResults.module.scss";
 import React from "react";
+import { GetProjectsDemo } from "@/apis/strapi-client/define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title, Paragraph, Text } = Typography;
 
-const ArtOfProgrammingResults: React.FC = () => {
-  const data = [
-    { title: "Leo Lin, Andrew Chen and George Sun", src: "/" },
-    { title: "Leo Lin, Andrew Chen and George Sun", src: "/" },
-    { title: "Leo Lin, Andrew Chen and George Sun", src: "/" },
-  ];
+interface Props {
+  data: StrapiResponseDataItem<GetProjectsDemo>[][] | undefined;
+}
+
+const ArtOfProgrammingResults = ({ data }: Props) => {
+  const { lang } = useLang();
 
   const listData = [
     {
@@ -56,74 +60,44 @@ const ArtOfProgrammingResults: React.FC = () => {
 
           <div className={styles.projectDemo}>
             <Title className={styles.title}>Projects Demo</Title>
-            <Title className={styles.subTitle}>2022 Winter Quarter</Title>
-            <List
-              grid={{
-                gutter: 16,
-                xs: 1,
-                sm: 1,
-                md: 1,
-                lg: 3,
-                xl: 3,
-                xxl: 3,
-              }}
-              dataSource={data}
-              className={styles.videoList}
-              renderItem={(item) => (
-                <List.Item>
-                  <Card className={styles.videoItem}>
-                    <video src="/"></video>
-                    <div className={styles.videoTitle}>{item.title}</div>
-                  </Card>
-                </List.Item>
-              )}
-            />
-
-            <Title className={styles.subTitle}>2022 Spring Quarter</Title>
-            <List
-              grid={{
-                gutter: 16,
-                xs: 1,
-                sm: 1,
-                md: 1,
-                lg: 3,
-                xl: 3,
-                xxl: 3,
-              }}
-              dataSource={data}
-              className={styles.videoList}
-              renderItem={(item) => (
-                <List.Item>
-                  <Card className={styles.videoItem}>
-                    <video src="/"></video>
-                    <div className={styles.videoTitle}>{item.title}</div>
-                  </Card>
-                </List.Item>
-              )}
-            />
-
-            <Title className={styles.subTitle}>2022 Summer Quarter</Title>
-            <List
-              grid={{
-                gutter: 16,
-                xs: 1,
-                sm: 1,
-                md: 1,
-                lg: 3,
-                xl: 3,
-                xxl: 3,
-              }}
-              dataSource={data}
-              className={styles.videoList}
-              renderItem={(item) => (
-                <List.Item>
-                  <Card className={styles.videoItem}>
-                    <video src={item.src}></video>
-                    <div className={styles.videoTitle}>{item.title}</div>
-                  </Card>
-                </List.Item>
-              )}
-            />
+            {data?.map((v, index) => (
+              <React.Fragment key={index}>
+                <Title className={styles.subTitle}>
+                  {getTransResult(
+                    lang,
+                    v?.[0]?.attributes?.categoryZh,
+                    v?.[0]?.attributes?.categoryEn
+                  )}
+                </Title>
+                <List
+                  grid={{
+                    gutter: 16,
+                    xs: 1,
+                    sm: 1,
+                    md: 1,
+                    lg: 3,
+                    xl: 3,
+                    xxl: 3,
+                  }}
+                  dataSource={v}
+                  className={styles.videoList}
+                  renderItem={(g) => (
+                    <List.Item>
+                      <Card className={styles.videoItem}>
+                        <video src="/"></video>
+                        <div className={styles.videoTitle}>
+                          {getTransResult(
+                            lang,
+                            g?.attributes?.titleZh,
+                            g?.attributes?.titleEn
+                          )}
+                        </div>
+                      </Card>
+                    </List.Item>
+                  )}
+                />
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

@@ -158,5 +158,80 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
 
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
+
 export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
 export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
+
+export interface GetProjectsDemo extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  categoryZh: string;
+  categoryEn: string;
+  url: StrapiMedia;
+  order: number;
+}
+
+export type GetProjectsDemoRequest = StrapiRequest<GetProjectsDemo>;
+export type GetProjectsDemoResponse = StrapiResponse<GetProjectsDemo>;
+
+export interface GetAchievementsTimeLine extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  order: number;
+}
+
+export type GetAchievementsTimeLineRequest =
+  StrapiRequest<GetAchievementsTimeLine>;
+export type GetAchievementsTimeLineResponse =
+  StrapiResponse<GetAchievementsTimeLine>;
+
+export interface GetAboutUsIntroArticle extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  order: number;
+  img1: StrapiMedia;
+  img2: StrapiMedia;
+  img3: StrapiMedia;
+}
+export type GetAboutUsIntroArticleRequest =
+  StrapiRequest<GetAboutUsIntroArticle>;
+export type GetAboutUsIntroArticleResponse =
+  StrapiResponse<GetAboutUsIntroArticle>;
+
+export interface GetResourcesLiveSolution extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  date: string;
+  category: string;
+  video: StrapiMedia;
+  order: number;
+}
+
+export type GetResourcesLiveSolutionRequest =
+  StrapiRequest<GetResourcesLiveSolution>;
+export type GetResourcesLiveSolutionResponse =
+  StrapiResponse<GetResourcesLiveSolution>;
+
+export enum FaqCategory {
+  ReferralQA = "Referral QA",
+  CoursesQA = "Courses QA",
+}
+
+export interface GetFaq extends strapiPublicFields {
+  questionZh: string;
+  questionEn: string;
+  answerZh: string;
+  answerEn: string;
+  category: FaqCategory;
+  order: number;
+  courseId: string;
+  pageName: string;
+  eventId: string;
+}
+
+export type GetFaqRequest = StrapiRequest<GetFaq>;
+export type GetFaqResponse = StrapiResponse<GetFaq>;
