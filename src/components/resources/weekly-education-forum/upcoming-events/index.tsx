@@ -18,16 +18,19 @@ import Link from "next/link";
 
 
 
+
 const UpcomingEvents = () => {
   const pageSize = 25;
   const { lang } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
 
-  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+
+  const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthNameEn = [
     'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
   ];
+  
 
   const getMonth = (date: string) => {
     return new Date(date).getMonth() + 1;
@@ -58,6 +61,23 @@ const UpcomingEvents = () => {
   const upComingEvent = newEventData?.data.filter((item, index) => {
     return item?.attributes?.datetime && (new Date(item?.attributes?.datetime)).getTime() - new Date().getTime() > 0;
   })
+
+  const formatDate = (dateString: string, locale: string) => {
+    let formatString = '';
+
+    // 根据传入的locale设置Day.js的语言环境
+    dayjs.locale(locale);
+
+    // 根据不同的locale选择不同的日期格式
+    if (locale === 'zh-cn') {
+      formatString = 'YYYY年MM月DD日';
+    } else if (locale === 'en') {
+      formatString = 'DD/MM/YYYY';
+    } 
+
+    const formattedDate = dayjs(dateString).format(formatString);
+    return formattedDate;
+  }
 
 
 
@@ -96,10 +116,8 @@ const UpcomingEvents = () => {
                         <Descriptions column={1} className={styles.descriptions}>
                           <Descriptions.Item label={<ClockCircleOutlined />}>
                             {`
-                            ${getWeekDay(item.attributes?.datetime)}, 
-                            ${getMonth(item.attributes?.datetime)} 
-                            ${getDate(item.attributes?.datetime)}, 
-                            ${getYear(item.attributes?.datetime)} | 
+                            ${weekdays[dayjs(item.attributes?.datetime).day()]}, 
+                            ${formatDate(item?.attributes?.datetime,dayjs.locale())} | 
                             ${item?.attributes?.start.substring(0, 5)} ${Number(item?.attributes?.start.substring(0, 2)) < 12 ? "AM" : "PM"} - 
                             ${item?.attributes?.end.substring(0, 5)} ${Number(item?.attributes?.end.substring(0, 2)) < 12 ? "AM" : "PM"} 
                             UTC ${item.attributes.timeZone > 0 ? '+' + item.attributes.timeZone : item.attributes.timeZone}
@@ -107,7 +125,7 @@ const UpcomingEvents = () => {
                           </Descriptions.Item>
                           <Descriptions.Item label={<LaptopOutlined />}>
                             {!item.attributes.geographicallyAddress && item.attributes.link && item.attributes.onlinePlatform ?
-                              <a href={item.attributes.link} style={{color:"#666666"}}>{item.attributes.onlinePlatform}</a> : item.attributes.geographicallyAddress}
+                              <a href={item.attributes.link} style={{ color: "#666666" }}>{item.attributes.onlinePlatform}</a> : item.attributes.geographicallyAddress}
                           </Descriptions.Item>
                           <Descriptions.Item label={<UserOutlined />}>
                             {`Organizer | ${item?.attributes?.organizer} `}
