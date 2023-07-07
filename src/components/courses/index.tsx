@@ -186,7 +186,7 @@ const Courses: React.FC = () => {
                                             ? "weeks"
                                             : "days"
                                         }`}
-                                        href={`/courses/detail?/${g?.id}`}
+                                        href={`/courses/detail/${g?.id}`}
                                       />
                                     );
                                   })}
