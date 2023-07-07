@@ -5,7 +5,7 @@ import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ColorfulCard from "../common/colorful-card";
 import { CarouselRef } from "antd/es/carousel";
-import { useGetFaculty } from "@/apis/strapi-client/strapi";
+import { useGetCourses, useGetFaculty } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
@@ -14,7 +14,13 @@ const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
   const { lang } = useLang();
-  const { data } = useGetFaculty();
+  const { data: coursesData } = useGetCourses();
+
+  const { data: facultyData } = useGetFaculty({
+    pageName: ['/home']
+  });
+
+  console.log(facultyData);
 
   const computedStyle = (index: number) => {
     const iconDefaultStyle = {
@@ -91,7 +97,7 @@ const Faculty: React.FC = () => {
           ]}
           dots={false}
         >
-          {data?.map((item, index) => {
+          {facultyData?.map((item, index) => {
             return (
               <ColorfulCard
                 key={item?.id}
