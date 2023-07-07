@@ -104,7 +104,7 @@ export interface GetCourses extends strapiPublicFields {
   courseShortDescriptionZh: string[];
   courseTitleEn: string;
   courseTitleZh: string;
-  isCamp: string;
+  isCamp: boolean;
   lessonNum: number;
   media: StrapiMedias;
   order: number;
