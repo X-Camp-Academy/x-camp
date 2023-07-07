@@ -12,7 +12,11 @@ import {
   Dropdown,
   MenuProps,
 } from 'antd';
-import { TranslationOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import {
+  SearchOutlined,
+  TranslationOutlined,
+  UnorderedListOutlined,
+} from '@ant-design/icons';
 import 'animate.css';
 import styles from './index.module.scss';
 import { useMobile } from '@/utils';
@@ -40,7 +44,7 @@ const Nav = () => {
   const isMobile = useMobile();
   const menuItems = useMenuItems();
   const { xydApi } = apiConfig;
-  const onSearch = (value: string) => console.log(value);
+  const onSearch = (e: React.KeyboardEvent<HTMLInputElement>) => console.log(e);
 
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -112,12 +116,17 @@ const Nav = () => {
               )}
             </Space>
             <Space size={'middle'}>
-              <Search
+              <Input
+                placeholder="Search"
+                onPressEnter={onSearch}
+                suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />}
+              />
+              {/* <Search
                 placeholder="Search"
                 onSearch={onSearch}
                 enterButton
                 className={styles.search}
-              />
+              /> */}
               {!isMobile && (
                 <>
                   {user ? (
