@@ -1,6 +1,6 @@
-"use client";
-import React, { ReactNode, useEffect, useState } from "react";
-import LoadingMask from "@/components/common/loading/LoadingMask";
+'use client';
+import React, { ReactNode, useEffect, useState } from 'react';
+import LoadingMask from '@/components/common/loading/LoadingMask';
 
 interface Props {
   children: ReactNode;

@@ -3,6 +3,7 @@ import styles from './index.module.scss';
 import classNames from 'classnames/bind';
 import { Col, Row, Space } from 'antd';
 import { XStarMenuItemType } from '../..';
+import { useScroll } from 'ahooks';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const MenuDropdown = ({ className, items, dropdown }: Props) => {
+  const scroll = useScroll(document);
   const divideLength = (items?.length || 0) > 6 ? 3 : 2;
   const dividedItems = useMemo(() => {
     // 分为若干列，大于6项则3列，否则2列
@@ -29,7 +31,15 @@ const MenuDropdown = ({ className, items, dropdown }: Props) => {
   }, [items]);
 
   return (
-    <div className={cx(className, styles.dropdown)}>
+    <div
+      className={cx(className, styles.dropdown)}
+      style={{
+        boxShadow:
+          scroll?.top === 0
+            ? 'inset 0px 9px 20px -4px #D8D8D8'
+            : 'inset 0px 9px 20px -4px #D8D8D8, 0px 9px 25px -4px #D8D8D8',
+      }}
+    >
       <Space className={cx('container', styles.dropdownContainer)}>
         {dropdown?.left && (
           <Space direction="vertical" className={styles.left}>
@@ -58,7 +68,12 @@ const MenuDropdown = ({ className, items, dropdown }: Props) => {
           ))}
         </Space>
         {dropdown?.right && (
-          <div className={styles.right} onClick={dropdown?.right?.action}>
+          <div
+            className={styles.right}
+            onClick={() => {
+              dropdown?.right?.action?.();
+            }}
+          >
             <div className={styles.title}>{dropdown?.right?.title}</div>
             <div className={styles.description}>
               {dropdown?.right?.description}

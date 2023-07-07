@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./index.module.scss";
-import { XStarMenuItemType } from "..";
-import { CaretUpOutlined } from "@ant-design/icons";
-import classNames from "classnames/bind";
-import MenuDropdown from "./menu-drop-down";
+import React from 'react';
+import styles from './index.module.scss';
+import { XStarMenuItemType } from '..';
+import { CaretUpOutlined } from '@ant-design/icons';
+import classNames from 'classnames/bind';
+import MenuDropdown from './menu-drop-down';
 
 interface Props {
   menuItem: XStarMenuItemType;
@@ -16,10 +16,10 @@ const cx = classNames.bind(styles);
 
 const XStarMenuItem = ({ menuItem, onClick, selected, children }: Props) => {
   return (
-    <>
+    <div className={styles.menuContent}>
       <span
         key={menuItem.key}
-        className={cx(styles.menuItem, selected && styles.selectedItem)}
+        className={`${styles.menuItem} ${selected && 'selectedItem'}`}
         onClick={() => {
           onClick?.(menuItem?.key);
         }}
@@ -34,7 +34,7 @@ const XStarMenuItem = ({ menuItem, onClick, selected, children }: Props) => {
           items={children}
         />
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,14 +1,18 @@
+@import "@/styles/variables";
+
 .dropdown {
   position: fixed;
   left: 0;
   top: 72px;
-  background-color: #ffad11;
+  background-color: #fff;
   width: 100%;
   height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  // box-shadow: inset 0px 9px 25px -15px #D8D8D8, 0px 9px 25px -4px #D8D8D8;
+  ;
 
   .dropdownContainer {
     justify-content: space-between;
@@ -19,7 +23,6 @@
         height: 96px;
         font-size: 36px;
         font-weight: bold;
-        color: #ffffff;
         line-height: 48px;
         margin-bottom: 16px;
       }
@@ -29,40 +32,61 @@
         height: 60px;
         font-size: 16px;
         font-weight: 600;
-        color: #ffffff;
-        line-height: 30px;
+        line-height: 24px;
         margin-bottom: 24px;
       }
 
       .btn {
         width: 232px;
         height: 56px;
-        background-color: #d46b14;
-        border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        border-radius: 4px;
+        border: 2px solid #172142;
 
         span {
-          font-size: 16px;
+          font-size: 24px;
           font-weight: 400;
-          color: #ffffff;
           line-height: 24px;
+
+          &:last-child {
+            margin-left: 10px;
+          }
         }
+
       }
     }
 
     .items {
+
+
       .item {
-        // white-space: nowrap;
         font-size: 16px;
         font-weight: 400;
         line-height: 48px;
         transition: all 0.3s;
 
+        :global(.selectedItem) {
+          border-bottom: none !important;
+          color: #ffad11;
+          font-weight: 600;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 18px;
+            width: 0;
+            height: 0;
+            border-left: 9px solid $primary-color;
+            border-bottom: 6px solid transparent;
+            border-top: 6px solid transparent;
+          }
+        }
+
         a {
-          color: #ffffff;
           width: 200px;
           display: inline-block;
 
@@ -76,7 +100,7 @@
               top: 18px;
               width: 0;
               height: 0;
-              border-left: 9px solid #ffff;
+              border-left: 9px solid $primary-color;
               border-bottom: 6px solid transparent;
               border-top: 6px solid transparent;
             }
@@ -88,15 +112,15 @@
     .right {
       width: 236px;
       height: 166px;
-      background: rgba(212, 107, 20, 0.5);
       border-radius: 4px;
       padding: 36px 32px;
       cursor: pointer;
+      border-radius: 4px;
+      border: 2px solid #172142;
 
       .title {
         font-size: 18px;
         font-weight: 600;
-        color: #ffffff;
         line-height: 28px;
         margin-bottom: 12px;
       }
@@ -104,8 +128,8 @@
       .description {
         font-size: 16px;
         font-weight: 400;
-        color: #ffffff;
         line-height: 24px;
+
       }
     }
   }
