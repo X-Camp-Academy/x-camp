@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import { Breadcrumb, Typography } from "antd";
 import CourseCard from "./course-card";
-import classNames from 'classnames/bind';
+import classNames from "classnames/bind";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+import CourseClassesContext from "../CourseClasses";
 const { Title } = Typography;
 
 const cx = classNames.bind(styles);
 
-const TopBanner = () => {
+const TopBanner: React.FC = () => {
+  const { lang } = useLang();
+  const courseData = useContext(CourseClassesContext);
+  const courseCodeTitle = `${
+    courseData?.attributes?.courseCode
+  }: ${getTransResult(
+    lang,
+    courseData?.attributes?.courseTitleZh,
+    courseData?.attributes?.courseTitleEn
+  )}`;
   return (
     <div className={styles.topBanner}>
       <div className={styles.banner} />
@@ -25,14 +37,11 @@ const TopBanner = () => {
               title: <a href="/courses">{"Courses"}</a>,
             },
             {
-              title:
-                "CS100P+CS101P: Python Intro with Creative Projects (20 Weeks)",
+              title: courseCodeTitle,
             },
           ]}
         />
-        <Title className={styles.title}>
-          {"CS100P+CS101P: Python Intro with Creative Projects (20 Weeks)"}
-        </Title>
+        <Title className={styles.title}>{courseCodeTitle}</Title>
         <CourseCard />
       </div>
     </div>

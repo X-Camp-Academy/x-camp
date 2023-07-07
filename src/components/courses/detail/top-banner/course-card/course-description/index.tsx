@@ -1,20 +1,51 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
-import { Carousel, Descriptions, Space } from "antd";
+import { Carousel, Descriptions, Space,Image } from "antd";
+import CourseClassesContext from "../../../CourseClasses";
+import { useLang } from "@/hoc/with-intl/define";
+import dayjs from "dayjs";
 
 const CourseDescription = () => {
+  const { lang } = useLang();
+  const courseData = useContext(CourseClassesContext);
+  const { classMode, classLang, classRoomLang, classes, media } =
+    courseData?.attributes ?? {};
+
+  console.log(courseData);
+  const classesData = classes?.data?.map((classItem) => {
+    const { classCode, isFull, startTime, endTime, location } =
+      classItem?.attributes;
+    return {
+      classCode,
+      isFull,
+      startTime: startTime.slice(0, -7),
+      endTime: endTime.slice(0, -7),
+      location,
+    };
+  });
+
+
+  const imageMimes = [
+    "image/jpeg",
+    "image/png",
+    "image/gif",
+    "image/bmp",
+    "image/tiff",
+    "image/svg+xml",
+    "image/webp",
+  ];
+
+  // console.log(classesData);
   return (
     <Space className={styles.description}>
       <div className={styles.left}>
         <Descriptions column={1}>
-          <Descriptions.Item label="Class Mode">
-            {"CS100P+CS101P"}
-          </Descriptions.Item>
+          <Descriptions.Item label="Class Mode">{classMode}</Descriptions.Item>
           <Descriptions.Item label="Code Language">
-            {"Python"}
+            {classLang}
           </Descriptions.Item>
           <Descriptions.Item label="Classroom Language">
-            {"English"}
+            {classRoomLang}
           </Descriptions.Item>
           <Descriptions.Item label="Duration">
             {"2023/06/24 - 2023/12/03"}
@@ -24,27 +55,40 @@ const CourseDescription = () => {
           </Descriptions.Item>
           <Descriptions.Item label="Classes Time">
             <Space direction="vertical">
-              <div>{"S100PA+CS101PA: Sat 1-3pm PT"}</div>
-              <div className={styles.full}>
-                {"CS100PB+CS101PB:Sat 3-5pm PT(Full)"}
-              </div>
+              {classesData?.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={item?.isFull ? `${styles.full}` : ""}
+                  >{`${item?.classCode}: ${item?.startTime}-${item?.endTime}`}</div>
+                );
+              })}
             </Space>
           </Descriptions.Item>
         </Descriptions>
       </div>
       <div className={styles.right}>
         <Carousel dots={{ className: styles.dots }}>
-          <div className={styles.videoBox}>
-            <video controls>
-              <source
-                src="https://media.strapi.turingstar.com.cn/production/2023/5/_2cd2122d99.mp4?updated_at=2023-05-14T08:17:12.234Z"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div className={styles.videoBox}>2</div>
-          <div className={styles.videoBox}>3</div>
+          {media?.data?.map((mediaItem) => {
+            return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
+              <div key={mediaItem?.id} className={styles.videoBox}>
+                <Image
+                  alt=""
+                  preview={false}
+                  src={mediaItem?.attributes?.url}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            ) : (
+              <div key={mediaItem?.id} className={styles.videoBox}>
+                <video controls>
+                  <source src={mediaItem?.attributes?.url} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            );
+          })}
         </Carousel>
       </div>
     </Space>

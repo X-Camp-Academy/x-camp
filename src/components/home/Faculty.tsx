@@ -61,7 +61,6 @@ const Faculty: React.FC = () => {
           className={styles.prev}
           onClick={onPrev}
         >
-          {}
           <LeftOutlined />
         </Button>
         <Carousel

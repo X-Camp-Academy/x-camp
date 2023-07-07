@@ -73,11 +73,30 @@ interface CourseLevelType {
   };
 }
 
+export interface GetClasses extends strapiPublicFields {
+  classCode: string;
+  startTime: string;
+  endTime: string;
+  isFull: boolean;
+  timeZone: string;
+  location: string;
+  order: number;
+}
+
+export type GetClassesRequest = StrapiRequest<GetClasses>;
+export type GetClassesResponse = StrapiResponse<GetClasses>;
+
 export interface GetCourses extends strapiPublicFields {
   classMode: string;
   classLang: string;
   classRoomLang: string;
   courseCode: string;
+  classes: {
+    data: {
+      id: number;
+      attributes: GetClasses;
+    }[];
+  };
   courseLevelType: CourseLevelType;
   courseLongDescriptionEn: string;
   courseLongDescriptionZh: string;
@@ -85,18 +104,15 @@ export interface GetCourses extends strapiPublicFields {
   courseShortDescriptionZh: string[];
   courseTitleEn: string;
   courseTitleZh: string;
-  createdAt: string;
   isCamp: string;
   lessonNum: number;
   media: StrapiMedias;
   order: number;
-  publishedAt: string;
   recommendedClasses: Array<number>;
   recommendedLowerGrade: number;
   recommendedUpperGrade: number;
   tuitionRMB: number;
   tuitionUSD: number;
-  updatedAt: string;
   frequency: string;
   schoolYear: string;
   schoolQuarter: string;
@@ -105,11 +121,6 @@ export interface GetCourses extends strapiPublicFields {
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
-
-export interface GetClasses extends strapiPublicFields {}
-
-export type GetClassesRequest = StrapiRequest<GetClasses>;
-export type GetClassesResponse = StrapiResponse<GetClasses>;
 
 export interface GetXAlumni extends strapiPublicFields {
   titleZh: string;

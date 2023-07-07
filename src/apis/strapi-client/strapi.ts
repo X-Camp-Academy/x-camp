@@ -26,9 +26,14 @@ import {
   GetFaq,
   FaqCategory,
   GetAboutUsIntroArticleRequest,
+  GetCourses,
 } from "./define";
 import { isArray } from "lodash";
-import { AndOrFilters, FilterFields, StrapiResponseDataItem } from "./strapiDefine";
+import {
+  AndOrFilters,
+  FilterFields,
+  StrapiResponseDataItem,
+} from "./strapiDefine";
 import { classifyByAttribution, filterByAttribution } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 /**
@@ -240,7 +245,12 @@ export const useGetCourseLevelType = () => {
  *
  * @returns 获取Courses
  */
-export const useGetCourses = (params?: any) => {
+export const useGetCourses = (
+  params?:
+    | Partial<FilterFields<GetCourses>>
+    | AndOrFilters<FilterFields<GetCourses>>
+    | undefined
+) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
 
