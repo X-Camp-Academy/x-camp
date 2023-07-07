@@ -11,12 +11,17 @@ import {
   useGetResourcesContest,
   useGetTestimony,
 } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 const { Content } = Layout;
 
 const Contests = () => {
   const { data: resourcesContest } = useGetResourcesContest();
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({ ready: true });
+  const pathname = usePathname();
+  // 请求courseId为isCamp课程, pageName 为"/courses/catalog/"的评论
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
 
   return (
     <ConfigProvider

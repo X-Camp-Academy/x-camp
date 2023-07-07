@@ -15,15 +15,23 @@ import {
   useGetTestimony,
 } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
+import { usePathname } from "next/navigation";
 const { Content } = Layout;
 const CourseCamps = () => {
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({ ready: true });
-  const { data: courses } = useGetCourses("true");
+  const pathname = usePathname();
+  const { data: courses } = useGetCourses("true"); // 筛选isCamp课程
+  // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
     category: FaqCategory.CoursesQA,
     courseId: courses?.map((v) => String(v?.id)),
+    pageName: [pathname],
+  });
+  // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
+  const { data: testimonyData } = useGetTestimony({
+    ready: Boolean(courses),
+    courseId: courses?.map((v) => String(v?.id)),
+    pageName: [pathname],
   });
 
   return (

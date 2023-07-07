@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import styles from "./index.module.scss";
 import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 const { Content } = Layout;
 const TopBanner = dynamic(() => import("./top-banner"));
 const PartnersIntroduction = dynamic(() => import("./partners-introduction"));
@@ -11,7 +12,11 @@ const Testimony = dynamic(() => import("@/components/home/Testimony"));
 
 const Partners = () => {
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({ ready: true });
+  const pathname = usePathname();
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
 
   return (
     <ConfigProvider

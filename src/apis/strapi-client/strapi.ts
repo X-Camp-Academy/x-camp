@@ -28,7 +28,11 @@ import {
 } from "./define";
 import { isArray } from "lodash";
 import { StrapiResponseDataItem } from "./strapiDefine";
-import { classifyByAttribution, filterByAttribution } from "@/utils/public";
+import {
+  classifyByAttribution,
+  deduplicateArray,
+  filterByAttribution,
+} from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 /**
  *
@@ -188,16 +192,16 @@ export const useGetTestimony = ({
       const res = await client.getTestimony(params);
       let data = [];
       // 根据courseId, pageName, eventId做筛选，根据category做分类
-      if (courseId && courseId?.length > 0) {
+      if (courseId) {
         data.push(...filterByAttribution(res?.data, "courseId", courseId));
       }
-      if (pageName && pageName?.length > 0) {
+      if (pageName) {
         data.push(...filterByAttribution(res?.data, "pageName", pageName));
       }
-      if (eventId && eventId?.length > 0) {
+      if (eventId) {
         data.push(...filterByAttribution(res?.data, "eventId", eventId));
       }
-      return data;
+      return deduplicateArray(data); // 去重
     },
     {
       defaultParams: [
@@ -445,15 +449,16 @@ export const useGetFaq = <
       const res = await client.getFaq(params);
       let data = [];
       // 根据courseId, pageName, eventId做筛选，根据category做分类
-      if (courseId && courseId?.length > 0) {
+      if (courseId) {
         data.push(...filterByAttribution(res?.data, "courseId", courseId));
       }
-      if (pageName && pageName?.length > 0) {
+      if (pageName) {
         data.push(...filterByAttribution(res?.data, "pageName", pageName));
       }
-      if (eventId && eventId?.length > 0) {
+      if (eventId) {
         data.push(...filterByAttribution(res?.data, "eventId", eventId));
       }
+      data = deduplicateArray(data); // 去重
       if (isClassify) {
         return classifyByAttribution(res?.data, "category") as R;
       } else {

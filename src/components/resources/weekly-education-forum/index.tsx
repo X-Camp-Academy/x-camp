@@ -8,11 +8,16 @@ import UpcomingEvents from "./upcoming-events";
 import RecentActivities from "./recent-activities";
 import Activities from "./activities";
 import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 const { Content } = Layout;
 
 const WeeklyEducationForum = () => {
+  const pathname = usePathname();
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({ ready: true });
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
 
   return (
     <ConfigProvider

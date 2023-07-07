@@ -14,15 +14,18 @@ import {
 } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import Faqs from "@/components/common/faqs";
+import { useParams } from "next/navigation";
 const { Content } = Layout;
 
 const CourseDetail = () => {
+  const params = useParams();
   const { data } = useGetCourseDetail();
 
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({ ready: true });
-
-  console.log(data);
+  // 请求当前 courseId 的评论
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    courseId: [params?.courseId],
+  });
 
   const { data: faq } = useGetFaq({
     ready: true,

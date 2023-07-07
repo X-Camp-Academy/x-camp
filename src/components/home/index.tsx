@@ -19,9 +19,12 @@ const Testimony = dynamic(() => import("./Testimony"));
 
 const { Content } = Layout;
 
-const Home: React.FC = () => {
+const Home = () => {
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({ ready: true });
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: ["/home"],
+  });
 
   return (
     <ConfigProvider

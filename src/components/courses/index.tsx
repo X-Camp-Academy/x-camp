@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { classesData } from "./define";
 import Testimony from "../home/Testimony";
 // import AnchorNav from './AnchorNav';
@@ -20,11 +20,15 @@ const { Panel } = Collapse;
 const { Content } = Layout;
 
 const Courses = () => {
+  const pathname = usePathname();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses();
 
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({ ready: true });
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
 
   const courseLevelTypeMap = new Map();
   courseLevelType?.forEach((item) => {
@@ -38,9 +42,6 @@ const Courses = () => {
     value?.push(item);
     courseLevelTypeMap.set(key, value);
   });
-
-  console.log(courses);
-  console.log(courseLevelTypeMap);
 
   return (
     <ConfigProvider
@@ -117,7 +118,7 @@ const Courses = () => {
                                           "6th+ Graders. No prior coding expected…",
                                         ]}
                                         time="10 weeks"
-                                        href={`/courses/detail?courseId=${g.id}`}
+                                        href={`/courses/detail/${g.id}`}
                                       />
                                     );
                                   })}
