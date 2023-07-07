@@ -61,7 +61,6 @@ const Faculty: React.FC = () => {
           className={styles.prev}
           onClick={onPrev}
         >
-          {}
           <LeftOutlined />
         </Button>
         <Carousel
@@ -111,7 +110,7 @@ const Faculty: React.FC = () => {
                         )}
                       </Text>
                       <Paragraph
-                        ellipsis={{ rows: 5 }}
+                        ellipsis={{ rows: 3 }}
                         className={styles.description}
                       >
                         {getTransResult(

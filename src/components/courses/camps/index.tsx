@@ -19,7 +19,15 @@ const { Content } = Layout;
 const CourseCamps = () => {
   //获取师生评价数据
   const { data: testimonyData } = useGetTestimony();
-  const { data: courses } = useGetCourses("true");
+  const params = {
+    isCamp: {
+      $eq: true
+    }
+  }
+  const { data: courses,  } = useGetCourses(params);
+
+  console.log(courses);
+  
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
     category: FaqCategory.CoursesQA,

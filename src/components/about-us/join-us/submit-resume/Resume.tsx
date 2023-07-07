@@ -9,6 +9,8 @@ import { useParams } from "next/navigation";
 
 const Resume = () => {
   const params = useParams();
+  console.log(params);
+  
   const { data: aboutUsJoinUs, runAsync: getAboutUsJoinUs } =
     useGetAboutUsJoinUs();
 

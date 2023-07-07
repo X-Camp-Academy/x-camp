@@ -5,10 +5,10 @@ import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
-  GetAboutUsIntroArticleRequest,
+  GetAboutUsAlumniMapRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
-  GetCourseDetailRequest,
+  GetClassesRequest,
   GetCourseLevelTypeRequest,
   GetCoursesRequest,
   GetFacultyRequest,
@@ -25,9 +25,15 @@ import {
   GetFaqRequest,
   GetFaq,
   FaqCategory,
+  GetAboutUsIntroArticleRequest,
+  GetCourses,
 } from "./define";
 import { isArray } from "lodash";
-import { StrapiResponseDataItem } from "./strapiDefine";
+import {
+  AndOrFilters,
+  FilterFields,
+  StrapiResponseDataItem,
+} from "./strapiDefine";
 import { classifyByAttribution, filterByAttribution } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 /**
@@ -191,7 +197,7 @@ export const useGetTestimony = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Home Student Projects
  */
 export const useGetHomeStudentProjects = () => {
   const client = useStrapiClient();
@@ -214,7 +220,7 @@ export const useGetHomeStudentProjects = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Course Level Type
  */
 export const useGetCourseLevelType = () => {
   const client = useStrapiClient();
@@ -237,11 +243,17 @@ export const useGetCourseLevelType = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Courses
  */
-export const useGetCourses = (isCamp?: string) => {
+export const useGetCourses = (
+  params?:
+    | Partial<FilterFields<GetCourses>>
+    | AndOrFilters<FilterFields<GetCourses>>
+    | undefined
+) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
+
   return useRequest(
     async (params: GetCoursesRequest) => {
       const res = await client.getCourses(params);
@@ -251,11 +263,7 @@ export const useGetCourses = (isCamp?: string) => {
       defaultParams: [
         {
           populate: "*",
-          filters: {
-            isCamp: {
-              $eq: isCamp,
-            },
-          },
+          filters: params ?? {},
           sort: ["order:desc"],
         },
       ],
@@ -266,24 +274,45 @@ export const useGetCourses = (isCamp?: string) => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Course Classes
  */
-export const useGetCourseDetail = () => {
+export const useGetClasses = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetCourseDetailRequest) => {
-      const res = await client.getCourseDetail(params);
+    async (params: GetClassesRequest) => {
+      const res = await client.getClasses(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
         {
           populate: "*",
-          sort: ["order:desc"],
         },
       ],
-      manual: true,
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Alumni Map
+ */
+export const useGetAboutUsAlumniMap = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetAboutUsAlumniMapRequest) => {
+      const res = await client.getAboutUsAlumniMap(params);
+      return res?.data?.attributes;
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
       onError: handleError,
     }
   );

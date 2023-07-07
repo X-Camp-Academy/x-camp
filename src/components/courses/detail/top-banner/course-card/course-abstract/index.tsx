@@ -1,23 +1,37 @@
-import { Button, Space } from "antd";
-import React from "react";
+import { Button, Space, Typography } from "antd";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
+import CourseClassesContext from "../../../CourseClasses";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
+
+const { Title, Paragraph, Text } = Typography;
 
 const CourseAbstract = () => {
+  const { lang } = useLang();
+  const courseData = useContext(CourseClassesContext);
+  const {
+    courseCode,
+    courseLongDescriptionEn,
+    courseLongDescriptionZh,
+    tuitionUSD,
+  } = courseData?.attributes ?? {};
   return (
-    <Space className={styles.abstract}>
+    <Space className={styles.abstract} size={24}>
       <div className={styles.left}>
-        <div className={styles.title}>{"CS100P+CS101P:"}</div>
-        <div className={styles.title}>{"Introduce"}</div>
-        <p className={styles.abstract}>
-          {`Python with visualization and fun projects.
-Learn basic abstraction, modularity and problem decomposition.
-Creative group projects to connect all and inspire love in coding.
-Final presentation for the project.`}
-        </p>
+        <div className={styles.title}>{courseCode}</div>
+        <div className={styles.title}>{"Description"}</div>
+        <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
+          {getTransResult(
+            lang,
+            courseLongDescriptionZh,
+            courseLongDescriptionEn
+          )}
+        </Paragraph>
       </div>
       <div className={styles.right}>
         <div className={styles.title}>{"One-Time Payment"}</div>
-        <div className={styles.price}>{"$1580"}</div>
+        <div className={styles.price}>{`$${tuitionUSD}`}</div>
         <Button type="primary" className={styles.btn}>
           {"Sign Up Now"}
         </Button>
