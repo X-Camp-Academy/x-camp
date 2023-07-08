@@ -131,7 +131,7 @@ export interface GetXAlumni extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  img: StrapiMedias;
+  img: StrapiMedia;
   order: number;
 }
 

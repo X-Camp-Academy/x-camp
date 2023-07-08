@@ -91,21 +91,14 @@ const CarouselContent: React.FC = () => {
       <div className={styles.cardFrom}>
         <Card
           title="Free Consultation"
-          extra={
-            <Image
-              src="/image/home/think.png"
-              alt="logo"
-              preview={false}
-              className={styles.extraImage}
-            />
-          }
           headStyle={{
-            color: "#fff",
-            fontSize: 20,
+            color: "#172142",
+            fontSize: 24,
             fontWeight: "normal",
             height: 64,
             lineHeight: 36,
-            backgroundColor: "#FFAD11",
+            textAlign: "center",
+            borderBottom: "none"
           }}
           bodyStyle={{
             paddingTop: 36,

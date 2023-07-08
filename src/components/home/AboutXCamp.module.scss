@@ -2,12 +2,12 @@
   width: 100%;
   margin-top: 100px;
   padding-bottom: 100px;
-  background-color: #ffeddf;
   .aboutXCamp {
     padding-top: 42px;
     .aboutXCampTop {
       text-align: center;
       margin-bottom: 20px;
+      position: relative;
       .title {
         font-size: 36px;
         font-weight: 600;
@@ -33,30 +33,32 @@
     .row {
       width: 100%;
       @media (max-width: 768px) {
-        margin-left: 0!important;
-        margin-right: 0!important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
       .card {
         margin-top: 24px;
+        background-color: #fff;
+        text-align: center;
         &:hover {
-          box-shadow: 0px 9px 25px -4px rgba(212, 107, 20, 0.4);
+          box-shadow: 0px 9px 25px -4px #d8d8d8;
         }
         .cardIcon {
-          width: 50px;
-          height: 50px;
-          box-shadow: 0 0 5px #ffad11;
-          border-radius: 5px;
+          width: 56px;
+          height: 56px;
+          border-radius: 4px;
+          background-color: #fff;
         }
         .cardTitle {
-          color: #ffad11;
           font-size: 24px;
           font-weight: 600;
-          line-height: 35px;
+          color: #172142;
+          line-height: 36px;
         }
         .cardParagraph {
           color: #666666;
           font-size: 16px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 28px;
           height: 144px;
         }

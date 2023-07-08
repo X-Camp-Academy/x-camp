@@ -6,7 +6,7 @@ import "animate.css";
 import styles from "./DiscoverCourses.module.scss";
 import { addAnimate, removeAnimate } from "@/utils";
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 const DiscoverCourses: React.FC = () => {
   const courseCards = [

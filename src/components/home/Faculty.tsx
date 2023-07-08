@@ -5,7 +5,7 @@ import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import ColorfulCard from "../common/colorful-card";
 import { CarouselRef } from "antd/es/carousel";
-import { useGetCourses, useGetFaculty } from "@/apis/strapi-client/strapi";
+import { useGetFaculty } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
@@ -14,14 +14,13 @@ const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
   const { lang } = useLang();
-  const { data: coursesData } = useGetCourses();
-
-  const { data: facultyData } = useGetFaculty({
-    pageName: ['/home']
+  const { data } = useGetFaculty({
+    pageName: ["/home"],
   });
 
-  console.log(facultyData);
-
+  const facultyData = data?.sort(
+    (a, b) => b?.attributes?.order - a?.attributes?.order
+  );
   const computedStyle = (index: number) => {
     const iconDefaultStyle = {
       color: "#d46b14",
@@ -37,7 +36,6 @@ const Faculty: React.FC = () => {
   };
 
   const carouselRef = useRef<CarouselRef>(null);
-
   const onPrev = () => {
     carouselRef?.current?.prev();
   };
