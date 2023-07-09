@@ -19,17 +19,26 @@
     }
 
     .carouselContainer {
-      position: relative;
-        .imageContainer {
-          width: 100%;
+      margin-top: 36px;
+      .imageContainer {
+        position: relative;
+        padding-left: 15px;
+        padding-right: 15px;
+        .image {
+          width: 288px;
+          height: 320px;
           border-radius: 12px;
-          padding-left: 15px; 
-          padding-right: 15px;
-          .image {
-            width: 100%;
-            height: 320px;
-          }
         }
+        .cardTitle {
+          font-size: 24px;
+          font-weight: 600;
+          color: #ffffff;
+          line-height: 48px;
+          position: absolute;
+          bottom: 0;
+          left: 30px;
+        }
+      }
     }
   }
 }

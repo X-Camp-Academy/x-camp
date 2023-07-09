@@ -13,6 +13,7 @@ import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import Link from "next/link";
 
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
@@ -64,15 +65,10 @@ const StudentProjects: React.FC = () => {
                   <Card
                     key={item?.id}
                     className={styles.card}
-                    bodyStyle={
-                      isMobile
-                        ? {
-                            padding: 8,
-                          }
-                        : {
-                            padding: 40,
-                          }
-                    }
+                    bodyStyle={{
+                      overflow: "hidden",
+                      padding: 16
+                    }}
                     cover={
                       <iframe
                         width="100%"
@@ -91,7 +87,7 @@ const StudentProjects: React.FC = () => {
                           item?.attributes?.titleEn
                         )}
                         description={
-                          <Paragraph ellipsis={{ rows: 5 }}>
+                          <Paragraph ellipsis={{ rows: 3 }}>
                             {getTransResult(
                               lang,
                               item?.attributes?.descriptionZh,
@@ -99,15 +95,10 @@ const StudentProjects: React.FC = () => {
                             )}
                           </Paragraph>
                         }
-                        className={styles.cardMeta}
                       />
-                      <Button
-                        type="primary"
-                        shape="circle"
-                        className={styles.cardButton}
-                      >
-                        <RightOutlined />
-                      </Button>
+                      <Link href="/" className={styles.cardMore}>
+                        More <RightOutlined />
+                      </Link>
                     </Space>
                   </Card>
                 ))}

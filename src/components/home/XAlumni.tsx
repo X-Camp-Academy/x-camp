@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
-import { Space, Card, Typography, Carousel, Image } from "antd";
+import { Space, Typography, Carousel, Image } from "antd";
 import styles from "./XAlumni.module.scss";
 import { useMobile } from "@/utils";
-import ColorfulCard from "../common/colorful-card";
 import { useGetXAlumni } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 
-const { Title, Text, Paragraph } = Typography;
+const { Title, Paragraph } = Typography;
 const XAlumni = () => {
   const { lang, format: t } = useLang();
   const { data: xAlumni } = useGetXAlumni();
@@ -58,7 +57,7 @@ const XAlumni = () => {
           >
             {xAlumni?.map((item, index) => {
               return (
-                <div  key={index} className={styles.imageContainer}>
+                <div key={index} className={styles.imageContainer}>
                   <Image
                     alt=""
                     preview={false}
