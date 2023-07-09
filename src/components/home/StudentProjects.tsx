@@ -2,12 +2,7 @@
 import React from "react";
 import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
 import styles from "./StudentProjects.module.scss";
-import {
-  RightCircleOutlined,
-  RightOutlined,
-  SwapLeftOutlined,
-  SwapRightOutlined,
-} from "@ant-design/icons";
+import { RightOutlined } from "@ant-design/icons";
 import { useMobile } from "@/utils";
 import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
@@ -67,7 +62,7 @@ const StudentProjects: React.FC = () => {
                     className={styles.card}
                     bodyStyle={{
                       overflow: "hidden",
-                      padding: 16
+                      padding: 16,
                     }}
                     cover={
                       <iframe
@@ -80,22 +75,20 @@ const StudentProjects: React.FC = () => {
                     }
                   >
                     <Space direction="vertical" size={24}>
-                      <Meta
-                        title={getTransResult(
+                      <Text className={styles.cardTitle}>
+                        {getTransResult(
                           lang,
                           item?.attributes?.titleZh,
                           item?.attributes?.titleEn
                         )}
-                        description={
-                          <Paragraph ellipsis={{ rows: 3 }}>
-                            {getTransResult(
-                              lang,
-                              item?.attributes?.descriptionZh,
-                              item?.attributes?.descriptionEn
-                            )}
-                          </Paragraph>
-                        }
-                      />
+                      </Text>
+                      <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
+                        )}
+                      </Paragraph>
                       <Link href="/" className={styles.cardMore}>
                         More <RightOutlined />
                       </Link>

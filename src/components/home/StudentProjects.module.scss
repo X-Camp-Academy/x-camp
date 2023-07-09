@@ -20,7 +20,7 @@
     @extend .paragraphText;
     color: #172142;
     text-align: center;
-    margin: auto 132px 80px 132px;
+    margin-bottom: 80px;
     @media (max-width: 768px) {
       margin: auto;
       margin-bottom: 80px;
@@ -39,12 +39,12 @@
         width: 50%;
         border-radius: 0;
         position: relative;
-        :global(.ant-card-meta-title) {
+        .cardTitle {
           font-size: 24px;
           font-weight: 600;
           line-height: 54px;
         }
-        :global(.ant-card-meta-description) {
+        .cardParagraph {
           color: #666666;
           font-size: 14px;
           font-weight: 400;
@@ -56,9 +56,6 @@
           left: 16px;
           bottom: 16px;
           color: #172142;
-          @media (max-width: 768px) {
-            bottom: 0px;
-          }
         }
       }
     }

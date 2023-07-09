@@ -5,22 +5,21 @@ import {
   Space,
   Button,
   Card,
-  Image,
   Form,
   Input,
   Typography,
   Row,
   Col,
-  message,
 } from "antd";
-
-import styles from "./CarouselContent.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
 import { openClassEmailRequest } from "@/apis/send-email-client";
+import styles from "./CarouselContent.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
 const CarouselContent: React.FC = () => {
+  const { format: t } = useLang();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
@@ -90,7 +89,7 @@ const CarouselContent: React.FC = () => {
 
       <div className={styles.cardFrom}>
         <Card
-          title="Free Consultation"
+          title={t("FreeConsultation")}
           headStyle={{
             color: "#172142",
             fontSize: 24,
@@ -98,7 +97,7 @@ const CarouselContent: React.FC = () => {
             height: 64,
             lineHeight: 36,
             textAlign: "center",
-            borderBottom: "none"
+            borderBottom: "none",
           }}
           bodyStyle={{
             paddingTop: 36,
@@ -112,11 +111,11 @@ const CarouselContent: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input child's name!",
+                  message: "Please input child's nickname!",
                 },
               ]}
             >
-              <Input placeholder="孩子昵称" />
+              <Input placeholder="Child Nickname*" />
             </Form.Item>
 
             <Form.Item
@@ -128,7 +127,7 @@ const CarouselContent: React.FC = () => {
                 },
               ]}
             >
-              <Input placeholder="孩子年级" />
+              <Input placeholder="Child Grade*" />
             </Form.Item>
 
             <Form.Item
@@ -141,7 +140,7 @@ const CarouselContent: React.FC = () => {
                 },
               ]}
             >
-              <Input type="email" placeholder="E-mail" />
+              <Input type="email" placeholder="E-mail*" />
             </Form.Item>
 
             <Form.Item
@@ -149,11 +148,11 @@ const CarouselContent: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your number!",
+                  message: "Please input your number/wechat ID!",
                 },
               ]}
             >
-              <Input placeholder="wechat ID/Phone Number" />
+              <Input placeholder="Phone Number/Wechat ID*" />
             </Form.Item>
 
             <Form.Item>
@@ -162,7 +161,7 @@ const CarouselContent: React.FC = () => {
                 htmlType="submit"
                 className={styles.submit}
               >
-                {"免费预约公开课（每周二）"}
+                Submit And Get Free USACO Toolkit
               </Button>
             </Form.Item>
           </Form>
