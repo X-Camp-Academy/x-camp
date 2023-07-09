@@ -3,7 +3,6 @@ import { useHandleError } from "@/utils/error";
 import { usePagination, useRequest } from "ahooks";
 import {
   AboutUsJoinUsCategory,
-  ActivityCategory,
   GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAlumniMapRequest,
@@ -70,13 +69,11 @@ export const useGetFaculty = () => {
  * @return 获取NewEvent
  */
 export const useGetNewEvent = ({
-  activityTag,
   tag,
   current,
   pageSize,
 }: {
-  activityTag?: ActivityCategory;
-  tag: NewEventCategory;
+  tag?: NewEventCategory ;
   current: number;
   pageSize: number;
 }) => {
@@ -94,17 +91,6 @@ export const useGetNewEvent = ({
           populate: "*",
           sort: ["order:desc"],
           filters: {
-            /* $and: [
-              {
-                tags: {
-                  $eq: tag,
-                },
-                activityCategory: {
-                  $eq: activityTag,
-                },
-              },
-            ], */
-
             tags: {
               $eq: tag,
             },

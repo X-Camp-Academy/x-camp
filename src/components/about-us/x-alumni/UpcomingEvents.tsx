@@ -24,41 +24,64 @@ const UpcomingEvents: React.FC = () => {
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
 
   const monthNameEn = [
-    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
-  const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-  const getMonth = (date: string) => {
-    return monthNameEn[new Date(date).getMonth() + 1];
-  }
+  const formatDate = (dateString: string, lang: string) => {
+    const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+    const weekdaysEn = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let formatString = "";
+    let formattedDate = "";
+    const dayInfo = dayjs(dateString);
+    if (lang === "zh") {
+      formatString = "YYYY年MM月DD日";
+      formattedDate =
+        dayInfo.format(formatString) + " " + weekdaysZh[dayInfo.day()];
+    } else if (lang === "en") {
+      formatString = "DD, YYYY";
+      formattedDate =
+        weekdaysEn[dayInfo.day()] +
+        ", " +
+        monthNameEn[dayInfo.month()] +
+        " " +
+        dayInfo.format(formatString);
+    }
 
-  const getDate = (date: string) => {
-    return new Date(date).getDate();
-  }
-
-  const getWeekDay = (date: string) => {
-    return weekdays[new Date(date).getDay()];
-  }
-
-  const getYear = (date: string) => {
-    return new Date(date).getFullYear();
-  }
-
-  const formatDate = (date: string) => {
-    const formattedDate = dayjs(date).format('YYYY-MM-DD HH:mm');
     return formattedDate;
-  }
+  };
 
   const { data: newEventData } = useGetNewEvent({
     tag,
     current,
-    pageSize
+    pageSize,
   });
 
   const upComingEvent = newEventData?.data.filter((item, index) => {
-    return item?.attributes?.datetime && (new Date(item?.attributes?.datetime)).getTime() - new Date().getTime() > 0;
-  })
+    return (
+      item?.attributes?.datetime &&
+      new Date(item?.attributes?.datetime).getTime() - new Date().getTime() > 0
+    );
+  });
 
   return (
     <div className={styles.upcomingEventsContainer}>
@@ -75,36 +98,72 @@ const UpcomingEvents: React.FC = () => {
 
         <Row gutter={32} className={styles.row}>
           {upComingEvent?.slice(0, 3).map((item, index) => {
-            if (item?.attributes?.datetime && item?.attributes.start && item?.attributes.end)
+            if (
+              item?.attributes?.datetime &&
+              item?.attributes.start &&
+              item?.attributes.end
+            )
               return (
                 <Col key={index} xs={24} sm={24} md={8}>
                   <ColorfulCard border="bottom" index={index}>
                     <Card>
                       <Space direction="vertical">
-                        <Text className={styles.cardMonth}>{getMonth(item.attributes?.datetime)}</Text>
-                        <Text className={styles.cardDay}>{getDate(item.attributes?.datetime)}</Text>
+                        <Text className={styles.cardMonth}>
+                          {lang === "en"
+                            ? monthNameEn[
+                                dayjs(item.attributes?.datetime).month()
+                              ]
+                            : dayjs(item.attributes?.datetime).month() +
+                              1 +
+                              "月"}
+                        </Text>
+                        <Text className={styles.cardDay}>
+                          {dayjs(item.attributes?.datetime).date()}
+                        </Text>
                         <Paragraph className={styles.cardParagraph}>
-                          {
-                            getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)
-                          }
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.titleZh,
+                            item?.attributes?.titleEn
+                          )}
                         </Paragraph>
                         <Space direction="vertical">
                           <Text className={styles.cardText}>
                             <HistoryOutlined className={styles.cardIcon} />
                             {`
-                            ${getWeekDay(item.attributes?.datetime)}, 
-                            ${getMonth(item.attributes?.datetime)} 
-                            ${getDate(item.attributes?.datetime)}, 
-                            ${getYear(item.attributes?.datetime)} | 
-                            ${item?.attributes?.start.substring(0, 5)} ${Number(item?.attributes?.start.substring(0, 2)) < 12 ? "AM" : "PM"} - 
-                            ${item?.attributes?.end.substring(0, 5)} ${Number(item?.attributes?.end.substring(0, 2)) < 12 ? "AM" : "PM"} 
-                            UTC ${item.attributes.timeZone > 0 ? '+' + item.attributes.timeZone : item.attributes.timeZone}
+                            ${formatDate(item?.attributes?.datetime, lang)} | 
+                            ${item?.attributes?.start.substring(0, 5)} ${
+                              Number(item?.attributes?.start.substring(0, 2)) <
+                              12
+                                ? "AM"
+                                : "PM"
+                            } - 
+                            ${item?.attributes?.end.substring(0, 5)} ${
+                              Number(item?.attributes?.end.substring(0, 2)) < 12
+                                ? "AM"
+                                : "PM"
+                            } 
+                            UTC ${
+                              item.attributes.timeZone > 0
+                                ? "+" + item.attributes.timeZone
+                                : item.attributes.timeZone
+                            }
                             `}
                           </Text>
                           <Text className={styles.cardText}>
                             <LaptopOutlined className={styles.cardIcon} />
-                            {!item.attributes.geographicallyAddress && item.attributes.link && item.attributes.onlinePlatform ?
-                              <a href={item.attributes.link} style={{ color: "#666666" }}>{item.attributes.onlinePlatform}</a> : item.attributes.geographicallyAddress}
+                            {!item.attributes.geographicallyAddress &&
+                            item.attributes.link &&
+                            item.attributes.onlinePlatform ? (
+                              <a
+                                href={item.attributes.link}
+                                style={{ color: "#666666" }}
+                              >
+                                {item.attributes.onlinePlatform}
+                              </a>
+                            ) : (
+                              item.attributes.geographicallyAddress
+                            )}
                           </Text>
                           <Text className={styles.cardText}>
                             <UserOutlined className={styles.cardIcon} />
@@ -115,42 +174,77 @@ const UpcomingEvents: React.FC = () => {
                     </Card>
                   </ColorfulCard>
                 </Col>
-              )
-
+              );
           })}
         </Row>
         <Row gutter={32} className={styles.row}>
           {upComingEvent?.slice(3, 6).map((item, index) => {
-            if (item?.attributes?.datetime && item?.attributes.start && item?.attributes.end)
+            if (
+              item?.attributes?.datetime &&
+              item?.attributes.start &&
+              item?.attributes.end
+            )
               return (
                 <Col key={index} xs={24} sm={24} md={8}>
                   <ColorfulCard border="bottom" index={index}>
                     <Card>
                       <Space direction="vertical">
-                        <Text className={styles.cardMonth}>{getMonth(item.attributes?.datetime)}</Text>
-                        <Text className={styles.cardDay}>{getDate(item.attributes?.datetime)}</Text>
+                        <Text className={styles.cardMonth}>
+                          {lang === "en"
+                            ? monthNameEn[
+                                dayjs(item.attributes?.datetime).month()
+                              ]
+                            : dayjs(item.attributes?.datetime).month() +
+                              1 +
+                              "月"}
+                        </Text>
+                        <Text className={styles.cardDay}>
+                          {dayjs(item.attributes?.datetime).date()}
+                        </Text>
                         <Paragraph className={styles.cardParagraph}>
-                          {
-                            getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)
-                          }
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.titleZh,
+                            item?.attributes?.titleEn
+                          )}
                         </Paragraph>
                         <Space direction="vertical">
                           <Text className={styles.cardText}>
                             <HistoryOutlined className={styles.cardIcon} />
                             {`
-                            ${getWeekDay(item.attributes?.datetime)}, 
-                            ${getMonth(item.attributes?.datetime)} 
-                            ${getDate(item.attributes?.datetime)}, 
-                            ${getYear(item.attributes?.datetime)} | 
-                            ${item?.attributes?.start.substring(0, 5)} ${Number(item?.attributes?.start.substring(0, 2)) < 12 ? "AM" : "PM"} - 
-                            ${item?.attributes?.end.substring(0, 5)} ${Number(item?.attributes?.end.substring(0, 2)) < 12 ? "AM" : "PM"} 
-                            UTC ${item.attributes.timeZone > 0 ? '+' + item.attributes.timeZone : item.attributes.timeZone}
+                            ${formatDate(item?.attributes?.datetime, lang)} | 
+                            ${item?.attributes?.start.substring(0, 5)} ${
+                              Number(item?.attributes?.start.substring(0, 2)) <
+                              12
+                                ? "AM"
+                                : "PM"
+                            } - 
+                            ${item?.attributes?.end.substring(0, 5)} ${
+                              Number(item?.attributes?.end.substring(0, 2)) < 12
+                                ? "AM"
+                                : "PM"
+                            } 
+                            UTC ${
+                              item.attributes.timeZone > 0
+                                ? "+" + item.attributes.timeZone
+                                : item.attributes.timeZone
+                            }
                             `}
                           </Text>
                           <Text className={styles.cardText}>
                             <LaptopOutlined className={styles.cardIcon} />
-                            {!item.attributes.geographicallyAddress && item.attributes.link && item.attributes.onlinePlatform ?
-                              <a href={item.attributes.link} style={{ color: "#666666" }}>{item.attributes.onlinePlatform}</a> : item.attributes.geographicallyAddress}
+                            {!item.attributes.geographicallyAddress &&
+                            item.attributes.link &&
+                            item.attributes.onlinePlatform ? (
+                              <a
+                                href={item.attributes.link}
+                                style={{ color: "#666666" }}
+                              >
+                                {item.attributes.onlinePlatform}
+                              </a>
+                            ) : (
+                              item.attributes.geographicallyAddress
+                            )}
                           </Text>
                           <Text className={styles.cardText}>
                             <UserOutlined className={styles.cardIcon} />
@@ -161,8 +255,7 @@ const UpcomingEvents: React.FC = () => {
                     </Card>
                   </ColorfulCard>
                 </Col>
-              )
-
+              );
           })}
         </Row>
       </div>
