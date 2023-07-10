@@ -1,73 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Space, Row, Col, Card, Image, Typography, Tag, Avatar } from "antd";
+import { useGetIntroductionFacultyCoach } from "@/apis/strapi-client/strapi";
 import styles from "./FacultyCoach.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
 const { Title, Paragraph, Text } = Typography;
 
+
 const FacultyCoach: React.FC = () => {
-  const facultyData = [
-    [
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-    ],
-    [
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-    ],
-    [
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-      {
-        name: "Michael",
-        avatar: "/image/about-us/introduction/faculty-coach.png",
-        description:
-          "Senior software engineer with more than 20 years of experience. After earning a Master Degree in computer science",
-      },
-    ],
-  ];
+  const { lang } = useLang();
+
+  const { data: facultyCoachData } = useGetIntroductionFacultyCoach();
+
+  const getImgUrl = (img: StrapiMedia) => {
+    return img?.data?.attributes?.url;
+  };
 
   const computedStyle = (index: number) => {
     const defaultStyle = {
@@ -94,7 +44,7 @@ const FacultyCoach: React.FC = () => {
           </Paragraph>
         </Space>
 
-        {facultyData.map((faculty, facultyIndex) => (
+        {facultyCoachData?.map((faculty, facultyIndex) => (
           <Row
             key={facultyIndex}
             justify="center"
@@ -102,7 +52,10 @@ const FacultyCoach: React.FC = () => {
             gutter={48}
             className={styles.row}
           >
+
             {faculty.map((item, index) => (
+
+
               <Col
                 key={index}
                 xs={{ span: 24 }}
@@ -113,13 +66,32 @@ const FacultyCoach: React.FC = () => {
                 <div style={computedStyle(index)}>
                   <Card>
                     <Space direction="vertical">
-                      <Avatar src={item.avatar} className={styles.avatar} />
-                      <Text className={styles.name}>{item?.name}</Text>
+                      <Avatar src={getImgUrl(item?.attributes?.avatar)} className={styles.avatar} />
+                      <Text className={styles.name}>{
+                        getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )
+                      }</Text>
                       <Paragraph
-                        ellipsis={{ rows: 5 }}
+                        ellipsis={{
+                          rows: 3,
+                          tooltip: getTransResult(
+                            lang,
+                            item?.attributes?.descriptionZh,
+                            item?.attributes?.descriptionEn
+                          )
+                        }}
                         className={styles.description}
                       >
-                        {item?.description}
+                        {
+                          getTransResult(
+                            lang,
+                            item?.attributes?.descriptionZh,
+                            item?.attributes?.descriptionEn
+                          )
+                        }
                       </Paragraph>
                     </Space>
                   </Card>

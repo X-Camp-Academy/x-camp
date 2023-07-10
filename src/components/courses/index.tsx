@@ -46,6 +46,30 @@ const Courses: React.FC = () => {
     (item) => item?.attributes?.type
   );
 
+  const courseLevelTypeMap = new Map();
+  courseLevelTypeData?.forEach((item) => {
+    courseLevelTypeMap.set(item, []);})
+ 
+
+
+
+  courses?.forEach((item) => {
+    const key = item?.attributes?.courseLevelType?.data?.attributes?.type;
+    const value = courseLevelTypeMap.get(key);
+    value?.push(item);
+    courseLevelTypeMap.set(key, value);
+  });
+
+  courseLevelTypeMap.forEach((value, key) => {
+    // 在这里对每个键值对执行操作
+    // console.log(key, value);
+  });
+
+  // console.log(courses);
+  console.log(courses);
+  console.log(courses);
+  console.log(courseLevelTypeMap);
+
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
       case "Online Courses":
@@ -203,6 +227,7 @@ const Courses: React.FC = () => {
               );
             })}
           </div>
+
           <Testimony testimonyData={testimonyData} />
           <AnchorNav />
         </Content>

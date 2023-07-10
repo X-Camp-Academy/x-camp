@@ -21,6 +21,54 @@ export interface GetFaculty extends strapiPublicFields {
 export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
+export interface GetIntroductionFacultyCoach extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  avatar: StrapiMedia;
+}
+export type GetIntroductionFacultyCoachRequest =
+  StrapiRequest<GetIntroductionFacultyCoach>;
+export type GetIntroductionFacultyCoachResponse =
+  StrapiResponse<GetIntroductionFacultyCoach>;
+
+export enum NewEventCategory {
+  News = "News",
+  Event = "Events",
+  Activity = "Activity",
+  All = "All"
+}
+
+export enum ActivityCategory {
+  SchoolLifeSharing = "School life's sharing",
+  CodingEducation = "Coding Education",
+  CareerPath = "Career Path",
+  Research = "Research"
+}
+
+export interface GetNewEvent extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  datetime: string;
+  tags: NewEventCategory;
+  activityCategory ?: ActivityCategory;
+  order?: number;
+  editor?: string;
+  img: StrapiMedia;
+  start?: string;
+  end?: string;
+  timeZone: number;
+  organizer?: string;
+  geographicallyAddress?: string;
+  onlinePlatform?: string;
+  link?: string;
+}
+export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
+export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
+
 export interface GetHomeStudentProjects extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
