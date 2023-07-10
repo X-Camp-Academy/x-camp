@@ -1,6 +1,6 @@
 import { useStrapiClient } from ".";
 import { useHandleError } from "@/utils/error";
-import { useRequest } from "ahooks";
+import { usePagination, useRequest } from "ahooks";
 import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
@@ -14,11 +14,17 @@ import {
   GetFacultyRequest,
   GetFacultyResponse,
   GetHomeStudentProjectsRequest,
+  GetIntroductionFacultyCoach,
+  GetIntroductionFacultyCoachRequest,
+  GetIntroductionFacultyCoachResponse,
+  GetNewEventRequest,
+  GetNewEventResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
   GetTestimonyRequest,
   GetXAlumniRequest,
   GetXAlumniResponse,
+  NewEventCategory,
   GetProjectsDemoRequest,
   GetAchievementsTimeLineRequest,
   GetResourcesLiveSolutionRequest,
@@ -70,6 +76,83 @@ export const useGetFaculty = ({courseId, pageName, eventId}: Props) => {
         data = filterByAttribution(data, "eventId", eventId);
       }
       return data;
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ * @return 获取NewEvent
+ */
+export const useGetNewEvent = ({
+  tag,
+  current,
+  pageSize,
+}: {
+  tag?: NewEventCategory ;
+  current: number;
+  pageSize: number;
+}) => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+
+  return useRequest(
+    async (params: GetNewEventRequest) => {
+      const res: GetNewEventResponse = await client.getNewEvent(params);
+      return res;
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+          filters: {
+            tags: {
+              $eq: tag,
+            },
+          },
+          pagination: {
+            page: current,
+            pageSize,
+          },
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取Introduction页面下的FacultyCoach
+ */
+export const useGetIntroductionFacultyCoach = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetIntroductionFacultyCoachRequest) => {
+      const res: GetIntroductionFacultyCoachResponse =
+        await client.getIntroductionFacultyCoach(params);
+
+      function groupArray(
+        arr: StrapiResponseDataItem<GetIntroductionFacultyCoach>[]
+      ) {
+        const result: StrapiResponseDataItem<GetIntroductionFacultyCoach>[][] =
+          [];
+        for (let i = 0; i < arr.length; i += 3) {
+          result.push(arr.slice(i, i + 3));
+        }
+        return result;
+      }
+
+      return isArray(res?.data) ? groupArray(res.data) : [];
     },
     {
       defaultParams: [

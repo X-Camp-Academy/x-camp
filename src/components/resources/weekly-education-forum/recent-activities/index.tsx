@@ -1,11 +1,38 @@
 import XCollapse from "@/components/common/collapse";
 import styles from "./index.module.scss";
-import React from "react";
-import { Button, Col, Row, Space } from "antd";
+import React, { useState } from "react";
+import { Button, Col, Row, Space, Typography } from "antd";
 import ColorfulCard from "@/components/common/colorful-card";
 import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
+import { NewEventCategory, ActivityCategory } from "@/apis/strapi-client/define";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+import dayjs from "dayjs";
 
 const RecentActivities = () => {
+
+  const pageSize = 25;
+  const [current, setCurrent] = useState<number>(1);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Activity);
+  const { lang } = useLang();
+  const { data: newEventData } = useGetNewEvent({
+    tag,
+    current,
+    pageSize
+  });
+
+  const getImgUrl = (img: StrapiMedia) => {
+    return img?.data?.attributes?.url;
+  };
+
+  const RecentActivities = newEventData?.data.filter((item, index) => {
+    return item?.attributes?.datetime && (new Date(item?.attributes?.datetime)).getTime() - new Date().getTime() > 0;
+  })
+
+
+
   return (
     <div className={styles.content}>
       <div className="container">
@@ -16,21 +43,23 @@ const RecentActivities = () => {
           }}
         >
           <Row className={styles.cards} gutter={[32, 32]}>
-            {[1, 2, 3]?.map((v, index) => (
+            {RecentActivities?.slice(0, 3).map((v, index) => (
               <Col key={index} md={24} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card}>
                     <img
-                      src="/image/about-us/introduction/top-banner.png"
-                      alt=""
+                      src={getImgUrl(v.attributes.img)}
+                      alt="img"
                     />
                     <div className={styles.title}>
-                      {"2023 Spring APCS Class series are now"}
+                      {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
                     </div>
                     <div className={styles.description}>
                       <div>
                         <AlignRightOutlined className={styles.icon} />
-                        {"Coding Education"}
+
+                        {getTransResult(lang, v?.attributes.descriptionZh, v?.attributes.descriptionEn)}
+
                       </div>
                       <Button
                         type="link"
