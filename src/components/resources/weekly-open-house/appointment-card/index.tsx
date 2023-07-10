@@ -11,11 +11,11 @@ const AppointmentCard = () => {
       <div className={styles.card}>
         <div className={styles.left}>
           <div className={styles.title}>
-            {'Would you like to schedule another time?'}
+            {'Time conflict？We are here for you!'}
           </div>
           <div className={styles.description}>
             {
-              'X-Camp aim to employ the best people from a wide pool of talent in order to create an environment where everybody’s contribution is valued and respected. '
+              'X-Camp course consultants are happy to provide 1 on 1 meeting at your available time. '
             }
           </div>
           <Button className={styles.btn}>
