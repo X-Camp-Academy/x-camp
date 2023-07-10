@@ -22,7 +22,7 @@
     padding-right: 45px;
     margin-top: 32px;
     .prev {
-      background-color: #d46b14;
+      background-color: #ffad11;
       position: absolute;
       left: 0;
       top: 50%;
@@ -30,7 +30,7 @@
       z-index: 999;
     }
     .next {
-      background-color: #d46b14;
+      background-color: #ffad11;
       position: absolute;
       right: 0;
       top: 50%;
@@ -38,8 +38,8 @@
       z-index: 999;
     }
     .cardContainer {
-      margin-left: 15px;
-      margin-right: 15px;
+      padding-left: 15px;
+      padding-right: 15px;
       margin-top: 16px;
       .name {
         color: #172142;
@@ -52,6 +52,13 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 20px;
+      }
+      .more {
+        color: #172142;
+      }
+      .cardImage {
+        width: 150px;
+        height: 168px;
       }
     }
   }

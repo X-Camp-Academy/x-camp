@@ -35,12 +35,13 @@
         line-height: 24px;
       }
       .button {
-        padding: 24px 48px;
+        padding: 16px 52px;
         background: #ffad11;
-        border-radius: 36px;
-        font-size: 26px;
+        border-radius: 12px;
+        font-size: 24px;
         font-weight: 600;
         color: #ffffff;
+        line-height: 36px;
         border: 1px solid #ffad11;
         cursor: pointer;
         &:hover {
@@ -72,19 +73,9 @@
     .card {
       width: 100%;
       border: none !important;
-      box-shadow: 0px 9px 25px -4px rgba(212, 107, 20, 0.4);
+      box-shadow: 0px 9px 25px -4px #D8D8D8;
       @media (max-width: 768px) {
         margin-top: 64px;
-      }
-      .extraImage {
-        width: 60px;
-        height: 50px;
-        margin-top: 12px;
-        @media (max-width: 768px) {
-          width: 72px;
-          height: 56px;
-          margin-top: 16px;
-        }
       }
       .form {
         margin-left: 10px;

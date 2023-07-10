@@ -9,12 +9,12 @@ const AboutXCamp: React.FC = () => {
     {
       icon: "/image/home/faculty-icon.png",
       title: "Faculty",
-      desc: "aaaacccccgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggcccccccccdddddddddddddddddddddddcccccccccccccccccccccccccccccccccccccccccccccaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X-Camp teachers are composed of senior engineers from leading tech companies and contestants from international and national level informatic contests like IOI, ICPC, USACO.",
+      desc: "X-Camp teachers are composed of senior engineers from leading tech companies and contestants from international and national level informatic contests like IOI, ICPC, USACO.",
     },
     {
       icon: "/image/home/achievement-icon.png",
       title: "Achievement",
-      desc: "More than 100 X-Camp students have been qualified for USACO Silver division and above; including 25 in the Platinum division and 5 selected in the US Camp, out of which 4 were fresh from the",
+      desc: "More than 100 X-Camp students have been qualified for USACO Silver division and above; including 25 in the Platinum division and 5 selected in the US Camp, out of which 4 were fresh from the …",
     },
     {
       icon: "/image/home/community-icon.png",
@@ -41,12 +41,7 @@ const AboutXCamp: React.FC = () => {
             <Text className={styles.paragraphText}>USACO classes</Text>
           </Paragraph>
         </Space>
-        <Row
-          className={styles.row}
-          gutter={16}
-          justify="center"
-          align="middle"
-        >
+        <Row className={styles.row} gutter={16} justify="center" align="middle">
           {aboutContents.map((item) => {
             return (
               <Col key={item?.icon} xs={24} sm={24} md={24} lg={8}>
@@ -54,19 +49,16 @@ const AboutXCamp: React.FC = () => {
                   className={styles.card}
                   bodyStyle={{
                     borderRadius: 8,
-                    padding: 40,
                   }}
                 >
                   <Space direction="vertical">
-                    <Space>
-                      <Image
-                        src={item?.icon}
-                        alt="icon"
-                        preview={false}
-                        className={styles.cardIcon}
-                      />
-                      <Title className={styles.cardTitle}>{item?.title}</Title>
-                    </Space>
+                    <Image
+                      src={item?.icon}
+                      alt="icon"
+                      preview={false}
+                      className={styles.cardIcon}
+                    />
+                    <Text className={styles.cardTitle}>{item?.title}</Text>
                     <Paragraph
                       ellipsis={{ rows: 5 }}
                       className={styles.cardParagraph}

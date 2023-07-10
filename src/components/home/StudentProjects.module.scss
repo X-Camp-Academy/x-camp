@@ -20,7 +20,7 @@
     @extend .paragraphText;
     color: #172142;
     text-align: center;
-    margin: auto 132px 80px 132px;
+    margin-bottom: 80px;
     @media (max-width: 768px) {
       margin: auto;
       margin-bottom: 80px;
@@ -33,34 +33,29 @@
       margin-right: 0 !important;
     }
     .cardContainer {
-      
       display: flex;
       justify-content: space-between;
       .card {
         width: 50%;
         border-radius: 0;
         position: relative;
-        .cardMeta {
-          .ant-card-meta-title {
-            font-size: 24px;
-            font-weight: 600;
-            line-height: 54px;
-          }
-          .ant-card-meta-description {
-            color: #666666;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 24px;
-            text-align: left;
-          }
+        .cardTitle {
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 54px;
         }
-        .cardButton {
+        .cardParagraph {
+          color: #666666;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 24px;
+          text-align: left;
+        }
+        .cardMore {
           position: absolute;
-          right: 8px;
-          bottom: 24px;
-          @media (max-width: 768px) {
-            bottom: 0px;
-          }
+          left: 16px;
+          bottom: 16px;
+          color: #172142;
         }
       }
     }
