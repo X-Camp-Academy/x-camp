@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { Space, Typography, Row, Col, Image, Carousel } from "antd";
-import { addAnimate, removeAnimate } from "@/utils";
+import AnimateBox from "../common/animate-box";
 import styles from "./WeSupport.module.scss";
 
 const { Title, Paragraph } = Typography;
@@ -11,12 +11,10 @@ const WeSupport: React.FC = () => {
     "/image/home/we-support-1.png",
     "/image/home/we-support-2.png",
     "/image/home/we-support-3.png",
+    "/image/home/we-support-1.png",
+    "/image/home/we-support-2.png",
     "/image/home/we-support-3.png",
   ];
-  const refs = Array.from({ length: images.length }, () =>
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useRef<HTMLDivElement>(null)
-  );
   return (
     <div className={`${styles.weSupport} container`}>
       <Row>
@@ -63,21 +61,17 @@ const WeSupport: React.FC = () => {
               md={{ span: 24, order: 2 }}
             >
               <Carousel
-                autoplay={true}
                 slidesToShow={3}
+                autoplay={true}
                 infinite={true}
                 dots={false}
               >
                 {images.map((item, index) => {
                   return (
-                    <div
-                      key={index}
-                      ref={refs[index]}
-                      onMouseEnter={() => addAnimate(refs[index])}
-                      onMouseLeave={() => removeAnimate(refs[index])}
-                      className={styles.imageBox}
-                    >
-                      <Image src={item} alt="image" preview={false} />
+                    <div key={index}>
+                      <AnimateBox className={styles.imageBox}>
+                        <Image src={item} alt="image" preview={false} />
+                      </AnimateBox>
                     </div>
                   );
                 })}
