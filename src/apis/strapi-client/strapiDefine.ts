@@ -61,7 +61,7 @@ type sortDesc<Fields> = {
 
 // strapi 公共 请求
 export interface StrapiRequest<Fields extends strapiPublicFields> {
-  populate?: Array<keyof Fields> | '*'; // 可请求 资源
+  populate?: Array<keyof Fields> | "*"; // 可请求 资源
   filters?: Partial<FilterFields<Fields>> | AndOrFilters<FilterFields<Fields>>; // 请求筛选
   fields?: Array<keyof Fields>; // 结果显示的字段
   sort?: Array<keyof Fields> | Array<keyof sortDesc<Fields>>; // 按照字段排序  'key:desc' 降序   'key:asc' or 'key'  升序
@@ -74,7 +74,7 @@ export interface StrapiResponseDataItem<T> {
 }
 //   strapi 公共响应
 export interface StrapiResponse<Fields extends strapiPublicFields> {
-  data: Array<StrapiResponseDataItem<Fields>> | StrapiResponseDataItem<Fields>;
+  data: Array<StrapiResponseDataItem<Fields>>;
   meta?: {
     pagination?: {
       page?: number;
@@ -83,4 +83,54 @@ export interface StrapiResponse<Fields extends strapiPublicFields> {
       total?: number;
     };
   };
+}
+
+// 单个记录的响应
+export interface StrapiResponseSingleDataItem<T> {
+  data: {
+    attributes: T;
+    id: number;
+  };
+}
+
+export interface StrapiMediaAttributes {
+  attributes: {
+    alternativeText: string;
+    caption: string;
+    createdAt: string;
+    ext: string;
+    formats: {
+      thumbnail: {
+        ext: string;
+        hash: string;
+        height: number;
+        mime: string;
+        name: string;
+        path: string;
+        size: number;
+        url: string;
+        width: number;
+      };
+    };
+    hash: string;
+    height: number;
+    mime: string;
+    name: string;
+    previewUrl: string;
+    provider: string;
+    provider_metadata: string;
+    size: number;
+    updatedAt: string;
+    url: string;
+    width: number;
+  };
+  id: number;
+}
+
+export interface StrapiMedia {
+  data: StrapiMediaAttributes;
+}
+
+export interface StrapiMedias {
+  data: StrapiMediaAttributes[];
 }

@@ -5,7 +5,8 @@ import CourseAbstract from "./course-abstract";
 import styles from "./index.module.scss";
 import CourseDescription from "./course-description";
 
-const CourseCard = () => {
+
+const CourseCard:React.FC = () => {
   return (
     <div className={styles.courseCard}>
       <ColorfulCard border={"bottom"} index={1} animate={false}>

@@ -3,13 +3,17 @@ import { ConfigProvider, Layout, Space } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./top-banner";
-import Comments from "@/components/home/Comments";
+import Testimony from "@/components/home/Testimony";
 import JoinWay from "./join-way";
 import Introduction from "./introduction";
 import AppointmentCard from "./appointment-card";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const { Content } = Layout;
 
 const WeeklyOpenHouse = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   return (
     <ConfigProvider
       theme={{
@@ -26,7 +30,7 @@ const WeeklyOpenHouse = () => {
             <Introduction />
             <AppointmentCard />
           </Space>
-          <Comments />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

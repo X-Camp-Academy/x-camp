@@ -1,10 +1,4 @@
-import {
-  Space,
-  Row,
-  Card,
-  Typography,
-  Button,
-} from "antd";
+import { Space, Row, Card, Typography, Button } from "antd";
 import {
   ClockCircleOutlined,
   BranchesOutlined,
@@ -13,19 +7,32 @@ import {
 import styles from "./JobCardHeader.module.scss";
 import { useState } from "react";
 import Link from "next/link";
+import { GetAboutUsJoinUs } from "@/apis/strapi-client/define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title, Text } = Typography;
 
-const JobCardHeader: React.FC<{ showExplandBtn?: boolean }> = ({ showExplandBtn = true }) => {
-  const [isExpland, setIsExpland] = useState<boolean>(false);
-  const handlerExpland = () => {
-    setIsExpland(!isExpland);
+interface Props {
+  data: StrapiResponseDataItem<GetAboutUsJoinUs> | undefined;
+  showExpandBtn?: boolean;
+}
+
+const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
+  const { lang } = useLang();
+  const [isExpand, setIsExpand] = useState<boolean>(false);
+  const handlerExpand = () => {
+    setIsExpand(!isExpand);
   };
+
   return (
     <>
       <Card
         className={styles.cardContainer}
-        style={isExpland ? { borderRadius: '10px 10px 0 0' } : { borderRadius: 10 }}
-        onClick={handlerExpland}
+        style={
+          isExpand ? { borderRadius: "10px 10px 0 0" } : { borderRadius: 10 }
+        }
+        onClick={handlerExpand}
       >
         <Row>
           <div
@@ -36,20 +43,30 @@ const JobCardHeader: React.FC<{ showExplandBtn?: boolean }> = ({ showExplandBtn 
               alignItems: "center",
             }}
           >
-            <Title className={styles.JobCardTitle}>Admissions Counselor</Title>
-            {showExplandBtn && (
+            <Title className={styles.jobCardTitle}>
+              {getTransResult(
+                lang,
+                data?.attributes?.titleZh,
+                data?.attributes?.titleEn
+              )}
+            </Title>
+            {showExpandBtn && (
               <Button
-                className={`${styles.explandBtn} ${isExpland ? styles.explandIcon : ""
-                  }`}
+                className={`${styles.expandBtn} ${
+                  isExpand ? styles.expandIcon : ""
+                }`}
                 icon={<DownCircleOutlined />}
-              ></Button>
+              />
             )}
-
           </div>
         </Row>
         <Row>
-          <Text className={styles.JobCardDescription}>
-            We are looking for a admissions counselor to jion our team.
+          <Text className={styles.jobCardDescription}>
+            {getTransResult(
+              lang,
+              data?.attributes?.descriptionZh,
+              data?.attributes?.descriptionEn
+            )}
           </Text>
         </Row>
         <Row>
@@ -61,17 +78,25 @@ const JobCardHeader: React.FC<{ showExplandBtn?: boolean }> = ({ showExplandBtn 
             <div className={styles.iconBox}>
               <div>
                 <ClockCircleOutlined style={{ color: "#666666" }} />
-                <Text className={styles.iconText}>Full time</Text>
+                <Text className={styles.iconText}>
+                  {data?.attributes?.category}
+                </Text>
               </div>
               <div style={{ marginLeft: 20 }}>
                 <BranchesOutlined style={{ color: "#666666" }} />
-                <Text className={styles.iconText}>remote</Text>
+                <Text className={styles.iconText}>
+                  {data?.attributes?.place}
+                </Text>
               </div>
             </div>
-            {showExplandBtn && (
-              <Link className={styles.applyBtn} href="/about-us/join-us/submit-resume">Apply Now</Link>
+            {showExpandBtn && (
+              <Link
+                className={styles.applyBtn}
+                href={`/about-us/join-us/submit-resume/${data?.id}`}
+              >
+                Apply Now
+              </Link>
             )}
-
           </Space>
         </Row>
       </Card>

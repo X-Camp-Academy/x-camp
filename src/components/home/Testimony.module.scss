@@ -1,45 +1,42 @@
-.commentsContainer {
+.testimoniesContainer {
   width: 100%;
-  background-color: #ffeddf;
-
-  .comments {
+  .testimonies {
     padding: 100px 60px 100px;
     position: relative;
-
     .prev {
-      background-color: #d46b14;
+      background-color: #ffad11;
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
     }
-
     .next {
-      background-color: #d46b14;
+      background-color: #ffad11;
       position: absolute;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
     }
-
-    .cardContainer {
-      margin: 20px 15px;
-
-      .card {
-        box-shadow: 0px 9px 25px -4px rgba(212, 107, 20, 0.4);
-      }
-
-      .cardTitle {
+    .testimonyContainer {
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      .testimonyTitle {
         font-size: 18px;
         font-weight: 600;
         line-height: 30px;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
       }
-
-      .cardParagraph {
+      .testimonyParagraph {
         color: #666666;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
+        min-height: 100px;
       }
     }
   }

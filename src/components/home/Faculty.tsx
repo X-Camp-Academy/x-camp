@@ -3,64 +3,26 @@ import React, { useRef } from "react";
 import { Space, Typography, Card, Image, Button, Carousel } from "antd";
 import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import ColorfulCard from "../common/colorful-card";
 import { CarouselRef } from "antd/es/carousel";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import Link from "next/link";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
-  const { data } = useGetFaculty();
-  console.log(data)
-  const facultyData = [
-    {
-      name: "Ryan1",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan2",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan3",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan4",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan5",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-    {
-      name: "Ryan6",
-      description: "10+ years programming language",
-      avatar: "/image/home/ryan.png",
-    },
-  ];
+  const { lang } = useLang();
+  const { data } = useGetFaculty({
+    pageName: ["/home"],
+  });
 
-  const computedStyle = (index: number) => {
-    const iconDefaultStyle = {
-      color: "#d46b14",
-      borderColor: "#d46b14",
-    };
-    const colors = ["#D46B14", "#FFAD11", "#FFD600"];
-    const iconStyle = {
-      ...iconDefaultStyle,
-      color: colors[index % 3],
-      borderColor: colors[index % 3],
-    };
-    return iconStyle;
-  };
+  const facultyData = data?.sort(
+    (a, b) => b?.attributes?.order - a?.attributes?.order
+  );
 
   const carouselRef = useRef<CarouselRef>(null);
-
   const onPrev = () => {
     carouselRef?.current?.prev();
   };
@@ -68,6 +30,9 @@ const Faculty: React.FC = () => {
     carouselRef?.current?.next();
   };
 
+  const getImgUrl = (img: StrapiMedia) => {
+    return img?.data?.attributes?.url;
+  };
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
@@ -117,47 +82,42 @@ const Faculty: React.FC = () => {
           ]}
           dots={false}
         >
-          {facultyData.map((item, index) => {
+          {facultyData?.map((item) => {
             return (
-              <ColorfulCard
-                key={index}
-                border="bottom"
-                index={index}
-                className={styles.cardContainer}
-              >
-                <Card
-                  bodyStyle={{
-                    paddingBottom: 0,
-                  }}
-                >
+              <div key={item?.id} className={styles.cardContainer}>
+                <Card>
                   <Space align="center">
                     <Space direction="vertical">
-                      <Text className={styles.name}>{item?.name}</Text>
+                      <Text className={styles.name}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Text>
                       <Paragraph
-                        ellipsis={{ rows: 5 }}
+                        ellipsis={{ rows: 3 }}
                         className={styles.description}
                       >
-                        {item?.description}
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
+                        )}
                       </Paragraph>
-                      <Button
-                        type="primary"
-                        size="small"
-                        ghost={true}
-                        shape="circle"
-                        style={computedStyle(index)}
-                      >
-                        <RightOutlined />
-                      </Button>
+                      <Link href="/" className={styles.more}>
+                        More <RightOutlined />
+                      </Link>
                     </Space>
                     <Image
-                      src={item?.avatar}
+                      src={getImgUrl(item?.attributes?.img)}
                       alt="avatar"
                       preview={false}
                       className={styles.cardImage}
                     />
                   </Space>
                 </Card>
-              </ColorfulCard>
+              </div>
             );
           })}
         </Carousel>

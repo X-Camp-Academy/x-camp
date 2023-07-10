@@ -3,16 +3,19 @@ import React from "react";
 import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
-
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 
 const Banner = dynamic(() => import("./Banner"));
 const Map = dynamic(() => import("./Map"));
 const Stories = dynamic(() => import("./Stories"));
 const UpcomingEvents = dynamic(() => import("./UpcomingEvents"));
-const Comments = dynamic(() => import("@/components/home/Comments"));
+const Testimony = dynamic(() => import("@/components/home/Testimony"));
 const { Content } = Layout;
 
 const XAlumni: React.FC = () => {
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony();
+
   return (
     <ConfigProvider
       theme={{
@@ -27,7 +30,7 @@ const XAlumni: React.FC = () => {
           <Map />
           <Stories />
           <UpcomingEvents />
-          <Comments />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

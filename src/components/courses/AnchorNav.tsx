@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
 import styles from './AnchorNav.module.scss';
 import { Space } from 'antd';
-import { classesData } from './define';
+import { COURSE_TYPES } from './define';
 import { useScroll } from 'ahooks';
 const AnchorNav = () => {
-  /**
-   * 将对应组件滚动到视口
-   */
   const scrollToComponent = (id: string) => {
     const component = document.getElementById(id);
     component?.scrollIntoView({
@@ -41,14 +38,14 @@ const AnchorNav = () => {
 
   return (
     <Space className={styles.nav} direction={'vertical'}>
-      {classesData.map((item, index) => {
+      {COURSE_TYPES.map((item, index) => {
         return (
           <div
             className={`${styles.catalog} catalogs-classify${index}`}
             key={index}
             onClick={() => scrollToComponent(`classify${index}`)}
           >
-            {item.title}
+            {item}
           </div>
         );
       })}
