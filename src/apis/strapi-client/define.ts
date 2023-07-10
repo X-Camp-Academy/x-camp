@@ -116,6 +116,8 @@ export type GetXAlumniResponse = StrapiResponse<GetXAlumni>;
 export interface GetResourcesContest extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
+  titleExplanationZh: string;
+  titleExplanationEn: string;
   descriptionZh: string;
   descriptionEn: string;
   linkEn: string;
@@ -123,6 +125,8 @@ export interface GetResourcesContest extends strapiPublicFields {
   order: number;
   imgZh: StrapiMedia;
   imgEn: StrapiMedia;
+  contestDate: string;
+  logo: StrapiMedia;
 }
 
 export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
