@@ -21,39 +21,21 @@
     padding-left: 45px;
     padding-right: 45px;
     margin-top: 32px;
-    .basePrev {
+    .prev {
+      background-color: #ffad11;
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
       z-index: 999;
     }
-    .prev {
+    .next {
       background-color: #ffad11;
-      @extend .basePrev;
-    }
-    .outPrev {
-      background-color: #fff;
-      border-color: #ffad11;
-      color: #ffad11;
-      @extend .basePrev;
-    }
-    .baseNext {
       position: absolute;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
       z-index: 999;
-    }
-    .next {
-      background-color: #ffad11;
-      @extend .baseNext;
-    }
-    .outNext {
-      background-color: #fff;
-      border-color: #ffad11;
-      color: #ffad11;
-      @extend .baseNext;
     }
     .cardContainer {
       margin-left: 15px;

@@ -35,20 +35,6 @@ const Faculty: React.FC = () => {
     return img?.data?.attributes?.url;
   };
 
-  const [prev, setPrev] = useState(true);
-  const [next, setNext] = useState(false);
-  const afterChange = (currentSlide: number) => {
-    if (currentSlide === 0) {
-      setPrev(true);
-    } else if ([4, 5, 6].includes(currentSlide)) {
-      // sm md lg
-      setNext(true);
-    } else {
-      setPrev(false);
-      setNext(false);
-    }
-  };
-
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
@@ -65,7 +51,7 @@ const Faculty: React.FC = () => {
         <Button
           type="primary"
           shape="circle"
-          className={prev ? styles.outPrev : styles.prev}
+          className={styles.prev}
           onClick={onPrev}
         >
           <LeftOutlined />
@@ -76,7 +62,6 @@ const Faculty: React.FC = () => {
           slidesToScroll={1}
           swipeToSlide={true}
           infinite={false}
-          afterChange={afterChange}
           responsive={[
             {
               breakpoint: 992,
@@ -146,7 +131,7 @@ const Faculty: React.FC = () => {
         <Button
           type="primary"
           shape="circle"
-          className={next ? styles.outNext : styles.next}
+          className={styles.next}
           onClick={onNext}
         >
           <RightOutlined />

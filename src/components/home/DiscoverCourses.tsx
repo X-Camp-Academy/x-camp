@@ -1,11 +1,9 @@
 "use client";
-import React, { useRef } from "react";
-import { Typography, Row, Col, Card, Space, Image } from "antd";
+import React from "react";
+import { Typography, Row, Col, Space, Image } from "antd";
 import Texty from "rc-texty";
-import "animate.css";
-import styles from "./DiscoverCourses.module.scss";
-import { addAnimate, removeAnimate } from "@/utils";
 import MaskCard from "../common/mask-card";
+import styles from "./DiscoverCourses.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -82,12 +80,6 @@ const DiscoverCourses: React.FC = () => {
       ),
     },
   ];
-
-  const refs = Array.from({ length: courseCards.length }, () =>
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useRef<HTMLDivElement>(null)
-  );
-
   return (
     <div className={`${styles.discoverCourses} container`}>
       <Texty
@@ -100,11 +92,10 @@ const DiscoverCourses: React.FC = () => {
       </Texty>
       <Text className={styles.arc}></Text>
       <Row className={styles.row} gutter={16} justify="center" align="middle">
-        {courseCards.map((item, index) => {
+        {courseCards.map((item) => {
           return (
             <Col key={item?.url} xs={24} sm={24} md={12} lg={6}>
               <MaskCard
-                ref={refs[index]}
                 className={styles.card}
                 bodyStyle={{
                   backgroundColor: item?.bgc,

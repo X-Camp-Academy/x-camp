@@ -54,7 +54,7 @@ const CopyRight: React.FC = () => {
               <Space direction="vertical">
                 <Image
                   alt=""
-                  src="/image/home/footer-logo-1.png"
+                  src="/logo/logo.png"
                   preview={false}
                   className={styles.image}
                 />
