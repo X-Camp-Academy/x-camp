@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Space, Typography, Card, Image, Button, Carousel } from "antd";
 import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -9,6 +9,7 @@ import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import Link from "next/link";
+import ColorfulCard from "../common/colorful-card";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -33,6 +34,21 @@ const Faculty: React.FC = () => {
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
   };
+
+  const [prev, setPrev] = useState(true);
+  const [next, setNext] = useState(false);
+  const afterChange = (currentSlide: number) => {
+    if (currentSlide === 0) {
+      setPrev(true);
+    } else if ([4, 5, 6].includes(currentSlide)) {
+      // sm md lg
+      setNext(true);
+    } else {
+      setPrev(false);
+      setNext(false);
+    }
+  };
+
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
@@ -49,7 +65,7 @@ const Faculty: React.FC = () => {
         <Button
           type="primary"
           shape="circle"
-          className={styles.prev}
+          className={prev ? styles.outPrev : styles.prev}
           onClick={onPrev}
         >
           <LeftOutlined />
@@ -60,6 +76,7 @@ const Faculty: React.FC = () => {
           slidesToScroll={1}
           swipeToSlide={true}
           infinite={false}
+          afterChange={afterChange}
           responsive={[
             {
               breakpoint: 992,
@@ -82,9 +99,14 @@ const Faculty: React.FC = () => {
           ]}
           dots={false}
         >
-          {facultyData?.map((item) => {
+          {facultyData?.map((item, index) => {
             return (
-              <div key={item?.id} className={styles.cardContainer}>
+              <ColorfulCard
+                key={item?.id}
+                border={"bottom"}
+                index={index}
+                className={styles.cardContainer}
+              >
                 <Card>
                   <Space align="center">
                     <Space direction="vertical">
@@ -117,14 +139,14 @@ const Faculty: React.FC = () => {
                     />
                   </Space>
                 </Card>
-              </div>
+              </ColorfulCard>
             );
           })}
         </Carousel>
         <Button
           type="primary"
           shape="circle"
-          className={styles.next}
+          className={next ? styles.outNext : styles.next}
           onClick={onNext}
         >
           <RightOutlined />
