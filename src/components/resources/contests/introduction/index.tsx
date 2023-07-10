@@ -12,77 +12,12 @@ interface Props {
 
 const Introduction = ({ data }: Props) => {
   const { lang } = useLang();
-  const items = [
-    {
-      title: "Art of Programming",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "USACO",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "Turing Cup",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "Teamscode",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "Calico",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "Proco",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "LIT",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "ACSL",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-    {
-      title: "TACO",
-      description:
-        "Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming Art of Programming ",
-      link: "https://www-new.x-camp.academy/",
-      img: "/image/about-us/introduction/top-banner.png",
-    },
-  ];
 
   return (
     <div className={styles.content}>
       <div className="container">
         {data?.map((v) => (
-          <div key={v?.id}>
+          <div key={v?.id} id={`contest-${v?.id}`}>
             <div className={styles.contest}>
               <div className={styles.title}>
                 {getTransResult(

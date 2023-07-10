@@ -4,6 +4,7 @@ import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 
 const ContactCard = dynamic(() => import("./ContactCard"));
 const TopBanner = dynamic(() => import("./TopBanner"));
@@ -12,9 +13,13 @@ const QuestionForm = dynamic(() => import("./QuestionForm"));
 const AddressMap = dynamic(() => import("./AddressMap"));
 const { Content } = Layout;
 
-const ContactUsContent: React.FC = () => {
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+const ContactUsContent = () => {
+  const pathname = usePathname();
+  // 请求当前页面的评论
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
   return (
     <ConfigProvider
       theme={{

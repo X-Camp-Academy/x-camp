@@ -59,7 +59,7 @@ const ProgressionClasses = () => {
                 title={v?.title}
                 list={[v?.desc]}
                 time="10 weeks"
-                href={`/courses/detail?courseId=${v?.id}`}
+                href={`/courses/detail?/${v?.id}`}
               />
             );
           })}

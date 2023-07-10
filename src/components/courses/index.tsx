@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
+import { usePathname } from "next/navigation";
 import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
 import dynamic from "next/dynamic";
@@ -19,12 +20,12 @@ const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 
-const Courses: React.FC = () => {
+const Courses = () => {
+  const pathname = usePathname();
   const { lang } = useLang();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses();
-  console.log(courses);
-  
+
   const getLangResult = (
     lang: "zh" | "en",
     zhData: string[],
@@ -41,6 +42,11 @@ const Courses: React.FC = () => {
     }
   };
 
+  //获取师生评价数据
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
   // 获取所有的courseLevelType分类
   const courseLevelTypeData = courseLevelType?.map(
     (item) => item?.attributes?.type
@@ -48,10 +54,8 @@ const Courses: React.FC = () => {
 
   const courseLevelTypeMap = new Map();
   courseLevelTypeData?.forEach((item) => {
-    courseLevelTypeMap.set(item, []);})
- 
-
-
+    courseLevelTypeMap.set(item, []);
+  });
 
   courses?.forEach((item) => {
     const key = item?.attributes?.courseLevelType?.data?.attributes?.type;
@@ -66,9 +70,6 @@ const Courses: React.FC = () => {
   });
 
   // console.log(courses);
-  console.log(courses);
-  console.log(courses);
-  console.log(courseLevelTypeMap);
 
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
@@ -97,7 +98,8 @@ const Courses: React.FC = () => {
       children: primaryData?.map((levelType) => {
         return {
           secondaryTitle: levelType,
-          children: filteredCourses?.filter( // 根据第一次分类过滤的courses或者原始的课程直接进行二层过滤
+          children: filteredCourses?.filter(
+            // 根据第一次分类过滤的courses或者原始的课程直接进行二层过滤
             (filteredCourse) =>
               filteredCourse?.attributes?.courseLevelType?.data?.attributes
                 ?.type === levelType
@@ -114,10 +116,6 @@ const Courses: React.FC = () => {
       return generateCourses(courseType, [courseType]);
     }
   });
-  console.log(allCourses);
-  
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
 
   return (
     <ConfigProvider

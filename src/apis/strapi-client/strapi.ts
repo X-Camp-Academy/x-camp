@@ -1,6 +1,6 @@
 import { useStrapiClient } from ".";
 import { useHandleError } from "@/utils/error";
-import { usePagination, useRequest } from "ahooks";
+import { useRequest } from "ahooks";
 import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
@@ -36,11 +36,15 @@ import {
 } from "./define";
 import { isArray } from "lodash";
 import {
+  classifyByAttribution,
+  deduplicateArray,
+  filterByAttribution,
+} from "@/utils/public";
+import {
   AndOrFilters,
   FilterFields,
   StrapiResponseDataItem,
 } from "./strapiDefine";
-import { classifyByAttribution, filterByAttribution } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 
 // 被用在哪些course 以英文逗号连接的字符串
@@ -48,15 +52,15 @@ import { useLang } from "@/hoc/with-intl/define";
 // 被用在哪些event 以英文逗号连接的字符串
 
 interface Props {
-  courseId?: string[],
-  pageName?: string[],
-  eventId?: string[]
+  courseId?: string[];
+  pageName?: string[];
+  eventId?: string[];
 }
 /**
  *
  * @returns 获取Faculty
  */
-export const useGetFaculty = ({courseId, pageName, eventId}: Props) => {
+export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
@@ -70,7 +74,6 @@ export const useGetFaculty = ({courseId, pageName, eventId}: Props) => {
       }
       if (pageName && pageName?.length > 0) {
         data = filterByAttribution(data, "pageName", pageName);
-        console.log(data);
       }
       if (eventId && eventId?.length > 0) {
         data = filterByAttribution(data, "eventId", eventId);
@@ -96,7 +99,7 @@ export const useGetNewEvent = ({
   current,
   pageSize,
 }: {
-  tag?: NewEventCategory ;
+  tag?: NewEventCategory;
   current: number;
   pageSize: number;
 }) => {
@@ -282,13 +285,34 @@ export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
   );
 };
 
-export const useGetTestimony = () => {
+export const useGetTestimony = ({
+  ready,
+  courseId,
+  pageName,
+  eventId,
+}: {
+  ready: boolean; // 是否发请求，用于等待其他请求
+  courseId?: string[]; // 被用在哪些course 以英文逗号连接的字符串
+  pageName?: string[]; // 被用在哪些page 以英文逗号连接的字符串
+  eventId?: string[]; // 被用在哪些event 以英文逗号连接的字符串
+}) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
     async (params: GetTestimonyRequest) => {
       const res = await client.getTestimony(params);
-      return isArray(res?.data) ? res.data : [];
+      let data = [];
+      // 根据courseId, pageName, eventId做筛选，根据category做分类
+      if (courseId) {
+        data.push(...filterByAttribution(res?.data, "courseId", courseId));
+      }
+      if (pageName) {
+        data.push(...filterByAttribution(res?.data, "pageName", pageName));
+      }
+      if (eventId) {
+        data.push(...filterByAttribution(res?.data, "eventId", eventId));
+      }
+      return deduplicateArray(data); // 去重
     },
     {
       defaultParams: [
@@ -296,6 +320,7 @@ export const useGetTestimony = () => {
           populate: "*",
         },
       ],
+      ready: ready,
       onError: handleError,
     }
   );
@@ -555,20 +580,20 @@ export const useGetFaq = <
   return useRequest<R, [GetFaqRequest]>(
     async (params) => {
       const res = await client.getFaq(params);
-      console.log(courseId);
-      let data = res?.data;
+      let data = [];
       // 根据courseId, pageName, eventId做筛选，根据category做分类
-      if (courseId && courseId?.length > 0) {
-        data = filterByAttribution(data, "courseId", courseId);
+      if (courseId) {
+        data.push(...filterByAttribution(res?.data, "courseId", courseId));
       }
-      if (pageName && pageName?.length > 0) {
-        data = filterByAttribution(data, "pageName", pageName);
+      if (pageName) {
+        data.push(...filterByAttribution(res?.data, "pageName", pageName));
       }
-      if (eventId && eventId?.length > 0) {
-        data = filterByAttribution(data, "eventId", eventId);
+      if (eventId) {
+        data.push(...filterByAttribution(res?.data, "eventId", eventId));
       }
+      data = deduplicateArray(data); // 去重
       if (isClassify) {
-        return classifyByAttribution(data, "category") as R;
+        return classifyByAttribution(res?.data, "category") as R;
       } else {
         return data as R;
       }
