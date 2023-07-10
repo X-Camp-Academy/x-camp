@@ -37,13 +37,21 @@ export enum NewEventCategory {
   All = "All"
 }
 
+export enum ActivityCategory {
+  SchoolLifeSharing = "School life's sharing",
+  CodingEducation = "Coding Education",
+  CareerPath = "Career Path",
+  Research = "Research"
+}
+
 export interface GetNewEvent extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  datetime?: string;
+  datetime: string;
   tags: NewEventCategory;
+  activityCategory ?: ActivityCategory;
   order?: number;
   editor?: string;
   img: StrapiMedia;
