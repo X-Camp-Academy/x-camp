@@ -10,7 +10,7 @@ interface Props {
 
 const MonthlyContest = ({ data }: Props) => {
   const align = ["left", "center", "right"] as ContestCardAlign[];
-console.log(data)
+
   return (
     <div className={styles.content}>
       <div className="container">

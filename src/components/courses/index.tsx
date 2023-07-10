@@ -70,9 +70,6 @@ const Courses = () => {
   });
 
   // console.log(courses);
-  console.log(courses);
-  console.log(courses);
-  console.log(courseLevelTypeMap);
 
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {

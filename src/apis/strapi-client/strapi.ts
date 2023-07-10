@@ -74,7 +74,6 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
       }
       if (pageName && pageName?.length > 0) {
         data = filterByAttribution(data, "pageName", pageName);
-        console.log(data);
       }
       if (eventId && eventId?.length > 0) {
         data = filterByAttribution(data, "eventId", eventId);
