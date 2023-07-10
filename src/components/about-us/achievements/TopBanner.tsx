@@ -23,12 +23,16 @@ const TopBanner: React.FC = () => {
             md={{ span: 8, offset: 2 }}
             className={styles.col}
           >
-            <Image
-              alt="image"
-              src="/image/home/course-3.png"
-              preview={false}
-              className={styles.image}
-            />
+            <div className={styles.bannerImgContainer}>
+              <div className={styles.colorSquare}></div>
+              <img
+                alt="image"
+                src="/image/about-us/introduction/top-banner.png"
+                
+                className={styles.image}
+              />
+            </div>
+
           </Col>
         </Row>
         <Space></Space>

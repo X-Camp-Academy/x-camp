@@ -1,8 +1,13 @@
 .topBannerContainer {
     width: 100%;
-    background-color: #ffad11;
+
+    overflow: hidden;
+    background-image: url("/image/home/carousel-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 
     .col {
+
         @media (max-width: 768px) {
             margin-top: 30px !important;
             padding: 15px;
@@ -13,7 +18,7 @@
     .title {
         font-size: 48px;
         font-weight: bold;
-        color: #d46b14;
+        color: #172142;
         line-height: 64px;
         margin-top: 110px;
     }
@@ -23,14 +28,39 @@
         font-weight: 500;
         color: #172142;
         line-height: 42px;
-
     }
 
-    .image {
-        margin-top: 181px;
-        @media (max-width: 768px) {
-            margin-top: 40px !important;
-            
+    .bannerImgContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 100px 0;
+
+        .colorSquare {
+            position: absolute;
+            transform: rotate(-15deg);
+            z-index: 1;
+            width: 422px;
+            height: 262px;
+            background: #FFAD11;
+            border-radius: 12px;
+            opacity: 0.4;
+            @media (max-width: 768px) {
+                display: none;
+            }
+
+
+        }
+
+        .image {
+            z-index: 2;
+            transform: rotate(-5deg);
+            @media (max-width: 768px) {
+                transform: rotate(0);
+                width: 90%;
+            }
         }
     }
+
+
 }
