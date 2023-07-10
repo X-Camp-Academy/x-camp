@@ -11,24 +11,19 @@ import {
   Calendar,
   Badge,
 } from "antd";
-import type { CalendarMode } from "antd/es/calendar/generateCalendar";
 import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
 import dayjs from "dayjs";
 import { useMobile } from "@/utils";
-import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import { useAsyncEffect } from "ahooks";
-import { it } from "node:test";
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
   const { lang } = useLang();
   const isMobile = useMobile();
   const [selectDate, setSelectDate] = useState<string>();
-  /*   let filterSameDateEventList: any[] = []; */
   const [filterSameDateEventList, setFilterSameDateEventList] = useState<{
     titleZh?: string,
     titleEn?: string,

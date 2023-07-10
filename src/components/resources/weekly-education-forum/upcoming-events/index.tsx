@@ -14,7 +14,6 @@ import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import dayjs from "dayjs";
 import { getTransResult } from "@/utils/public";
-import Link from "next/link";
 
 const UpcomingEvents = () => {
   const pageSize = 25;
@@ -42,8 +41,6 @@ const UpcomingEvents = () => {
     current,
     pageSize,
   });
-
-  console.log(dayjs("2023-07-01").date());
 
   const upComingEvent = newEventData?.data.filter((item, index) => {
     return (
