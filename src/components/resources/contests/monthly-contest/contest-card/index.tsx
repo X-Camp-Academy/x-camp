@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { Space } from "antd";
+import { Divider, Popover, Space } from "antd";
 import classNames from "classnames/bind";
+import { CalendarOutlined } from "@ant-design/icons";
 const cx = classNames.bind(styles);
 
 export enum ContestCardAlign {
@@ -38,21 +39,49 @@ const ContestCard = ({ data, align }: Props) => {
         )}
       >
         {data?.contests?.map((v, index) => (
-          <div
-            className={cx(styles.item, index % 2 === 1 && styles.itemEven)}
+          <Popover
+            title={
+              <div className={styles.popoverTitle}>
+                <div className={styles.left}>
+                  <div className={styles.title}>{v?.title}</div>
+                  <Space className={styles.time}>
+                    <CalendarOutlined />
+                    <span>{v?.time}</span>
+                  </Space>
+                </div>
+                <div className={styles.right}>
+                  {v?.logo && <img src={v?.logo} alt="" />}
+                </div>
+              </div>
+            }
+            content={
+              <div className={styles.popoverContent}>
+                <Divider className={styles.divider} />
+                <div className={styles.description}>{"Description"}</div>
+                <div className={styles.descriptionContent}>
+                  {v?.description}
+                </div>
+              </div>
+            }
+            arrow={false}
+            placement="right"
             key={index}
           >
-            <div className={styles.title}>{v?.title}</div>
-            <div className={styles.description}>{v?.description}</div>
-            <div className={styles.bottom}>
-              <div className={styles.time}>{v?.time}</div>
-              {v?.logo && (
-                <div className={styles.logo}>
-                  <img src={v?.logo} alt="" />
-                </div>
-              )}
+            <div
+              className={cx(styles.item, index % 2 === 1 && styles.itemEven)}
+            >
+              <div className={styles.title}>{v?.title}</div>
+              <div className={styles.description}>{v?.description}</div>
+              <div className={styles.bottom}>
+                <div className={styles.time}>{v?.time}</div>
+                {v?.logo && (
+                  <div className={styles.logo}>
+                    <img src={v?.logo} alt="" />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          </Popover>
         ))}
       </Space>
     </div>
