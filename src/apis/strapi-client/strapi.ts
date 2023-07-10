@@ -5,46 +5,158 @@ import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
-  GetAboutUsIntroArticleRequest,
+  GetAboutUsAlumniMapRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
-  GetCourseDetailRequest,
+  GetClassesRequest,
   GetCourseLevelTypeRequest,
   GetCoursesRequest,
   GetFacultyRequest,
   GetFacultyResponse,
   GetHomeStudentProjectsRequest,
+  GetIntroductionFacultyCoach,
+  GetIntroductionFacultyCoachRequest,
+  GetIntroductionFacultyCoachResponse,
+  GetNewEventRequest,
+  GetNewEventResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
   GetTestimonyRequest,
   GetXAlumniRequest,
   GetXAlumniResponse,
+  NewEventCategory,
   GetProjectsDemoRequest,
   GetAchievementsTimeLineRequest,
   GetResourcesLiveSolutionRequest,
   GetFaqRequest,
   GetFaq,
   FaqCategory,
+  GetAboutUsIntroArticleRequest,
+  GetCourses,
 } from "./define";
 import { isArray } from "lodash";
-import { StrapiResponseDataItem } from "./strapiDefine";
 import {
   classifyByAttribution,
   deduplicateArray,
   filterByAttribution,
 } from "@/utils/public";
+import {
+  AndOrFilters,
+  FilterFields,
+  StrapiResponseDataItem,
+} from "./strapiDefine";
 import { useLang } from "@/hoc/with-intl/define";
+
+// 被用在哪些course 以英文逗号连接的字符串
+// 被用在哪些page 以英文逗号连接的字符串
+// 被用在哪些event 以英文逗号连接的字符串
+
+interface Props {
+  courseId?: string[];
+  pageName?: string[];
+  eventId?: string[];
+}
 /**
  *
  * @returns 获取Faculty
  */
-export const useGetFaculty = () => {
+export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
-      return isArray(res?.data) ? res.data : [];
+      let data = res?.data;
+
+      // 根据courseId, pageName, eventId做筛选，根据category做分类
+      if (courseId && courseId?.length > 0) {
+        data = filterByAttribution(data, "courseId", courseId);
+      }
+      if (pageName && pageName?.length > 0) {
+        data = filterByAttribution(data, "pageName", pageName);
+        console.log(data);
+      }
+      if (eventId && eventId?.length > 0) {
+        data = filterByAttribution(data, "eventId", eventId);
+      }
+      return data;
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ * @return 获取NewEvent
+ */
+export const useGetNewEvent = ({
+  tag,
+  current,
+  pageSize,
+}: {
+  tag?: NewEventCategory;
+  current: number;
+  pageSize: number;
+}) => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+
+  return useRequest(
+    async (params: GetNewEventRequest) => {
+      const res: GetNewEventResponse = await client.getNewEvent(params);
+      return res;
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+          filters: {
+            tags: {
+              $eq: tag,
+            },
+          },
+          pagination: {
+            page: current,
+            pageSize,
+          },
+        },
+      ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取Introduction页面下的FacultyCoach
+ */
+export const useGetIntroductionFacultyCoach = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetIntroductionFacultyCoachRequest) => {
+      const res: GetIntroductionFacultyCoachResponse =
+        await client.getIntroductionFacultyCoach(params);
+
+      function groupArray(
+        arr: StrapiResponseDataItem<GetIntroductionFacultyCoach>[]
+      ) {
+        const result: StrapiResponseDataItem<GetIntroductionFacultyCoach>[][] =
+          [];
+        for (let i = 0; i < arr.length; i += 3) {
+          result.push(arr.slice(i, i + 3));
+        }
+        return result;
+      }
+
+      return isArray(res?.data) ? groupArray(res.data) : [];
     },
     {
       defaultParams: [
@@ -217,7 +329,7 @@ export const useGetTestimony = ({
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Home Student Projects
  */
 export const useGetHomeStudentProjects = () => {
   const client = useStrapiClient();
@@ -240,7 +352,7 @@ export const useGetHomeStudentProjects = () => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Course Level Type
  */
 export const useGetCourseLevelType = () => {
   const client = useStrapiClient();
@@ -260,14 +372,19 @@ export const useGetCourseLevelType = () => {
     }
   );
 };
-
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Courses
  */
-export const useGetCourses = (isCamp?: string) => {
+export const useGetCourses = (
+  params?:
+    | Partial<FilterFields<GetCourses>>
+    | AndOrFilters<FilterFields<GetCourses>>
+    | undefined
+) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
+
   return useRequest(
     async (params: GetCoursesRequest) => {
       const res = await client.getCourses(params);
@@ -277,11 +394,7 @@ export const useGetCourses = (isCamp?: string) => {
       defaultParams: [
         {
           populate: "*",
-          filters: {
-            isCamp: {
-              $eq: isCamp,
-            },
-          },
+          filters: params ?? {},
           sort: ["order:desc"],
         },
       ],
@@ -292,24 +405,45 @@ export const useGetCourses = (isCamp?: string) => {
 
 /**
  *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * @returns 获取Course Classes
  */
-export const useGetCourseDetail = () => {
+export const useGetClasses = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetCourseDetailRequest) => {
-      const res = await client.getCourseDetail(params);
+    async (params: GetClassesRequest) => {
+      const res = await client.getClasses(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
         {
           populate: "*",
-          sort: ["order:desc"],
         },
       ],
-      manual: true,
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取AboutUs Alumni Map
+ */
+export const useGetAboutUsAlumniMap = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetAboutUsAlumniMapRequest) => {
+      const res = await client.getAboutUsAlumniMap(params);
+      return res?.data?.attributes;
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+        },
+      ],
       onError: handleError,
     }
   );

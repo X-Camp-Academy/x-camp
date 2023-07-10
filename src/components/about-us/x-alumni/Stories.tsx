@@ -1,13 +1,33 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Space, Row, Col, Card, Image, Button, Typography } from "antd";
 import styles from "./Stories.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
 import { RightOutlined } from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
+import { NewEventCategory } from "@/apis/strapi-client/define";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Stories: React.FC = () => {
+  const pageSize = 3;
+  const { lang } = useLang();
+  const [current, setCurrent] = useState<number>(1);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
+
+  const { data: newEventData } = useGetNewEvent({
+    tag,
+    current,
+    pageSize
+  });
+
+  const getImgUrl = (img: StrapiMedia) => {
+    return img?.data?.attributes?.url;
+  };
+
   return (
     <div className={styles.storiesContainer}>
       <div className="container">
@@ -23,7 +43,7 @@ const Stories: React.FC = () => {
         </Space>
 
         <Row gutter={32} className={styles.row}>
-          {[1, 2, 3].map((item, index) => (
+          {newEventData?.data.map((item, index) => (
             <Col key={index} xs={24} sm={24} md={8}>
               <ColorfulCard border="bottom" index={index}>
                 <Card bodyStyle={{
@@ -33,11 +53,11 @@ const Stories: React.FC = () => {
                     <Image
                       alt=""
                       preview={false}
-                      src="/image/about-us/introduction/top-banner.png"
+                      src={getImgUrl(item?.attributes?.img)}
                       className={styles.cardImage}
                     />
                     <Text className={styles.cardTitle}>
-                      2023 Spring APCS Class series are now open for story title
+                      {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
                       <Button
                         type="primary"
                         size="small"
@@ -50,8 +70,7 @@ const Stories: React.FC = () => {
                     </Text>
 
                     <Paragraph className={styles.cardParagraph}>
-                      Introduction to the story Introduction to the story
-                      Introduction to the story Introduction to the story
+                      {getTransResult(lang, item?.attributes.descriptionZh, item?.attributes.descriptionEn)}
                     </Paragraph>
                   </Space>
                 </Card>

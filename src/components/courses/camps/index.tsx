@@ -19,8 +19,14 @@ import { usePathname } from "next/navigation";
 const { Content } = Layout;
 const CourseCamps = () => {
   const pathname = usePathname();
-  const { data: courses } = useGetCourses("true"); // 筛选isCamp课程
   // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
+  const params = {
+    isCamp: {
+      $eq: true,
+    },
+  };
+  const { data: courses } = useGetCourses(params);
+
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
     category: FaqCategory.CoursesQA,

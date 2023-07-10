@@ -1,10 +1,9 @@
 "use client";
 import React, { useRef } from "react";
-import { Space, Card, Rate, Typography, Carousel, Button } from "antd";
+import { Space, Rate, Typography, Carousel, Button } from "antd";
 import styles from "./Testimony.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import ColorfulCard from "../common/colorful-card";
 import classNames from "classnames/bind";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 
@@ -33,8 +32,8 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
   };
 
   return (
-    <div className={cx(className, styles.commentsContainer)}>
-      <div className={cx(styles.comments, "container")}>
+    <div className={cx(className, styles.testimoniesContainer)}>
+      <div className={cx(styles.testimonies, "container")}>
         <Button
           type="primary"
           shape="circle"
@@ -71,46 +70,33 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
             },
           ]}
         >
-          {testimonyData?.map((item, index) => {
-            const comment = item?.attributes;
+          {testimonyData?.map((item) => {
+            const testimony = item?.attributes;
             return (
-              <ColorfulCard
-                key={index}
-                border="top"
-                index={index}
-                className={styles.cardContainer}
-              >
-                <Card
-                  className={styles.card}
-                  bodyStyle={{
-                    borderWidth: 2,
-                  }}
-                >
-                  <Space direction="vertical" style={{ width: "100%" }}>
-                    <Text className={styles.cardTitle}>
-                      {getTransResult(lang, comment.titleZh, comment.titleEn)}
-                    </Text>
-                    <Rate disabled defaultValue={comment.score} />
-                    <Paragraph
-                      className={styles.cardParagraph}
-                      ellipsis={{
-                        rows: 4,
-                        tooltip: getTransResult(
-                          lang,
-                          comment.descriptionZh,
-                          comment.descriptionEn
-                        ),
-                      }}
-                    >
-                      {getTransResult(
-                        lang,
-                        comment.descriptionZh,
-                        comment.descriptionEn
-                      )}
-                    </Paragraph>
-                  </Space>
-                </Card>
-              </ColorfulCard>
+              <div key={item?.id} className={styles.testimonyContainer}>
+                <Space direction="vertical" style={{ width: "100%" }}>
+                  <Text className={styles.testimonyTitle}>
+                    {getTransResult(
+                      lang,
+                      testimony?.titleZh,
+                      testimony?.titleEn
+                    )}
+                  </Text>
+                  <Rate disabled defaultValue={testimony?.score} />
+                  <Paragraph
+                    className={styles.testimonyParagraph}
+                    ellipsis={{
+                      rows: 5,
+                    }}
+                  >
+                    {getTransResult(
+                      lang,
+                      testimony?.descriptionZh,
+                      testimony?.descriptionEn
+                    )}
+                  </Paragraph>
+                </Space>
+              </div>
             );
           })}
         </Carousel>
