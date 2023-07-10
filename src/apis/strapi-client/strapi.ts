@@ -42,17 +42,40 @@ import {
 } from "./strapiDefine";
 import { classifyByAttribution, filterByAttribution } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+
+// 被用在哪些course 以英文逗号连接的字符串
+// 被用在哪些page 以英文逗号连接的字符串
+// 被用在哪些event 以英文逗号连接的字符串
+
+interface Props {
+  courseId?: string[],
+  pageName?: string[],
+  eventId?: string[]
+}
 /**
  *
  * @returns 获取Faculty
  */
-export const useGetFaculty = () => {
+export const useGetFaculty = ({courseId, pageName, eventId}: Props) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
-      return isArray(res?.data) ? res.data : [];
+      let data = res?.data;
+
+      // 根据courseId, pageName, eventId做筛选，根据category做分类
+      if (courseId && courseId?.length > 0) {
+        data = filterByAttribution(data, "courseId", courseId);
+      }
+      if (pageName && pageName?.length > 0) {
+        data = filterByAttribution(data, "pageName", pageName);
+        console.log(data);
+      }
+      if (eventId && eventId?.length > 0) {
+        data = filterByAttribution(data, "eventId", eventId);
+      }
+      return data;
     },
     {
       defaultParams: [
@@ -323,7 +346,6 @@ export const useGetCourseLevelType = () => {
     }
   );
 };
-
 /**
  *
  * @returns 获取Courses

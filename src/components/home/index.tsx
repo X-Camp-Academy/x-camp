@@ -8,7 +8,7 @@ import { useGetTestimony } from "@/apis/strapi-client/strapi";
 const CarouselContent = dynamic(() => import("./CarouselContent"));
 const DiscoverCourses = dynamic(() => import("./DiscoverCourses"));
 const AboutXCamp = dynamic(() => import("./AboutXCamp"));
-const FoundingTeam = dynamic(() => import("./FoundingTeam"));
+const XCampFounder = dynamic(() => import("./XCampFounder"));
 const WeSupport = dynamic(() => import("./WeSupport"));
 const Faculty = dynamic(() => import("./Faculty"));
 const PublicCalendar = dynamic(() => import("./PublicCalendar"));
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
           <CarouselContent />
           <DiscoverCourses />
           <AboutXCamp />
-          <FoundingTeam />
+          <XCampFounder />
           <WeSupport />
           <Faculty />
           <PublicCalendar />

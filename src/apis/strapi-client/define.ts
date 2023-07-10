@@ -14,6 +14,9 @@ export interface GetFaculty extends strapiPublicFields {
   descriptionEn: string;
   img: StrapiMedia;
   order: number;
+  courseId: string;
+  pageName: string;
+  eventId: string;
 }
 export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
@@ -73,6 +76,7 @@ export interface GetHomeStudentProjects extends strapiPublicFields {
   descriptionEn: string;
   video: StrapiMedia;
   order: number;
+  link: string;
 }
 export type GetHomeStudentProjectsRequest =
   StrapiRequest<GetHomeStudentProjects>;
@@ -175,7 +179,7 @@ export interface GetXAlumni extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  img: StrapiMedias;
+  img: StrapiMedia;
   order: number;
 }
 

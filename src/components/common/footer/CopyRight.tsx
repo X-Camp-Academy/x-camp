@@ -78,22 +78,6 @@ const CopyRight: React.FC = () => {
                     Email: info@x-camp.academy
                   </Text>
                 </Paragraph>
-
-                <Space>
-                  {icons.map((_, index) => (
-                    <Link href={"/"} key={index}>
-                      <Image
-                        alt=""
-                        src={imageSrc[index]}
-                        preview={false}
-                        width={28}
-                        height={28}
-                        onMouseOver={() => onMouseOver(index)}
-                        onMouseLeave={onMouseLeave}
-                      />
-                    </Link>
-                  ))}
-                </Space>
               </Space>
             </Space>
           </Col>
@@ -121,7 +105,25 @@ const CopyRight: React.FC = () => {
           </Col>
         </Row>
         <div className={styles.bar}></div>
-        <Title className={styles.bottomTitle}>Copyright @ 2021 X-Camp</Title>
+
+        <div className={styles.bottomContainer}>
+          <Title className={styles.bottomTitle}>Copyright @ 2021 X-Camp</Title>
+          <Space>
+            {icons.map((_, index) => (
+              <Link href={"/"} key={index}>
+                <Image
+                  alt=""
+                  src={imageSrc[index]}
+                  preview={false}
+                  width={28}
+                  height={28}
+                  onMouseOver={() => onMouseOver(index)}
+                  onMouseLeave={onMouseLeave}
+                />
+              </Link>
+            ))}
+          </Space>
+        </div>
       </div>
     </div>
   );
