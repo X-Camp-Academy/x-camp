@@ -2,7 +2,7 @@
 
     position: relative;
     width: 100%;
-    background-color: #ffad11;
+    background-image: url("/image/about-us/join-us/JoinUsBannerBackground.png");
 
     .col1,
     .col2 {
@@ -19,9 +19,8 @@
         .title {
             font-size: 48px;
             font-weight: bold;
-            color: #d46b14;
+            color: #172142;
             line-height: 64px;
-            margin-top: 110px;
         }
 
         .paragraph {
@@ -29,23 +28,26 @@
             font-weight: 500;
             color: #172142;
             line-height: 42px;
-
         }
 
         .contactBtn {
-            background-color: #D46B14;
+            background-color: #F5F5F5;
             border: none;
             padding: 25px 35px;
             font-size: 24px;
-            
-            font-weight: 600;
+
+            font-size: 18px;
+            font-weight: 500;
             color: #172142;
-            line-height: 36px;
+            line-height: 24px;
+            border-radius: 12px;
+            border: 2px solid #172142;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        @media (max-width: 768px){
+
+        @media (max-width: 768px) {
             padding-bottom: 0;
         }
     }
@@ -54,9 +56,11 @@
     .col2 {
         display: flex;
         align-items: end;
-        @media (max-width: 768px){
+
+        @media (max-width: 768px) {
             height: auto;
         }
+
         .image {
             @media (max-width: 768px) {
                 margin-top: 40px !important;

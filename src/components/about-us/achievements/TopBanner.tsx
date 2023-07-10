@@ -32,7 +32,6 @@ const TopBanner: React.FC = () => {
                 className={styles.image}
               />
             </div>
-
           </Col>
         </Row>
         <Space></Space>

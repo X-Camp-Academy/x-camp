@@ -1,5 +1,6 @@
 import { Space, Row, Col, Image, Typography, Button } from "antd";
 import styles from './TopBanner.module.scss';
+import { CommentOutlined } from "@ant-design/icons";
 const { Title, Paragraph } = Typography;
 
 const TopBanner: React.FC = () => {
@@ -14,7 +15,8 @@ const TopBanner: React.FC = () => {
                                 X-Camp offers a wide range of career opportunities within our company. Please note that all openings are based in the Silicon Valley except for TAs.
                             </Paragraph>
                             <Button size="large" className={styles.contactBtn}>
-                                Contact Us
+                                Contact Us 
+                                <CommentOutlined />
                             </Button>
                         </Space>
                     </Col>
@@ -22,7 +24,7 @@ const TopBanner: React.FC = () => {
                         <Space direction="vertical">
                             <Image
                                 alt="image"
-                                src="/image/home/course-4.png"
+                                src="/image/about-us/join-us/JoinUsBannerAnimal.png"
                                 preview={false}
                                 className={styles.image}
                             />

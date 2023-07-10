@@ -93,7 +93,7 @@ const UpcomingEvents: React.FC = () => {
               Peek at some alumni events happening just around the corner.
             </Paragraph>
           </Space>
-          <button className={styles.button}>View More Events</button>
+          <button className={styles.button}>View More Events <RightOutlined /></button>
         </Space>
 
         <Row gutter={32} className={styles.row}>
