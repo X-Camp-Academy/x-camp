@@ -17,16 +17,19 @@ const { Content } = Layout;
 
 const CourseDetail = () => {
   const params = useParams();
-  console.log(params);
+
+  // 请求当前 courseId 的评论
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    courseId: [params?.courseId],
+  });
+
   const { data: coursesData } = useGetCourses({
     id: { $eq: Number(params?.courseId) },
   });
   // console.log(coursesData);
 
   const { data } = useGetClasses();
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
-
   // console.log(data);
 
   const { data: faq } = useGetFaq({

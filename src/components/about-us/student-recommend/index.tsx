@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import { useGetFaq } from "@/apis/strapi-client/strapi";
 import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 const { Content } = Layout;
 
 const TopBanner = dynamic(() => import("./TopBanner"));
@@ -15,13 +16,16 @@ const Faq = dynamic(() => import("@/components/common/faqs"));
 const Testimony = dynamic(() => import("@/components/home/Testimony"));
 
 const StudentRecommend: React.FC = () => {
+  const pathname = usePathname();
   const { data: faq } = useGetFaq({
     ready: true,
     category: FaqCategory.ReferralQA,
+    pageName: [pathname],
   });
-
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
   return (
     <ConfigProvider
       theme={{

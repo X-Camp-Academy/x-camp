@@ -11,12 +11,20 @@ import {
   useGetResourcesContest,
   useGetTestimony,
 } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
+import { formatContestsByQuarter } from "./define";
+import { useSize } from "ahooks";
 const { Content } = Layout;
 
 const Contests = () => {
   const { data: resourcesContest } = useGetResourcesContest();
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+  const pathname = usePathname();
+  // 请求courseId为isCamp课程, pageName 为"/courses/catalog/"的评论
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
+  const size = useSize(document.querySelector("body"));
 
   return (
     <ConfigProvider
@@ -29,7 +37,12 @@ const Contests = () => {
       <Layout className={styles.main}>
         <Content>
           <TopBanner />
-          <MonthlyContest />
+          <MonthlyContest
+            data={formatContestsByQuarter(
+              resourcesContest!,
+              Number(size?.width) >= 992 ? 3 : 1
+            )}
+          />
           <Introduction data={resourcesContest} />
           <WhyContest />
           <Testimony
