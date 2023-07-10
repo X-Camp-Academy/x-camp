@@ -6,10 +6,16 @@ import TopBanner from "./top-banner";
 import ScheduleTable from "./schedule-table";
 import Testimony from "@/components/home/Testimony";
 import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 const { Content } = Layout;
 const CourseCatalog = () => {
-  //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+  const pathname = usePathname();
+  // 请求 pageName 为"/courses/catalog/"的评论
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
+
   return (
     <ConfigProvider
       theme={{

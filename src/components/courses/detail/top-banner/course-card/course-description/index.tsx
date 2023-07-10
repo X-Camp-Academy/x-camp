@@ -11,7 +11,6 @@ const CourseDescription = () => {
   const { classMode, classLang, classRoomLang, classes, media } =
     courseData?.attributes ?? {};
 
-  console.log(courseData);
   const classesData = classes?.data?.map((classItem) => {
     const { classCode, isFull, startTime, endTime, location } =
       classItem?.attributes;
