@@ -1,46 +1,44 @@
 .joinUsFacultyContainer {
-    @media (max-width: 768px){
-       padding: 20px;
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+  .joinUsFaculty {
+    display: flex;
+    @media (max-width: 768px) {
+      display: block;
     }
-    .joinUsFaculty {
-        display: flex;
-        @media (max-width: 768px){
-            display: block;
-        }
 
-        .xCampIntro {
-            .logo {
-                width: 40%;
-            }
+    .xCampIntro {
+      .logo {
+        width: 40%;
+      }
 
-            .introText {
-                margin-top: 30px;
-                font-size: 18px;
-                font-weight: 500;
-                color: #172142;
-                line-height: 34px;
-            }
+      .introText {
+        margin-top: 30px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 34px;
+      }
 
-            .introBtn {
-                border: none;
-                display: flex;
-                align-items: center;
-                padding: 30px 52px;
-                background: #FFAD11;
-                border-radius: 12px;
-                font-size: 24px;
-                font-weight: 500;
-                color: #FFFFFF;
-                line-height: 36px;
-            }
-        }
-
-        .facultyImgs {
-            padding: 30px;
-            width: 100%;
-            @media (max-width: 768px){
-                padding: 30px;
-            }
-        }
+      .introBtn {
+        width: 248px;
+        height: 56px;
+        border-radius: 12px;
+        border: 2px solid #172142;
+        font-size: 18px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 24px;
+      }
     }
+
+    .facultyImgs {
+      padding: 30px;
+      width: 100%;
+      @media (max-width: 768px) {
+        padding: 30px;
+      }
+    }
+  }
 }
