@@ -10,11 +10,16 @@ import {
   useGetResourcesLiveSolution,
   useGetTestimony,
 } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 const { Content } = Layout;
 
 const UsacoLiveSolutions = () => {
+  const pathname = usePathname();
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
   const { data: resourcesLiveSolution } = useGetResourcesLiveSolution();
 
   return (

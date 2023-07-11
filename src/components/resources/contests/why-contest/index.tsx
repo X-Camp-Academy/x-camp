@@ -45,12 +45,8 @@ const WhyContest = () => {
         <Space direction="vertical" className={styles.intro} size={20}>
           {items?.map((v, index) => (
             <div key={index}>
-              <div key={index} className={styles.title}>
-                {v?.title}
-              </div>
-              <div key={index} className={styles.description}>
-                {v?.description}
-              </div>
+              <div className={styles.title}>{v?.title}</div>
+              <div className={styles.description}>{v?.description}</div>
             </div>
           ))}
         </Space>

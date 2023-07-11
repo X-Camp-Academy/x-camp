@@ -12,7 +12,6 @@ const XAlumni = () => {
   const { lang, format: t } = useLang();
   const { data: xAlumni } = useGetXAlumni();
 
-  console.log(xAlumni);
 
   return (
     <div className={styles.xalumniContainer}>

@@ -52,15 +52,44 @@ export const classifyByAttribution = <T extends { attributes: any }>(
 export const filterByAttribution = <T extends { attributes: any }>(
   data: T[],
   attribution: keyof T["attributes"] & string,
-  values: string[]
+  values?: string[]
 ): T[] => {
+  if (values === undefined) return data;
   const filteredData: T[] = data?.filter((item) => {
     const fieldValue = item?.attributes?.[attribution];
     const formattedFieldValue: string[] = fieldValue?.split(",") ?? [];
-    if (values?.some((value) => formattedFieldValue?.includes(value))) {
+    if (
+      formattedFieldValue?.length === 0 ||
+      values?.some((value) => formattedFieldValue?.includes(value))
+    ) {
+      // 这一项空的没填，或者填的内容分割之后在values中则留下
       return true;
     }
     return false;
   });
   return filteredData;
+};
+
+/**
+ *
+ * @param array
+ * @returns 数组去重，重复的判定标准是每个对象的id属性
+ */
+export const deduplicateArray = <
+  T extends {
+    id: number;
+  }
+>(
+  array: T[]
+): T[] => {
+  const deduplicatedArray: T[] = [];
+  const idSet = new Set<number>();
+  for (const item of array) {
+    if (!idSet.has(item?.id)) {
+      deduplicatedArray.push(item);
+      idSet.add(item?.id);
+    }
+  }
+
+  return deduplicatedArray;
 };
