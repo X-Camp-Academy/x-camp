@@ -31,7 +31,7 @@ const AboutXCamp: React.FC = () => {
           className={styles.aboutXCampTop}
         >
           <Title className={styles.title}>
-            <Text className={styles.titleText}>About </Text>X-Camp
+            About X-Camp
           </Title>
           <Paragraph className={styles.paragraph}>
             Focusing on mastery of data structures and algorithms, X-Camp

@@ -98,7 +98,7 @@ const UpcomingEvents = () => {
                 item?.attributes.end
               ) {
                 return (
-                  <Col key={index} md={24} lg={8}>
+                  <Col key={index} xs={24} sm={24} md={12} lg={8}>
                     <ColorfulCard
                       border={'bottom'}
                       animate={false}
@@ -125,11 +125,6 @@ const UpcomingEvents = () => {
                             item?.attributes?.titleZh,
                             item?.attributes?.titleEn
                           )}
-                          <Button
-                            type="link"
-                            className={styles.btn}
-                            icon={<RightCircleOutlined />}
-                          />
                         </div>
                         <Descriptions
                           column={1}
@@ -156,6 +151,9 @@ const UpcomingEvents = () => {
                             }
                             `}
                           </Descriptions.Item>
+                          <Descriptions.Item label={<UserOutlined />}>
+                            {`Organizer | ${item?.attributes?.organizer} `}
+                          </Descriptions.Item>
                           <Descriptions.Item label={<LaptopOutlined />}>
                             {!item.attributes.geographicallyAddress &&
                             item.attributes.link &&
@@ -169,9 +167,11 @@ const UpcomingEvents = () => {
                             ) : (
                               item.attributes.geographicallyAddress
                             )}
-                          </Descriptions.Item>
-                          <Descriptions.Item label={<UserOutlined />}>
-                            {`Organizer | ${item?.attributes?.organizer} `}
+                            <Button
+                              type="link"
+                              className={styles.btn}
+                              icon={<RightCircleOutlined />}
+                            />
                           </Descriptions.Item>
                         </Descriptions>
                       </div>
