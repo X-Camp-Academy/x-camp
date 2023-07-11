@@ -38,16 +38,16 @@ const CarouselContent: React.FC = () => {
             <Row>
               <Col xs={24} sm={24} md={14}>
                 <Space direction="vertical" className={styles.space} size={24}>
-                  <Title className={styles.title}>
-                    X-Camp Oline Open House
-                  </Title>
+                  <Title className={styles.title}>Weekly Open House</Title>
                   <div>
                     <Paragraph className={styles.paragraph}>
                       {"Evaluate student's programming level"}
                     </Paragraph>
                     <Paragraph className={styles.paragraph}>
-                      Make a programming learning plan and course schedule
-                      consultation
+                      {"Create a programming learning plan"}
+                    </Paragraph>
+                    <Paragraph className={styles.paragraph}>
+                      {"Take it online, meet you weekly"}
                     </Paragraph>
                   </div>
                   <button className={styles.button}>JOIN US</button>
@@ -89,7 +89,7 @@ const CarouselContent: React.FC = () => {
 
       <div className={styles.cardFrom}>
         <Card
-          title={t("FreeConsultation")}
+          title={"Free Consultation"}
           headStyle={{
             color: "#172142",
             fontSize: 24,

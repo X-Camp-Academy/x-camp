@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
-import styles from "./TopBanner.module.scss";
+import styles from "./Banner.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -26,10 +26,10 @@ const TopBanner: React.FC = () => {
             md={{ span: 8, offset: 2 }}
             className={styles.col}
           >
-            <Image
+            <div className={styles.imgBg}></div>
+            <img
               alt="image"
               src="/image/about-us/introduction/top-banner.png"
-              preview={false}
               className={styles.image}
             />
           </Col>

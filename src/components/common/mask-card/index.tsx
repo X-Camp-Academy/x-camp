@@ -1,6 +1,7 @@
 import { Card, CardProps } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
+
 interface MaskCardProps extends CardProps {
   ref?: React.RefObject<any>;
   maskChildren?: React.ReactNode;

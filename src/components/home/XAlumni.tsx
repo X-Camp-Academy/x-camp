@@ -2,26 +2,26 @@
 import React from "react";
 import { Space, Typography, Carousel, Image } from "antd";
 import styles from "./XAlumni.module.scss";
-import { useMobile } from "@/utils";
 import { useGetXAlumni } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+import { AppstoreAddOutlined } from "@ant-design/icons";
 
 const { Title, Paragraph } = Typography;
 const XAlumni = () => {
   const { lang, format: t } = useLang();
   const { data: xAlumni } = useGetXAlumni();
 
-
-  const isMobile = useMobile();
-
   return (
     <div className={styles.xalumniContainer}>
       <div className={`${styles.xalumni} container`}>
         <Space direction="vertical">
-          <Title className={styles.title}>{t("X_ALUMNI")}</Title>
+          <Title className={styles.title}>{"X-Alumni"}</Title>
           <Paragraph className={styles.paragraph}>
-            {t("X_ALUMNI_INTRODUCTION")}
+            {/* {t("X_ALUMNI_INTRODUCTION")} */}
+            Since its inception, X-Camp has had over 1,000 students and is
+            currently enrolling over 500+ students in 250+ schools around the
+            world. If you would like to find your classmates, please contact us!
           </Paragraph>
         </Space>
 
@@ -70,11 +70,38 @@ const XAlumni = () => {
                       item?.attributes?.titleEn
                     )}
                   </Title>
+                  <div className={styles.maskContainer}>
+                    <Space direction="vertical">
+                      <Title className={styles.maskCardTitle}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Title>
+
+                      <Paragraph
+                        ellipsis={{ rows: 5 }}
+                        className={styles.maskCardParagraph}
+                      >
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
+                        )}
+                      </Paragraph>
+                    </Space>
+                  </div>
                 </div>
               );
             })}
           </Carousel>
         </div>
+
+        <button className={styles.moreAlumniInfo}>
+          More Alumni Information
+          <AppstoreAddOutlined className={styles.icon} />
+        </button>
       </div>
     </div>
   );
