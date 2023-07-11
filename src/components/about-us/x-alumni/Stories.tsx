@@ -33,13 +33,12 @@ const Stories: React.FC = () => {
       <div className="container">
         <Space className={styles.topSpace}>
           <Space direction="vertical">
-            <Title className={styles.title}>Stories</Title>
+            <Title className={styles.title}>X-Alumni Events</Title>
             <Paragraph className={styles.paragraph}>
-              Explore news, views and perspectives from Stanford and your alumni
-              community.
+              Explore news, views and perspectives from Stanford and your alumni community.
             </Paragraph>
           </Space>
-          <button className={styles.button}>Explore More Stories</button>
+          <button className={styles.button}>View More Events <RightOutlined /></button>
         </Space>
 
         <Row gutter={32} className={styles.row}>

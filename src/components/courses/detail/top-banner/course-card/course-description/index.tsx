@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styles from "./index.module.scss";
-import { Carousel, Descriptions, Space,Image } from "antd";
+import { Carousel, Descriptions, Space, Image, Button } from "antd";
 import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import dayjs from "dayjs";
+import { ShareAltOutlined } from "@ant-design/icons";
+import { CarouselRef } from "antd/es/carousel";
 
 const CourseDescription = () => {
   const { lang } = useLang();
+  const ref = useRef<CarouselRef>(null);
   const courseData = useContext(CourseClassesContext);
   const { classMode, classLang, classRoomLang, classes, media } =
     courseData?.attributes ?? {};
@@ -17,8 +20,8 @@ const CourseDescription = () => {
     return {
       classCode,
       isFull,
-      startTime: startTime.slice(0, -7),
-      endTime: endTime.slice(0, -7),
+      startTime: startTime?.slice(0, -7),
+      endTime: endTime?.slice(0, -7),
       location,
     };
   });
@@ -38,36 +41,7 @@ const CourseDescription = () => {
   return (
     <Space className={styles.description}>
       <div className={styles.left}>
-        <Descriptions column={1}>
-          <Descriptions.Item label="Class Mode">{classMode}</Descriptions.Item>
-          <Descriptions.Item label="Code Language">
-            {classLang}
-          </Descriptions.Item>
-          <Descriptions.Item label="Classroom Language">
-            {classRoomLang}
-          </Descriptions.Item>
-          <Descriptions.Item label="Duration">
-            {"2023/06/24 - 2023/12/03"}
-          </Descriptions.Item>
-          <Descriptions.Item label="Course Format">
-            {"Offline(12280 Saratoga Sunnyvale Rd, #203 CA 95070)"}
-          </Descriptions.Item>
-          <Descriptions.Item label="Classes Time">
-            <Space direction="vertical">
-              {classesData?.map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={item?.isFull ? `${styles.full}` : ""}
-                  >{`${item?.classCode}: ${item?.startTime}-${item?.endTime}`}</div>
-                );
-              })}
-            </Space>
-          </Descriptions.Item>
-        </Descriptions>
-      </div>
-      <div className={styles.right}>
-        <Carousel dots={{ className: styles.dots }}>
+        <Carousel dots={false} ref={ref}>
           {media?.data?.map((mediaItem) => {
             return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
               <div key={mediaItem?.id} className={styles.videoBox}>
@@ -89,6 +63,68 @@ const CourseDescription = () => {
             );
           })}
         </Carousel>
+        <div className={styles.mediaChoice}>
+          <Space direction="horizontal">
+            {media?.data?.map((mediaItem, index) => {
+              return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
+                <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
+                  <Button ghost
+                    style={{
+                      width: '100%',
+                      height: '100%'
+                    }}
+                    onClick={() => {
+                      ref?.current?.goTo(index)
+                    }}>
+                    <Image
+                      alt=""
+                      preview={false}
+                      src={mediaItem?.attributes?.url}
+                      width="100%"
+                    />
+                  </Button>
+
+                </div>
+              ) : (
+                <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
+                  <Button
+                    ghost
+                    style={{
+                      width: '100%',
+                      height: '100%'
+                    }}
+                    onClick={() => {
+                      ref?.current?.goTo(index)
+                    }}>
+                    <video style={{ width: '100%' }}>
+                      <source src={mediaItem?.attributes?.url} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </Button>
+                </div>
+              );
+            })}
+
+          </Space>
+        </div>
+      </div>
+      <div className={styles.right}>
+        <Descriptions column={1}>
+          <Descriptions.Item label="Class Mode">{classMode}</Descriptions.Item>
+          <Descriptions.Item label="Code Language">
+            {classLang}
+          </Descriptions.Item>
+          <Descriptions.Item label="Classroom Language">
+            {classRoomLang}
+          </Descriptions.Item>
+          <Descriptions.Item label="Duration">
+            {"2023/06/24 - 2023/12/03"}
+          </Descriptions.Item>
+          <Descriptions.Item label="Course Format">
+            {"Offline(12280 Saratoga Sunnyvale Rd, #203 CA 95070)"}
+          </Descriptions.Item>
+        </Descriptions>
+        <Button className={styles.btn}>Share Lessons<ShareAltOutlined /></Button>
       </div>
     </Space>
   );

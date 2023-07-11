@@ -1,40 +1,32 @@
-@import "@/styles/variables";
-
-.banner {
+.topBannerContainer {
   width: 100%;
-  height: 488px;
-  background-color: $primary-color;
-  padding: 110px 174px;
+  padding-bottom: 100px;
+  background-color: #F5F5F5;
 
-  .content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    .title {
-      font-size: 48px;
-      font-weight: bold;
-      color: #d46b14;
-      line-height: 64px;
-      margin-bottom: 36px;
-    }
-
-    .description {
-      font-size: 24px;
-      font-weight: 500;
-      color: #172142;
-      line-height: 42px;
-      width: 580px;
-    }
+  .col {
+    margin-top: 100px;
   }
-}
 
-@media (max-width:768px) {
-  .banner {
-    padding: 20px 20px;
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #172142;
+    line-height: 64px;
+  }
 
-    .description {
-      width: auto !important;
-    }
+  .paragraph {
+    font-size: 24px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 42px;
+  }
+
+  .image {
+    width: 422px;
+    height: 262px;
+
+    /* @media (max-width: 768px) {
+      display: none;
+    } */
   }
 }

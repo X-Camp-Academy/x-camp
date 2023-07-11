@@ -1,4 +1,4 @@
-import { Button, Space, Typography } from "antd";
+import { Button, Descriptions, Space, Typography } from "antd";
 import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import CourseClassesContext from "../../../CourseClasses";
@@ -15,7 +15,22 @@ const CourseAbstract = () => {
     courseLongDescriptionEn,
     courseLongDescriptionZh,
     tuitionUSD,
+    classes
   } = courseData?.attributes ?? {};
+
+  const classesData = classes?.data?.map((classItem) => {
+    const { classCode, isFull, startTime, endTime, location } =
+      classItem?.attributes;
+    return {
+      classCode,
+      isFull,
+      startTime: startTime?.slice(0, -7),
+      endTime: endTime?.slice(0, -7),
+      location,
+    };
+  });
+
+
   return (
     <Space className={styles.abstract} size={24}>
       <div className={styles.left}>
@@ -28,6 +43,20 @@ const CourseAbstract = () => {
             courseLongDescriptionEn
           )}
         </Paragraph>
+        <Descriptions column={1} layout="vertical">
+          <Descriptions.Item label="Classes Time">
+            <Space direction="vertical">
+              {classesData?.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={item?.isFull ? `${styles.full}` : ""}
+                  >{`${item?.classCode}: ${item?.startTime}-${item?.endTime}`}</div>
+                );
+              })}
+            </Space>
+          </Descriptions.Item>
+        </Descriptions>
       </div>
       <div className={styles.right}>
         <div className={styles.title}>{"One-Time Payment"}</div>

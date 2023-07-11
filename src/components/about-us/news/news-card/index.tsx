@@ -36,6 +36,7 @@ const NewsCard = () => {
     });
   };
 
+
   return (
     <div className={styles.content}>
       <div className={"container"}>
