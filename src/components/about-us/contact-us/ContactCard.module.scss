@@ -2,27 +2,30 @@
   margin-top: 6.25rem;
   padding-bottom: 3.25rem;
 
-  .title {
-    font-size: 48px;
-    font-weight: bold;
-    color: #d46b14;
-    line-height: 64px;
-    margin:90px 0 40px 0;
-  }
+
+
   .card {
-    min-height: 180px;
+    height: 250px;
     width: 100%;
-    .icon
-    {
-        width: 40px;
-        height: 40px;
-        font-size: 21px;
-        border-radius: 8px;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        color:#FFAD11;
-        background-color: #FFEDDF;
+    padding: 24px 40px;
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #172142;
+      line-height: 64px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      font-size: 21px;
+      border-radius: 8px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      color: #FFAD11;
+      background-color: #FFEDDF;
     }
   }
 }

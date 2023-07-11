@@ -1,14 +1,14 @@
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import remarkRehype from "remark-rehype";
-import rehypeRaw from "rehype-raw";
-import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
-import rehypePrism from "rehype-prism-plus";
-import rehypeKatex from "rehype-katex";
-import { type Components, toJsxRuntime } from "hast-util-to-jsx-runtime";
+import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
+import rehypePrism from 'rehype-prism-plus';
+import rehypeKatex from 'rehype-katex';
+import { type Components, toJsxRuntime } from 'hast-util-to-jsx-runtime';
 
 /**
  * 将 Markdown 文本解析为 Mdast 树并转换为 Hast 树的处理器
@@ -23,21 +23,21 @@ const processor = unified()
       math: (h, node) =>
         // 如果 Math 节点的 `meta` 属性不为空，则视为自定义块
         node.meta
-          ? h(node.position, "custom", { meta: node.meta, value: node.value })
-          : h(node, "div"),
+          ? h(node.position, 'custom', { meta: node.meta, value: node.value })
+          : h(node, 'div'),
     },
   })
   .use(rehypeRaw)
   .use(rehypeSanitize, {
     ...defaultSchema,
-    tagNames: [...(defaultSchema.tagNames ?? []), "video", "custom"],
+    tagNames: [...(defaultSchema.tagNames ?? []), 'video', 'custom'],
     attributes: {
       ...defaultSchema.attributes,
-      code: [...(defaultSchema.attributes?.code ?? []), "className"],
-      div: [...(defaultSchema.attributes?.div ?? []), "className"],
-      span: [...(defaultSchema.attributes?.span ?? []), "className"],
-      video: [...(defaultSchema.attributes?.video ?? []), "src"],
-      custom: ["meta", "value"],
+      code: [...(defaultSchema.attributes?.code ?? []), 'className'],
+      div: [...(defaultSchema.attributes?.div ?? []), 'className'],
+      span: [...(defaultSchema.attributes?.span ?? []), 'className', 'style'],
+      video: [...(defaultSchema.attributes?.video ?? []), 'src'],
+      custom: ['meta', 'value'],
     },
   })
   .use(rehypePrism, { ignoreMissing: true })
@@ -48,8 +48,8 @@ const processor = unified()
  * Mdast 节点
  */
 export type MdastNode = ReturnType<
-  (typeof processor)["parse"]
->["children"][number];
+  (typeof processor)['parse']
+>['children'][number];
 
 /**
  * 将 Markdown 文本映射到 DOM 树，第一层为 `<div>` 块元素，第二层为 `<div>` 行元素，之后均为 `<span>` 元素
@@ -61,7 +61,7 @@ export const editorRender = (sourceCode: string) => {
   /**
    * CSS 类名前缀
    */
-  const classNamePrefix = "x-star-editor-md-";
+  const classNamePrefix = 'x-star-editor-md-';
 
   /**
    * 扫描偏移量，表示已经添加到 DOM 树的文本
@@ -76,12 +76,12 @@ export const editorRender = (sourceCode: string) => {
   /**
    * 块级元素
    */
-  let block = document.createElement("div");
+  let block = document.createElement('div');
 
   /**
    * DOM 树根元素
    */
-  const el = document.createElement("div");
+  const el = document.createElement('div');
 
   /**
    * 判断一个 Mdast 节点的子节点是否为流内容
@@ -90,9 +90,9 @@ export const editorRender = (sourceCode: string) => {
    * @returns 子节点是否为流内容
    */
   const isFlowContent = (node: MdastNode) =>
-    node.type === "blockquote" ||
-    node.type === "listItem" ||
-    node.type === "footnoteDefinition";
+    node.type === 'blockquote' ||
+    node.type === 'listItem' ||
+    node.type === 'footnoteDefinition';
 
   /**
    * 将栈中指定索引的 DOM 元素推到对应的父元素中
@@ -107,9 +107,9 @@ export const editorRender = (sourceCode: string) => {
     const styleElement =
       stack[index && !isFlowContent(stack[index - 1].node) ? index : 0].el;
     styleElement.classList.add(`${classNamePrefix}${node.type}`);
-    if (node.type === "heading") {
+    if (node.type === 'heading') {
       styleElement.classList.add(`${classNamePrefix}heading${node.depth}`);
-    } else if (node.type === "code" || node.type === "math") {
+    } else if (node.type === 'code' || node.type === 'math') {
       if (first) {
         styleElement.classList.add(`${classNamePrefix}first`);
       }
@@ -121,7 +121,7 @@ export const editorRender = (sourceCode: string) => {
     // 如果索引为 0，则父节点为块级元素，否则为前一个索引的 DOM 元素
     const parentElement = index ? stack[index - 1].el : block;
     parentElement.append(stack[index].el);
-    stack[index].el = document.createElement(index ? "span" : "div");
+    stack[index].el = document.createElement(index ? 'span' : 'div');
     stack[index].first = false;
   };
 
@@ -131,7 +131,7 @@ export const editorRender = (sourceCode: string) => {
   const pushBlock = () => {
     block.classList.add(`${classNamePrefix}block`);
     el.append(block);
-    block = document.createElement("div");
+    block = document.createElement('div');
   };
 
   /**
@@ -141,7 +141,7 @@ export const editorRender = (sourceCode: string) => {
    * @returns `<span>` 元素
    */
   const createDelimiter = (text: string) => {
-    const temp = document.createElement("span");
+    const temp = document.createElement('span');
     temp.append(text);
     temp.classList.add(`${classNamePrefix}delimiter`);
     return temp;
@@ -154,7 +154,7 @@ export const editorRender = (sourceCode: string) => {
    * @returns `<div>` 元素
    */
   const createLine = (text: string) => {
-    const temp = document.createElement("div");
+    const temp = document.createElement('div');
     temp.append(`${text}\u200B`);
     return temp;
   };
@@ -167,7 +167,7 @@ export const editorRender = (sourceCode: string) => {
    */
   const addText = (text: string, delimiter = false) => {
     // 每行文本放在不同 `<div>` 元素中
-    const lines = text.split("\n");
+    const lines = text.split('\n');
     if (stack.length) {
       // 如果栈不为空，说明为块级元素内的文本，每一行都应推到块级元素中
       if (lines[0]) {
@@ -179,7 +179,7 @@ export const editorRender = (sourceCode: string) => {
         for (let j = stack.length - 1; j; j--) {
           pushElement(j);
         }
-        stack[0].el.append("\u200B");
+        stack[0].el.append('\u200B');
         pushElement(0);
         if (lines[i]) {
           stack[stack.length - 1].el.append(
@@ -226,11 +226,11 @@ export const editorRender = (sourceCode: string) => {
       // 为 Mdast 节点创建 DOM 元素
       stack.push({
         node,
-        el: document.createElement(stack.length ? "span" : "div"),
+        el: document.createElement(stack.length ? 'span' : 'div'),
         first: true,
       });
 
-      if ("children" in node) {
+      if ('children' in node) {
         getChildren(node.children, endOffset);
       } else {
         addText(sourceCode.slice(scanOffset, endOffset));
@@ -240,7 +240,7 @@ export const editorRender = (sourceCode: string) => {
         pushElement(stack.length - 1, true);
       } else {
         // 如果栈大小为 1，说明为块级元素终点
-        stack[0].el.append("\u200B");
+        stack[0].el.append('\u200B');
         pushElement(0, true);
         pushBlock();
         scanOffset++;
@@ -296,7 +296,7 @@ export const viewerRender = (sourceCode: string, options: ViewerOptions) => {
     components: {
       ...options.customHTMLElements,
       custom: ({ meta, value }: { meta: string; value: string }) =>
-        jsx(options.customBlocks[meta] ?? "div", { children: value }),
+        jsx(options.customBlocks[meta] ?? 'div', { children: value }),
     } as never,
   });
 };

@@ -1,5 +1,5 @@
-import { Space, Row, Col, Card, Image, Typography } from "antd";
-import styles from "./TopBanner.module.scss";
+import { Space, Row, Col, Card, Image, Typography } from 'antd';
+import styles from './TopBanner.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
 const TopBanner: React.FC = () => {
@@ -23,12 +23,14 @@ const TopBanner: React.FC = () => {
             md={{ span: 8, offset: 2 }}
             className={styles.col}
           >
-            <Image
-              alt="image"
-              src="/image/home/course-3.png"
-              preview={false}
-              className={styles.image}
-            />
+            <div className={styles.imgContain}>
+              <Image
+                alt="image"
+                src="/image/about-us/introduction/top-banner.png"
+                preview={false}
+                className={styles.image}
+              />
+            </div>
           </Col>
         </Row>
         <Space></Space>
