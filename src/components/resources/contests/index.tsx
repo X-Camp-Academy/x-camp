@@ -45,10 +45,7 @@ const Contests = () => {
           />
           <Introduction data={resourcesContest} />
           <WhyContest />
-          <Testimony
-            className={styles.comments}
-            testimonyData={testimonyData}
-          />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>
