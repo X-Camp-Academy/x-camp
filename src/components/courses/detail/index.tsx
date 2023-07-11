@@ -36,6 +36,7 @@ const CourseDetail = () => {
     ready: true,
     category: FaqCategory.CoursesQA,
   });
+  
   // StrapiResponseDataItem<GetCourses>
 
   return (
@@ -54,8 +55,8 @@ const CourseDetail = () => {
             <TopBanner />
           </CourseClassesContext.Provider>
           <UsacoMedal />
-          <FacultyCoach />
           <ProgressionClasses />
+          <FacultyCoach />
           <Faqs title="Course FAQs" data={faq} />
           <Testimony
             className={styles.comments}
