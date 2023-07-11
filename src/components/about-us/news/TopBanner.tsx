@@ -8,9 +8,14 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 const { Title, Paragraph } = Typography;
 
-const TopBanner = () => {
-  const onChange: DatePickerProps["onChange"] = (date, dateString) => {
-    console.log(date, dateString);
+interface Props {
+  year: string;
+  setYear: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const TopBanner = ({ year, setYear }: Props) => {
+  const onChange: DatePickerProps["onChange"] = (date) => {
+    setYear(String(date?.get("year")));
   };
 
   //年份选择格式化
@@ -29,7 +34,7 @@ const TopBanner = () => {
             picker="year"
             format={customFormat}
             onChange={onChange}
-            defaultValue={dayjs()}
+            defaultValue={dayjs(year)}
           />
         </Space>
         <img src="/image/about-us/introduction/top-banner.png" alt="" />

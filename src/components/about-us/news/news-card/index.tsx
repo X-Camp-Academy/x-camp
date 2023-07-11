@@ -1,40 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./index.module.scss";
 import { Col, Pagination, Row, Space } from "antd";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { NewEventCategory } from "@/apis/strapi-client/define";
+import { GetNewEventResponse } from "@/apis/strapi-client/define";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import dayjs from "dayjs";
 
-const NewsCard = () => {
+interface Props {
+  current: number;
+  setCurrent: React.Dispatch<React.SetStateAction<number>>;
+  newEventData: GetNewEventResponse | undefined;
+}
+
+const NewsCard = ({ current, setCurrent, newEventData }: Props) => {
   const { lang } = useLang();
   const pageSize = 3;
-  const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.News);
-
-  const { data: newEventData, run } = useGetNewEvent({
-    tag,
-    current,
-    pageSize,
-  });
-
-  const paginationOnChange = (page: number) => {
-    setCurrent(page);
-    run({
-      populate: "*",
-      sort: ["order:desc"],
-      filters: {
-        tags: {
-          $eq: tag,
-        },
-      },
-      pagination: {
-        page: current,
-        pageSize,
-      },
-    });
-  };
 
   return (
     <div className={styles.content}>
@@ -71,7 +51,7 @@ const NewsCard = () => {
           className={styles.pagination}
           pageSize={pageSize}
           current={current}
-          onChange={(page) => paginationOnChange(page)}
+          onChange={(page) => setCurrent(page)}
         />
       </div>
     </div>
