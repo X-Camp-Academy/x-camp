@@ -1,16 +1,18 @@
 @import "@/styles/variables";
+
 .calendarContent {
   width: 100%;
 
   .calendarContainer {
     padding: 30px;
+
     .title {
-        font-size: 48px;
-        font-weight: 600;
-        color: #D46B14;
-        line-height: 64px;
+      font-size: 36px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 64px;
     }
-  
+
     .listContainer {
       padding: 40px;
       background: url("/logo/x-camp-logo.png") no-repeat;
@@ -18,26 +20,24 @@
       background-position: right bottom;
       position: relative;
 
-      .bookButton 
-      {
-        position: absolute;
-        right:20px;
+      .bookButton {
+        float: right;
+        z-index: 999;
         width: 80px;
         height: 80px;
-        background: #D46B14;
-        top:0;
+        background: #FBE6BE;
+        top: 0;
         border-radius: 8px;
         border: none;
         font-size: 40px;
         font-weight: 500;
-        color: #FFFFFF;
-        line-height: 24px;
-  
+        color: #FFAD11;
+
         &:hover {
           @extend .hoverButton;
         }
       }
     }
   }
-   
+
 }
