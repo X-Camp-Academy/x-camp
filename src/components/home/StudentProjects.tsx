@@ -29,9 +29,7 @@ const StudentProjects: React.FC = () => {
   return (
     <div className={`${styles.studentProjects} container`}>
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>
-          <Text className={styles.titleText}>Student</Text> Projects
-        </Title>
+        <Title className={styles.title}>Student Projects</Title>
         <Paragraph className={styles.paragraph}>
           X-Camp has its own Art of Python Programming contest 4.0 award and
           other projects and event every quarter to inspire students . It is a
@@ -82,7 +80,10 @@ const StudentProjects: React.FC = () => {
                           item?.attributes?.titleEn
                         )}
                       </Text>
-                      <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
+                      <Paragraph
+                        ellipsis={{ rows: 3 }}
+                        className={styles.cardParagraph}
+                      >
                         {getTransResult(
                           lang,
                           item?.attributes?.descriptionZh,

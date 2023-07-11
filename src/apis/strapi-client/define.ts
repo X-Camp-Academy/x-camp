@@ -21,17 +21,6 @@ export interface GetFaculty extends strapiPublicFields {
 export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
-export interface GetIntroductionFacultyCoach extends strapiPublicFields {
-  titleZh: string;
-  titleEn: string;
-  descriptionZh: string;
-  descriptionEn: string;
-  avatar: StrapiMedia;
-}
-export type GetIntroductionFacultyCoachRequest =
-  StrapiRequest<GetIntroductionFacultyCoach>;
-export type GetIntroductionFacultyCoachResponse =
-  StrapiResponse<GetIntroductionFacultyCoach>;
 
 export enum NewEventCategory {
   News = 'News',
@@ -102,6 +91,7 @@ export interface GetTestimony extends strapiPublicFields {
   courseId: string;
   pageName: string;
   eventId: string;
+  date: string;
 }
 
 export type GetAboutUsAchievementsAwardRequest =

@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
-import styles from "./BottomBanner.module.scss";
+import styles from "./ISPI.module.scss";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import { useMobile } from "@/utils";
 
 const { Title, Paragraph, Text } = Typography;
 
-const BottomBanner: React.FC = () => {
+const ISPI: React.FC = () => {
   const isMobile = useMobile();
   return (
-    <div className={styles.bottomBannerContainer}>
+    <div className={styles.ispiContainer}>
       <div className="container">
         <Row>
           <Col xs={24} sm={24} md={14} className={styles.col}>
@@ -68,4 +68,4 @@ const BottomBanner: React.FC = () => {
   );
 };
 
-export default BottomBanner;
+export default ISPI;

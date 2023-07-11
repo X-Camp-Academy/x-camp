@@ -3,7 +3,6 @@
 .publicCalendarContainer {
   width: 100%;
   margin-top: 100px;
-  background-color: #ffeddf;
   .publicCalendar {
     padding-top: 70px;
     padding-bottom: 100px;
@@ -17,9 +16,8 @@
     }
     .titleText {
       @extend .title;
-      color: #d46b14;
       display: inline-block;
-      width: 200px;
+      width: 168px;
       height: 22px;
       background-image: url("/image/home/founding-team-bg.png");
       background-repeat: no-repeat;
@@ -31,47 +29,7 @@
     .colSpace {
       margin-top: 62px;
     }
-    .activeCard {
-      padding-left: 12px;
-      background-color: #d46b14;
-      .cardContent {
-        width: 100%;
-        height: 100%;
-        padding-top: 24px;
-        padding-right: 144px;
-        @media (max-width: 768px) {
-          padding-right: 40px;
-        }
-        padding-bottom: 24px;
-        background-color: #ffad11;
-        .contentLeft {
-          width: 100%;
-          margin-left: 40px;
-          .text {
-            font-size: 20px;
-            color: #fff;
-            font-weight: 600;
-            line-height: 32px;
-          }
-        }
-        .contentRight {
-          width: 100%;
-          .paragraph {
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 32px;
-          }
-          .date {
-            color: #ffedca;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 32px;
-          }
-        }
-      }
-    }
-    .normalCard {
+    .eventCard {
       padding-left: 12px;
       background-color: #ffad11;
       .cardContent {
@@ -88,25 +46,29 @@
           width: 100%;
           margin-left: 40px;
           .text {
-            color: #666;
+            font-size: 18px;
+            font-weight: 500;
+            color: #6a6a6a;
+            line-height: 28px;
+          }
+          .textTwo {
+            font-size: 36px;
             font-weight: 600;
-            line-height: 32px;
-            :nth-child(2) {
-              color: #172142;
-            }
+            color: #172142;
+            line-height: 48px;
           }
         }
         .contentRight {
           .paragraph {
-            color: #d46b14;
             font-size: 18px;
             font-weight: bold;
+            color: #172142;
             line-height: 32px;
           }
           .date {
-            color: #666666;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 400;
+            color: #6a6a6a;
             line-height: 32px;
           }
         }

@@ -35,29 +35,15 @@ const Faculty: React.FC = () => {
     return img?.data?.attributes?.url;
   };
 
-  const [prev, setPrev] = useState(true);
-  const [next, setNext] = useState(false);
-  const afterChange = (currentSlide: number) => {
-    if (currentSlide === 0) {
-      setPrev(true);
-    } else if ([4, 5, 6].includes(currentSlide)) {
-      // sm md lg
-      setNext(true);
-    } else {
-      setPrev(false);
-      setNext(false);
-    }
-  };
-
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>Faculty</Title>
         <Paragraph className={styles.paragraph}>
-          X-Camp has its own Art of Python Programming contest 4.0 award and
-          other projects and event every quarter to inspire students . It is a
-          great opportunity for students to showcase what they have learned from
-          classes .
+          World-class faculties comprise experienced senior engineers from
+          leading tech companies, accomplished students from prestigious
+          computer science majors, and top-ranking members of competitive
+          programming contests like IOI, ICPC, and USACO.
         </Paragraph>
       </Space>
 
@@ -65,7 +51,7 @@ const Faculty: React.FC = () => {
         <Button
           type="primary"
           shape="circle"
-          className={prev ? styles.outPrev : styles.prev}
+          className={styles.prev}
           onClick={onPrev}
         >
           <LeftOutlined />
@@ -75,8 +61,7 @@ const Faculty: React.FC = () => {
           slidesToShow={3}
           slidesToScroll={1}
           swipeToSlide={true}
-          infinite={false}
-          afterChange={afterChange}
+          infinite={true}
           responsive={[
             {
               breakpoint: 992,
@@ -146,7 +131,7 @@ const Faculty: React.FC = () => {
         <Button
           type="primary"
           shape="circle"
-          className={next ? styles.outNext : styles.next}
+          className={styles.next}
           onClick={onNext}
         >
           <RightOutlined />

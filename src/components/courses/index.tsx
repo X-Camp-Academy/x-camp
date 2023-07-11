@@ -1,6 +1,13 @@
 "use client";
-import { Collapse, ConfigProvider, Divider, Layout, Space } from "antd";
-import React from "react";
+import {
+  Collapse,
+  ConfigProvider,
+  Divider,
+  Layout,
+  Segmented,
+  Space,
+} from "antd";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
@@ -16,13 +23,30 @@ import {
 } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+import { SegmentedValue } from "antd/es/segmented";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { GetCourses } from "@/apis/strapi-client/define";
+import { divide } from "lodash";
+import FilterForm from "./FilterForm";
 const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
 
+interface FormatCoursesProps {
+  primaryTitle: string;
+  children:
+    | {
+        secondaryTitle: string;
+        children: StrapiResponseDataItem<GetCourses>[] | undefined;
+      }[]
+    | undefined;
+}
 const Courses = () => {
   const pathname = usePathname();
   const { lang } = useLang();
+
+  const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
+  const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses();
 
@@ -52,28 +76,9 @@ const Courses = () => {
     (item) => item?.attributes?.type
   );
 
-  const courseLevelTypeMap = new Map();
-  courseLevelTypeData?.forEach((item) => {
-    courseLevelTypeMap.set(item, []);
-  });
-
-  courses?.forEach((item) => {
-    const key = item?.attributes?.courseLevelType?.data?.attributes?.type;
-    const value = courseLevelTypeMap.get(key);
-    value?.push(item);
-    courseLevelTypeMap.set(key, value);
-  });
-
-  courseLevelTypeMap.forEach((value, key) => {
-    // 在这里对每个键值对执行操作
-    // console.log(key, value);
-  });
-
-  // console.log(courses);
-
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
-      case "Online Courses":
+      case "Online Classes":
         return courses?.filter(
           (item) => item?.attributes?.classMode === "Online Live"
         );
@@ -117,6 +122,17 @@ const Courses = () => {
     }
   });
 
+  const getCourseBySegmented = (segmented: SegmentedValue) => {
+    const result = allCourses?.filter(
+      (item) => item?.primaryTitle === segmented
+    );
+    setCurrentData(result);
+  };
+  useEffect(() => {
+    getCourseBySegmented(segmented);
+  }, [segmented, courses]);
+  console.log(currentData);
+
   return (
     <ConfigProvider
       theme={{
@@ -130,7 +146,16 @@ const Courses = () => {
           <TopBanner />
 
           <div className={`${styles.classContainer} container`}>
-            {allCourses?.map((item, index) => {
+            <Segmented
+              style={{ backgroundColor: "#fff" }}
+              block
+              options={COURSE_TYPES}
+              onChange={(value: SegmentedValue) => setSegmented(value)}
+            />
+            <div className={styles.filterForm} style={{ marginTop: 64 }}>
+              <FilterForm />
+            </div>
+            {currentData?.map((item, index) => {
               return (
                 <div
                   className={"classify"}
@@ -173,8 +198,13 @@ const Courses = () => {
                               <Panel
                                 key={v?.secondaryTitle}
                                 header={
-                                  <div className={styles.panelTitle}>
-                                    {v?.secondaryTitle}
+                                  <div className={styles.paneBox}>
+                                    <div className={styles.panelTitle}>
+                                      {v?.secondaryTitle}
+                                    </div>
+                                    <span className={styles.courseNum}>
+                                      {v?.children?.length} courses
+                                    </span>
                                   </div>
                                 }
                               >
@@ -220,14 +250,13 @@ const Courses = () => {
                       </>
                     </Panel>
                   </Collapse>
-                  <Divider className={styles.divider} />
+                  {/* <Divider className={styles.divider} /> */}
                 </div>
               );
             })}
           </div>
-
           <Testimony testimonyData={testimonyData} />
-          <AnchorNav />
+          {/* <AnchorNav /> */}
         </Content>
       </Layout>
     </ConfigProvider>

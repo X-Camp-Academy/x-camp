@@ -382,12 +382,9 @@ export const classesData = [
 ];
 
 export const COURSE_TYPES = [
-  "Online Courses",
-  "In-person Classes",
-  "Camps",
+  "Online Classes",
+  "In-person Camps",
   "Enhancement Classes",
-  "100 Problem Challenge",
-  "APCS",
-  "Bilingual",
+  "APCS Classes",
   "X- Tutors",
 ];

@@ -1,19 +1,44 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Card, Image, Typography, Tag, Avatar } from "antd";
-import { useGetIntroductionFacultyCoach } from "@/apis/strapi-client/strapi";
-import styles from "./FacultyCoach.module.scss";
+import React from "react";
+import { Space, Row, Col, Card, Typography, Avatar } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import {
+  StrapiMedia,
+  StrapiResponseDataItem,
+} from "@/apis/strapi-client/strapiDefine";
+import { GetFaculty } from "@/apis/strapi-client/define";
+import { useGetFaculty } from "@/apis/strapi-client/strapi";
+
+import styles from "./FacultyCoach.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
-
 
 const FacultyCoach: React.FC = () => {
   const { lang } = useLang();
 
-  const { data: facultyCoachData } = useGetIntroductionFacultyCoach();
+  const { data } = useGetFaculty({
+    pageName: ["/introduction"],
+  });
+
+  const sortData = data?.sort(
+    (a, b) => b?.attributes?.order - a?.attributes?.order
+  );
+
+  console.log(sortData);
+
+  const splitIntoGroups = (
+    arr: StrapiResponseDataItem<GetFaculty>[] | undefined,
+    groupSize: number
+  ) => {
+    const groups = [];
+    for (let i = 0; arr && i < arr.length; i += groupSize) {
+      groups.push(arr?.slice(i, i + groupSize));
+    }
+    return groups;
+  };
+  const facultyData = splitIntoGroups(sortData, 3);
+  console.log(facultyData);
 
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
@@ -44,7 +69,7 @@ const FacultyCoach: React.FC = () => {
           </Paragraph>
         </Space>
 
-        {facultyCoachData?.map((faculty, facultyIndex) => (
+        {facultyData?.map((faculty, facultyIndex) => (
           <Row
             key={facultyIndex}
             justify="center"
@@ -52,10 +77,7 @@ const FacultyCoach: React.FC = () => {
             gutter={48}
             className={styles.row}
           >
-
-            {faculty.map((item, index) => (
-
-
+            {faculty?.map((item, index) => (
               <Col
                 key={index}
                 xs={{ span: 24 }}
@@ -66,14 +88,17 @@ const FacultyCoach: React.FC = () => {
                 <div style={computedStyle(index)}>
                   <Card>
                     <Space direction="vertical">
-                      <Avatar src={getImgUrl(item?.attributes?.avatar)} className={styles.avatar} />
-                      <Text className={styles.name}>{
-                        getTransResult(
+                      <Avatar
+                        src={getImgUrl(item?.attributes?.img)}
+                        className={styles.avatar}
+                      />
+                      <Text className={styles.name}>
+                        {getTransResult(
                           lang,
                           item?.attributes?.titleZh,
                           item?.attributes?.titleEn
-                        )
-                      }</Text>
+                        )}
+                      </Text>
                       <Paragraph
                         ellipsis={{
                           rows: 3,
@@ -81,17 +106,15 @@ const FacultyCoach: React.FC = () => {
                             lang,
                             item?.attributes?.descriptionZh,
                             item?.attributes?.descriptionEn
-                          )
+                          ),
                         }}
                         className={styles.description}
                       >
-                        {
-                          getTransResult(
-                            lang,
-                            item?.attributes?.descriptionZh,
-                            item?.attributes?.descriptionEn
-                          )
-                        }
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
+                        )}
                       </Paragraph>
                     </Space>
                   </Card>
