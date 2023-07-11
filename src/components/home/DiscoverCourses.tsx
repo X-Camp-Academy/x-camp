@@ -29,7 +29,7 @@ const DiscoverCourses: React.FC = () => {
   const courseCards = [
     {
       title: "Python Beginner",
-      desc: "Suitable for Year 6+",
+      desc: "5th+ Graders",
       url: "/image/home/course-1.png",
       bgc: "#D8D8D8",
       maskBgc: "rgb(216 216 216 / 40%)",
@@ -42,7 +42,7 @@ const DiscoverCourses: React.FC = () => {
     },
     {
       title: "C++ Knowledge",
-      desc: "Suitable for Year 7+",
+      desc: "6th+ Graders",
       url: "/image/home/course-2.png",
       bgc: "#FFD600",
       maskBgc: "rgb(255 214 0 / 40%)",
@@ -55,7 +55,7 @@ const DiscoverCourses: React.FC = () => {
     },
     {
       title: "USACO Grandmaster",
-      desc: "Suitable for Year 7+",
+      desc: "7th+ Graders",
       url: "/image/home/course-3.png",
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
@@ -68,7 +68,7 @@ const DiscoverCourses: React.FC = () => {
     },
     {
       title: "APCS",
-      desc: "Suitable for Year 7+",
+      desc: "7th+ Graders",
       url: "/image/home/course-4.png",
       bgc: "#D46B14",
       maskBgc: "rgb(212 107 20 / 40%)",

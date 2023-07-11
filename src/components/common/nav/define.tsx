@@ -15,9 +15,9 @@ export const useMenuItems = () => {
       key: "courses",
       dropdown: {
         left: {
-          title: "X-Camp Class Road Map",
+          title: "Class Road Map",
           description:
-            "学习路线简介学习路线简介学习路线简介学习路线简介学习路线简介学习路线简介",
+            "X-Camp offers beginner to IOI level programming classes with structured, self-designed curriculum",
           btn: (
             <>
               <span onClick={() => router.push("/courses")}>
@@ -43,7 +43,7 @@ export const useMenuItems = () => {
           key: "/courses/100-prob-challenge",
         },
         {
-          label: <Link href="/courses/camps">In-person Campus</Link>,
+          label: <Link href="/courses/camps">In-person Camps</Link>,
           key: "/courses/in-person-campus",
         },
         {
@@ -69,9 +69,9 @@ export const useMenuItems = () => {
       key: "resources",
       dropdown: {
         left: {
-          title: "X-Camp School Calendar",
+          title: "School Calendar",
           description:
-            "X-Camp学校日历展示本年度的开学和结束课程时间,教育论坛和比赛等",
+            "X-Camp offers beginner to IOI level programming classes with structured, self-designed curriculum",
           btn: (
             <>
               <span>{"View Calendar"}</span>
@@ -84,7 +84,7 @@ export const useMenuItems = () => {
         {
           label: (
             <Link href="/resources/weekly-education-forum">
-              Weekly Education Forum
+              Education Forum
             </Link>
           ),
           key: "/resources/weekly-education-forum/",
@@ -98,9 +98,7 @@ export const useMenuItems = () => {
           key: "/resources/usaco/",
         },
         {
-          label: (
-            <Link href="/resources/weekly-open-house">Weekly Open House</Link>
-          ),
+          label: <Link href="/resources/weekly-open-house">Open House</Link>,
           key: "/resources/weekly-open-house/",
         },
         {
@@ -147,9 +145,9 @@ export const useMenuItems = () => {
       key: "about-us",
       dropdown: {
         left: {
-          title: "X-Camp School Calendar",
+          title: "School Calendar",
           description:
-            "X-Camp学校日历展示本年度的开学和结束课程时间,教育论坛和比赛等",
+            "X-Camp offers beginner to IOI level programming classes with structured, self-designed curriculum",
           btn: (
             <>
               <span>{"View Calendar"}</span>
@@ -192,7 +190,7 @@ export const useMenuItems = () => {
           key: "news",
         },
         {
-          label: <Link href="/about-us/help-center">QA</Link>,
+          label: <Link href="/about-us/help-center">Q&A</Link>,
           key: "help-center",
         },
         {
@@ -201,9 +199,7 @@ export const useMenuItems = () => {
         },
         {
           label: (
-            <Link href="/about-us/student-recommend">
-              Current Student Referral Program
-            </Link>
+            <Link href="/about-us/student-recommend">Referral Program</Link>
           ),
           key: "current-student-referral-program",
         },

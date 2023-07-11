@@ -8,8 +8,8 @@
   .title {
     font-size: 48px;
     font-weight: bold;
-    color: #d46b14;
-    line-height: 64px;
+    color: #172142;
+    line-height: 72px;
   }
   .paragraph {
     font-size: 24px;
@@ -38,7 +38,6 @@
     transform: rotate(-16deg) translateX(-50%);
     background-color: #ffad11;
     z-index: 998;
-    
   }
   .image {
     @extend .box;

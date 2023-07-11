@@ -12,14 +12,16 @@ const XAlumni = () => {
   const { lang, format: t } = useLang();
   const { data: xAlumni } = useGetXAlumni();
 
-
   return (
     <div className={styles.xalumniContainer}>
       <div className={`${styles.xalumni} container`}>
         <Space direction="vertical">
-          <Title className={styles.title}>{t("X_ALUMNI")}</Title>
+          <Title className={styles.title}>{"X-Alumni"}</Title>
           <Paragraph className={styles.paragraph}>
-            {t("X_ALUMNI_INTRODUCTION")}
+            {/* {t("X_ALUMNI_INTRODUCTION")} */}
+            Since its inception, X-Camp has had over 1,000 students and is
+            currently enrolling over 500+ students in 250+ schools around the
+            world. If you would like to find your classmates, please contact us!
           </Paragraph>
         </Space>
 

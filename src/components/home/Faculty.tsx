@@ -40,10 +40,10 @@ const Faculty: React.FC = () => {
       <Space direction="vertical" align="center">
         <Title className={styles.title}>Faculty</Title>
         <Paragraph className={styles.paragraph}>
-          X-Camp has its own Art of Python Programming contest 4.0 award and
-          other projects and event every quarter to inspire students . It is a
-          great opportunity for students to showcase what they have learned from
-          classes .
+          World-class faculties comprise experienced senior engineers from
+          leading tech companies, accomplished students from prestigious
+          computer science majors, and top-ranking members of competitive
+          programming contests like IOI, ICPC, and USACO.
         </Paragraph>
       </Space>
 

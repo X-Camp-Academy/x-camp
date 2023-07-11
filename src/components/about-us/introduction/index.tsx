@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 
 const Banner = dynamic(() => import("./Banner"));
 const ISPI = dynamic(() => import("./ISPI"));
-const UsacoMedal = dynamic(() => import("./UsacoMedal"));
+const UsacoCards = dynamic(() => import("@/components/common/usaco-cards"));
 const Results = dynamic(() => import("./Results"));
 const XCampFounder = dynamic(() => import("@/components/common/xcamp-founder"));
 const FacultyCoach = dynamic(() => import("./FacultyCoach"));
@@ -25,7 +25,7 @@ const Introduction: React.FC = () => {
         <Content>
           <Banner />
           <XCampFounder />
-          <UsacoMedal />
+          <UsacoCards />
           <ISPI />
           <Results />
           <FacultyCoach />

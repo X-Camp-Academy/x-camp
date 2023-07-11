@@ -25,14 +25,14 @@
       .title {
         font-size: 48px;
         font-weight: 900;
-        color: #d46b14;
+        color: #172142;
         line-height: 58px;
       }
       .paragraph {
         font-size: 28px;
         font-weight: 500;
-        color: #ffad11;
-        line-height: 24px;
+        color: #172142;
+        line-height: 42px;
       }
       .button {
         padding: 16px 52px;
@@ -73,7 +73,7 @@
     .card {
       width: 100%;
       border: none !important;
-      box-shadow: 0px 9px 25px -4px #D8D8D8;
+      box-shadow: 0px 9px 25px -4px #d8d8d8;
       @media (max-width: 768px) {
         margin-top: 64px;
       }

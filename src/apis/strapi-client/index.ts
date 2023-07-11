@@ -13,8 +13,6 @@ import {
   GetAboutUsJoinUsResponse,
   GetFacultyRequest,
   GetFacultyResponse,
-  GetIntroductionFacultyCoachRequest,
-  GetIntroductionFacultyCoachResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
   GetXAlumniRequest,
@@ -96,14 +94,6 @@ export class StrapiClient extends BaseAxiosClient {
       "/xc-faculties" + getParamsStringify(params),
       {}
     );
-    return res;
-  }
-
-  async getIntroductionFacultyCoach(params: GetIntroductionFacultyCoachRequest): Promise<GetIntroductionFacultyCoachResponse>{
-    const res: GetIntroductionFacultyCoachResponse = await this.get(
-      "/xc-about-us-introduction-faculty-coaches" + getParamsStringify(params),
-      {}
-    )
     return res;
   }
 

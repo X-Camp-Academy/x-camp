@@ -24,19 +24,23 @@ const PublicCalendar: React.FC = () => {
   const { lang } = useLang();
   const isMobile = useMobile();
   const [selectDate, setSelectDate] = useState<string>();
-  const [filterSameDateEventList, setFilterSameDateEventList] = useState<{
-    titleZh?: string,
-    titleEn?: string,
-    descriptionZh?: string,
-    descriptionEn?: string,
-    start?: string,
-    end?: string,
-    timeZone?: number
-  }[]>([]);
+  const [filterSameDateEventList, setFilterSameDateEventList] = useState<
+    {
+      titleZh?: string;
+      titleEn?: string;
+      descriptionZh?: string;
+      descriptionEn?: string;
+      start?: string;
+      end?: string;
+      timeZone?: number;
+    }[]
+  >([]);
 
-  const [eventDate, setEventDate] = useState<{
-    dateTime: string
-  }[]>([]);
+  const [eventDate, setEventDate] = useState<
+    {
+      dateTime: string;
+    }[]
+  >([]);
 
   const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 
@@ -55,7 +59,6 @@ const PublicCalendar: React.FC = () => {
     "December",
   ];
 
-
   const pageSize = 999;
   const [current, setCurrent] = useState<number>(1);
 
@@ -63,7 +66,6 @@ const PublicCalendar: React.FC = () => {
     current,
     pageSize,
   });
-
 
   useEffect(() => {
     setSelectDate(dayjs().toString());
@@ -80,36 +82,35 @@ const PublicCalendar: React.FC = () => {
   useEffect(() => {
     if (newEventData) {
       const updatedEventDate = newEventData.data.map((item) => ({
-        dateTime: item.attributes.datetime
+        dateTime: item.attributes.datetime,
       }));
       setEventDate(updatedEventDate);
     }
   }, [newEventData]);
 
-
-
   useEffect(() => {
     if (selectDate) {
       filterSameDateEvent(selectDate);
     }
-  }, [selectDate])
+  }, [selectDate]);
 
   const formatDate = (date: string) => {
     const dateInfo = dayjs(date);
     const month = dateInfo.month();
     if (lang === "en") {
       return monthNameEn[month] + " " + dateInfo.date();
-    }
-    else {
+    } else {
       return dateInfo.format("MM月DD日");
     }
-  }
+  };
 
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData?.data) {
       setFilterSameDateEventList(
         newEventData.data
-          .filter((item) => dayjs(item?.attributes?.datetime).isSame(dayjs(selectDate), 'day'))
+          .filter((item) =>
+            dayjs(item?.attributes?.datetime).isSame(dayjs(selectDate), "day")
+          )
           .map((filteredItem) => ({
             titleZh: filteredItem?.attributes?.titleZh,
             titleEn: filteredItem?.attributes?.titleEn,
@@ -121,29 +122,28 @@ const PublicCalendar: React.FC = () => {
           }))
       );
     }
-  }
-
+  };
 
   const dateCellRender = (value: Dayjs) => {
-    const eventDataForDate = eventDate.find((event) => dayjs(event.dateTime).isSame(value, 'day'));
+    const eventDataForDate = eventDate.find((event) =>
+      dayjs(event.dateTime).isSame(value, "day")
+    );
     if (eventDataForDate) {
       return (
         <Badge dot>
           <div />
         </Badge>
-      )
-    }
-    else {
+      );
+    } else {
       return (
         <>
           <Badge dot color="white">
             <div />
           </Badge>
         </>
-      )
+      );
     }
-  }
-
+  };
 
   const getMonth = (date: string) => {
     return dayjs(date).month() + 1;
@@ -161,7 +161,7 @@ const PublicCalendar: React.FC = () => {
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
         <Title className={styles.title}>
-          X-Camp Public <Text className={styles.titleText}>Calendar</Text>
+          X-Camp Public<Text className={styles.titleText}>Calendar</Text>
         </Title>
 
         <Row>
@@ -174,7 +174,7 @@ const PublicCalendar: React.FC = () => {
                   item?.attributes.end
                 )
                   return (
-                    <div className={styles.activeCard} key={item.id}>
+                    <div className={styles.eventCard} key={item.id}>
                       <Space
                         size={72}
                         align="center"
@@ -187,7 +187,7 @@ const PublicCalendar: React.FC = () => {
                           <Text className={styles.text}>
                             {getWeekDay(item.attributes?.datetime)}
                           </Text>
-                          <Text className={styles.text}>
+                          <Text className={styles.textTwo}>
                             {getDate(item.attributes?.datetime)}
                           </Text>
                           <Text className={styles.text}>
@@ -215,20 +215,24 @@ const PublicCalendar: React.FC = () => {
                             </Text>
                           )}
                           <Text className={styles.date}>
-                            {`${item?.attributes?.start.substring(0, 5)} ${Number(item?.attributes?.start.substring(0, 2)) <
+                            {`${item?.attributes?.start.substring(0, 5)} ${
+                              Number(item?.attributes?.start.substring(0, 2)) <
                               12
-                              ? "AM"
-                              : "PM"
-                              } - 
-                            ${item?.attributes?.end.substring(0, 5)} ${Number(item?.attributes?.end.substring(0, 2)) < 12
                                 ? "AM"
                                 : "PM"
-                              } 
-                            ${item.attributes.timeZone
-                                ? `UTC ${item.attributes.timeZone > 0 ? "+" : ""
-                                }${item.attributes.timeZone}`
+                            } - 
+                            ${item?.attributes?.end.substring(0, 5)} ${
+                              Number(item?.attributes?.end.substring(0, 2)) < 12
+                                ? "AM"
+                                : "PM"
+                            } 
+                            ${
+                              item.attributes.timeZone
+                                ? `UTC ${
+                                    item.attributes.timeZone > 0 ? "+" : ""
+                                  }${item.attributes.timeZone}`
                                 : ""
-                              }`}
+                            }`}
                           </Text>
                         </Space>
                       </Space>
@@ -245,56 +249,60 @@ const PublicCalendar: React.FC = () => {
                 fullscreen={false}
                 dateCellRender={dateCellRender}
                 onSelect={(date) => {
-                  setSelectDate(date.toString())
+                  setSelectDate(date.toString());
                 }}
               />
               <Space direction="vertical" className={styles.calendarSpace}>
                 <Space className={styles.spaceDate}>
-                  <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
+                  <Text className={styles.text}>
+                    {selectDate && formatDate(selectDate)}
+                  </Text>
                   <div className={styles.line}></div>
                 </Space>
-                <div style={{ height: 250, overflow: 'scroll' }}>
-                  {selectDate && filterSameDateEventList.map((item, index) => {
-                    if (item?.start && item?.end && item?.timeZone)
-                      return (
-                        <Space
-                          key={index}
-                          direction="vertical"
-                          className={styles.calendarItem}
-                        >
-                          <Text className={styles.itemDate}>
-                            {`${item?.start.substring(0, 5)} ${Number(item?.start.substring(0, 2)) <
-                              12
-                              ? "AM"
-                              : "PM"
+                <div style={{ height: 250, overflow: "scroll" }}>
+                  {selectDate &&
+                    filterSameDateEventList.map((item, index) => {
+                      if (item?.start && item?.end && item?.timeZone)
+                        return (
+                          <Space
+                            key={index}
+                            direction="vertical"
+                            className={styles.calendarItem}
+                          >
+                            <Text className={styles.itemDate}>
+                              {`${item?.start.substring(0, 5)} ${
+                                Number(item?.start.substring(0, 2)) < 12
+                                  ? "AM"
+                                  : "PM"
                               } - 
-                            ${item?.end.substring(0, 5)} ${Number(item?.end.substring(0, 2)) < 12
-                                ? "AM"
-                                : "PM"
+                            ${item?.end.substring(0, 5)} ${
+                                Number(item?.end.substring(0, 2)) < 12
+                                  ? "AM"
+                                  : "PM"
                               } 
-                            UTC ${item?.timeZone > 0
+                            UTC ${
+                              item?.timeZone > 0
                                 ? "+" + item?.timeZone
                                 : item?.timeZone
-                              }`}
-                          </Text>
-                          <Paragraph className={styles.itemParagraph}>
-                            {`${getTransResult(
-                              lang,
-                              item.titleZh,
-                              item.titleEn
-                            )} - 
+                            }`}
+                            </Text>
+                            <Paragraph className={styles.itemParagraph}>
+                              {`${getTransResult(
+                                lang,
+                                item.titleZh,
+                                item.titleEn
+                              )} - 
                         ${getTransResult(
-                              lang,
-                              item.descriptionZh,
-                              item.descriptionEn
-                            )}`}
-                          </Paragraph>
-                          <div className={styles.itemLine}></div>
-                        </Space>
-                      );
-                  })}
+                          lang,
+                          item.descriptionZh,
+                          item.descriptionEn
+                        )}`}
+                            </Paragraph>
+                            <div className={styles.itemLine}></div>
+                          </Space>
+                        );
+                    })}
                 </div>
-
               </Space>
             </Space>
           </Col>
