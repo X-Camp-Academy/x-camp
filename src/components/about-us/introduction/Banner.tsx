@@ -10,20 +10,21 @@ const TopBanner: React.FC = () => {
     <div className={styles.topBannerContainer}>
       <div className="container">
         <Row>
-          <Col xs={24} sm={24} md={14} className={styles.col}>
+          <Col xs={24} sm={24} md={12} className={styles.col}>
             <Space direction="vertical">
-              <Title className={styles.title}>X-Camp Academy</Title>
+              <Title className={styles.title}>
+                X-Camp Academy, a Silicon Valley based coding institute
+              </Title>
               <Paragraph className={styles.paragraph}>
-                A Silicon Valley based coding institute, offers programming
-                classes to 5-12th grade students from beginner to USACO US Camp
-                level.
+                Offers programming classes to 5 - 12th graders from beginner to
+                IOI level with structured, self-designed curriculum.
               </Paragraph>
             </Space>
           </Col>
           <Col
             xs={24}
             sm={24}
-            md={{ span: 8, offset: 2 }}
+            md={{ span: 10, offset: 2 }}
             className={styles.col}
           >
             <div className={styles.imgBg}></div>

@@ -165,7 +165,7 @@ const PublicCalendar: React.FC = () => {
         </Title>
 
         <Row>
-          <Col xs={24} sm={24} md={24} lg={14}>
+          <Col xs={24} sm={24} md={24} lg={12}>
             <Space direction="vertical" className={styles.colSpace}>
               {newEventData?.data.slice(0, 4).map((item, index) => {
                 if (
@@ -243,7 +243,7 @@ const PublicCalendar: React.FC = () => {
             </Space>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={10}>
+          <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
             <Space size={48} direction="vertical" className={styles.colSpace}>
               <Calendar
                 fullscreen={false}

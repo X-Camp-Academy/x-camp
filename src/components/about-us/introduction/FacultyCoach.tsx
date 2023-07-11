@@ -1,8 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Card, Image, Typography, Tag, Avatar } from "antd";
-import { useGetFaculty } from "@/apis/strapi-client/strapi";
-import styles from "./FacultyCoach.module.scss";
+import React from "react";
+import { Space, Row, Col, Card, Typography, Avatar } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import {
@@ -10,6 +8,9 @@ import {
   StrapiResponseDataItem,
 } from "@/apis/strapi-client/strapiDefine";
 import { GetFaculty } from "@/apis/strapi-client/define";
+import { useGetFaculty } from "@/apis/strapi-client/strapi";
+
+import styles from "./FacultyCoach.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -17,7 +18,7 @@ const FacultyCoach: React.FC = () => {
   const { lang } = useLang();
 
   const { data } = useGetFaculty({
-    pageName: ["/home"],
+    pageName: ["/introduction"],
   });
 
   const sortData = data?.sort(
