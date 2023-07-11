@@ -1,35 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./index.module.scss";
-import { news } from "./define";
-import ColorfulCard from "@/components/common/colorful-card";
-import { Button, Col, Pagination, Row, Space, Typography } from "antd";
-import {
-  FieldTimeOutlined,
-  PercentageOutlined,
-  RightCircleOutlined,
-} from "@ant-design/icons";
+import { Col, Pagination, Row, Space } from "antd";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { NewEventCategory } from "@/apis/strapi-client/define";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import dayjs from "dayjs";
-const { Title, Paragraph, Text } = Typography;
-
 
 const NewsCard = () => {
-
   const { lang } = useLang();
-
   const pageSize = 3;
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.News);
 
-
   const { data: newEventData, run } = useGetNewEvent({
     tag,
     current,
-    pageSize
+    pageSize,
   });
 
   const paginationOnChange = (page: number) => {
@@ -47,64 +34,36 @@ const NewsCard = () => {
         pageSize,
       },
     });
-  }
-
-  const getImgUrl = (img: StrapiMedia) => {
-    return img?.data?.attributes?.url;
   };
-
-  const formatDate = (dateTime: string) => {
-    return dayjs(dateTime).format('YYYY-MM-DD')
-  }
-
 
 
   return (
     <div className={styles.content}>
       <div className={"container"}>
         <div className={styles.partner}>
-          <Space direction="vertical" style={{ width: "100%" }} size={52}>
+          <Row gutter={[16, 16]}>
             {newEventData?.data?.map((item, index) => (
-              <ColorfulCard
-                key={index}
-                border={"bottom"}
-                index={index}
-                animate={false}
-              >
-                <div className={styles.card}>
-                  <div className={styles.img}>
-                    <img src={getImgUrl(item?.attributes?.img)} alt="img" style={{ width: "100%" }} />
+              <Col key={index}>
+                <Space direction={"vertical"} className={styles.card}>
+                  <img
+                    src={item?.attributes?.img?.data?.attributes?.url}
+                    alt=""
+                  />
+                  <Space className={styles.description} size={"middle"}>
+                    {item?.attributes?.editor}
+                    {dayjs(item?.attributes?.datetime).format("YYYY-MM-DD")}
+                  </Space>
+                  <div className={styles.title}>
+                    {getTransResult(
+                      lang,
+                      item?.attributes?.titleZh,
+                      item?.attributes?.titleEn
+                    )}
                   </div>
-                  <div className={styles.cardContent}>
-                    <Title className={styles.cardTitle}>{getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}</Title>
-                    <Paragraph
-                      className={styles.cardDescription}
-                      ellipsis={{ rows: 2 }}
-                    >
-                      {getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}
-                    </Paragraph>
-
-                    <Row justify="space-around" style={{ marginTop: 80, width: "100%" }}>
-                      <Col span={20}>
-                        <Space size={30}>
-                          <Text type="secondary">
-                            <FieldTimeOutlined /> {formatDate(item?.attributes?.updatedAt || '')}
-                          </Text>
-
-                          <Text type="secondary">
-                            <PercentageOutlined /> {item?.attributes?.editor}
-                          </Text>
-                        </Space>
-                      </Col>
-                      <Col span={4} style={{ textAlign: "end" }}>
-                        <Button icon={<RightCircleOutlined />} type="link" />
-                      </Col>
-                    </Row>
-                  </div>
-                </div>
-              </ColorfulCard>
+                </Space>
+              </Col>
             ))}
-          </Space>
+          </Row>
         </div>
 
         <Pagination
