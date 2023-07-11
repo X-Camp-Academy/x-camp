@@ -1,6 +1,6 @@
 .topBannerContainer {
   width: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 72px;
   .col {
     margin-top: 100px;
     position: relative;
@@ -34,7 +34,6 @@
     border-radius: 12px;
     opacity: 0.6;
     left: 50%;
-    bottom: 0;
     transform: rotate(-16deg) translateX(-50%);
     background-color: #ffad11;
     z-index: 998;
@@ -44,7 +43,6 @@
     position: absolute;
     border-radius: 12px;
     left: 50%;
-    bottom: 0;
     transform: rotate(-8deg) translateX(-50%);
     background-color: #ffad11;
     z-index: 999;

@@ -97,6 +97,7 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
                       testimony?.descriptionEn
                     )}
                   </Paragraph>
+                  <Text className={styles.testimonyDate}>{testimony?.date}</Text>
                 </Space>
               </div>
             );

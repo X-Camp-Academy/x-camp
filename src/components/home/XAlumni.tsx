@@ -1,17 +1,18 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Space, Typography, Carousel, Image } from "antd";
-import styles from "./XAlumni.module.scss";
-import { useGetXAlumni } from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
 import { AppstoreAddOutlined } from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
+import { useGetXAlumni } from "@/apis/strapi-client/strapi";
+import styles from "./XAlumni.module.scss";
 
 const { Title, Paragraph } = Typography;
 const XAlumni = () => {
   const { lang, format: t } = useLang();
   const { data: xAlumni } = useGetXAlumni();
-
+  const router = useRouter();
   return (
     <div className={styles.xalumniContainer}>
       <div className={`${styles.xalumni} container`}>
@@ -98,7 +99,10 @@ const XAlumni = () => {
           </Carousel>
         </div>
 
-        <button className={styles.moreAlumniInfo}>
+        <button
+          className={styles.moreAlumniInfo}
+          onClick={() => router.push("/about-us/x-alumni")}
+        >
           More Alumni Information
           <AppstoreAddOutlined className={styles.icon} />
         </button>
