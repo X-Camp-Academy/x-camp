@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import { Space, Row, Col, Card, Typography } from "antd";
-import styles from "./ContactCard.module.scss";
-import { LaptopOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
+'use client';
+import React from 'react';
+import { Space, Row, Col, Card, Typography } from 'antd';
+import styles from './ContactCard.module.scss';
+import { LaptopOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import ColorfulCard from '@/components/common/colorful-card';
 
 const { Title, Paragraph } = Typography;
 
@@ -11,18 +11,18 @@ const ContactCard: React.FC = () => {
   const contactInfo = [
     {
       icon: <MailOutlined />,
-      title: "Email",
-      description: "Please email us at partner@x-camp.org",
+      title: 'Email',
+      description: 'Please email us at info@x-camp.org',
     },
     {
       icon: <PhoneOutlined rotate={180} />,
-      title: "Text",
-      description: "Feel free to text us at 510-708-8390",
+      title: 'Phone/Text',
+      description: 'Feel free to text us at +1-510-708-8390',
     },
     {
       icon: <LaptopOutlined />,
-      title: "Office Hour",
-      description: "7:00am - 5:00pm PT Monday Off",
+      title: 'Office Hour',
+      description: '7:00am - 5:00pm PT Monday Off',
     },
   ];
 
@@ -38,8 +38,8 @@ const ContactCard: React.FC = () => {
             lg={{ span: 8 }}
           >
             <ColorfulCard
-              border={"top"}
-              index={index}
+              border={'top'}
+              index={contactInfo.length - index - 1}
               key={index}
               animate={false}
             >
@@ -47,11 +47,15 @@ const ContactCard: React.FC = () => {
                 <Space direction="vertical">
                   <Space align="center">
                     <div className={styles.icon}> {item.icon}</div>
-                    <Title level={5} style={{ margin: 0 }}>
+                    <Title
+                      level={5}
+                      style={{ margin: 0 }}
+                      className={styles.title}
+                    >
                       {item.title}
                     </Title>
                   </Space>
-                  <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                  <Paragraph type="secondary" style={{ fontSize: 18 }}>
                     {item.description}
                   </Paragraph>
                 </Space>
