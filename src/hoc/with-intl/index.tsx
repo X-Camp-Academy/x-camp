@@ -88,8 +88,6 @@ const WithIntl: React.FC<WithIntlIProps> = ({ children }) => {
 
   useEffect(() => {
     dayjs.locale(lang === LANG_ZH_CN ? "zh-cn" : "en");
-    
-
   }, [lang]);
 
   return (

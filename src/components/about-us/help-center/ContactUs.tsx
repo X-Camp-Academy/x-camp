@@ -3,6 +3,7 @@ import React from "react";
 import { Typography, Button, Space } from "antd";
 import styles from "./ContactUs.module.scss";
 import Link from "next/link";
+import { CommentOutlined } from "@ant-design/icons";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -14,21 +15,27 @@ const ContactUs: React.FC = () => {
         <div className={styles.circleLeft} />
         <Space direction="vertical" align="center">
           <Title className={styles.title}>
-            Is there anything else I need help with?
+            Need more help
           </Title>
-          <Paragraph style={{ textAlign: "center", fontSize: 18 }}>
+          <Paragraph style={{
+            textAlign: "center",
+            fontSize: '18px',
+            fontWeight: 500,
+            color: '#172142',
+            lineHeight: '34px'
+          }}>
             <strong>
               {
-                "X-Camp aim to employ the best people from a wide pool of talent in order to create an environment where everybody’s contribution is valued and respected."
+                "X-Camp aims to provide you with more info about Course recommendations, Curriculum Guidance, Enrollment Assistance, etc. "
               }
             </strong>
           </Paragraph>
           <Link href="/about-us/contact-us">
-            <Button className={styles.button}>Contact Us</Button>
+            <Button className={styles.button}>Contact Us <CommentOutlined /></Button>
           </Link>
         </Space>
       </div>
-    </div>
+    </div >
   );
 };
 

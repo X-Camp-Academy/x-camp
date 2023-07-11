@@ -8,22 +8,27 @@
 
             display: flex;
             justify-content: space-around;
+
             //padding: 0 60px;
-            @media (max-width: 768px){
+            @media (max-width: 768px) {
                 display: block;
-                
+
             }
+
             .choiceBtn {
-                border: none;
                 margin: 0 20px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 padding: 25px 60px;
                 font-size: 24px;
-                font-weight: 600;
-                color: #FFAD11;
+                font-weight: 500;
+                color: #6A6A6A;
                 line-height: 36px;
+                border-radius: 12px;
+
+                background: #F5F5F5;
+                border: 2px solid #D8D8D8;
 
                 @media (max-width: 768px) {
                     margin: 20px auto;
@@ -32,6 +37,7 @@
             }
 
             .selectedBtn {
+                border: none;
                 background-color: #FFAD11;
                 color: #FFFFFF;
             }
@@ -40,7 +46,7 @@
 
 
 
-        
+
 
         .jobCardContainer {
             margin-top: 50px;

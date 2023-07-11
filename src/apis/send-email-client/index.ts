@@ -1,5 +1,5 @@
+import { File } from "buffer";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
-import { userFilledInfo } from "./define";
 
 export interface openClassEmailRequest {
   name: string;
@@ -13,6 +13,21 @@ export interface openClassEmailResponse {
   msg: string;
 }
 
+export interface subscribeNewsletterRequest {
+  email: string;
+  lang: string;
+}
+
+export interface subscribeNewsletterResponse {
+  code: number;
+  msg: string;
+}
+
+export interface submitResumeResponse {
+  code: number;
+  msg: string;
+}
+
 export class SendEmailClient extends BaseAxiosClient {
   async sendOpenClassEmail(
     req: openClassEmailRequest
@@ -22,6 +37,22 @@ export class SendEmailClient extends BaseAxiosClient {
       req,
       this.jsonHeaders
     );
+    return data;
+  }
+
+  async subscribeNewsletter(
+    req: subscribeNewsletterRequest
+  ): Promise<subscribeNewsletterResponse> {
+    const data: openClassEmailResponse = await this.post(
+      "/subscribeNewsletter",
+      req,
+      this.jsonHeaders
+    );
+    return data;
+  }
+
+  async submitResume(req: FormData): Promise<submitResumeResponse> {
+    const data = await this.post("/submitResume", req, this.dataHeaders);
     return data;
   }
 }

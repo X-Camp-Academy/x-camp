@@ -12,10 +12,10 @@ const TopBanner: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={14} className={styles.col}>
             <Space direction="vertical">
-              <Title className={styles.title}>Help Center & QA</Title>
+              <Title className={styles.title}>Help Center</Title>
               <Paragraph className={styles.paragraph}>
                 {
-                  "X-Camp Academy focuses on improving the coding abilities and problem-solving skills of our students. We strive to teach not only persistence in analytical thought, but also genuine curiosity whilst facing new challenges."
+                  "Here we provide helpful instructions to ensure a seamless and efficient resolution to any concerns or challenges you may encounter."
                 }
               </Paragraph>
             </Space>
@@ -28,7 +28,7 @@ const TopBanner: React.FC = () => {
           >
             <Image
               alt="image"
-              src="/image/about-us/introduction/top-banner.png"
+              src="/image/about-us/help-center/helpCenterTopBanner.png"
               preview={false}
               className={styles.image}
             />
