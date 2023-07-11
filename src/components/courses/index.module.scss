@@ -11,17 +11,22 @@
       border-block-start: none;
     }
 
+    .filterForm {
+      display: flex;
+      justify-content: end;
+      align-items: end;
+    }
     .changeBtn {
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       background: #ffad11;
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .icon {
-        font-size: 24px;
+        font-size: 20px;
         color: #fff;
       }
     }

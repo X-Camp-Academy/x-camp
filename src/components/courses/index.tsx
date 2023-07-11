@@ -27,6 +27,7 @@ import { SegmentedValue } from "antd/es/segmented";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetCourses } from "@/apis/strapi-client/define";
 import { divide } from "lodash";
+import FilterForm from "./FilterForm";
 const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -121,12 +122,15 @@ const Courses = () => {
     }
   });
 
-  useEffect(() => {
+  const getCourseBySegmented = (segmented: SegmentedValue) => {
     const result = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
     );
     setCurrentData(result);
-  }, [segmented]);
+  };
+  useEffect(() => {
+    getCourseBySegmented(segmented);
+  }, [segmented, courses]);
   console.log(currentData);
 
   return (
@@ -148,13 +152,15 @@ const Courses = () => {
               options={COURSE_TYPES}
               onChange={(value: SegmentedValue) => setSegmented(value)}
             />
+            <div className={styles.filterForm} style={{ marginTop: 64 }}>
+              <FilterForm />
+            </div>
             {currentData?.map((item, index) => {
               return (
                 <div
                   className={"classify"}
                   id={"classify" + index}
                   key={item?.primaryTitle}
-                  style={{ marginTop: 64 }}
                 >
                   <Collapse
                     defaultActiveKey={"classifyCollapse" + index}
