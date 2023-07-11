@@ -1,5 +1,6 @@
 import { Space, Row, Col, Image, Typography, Button } from "antd";
 import styles from './JoinUsFaculty.module.scss';
+import { UsergroupAddOutlined } from "@ant-design/icons";
 const { Paragraph } = Typography;
 
 const JoinUsFaculty: React.FC = () => {
@@ -34,7 +35,7 @@ const JoinUsFaculty: React.FC = () => {
                                 offers programming classes to 5-12th grade students from beginner to USACO
                                 US Camp level.
                             </Paragraph>
-                            <Button className={styles.introBtn}>X-Camp Faculty</Button>
+                            <Button className={styles.introBtn}>X-Camp Faculty <UsergroupAddOutlined /></Button>
                         </Space>
                     </Col>
                     <Col className={styles.facultyImgs} lg={12} md={24} xs={24}>

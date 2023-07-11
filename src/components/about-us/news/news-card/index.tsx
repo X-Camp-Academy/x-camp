@@ -11,11 +11,15 @@ import {
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+import dayjs from "dayjs";
 const { Title, Paragraph, Text } = Typography;
 
 
 const NewsCard = () => {
 
+  const { lang } = useLang();
 
   const pageSize = 3;
   const [current, setCurrent] = useState<number>(1);
@@ -49,6 +53,10 @@ const NewsCard = () => {
     return img?.data?.attributes?.url;
   };
 
+  const formatDate = (dateTime: string) => {
+    return dayjs(dateTime).format('YYYY-MM-DD')
+  }
+
 
 
   return (
@@ -68,19 +76,19 @@ const NewsCard = () => {
                     <img src={getImgUrl(item?.attributes?.img)} alt="img" style={{ width: "100%" }} />
                   </div>
                   <div className={styles.cardContent}>
-                    <Title className={styles.cardTitle}>{item?.attributes?.titleZh}</Title>
+                    <Title className={styles.cardTitle}>{getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}</Title>
                     <Paragraph
                       className={styles.cardDescription}
                       ellipsis={{ rows: 2 }}
                     >
-                      {item?.attributes?.descriptionZh}
+                      {getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}
                     </Paragraph>
 
                     <Row justify="space-around" style={{ marginTop: 80, width: "100%" }}>
                       <Col span={20}>
                         <Space size={30}>
                           <Text type="secondary">
-                            <FieldTimeOutlined /> {item?.attributes?.updatedAt}
+                            <FieldTimeOutlined /> {formatDate(item?.attributes?.updatedAt || '')}
                           </Text>
 
                           <Text type="secondary">
