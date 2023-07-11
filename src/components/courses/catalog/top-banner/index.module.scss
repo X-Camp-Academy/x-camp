@@ -3,31 +3,23 @@
 .topBanner {
   width: 100%;
   padding-bottom: 64px;
-  background-image: url('/image/home/carousel-bg.png');
+  background-image: url("/image/home/carousel-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-
   .content {
-    width: 100%;
-    margin-top: 85px;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
+    padding-top: 85px;
     .title {
       font-size: 48px;
       font-weight: 900;
-      color: #d46b14;
+      color: #172142;
       line-height: 58px;
-      margin-bottom: 36px;
     }
 
     .paragraph {
-      max-width: 701px;
       font-size: 28px;
       font-weight: 500;
-      color: $primary-color;
+      color: #172142;
       line-height: 42px;
-      margin-bottom: 0;
     }
 
     .paragraph:nth-child(2) {
@@ -35,19 +27,23 @@
     }
 
     .contact {
-      color: #172a88;
-      font-weight: 600;
       font-size: 21px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 46px;
+      text-decoration: underline;
+      cursor: pointer;
     }
 
     .button {
       width: 272px;
       height: 72px;
-      background: #FFAD11;
+      background-color: #fff;
       border-radius: 12px;
       font-size: 24px;
       font-weight: 600;
-      color: #FFFFFF;
+      color: #d46b14;
+      border-color: #d46b14;
       line-height: 40px;
       text-align: left;
       padding-left: 36px;
