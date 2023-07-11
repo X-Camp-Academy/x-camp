@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Space, Button, Image, Typography, Row, Col } from "antd";
-import styles from "./XCampFounder.module.scss";
+import styles from "./index.module.scss";
 import { CheckOutlined } from "@ant-design/icons";
 import { useMobile } from "@/utils";
 
