@@ -8,31 +8,35 @@ import {
   Carousel,
   Button,
   List,
-} from "antd";
-import { CarouselRef } from "antd/es/carousel";
+} from 'antd';
+import { CarouselRef } from 'antd/es/carousel';
 import {
+  LeftCircleOutlined,
   LeftCircleTwoTone,
+  RightCircleOutlined,
   RightCircleTwoTone,
   setTwoToneColor,
-} from "@ant-design/icons";
-import styles from "./USACOWinners.module.scss";
-import React, { useRef } from "react";
-import Link from "next/link";
-import ColorfulCard from "@/components/common/colorful-card";
-import UsacoCards from "@/components/common/usaco-cards";
+} from '@ant-design/icons';
+import styles from './USACOWinners.module.scss';
+import React, { useRef } from 'react';
+import Link from 'next/link';
+import ColorfulCard from '@/components/common/colorful-card';
+import UsacoCards from '@/components/common/usaco-cards';
 import {
   useGetAboutUsAchievementsAward,
   useGetAchievementsTimeLine,
-} from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
+} from '@/apis/strapi-client/strapi';
+import { getTransResult } from '@/utils/public';
+import { useLang } from '@/hoc/with-intl/define';
+import { url } from 'inspector';
+import { XStarViewer } from '@/utils/x-star-editor-beta';
 
 const { Title, Paragraph, Text } = Typography;
 
 const USACOMedal: React.FC = () => {
   const { lang } = useLang();
   const carouselEL = useRef<CarouselRef>(null);
-  setTwoToneColor("#D46B14");
+  setTwoToneColor('#D46B14');
   const { data: awards } = useGetAboutUsAchievementsAward();
   const { data: timeLine } = useGetAchievementsTimeLine();
 
@@ -58,7 +62,6 @@ const USACOMedal: React.FC = () => {
               }}
               icon={<LeftCircleTwoTone style={{ fontSize: 25 }} />}
             ></Button>
-
             <Carousel ref={carouselEL} dots={false}>
               {awards?.map((page, index) => {
                 return (
@@ -79,44 +82,34 @@ const USACOMedal: React.FC = () => {
                             lg={8}
                             className={styles.col}
                           >
-                            <ColorfulCard
-                              border="bottom"
-                              index={index}
-                              animate={false}
+                            <Card
+                              style={{
+                                backgroundImage: `url(
+                                  ${item?.attributes?.avatar?.data?.attributes?.url}
+                                )`,
+                              }}
+                              className={styles.colCard}
                             >
-                              <Card
-                                bodyStyle={{
-                                  borderWidth: 2,
-                                }}
-                                className={styles.colCard}
+                              <Space
+                                direction="vertical"
+                                className={styles.infoContainer}
                               >
-                                <Space direction="vertical">
-                                  <Image
-                                    alt="image"
-                                    src={
-                                      item?.attributes?.avatar?.data?.attributes
-                                        ?.url
-                                    }
-                                    preview={false}
-                                    className={styles.image}
-                                  />
-                                  <Title className={styles.cardTitle}>
-                                    {getTransResult(
-                                      lang,
-                                      item?.attributes?.titleZh,
-                                      item?.attributes?.titleEn
-                                    )}
-                                  </Title>
-                                  <Text className={styles.cardText}>
-                                    {getTransResult(
-                                      lang,
-                                      item?.attributes?.descriptionZh,
-                                      item?.attributes?.descriptionEn
-                                    )}
-                                  </Text>
-                                </Space>
-                              </Card>
-                            </ColorfulCard>
+                                <Title className={styles.cardTitle}>
+                                  {getTransResult(
+                                    lang,
+                                    item?.attributes?.titleZh,
+                                    item?.attributes?.titleEn
+                                  )}
+                                </Title>
+                                <Text className={styles.cardText}>
+                                  {getTransResult(
+                                    lang,
+                                    item?.attributes?.descriptionZh,
+                                    item?.attributes?.descriptionEn
+                                  )}
+                                </Text>
+                              </Space>
+                            </Card>
                           </Col>
                         );
                       })}
@@ -131,7 +124,7 @@ const USACOMedal: React.FC = () => {
               onClick={() => {
                 carouselEL?.current?.next();
               }}
-              icon={<RightCircleTwoTone style={{ fontSize: 25 }} />}
+              icon={<RightCircleOutlined style={{ fontSize: 25 }} />}
             ></Button>
           </div>
 
@@ -164,13 +157,14 @@ const USACOMedal: React.FC = () => {
                           </Text>
                         }
                         description={
-                          <Paragraph className={styles.timeListDetail}>
-                            {getTransResult(
+                          <XStarViewer
+                            className={styles.timeListDetail}
+                            value={getTransResult(
                               lang,
                               item?.attributes?.descriptionZh,
                               item?.attributes?.descriptionEn
                             )}
-                          </Paragraph>
+                          />
                         }
                       />
                     </List.Item>
@@ -188,8 +182,7 @@ const USACOMedal: React.FC = () => {
                   Download our free USACO Intro Package
                 </Text>
               </Link>
-
-              <UsacoCards />
+              <UsacoCards showTitle />
 
               {/* <Row className={styles.row} gutter={16}>
                 {cardData?.map((item) => {

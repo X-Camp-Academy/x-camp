@@ -1,7 +1,6 @@
 .ArtOfProgrammingResultsContainer {
-  background-color: #ffeddf;
   .ArtOfProgrammingResults {
-    padding: 100px 0px;
+    padding-bottom: 100px;
 
     @media (max-width: 768px) {
       padding: 30px;
@@ -9,10 +8,11 @@
 
     .firstTitle {
       font-size: 48px;
-      
+      margin-top: 0;
       font-weight: 600;
-      color: #d46b14;
+      color: #172142;
       line-height: 48px;
+
       @media (max-width: 768px) {
         line-height: 58px;
       }
@@ -34,8 +34,7 @@
       }
 
       .timeListTitle {
-        color: #d46b14;
-        
+        color: #172142;
         font-size: 24px;
         line-height: 48px;
         font-weight: 600;
@@ -46,19 +45,17 @@
       .timeListTitle::before {
         content: "";
         display: inline-block;
-        width: 10px;
-        height: 10px;
-        background-color: #d46b14;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #FFAD11;
         position: relative;
-        //top: 1px;
         left: -20px;
-        margin-right: 5px;
-        border: 3px solid #ffad11;
+        border: 3px solid #FFD600;
       }
 
       .timeListDetail {
         color: #172142;
-        
         font-size: 18px;
         line-height: 48px;
         font-weight: 500;
@@ -69,18 +66,19 @@
       .title {
         margin-top: 60px;
         font-size: 36px;
-        
+
         font-weight: 600;
-        color: #d46b14;
+        color: #172142;
         line-height: 48px;
       }
 
       .subTitle {
         font-size: 24px;
-        
+
         font-weight: 600;
         color: #172142;
         line-height: 48px;
+
         @media (max-width: 768px) {
           margin-left: 5px;
         }
@@ -88,47 +86,42 @@
         &::before {
           content: "";
           display: inline-block;
-          width: 14px;
-          height: 14px;
-          background-color: #172142;
+          width: 15px;
+          height: 15px;
           border-radius: 50%;
+          background-color: #FFAD11;
           position: relative;
-          //top: 1px;
-          left: -20px;
-          margin-right: 5px;
-          border: 3px solid #ffad11;
-
-          @media (max-width: 768px) {
-            left: 0;
-          }
+          left: 0;
+          border: 3px solid #FFD600;
+          margin-right: 20px;
         }
       }
 
       .videoList {
         margin-bottom: 100px;
+
         .videoItem {
-          background-color: #ffad11;
-          text-align: center;
-          //padding: 10px;
+          background-color: #fff;
+
           @media (max-width: 768px) {
             display: block;
           }
 
           video {
-            width: 90%;
+            width: 100%;
             background-color: #ffeddf;
           }
 
           .videoTitle {
-            margin-top: 20px;
             font-size: 24px;
-            
+
             font-weight: 600;
             color: #172142;
             line-height: 32px;
+
             @media (max-width: 768px) {
-                font-size: 21px;
-              }
+              font-size: 21px;
+            }
           }
         }
       }
