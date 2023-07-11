@@ -3,16 +3,17 @@
 
     .GetCredit {
         padding: 50px;
+
         .title {
             font-size: 36px;
             font-weight: 600;
-            color: #D46B14;
+            color: #172142;
             line-height: 48px;
         }
 
         .description {
             display: flex;
-            align-items:flex-start;
+            align-items: flex-start;
             justify-content: flex-start;
             text-align: left;
             font-size: 18px;
@@ -20,7 +21,7 @@
             color: #172142;
             line-height: 34px;
 
-            span{
+            span {
                 margin-right: 8px;
             }
         }

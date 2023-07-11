@@ -57,20 +57,26 @@
       }
 
       .descriptions {
+
         :global {
-          .ant-descriptions-row > td {
+
+          .ant-descriptions-row>td {
             padding-bottom: 8px;
           }
 
           .ant-descriptions-item-label::after {
             content: "";
           }
+
           .ant-descriptions-item-label {
-            align-items: center;
+            margin-top: 7px;
+            align-items: start;
           }
+
           .ant-descriptions-item-content {
             align-items: center;
             color: #666666;
+            font-size: 18px;
           }
         }
       }

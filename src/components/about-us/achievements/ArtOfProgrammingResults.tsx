@@ -1,10 +1,10 @@
-import { Card, Typography, List } from "antd";
-import styles from "./ArtOfProgrammingResults.module.scss";
-import React from "react";
-import { GetProjectsDemo } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
+import { Card, Typography, List } from 'antd';
+import styles from './ArtOfProgrammingResults.module.scss';
+import React from 'react';
+import { GetProjectsDemo } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { getTransResult } from '@/utils/public';
+import { useLang } from '@/hoc/with-intl/define';
 const { Title, Paragraph, Text } = Typography;
 
 interface Props {
@@ -16,13 +16,13 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
 
   const listData = [
     {
-      title: "Prerequisites of contestants:",
-      content: "students of CS100 who have no coding experience before.",
+      title: 'Prerequisites of contestants:',
+      content: 'students of CS100 who have no coding experience before.',
     },
     {
-      title: "Rules:",
+      title: 'Rules:',
       content:
-        "After 10-weeks learning Python, participants can create their own projects with Python by themselves or with classmates. All parents vote anonymously to select the Top 3 winning projects on demo day.",
+        'After 10-weeks learning Python, participants can create their own projects with Python by themselves or with classmates. All parents vote anonymously to select the Top 3 winning projects on demo day.',
     },
   ];
   return (
@@ -84,7 +84,10 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                   renderItem={(g) => (
                     <List.Item>
                       <Card className={styles.videoItem}>
-                        <video src="/"></video>
+                        <video
+                          controls
+                          src={g?.attributes?.url?.data?.attributes?.url}
+                        ></video>
                         <div className={styles.videoTitle}>
                           {getTransResult(
                             lang,

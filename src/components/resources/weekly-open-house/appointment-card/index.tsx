@@ -1,28 +1,32 @@
-import React from "react";
-import styles from "./index.module.scss";
-import classNames from "classnames/bind";
-import { Button } from "antd";
+import React from 'react';
+import styles from './index.module.scss';
+import classNames from 'classnames/bind';
+import { Button } from 'antd';
+import { CarryOutOutlined } from '@ant-design/icons';
 const cx = classNames.bind(styles);
 
 const AppointmentCard = () => {
   return (
-    <div className={"container"}>
+    <div className={'container'}>
       <div className={styles.card}>
         <div className={styles.left}>
           <div className={styles.title}>
-            {"Would you like to schedule another time?"}
+            {'Time conflict？We are here for you!'}
           </div>
           <div className={styles.description}>
             {
-              "X-Camp aim to employ the best people from a wide pool of talent in order to create an environment where everybody’s contribution is valued and respected. "
+              'X-Camp course consultants are happy to provide 1 on 1 meeting at your available time. '
             }
           </div>
-          <Button type="primary" className={styles.btn}>
-            {"Make an appointment"}
+          <Button className={styles.btn}>
+            {'Make an appointment'}
+            <CarryOutOutlined />
           </Button>
         </div>
         <div className={styles.right}>
-          <img src="/image/about-us/introduction/top-banner.png" alt="" />
+          <div className={styles.imgContain}>
+            <img src="/image/about-us/introduction/top-banner.png" alt="" />
+          </div>
         </div>
       </div>
     </div>
