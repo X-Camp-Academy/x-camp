@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import { news } from "./define";
 import ColorfulCard from "@/components/common/colorful-card";
@@ -8,15 +8,55 @@ import {
   PercentageOutlined,
   RightCircleOutlined,
 } from "@ant-design/icons";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { NewEventCategory } from "@/apis/strapi-client/define";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 const { Title, Paragraph, Text } = Typography;
 
+
 const NewsCard = () => {
+
+
+  const pageSize = 3;
+  const [current, setCurrent] = useState<number>(1);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.News);
+
+
+  const { data: newEventData, run } = useGetNewEvent({
+    tag,
+    current,
+    pageSize
+  });
+
+  const paginationOnChange = (page: number) => {
+    setCurrent(page);
+    run({
+      populate: "*",
+      sort: ["order:desc"],
+      filters: {
+        tags: {
+          $eq: tag,
+        },
+      },
+      pagination: {
+        page: current,
+        pageSize,
+      },
+    });
+  }
+
+  const getImgUrl = (img: StrapiMedia) => {
+    return img?.data?.attributes?.url;
+  };
+
+
+
   return (
     <div className={styles.content}>
       <div className={"container"}>
         <div className={styles.partner}>
           <Space direction="vertical" style={{ width: "100%" }} size={52}>
-            {news?.map((item, index) => (
+            {newEventData?.data?.map((item, index) => (
               <ColorfulCard
                 key={index}
                 border={"bottom"}
@@ -25,26 +65,26 @@ const NewsCard = () => {
               >
                 <div className={styles.card}>
                   <div className={styles.img}>
-                    <img src={item?.img} alt="" />
+                    <img src={getImgUrl(item?.attributes?.img)} alt="img" style={{ width: "100%" }} />
                   </div>
                   <div className={styles.cardContent}>
-                    <Title className={styles.cardTitle}>{item?.title}</Title>
+                    <Title className={styles.cardTitle}>{item?.attributes?.titleZh}</Title>
                     <Paragraph
                       className={styles.cardDescription}
                       ellipsis={{ rows: 2 }}
                     >
-                      {item?.content}
+                      {item?.attributes?.descriptionZh}
                     </Paragraph>
 
-                    <Row justify="space-around" style={{ marginTop: 80 }}>
+                    <Row justify="space-around" style={{ marginTop: 80, width: "100%" }}>
                       <Col span={20}>
                         <Space size={30}>
                           <Text type="secondary">
-                            <FieldTimeOutlined /> {item?.time}
+                            <FieldTimeOutlined /> {item?.attributes?.updatedAt}
                           </Text>
 
                           <Text type="secondary">
-                            <PercentageOutlined /> {item?.editor}
+                            <PercentageOutlined /> {item?.attributes?.editor}
                           </Text>
                         </Space>
                       </Col>
@@ -60,9 +100,12 @@ const NewsCard = () => {
         </div>
 
         <Pagination
-          defaultCurrent={6}
-          total={500}
+          defaultCurrent={1}
+          total={newEventData?.meta?.pagination?.pageCount}
           className={styles.pagination}
+          pageSize={pageSize}
+          current={current}
+          onChange={(page) => paginationOnChange(page)}
         />
       </div>
     </div>

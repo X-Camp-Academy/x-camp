@@ -4,6 +4,7 @@ import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { usePathname } from "next/navigation";
 
 const Banner = dynamic(() => import("./Banner"));
 const Map = dynamic(() => import("./Map"));
@@ -12,9 +13,13 @@ const UpcomingEvents = dynamic(() => import("./UpcomingEvents"));
 const Testimony = dynamic(() => import("@/components/home/Testimony"));
 const { Content } = Layout;
 
-const XAlumni: React.FC = () => {
+const XAlumni = () => {
+  const pathname = usePathname();
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony();
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: [pathname],
+  });
 
   return (
     <ConfigProvider
