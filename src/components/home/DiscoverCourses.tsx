@@ -8,8 +8,14 @@ import { addAnimate, removeAnimate } from '@/utils';
 import MaskCard from '../common/mask-card';
 
 const { Title, Paragraph, Text } = Typography;
-
-const DiscoverCourses: React.FC = () => {
+interface DiscoverCoursesProps {
+  showSubTitle?: boolean;
+  align?: 'center' | 'flex-start' | 'flex-end';
+}
+const DiscoverCourses = ({
+  showSubTitle = false,
+  align = 'center',
+}: DiscoverCoursesProps) => {
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
       <Space
@@ -89,7 +95,10 @@ const DiscoverCourses: React.FC = () => {
   );
 
   return (
-    <div className={`${styles.discoverCourses} container`}>
+    <div
+      className={`${styles.discoverCourses} container`}
+      style={{ alignItems: align }}
+    >
       <Texty
         duration={100}
         type={'left'}
@@ -98,6 +107,9 @@ const DiscoverCourses: React.FC = () => {
       >
         Discover Our Courses
       </Texty>
+      {showSubTitle && (
+        <div className={styles.subTitle}>Recent popular activities</div>
+      )}
       <Text className={styles.arc}></Text>
       <Row className={styles.row} gutter={16} justify="center" align="middle">
         {courseCards.map((item, index) => {
