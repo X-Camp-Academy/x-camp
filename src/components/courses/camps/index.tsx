@@ -52,7 +52,7 @@ const CourseCamps = () => {
         <Content>
           <TopBanner />
           <CampIntro />
-          <CampCarousel />
+          {/* <CampCarousel /> */}
           <div className={styles.courseCard}>
             <div className="container">
               <ColorfulCard border={"bottom"} index={1} animate={false}>
@@ -60,16 +60,6 @@ const CourseCamps = () => {
                   <CourseAbstract />
                 </div>
               </ColorfulCard>
-            </div>
-          </div>
-          <div className={styles.video}>
-            <div className="container">
-              <video controls className={styles.videoBox}>
-                <source
-                  src="https://media.strapi.turingstar.com.cn/production/2023/5/_2cd2122d99.mp4?updated_at=2023-05-14T08:17:12.234Z"
-                  type="video/mp4"
-                />
-              </video>
             </div>
           </div>
           <Faqs title="Camps FAQs" data={faq} />

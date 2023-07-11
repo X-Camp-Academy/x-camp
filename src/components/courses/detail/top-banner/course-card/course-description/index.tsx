@@ -17,8 +17,8 @@ const CourseDescription = () => {
     return {
       classCode,
       isFull,
-      startTime: startTime.slice(0, -7),
-      endTime: endTime.slice(0, -7),
+      startTime: startTime?.slice(0, -7),
+      endTime: endTime?.slice(0, -7),
       location,
     };
   });

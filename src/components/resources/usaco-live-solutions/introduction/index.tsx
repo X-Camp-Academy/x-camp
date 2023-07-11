@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { Collapse, Divider, Space } from "antd";
+import { Collapse, Divider, Space, Typography } from "antd";
 import { ClockCircleOutlined, DownOutlined } from "@ant-design/icons";
 import { GetResourcesLiveSolution } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 const { Panel } = Collapse;
+const { Text } = Typography;
 
 interface Props {
   data: StrapiResponseDataItem<GetResourcesLiveSolution>[][] | undefined;
@@ -17,16 +18,16 @@ const UsacoIntro = ({ data }: Props) => {
   return (
     <div className={styles.introduction}>
       <div className={"container"}>
-        <div
-          className={styles.description}
-        >{`In 2023 newest season, X-Camp hosts the first-ever USACO Live Solutions event
+        <div className={styles.description}>
+          {`In 2023 newest season, X-Camp hosts the first-ever USACO Live Solutions event
          on the entire web with our top coaches, including USACO Grandmaster Class instructors
           and ICPC World Finalists. They meticulously dissect the competition problems from the 
           USACO Bronze, Silver, and Gold levels, providing in-depth explanations and unraveling 
-          the intricacies.`}</div>
+          the intricacies.`}
+        </div>
         {data?.map((v, index) => {
           return (
-            <div key={"video" + index}>
+            <div key={"video" + index} style={{ marginBottom: 42 }}>
               <Collapse
                 ghost
                 defaultActiveKey={index}
@@ -34,7 +35,7 @@ const UsacoIntro = ({ data }: Props) => {
                 expandIcon={({ isActive }) => (
                   <div className={styles.changeBtn}>
                     <DownOutlined
-                      rotate={isActive ? 180 : 0}
+                      rotate={isActive ? 0 : 180}
                       className={styles.icon}
                     />
                   </div>
@@ -81,22 +82,23 @@ const UsacoIntro = ({ data }: Props) => {
                   </Space>
                 </Panel>
               </Collapse>
-              <Divider className={styles.divider} />
+
             </div>
           );
         })}
-        <div className={styles.title}>{"X-Camp More USACO Solutions"}</div>
-        <a
-          href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
-          className={styles.link}
-          target={"_blank"}
-        >
-          {
-            "https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
-          }
-        </a>
+        <div >
+          <a
+            href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
+            target={"_blank"}
+          >
+            <Text underline className={styles.title}>
+              {"X-Camp More USACO Solutions"}
+            </Text>
+          </a>
+        </div>
+
       </div>
-    </div>
+    </div >
   );
 };
 
