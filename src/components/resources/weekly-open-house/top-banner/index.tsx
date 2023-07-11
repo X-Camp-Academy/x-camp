@@ -20,6 +20,9 @@ const TopBanner = () => {
               <span>{'Join The Meeting'}</span>
               <img src="/image/resources/weekly-open-house-btn.png" alt="" />
             </Button>
+            <div className={styles.dateTime}>
+              {'*Tuesday, Weekly, 6:30 - 7:30 PM PDT'}
+            </div>
           </Space>
 
           <img src="/image/resources/weekly-open-house-banner.png"></img>

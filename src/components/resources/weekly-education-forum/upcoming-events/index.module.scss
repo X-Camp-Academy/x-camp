@@ -11,6 +11,7 @@
       background: #ffffff;
       border-radius: 8px 8px 12px 12px;
       padding: 48px 36px;
+      height: 550px;
 
       @media (max-width: 768px) {
         padding: 24px 18px;
@@ -45,18 +46,25 @@
         color: #172142;
         line-height: 36px;
         margin: 24px 0;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        /* 行数 */
+        -webkit-box-orient: vertical;
 
         @media (max-width: 768px) {
           margin: 12px 0;
         }
 
+
+      }
+
+      .descriptions {
         .btn {
           color: #ffad11;
           font-size: 18px;
         }
-      }
-
-      .descriptions {
 
         :global {
 
@@ -74,7 +82,8 @@
           }
 
           .ant-descriptions-item-content {
-            align-items: center;
+            justify-content: space-between;
+            align-items: start;
             color: #666666;
             font-size: 18px;
           }
