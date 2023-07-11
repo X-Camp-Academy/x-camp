@@ -95,10 +95,12 @@ export const useGetNewEvent = ({
   tag,
   current,
   pageSize,
+  manual = false,
 }: {
   tag?: NewEventCategory;
   current: number;
   pageSize: number;
+  manual?: boolean;
 }) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -109,6 +111,7 @@ export const useGetNewEvent = ({
       return res;
     },
     {
+      manual,
       defaultParams: [
         {
           populate: "*",

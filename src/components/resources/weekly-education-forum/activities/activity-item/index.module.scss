@@ -1,59 +1,54 @@
-.content {
-  width: 100%;
-  padding: 100px 0;
+.card {
+  background: #ffffff;
+  border-radius: 8px 8px 12px 12px;
+  height: 400px;
 
-  @media (max-width: 768px) {
-    padding: 30px 0;
+  img {
+    width: 100%;
   }
 
-  .cards {
-    .card {
-      background: #ffffff;
-      border-radius: 8px 8px 12px 12px;
+  .cardContent {
+    padding: 36px;
+    width: 100%;
 
-      img {
-        width: 100%;
+    @media (max-width: 768px) {
+      padding: 24px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 32px;
+      text-overflow: ellipsis;
+      width: 100%;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      /* 行数 */
+      -webkit-box-orient: vertical;
+
+
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      font-weight: 400;
+      color: #666666;
+      line-height: 28px;
+      align-items: center;
+
+      .btn {
+        color: #ffad11;
+        font-size: 18px;
       }
 
-      .cardContent {
-        padding: 36px;
-
-        @media (max-width: 768px) {
-          padding: 24px;
-        }
-
-        .title {
-          font-size: 24px;
-          font-weight: 600;
-          color: #172142;
-          line-height: 32px;
-
-          .btn {
-            color: #ffad11;
-            font-size: 18px;
-          }
-        }
-
-        .description {
-          display: flex;
-          justify-content: space-between;
-          font-size: 16px;
-          font-weight: 400;
-          color: #666666;
-          line-height: 28px;
-
-          .icon {
-            margin-right: 4px;
-            font-size: 14px;
-          }
-        }
+      .icon {
+        margin-right: 4px;
+        font-size: 14px;
       }
     }
-  }
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
   }
 }
