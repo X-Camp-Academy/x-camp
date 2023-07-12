@@ -1,5 +1,5 @@
 import { UserInfo } from "@/apis/auth-client/define";
-import { apiConfig } from "@/config/indx";
+import { apiConfig } from "@/config/index";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Divider, Dropdown, MenuProps, Space, theme } from "antd";
 import React from "react";

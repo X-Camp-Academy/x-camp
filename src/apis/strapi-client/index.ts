@@ -1,4 +1,4 @@
-import { apiConfig } from "@/config/indx";
+import { apiConfig } from "@/config/index";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 import {
   GetCourseLevelTypeRequest,
