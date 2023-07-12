@@ -10,6 +10,7 @@ import {
   Button,
   Calendar,
   Badge,
+  Empty,
 } from "antd";
 import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
@@ -18,12 +19,14 @@ import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+import { useAsyncEffect } from "ahooks";
+import ColorfulCard from "../common/colorful-card";
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
   const { lang } = useLang();
   const isMobile = useMobile();
-  const [selectDate, setSelectDate] = useState<string>();
+  const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
   const [filterSameDateEventList, setFilterSameDateEventList] = useState<
     {
       titleZh?: string;
@@ -67,43 +70,6 @@ const PublicCalendar: React.FC = () => {
     pageSize,
   });
 
-  useEffect(() => {
-    setSelectDate(dayjs().toString());
-    run({
-      populate: "*",
-      sort: ["order:desc"],
-      pagination: {
-        page: current,
-        pageSize,
-      },
-    });
-  }, []);
-
-  useEffect(() => {
-    if (newEventData) {
-      const updatedEventDate = newEventData.data.map((item) => ({
-        dateTime: item.attributes.datetime,
-      }));
-      setEventDate(updatedEventDate);
-    }
-  }, [newEventData]);
-
-  useEffect(() => {
-    if (selectDate) {
-      filterSameDateEvent(selectDate);
-    }
-  }, [selectDate]);
-
-  const formatDate = (date: string) => {
-    const dateInfo = dayjs(date);
-    const month = dateInfo.month();
-    if (lang === "en") {
-      return monthNameEn[month] + " " + dateInfo.date();
-    } else {
-      return dateInfo.format("MM月DD日");
-    }
-  };
-
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData?.data) {
       setFilterSameDateEventList(
@@ -123,6 +89,46 @@ const PublicCalendar: React.FC = () => {
       );
     }
   };
+  useEffect(() => {
+    run({
+      populate: "*",
+      sort: ["order:desc"],
+      pagination: {
+        page: current,
+        pageSize,
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    if (newEventData) {
+      const updatedEventDate = newEventData.data.map((item) => ({
+        dateTime: item.attributes.datetime,
+      }));
+      setEventDate(updatedEventDate);
+      filterSameDateEvent(selectDate);
+    }
+  }, [newEventData]);
+
+  //
+
+  useEffect(() => {
+    if (selectDate) {
+      filterSameDateEvent(selectDate);
+    }
+  }, [selectDate]);
+
+  const formatDate = (date: string) => {
+    const dateInfo = dayjs(date);
+    const month = dateInfo.month();
+    if (lang === "en") {
+      return monthNameEn[month] + " " + dateInfo.date();
+    } else {
+      return dateInfo.format("MM月DD日");
+    }
+  };
+
+
 
   const dateCellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) =>
@@ -215,31 +221,27 @@ const PublicCalendar: React.FC = () => {
                             </Text>
                           )}
                           <Text className={styles.date}>
-                            {`${item?.attributes?.start.substring(0, 5)} ${
-                              Number(item?.attributes?.start.substring(0, 2)) <
+                            {`${item?.attributes?.start.substring(0, 5)} ${Number(item?.attributes?.start.substring(0, 2)) <
                               12
+                              ? "AM"
+                              : "PM"
+                              } - 
+                            ${item?.attributes?.end.substring(0, 5)} ${Number(item?.attributes?.end.substring(0, 2)) < 12
                                 ? "AM"
                                 : "PM"
-                            } - 
-                            ${item?.attributes?.end.substring(0, 5)} ${
-                              Number(item?.attributes?.end.substring(0, 2)) < 12
-                                ? "AM"
-                                : "PM"
-                            } 
-                            ${
-                              item.attributes.timeZone
-                                ? `UTC ${
-                                    item.attributes.timeZone > 0 ? "+" : ""
-                                  }${item.attributes.timeZone}`
+                              } 
+                            ${item.attributes.timeZone
+                                ? `UTC ${item.attributes.timeZone > 0 ? "+" : ""
+                                }${item.attributes.timeZone}`
                                 : ""
-                            }`}
+                              }`}
                           </Text>
                         </Space>
                       </Space>
                     </div>
                   );
               })}
-              <Button className={styles.button}>Subscribe to Calendar</Button>
+              {/* <Button className={styles.button}>Subscribe to Calendar</Button> */}
             </Space>
           </Col>
 
@@ -260,7 +262,8 @@ const PublicCalendar: React.FC = () => {
                   <div className={styles.line}></div>
                 </Space>
                 <div style={{ height: 250, overflow: "scroll" }}>
-                  {selectDate &&
+                  {
+                    filterSameDateEventList.length != 0 &&
                     filterSameDateEventList.map((item, index) => {
                       if (item?.start && item?.end && item?.timeZone)
                         return (
@@ -270,21 +273,18 @@ const PublicCalendar: React.FC = () => {
                             className={styles.calendarItem}
                           >
                             <Text className={styles.itemDate}>
-                              {`${item?.start.substring(0, 5)} ${
-                                Number(item?.start.substring(0, 2)) < 12
+                              {`${item?.start.substring(0, 5)} ${Number(item?.start.substring(0, 2)) < 12
+                                ? "AM"
+                                : "PM"
+                                } - 
+                            ${item?.end.substring(0, 5)} ${Number(item?.end.substring(0, 2)) < 12
                                   ? "AM"
                                   : "PM"
-                              } - 
-                            ${item?.end.substring(0, 5)} ${
-                                Number(item?.end.substring(0, 2)) < 12
-                                  ? "AM"
-                                  : "PM"
-                              } 
-                            UTC ${
-                              item?.timeZone > 0
-                                ? "+" + item?.timeZone
-                                : item?.timeZone
-                            }`}
+                                } 
+                            UTC ${item?.timeZone > 0
+                                  ? "+" + item?.timeZone
+                                  : item?.timeZone
+                                }`}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`${getTransResult(
@@ -293,15 +293,24 @@ const PublicCalendar: React.FC = () => {
                                 item.titleEn
                               )} - 
                         ${getTransResult(
-                          lang,
-                          item.descriptionZh,
-                          item.descriptionEn
-                        )}`}
+                                lang,
+                                item.descriptionZh,
+                                item.descriptionEn
+                              )}`}
                             </Paragraph>
                             <div className={styles.itemLine}></div>
                           </Space>
                         );
-                    })}
+                    })
+                  }
+                  {
+                    filterSameDateEventList.length === 0 &&
+                    <div style={{
+                      padding:'50px 0'
+                    }}>
+                      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No Event Today'} />
+                    </div>
+                  }
                 </div>
               </Space>
             </Space>
