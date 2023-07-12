@@ -1,28 +1,34 @@
-'use client';
-import React from 'react';
-import { ConfigProvider, Layout, Space } from 'antd';
-import styles from './index.module.scss';
-import { Content } from 'antd/es/layout/layout';
+"use client";
+import React from "react";
+import { ConfigProvider, Layout, Space } from "antd";
+import styles from "./index.module.scss";
+import { Content } from "antd/es/layout/layout";
 
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
+import Testimony from "@/components/home/Testimony";
+import { useGetTestimony } from "@/apis/strapi-client/strapi";
 
-const TopBanner = dynamic(() => import('./TopBanner'));
-const CalendarContent = dynamic(() => import('./CalendarContent'));
+const TopBanner = dynamic(() => import("./TopBanner"));
+const CalendarContent = dynamic(() => import("./CalendarContent"));
 
 const RecentActivities = dynamic(
   () =>
-    import('@/components/resources/weekly-education-forum/recent-activities')
+    import("@/components/resources/weekly-education-forum/recent-activities")
 );
 const DiscoverCourses = dynamic(
-  () => import('@/components/home/DiscoverCourses')
+  () => import("@/components/home/DiscoverCourses")
 );
 
 const CalendarPage: React.FC = () => {
+  const { data: testimonyData } = useGetTestimony({
+    ready: true,
+    pageName: ['/home']
+  });
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
+          colorPrimary: "#FFAD11",
         },
       }}
     >
@@ -30,12 +36,13 @@ const CalendarPage: React.FC = () => {
         <Content>
           <TopBanner />
           <CalendarContent />
-          <DiscoverCourses showSubTitle align="flex-start" />
+          <DiscoverCourses showSubTitle align="flex-start" showBg={false} />
           <br />
           <br />
           <br />
           <br />
           <RecentActivities />
+          <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
     </ConfigProvider>

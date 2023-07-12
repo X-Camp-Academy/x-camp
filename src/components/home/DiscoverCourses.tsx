@@ -8,11 +8,13 @@ import styles from "./DiscoverCourses.module.scss";
 const { Title, Paragraph, Text } = Typography;
 interface DiscoverCoursesProps {
   showSubTitle?: boolean;
-  align?: 'center' | 'flex-start' | 'flex-end';
+  align?: "center" | "flex-start" | "flex-end";
+  showBg?: boolean;
 }
 const DiscoverCourses = ({
   showSubTitle = false,
-  align = 'center',
+  align = "center",
+  showBg = true,
 }: DiscoverCoursesProps) => {
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
@@ -102,7 +104,8 @@ const DiscoverCourses = ({
       {showSubTitle && (
         <div className={styles.subTitle}>Recent popular activities</div>
       )}
-      <Text className={styles.arc}></Text>
+      {showBg && <Text className={styles.arc}></Text>}
+
       <Row className={styles.row} gutter={16} justify="center" align="middle">
         {courseCards.map((item) => {
           return (

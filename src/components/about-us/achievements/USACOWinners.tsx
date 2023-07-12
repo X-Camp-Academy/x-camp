@@ -8,35 +8,35 @@ import {
   Carousel,
   Button,
   List,
-} from 'antd';
-import { CarouselRef } from 'antd/es/carousel';
+} from "antd";
+import { CarouselRef } from "antd/es/carousel";
 import {
   LeftCircleOutlined,
   LeftCircleTwoTone,
   RightCircleOutlined,
   RightCircleTwoTone,
   setTwoToneColor,
-} from '@ant-design/icons';
-import styles from './USACOWinners.module.scss';
-import React, { useRef } from 'react';
-import Link from 'next/link';
-import ColorfulCard from '@/components/common/colorful-card';
-import UsacoCards from '@/components/common/usaco-cards';
+} from "@ant-design/icons";
+import styles from "./USACOWinners.module.scss";
+import React, { useRef } from "react";
+import Link from "next/link";
+import ColorfulCard from "@/components/common/colorful-card";
+import UsacoCards from "@/components/common/usaco-cards";
 import {
   useGetAboutUsAchievementsAward,
   useGetAchievementsTimeLine,
-} from '@/apis/strapi-client/strapi';
-import { getTransResult } from '@/utils/public';
-import { useLang } from '@/hoc/with-intl/define';
-import { url } from 'inspector';
-import { XStarViewer } from '@/utils/x-star-editor-beta';
+} from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+import { url } from "inspector";
+import { XStarViewer } from "@/utils/x-star-editor-beta";
 
 const { Title, Paragraph, Text } = Typography;
 
 const USACOMedal: React.FC = () => {
   const { lang } = useLang();
   const carouselEL = useRef<CarouselRef>(null);
-  setTwoToneColor('#D46B14');
+  setTwoToneColor("#D46B14");
   const { data: awards } = useGetAboutUsAchievementsAward();
   const { data: timeLine } = useGetAchievementsTimeLine();
 
@@ -62,7 +62,10 @@ const USACOMedal: React.FC = () => {
               }}
               icon={<LeftCircleTwoTone style={{ fontSize: 25 }} />}
             ></Button>
-            <Carousel ref={carouselEL} dots={false}>
+            <Carousel
+              ref={carouselEL}
+              dots={false}
+            >
               {awards?.map((page, index) => {
                 return (
                   <div key={index}>

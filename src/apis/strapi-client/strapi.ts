@@ -30,6 +30,7 @@ import {
   FaqCategory,
   GetAboutUsIntroArticleRequest,
   GetCourses,
+  GetPartnerRequest,
 } from "./define";
 import { isArray } from "lodash";
 import {
@@ -266,15 +267,20 @@ export const useGetTestimony = ({
     async (params: GetTestimonyRequest) => {
       const res = await client.getTestimony(params);
       let data = [];
-      // 根据courseId, pageName, eventId做筛选，根据category做分类
-      if (courseId) {
-        data.push(...filterByAttribution(res?.data, "courseId", courseId));
-      }
-      if (pageName) {
-        data.push(...filterByAttribution(res?.data, "pageName", pageName));
-      }
-      if (eventId) {
-        data.push(...filterByAttribution(res?.data, "eventId", eventId));
+      if (!courseId && !pageName && !eventId) {
+        // 如果三个选项都没填则取所有的
+        data = res?.data;
+      } else {
+        // 根据courseId, pageName, eventId做筛选，根据category做分类
+        if (courseId) {
+          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+        }
+        if (pageName) {
+          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+        }
+        if (eventId) {
+          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+        }
       }
       return deduplicateArray(data); // 去重
     },
@@ -545,15 +551,20 @@ export const useGetFaq = <
     async (params) => {
       const res = await client.getFaq(params);
       let data = [];
-      // 根据courseId, pageName, eventId做筛选，根据category做分类
-      if (courseId) {
-        data.push(...filterByAttribution(res?.data, "courseId", courseId));
-      }
-      if (pageName) {
-        data.push(...filterByAttribution(res?.data, "pageName", pageName));
-      }
-      if (eventId) {
-        data.push(...filterByAttribution(res?.data, "eventId", eventId));
+      if (!courseId && !pageName && !eventId) {
+        // 如果三个选项都没填则取所有的
+        data = res?.data;
+      } else {
+        // 根据courseId, pageName, eventId做筛选，根据category做分类
+        if (courseId) {
+          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+        }
+        if (pageName) {
+          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+        }
+        if (eventId) {
+          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+        }
       }
       data = deduplicateArray(data); // 去重
       if (isClassify) {
@@ -568,13 +579,41 @@ export const useGetFaq = <
           populate: "*",
           sort: ["order:desc"],
           filters: {
-            category: {
-              $eq: category,
-            },
+            category: category
+              ? {
+                  $eq: category,
+                }
+              : {},
           },
         },
       ],
       ready: ready,
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取about us目录下的Partner
+ */
+export const useGetPartner = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetPartnerRequest) => {
+      const res = await client.getPartner(params);
+      return isArray(res?.data)
+        ? classifyByAttribution(res.data, "category")
+        : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+        },
+      ],
       onError: handleError,
     }
   );

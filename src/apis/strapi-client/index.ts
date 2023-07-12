@@ -1,4 +1,4 @@
-import { apiConfig } from "@/config/indx";
+import { apiConfig } from "@/config/index";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 import {
   GetCourseLevelTypeRequest,
@@ -35,6 +35,8 @@ import {
   GetFaqResponse,
   GetAboutUsIntroArticleRequest,
   GetAboutUsIntroArticleResponse,
+  GetPartnerRequest,
+  GetPartnerResponse,
 } from "./define";
 
 const { strapiServer } = apiConfig;
@@ -97,11 +99,11 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getNewEvent(params: GetNewEventRequest):Promise<GetNewEventResponse>{
+  async getNewEvent(params: GetNewEventRequest): Promise<GetNewEventResponse> {
     const res: GetNewEventResponse = await this.get(
       "/xc-new-events" + getParamsStringify(params),
       {}
-    )
+    );
     return res;
   }
 
@@ -241,6 +243,11 @@ export class StrapiClient extends BaseAxiosClient {
 
   async getFaq(params: GetFaqRequest): Promise<GetFaqResponse> {
     const res = await this.get("/xc-faqs" + getParamsStringify(params), {});
+    return res;
+  }
+
+  async getPartner(params: GetPartnerRequest): Promise<GetPartnerResponse> {
+    const res = await this.get("/xc-partners" + getParamsStringify(params), {});
     return res;
   }
 }

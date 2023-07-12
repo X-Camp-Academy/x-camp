@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
+import { Space, Typography, Row, Col, Image } from "antd";
 import styles from "./Partners.module.scss";
 import { useMobile } from "@/utils";
 
@@ -27,6 +27,7 @@ const Partners: React.FC = () => {
       style: styles.bottomRightImage,
     },
   ];
+
   return (
     <div className={`${styles.partners} container`}>
       <Space direction="vertical" align="center">
