@@ -4,6 +4,7 @@ import { Typography, Row, Col, Space, Image } from "antd";
 import Texty from "rc-texty";
 import MaskCard from "../common/mask-card";
 import styles from "./DiscoverCourses.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph, Text } = Typography;
 interface DiscoverCoursesProps {
@@ -16,6 +17,7 @@ const DiscoverCourses = ({
   align = "center",
   showBg = true,
 }: DiscoverCoursesProps) => {
+  const { format: t } = useLang();
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
       <Space
@@ -23,69 +25,49 @@ const DiscoverCourses = ({
         style={{ height: "100%", justifyContent: "space-between" }}
       >
         <Space direction={"vertical"}>
-          <Title className={styles.maskTitle}>APCS</Title>
-          <Paragraph className={styles.maskDesc}>
-            7th+ Graders Recommended. No coding background required. Target for
-            APCS A, 3 courses in total.
-          </Paragraph>
+          <Title className={styles.maskTitle}>{title}</Title>
+          <Paragraph className={styles.maskDesc}>{desc}</Paragraph>
         </Space>
 
-        <div className={styles.more}>{"More >"}</div>
+        <div className={styles.more}>
+          <a href={link}></a>
+          {t("More>")}
+        </div>
       </Space>
     );
   };
   const courseCards = [
     {
-      title: "Python Beginner",
-      desc: "5th+ Graders",
+      title: t("Python.Title"),
+      desc: t("Python.Grade"),
       url: "/image/home/course-1.png",
       bgc: "#D8D8D8",
       maskBgc: "rgb(216 216 216 / 40%)",
-      maskChildren: generateMaskChildren(
-        "APCS",
-        `7th+ Graders Recommended. No coding background required. Target for
-      APCS A, 3 courses in total.`,
-        ""
-      ),
+      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
     },
     {
-      title: "C++ Knowledge",
-      desc: "6th+ Graders",
+      title: t("C++.Title"),
+      desc: t("C++.Grade"),
       url: "/image/home/course-2.png",
       bgc: "#FFD600",
       maskBgc: "rgb(255 214 0 / 40%)",
-      maskChildren: generateMaskChildren(
-        "APCS",
-        `7th+ Graders Recommended. No coding background required. Target for
-      APCS A, 3 courses in total.`,
-        ""
-      ),
+      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
     },
     {
-      title: "USACO Grandmaster",
-      desc: "7th+ Graders",
+      title: t("USACO.Title"),
+      desc: t("USACO.Grade"),
       url: "/image/home/course-3.png",
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
-      maskChildren: generateMaskChildren(
-        "APCS",
-        `7th+ Graders Recommended. No coding background required. Target for
-      APCS A, 3 courses in total.`,
-        ""
-      ),
+      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
     },
     {
       title: "APCS",
-      desc: "7th+ Graders",
+      desc: t("APCS.Grade"),
       url: "/image/home/course-4.png",
       bgc: "#D46B14",
       maskBgc: "rgb(212 107 20 / 40%)",
-      maskChildren: generateMaskChildren(
-        "APCS",
-        `7th+ Graders Recommended. No coding background required. Target for
-      APCS A, 3 courses in total.`,
-        ""
-      ),
+      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
     },
   ];
   return (
@@ -99,10 +81,10 @@ const DiscoverCourses = ({
         interval={20}
         className={styles.title}
       >
-        Discover Our Courses
+        {t("DiscoverOurCourses")}
       </Texty>
       {showSubTitle && (
-        <div className={styles.subTitle}>Recent popular activities</div>
+        <div className={styles.subTitle}>{t("RecentPopularActivities")}</div>
       )}
       {showBg && <Text className={styles.arc}></Text>}
 

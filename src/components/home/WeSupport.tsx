@@ -3,10 +3,12 @@ import React from "react";
 import { Space, Typography, Row, Col, Image, Carousel } from "antd";
 import AnimateBox from "../common/animate-box";
 import styles from "./WeSupport.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
 
 const WeSupport: React.FC = () => {
+  const { format: t } = useLang();
   const images = [
     "/image/home/we-support-1.png",
     "/image/home/we-support-2.png",
@@ -29,7 +31,7 @@ const WeSupport: React.FC = () => {
               height="350"
               src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
               title="X-Camp Academy Intro - 2023"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
           </div>
@@ -46,11 +48,9 @@ const WeSupport: React.FC = () => {
               md={{ span: 24, order: 1 }}
             >
               <Space size={24} direction="vertical">
-                <Title className={styles.title}>We support</Title>
+                <Title className={styles.title}>{t("WeSupport")}</Title>
                 <Paragraph className={styles.paragraph}>
-                  {
-                    "X-Camp's programming courses support the three most mainstream and popular programming languages, including Intro to Python, Intro to Java (APCS), Beginner / Intermediate / Advanced level C++, for students in grades 5-12th."
-                  }
+                  {t("WeSupport.Desc")}
                 </Paragraph>
               </Space>
             </Col>

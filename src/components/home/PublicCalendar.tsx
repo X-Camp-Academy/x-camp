@@ -1,17 +1,6 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
-import {
-  Space,
-  Row,
-  Col,
-  Card,
-  Image,
-  Typography,
-  Button,
-  Calendar,
-  Badge,
-  Empty,
-} from "antd";
+import { Space, Row, Col, Typography, Calendar, Badge, Empty } from "antd";
 import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
 import dayjs from "dayjs";
@@ -19,12 +8,10 @@ import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import { useAsyncEffect } from "ahooks";
-import ColorfulCard from "../common/colorful-card";
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const isMobile = useMobile();
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
   const [filterSameDateEventList, setFilterSameDateEventList] = useState<
@@ -45,7 +32,8 @@ const PublicCalendar: React.FC = () => {
     }[]
   >([]);
 
-  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+  const weekdaysEn = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+  const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 
   const monthNameEn = [
     "January",
@@ -128,8 +116,6 @@ const PublicCalendar: React.FC = () => {
     }
   };
 
-
-
   const dateCellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) =>
       dayjs(event.dateTime).isSame(value, "day")
@@ -160,14 +146,19 @@ const PublicCalendar: React.FC = () => {
   };
 
   const getWeekDay = (date: string) => {
-    return weekdays[dayjs(date).day()];
+    return getTransResult(
+      lang,
+      weekdaysZh[dayjs(date).day()],
+      weekdaysEn[dayjs(date).day()]
+    );
   };
 
   return (
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
         <Title className={styles.title}>
-          X-Camp Public<Text className={styles.titleText}>Calendar</Text>
+          X-Camp {t("Public")}
+          <Text className={styles.titleText}>{t("Calendar")}</Text>
         </Title>
 
         <Row>
@@ -221,20 +212,24 @@ const PublicCalendar: React.FC = () => {
                             </Text>
                           )}
                           <Text className={styles.date}>
-                            {`${item?.attributes?.start.substring(0, 5)} ${Number(item?.attributes?.start.substring(0, 2)) <
+                            {`${item?.attributes?.start.substring(0, 5)} ${
+                              Number(item?.attributes?.start.substring(0, 2)) <
                               12
-                              ? "AM"
-                              : "PM"
-                              } - 
-                            ${item?.attributes?.end.substring(0, 5)} ${Number(item?.attributes?.end.substring(0, 2)) < 12
                                 ? "AM"
                                 : "PM"
-                              } 
-                            ${item.attributes.timeZone
-                                ? `UTC ${item.attributes.timeZone > 0 ? "+" : ""
-                                }${item.attributes.timeZone}`
+                            } - 
+                            ${item?.attributes?.end.substring(0, 5)} ${
+                              Number(item?.attributes?.end.substring(0, 2)) < 12
+                                ? "AM"
+                                : "PM"
+                            } 
+                            ${
+                              item.attributes.timeZone
+                                ? `UTC ${
+                                    item.attributes.timeZone > 0 ? "+" : ""
+                                  }${item.attributes.timeZone}`
                                 : ""
-                              }`}
+                            }`}
                           </Text>
                         </Space>
                       </Space>
@@ -262,8 +257,7 @@ const PublicCalendar: React.FC = () => {
                   <div className={styles.line}></div>
                 </Space>
                 <div style={{ height: 250, overflow: "scroll" }}>
-                  {
-                    filterSameDateEventList.length != 0 &&
+                  {filterSameDateEventList.length != 0 &&
                     filterSameDateEventList.map((item, index) => {
                       if (item?.start && item?.end && item?.timeZone)
                         return (
@@ -273,18 +267,21 @@ const PublicCalendar: React.FC = () => {
                             className={styles.calendarItem}
                           >
                             <Text className={styles.itemDate}>
-                              {`${item?.start.substring(0, 5)} ${Number(item?.start.substring(0, 2)) < 12
-                                ? "AM"
-                                : "PM"
-                                } - 
-                            ${item?.end.substring(0, 5)} ${Number(item?.end.substring(0, 2)) < 12
+                              {`${item?.start.substring(0, 5)} ${
+                                Number(item?.start.substring(0, 2)) < 12
                                   ? "AM"
                                   : "PM"
-                                } 
-                            UTC ${item?.timeZone > 0
-                                  ? "+" + item?.timeZone
-                                  : item?.timeZone
-                                }`}
+                              } - 
+                            ${item?.end.substring(0, 5)} ${
+                                Number(item?.end.substring(0, 2)) < 12
+                                  ? "AM"
+                                  : "PM"
+                              } 
+                            UTC ${
+                              item?.timeZone > 0
+                                ? "+" + item?.timeZone
+                                : item?.timeZone
+                            }`}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`${getTransResult(
@@ -293,24 +290,27 @@ const PublicCalendar: React.FC = () => {
                                 item.titleEn
                               )} - 
                         ${getTransResult(
-                                lang,
-                                item.descriptionZh,
-                                item.descriptionEn
-                              )}`}
+                          lang,
+                          item.descriptionZh,
+                          item.descriptionEn
+                        )}`}
                             </Paragraph>
                             <div className={styles.itemLine}></div>
                           </Space>
                         );
-                    })
-                  }
-                  {
-                    filterSameDateEventList.length === 0 &&
-                    <div style={{
-                      padding:'50px 0'
-                    }}>
-                      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No Event Today'} />
+                    })}
+                  {filterSameDateEventList.length === 0 && (
+                    <div
+                      style={{
+                        padding: "50px 0",
+                      }}
+                    >
+                      <Empty
+                        image={Empty.PRESENTED_IMAGE_SIMPLE}
+                        description={t("NoEventToday")}
+                      />
                     </div>
-                  }
+                  )}
                 </div>
               </Space>
             </Space>

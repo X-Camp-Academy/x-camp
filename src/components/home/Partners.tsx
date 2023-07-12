@@ -3,11 +3,12 @@ import React from "react";
 import { Space, Typography, Row, Col, Image } from "antd";
 import styles from "./Partners.module.scss";
 import { useMobile } from "@/utils";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Partners: React.FC = () => {
-  const isMobile = useMobile();
+  const { format: t } = useLang();
   const topImages = [
     "/image/home/partners-1.png",
     "/image/home/partners-2.png",
@@ -31,14 +32,9 @@ const Partners: React.FC = () => {
   return (
     <div className={`${styles.partners} container`}>
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>Partners</Title>
+        <Title className={styles.title}>{t("Partners")}</Title>
 
-        <Paragraph className={styles.paragraph}>
-          X-Camp has its own Art of Python Programming contest 4.0 award and
-          other projects and event every quarter to inspire students . It is a
-          great opportunity for students to showcase what they have learned from
-          classes .
-        </Paragraph>
+        <Paragraph className={styles.paragraph}>{t("Partners.Desc")}</Paragraph>
 
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>

@@ -2,24 +2,26 @@
 import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from "./AboutXCamp.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
+  const { format: t } = useLang();
   const aboutContents = [
     {
       icon: "/image/home/faculty-icon.png",
-      title: "Faculty",
-      desc: "X-Camp teachers are composed of senior engineers from leading tech companies and contestants from international and national level informatic contests like IOI, ICPC, USACO.",
+      title: t("Faculty"),
+      desc: t("Faculty.Des"),
     },
     {
       icon: "/image/home/achievement-icon.png",
-      title: "Achievement",
-      desc: "More than 100 X-Camp students have been qualified for USACO Silver division and above; including 25 in the Platinum division and 5 selected in the US Camp, out of which 4 were fresh from the …",
+      title: t("Achievements"),
+      desc: t("Achievements.Des"),
     },
     {
       icon: "/image/home/community-icon.png",
-      title: "Community",
-      desc: "We are a community dedicated to inspiring and cultivating the next generation of Computer Science and Artificial Intelligence talent.",
+      title: t("Community"),
+      desc: t("Community.Des"),
     },
   ];
   return (
@@ -30,15 +32,11 @@ const AboutXCamp: React.FC = () => {
           align="center"
           className={styles.aboutXCampTop}
         >
-          <Title className={styles.title}>
-            About X-Camp
-          </Title>
+          <Title className={styles.title}>{t("AboutX-Camp")}</Title>
           <Paragraph className={styles.paragraph}>
-            Focusing on mastery of data structures and algorithms, X-Camp
-            Academy is a Silicon Valley based institute offers coding classes
-            for middle and high school students to achieve success at contests
-            like USACO and beyond. Check our recent{" "}
-            <Text className={styles.paragraphText}>USACO classes</Text>
+            {t("X-Camp.Desc1")}
+
+            <Text className={styles.paragraphText}>{t("USACOClasses")}</Text>
           </Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
