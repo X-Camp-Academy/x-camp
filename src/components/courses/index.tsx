@@ -1,13 +1,15 @@
 "use client";
 import {
+  Affix,
   Collapse,
   ConfigProvider,
   Divider,
   Layout,
   Segmented,
   Space,
+  Typography,
 } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
@@ -26,9 +28,8 @@ import { useLang } from "@/hoc/with-intl/define";
 import { SegmentedValue } from "antd/es/segmented";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetCourses } from "@/apis/strapi-client/define";
-import { divide } from "lodash";
 import FilterForm from "./FilterForm";
-const AnchorNav = dynamic(() => import("./AnchorNav"), { ssr: false });
+const { Paragraph } = Typography;
 const { Panel } = Collapse;
 const { Content } = Layout;
 
@@ -131,7 +132,8 @@ const Courses = () => {
   useEffect(() => {
     getCourseBySegmented(segmented);
   }, [segmented, courses]);
-  console.log(currentData);
+
+  const segmentedDom = useRef<HTMLDivElement>(null);
 
   return (
     <ConfigProvider
@@ -146,12 +148,25 @@ const Courses = () => {
           <TopBanner />
 
           <div className={`${styles.classContainer} container`}>
-            <Segmented
-              style={{ backgroundColor: "#fff" }}
-              block
-              options={COURSE_TYPES}
-              onChange={(value: SegmentedValue) => setSegmented(value)}
-            />
+            <Affix
+              offsetTop={100}
+              onChange={(isAffix) => {
+                if (isAffix && segmentedDom.current) {
+                  segmentedDom.current.style.boxShadow =
+                    "0 2px 4px rgba(0, 0, 0, 0.2)";
+                } else if (segmentedDom.current) {
+                  segmentedDom.current.style.boxShadow = "initial";
+                }
+              }}
+            >
+              <Segmented
+                ref={segmentedDom}
+                style={{ backgroundColor: "#fff" }}
+                block
+                options={COURSE_TYPES}
+                onChange={(value: SegmentedValue) => setSegmented(value)}
+              />
+            </Affix>
             <div className={styles.filterForm} style={{ marginTop: 64 }}>
               <FilterForm />
             </div>

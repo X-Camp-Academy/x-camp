@@ -32,11 +32,13 @@ const ClassCard = ({ index, href, title, list, time }: ClassCardProps) => {
           }}
         >
           <Title className={styles.cardTitle}>{title}</Title>
-          <ul className={styles.list}>
+          <Paragraph ellipsis={{ rows: 4 }}>
             {list?.map((v, index) => (
-              <li key={index}>{v}</li>
+              <div key={index} className={styles.list}>
+                {v}
+              </div>
             ))}
-          </ul>
+          </Paragraph>
           <Space className={styles.bottom}>
             <Space className={styles.week} size={5}>
               <ClockCircleOutlined />
