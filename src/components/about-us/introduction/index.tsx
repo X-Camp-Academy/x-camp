@@ -27,7 +27,7 @@ const Introduction: React.FC = () => {
           <XCampFounder />
           <UsacoMedal />
           <ISPI />
-          <Results />
+          {/* <Results /> */}
           <FacultyCoach />
         </Content>
       </Layout>

@@ -176,7 +176,7 @@ export const useMenuItems = () => {
           key: "achievements",
         },
         {
-          label: <Link href="/about-us/introduction">Faculty&Coach</Link>,
+          label: <Link href="/about-us/introduction#faculty">Faculty&Coach</Link>,
           key: "faculty&coach",
         },
         {

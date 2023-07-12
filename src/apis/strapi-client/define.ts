@@ -299,8 +299,8 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = "Referral FAQs",
-  CoursesQA = "Courses QA",
+  ReferralQA = 'Referral QA',
+  CoursesQA = 'Courses QA',
 }
 
 export interface GetFaq extends strapiPublicFields {

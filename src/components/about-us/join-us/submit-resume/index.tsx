@@ -28,7 +28,7 @@ const SubmitResume: React.FC = () => {
                     <TopBanner />
                     <Resume/>
                     <JoinUsFaculty />
-                    <WhyWorkWithUs />
+                    {/* <WhyWorkWithUs /> */}
                 </Content>
             </Layout>
         </ConfigProvider>

@@ -38,7 +38,6 @@ const UpcomingEvents: React.FC = () => {
     "December",
   ];
 
-
   const formatDate = (dateString: string, lang: string) => {
     const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
     const weekdaysEn = [
@@ -93,7 +92,9 @@ const UpcomingEvents: React.FC = () => {
               Peek at some alumni events happening just around the corner.
             </Paragraph>
           </Space>
-          <button className={styles.button}>View More Events <RightOutlined /></button>
+          <button className={styles.button}>
+            View More Events <RightOutlined />
+          </button>
         </Space>
 
         <Row gutter={32} className={styles.row}>
@@ -120,7 +121,10 @@ const UpcomingEvents: React.FC = () => {
                         <Text className={styles.cardDay}>
                           {dayjs(item.attributes?.datetime).date()}
                         </Text>
-                        <Paragraph className={styles.cardParagraph}>
+                        <Paragraph
+                          ellipsis={{ rows: 2 }}
+                          className={styles.cardParagraph}
+                        >
                           {getTransResult(
                             lang,
                             item?.attributes?.titleZh,

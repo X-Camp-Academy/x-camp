@@ -123,6 +123,9 @@ const Courses = () => {
     }
   });
 
+  console.log(allCourses);
+  
+
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const result = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
