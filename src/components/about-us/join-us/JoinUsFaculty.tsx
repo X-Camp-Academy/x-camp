@@ -5,14 +5,14 @@ const { Paragraph } = Typography;
 
 const JoinUsFaculty: React.FC = () => {
   const imgUrlTwoList = [
-    { url: "/image/home/yuan-big.png" },
-    { url: "/image/home/yuan-big.png" },
+    { url: "/image/home/yuan.png" },
+    { url: "/image/home/yuan.png" },
   ];
 
   const imgUrlThreeList = [
-    { url: "/image/home/yuan-big.png" },
-    { url: "/image/home/yuan-big.png" },
-    { url: "/image/home/yuan-big.png" },
+    { url: "/image/home/yuan.png" },
+    { url: "/image/home/yuan.png" },
+    { url: "/image/home/yuan.png" },
   ];
   return (
     <>
