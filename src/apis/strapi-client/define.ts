@@ -5,7 +5,7 @@ import {
   StrapiResponse,
   StrapiResponseSingleDataItem,
   strapiPublicFields,
-} from './strapiDefine';
+} from "./strapiDefine";
 
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
@@ -21,19 +21,18 @@ export interface GetFaculty extends strapiPublicFields {
 export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
-
 export enum NewEventCategory {
-  News = 'News',
-  Event = 'Events',
-  Activity = 'Activity',
-  All = 'All',
+  News = "News",
+  Event = "Events",
+  Activity = "Activity",
+  All = "All",
 }
 
 export enum ActivityCategory {
   SchoolLifeSharing = "School life's sharing",
-  CodingEducation = 'Coding Education',
-  CareerPath = 'Career Path',
-  Research = 'Research',
+  CodingEducation = "Coding Education",
+  CareerPath = "Career Path",
+  Research = "Research",
 }
 
 export interface GetNewEvent extends strapiPublicFields {
@@ -198,14 +197,14 @@ export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
 export enum AboutUsJoinUsCategory {
-  PartTime = 'Part Time',
-  FullTime = 'Full Time',
-  XTutor = 'X-Tutor',
+  PartTime = "Part Time",
+  FullTime = "Full Time",
+  XTutor = "X-Tutor",
 }
 
 export enum AboutUsJoinUsPlace {
-  Remote = 'Remote',
-  OnSite = 'On Site',
+  Remote = "Remote",
+  OnSite = "On Site",
 }
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
@@ -318,3 +317,24 @@ export interface GetFaq extends strapiPublicFields {
 
 export type GetFaqRequest = StrapiRequest<GetFaq>;
 export type GetFaqResponse = StrapiResponse<GetFaq>;
+
+export enum PartnerCategory {
+  ChinaPartners = "China Partners",
+  UniversityPartners = "University Partners",
+  CommunityPartners = "Community Partners",
+  EducationPartners = "Education Partners",
+}
+
+export interface GetPartner extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  titleDescriptionZh: string;
+  titleDescriptionEn: string;
+  category: PartnerCategory;
+  link: string;
+  logo: StrapiMedia;
+  order: number;
+}
+
+export type GetPartnerRequest = StrapiRequest<GetPartner>;
+export type GetPartnerResponse = StrapiResponse<GetPartner>;
