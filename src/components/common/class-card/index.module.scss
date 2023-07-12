@@ -14,10 +14,20 @@
     }
 
     .list {
-      li {
-        font-size: 18px;
-        font-weight: 400;
-        color: #172142;
+      font-size: 18px;
+      font-weight: 400;
+      color: #172142;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #172142;
+        position: relative;
+        margin-right: 8px;
+        top: -3px;
       }
     }
 

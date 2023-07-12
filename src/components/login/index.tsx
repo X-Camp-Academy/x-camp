@@ -1,5 +1,5 @@
 "use client";
-import { apiConfig } from "@/config/indx";
+import { apiConfig } from "@/config/index";
 import React from "react";
 
 const Login = () => {

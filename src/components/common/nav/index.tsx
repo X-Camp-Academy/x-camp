@@ -18,7 +18,7 @@ import { removeDropdown, useMenuItems } from "./define";
 import XStarMenu from "./x-star-menu";
 import { useAuth } from "@/hoc/with-auth/define";
 import DropdownUserMenu from "../dropdown-user-menu";
-import { apiConfig } from "@/config/indx";
+import { apiConfig } from "@/config/index";
 
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
