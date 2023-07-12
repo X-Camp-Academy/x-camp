@@ -11,11 +11,9 @@ import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import Link from "next/link";
 
 const { Title, Paragraph, Text } = Typography;
-const { Meta } = Card;
 
 const StudentProjects: React.FC = () => {
-  const isMobile = useMobile();
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
 
   const { data } = useGetHomeStudentProjects();
 
@@ -29,12 +27,11 @@ const StudentProjects: React.FC = () => {
   return (
     <div className={`${styles.studentProjects} container`}>
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>Student Projects</Title>
+        <Title className={styles.title}>{t("StudentProjects")}</Title>
         <Paragraph className={styles.paragraph}>
-          X-Camp has its own Art of Python Programming contest 4.0 award and
-          other projects and event every quarter to inspire students . It is a
-          <Text className={styles.paragraphText}> great opportunity </Text>
-          for students to showcase what they have learned fProm classes .
+          {t("StudentProjects.Desc1")}
+          <Text className={styles.paragraphText}> {t("greatOpportunity")}</Text>
+          {t("StudentProjects.Desc2")}
         </Paragraph>
 
         <Row gutter={16} className={styles.row}>
@@ -45,7 +42,7 @@ const StudentProjects: React.FC = () => {
                 height="100%"
                 src={getMediaUrl(studentProjectsData[0]?.attributes?.video)}
                 title="X-Camp Academy Intro - 2023"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
             )}
@@ -67,7 +64,7 @@ const StudentProjects: React.FC = () => {
                         width="100%"
                         src={getMediaUrl(item?.attributes?.video)}
                         title="X-Camp Academy Intro - 2023"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                       ></iframe>
                     }
@@ -91,7 +88,7 @@ const StudentProjects: React.FC = () => {
                         )}
                       </Paragraph>
                       <Link href="/" className={styles.cardMore}>
-                        More <RightOutlined />
+                        {"More"} <RightOutlined />
                       </Link>
                     </Space>
                   </Card>

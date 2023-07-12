@@ -8,10 +8,12 @@ import { SearchOutlined } from "@ant-design/icons";
 const { Text } = Typography;
 
 import { DatePicker } from "antd";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { RangePicker } = DatePicker;
 
 const FilterForm: React.FC = () => {
+  const { format: t } = useLang();
   const isMobile = useMobile();
   const options = [
     {
@@ -37,15 +39,7 @@ const FilterForm: React.FC = () => {
       onFinish={onFinish}
       layout="inline"
     >
-      <Form.Item
-        name="language"
-        rules={[
-          {
-            required: true,
-            message: "Please select code language",
-          },
-        ]}
-      >
+      <Form.Item name="language">
         <Select
           defaultValue="python"
           className={styles.formSelect}
@@ -53,22 +47,13 @@ const FilterForm: React.FC = () => {
         />
       </Form.Item>
 
-      <Form.Item
-        name="email"
-        rules={[
-          {
-            required: true,
-            message: "Please input child's grade!",
-          },
-        ]}
-        style={isMobile ? { width: 120 } : {}}
-      >
+      <Form.Item name="time" style={isMobile ? { width: 120 } : {}}>
         <RangePicker />
       </Form.Item>
 
       <Form.Item>
         <Input
-          placeholder="Search"
+          placeholder={t("Search")}
           onPressEnter={onSearch}
           suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
         />

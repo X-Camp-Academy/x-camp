@@ -2,27 +2,27 @@ import React from "react";
 import styles from "./index.module.scss";
 import { Button, Col, Row, Space, Typography } from "antd";
 import { CaretRightOutlined } from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
 const { Paragraph } = Typography;
 const TopBanner = () => {
+  const { format: t } = useLang();
   return (
     <div className={styles.topBanner}>
       <div className={`${styles.content} container`}>
         <Row>
           <Col xs={24} sm={24} md={14}>
             <Space direction={"vertical"}>
-              <div className={styles.title}>2023 Course Schedule</div>
+              <div className={styles.title}>2023 {t("CourseSchedule")}</div>
               <div>
                 <Paragraph className={styles.paragraph}>
-                  We offer a variety of courses tailored to suit the student’s
-                  academic goals and schedule.
+                  {t("CourseSchedule.Desc1")}
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
-                  Programming fundamentals and intensive classes and more
-                  competition-related courses
+                  {t("CourseSchedule.Desc2")}
                 </Paragraph>
               </div>
               <div className={styles.contact}>
-                *Any questions please contact us
+                {t("CourseSchedule.Question")}
               </div>
             </Space>
           </Col>
@@ -33,21 +33,21 @@ const TopBanner = () => {
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
-                Trial Class
+                {t("TrialClass")}
               </Button>
               <Button
                 type={"primary"}
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
-                Placement Test
+                {t("PlacementTest")}
               </Button>
               <Button
                 type={"primary"}
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
-                Trial Course
+                {t("TrialCourse")}
               </Button>
             </Space>
           </Col>

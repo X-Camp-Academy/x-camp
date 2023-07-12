@@ -5,25 +5,13 @@ import styles from "./SubscribeNewsletter.module.scss";
 import { useMobile } from "@/utils";
 import { subscribeNewsletterRequest } from "@/apis/send-email-client";
 import { useSubscribeNewsletter } from "@/apis/send-email-client/sendEmail";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Text } = Typography;
 
 const SubscribeNewsletter: React.FC = () => {
   const isMobile = useMobile();
-  const options = [
-    {
-      label: "Python",
-      value: "python",
-    },
-    {
-      label: "C++",
-      value: "c++",
-    },
-    {
-      label: "Java",
-      value: "java",
-    },
-  ];
+  const { format: t } = useLang();
   const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
 
   const onFinish = async (values: subscribeNewsletterRequest) => {
@@ -40,7 +28,7 @@ const SubscribeNewsletter: React.FC = () => {
             className={styles.image}
           />
           {!isMobile && (
-            <Text className={styles.text}>Free Programming Pack</Text>
+            <Text className={styles.text}>{t("FreeProgrammingPack")}</Text>
           )}
 
           <Form name="basic" onFinish={onFinish} layout="inline">
@@ -50,7 +38,7 @@ const SubscribeNewsletter: React.FC = () => {
                 { type: "email" },
                 {
                   required: true,
-                  message: "Please input your email!",
+                  message: t("Email.Required"),
                 },
               ]}
               style={isMobile ? { width: 120 } : {}}
@@ -64,7 +52,7 @@ const SubscribeNewsletter: React.FC = () => {
                 htmlType="submit"
                 className={styles.submit}
               >
-                {"Subscribe Newsletter"}
+                {t("SubscribeNewsletter")}
               </Button>
             </Form.Item>
           </Form>

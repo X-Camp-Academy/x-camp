@@ -16,8 +16,10 @@ import {
 } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import { usePathname } from "next/navigation";
+import { useLang } from "@/hoc/with-intl/define";
 const { Content } = Layout;
 const CourseCamps = () => {
+  const { format: t } = useLang();
   const pathname = usePathname();
   // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
   const params = {
@@ -62,7 +64,7 @@ const CourseCamps = () => {
               </ColorfulCard>
             </div>
           </div>
-          <Faqs title="Camps FAQs" data={faq} />
+          <Faqs title={t("CampsFAQs")} data={faq} />
           <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>
