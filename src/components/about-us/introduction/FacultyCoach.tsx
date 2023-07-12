@@ -60,7 +60,7 @@ const FacultyCoach: React.FC = () => {
     return cardStyle;
   };
   return (
-    <div className={`${styles.facultyCoach} container`}>
+    <div className={`${styles.facultyCoach} container`} id="faculty">
       <Space direction="vertical" size={48}>
         <Space direction="vertical">
           <Title className={styles.title}>Faculty & Coach</Title>

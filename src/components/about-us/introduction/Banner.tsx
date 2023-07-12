@@ -1,16 +1,13 @@
-"use client";
-import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from "./Banner.module.scss";
-
 const { Title, Paragraph, Text } = Typography;
 
-const TopBanner: React.FC = () => {
+const Banner: React.FC = () => {
   return (
     <div className={styles.topBannerContainer}>
       <div className="container">
         <Row>
-          <Col xs={24} sm={24} md={12} className={styles.col}>
+          <Col xs={24} sm={24} md={14} className={styles.col}>
             <Space direction="vertical">
               <Title className={styles.title}>
                 X-Camp Academy, a Silicon Valley based coding institute
@@ -24,15 +21,17 @@ const TopBanner: React.FC = () => {
           <Col
             xs={24}
             sm={24}
-            md={{ span: 10, offset: 2 }}
+            md={{ span: 8, offset: 2 }}
             className={styles.col}
           >
-            <div className={styles.imgBg}></div>
-            <img
-              alt="image"
-              src="/image/about-us/introduction/top-banner.png"
-              className={styles.image}
-            />
+            <div className={styles.imgContain}>
+              <Image
+                alt="image"
+                src="/image/about-us/introduction/top-banner.png"
+                preview={false}
+                className={styles.image}
+              />
+            </div>
           </Col>
         </Row>
       </div>
@@ -40,4 +39,4 @@ const TopBanner: React.FC = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;

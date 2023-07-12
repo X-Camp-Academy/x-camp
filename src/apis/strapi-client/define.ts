@@ -300,7 +300,7 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = 'Referral FAQs',
+  ReferralQA = 'Referral QA',
   CoursesQA = 'Courses QA',
 }
 

@@ -1,21 +1,18 @@
 "use client";
-import React, { LegacyRef, useEffect, useRef, useState } from "react";
-import { Typography, Segmented } from "antd";
+import React, { LegacyRef, useEffect, useRef } from "react";
+import { Typography } from "antd";
 import * as echarts from "echarts";
+import { useGetAboutUsAlumniMap } from "@/apis/strapi-client/strapi";
 import worldJson from "./world.json";
 import usaJson from "./usa.json";
 import styles from "./Map.module.scss";
-import { SegmentedValue } from "antd/es/segmented";
-import { useGetAboutUsAlumniMap } from "@/apis/strapi-client/strapi";
 
 const { Title, Text } = Typography;
 
 const Map: React.FC = () => {
   const { data } = useGetAboutUsAlumniMap();
-  const [current, setCurrent] = useState<SegmentedValue>("World");
   const worldDOM = useRef<HTMLDivElement>();
   const usaDOM = useRef<HTMLDivElement>();
-
 
   useEffect(() => {
     if (worldDOM.current) {
@@ -56,7 +53,7 @@ const Map: React.FC = () => {
       };
       mapChart.setOption(options);
     }
-  }, [data, current]);
+  }, [data]);
   useEffect(() => {
     if (usaDOM.current) {
       const mapChart = echarts.init(usaDOM.current);
@@ -112,27 +109,21 @@ const Map: React.FC = () => {
       };
       mapChart.setOption(options);
     }
-  }, [data, current]);
-  const onChange = (value: SegmentedValue) => {
-    setCurrent(value);
-  };
+  }, [data]);
+
   return (
     <div className={`${styles.map} container`}>
-
-      <Segmented
-        options={["World", "USA"]}
-        onChange={onChange}
-        className={styles.button}
-      />
       <Title className={styles.title}>We are one big family</Title>
-      <Text className={styles.text}>Our alumni are located all over the world.</Text>
+      <Text className={styles.text}>
+        Our alumni are located all over the world.
+      </Text>
 
       <div
-        ref={
-          current === "World"
-            ? (worldDOM as LegacyRef<HTMLDivElement>)
-            : (usaDOM as LegacyRef<HTMLDivElement>)
-        }
+        ref={worldDOM as LegacyRef<HTMLDivElement>}
+        className={styles.mapContainer}
+      ></div>
+      <div
+        ref={usaDOM as LegacyRef<HTMLDivElement>}
         className={styles.mapContainer}
       ></div>
     </div>

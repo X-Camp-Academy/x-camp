@@ -21,7 +21,7 @@ const Stories: React.FC = () => {
   const { data: newEventData } = useGetNewEvent({
     tag,
     current,
-    pageSize
+    pageSize,
   });
 
   const getImgUrl = (img: StrapiMedia) => {
@@ -35,19 +35,24 @@ const Stories: React.FC = () => {
           <Space direction="vertical">
             <Title className={styles.title}>X-Alumni Events</Title>
             <Paragraph className={styles.paragraph}>
-              Explore news, views and perspectives from Stanford and your alumni community.
+              Explore news, views and perspectives from Stanford and your alumni
+              community.
             </Paragraph>
           </Space>
-          <button className={styles.button}>View More Events <RightOutlined /></button>
+          <button className={styles.button}>
+            View More Events <RightOutlined />
+          </button>
         </Space>
 
         <Row gutter={32} className={styles.row}>
           {newEventData?.data.map((item, index) => (
             <Col key={index} xs={24} sm={24} md={8}>
               <ColorfulCard border="bottom" index={index}>
-                <Card bodyStyle={{
-                  padding: 0,
-                }}>
+                <Card
+                  bodyStyle={{
+                    padding: 0,
+                  }}
+                >
                   <Space direction="vertical" size={32}>
                     <Image
                       alt=""
@@ -55,8 +60,13 @@ const Stories: React.FC = () => {
                       src={getImgUrl(item?.attributes?.img)}
                       className={styles.cardImage}
                     />
-                    <Text className={styles.cardTitle}>
-                      {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
+
+                    <Title ellipsis={{ rows: 2 }} className={styles.cardTitle}>
+                      {getTransResult(
+                        lang,
+                        item?.attributes?.titleZh,
+                        item?.attributes?.titleEn
+                      )}
                       <Button
                         type="primary"
                         size="small"
@@ -66,10 +76,17 @@ const Stories: React.FC = () => {
                       >
                         <RightOutlined />
                       </Button>
-                    </Text>
+                    </Title>
 
-                    <Paragraph className={styles.cardParagraph}>
-                      {getTransResult(lang, item?.attributes.descriptionZh, item?.attributes.descriptionEn)}
+                    <Paragraph
+                      ellipsis={{ rows: 3 }}
+                      className={styles.cardParagraph}
+                    >
+                      {getTransResult(
+                        lang,
+                        item?.attributes.descriptionZh,
+                        item?.attributes.descriptionEn
+                      )}
                     </Paragraph>
                   </Space>
                 </Card>
