@@ -19,17 +19,18 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
     refreshAsync,
   } = useRequest(
     async () => {
-      try {
-        const resp = await client.getUserInfo();
-        if (resp?.data) {
-          // 登陆成功以后就删除登录之前保存的path
-          localStorage.removeItem("no_login_data");
-        }
-        return resp?.data;
-      } catch (error: any) {
-        message.error({ content: JSON.stringify(error), key: "authMsg" });
-        return null;
-      }
+      // try {
+      //   const resp = await client.getUserInfo();
+      //   if (resp?.data) {
+      //     // 登陆成功以后就删除登录之前保存的path
+      //     localStorage.removeItem("no_login_data");
+      //   }
+      //   return resp?.data;
+      // } catch (error: any) {
+      //   message.error({ content: JSON.stringify(error), key: "authMsg" });
+      //   return null;
+      // }
+      return null;
     },
     { throttleWait: 1000 }
   );
