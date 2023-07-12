@@ -5,6 +5,7 @@ import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { NewEventCategory } from "@/apis/strapi-client/define";
+import dayjs from "dayjs";
 
 const TopBanner = dynamic(() => import("./TopBanner"));
 const Partners = dynamic(() => import("@/components/home/Partners"));
@@ -20,6 +21,7 @@ const NewsPage = () => {
   const { data: newEventData, run: getNewEvent } = useGetNewEvent({
     current,
     pageSize: PAGE_SIZE,
+    manual: true,
   });
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const NewsPage = () => {
   }, [year]);
 
   useEffect(() => {
-    if (current) {
+    if (current && year) {
       getNewEvent({
         populate: "*",
         sort: ["order:desc"],
@@ -38,7 +40,8 @@ const NewsPage = () => {
             $eq: NewEventCategory.News,
           },
           datetime: {
-            $startsWith: year,
+            $gte: String(dayjs(year).valueOf()),
+            $lte: String(dayjs(String(+year + 1)).valueOf()),
           },
         },
         pagination: {
@@ -47,7 +50,7 @@ const NewsPage = () => {
         },
       });
     }
-  }, [current]);
+  }, [current, year]);
 
   return (
     <ConfigProvider

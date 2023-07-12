@@ -46,7 +46,6 @@ const NewsCard = ({ current, setCurrent, newEventData }: Props) => {
         </div>
 
         <Pagination
-          defaultCurrent={1}
           total={newEventData?.meta?.pagination?.pageCount}
           className={styles.pagination}
           pageSize={pageSize}

@@ -5,6 +5,7 @@ import styles from "./TopBanner.module.scss";
 import dayjs from "dayjs";
 import { getTransResult } from "@/utils/public";
 import classNames from "classnames/bind";
+import { useLang } from "@/hoc/with-intl/define";
 const cx = classNames.bind(styles);
 const { Title, Paragraph } = Typography;
 
@@ -14,13 +15,14 @@ interface Props {
 }
 
 const TopBanner = ({ year, setYear }: Props) => {
+  const { lang } = useLang();
   const onChange: DatePickerProps["onChange"] = (date) => {
     setYear(String(date?.get("year")));
   };
 
   //年份选择格式化
   const customFormat: DatePickerProps["format"] = (value) =>
-    `${value.format("YYYY")}${getTransResult("zh", "年", " ")}`;
+    `${value.format("YYYY")}${getTransResult(lang, "年", "Year")}`;
 
   return (
     <div className={styles.topBannerContainer}>
@@ -31,6 +33,7 @@ const TopBanner = ({ year, setYear }: Props) => {
             {"Check out our most updated info from our school and students."}
           </Paragraph>
           <DatePicker
+            className={styles.date}
             picker="year"
             format={customFormat}
             onChange={onChange}
