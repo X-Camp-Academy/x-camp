@@ -15,7 +15,6 @@ export interface openClassEmailResponse {
 
 export interface subscribeNewsletterRequest {
   email: string;
-  lang: string;
 }
 
 export interface subscribeNewsletterResponse {
