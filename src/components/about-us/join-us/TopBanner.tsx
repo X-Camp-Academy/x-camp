@@ -25,7 +25,7 @@ const TopBanner: React.FC = () => {
             <Space direction="vertical">
               <Image
                 alt="image"
-                src="/image/home/course-4.png"
+                src="/image/about-us/join-us/JoinUsBannerAnimal.png"
                 preview={false}
                 className={styles.image}
               />
