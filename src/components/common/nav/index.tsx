@@ -164,7 +164,7 @@ const Nav = () => {
                     </Space>
                   ) : (
                     <Button type="primary" href="/login">
-                      Login / Register
+                      {t("Nav.Login")}
                     </Button>
                   )}
                   <div onClick={toggle} className={styles.intl}>

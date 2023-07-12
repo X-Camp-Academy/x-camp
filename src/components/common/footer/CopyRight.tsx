@@ -4,10 +4,12 @@ import { Space, Row, Col, Image, Typography } from "antd";
 import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styles from "./CopyRight.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
+  const { format: t } = useLang();
   const icons = [
     {
       src: "/image/home/youtube.png",
@@ -74,7 +76,7 @@ const CopyRight: React.FC = () => {
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
                   <PhoneOutlined />
-                  <Text className={styles.text}>Tel: 510-708-8390</Text>
+                  <Text className={styles.text}>{t("Tel")}510-708-8390</Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
@@ -90,20 +92,20 @@ const CopyRight: React.FC = () => {
             <Space align="start" className={styles.spaceRight}>
               <Space direction="vertical">
                 <Text className={styles.text}>X-Camp Academy</Text>
-                <Link href={"/about-us/achievements"}>Achievements</Link>
-                <Link href={"/about-us/introduction"}>About us</Link>
-                <Link href={"/about-us/introduction"}>Faculty</Link>
+                <Link href={"/about-us/achievements"}>{t("Achievements")}</Link>
+                <Link href={"/about-us/introduction"}>{t("AboutUs")}</Link>
+                <Link href={"/about-us/introduction"}>{t("Faculty")}</Link>
               </Space>
               <Space direction="vertical">
-                <Text className={styles.text}>Campus</Text>
-                <Link href={"/"}>Main Campus</Link>
-                <Link href={"/"}>Austin Branch</Link>
+                <Text className={styles.text}>{t("Campus")}</Text>
+                <Link href={"/"}>{t("MainCampus")}</Link>
+                <Link href={"/"}>{t("AustinBranch")}</Link>
               </Space>
               <Space direction="vertical">
-                <Text className={styles.text}>Quick Links</Text>
-                <Link href={"/resources/contests"}>CS Competition</Link>
-                <Link href={"/courses"}>Enroll</Link>
-                <Link href={"/about-us/help-center"}>FAQs</Link>
+                <Text className={styles.text}>{t("QuickLinks")}</Text>
+                <Link href={"/resources/contests"}>{t("CSCompetition")}</Link>
+                <Link href={"/courses"}>{t("Enroll")}</Link>
+                <Link href={"/about-us/help-center"}>{t("FAQs")}</Link>
               </Space>
             </Space>
           </Col>
@@ -111,7 +113,7 @@ const CopyRight: React.FC = () => {
         <div className={styles.bar}></div>
 
         <div className={styles.bottomContainer}>
-          <Title className={styles.bottomTitle}>Copyright @ 2021 X-Camp</Title>
+          <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
           <Space>
             {icons.map((item, index) => (
               <a href={item?.link} target="_blank" key={index}>

@@ -4,6 +4,7 @@ import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Divider, Dropdown, MenuProps, Space, theme } from "antd";
 import React from "react";
 import RealNameAvatar from "../avatar";
+import { useLang } from "@/hoc/with-intl/define";
 
 type UserMenuProps = {
   user: UserInfo | null;
@@ -12,6 +13,7 @@ type UserMenuProps = {
 
 const DropdownUserMenu = ({ user, logout }: UserMenuProps) => {
   const { idApi } = apiConfig;
+  const { format: t } = useLang();
   const onClickMenu: MenuProps["onClick"] = (e) => {
     switch (e.key) {
       case "user":
@@ -27,12 +29,12 @@ const DropdownUserMenu = ({ user, logout }: UserMenuProps) => {
 
   const items: MenuProps["items"] = [
     {
-      label: <a>{"个人中心"}</a>,
+      label: <a>{t("User.PersonalCenter")}</a>,
       key: "user",
       icon: <UserOutlined />,
     },
     {
-      label: <a>{"退出登录"}</a>,
+      label: <a>{t("User.Logout")}</a>,
       key: "logout",
       icon: <LogoutOutlined />,
     },
