@@ -9,7 +9,7 @@ import CourseDescription from "./course-description";
 const CourseCard:React.FC = () => {
   return (
     <div className={styles.courseCard}>
-      <ColorfulCard border={"bottom"} index={1} animate={false}>
+
         <Space
           className={styles.cardContent}
           direction="vertical"
@@ -18,7 +18,7 @@ const CourseCard:React.FC = () => {
           <CourseAbstract />
           <CourseDescription />
         </Space>
-      </ColorfulCard>
+
     </div>
   );
 };

@@ -3,26 +3,34 @@
   padding-bottom: 80px;
   text-align: center;
   position: relative;
+
   .title {
     font-size: 48px;
     font-weight: 600;
-    color: #d46b14;
+    color: #172142;
     line-height: 64px;
   }
+
   .text {
     font-size: 18px;
     font-weight: 500;
     color: #172142;
     line-height: 34px;
+    display: block;
   }
+
   .button {
     position: absolute;
     right: 0;
+    display: block;
+    margin-bottom: 30px;
   }
+
   :global(.ant-segmented-item-selected) {
     color: #fff;
     background-color: #ffad11;
   }
+
   .mapContainer {
     width: 100%;
     height: 500px;

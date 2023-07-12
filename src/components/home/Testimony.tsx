@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Space, Rate, Typography, Carousel, Button } from "antd";
 import styles from "./Testimony.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -23,6 +23,8 @@ interface Props {
 const Testimony = ({ className = "", testimonyData }: Props) => {
   const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
+
+  console.log(testimonyData);
 
   const onPrev = () => {
     carouselRef?.current?.prev();
@@ -95,6 +97,7 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
                       testimony?.descriptionEn
                     )}
                   </Paragraph>
+                  <Text className={styles.testimonyDate}>{testimony?.date}</Text>
                 </Space>
               </div>
             );

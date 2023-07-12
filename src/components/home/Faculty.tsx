@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Space, Typography, Card, Image, Button, Carousel } from "antd";
 import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -9,6 +9,7 @@ import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import Link from "next/link";
+import ColorfulCard from "../common/colorful-card";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -33,15 +34,16 @@ const Faculty: React.FC = () => {
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
   };
+
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>Faculty</Title>
         <Paragraph className={styles.paragraph}>
-          X-Camp has its own Art of Python Programming contest 4.0 award and
-          other projects and event every quarter to inspire students . It is a
-          great opportunity for students to showcase what they have learned from
-          classes .
+          World-class faculties comprise experienced senior engineers from
+          leading tech companies, accomplished students from prestigious
+          computer science majors, and top-ranking members of competitive
+          programming contests like IOI, ICPC, and USACO.
         </Paragraph>
       </Space>
 
@@ -59,7 +61,7 @@ const Faculty: React.FC = () => {
           slidesToShow={3}
           slidesToScroll={1}
           swipeToSlide={true}
-          infinite={false}
+          infinite={true}
           responsive={[
             {
               breakpoint: 992,
@@ -82,9 +84,14 @@ const Faculty: React.FC = () => {
           ]}
           dots={false}
         >
-          {facultyData?.map((item) => {
+          {facultyData?.map((item, index) => {
             return (
-              <div key={item?.id} className={styles.cardContainer}>
+              <ColorfulCard
+                key={item?.id}
+                border={"bottom"}
+                index={index}
+                className={styles.cardContainer}
+              >
                 <Card>
                   <Space align="center">
                     <Space direction="vertical">
@@ -117,7 +124,7 @@ const Faculty: React.FC = () => {
                     />
                   </Space>
                 </Card>
-              </div>
+              </ColorfulCard>
             );
           })}
         </Carousel>

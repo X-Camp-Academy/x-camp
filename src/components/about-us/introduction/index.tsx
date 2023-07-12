@@ -4,11 +4,11 @@ import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 
-const TopBanner = dynamic(() => import("./TopBanner"));
-const BottomBanner = dynamic(() => import("./BottomBanner"));
+const Banner = dynamic(() => import("./Banner"));
+const ISPI = dynamic(() => import("./ISPI"));
 const UsacoMedal = dynamic(() => import("./UsacoMedal"));
 const Results = dynamic(() => import("./Results"));
-const Founder = dynamic(() => import("./Founder"));
+const XCampFounder = dynamic(() => import("@/components/common/xcamp-founder"));
 const FacultyCoach = dynamic(() => import("./FacultyCoach"));
 const { Content } = Layout;
 
@@ -23,11 +23,11 @@ const Introduction: React.FC = () => {
     >
       <Layout className={styles.introductionContainer}>
         <Content>
-          <TopBanner />
-          <BottomBanner />
+          <Banner />
+          <XCampFounder />
           <UsacoMedal />
+          <ISPI />
           <Results />
-          <Founder />
           <FacultyCoach />
         </Content>
       </Layout>

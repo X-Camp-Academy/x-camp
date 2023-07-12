@@ -16,6 +16,7 @@ const NewsCard = ({ current, setCurrent, newEventData }: Props) => {
   const { lang } = useLang();
   const pageSize = 3;
 
+
   return (
     <div className={styles.content}>
       <div className={"container"}>

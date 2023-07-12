@@ -9,7 +9,7 @@
     font-weight: 500;
     color: #172142;
     line-height: 34px;
-    margin-bottom: 32px;
+    margin-bottom: 120px;
   }
 
   :global(.ant-collapse) {
@@ -31,10 +31,10 @@
   }
 
   .changeBtn {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     background: #FFAD11;
-    border-radius: 12px;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@
   .title {
     font-size: 36px;
     font-weight: 600;
-    color: #D46B14;
+    color: #172142;
     line-height: 48px;
   }
 
@@ -59,16 +59,10 @@
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    background-color: #D46B14;
-    border: 4px solid #FFAD11;
+    background: #FFAD11;
+    border: 3px solid #FFD600;
   }
 
-  .divider {
-    background-color: #FFAD11;
-    margin: 40px 0 40px 0;
-    min-width: unset;
-    height: 2px;
-  }
 
   .videoPane {
     width: 100%;

@@ -16,7 +16,7 @@ const Map: React.FC = () => {
   const worldDOM = useRef<HTMLDivElement>();
   const usaDOM = useRef<HTMLDivElement>();
 
-  
+
   useEffect(() => {
     if (worldDOM.current) {
       const mapChart = echarts.init(worldDOM.current);
@@ -118,14 +118,15 @@ const Map: React.FC = () => {
   };
   return (
     <div className={`${styles.map} container`}>
+
       <Segmented
         options={["World", "USA"]}
         onChange={onChange}
         className={styles.button}
       />
-
       <Title className={styles.title}>We are one big family</Title>
-      <Text className={styles.text}>All X-Campers, All Together</Text>
+      <Text className={styles.text}>Our alumni are located all over the world.</Text>
+
       <div
         ref={
           current === "World"

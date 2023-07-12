@@ -9,7 +9,9 @@
     align-items: center;
   }
 
-  .left {
+  .right {
+    margin-left: 50px;
+
     :global(.ant-descriptions-item-label) {
       color: #172142;
       font-size: 18px;
@@ -18,10 +20,11 @@
 
       &::before {
         content: "";
+        box-sizing: border-box;
         width: 12px;
         height: 12px;
-        background: #d46b14;
-        border: 2px solid #ffad11;
+        background: #FFAD11;
+        border: 2px solid #FFD600;
         border-radius: 50%;
         margin-right: 10px;
       }
@@ -36,9 +39,22 @@
     .full {
       text-decoration: line-through;
     }
+
+    .btn {
+      width: 226px;
+      height: 56px;
+      background: #FFFFFF;
+      border-radius: 12px;
+      border: 2px solid #172142;
+
+      font-size: 18px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 24px;
+    }
   }
 
-  .right {
+  .left {
     width: 550px;
     padding-left: 30px;
 
@@ -72,6 +88,14 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    .mediaChoice{
+      margin-top: 20px;
+      .mediaChoiceBox{
+        width: 100px;
+        height: 100px;
       }
     }
   }

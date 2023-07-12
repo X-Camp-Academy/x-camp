@@ -9,9 +9,8 @@
     .title {
       font-size: 36px;
       font-weight: 600;
-      color: #d46b14;
+      color: #172142;
       line-height: 56px;
-      margin: 0;
 
       @media (max-width: 1140px) {
         font-size: 24px;
@@ -24,11 +23,43 @@
       font-weight: 500;
       color: #172142;
       line-height: 36px;
+      margin-top: 30px;
 
       @media (max-width: 1140px) {
         font-size: 16px;
         line-height: 30px;
       }
+    }
+
+    .full {
+      text-decoration: line-through;
+    }
+
+    :global(.ant-descriptions-item-label) {
+      font-size: 18px;
+      font-weight: 600;
+      color: #D46B14;
+      line-height: 36px;
+
+
+      &::before {
+        content: "";
+        box-sizing: border-box;
+        width: 12px;
+        height: 12px;
+        background: #FFAD11;
+        border: 2px solid #FFD600;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+
+    :global(.ant-descriptions-item-content) {
+      display: block;
+      color: #172142;
+      font-size: 18px;
+      line-height: 40px;
+      padding-left: 20px;
     }
   }
 

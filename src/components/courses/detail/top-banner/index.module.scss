@@ -6,7 +6,7 @@
     top: 0;
     height: 494px;
     width: 100%;
-    background-image: url("/image/home/carousel-filled-bg.png");
+    background-image: url("/image/home/carousel-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -21,7 +21,7 @@
     .title {
       font-size: 36px;
       font-weight: 600;
-      color: #ffffff;
+      color: #172142;
       line-height: 48px;
 
       @media (max-width: 1140px) {
