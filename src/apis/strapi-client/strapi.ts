@@ -30,6 +30,7 @@ import {
   FaqCategory,
   GetAboutUsIntroArticleRequest,
   GetCourses,
+  GetPartnerRequest,
 } from "./define";
 import { isArray } from "lodash";
 import {
@@ -587,6 +588,32 @@ export const useGetFaq = <
         },
       ],
       ready: ready,
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ *
+ * @returns 获取about us目录下的Partner
+ */
+export const useGetPartner = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetPartnerRequest) => {
+      const res = await client.getPartner(params);
+      return isArray(res?.data)
+        ? classifyByAttribution(res.data, "category")
+        : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: "*",
+          sort: ["order:desc"],
+        },
+      ],
       onError: handleError,
     }
   );
