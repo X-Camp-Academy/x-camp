@@ -65,7 +65,10 @@ const FacultyCoach: React.FC = () => {
         <Space direction="vertical">
           <Title className={styles.title}>Faculty & Coach</Title>
           <Paragraph className={styles.titleParagraph}>
-            教师团队是由各大厂及各名校毕业生组建
+            World-class faculties comprise experienced senior engineers from
+            leading tech companies, accomplished students from prestigious
+            computer science majors, and top-ranking members of competitive
+            programming contests like IOI, ICPC, and USACO.
           </Paragraph>
         </Space>
 

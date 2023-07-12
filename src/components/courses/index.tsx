@@ -122,6 +122,9 @@ const Courses = () => {
     }
   });
 
+  console.log(allCourses);
+  
+
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const result = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
@@ -131,7 +134,7 @@ const Courses = () => {
   useEffect(() => {
     getCourseBySegmented(segmented);
   }, [segmented, courses]);
-  console.log(currentData);
+  // console.log(currentData);
 
   return (
     <ConfigProvider
