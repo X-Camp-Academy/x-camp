@@ -13,10 +13,12 @@ import { FaqCategory, GetFaq } from "@/apis/strapi-client/define";
 import Faqs from "@/components/common/faqs";
 import { useParams } from "next/navigation";
 import CourseClassesContext from "./CourseClasses";
+import { useLang } from "@/hoc/with-intl/define";
 const { Content } = Layout;
 
 const CourseDetail = () => {
   const params = useParams();
+  const { format: t } = useLang();
   // 请求当前 courseId 的评论
   const { data: testimonyData } = useGetTestimony({
     ready: true,
@@ -29,13 +31,11 @@ const CourseDetail = () => {
 
   const { data } = useGetClasses();
 
-
   const { data: faq } = useGetFaq({
     ready: true,
     category: FaqCategory.CoursesQA,
     courseId: [params?.courseId],
   });
-
 
   // StrapiResponseDataItem<GetCourses>
 
@@ -54,15 +54,18 @@ const CourseDetail = () => {
           >
             <TopBanner />
           </CourseClassesContext.Provider>
-          <div className="container" style={{
-            marginTop: 100
-          }}>
+          <div
+            className="container"
+            style={{
+              marginTop: 100,
+            }}
+          >
             <UsacoMedal showTitle={true} />
           </div>
 
           <ProgressionClasses />
           <FacultyCoach />
-          <Faqs title="Course FAQs" data={faq} />
+          <Faqs title={t("CoursesFAQS")} data={faq} />
           <Testimony
             className={styles.comments}
             testimonyData={testimonyData}

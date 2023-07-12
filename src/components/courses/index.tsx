@@ -16,7 +16,6 @@ import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";
 import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
-import dynamic from "next/dynamic";
 import ClassCard from "../common/class-card";
 import {
   useGetCourseLevelType,
@@ -124,7 +123,6 @@ const Courses = () => {
   });
 
   console.log(allCourses);
-  
 
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const result = allCourses?.filter(

@@ -8,14 +8,14 @@ import { getTransResult } from "@/utils/public";
 const { Title, Paragraph, Text } = Typography;
 
 const CourseAbstract = () => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const courseData = useContext(CourseClassesContext);
   const {
     courseCode,
     courseLongDescriptionEn,
     courseLongDescriptionZh,
     tuitionUSD,
-    classes
+    classes,
   } = courseData?.attributes ?? {};
 
   const classesData = classes?.data?.map((classItem) => {
@@ -30,12 +30,11 @@ const CourseAbstract = () => {
     };
   });
 
-
   return (
     <Space className={styles.abstract} size={24}>
       <div className={styles.left}>
         <div className={styles.title}>{courseCode}:</div>
-        <div className={styles.title}>{"Description"}</div>
+        <div className={styles.title}>{t("Description")}</div>
         <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
           {getTransResult(
             lang,
@@ -44,7 +43,7 @@ const CourseAbstract = () => {
           )}
         </Paragraph>
         <Descriptions column={1} layout="vertical">
-          <Descriptions.Item label="Classes Time">
+          <Descriptions.Item label={t("ClassesTime")}>
             <Space direction="vertical">
               {classesData?.map((item, index) => {
                 return (
@@ -59,14 +58,12 @@ const CourseAbstract = () => {
         </Descriptions>
       </div>
       <div className={styles.right}>
-        <div className={styles.title}>{"One-Time Payment"}</div>
+        <div className={styles.title}>{t("One-TimePayment")}</div>
         <div className={styles.price}>{`$${tuitionUSD}`}</div>
         <Button type="primary" className={styles.btn}>
-          {"Sign Up Now"}
+          {t("SignUpNow")}
         </Button>
-        <div className={styles.tip}>
-          {"$50 discount only applicable for bundle course"}
-        </div>
+        <div className={styles.tip}>{t("Discount")}</div>
       </div>
     </Space>
   );

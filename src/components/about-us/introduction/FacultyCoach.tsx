@@ -15,7 +15,7 @@ import styles from "./FacultyCoach.module.scss";
 const { Title, Paragraph, Text } = Typography;
 
 const FacultyCoach: React.FC = () => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
 
   const { data } = useGetFaculty({
     pageName: ["/introduction"],
@@ -63,12 +63,9 @@ const FacultyCoach: React.FC = () => {
     <div className={`${styles.facultyCoach} container`} id="faculty">
       <Space direction="vertical" size={48}>
         <Space direction="vertical">
-          <Title className={styles.title}>Faculty & Coach</Title>
+          <Title className={styles.title}>{t("Faculty&Coach")}</Title>
           <Paragraph className={styles.titleParagraph}>
-            World-class faculties comprise experienced senior engineers from
-            leading tech companies, accomplished students from prestigious
-            computer science majors, and top-ranking members of competitive
-            programming contests like IOI, ICPC, and USACO.
+            {t("Faculty.Desc")}
           </Paragraph>
         </Space>
 
