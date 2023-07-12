@@ -11,7 +11,10 @@ const { Title } = Typography;
 
 const QAPart = () => {
   const { lang } = useLang();
-  const { data: faq } = useGetFaq({ ready: true, isClassify: true });
+  const { data: faq } = useGetFaq({
+    ready: true,
+    isClassify: true,
+  });
 
   return (
     <div className={`${styles.qaContent} container`}>

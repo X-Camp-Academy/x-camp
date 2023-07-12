@@ -1,0 +1,65 @@
+.content {
+  padding: 100px 0;
+  text-align: center;
+
+  .title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 48px;
+    margin-bottom: 48px;
+  }
+
+  .cards {
+    justify-content: center;
+
+    :global(.ant-space-item) {
+      &:nth-child(2) {
+        .level {
+          color: #ffad11;
+        }
+      }
+
+      &:nth-child(3) {
+        .level {
+          color: #d46b14;
+        }
+      }
+
+      &:nth-child(4) {
+        .level {
+          color: #00a0e9;
+        }
+      }
+
+      &:nth-child(5) {
+        .level {
+          color: #036eb8;
+        }
+      }
+    }
+
+    .card {
+      width: 376px;
+      height: 252px;
+      background: #ffffff;
+      box-shadow: 0px 9px 25px -4px rgba(216, 216, 216, 0.4);
+      border-radius: 12px;
+      padding: 28px 50px;
+
+      .level {
+        font-size: 40px;
+        font-weight: 600;
+        color: #ffd600;
+        line-height: 72px;
+      }
+
+      .description {
+        font-size: 16px;
+        font-weight: 400;
+        color: #172142;
+        line-height: 26px;
+      }
+    }
+  }
+}

@@ -39,7 +39,9 @@ export const useMenuItems = () => {
           key: "/courses/#classify0",
         },
         {
-          label: <Link href="/">100 Prob Challenge</Link>,
+          label: (
+            <Link href="/courses/100-probs-challenge">100 Prob Challenge</Link>
+          ),
           key: "/courses/100-prob-challenge",
         },
         {
