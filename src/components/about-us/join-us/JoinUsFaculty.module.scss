@@ -9,6 +9,10 @@
     }
 
     .xCampIntro {
+      padding-top: 60px;
+      @media (max-width: 1200px) {
+        padding-top: 0px;
+      }
       .logo {
         width: 40%;
       }

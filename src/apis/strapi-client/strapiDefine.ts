@@ -19,8 +19,8 @@ export interface FilterType<T> {
   $notContainsi?: T;
   $null?: boolean;
   $notNull?: boolean;
-  // $between?: T; // 不知 该用什么类型
-  // $startsWith?: T; // 不知 该用什么类型
+  $between?: T; // 不知 该用什么类型
+  $startsWith?: T; // 不知 该用什么类型
   // $endsWith?: T; // 不知 该用什么类型
   // $or	Joins the filters in an "or" expression
   // $and	Joins the filters in an "and" expression
