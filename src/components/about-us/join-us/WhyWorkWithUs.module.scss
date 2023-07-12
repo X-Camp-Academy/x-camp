@@ -1,36 +1,43 @@
 .WhyWorkWithUsContainer {
     margin-top: 40px;
-    background-color: #FECEA7;
+    background-color: #f5f5f5;
     padding: 60px 0;
+
+
     .WhyWorkWithUs {
-        padding: 30px;
-        .title {
-            font-size: 48px;
-            font-weight: 600;
-            color: #172142;
-            line-height: 64px;
-        }
 
-        .description {
-            font-size: 18px;
-            font-weight: 500;
-            color: #172142;
-            line-height: 34px;
-        }
+        .card {
+            .title {
+                font-size: 48px;
+                font-weight: 600;
+                color: #172142;
+                line-height: 64px;
+            }
 
-        .contactBtn {
-            border: none;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            padding: 30px 52px;
-            background: #172142;
-            border-radius: 12px;
-            font-size: 24px;
-            font-weight: 500;
-            color: #FECEA7;
-            line-height: 36px;
-            margin: 0 auto;
+            .description {
+                font-size: 18px;
+                font-weight: 500;
+                color: #172142;
+                line-height: 34px;
+            }
+
+            .contactBtn {
+                border: none;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                padding: 30px 52px;
+
+                background: #FFFFFF;
+                font-size: 24px;
+                font-weight: 500;
+                color: #172142;
+                line-height: 36px;
+                margin: 0 auto;
+                border-radius: 12px;
+                border: 2px solid #172142;
+            }
         }
     }
+
 }

@@ -1,18 +1,15 @@
-.bottomBannerContainer {
+.ispiContainer {
   width: 100%;
-  padding-bottom: 50px;
-  background-color: #ffeddf;
   .col {
-    margin-top: 160px;
+    margin-top: 176px;
     @media (max-width: 768px) {
       margin-top: 100px;
     }
   }
   .title {
     font-size: 48px;
-    
     font-weight: 600;
-    color: #d46b14;
+    color: #172142;
     line-height: 64px;
   }
   .text {
@@ -21,7 +18,7 @@
     color: #172142;
     line-height: 54px;
     .textIcon {
-      color: #000;
+      color: #333;
       width: 21px;
       height: 21px;
       border-radius: 50%;

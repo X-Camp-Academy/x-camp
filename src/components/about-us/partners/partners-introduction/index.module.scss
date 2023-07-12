@@ -1,13 +1,14 @@
 .content {
   width: 100%;
-  padding: 96px 0 168px 0;
-  background-color: #ffeddf;
+  padding: 96px 0 96px 0;
+  background-color: #F5F5F5;
 
   .partner {
     .title {
+      text-align: center;
       font-size: 48px;
       font-weight: 600;
-      color: #d46b14;
+      color: #172142;
       line-height: 64px;
       margin-bottom: 48px;
     }
@@ -67,8 +68,14 @@
         .btn {
           width: 186px;
           height: 48px;
-          font-size: 16px;
+          font-size: 18px;
+          font-weight: 500;
+          color: #172142;
+          line-height: 24px;
           float: right;
+          background: #FFFFFF;
+          border-radius: 12px;
+          border: 2px solid #172142;
         }
       }
     }

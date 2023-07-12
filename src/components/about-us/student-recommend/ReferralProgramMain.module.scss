@@ -3,12 +3,14 @@
 
     .referralProgramMain {
         padding: 50px;
+
         .giveAndGetCard {
             padding: 30px;
+
             .title {
                 font-size: 36px;
                 font-weight: 600;
-                color: #D46B14;
+                color: #172142;
                 line-height: 48px;
             }
 
@@ -25,6 +27,10 @@
                 color: #172142;
                 line-height: 36px;
                 margin-bottom: 30px;
+
+                span {
+                    color: #D46B14;
+                }
             }
         }
 

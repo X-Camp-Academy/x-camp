@@ -1,0 +1,52 @@
+.topBannerContainer {
+  width: 100%;
+  padding-bottom: 72px;
+  .col {
+    margin-top: 100px;
+    position: relative;
+  }
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #172142;
+    line-height: 72px;
+  }
+  .paragraph {
+    font-size: 24px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 42px;
+    @media (max-width: 768px) {
+      margin-bottom: 120px;
+    }
+  }
+  .box {
+    width: 400px;
+    height: 264px;
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 198px;
+    }
+  }
+  .imgBg {
+    @extend .box;
+    position: absolute;
+    border-radius: 12px;
+    opacity: 0.6;
+    left: 50%;
+    transform: rotate(-16deg) translateX(-50%);
+    background-color: #ffad11;
+    z-index: 998;
+  }
+  .image {
+    @extend .box;
+    position: absolute;
+    border-radius: 12px;
+    left: 50%;
+    transform: rotate(-8deg) translateX(-50%);
+    background-color: #ffad11;
+    z-index: 999;
+    @media (max-width: 768px) {
+    }
+  }
+}

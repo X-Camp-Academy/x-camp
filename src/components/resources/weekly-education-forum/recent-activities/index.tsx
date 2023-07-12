@@ -1,18 +1,20 @@
-import XCollapse from "@/components/common/collapse";
-import styles from "./index.module.scss";
-import React, { useState } from "react";
-import { Button, Col, Row, Space, Typography } from "antd";
-import ColorfulCard from "@/components/common/colorful-card";
-import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
-import { NewEventCategory, ActivityCategory } from "@/apis/strapi-client/define";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
-import dayjs from "dayjs";
+import XCollapse from '@/components/common/collapse';
+import styles from './index.module.scss';
+import React, { useState } from 'react';
+import { Button, Col, Row, Space, Typography } from 'antd';
+import ColorfulCard from '@/components/common/colorful-card';
+import { AlignRightOutlined, RightCircleOutlined } from '@ant-design/icons';
+import {
+  NewEventCategory,
+  ActivityCategory,
+} from '@/apis/strapi-client/define';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import { StrapiMedia } from '@/apis/strapi-client/strapiDefine';
+import { getTransResult } from '@/utils/public';
+import { useLang } from '@/hoc/with-intl/define';
+import dayjs from 'dayjs';
 
 const RecentActivities = () => {
-
   const pageSize = 25;
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Activity);
@@ -20,7 +22,7 @@ const RecentActivities = () => {
   const { data: newEventData } = useGetNewEvent({
     tag,
     current,
-    pageSize
+    pageSize,
   });
 
   const getImgUrl = (img: StrapiMedia) => {
@@ -28,38 +30,43 @@ const RecentActivities = () => {
   };
 
   const RecentActivities = newEventData?.data.filter((item, index) => {
-    return item?.attributes?.datetime && (new Date(item?.attributes?.datetime)).getTime() - new Date().getTime() > 0;
-  })
-
-
+    return (
+      item?.attributes?.datetime &&
+      new Date(item?.attributes?.datetime).getTime() - new Date().getTime() > 0
+    );
+  });
 
   return (
     <div className={styles.content}>
       <div className="container">
         <XCollapse
           header={{
-            title: "Recent popular activities",
-            description: "Recent popular activities",
+            title: 'Recent popular activities',
+            description: 'Recent popular activities',
           }}
         >
           <Row className={styles.cards} gutter={[32, 32]}>
             {RecentActivities?.slice(0, 3).map((v, index) => (
-              <Col key={index} md={24} lg={8}>
-                <ColorfulCard border={"bottom"} animate={false} index={index}>
+              <Col key={index} xs={24} sm={24} md={12} lg={8}>
+                <ColorfulCard border={'bottom'} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card}>
-                    <img
-                      src={getImgUrl(v.attributes.img)}
-                      alt="img"
-                    />
+                    <img src={getImgUrl(v.attributes.img)} alt="img" />
                     <div className={styles.title}>
-                      {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
+                      {getTransResult(
+                        lang,
+                        v?.attributes?.titleZh,
+                        v?.attributes?.titleEn
+                      )}
                     </div>
                     <div className={styles.description}>
                       <div>
                         <AlignRightOutlined className={styles.icon} />
 
-                        {getTransResult(lang, v?.attributes.descriptionZh, v?.attributes.descriptionEn)}
-
+                        {getTransResult(
+                          lang,
+                          v?.attributes.descriptionZh,
+                          v?.attributes.descriptionEn
+                        )}
                       </div>
                       <Button
                         type="link"

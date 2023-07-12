@@ -3,6 +3,8 @@ import React from "react";
 import { Space, Image, Typography, Button, Input, Select, Form } from "antd";
 import styles from "./SubscribeNewsletter.module.scss";
 import { useMobile } from "@/utils";
+import { subscribeNewsletterRequest } from "@/apis/send-email-client";
+import { useSubscribeNewsletter } from "@/apis/send-email-client/sendEmail";
 
 const { Text } = Typography;
 
@@ -22,7 +24,11 @@ const SubscribeNewsletter: React.FC = () => {
       value: "java",
     },
   ];
-  const onFinish = () => {};
+  const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
+
+  const onFinish = async (values: subscribeNewsletterRequest) => {
+    await subscribeNewsletterRun(values);
+  };
   return (
     <div className={styles.subscribeNewsletterContainer}>
       <div className={`${styles.subscribeNewsletter} container`}>
@@ -39,7 +45,8 @@ const SubscribeNewsletter: React.FC = () => {
 
           <Form name="basic" onFinish={onFinish} layout="inline">
             <Form.Item
-              name="language"
+              name="lang"
+              initialValue={"C++"}
               rules={[
                 {
                   required: true,
@@ -47,19 +54,16 @@ const SubscribeNewsletter: React.FC = () => {
                 },
               ]}
             >
-              <Select
-                defaultValue="python"
-                className={styles.formSelect}
-                options={options}
-              />
+              <Select className={styles.formSelect} options={options} />
             </Form.Item>
 
             <Form.Item
               name="email"
               rules={[
+                { type: "email" },
                 {
                   required: true,
-                  message: "Please input child's grade!",
+                  message: "Please input your email!",
                 },
               ]}
               style={isMobile ? { width: 120 } : {}}

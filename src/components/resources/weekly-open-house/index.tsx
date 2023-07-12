@@ -1,14 +1,14 @@
-"use client";
-import { ConfigProvider, Layout, Space } from "antd";
-import React from "react";
-import styles from "./index.module.scss";
-import TopBanner from "./top-banner";
-import Testimony from "@/components/home/Testimony";
-import JoinWay from "./join-way";
-import Introduction from "./introduction";
-import AppointmentCard from "./appointment-card";
-import { useGetTestimony } from "@/apis/strapi-client/strapi";
-import { usePathname } from "next/navigation";
+'use client';
+import { ConfigProvider, Layout, Space } from 'antd';
+import React from 'react';
+import styles from './index.module.scss';
+import TopBanner from './top-banner';
+import Testimony from '@/components/home/Testimony';
+import JoinWay from './join-way';
+import Introduction from './introduction';
+import AppointmentCard from './appointment-card';
+import { useGetTestimony } from '@/apis/strapi-client/strapi';
+import { usePathname } from 'next/navigation';
 const { Content } = Layout;
 
 const WeeklyOpenHouse = () => {
@@ -23,7 +23,7 @@ const WeeklyOpenHouse = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#FFAD11",
+          colorPrimary: '#FFAD11',
         },
       }}
     >
@@ -31,7 +31,7 @@ const WeeklyOpenHouse = () => {
         <Content>
           <TopBanner />
           <Space direction="vertical" size={100} className={styles.content}>
-            <JoinWay />
+            {/* <JoinWay /> */}
             <Introduction />
             <AppointmentCard />
           </Space>

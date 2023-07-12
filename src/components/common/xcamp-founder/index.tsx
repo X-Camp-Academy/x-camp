@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Space, Button, Image, Typography, Row, Col } from "antd";
-import styles from "./XCampFounder.module.scss";
+import styles from "./index.module.scss";
 import { CheckOutlined } from "@ant-design/icons";
 import { useMobile } from "@/utils";
 
@@ -14,8 +14,9 @@ const XCampFounder = () => {
       <Space direction="vertical" align="center">
         <Title className={styles.title}>X-Camp Founder</Title>
         <Paragraph className={styles.description}>
-          2017年8月22日创立，现如今培养的4日创立，现如今培养的4名学生进入美国国家集训队，在读学生超过500名，遍及全球300+学校。7名学生进入
-          美国国家集训队（US Camp），占据本赛季进入国家集训队名额的近1/4比例
+          Founded on August 22, 2017, 4 students currently trained have entered
+          the US National Training Team, with more than 500 students currently
+          studying in 300+ schools around the world.
         </Paragraph>
 
         <Row>
@@ -29,7 +30,13 @@ const XCampFounder = () => {
             />
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={12} className={styles.founderDescription}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            className={styles.founderDescription}
+          >
             <Space direction="vertical">
               <Title className={styles.founderName}>Charlie</Title>
 
@@ -66,7 +73,7 @@ const XCampFounder = () => {
                   He earned his PhD. in Artificial Intelligence from UCLA with
                   more than
                   <Text className={styles.keyText}> 20 papers </Text>
-                  published in international journals and more than10 patents
+                  published in international journals and more than 10 patents
                   granted.
                 </Paragraph>
 
@@ -81,7 +88,13 @@ const XCampFounder = () => {
         </Row>
 
         <Row>
-          <Col xs={24} sm={24} md={24} lg={12} className={styles.founderDescription}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            className={styles.founderDescription}
+          >
             <Space direction="vertical">
               <Title className={styles.founderName}>Yuan</Title>
 

@@ -5,7 +5,7 @@ import {
   StrapiResponse,
   StrapiResponseSingleDataItem,
   strapiPublicFields,
-} from "./strapiDefine";
+} from './strapiDefine';
 
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
@@ -21,30 +21,19 @@ export interface GetFaculty extends strapiPublicFields {
 export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
-export interface GetIntroductionFacultyCoach extends strapiPublicFields {
-  titleZh: string;
-  titleEn: string;
-  descriptionZh: string;
-  descriptionEn: string;
-  avatar: StrapiMedia;
-}
-export type GetIntroductionFacultyCoachRequest =
-  StrapiRequest<GetIntroductionFacultyCoach>;
-export type GetIntroductionFacultyCoachResponse =
-  StrapiResponse<GetIntroductionFacultyCoach>;
 
 export enum NewEventCategory {
-  News = "News",
-  Event = "Events",
-  Activity = "Activity",
-  All = "All"
+  News = 'News',
+  Event = 'Events',
+  Activity = 'Activity',
+  All = 'All',
 }
 
 export enum ActivityCategory {
   SchoolLifeSharing = "School life's sharing",
-  CodingEducation = "Coding Education",
-  CareerPath = "Career Path",
-  Research = "Research"
+  CodingEducation = 'Coding Education',
+  CareerPath = 'Career Path',
+  Research = 'Research',
 }
 
 export interface GetNewEvent extends strapiPublicFields {
@@ -54,7 +43,7 @@ export interface GetNewEvent extends strapiPublicFields {
   descriptionEn: string;
   datetime: string;
   tags: NewEventCategory;
-  activityCategory ?: ActivityCategory;
+  activityCategory?: ActivityCategory;
   order?: number;
   editor?: string;
   img: StrapiMedia;
@@ -102,6 +91,7 @@ export interface GetTestimony extends strapiPublicFields {
   courseId: string;
   pageName: string;
   eventId: string;
+  date: string;
 }
 
 export type GetAboutUsAchievementsAwardRequest =
@@ -208,14 +198,14 @@ export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
 export enum AboutUsJoinUsCategory {
-  PartTime = "Part Time",
-  FullTime = "Full Time",
-  XTutor = "X-Tutor",
+  PartTime = 'Part Time',
+  FullTime = 'Full Time',
+  XTutor = 'X-Tutor',
 }
 
 export enum AboutUsJoinUsPlace {
-  Remote = "Remote",
-  OnSite = "On Site",
+  Remote = 'Remote',
+  OnSite = 'On Site',
 }
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
@@ -310,8 +300,8 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = "Referral QA",
-  CoursesQA = "Courses QA",
+  ReferralQA = 'Referral FAQs',
+  CoursesQA = 'Courses QA',
 }
 
 export interface GetFaq extends strapiPublicFields {
