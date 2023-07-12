@@ -40,23 +40,10 @@ const SubscribeNewsletter: React.FC = () => {
             className={styles.image}
           />
           {!isMobile && (
-            <Text className={styles.text}>Free Olympiad Programming Pack</Text>
+            <Text className={styles.text}>Free Programming Pack</Text>
           )}
 
           <Form name="basic" onFinish={onFinish} layout="inline">
-            <Form.Item
-              name="lang"
-              initialValue={"C++"}
-              rules={[
-                {
-                  required: true,
-                  message: "Please select code language",
-                },
-              ]}
-            >
-              <Select className={styles.formSelect} options={options} />
-            </Form.Item>
-
             <Form.Item
               name="email"
               rules={[
@@ -77,7 +64,7 @@ const SubscribeNewsletter: React.FC = () => {
                 htmlType="submit"
                 className={styles.submit}
               >
-                Download
+                {"Subscribe Newsletter"}
               </Button>
             </Form.Item>
           </Form>
