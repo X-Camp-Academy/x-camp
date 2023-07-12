@@ -81,7 +81,6 @@ const ResumeForm: React.FC = () => {
   return (
     <>
       <Divider style={{ borderColor: "#FFAD11" }} />
-
       <Form
         form={form}
         layout="vertical"
