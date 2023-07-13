@@ -5,6 +5,7 @@ import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
+import Item from "antd/es/list/Item";
 
 const CourseDescription = () => {
   const { format: t } = useLang();
@@ -109,7 +110,13 @@ const CourseDescription = () => {
             {classRoomLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
-            {"2023/06/24 - 2023/12/03"}
+            {classes?.data.map((item, index) => {
+              return (
+                <div key={index}>
+                  {item.attributes.startTime || 'null'} - {item.attributes.endTime || 'null'}
+                </div>
+              )
+            })}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
             {"Offline(12280 Saratoga Sunnyvale Rd, #203 CA 95070)"}

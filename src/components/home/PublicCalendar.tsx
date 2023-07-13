@@ -304,12 +304,13 @@ const PublicCalendar: React.FC = () => {
 
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
-                              {`${getTransResult(
+                              {`
+                              ${getTransResult(
                                 lang,
                                 item.titleZh,
                                 item.titleEn
                               )} - 
-                        ${getTransResult(
+                              ${getTransResult(
                                 lang,
                                 item.descriptionZh,
                                 item.descriptionEn
