@@ -40,7 +40,6 @@ export interface GetNewEvent extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  datetime: string;
   tags: NewEventCategory;
   activityCategory?: ActivityCategory;
   order?: number;
@@ -64,8 +63,8 @@ export interface GetNewEvent extends strapiPublicFields {
   contestLogo?: StrapiMedia;
   contestTitleExplanationZh?: string;
   contestTitleExplanationEn?: string;
-  contestStartDateTime?: string;
-  contestEndDateTime?: string;
+  startDateTime?: string;
+  endDateTime?: string;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
