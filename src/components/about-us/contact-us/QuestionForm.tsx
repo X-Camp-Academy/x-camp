@@ -3,11 +3,13 @@ import React from "react";
 import { Row, Col, Card, Typography, Form, Input, Button } from "antd";
 import styles from "./QuestionForm.module.scss";
 import QACard from "@/components/common/q&a";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { TextArea } = Input;
 const { Title } = Typography;
 
-const QAPart: React.FC = () => {
+const QAPart = () => {
+  const { format: t } = useLang();
   const QAData = [
     {
       question: "How can I refer friends.How can I refer friends",
@@ -54,7 +56,7 @@ const QAPart: React.FC = () => {
           lg={{ span: 12 }}
         >
           <Card className={styles.card}>
-            <Title className={styles.formTitle}>Submit a Question</Title>
+            <Title className={styles.formTitle}>{t("SubmitAQuestion")}</Title>
             <Form layout="vertical">
               <Row gutter={[16, 8]}>
                 <Col
