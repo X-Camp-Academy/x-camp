@@ -1,4 +1,4 @@
-{
+declare const json: {
     "400": "The input parameter format is incorrect, please re-enter it.",
     "401": "Internal server error, please try again later.",
     "403": "You do not have sufficient permissions to access this page or operate this function.",
@@ -178,3 +178,4 @@
     "ArtProgrammingResults.Desc": "X-Camp has created an Art of Python Programming contest every quarter to inspire students that are new to Python. It is a great opportunity for students to showcase what they have learned from classes by creating fun projects, and get rewarded!",
     "ProjectsDemo": "Projects Demo"
 }
+export default json;

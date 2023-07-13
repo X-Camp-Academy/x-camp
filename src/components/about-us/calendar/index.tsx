@@ -22,7 +22,7 @@ const DiscoverCourses = dynamic(
 const CalendarPage: React.FC = () => {
   const { data: testimonyData } = useGetTestimony({
     ready: true,
-    pageName: ['/home']
+    pageName: ["/home"],
   });
   return (
     <ConfigProvider
@@ -37,10 +37,6 @@ const CalendarPage: React.FC = () => {
           <TopBanner />
           <CalendarContent />
           <DiscoverCourses showSubTitle align="flex-start" showBg={false} />
-          <br />
-          <br />
-          <br />
-          <br />
           <RecentActivities />
           <Testimony testimonyData={testimonyData} />
         </Content>

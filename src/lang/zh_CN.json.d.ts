@@ -1,4 +1,4 @@
-{
+declare const json: {
     "400": "输入的参数格式错误，请重新输入",
     "401": "服务器走丢了，请稍后重试",
     "403": "您的权限不足，无法访问该页面或操作该功能",
@@ -178,3 +178,4 @@
     "ArtProgrammingResults.Desc": "X-Camp每季度都会举办一次Python编程艺术竞赛，以激励刚接触Python的学生。对于学生来说，这是一个很好的机会，通过创造有趣的项目来展示他们在课堂上学到的东西，并获得奖励！",
     "ProjectsDemo": "项目演示"
 }
+export default json;
