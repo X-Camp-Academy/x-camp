@@ -1,8 +1,10 @@
-import { Space, Row, Col, Card, Image, Typography } from "antd";
+import { Space, Row, Col, Image, Typography } from "antd";
 import styles from "./Banner.module.scss";
-const { Title, Paragraph, Text } = Typography;
+import { useLang } from "@/hoc/with-intl/define";
+const { Title, Paragraph } = Typography;
 
-const Banner: React.FC = () => {
+const Banner = () => {
+  const { format: t } = useLang();
   return (
     <div className={styles.topBannerContainer}>
       <div className="container">
@@ -10,11 +12,10 @@ const Banner: React.FC = () => {
           <Col xs={24} sm={24} md={14} className={styles.col}>
             <Space direction="vertical">
               <Title className={styles.title}>
-                X-Camp Academy, a Silicon Valley based coding institute
+                {t("AboutUs.Introduction")}
               </Title>
               <Paragraph className={styles.paragraph}>
-                Offers programming classes to 5 - 12th graders from beginner to
-                IOI level with structured, self-designed curriculum.
+                {t("AboutUs.Introduction.Desc")}
               </Paragraph>
             </Space>
           </Col>

@@ -1,9 +1,11 @@
 import { Space, Row, Col, Image, Typography, Button } from "antd";
 import styles from "./JoinUsFaculty.module.scss";
 import { UsergroupAddOutlined } from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
 const { Paragraph } = Typography;
 
-const JoinUsFaculty: React.FC = () => {
+const JoinUsFaculty = () => {
+  const { format: t } = useLang();
   const imgUrlTwoList = [
     { url: "/image/home/yuan.png" },
     { url: "/image/home/yuan.png" },
@@ -14,6 +16,7 @@ const JoinUsFaculty: React.FC = () => {
     { url: "/image/home/yuan.png" },
     { url: "/image/home/yuan.png" },
   ];
+
   return (
     <>
       <div className={styles.joinUsFacultyContainer}>
@@ -27,12 +30,10 @@ const JoinUsFaculty: React.FC = () => {
                 className={styles.logo}
               />
               <Paragraph className={styles.introText}>
-                X-Camp Academy, a Silicon Valley based coding institute, offers
-                programming classes to 5-12th grade students from beginner to
-                USACO US Camp level.
+                {t("XCampFaculty.Desc")}
               </Paragraph>
               <Button className={styles.introBtn}>
-                {"X-Camp Faculty"}
+                {t("XCampFaculty")}
                 <UsergroupAddOutlined />
               </Button>
             </Space>
