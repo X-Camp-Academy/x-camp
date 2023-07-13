@@ -5,7 +5,7 @@ import JobCard from "./JobCard";
 import { useGetAboutUsJoinUs } from "@/apis/strapi-client/strapi";
 import { AboutUsJoinUsCategory } from "@/apis/strapi-client/define";
 
-const JobSelection: React.FC = () => {
+const JobSelection = () => {
   const [category, setCategory] = useState<AboutUsJoinUsCategory>(
     AboutUsJoinUsCategory.PartTime
   );

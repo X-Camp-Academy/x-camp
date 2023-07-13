@@ -19,7 +19,7 @@ interface Props {
 }
 
 const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
-  const { lang } = useLang();
+  const { lang, format: t } = useLang();
   const [isExpand, setIsExpand] = useState<boolean>(false);
   const handlerExpand = () => {
     setIsExpand(!isExpand);
@@ -94,7 +94,7 @@ const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
                 className={styles.applyBtn}
                 href={`/about-us/join-us/submit-resume/${data?.id}`}
               >
-                Apply Now
+                {t("ApplyNow")}
               </Link>
             )}
           </Space>

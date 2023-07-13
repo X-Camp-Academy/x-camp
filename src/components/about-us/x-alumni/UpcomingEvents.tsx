@@ -19,7 +19,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const UpcomingEvents: React.FC = () => {
   const pageSize = 25;
-  const { lang } = useLang();
+  const { lang, format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
 
@@ -87,13 +87,13 @@ const UpcomingEvents: React.FC = () => {
       <div className="container">
         <Space className={styles.topSpace}>
           <Space direction="vertical">
-            <Title className={styles.title}>Upcoming Events</Title>
+            <Title className={styles.title}>{t("UpcomingEvents")}</Title>
             <Paragraph className={styles.paragraph}>
-              Peek at some alumni events happening just around the corner.
+              {t("UpcomingEvents.Desc")}
             </Paragraph>
           </Space>
           <button className={styles.button}>
-            View More Events <RightOutlined />
+            {t("ViewMoreEvents")} <RightOutlined />
           </button>
         </Space>
 

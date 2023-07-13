@@ -1,27 +1,19 @@
-import {
-  Space,
-  Row,
-  Col,
-  Image,
-  Typography,
-  Button,
-  Card,
-  List,
-  Avatar,
-} from 'antd';
-import styles from './GetCredit.module.scss';
-import React from 'react';
+import { Space, Row, Col, Image, Typography, List } from "antd";
+import styles from "./GetCredit.module.scss";
+import React from "react";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title } = Typography;
 
-const GetCredit: React.FC = () => {
+const GetCredit = () => {
+  const { format: t } = useLang();
   const listData = [
-    "Share X-Camp's program with your friends!",
-    'When signing up, have them select "Word of Mouth" as the referral source.',
-    'Ask them to enter your child\'s name in the "Referral by Discount Code" box.',
-    'Your friend will receive a $50 discount on their payment.',
-    'You will receive a $100 credit towards your next payment.',
-    'If your friend forgets to use the code or mentions you, contact us within a month.',
-    'Remember, spreading the word about our program can benefit you and your friends!',
+    t("Credit.Desc1"),
+    t("Credit.Desc2"),
+    t("Credit.Desc3"),
+    t("Credit.Desc4"),
+    t("Credit.Desc5"),
+    t("Credit.Desc6"),
+    t("Credit.Desc7"),
   ];
 
   return (
@@ -32,7 +24,7 @@ const GetCredit: React.FC = () => {
             <Col lg={14} md={24} xs={24}>
               <Space direction="vertical">
                 <Title className={styles.title}>
-                  How does the referral program work?
+                  {t("ReferralProgramWork")}
                 </Title>
                 <List
                   dataSource={listData}
