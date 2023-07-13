@@ -14,17 +14,11 @@ interface Props {
 }
 
 const UsacoIntro = ({ data }: Props) => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   return (
     <div className={styles.introduction}>
       <div className={"container"}>
-        <div className={styles.description}>
-          {`In 2023 newest season, X-Camp hosts the first-ever USACO Live Solutions event
-         on the entire web with our top coaches, including USACO Grandmaster Class instructors
-          and ICPC World Finalists. They meticulously dissect the competition problems from the 
-          USACO Bronze, Silver, and Gold levels, providing in-depth explanations and unraveling 
-          the intricacies.`}
-        </div>
+        <div className={styles.description}>{t("USACOSolution.Intro")}</div>
         {data?.map((v, index) => {
           return (
             <div key={"video" + index} style={{ marginBottom: 42 }}>
@@ -82,23 +76,21 @@ const UsacoIntro = ({ data }: Props) => {
                   </Space>
                 </Panel>
               </Collapse>
-
             </div>
           );
         })}
-        <div >
+        <div>
           <a
             href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
             target={"_blank"}
           >
             <Text underline className={styles.title}>
-              {"X-Camp More USACO Solutions"}
+              {t("MoreUSACOSolution")}
             </Text>
           </a>
         </div>
-
       </div>
-    </div >
+    </div>
   );
 };
 
