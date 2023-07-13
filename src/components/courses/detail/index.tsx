@@ -26,7 +26,9 @@ const CourseDetail = () => {
   });
 
   const { data: coursesData } = useGetCourses({
-    id: { $eq: Number(params?.courseId) },
+    filters: {
+      id: { $eq: Number(params?.courseId) },
+    },
   });
 
   const { data } = useGetClasses();
@@ -50,7 +52,7 @@ const CourseDetail = () => {
       <Layout className={styles.courseDetail}>
         <Content>
           <CourseClassesContext.Provider
-            value={coursesData ? coursesData[0] : undefined}
+            value={coursesData ? coursesData?.data[0] : undefined}
           >
             <TopBanner />
           </CourseClassesContext.Provider>

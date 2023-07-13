@@ -161,6 +161,8 @@ export interface GetCourses extends strapiPublicFields {
   schoolQuarter: string;
   registerLink: string;
   bundleRegisterLink: string;
+  startDate: string;
+  endDate: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
@@ -299,8 +301,8 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = 'Referral QA',
-  CoursesQA = 'Courses QA',
+  ReferralQA = "Referral QA",
+  CoursesQA = "Courses QA",
 }
 
 export interface GetFaq extends strapiPublicFields {

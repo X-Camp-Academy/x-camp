@@ -52,7 +52,7 @@ const Courses = () => {
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
   const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
-  const { data: courses } = useGetCourses();
+  const { data: courses } = useGetCourses({});
 
   const getLangResult = (
     lang: "zh" | "en",
@@ -83,17 +83,17 @@ const Courses = () => {
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
       case "Online Classes":
-        return courses?.filter(
+        return courses?.data?.filter(
           (item) => item?.attributes?.classMode === "Online Live"
         );
       case "In-person Classes":
-        return courses?.filter(
+        return courses?.data?.filter(
           (item) => item?.attributes?.classMode === "In-person"
         );
       case "is Camp":
-        return courses?.filter((item) => item?.attributes?.isCamp);
+        return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
-        return courses;
+        return courses?.data;
     }
   };
 
