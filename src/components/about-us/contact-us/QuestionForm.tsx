@@ -32,7 +32,7 @@ const QAPart = () => {
 
   return (
     <div className={`${styles.qaContent} container`}>
-      <Title className={styles.title}>{"Questions?"}</Title>
+      <Title className={styles.title}>{t("Questions")}</Title>
       <Row gutter={[32, 32]}>
         <Col
           xs={{ span: 24 }}
