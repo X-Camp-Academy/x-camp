@@ -287,7 +287,7 @@ declare const json: {
     "DeepDiveIOfX-CampClass": "X-Camp课程的深入探讨",
     "DeepDiveIOfX.Desc": "X-Camp每个季度都会举办一次Python编程的艺术竞赛，以激励刚接触Python的学生。这是学生展示他们通过创建有趣的项目所学到的知识的绝佳机会，并获得奖励！",
     "JoinWay.Desc": "在开放日活动中，我们的课程顾问将介绍X-Camp的系统化课程设计，评估学生的编程水平，并向您提供编程学习计划。",
-    "DateAndTime:": "日期和时间：",
+    "DateAndTime": "日期和时间：",
     "JoinWay.Time": "*每周二，晚上6:30 - 7:30 PDT",
     "JoinWay.Btn": "点击并加入：",
     "OpenHouse.Desc": "自2022年春季学期以来，X-Camp为对X-Camp感兴趣的学生和家长提供每周开放日活动。"
