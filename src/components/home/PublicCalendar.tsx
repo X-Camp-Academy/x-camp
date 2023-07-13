@@ -196,11 +196,6 @@ const PublicCalendar: React.FC = () => {
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space direction="vertical" className={styles.colSpace}>
               {newEventData?.data.slice(0, 4).map((item, index) => {
-                /* if (
-                  item?.attributes?.datetime &&
-                  item?.attributes.start &&
-                  item?.attributes.end
-                ) */
                 return (
                   <div className={styles.eventCard} key={item.id}>
                     <Space
@@ -259,7 +254,7 @@ const PublicCalendar: React.FC = () => {
                             :
                             `${formatYMDTime(item?.attributes?.startDateTime || '')} - ${formatYMDTime(item?.attributes?.endDateTime || '')}`
                             } 
-                                UTC ${item?.attributes?.timeZone > 0 ? "+" + item?.attributes?.timeZone : item?.attributes?.timeZone}`}
+                            `}
                         </Text>
                       </Space>
                     </Space>
@@ -288,7 +283,7 @@ const PublicCalendar: React.FC = () => {
                 <div style={{ height: 400, overflow: "scroll" }}>
                   {filterDateEventList.length != 0 &&
                     filterDateEventList.map((item, index) => {
-                      if (item?.startDateTime && item?.endDateTime && item?.timeZone)
+                      if (item?.startDateTime && item?.endDateTime)
                         return (
                           <Space
                             key={index}
@@ -305,7 +300,7 @@ const PublicCalendar: React.FC = () => {
                                 :
                                 `${formatYMDTime(item?.startDateTime || '')} - ${formatYMDTime(item?.endDateTime || '')}`
                                 } 
-                                UTC ${item?.timeZone > 0 ? "+" + item?.timeZone : item?.timeZone}`}
+                                /*timeZone*/`}
 
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
