@@ -8,13 +8,18 @@ import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+import isBetween from 'dayjs/plugin/isBetween';
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
+
+  //引入dayjs插件
+  dayjs.extend(isBetween);
+
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
-  const [filterSameDateEventList, setFilterSameDateEventList] = useState<
+  const [filterDateEventList, setFilterDateEventList] = useState<
     {
       titleZh?: string;
       titleEn?: string;
@@ -23,12 +28,17 @@ const PublicCalendar: React.FC = () => {
       start?: string;
       end?: string;
       timeZone?: number;
+
+      contestStartDateTime?: string;
+      contestEndDateTime?: string;
     }[]
   >([]);
 
   const [eventDate, setEventDate] = useState<
     {
       dateTime: string;
+      contestStartDateTime?: string;
+      contestEndDateTime?: string;
     }[]
   >([]);
 
@@ -60,10 +70,10 @@ const PublicCalendar: React.FC = () => {
 
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData?.data) {
-      setFilterSameDateEventList(
+      setFilterDateEventList(
         newEventData.data
           .filter((item) =>
-            dayjs(item?.attributes?.datetime).isSame(dayjs(selectDate), "day")
+            dayjs(selectDate).isBetween(dayjs(item.attributes.contestStartDateTime), dayjs(item.attributes.contestEndDateTime), "days", '[]')
           )
           .map((filteredItem) => ({
             titleZh: filteredItem?.attributes?.titleZh,
@@ -73,8 +83,12 @@ const PublicCalendar: React.FC = () => {
             start: filteredItem?.attributes?.start,
             end: filteredItem?.attributes?.end,
             timeZone: filteredItem?.attributes?.timeZone,
+            contestStartDateTime: filteredItem?.attributes?.contestStartDateTime,
+            contestEndDateTime: filteredItem?.attributes?.contestEndDateTime,
           }))
       );
+      console.log("@@", filterDateEventList);
+
     }
   };
   useEffect(() => {
@@ -92,6 +106,8 @@ const PublicCalendar: React.FC = () => {
     if (newEventData) {
       const updatedEventDate = newEventData.data.map((item) => ({
         dateTime: item.attributes.datetime,
+        contestStartDateTime: item.attributes?.contestStartDateTime,
+        contestEndDateTime: item.attributes?.contestEndDateTime,
       }));
       setEventDate(updatedEventDate);
       filterSameDateEvent(selectDate);
@@ -117,9 +133,10 @@ const PublicCalendar: React.FC = () => {
   };
 
   const dateCellRender = (value: Dayjs) => {
-    const eventDataForDate = eventDate.find((event) =>
-      dayjs(event.dateTime).isSame(value, "day")
-    );
+    const eventDataForDate = eventDate.find((event) => {
+      if (event.contestStartDateTime && event.contestEndDateTime)
+        return value.isBetween(event.contestStartDateTime, event.contestEndDateTime, 'days', '[]');
+    });
     if (eventDataForDate) {
       return (
         <Badge dot>
@@ -152,6 +169,22 @@ const PublicCalendar: React.FC = () => {
       weekdaysEn[dayjs(date).day()]
     );
   };
+
+  const formatHourMinute = (time: string) => {
+    const timeInfo = dayjs(time);
+    const formatString = 'HH:mm';
+    return timeInfo.format(formatString);
+  }
+
+  const formatYMDTime = (date: string) => {
+    const formatStringZh = 'YYYY年MM月DD日 HH:mm';
+    const formatStringEn = 'MM DD,YY HH:mm';
+    return getTransResult(
+      lang,
+      dayjs(date).format(formatStringZh),
+      dayjs(date).format(formatStringEn)
+    )
+  }
 
   return (
     <div className={styles.publicCalendarContainer}>
@@ -203,40 +236,38 @@ const PublicCalendar: React.FC = () => {
                             )}
                           </Text>
                           {!isMobile && (
-                            <Text className={styles.paragraph}>
+                            <Paragraph className={styles.paragraph}
+                              ellipsis={{
+                                rows: 2,
+                                tooltip: getTransResult(
+                                  lang,
+                                  item?.attributes?.descriptionZh,
+                                  item?.attributes?.descriptionEn
+                                ),
+                              }}
+                            >
                               {`- ${getTransResult(
                                 lang,
                                 item.attributes.descriptionZh,
                                 item.attributes.descriptionEn
                               )}`}
-                            </Text>
+                            </Paragraph>
                           )}
                           <Text className={styles.date}>
-                            {`${item?.attributes?.start.substring(0, 5)} ${
-                              Number(item?.attributes?.start.substring(0, 2)) <
-                              12
-                                ? "AM"
-                                : "PM"
-                            } - 
-                            ${item?.attributes?.end.substring(0, 5)} ${
-                              Number(item?.attributes?.end.substring(0, 2)) < 12
-                                ? "AM"
-                                : "PM"
-                            } 
-                            ${
-                              item.attributes.timeZone
-                                ? `UTC ${
-                                    item.attributes.timeZone > 0 ? "+" : ""
-                                  }${item.attributes.timeZone}`
-                                : ""
-                            }`}
+                            {`${dayjs(item?.attributes?.contestStartDateTime).isSame(dayjs(item?.attributes?.contestEndDateTime), 'day')
+                              ?
+                              `${formatHourMinute(item?.attributes?.contestStartDateTime || '')} ${dayjs(item?.attributes?.contestStartDateTime).hour() < 12 ? "AM" : "PM"} - 
+                                ${formatHourMinute(item?.attributes?.contestEndDateTime || '')} ${dayjs(item?.attributes?.contestEndDateTime).hour() < 12 ? "AM" : "PM"}`
+                              :
+                              `${formatYMDTime(item?.attributes?.contestStartDateTime || '')} - ${formatYMDTime(item?.attributes?.contestEndDateTime || '')}`
+                              } 
+                                UTC ${item?.attributes?.timeZone > 0 ? "+" + item?.attributes?.timeZone : item?.attributes?.timeZone}`}
                           </Text>
                         </Space>
                       </Space>
                     </div>
                   );
               })}
-              {/* <Button className={styles.button}>Subscribe to Calendar</Button> */}
             </Space>
           </Col>
 
@@ -256,9 +287,9 @@ const PublicCalendar: React.FC = () => {
                   </Text>
                   <div className={styles.line}></div>
                 </Space>
-                <div style={{ height: 250, overflow: "scroll" }}>
-                  {filterSameDateEventList.length != 0 &&
-                    filterSameDateEventList.map((item, index) => {
+                <div style={{ height: 400, overflow: "scroll" }}>
+                  {filterDateEventList.length != 0 &&
+                    filterDateEventList.map((item, index) => {
                       if (item?.start && item?.end && item?.timeZone)
                         return (
                           <Space
@@ -267,21 +298,29 @@ const PublicCalendar: React.FC = () => {
                             className={styles.calendarItem}
                           >
                             <Text className={styles.itemDate}>
-                              {`${item?.start.substring(0, 5)} ${
-                                Number(item?.start.substring(0, 2)) < 12
+
+                              {/* {`${formatHourMinute(item?.contestStartDateTime || '')} ${dayjs(item?.contestStartDateTime).hour() < 12
+                                ? "AM"
+                                : "PM"
+                                } - 
+                                ${formatHourMinute(item?.contestEndDateTime || '')} ${dayjs(item?.contestEndDateTime).hour() < 12
                                   ? "AM"
                                   : "PM"
-                              } - 
-                            ${item?.end.substring(0, 5)} ${
-                                Number(item?.end.substring(0, 2)) < 12
-                                  ? "AM"
-                                  : "PM"
-                              } 
-                            UTC ${
-                              item?.timeZone > 0
-                                ? "+" + item?.timeZone
-                                : item?.timeZone
-                            }`}
+                                } 
+                            UTC ${item?.timeZone > 0
+                                  ? "+" + item?.timeZone
+                                  : item?.timeZone
+                                }`} */}
+
+                              {`${dayjs(item?.contestStartDateTime).isSame(dayjs(item?.contestEndDateTime), 'day')
+                                ?
+                                `${formatHourMinute(item?.contestStartDateTime || '')} ${dayjs(item?.contestStartDateTime).hour() < 12 ? "AM" : "PM"} - 
+                                ${formatHourMinute(item?.contestEndDateTime || '')} ${dayjs(item?.contestEndDateTime).hour() < 12 ? "AM" : "PM"}`
+                                :
+                                `${formatYMDTime(item?.contestStartDateTime || '')} - ${formatYMDTime(item?.contestEndDateTime || '')}`
+                                } 
+                                UTC ${item?.timeZone > 0 ? "+" + item?.timeZone : item?.timeZone}`}
+
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`${getTransResult(
@@ -290,16 +329,16 @@ const PublicCalendar: React.FC = () => {
                                 item.titleEn
                               )} - 
                         ${getTransResult(
-                          lang,
-                          item.descriptionZh,
-                          item.descriptionEn
-                        )}`}
+                                lang,
+                                item.descriptionZh,
+                                item.descriptionEn
+                              )}`}
                             </Paragraph>
                             <div className={styles.itemLine}></div>
                           </Space>
                         );
                     })}
-                  {filterSameDateEventList.length === 0 && (
+                  {filterDateEventList.length === 0 && (
                     <div
                       style={{
                         padding: "50px 0",
