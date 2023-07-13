@@ -44,10 +44,7 @@ const CarouselContent: React.FC = () => {
                       {t("OpenHouse.Dec3")}
                     </Paragraph>
                   </div>
-                  <button className={styles.button}>
-                    {t("WeeklyOpenHouse")}
-                    {t("JOINUS")}
-                  </button>
+                  <button className={styles.button}>{t("JoinUs")}</button>
                   <Text className={styles.date}>{t("OpenTime")}</Text>
                 </Space>
               </Col>
