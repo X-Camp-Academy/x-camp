@@ -1,24 +1,20 @@
 import React from "react";
 import styles from "./index.module.scss";
 import { Space } from "antd";
+import { useLang } from "@/hoc/with-intl/define";
 
 const JoinWay = () => {
+  const { format: t } = useLang();
   return (
     <div className={"container"}>
-      <div className={styles.description}>
-        {
-          "During the open house, our course consultant will introduce X-Camp’s systematic course design, evaluate students' programming level, and provide a programming learning plan to you."
-        }
-      </div>
+      <div className={styles.description}>{t("JoinWay.Desc")}</div>
       <Space direction="vertical" size={20}>
         <div>
-          <div className={styles.title}>{"Date and Time:"}</div>
-          <div className={styles.time}>
-            {"Tuesday, Weekly, 6:30 - 7:30 PM PDT"}
-          </div>
+          <div className={styles.title}>{t("DateAndTime")}</div>
+          <div className={styles.time}>{t("JoinWay.Time")}</div>
         </div>
         <div>
-          <div className={styles.title}>{"Click and Join:"}</div>
+          <div className={styles.title}>{t("JoinWay.Btn")}</div>
           <a
             className={styles.link}
             href={
