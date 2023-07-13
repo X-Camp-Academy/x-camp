@@ -53,6 +53,19 @@ export interface GetNewEvent extends strapiPublicFields {
   geographicallyAddress?: string;
   onlinePlatform?: string;
   link?: string;
+
+  courseId?: number;
+  pageName?: string;
+  eventId?: number;
+  contestLinkZh?: string;
+  contestLinkEn?: string;
+  contestImgZh?: StrapiMedia;
+  contestImgEn?: StrapiMedia;
+  contestLogo?: StrapiMedia;
+  contestTitleExplanationZh?: string;
+  contestTitleExplanationEn?: string;
+  contestStartDateTime?: string;
+  contestEndDateTime?: string;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
@@ -299,8 +312,8 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = 'Referral QA',
-  CoursesQA = 'Courses QA',
+  ReferralQA = "Referral QA",
+  CoursesQA = "Courses QA",
 }
 
 export interface GetFaq extends strapiPublicFields {

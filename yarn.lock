@@ -4120,6 +4120,20 @@ unist-util-visit@^4.0.0:
     unist-util-is "^5.0.0"
     unist-util-visit-parents "^5.1.1"
 
+unplugin-json-dts@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/unplugin-json-dts/-/unplugin-json-dts-1.2.0.tgz#7d1f10294871b8aa4e1647f9af0777c4fa998aa5"
+  integrity sha512-IDw1l9RV61CCK5khlayGaSUMti1NpPmhmdP2OiyvAZ+XxnJ1xOj8hGQRAJibSOh+emx2j9ahbFdP6KZ5iczwPA==
+  dependencies:
+    unplugin "^0.2.19"
+
+unplugin@^0.2.19:
+  version "0.2.21"
+  resolved "https://registry.npmjs.org/unplugin/-/unplugin-0.2.21.tgz#7852cddd9f78f0b32881812fd2efd5a39dcc64e5"
+  integrity sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ==
+  dependencies:
+    webpack-virtual-modules "^0.4.3"
+
 untildify@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmmirror.com/untildify/-/untildify-4.0.0.tgz#2bc947b953652487e4600949fb091e3ae8cd919b"
@@ -4172,6 +4186,11 @@ web-namespaces@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-2.0.1.tgz#1010ff7c650eccb2592cebeeaf9a1b253fd40692"
   integrity sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==
+
+webpack-virtual-modules@^0.4.3:
+  version "0.4.6"
+  resolved "https://registry.npmjs.org/webpack-virtual-modules/-/webpack-virtual-modules-0.4.6.tgz#3e4008230731f1db078d9cb6f68baf8571182b45"
+  integrity sha512-5tyDlKLqPfMqjT3Q9TAqf2YqjwmnUleZwzJi1A5qXnlBCdj2AtOJ6wAWdglTIDOPgOiOrXeBeFcsQ8+aGQ6QbA==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
