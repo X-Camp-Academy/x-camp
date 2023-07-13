@@ -1,14 +1,19 @@
-import { Button, Descriptions, Space, Typography } from "antd";
-import React, { useContext } from "react";
+import { Button, Descriptions, Modal, Space, Typography } from "antd";
+import React, { useContext, useState } from "react";
 import styles from "./index.module.scss";
 import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
+import dayjs from "dayjs";
+import { useRouter } from "next/navigation";
+
 
 const { Title, Paragraph, Text } = Typography;
 
 const CourseAbstract = () => {
   const { format: t, lang } = useLang();
+  const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const courseData = useContext(CourseClassesContext);
   const {
     courseCode,
@@ -16,6 +21,8 @@ const CourseAbstract = () => {
     courseLongDescriptionZh,
     tuitionUSD,
     classes,
+    startDate,
+    registerLink
   } = courseData?.attributes ?? {};
 
   const classesData = classes?.data?.map((classItem) => {
@@ -29,6 +36,29 @@ const CourseAbstract = () => {
       location,
     };
   });
+
+  const judgeInWeek = (openDate: string) => {
+    const currentDate = dayjs();
+    const diff = currentDate.diff(openDate, 'day');
+    return diff <= 7;
+  }
+
+  const handlerSighUp = (startDate: string) => {
+    if (judgeInWeek(startDate) && registerLink) {
+      window.open(registerLink);
+    }
+    else {
+      setIsModalOpen(true);
+    }
+  }
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <Space className={styles.abstract} size={24}>
@@ -60,9 +90,12 @@ const CourseAbstract = () => {
       <div className={styles.right}>
         <div className={styles.title}>{t("One-TimePayment")}</div>
         <div className={styles.price}>{`$${tuitionUSD}`}</div>
-        <Button type="primary" className={styles.btn}>
+        <Button type="primary" className={styles.btn} onClick={() => handlerSighUp(startDate || '')}>
           {t("SignUpNow")}
         </Button>
+        <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+          <img src="/image/QRCode/weChatAssistance.jpg" alt="weChatAssistance" width={'100%'} height={'100%'} />
+        </Modal>
         <div className={styles.tip}>{t("Discount")}</div>
       </div>
     </Space>
