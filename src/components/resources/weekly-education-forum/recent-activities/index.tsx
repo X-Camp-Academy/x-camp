@@ -27,8 +27,10 @@ const RecentActivities = () => {
 
   const RecentActivities = newEventData?.data.filter((item, index) => {
     return (
-      item?.attributes?.datetime &&
-      new Date(item?.attributes?.datetime).getTime() - new Date().getTime() > 0
+      item?.attributes?.startDateTime &&
+      new Date(item?.attributes?.startDateTime).getTime() -
+        new Date().getTime() >
+        0
     );
   });
 

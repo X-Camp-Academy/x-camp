@@ -14,18 +14,16 @@ import styles from "./FacultyCoach.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
-const FacultyCoach: React.FC = () => {
+const FacultyCoach = () => {
   const { format: t, lang } = useLang();
 
   const { data } = useGetFaculty({
-    pageName: ["/introduction"],
+    pageName: ["/introduction/"],
   });
 
   const sortData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order
   );
-
-  console.log(sortData);
 
   const splitIntoGroups = (
     arr: StrapiResponseDataItem<GetFaculty>[] | undefined,
@@ -38,7 +36,6 @@ const FacultyCoach: React.FC = () => {
     return groups;
   };
   const facultyData = splitIntoGroups(sortData, 3);
-  console.log(facultyData);
 
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;

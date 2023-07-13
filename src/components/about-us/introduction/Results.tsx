@@ -1,14 +1,14 @@
-'use client';
-import React from 'react';
-import { Space, Row, Col, Card, Image, Typography } from 'antd';
-import styles from './Results.module.scss';
-import { useGetAboutUsIntroArticle } from '@/apis/strapi-client/strapi';
-import { getTransResult } from '@/utils/public';
-import { useLang } from '@/hoc/with-intl/define';
+"use client";
+import React from "react";
+import { Space, Row, Col, Image, Typography } from "antd";
+import styles from "./Results.module.scss";
+import { useGetAboutUsIntroArticle } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
-const Results: React.FC = () => {
+const Results = () => {
   const { lang } = useLang();
   const { data: introArticle } = useGetAboutUsIntroArticle();
   return (

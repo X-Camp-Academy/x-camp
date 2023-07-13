@@ -14,7 +14,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const Stories: React.FC = () => {
   const pageSize = 3;
-  const { lang } = useLang();
+  const { lang, format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
 
@@ -33,14 +33,13 @@ const Stories: React.FC = () => {
       <div className="container">
         <Space className={styles.topSpace}>
           <Space direction="vertical">
-            <Title className={styles.title}>X-Alumni Events</Title>
+            <Title className={styles.title}>{t("XAlumniEvents")}</Title>
             <Paragraph className={styles.paragraph}>
-              Explore news, views and perspectives from Stanford and your alumni
-              community.
+              {t("XAlumniEvents.Desc")}
             </Paragraph>
           </Space>
           <button className={styles.button}>
-            View More Events <RightOutlined />
+            {t("ViewMoreEvents")} <RightOutlined />
           </button>
         </Space>
 
