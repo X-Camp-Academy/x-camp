@@ -21,16 +21,17 @@ const SubscribeNewsletter: React.FC = () => {
     <div className={styles.subscribeNewsletterContainer}>
       <div className={`${styles.subscribeNewsletter} container`}>
         <Space align="center" className={styles.space}>
-          <Image
-            alt=""
-            src="/image/home/course-4.png"
-            preview={false}
-            className={styles.image}
-          />
-          {!isMobile && (
-            <Text className={styles.text}>{t("FreeProgrammingPack")}</Text>
-          )}
-
+          <div className={styles.imgAndText}>
+            <Image
+              alt=""
+              src="/image/home/course-4.png"
+              preview={false}
+              className={styles.image}
+            />
+            {!isMobile && (
+              <Text className={styles.text}>{t("FreeProgrammingPack")}</Text>
+            )}
+          </div>
           <Form name="basic" onFinish={onFinish} layout="inline">
             <Form.Item
               name="email"
@@ -43,7 +44,7 @@ const SubscribeNewsletter: React.FC = () => {
               ]}
               style={isMobile ? { width: 120 } : {}}
             >
-              <Input type="email" placeholder="E-mail*" />
+              <Input type="email" placeholder="E-mail*" className={styles.formSelect}/>
             </Form.Item>
 
             <Form.Item>

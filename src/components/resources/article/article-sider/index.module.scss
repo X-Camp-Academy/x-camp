@@ -37,7 +37,7 @@
 
                 .line {
                     position: absolute;
-                    width: calc(100% - 72px);
+                    width: calc(100% - 82px);
                     height: 2px;
                     border: 1px solid #ffad11;
                     right: 0;
@@ -97,7 +97,7 @@
                 font-weight: 400;
                 color: #666666;
                 line-height: 28px;
-
+                width: 150px
 
             }
 
@@ -109,5 +109,9 @@
                 align-items: center;
             }
         }
+    }
+
+    :global(.ant-typography){
+        margin-bottom: 0 !important;
     }
 }

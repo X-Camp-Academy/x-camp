@@ -5,12 +5,15 @@ import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
+import Item from "antd/es/list/Item";
+import dayjs from "dayjs";
+import { getTransResult } from "@/utils/public";
 
 const CourseDescription = () => {
-  const { format: t } = useLang();
+  const { lang, format: t } = useLang();
   const ref = useRef<CarouselRef>(null);
   const courseData = useContext(CourseClassesContext);
-  const { classMode, classLang, classRoomLang, classes, media } =
+  const { classMode, classLang, classRoomLang, classes, media, startDate, endDate } =
     courseData?.attributes ?? {};
 
   const imageMimes = [
@@ -22,6 +25,16 @@ const CourseDescription = () => {
     "image/svg+xml",
     "image/webp",
   ];
+
+  const formatDate = (date: string) => {
+    const formatStringZh = 'YYYY/MM/DD';
+    const formatStringEn = 'MM/DD, YYYY';
+    return getTransResult(
+      lang,
+      dayjs(date).format(formatStringZh),
+      dayjs(date).format(formatStringEn),
+    )
+  }
 
   return (
     <Space className={styles.description}>
@@ -109,7 +122,7 @@ const CourseDescription = () => {
             {classRoomLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
-            {"2023/06/24 - 2023/12/03"}
+            {formatDate(startDate || '')} - {formatDate(endDate || '')}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
             {"Offline(12280 Saratoga Sunnyvale Rd, #203 CA 95070)"}
