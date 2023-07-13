@@ -24,8 +24,6 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
   const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
 
-  console.log(testimonyData);
-
   const onPrev = () => {
     carouselRef?.current?.prev();
   };
@@ -97,7 +95,9 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
                       testimony?.descriptionEn
                     )}
                   </Paragraph>
-                  <Text className={styles.testimonyDate}>{testimony?.date}</Text>
+                  <Text className={styles.testimonyDate}>
+                    {testimony?.date}
+                  </Text>
                 </Space>
               </div>
             );
