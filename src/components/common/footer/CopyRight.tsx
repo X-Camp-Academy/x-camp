@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Space, Row, Col, Image, Typography } from "antd";
+import { Space, Row, Col, Image, Typography, Popover } from "antd";
 import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styles from "./CopyRight.module.scss";
@@ -34,12 +34,19 @@ const CopyRight: React.FC = () => {
     {
       src: "/image/home/we-chat.png",
       hoverSrc: "/image/home/we-chat-hover.png",
+
     },
     {
       src: "/image/home/small-red-book.png",
       hoverSrc: "/image/home/small-red-book-hover.png",
+
     },
   ];
+
+  /* const QRCode = [<img src="/image/QRCode/wechatQR.jpg" alt="" key={1} />, <img src="/image/QRCode/xiaoRedBookQR" alt="" key={2} />] */
+
+  const QRcodeImg = ["/image/QRCode/wechatQR.jpg", "/image/QRCode/xiaoRedBookQR.png"]
+
   const source = icons.map((icon) => icon.src);
   const [imageSrc, setImageSrc] = useState(source);
   const onMouseOver = (index: number) => {
@@ -115,19 +122,40 @@ const CopyRight: React.FC = () => {
         <div className={styles.bottomContainer}>
           <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
           <Space>
-            {icons.map((item, index) => (
-              <a href={item?.link} target="_blank" key={index}>
-                <Image
-                  alt=""
-                  src={imageSrc[index]}
-                  preview={false}
-                  width={28}
-                  height={28}
-                  onMouseOver={() => onMouseOver(index)}
-                  onMouseLeave={onMouseLeave}
-                />
-              </a>
-            ))}
+            {icons.map((item, index) => {
+              if (index <= 3) {
+                return (
+                  <a href={item?.link} target="_blank" key={index}>
+                    <Image
+                      alt=""
+                      src={imageSrc[index]}
+                      preview={false}
+                      width={28}
+                      height={28}
+                      onMouseOver={() => onMouseOver(index)}
+                      onMouseLeave={onMouseLeave}
+                    />
+                  </a>
+                )
+              }
+              else {
+                return (
+                  <Popover content={<img src={QRcodeImg[index - 4]} alt="" style={{ width: '100px', height: '100px' }} />} key={index}>
+                    <Image
+                      alt=""
+                      src={imageSrc[index]}
+                      preview={false}
+                      width={28}
+                      height={28}
+                      onMouseOver={() => onMouseOver(index)}
+                      onMouseLeave={onMouseLeave}
+                    />
+                  </Popover>
+                )
+
+              }
+
+            })}
           </Space>
         </div>
       </div>

@@ -5,9 +5,12 @@ import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
+import Item from "antd/es/list/Item";
+import dayjs from "dayjs";
+import { getTransResult } from "@/utils/public";
 
 const CourseDescription = () => {
-  const { format: t } = useLang();
+  const { lang, format: t } = useLang();
   const ref = useRef<CarouselRef>(null);
   const courseData = useContext(CourseClassesContext);
   const {
@@ -29,6 +32,16 @@ const CourseDescription = () => {
     "image/svg+xml",
     "image/webp",
   ];
+
+  const formatDate = (date: string) => {
+    const formatStringZh = 'YYYY/MM/DD';
+    const formatStringEn = 'MM/DD, YYYY';
+    return getTransResult(
+      lang,
+      dayjs(date).format(formatStringZh),
+      dayjs(date).format(formatStringEn),
+    )
+  }
 
   return (
     <Space className={styles.description}>
