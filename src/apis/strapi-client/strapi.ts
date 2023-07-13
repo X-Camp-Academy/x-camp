@@ -345,26 +345,35 @@ export const useGetCourseLevelType = () => {
  *
  * @returns 获取Courses
  */
-export const useGetCourses = (
-  params?:
+
+export const useGetCourses = ({
+  filters,
+  pagination,
+  manual = false,
+}: {
+  filters?:
     | Partial<FilterFields<GetCourses>>
     | AndOrFilters<FilterFields<GetCourses>>
-    | undefined
-) => {
+    | undefined;
+  pagination?: { page: number; pageSize: number };
+  manual?: boolean;
+}) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
 
   return useRequest(
     async (params: GetCoursesRequest) => {
       const res = await client.getCourses(params);
-      return isArray(res?.data) ? res.data : [];
+      return  res;
     },
     {
+      manual,
       defaultParams: [
         {
           populate: "*",
-          filters: params ?? {},
           sort: ["order:desc"],
+          filters: filters ?? {},
+          pagination: pagination ?? {},
         },
       ],
       onError: handleError,

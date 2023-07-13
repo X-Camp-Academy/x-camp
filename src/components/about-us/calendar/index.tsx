@@ -16,7 +16,7 @@ const RecentActivities = dynamic(
     import("@/components/resources/weekly-education-forum/recent-activities")
 );
 const DiscoverCourses = dynamic(
-  () => import("@/components/home/DiscoverCourses")
+  () => import("@/components/common/discover-courses")
 );
 
 const CalendarPage = () => {

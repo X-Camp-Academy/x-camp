@@ -1,33 +1,34 @@
 import React from "react";
 import styles from "./index.module.scss";
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  Row,
-  Select,
-  Space,
-  Table,
-  Typography,
-  Descriptions,
-  Divider,
-} from "antd";
-import { ColumnsType } from "antd/es/table";
-import { useMobile } from "@/utils";
-import { SearchOutlined } from "@ant-design/icons";
-import { ScheduleData } from "../schedule-table";
+import { Col, Row, Typography, Descriptions, Divider } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
+import { GetCourses } from "@/apis/strapi-client/define";
+import { getTransResult } from "@/utils/public";
 const { Text, Title } = Typography;
 
-const CourseCard: React.FC<ScheduleData> = ({ ...props }: ScheduleData) => {
-  const { format: t } = useLang();
+const CourseCard: React.FC<GetCourses> = (props) => {
+  const {
+    courseCode,
+    courseTitleEn,
+    courseTitleZh,
+    classMode,
+    recommendedLowerGrade,
+    recommendedUpperGrade,
+    classLang,
+    startDate,
+    endDate,
+    lessonNum,
+    frequency,
+    tuitionRMB,
+    tuitionUSD,
+  } = props;
+  const { format: t, lang } = useLang();
   return (
     <>
       <Row className={styles.row}>
         <Col sm={24} lg={12} className={styles.col}>
           <Title className={styles.title}>
-            {props.class}:{props.courseTitle}
+            {courseCode}：{getTransResult(lang, courseTitleZh, courseTitleEn)}
           </Title>
         </Col>
         <Col
@@ -36,23 +37,25 @@ const CourseCard: React.FC<ScheduleData> = ({ ...props }: ScheduleData) => {
           className={`${styles.col} ${styles.feeCol}`}
           style={{}}
         >
-          <Title className={styles.title}>{"10 Weeks"}</Title>
+          <Title className={styles.title}>{`${lessonNum} ${
+            frequency === "Weekly" ? "weeks" : "days"
+          }`}</Title>
         </Col>
       </Row>
       <Row style={{ marginTop: 20 }} className={styles.row}>
         <Col lg={12} className={styles.col}>
           <Descriptions column={1}>
             <Descriptions.Item label={t("CourseStyle")}>
-              {props.style}
+              {classMode}
             </Descriptions.Item>
             <Descriptions.Item label={t("Level")}>
-              {props.level}
+              {recommendedLowerGrade}
             </Descriptions.Item>
             <Descriptions.Item label={t("Language")}>
-              {props.language}
+              {classLang}
             </Descriptions.Item>
             <Descriptions.Item label={t("ClassesTime")}>
-              {props.time}
+              {`${startDate} ${endDate}`}
             </Descriptions.Item>
           </Descriptions>
         </Col>
@@ -61,7 +64,9 @@ const CourseCard: React.FC<ScheduleData> = ({ ...props }: ScheduleData) => {
           className={styles.col}
           style={{ justifyContent: "flex-end" }}
         >
-          <Text className={styles.fee}>{props.fee}</Text>
+          <Text className={styles.fee}>
+            {getTransResult(lang, `￥${tuitionRMB}`, `$${tuitionUSD}`)}
+          </Text>
         </Col>
       </Row>
       <Divider style={{ marginTop: 35 }} />

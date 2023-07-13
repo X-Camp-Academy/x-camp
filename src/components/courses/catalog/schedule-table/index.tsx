@@ -1,212 +1,218 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import {
   Button,
   Col,
-  Form,
   Input,
   Row,
   Select,
   Space,
-  Table,
   Typography,
   Pagination,
 } from "antd";
-import { ColumnsType } from "antd/es/table";
-import { useMobile } from "@/utils";
 import { SearchOutlined } from "@ant-design/icons";
-import CourseCard from "../course-card";
 import { useLang } from "@/hoc/with-intl/define";
+import { useMobile } from "@/utils";
+import CourseCard from "../course-card";
+import {
+  useGetCourses,
+} from "@/apis/strapi-client/strapi";
+
 const { Text } = Typography;
-export interface ScheduleData {
-  class: string;
-  level: string;
-  language: string;
-  courseTitle: string;
-  grade: string;
-  style: string;
-  date: string;
-  lessons: number;
-  time: string;
-  fee: string;
-}
+
 const ScheduleTable = () => {
   const isMobile = useMobile();
   const { format: t } = useLang();
-  const data: ScheduleData[] = [
-    {
-      class: "CS100P",
-      level: "Beginner (<1 year)",
-      language: "Python",
-      courseTitle: "Fall in Love with Coding",
-      grade: "6th+ graders",
-      style: "Online Live",
-      date: "Saturdays 11:00am-1:00pm",
-      lessons: 12,
-      time: "08/26/2023 05/11/2023",
-      fee: "$1,345.00",
-    },
-    {
-      class: "CS100P",
-      level: "Beginner (<1 year)",
-      language: "Python",
-      courseTitle: "Fall in Love with Coding",
-      grade: "6th+ graders",
-      style: "Online Live",
-      date: "Saturdays 11:00am-1:00pm",
-      lessons: 12,
-      time: "08/26/2023 05/11/2023",
-      fee: "$1,345.00",
-    },
-    {
-      class: "CS100P",
-      level: "Beginner (<1 year)",
-      language: "Python",
-      courseTitle: "Fall in Love with Coding",
-      grade: "6th+ graders",
-      style: "Online Live",
-      date: "Saturdays 11:00am-1:00pm",
-      lessons: 12,
-      time: "08/26/2023 05/11/2023",
-      fee: "$1,345.00",
-    },
-    {
-      class: "CS100P",
-      level: "Beginner (<1 year)",
-      language: "Python",
+  const defaultPagination = { page: 1, pageSize: 10 };
+  const [pagination, setPagination] = useState(defaultPagination);
+  const [filters, setFilters] = useState<
+    | { [key: string]: string | { $eq: string } }
+    | { [key: string]: string | { type: { $eq: string } } }
+  >({});
 
-      courseTitle: "Fall in Love with Coding",
-      grade: "6th+ graders",
-      style: "Online Live",
-      date: "Saturdays 11:00am-1:00pm",
-      lessons: 12,
-      time: "08/26/2023 05/11/2023",
-      fee: "$1,345.00",
+  const { data: courses, runAsync } = useGetCourses({});
+
+  const onChange = (page: number, pageSize: number) => {
+    const newPagination = {
+      page,
+      pageSize,
+    };
+    setPagination(newPagination);
+  };
+  useEffect(() => {
+    runAsync({
+      populate: "*",
+      sort: ["order:desc"],
+      filters: { ...filters },
+      pagination: { ...pagination },
+    });
+  }, [pagination, filters]);
+
+  const selectItems = [
+    {
+      span: 5,
+      name: "classMode",
+      text: "Class Mode:",
+      options: [
+        {
+          label: "Show All",
+          value: "",
+        },
+        {
+          label: "Online Live",
+          value: "Online Live",
+        },
+        {
+          label: "In-person",
+          value: "In-person",
+        },
+      ],
+    },
+    {
+      span: 7,
+      name: "courseLevelType",
+      text: "Course Level Type:",
+      options: [
+        {
+          label: "Show All",
+          value: "",
+        },
+        {
+          label: "Python",
+          value: "Python",
+        },
+        {
+          label: "USACO Bronze Knowledge",
+          value: "USACO Bronze Knowledge",
+        },
+        {
+          label: "USACO Silver Knowledge",
+          value: "USACO Silver Knowledge",
+        },
+        {
+          label: "USACO Grandmaster Classes",
+          value: "USACO Grandmaster Classes",
+        },
+        {
+          label: "APCS Classes",
+          value: "APCS Classes",
+        },
+        {
+          label: "USACO Enhancement Classes",
+          value: "USACO Enhancement Classes",
+        },
+        {
+          label: "100 Problem Challenge",
+          value: "100 Problem Challenge",
+        },
+        {
+          label: "Bilingual Classes",
+          value: "Bilingual Classes",
+        },
+      ],
+    },
+    {
+      span: 5,
+      name: "schoolQuarter",
+      text: "School Quarter:",
+      options: [
+        {
+          label: "Show All",
+          value: "",
+        },
+        {
+          label: "Spring",
+          value: "Spring",
+        },
+        {
+          label: "Summer",
+          value: "Summer",
+        },
+        {
+          label: "Fall",
+          value: "Fall",
+        },
+        {
+          label: "Winter",
+          value: "Winter",
+        },
+      ],
     },
   ];
-  /* const columns: ColumnsType<ScheduleData> = [
-    {
-      title: 'Class',
-      key: 'class',
-      dataIndex: 'class',
-    },
-    {
-      title: 'Course Title',
-      key: 'courseTitle',
-      dataIndex: 'courseTitle',
-      render: (courseTitle: string) => {
-        return (
-          <span style={{ color: '#D46B14', textDecoration: 'underline' }}>
-            {courseTitle}
-          </span>
-        );
-      },
-    },
-    {
-      title: 'Grade',
-      key: 'grade',
-      dataIndex: 'grade',
-    },
-    {
-      title: 'Style',
-      key: 'style',
-      dataIndex: 'style',
-    },
-    {
-      title: 'Date And Time',
-      key: 'date',
-      dataIndex: 'date',
-    },
-    {
-      title: 'Lessons',
-      key: 'lessons',
-      dataIndex: 'lessons',
-    },
-    {
-      title: 'Start End Time',
-      key: 'time',
-      dataIndex: 'time',
-    },
-    {
-      title: 'Fee',
-      key: 'fee',
-      dataIndex: 'fee',
-    },
-  ]; */
+  const onSelectChange = (value: string, name: string) => {
+    const newFilters = { ...filters };
+    if (value !== "") {
+      if (name === "courseLevelType") {
+        const relations = {
+          type: {
+            $eq: value,
+          },
+        };
+        newFilters[name] = relations;
+      } else {
+        newFilters[name] = { $eq: value };
+      }
+    } else {
+      delete newFilters[name];
+    }
+    setFilters(newFilters);
+    setPagination(defaultPagination);
+  };
   return (
     <div className={styles.scheduleTable}>
       <div className={"container"}>
-        <Form layout={"inline"}>
-          <Row style={{ width: "100%" }} gutter={[18, 0]}>
-            <Col xs={24} sm={24} md={12} lg={8} xl={6} className={styles.col}>
-              <Form.Item name={"courseMode"} colon={false}>
-                <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>Course Mode:</Text>
-                  <Select placeholder={"Show All"} className={styles.select} />
-                </Space>
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={24} md={12} lg={8} xl={6} className={styles.col}>
-              <Form.Item name={"courseLevel"} colon={false}>
-                <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>Course Level:</Text>
-                  <Select placeholder={"Show All"} className={styles.select} />
-                </Space>
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={24} md={12} lg={8} xl={5} className={styles.col}>
-              <Form.Item name={"quarter"} colon={false}>
-                <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>Quarter:</Text>
-                  <Select placeholder={"Show All"} className={styles.select} />
-                </Space>
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={3} className={styles.col}>
-              <Form.Item name={"searchCourse"} colon={false}>
-                <Input
-                  className={styles.select}
-                  suffix={<SearchOutlined />}
-                  placeholder="Search"
-                />
-              </Form.Item>
-            </Col>
+        <Row>
+          {selectItems?.map((selectItem, index) => (
             <Col
+              key={index}
               xs={24}
               sm={24}
-              md={24}
-              lg={24}
-              xl={4}
-              style={{ marginTop: isMobile ? "20px" : "auto" }}
+              md={12}
+              lg={selectItem?.span}
               className={styles.col}
             >
-              <Form.Item>
-                <Button
-                  type={"primary"}
-                  htmlType={"submit"}
-                  className={styles.button}
-                >
-                  {t("Search")}
-                </Button>
-              </Form.Item>
+              <Space align="center">
+                <Text className={styles.text}>{selectItem?.text}</Text>
+                <Select
+                  placeholder={"Show All"}
+                  className={styles.select}
+                  style={selectItem?.span === 7 ? { width: 200 } : {}}
+                  options={selectItem?.options}
+                  onChange={(value) => onSelectChange(value, selectItem?.name)}
+                />
+              </Space>
             </Col>
-          </Row>
-        </Form>
-        {/* <Table
-          className={styles.table}
-          dataSource={data}
-          scroll={{ x: 'max-content' }}
-          columns={columns}
-          rowKey={'title'}
-        /> */}
+          ))}
+
+          <Col xs={24} sm={24} md={24} lg={7} className={styles.col}>
+            <Space>
+              <Input
+                suffix={<SearchOutlined />}
+                className={styles.search}
+                placeholder="Search"
+              />
+              <Button
+                type={"primary"}
+                htmlType={"submit"}
+                className={styles.button}
+              >
+                {t("Search")}
+              </Button>
+            </Space>
+          </Col>
+        </Row>
+
         <div style={{ marginTop: 35 }}>
-          {data.map((item, index) => {
-            return <CourseCard {...item} key={index} />;
+          {courses?.data?.map((item) => {
+            return <CourseCard {...item?.attributes} key={item?.id} />;
           })}
         </div>
         <Pagination
-          defaultCurrent={6}
-          total={10}
+          onChange={onChange}
+          current={pagination?.page}
+          pageSize={pagination?.pageSize}
+          total={courses?.meta?.pagination?.total}
+          showSizeChanger={true}
           style={{ textAlign: "center", marginTop: "56px" }}
         />
       </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./index.module.scss";
 import { ConfigProvider, Layout } from "antd";
 import Testimony from "@/components/home/Testimony";
@@ -9,11 +9,12 @@ import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
 import ProgressionClasses from "./progression-classes";
 import { useGetClasses, useGetCourses } from "@/apis/strapi-client/strapi";
 import { useGetFaq, useGetTestimony } from "@/apis/strapi-client/strapi";
-import { FaqCategory, GetFaq } from "@/apis/strapi-client/define";
+import { FaqCategory } from "@/apis/strapi-client/define";
 import Faqs from "@/components/common/faqs";
 import { useParams } from "next/navigation";
 import CourseClassesContext from "./CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
+
 const { Content } = Layout;
 
 const CourseDetail = () => {
@@ -26,7 +27,9 @@ const CourseDetail = () => {
   });
 
   const { data: coursesData } = useGetCourses({
-    id: { $eq: Number(params?.courseId) },
+    filters: {
+      id: { $eq: Number(params?.courseId) },
+    },
   });
 
   const { data } = useGetClasses();
@@ -50,7 +53,7 @@ const CourseDetail = () => {
       <Layout className={styles.courseDetail}>
         <Content>
           <CourseClassesContext.Provider
-            value={coursesData ? coursesData[0] : undefined}
+            value={coursesData ? coursesData?.data[0] : undefined}
           >
             <TopBanner />
           </CourseClassesContext.Provider>

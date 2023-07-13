@@ -172,7 +172,6 @@ export interface GetCourses extends strapiPublicFields {
   schoolQuarter: string;
   registerLink: string;
   bundleRegisterLink: string;
-
   startDate: string;
   endDate: string;
 }

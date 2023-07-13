@@ -80,7 +80,10 @@ const CourseAbstract = () => {
                   <div
                     key={index}
                     className={item?.isFull ? `${styles.full}` : ""}
-                  >{`${item?.classCode}: ${item?.startTime}-${item?.endTime}`}</div>
+                  >
+                    {`${item?.classCode}: ${item?.startTime}-${item?.endTime}`}{" "}
+                    {item?.isFull ? "(Full)" : ""}
+                  </div>
                 );
               })}
             </Space>
