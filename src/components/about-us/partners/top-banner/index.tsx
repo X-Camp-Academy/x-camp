@@ -2,27 +2,32 @@
 import React from "react";
 import { Col, Row, Space, Typography } from "antd";
 import styles from "./index.module.scss";
-import Link from "next/link";
-const { Title, Paragraph, Text } = Typography;
+import { useLang } from "@/hoc/with-intl/define";
+const { Title, Paragraph } = Typography;
 
-const TopBanner: React.FC = () => {
+const TopBanner = () => {
+  const { format: t } = useLang();
   return (
     <div className={styles.topBannerContainer}>
       <div className="container">
         <Row>
           <Col xs={24} sm={24} md={14} className={styles.col}>
             <Space direction="vertical">
-              <Title className={styles.title}>Partners</Title>
+              <Title className={styles.title}>{t("Partners")}</Title>
               <Paragraph className={styles.paragraph}>
+                {t("Partner.Desc")}
                 {
-                  "X-Camp aims to create a supportive and inclusive coding community that encourages knowledge sharing, skill development, and collaboration with our dedicated partners. We welcome new partner, please send your inquiry to   "
-                } {
-                  <a href="/" style={{
-                    fontSize: 24,
-                    fontWeight: 500,
-                    color: '#D46B14',
-                    lineHeight: "42px"
-                  }}>info @x-camp.org.</a>
+                  <a
+                    href="/"
+                    style={{
+                      fontSize: 24,
+                      fontWeight: 500,
+                      color: "#D46B14",
+                      lineHeight: "42px",
+                    }}
+                  >
+                    info @x-camp.org.
+                  </a>
                 }
               </Paragraph>
             </Space>
@@ -38,15 +43,13 @@ const TopBanner: React.FC = () => {
               <img
                 alt="image"
                 src="/image/about-us/introduction/top-banner.png"
-
                 className={styles.image}
               />
             </div>
           </Col>
         </Row>
-        <Space></Space>
       </div>
-    </div >
+    </div>
   );
 };
 
