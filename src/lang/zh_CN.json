@@ -176,5 +176,12 @@
     "USACO.DownloadPackage": "下载我们的免费USACO介绍包",
     "ArtProgrammingResults": "程序设计结果的艺术",
     "ArtProgrammingResults.Desc": "X-Camp每季度都会举办一次Python编程艺术竞赛，以激励刚接触Python的学生。对于学生来说，这是一个很好的机会，通过创造有趣的项目来展示他们在课堂上学到的东西，并获得奖励！",
-    "ProjectsDemo": "项目演示"
+    "ProjectsDemo": "项目演示",
+    "XCampCalendar": "2023 X-Camp 日历",
+    "ContactXCamp": "联系 X-Camp",
+    "ContactXCamp.Desc": "X-Camp Academy致力于提高学生的编码能力和问题解决能力。",
+    "SubmitAQuestion": "提交一个问题",
+    "HelpCenter": "帮助中心",
+    "HelpCenter.Desc": "在这里，我们提供了有用的指南，以确保您在遇到任何问题或挑战时能够顺利高效地解决。",
+    "NeedMoreHelp": "需要更多帮助"
 }

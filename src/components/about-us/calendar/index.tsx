@@ -19,10 +19,10 @@ const DiscoverCourses = dynamic(
   () => import("@/components/home/DiscoverCourses")
 );
 
-const CalendarPage: React.FC = () => {
+const CalendarPage = () => {
   const { data: testimonyData } = useGetTestimony({
     ready: true,
-    pageName: ["/home"],
+    pageName: ["/home/"],
   });
   return (
     <ConfigProvider

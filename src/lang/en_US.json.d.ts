@@ -176,6 +176,13 @@ declare const json: {
     "USACO.DownloadPackage": "Download our free USACO Intro Package",
     "ArtProgrammingResults": "Art of Programming Results",
     "ArtProgrammingResults.Desc": "X-Camp has created an Art of Python Programming contest every quarter to inspire students that are new to Python. It is a great opportunity for students to showcase what they have learned from classes by creating fun projects, and get rewarded!",
-    "ProjectsDemo": "Projects Demo"
+    "ProjectsDemo": "Projects Demo",
+    "XCampCalendar": "2023 X-Camp Calendar",
+    "ContactXCamp": "Contact X-Camp",
+    "ContactXCamp.Desc": "X-Camp Academy focuses on improving the coding abilities and problem-solving skills of our students.",
+    "SubmitAQuestion": "Submit a Question",
+    "HelpCenter": "Help Center",
+    "HelpCenter.Desc": "Here we provide helpful instructions to ensure a seamless and efficient resolution to any concerns or challenges you may encounter.",
+    "NeedMoreHelp": "Need More Help"
 }
 export default json;
