@@ -6,7 +6,7 @@ import ColorfulCard from '@/components/common/colorful-card';
 import XCollapse from '@/components/common/collapse';
 import { ActivityCategory, GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
-import { getTransResult } from '@/utils/public';
+import { formatTimezone, getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
 import dayjs from 'dayjs';
 const { Text } = Typography;
@@ -16,7 +16,8 @@ export type ActivityItemProps = StrapiResponseDataItem<GetNewEvent> & {
 
 const ActivityItem = ({ attributes, index }: ActivityItemProps) => {
   const { lang } = useLang();
-  const { img, titleZh, titleEn, datetime } = attributes;
+  const { img, titleZh, titleEn, startDateTime } = attributes;
+  const { utcTime } = formatTimezone(startDateTime);
   return (
     <Col xs={24} sm={24} md={12} lg={8}>
       <ColorfulCard border={'bottom'} animate={false} index={index}>
@@ -29,7 +30,7 @@ const ActivityItem = ({ attributes, index }: ActivityItemProps) => {
             <div className={styles.description}>
               <div>
                 <ClockCircleOutlined className={styles.icon} />
-                {dayjs(datetime).format('YYYY-MM-DD')}
+                {utcTime.format('YYYY-MM-DD')}
               </div>
               <Button
                 type="link"
