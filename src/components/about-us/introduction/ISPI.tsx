@@ -29,7 +29,7 @@ const ISPI = () => {
                   </Text>
                   <Text className={styles.text}>
                     <CheckCircleOutlined className={styles.textIcon} />
-                    {"Unleash Students' Potential"}
+                    {t("ISPI.Text4")}
                   </Text>
                 </Space>
                 <Space
