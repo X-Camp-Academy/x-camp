@@ -11,16 +11,13 @@ import {
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import {
-  LeftCircleOutlined,
   LeftCircleTwoTone,
   RightCircleOutlined,
-  RightCircleTwoTone,
   setTwoToneColor,
 } from "@ant-design/icons";
 import styles from "./USACOWinners.module.scss";
 import React, { useRef } from "react";
 import Link from "next/link";
-import ColorfulCard from "@/components/common/colorful-card";
 import UsacoCards from "@/components/common/usaco-cards";
 import {
   useGetAboutUsAchievementsAward,
@@ -28,13 +25,12 @@ import {
 } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import { url } from "inspector";
 import { XStarViewer } from "@/utils/x-star-editor-beta";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Text } = Typography;
 
-const USACOMedal: React.FC = () => {
-  const { lang } = useLang();
+const USACOMedal = () => {
+  const { lang, format: t } = useLang();
   const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor("#D46B14");
   const { data: awards } = useGetAboutUsAchievementsAward();
@@ -45,13 +41,8 @@ const USACOMedal: React.FC = () => {
       <div className={styles.USACOMedalContainer}>
         <div className={`${styles.USACOMedal} container`}>
           <Space direction="vertical" align="start">
-            <Title className={styles.title}>USACO Medal</Title>
-            <Text className={styles.intro}>
-              Over the past 5 years, more than 200 X-Camp students have
-              qualified for the USACO Silver division and above; including 30 in
-              the Platinum division and 12 selected in the US Camp, out of which
-              7 were fresh from the 2023 season.
-            </Text>
+            <Title className={styles.title}>{t("USACOMedal")}</Title>
+            <Text className={styles.intro}>{t("USACOMedal.Desc")}</Text>
           </Space>
 
           <div className={styles.medalIntro}>
@@ -62,10 +53,7 @@ const USACOMedal: React.FC = () => {
               }}
               icon={<LeftCircleTwoTone style={{ fontSize: 25 }} />}
             ></Button>
-            <Carousel
-              ref={carouselEL}
-              dots={false}
-            >
+            <Carousel ref={carouselEL} dots={false}>
               {awards?.map((page, index) => {
                 return (
                   <div key={index}>
@@ -134,13 +122,8 @@ const USACOMedal: React.FC = () => {
           <div className={styles.timeLineContainer}>
             <div className={styles.timeLine}>
               <Space direction="vertical" align="start">
-                <Title className={styles.title}>Timeline</Title>
-                <Text className={styles.intro}>
-                  Nevertheless, our teaching principle is that the USACO is just
-                  a side project for our students. We hope that they can lay a
-                  solid foundation in computer algorithms and data structures
-                  and challenge themselves during the learning process.
-                </Text>
+                <Title className={styles.title}>{t("Timeline")}</Title>
+                <Text className={styles.intro}>{t("Timeline.Desc")}</Text>
               </Space>
 
               <div className={styles.listContainer}>
@@ -182,7 +165,7 @@ const USACOMedal: React.FC = () => {
                   preview={false}
                 ></Image>
                 <Text className={styles.downloadText}>
-                  Download our free USACO Intro Package
+                  {t("USACO.DownloadPackage")}
                 </Text>
               </Link>
               <UsacoCards showTitle />

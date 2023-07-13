@@ -1,22 +1,22 @@
-'use client';
-import React from 'react';
-import { Space, Row, Col, Image, Typography } from 'antd';
-import styles from './TopBanner.module.scss';
+"use client";
+import React from "react";
+import { Space, Row, Col, Image, Typography } from "antd";
+import styles from "./TopBanner.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
 
-const TopBanner: React.FC = () => {
+const TopBanner = () => {
+  const { format: t } = useLang();
   return (
     <div className={styles.topBannerContainer}>
       <div className="container">
         <Row>
           <Col xs={24} sm={24} md={14} className={styles.col}>
             <Space direction="vertical">
-              <Title className={styles.title}>Contact X-Camp</Title>
+              <Title className={styles.title}>{t("ContactXCamp")}</Title>
               <Paragraph className={styles.paragraph}>
-                {
-                  'X-Camp Academy focuses on improving the coding abilities and problem-solving skills of our students. We strive to teach not only persistence in analytical thought, but also genuine curiosity whilst facing new challenges.'
-                }
+                {t("ContactXCamp.Desc")}
               </Paragraph>
             </Space>
           </Col>

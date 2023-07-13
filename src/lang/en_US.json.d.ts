@@ -1,4 +1,4 @@
-{
+declare const json: {
     "400": "The input parameter format is incorrect, please re-enter it.",
     "401": "Internal server error, please try again later.",
     "403": "You do not have sufficient permissions to access this page or operate this function.",
@@ -185,3 +185,4 @@
     "HelpCenter.Desc": "Here we provide helpful instructions to ensure a seamless and efficient resolution to any concerns or challenges you may encounter.",
     "NeedMoreHelp": "Need More Help"
 }
+export default json;
