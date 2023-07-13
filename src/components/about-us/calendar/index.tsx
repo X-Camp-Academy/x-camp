@@ -16,13 +16,13 @@ const RecentActivities = dynamic(
     import("@/components/resources/weekly-education-forum/recent-activities")
 );
 const DiscoverCourses = dynamic(
-  () => import("@/components/home/DiscoverCourses")
+  () => import("@/components/common/discover-courses")
 );
 
 const CalendarPage: React.FC = () => {
   const { data: testimonyData } = useGetTestimony({
     ready: true,
-    pageName: ['/home']
+    pageName: ["/home"],
   });
   return (
     <ConfigProvider

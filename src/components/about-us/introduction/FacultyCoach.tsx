@@ -25,8 +25,6 @@ const FacultyCoach: React.FC = () => {
     (a, b) => b?.attributes?.order - a?.attributes?.order
   );
 
-  console.log(sortData);
-
   const splitIntoGroups = (
     arr: StrapiResponseDataItem<GetFaculty>[] | undefined,
     groupSize: number
@@ -38,7 +36,6 @@ const FacultyCoach: React.FC = () => {
     return groups;
   };
   const facultyData = splitIntoGroups(sortData, 3);
-  console.log(facultyData);
 
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;

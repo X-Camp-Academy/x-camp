@@ -24,8 +24,6 @@ const Testimony = ({ className = "", testimonyData }: Props) => {
   const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
 
-  console.log(testimonyData);
-
   const onPrev = () => {
     carouselRef?.current?.prev();
   };
