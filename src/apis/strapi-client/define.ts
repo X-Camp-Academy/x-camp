@@ -55,6 +55,18 @@ export interface GetNewEvent extends strapiPublicFields {
   link?: string;
   startDateTime: string;
   endDateTime?: string;
+  courseId?: number;
+  pageName?: string;
+  eventId?: number;
+  contestLinkZh?: string;
+  contestLinkEn?: string;
+  contestImgZh?: StrapiMedia;
+  contestImgEn?: StrapiMedia;
+  contestLogo?: StrapiMedia;
+  contestTitleExplanationZh?: string;
+  contestTitleExplanationEn?: string;
+  contestStartDateTime?: string;
+  contestEndDateTime?: string;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
