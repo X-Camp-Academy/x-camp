@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
+import CourseClassesContext from "../CourseClasses";
 const { Title } = Typography;
 
 const ProgressionClasses = () => {
   const { format: t } = useLang();
+  const courseData = useContext(CourseClassesContext);
+  console.log(courseData);
+  const { recommendedClasses } = courseData?.attributes ?? {};
+
+  console.log(recommendedClasses);
 
   const items = [
     {

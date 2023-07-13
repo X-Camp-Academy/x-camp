@@ -10,8 +10,15 @@ const CourseDescription = () => {
   const { format: t } = useLang();
   const ref = useRef<CarouselRef>(null);
   const courseData = useContext(CourseClassesContext);
-  const { classMode, classLang, classRoomLang, classes, media } =
-    courseData?.attributes ?? {};
+  const {
+    classMode,
+    classLang,
+    classRoomLang,
+    startDate,
+    endDate,
+    classes,
+    media,
+  } = courseData?.attributes ?? {};
 
   const imageMimes = [
     "image/jpeg",
@@ -109,7 +116,7 @@ const CourseDescription = () => {
             {classRoomLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
-            {"2023/06/24 - 2023/12/03"}
+            {`${startDate}-${endDate}`}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
             {"Offline(12280 Saratoga Sunnyvale Rd, #203 CA 95070)"}
