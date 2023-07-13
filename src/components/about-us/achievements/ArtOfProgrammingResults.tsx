@@ -16,13 +16,12 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
 
   const listData = [
     {
-      title: "Prerequisites of contestants:",
-      content: "students of CS100 who have no coding experience before.",
+      title: t("Art.Contestants"),
+      content: t("Art.Contestants.Desc"),
     },
     {
-      title: "Rules:",
-      content:
-        "After 10-weeks learning Python, participants can create their own projects with Python by themselves or with classmates. All parents vote anonymously to select the Top 3 winning projects on demo day.",
+      title: t("Art.Rules"),
+      content: t("Art.Rules.Desc"),
     },
   ];
   return (

@@ -1,28 +1,30 @@
-'use client';
-import React from 'react';
-import { Space, Row, Col, Card, Typography } from 'antd';
-import styles from './ContactCard.module.scss';
-import { LaptopOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
-import ColorfulCard from '@/components/common/colorful-card';
+"use client";
+import React from "react";
+import { Space, Row, Col, Card, Typography } from "antd";
+import styles from "./ContactCard.module.scss";
+import { LaptopOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import ColorfulCard from "@/components/common/colorful-card";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
 
 const ContactCard: React.FC = () => {
+  const { format: t } = useLang();
   const contactInfo = [
     {
       icon: <MailOutlined />,
-      title: 'Email',
-      description: 'Please email us at info@x-camp.org',
+      title: t("Contact.Email"),
+      description: t("Contact.Email.info"),
     },
     {
       icon: <PhoneOutlined rotate={180} />,
-      title: 'Phone/Text',
-      description: 'Feel free to text us at +1-510-708-8390',
+      title: t("Contact.Phone"),
+      description: t("Contact.Phone.info"),
     },
     {
       icon: <LaptopOutlined />,
-      title: 'Office Hour',
-      description: '7:00am - 5:00pm PT Monday Off',
+      title: t("Contact.OfficeHour"),
+      description: t("Contact.OfficeHour.info"),
     },
   ];
 
@@ -38,7 +40,7 @@ const ContactCard: React.FC = () => {
             lg={{ span: 8 }}
           >
             <ColorfulCard
-              border={'top'}
+              border={"top"}
               index={contactInfo.length - index - 1}
               key={index}
               animate={false}

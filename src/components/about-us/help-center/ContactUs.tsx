@@ -26,15 +26,12 @@ const ContactUs = () => {
               lineHeight: "34px",
             }}
           >
-            <strong>
-              {
-                "X-Camp aims to provide you with more info about Course recommendations, Curriculum Guidance, Enrollment Assistance, etc. "
-              }
-            </strong>
+            <strong>{t("NeedMoreHelp.Desc")}</strong>
           </Paragraph>
           <Link href="/about-us/contact-us">
             <Button className={styles.button}>
-              Contact Us <CommentOutlined />
+              {t("ContactUs")}
+              <CommentOutlined />
             </Button>
           </Link>
         </Space>

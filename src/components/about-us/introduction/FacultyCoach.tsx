@@ -14,11 +14,11 @@ import styles from "./FacultyCoach.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
-const FacultyCoach: React.FC = () => {
+const FacultyCoach = () => {
   const { format: t, lang } = useLang();
 
   const { data } = useGetFaculty({
-    pageName: ["/introduction"],
+    pageName: ["/introduction/"],
   });
 
   const sortData = data?.sort(
