@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Space, Row, Col, Typography, Calendar, Badge, Empty } from "antd";
 import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
@@ -8,8 +8,7 @@ import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import isBetween from 'dayjs/plugin/isBetween';
-import { TimeZone } from "@/utils/public";
+import isBetween from "dayjs/plugin/isBetween";
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
@@ -230,11 +229,15 @@ const PublicCalendar: React.FC = () => {
                           {getDate(item.attributes?.startDateTime || "")}
                         </Text>
                         <Text className={styles.text}>
-                          {
-                            getTransResult(lang,
-                              `${getMonth(item.attributes?.startDateTime || '') + 1}月`,
-                              monthNameAbbrEn[getMonth(item.attributes?.startDateTime || '')])
-                          }
+                          {getTransResult(
+                            lang,
+                            `${
+                              getMonth(item.attributes?.startDateTime || "") + 1
+                            }月`,
+                            monthNameAbbrEn[
+                              getMonth(item.attributes?.startDateTime || "")
+                            ]
+                          )}
                         </Text>
                       </Space>
                       <Space
@@ -268,22 +271,26 @@ const PublicCalendar: React.FC = () => {
                           </Paragraph>
                         )}
                         <Text className={styles.date}>
-                          {`${dayjs(item?.attributes?.startDateTime).isSame(
-                            dayjs(item?.attributes?.endDateTime),
-                            "day"
-                          )
-                            ? `${formatHourMinute(
-                              item?.attributes?.startDateTime || ""
-                            )} - 
+                          {`${
+                            dayjs(item?.attributes?.startDateTime).isSame(
+                              dayjs(item?.attributes?.endDateTime),
+                              "day"
+                            )
+                              ? `${formatHourMinute(
+                                  item?.attributes?.startDateTime || ""
+                                )} - 
                                 ${formatHourMinute(
-                              item?.attributes?.endDateTime || ""
-                            )} `
-                            : `${formatYMDTime(
-                              item?.attributes?.startDateTime || ""
-                            )} - ${formatYMDTime(
-                              item?.attributes?.endDateTime || ""
-                            )}`
-                            } ${formatTimezone(item?.attributes?.startDateTime).timezone} 
+                                  item?.attributes?.endDateTime || ""
+                                )} `
+                              : `${formatYMDTime(
+                                  item?.attributes?.startDateTime || ""
+                                )} - ${formatYMDTime(
+                                  item?.attributes?.endDateTime || ""
+                                )}`
+                          } ${
+                            formatTimezone(item?.attributes?.startDateTime)
+                              .timezone
+                          } 
                             `}
                         </Text>
                       </Space>
@@ -323,15 +330,24 @@ const PublicCalendar: React.FC = () => {
                             <Text className={styles.itemDate}>
                               {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
-                              {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
-                                ?
-                                `${formatHourMinute(item?.startDateTime || '')} - 
-                                 ${formatHourMinute(item?.endDateTime || '')}`
-                                :
-                                `${formatYMDTime(item?.startDateTime || '')} - ${formatYMDTime(item?.endDateTime || '')}`
-                                } 
-                                ${formatTimezone(item?.startDateTime).timezone}`}
-
+                              {`${
+                                dayjs(item?.startDateTime).isSame(
+                                  dayjs(item?.endDateTime),
+                                  "day"
+                                )
+                                  ? `${formatHourMinute(
+                                      item?.startDateTime || ""
+                                    )} - 
+                                 ${formatHourMinute(item?.endDateTime || "")}`
+                                  : `${formatYMDTime(
+                                      item?.startDateTime || ""
+                                    )} - ${formatYMDTime(
+                                      item?.endDateTime || ""
+                                    )}`
+                              } 
+                                ${
+                                  formatTimezone(item?.startDateTime).timezone
+                                }`}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`
