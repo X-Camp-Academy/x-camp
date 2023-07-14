@@ -64,7 +64,7 @@
 
       .right {
         padding-left: 36px;
-
+        height: 248px;
         @media (max-width: 768px) {
           padding-left: 0;
           padding-top: 20px;
@@ -72,8 +72,8 @@
         }
 
         img {
-          width: 366px;
-          height: 248px;
+          //width: 366px;
+          height: 100%;
           background: #ffeddf;
           border-radius: 12px;
         }

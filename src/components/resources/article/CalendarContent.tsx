@@ -6,8 +6,10 @@ const { Title } = Typography;
 import styles from "./CalendarContent.module.scss";
 import { ScheduleOutlined } from "@ant-design/icons";
 import TimelineComponent from "@/components/common/timeline";
+import { useLang } from "@/hoc/with-intl/define";
 
 const CalendarContent: React.FC = () => {
+  const { format: t } = useLang();
   interface Item {
     label: string;
     children: Item[] | string;
@@ -114,7 +116,7 @@ const CalendarContent: React.FC = () => {
     <>
       <div className={styles.calendarContent}>
         <div className={`${styles.calendarContainer} container`}>
-          <Title className={styles.title}>2023 X-Camp Calendar</Title>
+          <Title className={styles.title}>{t("XCampCalendar")}</Title>
           <div className={styles.listContainer}>
             <Button className={styles.bookButton}>
               <ScheduleOutlined />

@@ -3,11 +3,13 @@ import React from "react";
 import { Row, Col, Card, Typography, Form, Input, Button } from "antd";
 import styles from "./QuestionForm.module.scss";
 import QACard from "@/components/common/q&a";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { TextArea } = Input;
 const { Title } = Typography;
 
-const QAPart: React.FC = () => {
+const QAPart = () => {
+  const { format: t } = useLang();
   const QAData = [
     {
       question: "How can I refer friends.How can I refer friends",
@@ -30,7 +32,7 @@ const QAPart: React.FC = () => {
 
   return (
     <div className={`${styles.qaContent} container`}>
-      <Title className={styles.title}>{"Questions?"}</Title>
+      <Title className={styles.title}>{t("Questions")}</Title>
       <Row gutter={[32, 32]}>
         <Col
           xs={{ span: 24 }}
@@ -54,7 +56,7 @@ const QAPart: React.FC = () => {
           lg={{ span: 12 }}
         >
           <Card className={styles.card}>
-            <Title className={styles.formTitle}>Submit a Question</Title>
+            <Title className={styles.formTitle}>{t("SubmitAQuestion")}</Title>
             <Form layout="vertical">
               <Row gutter={[16, 8]}>
                 <Col
@@ -63,8 +65,8 @@ const QAPart: React.FC = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="First Name">
-                    <Input placeholder="First Name" />
+                  <Form.Item label={t("FirstName")}>
+                    <Input placeholder={t("FirstName")} />
                   </Form.Item>
                 </Col>
                 <Col
@@ -73,8 +75,8 @@ const QAPart: React.FC = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="Last Name">
-                    <Input placeholder="Last Name" />
+                  <Form.Item label={t("LastName")}>
+                    <Input placeholder={t("LastName")} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -85,7 +87,7 @@ const QAPart: React.FC = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="Email">
+                  <Form.Item label={t("Email")}>
                     <Input placeholder="partner@x-camp.org" />
                   </Form.Item>
                 </Col>
@@ -95,14 +97,14 @@ const QAPart: React.FC = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="Phone">
+                  <Form.Item label={t("Phone")}>
                     <Input placeholder="(XXX) XXX-XXXX" />
                   </Form.Item>
                 </Col>
               </Row>
-              <Form.Item label="Message">
+              <Form.Item label={t("Message")}>
                 <TextArea
-                  placeholder="Your message here"
+                  placeholder={t("YourMessageHere")}
                   className={styles.formTextArea}
                   autoSize={{ minRows: 6, maxRows: 6 }}
                 />

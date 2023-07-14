@@ -144,7 +144,7 @@ const Nav = () => {
             </Space>
             <Space size={"middle"}>
               <Input
-                placeholder="Search"
+                placeholder={t("Search")}
                 onPressEnter={onSearch}
                 suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
               />
@@ -164,7 +164,7 @@ const Nav = () => {
                     </Space>
                   ) : (
                     <Button type="primary" href="/login">
-                      Login / Register
+                      {t("Nav.Login")}
                     </Button>
                   )}
                   <div onClick={toggle} className={styles.intl}>

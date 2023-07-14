@@ -16,27 +16,29 @@ import {
 } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import { usePathname } from "next/navigation";
+import { useLang } from "@/hoc/with-intl/define";
 const { Content } = Layout;
 const CourseCamps = () => {
+  const { format: t } = useLang();
   const pathname = usePathname();
   // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
-  const params = {
-    isCamp: {
-      $eq: true,
+  const { data: courses } = useGetCourses({
+    filters: {
+      isCamp: {
+        $eq: true,
+      },
     },
-  };
-  const { data: courses } = useGetCourses(params);
+  });
 
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
-    category: FaqCategory.CoursesQA,
-    courseId: courses?.map((v) => String(v?.id)),
+    category: FaqCategory.CampsQA,
     pageName: [pathname],
   });
   // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
   const { data: testimonyData } = useGetTestimony({
     ready: Boolean(courses),
-    courseId: courses?.map((v) => String(v?.id)),
+    courseId: courses?.data?.map((v) => String(v?.id)),
     pageName: [pathname],
   });
 
@@ -62,7 +64,7 @@ const CourseCamps = () => {
               </ColorfulCard>
             </div>
           </div>
-          <Faqs title="Camps FAQs" data={faq} />
+          <Faqs title={t("CampsFAQs")} data={faq} />
           <Testimony testimonyData={testimonyData} />
         </Content>
       </Layout>

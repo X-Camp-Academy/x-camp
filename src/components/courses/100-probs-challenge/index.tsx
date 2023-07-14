@@ -9,22 +9,25 @@ import Faqs from "@/components/common/faqs";
 import { usePathname } from "next/navigation";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import { useGetCourses, useGetFaq } from "@/apis/strapi-client/strapi";
+import { useLang } from "@/hoc/with-intl/define";
 const { Content } = Layout;
 
 const ProbsChallenge = () => {
   const pathname = usePathname();
+  const { format: t } = useLang();
   // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
-  const params = {
-    isCamp: {
-      $eq: true,
+  const { data: courses } = useGetCourses({
+    filters: {
+      isCamp: {
+        $eq: true,
+      },
     },
-  };
-  const { data: courses } = useGetCourses(params);
+  });
 
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
     category: FaqCategory.CoursesQA,
-    courseId: courses?.map((v) => String(v?.id)),
+    courseId: courses?.data?.map((v) => String(v?.id)),
     pageName: [pathname],
   });
 
@@ -41,7 +44,7 @@ const ProbsChallenge = () => {
           <TopBanner />
           <Introduction />
           <Levels />
-          <Faqs title="Camps FAQs" data={faq} />
+          <Faqs title={t("CampsFAQs")} data={faq} />
         </Content>
       </Layout>
     </ConfigProvider>

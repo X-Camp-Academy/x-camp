@@ -25,6 +25,8 @@ export enum NewEventCategory {
   News = "News",
   Event = "Events",
   Activity = "Activity",
+  SchoolCalendar = "School Calendar",
+  EventContest = "Event Contest",
   All = "All",
 }
 
@@ -40,7 +42,6 @@ export interface GetNewEvent extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  datetime: string;
   tags: NewEventCategory;
   activityCategory?: ActivityCategory;
   order?: number;
@@ -53,6 +54,18 @@ export interface GetNewEvent extends strapiPublicFields {
   geographicallyAddress?: string;
   onlinePlatform?: string;
   link?: string;
+  startDateTime: string;
+  endDateTime?: string;
+  courseId?: number;
+  pageName?: string;
+  eventId?: number;
+  contestLinkZh?: string;
+  contestLinkEn?: string;
+  contestImgZh?: StrapiMedia;
+  contestImgEn?: StrapiMedia;
+  contestLogo?: StrapiMedia;
+  contestTitleExplanationZh?: string;
+  contestTitleExplanationEn?: string;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
@@ -161,6 +174,8 @@ export interface GetCourses extends strapiPublicFields {
   schoolQuarter: string;
   registerLink: string;
   bundleRegisterLink: string;
+  startDate: string;
+  endDate: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
@@ -299,8 +314,9 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = 'Referral QA',
-  CoursesQA = 'Courses QA',
+  ReferralQA = "Referral QA",
+  CoursesQA = "Courses QA",
+  CampsQA = "Camps QA",
 }
 
 export interface GetFaq extends strapiPublicFields {

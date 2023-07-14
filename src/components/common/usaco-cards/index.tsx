@@ -1,45 +1,43 @@
-'use client';
-import React from 'react';
-import { Space, Row, Col, Typography } from 'antd';
-import styles from './index.module.scss';
+"use client";
+import React from "react";
+import { Space, Row, Col, Typography } from "antd";
+import styles from "./index.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 const { Text } = Typography;
 export interface UsacoCardsProps {
   showTitle?: boolean;
 }
 const UsacoCards = ({ showTitle = false }: UsacoCardsProps) => {
+  const { format: t } = useLang();
   const cardsData = [
     {
-      count: '200+',
-      title: 'USACO Silver and above',
-      color: '#00A0E9',
+      count: "200+",
+      title: t("USACOSilverAndAbove"),
+      color: "#00A0E9",
     },
     {
-      count: '30+',
-      title: 'USACO Platinum',
-      color: '#FFD600',
+      count: "30+",
+      title: t("USACOPlatinum"),
+      color: "#FFD600",
     },
     {
-      count: '12+',
-      title: 'USACO Finalist',
-      color: '#FFAD11',
+      count: "12+",
+      title: t("USACOFinalist"),
+      color: "#FFAD11",
     },
     {
-      count: '1+',
-      title: 'USACO Team',
-      color: '#D46B14',
+      count: "1+",
+      title: t("USACOTeam"),
+      color: "#D46B14",
     },
   ];
 
   return (
     <>
       {showTitle && (
-        <Space direction={'vertical'} style={{ width: '100%' }} size={30}>
-          <div className={styles.usacoTitle}>
-            {'USACO Spotlight in last 5 years'}
-          </div>
-          <div className={styles.usacoDesc}>
-            {'World-class faculties qualified to coach the US national team'}
-          </div>
+        <Space direction={"vertical"} style={{ width: "100%" }} size={30}>
+          <div className={styles.usacoTitle}>{t("USACOSpotlight")}</div>
+          <div className={styles.usacoDesc}>{t("USACO.Desc")}</div>
         </Space>
       )}
       <Row gutter={16} className={styles.row}>

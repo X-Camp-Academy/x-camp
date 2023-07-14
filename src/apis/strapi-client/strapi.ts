@@ -94,11 +94,17 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
  */
 export const useGetNewEvent = ({
   tag,
+  courseId,
+  pageName,
+  eventId,
   current,
   pageSize,
   manual = false,
 }: {
   tag?: NewEventCategory;
+  courseId?: string[]; // 被用在哪些course 以英文逗号连接的字符串
+  pageName?: string[]; // 被用在哪些page 以英文逗号连接的字符串
+  eventId?: string[]; // 被用在哪些event 以英文逗号连接的字符串
   current: number;
   pageSize: number;
   manual?: boolean;
@@ -108,8 +114,24 @@ export const useGetNewEvent = ({
 
   return useRequest(
     async (params: GetNewEventRequest) => {
-      const res: GetNewEventResponse = await client.getNewEvent(params);
-      return res;
+      const res = await client.getNewEvent(params);
+      let data = [];
+      if (!courseId && !pageName && !eventId) {
+        // 如果三个选项都没填则取所有的
+        data = res?.data;
+      } else {
+        // 根据courseId, pageName, eventId做筛选，根据category做分类
+        if (courseId) {
+          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+        }
+        if (pageName) {
+          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+        }
+        if (eventId) {
+          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+        }
+      }
+      return deduplicateArray(data); // 去重
     },
     {
       manual,
@@ -118,9 +140,11 @@ export const useGetNewEvent = ({
           populate: "*",
           sort: ["order:desc"],
           filters: {
-            tags: {
-              $eq: tag,
-            },
+            tags: tag
+              ? {
+                  $eq: tag,
+                }
+              : {},
           },
           pagination: {
             page: current,
@@ -345,26 +369,35 @@ export const useGetCourseLevelType = () => {
  *
  * @returns 获取Courses
  */
-export const useGetCourses = (
-  params?:
+
+export const useGetCourses = ({
+  filters,
+  pagination,
+  manual = false,
+}: {
+  filters?:
     | Partial<FilterFields<GetCourses>>
     | AndOrFilters<FilterFields<GetCourses>>
-    | undefined
-) => {
+    | undefined;
+  pagination?: { page: number; pageSize: number };
+  manual?: boolean;
+}) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
 
   return useRequest(
     async (params: GetCoursesRequest) => {
       const res = await client.getCourses(params);
-      return isArray(res?.data) ? res.data : [];
+      return res;
     },
     {
+      manual,
       defaultParams: [
         {
           populate: "*",
-          filters: params ?? {},
           sort: ["order:desc"],
+          filters: filters ?? {},
+          pagination: pagination ?? {},
         },
       ],
       onError: handleError,

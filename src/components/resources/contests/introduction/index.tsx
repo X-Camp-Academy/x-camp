@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./index.module.scss";
 import { Divider } from "antd";
-import { GetResourcesContest } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { GetNewEvent } from "@/apis/strapi-client/define";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 
 interface Props {
-  data: StrapiResponseDataItem<GetResourcesContest>[] | undefined;
+  data: StrapiResponseDataItem<GetNewEvent>[] | undefined;
 }
 
 const Introduction = ({ data }: Props) => {
@@ -35,27 +35,16 @@ const Introduction = ({ data }: Props) => {
                       v?.attributes?.descriptionEn
                     )}
                   </div>
-                  <a
-                    href={getTransResult(
-                      lang,
-                      v?.attributes?.linkZh,
-                      v?.attributes?.linkEn
-                    )}
-                    className={styles.link}
-                  >
-                    {getTransResult(
-                      lang,
-                      v?.attributes?.linkZh,
-                      v?.attributes?.linkEn
-                    )}
+                  <a href={v?.attributes?.link} className={styles.link}>
+                    {v?.attributes?.link}
                   </a>
                 </div>
                 <div className={styles.right}>
                   <img
                     src={getTransResult(
                       lang,
-                      v?.attributes?.imgZh?.data?.attributes?.url,
-                      v?.attributes?.imgEn?.data?.attributes?.url
+                      v?.attributes?.contestImgZh?.data?.attributes?.url,
+                      v?.attributes?.contestImgEn?.data?.attributes?.url
                     )}
                     alt=""
                   />

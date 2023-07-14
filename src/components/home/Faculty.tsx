@@ -14,9 +14,9 @@ import ColorfulCard from "../common/colorful-card";
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const { data } = useGetFaculty({
-    pageName: ["/home"],
+    pageName: ["/home/"],
   });
 
   const facultyData = data?.sort(
@@ -38,13 +38,8 @@ const Faculty: React.FC = () => {
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>Faculty</Title>
-        <Paragraph className={styles.paragraph}>
-          World-class faculties comprise experienced senior engineers from
-          leading tech companies, accomplished students from prestigious
-          computer science majors, and top-ranking members of competitive
-          programming contests like IOI, ICPC, and USACO.
-        </Paragraph>
+        <Title className={styles.title}>{t("Faculty")}</Title>
+        <Paragraph className={styles.paragraph}>{t("Faculty.Desc")}</Paragraph>
       </Space>
 
       <div className={styles.carouselContainer}>
@@ -113,7 +108,7 @@ const Faculty: React.FC = () => {
                         )}
                       </Paragraph>
                       <Link href="/" className={styles.more}>
-                        More <RightOutlined />
+                        {t("More")} <RightOutlined />
                       </Link>
                     </Space>
                     <Image

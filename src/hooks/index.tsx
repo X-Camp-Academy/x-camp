@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import dayjs, { Dayjs } from 'dayjs';
+import { useState, useEffect, useMemo, useRef } from 'react';
 
 /**
  * 控制组件是否挂载、是否可见的 Hook

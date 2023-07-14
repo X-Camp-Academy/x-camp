@@ -1,4 +1,4 @@
-import { GetResourcesContest } from "@/apis/strapi-client/define";
+import { GetNewEvent } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import dayjs from "dayjs";
 
@@ -37,7 +37,7 @@ export const Quarter = {
 
 export interface ContestsByMonthInterface {
   month: MonthAbbreviation;
-  contests?: StrapiResponseDataItem<GetResourcesContest>[];
+  contests?: StrapiResponseDataItem<GetNewEvent>[];
 }
 
 /**
@@ -46,7 +46,7 @@ export interface ContestsByMonthInterface {
  * @returns 将data按照月份进行分组
  */
 export const formatContestsByMonth = (
-  data: StrapiResponseDataItem<GetResourcesContest>[]
+  data: StrapiResponseDataItem<GetNewEvent>[]
 ) => {
   const contestsByMonth: ContestsByMonthInterface[] = Object.values(
     MonthAbbreviation
@@ -55,7 +55,7 @@ export const formatContestsByMonth = (
     contests: [],
   }));
   data?.forEach((contest) => {
-    const month = dayjs(contest.attributes.contestDate).get("month");
+    const month = dayjs(contest.attributes.startDateTime).get("month");
     if (!isNaN(month)) {
       contestsByMonth?.[month]?.contests?.push(contest);
     }
@@ -69,7 +69,7 @@ export const formatContestsByMonth = (
  * @returns 将data按照月份进行分组，然后按照size进行分组
  */
 export const formatContestsByQuarter = (
-  data: StrapiResponseDataItem<GetResourcesContest>[],
+  data: StrapiResponseDataItem<GetNewEvent>[],
   size: number
 ) => {
   return Array.from({ length: Math.ceil(12 / size) }, (_, i) =>

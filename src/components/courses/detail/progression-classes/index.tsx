@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
+import { useLang } from "@/hoc/with-intl/define";
+import CourseClassesContext from "../CourseClasses";
 const { Title } = Typography;
 
 const ProgressionClasses = () => {
+  const { format: t } = useLang();
+  const courseData = useContext(CourseClassesContext);
+  console.log(courseData);
+  const { recommendedClasses } = courseData?.attributes ?? {};
+
+  console.log(recommendedClasses);
+
   const items = [
     {
       id: 1,
@@ -47,7 +56,7 @@ const ProgressionClasses = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <Title className={styles.title}>{"Progression Classes"}</Title>
+        <Title className={styles.title}>{t("ProgressionClasses")}</Title>
         <Space size={27} wrap className={styles.cards}>
           {items?.map((v, index) => {
             return (

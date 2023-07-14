@@ -6,7 +6,9 @@ import styles from "./index.module.scss";
 import { useGetTestimony } from "@/apis/strapi-client/strapi";
 
 const CarouselContent = dynamic(() => import("./CarouselContent"));
-const DiscoverCourses = dynamic(() => import("./DiscoverCourses"));
+const DiscoverCourses = dynamic(
+  () => import("@/components/common/discover-courses")
+);
 const AboutXCamp = dynamic(() => import("./AboutXCamp"));
 const XCampFounder = dynamic(() => import("@/components/common/xcamp-founder"));
 const WeSupport = dynamic(() => import("./WeSupport"));

@@ -6,10 +6,12 @@ import { useGetAboutUsAlumniMap } from "@/apis/strapi-client/strapi";
 import worldJson from "./world.json";
 import usaJson from "./usa.json";
 import styles from "./Map.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Text } = Typography;
 
-const Map: React.FC = () => {
+const Map = () => {
+  const { format: t } = useLang();
   const { data } = useGetAboutUsAlumniMap();
   const worldDOM = useRef<HTMLDivElement>();
   const usaDOM = useRef<HTMLDivElement>();
@@ -38,7 +40,7 @@ const Map: React.FC = () => {
         },
         series: [
           {
-            name: "校友人数",
+            name: t("NUMBER_OF_ALUMNI"),
             type: "map",
             mapType: "world",
             roam: true,
@@ -94,7 +96,7 @@ const Map: React.FC = () => {
         },
         series: [
           {
-            name: "USA PopEstimates",
+            name: t("USAPopEstimates"),
             type: "map",
             roam: true,
             map: "USA",
@@ -113,10 +115,8 @@ const Map: React.FC = () => {
 
   return (
     <div className={`${styles.map} container`}>
-      <Title className={styles.title}>We are one big family</Title>
-      <Text className={styles.text}>
-        Our alumni are located all over the world.
-      </Text>
+      <Title className={styles.title}>{t("OneBigFamily")}</Title>
+      <Text className={styles.text}>{t("AlumniLocations")}</Text>
 
       <div
         ref={worldDOM as LegacyRef<HTMLDivElement>}

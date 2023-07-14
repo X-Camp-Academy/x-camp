@@ -6,10 +6,12 @@ import {
   useSendEmailClient,
 } from ".";
 import { useHandleError } from "@/utils/error";
+import { useLang } from "@/hoc/with-intl/define";
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
   const client = useSendEmailClient();
+  const { format: t } = useLang();
   return useRequest(
     async (params: openClassEmailRequest) => {
       const resp = await client.sendOpenClassEmail(params);
@@ -20,7 +22,7 @@ export const useSendOpenClassEmail = () => {
       onSuccess: () => {
         message.success({
           key: "sendEmailSuccessfully",
-          content: "已将公开课信息发送至您的邮箱，请注意查收！",
+          content: t("sendOpenClassEmail.Success"),
         });
       },
       onError: handleError,
@@ -31,6 +33,7 @@ export const useSendOpenClassEmail = () => {
 export const useSubscribeNewsletter = () => {
   const handleError = useHandleError();
   const client = useSendEmailClient();
+  const { format: t } = useLang();
   return useRequest(
     async (params: subscribeNewsletterRequest) => {
       const resp = await client.subscribeNewsletter(params);
@@ -41,7 +44,7 @@ export const useSubscribeNewsletter = () => {
       onSuccess: () => {
         message.success({
           key: "sendEmailSuccessfully",
-          content: "订阅成功，请查收您的邮箱",
+          content: t("subscribeNewsLetter.Success"),
         });
       },
       onError: handleError,
@@ -57,6 +60,7 @@ export const useSubscribeNewsletter = () => {
 export const useSubmitResume = () => {
   const handleError = useHandleError();
   const client = useSendEmailClient();
+  const { format: t } = useLang();
   return useRequest(
     async (params: FormData) => {
       const resp = await client.submitResume(params);
@@ -67,7 +71,7 @@ export const useSubmitResume = () => {
       onSuccess: () => {
         message.success({
           key: "sendEmailSuccessfully",
-          content: "已将简历发送至X-Camp邮箱",
+          content: t("sendResume.Success"),
         });
       },
       onError: handleError,

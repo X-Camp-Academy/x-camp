@@ -2,64 +2,67 @@ import Link from "next/link";
 import { XStarMenuItemType } from "./x-star-menu";
 import { useRouter } from "next/navigation";
 import { CalendarOutlined, UserAddOutlined } from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
 
 export const useMenuItems = () => {
   const router = useRouter();
+  const { format: t } = useLang();
   const menuItems: XStarMenuItemType[] = [
     {
-      label: <Link href="/">Home</Link>,
+      label: <Link href="/">{t("Home")}</Link>,
       key: "/",
     },
     {
-      label: <a>Courses</a>,
-      key: "courses",
+      label: <a>{t("Courses")}</a>,
+      key: "/courses/",
       dropdown: {
         left: {
-          title: "Class Road Map",
-          description:
-            "X-Camp offers beginner to IOI level programming classes with structured, self-designed curriculum",
+          title: t("ClassRoadMap"),
+          description: t("Courses.LeftDescription"),
           btn: (
             <>
               <span onClick={() => router.push("/courses")}>
-                {"Find My Class"}
+                {t("Courses.Btn")}
               </span>
               <UserAddOutlined />
             </>
           ),
         },
         right: {
-          title: "Course Catalog",
-          description: "List of all courses in X-Camp 2023",
+          title: t("CourseCatalog"),
+          description: t("Courses.RightDescription"),
           action: () => router.push("/courses/catalog"),
         },
       },
       children: [
         {
-          label: <Link href="/courses#classify0">Online Classes</Link>,
+          label: <Link href="/courses#classify0">{t("OnlineClasses")}</Link>,
           key: "/courses/#classify0",
         },
+        // {
+        //   label: (
+        //     <Link href="/courses/100-probs-challenge">100 Prob Challenge</Link>
+        //   ),
+        //   key: "/courses/100-prob-challenge",
+        // },
         {
-          label: (
-            <Link href="/courses/100-probs-challenge">100 Prob Challenge</Link>
-          ),
-          key: "/courses/100-prob-challenge",
+          label: <Link href="/courses/camps">{t("In-personCamps")}</Link>,
+          key: "/courses/in-person-campus/",
         },
         {
-          label: <Link href="/courses/camps">In-person Camps</Link>,
-          key: "/courses/in-person-campus",
-        },
-        {
-          label: <Link href="/courses#classify5">APCS Classes</Link>,
+          label: <Link href="/courses#classify5">{t("APCSClasses")}</Link>,
           key: "/courses/#classify5",
         },
         {
-          label: <Link href="/courses#classify3">Enhancement Classes</Link>,
-          key: "/courses/enhancement-classes",
+          label: (
+            <Link href="/courses#classify3">{t("EnhancementClasses")}</Link>
+          ),
+          key: "/courses/enhancement-classes/",
         },
         {
           label: (
             <a href="https://x-tutors.org/" target="_blank">
-              X-Tutors
+              {t("X-Tutors")}
             </a>
           ),
           key: "x-tutors",
@@ -67,16 +70,15 @@ export const useMenuItems = () => {
       ],
     },
     {
-      label: <Link href="/">Resources</Link>,
+      label: <Link href="/">{t("Resources")}</Link>,
       key: "resources",
       dropdown: {
         left: {
-          title: "School Calendar",
-          description:
-            "X-Camp offers beginner to IOI level programming classes with structured, self-designed curriculum",
+          title: t("SchoolCalendar"),
+          description: t("SchoolCalendar.Description"),
           btn: (
             <>
-              <span>{"View Calendar"}</span>
+              <span>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
           ),
@@ -86,13 +88,13 @@ export const useMenuItems = () => {
         {
           label: (
             <Link href="/resources/weekly-education-forum">
-              Education Forum
+              {t("EducationForum")}
             </Link>
           ),
           key: "/resources/weekly-education-forum/",
         },
         {
-          label: <Link href="/">Turing cup</Link>,
+          label: <Link href="/">{t("TuringCup")}</Link>,
           key: "/resources/turing-cup/",
         },
         {
@@ -100,11 +102,13 @@ export const useMenuItems = () => {
           key: "/resources/usaco/",
         },
         {
-          label: <Link href="/resources/weekly-open-house">Open House</Link>,
+          label: (
+            <Link href="/resources/weekly-open-house">{t("OpenHouse")}</Link>
+          ),
           key: "/resources/weekly-open-house/",
         },
         {
-          label: <Link href="/">X-Cup</Link>,
+          label: <Link href="/">{t("X-Cup")}</Link>,
           key: "/resources/x-cup/",
         },
         {
@@ -114,7 +118,7 @@ export const useMenuItems = () => {
         {
           label: (
             <Link href="/resources/usaco-live-solutions">
-              USACO Live Solution
+              {t("USACOLiveSolution")}
             </Link>
           ),
           key: "/resources/usaco-live-solution/",
@@ -128,12 +132,12 @@ export const useMenuItems = () => {
           key: "calico",
         },
         {
-          label: <Link href="/resources/contests">Contests</Link>,
+          label: <Link href="/resources/contests">{t("Contests")}</Link>,
           key: "/resources/contests/",
         },
 
         {
-          label: <Link href="/">Art of Programming</Link>,
+          label: <Link href="/">{t("ArtOfProgramming")}</Link>,
           key: "art-of-programming",
         },
         {
@@ -143,16 +147,15 @@ export const useMenuItems = () => {
       ],
     },
     {
-      label: <Link href="/about-us/introduction">About Us</Link>,
+      label: <Link href="/about-us/introduction">{t("AboutUs")}</Link>,
       key: "about-us",
       dropdown: {
         left: {
-          title: "School Calendar",
-          description:
-            "X-Camp offers beginner to IOI level programming classes with structured, self-designed curriculum",
+          title: t("SchoolCalendar"),
+          description: t("SchoolCalendar.Description"),
           btn: (
             <>
-              <span>{"View Calendar"}</span>
+              <span>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
           ),
@@ -160,55 +163,61 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <Link href="/about-us/introduction">Introduction</Link>,
-          key: "introduction",
+          label: <Link href="/about-us/introduction">{t("Introduction")}</Link>,
+          key: "/about-us/introduction/",
         },
         {
-          label: <Link href="/about-us/calendar">School Calendar</Link>,
-          key: "school-calendar",
+          label: <Link href="/about-us/calendar">{t("SchoolCalendar")}</Link>,
+          key: "/about-us/calendar/",
         },
         {
-          label: <Link href="/about-us/contact-us">Contact Us</Link>,
-          key: "contact-us",
+          label: <Link href="/about-us/contact-us">{t("ContactUs")}</Link>,
+          key: "/about-us/contact-us/",
         },
         {
-          label: <Link href="/about-us/achievements">Achievements</Link>,
-          key: "achievements",
-        },
-        {
-          label: <Link href="/about-us/introduction#faculty">Faculty&Coach</Link>,
-          key: "faculty&coach",
-        },
-        {
-          label: <Link href="/about-us/join-us">Join Us</Link>,
-          key: "join-us",
-        },
-        {
-          label: <Link href="/about-us/partners">Partners</Link>,
-          key: "partners",
-        },
-        {
-          label: <Link href="/about-us/news">News</Link>,
-          key: "news",
-        },
-        {
-          label: <Link href="/about-us/help-center">Q&A</Link>,
-          key: "help-center",
-        },
-        {
-          label: <Link href="/about-us/x-alumni">X-Alumni</Link>,
-          key: "x-alumni",
+          label: <Link href="/about-us/achievements">{t("Achievements")}</Link>,
+          key: "/about-us/achievements/",
         },
         {
           label: (
-            <Link href="/about-us/student-recommend">Referral Program</Link>
+            <Link href="/about-us/introduction#faculty">
+              {t("Faculty&Coach")}
+            </Link>
           ),
-          key: "current-student-referral-program",
+          key: "/about-us/introduction#faculty",
+        },
+        {
+          label: <Link href="/about-us/join-us">{t("JoinUs")}</Link>,
+          key: "/about-us/join-us/",
+        },
+        {
+          label: <Link href="/about-us/partners">{t("Partners")}</Link>,
+          key: "/about-us/partners/",
+        },
+        {
+          label: <Link href="/about-us/news">{t("News")}</Link>,
+          key: "/about-us/news/",
+        },
+        {
+          label: <Link href="/about-us/help-center">{t("Q&A")}</Link>,
+          key: "/about-us/help-center/",
+        },
+        {
+          label: <Link href="/about-us/x-alumni">{t("X_ALUMNI")}</Link>,
+          key: "/about-us/x-alumni/",
+        },
+        {
+          label: (
+            <Link href="/about-us/student-recommend">
+              {t("ReferralProgram")}
+            </Link>
+          ),
+          key: "/about-us/student-recommend/",
         },
       ],
     },
     {
-      label: <Link href="/">Evaluation</Link>,
+      label: <Link href="/">{t("Evaluation")}</Link>,
       key: "evaluation",
     },
   ];

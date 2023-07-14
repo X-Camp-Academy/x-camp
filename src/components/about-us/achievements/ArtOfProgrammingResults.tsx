@@ -1,10 +1,10 @@
-import { Card, Typography, List } from 'antd';
-import styles from './ArtOfProgrammingResults.module.scss';
-import React from 'react';
-import { GetProjectsDemo } from '@/apis/strapi-client/define';
-import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
-import { getTransResult } from '@/utils/public';
-import { useLang } from '@/hoc/with-intl/define';
+import { Card, Typography, List } from "antd";
+import styles from "./ArtOfProgrammingResults.module.scss";
+import React from "react";
+import { GetProjectsDemo } from "@/apis/strapi-client/define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title, Paragraph, Text } = Typography;
 
 interface Props {
@@ -12,17 +12,16 @@ interface Props {
 }
 
 const ArtOfProgrammingResults = ({ data }: Props) => {
-  const { lang } = useLang();
+  const { lang, format: t } = useLang();
 
   const listData = [
     {
-      title: 'Prerequisites of contestants:',
-      content: 'students of CS100 who have no coding experience before.',
+      title: t("Art.Contestants"),
+      content: t("Art.Contestants.Desc"),
     },
     {
-      title: 'Rules:',
-      content:
-        'After 10-weeks learning Python, participants can create their own projects with Python by themselves or with classmates. All parents vote anonymously to select the Top 3 winning projects on demo day.',
+      title: t("Art.Rules"),
+      content: t("Art.Rules.Desc"),
     },
   ];
   return (
@@ -30,13 +29,10 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
       <div className={styles.ArtOfProgrammingResultsContainer}>
         <div className={`${styles.ArtOfProgrammingResults} container`}>
           <Title className={styles.firstTitle}>
-            Art of Programming Results
+            {t("ArtProgrammingResults")}
           </Title>
           <Text className={styles.intro}>
-            X-Camp has created an Art of Python Programming contest every
-            quarter to inspire students that are new to Python. It is a great
-            opportunity for students to showcase what they have learned from
-            classes by creating fun projects, and get rewarded!
+            {t("ArtProgrammingResults.Desc")}
           </Text>
 
           <List
@@ -59,7 +55,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
           />
 
           <div className={styles.projectDemo}>
-            <Title className={styles.title}>Projects Demo</Title>
+            <Title className={styles.title}>{t("ProjectsDemo")}</Title>
             {data?.map((v, index) => (
               <React.Fragment key={index}>
                 <Title className={styles.subTitle}>

@@ -17,12 +17,9 @@ const XAlumni = () => {
     <div className={styles.xalumniContainer}>
       <div className={`${styles.xalumni} container`}>
         <Space direction="vertical">
-          <Title className={styles.title}>{"X-Alumni"}</Title>
+          <Title className={styles.title}>{t("X_ALUMNI")}</Title>
           <Paragraph className={styles.paragraph}>
-            {/* {t("X_ALUMNI_INTRODUCTION")} */}
-            Since its inception, X-Camp has had over 1,000 students and is
-            currently enrolling over 500+ students in 250+ schools around the
-            world. If you would like to find your classmates, please contact us!
+            {t("X_Alumni.Desc")}
           </Paragraph>
         </Space>
 
@@ -103,7 +100,7 @@ const XAlumni = () => {
           className={styles.moreAlumniInfo}
           onClick={() => router.push("/about-us/x-alumni")}
         >
-          More Alumni Information
+          {t("MoreAlumniInformation")}
           <AppstoreAddOutlined className={styles.icon} />
         </button>
       </div>

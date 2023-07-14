@@ -24,12 +24,6 @@ const CarouselContent: React.FC = () => {
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
   };
-
-  const carouselImages = [
-    "/image/home/carousel-1-en.png",
-    "/image/home/carousel-2-en.png",
-  ];
-
   return (
     <div className={styles.bannerContainer}>
       <Carousel autoplay={false} dots={{ className: styles.carouselDots }}>
@@ -38,48 +32,20 @@ const CarouselContent: React.FC = () => {
             <Row>
               <Col xs={24} sm={24} md={14}>
                 <Space direction="vertical" className={styles.space} size={24}>
-                  <Title className={styles.title}>Weekly Open House</Title>
+                  <Title className={styles.title}>{t("WeeklyOpenHouse")}</Title>
                   <div>
                     <Paragraph className={styles.paragraph}>
-                      {"Evaluate student's programming level"}
+                      {t("OpenHouse.Dec1")}
                     </Paragraph>
                     <Paragraph className={styles.paragraph}>
-                      {"Create a programming learning plan"}
+                      {t("OpenHouse.Dec2")}
                     </Paragraph>
                     <Paragraph className={styles.paragraph}>
-                      {"Take it online, meet you weekly"}
+                      {t("OpenHouse.Dec3")}
                     </Paragraph>
                   </div>
-                  <button className={styles.button}>JOIN US</button>
-                  <Text className={styles.date}>
-                    *Every Tuesday 6:30pm-7:30pm PT
-                  </Text>
-                </Space>
-              </Col>
-            </Row>
-          </div>
-        </div>
-        <div className={styles.first}>
-          <div className="container">
-            <Row>
-              <Col xs={24} sm={24} md={14}>
-                <Space direction="vertical" className={styles.space} size={24}>
-                  <Title className={styles.title}>
-                    X-Camp Oline Open House
-                  </Title>
-                  <div>
-                    <Paragraph className={styles.paragraph}>
-                      {"Evaluate student's programming level"}
-                    </Paragraph>
-                    <Paragraph className={styles.paragraph}>
-                      Make a programming learning plan and course schedule
-                      consultation
-                    </Paragraph>
-                  </div>
-                  <button className={styles.button}>JOIN US</button>
-                  <Text className={styles.date}>
-                    *Every Tuesday 6:30pm-7:30pm PT
-                  </Text>
+                  <button className={styles.button}>{t("JoinUs")}</button>
+                  <Text className={styles.date}>{t("OpenTime")}</Text>
                 </Space>
               </Col>
             </Row>
@@ -89,7 +55,7 @@ const CarouselContent: React.FC = () => {
 
       <div className={styles.cardFrom}>
         <Card
-          title={"Free Consultation"}
+          title={t("FreeConsultation")}
           headStyle={{
             color: "#172142",
             fontSize: 24,
@@ -111,11 +77,11 @@ const CarouselContent: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input child's nickname!",
+                  message: t("Name.Required"),
                 },
               ]}
             >
-              <Input placeholder="Child Nickname*" />
+              <Input placeholder={t("Nickname")} />
             </Form.Item>
 
             <Form.Item
@@ -123,11 +89,11 @@ const CarouselContent: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input child's grade!",
+                  message: t("Grade.Required"),
                 },
               ]}
             >
-              <Input placeholder="Child Grade*" />
+              <Input placeholder={t("Grade")} />
             </Form.Item>
 
             <Form.Item
@@ -136,7 +102,7 @@ const CarouselContent: React.FC = () => {
                 { type: "email" },
                 {
                   required: true,
-                  message: "Please input your email!",
+                  message: t("Email.Required"),
                 },
               ]}
             >
@@ -148,11 +114,11 @@ const CarouselContent: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your number/wechat ID!",
+                  message: t("Phone/Wechat.Required"),
                 },
               ]}
             >
-              <Input placeholder="Phone Number/Wechat ID*" />
+              <Input placeholder={t("Phone/Wechat")} />
             </Form.Item>
 
             <Form.Item>
@@ -161,7 +127,7 @@ const CarouselContent: React.FC = () => {
                 htmlType="submit"
                 className={styles.submit}
               >
-                Submit And Get Free USACO Toolkit
+                {t("SubmitOpenHouse")}
               </Button>
             </Form.Item>
           </Form>

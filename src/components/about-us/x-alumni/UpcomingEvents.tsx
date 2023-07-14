@@ -14,60 +14,15 @@ import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import dayjs from "dayjs";
+import { formatTimezone } from "@/utils/public";
 
 const { Title, Paragraph, Text } = Typography;
 
 const UpcomingEvents: React.FC = () => {
   const pageSize = 25;
-  const { lang } = useLang();
+  const { lang, format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
-
-  const monthNameEn = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const formatDate = (dateString: string, lang: string) => {
-    const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
-    const weekdaysEn = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    let formatString = "";
-    let formattedDate = "";
-    const dayInfo = dayjs(dateString);
-    if (lang === "zh") {
-      formatString = "YYYY年MM月DD日";
-      formattedDate =
-        dayInfo.format(formatString) + " " + weekdaysZh[dayInfo.day()];
-    } else if (lang === "en") {
-      formatString = "DD, YYYY";
-      formattedDate =
-        weekdaysEn[dayInfo.day()] +
-        ", " +
-        monthNameEn[dayInfo.month()] +
-        " " +
-        dayInfo.format(formatString);
-    }
-
-    return formattedDate;
-  };
 
   const { data: newEventData } = useGetNewEvent({
     tag,
@@ -75,10 +30,12 @@ const UpcomingEvents: React.FC = () => {
     pageSize,
   });
 
-  const upComingEvent = newEventData?.data.filter((item, index) => {
+  const upComingEvent = newEventData?.filter((item, index) => {
     return (
-      item?.attributes?.datetime &&
-      new Date(item?.attributes?.datetime).getTime() - new Date().getTime() > 0
+      item?.attributes?.startDateTime &&
+      new Date(item?.attributes?.startDateTime).getTime() -
+        new Date().getTime() >
+        0
     );
   });
 
@@ -87,179 +44,148 @@ const UpcomingEvents: React.FC = () => {
       <div className="container">
         <Space className={styles.topSpace}>
           <Space direction="vertical">
-            <Title className={styles.title}>Upcoming Events</Title>
+            <Title className={styles.title}>{t("UpcomingEvents")}</Title>
             <Paragraph className={styles.paragraph}>
-              Peek at some alumni events happening just around the corner.
+              {t("UpcomingEvents.Desc")}
             </Paragraph>
           </Space>
           <button className={styles.button}>
-            View More Events <RightOutlined />
+            {t("ViewMoreEvents")} <RightOutlined />
           </button>
         </Space>
 
         <Row gutter={32} className={styles.row}>
           {upComingEvent?.slice(0, 3).map((item, index) => {
-            if (
-              item?.attributes?.datetime &&
-              item?.attributes.start &&
-              item?.attributes.end
-            )
-              return (
-                <Col key={index} xs={24} sm={24} md={8}>
-                  <ColorfulCard border="bottom" index={index}>
-                    <Card>
-                      <Space direction="vertical">
-                        <Text className={styles.cardMonth}>
-                          {lang === "en"
-                            ? monthNameEn[
-                                dayjs(item.attributes?.datetime).month()
-                              ]
-                            : dayjs(item.attributes?.datetime).month() +
-                              1 +
-                              "月"}
-                        </Text>
-                        <Text className={styles.cardDay}>
-                          {dayjs(item.attributes?.datetime).date()}
-                        </Text>
-                        <Paragraph
-                          ellipsis={{ rows: 2 }}
-                          className={styles.cardParagraph}
-                        >
-                          {getTransResult(
+            const { utcTime: startTime } = formatTimezone(
+              item?.attributes?.startDateTime
+            );
+            const { utcTime: endTime, timezone: endTimeZone } = formatTimezone(
+              item?.attributes?.endDateTime
+            );
+            return (
+              <Col key={index} xs={24} sm={24} md={8}>
+                <ColorfulCard border="bottom" index={index}>
+                  <Card style={{ height: 450 }}>
+                    <Space direction="vertical">
+                      <Text className={styles.cardMonth}>
+                        {startTime.format("MMMM")}
+                      </Text>
+                      <Text className={styles.cardDay}>
+                        {startTime.format("DD")}
+                      </Text>
+                      <Paragraph
+                        ellipsis={{
+                          rows: 2,
+                          tooltip: getTransResult(
                             lang,
                             item?.attributes?.titleZh,
                             item?.attributes?.titleEn
+                          ),
+                        }}
+                        className={styles.cardParagraph}
+                      >
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Paragraph>
+                      <Space direction="vertical">
+                        <Text className={styles.cardText}>
+                          <HistoryOutlined className={styles.cardIcon} />
+                          {`${startTime.format(
+                            "dddd, MMMM DD, YYYY hh:mm A"
+                          )} - ${endTime.format(
+                            "dddd, MMMM DD, YYYY hh:mm A"
+                          )} ${endTimeZone}`}
+                        </Text>
+                        <Text className={styles.cardText}>
+                          <LaptopOutlined className={styles.cardIcon} />
+                          {!item.attributes.geographicallyAddress &&
+                          item.attributes.link &&
+                          item.attributes.onlinePlatform ? (
+                            <a
+                              href={item.attributes.link}
+                              style={{ color: "#666666" }}
+                            >
+                              {item.attributes.onlinePlatform}
+                            </a>
+                          ) : (
+                            item.attributes.geographicallyAddress
                           )}
-                        </Paragraph>
-                        <Space direction="vertical">
-                          <Text className={styles.cardText}>
-                            <HistoryOutlined className={styles.cardIcon} />
-                            {`
-                            ${formatDate(item?.attributes?.datetime, lang)} | 
-                            ${item?.attributes?.start.substring(0, 5)} ${
-                              Number(item?.attributes?.start.substring(0, 2)) <
-                              12
-                                ? "AM"
-                                : "PM"
-                            } - 
-                            ${item?.attributes?.end.substring(0, 5)} ${
-                              Number(item?.attributes?.end.substring(0, 2)) < 12
-                                ? "AM"
-                                : "PM"
-                            } 
-                            UTC ${
-                              item.attributes.timeZone > 0
-                                ? "+" + item.attributes.timeZone
-                                : item.attributes.timeZone
-                            }
-                            `}
-                          </Text>
-                          <Text className={styles.cardText}>
-                            <LaptopOutlined className={styles.cardIcon} />
-                            {!item.attributes.geographicallyAddress &&
-                            item.attributes.link &&
-                            item.attributes.onlinePlatform ? (
-                              <a
-                                href={item.attributes.link}
-                                style={{ color: "#666666" }}
-                              >
-                                {item.attributes.onlinePlatform}
-                              </a>
-                            ) : (
-                              item.attributes.geographicallyAddress
-                            )}
-                          </Text>
-                          <Text className={styles.cardText}>
-                            <UserOutlined className={styles.cardIcon} />
-                            {`Organizer | ${item?.attributes?.organizer} `}
-                          </Text>
-                        </Space>
+                        </Text>
+                        <Text className={styles.cardText}>
+                          <UserOutlined className={styles.cardIcon} />
+                          {`Organizer | ${item?.attributes?.organizer} `}
+                        </Text>
                       </Space>
-                    </Card>
-                  </ColorfulCard>
-                </Col>
-              );
+                    </Space>
+                  </Card>
+                </ColorfulCard>
+              </Col>
+            );
           })}
         </Row>
         <Row gutter={32} className={styles.row}>
           {upComingEvent?.slice(3, 6).map((item, index) => {
-            if (
-              item?.attributes?.datetime &&
-              item?.attributes.start &&
-              item?.attributes.end
-            )
-              return (
-                <Col key={index} xs={24} sm={24} md={8}>
-                  <ColorfulCard border="bottom" index={index}>
-                    <Card>
+            const { utcTime: startTime } = formatTimezone(
+              item?.attributes?.startDateTime
+            );
+            const { utcTime: endTime, timezone: endTimeZone } = formatTimezone(
+              item?.attributes?.endDateTime
+            );
+            return (
+              <Col key={index} xs={24} sm={24} md={8}>
+                <ColorfulCard border="bottom" index={index}>
+                  <Card>
+                    <Space direction="vertical">
+                      <Text className={styles.cardMonth}>
+                        {startTime.format("MMMM")}
+                      </Text>
+                      <Text className={styles.cardDay}>
+                        {startTime.format("DD")}
+                      </Text>
+                      <Paragraph className={styles.cardParagraph}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Paragraph>
                       <Space direction="vertical">
-                        <Text className={styles.cardMonth}>
-                          {lang === "en"
-                            ? monthNameEn[
-                                dayjs(item.attributes?.datetime).month()
-                              ]
-                            : dayjs(item.attributes?.datetime).month() +
-                              1 +
-                              "月"}
+                        <Text className={styles.cardText}>
+                          <HistoryOutlined className={styles.cardIcon} />
+                          {`${startTime.format(
+                            "dddd, MMMM DD, YYYY hh:mm A"
+                          )} - ${endTime.format(
+                            "dddd, MMMM DD, YYYY hh:mm A"
+                          )} ${endTimeZone}`}
                         </Text>
-                        <Text className={styles.cardDay}>
-                          {dayjs(item.attributes?.datetime).date()}
-                        </Text>
-                        <Paragraph className={styles.cardParagraph}>
-                          {getTransResult(
-                            lang,
-                            item?.attributes?.titleZh,
-                            item?.attributes?.titleEn
+                        <Text className={styles.cardText}>
+                          <LaptopOutlined className={styles.cardIcon} />
+                          {!item.attributes.geographicallyAddress &&
+                          item.attributes.link &&
+                          item.attributes.onlinePlatform ? (
+                            <a
+                              href={item.attributes.link}
+                              style={{ color: "#666666" }}
+                            >
+                              {item.attributes.onlinePlatform}
+                            </a>
+                          ) : (
+                            item.attributes.geographicallyAddress
                           )}
-                        </Paragraph>
-                        <Space direction="vertical">
-                          <Text className={styles.cardText}>
-                            <HistoryOutlined className={styles.cardIcon} />
-                            {`
-                            ${formatDate(item?.attributes?.datetime, lang)} | 
-                            ${item?.attributes?.start.substring(0, 5)} ${
-                              Number(item?.attributes?.start.substring(0, 2)) <
-                              12
-                                ? "AM"
-                                : "PM"
-                            } - 
-                            ${item?.attributes?.end.substring(0, 5)} ${
-                              Number(item?.attributes?.end.substring(0, 2)) < 12
-                                ? "AM"
-                                : "PM"
-                            } 
-                            UTC ${
-                              item.attributes.timeZone > 0
-                                ? "+" + item.attributes.timeZone
-                                : item.attributes.timeZone
-                            }
-                            `}
-                          </Text>
-                          <Text className={styles.cardText}>
-                            <LaptopOutlined className={styles.cardIcon} />
-                            {!item.attributes.geographicallyAddress &&
-                            item.attributes.link &&
-                            item.attributes.onlinePlatform ? (
-                              <a
-                                href={item.attributes.link}
-                                style={{ color: "#666666" }}
-                              >
-                                {item.attributes.onlinePlatform}
-                              </a>
-                            ) : (
-                              item.attributes.geographicallyAddress
-                            )}
-                          </Text>
-                          <Text className={styles.cardText}>
-                            <UserOutlined className={styles.cardIcon} />
-                            {`Organizer | ${item?.attributes?.organizer} `}
-                          </Text>
-                        </Space>
+                        </Text>
+                        <Text className={styles.cardText}>
+                          <UserOutlined className={styles.cardIcon} />
+                          {`Organizer | ${item?.attributes?.organizer} `}
+                        </Text>
                       </Space>
-                    </Card>
-                  </ColorfulCard>
-                </Col>
-              );
+                    </Space>
+                  </Card>
+                </ColorfulCard>
+              </Col>
+            );
           })}
         </Row>
       </div>

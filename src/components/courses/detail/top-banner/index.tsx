@@ -6,20 +6,23 @@ import classNames from "classnames/bind";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import CourseClassesContext from "../CourseClasses";
+import { getWeeksDays } from "../../utils";
 const { Title } = Typography;
 
 const cx = classNames.bind(styles);
 
 const TopBanner: React.FC = () => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const courseData = useContext(CourseClassesContext);
-  const courseCodeTitle = `${
-    courseData?.attributes?.courseCode
-  }: ${getTransResult(
+  console.log(courseData);
+  const { courseCode, courseTitleZh, courseTitleEn, lessonNum, frequency } =
+    courseData?.attributes ?? {};
+
+  const courseCodeTitle = `${courseCode}: ${getTransResult(
     lang,
-    courseData?.attributes?.courseTitleZh,
-    courseData?.attributes?.courseTitleEn
-  )}`;
+    courseTitleZh,
+    courseTitleEn
+  )} (${lessonNum} ${getWeeksDays(frequency)})`;
   return (
     <div className={styles.topBanner}>
       <div className={styles.banner} />
@@ -31,10 +34,10 @@ const TopBanner: React.FC = () => {
           className={styles.breadcrumb}
           items={[
             {
-              title: "Home",
+              title: t("Home"),
             },
             {
-              title: <a href="/courses">{"Courses"}</a>,
+              title: <a href="/courses">{t("Courses")}</a>,
             },
             {
               title: courseCodeTitle,
