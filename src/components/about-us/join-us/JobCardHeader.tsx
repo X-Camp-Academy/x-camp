@@ -93,6 +93,7 @@ const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
               <Link
                 className={styles.applyBtn}
                 href={`/about-us/join-us/submit-resume/${data?.id}`}
+                onClick={(e) => e.stopPropagation()}
               >
                 {t("ApplyNow")}
               </Link>
