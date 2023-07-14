@@ -354,3 +354,9 @@ export interface GetPartner extends strapiPublicFields {
 
 export type GetPartnerRequest = StrapiRequest<GetPartner>;
 export type GetPartnerResponse = StrapiResponse<GetPartner>;
+
+export interface UserSearch extends strapiPublicFields {
+  keywords: JSON;
+}
+export type GetUserSearchRequest = StrapiRequest<UserSearch>;
+export type GetUserSearchResponse = StrapiResponseSingleDataItem<UserSearch>;

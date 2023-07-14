@@ -3,10 +3,12 @@ import styles from "./BecomePartner.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
 import { EditOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
 const { Title, Paragraph } = Typography;
 
 const BecomePartner = () => {
   const { format: t } = useLang();
+  const router = useRouter();
   return (
     <>
       <div className={styles.becomePartnerContainer}>

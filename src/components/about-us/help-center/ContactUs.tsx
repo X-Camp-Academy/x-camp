@@ -5,11 +5,13 @@ import styles from "./ContactUs.module.scss";
 import Link from "next/link";
 import { CommentOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
 
 const { Title, Paragraph } = Typography;
 
 const ContactUs = () => {
   const { format: t } = useLang();
+  const router = useRouter();
   return (
     <div className={`${styles.contactUs} container`}>
       <div className={styles.card}>
@@ -29,7 +31,7 @@ const ContactUs = () => {
             <strong>{t("NeedMoreHelp.Desc")}</strong>
           </Paragraph>
           <Link href="/about-us/contact-us">
-            <Button className={styles.button}>
+            <Button className={styles.button} onClick={() => { router.push('/about-us/contact-us') }}>
               {t("ContactUs")}
               <CommentOutlined />
             </Button>

@@ -3,25 +3,32 @@ import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from "./AboutXCamp.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
 
 const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
   const { format: t } = useLang();
+  const router = useRouter();
   const aboutContents = [
     {
       icon: "/image/home/faculty-icon.png",
       title: t("Faculty"),
       desc: t("Faculty.Des"),
+      url: '/about-us/introduction/#faculty'
     },
     {
       icon: "/image/home/achievement-icon.png",
       title: t("Achievements"),
       desc: t("Achievements.Des"),
+      url: '/about-us/achievements/'
     },
     {
       icon: "/image/home/community-icon.png",
       title: t("Community"),
       desc: t("Community.Des"),
+      url: '/about-us/x-alumni/'
     },
   ];
   return (
@@ -35,8 +42,7 @@ const AboutXCamp: React.FC = () => {
           <Title className={styles.title}>{t("AboutX-Camp")}</Title>
           <Paragraph className={styles.paragraph}>
             {t("X-Camp.Desc1")}
-
-            <Text className={styles.paragraphText}>{t("USACOClasses")}</Text>
+            <Text className={styles.paragraphText} onClick={() => { router.push("/courses") }}>{t("USACOClasses")}</Text>
           </Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
@@ -49,22 +55,25 @@ const AboutXCamp: React.FC = () => {
                     borderRadius: 8,
                   }}
                 >
-                  <Space direction="vertical">
-                    <Image
-                      src={item?.icon}
-                      alt="icon"
-                      preview={false}
-                      className={styles.cardIcon}
-                    />
-                    <Text className={styles.cardTitle}>{item?.title}</Text>
-                    <Paragraph
-                      ellipsis={{ rows: 5 }}
-                      className={styles.cardParagraph}
-                    >
-                      {item?.desc}
-                    </Paragraph>
-                  </Space>
+                  <a href={item.url}>
+                    <Space direction="vertical">
+                      <Image
+                        src={item?.icon}
+                        alt="icon"
+                        preview={false}
+                        className={styles.cardIcon}
+                      />
+                      <Text className={styles.cardTitle}>{item?.title}</Text>
+                      <Paragraph
+                        ellipsis={{ rows: 5 }}
+                        className={styles.cardParagraph}
+                      >
+                        {item?.desc}
+                      </Paragraph>
+                    </Space>
+                  </a>
                 </Card>
+
               </Col>
             );
           })}

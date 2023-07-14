@@ -51,7 +51,7 @@ const ScheduleTable = () => {
     {
       span: 5,
       name: "classMode",
-      text: "Class Mode:",
+      text: t("CourseMode"),
       options: [
         {
           label: "Show All",
@@ -70,7 +70,7 @@ const ScheduleTable = () => {
     {
       span: 7,
       name: "courseLevelType",
-      text: "Course Level Type:",
+      text: t("CourseLevel"),
       options: [
         {
           label: "Show All",
@@ -113,7 +113,7 @@ const ScheduleTable = () => {
     {
       span: 5,
       name: "schoolQuarter",
-      text: "School Quarter:",
+      text: t("Quarter"),
       options: [
         {
           label: "Show All",
@@ -160,7 +160,7 @@ const ScheduleTable = () => {
   return (
     <div className={styles.scheduleTable}>
       <div className={"container"}>
-        <Form layout={"inline"}>
+{/*         <Form layout={"inline"}>
           <Row style={{ width: "100%" }} gutter={[18, 0]}>
             <Col xs={24} sm={24} md={12} lg={8} xl={6} className={styles.col}>
               <Form.Item name={"courseMode"} colon={false}>
@@ -205,7 +205,7 @@ const ScheduleTable = () => {
               </Form.Item>
             </Col>
           </Row>
-        </Form>
+        </Form> */}
         <Row>
           {selectItems?.map((selectItem, index) => (
             <Col
@@ -219,7 +219,7 @@ const ScheduleTable = () => {
               <Space align="center">
                 <Text className={styles.text}>{selectItem?.text}</Text>
                 <Select
-                  placeholder={"Show All"}
+                  placeholder={t("ShowAll")}
                   className={styles.select}
                   style={selectItem?.span === 7 ? { width: 200 } : {}}
                   options={selectItem?.options}
@@ -234,7 +234,7 @@ const ScheduleTable = () => {
               <Input
                 suffix={<SearchOutlined />}
                 className={styles.search}
-                placeholder="Search"
+                placeholder={t("Search")}
               />
               <Button
                 type={"primary"}

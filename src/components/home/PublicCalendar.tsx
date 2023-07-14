@@ -1,12 +1,12 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Space, Row, Col, Typography, Calendar, Badge, Empty } from "antd";
 import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
 import dayjs from "dayjs";
 import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
+import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import isBetween from "dayjs/plugin/isBetween";
 const { Title, Paragraph, Text } = Typography;
@@ -57,6 +57,21 @@ const PublicCalendar: React.FC = () => {
     "October",
     "November",
     "December",
+  ];
+
+  const monthNameAbbrEn = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   const pageSize = 999;
@@ -153,7 +168,7 @@ const PublicCalendar: React.FC = () => {
   };
 
   const getMonth = (date: string) => {
-    return dayjs(date).month() + 1;
+    return dayjs(date).month();
   };
 
   const getDate = (date: string) => {
@@ -214,7 +229,15 @@ const PublicCalendar: React.FC = () => {
                           {getDate(item.attributes?.startDateTime || "")}
                         </Text>
                         <Text className={styles.text}>
-                          {getMonth(item.attributes?.startDateTime || "")}
+                          {getTransResult(
+                            lang,
+                            `${
+                              getMonth(item.attributes?.startDateTime || "") + 1
+                            }月`,
+                            monthNameAbbrEn[
+                              getMonth(item.attributes?.startDateTime || "")
+                            ]
+                          )}
                         </Text>
                       </Space>
                       <Space
@@ -255,26 +278,18 @@ const PublicCalendar: React.FC = () => {
                             )
                               ? `${formatHourMinute(
                                   item?.attributes?.startDateTime || ""
-                                )} ${
-                                  dayjs(
-                                    item?.attributes?.startDateTime
-                                  ).hour() < 12
-                                    ? "AM"
-                                    : "PM"
-                                } - 
+                                )} - 
                                 ${formatHourMinute(
                                   item?.attributes?.endDateTime || ""
-                                )} ${
-                                  dayjs(item?.attributes?.endDateTime).hour() <
-                                  12
-                                    ? "AM"
-                                    : "PM"
-                                }`
+                                )} `
                               : `${formatYMDTime(
                                   item?.attributes?.startDateTime || ""
                                 )} - ${formatYMDTime(
                                   item?.attributes?.endDateTime || ""
                                 )}`
+                          } ${
+                            formatTimezone(item?.attributes?.startDateTime)
+                              .timezone
                           } 
                             `}
                         </Text>
@@ -330,7 +345,9 @@ const PublicCalendar: React.FC = () => {
                                       item?.endDateTime || ""
                                     )}`
                               } 
-                                /*timeZone*/`}
+                                ${
+                                  formatTimezone(item?.startDateTime).timezone
+                                }`}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`
