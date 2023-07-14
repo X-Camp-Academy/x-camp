@@ -314,6 +314,7 @@ export type GetResourcesLiveSolutionResponse =
 export enum FaqCategory {
   ReferralQA = "Referral QA",
   CoursesQA = "Courses QA",
+  CampsQA = "Camps QA",
 }
 
 export interface GetFaq extends strapiPublicFields {
