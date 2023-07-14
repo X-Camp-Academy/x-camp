@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useLang } from '@/hoc/with-intl/define';
-import dayjs, { Dayjs, tz } from 'dayjs';
+import { useLang } from "@/hoc/with-intl/define";
+import dayjs, { Dayjs, tz } from "dayjs";
 
 /**
  * 选择语言
@@ -11,12 +11,12 @@ import dayjs, { Dayjs, tz } from 'dayjs';
  * @returns string
  */
 export const getTransResult = (
-  lang: 'zh' | 'en',
+  lang: "zh" | "en",
   zhText: string | undefined,
   enText: string | undefined
 ) => {
-  if (zhText === undefined && enText === undefined) return '';
-  if (lang == 'zh') return zhText ? zhText : enText;
+  if (zhText === undefined && enText === undefined) return "";
+  if (lang == "zh") return zhText ? zhText : enText;
   else return enText ? enText : zhText;
 };
 
@@ -54,13 +54,13 @@ export const classifyByAttribution = <T extends { attributes: any }>(
  */
 export const filterByAttribution = <T extends { attributes: any }>(
   data: T[],
-  attribution: keyof T['attributes'] & string,
+  attribution: keyof T["attributes"] & string,
   values?: string[]
 ): T[] => {
   if (values === undefined) return data;
   const filteredData: T[] = data?.filter((item) => {
     const fieldValue = item?.attributes?.[attribution];
-    const formattedFieldValue: string[] = fieldValue?.split(',') ?? [];
+    const formattedFieldValue: string[] = fieldValue?.split(",") ?? [];
     if (
       formattedFieldValue?.length === 0 ||
       values?.some((value) => formattedFieldValue?.includes(value))
@@ -123,17 +123,17 @@ export const formatTimezone = (original: string | undefined) => {
   const convertTimeZone = () => {
     switch (utcOffset) {
       case TimeZone.CST:
-        return 'CST';
+        return "CST";
       case TimeZone.EDT:
-        return 'EDT';
+        return "EDT";
       case TimeZone.EST:
-        return 'EST';
+        return "EST";
       case TimeZone.PST:
-        return 'PST';
+        return "PST";
       case TimeZone.PDT:
-        return 'PDT';
+        return "PDT";
       default:
-        return `UTC${utcOffset >= 0 ? `+${utcOffset}` : utcOffset}`;
+        return `GMT${utcOffset >= 0 ? `+${utcOffset}` : utcOffset}`;
     }
   };
   return {
