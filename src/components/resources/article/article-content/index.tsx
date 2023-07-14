@@ -54,7 +54,7 @@ Joe是理科全才，他不仅是USACO美国国家训练队成员，也是物理
         className={styles.breadcrumb}
         items={[
           {
-            title: <Link href="/">{"Home"}</Link>,
+            title: <Link href="/">{t("Home")}</Link>,
           },
           {
             title: (

@@ -14,9 +14,7 @@ const TopBanner = () => {
             <Space direction="vertical">
               <Title className={styles.title}>{t("SchoolCalendar")}</Title>
               <Paragraph className={styles.paragraph}>
-                {
-                  "Since X-Camp was established, USACO has achieved remarkable results as our students' side project on their learning journey. "
-                }
+                {t("AboutUs.Achievements.Desc")}
               </Paragraph>
             </Space>
           </Col>
