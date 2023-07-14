@@ -97,17 +97,11 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
  */
 export const useGetNewEvent = ({
   tag,
-  courseId,
-  pageName,
-  eventId,
   current,
   pageSize,
   manual = false,
 }: {
   tag?: NewEventCategory;
-  courseId?: string[]; // 被用在哪些course 以英文逗号连接的字符串
-  pageName?: string[]; // 被用在哪些page 以英文逗号连接的字符串
-  eventId?: string[]; // 被用在哪些event 以英文逗号连接的字符串
   current: number;
   pageSize: number;
   manual?: boolean;
@@ -118,23 +112,7 @@ export const useGetNewEvent = ({
   return useRequest(
     async (params: GetNewEventRequest) => {
       const res = await client.getNewEvent(params);
-      let data = [];
-      if (!courseId && !pageName && !eventId) {
-        // 如果三个选项都没填则取所有的
-        data = res?.data;
-      } else {
-        // 根据courseId, pageName, eventId做筛选，根据category做分类
-        if (courseId) {
-          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
-        }
-        if (pageName) {
-          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
-        }
-        if (eventId) {
-          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
-        }
-      }
-      return deduplicateArray(data); // 去重
+      return res?.data;
     },
     {
       manual,
