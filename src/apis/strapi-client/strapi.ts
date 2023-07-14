@@ -32,6 +32,7 @@ import {
   GetCourses,
   GetPartnerRequest,
   GetUserSearchRequest,
+  SubmitUserInfoRequest,
 } from './define';
 import { isArray } from 'lodash';
 import {
@@ -83,6 +84,7 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
       defaultParams: [
         {
           populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -670,6 +672,26 @@ export const useGetUserSearchMap = () => {
           populate: '*',
         },
       ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ * 提交用户问题表单
+ * @returns
+ */
+export const useSubmitQuestionForm = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: SubmitUserInfoRequest) => {
+      console.log(params);
+      const res = await client.submitQuestionForm(params);
+      return res;
+    },
+    {
+      manual: true,
       onError: handleError,
     }
   );
