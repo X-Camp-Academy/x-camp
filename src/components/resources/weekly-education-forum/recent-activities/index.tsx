@@ -39,8 +39,8 @@ const RecentActivities = () => {
       <div className="container">
         <XCollapse
           header={{
-            title: t("RecentPopularActivities"),
-            description: t("RecentPopularActivities"),
+            title: t("RecentPopularEvents"),
+            description: t("RecentPopularEvents.Desc"),
           }}
         >
           <Row className={styles.cards} gutter={[32, 32]}>

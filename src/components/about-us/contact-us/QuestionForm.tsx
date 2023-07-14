@@ -65,8 +65,8 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="First Name">
-                    <Input placeholder="First Name" />
+                  <Form.Item label={t("FirstName")}>
+                    <Input placeholder={t("FirstName")} />
                   </Form.Item>
                 </Col>
                 <Col
@@ -75,8 +75,8 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="Last Name">
-                    <Input placeholder="Last Name" />
+                  <Form.Item label={t("LastName")}>
+                    <Input placeholder={t("LastName")} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -87,7 +87,7 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="Email">
+                  <Form.Item label={t("Email")}>
                     <Input placeholder="partner@x-camp.org" />
                   </Form.Item>
                 </Col>
@@ -97,14 +97,14 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label="Phone">
+                  <Form.Item label={t("Phone")}>
                     <Input placeholder="(XXX) XXX-XXXX" />
                   </Form.Item>
                 </Col>
               </Row>
-              <Form.Item label="Message">
+              <Form.Item label={t("Message")}>
                 <TextArea
-                  placeholder="Your message here"
+                  placeholder={t("YourMessageHere")}
                   className={styles.formTextArea}
                   autoSize={{ minRows: 6, maxRows: 6 }}
                 />

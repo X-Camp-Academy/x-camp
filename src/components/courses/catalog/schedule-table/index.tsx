@@ -141,24 +141,33 @@ const ScheduleTable = () => {
             <Col xs={24} sm={24} md={12} lg={8} xl={6} className={styles.col}>
               <Form.Item name={"courseMode"} colon={false}>
                 <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>Course Mode:</Text>
-                  <Select placeholder={"Show All"} className={styles.select} />
+                  <Text className={styles.search}>{t("CourseMode")}</Text>
+                  <Select
+                    placeholder={t("ShowAll")}
+                    className={styles.select}
+                  />
                 </Space>
               </Form.Item>
             </Col>
             <Col xs={24} sm={24} md={12} lg={8} xl={6} className={styles.col}>
               <Form.Item name={"courseLevel"} colon={false}>
                 <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>Course Level:</Text>
-                  <Select placeholder={"Show All"} className={styles.select} />
+                  <Text className={styles.search}>{t("CourseLevel")}</Text>
+                  <Select
+                    placeholder={t("ShowAll")}
+                    className={styles.select}
+                  />
                 </Space>
               </Form.Item>
             </Col>
             <Col xs={24} sm={24} md={12} lg={8} xl={5} className={styles.col}>
               <Form.Item name={"quarter"} colon={false}>
                 <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>Quarter:</Text>
-                  <Select placeholder={"Show All"} className={styles.select} />
+                  <Text className={styles.search}>{t("Quarter")}</Text>
+                  <Select
+                    placeholder={t("ShowAll")}
+                    className={styles.select}
+                  />
                 </Space>
               </Form.Item>
             </Col>
@@ -167,7 +176,7 @@ const ScheduleTable = () => {
                 <Input
                   className={styles.select}
                   suffix={<SearchOutlined />}
-                  placeholder="Search"
+                  placeholder={t("Search")}
                 />
               </Form.Item>
             </Col>

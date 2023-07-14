@@ -84,7 +84,7 @@ const DiscoverCourses = ({
         {t("DiscoverOurCourses")}
       </Texty>
       {showSubTitle && (
-        <div className={styles.subTitle}>{t("RecentPopularActivities")}</div>
+        <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
       )}
       {showBg && <Text className={styles.arc}></Text>}
 
