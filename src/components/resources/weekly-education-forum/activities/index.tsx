@@ -109,11 +109,11 @@ const Activities = () => {
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{selectedItem}</div>
           <div className={styles.pageTotal}>
-            {newEventData?.meta?.pagination?.pageCount} {t("educationalForum")}
+            {newEventData?.length} {t("educationalForum")}
           </div>
         </Space>
         <Row gutter={[32, 32]}>
-          {newEventData?.data?.map((v, index) => (
+          {newEventData?.map((v, index) => (
             /* 新版UI的分页器待完成 */
             <ActivityItem {...v} key={index} index={index} />
           ))}
@@ -123,7 +123,7 @@ const Activities = () => {
           className={styles.pagination}
           pageSize={pageSize}
           current={current}
-          total={newEventData?.meta?.pagination?.pageCount}
+          total={newEventData?.length}
           onChange={(page) => setCurrent(page)}
         />
       </div>

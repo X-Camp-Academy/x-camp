@@ -32,8 +32,7 @@ const CourseCamps = () => {
 
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
-    category: FaqCategory.CoursesQA,
-    courseId: courses?.data?.map((v) => String(v?.id)),
+    category: FaqCategory.CampsQA,
     pageName: [pathname],
   });
   // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
