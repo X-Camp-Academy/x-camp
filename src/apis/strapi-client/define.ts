@@ -22,15 +22,14 @@ export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
 export enum NewEventCategory {
-  News = 'News',
-  Event = 'Events',
-  Activity = 'Activity',
-  SchoolCalendar = 'School Calendar',
-  EventContest = 'Event Contest',
-  All = 'All',
+  News = "News",
+  Event = "Events",
+  SchoolCalendar = "School Calendar",
+  EventContest = "Event Contest",
+  All = "All",
 }
 
-export enum ActivityCategory {
+export enum EventCategory {
   SchoolLifeSharing = "School life's sharing",
   CodingEducation = 'Coding Education',
   CareerPath = 'Career Path',
@@ -43,10 +42,9 @@ export interface GetNewEvent extends strapiPublicFields {
   descriptionZh: string;
   descriptionEn: string;
   tags: NewEventCategory;
-  activityCategory?: ActivityCategory;
+  eventCategory?: EventCategory;
   order?: number;
   editor?: string;
-  img: StrapiMedia;
   start?: string;
   end?: string;
   timeZone: number;
@@ -66,6 +64,9 @@ export interface GetNewEvent extends strapiPublicFields {
   contestLogo?: StrapiMedia;
   contestTitleExplanationZh?: string;
   contestTitleExplanationEn?: string;
+
+  imgEn: StrapiMedia;
+  imgZh: StrapiMedia;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
@@ -176,6 +177,7 @@ export interface GetCourses extends strapiPublicFields {
   bundleRegisterLink: string;
   startDate: string;
   endDate: string;
+  courseFormat: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

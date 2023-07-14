@@ -1,26 +1,31 @@
 import React, { useContext, useRef } from "react";
 import styles from "./index.module.scss";
-import { Carousel, Descriptions, Space, Image, Button } from "antd";
+import { Carousel, Descriptions, Space, Image, Button, message } from "antd";
 import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import Item from "antd/es/list/Item";
 import dayjs from "dayjs";
 import { getTransResult } from "@/utils/public";
 
+
 const CourseDescription = () => {
   const { lang, format: t } = useLang();
+  const [messageApi, contextHolder] = message.useMessage();
   const ref = useRef<CarouselRef>(null);
   const courseData = useContext(CourseClassesContext);
   const {
+    courseCode,
     classMode,
     classLang,
     classRoomLang,
     startDate,
     endDate,
-    classes,
     media,
+    courseTitleZh,
+    courseTitleEn,
+    frequency,
+    courseFormat
   } = courseData?.attributes ?? {};
 
   const imageMimes = [
@@ -41,6 +46,23 @@ const CourseDescription = () => {
       dayjs(date).format(formatStringZh),
       dayjs(date).format(formatStringEn),
     )
+  }
+
+  const copyInfo = () => {
+    messageApi.info('Hello, Ant Design!');
+  };
+
+  const handlerShareLesson = () => {
+    const fullPath = window.location.href;
+    const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${classRoomLang}\n开始结束时间：${startDate} - ${endDate}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}`;
+    const clipTextEn = `Course Name:${courseTitleZh}\nCourse Code:${courseCode}\nprogramming language：${classLang}\nLanguage of instruction：${classRoomLang}\nStart end time:${startDate} - ${endDate}\nCourse cycle:${frequency}\nHow to start the course:${classMode}\nCourse Links:${fullPath}`;
+    navigator.clipboard.writeText(getTransResult(lang, clipTextZh, clipTextEn) || '').then(function () {
+      messageApi.info(getTransResult(lang, '复制成功', 'Copy Successfully'));
+    }, function () {
+      messageApi.info(getTransResult(lang, '复制失败', 'Copy Failed'));
+    });
+
+
   }
 
   return (
@@ -132,10 +154,12 @@ const CourseDescription = () => {
             {`${formatDate(startDate || '')} - ${formatDate(endDate || '')}`}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
-            {"Offline(12280 Saratoga Sunnyvale Rd, #203 CA 95070)"}
+            {courseFormat}
           </Descriptions.Item>
         </Descriptions>
-        <Button className={styles.btn}>
+        <Button id="copyButton" className={styles.btn} onClick={() => {
+          handlerShareLesson();
+        }}>
           {t("ShareLessons")}
           <ShareAltOutlined />
         </Button>
