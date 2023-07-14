@@ -1,38 +1,36 @@
-"use client";
-import React from "react";
-import { Row, Col, Card, Typography, Form, Input, Button } from "antd";
-import styles from "./QuestionForm.module.scss";
-import QACard from "@/components/common/q&a";
-import { useLang } from "@/hoc/with-intl/define";
+'use client';
+import React from 'react';
+import { Row, Col, Card, Typography, Form, Input, Button, message } from 'antd';
+import styles from './QuestionForm.module.scss';
+import QACard from '@/components/common/q&a';
+import { useLang } from '@/hoc/with-intl/define';
+import { usePathname } from 'next/navigation';
+import { useGetFaq, useSubmitQuestionForm } from '@/apis/strapi-client/strapi';
+import { getTransResult } from '@/utils/public';
+import { UserInfo } from '@/apis/strapi-client/define';
 
 const { TextArea } = Input;
 const { Title } = Typography;
 
 const QAPart = () => {
-  const { format: t } = useLang();
-  const QAData = [
-    {
-      question: "How can I refer friends.How can I refer friends",
-      answer:
-        "I don't know it. But you can ask for your parents.I don't know it. But you can ask for your parents.I don't know it. But you can ask for your parents.",
-    },
-    {
-      question: "How can I refer friends",
-      answer: "I don't know it. But you can ask for your parents.",
-    },
-    {
-      question: "How can I refer friends",
-      answer: "I don't know it. But you can ask for your parents.",
-    },
-    {
-      question: "How can I refer friends",
-      answer: "I don't know it. But you can ask for your parents.",
-    },
-  ];
-
+  const { format: t, lang } = useLang();
+  const [form] = Form.useForm();
+  const pathname = usePathname();
+  const { data: faq } = useGetFaq({
+    ready: true,
+    pageName: [pathname],
+  });
+  const { runAsync: submitQuestionForm } = useSubmitQuestionForm();
+  const onFinish = async (values: UserInfo) => {
+    await submitQuestionForm({
+      data: values,
+    });
+    form.resetFields();
+    message.success({ key: 'success', content: t('SUCCESSFULLY_SUBMITTED') });
+  };
   return (
     <div className={`${styles.qaContent} container`}>
-      <Title className={styles.title}>{t("Questions")}</Title>
+      <Title className={styles.title}>{t('Questions')}</Title>
       <Row gutter={[32, 32]}>
         <Col
           xs={{ span: 24 }}
@@ -40,11 +38,23 @@ const QAPart = () => {
           md={{ span: 24 }}
           lg={{ span: 12 }}
         >
-          {QAData.map((item, index) => (
+          {faq?.slice(0, 4)?.map((item, index) => (
             <QACard
-              key={"referral" + index}
-              question={item.question}
-              answer={item.answer}
+              key={'referral' + index}
+              question={
+                getTransResult(
+                  lang,
+                  item?.attributes?.questionZh,
+                  item?.attributes?.questionEn
+                ) || ''
+              }
+              answer={
+                getTransResult(
+                  lang,
+                  item?.attributes?.answerZh,
+                  item?.attributes?.answerEn
+                ) || ''
+              }
               index={index}
             />
           ))}
@@ -56,8 +66,8 @@ const QAPart = () => {
           lg={{ span: 12 }}
         >
           <Card className={styles.card}>
-            <Title className={styles.formTitle}>{t("SubmitAQuestion")}</Title>
-            <Form layout="vertical">
+            <Title className={styles.formTitle}>{t('SubmitAQuestion')}</Title>
+            <Form layout="vertical" form={form} onFinish={onFinish}>
               <Row gutter={[16, 8]}>
                 <Col
                   xs={{ span: 24 }}
@@ -65,8 +75,12 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label={t("FirstName")}>
-                    <Input placeholder={t("FirstName")} />
+                  <Form.Item
+                    label={t('FirstName')}
+                    name={'firstName'}
+                    rules={[{ required: true }]}
+                  >
+                    <Input placeholder={t('FirstName')} />
                   </Form.Item>
                 </Col>
                 <Col
@@ -75,8 +89,12 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label={t("LastName")}>
-                    <Input placeholder={t("LastName")} />
+                  <Form.Item
+                    label={t('LastName')}
+                    name={'lastName'}
+                    rules={[{ required: true }]}
+                  >
+                    <Input placeholder={t('LastName')} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -87,7 +105,19 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label={t("Email")}>
+                  <Form.Item
+                    label={t('Email')}
+                    name={'email'}
+                    rules={[
+                      {
+                        type: 'email',
+                      },
+                      {
+                        required: true,
+                      },
+                    ]}
+                    required
+                  >
                     <Input placeholder="partner@x-camp.org" />
                   </Form.Item>
                 </Col>
@@ -97,21 +127,27 @@ const QAPart = () => {
                   md={{ span: 24 }}
                   lg={{ span: 12 }}
                 >
-                  <Form.Item label={t("Phone")}>
+                  <Form.Item label={t('Phone')} name={'phone'}>
                     <Input placeholder="(XXX) XXX-XXXX" />
                   </Form.Item>
                 </Col>
               </Row>
-              <Form.Item label={t("Message")}>
+              <Form.Item
+                label={t('Message')}
+                name={'message'}
+                rules={[{ required: true }]}
+              >
                 <TextArea
-                  placeholder={t("YourMessageHere")}
+                  placeholder={t('YourMessageHere')}
                   className={styles.formTextArea}
                   autoSize={{ minRows: 6, maxRows: 6 }}
                 />
               </Form.Item>
 
               <Form.Item>
-                <Button className={styles.formButton}>Submit</Button>
+                <Button className={styles.formButton} htmlType="submit">
+                  {t('Submit')}
+                </Button>
               </Form.Item>
             </Form>
           </Card>
