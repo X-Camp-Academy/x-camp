@@ -1,117 +1,84 @@
 import { Button, Typography } from "antd";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 const { Title } = Typography;
 import styles from "./CalendarContent.module.scss";
 import { ScheduleOutlined } from "@ant-design/icons";
 import TimelineComponent from "@/components/common/timeline";
 import { useLang } from "@/hoc/with-intl/define";
+import { GetNewEvent, NewEventCategory } from "@/apis/strapi-client/define";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import dayjs from "dayjs";
+import { getTransResult } from "@/utils/public";
 
-const CalendarContent: React.FC = () => {
+const CalendarContent = () => {
+  const { lang, format: t } = useLang();
+  const { data: schoolCalendar, runAsync: getSchoolCalendar } = useGetNewEvent({
+    current: 1,
+    pageSize: 9999,
+    manual: true,
+  });
+
+  useEffect(() => {
+    getSchoolCalendar({
+      populate: "*",
+      sort: ["startDateTime"],
+      filters: {
+        tags: {
+          $eq: NewEventCategory.SchoolCalendar,
+        },
+      },
+      pagination: {
+        page: 1,
+        pageSize: 9999,
+      },
+    });
+  }, []);
+
   interface Item {
     label: string;
     children: Item[] | string;
   }
 
-  const items: Item[] = [
-    {
-      label: "Jan",
-      children: [
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-      ],
-    },
-    {
-      label: "Feb",
-      children: [
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-      ],
-    },
-    {
-      label: "Mar",
-      children: [
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-      ],
-    },
-    {
-      label: "Jan",
-      children: [
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-      ],
-    },
-    {
-      label: "Feb",
-      children: [
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-      ],
-    },
-    {
-      label: "Mar",
-      children: [
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-        {
-          label: "In the 20/21 season",
-          children:
-            "four students from the USACO Grandmaster Class (Tier 5) simultaneously entered the USACO US Camp (USACO Finalist).",
-        },
-      ],
-    },
-    {
-      label: "New Year",
-      children: [],
-    },
-  ];
+  /**
+   *
+   * @param data
+   * @returns 格式化Calendar
+   */
+  const formatCalendar = (
+    data: StrapiResponseDataItem<GetNewEvent>[] | undefined
+  ): Item[] => {
+    const groupedData: {
+      [month: string]: Item[];
+    } = {};
+    data?.forEach((item) => {
+      const month = dayjs(item?.attributes?.startDateTime).format("MMM");
+      if (!groupedData[month]) {
+        groupedData[month] = [];
+      }
+      groupedData[month].push({
+        label: getTransResult(
+          lang,
+          item?.attributes?.titleZh,
+          item?.attributes?.titleEn
+        )!,
+        children: getTransResult(
+          lang,
+          item?.attributes?.descriptionZh,
+          item?.attributes?.descriptionEn
+        )!,
+      });
+    });
 
-  const { format: t } = useLang();
+    const res = Object.entries(groupedData).map(([label, children]) => ({
+      label,
+      children,
+    }));
+
+    return [...res, { label: "New Year", children: [] }];
+  };
 
   return (
     <>
@@ -122,7 +89,7 @@ const CalendarContent: React.FC = () => {
             <Button className={styles.bookButton}>
               <ScheduleOutlined />
             </Button>
-            <TimelineComponent items={items} />
+            <TimelineComponent items={formatCalendar(schoolCalendar)} />
           </div>
         </div>
       </div>
