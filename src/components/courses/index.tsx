@@ -1,17 +1,23 @@
 "use client";
 import {
   Affix,
+  Button,
+  Col,
   Collapse,
   ConfigProvider,
+  DatePicker,
+  Input,
   Layout,
+  Row,
   Segmented,
+  Select,
   Space,
   Typography,
 } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
-import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
+import { CaretRightOutlined, DownOutlined, SearchOutlined } from "@ant-design/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
@@ -29,26 +35,27 @@ import { GetCourses } from "@/apis/strapi-client/define";
 import FilterForm from "./FilterForm";
 const { Panel } = Collapse;
 const { Content } = Layout;
+const { RangePicker } = DatePicker;
 
 interface FormatCoursesProps {
   primaryTitle: string;
   children:
-    | {
-        secondaryTitle: string;
-        children: StrapiResponseDataItem<GetCourses>[] | undefined;
-      }[]
-    | undefined;
+  | {
+    secondaryTitle: string;
+    children: StrapiResponseDataItem<GetCourses>[] | undefined;
+  }[]
+  | undefined;
 }
 const Courses = () => {
   const pathname = usePathname();
   const route = useRouter();
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const { hash } = window.location;
   const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
   const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
-  const { data: courses } = useGetCourses({});
+  const { data: courses, runAsync } = useGetCourses({});
 
   const getLangResult = (
     lang: "zh" | "en",
@@ -151,6 +158,36 @@ const Courses = () => {
       scrollIntoView(hash);
     }
   }, [hash, currentData]);
+
+
+
+  
+
+  // useEffect(() => {
+  //   runAsync({
+  //     populate: "*",
+  //     sort: ["order:desc"],
+  //     filters: { ...filters },
+  //     pagination: { ...pagination },
+  //   });
+  // }, [pagination, filters]);
+
+
+
+  const categoryOptions = courseLevelTypeData?.map(item => {
+    return {
+      labe: item,
+      value: item
+    }
+  })
+  const onCategoryChange = (value: string) => {
+    console.log(value);
+
+  }
+
+  const onSearch = (value: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(value);
+  }
   return (
     <ConfigProvider
       theme={{
@@ -184,9 +221,38 @@ const Courses = () => {
                 onChange={onSegmentedChange}
               />
             </Affix>
-            <div className={styles.filterForm} style={{ marginTop: 64 }}>
-              <FilterForm />
-            </div>
+
+            <Row justify="end" className={styles.row}>
+              <Col xs={24} sm={24} md={4}>
+                <Select
+                  style={{ width: '100%' }}
+                  placeholder={"Show All"}
+                  className={styles.select}
+                  options={categoryOptions}
+                  onChange={onCategoryChange}
+                />
+              </Col>
+
+              <Col xs={24} sm={24} md={{ span: 4, offset: 1 }}>
+                <RangePicker />
+              </Col>
+
+              <Col xs={24} sm={24} md={{ span: 6, offset: 1 }}>
+                <Space>
+                  <Input
+                    onPressEnter={onSearch}
+                    suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+                  />
+                  <Button
+                    type={"primary"}
+                    htmlType={"submit"}
+                    className={styles.button}
+                  >
+                    {t("Search")}
+                  </Button>
+                </Space>
+              </Col>
+            </Row>
             {currentData?.map((item, index) => {
               return (
                 <div className={"classify"} key={item?.primaryTitle}>
@@ -247,13 +313,12 @@ const Courses = () => {
                                           border={"bottom"}
                                           index={index}
                                           animate={false}
-                                          title={`${
-                                            g?.attributes?.courseCode
-                                          }: ${getTransResult(
-                                            lang,
-                                            g?.attributes?.courseTitleZh,
-                                            g?.attributes?.courseTitleEn
-                                          )}`}
+                                          title={`${g?.attributes?.courseCode
+                                            }: ${getTransResult(
+                                              lang,
+                                              g?.attributes?.courseTitleZh,
+                                              g?.attributes?.courseTitleEn
+                                            )}`}
                                           list={getLangResult(
                                             lang,
                                             g?.attributes
@@ -261,12 +326,11 @@ const Courses = () => {
                                             g?.attributes
                                               ?.courseShortDescriptionEn
                                           )}
-                                          time={`${g.attributes?.lessonNum} ${
-                                            g?.attributes?.frequency ===
+                                          time={`${g.attributes?.lessonNum} ${g?.attributes?.frequency ===
                                             "Weekly"
-                                              ? "weeks"
-                                              : "days"
-                                          }`}
+                                            ? "weeks"
+                                            : "days"
+                                            }`}
                                           href={`/courses/detail/${g?.id}`}
                                         />
                                       );
