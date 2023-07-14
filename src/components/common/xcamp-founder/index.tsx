@@ -63,17 +63,14 @@ const XCampFounder = () => {
                 {t("X-CampAcademyPrincipal")}
               </Paragraph>
 
-              <Space direction="vertical">
-                <Paragraph className={styles.paragraph}>
+              <Space direction="vertical" size={0}>
+                <Paragraph className={styles.paragraph} style={{ marginBottom: 0}}>
                   {t("Charlie.Desc1")}
                   <Text className={styles.keyText}>{t("Charlie.years")}</Text>
-                </Paragraph>
-                <Paragraph className={styles.paragraph}>
                   {t("Charlie.Desc2")}
                   <Text className={styles.keyText}>{t("Charlie.paper")}</Text>
                   {t("Charlie.Desc3")}
                 </Paragraph>
-
                 <Paragraph className={styles.paragraph}>
                   {t("Charlie.Desc4")}
                 </Paragraph>
@@ -129,7 +126,6 @@ const XCampFounder = () => {
                   <Text className={styles.keyText}>{t("Yuan.Desc4")}</Text>
                   {t("Yuan.Desc5")}
                   <Text className={styles.keyText}> 25-27 </Text>
-                  {t("X-CampFounder.description")}
                   {t("Yuan.Desc6")}
                 </Paragraph>
               </Space>
