@@ -12,7 +12,6 @@ const { Title, Paragraph, Text } = Typography;
 
 const CourseAbstract = () => {
   const { format: t, lang } = useLang();
-  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const courseData = useContext(CourseClassesContext);
   const {

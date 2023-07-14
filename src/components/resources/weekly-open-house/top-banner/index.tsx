@@ -14,7 +14,7 @@ const TopBanner = () => {
           <Space direction={"vertical"}>
             <div className={styles.title}>{t("WeeklyOpenHouse")}</div>
             <div className={styles.description}>{t("OpenHouse.Desc")}</div>
-            <Button className={styles.btn}>
+            <Button className={styles.btn} onClick={() => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') }}>
               <span>{"Join The Meeting"}</span>
               <img src="/image/resources/weekly-open-house-btn.png" alt="" />
             </Button>

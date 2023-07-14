@@ -9,7 +9,7 @@ const RelateResources = () => {
   const QAData = [
     {
       title: t("USACO.Activity1"),
-      url: "/",
+      url: "/about-us/contact-us/",
       description: t("USACO.Desc1"),
     },
     {
@@ -19,7 +19,7 @@ const RelateResources = () => {
     },
     {
       title: t("USACO.Activity3"),
-      url: "/",
+      url: "https://www.youtube.com/watch?v=K2PWgYHZWbw&t=3s",
       description: t("USACO.Desc3"),
     },
   ];
