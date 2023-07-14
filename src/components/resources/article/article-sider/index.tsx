@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import { Button, Card, Row, Space, Typography, Image, Badge, Tooltip } from "antd";
+import {
+  Button,
+  Card,
+  Row,
+  Space,
+  Typography,
+  Image,
+  Badge,
+  Tooltip,
+} from "antd";
 const { Text, Paragraph, Title } = Typography;
 import ActivityCalendar from "@/components/common/activity-calendar";
 import ColorfulCard from "@/components/common/colorful-card";
 import { RightCircleOutlined, AlignRightOutlined } from "@ant-design/icons";
 import dayjs, { Dayjs } from "dayjs";
-import isBetween from 'dayjs/plugin/isBetween';
+import isBetween from "dayjs/plugin/isBetween";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
@@ -70,26 +79,19 @@ const ArticleSider = () => {
   });
 
   const filterSameDateEvent = (selectDate: string) => {
-    if (newEventData?.data) {
+    if (newEventData) {
       setFilterDateEventList(
-        newEventData.data
-          .filter((item) =>
-            dayjs(selectDate).isBetween(dayjs(item.attributes.startDateTime), dayjs(item.attributes.endDateTime), "days", '[]')
+        newEventData
+          ?.filter((item) =>
+            dayjs(selectDate).isBetween(
+              dayjs(item.attributes.startDateTime),
+              dayjs(item.attributes.endDateTime),
+              "days",
+              "[]"
+            )
           )
-          .map((filteredItem) => ({
-            titleZh: filteredItem?.attributes?.titleZh,
-            titleEn: filteredItem?.attributes?.titleEn,
-            descriptionZh: filteredItem?.attributes?.descriptionZh,
-            descriptionEn: filteredItem?.attributes?.descriptionEn,
-            start: filteredItem?.attributes?.start,
-            end: filteredItem?.attributes?.end,
-            timeZone: filteredItem?.attributes?.timeZone,
-            startDateTime: filteredItem?.attributes?.startDateTime,
-            endDateTime: filteredItem?.attributes?.endDateTime,
-          }))
+          .map((filteredItem) => ({ ...filteredItem?.attributes }))
       );
-      console.log("@@", filterDateEventList);
-
     }
   };
   useEffect(() => {
@@ -105,7 +107,7 @@ const ArticleSider = () => {
 
   useEffect(() => {
     if (newEventData) {
-      const updatedEventDate = newEventData.data.map((item) => ({
+      const updatedEventDate = newEventData?.map((item) => ({
         startDateTime: item.attributes?.startDateTime,
         endDateTime: item.attributes?.endDateTime,
       }));
@@ -122,7 +124,6 @@ const ArticleSider = () => {
     }
   }, [selectedDate]);
 
-
   const formatDate = (date: string) => {
     const dateInfo = dayjs(date);
     const month = dateInfo.month();
@@ -135,49 +136,50 @@ const ArticleSider = () => {
 
   const formatHourMinute = (time: string) => {
     const timeInfo = dayjs(time);
-    const formatString = 'HH:mm';
+    const formatString = "HH:mm";
     return timeInfo.format(formatString);
-  }
+  };
 
   const formatYMDTime = (date: string) => {
-    const formatStringZh = 'YYYY年MM月DD日 HH:mm';
-    const formatStringEn = ' DD, YYYY HH:mm';
+    const formatStringZh = "YYYY年MM月DD日 HH:mm";
+    const formatStringEn = " DD, YYYY HH:mm";
     return getTransResult(
       lang,
       dayjs(date).format(formatStringZh),
       `${monthNameEn[dayjs(date).month()]}` + dayjs(date).format(formatStringEn)
-    )
-  }
-
+    );
+  };
 
   const activityData = [
     {
       img: "/image/about-us/introduction/top-banner.png",
       title: "2023 Spring APCS Class series are now",
-
     },
     {
       img: "/image/about-us/introduction/top-banner.png",
       title: "2023 Spring APCS Class series are now",
-
     },
     {
       img: "/image/about-us/introduction/top-banner.png",
       title: "2023 Spring APCS Class series are now",
-
     },
-  ]
+  ];
   return (
     <div className={styles.content}>
       <div className={styles.calendarContainer}>
-        <ActivityCalendar className={styles.activityCalendar} onSelectDate={handleSelectDate} eventDate={eventDate} />
+        <ActivityCalendar
+          className={styles.activityCalendar}
+          onSelectDate={handleSelectDate}
+          eventDate={eventDate}
+        />
       </div>
-
 
       <div className={styles.inDayAcyvityContainer}>
         <Space direction="vertical" className={styles.calendarSpace}>
           <Space className={styles.spaceDate}>
-            <Text className={styles.text}>{selectedDate && formatDate(selectedDate)}</Text>
+            <Text className={styles.text}>
+              {selectedDate && formatDate(selectedDate)}
+            </Text>
             <div className={styles.line}></div>
           </Space>
           <div style={{ height: 400, overflow: "scroll" }}>
@@ -185,10 +187,7 @@ const ArticleSider = () => {
               filterDateEventList.map((item, index) => {
                 if (item?.startDateTime && item?.endDateTime)
                   return (
-                    <Space
-                      direction="vertical"
-                      className={styles.calendarItem}
-                    >
+                    <Space direction="vertical" className={styles.calendarItem}>
                       <Text className={styles.itemDate}>
                         {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
@@ -201,28 +200,23 @@ const ArticleSider = () => {
                           } 
                           ${formatTimezone(item?.endDateTime).timezone}`}
                       </Text>
-                      <Paragraph className={styles.itemParagraph}
+                      <Paragraph
+                        className={styles.itemParagraph}
                         ellipsis={{
                           rows: 2,
-                          tooltip:
-                            `${getTransResult(
-                              lang,
-                              item.titleZh,
-                              item.titleEn
-                            )} - ${getTransResult(
-                              lang,
-                              item.descriptionZh,
-                              item.descriptionEn
-                            )}`
+                          tooltip: `${getTransResult(
+                            lang,
+                            item.titleZh,
+                            item.titleEn
+                          )} - ${getTransResult(
+                            lang,
+                            item.descriptionZh,
+                            item.descriptionEn
+                          )}`,
                         }}
                       >
-                        {getTransResult(
-                          lang,
-                          item.titleZh,
-                          item.titleEn
-                        )}
-                        <br />
-                        -
+                        {getTransResult(lang, item.titleZh, item.titleEn)}
+                        <br />-
                         {getTransResult(
                           lang,
                           item.descriptionZh,
@@ -234,17 +228,21 @@ const ArticleSider = () => {
                   );
               })}
           </div>
-
         </Space>
       </div>
 
       <div className={styles.activityCardContainer}>
-        {newEventData?.data.slice(0, 3)?.map((v, index) => {
+        {newEventData?.slice(0, 3)?.map((v, index) => {
           return (
-            <ColorfulCard border={"bottom"} animate={false} index={index} className={styles.card} key={index}>
-              <Card >
-                <Space direction="vertical" style={{ width: '100%' }}>
-
+            <ColorfulCard
+              border={"bottom"}
+              animate={false}
+              index={index}
+              className={styles.card}
+              key={index}
+            >
+              <Card>
+                <Space direction="vertical" style={{ width: "100%" }}>
                   <Image
                     src={v.attributes.img?.data?.attributes?.url}
                     alt="image"
@@ -252,15 +250,18 @@ const ArticleSider = () => {
                   />
 
                   <Row>
-                    <Title className={styles.title}>{v.attributes.titleZh}</Title>
+                    <Title className={styles.title}>
+                      {v.attributes.titleZh}
+                    </Title>
                   </Row>
-                  <Row style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Row
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center" }}>
                       <AlignRightOutlined style={{ fontSize: 16 }} />
                       <Paragraph
                         className={styles.description}
@@ -270,7 +271,7 @@ const ArticleSider = () => {
                             lang,
                             v.attributes.descriptionZh,
                             v.attributes.descriptionEn
-                          )
+                          ),
                         }}
                       >
                         {getTransResult(
@@ -284,21 +285,17 @@ const ArticleSider = () => {
                       type="link"
                       className={styles.btn}
                       icon={<RightCircleOutlined />}
-                      style={{ color: '#FFAD11', fontSize: 24 }}
+                      style={{ color: "#FFAD11", fontSize: 24 }}
                     />
                   </Row>
-
                 </Space>
-
               </Card>
             </ColorfulCard>
-          )
+          );
         })}
       </div>
-
     </div>
-  )
-
+  );
 };
 
 export default ArticleSider;

@@ -84,26 +84,21 @@ const PublicCalendar: React.FC = () => {
   });
 
   const filterSameDateEvent = (selectDate: string) => {
-    if (newEventData?.data) {
+    if (newEventData) {
       setFilterDateEventList(
-        newEventData.data
-          .filter((item) =>
-            dayjs(selectDate).isBetween(dayjs(item.attributes.startDateTime), dayjs(item.attributes.endDateTime), "days", '[]')
+        newEventData
+          ?.filter((item) =>
+            dayjs(selectDate).isBetween(
+              dayjs(item.attributes.startDateTime),
+              dayjs(item.attributes.endDateTime),
+              "days",
+              "[]"
+            )
           )
           .map((filteredItem) => ({
-            titleZh: filteredItem?.attributes?.titleZh,
-            titleEn: filteredItem?.attributes?.titleEn,
-            descriptionZh: filteredItem?.attributes?.descriptionZh,
-            descriptionEn: filteredItem?.attributes?.descriptionEn,
-            start: filteredItem?.attributes?.start,
-            end: filteredItem?.attributes?.end,
-            timeZone: filteredItem?.attributes?.timeZone,
-            startDateTime: filteredItem?.attributes?.startDateTime,
-            endDateTime: filteredItem?.attributes?.endDateTime,
+            ...filteredItem?.attributes,
           }))
       );
-      console.log("@@", filterDateEventList);
-
     }
   };
   useEffect(() => {
@@ -119,7 +114,7 @@ const PublicCalendar: React.FC = () => {
 
   useEffect(() => {
     if (newEventData) {
-      const updatedEventDate = newEventData.data.map((item) => ({
+      const updatedEventDate = newEventData?.map((item) => ({
         startDateTime: item.attributes?.startDateTime,
         endDateTime: item.attributes?.endDateTime,
       }));
@@ -149,7 +144,12 @@ const PublicCalendar: React.FC = () => {
   const dateCellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
       if (event.startDateTime && event.endDateTime)
-        return value.isBetween(event.startDateTime, event.endDateTime, 'days', '[]');
+        return value.isBetween(
+          event.startDateTime,
+          event.endDateTime,
+          "days",
+          "[]"
+        );
     });
     if (eventDataForDate) {
       return (
@@ -186,19 +186,19 @@ const PublicCalendar: React.FC = () => {
 
   const formatHourMinute = (time: string) => {
     const timeInfo = dayjs(time);
-    const formatString = 'HH:mm';
+    const formatString = "HH:mm";
     return timeInfo.format(formatString);
-  }
+  };
 
   const formatYMDTime = (date: string) => {
-    const formatStringZh = 'YYYY年MM月DD日 HH:mm';
-    const formatStringEn = ' DD, YYYY HH:mm';
+    const formatStringZh = "YYYY年MM月DD日 HH:mm";
+    const formatStringEn = " DD, YYYY HH:mm";
     return getTransResult(
       lang,
       dayjs(date).format(formatStringZh),
       `${monthNameEn[dayjs(date).month()]}` + dayjs(date).format(formatStringEn)
-    )
-  }
+    );
+  };
 
   return (
     <div className={styles.publicCalendarContainer}>
@@ -211,9 +211,9 @@ const PublicCalendar: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space direction="vertical" className={styles.colSpace}>
-              {newEventData?.data.slice(0, 4).map((item, index) => {
+              {newEventData?.slice(0, 4).map((item, index) => {
                 return (
-                  <div className={styles.eventCard} key={item.id}>
+                  <div className={styles.eventCard} key={item?.id}>
                     <Space
                       size={72}
                       align="center"
@@ -224,10 +224,10 @@ const PublicCalendar: React.FC = () => {
                         className={styles.contentLeft}
                       >
                         <Text className={styles.text}>
-                          {getWeekDay(item.attributes?.startDateTime || '')}
+                          {getWeekDay(item.attributes?.startDateTime || "")}
                         </Text>
                         <Text className={styles.textTwo}>
-                          {getDate(item.attributes?.startDateTime || '')}
+                          {getDate(item.attributes?.startDateTime || "")}
                         </Text>
                         <Text className={styles.text}>
                           {
@@ -249,7 +249,8 @@ const PublicCalendar: React.FC = () => {
                           )}
                         </Text>
                         {!isMobile && (
-                          <Paragraph className={styles.paragraph}
+                          <Paragraph
+                            className={styles.paragraph}
                             ellipsis={{
                               rows: 2,
                               tooltip: getTransResult(
@@ -267,13 +268,22 @@ const PublicCalendar: React.FC = () => {
                           </Paragraph>
                         )}
                         <Text className={styles.date}>
-                          {`${dayjs(item?.attributes?.startDateTime).isSame(dayjs(item?.attributes?.endDateTime), 'day')
-                            ?
-                            `${formatHourMinute(item?.attributes?.startDateTime || '')} ${dayjs(item?.attributes?.startDateTime).hour() < 12 ? "AM" : "PM"} - 
-                                ${formatHourMinute(item?.attributes?.endDateTime || '')} ${dayjs(item?.attributes?.endDateTime).hour() < 12 ? "AM" : "PM"}`
-                            :
-                            `${formatYMDTime(item?.attributes?.startDateTime || '')} - ${formatYMDTime(item?.attributes?.endDateTime || '')}`
-                            } ${formatTimezone(item?.attributes?.startDateTime).timezone}
+                          {`${dayjs(item?.attributes?.startDateTime).isSame(
+                            dayjs(item?.attributes?.endDateTime),
+                            "day"
+                          )
+                            ? `${formatHourMinute(
+                              item?.attributes?.startDateTime || ""
+                            )} - 
+                                ${formatHourMinute(
+                              item?.attributes?.endDateTime || ""
+                            )} `
+                            : `${formatYMDTime(
+                              item?.attributes?.startDateTime || ""
+                            )} - ${formatYMDTime(
+                              item?.attributes?.endDateTime || ""
+                            )}`
+                            } ${formatTimezone(item?.attributes?.startDateTime).timezone} 
                             `}
                         </Text>
                       </Space>
