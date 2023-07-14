@@ -18,7 +18,7 @@ const FacultyCoach = () => {
   const { format: t, lang } = useLang();
 
   const { data } = useGetFaculty({
-    pageName: ["/introduction/"],
+    pageName: ["/about-us/introduction/"],
   });
 
   const sortData = data?.sort(

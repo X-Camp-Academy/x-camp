@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import "dayjs/locale/zh-cn";
 import {
   Calendar,
@@ -10,17 +10,25 @@ import {
   Typography,
   theme,
   Button,
+  Badge,
 } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
+import dayjs, { Dayjs } from "dayjs";
 
 interface Props {
   className?: string;
+  onSelectDate: (date: string) => void;
+  eventDate: {
+    startDateTime?: string;
+    endDateTime?: string;
+  }[];
 }
 
-const ActivityCalendar: React.FC<Props> = ({ className = "" }) => {
+
+const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, eventDate }) => {
   const { lang } = useLang();
   const monthNameEn = [
     "January",
@@ -53,6 +61,30 @@ const ActivityCalendar: React.FC<Props> = ({ className = "" }) => {
   ];
 
   const { token } = theme.useToken();
+  const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
+
+
+  const dateCellRender = (value: Dayjs) => {
+    const eventDataForDate = eventDate.find((event) => {
+      if (event.startDateTime && event.endDateTime)
+        return value.isBetween(event.startDateTime, event.endDateTime, 'days', '[]');
+    });
+    if (eventDataForDate) {
+      return (
+        <Badge dot>
+          <div />
+        </Badge>
+      );
+    } else {
+      return (
+        <>
+          <Badge dot color="white">
+            <div />
+          </Badge>
+        </>
+      );
+    }
+  };
 
   const wrapperStyle = {
     width: 300,
@@ -65,6 +97,11 @@ const ActivityCalendar: React.FC<Props> = ({ className = "" }) => {
       <Calendar
         fullscreen={false}
         className={className}
+        dateCellRender={dateCellRender}
+        onSelect={(date) => {
+          setSelectDate(date.toString());
+          onSelectDate(date.toString()); // 将选择的日期传递给父组件
+        }}
         //style={{ padding: 10, borderRadius: 0 }}
         headerRender={({ value, onChange }) => {
           const year = value.year();

@@ -14,7 +14,7 @@ export const useMenuItems = () => {
     },
     {
       label: <a>{t("Courses")}</a>,
-      key: "courses",
+      key: "/courses/",
       dropdown: {
         left: {
           title: t("ClassRoadMap"),
@@ -47,7 +47,7 @@ export const useMenuItems = () => {
         // },
         {
           label: <Link href="/courses/camps">{t("In-personCamps")}</Link>,
-          key: "/courses/in-person-campus",
+          key: "/courses/in-person-campus/",
         },
         {
           label: <Link href="/courses#classify5">{t("APCSClasses")}</Link>,
@@ -57,7 +57,7 @@ export const useMenuItems = () => {
           label: (
             <Link href="/courses#classify3">{t("EnhancementClasses")}</Link>
           ),
-          key: "/courses/enhancement-classes",
+          key: "/courses/enhancement-classes/",
         },
         {
           label: (
@@ -164,19 +164,19 @@ export const useMenuItems = () => {
       children: [
         {
           label: <Link href="/about-us/introduction">{t("Introduction")}</Link>,
-          key: "introduction",
+          key: "/about-us/introduction/",
         },
         {
           label: <Link href="/about-us/calendar">{t("SchoolCalendar")}</Link>,
-          key: "school-calendar",
+          key: "/about-us/calendar/",
         },
         {
           label: <Link href="/about-us/contact-us">{t("ContactUs")}</Link>,
-          key: "contact-us",
+          key: "/about-us/contact-us/",
         },
         {
           label: <Link href="/about-us/achievements">{t("Achievements")}</Link>,
-          key: "achievements",
+          key: "/about-us/achievements/",
         },
         {
           label: (
@@ -184,27 +184,27 @@ export const useMenuItems = () => {
               {t("Faculty&Coach")}
             </Link>
           ),
-          key: "faculty&coach",
+          key: "/about-us/introduction#faculty",
         },
         {
           label: <Link href="/about-us/join-us">{t("JoinUs")}</Link>,
-          key: "join-us",
+          key: "/about-us/join-us/",
         },
         {
           label: <Link href="/about-us/partners">{t("Partners")}</Link>,
-          key: "partners",
+          key: "/about-us/partners/",
         },
         {
           label: <Link href="/about-us/news">{t("News")}</Link>,
-          key: "news",
+          key: "/about-us/news/",
         },
         {
           label: <Link href="/about-us/help-center">{t("Q&A")}</Link>,
-          key: "help-center",
+          key: "/about-us/help-center/",
         },
         {
           label: <Link href="/about-us/x-alumni">{t("X_ALUMNI")}</Link>,
-          key: "x-alumni",
+          key: "/about-us/x-alumni/",
         },
         {
           label: (
@@ -212,7 +212,7 @@ export const useMenuItems = () => {
               {t("ReferralProgram")}
             </Link>
           ),
-          key: "current-student-referral-program",
+          key: "/about-us/student-recommend/",
         },
       ],
     },
