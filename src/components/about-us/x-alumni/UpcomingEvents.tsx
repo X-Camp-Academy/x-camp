@@ -34,8 +34,8 @@ const UpcomingEvents: React.FC = () => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
-        new Date().getTime() >
-        0
+      new Date().getTime() >
+      0
     );
   });
 
@@ -55,7 +55,7 @@ const UpcomingEvents: React.FC = () => {
         </Space>
 
         <Row gutter={32} className={styles.row}>
-          {upComingEvent?.slice(0, 3).map((item, index) => {
+          {upComingEvent?.slice(0, 6).map((item, index) => {
             const { utcTime: startTime } = formatTimezone(
               item?.attributes?.startDateTime
             );
@@ -63,7 +63,7 @@ const UpcomingEvents: React.FC = () => {
               item?.attributes?.endDateTime
             );
             return (
-              <Col key={index} xs={24} sm={24} md={8}>
+              <Col key={index} xs={24} sm={24} md={8} style={{ marginTop: 20 }}>
                 <ColorfulCard border="bottom" index={index}>
                   <Card style={{ height: 450 }}>
                     <Space direction="vertical">
@@ -102,8 +102,8 @@ const UpcomingEvents: React.FC = () => {
                         <Text className={styles.cardText}>
                           <LaptopOutlined className={styles.cardIcon} />
                           {!item.attributes.geographicallyAddress &&
-                          item.attributes.link &&
-                          item.attributes.onlinePlatform ? (
+                            item.attributes.link &&
+                            item.attributes.onlinePlatform ? (
                             <a
                               href={item.attributes.link}
                               style={{ color: '#666666' }}
@@ -126,7 +126,7 @@ const UpcomingEvents: React.FC = () => {
             );
           })}
         </Row>
-        <Row gutter={32} className={styles.row}>
+        {/* <Row gutter={32} className={styles.row}>
           {upComingEvent?.slice(3, 6).map((item, index) => {
             const { utcTime: startTime } = formatTimezone(
               item?.attributes?.startDateTime
@@ -164,8 +164,8 @@ const UpcomingEvents: React.FC = () => {
                         <Text className={styles.cardText}>
                           <LaptopOutlined className={styles.cardIcon} />
                           {!item.attributes.geographicallyAddress &&
-                          item.attributes.link &&
-                          item.attributes.onlinePlatform ? (
+                            item.attributes.link &&
+                            item.attributes.onlinePlatform ? (
                             <a
                               href={item.attributes.link}
                               style={{ color: '#666666' }}
@@ -187,7 +187,7 @@ const UpcomingEvents: React.FC = () => {
               </Col>
             );
           })}
-        </Row>
+        </Row>  */}
       </div>
     </div>
   );

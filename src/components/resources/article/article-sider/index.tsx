@@ -9,7 +9,7 @@ import dayjs, { Dayjs } from "dayjs";
 import isBetween from 'dayjs/plugin/isBetween';
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
+import { formatTimezone, getTransResult } from "@/utils/public";
 
 const ArticleSider = () => {
   const { format: t, lang } = useLang();
@@ -199,7 +199,7 @@ const ArticleSider = () => {
                           :
                           `${formatYMDTime(item?.startDateTime || '')} - ${formatYMDTime(item?.endDateTime || '')}`
                           } 
-                                /*timeZone*/`}
+                          ${formatTimezone(item?.endDateTime).timezone}`}
                       </Text>
                       <Paragraph className={styles.itemParagraph}
                         ellipsis={{
@@ -260,12 +260,12 @@ const ArticleSider = () => {
                     alignItems: 'center'
 
                   }}>
-                    <div style={{display:'flex',alignItems:'center'}}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
                       <AlignRightOutlined style={{ fontSize: 16 }} />
                       <Paragraph
                         className={styles.description}
                         ellipsis={{
-                          rows:1,
+                          rows: 1,
                           tooltip: getTransResult(
                             lang,
                             v.attributes.descriptionZh,
