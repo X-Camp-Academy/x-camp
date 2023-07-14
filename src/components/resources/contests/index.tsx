@@ -7,17 +7,19 @@ import Testimony from "@/components/home/Testimony";
 import Introduction from "./introduction";
 import WhyContest from "./why-contest";
 import MonthlyContest from "./monthly-contest";
-import {
-  useGetResourcesContest,
-  useGetTestimony,
-} from "@/apis/strapi-client/strapi";
+import { useGetNewEvent, useGetTestimony } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
 import { formatContestsByQuarter } from "./define";
 import { useSize } from "ahooks";
+import { NewEventCategory } from "@/apis/strapi-client/define";
 const { Content } = Layout;
 
 const Contests = () => {
-  const { data: resourcesContest } = useGetResourcesContest();
+  const { data: resourcesContest } = useGetNewEvent({
+    tag: NewEventCategory.EventContest,
+    current: 1,
+    pageSize: 9999,
+  });
   const pathname = usePathname();
   // 请求courseId为isCamp课程, pageName 为"/courses/catalog/"的评论
   const { data: testimonyData } = useGetTestimony({

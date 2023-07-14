@@ -24,6 +24,7 @@
       .paragraphText {
         @extend .paragraph;
         color: #d46b14;
+        cursor: pointer;
       }
     }
     .row {

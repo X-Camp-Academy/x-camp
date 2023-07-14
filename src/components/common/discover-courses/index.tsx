@@ -2,9 +2,9 @@
 import React from "react";
 import { Typography, Row, Col, Space, Image } from "antd";
 import Texty from "rc-texty";
-import MaskCard from "../common/mask-card";
-import styles from "./DiscoverCourses.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import MaskCard from "../mask-card";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 interface DiscoverCoursesProps {
@@ -30,12 +30,12 @@ const DiscoverCourses = ({
         </Space>
 
         <div className={styles.more}>
-          <a href={link}></a>
-          {t("More>")}
+          <a href={link}>{t("More>")}</a>
         </div>
       </Space>
     );
   };
+  
   const courseCards = [
     {
       title: t("Python.Title"),
@@ -43,7 +43,11 @@ const DiscoverCourses = ({
       url: "/image/home/course-1.png",
       bgc: "#D8D8D8",
       maskBgc: "rgb(216 216 216 / 40%)",
-      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
+      maskChildren: generateMaskChildren(
+        t("Python.Title"),
+        t("Python.Mask.Desc"),
+        "/courses/#classify0"
+      ),
     },
     {
       title: t("C++.Title"),
@@ -51,7 +55,11 @@ const DiscoverCourses = ({
       url: "/image/home/course-2.png",
       bgc: "#FFD600",
       maskBgc: "rgb(255 214 0 / 40%)",
-      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
+      maskChildren: generateMaskChildren(
+        t("C++.Title"),
+        t("C++.Mask.Desc"),
+        "/courses/#classify1"
+      ),
     },
     {
       title: t("USACO.Title"),
@@ -59,7 +67,11 @@ const DiscoverCourses = ({
       url: "/image/home/course-3.png",
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
-      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
+      maskChildren: generateMaskChildren(
+        t("USACO.Title"),
+        t("USACO.Mask.Desc"),
+        "/courses/#classify3"
+      ),
     },
     {
       title: "APCS",
@@ -67,7 +79,11 @@ const DiscoverCourses = ({
       url: "/image/home/course-4.png",
       bgc: "#D46B14",
       maskBgc: "rgb(212 107 20 / 40%)",
-      maskChildren: generateMaskChildren("APCS", t("APCS.Mask.Desc"), ""),
+      maskChildren: generateMaskChildren(
+        "APCS",
+        t("APCS.Mask.Desc"),
+        "/courses/#apcs"
+      ),
     },
   ];
   return (
@@ -84,7 +100,7 @@ const DiscoverCourses = ({
         {t("DiscoverOurCourses")}
       </Texty>
       {showSubTitle && (
-        <div className={styles.subTitle}>{t("RecentPopularActivities")}</div>
+        <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
       )}
       {showBg && <Text className={styles.arc}></Text>}
 

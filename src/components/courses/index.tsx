@@ -1,19 +1,24 @@
 "use client";
 import {
   Affix,
+  Button,
+  Col,
   Collapse,
   ConfigProvider,
-  Divider,
+  DatePicker,
+  Input,
   Layout,
+  Row,
   Segmented,
+  Select,
   Space,
   Typography,
 } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
-import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
-import { usePathname } from "next/navigation";
+import { CaretRightOutlined, DownOutlined, SearchOutlined } from "@ant-design/icons";
+import { usePathname, useRouter } from "next/navigation";
 import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
 import ClassCard from "../common/class-card";
@@ -28,27 +33,29 @@ import { SegmentedValue } from "antd/es/segmented";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetCourses } from "@/apis/strapi-client/define";
 import FilterForm from "./FilterForm";
-const { Paragraph } = Typography;
 const { Panel } = Collapse;
 const { Content } = Layout;
+const { RangePicker } = DatePicker;
 
 interface FormatCoursesProps {
   primaryTitle: string;
   children:
-    | {
-        secondaryTitle: string;
-        children: StrapiResponseDataItem<GetCourses>[] | undefined;
-      }[]
-    | undefined;
+  | {
+    secondaryTitle: string;
+    children: StrapiResponseDataItem<GetCourses>[] | undefined;
+  }[]
+  | undefined;
 }
 const Courses = () => {
   const pathname = usePathname();
-  const { lang } = useLang();
-
+  const route = useRouter();
+  const { format: t, lang } = useLang();
+  const { hash } = window.location;
+  const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
   const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
-  const { data: courses } = useGetCourses();
+  const { data: courses, runAsync } = useGetCourses({});
 
   const getLangResult = (
     lang: "zh" | "en",
@@ -79,17 +86,17 @@ const Courses = () => {
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
       case "Online Classes":
-        return courses?.filter(
+        return courses?.data?.filter(
           (item) => item?.attributes?.classMode === "Online Live"
         );
       case "In-person Classes":
-        return courses?.filter(
+        return courses?.data?.filter(
           (item) => item?.attributes?.classMode === "In-person"
         );
       case "is Camp":
-        return courses?.filter((item) => item?.attributes?.isCamp);
+        return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
-        return courses;
+        return courses?.data;
     }
   };
 
@@ -122,20 +129,65 @@ const Courses = () => {
     }
   });
 
-  console.log(allCourses);
-
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const result = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
     );
     setCurrentData(result);
   };
+  const onSegmentedChange = (value: SegmentedValue) => {
+    history.replaceState(null, "", pathname);
+    setSegmented(value);
+  };
   useEffect(() => {
     getCourseBySegmented(segmented);
   }, [segmented, courses]);
 
-  const segmentedDom = useRef<HTMLDivElement>(null);
+  const scrollIntoView = (id: string) => {
+    const dom = document.getElementById(id);
+    dom?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+  // 监听hash
+  useEffect(() => {
+    if (hash === "#apcs") {
+      setSegmented("APCS Classes");
+    } else {
+      scrollIntoView(hash);
+    }
+  }, [hash, currentData]);
 
+
+
+  
+
+  // useEffect(() => {
+  //   runAsync({
+  //     populate: "*",
+  //     sort: ["order:desc"],
+  //     filters: { ...filters },
+  //     pagination: { ...pagination },
+  //   });
+  // }, [pagination, filters]);
+
+
+
+  const categoryOptions = courseLevelTypeData?.map(item => {
+    return {
+      labe: item,
+      value: item
+    }
+  })
+  const onCategoryChange = (value: string) => {
+    console.log(value);
+
+  }
+
+  const onSearch = (value: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(value);
+  }
   return (
     <ConfigProvider
       theme={{
@@ -164,20 +216,46 @@ const Courses = () => {
                 ref={segmentedDom}
                 style={{ backgroundColor: "#fff" }}
                 block
+                value={segmented}
                 options={COURSE_TYPES}
-                onChange={(value: SegmentedValue) => setSegmented(value)}
+                onChange={onSegmentedChange}
               />
             </Affix>
-            <div className={styles.filterForm} style={{ marginTop: 64 }}>
-              <FilterForm />
-            </div>
+
+            <Row justify="end" className={styles.row}>
+              <Col xs={24} sm={24} md={4}>
+                <Select
+                  style={{ width: '100%' }}
+                  placeholder={"Show All"}
+                  className={styles.select}
+                  options={categoryOptions}
+                  onChange={onCategoryChange}
+                />
+              </Col>
+
+              <Col xs={24} sm={24} md={{ span: 4, offset: 1 }}>
+                <RangePicker />
+              </Col>
+
+              <Col xs={24} sm={24} md={{ span: 6, offset: 1 }}>
+                <Space>
+                  <Input
+                    onPressEnter={onSearch}
+                    suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+                  />
+                  <Button
+                    type={"primary"}
+                    htmlType={"submit"}
+                    className={styles.button}
+                  >
+                    {t("Search")}
+                  </Button>
+                </Space>
+              </Col>
+            </Row>
             {currentData?.map((item, index) => {
               return (
-                <div
-                  className={"classify"}
-                  id={"classify" + index}
-                  key={item?.primaryTitle}
-                >
+                <div className={"classify"} key={item?.primaryTitle}>
                   <Collapse
                     defaultActiveKey={"classifyCollapse" + index}
                     ghost
@@ -198,81 +276,79 @@ const Courses = () => {
                       }
                     >
                       <>
-                        {item?.children?.map((v) => {
+                        {item?.children?.map((v, j) => {
                           return (
-                            <Collapse
-                              key={v?.secondaryTitle}
-                              defaultActiveKey={v?.secondaryTitle}
-                              ghost
-                              style={{ marginBottom: 30 }}
-                              expandIcon={({ isActive }) => (
-                                <CaretRightOutlined
-                                  rotate={isActive ? 90 : 0}
-                                />
-                              )}
-                            >
-                              <Panel
-                                key={v?.secondaryTitle}
-                                header={
-                                  <div className={styles.paneBox}>
-                                    <div className={styles.panelTitle}>
-                                      {v?.secondaryTitle}
-                                    </div>
-                                    <span className={styles.courseNum}>
-                                      {v?.children?.length} courses
-                                    </span>
-                                  </div>
-                                }
+                            <div key={v?.secondaryTitle} id={"#classify" + j}>
+                              <Collapse
+                                defaultActiveKey={v?.secondaryTitle}
+                                ghost
+                                style={{ marginBottom: 30 }}
+                                expandIcon={({ isActive }) => (
+                                  <CaretRightOutlined
+                                    rotate={isActive ? 90 : 0}
+                                  />
+                                )}
                               >
-                                <Space
-                                  size={27}
-                                  style={{ width: "100%", flexWrap: "wrap" }}
+                                <Panel
+                                  key={v?.secondaryTitle}
+                                  header={
+                                    <div className={styles.paneBox}>
+                                      <div className={styles.panelTitle}>
+                                        {v?.secondaryTitle}
+                                      </div>
+                                      <span className={styles.courseNum}>
+                                        {v?.children?.length} courses
+                                      </span>
+                                    </div>
+                                  }
                                 >
-                                  {v?.children?.map((g, index) => {
-                                    return (
-                                      <ClassCard
-                                        key={g?.id}
-                                        border={"bottom"}
-                                        index={index}
-                                        animate={false}
-                                        title={`${
-                                          g?.attributes?.courseCode
-                                        }: ${getTransResult(
-                                          lang,
-                                          g?.attributes?.courseTitleZh,
-                                          g?.attributes?.courseTitleEn
-                                        )}`}
-                                        list={getLangResult(
-                                          lang,
-                                          g?.attributes
-                                            ?.courseShortDescriptionZh,
-                                          g?.attributes
-                                            ?.courseShortDescriptionEn
-                                        )}
-                                        time={`${g.attributes?.lessonNum} ${
-                                          g?.attributes?.frequency === "Weekly"
+                                  <Space
+                                    size={27}
+                                    style={{ width: "100%", flexWrap: "wrap" }}
+                                  >
+                                    {v?.children?.map((g, index) => {
+                                      return (
+                                        <ClassCard
+                                          key={g?.id}
+                                          border={"bottom"}
+                                          index={index}
+                                          animate={false}
+                                          title={`${g?.attributes?.courseCode
+                                            }: ${getTransResult(
+                                              lang,
+                                              g?.attributes?.courseTitleZh,
+                                              g?.attributes?.courseTitleEn
+                                            )}`}
+                                          list={getLangResult(
+                                            lang,
+                                            g?.attributes
+                                              ?.courseShortDescriptionZh,
+                                            g?.attributes
+                                              ?.courseShortDescriptionEn
+                                          )}
+                                          time={`${g.attributes?.lessonNum} ${g?.attributes?.frequency ===
+                                            "Weekly"
                                             ? "weeks"
                                             : "days"
-                                        }`}
-                                        href={`/courses/detail/${g?.id}`}
-                                      />
-                                    );
-                                  })}
-                                </Space>
-                              </Panel>
-                            </Collapse>
+                                            }`}
+                                          href={`/courses/detail/${g?.id}`}
+                                        />
+                                      );
+                                    })}
+                                  </Space>
+                                </Panel>
+                              </Collapse>
+                            </div>
                           );
                         })}
                       </>
                     </Panel>
                   </Collapse>
-                  {/* <Divider className={styles.divider} /> */}
                 </div>
               );
             })}
           </div>
           <Testimony testimonyData={testimonyData} />
-          {/* <AnchorNav /> */}
         </Content>
       </Layout>
     </ConfigProvider>

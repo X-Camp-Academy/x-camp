@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import styles from './index.module.scss';
-import ActivityItem from './activity-item';
-import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import React, { useEffect, useState } from "react";
+import styles from "./index.module.scss";
+import ActivityItem from "./activity-item";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import {
   ActivityCategory,
   GetNewEvent,
   GetNewEventRequest,
   NewEventCategory,
-} from '@/apis/strapi-client/define';
+} from "@/apis/strapi-client/define";
 import {
   AndOrFilters,
   FilterFields,
   StrapiMedia,
-} from '@/apis/strapi-client/strapiDefine';
-import { Pagination, Row, Space } from 'antd';
+} from "@/apis/strapi-client/strapiDefine";
+import { Pagination, Row, Space } from "antd";
+import { useLang } from "@/hoc/with-intl/define";
 interface ActivityItem {
   title: string;
-  key: ActivityCategory | 'All Education Forums';
+  key: ActivityCategory | "All Education Forums";
 }
 const Activities = () => {
   //useGetNewEvent
   const pageSize = 12;
+  const { format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const tag = NewEventCategory.Activity;
   const { data: newEventData, runAsync: getNewEventData } = useGetNewEvent({
@@ -30,12 +32,12 @@ const Activities = () => {
     manual: true,
   });
   const [selectedItem, setSelectedItem] = useState<
-    ActivityCategory | 'All Education Forums'
+    ActivityCategory | "All Education Forums"
   >(ActivityCategory.SchoolLifeSharing);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
-      populate: '*',
-      sort: ['order:desc'],
+      populate: "*",
+      sort: ["order:desc"],
       pagination: {
         page: current,
         pageSize,
@@ -48,7 +50,7 @@ const Activities = () => {
         $eq: tag,
       },
     };
-    if (selectedItem !== 'All Education Forums') {
+    if (selectedItem !== "All Education Forums") {
       filters = {
         ...filters,
         activityCategory: {
@@ -64,24 +66,24 @@ const Activities = () => {
 
   const items: ActivityItem[] = [
     {
-      title: "School life's sharing",
+      title: t("ActivityItem1"),
       key: ActivityCategory.SchoolLifeSharing,
     },
     {
-      title: 'Coding Education',
+      title: t("ActivityItem2"),
       key: ActivityCategory.CodingEducation,
     },
     {
-      title: 'Career Path',
+      title: t("ActivityItem3"),
       key: ActivityCategory.CareerPath,
     },
     {
-      title: 'Research',
+      title: t("ActivityItem4"),
       key: ActivityCategory.Research,
     },
     {
-      title: 'All Education Forums',
-      key: 'All Education Forums',
+      title: t("ActivityItem5"),
+      key: "All Education Forums",
     },
   ];
   return (
@@ -92,7 +94,7 @@ const Activities = () => {
             return (
               <div
                 className={`${styles.toolBarItem} ${
-                  v.key === selectedItem ? styles.selectedToolBarItem : ''
+                  v.key === selectedItem ? styles.selectedToolBarItem : ""
                 }`}
                 key={v.key}
                 onClick={() => {
@@ -107,11 +109,11 @@ const Activities = () => {
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{selectedItem}</div>
           <div className={styles.pageTotal}>
-            {newEventData?.meta?.pagination?.pageCount} educational forum
+            {newEventData?.length} {t("educationalForum")}
           </div>
         </Space>
         <Row gutter={[32, 32]}>
-          {newEventData?.data?.map((v, index) => (
+          {newEventData?.map((v, index) => (
             /* 新版UI的分页器待完成 */
             <ActivityItem {...v} key={index} index={index} />
           ))}
@@ -121,7 +123,7 @@ const Activities = () => {
           className={styles.pagination}
           pageSize={pageSize}
           current={current}
-          total={newEventData?.meta?.pagination?.pageCount}
+          total={newEventData?.length}
           onChange={(page) => setCurrent(page)}
         />
       </div>

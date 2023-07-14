@@ -1,14 +1,10 @@
 "use client";
 import React from "react";
-import { Space, Image, Typography, Button, Input, Select, Form } from "antd";
-import styles from "./FilterForm.module.scss";
-import { useMobile } from "@/utils";
+import { Input, Select, Form, DatePicker } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-
-const { Text } = Typography;
-
-import { DatePicker } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
+import { useMobile } from "@/utils";
+import styles from "./FilterForm.module.scss";
 
 const { RangePicker } = DatePicker;
 
@@ -38,10 +34,12 @@ const FilterForm: React.FC = () => {
       className={styles.form}
       onFinish={onFinish}
       layout="inline"
+      initialValues={{
+        language: "python"
+      }}
     >
       <Form.Item name="language">
         <Select
-          defaultValue="python"
           className={styles.formSelect}
           options={options}
         />

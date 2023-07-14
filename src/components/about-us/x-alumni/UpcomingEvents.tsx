@@ -1,26 +1,26 @@
-'use client';
-import React, { useState } from 'react';
-import { Space, Row, Col, Card, Image, Button, Typography } from 'antd';
-import styles from './UpcomingEvents.module.scss';
-import ColorfulCard from '@/components/common/colorful-card';
+"use client";
+import React, { useState } from "react";
+import { Space, Row, Col, Card, Image, Button, Typography } from "antd";
+import styles from "./UpcomingEvents.module.scss";
+import ColorfulCard from "@/components/common/colorful-card";
 import {
   HistoryOutlined,
   LaptopOutlined,
   RightOutlined,
   UserOutlined,
-} from '@ant-design/icons';
-import { useLang } from '@/hoc/with-intl/define';
-import { NewEventCategory } from '@/apis/strapi-client/define';
-import { useGetNewEvent } from '@/apis/strapi-client/strapi';
-import { getTransResult } from '@/utils/public';
-import dayjs from 'dayjs';
-import { formatTimezone } from '@/utils/public';
+} from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
+import { NewEventCategory } from "@/apis/strapi-client/define";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import dayjs from "dayjs";
+import { formatTimezone } from "@/utils/public";
 
 const { Title, Paragraph, Text } = Typography;
 
 const UpcomingEvents: React.FC = () => {
   const pageSize = 25;
-  const { lang } = useLang();
+  const { lang, format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
 
@@ -30,12 +30,12 @@ const UpcomingEvents: React.FC = () => {
     pageSize,
   });
 
-  const upComingEvent = newEventData?.data.filter((item, index) => {
+  const upComingEvent = newEventData?.filter((item, index) => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
-        new Date().getTime() >
-        0
+      new Date().getTime() >
+      0
     );
   });
 
@@ -44,18 +44,18 @@ const UpcomingEvents: React.FC = () => {
       <div className="container">
         <Space className={styles.topSpace}>
           <Space direction="vertical">
-            <Title className={styles.title}>Upcoming Events</Title>
+            <Title className={styles.title}>{t("UpcomingEvents")}</Title>
             <Paragraph className={styles.paragraph}>
-              Peek at some alumni events happening just around the corner.
+              {t("UpcomingEvents.Desc")}
             </Paragraph>
           </Space>
           <button className={styles.button}>
-            View More Events <RightOutlined />
+            {t("ViewMoreEvents")} <RightOutlined />
           </button>
         </Space>
 
         <Row gutter={32} className={styles.row}>
-          {upComingEvent?.slice(0, 3).map((item, index) => {
+          {upComingEvent?.slice(0, 6).map((item, index) => {
             const { utcTime: startTime } = formatTimezone(
               item?.attributes?.startDateTime
             );
@@ -63,15 +63,15 @@ const UpcomingEvents: React.FC = () => {
               item?.attributes?.endDateTime
             );
             return (
-              <Col key={index} xs={24} sm={24} md={8}>
+              <Col key={index} xs={24} sm={24} md={8} style={{ marginTop: 20 }}>
                 <ColorfulCard border="bottom" index={index}>
                   <Card style={{ height: 450 }}>
                     <Space direction="vertical">
                       <Text className={styles.cardMonth}>
-                        {startTime.format('MMMM')}
+                        {startTime.format("MMMM")}
                       </Text>
                       <Text className={styles.cardDay}>
-                        {startTime.format('DD')}
+                        {startTime.format("DD")}
                       </Text>
                       <Paragraph
                         ellipsis={{
@@ -94,19 +94,19 @@ const UpcomingEvents: React.FC = () => {
                         <Text className={styles.cardText}>
                           <HistoryOutlined className={styles.cardIcon} />
                           {`${startTime.format(
-                            'dddd, MMMM DD, YYYY hh:mm A'
+                            "dddd, MMMM DD, YYYY hh:mm A"
                           )} - ${endTime.format(
-                            'dddd, MMMM DD, YYYY hh:mm A'
+                            "dddd, MMMM DD, YYYY hh:mm A"
                           )} ${endTimeZone}`}
                         </Text>
                         <Text className={styles.cardText}>
                           <LaptopOutlined className={styles.cardIcon} />
                           {!item.attributes.geographicallyAddress &&
-                          item.attributes.link &&
-                          item.attributes.onlinePlatform ? (
+                            item.attributes.link &&
+                            item.attributes.onlinePlatform ? (
                             <a
                               href={item.attributes.link}
-                              style={{ color: '#666666' }}
+                              style={{ color: "#666666" }}
                             >
                               {item.attributes.onlinePlatform}
                             </a>
@@ -126,7 +126,7 @@ const UpcomingEvents: React.FC = () => {
             );
           })}
         </Row>
-        <Row gutter={32} className={styles.row}>
+        {/* <Row gutter={32} className={styles.row}>
           {upComingEvent?.slice(3, 6).map((item, index) => {
             const { utcTime: startTime } = formatTimezone(
               item?.attributes?.startDateTime
@@ -140,10 +140,10 @@ const UpcomingEvents: React.FC = () => {
                   <Card>
                     <Space direction="vertical">
                       <Text className={styles.cardMonth}>
-                        {startTime.format('MMMM')}
+                        {startTime.format("MMMM")}
                       </Text>
                       <Text className={styles.cardDay}>
-                        {startTime.format('DD')}
+                        {startTime.format("DD")}
                       </Text>
                       <Paragraph className={styles.cardParagraph}>
                         {getTransResult(
@@ -156,19 +156,19 @@ const UpcomingEvents: React.FC = () => {
                         <Text className={styles.cardText}>
                           <HistoryOutlined className={styles.cardIcon} />
                           {`${startTime.format(
-                            'dddd, MMMM DD, YYYY hh:mm A'
+                            "dddd, MMMM DD, YYYY hh:mm A"
                           )} - ${endTime.format(
-                            'dddd, MMMM DD, YYYY hh:mm A'
+                            "dddd, MMMM DD, YYYY hh:mm A"
                           )} ${endTimeZone}`}
                         </Text>
                         <Text className={styles.cardText}>
                           <LaptopOutlined className={styles.cardIcon} />
                           {!item.attributes.geographicallyAddress &&
-                          item.attributes.link &&
-                          item.attributes.onlinePlatform ? (
+                            item.attributes.link &&
+                            item.attributes.onlinePlatform ? (
                             <a
                               href={item.attributes.link}
-                              style={{ color: '#666666' }}
+                              style={{ color: "#666666" }}
                             >
                               {item.attributes.onlinePlatform}
                             </a>
@@ -187,7 +187,7 @@ const UpcomingEvents: React.FC = () => {
               </Col>
             );
           })}
-        </Row>
+        </Row>  */}
       </div>
     </div>
   );

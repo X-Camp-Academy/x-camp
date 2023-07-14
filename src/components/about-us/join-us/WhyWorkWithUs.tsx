@@ -1,9 +1,13 @@
 import { Space, Typography, Button, Card } from "antd";
 import styles from "./WhyWorkWithUs.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
+import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
 const { Title, Paragraph } = Typography;
 
-const WhyWorkWithUs: React.FC = () => {
+const WhyWorkWithUs = () => {
+  const { format: t } = useLang();
+  const router = useRouter();
   return (
     <>
       <div className={styles.WhyWorkWithUsContainer}>
@@ -11,20 +15,14 @@ const WhyWorkWithUs: React.FC = () => {
           <ColorfulCard border="bottom" index={1}>
             <Card className={styles.card}>
               <Space direction="vertical" style={{ textAlign: "center" }}>
-                <Title className={styles.title}>Why work with us</Title>
+                <Title className={styles.title}>{t("WhyWorkWithUs")}</Title>
                 <Paragraph className={styles.description}>
-                  X-Camp aim to employ the best people from a wide pool of talent in
-                  order to create an environment where everybody’s contribution is
-                  valued and respected. If a candidate is recommended by parents of
-                  X-Camp students and is offered, the student will receive a
-                  one-time $500 tuition waiver.
+                  {t("WhyWorkWithUs.Desc")}
                 </Paragraph>
-                <Button className={styles.contactBtn}>{"Contact Us"}</Button>
+                <Button className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>{t("ContactUs")}</Button>
               </Space>
             </Card>
-
           </ColorfulCard>
-
         </div>
       </div>
     </>

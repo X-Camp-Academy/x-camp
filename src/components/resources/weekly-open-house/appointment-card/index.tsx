@@ -1,25 +1,24 @@
-import React from 'react';
-import styles from './index.module.scss';
-import classNames from 'classnames/bind';
-import { Button } from 'antd';
-import { CarryOutOutlined } from '@ant-design/icons';
-const cx = classNames.bind(styles);
+import React from "react";
+import styles from "./index.module.scss";
+import classNames from "classnames/bind";
+import { Button } from "antd";
+import { CarryOutOutlined } from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
 
 const AppointmentCard = () => {
+  const { format: t } = useLang();
+  const router = useRouter();
   return (
-    <div className={'container'}>
+    <div className={"container"}>
       <div className={styles.card}>
         <div className={styles.left}>
-          <div className={styles.title}>
-            {'Time conflict？We are here for you!'}
-          </div>
+          <div className={styles.title}>{t("OpenHouse.Conflict")}</div>
           <div className={styles.description}>
-            {
-              'X-Camp course consultants are happy to provide 1 on 1 meeting at your available time. '
-            }
+            {t("OpenHouse.Conflict.Desc")}
           </div>
-          <Button className={styles.btn}>
-            {'Make an appointment'}
+          <Button className={styles.btn} onClick={() => { router.push('/') }}>
+            {t("MakeAnAppointment")}
             <CarryOutOutlined />
           </Button>
         </div>

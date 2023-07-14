@@ -5,9 +5,11 @@ import Link from "next/link";
 import { ClockCircleOutlined, ReadOutlined } from "@ant-design/icons";
 import { XStarViewer } from "@/utils/x-star-editor-beta";
 import { viewerVideoPlugin } from "@/utils/x-star-editor-beta/plugins/viewer-video";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title } = Typography;
 
 const ArticleContent = () => {
+  const { format: t } = useLang();
   const content = `我们对学霸常有天降紫微星的文艺想象，好象他们在学业上的成就都是上天注目的，是幸运的天选之人，但现实上并非如此。
 
   Joe是2022年美国信息学奥林匹克竞赛USACO国家集训队的26人之一，他的成就是个人极度努力和优秀人才系统培训共同合作用的结果，他的成功没有玄学没有捷径，他的成功是可以复制的的。沿着同样的路，同年X-Camp有另外三名优秀学生也进入了USACO美国国家集训队。
@@ -52,12 +54,12 @@ Joe是理科全才，他不仅是USACO美国国家训练队成员，也是物理
         className={styles.breadcrumb}
         items={[
           {
-            title: <Link href="/">{"Home"}</Link>,
+            title: <Link href="/">{t("Home")}</Link>,
           },
           {
             title: (
               <Link href="/resources/weekly-education-forum">
-                {"Weekly Education Forum"}
+                {t("WeeklyEducationForum")}
               </Link>
             ),
           },
@@ -80,11 +82,7 @@ Joe是理科全才，他不仅是USACO美国国家训练队成员，也是物理
       />
       <Space className={styles.note}>
         <ReadOutlined className={styles.icon} />
-        <span>
-          {
-            "Note: This document is an original work of X-Camp, and its copyright belongs to our company."
-          }
-        </span>
+        <span>{t("ArticleContent.Desc")}</span>
       </Space>
     </div>
   );

@@ -14,6 +14,7 @@ import styles from "./ResumeForm.module.scss";
 import React, { useState } from "react";
 import { UploadChangeParam } from "antd/es/upload";
 import { useSubmitResume } from "@/apis/send-email-client/sendEmail";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title, Text, Paragraph } = Typography;
 
 interface submitResumeProps {
@@ -29,7 +30,8 @@ interface submitResumeProps {
   website?: Blob;
 }
 
-const ResumeForm: React.FC = () => {
+const ResumeForm = () => {
+  const { format: t } = useLang();
   const [pdfFileList, setPdfFileList] = useState<any>(); //已选择的文件列表（只有一个）
   function beforePDFUpload(file: Blob) {
     const fileSizeLimit = 10 * 1024 * 1024; // 10MB，字节为单位
@@ -89,29 +91,27 @@ const ResumeForm: React.FC = () => {
         className={styles.formContainer}
         onFinish={submitResumeOnFinish}
       >
-        <Title className={styles.title}>Apply Now</Title>
-        <Text className={styles.description}>
-          Fields marked with * are required
-        </Text>
+        <Title className={styles.title}>{t("ApplyNow")}</Title>
+        <Text className={styles.description}>{t("RequiredFields")}</Text>
 
         <div className={styles.basicInfoContainer}>
           <Form.Item name="firstName" rules={[{ required: true }]}>
-            <Input placeholder="First Name *" />
+            <Input placeholder={`${t("FirstName")} *`} />
           </Form.Item>
           <Form.Item name="lastName" rules={[{ required: true }]}>
-            <Input placeholder="Last Name *" />
+            <Input placeholder={`${t("LastName")} *`} />
           </Form.Item>
           <Form.Item
             name="email"
             rules={[{ type: "email" }, { required: true }]}
           >
-            <Input type="email" placeholder="Email *" />
+            <Input type="email" placeholder={`${t("Email")} *`} />
           </Form.Item>
           <Form.Item name="phone" rules={[{ required: true }]}>
-            <Input placeholder="Phone *" />
+            <Input placeholder={`${t("Phone")} *`} />
           </Form.Item>
         </div>
-        <Title className={styles.title}>{"Resume/CV *"}</Title>
+        <Title className={styles.title}>{`${t("ResumeCV")} *`}</Title>
         <Form.Item name="resume" rules={[{ required: true }]}>
           <Upload
             accept=".pdf"
@@ -125,11 +125,11 @@ const ResumeForm: React.FC = () => {
             disabled={false}
           >
             <Button type="primary" className={styles.upBtn}>
-              {"Upload File"}
+              {t("UploadFile")}
             </Button>
           </Upload>
         </Form.Item>
-        <Title className={styles.title}>{"Cover Letter"}</Title>
+        <Title className={styles.title}>{t("CoverLetter")}</Title>
         <Form.Item name="letter">
           <Upload
             accept=".pdf"
@@ -143,34 +143,36 @@ const ResumeForm: React.FC = () => {
             disabled={false}
           >
             <Button type="primary" className={styles.upBtn}>
-              {"Upload File"}
+              {t("UploadFile")}
             </Button>
           </Upload>
         </Form.Item>
 
         <Form.Item name="linkedIn">
-          <Input placeholder="LinkedIn Profile" className={styles.inputInfo} />
+          <Input
+            placeholder={t("LinkedInProfile")}
+            className={styles.inputInfo}
+          />
         </Form.Item>
 
         <Form.Item name="website">
-          <Input placeholder="Website" className={styles.inputInfo} />
+          <Input placeholder={t("Website")} className={styles.inputInfo} />
         </Form.Item>
 
         <div style={{ marginBottom: 20 }}>
           <Text className={styles.problem}>
-            {
-              "This position is located in Mountain View, CA. Are you able to commute to the office and/or are you willing to relocate?*"
-            }
+            {t("RelocationQuestion")}
+            {" *"}
           </Text>
         </div>
         <Form.Item name="acRelocate">
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
-                Yes
+                {t("Yes")}
               </Radio>
               <Radio value="No" className={styles.problem}>
-                No
+                {t("No")}
               </Radio>
             </Space>
           </Radio.Group>
@@ -178,47 +180,42 @@ const ResumeForm: React.FC = () => {
 
         <div style={{ marginBottom: 20 }}>
           <Text className={styles.problem}>
-            {
-              "Are you currently or were you previously an Alphabet employee, contractor, or intern?*"
-            }
+            {t("AlphabetEmployeeQuestion")}
+            {" *"}
           </Text>
         </div>
         <Form.Item name="alphabetEmployee">
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
-                Yes
+                {t("Yes")}
               </Radio>
               <Radio value="No" className={styles.problem}>
-                No
+                {t("No")}
               </Radio>
             </Space>
           </Radio.Group>
         </Form.Item>
 
         <Form.Item rules={[{ required: true }]}>
-          <Text className={styles.title}>Application consent for X</Text>
+          <Text className={styles.title}>{t("ApplicationConsent")}</Text>
           <Paragraph className={styles.acceptText}>
-            By clicking the “I Accept” button you expressly give your consent
-            for the collection and use of your information as described at{" "}
+            {t("ApplicationConsent.Desc1")}{" "}
             <a style={{ color: "#FFAD11" }}>
               https://www.google.com/about/careers/privacy/
             </a>
-            . I consent to the processing of my information as described in that
-            policy including that, in limited circumstances, my information may
-            be shared with trusted third parties to assist in certain phases of
-            the hiring process (such as conducting background checks).
+            {t("ApplicationConsent.Desc2")}
           </Paragraph>
           <Radio.Group>
             <Radio value="1" className={styles.problem}>
-              I Accept
+              {t("IAccept")}
             </Radio>
           </Radio.Group>
         </Form.Item>
 
         <Form.Item>
           <Button type="primary" htmlType="submit" className={styles.upBtn}>
-            Submit
+            {t("Submit")}
           </Button>
         </Form.Item>
       </Form>

@@ -1,24 +1,23 @@
-import XCollapse from '@/components/common/collapse';
-import styles from './index.module.scss';
-import React, { useState } from 'react';
-import { Button, Col, Row, Space, Typography } from 'antd';
-import ColorfulCard from '@/components/common/colorful-card';
-import { AlignRightOutlined, RightCircleOutlined } from '@ant-design/icons';
-import {
-  NewEventCategory,
-  ActivityCategory,
-} from '@/apis/strapi-client/define';
-import { useGetNewEvent } from '@/apis/strapi-client/strapi';
-import { StrapiMedia } from '@/apis/strapi-client/strapiDefine';
-import { getTransResult } from '@/utils/public';
-import { useLang } from '@/hoc/with-intl/define';
-import dayjs from 'dayjs';
+import XCollapse from "@/components/common/collapse";
+import styles from "./index.module.scss";
+import React, { useState } from "react";
+import { Button, Col, Row, Space, Typography } from "antd";
+import ColorfulCard from "@/components/common/colorful-card";
+import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
+import { NewEventCategory } from "@/apis/strapi-client/define";
+import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const RecentActivities = () => {
+  const router = useRouter();
   const pageSize = 25;
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Activity);
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const { data: newEventData } = useGetNewEvent({
     tag,
     current,
@@ -29,12 +28,12 @@ const RecentActivities = () => {
     return img?.data?.attributes?.url;
   };
 
-  const RecentActivities = newEventData?.data.filter((item, index) => {
+  const RecentActivities = newEventData?.filter((item, index) => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
-        new Date().getTime() >
-        0
+      new Date().getTime() >
+      0
     );
   });
 
@@ -43,15 +42,15 @@ const RecentActivities = () => {
       <div className="container">
         <XCollapse
           header={{
-            title: 'Recent popular activities',
-            description: 'Recent popular activities',
+            title: t("RecentPopularEvents"),
+            description: t("RecentPopularEvents.Desc"),
           }}
         >
           <Row className={styles.cards} gutter={[32, 32]}>
             {RecentActivities?.slice(0, 3).map((v, index) => (
               <Col key={index} xs={24} sm={24} md={12} lg={8}>
-                <ColorfulCard border={'bottom'} animate={false} index={index}>
-                  <Space direction="vertical" className={styles.card}>
+                <ColorfulCard border={"bottom"} animate={false} index={index}>
+                  <Space direction="vertical" className={styles.card} >
                     <img src={getImgUrl(v.attributes.img)} alt="img" />
                     <div className={styles.title}>
                       {getTransResult(
@@ -70,11 +69,14 @@ const RecentActivities = () => {
                           v?.attributes.descriptionEn
                         )}
                       </div>
-                      <Button
-                        type="link"
-                        className={styles.btn}
-                        icon={<RightCircleOutlined />}
-                      />
+
+                      <Link href={`/resources/${v.id}`}>
+                        <Button
+                          type="link"
+                          className={styles.btn}
+                          icon={<RightCircleOutlined />}
+                        />
+                      </Link>
                     </div>
                   </Space>
                 </ColorfulCard>

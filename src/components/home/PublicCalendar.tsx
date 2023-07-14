@@ -6,9 +6,10 @@ import styles from "./PublicCalendar.module.scss";
 import dayjs from "dayjs";
 import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
+import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import isBetween from 'dayjs/plugin/isBetween';
+import { TimeZone } from "@/utils/public";
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
@@ -29,16 +30,15 @@ const PublicCalendar: React.FC = () => {
       end?: string;
       timeZone?: number;
 
-      contestStartDateTime?: string;
-      contestEndDateTime?: string;
+      startDateTime?: string;
+      endDateTime?: string;
     }[]
   >([]);
 
   const [eventDate, setEventDate] = useState<
     {
-      dateTime: string;
-      contestStartDateTime?: string;
-      contestEndDateTime?: string;
+      startDateTime?: string;
+      endDateTime?: string;
     }[]
   >([]);
 
@@ -60,6 +60,21 @@ const PublicCalendar: React.FC = () => {
     "December",
   ];
 
+  const monthNameAbbrEn = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
   const pageSize = 999;
   const [current, setCurrent] = useState<number>(1);
 
@@ -69,26 +84,21 @@ const PublicCalendar: React.FC = () => {
   });
 
   const filterSameDateEvent = (selectDate: string) => {
-    if (newEventData?.data) {
+    if (newEventData) {
       setFilterDateEventList(
-        newEventData.data
-          .filter((item) =>
-            dayjs(selectDate).isBetween(dayjs(item.attributes.contestStartDateTime), dayjs(item.attributes.contestEndDateTime), "days", '[]')
+        newEventData
+          ?.filter((item) =>
+            dayjs(selectDate).isBetween(
+              dayjs(item.attributes.startDateTime),
+              dayjs(item.attributes.endDateTime),
+              "days",
+              "[]"
+            )
           )
           .map((filteredItem) => ({
-            titleZh: filteredItem?.attributes?.titleZh,
-            titleEn: filteredItem?.attributes?.titleEn,
-            descriptionZh: filteredItem?.attributes?.descriptionZh,
-            descriptionEn: filteredItem?.attributes?.descriptionEn,
-            start: filteredItem?.attributes?.start,
-            end: filteredItem?.attributes?.end,
-            timeZone: filteredItem?.attributes?.timeZone,
-            contestStartDateTime: filteredItem?.attributes?.contestStartDateTime,
-            contestEndDateTime: filteredItem?.attributes?.contestEndDateTime,
+            ...filteredItem?.attributes,
           }))
       );
-      console.log("@@", filterDateEventList);
-
     }
   };
   useEffect(() => {
@@ -104,10 +114,9 @@ const PublicCalendar: React.FC = () => {
 
   useEffect(() => {
     if (newEventData) {
-      const updatedEventDate = newEventData.data.map((item) => ({
-        dateTime: item.attributes.datetime,
-        contestStartDateTime: item.attributes?.contestStartDateTime,
-        contestEndDateTime: item.attributes?.contestEndDateTime,
+      const updatedEventDate = newEventData?.map((item) => ({
+        startDateTime: item.attributes?.startDateTime,
+        endDateTime: item.attributes?.endDateTime,
       }));
       setEventDate(updatedEventDate);
       filterSameDateEvent(selectDate);
@@ -134,8 +143,13 @@ const PublicCalendar: React.FC = () => {
 
   const dateCellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
-      if (event.contestStartDateTime && event.contestEndDateTime)
-        return value.isBetween(event.contestStartDateTime, event.contestEndDateTime, 'days', '[]');
+      if (event.startDateTime && event.endDateTime)
+        return value.isBetween(
+          event.startDateTime,
+          event.endDateTime,
+          "days",
+          "[]"
+        );
     });
     if (eventDataForDate) {
       return (
@@ -155,7 +169,7 @@ const PublicCalendar: React.FC = () => {
   };
 
   const getMonth = (date: string) => {
-    return dayjs(date).month() + 1;
+    return dayjs(date).month();
   };
 
   const getDate = (date: string) => {
@@ -172,19 +186,19 @@ const PublicCalendar: React.FC = () => {
 
   const formatHourMinute = (time: string) => {
     const timeInfo = dayjs(time);
-    const formatString = 'HH:mm';
+    const formatString = "HH:mm";
     return timeInfo.format(formatString);
-  }
+  };
 
   const formatYMDTime = (date: string) => {
-    const formatStringZh = 'YYYY年MM月DD日 HH:mm';
-    const formatStringEn = 'MM DD,YY HH:mm';
+    const formatStringZh = "YYYY年MM月DD日 HH:mm";
+    const formatStringEn = " DD, YYYY HH:mm";
     return getTransResult(
       lang,
       dayjs(date).format(formatStringZh),
-      dayjs(date).format(formatStringEn)
-    )
-  }
+      `${monthNameEn[dayjs(date).month()]}` + dayjs(date).format(formatStringEn)
+    );
+  };
 
   return (
     <div className={styles.publicCalendarContainer}>
@@ -197,76 +211,85 @@ const PublicCalendar: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space direction="vertical" className={styles.colSpace}>
-              {newEventData?.data.slice(0, 4).map((item, index) => {
-                if (
-                  item?.attributes?.datetime &&
-                  item?.attributes.start &&
-                  item?.attributes.end
-                )
-                  return (
-                    <div className={styles.eventCard} key={item.id}>
+              {newEventData?.slice(0, 4).map((item, index) => {
+                return (
+                  <div className={styles.eventCard} key={item?.id}>
+                    <Space
+                      size={72}
+                      align="center"
+                      className={styles.cardContent}
+                    >
                       <Space
-                        size={72}
-                        align="center"
-                        className={styles.cardContent}
+                        direction="vertical"
+                        className={styles.contentLeft}
                       >
-                        <Space
-                          direction="vertical"
-                          className={styles.contentLeft}
-                        >
-                          <Text className={styles.text}>
-                            {getWeekDay(item.attributes?.datetime)}
-                          </Text>
-                          <Text className={styles.textTwo}>
-                            {getDate(item.attributes?.datetime)}
-                          </Text>
-                          <Text className={styles.text}>
-                            {getMonth(item.attributes?.datetime)}
-                          </Text>
-                        </Space>
-                        <Space
-                          direction="vertical"
-                          className={styles.contentRight}
-                        >
-                          <Text className={styles.paragraph}>
-                            {getTransResult(
-                              lang,
-                              item.attributes.titleZh,
-                              item.attributes.titleEn
-                            )}
-                          </Text>
-                          {!isMobile && (
-                            <Paragraph className={styles.paragraph}
-                              ellipsis={{
-                                rows: 2,
-                                tooltip: getTransResult(
-                                  lang,
-                                  item?.attributes?.descriptionZh,
-                                  item?.attributes?.descriptionEn
-                                ),
-                              }}
-                            >
-                              {`- ${getTransResult(
-                                lang,
-                                item.attributes.descriptionZh,
-                                item.attributes.descriptionEn
-                              )}`}
-                            </Paragraph>
-                          )}
-                          <Text className={styles.date}>
-                            {`${dayjs(item?.attributes?.contestStartDateTime).isSame(dayjs(item?.attributes?.contestEndDateTime), 'day')
-                              ?
-                              `${formatHourMinute(item?.attributes?.contestStartDateTime || '')} ${dayjs(item?.attributes?.contestStartDateTime).hour() < 12 ? "AM" : "PM"} - 
-                                ${formatHourMinute(item?.attributes?.contestEndDateTime || '')} ${dayjs(item?.attributes?.contestEndDateTime).hour() < 12 ? "AM" : "PM"}`
-                              :
-                              `${formatYMDTime(item?.attributes?.contestStartDateTime || '')} - ${formatYMDTime(item?.attributes?.contestEndDateTime || '')}`
-                              } 
-                                UTC ${item?.attributes?.timeZone > 0 ? "+" + item?.attributes?.timeZone : item?.attributes?.timeZone}`}
-                          </Text>
-                        </Space>
+                        <Text className={styles.text}>
+                          {getWeekDay(item.attributes?.startDateTime || "")}
+                        </Text>
+                        <Text className={styles.textTwo}>
+                          {getDate(item.attributes?.startDateTime || "")}
+                        </Text>
+                        <Text className={styles.text}>
+                          {
+                            getTransResult(lang,
+                              `${getMonth(item.attributes?.startDateTime || '') + 1}月`,
+                              monthNameAbbrEn[getMonth(item.attributes?.startDateTime || '')])
+                          }
+                        </Text>
                       </Space>
-                    </div>
-                  );
+                      <Space
+                        direction="vertical"
+                        className={styles.contentRight}
+                      >
+                        <Text className={styles.paragraph}>
+                          {getTransResult(
+                            lang,
+                            item.attributes.titleZh,
+                            item.attributes.titleEn
+                          )}
+                        </Text>
+                        {!isMobile && (
+                          <Paragraph
+                            className={styles.paragraph}
+                            ellipsis={{
+                              rows: 2,
+                              tooltip: getTransResult(
+                                lang,
+                                item?.attributes?.descriptionZh,
+                                item?.attributes?.descriptionEn
+                              ),
+                            }}
+                          >
+                            {`- ${getTransResult(
+                              lang,
+                              item.attributes.descriptionZh,
+                              item.attributes.descriptionEn
+                            )}`}
+                          </Paragraph>
+                        )}
+                        <Text className={styles.date}>
+                          {`${dayjs(item?.attributes?.startDateTime).isSame(
+                            dayjs(item?.attributes?.endDateTime),
+                            "day"
+                          )
+                            ? `${formatHourMinute(
+                              item?.attributes?.startDateTime || ""
+                            )} - 
+                                ${formatHourMinute(
+                              item?.attributes?.endDateTime || ""
+                            )} `
+                            : `${formatYMDTime(
+                              item?.attributes?.startDateTime || ""
+                            )} - ${formatYMDTime(
+                              item?.attributes?.endDateTime || ""
+                            )}`
+                            } ${formatTimezone(item?.attributes?.startDateTime).timezone} 
+                            `}
+                        </Text>
+                      </Space>
+                    </Space>
+                  </div>
+                );
               })}
             </Space>
           </Col>
@@ -290,7 +313,7 @@ const PublicCalendar: React.FC = () => {
                 <div style={{ height: 400, overflow: "scroll" }}>
                   {filterDateEventList.length != 0 &&
                     filterDateEventList.map((item, index) => {
-                      if (item?.start && item?.end && item?.timeZone)
+                      if (item?.startDateTime && item?.endDateTime)
                         return (
                           <Space
                             key={index}
@@ -298,37 +321,26 @@ const PublicCalendar: React.FC = () => {
                             className={styles.calendarItem}
                           >
                             <Text className={styles.itemDate}>
+                              {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
-                              {/* {`${formatHourMinute(item?.contestStartDateTime || '')} ${dayjs(item?.contestStartDateTime).hour() < 12
-                                ? "AM"
-                                : "PM"
-                                } - 
-                                ${formatHourMinute(item?.contestEndDateTime || '')} ${dayjs(item?.contestEndDateTime).hour() < 12
-                                  ? "AM"
-                                  : "PM"
-                                } 
-                            UTC ${item?.timeZone > 0
-                                  ? "+" + item?.timeZone
-                                  : item?.timeZone
-                                }`} */}
-
-                              {`${dayjs(item?.contestStartDateTime).isSame(dayjs(item?.contestEndDateTime), 'day')
+                              {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
                                 ?
-                                `${formatHourMinute(item?.contestStartDateTime || '')} ${dayjs(item?.contestStartDateTime).hour() < 12 ? "AM" : "PM"} - 
-                                ${formatHourMinute(item?.contestEndDateTime || '')} ${dayjs(item?.contestEndDateTime).hour() < 12 ? "AM" : "PM"}`
+                                `${formatHourMinute(item?.startDateTime || '')} - 
+                                 ${formatHourMinute(item?.endDateTime || '')}`
                                 :
-                                `${formatYMDTime(item?.contestStartDateTime || '')} - ${formatYMDTime(item?.contestEndDateTime || '')}`
+                                `${formatYMDTime(item?.startDateTime || '')} - ${formatYMDTime(item?.endDateTime || '')}`
                                 } 
-                                UTC ${item?.timeZone > 0 ? "+" + item?.timeZone : item?.timeZone}`}
+                                ${formatTimezone(item?.startDateTime).timezone}`}
 
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
-                              {`${getTransResult(
+                              {`
+                              ${getTransResult(
                                 lang,
                                 item.titleZh,
                                 item.titleEn
                               )} - 
-                        ${getTransResult(
+                              ${getTransResult(
                                 lang,
                                 item.descriptionZh,
                                 item.descriptionEn

@@ -1,28 +1,24 @@
-import React from 'react';
-import styles from './index.module.scss';
-import { Button, Space } from 'antd';
-import classNames from 'classnames/bind';
+import React from "react";
+import styles from "./index.module.scss";
+import { Button, Space } from "antd";
+import classNames from "classnames/bind";
+import { useLang } from "@/hoc/with-intl/define";
 const cx = classNames.bind(styles);
 
 const TopBanner = () => {
+  const { format: t } = useLang();
   return (
     <div className={styles.banner}>
-      <div className={cx('container', styles.content)}>
+      <div className={cx("container", styles.content)}>
         <Space className={styles.bannerContent}>
-          <Space direction={'vertical'}>
-            <div className={styles.title}>{'Weekly Open House'}</div>
-            <div className={styles.description}>
-              {
-                'Since 2022 spring quarter, X-Camp provides a weekly open house for students and parents who are interested in X-Camp.'
-              }
-            </div>
-            <Button className={styles.btn}>
-              <span>{'Join The Meeting'}</span>
+          <Space direction={"vertical"}>
+            <div className={styles.title}>{t("WeeklyOpenHouse")}</div>
+            <div className={styles.description}>{t("OpenHouse.Desc")}</div>
+            <Button className={styles.btn} onClick={() => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') }}>
+              <span>{"Join The Meeting"}</span>
               <img src="/image/resources/weekly-open-house-btn.png" alt="" />
             </Button>
-            <div className={styles.dateTime}>
-              {'*Tuesday, Weekly, 6:30 - 7:30 PM PDT'}
-            </div>
+            <div className={styles.dateTime}>{t("JoinWay.Time")}</div>
           </Space>
 
           <img src="/image/resources/weekly-open-house-banner.png"></img>
