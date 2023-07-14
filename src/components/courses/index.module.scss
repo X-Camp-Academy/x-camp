@@ -11,10 +11,8 @@
       border-block-start: none;
     }
 
-    .filterForm {
-      display: flex;
-      justify-content: end;
-      align-items: end;
+    .row {
+      margin-top: 64px;
     }
     .changeBtn {
       width: 48px;
@@ -51,14 +49,6 @@
         background: #ffad11;
         border-radius: 8px;
       }
-    }
-
-    .divider {
-      background-color: #ffad11;
-      margin: 60px 0 60px 0;
-      min-width: unset;
-      width: calc(100% - 32px);
-      height: 2px;
     }
 
     :global(.ant-collapse-expand-icon) {
