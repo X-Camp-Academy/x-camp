@@ -1,17 +1,17 @@
 import React, { useContext, useRef } from "react";
 import styles from "./index.module.scss";
-import { Carousel, Descriptions, Space, Image, Button } from "antd";
+import { Carousel, Descriptions, Space, Image, Button, message } from "antd";
 import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import Item from "antd/es/list/Item";
 import dayjs from "dayjs";
 import { getTransResult } from "@/utils/public";
 
 
 const CourseDescription = () => {
   const { lang, format: t } = useLang();
+  const [messageApi, contextHolder] = message.useMessage();
   const ref = useRef<CarouselRef>(null);
   const courseData = useContext(CourseClassesContext);
   const {
@@ -48,17 +48,18 @@ const CourseDescription = () => {
     )
   }
 
+  const copyInfo = () => {
+    messageApi.info('Hello, Ant Design!');
+  };
+
   const handlerShareLesson = () => {
     const fullPath = window.location.href;
     const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${classRoomLang}\n开始结束时间：${startDate} - ${endDate}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}`;
     const clipTextEn = `Course Name:${courseTitleZh}\nCourse Code:${courseCode}\nprogramming language：${classLang}\nLanguage of instruction：${classRoomLang}\nStart end time:${startDate} - ${endDate}\nCourse cycle:${frequency}\nHow to start the course:${classMode}\nCourse Links:${fullPath}`;
     navigator.clipboard.writeText(getTransResult(lang, clipTextZh, clipTextEn) || '').then(function () {
-
-
-      console.log(1);
+      messageApi.info(getTransResult(lang, '复制成功', 'Copy Successfully'));
     }, function () {
-      
-      console.log(2);
+      messageApi.info(getTransResult(lang, '复制失败', 'Copy Failed'));
     });
 
 
