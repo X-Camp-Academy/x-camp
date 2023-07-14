@@ -33,6 +33,8 @@ import { SegmentedValue } from "antd/es/segmented";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetCourses } from "@/apis/strapi-client/define";
 import FilterForm from "./FilterForm";
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 const { Panel } = Collapse;
 const { Content } = Layout;
 const { RangePicker } = DatePicker;
@@ -48,14 +50,15 @@ interface FormatCoursesProps {
 }
 const Courses = () => {
   const pathname = usePathname();
-  const route = useRouter();
   const { format: t, lang } = useLang();
   const { hash } = window.location;
   const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
   const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
+  const [copyCurrentData, setCopyCurrentData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses, runAsync } = useGetCourses({});
+
 
   const getLangResult = (
     lang: "zh" | "en",
@@ -134,6 +137,7 @@ const Courses = () => {
       (item) => item?.primaryTitle === segmented
     );
     setCurrentData(result);
+    setCopyCurrentData(result);
   };
   const onSegmentedChange = (value: SegmentedValue) => {
     history.replaceState(null, "", pathname);
@@ -141,7 +145,7 @@ const Courses = () => {
   };
   useEffect(() => {
     getCourseBySegmented(segmented);
-  }, [segmented, courses]);
+  }, [segmented, courses, courseLevelType]);
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
@@ -161,7 +165,12 @@ const Courses = () => {
 
 
 
-  
+  const getCurrentData = () => {
+
+  }
+
+  // 根据自动获取生成的数据来筛选
+
 
   // useEffect(() => {
   //   runAsync({
@@ -176,14 +185,75 @@ const Courses = () => {
 
   const categoryOptions = courseLevelTypeData?.map(item => {
     return {
-      labe: item,
+      label: item,
       value: item
     }
-  })
-  const onCategoryChange = (value: string) => {
-    console.log(value);
+  });
+  categoryOptions?.unshift({ label: "Category", value: "Category" });
 
+
+  const onCategoryChange = (value: string) => {
+    console.log(copyCurrentData);
+    if (copyCurrentData && value !== "Category") {
+      const categorizedCurrentData = copyCurrentData[0]?.children?.filter(item => item?.secondaryTitle === value);
+      const newCategorizedCurrentData = {
+        primaryTitle: copyCurrentData[0]?.primaryTitle,
+        children: categorizedCurrentData
+      }
+      console.log(newCategorizedCurrentData);
+      setCurrentData([newCategorizedCurrentData]);
+    } else if (copyCurrentData && value === "Category") {
+      setCurrentData(copyCurrentData);
+    }
   }
+
+
+
+  const isDataInRange = (start: Dayjs, end: Dayjs, dataStart: Dayjs, dataEnd: Dayjs) => {
+    if (dataStart && dataEnd) {
+      return dataStart?.isBetween(start, end) && dataEnd?.isBetween(start, end);
+    }
+    return false;
+  }
+
+  useEffect(() => {
+
+  }, [])
+  const onRangePickerChange = (_: any, dateStrings: [string, string]) => {
+    const startTime = dayjs(dateStrings[0]);
+    const endTime = dayjs(dateStrings[1]);
+    runAsync({
+      populate: "*",
+      sort: ['order:desc'],
+      filters: {
+        startDate: {
+          $between: String(startTime)
+        },
+        endDate: {
+          $between: String(endTime)
+        }
+      }
+    });
+
+    console.log(currentData);
+
+
+    // const filteredCourses = currentData && currentData[0]?.children?.filter(primary => {
+    //   return primary?.children?.filter(secondary => {
+    //     const dataStart = dayjs(secondary?.attributes?.startDate);
+    //     const dataEnd = dayjs(secondary?.attributes?.endDate);
+
+    //     if (dataStart && dataEnd) {
+    //       return isDataInRange(dayjs(startTime), dayjs(endTime), dataStart, dataEnd);
+    //     }
+    //     return false;
+    //   });
+
+    // });
+    // 其他处理逻辑...
+  }
+
+
 
   const onSearch = (value: React.KeyboardEvent<HTMLInputElement>) => {
     console.log(value);
@@ -226,15 +296,14 @@ const Courses = () => {
               <Col xs={24} sm={24} md={4}>
                 <Select
                   style={{ width: '100%' }}
-                  placeholder={"Show All"}
-                  className={styles.select}
+                  placeholder={"Category"}
                   options={categoryOptions}
                   onChange={onCategoryChange}
                 />
               </Col>
 
               <Col xs={24} sm={24} md={{ span: 4, offset: 1 }}>
-                <RangePicker />
+                <RangePicker onChange={onRangePickerChange} />
               </Col>
 
               <Col xs={24} sm={24} md={{ span: 6, offset: 1 }}>
