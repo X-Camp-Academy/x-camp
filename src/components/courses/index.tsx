@@ -3,7 +3,6 @@ import {
   Affix,
   Collapse,
   ConfigProvider,
-  Divider,
   Layout,
   Segmented,
   Space,
@@ -13,7 +12,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined } from "@ant-design/icons";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
 import ClassCard from "../common/class-card";
@@ -28,9 +27,6 @@ import { SegmentedValue } from "antd/es/segmented";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetCourses } from "@/apis/strapi-client/define";
 import FilterForm from "./FilterForm";
-import AnchorNav from "./AnchorNav";
-import { has } from "lodash";
-const { Paragraph } = Typography;
 const { Panel } = Collapse;
 const { Content } = Layout;
 
@@ -284,13 +280,11 @@ const Courses = () => {
                       </>
                     </Panel>
                   </Collapse>
-                  {/* <Divider className={styles.divider} /> */}
                 </div>
               );
             })}
           </div>
           <Testimony testimonyData={testimonyData} />
-          <AnchorNav />
         </Content>
       </Layout>
     </ConfigProvider>
