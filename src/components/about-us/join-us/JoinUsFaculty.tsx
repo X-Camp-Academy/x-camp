@@ -1,22 +1,18 @@
-import { Space, Row, Col, Image, Typography, Button } from "antd";
-import styles from "./JoinUsFaculty.module.scss";
-import { UsergroupAddOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
+import { Space, Row, Col, Image, Typography, Button } from 'antd';
+import styles from './JoinUsFaculty.module.scss';
+import { UsergroupAddOutlined } from '@ant-design/icons';
+import { useLang } from '@/hoc/with-intl/define';
+import { usePathname, useRouter } from 'next/navigation';
+import { useGetFaculty } from '@/apis/strapi-client/strapi';
 const { Paragraph } = Typography;
 
 const JoinUsFaculty = () => {
   const { format: t } = useLang();
-  const imgUrlTwoList = [
-    { url: "/image/home/yuan.png" },
-    { url: "/image/home/yuan.png" },
-  ];
-
-  const imgUrlThreeList = [
-    { url: "/image/home/yuan.png" },
-    { url: "/image/home/yuan.png" },
-    { url: "/image/home/yuan.png" },
-  ];
-
+  const router = useRouter();
+  const pathname = usePathname();
+  const { data: imgUrlList } = useGetFaculty({
+    pageName: [pathname],
+  });
   return (
     <>
       <div className={styles.joinUsFacultyContainer}>
@@ -30,22 +26,27 @@ const JoinUsFaculty = () => {
                 className={styles.logo}
               />
               <Paragraph className={styles.introText}>
-                {t("XCampFaculty.Desc")}
+                {t('XCampFaculty.Desc')}
               </Paragraph>
-              <Button className={styles.introBtn}>
-                {t("XCampFaculty")}
+              <Button
+                className={styles.introBtn}
+                onClick={() => {
+                  router.push('/about-us/introduction');
+                }}
+              >
+                {t('XCampFaculty')}
                 <UsergroupAddOutlined />
               </Button>
             </Space>
           </Col>
           <Col className={styles.facultyImgs} lg={12} md={24} xs={24}>
             <Row gutter={16}>
-              {imgUrlTwoList?.map((item, index) => {
+              {imgUrlList?.slice(0, 2)?.map((item, index) => {
                 return (
                   <Col span={8} offset={3} key={index}>
                     <Image
                       alt="image"
-                      src={item.url}
+                      src={item.attributes.img.data.attributes.url}
                       preview={false}
                       className={styles.image}
                     />
@@ -53,13 +54,13 @@ const JoinUsFaculty = () => {
                 );
               })}
             </Row>
-            <Row gutter={16} style={{ marginTop: "20px" }}>
-              {imgUrlThreeList?.map((item, index) => {
+            <Row gutter={16} style={{ marginTop: '20px' }}>
+              {imgUrlList?.slice(2, 5)?.map((item, index) => {
                 return (
                   <Col span={8} key={index}>
                     <Image
                       alt="image"
-                      src={item.url}
+                      src={item.attributes.img.data.attributes.url}
                       preview={false}
                       className={styles.image}
                     />

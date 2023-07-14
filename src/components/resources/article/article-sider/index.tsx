@@ -18,7 +18,8 @@ import dayjs, { Dayjs } from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
+import { formatTimezone, getTransResult } from "@/utils/public";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
 const ArticleSider = () => {
   const { format: t, lang } = useLang();
@@ -150,6 +151,14 @@ const ArticleSider = () => {
     );
   };
 
+  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
+    return getTransResult(
+      lang,
+      imgZh.data?.attributes.url,
+      imgEn.data?.attributes.url,
+    )
+  }
+
   const activityData = [
     {
       img: "/image/about-us/introduction/top-banner.png",
@@ -191,18 +200,14 @@ const ArticleSider = () => {
                       <Text className={styles.itemDate}>
                         {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
-                        {`${
-                          dayjs(item?.startDateTime).isSame(
-                            dayjs(item?.endDateTime),
-                            "day"
-                          )
-                            ? `${formatHourMinute(item?.startDateTime || "")} - 
-                                 ${formatHourMinute(item?.endDateTime || "")}`
-                            : `${formatYMDTime(
-                                item?.startDateTime || ""
-                              )} - ${formatYMDTime(item?.endDateTime || "")}`
-                        } 
-                                /*timeZone*/`}
+                        {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
+                          ?
+                          `${formatHourMinute(item?.startDateTime || '')} - 
+                                 ${formatHourMinute(item?.endDateTime || '')}`
+                          :
+                          `${formatYMDTime(item?.startDateTime || '')} - ${formatYMDTime(item?.endDateTime || '')}`
+                          } 
+                          ${formatTimezone(item?.endDateTime).timezone}`}
                       </Text>
                       <Paragraph
                         className={styles.itemParagraph}
@@ -248,7 +253,7 @@ const ArticleSider = () => {
               <Card>
                 <Space direction="vertical" style={{ width: "100%" }}>
                   <Image
-                    src={v.attributes.img?.data?.attributes?.url}
+                    src={getTranslateImg(v.attributes?.imgZh, v.attributes?.imgEn)}
                     alt="image"
                     preview={false}
                   />

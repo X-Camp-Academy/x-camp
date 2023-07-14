@@ -24,9 +24,14 @@ const Stories: React.FC = () => {
     pageSize,
   });
 
-  const getImgUrl = (img: StrapiMedia) => {
-    return img?.data?.attributes?.url;
-  };
+
+  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
+    return getTransResult(
+      lang,
+      imgZh.data?.attributes.url,
+      imgEn.data?.attributes.url,
+    )
+  }
 
   return (
     <div className={styles.storiesContainer}>
@@ -56,7 +61,7 @@ const Stories: React.FC = () => {
                     <Image
                       alt=""
                       preview={false}
-                      src={getImgUrl(item?.attributes?.img)}
+                      src={getTranslateImg(item.attributes.imgZh, item.attributes.imgEn)}
                       className={styles.cardImage}
                     />
 

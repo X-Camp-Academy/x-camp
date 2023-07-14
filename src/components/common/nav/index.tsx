@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+'use client';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ConfigProvider,
   Layout,
@@ -9,21 +9,24 @@ import {
   Input,
   Button,
   MenuProps,
-} from "antd";
-import { SearchOutlined, UnorderedListOutlined } from "@ant-design/icons";
-import "animate.css";
-import styles from "./index.module.scss";
-import { useMobile } from "@/utils";
-import { removeDropdown, useMenuItems } from "./define";
-import XStarMenu from "./x-star-menu";
-import { useAuth } from "@/hoc/with-auth/define";
-import DropdownUserMenu from "../dropdown-user-menu";
-import { apiConfig } from "@/config/index";
+  Select,
+  Spin,
+} from 'antd';
+import { SearchOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import 'animate.css';
+import styles from './index.module.scss';
+import { useMobile } from '@/utils';
+import { removeDropdown, useMenuItems } from './define';
+import XStarMenu from './x-star-menu';
+import { useAuth } from '@/hoc/with-auth/define';
+import DropdownUserMenu from '../dropdown-user-menu';
+import { apiConfig } from '@/config/index';
 
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { getTransResult } from '@/utils/public';
+import { useLang } from '@/hoc/with-intl/define';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import SelectPage from './SelectPage';
 
 const { Header } = Layout;
 
@@ -37,7 +40,6 @@ const Nav = () => {
   const isMobile = useMobile();
   const menuItems = useMenuItems();
   const { xydApi } = apiConfig;
-  const onSearch = (e: React.KeyboardEvent<HTMLInputElement>) => console.log(e);
 
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -47,33 +49,33 @@ const Nav = () => {
   useEffect(() => {
     if (showMenu) {
       (ref?.current as HTMLDivElement)?.classList?.add(
-        "animate__animated",
-        "animate__slideInRight"
+        'animate__animated',
+        'animate__slideInRight'
       );
     } else {
       (ref?.current as HTMLDivElement)?.classList?.remove(
-        "animate__animated",
-        "animate__slideInRight"
+        'animate__animated',
+        'animate__slideInRight'
       );
     }
   }, [showMenu]);
 
-  const mobileMenuItems: MenuProps["items"] = useMemo(() => {
+  const mobileMenuItems: MenuProps['items'] = useMemo(() => {
     // 手机端则去除dropdown
     const loginSignUp = [
       {
         label: <Link href="/login">Log In</Link>,
-        key: "/login",
+        key: '/login',
       },
       {
         label: <Link href="/login">Sign Up</Link>,
-        key: "/login",
+        key: '/login',
       },
       {
         label: (
-          <a onClick={toggle}>{getTransResult(lang, "中文", "English")}</a>
+          <a onClick={toggle}>{getTransResult(lang, '中文', 'English')}</a>
         ),
-        key: "",
+        key: '',
       },
     ];
     return isMobile
@@ -81,14 +83,14 @@ const Nav = () => {
       : menuItems;
   }, [menuItems, isMobile]);
 
-  const [openKeys, setOpenKeys] = useState([""]);
+  const [openKeys, setOpenKeys] = useState(['']);
 
-  const rootSubmenuKeys = ["courses", "resources", "about-us"];
+  const rootSubmenuKeys = ['courses', 'resources', 'about-us'];
 
   const setCurrentKey = (key: string) => {
     setCurrent(key);
   };
-  const onOpenMobileMenuChange: MenuProps["onOpenChange"] = (keys) => {
+  const onOpenMobileMenuChange: MenuProps['onOpenChange'] = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
     if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
       setOpenKeys(keys);
@@ -104,11 +106,11 @@ const Nav = () => {
       setShowMenu(true);
     } else {
       (ref?.current as HTMLDivElement)?.classList?.remove(
-        "animate__slideInRight"
+        'animate__slideInRight'
       );
       (ref?.current as HTMLDivElement)?.classList?.add(
-        "animate__animated",
-        "animate__slideOutRight"
+        'animate__animated',
+        'animate__slideOutRight'
       );
       setTimeout(() => {
         setShowMenu(false);
@@ -119,7 +121,7 @@ const Nav = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#FFAD11",
+          colorPrimary: '#FFAD11',
         },
       }}
     >
@@ -142,13 +144,8 @@ const Nav = () => {
                 />
               )}
             </Space>
-            <Space size={"middle"}>
-              <Input
-                placeholder={t("Search")}
-                onPressEnter={onSearch}
-                suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
-              />
-
+            <Space size={'middle'}>
+              <SelectPage />
               {!isMobile && (
                 <>
                   {user ? (
@@ -159,17 +156,17 @@ const Nav = () => {
                         type="primary"
                         onClick={() => window.open(`${xydApi}/courses`)}
                       >
-                        {t("ToStudy")}
+                        {t('ToStudy')}
                       </Button>
                     </Space>
                   ) : (
                     <Button type="primary" href="/login">
-                      {t("Nav.Login")}
+                      {t('Nav.Login')}
                     </Button>
                   )}
                   <div onClick={toggle} className={styles.intl}>
                     <div className={styles.img} />
-                    <span>{getTransResult(lang, "中文", "English")}</span>
+                    <span>{getTransResult(lang, '中文', 'English')}</span>
                   </div>
                 </>
               )}

@@ -1,8 +1,8 @@
-"use client";
-import React from "react";
-import styles from "./index.module.scss";
-import { Collapse, Space } from "antd";
-import { DownCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
+'use client';
+import React from 'react';
+import styles from './index.module.scss';
+import { Collapse, Space } from 'antd';
+import { DownCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 
 const { Panel } = Collapse;
 
@@ -16,9 +16,9 @@ const QACard: React.FC<Props> = ({
   question,
   answer,
   index,
-  className = "",
+  className = '',
 }) => {
-  const threeColors = ["#FFD600", "#FFAD11", "#D46B14"];
+  const threeColors = ['#FFD600', '#FFAD11', '#D46B14'];
   const computedStyle = (index: number) => {
     const defaultStyle = {
       borderRadius: 12,
@@ -35,7 +35,7 @@ const QACard: React.FC<Props> = ({
       expandIcon={({ isActive }) => (
         <DownCircleOutlined
           rotate={isActive ? 180 : 0}
-          style={{ color: "#FFAD11", fontSize: 24 }}
+          style={{ color: '#FFAD11', fontSize: 24 }}
         />
       )}
       className={`${styles.collapse} ${className}`}

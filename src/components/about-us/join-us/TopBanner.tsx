@@ -1,10 +1,12 @@
 import { Space, Row, Col, Image, Typography, Button } from "antd";
 import styles from "./TopBanner.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
 const { Title, Paragraph } = Typography;
 
 const TopBanner = () => {
   const { format: t } = useLang();
+  const router = useRouter();
   return (
     <div className={styles.topBannerContainer}>
       <div className="container">
@@ -15,7 +17,7 @@ const TopBanner = () => {
               <Paragraph className={styles.paragraph}>
                 {t("Careers.Desc")}
               </Paragraph>
-              <Button size="large" className={styles.contactBtn}>
+              <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>
                 {t("ContactUs")}
                 <img src="/image/about-us/join-us/comment.png" alt="" />
               </Button>

@@ -5,7 +5,7 @@ import {
   StrapiResponse,
   StrapiResponseSingleDataItem,
   strapiPublicFields,
-} from "./strapiDefine";
+} from './strapiDefine';
 
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
@@ -24,17 +24,16 @@ export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 export enum NewEventCategory {
   News = "News",
   Event = "Events",
-  Activity = "Activity",
   SchoolCalendar = "School Calendar",
   EventContest = "Event Contest",
   All = "All",
 }
 
-export enum ActivityCategory {
+export enum EventCategory {
   SchoolLifeSharing = "School life's sharing",
-  CodingEducation = "Coding Education",
-  CareerPath = "Career Path",
-  Research = "Research",
+  CodingEducation = 'Coding Education',
+  CareerPath = 'Career Path',
+  Research = 'Research',
 }
 
 export interface GetNewEvent extends strapiPublicFields {
@@ -43,10 +42,9 @@ export interface GetNewEvent extends strapiPublicFields {
   descriptionZh: string;
   descriptionEn: string;
   tags: NewEventCategory;
-  activityCategory?: ActivityCategory;
+  eventCategory?: EventCategory;
   order?: number;
   editor?: string;
-  img: StrapiMedia;
   start?: string;
   end?: string;
   timeZone: number;
@@ -66,6 +64,9 @@ export interface GetNewEvent extends strapiPublicFields {
   contestLogo?: StrapiMedia;
   contestTitleExplanationZh?: string;
   contestTitleExplanationEn?: string;
+
+  imgEn: StrapiMedia;
+  imgZh: StrapiMedia;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
@@ -176,6 +177,7 @@ export interface GetCourses extends strapiPublicFields {
   bundleRegisterLink: string;
   startDate: string;
   endDate: string;
+  courseFormat: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
@@ -212,14 +214,14 @@ export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
 export enum AboutUsJoinUsCategory {
-  PartTime = "Part Time",
-  FullTime = "Full Time",
-  XTutor = "X-Tutor",
+  PartTime = 'Part Time',
+  FullTime = 'Full Time',
+  XTutor = 'X-Tutor',
 }
 
 export enum AboutUsJoinUsPlace {
-  Remote = "Remote",
-  OnSite = "On Site",
+  Remote = 'Remote',
+  OnSite = 'On Site',
 }
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
@@ -314,9 +316,9 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = "Referral QA",
-  CoursesQA = "Courses QA",
-  CampsQA = "Camps QA",
+  ReferralQA = 'Referral QA',
+  CoursesQA = 'Courses QA',
+  CampsQA = 'Camps QA',
 }
 
 export interface GetFaq extends strapiPublicFields {
@@ -335,10 +337,10 @@ export type GetFaqRequest = StrapiRequest<GetFaq>;
 export type GetFaqResponse = StrapiResponse<GetFaq>;
 
 export enum PartnerCategory {
-  ChinaPartners = "China Partners",
-  UniversityPartners = "University Partners",
-  CommunityPartners = "Community Partners",
-  EducationPartners = "Education Partners",
+  ChinaPartners = 'China Partners',
+  UniversityPartners = 'University Partners',
+  CommunityPartners = 'Community Partners',
+  EducationPartners = 'Education Partners',
 }
 
 export interface GetPartner extends strapiPublicFields {
@@ -354,3 +356,21 @@ export interface GetPartner extends strapiPublicFields {
 
 export type GetPartnerRequest = StrapiRequest<GetPartner>;
 export type GetPartnerResponse = StrapiResponse<GetPartner>;
+
+export interface UserSearch extends strapiPublicFields {
+  keywords: JSON;
+}
+export type GetUserSearchRequest = StrapiRequest<UserSearch>;
+export type GetUserSearchResponse = StrapiResponseSingleDataItem<UserSearch>;
+
+export interface UserInfo extends strapiPublicFields {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+export type SubmitUserInfoRequest = {
+  data: UserInfo;
+};
+export type SubmitUserInfoResponse = StrapiResponseSingleDataItem<UserInfo>;
