@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import { Button, Carousel, Col, Row, Space } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { CarouselRef } from 'antd/es/carousel';
-import Image from 'next/image';
+
 const CampCarousel = () => {
   const ref = useRef<CarouselRef>(null);
   return (

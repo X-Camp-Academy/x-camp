@@ -129,7 +129,7 @@ const CourseDescription = () => {
             {classRoomLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
-            {`${startDate}-${endDate}`}
+            {`${formatDate(startDate || '')} - ${formatDate(endDate || '')}`}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
             {"Offline(12280 Saratoga Sunnyvale Rd, #203 CA 95070)"}

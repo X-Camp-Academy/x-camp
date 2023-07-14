@@ -35,6 +35,7 @@ const DiscoverCourses = ({
       </Space>
     );
   };
+  
   const courseCards = [
     {
       title: t("Python.Title"),
@@ -43,8 +44,8 @@ const DiscoverCourses = ({
       bgc: "#D8D8D8",
       maskBgc: "rgb(216 216 216 / 40%)",
       maskChildren: generateMaskChildren(
-        "APCS",
-        t("APCS.Mask.Desc"),
+        t("Python.Title"),
+        t("Python.Mask.Desc"),
         "/courses/#classify0"
       ),
     },
@@ -55,8 +56,8 @@ const DiscoverCourses = ({
       bgc: "#FFD600",
       maskBgc: "rgb(255 214 0 / 40%)",
       maskChildren: generateMaskChildren(
-        "APCS",
-        t("APCS.Mask.Desc"),
+        t("C++.Title"),
+        t("C++.Mask.Desc"),
         "/courses/#classify1"
       ),
     },
@@ -67,8 +68,8 @@ const DiscoverCourses = ({
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
       maskChildren: generateMaskChildren(
-        "APCS",
-        t("APCS.Mask.Desc"),
+        t("USACO.Title"),
+        t("USACO.Mask.Desc"),
         "/courses/#classify3"
       ),
     },
@@ -99,7 +100,7 @@ const DiscoverCourses = ({
         {t("DiscoverOurCourses")}
       </Texty>
       {showSubTitle && (
-        <div className={styles.subTitle}>{t("RecentPopularActivities")}</div>
+        <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
       )}
       {showBg && <Text className={styles.arc}></Text>}
 

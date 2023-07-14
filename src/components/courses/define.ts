@@ -3,5 +3,5 @@ export const COURSE_TYPES = [
   "In-person Camps",
   "Enhancement Classes",
   "APCS Classes",
-  "X- Tutors",
+  // "X- Tutors",
 ];

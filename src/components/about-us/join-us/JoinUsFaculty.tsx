@@ -2,10 +2,12 @@ import { Space, Row, Col, Image, Typography, Button } from "antd";
 import styles from "./JoinUsFaculty.module.scss";
 import { UsergroupAddOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
+import { useRouter } from "next/navigation";
 const { Paragraph } = Typography;
 
 const JoinUsFaculty = () => {
   const { format: t } = useLang();
+  const router = useRouter();
   const imgUrlTwoList = [
     { url: "/image/home/yuan.png" },
     { url: "/image/home/yuan.png" },
@@ -32,7 +34,7 @@ const JoinUsFaculty = () => {
               <Paragraph className={styles.introText}>
                 {t("XCampFaculty.Desc")}
               </Paragraph>
-              <Button className={styles.introBtn}>
+              <Button className={styles.introBtn} onClick={()=>{router.push('/about-us/introduction')}}>
                 {t("XCampFaculty")}
                 <UsergroupAddOutlined />
               </Button>
