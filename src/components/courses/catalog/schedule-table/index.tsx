@@ -160,52 +160,6 @@ const ScheduleTable = () => {
   return (
     <div className={styles.scheduleTable}>
       <div className={"container"}>
-        <Form layout={"inline"}>
-          <Row style={{ width: "100%" }} gutter={[18, 0]}>
-            <Col xs={24} sm={24} md={12} lg={8} xl={6} className={styles.col}>
-              <Form.Item name={"courseMode"} colon={false}>
-                <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>{t("CourseMode")}</Text>
-                  <Select
-                    placeholder={t("ShowAll")}
-                    className={styles.select}
-                  />
-                </Space>
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={24} md={12} lg={8} xl={6} className={styles.col}>
-              <Form.Item name={"courseLevel"} colon={false}>
-                <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>{t("CourseLevel")}</Text>
-                  <Select
-                    placeholder={t("ShowAll")}
-                    className={styles.select}
-                  />
-                </Space>
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={24} md={12} lg={8} xl={5} className={styles.col}>
-              <Form.Item name={"quarter"} colon={false}>
-                <Space direction="horizontal" align="baseline">
-                  <Text className={styles.search}>{t("Quarter")}</Text>
-                  <Select
-                    placeholder={t("ShowAll")}
-                    className={styles.select}
-                  />
-                </Space>
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={3} className={styles.col}>
-              <Form.Item name={"searchCourse"} colon={false}>
-                <Input
-                  className={styles.select}
-                  suffix={<SearchOutlined />}
-                  placeholder={t("Search")}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
         <Row>
           {selectItems?.map((selectItem, index) => (
             <Col
