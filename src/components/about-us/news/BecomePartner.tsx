@@ -18,7 +18,7 @@ const BecomePartner = () => {
                 {t("BecomeOurPartner.Desc")}
               </Paragraph>
               <Button className={styles.contactBtn}>
-                {t("ApplyNow")}
+                {t("JoinUs")}
                 <EditOutlined />
               </Button>
             </Space>

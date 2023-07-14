@@ -49,13 +49,13 @@ const ContestCard = ({ data, align }: Props) => {
                   </div>
                   <Space className={styles.time}>
                     <CalendarOutlined />
-                    <span>{v?.attributes?.contestDate}</span>
+                    <span>{v?.attributes?.startDateTime}</span>
                   </Space>
                 </div>
                 <div className={styles.right}>
-                  {v?.attributes?.logo?.data && (
+                  {v?.attributes?.contestLogo?.data && (
                     <img
-                      src={v?.attributes?.logo?.data?.attributes?.url}
+                      src={v?.attributes?.contestLogo?.data?.attributes?.url}
                       alt=""
                     />
                   )}
@@ -103,16 +103,18 @@ const ContestCard = ({ data, align }: Props) => {
               <div className={styles.description}>
                 {getTransResult(
                   lang,
-                  v?.attributes?.titleExplanationZh,
-                  v?.attributes?.titleExplanationEn
+                  v?.attributes?.contestTitleExplanationZh,
+                  v?.attributes?.contestTitleExplanationEn
                 )}
               </div>
               <div className={styles.bottom}>
-                <div className={styles.time}>{v?.attributes?.contestDate}</div>
-                {v?.attributes?.logo?.data && (
+                <div className={styles.time}>
+                  {v?.attributes?.startDateTime}
+                </div>
+                {v?.attributes?.contestLogo?.data && (
                   <div className={styles.logo}>
                     <img
-                      src={v?.attributes?.logo?.data?.attributes?.url}
+                      src={v?.attributes?.contestLogo?.data?.attributes?.url}
                       alt=""
                     />
                   </div>

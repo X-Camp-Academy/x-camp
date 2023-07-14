@@ -28,9 +28,7 @@ const TopBanner = ({ year, setYear }: Props) => {
       <div className={cx("container", styles.content)}>
         <Space direction="vertical">
           <Title className={styles.title}>{t("News")}</Title>
-          <Paragraph className={styles.paragraph}>
-            {"Check out our most updated info from our school and students."}
-          </Paragraph>
+          <Paragraph className={styles.paragraph}>{t("News.Desc")}</Paragraph>
           <DatePicker
             className={styles.date}
             picker="year"

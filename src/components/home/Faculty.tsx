@@ -16,7 +16,7 @@ const { Title, Paragraph, Text } = Typography;
 const Faculty: React.FC = () => {
   const { format: t, lang } = useLang();
   const { data } = useGetFaculty({
-    pageName: ["/home"],
+    pageName: ["/home/"],
   });
 
   const facultyData = data?.sort(

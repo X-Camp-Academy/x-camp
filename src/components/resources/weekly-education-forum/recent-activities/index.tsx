@@ -25,7 +25,7 @@ const RecentActivities = () => {
     return img?.data?.attributes?.url;
   };
 
-  const RecentActivities = newEventData?.data.filter((item, index) => {
+  const RecentActivities = newEventData?.filter((item, index) => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
@@ -39,8 +39,8 @@ const RecentActivities = () => {
       <div className="container">
         <XCollapse
           header={{
-            title: t("RecentPopularActivities"),
-            description: t("RecentPopularActivities"),
+            title: t("RecentPopularEvents"),
+            description: t("RecentPopularEvents.Desc"),
           }}
         >
           <Row className={styles.cards} gutter={[32, 32]}>

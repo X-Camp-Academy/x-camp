@@ -25,6 +25,8 @@ export enum NewEventCategory {
   News = "News",
   Event = "Events",
   Activity = "Activity",
+  SchoolCalendar = "School Calendar",
+  EventContest = "Event Contest",
   All = "All",
 }
 
@@ -314,6 +316,7 @@ export type GetResourcesLiveSolutionResponse =
 export enum FaqCategory {
   ReferralQA = "Referral QA",
   CoursesQA = "Courses QA",
+  CampsQA = "Camps QA",
 }
 
 export interface GetFaq extends strapiPublicFields {
