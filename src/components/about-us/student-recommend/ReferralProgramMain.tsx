@@ -1,31 +1,29 @@
-import { Space, Image, Typography, Card } from 'antd';
-import styles from './ReferralProgramMain.module.scss';
-import React from 'react';
-import ColorfulCard from '@/components/common/colorful-card';
-import {} from '@ant-design/icons';
-import Link from 'next/link';
+import { Space, Image, Typography, Card } from "antd";
+import styles from "./ReferralProgramMain.module.scss";
+import React from "react";
+import ColorfulCard from "@/components/common/colorful-card";
+import {} from "@ant-design/icons";
+import Link from "next/link";
+import { useLang } from "@/hoc/with-intl/define";
 const { Title, Paragraph } = Typography;
 
 const ReferralProgramMain: React.FC = () => {
+  const { format: t } = useLang();
   return (
     <>
       <div className={styles.referralProgramMainContainer}>
         <div className={`${styles.referralProgramMain} container`}>
           <ColorfulCard border="bottom" index={1}>
             <Card className={styles.giveAndGetCard}>
-              <Title className={styles.title}>
-                Refer and Earn Credits in Tuition
-              </Title>
+              <Title className={styles.title}>{t("Refer.Title")}</Title>
               <Paragraph className={styles.description}>
-                Coding is much more fun with friends. If students invite their
-                friends, they can work on projects together, help each other out
-                and can also motivate each other with some friendly rivalry. Who
-                knows, they might even start a company together.
+                {t("Refer.Desc")}
               </Paragraph>
               <Title className={styles.subTitle}>
-                Earn <span>$50</span> for you and <span>$50</span> for your
-                friend <br />
-                when a friend signs up.
+                {t("Earn")} <span>$50</span>
+                {t("ForYouAnd")}
+                <span>$50</span>
+                {t("ForYourFriend")}
               </Title>
               <Space>
                 <Link href="/">

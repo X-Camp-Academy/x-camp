@@ -19,8 +19,8 @@ const BecomePartner = () => {
               <Paragraph className={styles.description}>
                 {t("BecomeOurPartner.Desc")}
               </Paragraph>
-              <Button className={styles.contactBtn} onClick={() => { router.push('/about-us/join-us') }}>
-                {t("ApplyNow")}
+              <Button className={styles.contactBtn}>
+                {t("JoinUs")}
                 <EditOutlined />
               </Button>
             </Space>
