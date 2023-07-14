@@ -16,7 +16,7 @@ const RecentActivities = () => {
   const router = useRouter();
   const pageSize = 25;
   const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Activity);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
   const { format: t, lang } = useLang();
   const { data: newEventData } = useGetNewEvent({
     tag,
@@ -27,6 +27,14 @@ const RecentActivities = () => {
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
   };
+
+  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
+    return getTransResult(
+      lang,
+      getImgUrl(imgZh),
+      getImgUrl(imgEn),
+    )
+  }
 
   const RecentActivities = newEventData?.filter((item, index) => {
     return (
@@ -51,7 +59,7 @@ const RecentActivities = () => {
               <Col key={index} xs={24} sm={24} md={12} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card} >
-                    <img src={getImgUrl(v.attributes.img)} alt="img" />
+                    <img src={getTranslateImg(v.attributes?.imgZh,v.attributes?.imgEn)} alt="img" />
                     <div className={styles.title}>
                       {getTransResult(
                         lang,

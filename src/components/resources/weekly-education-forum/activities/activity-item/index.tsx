@@ -4,8 +4,8 @@ import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import ColorfulCard from '@/components/common/colorful-card';
 import XCollapse from '@/components/common/collapse';
-import { ActivityCategory, GetNewEvent } from '@/apis/strapi-client/define';
-import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { EventCategory, GetNewEvent } from '@/apis/strapi-client/define';
+import { StrapiMedia, StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
 import dayjs from 'dayjs';
@@ -16,13 +16,21 @@ export type ActivityItemProps = StrapiResponseDataItem<GetNewEvent> & {
 
 const ActivityItem = ({ attributes, index }: ActivityItemProps) => {
   const { lang } = useLang();
-  const { img, titleZh, titleEn, startDateTime } = attributes;
+  const { imgZh, imgEn, titleZh, titleEn, startDateTime, } = attributes;
   const { utcTime } = formatTimezone(startDateTime);
+
+  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
+    return getTransResult(
+      lang,
+      imgZh.data?.attributes.url,
+      imgEn.data?.attributes.url,
+    )
+  }
   return (
     <Col xs={24} sm={24} md={12} lg={8}>
       <ColorfulCard border={'bottom'} animate={false} index={index}>
         <div className={styles.card}>
-          <img src={img?.data?.attributes?.url} alt="" />
+          <img src={getTranslateImg(imgZh, imgEn)} alt="" />
           <Space direction="vertical" className={styles.cardContent}>
             <div className={styles.title}>
               {getTransResult(lang, titleZh, titleEn)}

@@ -19,6 +19,7 @@ import isBetween from "dayjs/plugin/isBetween";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 
 const ArticleSider = () => {
   const { format: t, lang } = useLang();
@@ -150,6 +151,14 @@ const ArticleSider = () => {
     );
   };
 
+  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
+    return getTransResult(
+      lang,
+      imgZh.data?.attributes.url,
+      imgEn.data?.attributes.url,
+    )
+  }
+
   const activityData = [
     {
       img: "/image/about-us/introduction/top-banner.png",
@@ -244,7 +253,7 @@ const ArticleSider = () => {
               <Card>
                 <Space direction="vertical" style={{ width: "100%" }}>
                   <Image
-                    src={v.attributes.img?.data?.attributes?.url}
+                    src={getTranslateImg(v.attributes?.imgZh, v.attributes?.imgEn)}
                     alt="image"
                     preview={false}
                   />
