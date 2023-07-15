@@ -11,8 +11,10 @@
       border-block-start: none;
     }
 
-    .row {
+    .form {
       margin-top: 64px;
+      display: flex;
+      justify-content: end;
     }
     .changeBtn {
       width: 48px;

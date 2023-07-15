@@ -317,6 +317,7 @@ declare const json: {
     "Yuan.Desc4": "USACO美国国家集训队",
     "Yuan.Desc5": "从2020年到2023年（每年只能选出约",
     "Yuan.Desc6": "名选手）",
-    "Yuan.Student": "200名学生"
+    "Yuan.Student": "200名学生",
+    "Java.Grade": "7年级及以上"
 }
 export default json;

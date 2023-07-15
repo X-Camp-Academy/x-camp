@@ -1,6 +1,6 @@
 export const COURSE_TYPES = [
   "Online Classes",
-  "In-person Camps",
+  "In-person Classes",
   "Enhancement Classes",
   "APCS Classes",
   // "X- Tutors",
