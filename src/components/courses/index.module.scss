@@ -11,10 +11,33 @@
       border-block-start: none;
     }
 
+
+    
+    :global(.ant-segmented-group) {
+      padding: 8px 36px;
+      @media (max-width: 768px) {
+        padding: 0;
+      }
+    }
+    :global(.ant-segmented-item-label) {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 36px;
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+    :global(.ant-segmented-item-selected) {
+      color: #fff;
+      background-color: #ffad11;
+    }
+
     .form {
       margin-top: 64px;
       display: flex;
       justify-content: end;
+      padding-left: 24px;
+      padding-right: 24px;
     }
     .changeBtn {
       width: 48px;
@@ -39,7 +62,9 @@
       position: relative;
       display: inline;
       z-index: 1;
-
+      @media (max-width: 768px) {
+        font-size: 32px;
+      }
       &::after {
         position: absolute;
         content: "";
@@ -61,7 +86,9 @@
     :global(.ant-collapse-expand-icon > span) {
       font-size: 24px !important;
     }
-
+    :global(.ant-collapse-header) {
+      align-items: center;
+    }
     :global(.ant-collapse-header),
     :global(.ant-collapse-content-box) {
       padding: 12px 0;
@@ -70,11 +97,13 @@
     .paneBox {
       display: flex;
       justify-content: space-between;
-
       .panelTitle {
         font-size: 36px;
         font-weight: 600;
         color: #172a88;
+        @media (max-width: 768px) {
+          font-size: 24px;
+        }
       }
       .courseNum {
         font-size: 18px;
@@ -82,19 +111,6 @@
         color: #6a6a6a;
         line-height: 24px;
       }
-    }
-
-    :global(.ant-segmented-group) {
-      padding: 8px 36px;
-    }
-    :global(.ant-segmented-item-label) {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 36px;
-    }
-    :global(.ant-segmented-item-selected) {
-      color: #fff;
-      background-color: #ffad11;
     }
   }
 }

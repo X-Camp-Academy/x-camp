@@ -138,6 +138,7 @@ const Courses = () => {
     };
   };
 
+  // 固定所有的数据
   const allCourses = COURSE_TYPES.map((courseType, index) => {
     if (index < 3) {
       return generateCourses(courseType, courseLevelTypeData);
@@ -146,6 +147,7 @@ const Courses = () => {
     }
   });
 
+  // 移除二级课程为空的数据
   const removeEmptyChildren = (data: FormatCoursesProps[]) => {
     if (data) {
       return [{
@@ -154,6 +156,7 @@ const Courses = () => {
       }];
     }
   }
+  // 根据segmented来筛选课程数据
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const segmentedData = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
@@ -188,38 +191,111 @@ const Courses = () => {
     }
   }, [hash, currentData]);
 
-  const onFinish = (values: any) => {
-    const { category, rangeDate, serach } = values;
-    // console.log(currentData);
-    // console.log(values);
+
+
+  const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
+    const { category, rangeDate, search } = values;
+    console.log(values);
     let result;
-    if (!category && !rangeDate && !serach) {
+    if (!category && !rangeDate && !search) {
       result = copyCurrentData;
     }
     if (copyCurrentData) {
       const primaryData = copyCurrentData[0];
-      if (category) {
-        result = [{
-          primaryTitle: primaryData?.primaryTitle,
-          children: primaryData?.children?.filter(item => item?.secondaryTitle === category)
-        }];
-      }
-
-      if (rangeDate) {
+      if (category && rangeDate && search) {
         const [start, end] = rangeDate;
         const startRangeDate = dayjs(start);
         const endRangeDate = dayjs(end);
 
         result = [{
           primaryTitle: primaryData?.primaryTitle,
-          children: primaryData?.children?.map(item => {
-            return {
-              ...item,
-              children: item.children?.filter((course) => {
-                return dayjs(course?.attributes?.startDate).isBetween(startRangeDate, endRangeDate) && dayjs(course?.attributes?.endDate).isBetween(startRangeDate, endRangeDate);
-              }),
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+                dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
+                [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
             }
-          })
+            )
+          }))
+        }];
+      } else if (category && rangeDate) {
+        const [start, end] = rangeDate;
+        const startRangeDate = dayjs(start);
+        const endRangeDate = dayjs(end);
+
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course =>
+              dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+              dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate)
+            )
+          }))
+        }];
+      } else if (category && search) {
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+            }
+            )
+          }))
+        }];
+      } else if (rangeDate && search) {
+        const [start, end] = rangeDate;
+        const startRangeDate = dayjs(start);
+        const endRangeDate = dayjs(end);
+
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+                dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
+                [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+            }
+            )
+          }))
+        }];
+      } else if (category) {
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category)
+        }];
+      } else if (rangeDate) {
+        const [start, end] = rangeDate;
+        const startRangeDate = dayjs(start);
+        const endRangeDate = dayjs(end);
+
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course =>
+              dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+              dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate)
+            )
+          }))
+        }];
+      } else if (search) {
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+            }
+            )
+          }))
         }];
       }
     }
@@ -263,34 +339,38 @@ const Courses = () => {
             </Affix>
 
             <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
-              <Form.Item name="category">
-                <Select
-                  placeholder={"Category"}
-                  options={categoryOptions}
-                  allowClear={true}
-                  style={{ width: 240 }}
-                // onChange={(value) => onFilterFieldsChange(value, "courseLevelType")}
-                />
-              </Form.Item>
-              <Form.Item name="rangeDate">
-                <RangePicker />
-              </Form.Item>
-              <Form.Item name="search">
-                <Space>
-                  <Input
-                    suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
-                  />
-                  <Button
-                    type={"primary"}
-                    htmlType={"submit"}
-                    className={styles.button}
-                  >
-                    {t("Search")}
-                  </Button>
-                </Space>
-              </Form.Item>
-
-
+              <Row gutter={[16, 8]}>
+                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 7 }}>
+                  <Form.Item name="category">
+                    <Select
+                      style={{ width: 240 }}
+                      placeholder={"Category"}
+                      options={categoryOptions}
+                      allowClear={true}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }}>
+                  <Form.Item name="rangeDate">
+                    <RangePicker />
+                  </Form.Item>
+                </Col>
+                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 7 }}>
+                  <Form.Item name="search">
+                    <Input
+                      suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+                      allowClear={true}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 2 }}>
+                  <Form.Item>
+                    <Button type={"primary"} className={styles.button} htmlType="submit">
+                      {t('Search')}
+                    </Button>
+                  </Form.Item>
+                </Col>
+              </Row>
             </Form>
 
             {currentData?.map((item, index) => {
