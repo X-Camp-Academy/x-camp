@@ -169,6 +169,7 @@ const Courses = () => {
 
   const onSegmentedChange = (value: SegmentedValue) => {
     history.replaceState(null, "", pathname);
+    form.resetFields();
     setSegmented(value);
   };
   useEffect(() => {
@@ -195,7 +196,6 @@ const Courses = () => {
 
   const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
     const { category, rangeDate, search } = values;
-    console.log(values);
     let result;
     if (!category && !rangeDate && !search) {
       result = copyCurrentData;
@@ -212,10 +212,10 @@ const Courses = () => {
           children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
             secondaryTitle: item?.secondaryTitle,
             children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
               return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
                 dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
-                [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+                [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
             }
             )
           }))
@@ -241,8 +241,8 @@ const Courses = () => {
           children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
             secondaryTitle: item?.secondaryTitle,
             children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
-              return [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
             }
             )
           }))
@@ -257,10 +257,10 @@ const Courses = () => {
           children: primaryData?.children?.map(item => ({
             secondaryTitle: item?.secondaryTitle,
             children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
               return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
                 dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
-                [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+                [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
             }
             )
           }))
@@ -291,8 +291,8 @@ const Courses = () => {
           children: primaryData?.children?.map(item => ({
             secondaryTitle: item?.secondaryTitle,
             children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
-              return [classLang, classMode, classRoomLang, courseCode, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
             }
             )
           }))
