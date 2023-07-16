@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import {
   Button,
@@ -6,57 +6,31 @@ import {
   Input,
   Row,
   Select,
-  Space,
-  Typography,
   Pagination,
   Form,
 } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
-import { useMobile } from "@/utils";
 import CourseCard from "../course-card";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
 
-const { Text } = Typography;
-
 const ScheduleTable = () => {
-  const isMobile = useMobile();
   const { format: t } = useLang();
+  const [form] = Form.useForm();
   const defaultPagination = { page: 1, pageSize: 10 };
   const [pagination, setPagination] = useState(defaultPagination);
   const [filters, setFilters] = useState<
     | { [key: string]: string | { $eq: string } }
     | { [key: string]: string | { type: { $eq: string } } }
+    | any
   >({});
-
   const { data: courses, runAsync } = useGetCourses({});
-
-  const onChange = (page: number, pageSize: number) => {
-    const newPagination = {
-      page,
-      pageSize,
-    };
-    setPagination(newPagination);
-  };
-  useEffect(() => {
-    runAsync({
-      populate: "*",
-      sort: ["order:desc"],
-      filters: { ...filters },
-      pagination: { ...pagination },
-    });
-  }, [pagination, filters]);
 
   const selectItems = [
     {
-      span: 5,
       name: "classMode",
       text: t("CourseMode"),
       options: [
-        {
-          label: "Show All",
-          value: "",
-        },
         {
           label: "Online Live",
           value: "Online Live",
@@ -68,14 +42,9 @@ const ScheduleTable = () => {
       ],
     },
     {
-      span: 7,
       name: "courseLevelType",
       text: t("CourseLevel"),
       options: [
-        {
-          label: "Show All",
-          value: "",
-        },
         {
           label: "Python",
           value: "Python",
@@ -111,14 +80,9 @@ const ScheduleTable = () => {
       ],
     },
     {
-      span: 5,
       name: "schoolQuarter",
       text: t("Quarter"),
       options: [
-        {
-          label: "Show All",
-          value: "",
-        },
         {
           label: "Spring",
           value: "Spring",
@@ -138,68 +102,80 @@ const ScheduleTable = () => {
       ],
     },
   ];
-  const onSelectChange = (value: string, name: string) => {
+  useEffect(() => {
+    runAsync({
+      populate: "*",
+      sort: ["order:desc"],
+      filters: { ...filters },
+      pagination: { ...pagination },
+    });
+  }, [pagination, filters]);
+
+
+  const onFinish = (values: { classMode: string, courseLevelType: string, schoolQuarter: string, search: string }) => {
     const newFilters = { ...filters };
-    if (value !== "") {
-      if (name === "courseLevelType") {
-        const relations = {
-          type: {
-            $eq: value,
-          },
-        };
-        newFilters[name] = relations;
-      } else {
-        newFilters[name] = { $eq: value };
-      }
-    } else {
-      delete newFilters[name];
-    }
-    setFilters(newFilters);
+    const { classMode, courseLevelType, schoolQuarter, search } = values;
+
+    classMode ? newFilters['classMode'] = { $eq: classMode } : delete newFilters['classMode'];
+    courseLevelType ? newFilters['courseLevelType'] = { type: { $eq: courseLevelType } } : delete newFilters['courseLevelType'];
+    schoolQuarter ? newFilters['schoolQuarter'] = { $eq: schoolQuarter } : delete newFilters['schoolQuarter'];
+
+
+    const searchFields = ['classLang', 'classMode', 'classRoomLang', 'courseCode', 'courseTitleZh', 'courseTitleEn', 'courseShortDescriptionZh', 'courseShortDescriptionEn', 'courseLongDescriptionZh', 'courseLongDescriptionEn'];
+    const allSearchFields = searchFields?.map(searchField => {
+      const item: { [key: string]: { $containsi: string } } = {};
+      item[searchField] = { $containsi: search };
+      return item;
+    });
+    search ? newFilters['$or'] = allSearchFields : delete newFilters['$or'];
+
+    setFilters({ ...newFilters });
     setPagination(defaultPagination);
+  }
+  const onPaginationChange = (page: number, pageSize: number) => {
+    const newPagination = {
+      page,
+      pageSize,
+    };
+    setPagination(newPagination);
   };
   return (
     <div className={styles.scheduleTable}>
       <div className={"container"}>
-        <Row>
-          {selectItems?.map((selectItem, index) => (
-            <Col
-              key={index}
-              xs={24}
-              sm={24}
-              md={12}
-              lg={selectItem?.span}
-              className={styles.col}
-            >
-              <Space align="center">
-                <Text className={styles.text}>{selectItem?.text}</Text>
-                <Select
-                  placeholder={t("ShowAll")}
-                  className={styles.select}
-                  style={selectItem?.span === 7 ? { width: 200 } : {}}
-                  options={selectItem?.options}
-                  onChange={(value) => onSelectChange(value, selectItem?.name)}
-                />
-              </Space>
-            </Col>
-          ))}
 
-          <Col xs={24} sm={24} md={24} lg={7} className={styles.col}>
-            <Space>
-              <Input
-                suffix={<SearchOutlined />}
-                className={styles.search}
-                placeholder={t("Search")}
-              />
-              <Button
-                type={"primary"}
-                htmlType={"submit"}
-                className={styles.button}
-              >
-                {t("Search")}
-              </Button>
-            </Space>
-          </Col>
-        </Row>
+        <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
+          <Row gutter={[16, 8]} className={styles.row}>
+            {
+              selectItems?.map((selectItem, index) => (
+                <Col key={index} xs={24} sm={24} md={24} lg={6}>
+                  <Form.Item name={selectItem?.name} label={selectItem?.text}>
+                    <Select
+                      placeholder={"Show All"}
+                      options={selectItem?.options}
+                      className={styles.select}
+                      allowClear={true}
+                    />
+                  </Form.Item>
+                </Col>
+              ))
+            }
+            <Col xs={24} sm={24} md={24} lg={4}>
+              <Form.Item name="search" >
+                <Input
+                  suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+                  allowClear={true}
+                />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={2}>
+              <Form.Item>
+                <Button type={"primary"} className={styles.button} htmlType="submit">
+                  {t('Search')}
+                </Button>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
 
         <div style={{ marginTop: 35 }}>
           {courses?.data?.map((item) => {
@@ -207,7 +183,7 @@ const ScheduleTable = () => {
           })}
         </div>
         <Pagination
-          onChange={onChange}
+          onChange={onPaginationChange}
           current={pagination?.page}
           pageSize={pagination?.pageSize}
           total={courses?.meta?.pagination?.total}

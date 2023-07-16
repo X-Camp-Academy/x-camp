@@ -340,7 +340,7 @@ const Courses = () => {
 
             <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
               <Row gutter={[16, 8]}>
-                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 7 }}>
+                <Col xs={24} sm={24} md={24} lg={7}>
                   <Form.Item name="category">
                     <Select
                       style={{ width: 240 }}
@@ -350,12 +350,12 @@ const Courses = () => {
                     />
                   </Form.Item>
                 </Col>
-                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }}>
+                <Col xs={24} sm={24} md={24} lg={8}>
                   <Form.Item name="rangeDate">
                     <RangePicker />
                   </Form.Item>
                 </Col>
-                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 7 }}>
+                <Col xs={24} sm={24} md={24} lg={7}>
                   <Form.Item name="search">
                     <Input
                       suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
@@ -363,7 +363,7 @@ const Courses = () => {
                     />
                   </Form.Item>
                 </Col>
-                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 2 }}>
+                <Col xs={24} sm={24} md={24} lg={2}>
                   <Form.Item>
                     <Button type={"primary"} className={styles.button} htmlType="submit">
                       {t('Search')}
