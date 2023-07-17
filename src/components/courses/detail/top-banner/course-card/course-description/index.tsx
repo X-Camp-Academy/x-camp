@@ -55,7 +55,7 @@ const CourseDescription = () => {
   const handlerShareLesson = () => {
     const fullPath = window.location.href;
     const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${classRoomLang}\n开始结束时间：${startDate} - ${endDate}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}`;
-    const clipTextEn = `Course Name:${courseTitleZh}\nCourse Code:${courseCode}\nprogramming language：${classLang}\nLanguage of instruction：${classRoomLang}\nStart end time:${startDate} - ${endDate}\nCourse cycle:${frequency}\nHow to start the course:${classMode}\nCourse Links:${fullPath}`;
+    const clipTextEn = `Course Name:${courseTitleEn}\nCourse Code:${courseCode}\nprogramming language：${classLang}\nLanguage of instruction：${classRoomLang}\nStart end time:${startDate} - ${endDate}\nCourse cycle:${frequency}\nHow to start the course:${classMode}\nCourse Links:${fullPath}`;
     navigator.clipboard.writeText(getTransResult(lang, clipTextZh, clipTextEn) || '').then(function () {
       messageApi.info(getTransResult(lang, '复制成功', 'Copy Successfully'));
     }, function () {

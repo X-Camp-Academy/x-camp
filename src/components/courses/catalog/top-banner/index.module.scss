@@ -29,12 +29,13 @@
     }
 
     .contact {
-      font-size: 21px;
-      font-weight: 600;
-      color: #d46b14;
-      line-height: 46px;
-      text-decoration: underline;
-      cursor: pointer;
+      a {
+        font-size: 21px;
+        font-weight: 600;
+        color: #d46b14;
+        line-height: 46px;
+        text-decoration: underline;
+      }
     }
 
     .button {

@@ -1,73 +1,59 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./index.module.scss";
 import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import CourseClassesContext from "../CourseClasses";
+import { useParams } from "next/navigation";
+import { useGetCourses } from "@/apis/strapi-client/strapi";
+import { getTransResult } from "@/utils/public";
+import { getLangResult } from "../../utils";
 const { Title } = Typography;
 
-const ProgressionClasses = () => {
-  const { format: t } = useLang();
-  const courseData = useContext(CourseClassesContext);
-  // const { data } = courseData?.attributes?.recommendedClasses ?? {};
+const ProgressionClasses: React.FC = () => {
+  // const courseData = useContext(CourseClassesContext);
 
-  console.log(courseData?.attributes?.recommendedClasses);
+  const params = useParams();
+  const { format: t, lang } = useLang();
 
-  const items = [
-    {
-      id: 1,
-      title: "CS100P: Python Intro with Creative Projects",
-      desc: "6th+ Graders. No prior coding expected…",
-      duration: "10 weeks",
+  const { data: courseData } = useGetCourses({
+    filters: {
+      id: { $eq: Number(params?.courseId) },
     },
-    {
-      id: 2,
-      title: "CS100P: Python Intro with Creative Projects",
-      desc: "6th+ Graders. No prior coding expected…",
-      duration: "10 weeks",
-    },
-    {
-      id: 3,
-      title: "CS100P: Python Intro with Creative Projects",
-      desc: "6th+ Graders. No prior coding expected…",
-      duration: "10 weeks",
-    },
-    {
-      id: 4,
-      title: "CS100P: Python Intro with Creative Projects",
-      desc: "6th+ Graders. No prior coding expected…",
-      duration: "10 weeks",
-    },
-    {
-      id: 5,
-      title: "CS100P: Python Intro with Creative Projects",
-      desc: "6th+ Graders. No prior coding expected…",
-      duration: "10 weeks",
-    },
-    {
-      id: 6,
-      title: "CS100P: Python Intro with Creative Projects",
-      desc: "6th+ Graders. No prior coding expected…",
-      duration: "10 weeks",
-    },
-  ];
+  });
 
+  const recommendedCourses = courseData?.data[0]?.attributes?.recommendedClasses?.data;
   return (
     <div className={styles.content}>
       <div className="container">
         <Title className={styles.title}>{t("ProgressionClasses")}</Title>
         <Space size={27} wrap className={styles.cards}>
-          {items?.map((v, index) => {
+          {recommendedCourses?.map((v, index) => {
             return (
               <ClassCard
                 key={v?.id}
                 border={"bottom"}
                 index={index}
                 animate={false}
-                title={v?.title}
-                list={[v?.desc]}
-                time="10 weeks"
-                href={`/courses/detail?/${v?.id}`}
+                title={`${v?.attributes?.courseCode
+                  }: ${getTransResult(
+                    lang,
+                    v?.attributes?.courseTitleZh,
+                    v?.attributes?.courseTitleEn
+                  )}`}
+                list={getLangResult(
+                  lang,
+                  v?.attributes
+                    ?.courseShortDescriptionZh,
+                  v?.attributes
+                    ?.courseShortDescriptionEn
+                )}
+                time={`${v?.attributes?.lessonNum} ${v?.attributes?.frequency ===
+                  "Weekly"
+                  ? "weeks"
+                  : "days"
+                  }`}
+                href={`/courses/detail/${v?.id}`}
               />
             );
           })}

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Space, Row, Col, Image, Typography, Popover } from "antd";
-import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import { HistoryOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styles from "./CopyRight.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
@@ -78,12 +78,18 @@ const CopyRight: React.FC = () => {
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
                   <PhoneOutlined />
-                  <Text className={styles.text}>{t("Tel")}510-708-8390</Text>
+                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t("Tel")}+1 - 510-708-8390</Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
-                  <Text className={styles.text}>
+                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>
                     Email: info@x-camp.academy
+                  </Text>
+                </Paragraph>
+                <Paragraph className={styles.paragraph}>
+                  <HistoryOutlined />
+                  <Text className={styles.text}>
+                    Office Hour: Tue - Sun (Monday Off)
                   </Text>
                 </Paragraph>
               </Space>
@@ -94,20 +100,23 @@ const CopyRight: React.FC = () => {
             <Space align="start" className={styles.spaceRight}>
               <Space direction="vertical">
                 <Text className={styles.text}>X-Camp Academy</Text>
-                <Link href={"/about-us/achievements"}>{t("Achievements")}</Link>
-                <Link href={"/about-us/introduction"}>{t("AboutUs")}</Link>
-                <Link href={"/about-us/introduction"}>{t("Faculty")}</Link>
+                <Link href={"/about-us/calendar"}>{t('SchoolCalendar')}</Link>
+                {/* ! TODO */}
+                <Link href={"/courses#classify0"}>{'Online Courses'}</Link>
+                <Link href={"/courses/camps"}>{t('In-personCamps')}</Link>
               </Space>
               <Space direction="vertical">
-                <Text className={styles.text}>{t("Campus")}</Text>
-                <Link href={"/"}>{t("MainCampus")}</Link>
-                <Link href={"/"}>{t("AustinBranch")}</Link>
+                <Text className={styles.text}>Activity</Text>
+                <Link href={"/resources/weekly-open-house"}>{t('WeeklyOpenHouse')}</Link>
+                {/* ! TODO */}
+                <Link href={"/"}>{'Event Calendar'}</Link>
+                <Link href={"/"}>{'USACO'}</Link>
               </Space>
               <Space direction="vertical">
-                <Text className={styles.text}>{t("QuickLinks")}</Text>
-                <Link href={"/resources/contests"}>{t("CSCompetition")}</Link>
-                <Link href={"/courses"}>{t("Enroll")}</Link>
-                <Link href={"/about-us/help-center"}>{t("FAQs")}</Link>
+                <Text className={styles.text}>{'Help Center'}</Text>
+                <Link href={"/about-us/contact-us"}>{'Contact Us'}</Link>
+                <Link href={"/about-us/contact-us"}>{'Join Us'}</Link>
+                <Link href={"/about-us/help-center"}>{'Q&A'}</Link>
               </Space>
             </Space>
           </Col>
@@ -147,9 +156,7 @@ const CopyRight: React.FC = () => {
                     />
                   </Popover>
                 )
-
               }
-
             })}
           </Space>
         </div>
