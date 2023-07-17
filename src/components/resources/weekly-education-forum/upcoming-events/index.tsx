@@ -13,9 +13,11 @@ import { useLang } from "@/hoc/with-intl/define";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { formatTimezone, getTransResult } from "@/utils/public";
+import { useRouter } from "next/navigation";
 
 const UpcomingEvents = () => {
   const pageSize = 25;
+  const router = useRouter();
   const { lang, format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
@@ -29,8 +31,8 @@ const UpcomingEvents = () => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
-        new Date().getTime() >
-        0
+      new Date().getTime() >
+      0
     );
   });
 
@@ -82,8 +84,8 @@ const UpcomingEvents = () => {
                         </Descriptions.Item>
                         <Descriptions.Item label={<LaptopOutlined />}>
                           {!item.attributes.geographicallyAddress &&
-                          item.attributes.link &&
-                          item.attributes.onlinePlatform ? (
+                            item.attributes.link &&
+                            item.attributes.onlinePlatform ? (
                             <a
                               href={item.attributes.link}
                               style={{ color: "#666666" }}
@@ -97,6 +99,7 @@ const UpcomingEvents = () => {
                             type="link"
                             className={styles.btn}
                             icon={<RightCircleOutlined />}
+                            onClick={() => { router.push(`/resources/${item.id}`) }}
                           />
                         </Descriptions.Item>
                       </Descriptions>

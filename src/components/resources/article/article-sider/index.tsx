@@ -7,25 +7,24 @@ import {
   Space,
   Typography,
   Image,
-  Badge,
-  Tooltip,
 } from "antd";
 const { Text, Paragraph, Title } = Typography;
 import ActivityCalendar from "@/components/common/activity-calendar";
 import ColorfulCard from "@/components/common/colorful-card";
 import { RightCircleOutlined, AlignRightOutlined } from "@ant-design/icons";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { EventCategory, GetNewEvent } from "@/apis/strapi-client/define";
 
-const ArticleSider = () => {
+const ArticleSider: React.FC<{
+  eventCategory: EventCategory | undefined,
+  articleId: number
+}> = ({ eventCategory: EventCategory, articleId }) => {
   const { format: t, lang } = useLang();
-
-  const weekdaysEn = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-  const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 
   const monthNameEn = [
     "January",
@@ -45,16 +44,13 @@ const ArticleSider = () => {
   //引入dayjs插件
   dayjs.extend(isBetween);
   const [selectedDate, setSelectedDate] = useState<string>(dayjs().toString());
+  const [eventThreeCard, setEventThreeCard] = useState<StrapiResponseDataItem<GetNewEvent>[]>([]); //日历下面三张卡片
   const [filterDateEventList, setFilterDateEventList] = useState<
     {
       titleZh?: string;
       titleEn?: string;
       descriptionZh?: string;
       descriptionEn?: string;
-      start?: string;
-      end?: string;
-      timeZone?: number;
-
       startDateTime?: string;
       endDateTime?: string;
     }[]
@@ -79,6 +75,8 @@ const ArticleSider = () => {
     pageSize,
   });
 
+
+
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
       setFilterDateEventList(
@@ -95,6 +93,14 @@ const ArticleSider = () => {
       );
     }
   };
+
+  const filterSameEventCategory = (eventCategory: EventCategory | undefined) => {
+    if (newEventData) {
+      const filteredData = newEventData.filter(item => item.attributes.eventCategory === eventCategory && item.id != articleId).slice(0, 3);
+      setEventThreeCard(filteredData);
+    }
+  }
+
   useEffect(() => {
     run({
       populate: "*",
@@ -114,10 +120,12 @@ const ArticleSider = () => {
       }));
       setEventDate(updatedEventDate);
       filterSameDateEvent(selectedDate);
+      filterSameEventCategory(EventCategory);
+      console.log(eventThreeCard);
+
     }
   }, [newEventData]);
 
-  //
 
   useEffect(() => {
     if (selectedDate) {
@@ -159,20 +167,7 @@ const ArticleSider = () => {
     )
   }
 
-  const activityData = [
-    {
-      img: "/image/about-us/introduction/top-banner.png",
-      title: "2023 Spring APCS Class series are now",
-    },
-    {
-      img: "/image/about-us/introduction/top-banner.png",
-      title: "2023 Spring APCS Class series are now",
-    },
-    {
-      img: "/image/about-us/introduction/top-banner.png",
-      title: "2023 Spring APCS Class series are now",
-    },
-  ];
+
   return (
     <div className={styles.content}>
       <div className={styles.calendarContainer}>
@@ -241,7 +236,7 @@ const ArticleSider = () => {
       </div>
 
       <div className={styles.activityCardContainer}>
-        {newEventData?.slice(0, 3)?.map((v, index) => {
+        {eventThreeCard?.map((v, index) => {
           return (
             <ColorfulCard
               border={"bottom"}

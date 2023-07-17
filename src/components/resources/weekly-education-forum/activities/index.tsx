@@ -115,7 +115,7 @@ const Activities = () => {
         <Row gutter={[32, 32]}>
           {newEventData?.map((v, index) => (
             /* 新版UI的分页器待完成 */
-            <ActivityItem {...v} key={index} index={index} />
+            <ActivityItem {...v} key={index} index={index}/>
           ))}
         </Row>
 

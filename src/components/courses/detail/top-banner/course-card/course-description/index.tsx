@@ -8,10 +8,8 @@ import { CarouselRef } from "antd/es/carousel";
 import dayjs from "dayjs";
 import { getTransResult } from "@/utils/public";
 
-
 const CourseDescription = () => {
   const { lang, format: t } = useLang();
-  const [messageApi, contextHolder] = message.useMessage();
   const ref = useRef<CarouselRef>(null);
   const courseData = useContext(CourseClassesContext);
   const {
@@ -25,7 +23,7 @@ const CourseDescription = () => {
     courseTitleZh,
     courseTitleEn,
     frequency,
-    courseFormat
+    courseFormat,
   } = courseData?.attributes ?? {};
 
   const imageMimes = [
@@ -39,31 +37,46 @@ const CourseDescription = () => {
   ];
 
   const formatDate = (date: string) => {
-    const formatStringZh = 'YYYY/MM/DD';
-    const formatStringEn = 'MM/DD, YYYY';
+    const formatStringZh = "YYYY/MM/DD";
+    const formatStringEn = "MM/DD, YYYY";
     return getTransResult(
       lang,
       dayjs(date).format(formatStringZh),
-      dayjs(date).format(formatStringEn),
-    )
-  }
-
-  const copyInfo = () => {
-    messageApi.info('Hello, Ant Design!');
+      dayjs(date).format(formatStringEn)
+    );
   };
 
   const handlerShareLesson = () => {
     const fullPath = window.location.href;
     const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${classRoomLang}\n开始结束时间：${startDate} - ${endDate}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}`;
-    const clipTextEn = `Course Name:${courseTitleZh}\nCourse Code:${courseCode}\nprogramming language：${classLang}\nLanguage of instruction：${classRoomLang}\nStart end time:${startDate} - ${endDate}\nCourse cycle:${frequency}\nHow to start the course:${classMode}\nCourse Links:${fullPath}`;
-    navigator.clipboard.writeText(getTransResult(lang, clipTextZh, clipTextEn) || '').then(function () {
-      messageApi.info(getTransResult(lang, '复制成功', 'Copy Successfully'));
-    }, function () {
-      messageApi.info(getTransResult(lang, '复制失败', 'Copy Failed'));
-    });
-
-
-  }
+    const clipTextEn = `Course Name:${courseTitleEn}\nCourse Code:${courseCode}\nprogramming language：${classLang}\nLanguage of instruction：${classRoomLang}\nStart end time:${startDate} - ${endDate}\nCourse cycle:${frequency}\nHow to start the course:${classMode}\nCourse Links:${fullPath}`;
+    navigator.clipboard
+      .writeText(getTransResult(lang, clipTextZh, clipTextEn) || "")
+      .then(
+        function () {
+          message.open({
+            content: getTransResult(
+              lang,
+              "课程信息复制成功",
+              "The course information was copied successfully"
+            ),
+            duration: 2,
+            type: "success",
+          });
+        },
+        function () {
+          message.open({
+            content: getTransResult(
+              lang,
+              "课程信息复制失败",
+              "Course information replication failed"
+            ),
+            duration: 2,
+            type: "error",
+          });
+        }
+      );
+  };
 
   return (
     <Space className={styles.description}>
@@ -151,15 +164,19 @@ const CourseDescription = () => {
             {classRoomLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
-            {`${formatDate(startDate || '')} - ${formatDate(endDate || '')}`}
+            {`${formatDate(startDate || "")} - ${formatDate(endDate || "")}`}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
             {courseFormat}
           </Descriptions.Item>
         </Descriptions>
-        <Button id="copyButton" className={styles.btn} onClick={() => {
-          handlerShareLesson();
-        }}>
+        <Button
+          id="copyButton"
+          className={styles.btn}
+          onClick={() => {
+            handlerShareLesson();
+          }}
+        >
           {t("ShareLessons")}
           <ShareAltOutlined />
         </Button>
