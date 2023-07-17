@@ -102,7 +102,7 @@ const CalendarContent = () => {
             <Button className={styles.bookButton}>
               <ScheduleOutlined />
             </Button>
-            <TimelineComponent items={formatCalendar(schoolCalendar)} />
+            <TimelineComponent items={formatCalendar(schoolCalendar?.data)} />
           </div>
         </div>
       </div>

@@ -9,12 +9,14 @@ import { StrapiMedia, StrapiResponseDataItem } from '@/apis/strapi-client/strapi
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
 import dayjs from 'dayjs';
+import { useRouter } from 'next/navigation';
 const { Text } = Typography;
 export type ActivityItemProps = StrapiResponseDataItem<GetNewEvent> & {
   index: number;
 };
 
-const ActivityItem = ({ attributes, index }: ActivityItemProps) => {
+const ActivityItem = ({ attributes, index, id }: ActivityItemProps) => {
+  const router = useRouter();
   const { lang } = useLang();
   const { imgZh, imgEn, titleZh, titleEn, startDateTime, } = attributes;
   const { utcTime } = formatTimezone(startDateTime);
@@ -44,6 +46,7 @@ const ActivityItem = ({ attributes, index }: ActivityItemProps) => {
                 type="link"
                 className={styles.btn}
                 icon={<RightCircleOutlined />}
+                onClick={()=>{router.push(`/resources/${id}`)}}
               />
             </div>
           </Space>

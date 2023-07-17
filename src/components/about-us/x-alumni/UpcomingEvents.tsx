@@ -31,7 +31,7 @@ const UpcomingEvents: React.FC = () => {
     pageSize,
   });
 
-  const upComingEvent = newEventData?.filter((item, index) => {
+  const upComingEvent = newEventData?.data?.filter((item, index) => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
@@ -127,7 +127,7 @@ const UpcomingEvents: React.FC = () => {
                         </Text>
                         <Text className={styles.cardText}>
                           <UserOutlined className={styles.cardIcon} />
-                          {`Organizer | ${item?.attributes?.organizer} `}
+                          {`Organizer ${item?.attributes?.organizer ? '| '+item?.attributes?.organizer : ''} `}
                         </Text>
                       </Space>
                     </Space>

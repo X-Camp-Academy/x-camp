@@ -34,7 +34,10 @@ const Resume = () => {
           <Card className={styles.cardContainer}>
             <JobCardHeader showExpandBtn={false} data={aboutUsJoinUs?.[0]} />
             <JobCardDetail data={aboutUsJoinUs?.[0]} />
-            <ResumeForm />
+            <ResumeForm
+              job={aboutUsJoinUs?.[0].attributes.titleEn}
+              department={aboutUsJoinUs?.[0].attributes.descriptionEn}
+            />
           </Card>
         </div>
       </div>
