@@ -43,13 +43,13 @@ const Article = () => {
         <div className="container">
           <Content className={styles.content}>
             {
-              newEventData?.[0] ?
+              newEventData?.data?.[0] ?
                 <Row>
                   <Col lg={17} md={24}>
-                    <ArticleContent props={newEventData?.[0]} />
+                    <ArticleContent props={newEventData.data?.[0]} />
                   </Col>
                   <Col lg={7} md={24}>
-                    <ArticleSider eventCategory={newEventData?.[0]?.attributes?.eventCategory} articleId={+newEventData?.[0]?.id!} />
+                    <ArticleSider eventCategory={newEventData.data?.[0]?.attributes?.eventCategory} articleId={+newEventData.data?.[0]?.id!} />
                   </Col>
                 </Row> : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
             }

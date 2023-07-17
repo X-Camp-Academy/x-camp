@@ -17,12 +17,14 @@ const { Content } = Layout;
 const NewsPage = () => {
   const [year, setYear] = useState('2023');
   const [current, setCurrent] = useState(1);
-  const PAGE_SIZE = 15;
+  const PAGE_SIZE = 2;
   const { data: newEventData, run: getNewEvent } = useGetNewEvent({
     current,
     pageSize: PAGE_SIZE,
     manual: true,
   });
+
+  const total = newEventData?.meta?.pagination?.total;
 
   useEffect(() => {
     if (year) {
@@ -34,7 +36,7 @@ const NewsPage = () => {
     if (current && year) {
       console.log(String(dayjs(year).valueOf()));
       console.log(String(dayjs(String(+year + 1)).valueOf()));
-      
+
       getNewEvent({
         populate: '*',
         sort: ['order:desc'],
@@ -52,6 +54,7 @@ const NewsPage = () => {
           pageSize: PAGE_SIZE,
         },
       });
+
     }
   }, [current, year]);
 
@@ -67,9 +70,11 @@ const NewsPage = () => {
         <Content>
           <TopBanner year={year} setYear={setYear} />
           <NewsCard
-            newEventData={newEventData}
+            newEventData={newEventData?.data}
             current={current}
             setCurrent={setCurrent}
+            pageSize={PAGE_SIZE}
+            total={total}
           />
           <Partners />
           <BecomePartner />

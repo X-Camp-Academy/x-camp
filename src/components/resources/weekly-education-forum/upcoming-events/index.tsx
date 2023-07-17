@@ -27,7 +27,7 @@ const UpcomingEvents = () => {
     pageSize,
   });
 
-  const upComingEvent = newEventData?.filter((item, index) => {
+  const upComingEvent = newEventData?.data?.filter((item, index) => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
