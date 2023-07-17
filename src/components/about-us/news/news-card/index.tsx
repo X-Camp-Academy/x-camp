@@ -10,11 +10,13 @@ interface Props {
   current: number;
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
   newEventData: StrapiResponseDataItem<GetNewEvent>[] | undefined;
+  pageSize: number;
+  total?: number;
 }
 
-const NewsCard = ({ current, setCurrent, newEventData }: Props) => {
+const NewsCard = ({ current, setCurrent, newEventData, pageSize, total }: Props) => {
   const { lang } = useLang();
-  const pageSize = 3;
+
 
   const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
     return getTransResult(
@@ -59,7 +61,7 @@ const NewsCard = ({ current, setCurrent, newEventData }: Props) => {
         </div>
 
         <Pagination
-          total={newEventData?.length}
+          total={total}
           className={styles.pagination}
           pageSize={pageSize}
           current={current}

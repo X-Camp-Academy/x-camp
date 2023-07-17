@@ -80,7 +80,7 @@ const ArticleSider: React.FC<{
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
       setFilterDateEventList(
-        newEventData
+        newEventData.data
           ?.filter((item) =>
             dayjs(selectDate).isBetween(
               dayjs(item.attributes.startDateTime),
@@ -96,7 +96,7 @@ const ArticleSider: React.FC<{
 
   const filterSameEventCategory = (eventCategory: EventCategory | undefined) => {
     if (newEventData) {
-      const filteredData = newEventData.filter(item => item.attributes.eventCategory === eventCategory && item.id != articleId).slice(0, 3);
+      const filteredData = newEventData?.data?.filter(item => item.attributes.eventCategory === eventCategory && item.id != articleId).slice(0, 3);
       setEventThreeCard(filteredData);
     }
   }
@@ -114,7 +114,7 @@ const ArticleSider: React.FC<{
 
   useEffect(() => {
     if (newEventData) {
-      const updatedEventDate = newEventData?.map((item) => ({
+      const updatedEventDate = newEventData.data?.map((item) => ({
         startDateTime: item.attributes?.startDateTime,
         endDateTime: item.attributes?.endDateTime,
       }));

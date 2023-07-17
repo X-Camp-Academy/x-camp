@@ -36,7 +36,7 @@ const RecentActivities = () => {
     )
   }
 
-  const RecentActivities = newEventData?.filter((item, index) => {
+  const RecentActivities = newEventData?.data?.filter((item, index) => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -

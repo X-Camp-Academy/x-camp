@@ -49,7 +49,7 @@ const Stories: React.FC = () => {
         </Space>
 
         <Row gutter={32} className={styles.row}>
-          {newEventData?.map((item, index) => (
+          {newEventData?.data?.map((item, index) => (
             <Col key={index} xs={24} sm={24} md={8}>
               <ColorfulCard border="bottom" index={index}>
                 <Card

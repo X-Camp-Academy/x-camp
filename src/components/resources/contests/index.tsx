@@ -41,11 +41,11 @@ const Contests = () => {
           <TopBanner />
           <MonthlyContest
             data={formatContestsByQuarter(
-              resourcesContest!,
+              resourcesContest?.data!,
               Number(size?.width) >= 992 ? 3 : 1
             )}
           />
-          <Introduction data={resourcesContest} />
+          <Introduction data={resourcesContest?.data} />
           <WhyContest />
           <Testimony testimonyData={testimonyData} />
         </Content>
