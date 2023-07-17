@@ -1,44 +1,51 @@
 .WhyWorkWithUsContainer {
-    margin-top: 40px;
-    background-color: #f5f5f5;
-    padding: 60px 0;
+  margin-top: 40px;
+  background-color: #f5f5f5;
+  padding: 60px 0;
 
+  .WhyWorkWithUs {
+    .card {
+      padding: 20px 50px;
 
-    .WhyWorkWithUs {
+      .cardContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
 
-        .card {
-            padding: 20px 50px;
-            .title {
-                font-size: 48px;
-                font-weight: 600;
-                color: #172142;
-                line-height: 64px;
-            }
-
-            .description {
-                font-size: 18px;
-                font-weight: 500;
-                color: #172142;
-                line-height: 34px;
-            }
-
-            .contactBtn {
-                border: none;
-                display: flex;
-                align-items: center;
-                text-align: center;
-                padding: 30px 52px;
-
-                background: #FFFFFF;
-                font-size: 24px;
-                font-weight: 500;
-                color: #172142;
-                line-height: 36px;
-                margin: 0 auto;
-                border-radius: 12px;
-                border: 2px solid #172142;
-            }
+        .title {
+          font-size: 48px;
+          font-weight: 600;
+          color: #172142;
+          line-height: 64px;
         }
-    }
 
+        .description {
+          font-size: 18px;
+          font-weight: 500;
+          color: #172142;
+          line-height: 34px;
+        }
+
+        .contactBtn {
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 30px 52px;
+          background: #ffffff;
+          font-size: 24px;
+          font-weight: 500;
+          color: #172142;
+          line-height: 36px;
+          border-radius: 12px;
+          border: 2px solid #172142;
+
+          img {
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+  }
 }
