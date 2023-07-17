@@ -116,7 +116,7 @@ const UpcomingEvents: React.FC = () => {
                         </Text>
                         <Text className={styles.cardText}>
                           <UserOutlined className={styles.cardIcon} />
-                          {`Organizer | ${item?.attributes?.organizer} `}
+                          {`Organizer ${item?.attributes?.organizer ? '| '+item?.attributes?.organizer : ''} `}
                         </Text>
                       </Space>
                     </Space>

@@ -17,7 +17,7 @@ const { Content } = Layout;
 const NewsPage = () => {
   const [year, setYear] = useState('2023');
   const [current, setCurrent] = useState(1);
-  const PAGE_SIZE = 2;
+  const PAGE_SIZE = 15;
   const { data: newEventData, run: getNewEvent } = useGetNewEvent({
     current,
     pageSize: PAGE_SIZE,
