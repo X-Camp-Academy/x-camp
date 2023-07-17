@@ -12,14 +12,20 @@ const WhyWorkWithUs = () => {
     <>
       <div className={styles.WhyWorkWithUsContainer}>
         <div className={`${styles.WhyWorkWithUs} container`}>
-          <ColorfulCard border="bottom" index={1}>
+          <ColorfulCard border="bottom" index={1} animate={false}>
             <Card className={styles.card}>
-              <Space direction="vertical" style={{ textAlign: "center" }}>
+              <Space direction="vertical" className={styles.cardContent}>
                 <Title className={styles.title}>{t("WhyWorkWithUs")}</Title>
                 <Paragraph className={styles.description}>
                   {t("WhyWorkWithUs.Desc")}
                 </Paragraph>
-                <Button className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>{t("ContactUs")}</Button>
+                <Button
+                  className={styles.contactBtn}
+                  href={"/about-us/contact-us"}
+                >
+                  {t("ContactUs")}
+                  <img src="/image/about-us/join-us/comment.png" alt="" />
+                </Button>
               </Space>
             </Card>
           </ColorfulCard>
