@@ -305,7 +305,7 @@ const PublicCalendar: React.FC = () => {
             <Space size={48} direction="vertical" className={styles.colSpace}>
               <Calendar
                 fullscreen={false}
-                dateCellRender={dateCellRender}
+                cellRender={dateCellRender}
                 onSelect={(date) => {
                   setSelectDate(date.toString());
                 }}

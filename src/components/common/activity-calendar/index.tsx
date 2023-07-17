@@ -97,7 +97,7 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
       <Calendar
         fullscreen={false}
         className={className}
-        dateCellRender={dateCellRender}
+        cellRender={dateCellRender}
         onSelect={(date) => {
           setSelectDate(date.toString());
           onSelectDate(date.toString()); // 将选择的日期传递给父组件

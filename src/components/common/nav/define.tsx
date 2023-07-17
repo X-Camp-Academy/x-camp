@@ -78,7 +78,7 @@ export const useMenuItems = () => {
           description: t("SchoolCalendar.Description"),
           btn: (
             <>
-              <span>{t("ViewCalendar")}</span>
+              <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
           ),
@@ -155,7 +155,7 @@ export const useMenuItems = () => {
           description: t("SchoolCalendar.Description"),
           btn: (
             <>
-              <span>{t("ViewCalendar")}</span>
+              <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
           ),
