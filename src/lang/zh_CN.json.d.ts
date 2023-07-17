@@ -301,14 +301,14 @@ declare const json: {
     "Contact.Phone.info": "请随时发送短信至+1-510-708-8390",
     "Contact.OfficeHour": "办公时间",
     "Contact.OfficeHour.info": "上午7:00 - 下午5:00 PT，周一休息",
-    "Questions":"其他问题？",
-    "Python.Mask.Desc":"适合五年级及以上学生推荐。无需编程基础。总共有三门课程。",
-    "C++.Mask.Desc":"适合六年级及以上学生推荐。需要一年的编程基础。总共有六门课程。",
-    "USACO.Mask.Desc":"适合七年级及以上学生推荐。需要两年的编程基础。美国夏令营级别的教师。",
+    "Questions": "其他问题？",
+    "Python.Mask.Desc": "适合五年级及以上学生推荐。无需编程基础。总共有三门课程。",
+    "C++.Mask.Desc": "适合六年级及以上学生推荐。需要一年的编程基础。总共有六门课程。",
+    "USACO.Mask.Desc": "适合七年级及以上学生推荐。需要两年的编程基础。美国夏令营级别的教师。",
     "APCS.Mask.Desc": "推荐7年级及以上学生。无需编程背景。目标是APCS A，总共3门课程。",
-    "Message":"信息",
-    "YourMessageHere":"填写你的问题", 
-    "News.Desc":"保持关注我们学生和合作伙伴的新项目发布、活动和令人兴奋的成就，以便及时了解相关信息。",
+    "Message": "信息",
+    "YourMessageHere": "填写你的问题",
+    "News.Desc": "保持关注我们学生和合作伙伴的新项目发布、活动和令人兴奋的成就，以便及时了解相关信息。",
     "Refer.Title": "推荐并赚取学费积分",
     "Refer.Desc": "与朋友一起编程更有趣。如果学生邀请他们的朋友参与，他们可以一起完成项目，互相帮助，并且通过友好的竞争相互激励。谁知道，他们甚至可能一起创办一家公司。",
     "ForYouAnd": "给您和",
@@ -316,7 +316,14 @@ declare const json: {
     "CourseMode": "课程模式：",
     "ShowAll": "显示全部",
     "CourseLevel": "课程级别：",
-    "Quarter": "学期："
-    
+    "Quarter": "学期：",
+    "COMPATIBILITY_TIP": "您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问X-Camp。",
+    "CHROME_BROWSER": "Chrome 浏览器",
+    "CHROME_BROWSER_DESC": "Google Chrome 是一款快速、安全且免费的网络浏览器，能很好地满足新型网站对浏览器的要求。",
+    "DOWNLOAD_LINK": "下载链接",
+    "FIREFOX_BROWSER": "Firefox 浏览器",
+    "FIREFOX_BROWSER_DESC": "没有晦涩难懂的隐私保护政策，更不向第三方预留后门，纯粹是一款闪电般快、不会出卖您的浏览器。",
+    "EDGE_BROWSER": "Edge 浏览器",
+    "EDGE_BROWSER_DESC": "Microsoft Edge 采用与 Chrome 相同的技术，可增强您的浏览体验，并提供一流的性能和速度。"
 }
 export default json;
