@@ -112,7 +112,7 @@ export const useGetNewEvent = ({
   return useRequest(
     async (params: GetNewEventRequest) => {
       const res = await client.getNewEvent(params);
-      return res?.data;
+      return res || {};
     },
     {
       manual,

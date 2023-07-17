@@ -32,6 +32,7 @@ const CourseDetail = () => {
     },
   });
 
+
   const { data: faq } = useGetFaq({
     ready: true,
     category: FaqCategory.CoursesQA,

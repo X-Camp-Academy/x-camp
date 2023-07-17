@@ -45,9 +45,6 @@ export interface GetNewEvent extends strapiPublicFields {
   eventCategory?: EventCategory;
   order?: number;
   editor?: string;
-  start?: string;
-  end?: string;
-  timeZone: number;
   organizer?: string;
   geographicallyAddress?: string;
   onlinePlatform?: string;
@@ -67,6 +64,7 @@ export interface GetNewEvent extends strapiPublicFields {
 
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
+  detailContent: string;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;

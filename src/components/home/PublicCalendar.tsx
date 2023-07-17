@@ -85,7 +85,7 @@ const PublicCalendar: React.FC = () => {
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
       setFilterDateEventList(
-        newEventData
+        newEventData.data
           ?.filter((item) =>
             dayjs(selectDate).isBetween(
               dayjs(item.attributes.startDateTime),
@@ -113,7 +113,7 @@ const PublicCalendar: React.FC = () => {
 
   useEffect(() => {
     if (newEventData) {
-      const updatedEventDate = newEventData?.map((item) => ({
+      const updatedEventDate = newEventData.data?.map((item) => ({
         startDateTime: item.attributes?.startDateTime,
         endDateTime: item.attributes?.endDateTime,
       }));
@@ -210,7 +210,7 @@ const PublicCalendar: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space direction="vertical" className={styles.colSpace}>
-              {newEventData?.slice(0, 4).map((item, index) => {
+              {newEventData?.data?.slice(0, 4).map((item, index) => {
                 return (
                   <div className={styles.eventCard} key={item?.id}>
                     <Space
