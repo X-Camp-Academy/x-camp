@@ -31,8 +31,7 @@ const UpcomingEvents = () => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
-      new Date().getTime() >
-      0
+      new Date().getTime() > 0
     );
   });
 
@@ -79,9 +78,11 @@ const UpcomingEvents = () => {
                             "dddd, MMMM DD, YYYY hh:mm A"
                           )} ${endTimeZone}`}
                         </Descriptions.Item>
+
                         <Descriptions.Item label={<UserOutlined />}>
-                          {`Organizer | ${item?.attributes?.organizer} `}
+                          {`Organizer ${item?.attributes?.organizer ? '| ' + item?.attributes?.organizer : ''} `}
                         </Descriptions.Item>
+
                         <Descriptions.Item label={<LaptopOutlined />}>
                           {!item.attributes.geographicallyAddress &&
                             item.attributes.link &&
