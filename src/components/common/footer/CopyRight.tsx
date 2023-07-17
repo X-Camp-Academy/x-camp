@@ -14,22 +14,17 @@ const CopyRight: React.FC = () => {
     {
       src: "/image/home/youtube.png",
       hoverSrc: "/image/home/youtube-hover.png",
-      link: "https://www.youtube.com/channel/UCMVQsb_RSTuthiHbni9jfow",
+      link: "https://www.youtube.com/@xcampacademy",
     },
     {
       src: "/image/home/facebook.png",
       hoverSrc: "/image/home/facebook-hover.png",
-      link: "https://www.facebook.com/XCampAcademy2017/",
+      link: "https://www.facebook.com/XCampAcademy2017",
     },
     {
       src: "/image/home/linkedin.png",
       hoverSrc: "/image/home/linkedin-hover.png",
-      link: "https://www.linkedin.com/company/x-camp-academy",
-    },
-    {
-      src: "/image/home/twitter.png",
-      hoverSrc: "/image/home/twitter-hover.png",
-      link: "https://twitter.com/CampacademyX",
+      link: "https://www.linkedin.com/company/x-camp-academy/",
     },
     {
       src: "/image/home/we-chat.png",

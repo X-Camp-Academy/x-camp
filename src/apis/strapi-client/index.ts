@@ -39,6 +39,8 @@ import {
   GetPartnerResponse,
   GetUserSearchRequest,
   GetUserSearchResponse,
+  SubmitUserInfoRequest,
+  SubmitUserInfoResponse,
 } from './define';
 
 const { strapiServer } = apiConfig;
@@ -259,6 +261,12 @@ export class StrapiClient extends BaseAxiosClient {
       '/xc-user-search' + getParamsStringify(params),
       {}
     );
+    return res;
+  }
+  async submitQuestionForm(
+    params: SubmitUserInfoRequest
+  ): Promise<SubmitUserInfoResponse> {
+    const res = await this.post('/xc-feed-backs', params, this.jsonHeaders);
     return res;
   }
 }

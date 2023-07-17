@@ -4,7 +4,7 @@ import { Col, Pagination, Row, Space } from "antd";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 
 interface Props {
   current: number;
@@ -15,6 +15,14 @@ interface Props {
 const NewsCard = ({ current, setCurrent, newEventData }: Props) => {
   const { lang } = useLang();
   const pageSize = 3;
+
+  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
+    return getTransResult(
+      lang,
+      imgZh.data?.attributes.url,
+      imgEn.data?.attributes.url,
+    )
+  }
 
   return (
     <div className={styles.content}>
@@ -29,7 +37,7 @@ const NewsCard = ({ current, setCurrent, newEventData }: Props) => {
                 <Col key={index}>
                   <Space direction={"vertical"} className={styles.card}>
                     <img
-                      src={item?.attributes?.img?.data?.attributes?.url}
+                      src={getTranslateImg(item.attributes?.imgZh, item.attributes?.imgEn)}
                       alt=""
                     />
                     <Space className={styles.description} size={"middle"}>

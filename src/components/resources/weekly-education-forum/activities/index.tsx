@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import ActivityItem from "./activity-item";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import {
-  ActivityCategory,
+  EventCategory,
   GetNewEvent,
   GetNewEventRequest,
   NewEventCategory,
@@ -17,14 +17,14 @@ import { Pagination, Row, Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 interface ActivityItem {
   title: string;
-  key: ActivityCategory | "All Education Forums";
+  key: EventCategory | "All Education Forums";
 }
 const Activities = () => {
   //useGetNewEvent
   const pageSize = 12;
   const { format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
-  const tag = NewEventCategory.Activity;
+  const tag = NewEventCategory.Event;
   const { data: newEventData, runAsync: getNewEventData } = useGetNewEvent({
     tag,
     current,
@@ -32,8 +32,8 @@ const Activities = () => {
     manual: true,
   });
   const [selectedItem, setSelectedItem] = useState<
-    ActivityCategory | "All Education Forums"
-  >(ActivityCategory.SchoolLifeSharing);
+  EventCategory | "All Education Forums"
+  >(EventCategory.SchoolLifeSharing);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
       populate: "*",
@@ -53,7 +53,7 @@ const Activities = () => {
     if (selectedItem !== "All Education Forums") {
       filters = {
         ...filters,
-        activityCategory: {
+        eventCategory: {
           $eq: selectedItem,
         },
       };
@@ -67,19 +67,19 @@ const Activities = () => {
   const items: ActivityItem[] = [
     {
       title: t("ActivityItem1"),
-      key: ActivityCategory.SchoolLifeSharing,
+      key: EventCategory.SchoolLifeSharing,
     },
     {
       title: t("ActivityItem2"),
-      key: ActivityCategory.CodingEducation,
+      key: EventCategory.CodingEducation,
     },
     {
       title: t("ActivityItem3"),
-      key: ActivityCategory.CareerPath,
+      key: EventCategory.CareerPath,
     },
     {
       title: t("ActivityItem4"),
-      key: ActivityCategory.Research,
+      key: EventCategory.Research,
     },
     {
       title: t("ActivityItem5"),

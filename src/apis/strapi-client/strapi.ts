@@ -1,6 +1,6 @@
-import { useStrapiClient } from ".";
-import { useHandleError } from "@/utils/error";
-import { useRequest } from "ahooks";
+import { useStrapiClient } from '.';
+import { useHandleError } from '@/utils/error';
+import { useRequest } from 'ahooks';
 import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAward,
@@ -32,19 +32,20 @@ import {
   GetCourses,
   GetPartnerRequest,
   GetUserSearchRequest,
-} from "./define";
-import { isArray } from "lodash";
+  SubmitUserInfoRequest,
+} from './define';
+import { isArray } from 'lodash';
 import {
   classifyByAttribution,
   deduplicateArray,
   filterByAttribution,
-} from "@/utils/public";
+} from '@/utils/public';
 import {
   AndOrFilters,
   FilterFields,
   StrapiResponseDataItem,
-} from "./strapiDefine";
-import { useLang } from "@/hoc/with-intl/define";
+} from './strapiDefine';
+import { useLang } from '@/hoc/with-intl/define';
 
 // 被用在哪些course 以英文逗号连接的字符串
 // 被用在哪些page 以英文逗号连接的字符串
@@ -69,20 +70,21 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
 
       // 根据courseId, pageName, eventId做筛选，根据category做分类
       if (courseId && courseId?.length > 0) {
-        data = filterByAttribution(data, "courseId", courseId);
+        data = filterByAttribution(data, 'courseId', courseId);
       }
       if (pageName && pageName?.length > 0) {
-        data = filterByAttribution(data, "pageName", pageName);
+        data = filterByAttribution(data, 'pageName', pageName);
       }
       if (eventId && eventId?.length > 0) {
-        data = filterByAttribution(data, "eventId", eventId);
+        data = filterByAttribution(data, 'eventId', eventId);
       }
       return data;
     },
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -116,8 +118,8 @@ export const useGetNewEvent = ({
       manual,
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: {
             tags: tag
               ? {
@@ -162,8 +164,8 @@ export const useGetAboutUsAchievementsAward = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -186,8 +188,8 @@ export const useGetXAlumni = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -212,8 +214,8 @@ export const useGetResourcesContest = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -239,8 +241,8 @@ export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
       manual: true,
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: {
             category: {
               $eq: category,
@@ -276,13 +278,13 @@ export const useGetTestimony = ({
       } else {
         // 根据courseId, pageName, eventId做筛选，根据category做分类
         if (courseId) {
-          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
         }
         if (pageName) {
-          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
         }
         if (eventId) {
-          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
         }
       }
       return deduplicateArray(data); // 去重
@@ -290,7 +292,7 @@ export const useGetTestimony = ({
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       ready: ready,
@@ -314,7 +316,7 @@ export const useGetHomeStudentProjects = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -337,7 +339,7 @@ export const useGetCourseLevelType = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -373,8 +375,8 @@ export const useGetCourses = ({
       manual,
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: filters ?? {},
           pagination: pagination ?? {},
         },
@@ -399,7 +401,7 @@ export const useGetClasses = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -422,7 +424,7 @@ export const useGetAboutUsAlumniMap = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -444,15 +446,15 @@ export const useGetProjectsDemo = () => {
       return isArray(res?.data)
         ? classifyByAttribution(
             res.data,
-            lang === "zh" ? "categoryZh" : "categoryEn"
+            lang === 'zh' ? 'categoryZh' : 'categoryEn'
           )
         : [];
     },
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -475,7 +477,7 @@ export const useGetAchievementsTimeLine = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
       onError: handleError,
@@ -498,8 +500,8 @@ export const useGetAboutUsIntroArticle = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -518,14 +520,14 @@ export const useGetResourcesLiveSolution = () => {
     async (params: GetResourcesLiveSolutionRequest) => {
       const res = await client.getResourcesLiveSolution(params);
       return isArray(res?.data)
-        ? classifyByAttribution(res.data, "category")
+        ? classifyByAttribution(res.data, 'category')
         : [];
     },
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -569,18 +571,18 @@ export const useGetFaq = <
       } else {
         // 根据courseId, pageName, eventId做筛选，根据category做分类
         if (courseId) {
-          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
         }
         if (pageName) {
-          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
         }
         if (eventId) {
-          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
         }
       }
       data = deduplicateArray(data); // 去重
       if (isClassify) {
-        return classifyByAttribution(res?.data, "category") as R;
+        return classifyByAttribution(res?.data, 'category') as R;
       } else {
         return data as R;
       }
@@ -588,8 +590,8 @@ export const useGetFaq = <
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: {
             category: category
               ? {
@@ -616,14 +618,14 @@ export const useGetPartner = () => {
     async (params: GetPartnerRequest) => {
       const res = await client.getPartner(params);
       return isArray(res?.data)
-        ? classifyByAttribution(res.data, "category")
+        ? classifyByAttribution(res.data, 'category')
         : [];
     },
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
         },
       ],
       onError: handleError,
@@ -645,9 +647,29 @@ export const useGetUserSearchMap = () => {
     {
       defaultParams: [
         {
-          populate: "*",
+          populate: '*',
         },
       ],
+      onError: handleError,
+    }
+  );
+};
+
+/**
+ * 提交用户问题表单
+ * @returns
+ */
+export const useSubmitQuestionForm = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: SubmitUserInfoRequest) => {
+      console.log(params);
+      const res = await client.submitQuestionForm(params);
+      return res;
+    },
+    {
+      manual: true,
       onError: handleError,
     }
   );

@@ -85,6 +85,18 @@ const DiscoverCourses = ({
         "/courses/#apcs"
       ),
     },
+    // {
+    //   title: "Java",
+    //   desc: t("Java.Grade"),
+    //   url: "/image/home/course-4.png",
+    //   bgc: "#D46B14",
+    //   maskBgc: "rgb(212 107 20 / 40%)",
+    //   maskChildren: generateMaskChildren(
+    //     "APCS",
+    //     t("APCS.Mask.Desc"),
+    //     "/courses/#apcs"
+    //   ),
+    // },
   ];
   return (
     <div
