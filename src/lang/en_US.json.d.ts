@@ -317,6 +317,7 @@ declare const json: {
     "Yuan.Desc4": " USACO USA National Training Team ",
     "Yuan.Desc5": "from 2020 to 2023 (only about",
     "Yuan.Desc6": "players can be selected each year).",
-    "Yuan.Student": " 200 students "
+    "Yuan.Student": " 200 students ",
+    "Java.Grade": "7th+ Graders"
 }
 export default json;

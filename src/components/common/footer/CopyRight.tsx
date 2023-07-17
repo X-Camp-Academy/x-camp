@@ -14,22 +14,17 @@ const CopyRight: React.FC = () => {
     {
       src: "/image/home/youtube.png",
       hoverSrc: "/image/home/youtube-hover.png",
-      link: "https://www.youtube.com/channel/UCMVQsb_RSTuthiHbni9jfow",
+      link: "https://www.youtube.com/@xcampacademy",
     },
     {
       src: "/image/home/facebook.png",
       hoverSrc: "/image/home/facebook-hover.png",
-      link: "https://www.facebook.com/XCampAcademy2017/",
+      link: "https://www.facebook.com/XCampAcademy2017",
     },
     {
       src: "/image/home/linkedin.png",
       hoverSrc: "/image/home/linkedin-hover.png",
-      link: "https://www.linkedin.com/company/x-camp-academy",
-    },
-    {
-      src: "/image/home/twitter.png",
-      hoverSrc: "/image/home/twitter-hover.png",
-      link: "https://twitter.com/CampacademyX",
+      link: "https://www.linkedin.com/company/x-camp-academy/",
     },
     {
       src: "/image/home/we-chat.png",
@@ -39,13 +34,10 @@ const CopyRight: React.FC = () => {
     {
       src: "/image/home/small-red-book.png",
       hoverSrc: "/image/home/small-red-book-hover.png",
-
     },
   ];
 
-  /* const QRCode = [<img src="/image/QRCode/wechatQR.jpg" alt="" key={1} />, <img src="/image/QRCode/xiaoRedBookQR" alt="" key={2} />] */
-
-  const QRcodeImg = ["/image/QRCode/wechatQR.jpg", "/image/QRCode/xiaoRedBookQR.png"]
+  const QRcodeImg = ["/image/QRCode/weChatQR.jpg", "/image/QRCode/xiaoRedBookQR.png"]
 
   const source = icons.map((icon) => icon.src);
   const [imageSrc, setImageSrc] = useState(source);
@@ -123,7 +115,7 @@ const CopyRight: React.FC = () => {
           <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
           <Space>
             {icons.map((item, index) => {
-              if (index <= 3) {
+              if (index <= 2) {
                 return (
                   <a href={item?.link} target="_blank" key={index}>
                     <Image
@@ -140,7 +132,7 @@ const CopyRight: React.FC = () => {
               }
               else {
                 return (
-                  <Popover content={<img src={QRcodeImg[index - 4]} alt="" style={{ width: '100px', height: '100px' }} />} key={index}>
+                  <Popover content={<img src={QRcodeImg[index - 3]} alt="" style={{ width: '100px', height: '100px' }} />} key={index}>
                     <Image
                       alt=""
                       src={imageSrc[index]}

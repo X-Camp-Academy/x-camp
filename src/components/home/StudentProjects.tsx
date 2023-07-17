@@ -87,9 +87,9 @@ const StudentProjects: React.FC = () => {
                           item?.attributes?.descriptionEn
                         )}
                       </Paragraph>
-                      <Link href="/" className={styles.cardMore}>
+                      <a href={item?.attributes?.link} className={styles.cardMore}>
                         {"More"} <RightOutlined />
-                      </Link>
+                      </a>
                     </Space>
                   </Card>
                 ))}

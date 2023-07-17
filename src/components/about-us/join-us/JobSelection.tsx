@@ -50,6 +50,7 @@ const JobSelection = () => {
             {aboutUsJoinUs?.map((v, index) => (
               <JobCard key={index} index={index} data={v} />
             ))}
+            
           </div>
         </div>
       </div>

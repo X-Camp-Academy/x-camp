@@ -164,7 +164,7 @@ const USACOMedal = () => {
                   src="/image/about-us/achievement/download-outlined.png"
                   preview={false}
                 ></Image>
-                <Text className={styles.downloadText}>
+                <Text className={styles.downloadText} underline>
                   {t("USACO.DownloadPackage")}
                 </Text>
               </Link>
