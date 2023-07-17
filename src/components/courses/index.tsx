@@ -6,19 +6,19 @@ import {
   Collapse,
   ConfigProvider,
   DatePicker,
+  Form,
   Input,
   Layout,
   Row,
   Segmented,
   Select,
   Space,
-  Typography,
 } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, DownOutlined, SearchOutlined } from "@ant-design/icons";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
 import ClassCard from "../common/class-card";
@@ -32,7 +32,11 @@ import { useLang } from "@/hoc/with-intl/define";
 import { SegmentedValue } from "antd/es/segmented";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetCourses } from "@/apis/strapi-client/define";
-import FilterForm from "./FilterForm";
+import type { Dayjs } from 'dayjs';
+import isBetween from "dayjs/plugin/isBetween";
+import dayjs from 'dayjs';
+
+
 const { Panel } = Collapse;
 const { Content } = Layout;
 const { RangePicker } = DatePicker;
@@ -48,15 +52,19 @@ interface FormatCoursesProps {
 }
 const Courses = () => {
   const pathname = usePathname();
-  const route = useRouter();
   const { format: t, lang } = useLang();
+  const [form] = Form.useForm();
   const { hash } = window.location;
   const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
-  const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
-  const { data: courses, runAsync } = useGetCourses({});
+  const { data: courses } = useGetCourses({});
+  const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
+  const [copyCurrentData, setCopyCurrentData] = useState<FormatCoursesProps[]>();
 
+
+  dayjs.extend(isBetween);
+  // 获取非空数据
   const getLangResult = (
     lang: "zh" | "en",
     zhData: string[],
@@ -83,6 +91,15 @@ const Courses = () => {
     (item) => item?.attributes?.type
   );
 
+  // 筛选类别的options
+  const categoryOptions = courseLevelTypeData?.map(item => {
+    return {
+      label: item,
+      value: item
+    }
+  });
+
+  // 根据online in person isCamp划分
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
       case "Online Classes":
@@ -121,6 +138,7 @@ const Courses = () => {
     };
   };
 
+  // 固定所有的数据
   const allCourses = COURSE_TYPES.map((courseType, index) => {
     if (index < 3) {
       return generateCourses(courseType, courseLevelTypeData);
@@ -129,19 +147,34 @@ const Courses = () => {
     }
   });
 
+  // 移除二级课程为空的数据
+  const removeEmptyChildren = (data: FormatCoursesProps[]) => {
+    if (data) {
+      return [{
+        primaryTitle: data[0]?.primaryTitle,
+        children: data[0]?.children?.filter(item => item?.children?.length !== 0)
+      }];
+    }
+  }
+  // 根据segmented来筛选课程数据
   const getCourseBySegmented = (segmented: SegmentedValue) => {
-    const result = allCourses?.filter(
+    const segmentedData = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
     );
+    const result = removeEmptyChildren(segmentedData);
+
     setCurrentData(result);
+    setCopyCurrentData(result);
   };
+
   const onSegmentedChange = (value: SegmentedValue) => {
     history.replaceState(null, "", pathname);
+    form.resetFields();
     setSegmented(value);
   };
   useEffect(() => {
     getCourseBySegmented(segmented);
-  }, [segmented, courses]);
+  }, [segmented, courses, courseLevelType]);
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
@@ -161,33 +194,116 @@ const Courses = () => {
 
 
 
-  
-
-  // useEffect(() => {
-  //   runAsync({
-  //     populate: "*",
-  //     sort: ["order:desc"],
-  //     filters: { ...filters },
-  //     pagination: { ...pagination },
-  //   });
-  // }, [pagination, filters]);
-
-
-
-  const categoryOptions = courseLevelTypeData?.map(item => {
-    return {
-      labe: item,
-      value: item
+  const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
+    const { category, rangeDate, search } = values;
+    let result;
+    if (!category && !rangeDate && !search) {
+      result = copyCurrentData;
     }
-  })
-  const onCategoryChange = (value: string) => {
-    console.log(value);
+    if (copyCurrentData) {
+      const primaryData = copyCurrentData[0];
+      if (category && rangeDate && search) {
+        const [start, end] = rangeDate;
+        const startRangeDate = dayjs(start);
+        const endRangeDate = dayjs(end);
 
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+                dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
+                [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+            }
+            )
+          }))
+        }];
+      } else if (category && rangeDate) {
+        const [start, end] = rangeDate;
+        const startRangeDate = dayjs(start);
+        const endRangeDate = dayjs(end);
+
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course =>
+              dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+              dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate)
+            )
+          }))
+        }];
+      } else if (category && search) {
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+            }
+            )
+          }))
+        }];
+      } else if (rangeDate && search) {
+        const [start, end] = rangeDate;
+        const startRangeDate = dayjs(start);
+        const endRangeDate = dayjs(end);
+
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+                dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
+                [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+            }
+            )
+          }))
+        }];
+      } else if (category) {
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category)
+        }];
+      } else if (rangeDate) {
+        const [start, end] = rangeDate;
+        const startRangeDate = dayjs(start);
+        const endRangeDate = dayjs(end);
+
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course =>
+              dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
+              dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate)
+            )
+          }))
+        }];
+      } else if (search) {
+        result = [{
+          primaryTitle: primaryData?.primaryTitle,
+          children: primaryData?.children?.map(item => ({
+            secondaryTitle: item?.secondaryTitle,
+            children: item?.children?.filter(course => {
+              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
+              return [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+            }
+            )
+          }))
+        }];
+      }
+    }
+    const filteredResult = removeEmptyChildren(result as FormatCoursesProps[]);
+    setCurrentData(filteredResult);
   }
 
-  const onSearch = (value: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log(value);
-  }
+
   return (
     <ConfigProvider
       theme={{
@@ -222,37 +338,41 @@ const Courses = () => {
               />
             </Affix>
 
-            <Row justify="end" className={styles.row}>
-              <Col xs={24} sm={24} md={4}>
-                <Select
-                  style={{ width: '100%' }}
-                  placeholder={"Show All"}
-                  className={styles.select}
-                  options={categoryOptions}
-                  onChange={onCategoryChange}
-                />
-              </Col>
+            <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
+              <Row gutter={[16, 8]}>
+                <Col xs={24} sm={24} md={24} lg={7}>
+                  <Form.Item name="category">
+                    <Select
+                      style={{ width: 240 }}
+                      placeholder={"Category"}
+                      options={categoryOptions}
+                      allowClear={true}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={8}>
+                  <Form.Item name="rangeDate">
+                    <RangePicker />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={7}>
+                  <Form.Item name="search">
+                    <Input
+                      suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+                      allowClear={true}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={2}>
+                  <Form.Item>
+                    <Button type={"primary"} className={styles.button} htmlType="submit">
+                      {t('Search')}
+                    </Button>
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
 
-              <Col xs={24} sm={24} md={{ span: 4, offset: 1 }}>
-                <RangePicker />
-              </Col>
-
-              <Col xs={24} sm={24} md={{ span: 6, offset: 1 }}>
-                <Space>
-                  <Input
-                    onPressEnter={onSearch}
-                    suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
-                  />
-                  <Button
-                    type={"primary"}
-                    htmlType={"submit"}
-                    className={styles.button}
-                  >
-                    {t("Search")}
-                  </Button>
-                </Space>
-              </Col>
-            </Row>
             {currentData?.map((item, index) => {
               return (
                 <div className={"classify"} key={item?.primaryTitle}>

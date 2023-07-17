@@ -32,6 +32,9 @@ const NewsPage = () => {
 
   useEffect(() => {
     if (current && year) {
+      console.log(String(dayjs(year).valueOf()));
+      console.log(String(dayjs(String(+year + 1)).valueOf()));
+      
       getNewEvent({
         populate: '*',
         sort: ['order:desc'],
