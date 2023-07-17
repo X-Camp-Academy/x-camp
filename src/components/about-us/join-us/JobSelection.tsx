@@ -1,11 +1,14 @@
-import { Button } from "antd";
+import { Button, Empty } from "antd";
 import styles from "./JobSelection.module.scss";
 import { useEffect, useState } from "react";
 import JobCard from "./JobCard";
 import { useGetAboutUsJoinUs } from "@/apis/strapi-client/strapi";
 import { AboutUsJoinUsCategory } from "@/apis/strapi-client/define";
+import { getTransResult } from "@/utils/public";
+import { useLang } from "@/hoc/with-intl/define";
 
 const JobSelection = () => {
+  const { lang } = useLang();
   const [category, setCategory] = useState<AboutUsJoinUsCategory>(
     AboutUsJoinUsCategory.PartTime
   );
@@ -36,9 +39,8 @@ const JobSelection = () => {
             ]?.map((v) => (
               <Button
                 key={v}
-                className={`${styles.choiceBtn} ${
-                  category === v ? styles.selectedBtn : ""
-                }`}
+                className={`${styles.choiceBtn} ${category === v ? styles.selectedBtn : ""
+                  }`}
                 onClick={() => setCategory(v)}
               >
                 {v}
@@ -47,10 +49,10 @@ const JobSelection = () => {
           </div>
 
           <div className={styles.jobCardContainer}>
-            {aboutUsJoinUs?.map((v, index) => (
+            {aboutUsJoinUs?.length != 0 ? aboutUsJoinUs?.map((v, index) => (
               <JobCard key={index} index={index} data={v} />
-            ))}
-            
+            )) : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={getTransResult(lang, '目前暂无职位', 'There are currently no positions')} />}
+
           </div>
         </div>
       </div>

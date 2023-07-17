@@ -1,7 +1,5 @@
-import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult } from '@/utils/public';
-import dayjs, { Dayjs } from 'dayjs';
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { getBrowserCompatibility } from "@/utils/public";
+import { useState, useEffect } from "react";
 
 /**
  * 控制组件是否挂载、是否可见的 Hook
@@ -36,4 +34,12 @@ export const useDelayedMount = (
   }, [show, delay]);
 
   return [mount, visible];
+};
+
+/**
+ * 
+ * @returns 浏览器兼容性检测
+ */
+export const useCheckBrowserCompatibility = (): Boolean => {
+  return getBrowserCompatibility();
 };

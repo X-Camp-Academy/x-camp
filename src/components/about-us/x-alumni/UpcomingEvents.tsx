@@ -6,6 +6,7 @@ import ColorfulCard from "@/components/common/colorful-card";
 import {
   HistoryOutlined,
   LaptopOutlined,
+  RightCircleOutlined,
   RightOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -30,12 +31,12 @@ const UpcomingEvents: React.FC = () => {
     pageSize,
   });
 
-  const upComingEvent = newEventData?.filter((item, index) => {
+  const upComingEvent = newEventData?.data?.filter((item, index) => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
-      new Date().getTime() >
-      0
+        new Date().getTime() >
+        0
     );
   });
 
@@ -55,13 +56,17 @@ const UpcomingEvents: React.FC = () => {
         </Space>
 
         <Row gutter={32} className={styles.row}>
-          {upComingEvent?.slice(0, 6).map((item, index) => {
+          {upComingEvent?.slice(0, 6)?.map((item, index) => {
             const { utcTime: startTime } = formatTimezone(
               item?.attributes?.startDateTime
             );
             const { utcTime: endTime, timezone: endTimeZone } = formatTimezone(
               item?.attributes?.endDateTime
             );
+            const isLinked =
+              !item.attributes.geographicallyAddress &&
+              item.attributes.link &&
+              item.attributes.onlinePlatform;
             return (
               <Col key={index} xs={24} sm={24} md={8} style={{ marginTop: 20 }}>
                 <ColorfulCard border="bottom" index={index}>
@@ -89,6 +94,14 @@ const UpcomingEvents: React.FC = () => {
                           item?.attributes?.titleZh,
                           item?.attributes?.titleEn
                         )}
+                        {isLinked && (
+                          <Button
+                            href={item.attributes.onlinePlatform}
+                            icon={<RightCircleOutlined />}
+                            className={styles.link}
+                            type="link"
+                          />
+                        )}
                       </Paragraph>
                       <Space direction="vertical">
                         <Text className={styles.cardText}>
@@ -101,9 +114,7 @@ const UpcomingEvents: React.FC = () => {
                         </Text>
                         <Text className={styles.cardText}>
                           <LaptopOutlined className={styles.cardIcon} />
-                          {!item.attributes.geographicallyAddress &&
-                            item.attributes.link &&
-                            item.attributes.onlinePlatform ? (
+                          {isLinked ? (
                             <a
                               href={item.attributes.link}
                               style={{ color: "#666666" }}
@@ -116,7 +127,7 @@ const UpcomingEvents: React.FC = () => {
                         </Text>
                         <Text className={styles.cardText}>
                           <UserOutlined className={styles.cardIcon} />
-                          {`Organizer | ${item?.attributes?.organizer} `}
+                          {`Organizer ${item?.attributes?.organizer ? '| '+item?.attributes?.organizer : ''} `}
                         </Text>
                       </Space>
                     </Space>

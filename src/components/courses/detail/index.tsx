@@ -32,7 +32,6 @@ const CourseDetail = () => {
     },
   });
 
-  const { data } = useGetClasses();
 
   const { data: faq } = useGetFaq({
     ready: true,

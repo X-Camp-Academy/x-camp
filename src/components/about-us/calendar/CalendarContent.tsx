@@ -52,7 +52,20 @@ const CalendarContent = () => {
   ): Item[] => {
     const groupedData: {
       [month: string]: Item[];
-    } = {};
+    } = {
+      Jan: [],
+      Feb: [],
+      Mar: [],
+      Apr: [],
+      May: [],
+      Jun: [],
+      Jul: [],
+      Aug: [],
+      Sep: [],
+      Oct: [],
+      Nov: [],
+      Dec: [],
+    };
     data?.forEach((item) => {
       const month = dayjs(item?.attributes?.startDateTime).format("MMM");
       if (!groupedData[month]) {
@@ -77,7 +90,7 @@ const CalendarContent = () => {
       children,
     }));
 
-    return [...res, { label: "New Year", children: [] }];
+    return [...res, { label: t("NEW_YEAR"), children: [] }];
   };
 
   return (
@@ -89,7 +102,7 @@ const CalendarContent = () => {
             <Button className={styles.bookButton}>
               <ScheduleOutlined />
             </Button>
-            <TimelineComponent items={formatCalendar(schoolCalendar)} />
+            <TimelineComponent items={formatCalendar(schoolCalendar?.data)} />
           </div>
         </div>
       </div>

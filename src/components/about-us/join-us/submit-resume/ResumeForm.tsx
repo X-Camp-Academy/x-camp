@@ -1,3 +1,4 @@
+"use client";
 import {
   Typography,
   Divider,
@@ -11,7 +12,7 @@ import {
   message,
 } from "antd";
 import styles from "./ResumeForm.module.scss";
-import React, { useState } from "react";
+import React from "react";
 import { UploadChangeParam } from "antd/es/upload";
 import { useSubmitResume } from "@/apis/send-email-client/sendEmail";
 import { useLang } from "@/hoc/with-intl/define";
@@ -30,33 +31,33 @@ interface submitResumeProps {
   website?: Blob;
 }
 
-const ResumeForm = () => {
+const ResumeForm: React.FC<{
+  job: string | undefined;
+  department: string | undefined;
+}> = ({ job, department }) => {
   const { format: t } = useLang();
-  const [pdfFileList, setPdfFileList] = useState<any>(); //已选择的文件列表（只有一个）
-  function beforePDFUpload(file: Blob) {
-    const fileSizeLimit = 10 * 1024 * 1024; // 10MB，字节为单位
-    const isSizeValid = file.size <= fileSizeLimit;
-    if (!isSizeValid) {
-      message.error("File size must be less than or equal to 10MB");
-    }
-    return isSizeValid;
-  }
-  const submitCvPDF = async (info: UploadChangeParam<UploadFile<any>>) => {
-    setPdfFileList(info.fileList);
-    form.setFieldsValue({ resume: info.fileList });
-  };
-
-  const [letterFileList, setLetterFileList] = useState<any>(); //已选择的文件列表（只有一个）
-  function beforeLetterUpload(file: Blob) {
-    const fileSizeLimit = 10 * 1024 * 1024; // 10MB，字节为单位
+  const fileSizeLimit = 10 * 1024 * 1024; // 10MB，字节为单位
+  function beforePDFUpload(file: any) {
     const isSizeValid = file.size <= fileSizeLimit;
     if (!isSizeValid) {
       message.error("File size must be less than or equal to 10MB");
     }
     return false;
   }
+  const submitCvPDF = async (info: UploadChangeParam<UploadFile<any>>) => {
+    form.setFieldsValue({ resume: info.fileList });
+  };
+
+  function beforeLetterUpload(file: any) {
+    const isSizeValid = file.size <= fileSizeLimit;
+    if (!isSizeValid) {
+      message.error(
+        "File size must be less than or equal to 10MB. Please Upload again!"
+      );
+    }
+    return false;
+  }
   const submitLetter = async (info: UploadChangeParam<UploadFile<any>>) => {
-    setLetterFileList(info.fileList);
     form.setFieldsValue({ letter: info.fileList });
   };
 
@@ -66,6 +67,15 @@ const ResumeForm = () => {
 
   const submitResumeOnFinish = async (formValues: submitResumeProps) => {
     const requestData = new FormData();
+    if (formValues.resume[0].originFileObj.size >= fileSizeLimit) {
+      message.error(
+        "File size must be less than or equal to 10MB. Please Upload again!"
+      );
+      return;
+    }
+
+    if (job) requestData.append("job", job);
+    if (department) requestData.append("department", department);
     requestData.append("firstName", formValues.firstName);
     requestData.append("lastName", formValues.lastName);
     requestData.append("email", formValues.email);
@@ -115,7 +125,6 @@ const ResumeForm = () => {
         <Form.Item name="resume" rules={[{ required: true }]}>
           <Upload
             accept=".pdf"
-            fileList={pdfFileList}
             maxCount={1}
             beforeUpload={beforePDFUpload}
             onChange={(info) => submitCvPDF(info)}
@@ -133,7 +142,6 @@ const ResumeForm = () => {
         <Form.Item name="letter">
           <Upload
             accept=".pdf"
-            fileList={letterFileList}
             maxCount={1}
             beforeUpload={beforeLetterUpload}
             onChange={(info) => submitLetter(info)}
@@ -165,7 +173,10 @@ const ResumeForm = () => {
             {" *"}
           </Text>
         </div>
-        <Form.Item name="acRelocate">
+        <Form.Item
+          name="acRelocate"
+          rules={[{ required: true, message: "please choose the radio" }]}
+        >
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
@@ -184,7 +195,10 @@ const ResumeForm = () => {
             {" *"}
           </Text>
         </div>
-        <Form.Item name="alphabetEmployee">
+        <Form.Item
+          name="alphabetEmployee"
+          rules={[{ required: true, message: "please choose the radio" }]}
+        >
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
@@ -197,15 +211,19 @@ const ResumeForm = () => {
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item rules={[{ required: true }]}>
-          <Text className={styles.title}>{t("ApplicationConsent")}</Text>
-          <Paragraph className={styles.acceptText}>
-            {t("ApplicationConsent.Desc1")}{" "}
-            <a style={{ color: "#FFAD11" }}>
-              https://www.google.com/about/careers/privacy/
-            </a>
-            {t("ApplicationConsent.Desc2")}
-          </Paragraph>
+        <Text className={styles.title}>{t("ApplicationConsent")}</Text>
+        <Paragraph className={styles.acceptText}>
+          {t("ApplicationConsent.Desc1")}{" "}
+          <a style={{ color: "#FFAD11" }}>
+            https://www.google.com/about/careers/privacy/
+          </a>
+          {t("ApplicationConsent.Desc2")}
+        </Paragraph>
+
+        <Form.Item
+          name="accept"
+          rules={[{ required: true, message: "please choose the answer" }]}
+        >
           <Radio.Group>
             <Radio value="1" className={styles.problem}>
               {t("IAccept")}

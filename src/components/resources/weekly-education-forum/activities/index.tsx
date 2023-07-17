@@ -32,7 +32,7 @@ const Activities = () => {
     manual: true,
   });
   const [selectedItem, setSelectedItem] = useState<
-  EventCategory | "All Education Forums"
+    EventCategory | "All Education Forums"
   >(EventCategory.SchoolLifeSharing);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
@@ -62,7 +62,7 @@ const Activities = () => {
       ...commonParams,
       filters,
     });
-  }, [tag, selectedItem]);
+  }, [tag, selectedItem, current]);
 
   const items: ActivityItem[] = [
     {
@@ -93,9 +93,8 @@ const Activities = () => {
           {items.map((v) => {
             return (
               <div
-                className={`${styles.toolBarItem} ${
-                  v.key === selectedItem ? styles.selectedToolBarItem : ""
-                }`}
+                className={`${styles.toolBarItem} ${v.key === selectedItem ? styles.selectedToolBarItem : ""
+                  }`}
                 key={v.key}
                 onClick={() => {
                   setSelectedItem(v.key);
@@ -109,13 +108,13 @@ const Activities = () => {
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{selectedItem}</div>
           <div className={styles.pageTotal}>
-            {newEventData?.length} {t("educationalForum")}
+            {newEventData?.data?.length} {t("educationalForum")}
           </div>
         </Space>
         <Row gutter={[32, 32]}>
-          {newEventData?.map((v, index) => (
+          {newEventData?.data?.map((v, index) => (
             /* 新版UI的分页器待完成 */
-            <ActivityItem {...v} key={index} index={index}/>
+            <ActivityItem {...v} key={index} index={index} />
           ))}
         </Row>
 
@@ -123,7 +122,7 @@ const Activities = () => {
           className={styles.pagination}
           pageSize={pageSize}
           current={current}
-          total={newEventData?.length}
+          total={newEventData?.meta?.pagination?.total}
           onChange={(page) => setCurrent(page)}
         />
       </div>

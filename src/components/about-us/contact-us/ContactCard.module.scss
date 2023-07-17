@@ -2,12 +2,15 @@
   margin-top: 6.25rem;
   padding-bottom: 3.25rem;
 
-
-
   .card {
     height: 250px;
     width: 100%;
     padding: 24px 40px;
+
+    @media (max-width: 1200px) {
+      height: initial;
+      padding: 0;
+    }
 
     .title {
       font-size: 24px;
@@ -24,8 +27,8 @@
       align-items: center;
       display: flex;
       justify-content: center;
-      color: #FFAD11;
-      background-color: #FFEDDF;
+      color: #ffad11;
+      background-color: #ffeddf;
     }
   }
 }

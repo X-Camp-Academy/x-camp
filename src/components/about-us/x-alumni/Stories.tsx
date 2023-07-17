@@ -24,14 +24,13 @@ const Stories: React.FC = () => {
     pageSize,
   });
 
-
   const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
     return getTransResult(
       lang,
       imgZh.data?.attributes.url,
-      imgEn.data?.attributes.url,
-    )
-  }
+      imgEn.data?.attributes.url
+    );
+  };
 
   return (
     <div className={styles.storiesContainer}>
@@ -49,10 +48,15 @@ const Stories: React.FC = () => {
         </Space>
 
         <Row gutter={32} className={styles.row}>
-          {newEventData?.map((item, index) => (
+          {newEventData?.data?.map((item, index) => (
             <Col key={index} xs={24} sm={24} md={8}>
-              <ColorfulCard border="bottom" index={index}>
+              <ColorfulCard
+                border="bottom"
+                index={index}
+                className={styles.colorfulCard}
+              >
                 <Card
+                  className={styles.card}
                   bodyStyle={{
                     padding: 0,
                   }}
@@ -61,7 +65,10 @@ const Stories: React.FC = () => {
                     <Image
                       alt=""
                       preview={false}
-                      src={getTranslateImg(item.attributes.imgZh, item.attributes.imgEn)}
+                      src={getTranslateImg(
+                        item.attributes.imgZh,
+                        item.attributes.imgEn
+                      )}
                       className={styles.cardImage}
                     />
 

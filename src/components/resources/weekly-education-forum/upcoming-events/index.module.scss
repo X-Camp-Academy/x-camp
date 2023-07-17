@@ -61,13 +61,15 @@
       }
 
       .descriptions {
+        position: relative;
         .btn {
+          position: absolute;
           color: #ffad11;
           font-size: 18px;
+          
+          right: 0;
         }
-
         :global {
-
           .ant-descriptions-row>td {
             padding-bottom: 8px;
           }
@@ -83,7 +85,7 @@
 
           .ant-descriptions-item-content {
             justify-content: space-between;
-            align-items: start;
+            align-items: end;
             color: #666666;
             font-size: 18px;
           }

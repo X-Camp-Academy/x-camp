@@ -1,0 +1,117 @@
+$ip: 'https://media.strapi.turingstar.com.cn/production/2023/3/_31e3aca7f2.png?updated_at=2023-03-06T06:33:20.724Z';
+$planets: 'https://media.strapi.turingstar.com.cn/production/2023/3/background_right_6ff67955bc.png?updated_at=2023-03-06T06:42:07.160Z';
+$hello: 'https://media.strapi.turingstar.com.cn/production/2023/3/hello_0dd8b00bbf.png?updated_at=2023-03-06T06:54:19.121Z';
+
+.page {
+  position: relative;
+  background-color: #3872e6;
+  width: 100vw;
+  height: 100vh;
+
+  .hello {
+    position: absolute;
+    left: 100px;
+    bottom: 240px;
+    width: 204px;
+    height: 96px;
+    background: url($hello) 100% no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .ip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    height: 280px;
+    background: url($ip) 100% no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .planets {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 240px;
+    height: 280px;
+    background: url($planets) 100% no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 70vh;
+    max-height: 500px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .reason {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: space-between;
+
+      .card {
+        width: 30%;
+        box-sizing: border-box;
+        font-size: 14px;
+        line-height: 1.5;
+        list-style: none;
+        border-radius: 8px;
+        border: 1px solid #f0f0f0;
+        background: #fff;
+        color: rgba(0, 0, 0, 0.88);
+
+        .cardBody {
+          padding: 24px;
+
+          .title {
+            font-weight: bold;
+            font-size: 16px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 8px;
+          }
+
+          .description {
+            color: rgba(0, 0, 0, 0.45);
+          }
+        }
+
+        .actions {
+          background: #fff;
+          border-top: 1px solid #f0f0f0;
+          display: flex;
+          border-radius: 0 0 8px 8px;
+          padding: 12px 0;
+          display: flex;
+          justify-content: center;
+
+          .link {
+            color: rgba(0, 0, 0, 0.45);
+            transition: color 0.2s;
+            padding: 0 20px;
+            text-decoration: none;
+
+            &:hover {
+              color: #167fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
