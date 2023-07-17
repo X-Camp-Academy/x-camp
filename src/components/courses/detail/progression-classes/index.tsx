@@ -9,10 +9,9 @@ const { Title } = Typography;
 const ProgressionClasses = () => {
   const { format: t } = useLang();
   const courseData = useContext(CourseClassesContext);
-  console.log(courseData);
-  const { recommendedClasses } = courseData?.attributes ?? {};
+  // const { data } = courseData?.attributes?.recommendedClasses ?? {};
 
-  console.log(recommendedClasses);
+  console.log(courseData?.attributes?.recommendedClasses);
 
   const items = [
     {

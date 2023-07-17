@@ -5,7 +5,7 @@ import {
   StrapiResponse,
   StrapiResponseSingleDataItem,
   strapiPublicFields,
-} from './strapiDefine';
+} from "./strapiDefine";
 
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
@@ -31,9 +31,9 @@ export enum NewEventCategory {
 
 export enum EventCategory {
   SchoolLifeSharing = "School life's sharing",
-  CodingEducation = 'Coding Education',
-  CareerPath = 'Career Path',
-  Research = 'Research',
+  CodingEducation = "Coding Education",
+  CareerPath = "Career Path",
+  Research = "Research",
 }
 
 export interface GetNewEvent extends strapiPublicFields {
@@ -165,7 +165,18 @@ export interface GetCourses extends strapiPublicFields {
   lessonNum: number;
   media: StrapiMedias;
   order: number;
-  recommendedClasses: Array<number>;
+  isRecommended: {
+    data: {
+      id: number;
+      attributes: GetCourses;
+    }[];
+  };
+  recommendedClasses: {
+    data: {
+      id: number;
+      attributes: GetCourses;
+    }[];
+  };
   recommendedLowerGrade: number;
   recommendedUpperGrade: number;
   tuitionRMB: number;
@@ -214,14 +225,14 @@ export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
 export enum AboutUsJoinUsCategory {
-  PartTime = 'Part Time',
-  FullTime = 'Full Time',
-  XTutor = 'X-Tutor',
+  PartTime = "Part Time",
+  FullTime = "Full Time",
+  XTutor = "X-Tutor",
 }
 
 export enum AboutUsJoinUsPlace {
-  Remote = 'Remote',
-  OnSite = 'On Site',
+  Remote = "Remote",
+  OnSite = "On Site",
 }
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
@@ -316,9 +327,9 @@ export type GetResourcesLiveSolutionResponse =
   StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = 'Referral QA',
-  CoursesQA = 'Courses QA',
-  CampsQA = 'Camps QA',
+  ReferralQA = "Referral QA",
+  CoursesQA = "Courses QA",
+  CampsQA = "Camps QA",
 }
 
 export interface GetFaq extends strapiPublicFields {
@@ -337,10 +348,10 @@ export type GetFaqRequest = StrapiRequest<GetFaq>;
 export type GetFaqResponse = StrapiResponse<GetFaq>;
 
 export enum PartnerCategory {
-  ChinaPartners = 'China Partners',
-  UniversityPartners = 'University Partners',
-  CommunityPartners = 'Community Partners',
-  EducationPartners = 'Education Partners',
+  ChinaPartners = "China Partners",
+  UniversityPartners = "University Partners",
+  CommunityPartners = "Community Partners",
+  EducationPartners = "Education Partners",
 }
 
 export interface GetPartner extends strapiPublicFields {
