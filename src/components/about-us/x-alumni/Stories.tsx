@@ -9,14 +9,16 @@ import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
+import { useRouter } from "next/navigation";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Stories: React.FC = () => {
+  const router = useRouter();
   const pageSize = 3;
   const { lang, format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.XAlumni);
 
   const { data: newEventData } = useGetNewEvent({
     tag,
@@ -84,6 +86,7 @@ const Stories: React.FC = () => {
                         ghost={true}
                         shape="circle"
                         className={styles.cardButton}
+                        onClick={() => router.push(`/resources/${item.id}`)}
                       >
                         <RightOutlined />
                       </Button>
