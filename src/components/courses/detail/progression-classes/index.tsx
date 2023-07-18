@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
