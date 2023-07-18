@@ -29,7 +29,7 @@ const CourseDescription = () => {
 
   const formatDate = (date: string) => {
     const formatStringZh = "YYYY/MM/DD";
-    const formatStringEn = "MM/DD, YYYY";
+    const formatStringEn = "YYYY/MM/DD";
     return getTransResult(
       lang,
       dayjs(date).format(formatStringZh),
@@ -93,6 +93,36 @@ const CourseDescription = () => {
   return (
     <Space className={styles.description}>
       <div className={styles.left}>
+        <Descriptions column={1}>
+          <Descriptions.Item label={t("ClassMode")}>
+            {classMode}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("CodeLanguage")}>
+            {classLang}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("ClassroomLanguage")}>
+            {classRoomLang}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("Duration")}>
+            {`${formatDate(startDate || "")} - ${formatDate(endDate || "")}`}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("CourseFormat")}>
+            {courseFormat}
+          </Descriptions.Item>
+        </Descriptions>
+        <Button
+          id="copyButton"
+          className={styles.btn}
+          onClick={() => {
+            handlerShareLesson();
+          }}
+        >
+          {t("ShareLessons")}
+          <ShareAltOutlined />
+        </Button>
+      </div>
+
+      <div className={styles.right}>
         <Carousel dots={false} ref={ref}>
           {media?.data?.map((mediaItem) => {
             return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
@@ -163,49 +193,6 @@ const CourseDescription = () => {
             })}
           </Space>
         </div>
-      </div>
-      <div className={styles.right}>
-        <Descriptions column={1}>
-          <Descriptions.Item label={t("ClassMode")}>
-            {classMode}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("CodeLanguage")}>
-            {classLang}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("ClassroomLanguage")}>
-            {classRoomLang}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("Duration")}>
-            {`${formatDate(startDate || "")} - ${formatDate(endDate || "")}`}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("CourseFormat")}>
-            {courseFormat}
-          </Descriptions.Item>
-        </Descriptions>
-        <Button
-          id="copyButton"
-          className={styles.btn}
-          onClick={() => {
-            handlerShareLesson();
-          }}
-        >
-          {t("ShareLessons")}
-          <ShareAltOutlined />
-        </Button>
-        <Modal
-          title={getTransResult(lang, "分享课程信息", 'Share course information')}
-          open={isModalOpen}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          closeIcon={false}
-          footer={[
-            <Button key="submit" type="primary" onClick={handleOk}>
-              {getTransResult(lang, '复制课程信息', 'Copy the course information')}
-            </Button>
-          ]}
-        >
-          <div style={{ whiteSpace: 'pre-line' }}>{getTransResult(lang, clipTextZh, clipTextEn)}</div>
-        </Modal>
       </div>
     </Space>
   );

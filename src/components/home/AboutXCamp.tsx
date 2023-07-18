@@ -4,7 +4,6 @@ import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from "./AboutXCamp.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 
 const { Title, Paragraph, Text } = Typography;

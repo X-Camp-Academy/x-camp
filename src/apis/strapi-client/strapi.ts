@@ -8,7 +8,6 @@ import {
   GetAboutUsAlumniMapRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
-  GetClassesRequest,
   GetCourseLevelTypeRequest,
   GetCoursesRequest,
   GetFacultyRequest,
@@ -397,29 +396,6 @@ export const useGetCourses = ({
           sort: ["order:desc"],
           filters: filters ?? {},
           pagination: pagination ?? {},
-        },
-      ],
-      onError: handleError,
-    }
-  );
-};
-
-/**
- *
- * @returns 获取Course Classes
- */
-export const useGetClasses = () => {
-  const client = useStrapiClient();
-  const handleError = useHandleError();
-  return useRequest(
-    async (params: GetClassesRequest) => {
-      const res = await client.getClasses(params);
-      return isArray(res?.data) ? res.data : [];
-    },
-    {
-      defaultParams: [
-        {
-          populate: "*",
         },
       ],
       onError: handleError,

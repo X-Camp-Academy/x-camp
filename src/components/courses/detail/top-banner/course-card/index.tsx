@@ -6,18 +6,18 @@ import styles from "./index.module.scss";
 import CourseDescription from "./course-description";
 
 
-const CourseCard:React.FC = () => {
+const CourseCard: React.FC = () => {
   return (
     <div className={styles.courseCard}>
 
-        <Space
-          className={styles.cardContent}
-          direction="vertical"
-          split={<Divider className={styles.divider} />}
-        >
-          <CourseAbstract />
-          <CourseDescription />
-        </Space>
+      <Space
+        className={styles.cardContent}
+        direction="vertical"
+        split={<Divider className={styles.divider} />}
+      >
+        <CourseAbstract />
+        <CourseDescription />
+      </Space>
 
     </div>
   );

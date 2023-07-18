@@ -60,8 +60,8 @@ const Courses = () => {
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
-  const [currentData, setCurrentData] = useState<FormatCoursesProps[]>();
-  const [copyCurrentData, setCopyCurrentData] = useState<FormatCoursesProps[]>();
+  const [segmentedData, setSegmentedData] = useState<FormatCoursesProps[]>();
+  const [copySegmentedData, setCopySegmentedData] = useState<FormatCoursesProps[]>();
 
 
   dayjs.extend(isBetween);
@@ -102,17 +102,20 @@ const Courses = () => {
     }
   };
 
+  // 根据online  或者 in person 或者enhancement classes 等
   const generateCourses = (
     courseType: string,
     primaryData: string[] | undefined
   ) => {
     const filteredCourses = getOnlineInPersonIsCamp(courseType);
+    // 排序二级数据
+    const sortFilteredCourses = filteredCourses?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
     return {
       primaryTitle: courseType,
       children: primaryData?.map((levelType) => {
         return {
           secondaryTitle: levelType,
-          children: filteredCourses?.filter(
+          children: sortFilteredCourses?.filter(
             // 根据第一次分类过滤的courses或者原始的课程直接进行二层过滤
             (filteredCourse) =>
               filteredCourse?.attributes?.courseLevelType?.data?.attributes
@@ -148,8 +151,8 @@ const Courses = () => {
     );
     const result = removeEmptyChildren(segmentedData);
 
-    setCurrentData(result);
-    setCopyCurrentData(result);
+    setSegmentedData(result);
+    setCopySegmentedData(result);
   };
 
   const onSegmentedChange = (value: SegmentedValue) => {
@@ -175,17 +178,17 @@ const Courses = () => {
     } else {
       scrollIntoView(hash);
     }
-  }, [hash, currentData]);
+  }, [hash, segmentedData]);
 
 
   const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
     const { category, rangeDate, search } = values;
     let result;
     if (!category && !rangeDate && !search) {
-      result = copyCurrentData;
+      result = copySegmentedData;
     }
-    if (copyCurrentData) {
-      const primaryData = copyCurrentData[0];
+    if (copySegmentedData) {
+      const primaryData = copySegmentedData[0];
       if (category && rangeDate && search) {
         const [start, end] = rangeDate;
         const startRangeDate = dayjs(start);
@@ -284,9 +287,8 @@ const Courses = () => {
       }
     }
     const filteredResult = removeEmptyChildren(result as FormatCoursesProps[]);
-    setCurrentData(filteredResult);
+    setSegmentedData(filteredResult);
   }
-
 
   return (
     <ConfigProvider
@@ -357,7 +359,7 @@ const Courses = () => {
               </Row>
             </Form>
 
-            {currentData?.map((item, index) => {
+            {segmentedData?.map((item, index) => {
               return (
                 <div className={"classify"} key={item?.primaryTitle}>
                   <Collapse

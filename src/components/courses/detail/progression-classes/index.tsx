@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
@@ -10,8 +10,8 @@ import { getTransResult } from "@/utils/public";
 import { getLangResult } from "../../utils";
 const { Title } = Typography;
 
-const ProgressionClasses: React.FC = () => {
-  // const courseData = useContext(CourseClassesContext);
+const ProgressionClasses = () => {
+  // const Data = useContext(CourseClassesContext);
 
   const params = useParams();
   const { format: t, lang } = useLang();
@@ -22,12 +22,14 @@ const ProgressionClasses: React.FC = () => {
     },
   });
 
-  const recommendedCourses = courseData?.data[0]?.attributes?.recommendedClasses?.data;
+  const data = courseData?.data[0]?.attributes?.recommendedClasses?.data;
+  const recommendedCourses = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
   return (
     <div className={styles.content}>
       <div className="container">
         <Title className={styles.title}>{t("ProgressionClasses")}</Title>
-        <Space size={27} wrap className={styles.cards}>
+        <Space size={24} wrap className={styles.cards}>
           {recommendedCourses?.map((v, index) => {
             return (
               <ClassCard
