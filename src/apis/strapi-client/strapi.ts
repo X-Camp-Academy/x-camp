@@ -82,6 +82,7 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
           data.push(...filterByAttribution(res?.data, "eventId", eventId));
         }
       }
+      data = deduplicateArray(data); // 去重
       return data;
     },
     {

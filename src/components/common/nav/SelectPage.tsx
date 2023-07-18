@@ -3,6 +3,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useMemo, useState } from 'react';
+import styles from './SelectPage.module.scss';
 interface ValueType {
   label: string;
   value: string;
@@ -15,9 +16,9 @@ const SelectPage = () => {
     () =>
       searchMap?.keywords
         ? Object.entries(searchMap.keywords).map(([label, value]) => ({
-            label,
-            value,
-          }))
+          label,
+          value,
+        }))
         : [],
     [searchMap]
   );
@@ -42,7 +43,8 @@ const SelectPage = () => {
       filterOption={false}
       onSearch={handleSearch}
       onSelect={handleSelect}
-      style={{ width: '20vw', maxWidth: 200 }}
+      // style={{ width: '20vw', maxWidth: 200 }}
+      className={styles.select}
       suffixIcon={<SearchOutlined style={{ color: '#d9d9d9' }} />}
       notFoundContent={null}
       options={options || []}

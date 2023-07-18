@@ -4,6 +4,7 @@ import { Col, Row, Typography, Descriptions, Divider } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { GetCourses } from "@/apis/strapi-client/define";
 import { getTransResult } from "@/utils/public";
+import dayjs from 'dayjs';
 const { Text, Title } = Typography;
 
 const CourseCard: React.FC<GetCourses> = (props) => {
@@ -23,6 +24,16 @@ const CourseCard: React.FC<GetCourses> = (props) => {
     tuitionUSD,
   } = props;
   const { format: t, lang } = useLang();
+  const recommendedGradeLevel = (recommendedLowerGrade: number, recommendedUpperGrade: number) => {
+    let result = '';
+    if (recommendedLowerGrade) {
+      result += recommendedLowerGrade;
+    }
+    if (recommendedUpperGrade) {
+      result = result + '-' + recommendedUpperGrade;
+    }
+    return result + ' Grade';
+  }
   return (
     <>
       <Row className={styles.row}>
@@ -37,9 +48,8 @@ const CourseCard: React.FC<GetCourses> = (props) => {
           className={`${styles.col} ${styles.feeCol}`}
           style={{}}
         >
-          <Title className={styles.title}>{`${lessonNum} ${
-            frequency === "Weekly" ? "weeks" : "days"
-          }`}</Title>
+          <Title className={styles.title}>{`${lessonNum} ${frequency === "Weekly" ? "weeks" : "days"
+            }`}</Title>
         </Col>
       </Row>
       <Row style={{ marginTop: 20 }} className={styles.row}>
@@ -49,13 +59,13 @@ const CourseCard: React.FC<GetCourses> = (props) => {
               {classMode}
             </Descriptions.Item>
             <Descriptions.Item label={t("Level")}>
-              {recommendedLowerGrade}
+              {recommendedGradeLevel(recommendedLowerGrade, recommendedUpperGrade)}
             </Descriptions.Item>
             <Descriptions.Item label={t("Language")}>
               {classLang}
             </Descriptions.Item>
             <Descriptions.Item label={t("ClassesTime")}>
-              {`${startDate} ${endDate}`}
+              {`${dayjs(startDate)?.format('MM/DD/YYYY')} - ${dayjs(endDate)?.format('MM/DD/YYYY')}`}
             </Descriptions.Item>
           </Descriptions>
         </Col>

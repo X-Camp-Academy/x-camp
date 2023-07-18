@@ -71,12 +71,12 @@ const Nav = () => {
         label: <Link href="/login">Sign Up</Link>,
         key: '/login',
       },
-      {
-        label: (
-          <a onClick={toggle}>{getTransResult(lang, '中文', 'English')}</a>
-        ),
-        key: '',
-      },
+      // {
+      //   label: (
+      //     <a onClick={toggle}>{getTransResult(lang, '中文', 'English')}</a>
+      //   ),
+      //   key: '',
+      // },
     ];
     return isMobile
       ? removeDropdown(menuItems)?.concat(loginSignUp)

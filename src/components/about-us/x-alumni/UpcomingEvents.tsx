@@ -96,7 +96,7 @@ const UpcomingEvents: React.FC = () => {
                         )}
                         {isLinked && (
                           <Button
-                            href={item.attributes.onlinePlatform}
+                            href={item.attributes.link}
                             icon={<RightCircleOutlined />}
                             className={styles.link}
                             type="link"

@@ -23,11 +23,11 @@ const { Content } = Layout;
 
 const Home = () => {
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({
+  const { data } = useGetTestimony({
     ready: true,
     pageName: ["/home/"], // 因为首页的路由是空字符串，约定用/home/表示
   });
-
+  const testimonyData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
   return (
     <ConfigProvider
       theme={{

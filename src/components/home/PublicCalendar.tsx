@@ -140,7 +140,7 @@ const PublicCalendar: React.FC = () => {
     }
   };
 
-  const dateCellRender = (value: Dayjs) => {
+  const cellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
       if (event.startDateTime && event.endDateTime)
         return value.isBetween(
@@ -231,11 +231,10 @@ const PublicCalendar: React.FC = () => {
                         <Text className={styles.text}>
                           {getTransResult(
                             lang,
-                            `${
-                              getMonth(item.attributes?.startDateTime || "") + 1
+                            `${getMonth(item.attributes?.startDateTime || "") + 1
                             }月`,
                             monthNameAbbrEn[
-                              getMonth(item.attributes?.startDateTime || "")
+                            getMonth(item.attributes?.startDateTime || "")
                             ]
                           )}
                         </Text>
@@ -271,26 +270,24 @@ const PublicCalendar: React.FC = () => {
                           </Paragraph>
                         )}
                         <Text className={styles.date}>
-                          {`${
-                            dayjs(item?.attributes?.startDateTime).isSame(
-                              dayjs(item?.attributes?.endDateTime),
-                              "day"
-                            )
-                              ? `${formatHourMinute(
-                                  item?.attributes?.startDateTime || ""
-                                )} - 
+                          {`${dayjs(item?.attributes?.startDateTime).isSame(
+                            dayjs(item?.attributes?.endDateTime),
+                            "day"
+                          )
+                            ? `${formatHourMinute(
+                              item?.attributes?.startDateTime || ""
+                            )} - 
                                 ${formatHourMinute(
-                                  item?.attributes?.endDateTime || ""
-                                )} `
-                              : `${formatYMDTime(
-                                  item?.attributes?.startDateTime || ""
-                                )} - ${formatYMDTime(
-                                  item?.attributes?.endDateTime || ""
-                                )}`
-                          } ${
-                            formatTimezone(item?.attributes?.startDateTime)
+                              item?.attributes?.endDateTime || ""
+                            )} `
+                            : `${formatYMDTime(
+                              item?.attributes?.startDateTime || ""
+                            )} - ${formatYMDTime(
+                              item?.attributes?.endDateTime || ""
+                            )}`
+                            } ${formatTimezone(item?.attributes?.startDateTime)
                               .timezone
-                          } 
+                            } 
                             `}
                         </Text>
                       </Space>
@@ -305,7 +302,7 @@ const PublicCalendar: React.FC = () => {
             <Space size={48} direction="vertical" className={styles.colSpace}>
               <Calendar
                 fullscreen={false}
-                cellRender={dateCellRender}
+                cellRender={cellRender}
                 onSelect={(date) => {
                   setSelectDate(date.toString());
                 }}
@@ -330,23 +327,21 @@ const PublicCalendar: React.FC = () => {
                             <Text className={styles.itemDate}>
                               {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
-                              {`${
-                                dayjs(item?.startDateTime).isSame(
-                                  dayjs(item?.endDateTime),
-                                  "day"
-                                )
-                                  ? `${formatHourMinute(
-                                      item?.startDateTime || ""
-                                    )} - 
+                              {`${dayjs(item?.startDateTime).isSame(
+                                dayjs(item?.endDateTime),
+                                "day"
+                              )
+                                ? `${formatHourMinute(
+                                  item?.startDateTime || ""
+                                )} - 
                                  ${formatHourMinute(item?.endDateTime || "")}`
-                                  : `${formatYMDTime(
-                                      item?.startDateTime || ""
-                                    )} - ${formatYMDTime(
-                                      item?.endDateTime || ""
-                                    )}`
-                              } 
-                                ${
-                                  formatTimezone(item?.startDateTime).timezone
+                                : `${formatYMDTime(
+                                  item?.startDateTime || ""
+                                )} - ${formatYMDTime(
+                                  item?.endDateTime || ""
+                                )}`
+                                } 
+                                ${formatTimezone(item?.startDateTime).timezone
                                 }`}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>

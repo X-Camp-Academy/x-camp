@@ -26,6 +26,7 @@ export enum NewEventCategory {
   Event = "Events",
   SchoolCalendar = "School Calendar",
   EventContest = "Event Contest",
+  XAlumni = "X-Alumni",
   All = "All",
 }
 
@@ -163,7 +164,18 @@ export interface GetCourses extends strapiPublicFields {
   lessonNum: number;
   media: StrapiMedias;
   order: number;
-  recommendedClasses: Array<number>;
+  isRecommended: {
+    data: {
+      id: number;
+      attributes: GetCourses;
+    }[];
+  };
+  recommendedClasses: {
+    data: {
+      id: number;
+      attributes: GetCourses;
+    }[];
+  };
   recommendedLowerGrade: number;
   recommendedUpperGrade: number;
   tuitionRMB: number;

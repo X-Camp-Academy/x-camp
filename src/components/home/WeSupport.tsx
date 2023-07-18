@@ -29,7 +29,7 @@ const WeSupport: React.FC = () => {
             <iframe
               width="100%"
               height="350"
-              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+              src="https://media.strapi.turingstar.com.cn/production/2023/7/1st_Tic_Tac_toe_d73c6e87d5.mp4?updated_at=2023-07-11T17:26:59.659Z"
               title="X-Camp Academy Intro - 2023"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
