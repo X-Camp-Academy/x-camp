@@ -3,9 +3,15 @@
   border-radius: 8px 8px 12px 12px;
   height: 400px;
 
-  img {
-    width: 100%;
+  .imgBox {
+    height: 226px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
+
+
 
   .cardContent {
     padding: 36px;
