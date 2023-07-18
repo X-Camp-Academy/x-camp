@@ -35,7 +35,7 @@ const DiscoverCourses = ({
       </Space>
     );
   };
-  
+
   const courseCards = [
     {
       title: t("Python.Title"),
@@ -49,6 +49,18 @@ const DiscoverCourses = ({
         "/courses/#classify0"
       ),
     },
+    // {
+    //   title: "Java",
+    //   desc: t("Java.Grade"),
+    //   url: "/image/home/course-5.png",
+    //   bgc: "#D7680B",
+    //   maskBgc: "rgb(212 107 20 / 40%)",
+    //   maskChildren: generateMaskChildren(
+    //     "Java",
+    //     t("Java.Mask.Desc"),
+    //     "/courses"
+    //   ),
+    // },
     {
       title: t("C++.Title"),
       desc: t("C++.Grade"),
@@ -85,18 +97,6 @@ const DiscoverCourses = ({
         "/courses/#apcs"
       ),
     },
-    // {
-    //   title: "Java",
-    //   desc: t("Java.Grade"),
-    //   url: "/image/home/course-4.png",
-    //   bgc: "#D46B14",
-    //   maskBgc: "rgb(212 107 20 / 40%)",
-    //   maskChildren: generateMaskChildren(
-    //     "APCS",
-    //     t("APCS.Mask.Desc"),
-    //     "/courses/#apcs"
-    //   ),
-    // },
   ];
   return (
     <div
@@ -114,9 +114,9 @@ const DiscoverCourses = ({
       {showSubTitle && (
         <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
       )}
-      {showBg && <Text className={styles.arc}></Text>}
+      {showBg && <Text className={styles.titleBg}></Text>}
 
-      <Row className={styles.row} gutter={16} justify="center" align="middle">
+      <Row className={styles.row} gutter={16} align="middle">
         {courseCards.map((item) => {
           return (
             <Col key={item?.url} xs={24} sm={24} md={12} lg={6}>

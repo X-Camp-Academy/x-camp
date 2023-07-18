@@ -11,7 +11,8 @@ import styles from "./XAlumni.module.scss";
 const { Title, Paragraph } = Typography;
 const XAlumni = () => {
   const { lang, format: t } = useLang();
-  const { data: xAlumni } = useGetXAlumni();
+  const { data } = useGetXAlumni();
+  const xAlumni = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
   const router = useRouter();
   return (
     <div className={styles.xalumniContainer}>

@@ -1,7 +1,7 @@
 import { Space, Row, Col, Image, Typography } from "antd";
 import styles from "./Banner.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 const Banner = () => {
   const { format: t } = useLang();
@@ -14,6 +14,7 @@ const Banner = () => {
               <Title className={styles.title}>
                 {t("AboutUs.Introduction")}
               </Title>
+              <Text className={styles.titleBg}></Text>
               <Paragraph className={styles.paragraph}>
                 {t("AboutUs.Introduction.Desc")}
               </Paragraph>

@@ -35,6 +35,7 @@ import { GetCourses } from "@/apis/strapi-client/define";
 import type { Dayjs } from 'dayjs';
 import isBetween from "dayjs/plugin/isBetween";
 import dayjs from 'dayjs';
+import { getLangResult } from "./utils";
 
 
 const { Panel } = Collapse;
@@ -64,22 +65,6 @@ const Courses = () => {
 
 
   dayjs.extend(isBetween);
-  // 获取非空数据
-  const getLangResult = (
-    lang: "zh" | "en",
-    zhData: string[],
-    enData: string[]
-  ) => {
-    if (zhData === null && enData === null) {
-      return [];
-    } else {
-      if (lang === "zh") {
-        return zhData ? zhData : enData;
-      } else {
-        return enData ? enData : zhData;
-      }
-    }
-  };
 
   //获取师生评价数据
   const { data: testimonyData } = useGetTestimony({
@@ -191,7 +176,6 @@ const Courses = () => {
       scrollIntoView(hash);
     }
   }, [hash, currentData]);
-
 
 
   const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
@@ -446,7 +430,7 @@ const Courses = () => {
                                             g?.attributes
                                               ?.courseShortDescriptionEn
                                           )}
-                                          time={`${g.attributes?.lessonNum} ${g?.attributes?.frequency ===
+                                          time={`${g?.attributes?.lessonNum} ${g?.attributes?.frequency ===
                                             "Weekly"
                                             ? "weeks"
                                             : "days"

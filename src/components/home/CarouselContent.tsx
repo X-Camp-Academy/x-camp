@@ -71,7 +71,7 @@ const CarouselContent: React.FC = () => {
           }}
           className={styles.card}
         >
-          <Form name="basic" onFinish={onFinish} className={styles.form}>
+          <Form name="carouselContent" onFinish={onFinish} className={styles.form}>
             <Form.Item
               name="name"
               rules={[
