@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Typography, Calendar, Badge, Empty } from "antd";
+import { Space, Row, Col, Typography, Calendar, Badge, Empty, Carousel } from "antd";
 import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
 import dayjs from "dayjs";
@@ -9,6 +9,7 @@ import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import isBetween from "dayjs/plugin/isBetween";
+
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
@@ -209,50 +210,59 @@ const PublicCalendar: React.FC = () => {
 
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
-            <Space direction="vertical" className={styles.colSpace}>
-              {newEventData?.data?.slice(0, 4).map((item, index) => {
+            <Carousel
+              dots={false}
+              infinite={true}
+              slidesToShow={4}
+              slidesToScroll={1}
+              vertical={true}
+              verticalSwiping={true}
+              autoplay={true}
+            >
+              {newEventData?.data?.map((item, index) => {
                 return (
-                  <div className={styles.eventCard} key={item?.id}>
+                  <div key={item?.id} className={styles.eventCard} >
                     <Space
-                      size={72}
+                      size={isMobile ? 8 : 72}
                       align="center"
-                      className={styles.cardContent}
+                      className={styles.eventContent}
                     >
                       <Space
                         direction="vertical"
                         className={styles.contentLeft}
                       >
-                        <Text className={styles.text}>
-                          {getWeekDay(item.attributes?.startDateTime || "")}
+                        <Text className={styles.weekMonth}>
+                          {getWeekDay(item?.attributes?.startDateTime || "")}
                         </Text>
-                        <Text className={styles.textTwo}>
-                          {getDate(item.attributes?.startDateTime || "")}
+                        <Text className={styles.day}>
+                          {getDate(item?.attributes?.startDateTime || "")}
                         </Text>
-                        <Text className={styles.text}>
+                        <Text className={styles.weekMonth}>
                           {getTransResult(
                             lang,
-                            `${getMonth(item.attributes?.startDateTime || "") + 1
+                            `${getMonth(item?.attributes?.startDateTime || "") + 1
                             }月`,
                             monthNameAbbrEn[
-                            getMonth(item.attributes?.startDateTime || "")
+                            getMonth(item?.attributes?.startDateTime || "")
                             ]
                           )}
                         </Text>
                       </Space>
+
                       <Space
                         direction="vertical"
                         className={styles.contentRight}
                       >
-                        <Text className={styles.paragraph}>
+                        <Title ellipsis={{ rows: 1 }} className={styles.titleParagraph}>
                           {getTransResult(
                             lang,
                             item.attributes.titleZh,
                             item.attributes.titleEn
                           )}
-                        </Text>
+                        </Title>
                         {!isMobile && (
                           <Paragraph
-                            className={styles.paragraph}
+                            className={styles.titleParagraph}
                             ellipsis={{
                               rows: 2,
                               tooltip: getTransResult(
@@ -295,11 +305,11 @@ const PublicCalendar: React.FC = () => {
                   </div>
                 );
               })}
-            </Space>
+            </Carousel>
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
-            <Space size={48} direction="vertical" className={styles.colSpace}>
+            <Space size={48} direction="vertical" className={styles.rightSpace}>
               <Calendar
                 fullscreen={false}
                 cellRender={cellRender}

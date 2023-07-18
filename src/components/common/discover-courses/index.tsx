@@ -107,7 +107,7 @@ const DiscoverCourses = ({
       <Row className={styles.row} gutter={16} align="middle">
         {courseCards.map((item) => {
           return (
-            <Col key={item?.url} xs={24} sm={24} md={12} lg={6}>
+            <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>
               <MaskCard
                 className={styles.card}
                 bodyStyle={{
@@ -123,13 +123,13 @@ const DiscoverCourses = ({
                   <Paragraph className={styles.cardParagraph}>
                     {item?.desc}
                   </Paragraph>
+                  <Image
+                    src={item?.url}
+                    alt="image"
+                    preview={false}
+                    className={styles.cardImage}
+                  />
                 </Space>
-                <Image
-                  src={item?.url}
-                  alt="image"
-                  preview={false}
-                  className={styles.cardImage}
-                />
               </MaskCard>
             </Col>
           );
