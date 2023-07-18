@@ -49,18 +49,6 @@ const DiscoverCourses = ({
         "/courses/#classify0"
       ),
     },
-    // {
-    //   title: "Java",
-    //   desc: t("Java.Grade"),
-    //   url: "/image/home/course-5.png",
-    //   bgc: "#D7680B",
-    //   maskBgc: "rgb(212 107 20 / 40%)",
-    //   maskChildren: generateMaskChildren(
-    //     "Java",
-    //     t("Java.Mask.Desc"),
-    //     "/courses"
-    //   ),
-    // },
     {
       title: t("C++.Title"),
       desc: t("C++.Grade"),

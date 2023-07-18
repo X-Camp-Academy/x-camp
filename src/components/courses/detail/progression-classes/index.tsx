@@ -23,6 +23,8 @@ const ProgressionClasses: React.FC = () => {
   });
 
   const recommendedCourses = courseData?.data[0]?.attributes?.recommendedClasses?.data;
+  console.log(courseData);
+
   return (
     <div className={styles.content}>
       <div className="container">
