@@ -9,7 +9,7 @@ const Introduction = () => {
     <div className={"container"}>
       <div className={styles.title}>{t("DeepDiveIOfX-CampClass")}</div>
       <p className={styles.description}>{t("DeepDiveIOfX.Desc")}</p>
-      <Space size={50} className={styles.images} wrap>
+      <Space className={styles.images} wrap>
         {[1, 2, 3]?.map((v, index) => (
           <img key={index} src="/image/about-us/introduction/top-banner.png" />
         ))}

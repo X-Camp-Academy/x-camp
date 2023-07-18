@@ -27,6 +27,7 @@ export enum NewEventCategory {
   Event = "Events",
   SchoolCalendar = "School Calendar",
   EventContest = "Event Contest",
+  XAlumni = "X-Alumni",
   All = "All",
 }
 

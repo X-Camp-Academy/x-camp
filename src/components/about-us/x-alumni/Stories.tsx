@@ -9,14 +9,16 @@ import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
+import { useRouter } from "next/navigation";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Stories: React.FC = () => {
+  const router = useRouter();
   const pageSize = 3;
   const { lang, format: t } = useLang();
   const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
+  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.XAlumni);
 
   const { data: newEventData } = useGetNewEvent({
     tag,
@@ -24,14 +26,13 @@ const Stories: React.FC = () => {
     pageSize,
   });
 
-
   const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
     return getTransResult(
       lang,
       imgZh.data?.attributes.url,
-      imgEn.data?.attributes.url,
-    )
-  }
+      imgEn.data?.attributes.url
+    );
+  };
 
   return (
     <div className={styles.storiesContainer}>
@@ -51,8 +52,13 @@ const Stories: React.FC = () => {
         <Row gutter={32} className={styles.row}>
           {newEventData?.data?.map((item, index) => (
             <Col key={index} xs={24} sm={24} md={8}>
-              <ColorfulCard border="bottom" index={index}>
+              <ColorfulCard
+                border="bottom"
+                index={index}
+                className={styles.colorfulCard}
+              >
                 <Card
+                  className={styles.card}
                   bodyStyle={{
                     padding: 0,
                   }}
@@ -61,7 +67,10 @@ const Stories: React.FC = () => {
                     <Image
                       alt=""
                       preview={false}
-                      src={getTranslateImg(item.attributes.imgZh, item.attributes.imgEn)}
+                      src={getTranslateImg(
+                        item.attributes.imgZh,
+                        item.attributes.imgEn
+                      )}
                       className={styles.cardImage}
                     />
 
@@ -77,6 +86,7 @@ const Stories: React.FC = () => {
                         ghost={true}
                         shape="circle"
                         className={styles.cardButton}
+                        onClick={() => router.push(`/resources/${item.id}`)}
                       >
                         <RightOutlined />
                       </Button>

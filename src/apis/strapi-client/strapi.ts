@@ -65,18 +65,36 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
-      let data = res?.data;
+      // let data = res?.data;
 
-      // 根据courseId, pageName, eventId做筛选，根据category做分类
-      if (courseId && courseId?.length > 0) {
-        data = filterByAttribution(data, "courseId", courseId);
+      // // 根据courseId, pageName, eventId做筛选，根据category做分类
+      // if (courseId && courseId?.length > 0) {
+      //   data = filterByAttribution(data, "courseId", courseId);
+      // }
+      // if (pageName && pageName?.length > 0) {
+      //   data = filterByAttribution(data, "pageName", pageName);
+      // }
+      // if (eventId && eventId?.length > 0) {
+      //   data = filterByAttribution(data, "eventId", eventId);
+      // }
+      // return data;
+      let data = [];
+      if (!courseId && !pageName && !eventId) {
+        // 如果三个选项都没填则取所有的
+        data = res?.data;
+      } else {
+        // 根据courseId, pageName, eventId做筛选，根据category做分类
+        if (courseId) {
+          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+        }
+        if (pageName) {
+          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+        }
+        if (eventId) {
+          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+        }
       }
-      if (pageName && pageName?.length > 0) {
-        data = filterByAttribution(data, "pageName", pageName);
-      }
-      if (eventId && eventId?.length > 0) {
-        data = filterByAttribution(data, "eventId", eventId);
-      }
+      data = deduplicateArray(data); // 去重
       return data;
     },
     {
