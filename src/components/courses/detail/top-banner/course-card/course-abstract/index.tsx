@@ -21,7 +21,9 @@ const CourseAbstract = () => {
     tuitionUSD,
     classes,
     startDate,
-    registerLink
+    registerLink,
+    isBundle,
+    bundleRegisterLink
   } = courseData?.attributes ?? {};
 
   const classesData = classes?.data?.map((classItem) => {
@@ -44,7 +46,7 @@ const CourseAbstract = () => {
 
   const handlerSighUp = (startDate: string) => {
     if (judgeInWeek(startDate) && registerLink) {
-      window.open(registerLink);
+      isBundle ? window.open(bundleRegisterLink) : window.open(registerLink);
     }
     else {
       setIsModalOpen(true);

@@ -8,7 +8,6 @@ import {
   GetAboutUsAlumniMapRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
-  GetClassesRequest,
   GetCourseLevelTypeRequest,
   GetCoursesRequest,
   GetFacultyRequest,
@@ -66,19 +65,6 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
-      // let data = res?.data;
-
-      // // 根据courseId, pageName, eventId做筛选，根据category做分类
-      // if (courseId && courseId?.length > 0) {
-      //   data = filterByAttribution(data, "courseId", courseId);
-      // }
-      // if (pageName && pageName?.length > 0) {
-      //   data = filterByAttribution(data, "pageName", pageName);
-      // }
-      // if (eventId && eventId?.length > 0) {
-      //   data = filterByAttribution(data, "eventId", eventId);
-      // }
-      // return data;
       let data = [];
       if (!courseId && !pageName && !eventId) {
         // 如果三个选项都没填则取所有的
@@ -406,29 +392,6 @@ export const useGetCourses = ({
 
 /**
  *
- * @returns 获取Course Classes
- */
-export const useGetClasses = () => {
-  const client = useStrapiClient();
-  const handleError = useHandleError();
-  return useRequest(
-    async (params: GetClassesRequest) => {
-      const res = await client.getClasses(params);
-      return isArray(res?.data) ? res.data : [];
-    },
-    {
-      defaultParams: [
-        {
-          populate: "*",
-        },
-      ],
-      onError: handleError,
-    }
-  );
-};
-
-/**
- *
  * @returns 获取AboutUs Alumni Map
  */
 export const useGetAboutUsAlumniMap = () => {
@@ -682,7 +645,6 @@ export const useSubmitQuestionForm = () => {
   const handleError = useHandleError();
   return useRequest(
     async (params: SubmitUserInfoRequest) => {
-      console.log(params);
       const res = await client.submitQuestionForm(params);
       return res;
     },
