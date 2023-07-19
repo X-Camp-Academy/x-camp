@@ -152,18 +152,7 @@ export const useGetAboutUsAchievementsAward = () => {
   return useRequest(
     async (params: GetAboutUsAchievementsAwardRequest) => {
       const res = await client.getAboutUsAchievementsAward(params);
-
-      function groupArray(
-        arr: StrapiResponseDataItem<GetAboutUsAchievementsAward>[]
-      ) {
-        const result: StrapiResponseDataItem<GetAboutUsAchievementsAward>[][] =
-          [];
-        for (let i = 0; i < arr.length; i += 3) {
-          result.push(arr.slice(i, i + 3));
-        }
-        return result;
-      }
-      return isArray(res?.data) ? groupArray(res.data) : [];
+      return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
