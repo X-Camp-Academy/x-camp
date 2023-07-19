@@ -1,17 +1,16 @@
-import { Space, Row, Col, Image, Typography, Button } from 'antd';
-import styles from './JoinUsFaculty.module.scss';
-import { UsergroupAddOutlined } from '@ant-design/icons';
-import { useLang } from '@/hoc/with-intl/define';
-import { usePathname, useRouter } from 'next/navigation';
-import { useGetFaculty } from '@/apis/strapi-client/strapi';
+import { Space, Row, Col, Image, Typography, Button } from "antd";
+import styles from "./JoinUsFaculty.module.scss";
+import { UsergroupAddOutlined } from "@ant-design/icons";
+import { useLang } from "@/hoc/with-intl/define";
+import { usePathname, useRouter } from "next/navigation";
+import { useGetFaculty } from "@/apis/strapi-client/strapi";
 const { Paragraph } = Typography;
 
 const JoinUsFaculty = () => {
   const { format: t } = useLang();
   const router = useRouter();
-  const pathname = usePathname();
   const { data: imgUrlList } = useGetFaculty({
-    pageName: [pathname],
+    pageName: ["/about-us/join-us/"],
   });
   return (
     <>
@@ -26,15 +25,15 @@ const JoinUsFaculty = () => {
                 className={styles.logo}
               />
               <Paragraph className={styles.introText}>
-                {t('XCampFaculty.Desc')}
+                {t("XCampFaculty.Desc")}
               </Paragraph>
               <Button
                 className={styles.introBtn}
                 onClick={() => {
-                  router.push('/about-us/introduction');
+                  router.push("/about-us/introduction");
                 }}
               >
-                {t('XCampFaculty')}
+                {t("XCampFaculty")}
                 <UsergroupAddOutlined />
               </Button>
             </Space>
@@ -54,7 +53,7 @@ const JoinUsFaculty = () => {
                 );
               })}
             </Row>
-            <Row gutter={16} style={{ marginTop: '20px' }}>
+            <Row gutter={16} style={{ marginTop: "20px" }}>
               {imgUrlList?.slice(2, 5)?.map((item, index) => {
                 return (
                   <Col span={8} key={index}>
