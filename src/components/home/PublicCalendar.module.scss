@@ -1,9 +1,11 @@
 .publicCalendarContainer {
   width: 100%;
   margin-top: 100px;
+
   .publicCalendar {
     padding-top: 70px;
     padding-bottom: 100px;
+
     .title {
       color: #172142;
       font-size: 36px;
@@ -13,6 +15,7 @@
       position: relative;
       margin-bottom: 80px;
     }
+
     .titleText {
       @extend .title;
       display: inline-block;
@@ -21,13 +24,16 @@
       background-image: url("/image/home/founding-team-bg.png");
       background-repeat: no-repeat;
       background-size: cover;
+
       @media (max-width: 768px) {
         width: auto;
       }
     }
+
     .eventCard {
       padding-left: 12px;
       background-color: #ffad11;
+
       .eventContent {
         width: 100%;
         height: 100%;
@@ -35,6 +41,7 @@
         padding-right: 24px;
         padding-bottom: 24px;
         background-color: #fff;
+
         .contentLeft {
           width: 100%;
           margin-left: 40px;
@@ -43,12 +50,14 @@
           @media (max-width: 768px) {
             margin-left: 20px;
           }
+
           .weekMonth {
             font-size: 18px;
             font-weight: 500;
             color: #6a6a6a;
             line-height: 28px;
           }
+
           .day {
             font-size: 36px;
             font-weight: 600;
@@ -56,6 +65,7 @@
             line-height: 48px;
           }
         }
+
         .contentRight {
           width: 480px;
           @media (max-width: 768px) {
@@ -67,6 +77,7 @@
             color: #172142;
             line-height: 32px;
           }
+
           .date {
             font-size: 16px;
             font-weight: 400;
@@ -82,28 +93,36 @@
         margin-top: 64px;
       }
     }
+
     .calendarSpace {
       width: 100%;
-      position: relative;
+
       .spaceDate {
         width: 100%;
+
         .text {
           color: #000000;
           font-size: 18px;
           font-weight: 400;
           line-height: 25px;
+          white-space: nowrap;
         }
+
+        :global(.ant-space-item:nth-child(2)) {
+          width: 100%;
+        }
+
         .line {
-          position: absolute;
-          width: calc(100% - 82px);
+          width: 100%;
           height: 2px;
           border: 1px solid #ffad11;
-          right: 0;
         }
       }
+
       .calendarItem {
         width: 100%;
         margin-top: 24px;
+
         .itemDate {
           font-size: 14px;
           font-weight: 400;
@@ -111,12 +130,14 @@
           line-height: 20px;
           font-weight: 400;
         }
+
         .itemParagraph {
           width: 100%;
           font-weight: 600;
           color: rgba(0, 0, 0, 0.88);
           line-height: 26px;
         }
+
         .itemLine {
           width: 100%;
           height: 2px;
