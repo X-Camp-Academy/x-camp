@@ -99,9 +99,9 @@ const CalendarContent = () => {
         <div className={`${styles.calendarContainer} container`}>
           <Title className={styles.title}>{t("XCampCalendar")}</Title>
           <div className={styles.listContainer}>
-            <Button className={styles.bookButton}>
+            <div className={styles.bookButton}>
               <ScheduleOutlined />
-            </Button>
+            </div>
             <TimelineComponent items={formatCalendar(schoolCalendar?.data)} />
           </div>
         </div>

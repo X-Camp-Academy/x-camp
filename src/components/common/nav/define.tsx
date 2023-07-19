@@ -94,11 +94,11 @@ export const useMenuItems = () => {
           key: "/resources/weekly-education-forum/",
         },
         {
-          label: <Link href="/">{t("TuringCup")}</Link>,
-          key: "/resources/turing-cup/",
+          label: <Link href="/resources/contests#contest-31">{t("TuringCup")}</Link>,
+          key: "/resources/contests#contest-31",
         },
         {
-          label: <Link href="/">USACO</Link>,
+          label: <a href="http://usaco.org/ ">USACO</a>,
           key: "/resources/usaco/",
         },
         {
@@ -107,14 +107,24 @@ export const useMenuItems = () => {
           ),
           key: "/resources/weekly-open-house/",
         },
+        /*         {
+                  label: <Link href="/">{t("X-Cup")}</Link>,
+                  key: "/resources/x-cup/",
+                },
+                {
+                  label: <Link href="/">ACSL</Link>,
+                  key: "/resources/acsl/",
+                }, */
+
         {
-          label: <Link href="/">{t("X-Cup")}</Link>,
-          key: "/resources/x-cup/",
+          label: <a href="https://calico.cs.berkeley.edu/">Calico</a>,
+          key: "calico",
         },
         {
-          label: <Link href="/">ACSL</Link>,
-          key: "/resources/acsl/",
+          label: <a href="https://www.stanfordacm.org/proco">Proco</a>,
+          key: "proco",
         },
+        
         {
           label: (
             <Link href="/resources/usaco-live-solutions">
@@ -123,26 +133,18 @@ export const useMenuItems = () => {
           ),
           key: "/resources/usaco-live-solution/",
         },
+
         {
-          label: <Link href="/">Teamscode</Link>,
+          label: <a href="https://www.teamscode.org/">Teamscode</a>,
           key: "teamscode",
         },
         {
-          label: <Link href="/">Calico</Link>,
-          key: "calico",
+          label: <a href="/#stu_project">{t("ArtOfProgramming")}</a>,
+          key: "/#stu_project",
         },
         {
           label: <Link href="/resources/contests">{t("Contests")}</Link>,
           key: "/resources/contests/",
-        },
-
-        {
-          label: <Link href="/">{t("ArtOfProgramming")}</Link>,
-          key: "art-of-programming",
-        },
-        {
-          label: <Link href="/">Proco</Link>,
-          key: "proco",
         },
       ],
     },

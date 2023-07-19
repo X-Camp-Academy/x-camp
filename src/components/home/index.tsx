@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
@@ -27,7 +27,9 @@ const Home = () => {
     ready: true,
     pageName: ["/home/"], // 因为首页的路由是空字符串，约定用/home/表示
   });
+
   const testimonyData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
   return (
     <ConfigProvider
       theme={{

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.scss";
 import { Divider } from "antd";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { log } from "console";
 
 interface Props {
   data: StrapiResponseDataItem<GetNewEvent>[] | undefined;
@@ -12,6 +13,46 @@ interface Props {
 
 const Introduction = ({ data }: Props) => {
   const { lang } = useLang();
+  const { hash } = window.location;
+
+
+/*   const scrollIntoView = (id: string) => {
+    const dom = document.getElementById(id);
+    console.log(id)
+    console.log(dom);
+    
+    dom?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+  // 监听hash
+  useEffect(() => {
+
+    scrollIntoView(hash.slice(1));
+
+  }, [hash]); */
+
+
+  // 这样处理是为了防止组件没挂载时调用
+  const scrollIntoView = (id: string) => {
+    const handleScroll = () => {
+      const dom = document.getElementById(id);
+      if (dom) {
+        dom.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    };
+  
+    return handleScroll;
+  };
+
+  const handleScroll = scrollIntoView(hash.slice(1));
+  useEffect(() => {
+    handleScroll();
+  }, [handleScroll]);
 
   return (
     <div className={styles.content}>
