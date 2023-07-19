@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
-import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
+import { Button, Col, Space } from 'antd';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import ColorfulCard from '@/components/common/colorful-card';
-import XCollapse from '@/components/common/collapse';
-import { EventCategory, GetNewEvent } from '@/apis/strapi-client/define';
+import { GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiMedia, StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
-import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
-const { Text } = Typography;
 export type ActivityItemProps = StrapiResponseDataItem<GetNewEvent> & {
   index: number;
 };
@@ -32,7 +29,9 @@ const ActivityItem = ({ attributes, index, id }: ActivityItemProps) => {
     <Col xs={24} sm={24} md={12} lg={8}>
       <ColorfulCard border={'bottom'} animate={false} index={index}>
         <div className={styles.card}>
-          <img src={getTranslateImg(imgZh, imgEn)} alt="" />
+          <div className={styles.imgBox}>
+            <img src={getTranslateImg(imgZh, imgEn)} alt="" />
+          </div>
           <Space direction="vertical" className={styles.cardContent}>
             <div className={styles.title}>
               {getTransResult(lang, titleZh, titleEn)}
@@ -46,7 +45,7 @@ const ActivityItem = ({ attributes, index, id }: ActivityItemProps) => {
                 type="link"
                 className={styles.btn}
                 icon={<RightCircleOutlined />}
-                onClick={()=>{router.push(`/resources/${id}`)}}
+                onClick={() => { router.push(`/resources/${id}`) }}
               />
             </div>
           </Space>

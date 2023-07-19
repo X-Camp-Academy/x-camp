@@ -10,6 +10,7 @@ import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { useRouter } from "next/navigation";
+const { Paragraph, Text } = Typography;
 import Link from "next/link";
 
 const RecentActivities = () => {
@@ -59,7 +60,7 @@ const RecentActivities = () => {
               <Col key={index} xs={24} sm={24} md={12} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card} >
-                    <img src={getTranslateImg(v.attributes?.imgZh,v.attributes?.imgEn)} alt="img" />
+                    <img src={getTranslateImg(v.attributes?.imgZh, v.attributes?.imgEn)} alt="img" />
                     <div className={styles.title}>
                       {getTransResult(
                         lang,
@@ -68,15 +69,24 @@ const RecentActivities = () => {
                       )}
                     </div>
                     <div className={styles.description}>
-                      <div>
-                        <AlignRightOutlined className={styles.icon} />
-
+                      <Text
+                        ellipsis={{
+                          tooltip: `${getTransResult(
+                            lang,
+                            v?.attributes.descriptionZh,
+                            v?.attributes.descriptionEn
+                          )
+                            }`
+                        }}
+                        className={styles.descriptionText}
+                      >
+                        <AlignRightOutlined className={styles.icon} />&nbsp;
                         {getTransResult(
                           lang,
                           v?.attributes.descriptionZh,
                           v?.attributes.descriptionEn
                         )}
-                      </div>
+                      </Text>
 
                       <Link href={`/resources/${v.id}`}>
                         <Button
@@ -93,7 +103,7 @@ const RecentActivities = () => {
           </Row>
         </XCollapse>
       </div>
-    </div>
+    </div >
   );
 };
 

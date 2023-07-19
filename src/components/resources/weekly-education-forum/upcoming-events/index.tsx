@@ -100,7 +100,7 @@ const UpcomingEvents = () => {
                             type="link"
                             className={styles.btn}
                             icon={<RightCircleOutlined />}
-                            onClick={() => { router.push(`/resources/${item.id}`) }}
+                            href={item.attributes.link}
                           />
                         </Descriptions.Item>
                       </Descriptions>
