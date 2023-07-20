@@ -13,6 +13,8 @@ const FacultyCoach = dynamic(() => import("./FacultyCoach"));
 const { Content } = Layout;
 
 const Introduction: React.FC = () => {
+  // TODO History wait Charlie提供
+  // TODO ISPI组件移动端下还可以优化一下
   return (
     <ConfigProvider
       theme={{
