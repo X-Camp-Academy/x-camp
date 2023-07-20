@@ -66,6 +66,8 @@
             color: #172142;
             line-height: 48px;
           }
+
+
         }
 
         .contentRight {
@@ -79,6 +81,17 @@
             color: #172142;
             line-height: 32px;
             width: 90%;
+            padding-right: 30px;
+            @media (max-width:1400px){
+              width: 70%;
+            }
+            @media (max-width:1200px){
+              width: 50%;
+            }
+            @media (max-width:992px){
+              width: 90%;
+            }
+
           }
 
           .date {
@@ -87,6 +100,10 @@
             color: #6a6a6a;
             line-height: 32px;
           }
+          :global(.ant-space-item){
+            width: 100%;
+          }
+          
         }
       }
     }
