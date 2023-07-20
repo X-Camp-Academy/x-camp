@@ -23,22 +23,22 @@
     }
 
     .button {
+      display: block;
       font-size: 18px;
       font-weight: 500;
       line-height: 24px;
       background: #f5f5f5;
       padding: 20px 56px;
-      border: none;
-      cursor: pointer;
       text-align: center;
       border-radius: 12px;
       border: 2px solid #172142;
+      white-space: nowrap;
+      cursor: pointer;
       a {
         color: #172142;
       }
       @media (max-width: 1200px) {
         padding: 15px;
-        white-space: nowrap;
       }
     }
   }

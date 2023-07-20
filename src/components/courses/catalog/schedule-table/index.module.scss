@@ -9,8 +9,8 @@
     margin-bottom: 10px;
     .row {
       @media (max-width: 768px) {
-        padding-left: 0!important;
-        padding-right: 0!important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
       .text {
         font-size: 18px;
@@ -24,6 +24,9 @@
         font-weight: 400;
         color: #6a6a6a;
         line-height: 24px;
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
       .search {
         width: 200px;
@@ -35,6 +38,9 @@
       .button {
         background: #ffad11;
         border-radius: 4px;
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
     }
   }

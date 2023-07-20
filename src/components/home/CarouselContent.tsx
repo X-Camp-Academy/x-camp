@@ -35,12 +35,15 @@ const CarouselContent: React.FC = () => {
                   <Title className={styles.title}>{t("WeeklyOpenHouse")}</Title>
                   <div>
                     <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
                       {t("OpenHouse.Dec1")}
                     </Paragraph>
                     <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
                       {t("OpenHouse.Dec2")}
                     </Paragraph>
                     <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
                       {t("OpenHouse.Dec3")}
                     </Paragraph>
                   </div>

@@ -33,6 +33,15 @@
         font-weight: 500;
         color: #172142;
         line-height: 42px;
+        .dot {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 12px;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: #172142;
+        }
       }
       .button {
         padding: 16px 52px;

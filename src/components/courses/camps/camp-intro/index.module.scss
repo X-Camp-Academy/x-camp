@@ -21,14 +21,14 @@
 
     .question::before {
       box-sizing: border-box;
-      content: '';
+      content: "";
       display: inline-block;
       margin-right: 15px;
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: #D46B14;
-      border: 2px solid #FFAD11;
+      background-color: #d46b14;
+      border: 2px solid #ffad11;
     }
 
     .answer {
@@ -43,7 +43,7 @@
     .usacoTitle {
       font-size: 48px;
       font-weight: 600;
-      color: #D46B14;
+      color: #d46b14;
       line-height: 64px;
       text-align: center;
     }
@@ -58,17 +58,18 @@
     }
 
     .imgBox {
-      width: 90%;
+      width: 100%;
+      border-radius: 12px;
       overflow: hidden;
-      text-align: center;
-
-      @media (max-width: 992px) {
-        width: 100%;
-        margin-top: 15px;
-      }
-
       .threeImages {
         width: 100%;
+        height: 168px;
+        @media (max-width: 768px) {
+          height: 208px;
+        }
+      }
+      @media (max-width: 768px) {
+        margin-top: 15px;
       }
     }
   }
