@@ -4,11 +4,12 @@ import { Space, Row, Col, Card, Image, Typography } from "antd";
 import styles from "./AboutXCamp.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 import { useRouter } from "next/navigation";
+import { getTransResult } from "@/utils/public";
 
 
 const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const router = useRouter();
   const aboutContents = [
     {
@@ -41,7 +42,8 @@ const AboutXCamp: React.FC = () => {
           <Title className={styles.title}>{t("AboutX-Camp")}</Title>
           <Paragraph className={styles.paragraph}>
             {t("X-Camp.Desc1")}
-            <Text className={styles.paragraphText} onClick={() => { router.push("/courses") }}>{t("USACOClasses")}</Text>
+            <Text className={styles.paragraphText} onClick={() => { router.push("/courses") }}> {t("USACOClasses")}</Text>
+            {getTransResult(lang, '', ' here.')}
           </Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">

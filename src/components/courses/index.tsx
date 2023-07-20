@@ -1,4 +1,6 @@
 "use client";
+import React, { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   Affix,
   Button,
@@ -16,34 +18,32 @@ import {
   Select,
   Space,
 } from "antd";
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./index.module.scss";
-import TopBanner from "./catalog/top-banner";
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
-import { usePathname } from "next/navigation";
-import { COURSE_TYPES } from "./define";
-import Testimony from "../home/Testimony";
+import dayjs from 'dayjs';
+import type { Dayjs } from 'dayjs';
+import isBetween from "dayjs/plugin/isBetween";
+import { SegmentedValue } from "antd/es/segmented";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult, scrollIntoView } from "@/utils/public";
+import { getLangResult, getWeeksDays } from "./utils";
+import { useMobile } from "@/utils";
+import TopBanner from "./catalog/top-banner";
 import ClassCard from "../common/class-card";
+import Testimony from "../home/Testimony";
+import { COURSE_TYPES } from "./define";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import {
   useGetCourseLevelType,
   useGetCourses,
   useGetTestimony,
 } from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
-import { SegmentedValue } from "antd/es/segmented";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetCourses } from "@/apis/strapi-client/define";
-import type { Dayjs } from 'dayjs';
-import isBetween from "dayjs/plugin/isBetween";
-import dayjs from 'dayjs';
-import { getLangResult, getWeeksDays } from "./utils";
-import { useMobile } from "@/utils";
-
+import styles from "./index.module.scss";
 
 const { Panel } = Collapse;
 const { Content } = Layout;
 const { RangePicker } = DatePicker;
+dayjs.extend(isBetween);
 
 interface FormatCoursesProps {
   primaryTitle: string;
@@ -54,22 +54,20 @@ interface FormatCoursesProps {
   }[]
   | undefined;
 }
-const Courses = () => {
+
+const Courses: React.FC = () => {
+  const { hash } = window.location;
   const pathname = usePathname();
+  const [form] = Form.useForm();
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
-  const [form] = Form.useForm();
-  const { hash } = window.location;
   const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
-  const [primaryTitle, setPrimaryTitle] = useState();
-  const { data: courseLevelType } = useGetCourseLevelType();
-  const { data: courses } = useGetCourses({});
   const [segmentedData, setSegmentedData] = useState<FormatCoursesProps[]>();
   const [copySegmentedData, setCopySegmentedData] = useState<FormatCoursesProps[]>();
+  const { data: courseLevelType } = useGetCourseLevelType();
+  const { data: courses } = useGetCourses({});
 
-
-  dayjs.extend(isBetween);
 
   //获取师生评价数据
   const { data: testimonyData } = useGetTestimony({
@@ -169,13 +167,6 @@ const Courses = () => {
     getCourseBySegmented(segmented);
   }, [segmented, courses, courseLevelType]);
 
-  const scrollIntoView = (id: string) => {
-    const dom = document.getElementById(id);
-    dom?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-  };
   // 监听hash
   useEffect(() => {
     if (hash === "#apcs") {
@@ -301,6 +292,7 @@ const Courses = () => {
     setSegmentedData(filteredResult);
   }
 
+  // 执行和onSegmentedChange同样的操作
   const onSegmentedRadioChange = (e: RadioChangeEvent) => {
     history.replaceState(null, "", pathname);
     form.resetFields();
@@ -405,7 +397,7 @@ const Courses = () => {
                   <div className={styles.title}>{item?.primaryTitle}</div>
                   {item?.children?.map((v, j) => {
                     return (
-                      <div key={v?.secondaryTitle} id={"#classify" + j}>
+                      <div key={v?.secondaryTitle} id={"#classify" + (j + 1)}>
                         <Collapse
                           defaultActiveKey={v?.secondaryTitle}
                           ghost

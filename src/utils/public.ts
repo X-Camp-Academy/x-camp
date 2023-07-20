@@ -296,3 +296,15 @@ export const getBrowserCompatibility = (): boolean => {
   }
   return false;
 };
+
+/**
+ *
+ * @returns 滚动到指定的id容器
+ */
+export const scrollIntoView = (id: string) => {
+  const dom = document.getElementById(id);
+  dom?.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
+};

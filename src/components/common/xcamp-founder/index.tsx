@@ -121,9 +121,9 @@ const XCampFounder = () => {
 
                 <Paragraph className={styles.paragraph}>
                   {t("Yuan.Desc2")}
-                  <Text className={styles.keyText}>{t("Yuan.Student")}</Text>
+                  <Text className={styles.keyText}> {t("Yuan.Student")} </Text>
                   {t("Yuan.Desc3")}
-                  <Text className={styles.keyText}>{t("Yuan.Desc4")}</Text>
+                  <Text className={styles.keyText}> {t("Yuan.Desc4")} </Text>
                   {t("Yuan.Desc5")}
                   <Text className={styles.keyText}> 25-27 </Text>
                   {t("Yuan.Desc6")}
