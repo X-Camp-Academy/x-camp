@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
-import { Space, Typography, DatePicker, DatePickerProps } from "antd";
+import { Space, Typography, DatePicker, DatePickerProps, Row, Col } from "antd";
 import styles from "./TopBanner.module.scss";
 import dayjs from "dayjs";
 import classNames from "classnames/bind";
 import { useLang } from "@/hoc/with-intl/define";
-const cx = classNames.bind(styles);
 const { Title, Paragraph } = Typography;
 
 interface Props {
@@ -25,19 +24,37 @@ const TopBanner = ({ year, setYear }: Props) => {
 
   return (
     <div className={styles.topBannerContainer}>
-      <div className={cx("container", styles.content)}>
-        <Space direction="vertical">
-          <Title className={styles.title}>{t("News")}</Title>
-          <Paragraph className={styles.paragraph}>{t("News.Desc")}</Paragraph>
-          <DatePicker
-            className={styles.date}
-            picker="year"
-            format={customFormat}
-            onChange={onChange}
-            defaultValue={dayjs(year)}
-          />
-        </Space>
-        <img src="/image/about-us/introduction/top-banner.png" alt="" />
+      <div className="container">
+        <Row>
+          <Col xs={24} sm={24} md={14} className={styles.col}>
+            <Space direction="vertical">
+              <Title className={styles.title}>{t("News")}</Title>
+              <Paragraph className={styles.paragraph}>{t("News.Desc")}</Paragraph>
+              <DatePicker
+                className={styles.date}
+                picker="year"
+                format={customFormat}
+                onChange={onChange}
+                defaultValue={dayjs(year)}
+              />
+            </Space>
+          </Col>
+          <Col
+            xs={24}
+            sm={24}
+            md={{ span: 8, offset: 2 }}
+            className={styles.col}
+          >
+            <div className={styles.bannerImgContainer}>
+              <div className={styles.colorSquare}></div>
+              <img
+                alt="image"
+                src="/image/about-us/introduction/top-banner.png"
+                className={styles.image}
+              />
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );

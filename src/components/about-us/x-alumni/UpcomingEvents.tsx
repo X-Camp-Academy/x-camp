@@ -45,7 +45,7 @@ const UpcomingEvents: React.FC = () => {
     <div className={styles.upcomingEventsContainer}>
       <div className="container">
         <Space className={styles.topSpace}>
-          <Space direction="vertical">
+          <Space direction="vertical" >
             <Title className={styles.title}>{t("UpcomingEvents")}</Title>
             <Paragraph className={styles.paragraph}>
               {t("UpcomingEvents.Desc")}
@@ -74,7 +74,7 @@ const UpcomingEvents: React.FC = () => {
             return (
               <Col key={index} xs={24} sm={24} md={8} style={{ marginTop: 20 }}>
                 <ColorfulCard border="bottom" index={index}>
-                  <Card style={{ height: 450 }}>
+                  <Card>
                     <Space direction="vertical">
                       <Text className={styles.cardMonth}>
                         {startTime.format("MMMM")}

@@ -36,7 +36,6 @@ const Banner = () => {
             </div>
           </Col>
         </Row>
-        <Space></Space>
       </div>
     </div>
   );

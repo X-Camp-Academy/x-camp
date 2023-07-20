@@ -326,7 +326,8 @@ declare const json: {
   "FIREFOX_BROWSER_DESC": "没有晦涩难懂的隐私保护政策，更不向第三方预留后门，纯粹是一款闪电般快、不会出卖您的浏览器。",
   "EDGE_BROWSER": "Edge 浏览器",
   "EDGE_BROWSER_DESC": "Microsoft Edge 采用与 Chrome 相同的技术，可增强您的浏览体验，并提供一流的性能和速度。",
-  "COMPATIBILITY_TIP": "您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问信友队。"
+  "COMPATIBILITY_TIP": "您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问信友队。",
+  "1On1Consultation": "一对一咨询"
 }
 
 export default json;
