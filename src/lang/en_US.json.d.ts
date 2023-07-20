@@ -232,7 +232,7 @@ declare const json: {
     "XCampFaculty.Desc": "X-Camp Academy, a coding institute based in Silicon Valley, offers programming classes tailored to students in grades 5-12. Our comprehensive curriculum spans from beginner to advanced levels, preparing students for USACO and the US Camp.",
     "Year": "Year",
     "Yes": "Yes",
-    "Yuan": "Yuan",
+    "Yuan": "Yuan Xu",
     "Yuan.Desc1": "Yuan is a Senior Big Data Infrastructure Engineer specializing in building and maintaining robust infrastructures for handling large-scale data. As X-Camp’s Head of Teaching, Yuan leads our instructional team to ensure the highest quality of education for our students. ",
     "Yuan.Desc2": "Over the past 5 years, Yuan's teaching team has guided more than",
     "Yuan.Desc3": "achieve the level of USACO Silver or higher. This includes an impressive accomplishment of 12 students being selected for the",
@@ -329,8 +329,6 @@ declare const json: {
     "EDGE_BROWSER": "Edge Browser",
     "EDGE_BROWSER_DESC": "Microsoft Edge uses the same technology as Chrome to enhance your browsing experience.",
     "COMPATIBILITY_TIP": "Your browser does not support modern CSS Selectors and has compatibility problems. Please use a modern browser (such as Chrome or Firefox) to access your friend team."
-    
-    
 }
 
 
