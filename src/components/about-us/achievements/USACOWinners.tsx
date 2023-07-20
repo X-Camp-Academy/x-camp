@@ -12,6 +12,7 @@ import {
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import {
+  LeftCircleOutlined,
   LeftCircleTwoTone,
   RightCircleOutlined,
   setTwoToneColor,
@@ -52,62 +53,61 @@ const USACOMedal = () => {
               onClick={() => {
                 carouselEL?.current?.prev();
               }}
-              icon={<LeftCircleTwoTone style={{ fontSize: 25 }} />}
+              icon={<LeftCircleOutlined style={{ fontSize: 25 }} />}
             ></Button>
-            <Carousel ref={carouselEL} dots={false}>
-              {awards?.map((page, index) => {
+            <Carousel
+              ref={carouselEL}
+              dots={false}
+              slidesToShow={3}
+              slidesToScroll={1}
+              swipeToSlide={true}
+              infinite={true}
+              responsive={[
+                {
+                  breakpoint: 992,
+                  settings: {
+                    slidesToShow: 2,
+                  },
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1,
+                  },
+                },
+              ]}
+            >
+              {awards?.map((item, index) => {
                 return (
                   <div key={index}>
-                    <Row
-                      gutter={40}
-                      justify="center"
-                      align="middle"
-                      className={styles.row}
+                    <Card
+                      style={{
+                        backgroundImage: `url(${item?.attributes?.avatar?.data?.attributes?.url})`,
+                      }}
+                      className={styles.colCard}
                     >
-                      {page?.map((item, index) => {
-                        return (
-                          <Col
-                            key={index}
-                            xs={24}
-                            sm={24}
-                            md={24}
-                            lg={8}
-                            className={styles.col}
-                          >
-                            <Card
-                              style={{
-                                backgroundImage: `url(
-                                  ${item?.attributes?.avatar?.data?.attributes?.url}
-                                )`,
-                              }}
-                              className={styles.colCard}
-                            >
-                              <Space
-                                direction="vertical"
-                                className={styles.infoContainer}
-                              >
-                                <Title className={styles.cardTitle}>
-                                  {getTransResult(
-                                    lang,
-                                    item?.attributes?.titleZh,
-                                    item?.attributes?.titleEn
-                                  )}
-                                </Title>
-                                <Text className={styles.cardText}>
-                                  {getTransResult(
-                                    lang,
-                                    item?.attributes?.descriptionZh,
-                                    item?.attributes?.descriptionEn
-                                  )}
-                                </Text>
-                              </Space>
-                            </Card>
-                          </Col>
-                        );
-                      })}
-                    </Row>
+                      <Space
+                        direction="vertical"
+                        className={styles.infoContainer}
+                      >
+                        <Title className={styles.cardTitle}>
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.titleZh,
+                            item?.attributes?.titleEn
+                          )}
+                        </Title>
+                        <Text className={styles.cardText}>
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.descriptionZh,
+                            item?.attributes?.descriptionEn
+                          )}
+                        </Text>
+                      </Space>
+                    </Card>
                   </div>
-                );
+                )
               })}
             </Carousel>
 

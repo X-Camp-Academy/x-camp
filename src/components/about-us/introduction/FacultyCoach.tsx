@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Space, Row, Col, Card, Typography, Avatar } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
@@ -56,6 +56,19 @@ const FacultyCoach = () => {
 
     return cardStyle;
   };
+
+  const { hash } = window.location;
+  const scrollIntoView = (id: string) => {
+    const dom = document.getElementById(id);
+    dom?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+  // 监听hash
+  useEffect(() => {
+    scrollIntoView(hash.slice(1));
+  }, [hash]);
   return (
     <div className={`${styles.facultyCoach} container`} id="faculty">
       <Space direction="vertical" size={48}>
