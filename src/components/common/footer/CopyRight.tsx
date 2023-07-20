@@ -98,16 +98,14 @@ const CopyRight: React.FC = () => {
               <Space direction="vertical">
                 <Text className={styles.text}>X-Camp Academy</Text>
                 <Link href={"/about-us/calendar"}>{t('SchoolCalendar')}</Link>
-                {/* ! TODO */}
                 <Link href={"/courses#classify0"}>{'Online Courses'}</Link>
                 <Link href={"/courses/camps"}>{t('In-personCamps')}</Link>
               </Space>
               <Space direction="vertical">
                 <Text className={styles.text}>Activity</Text>
                 <Link href={"/resources/weekly-open-house"}>{t('WeeklyOpenHouse')}</Link>
-                {/* ! TODO */}
-                <Link href={"/resources/weekly-education-forum"}>{'Event Calendar'}</Link>
-                <a href={"http://usaco.org/"}>{'USACO'}</a>
+                <Link href={"/about-us/calendar"}>{'Event Calendar'}</Link>
+                <a href={"/resources/usaco-live-solutions"}>{'USACO'}</a>
               </Space>
               <Space direction="vertical">
                 <Text className={styles.text}>{'Help Center'}</Text>
