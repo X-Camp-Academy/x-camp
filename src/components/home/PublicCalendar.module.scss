@@ -32,15 +32,17 @@
 
     .eventCard {
       padding-left: 12px;
-      background-color: #ffad11;
+      height: 200px;
+      
 
       .eventContent {
         width: 100%;
-        height: 100%;
+        height: 95%;
         padding-top: 24px;
         padding-right: 24px;
         padding-bottom: 24px;
         background-color: #fff;
+        border-left:  #ffad11 solid 10px;
 
         .contentLeft {
           width: 100%;
@@ -76,6 +78,7 @@
             font-weight: bold;
             color: #172142;
             line-height: 32px;
+            width: 90%;
           }
 
           .date {

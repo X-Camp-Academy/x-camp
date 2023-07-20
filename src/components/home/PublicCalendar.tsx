@@ -217,7 +217,7 @@ const PublicCalendar: React.FC = () => {
               slidesToScroll={1}
               vertical={true}
               verticalSwiping={true}
-            // autoplay={true}
+              autoplay={true}
             >
               {newEventData?.data?.map((item, index) => {
                 return (
