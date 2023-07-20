@@ -54,8 +54,12 @@
         }
       }
 
+      :global(.ant-form-inline){
+        flex-wrap: nowrap;
+      }
+
       .formSelect {
-        width: 360px;
+        width: 150px;
         height: 42px;
         background: #ffffff;
         border-radius: 4px;
@@ -66,7 +70,7 @@
       }
 
       .submit {
-        width: 240px;
+        width: 150px;
         height: 42px;
         background: #ffad11;
         border-radius: 4px;
