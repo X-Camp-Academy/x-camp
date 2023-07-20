@@ -96,12 +96,15 @@ const UpcomingEvents = () => {
                           ) : (
                             item.attributes.geographicallyAddress
                           )}
-                          <Button
-                            type="link"
-                            className={styles.btn}
-                            icon={<RightCircleOutlined />}
-                            href={item.attributes.link}
-                          />
+                          {item.attributes.link && (
+                            <Button
+                              type="link"
+                              className={styles.btn}
+                              icon={<RightCircleOutlined />}
+                              href={item.attributes.link}
+                            />
+                          )}
+
                         </Descriptions.Item>
                       </Descriptions>
                     </div>

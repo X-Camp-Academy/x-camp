@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./index.module.scss";
 import { Carousel } from "antd";
 import ContestCard, { ContestCardAlign } from "./contest-card";
 import { ContestsByMonthInterface, Quarter } from "../define";
+import dayjs from "dayjs";
+import { CarouselRef } from "antd/es/carousel";
 
 interface Props {
   data: ContestsByMonthInterface[][] | undefined;
@@ -10,6 +12,11 @@ interface Props {
 
 const MonthlyContest = ({ data }: Props) => {
   const align = ["left", "center", "right"] as ContestCardAlign[];
+  const defaultSlideToThisMonth = Math.floor((dayjs().month()) / 3);
+  const ref = useRef<CarouselRef>(null);
+  useEffect(()=>{
+    ref?.current?.goTo(defaultSlideToThisMonth);
+  },[])
 
   return (
     <div className={styles.content}>
@@ -18,6 +25,7 @@ const MonthlyContest = ({ data }: Props) => {
           autoplay={false}
           className={styles.carousel}
           dots={{ className: styles.dots }}
+          ref={ref}
         >
           {data?.map((items, i) => {
             return (
@@ -25,9 +33,8 @@ const MonthlyContest = ({ data }: Props) => {
                 {items?.map((item, j) => {
                   return <ContestCard data={item} key={j} align={align[j]} />;
                 })}
-                <span className={styles.quarter}>{`Q${
-                  Quarter[items?.[0]?.month]
-                }`}</span>
+                <span className={styles.quarter}>{`Q${Quarter[items?.[0]?.month]
+                  }`}</span>
               </div>
             );
           })}

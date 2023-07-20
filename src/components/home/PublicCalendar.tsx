@@ -223,9 +223,10 @@ const PublicCalendar: React.FC = () => {
                 return (
                   <div key={item?.id} className={styles.eventCard} >
                     <Space
-                      size={isMobile ? 8 : 72}
+                      size={isMobile ? 8 : 60}
                       align="center"
                       className={styles.eventContent}
+
                     >
                       <Space
                         direction="vertical"
@@ -286,22 +287,27 @@ const PublicCalendar: React.FC = () => {
                           </Paragraph>
                         )}
                         <Text className={styles.date}>
-                          {`${dayjs(item?.attributes?.startDateTime).isSame(
-                            dayjs(item?.attributes?.endDateTime),
-                            "day"
-                          )
-                            ? `${formatHourMinute(
+                          {`${dayjs(item?.attributes?.startDateTime)
+                            .isSame(
+                              dayjs(item?.attributes?.endDateTime),
+                              "day"
+                            )
+                            ?
+                            `${formatHourMinute(
                               item?.attributes?.startDateTime || ""
                             )} - 
                                 ${formatHourMinute(
                               item?.attributes?.endDateTime || ""
                             )} `
-                            : `${formatYMDTime(
+                            :
+                            `${formatYMDTime(
                               item?.attributes?.startDateTime || ""
                             )} - ${formatYMDTime(
                               item?.attributes?.endDateTime || ""
                             )}`
-                            } ${formatTimezone(item?.attributes?.startDateTime)
+
+                            } 
+                            ${formatTimezone(item?.attributes?.startDateTime)
                               .timezone
                             } 
                             `}

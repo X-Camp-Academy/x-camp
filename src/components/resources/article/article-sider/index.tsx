@@ -19,6 +19,9 @@ import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { EventCategory, GetNewEvent } from "@/apis/strapi-client/define";
+import Item from "antd/es/list/Item";
+import { iteratee } from "lodash";
+import Link from "next/link";
 
 const ArticleSider: React.FC<{
   eventCategory: EventCategory | undefined,
@@ -285,12 +288,15 @@ const ArticleSider: React.FC<{
                         )}
                       </Paragraph>
                     </div>
-                    <Button
-                      type="link"
-                      className={styles.btn}
-                      icon={<RightCircleOutlined />}
-                      style={{ color: "#FFAD11", fontSize: 24 }}
-                    />
+                    <Link href={`/resources/${v.id}`}>
+                      <Button
+                        type="link"
+                        className={styles.btn}
+                        icon={<RightCircleOutlined />}
+                        style={{ color: "#FFAD11", fontSize: 24 }}
+                      />
+                    </Link>
+
                   </Row>
                 </Space>
               </Card>
