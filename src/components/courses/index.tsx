@@ -9,6 +9,8 @@ import {
   Form,
   Input,
   Layout,
+  Radio,
+  RadioChangeEvent,
   Row,
   Segmented,
   Select,
@@ -17,7 +19,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./catalog/top-banner";
-import { CaretRightOutlined, DownOutlined, SearchOutlined } from "@ant-design/icons";
+import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";
 import { COURSE_TYPES } from "./define";
 import Testimony from "../home/Testimony";
@@ -35,7 +37,8 @@ import { GetCourses } from "@/apis/strapi-client/define";
 import type { Dayjs } from 'dayjs';
 import isBetween from "dayjs/plugin/isBetween";
 import dayjs from 'dayjs';
-import { getLangResult } from "./utils";
+import { getLangResult, getWeeksDays } from "./utils";
+import { useMobile } from "@/utils";
 
 
 const { Panel } = Collapse;
@@ -54,10 +57,12 @@ interface FormatCoursesProps {
 const Courses = () => {
   const pathname = usePathname();
   const { format: t, lang } = useLang();
+  const isMobile = useMobile();
   const [form] = Form.useForm();
   const { hash } = window.location;
   const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
+  const [primaryTitle, setPrimaryTitle] = useState();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
   const [segmentedData, setSegmentedData] = useState<FormatCoursesProps[]>();
@@ -180,7 +185,45 @@ const Courses = () => {
     }
   }, [hash, segmentedData]);
 
+  const searchDate = (startDate: Dayjs, endDate: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
+    return dayjs(course?.attributes?.startDate)?.isBetween(startDate, endDate) &&
+      dayjs(course?.attributes?.endDate)?.isBetween(startDate, endDate);
+  }
+  const searchInput = (inputValue: string, course: StrapiResponseDataItem<GetCourses>) => {
+    const {
+      classLang,
+      classMode,
+      classRoomLang,
+      courseCode,
+      courseTitleZh,
+      courseTitleEn,
+      courseShortDescriptionZh,
+      courseShortDescriptionEn,
+      courseLongDescriptionZh,
+      courseLongDescriptionEn
+    } = course?.attributes;
 
+    const searchFields = [
+      classLang,
+      classMode,
+      classRoomLang,
+      courseCode,
+      courseTitleZh,
+      courseTitleEn,
+      courseShortDescriptionZh,
+      courseShortDescriptionEn,
+      courseLongDescriptionZh,
+      courseLongDescriptionEn
+    ];
+
+    return searchFields?.some(field => {
+      if (field) {
+        return (field as string)?.toLowerCase()?.indexOf(inputValue?.toLowerCase()) > -1;
+      }
+    });
+
+  }
+  // 前端根据当前的segmentedData来筛选
   const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
     const { category, rangeDate, search } = values;
     let result;
@@ -191,35 +234,23 @@ const Courses = () => {
       const primaryData = copySegmentedData[0];
       if (category && rangeDate && search) {
         const [start, end] = rangeDate;
-        const startRangeDate = dayjs(start);
-        const endRangeDate = dayjs(end);
-
         result = [{
           primaryTitle: primaryData?.primaryTitle,
-          children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
+          children: primaryData?.children?.filter(item => item?.secondaryTitle === category)?.map(item => ({
             secondaryTitle: item?.secondaryTitle,
             children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
-              return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
-                dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
-                [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+              return searchDate(dayjs(start), dayjs(end), course) && searchInput(search, course);
             }
             )
           }))
         }];
       } else if (category && rangeDate) {
         const [start, end] = rangeDate;
-        const startRangeDate = dayjs(start);
-        const endRangeDate = dayjs(end);
-
         result = [{
           primaryTitle: primaryData?.primaryTitle,
           children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
             secondaryTitle: item?.secondaryTitle,
-            children: item?.children?.filter(course =>
-              dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
-              dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate)
-            )
+            children: item?.children?.filter(course => searchDate(dayjs(start), dayjs(end), course))
           }))
         }];
       } else if (category && search) {
@@ -227,27 +258,17 @@ const Courses = () => {
           primaryTitle: primaryData?.primaryTitle,
           children: primaryData?.children?.filter(item => item?.secondaryTitle === category).map(item => ({
             secondaryTitle: item?.secondaryTitle,
-            children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
-              return [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
-            }
-            )
+            children: item?.children?.filter(course => searchInput(search, course))
           }))
         }];
       } else if (rangeDate && search) {
         const [start, end] = rangeDate;
-        const startRangeDate = dayjs(start);
-        const endRangeDate = dayjs(end);
-
         result = [{
           primaryTitle: primaryData?.primaryTitle,
           children: primaryData?.children?.map(item => ({
             secondaryTitle: item?.secondaryTitle,
             children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
-              return dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
-                dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate) &&
-                [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
+              return searchDate(dayjs(start), dayjs(end), course) && searchInput(search, course);
             }
             )
           }))
@@ -259,17 +280,11 @@ const Courses = () => {
         }];
       } else if (rangeDate) {
         const [start, end] = rangeDate;
-        const startRangeDate = dayjs(start);
-        const endRangeDate = dayjs(end);
-
         result = [{
           primaryTitle: primaryData?.primaryTitle,
           children: primaryData?.children?.map(item => ({
             secondaryTitle: item?.secondaryTitle,
-            children: item?.children?.filter(course =>
-              dayjs(course?.attributes?.startDate)?.isBetween(startRangeDate, endRangeDate) &&
-              dayjs(course?.attributes?.endDate)?.isBetween(startRangeDate, endRangeDate)
-            )
+            children: item?.children?.filter(course => searchDate(dayjs(start), dayjs(end), course))
           }))
         }];
       } else if (search) {
@@ -277,11 +292,7 @@ const Courses = () => {
           primaryTitle: primaryData?.primaryTitle,
           children: primaryData?.children?.map(item => ({
             secondaryTitle: item?.secondaryTitle,
-            children: item?.children?.filter(course => {
-              const { classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } = course?.attributes;
-              return [classLang, classMode, classRoomLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn].some(field => field?.includes(search));
-            }
-            )
+            children: item?.children?.filter(course => searchInput(search, course))
           }))
         }];
       }
@@ -290,6 +301,11 @@ const Courses = () => {
     setSegmentedData(filteredResult);
   }
 
+  const onSegmentedRadioChange = (e: RadioChangeEvent) => {
+    history.replaceState(null, "", pathname);
+    form.resetFields();
+    setSegmented(e?.target?.value);
+  }
   return (
     <ConfigProvider
       theme={{
@@ -314,44 +330,68 @@ const Courses = () => {
                 }
               }}
             >
-              <Segmented
-                ref={segmentedDom}
-                style={{ backgroundColor: "#fff" }}
-                block
-                value={segmented}
-                options={COURSE_TYPES}
-                onChange={onSegmentedChange}
-              />
+              {
+                isMobile ?
+                  <Radio.Group
+                    optionType="button"
+                    buttonStyle="solid"
+                    onChange={onSegmentedRadioChange}
+                    value={segmented}
+                    className={styles.radioGroup}
+                  >
+                    <Space size={0} style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>
+                      {
+                        COURSE_TYPES?.map(courseType => (
+                          <Radio style={{ width: '100%' }} key={courseType} value={courseType}>{courseType}</Radio>
+                        ))
+                      }
+                    </Space>
+                  </Radio.Group>
+                  :
+                  <Segmented
+                    ref={segmentedDom}
+                    style={{ backgroundColor: "#fff" }}
+                    block
+                    value={segmented}
+                    options={COURSE_TYPES}
+                    onChange={onSegmentedChange}
+                  />
+              }
             </Affix>
 
             <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
-              <Row gutter={[16, 8]}>
-                <Col xs={24} sm={24} md={24} lg={7}>
+              <Row gutter={[32, 8]}>
+                <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 4 }}>
                   <Form.Item name="category">
                     <Select
-                      style={{ width: 240 }}
+                      style={isMobile ? { width: '100%' } : { width: 240 }}
                       placeholder={"Category"}
                       options={categoryOptions}
                       allowClear={true}
                     />
                   </Form.Item>
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={8}>
-                  <Form.Item name="rangeDate">
-                    <RangePicker />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={24} md={24} lg={7}>
-                  <Form.Item name="search">
+                {
+                  !isMobile &&
+                  <Col xs={24} sm={24} md={24} lg={6}>
+                    <Form.Item name="rangeDate" >
+                      <RangePicker />
+                    </Form.Item>
+                  </Col>
+                }
+
+                <Col xs={24} sm={24} md={24} lg={6}>
+                  <Form.Item name="search" >
                     <Input
                       suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
                       allowClear={true}
+                      style={isMobile ? { width: '100%' } : {}}
                     />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={2}>
                   <Form.Item>
-                    <Button type={"primary"} className={styles.button} htmlType="submit">
+                    <Button type={"primary"} className={styles.button} style={isMobile ? { width: '100%' } : {}} htmlType="submit">
                       {t('Search')}
                     </Button>
                   </Form.Item>
@@ -359,97 +399,71 @@ const Courses = () => {
               </Row>
             </Form>
 
-            {segmentedData?.map((item, index) => {
+            {segmentedData?.map(item => {
               return (
-                <div className={"classify"} key={item?.primaryTitle}>
-                  <Collapse
-                    defaultActiveKey={"classifyCollapse" + index}
-                    ghost
-                    expandIconPosition={"end"}
-                    expandIcon={({ isActive }) => (
-                      <div className={styles.changeBtn}>
-                        <DownOutlined
-                          rotate={isActive ? 180 : 0}
-                          className={styles.icon}
-                        />
-                      </div>
-                    )}
-                  >
-                    <Panel
-                      key={"classifyCollapse" + index}
-                      header={
-                        <div className={styles.title}>{item?.primaryTitle}</div>
-                      }
-                    >
-                      <>
-                        {item?.children?.map((v, j) => {
-                          return (
-                            <div key={v?.secondaryTitle} id={"#classify" + j}>
-                              <Collapse
-                                defaultActiveKey={v?.secondaryTitle}
-                                ghost
-                                style={{ marginBottom: 30 }}
-                                expandIcon={({ isActive }) => (
-                                  <CaretRightOutlined
-                                    rotate={isActive ? 90 : 0}
+                <div key={item?.primaryTitle}>
+                  <div className={styles.title}>{item?.primaryTitle}</div>
+                  {item?.children?.map((v, j) => {
+                    return (
+                      <div key={v?.secondaryTitle} id={"#classify" + j}>
+                        <Collapse
+                          defaultActiveKey={v?.secondaryTitle}
+                          ghost
+                          style={{ marginBottom: 30 }}
+                          expandIcon={({ isActive }) => (
+                            <CaretRightOutlined
+                              rotate={isActive ? 90 : 0}
+                            />
+                          )}
+                        >
+                          <Panel
+                            key={v?.secondaryTitle}
+                            header={
+                              <div className={styles.paneBox}>
+                                <div className={styles.panelTitle}>
+                                  {v?.secondaryTitle}
+                                </div>
+                                <span className={styles.courseNum}>
+                                  {v?.children?.length} courses
+                                </span>
+                              </div>
+                            }
+                          >
+                            <Space
+                              size={27}
+                              style={{ width: "100%", flexWrap: "wrap" }}
+                            >
+                              {v?.children?.map((g, index) => {
+                                return (
+                                  <ClassCard
+                                    key={g?.id}
+                                    border={"bottom"}
+                                    index={index}
+                                    animate={false}
+                                    title={`${g?.attributes?.courseCode
+                                      }: ${getTransResult(
+                                        lang,
+                                        g?.attributes?.courseTitleZh,
+                                        g?.attributes?.courseTitleEn
+                                      )}`}
+                                    list={getLangResult(
+                                      lang,
+                                      g?.attributes
+                                        ?.courseShortDescriptionZh,
+                                      g?.attributes
+                                        ?.courseShortDescriptionEn
+                                    )}
+                                    time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
+                                    href={`/courses/detail/${g?.id}`}
                                   />
-                                )}
-                              >
-                                <Panel
-                                  key={v?.secondaryTitle}
-                                  header={
-                                    <div className={styles.paneBox}>
-                                      <div className={styles.panelTitle}>
-                                        {v?.secondaryTitle}
-                                      </div>
-                                      <span className={styles.courseNum}>
-                                        {v?.children?.length} courses
-                                      </span>
-                                    </div>
-                                  }
-                                >
-                                  <Space
-                                    size={27}
-                                    style={{ width: "100%", flexWrap: "wrap" }}
-                                  >
-                                    {v?.children?.map((g, index) => {
-                                      return (
-                                        <ClassCard
-                                          key={g?.id}
-                                          border={"bottom"}
-                                          index={index}
-                                          animate={false}
-                                          title={`${g?.attributes?.courseCode
-                                            }: ${getTransResult(
-                                              lang,
-                                              g?.attributes?.courseTitleZh,
-                                              g?.attributes?.courseTitleEn
-                                            )}`}
-                                          list={getLangResult(
-                                            lang,
-                                            g?.attributes
-                                              ?.courseShortDescriptionZh,
-                                            g?.attributes
-                                              ?.courseShortDescriptionEn
-                                          )}
-                                          time={`${g?.attributes?.lessonNum} ${g?.attributes?.frequency ===
-                                            "Weekly"
-                                            ? "weeks"
-                                            : "days"
-                                            }`}
-                                          href={`/courses/detail/${g?.id}`}
-                                        />
-                                      );
-                                    })}
-                                  </Space>
-                                </Panel>
-                              </Collapse>
-                            </div>
-                          );
-                        })}
-                      </>
-                    </Panel>
-                  </Collapse>
+                                );
+                              })}
+                            </Space>
+                          </Panel>
+                        </Collapse>
+                      </div>
+                    );
+                  })}
                 </div>
               );
             })}

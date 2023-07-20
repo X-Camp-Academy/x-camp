@@ -5,6 +5,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import { GetCourses } from "@/apis/strapi-client/define";
 import { getTransResult } from "@/utils/public";
 import dayjs from 'dayjs';
+import { getWeeksDays } from "../../utils";
 const { Text, Title } = Typography;
 
 const CourseCard: React.FC<GetCourses> = (props) => {
@@ -48,8 +49,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
           className={`${styles.col} ${styles.feeCol}`}
           style={{}}
         >
-          <Title className={styles.title}>{`${lessonNum} ${frequency === "Weekly" ? "weeks" : "days"
-            }`}</Title>
+          <Title className={styles.title}>{`${lessonNum} ${getWeeksDays(frequency)}`}</Title>
         </Col>
       </Row>
       <Row style={{ marginTop: 20 }} className={styles.row}>

@@ -21,7 +21,8 @@ const WithAntdConfig = ({ children }: Props) => {
         },
       }}
     >
-      {compatibility ? children : <BrowserCompatibilityPage />}
+      {/* {compatibility ? children : <BrowserCompatibilityPage />} */}
+      {children}
     </ConfigProvider>
   );
 };
