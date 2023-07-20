@@ -6,13 +6,10 @@ import {
   Space,
   Image,
   Menu,
-  Input,
   Button,
   MenuProps,
-  Select,
-  Spin,
 } from 'antd';
-import { SearchOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { UnorderedListOutlined } from '@ant-design/icons';
 import 'animate.css';
 import styles from './index.module.scss';
 import { useMobile } from '@/utils';
@@ -21,7 +18,6 @@ import XStarMenu from './x-star-menu';
 import { useAuth } from '@/hoc/with-auth/define';
 import DropdownUserMenu from '../dropdown-user-menu';
 import { apiConfig } from '@/config/index';
-
 import { getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
 import { usePathname } from 'next/navigation';

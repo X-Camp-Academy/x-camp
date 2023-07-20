@@ -121,10 +121,10 @@ export const useMenuItems = () => {
           key: "calico",
         },
         {
-          label: <a href="https://www.stanfordacm.org/proco">Proco</a>,
+          label: <a href="https://www.stanfordacm.org/proco">ProCo</a>,
           key: "proco",
         },
-        
+
         {
           label: (
             <Link href="/resources/usaco-live-solutions">
