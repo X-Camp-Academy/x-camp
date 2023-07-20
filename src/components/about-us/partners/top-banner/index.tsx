@@ -26,7 +26,7 @@ const TopBanner = () => {
                       lineHeight: "42px",
                     }}
                   >
-                    info @x-camp.org.
+                    mailto info@x-camp.org
                   </a>
                 }
               </Paragraph>

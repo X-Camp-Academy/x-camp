@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Typography, Calendar, Badge, Empty, Carousel } from "antd";
+import { Space, Row, Col, Typography, Calendar, Badge, Empty, Carousel, Image } from "antd";
 import type { Dayjs } from "dayjs";
 import styles from "./PublicCalendar.module.scss";
 import dayjs from "dayjs";
@@ -204,8 +204,8 @@ const PublicCalendar: React.FC = () => {
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
         <Title className={styles.title}>
-          X-Camp {t("Public")}
-          <Text className={styles.titleText}>{t("Calendar")}</Text>
+          X-Camp {t("Public")} {t("Calendar")}
+          <Image alt="" className={styles.titleImage} preview={false} src="/image/home/founding-team-bg.png" />
         </Title>
 
         <Row>

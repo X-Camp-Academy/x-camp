@@ -14,19 +14,13 @@
       text-align: center;
       position: relative;
       margin-bottom: 80px;
-    }
-
-    .titleText {
-      @extend .title;
-      display: inline-block;
-      width: 168px;
-      height: 22px;
-      background-image: url("/image/home/founding-team-bg.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-
-      @media (max-width: 768px) {
-        width: auto;
+      position: relative;
+      .titleImage {
+        width: 168px;
+        height: 22px;
+        position: absolute;
+        top: -48px;
+        right: -16px;
       }
     }
 
