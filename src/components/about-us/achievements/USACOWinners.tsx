@@ -12,6 +12,7 @@ import {
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import {
+  LeftCircleOutlined,
   LeftCircleTwoTone,
   RightCircleOutlined,
   setTwoToneColor,
@@ -52,7 +53,7 @@ const USACOMedal = () => {
               onClick={() => {
                 carouselEL?.current?.prev();
               }}
-              icon={<LeftCircleTwoTone style={{ fontSize: 25 }} />}
+              icon={<LeftCircleOutlined style={{ fontSize: 25 }} />}
             ></Button>
             <Carousel
               ref={carouselEL}
@@ -60,6 +61,7 @@ const USACOMedal = () => {
               slidesToShow={3}
               slidesToScroll={1}
               swipeToSlide={true}
+              infinite={true}
               responsive={[
                 {
                   breakpoint: 992,
