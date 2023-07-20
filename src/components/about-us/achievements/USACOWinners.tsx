@@ -8,9 +8,11 @@ import {
   Carousel,
   Button,
   List,
+  message
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import {
+  LeftCircleOutlined,
   LeftCircleTwoTone,
   RightCircleOutlined,
   setTwoToneColor,
@@ -51,62 +53,61 @@ const USACOMedal = () => {
               onClick={() => {
                 carouselEL?.current?.prev();
               }}
-              icon={<LeftCircleTwoTone style={{ fontSize: 25 }} />}
+              icon={<LeftCircleOutlined style={{ fontSize: 25 }} />}
             ></Button>
-            <Carousel ref={carouselEL} dots={false}>
-              {awards?.map((page, index) => {
+            <Carousel
+              ref={carouselEL}
+              dots={false}
+              slidesToShow={3}
+              slidesToScroll={1}
+              swipeToSlide={true}
+              infinite={true}
+              responsive={[
+                {
+                  breakpoint: 992,
+                  settings: {
+                    slidesToShow: 2,
+                  },
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1,
+                  },
+                },
+              ]}
+            >
+              {awards?.map((item, index) => {
                 return (
                   <div key={index}>
-                    <Row
-                      gutter={40}
-                      justify="center"
-                      align="middle"
-                      className={styles.row}
+                    <Card
+                      style={{
+                        backgroundImage: `url(${item?.attributes?.avatar?.data?.attributes?.url})`,
+                      }}
+                      className={styles.colCard}
                     >
-                      {page?.map((item, index) => {
-                        return (
-                          <Col
-                            key={index}
-                            xs={24}
-                            sm={24}
-                            md={24}
-                            lg={8}
-                            className={styles.col}
-                          >
-                            <Card
-                              style={{
-                                backgroundImage: `url(
-                                  ${item?.attributes?.avatar?.data?.attributes?.url}
-                                )`,
-                              }}
-                              className={styles.colCard}
-                            >
-                              <Space
-                                direction="vertical"
-                                className={styles.infoContainer}
-                              >
-                                <Title className={styles.cardTitle}>
-                                  {getTransResult(
-                                    lang,
-                                    item?.attributes?.titleZh,
-                                    item?.attributes?.titleEn
-                                  )}
-                                </Title>
-                                <Text className={styles.cardText}>
-                                  {getTransResult(
-                                    lang,
-                                    item?.attributes?.descriptionZh,
-                                    item?.attributes?.descriptionEn
-                                  )}
-                                </Text>
-                              </Space>
-                            </Card>
-                          </Col>
-                        );
-                      })}
-                    </Row>
+                      <Space
+                        direction="vertical"
+                        className={styles.infoContainer}
+                      >
+                        <Title className={styles.cardTitle}>
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.titleZh,
+                            item?.attributes?.titleEn
+                          )}
+                        </Title>
+                        <Text className={styles.cardText}>
+                          {getTransResult(
+                            lang,
+                            item?.attributes?.descriptionZh,
+                            item?.attributes?.descriptionEn
+                          )}
+                        </Text>
+                      </Space>
+                    </Card>
                   </div>
-                );
+                )
               })}
             </Carousel>
 
@@ -158,7 +159,7 @@ const USACOMedal = () => {
                 />
               </div>
 
-              <Link className={styles.download} href="/">
+              {/*               <Link className={styles.download} href="/" onClick={() => { message.info(getTransResult(lang,"")) }}>
                 <Image
                   alt="download"
                   src="/image/about-us/achievement/download-outlined.png"
@@ -167,42 +168,26 @@ const USACOMedal = () => {
                 <Text className={styles.downloadText} underline>
                   {t("USACO.DownloadPackage")}
                 </Text>
-              </Link>
-              <UsacoCards showTitle />
+              </Link> */}
+              <div className={styles.download}
+                onClick={() => {
+                  message.info(getTransResult(
+                    lang,
+                    "点击页面下方subscribe newsletter ，获取X-Camp更多信息，领取USACO大礼包",
+                    "Click the 'Subscribe Newsletter' at the bottom of the page to receive more information from X-Camp and get the USACO gift package."
+                  ))
+                }}>
+                <Image
+                  alt="download"
+                  src="/image/about-us/achievement/download-outlined.png"
+                  preview={false}
+                ></Image>
+                <Text className={styles.downloadText} underline>
+                  {t("USACO.DownloadPackage")}
+                </Text>
+              </div>
 
-              {/* <Row className={styles.row} gutter={16}>
-                {cardData?.map((item) => {
-                  return (
-                    <Col
-                      key={item.number}
-                      xs={24}
-                      sm={24}
-                      md={12}
-                      lg={6}
-                      className={styles.col}
-                    >
-                      <ColorfulCard
-                        border="bottom"
-                        index={item.borderColorIndex}
-                        className={styles.cardItem}
-                        total={4}
-                      >
-                        <Card>
-                          <Space direction="vertical">
-                            <Text
-                              className={styles.title}
-                              style={{ color: item.numberColor }}
-                            >
-                              {item.number}
-                            </Text>
-                            <Text className={styles.text}>{item.text}</Text>
-                          </Space>
-                        </Card>
-                      </ColorfulCard>
-                    </Col>
-                  );
-                })}
-              </Row> */}
+              <UsacoCards showTitle />
             </div>
           </div>
         </div>

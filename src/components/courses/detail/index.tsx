@@ -7,7 +7,7 @@ import TopBanner from "./top-banner";
 import UsacoMedal from "@/components/common/usaco-cards";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
 import ProgressionClasses from "./progression-classes";
-import { useGetClasses, useGetCourses } from "@/apis/strapi-client/strapi";
+import { useGetCourses } from "@/apis/strapi-client/strapi";
 import { useGetFaq, useGetTestimony } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import Faqs from "@/components/common/faqs";
@@ -38,8 +38,6 @@ const CourseDetail = () => {
     category: FaqCategory.CoursesQA,
     courseId: [params?.courseId],
   });
-
-  // StrapiResponseDataItem<GetCourses>
 
   return (
     <ConfigProvider

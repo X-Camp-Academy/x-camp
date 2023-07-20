@@ -32,7 +32,7 @@ const SubscribeNewsletter: React.FC = () => {
               <Text className={styles.text}>{t("FreeProgrammingPack")}</Text>
             )}
           </div>
-          <Form name="basic" onFinish={onFinish} layout="inline">
+          <Form name="subscribeNewsletter" onFinish={onFinish} layout="inline">
             <Form.Item
               name="email"
               rules={[
@@ -42,9 +42,8 @@ const SubscribeNewsletter: React.FC = () => {
                   message: t("Email.Required"),
                 },
               ]}
-              style={isMobile ? { width: 120 } : {}}
             >
-              <Input type="email" placeholder="E-mail*" className={styles.formSelect}/>
+              <Input type="email" placeholder="E-mail*" className={styles.formSelect} />
             </Form.Item>
 
             <Form.Item>

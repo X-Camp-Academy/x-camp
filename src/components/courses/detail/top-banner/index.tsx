@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 const TopBanner: React.FC = () => {
   const { format: t, lang } = useLang();
   const courseData = useContext(CourseClassesContext);
-  console.log(courseData);
+  
   const { courseCode, courseTitleZh, courseTitleEn, lessonNum, frequency } =
     courseData?.attributes ?? {};
 

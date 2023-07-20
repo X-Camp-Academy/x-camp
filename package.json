@@ -31,6 +31,7 @@
     "react-intl": "^6.4.3",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^6.14.1",
+    "react-slick": "^0.29.0",
     "rehype-katex": "^6.0.2",
     "rehype-prism-plus": "^1.5.0",
     "rehype-raw": "^6.1.1",

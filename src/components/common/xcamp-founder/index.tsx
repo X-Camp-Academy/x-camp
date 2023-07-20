@@ -2,7 +2,7 @@
 import React from "react";
 import { Space, Button, Image, Typography, Row, Col } from "antd";
 import styles from "./index.module.scss";
-import { CheckOutlined } from "@ant-design/icons";
+import { StarOutlined } from "@ant-design/icons";
 import { useMobile } from "@/utils";
 import { useLang } from "@/hoc/with-intl/define";
 
@@ -46,7 +46,7 @@ const XCampFounder = () => {
                   size="small"
                   className={styles.founderTagButton}
                 >
-                  <CheckOutlined />
+                  <StarOutlined />
                 </Button>
                 {t("Co-Founder")}
               </Paragraph>
@@ -58,13 +58,13 @@ const XCampFounder = () => {
                   size="small"
                   className={styles.founderTagButton}
                 >
-                  <CheckOutlined />
+                  <StarOutlined />
                 </Button>
                 {t("X-CampAcademyPrincipal")}
               </Paragraph>
 
               <Space direction="vertical" size={0}>
-                <Paragraph className={styles.paragraph} style={{ marginBottom: 0}}>
+                <Paragraph className={styles.paragraph} style={{ marginBottom: 0 }}>
                   {t("Charlie.Desc1")}
                   <Text className={styles.keyText}>{t("Charlie.years")}</Text>
                   {t("Charlie.Desc2")}
@@ -79,7 +79,7 @@ const XCampFounder = () => {
           </Col>
         </Row>
 
-        <Row>
+        <Row style={{ marginTop: 120 }}>
           <Col
             xs={24}
             sm={24}
@@ -97,7 +97,7 @@ const XCampFounder = () => {
                   size="small"
                   className={styles.founderTagButton}
                 >
-                  <CheckOutlined />
+                  <StarOutlined />
                 </Button>
                 {t("Co-Founder")}
               </Paragraph>
@@ -109,7 +109,7 @@ const XCampFounder = () => {
                   size="small"
                   className={styles.founderTagButton}
                 >
-                  <CheckOutlined />
+                  <StarOutlined />
                 </Button>
                 {t("X-CampSeniorCodingCoach")}
               </Paragraph>

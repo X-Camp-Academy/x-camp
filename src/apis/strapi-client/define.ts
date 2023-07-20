@@ -3,6 +3,7 @@ import {
   StrapiMedias,
   StrapiRequest,
   StrapiResponse,
+  StrapiResponseDataItem,
   StrapiResponseSingleDataItem,
   strapiPublicFields,
 } from "./strapiDefine";
@@ -26,6 +27,7 @@ export enum NewEventCategory {
   Event = "Events",
   SchoolCalendar = "School Calendar",
   EventContest = "Event Contest",
+  XAlumni = "X-Alumni",
   All = "All",
 }
 
@@ -116,30 +118,14 @@ export interface GetCourseLevelType extends strapiPublicFields {
 export type GetCourseLevelTypeRequest = StrapiRequest<GetCourseLevelType>;
 export type GetCourseLevelTypeResponse = StrapiResponse<GetCourseLevelType>;
 
-interface CourseLevelType {
-  data: {
-    id: number;
-    attributes: {
-      type: string;
-      createdAt: string;
-      publishedAt: string;
-      updatedAt: string;
-    };
-  };
-}
-
 export interface GetClasses extends strapiPublicFields {
   classCode: string;
   startTime: string;
   endTime: string;
   isFull: boolean;
-  timeZone: string;
   location: string;
   order: number;
 }
-
-export type GetClassesRequest = StrapiRequest<GetClasses>;
-export type GetClassesResponse = StrapiResponse<GetClasses>;
 
 export interface GetCourses extends strapiPublicFields {
   classMode: string;
@@ -147,12 +133,9 @@ export interface GetCourses extends strapiPublicFields {
   classRoomLang: string;
   courseCode: string;
   classes: {
-    data: {
-      id: number;
-      attributes: GetClasses;
-    }[];
+    data: StrapiResponseDataItem<GetClasses>[];
   };
-  courseLevelType: CourseLevelType;
+  courseLevelType: StrapiResponseSingleDataItem<GetCourseLevelType>;
   courseLongDescriptionEn: string;
   courseLongDescriptionZh: string;
   courseShortDescriptionEn: string[];
@@ -163,7 +146,12 @@ export interface GetCourses extends strapiPublicFields {
   lessonNum: number;
   media: StrapiMedias;
   order: number;
-  recommendedClasses: Array<number>;
+  isRecommendedClasses: {
+    data: StrapiResponseDataItem<GetCourses>[];
+  };
+  recommendedClasses: {
+    data: StrapiResponseDataItem<GetCourses>[];
+  };
   recommendedLowerGrade: number;
   recommendedUpperGrade: number;
   tuitionRMB: number;
@@ -172,6 +160,7 @@ export interface GetCourses extends strapiPublicFields {
   schoolYear: string;
   schoolQuarter: string;
   registerLink: string;
+  isBundle: boolean;
   bundleRegisterLink: string;
   startDate: string;
   endDate: string;

@@ -16,6 +16,7 @@ import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import dayjs from "dayjs";
 import { formatTimezone } from "@/utils/public";
+import Link from "next/link";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -35,8 +36,8 @@ const UpcomingEvents: React.FC = () => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
-        new Date().getTime() >
-        0
+      new Date().getTime() >
+      0
     );
   });
 
@@ -51,7 +52,10 @@ const UpcomingEvents: React.FC = () => {
             </Paragraph>
           </Space>
           <button className={styles.button}>
-            {t("ViewMoreEvents")} <RightOutlined />
+            <Link href="/resources/weekly-education-forum">
+              {t("ViewMoreEvents")}
+            </Link>
+            <RightOutlined />
           </button>
         </Space>
 
@@ -96,7 +100,7 @@ const UpcomingEvents: React.FC = () => {
                         )}
                         {isLinked && (
                           <Button
-                            href={item.attributes.onlinePlatform}
+                            href={item.attributes.link}
                             icon={<RightCircleOutlined />}
                             className={styles.link}
                             type="link"
@@ -127,7 +131,7 @@ const UpcomingEvents: React.FC = () => {
                         </Text>
                         <Text className={styles.cardText}>
                           <UserOutlined className={styles.cardIcon} />
-                          {`Organizer ${item?.attributes?.organizer ? '| '+item?.attributes?.organizer : ''} `}
+                          {`Organizer ${item?.attributes?.organizer ? '| ' + item?.attributes?.organizer : ''} `}
                         </Text>
                       </Space>
                     </Space>

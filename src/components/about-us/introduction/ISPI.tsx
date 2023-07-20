@@ -18,6 +18,8 @@ const ISPI = () => {
           <Col xs={24} sm={24} md={14} className={styles.col}>
             <Space direction="vertical" size={96}>
               <Title className={styles.title}>{t("ISPI.Title")}</Title>
+
+              <Text className={styles.titleBg}></Text>
               <Space size={isMobile ? 8 : 48} direction="vertical">
                 <Space
                   size={isMobile ? 8 : 48}

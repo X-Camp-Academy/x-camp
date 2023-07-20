@@ -11,6 +11,21 @@
     font-weight: 600;
     color: #172142;
     line-height: 64px;
+    position: relative;
+  }
+  .titleBg {
+    position: absolute;
+    display: block;
+    top: 16px;
+    right: 120px;
+    width: 40px;
+    height: 48px;
+    background-image: url("/image/about-us/introduction/three-bar.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media (max-width: 768px) {
+      right: 0;
+    }
   }
   .text {
     font-size: 24px;
@@ -19,8 +34,8 @@
     line-height: 54px;
     .textIcon {
       color: #333;
-      width: 21px;
-      height: 21px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       margin-right: 8px;
     }
@@ -41,9 +56,9 @@
     .interest {
       position: absolute;
       z-index: 996;
-      top: -50px;
+      top: 32px;
       color: #172142;
-      transform: rotate(-30deg);
+      transform: rotate(-24deg);
       background-color: #ffd600;
       @media (max-width: 768px) {
         position: static;
@@ -54,6 +69,7 @@
     .skills {
       position: absolute;
       z-index: 997;
+      top: 128px;
       right: 0;
       transform: rotate(30deg);
       background-color: #d46b14;
@@ -70,7 +86,7 @@
       bottom: 152px;
       z-index: 998;
       color: #172142;
-      transform: rotate(-45deg);
+      transform: rotate(-30deg);
       background-color: #ffad11;
       @media (max-width: 768px) {
         position: static;
@@ -83,7 +99,7 @@
       position: absolute;
       bottom: 0;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-40%);
       z-index: 999;
       background-color: #00a0e9;
       @media (max-width: 768px) {

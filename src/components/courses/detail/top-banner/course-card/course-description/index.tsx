@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styles from "./index.module.scss";
-import { Carousel, Descriptions, Space, Image, Button, message } from "antd";
+import { Carousel, Descriptions, Space, Image, Button, message, Modal } from "antd";
 import CourseClassesContext from "../../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
 import { ShareAltOutlined } from "@ant-design/icons";
@@ -11,6 +11,7 @@ import { getTransResult } from "@/utils/public";
 const CourseDescription = () => {
   const { lang, format: t } = useLang();
   const ref = useRef<CarouselRef>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const courseData = useContext(CourseClassesContext);
   const {
     courseCode,
@@ -26,6 +27,20 @@ const CourseDescription = () => {
     courseFormat,
   } = courseData?.attributes ?? {};
 
+  const formatDate = (date: string) => {
+    const formatStringZh = "YYYY/MM/DD";
+    const formatStringEn = "YYYY/MM/DD";
+    return getTransResult(
+      lang,
+      dayjs(date).format(formatStringZh),
+      dayjs(date).format(formatStringEn)
+    );
+  };
+
+  const fullPath = window.location.href;
+  const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${classRoomLang}\n开始结束时间：${formatDate(startDate || '')} ~ ${formatDate(endDate || '')}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}\n更多课程：https://www-new.x-camp.academy/courses/`;
+  const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${classRoomLang}\nCourse time: ${formatDate(startDate || '')} ~ ${formatDate(endDate || '')}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
+
   const imageMimes = [
     "image/jpeg",
     "image/png",
@@ -36,20 +51,7 @@ const CourseDescription = () => {
     "image/webp",
   ];
 
-  const formatDate = (date: string) => {
-    const formatStringZh = "YYYY/MM/DD";
-    const formatStringEn = "MM/DD, YYYY";
-    return getTransResult(
-      lang,
-      dayjs(date).format(formatStringZh),
-      dayjs(date).format(formatStringEn)
-    );
-  };
-
-  const handlerShareLesson = () => {
-    const fullPath = window.location.href;
-    const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${classRoomLang}\n开始结束时间：${startDate} - ${endDate}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}`;
-    const clipTextEn = `Course Name:${courseTitleEn}\nCourse Code:${courseCode}\nprogramming language：${classLang}\nLanguage of instruction：${classRoomLang}\nStart end time:${startDate} - ${endDate}\nCourse cycle:${frequency}\nHow to start the course:${classMode}\nCourse Links:${fullPath}`;
+  const handleOk = () => {
     navigator.clipboard
       .writeText(getTransResult(lang, clipTextZh, clipTextEn) || "")
       .then(
@@ -76,11 +78,51 @@ const CourseDescription = () => {
           });
         }
       );
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+
+  const handlerShareLesson = () => {
+    setIsModalOpen(true);
   };
 
   return (
     <Space className={styles.description}>
       <div className={styles.left}>
+        <Descriptions column={1}>
+          <Descriptions.Item label={t("ClassMode")}>
+            {classMode}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("CodeLanguage")}>
+            {classLang}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("ClassroomLanguage")}>
+            {classRoomLang}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("Duration")}>
+            {`${formatDate(startDate || "")} - ${formatDate(endDate || "")}`}
+          </Descriptions.Item>
+          <Descriptions.Item label={t("CourseFormat")}>
+            {courseFormat}
+          </Descriptions.Item>
+        </Descriptions>
+        <Button
+          id="copyButton"
+          className={styles.btn}
+          onClick={() => {
+            handlerShareLesson();
+          }}
+        >
+          {t("ShareLessons")}
+          <ShareAltOutlined />
+        </Button>
+      </div>
+
+      <div className={styles.right}>
         <Carousel dots={false} ref={ref}>
           {media?.data?.map((mediaItem) => {
             return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
@@ -151,35 +193,6 @@ const CourseDescription = () => {
             })}
           </Space>
         </div>
-      </div>
-      <div className={styles.right}>
-        <Descriptions column={1}>
-          <Descriptions.Item label={t("ClassMode")}>
-            {classMode}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("CodeLanguage")}>
-            {classLang}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("ClassroomLanguage")}>
-            {classRoomLang}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("Duration")}>
-            {`${formatDate(startDate || "")} - ${formatDate(endDate || "")}`}
-          </Descriptions.Item>
-          <Descriptions.Item label={t("CourseFormat")}>
-            {courseFormat}
-          </Descriptions.Item>
-        </Descriptions>
-        <Button
-          id="copyButton"
-          className={styles.btn}
-          onClick={() => {
-            handlerShareLesson();
-          }}
-        >
-          {t("ShareLessons")}
-          <ShareAltOutlined />
-        </Button>
       </div>
     </Space>
   );

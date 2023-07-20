@@ -4,7 +4,7 @@
 - 注意点：
   - 该函数会返回一个 utcTime（Dayjs 对象），使用直接调用 dayjs 相关方法即可
   - 还会返回一个 timezone （即时区），如果需要显示 CST PST UCT 时间，调用它即可
-  - 如果你的时间不涉及到具体时间点无需调用它，如'2023-7-13'，因为无法根据时区转化
+  - 如果你的时间不涉及到具体时间你需要调用 dayjs 转换为零点，如'2023-7-13 00:00:00'
 - 用例:
 
   ```js
@@ -12,6 +12,6 @@
     item?.attributes?.startDateTime
   );
   {
-    `${startTime.format('dddd, MMMM DD, YYYY hh:mm A')} ${timezone} `;
+    `${startTime.format("dddd, MMMM DD, YYYY hh:mm A")} ${timezone} `;
   }
   ```

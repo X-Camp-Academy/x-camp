@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import { Button, Col, Row, Space, Typography } from "antd";
 import { CaretRightOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
+import Link from "next/link";
 const { Paragraph } = Typography;
 const TopBanner = () => {
   const { format: t } = useLang();
@@ -22,18 +23,22 @@ const TopBanner = () => {
                 </Paragraph>
               </div>
               <div className={styles.contact}>
-                {t("CourseSchedule.Question")}
+                <Link href="/about-us/contact-us" target="_blank">
+                  {t("CourseSchedule.Question")}
+                </Link>
               </div>
             </Space>
           </Col>
-          <Col xs={24} sm={24} md={{ span: 8, offset: 2 }}>
+          <Col xs={24} sm={24} md={{ span: 8, offset: 2 }} className={styles.rightCol}>
             <Space direction={"vertical"} size={32}>
               <Button
                 type={"primary"}
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
-                {t("TrialClass")}
+                <Link href="/about-us/contact-us#trial-class" target="_blank">
+                  {t("TrialClass")}
+                </Link>
               </Button>
               <Button
                 type={"primary"}
@@ -47,7 +52,9 @@ const TopBanner = () => {
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
-                {t("TrialCourse")}
+                <Link href="/" target="_blank">
+                  {t("TrialCourse")}
+                </Link>
               </Button>
             </Space>
           </Col>

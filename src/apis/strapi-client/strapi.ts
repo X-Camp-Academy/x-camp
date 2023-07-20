@@ -8,7 +8,6 @@ import {
   GetAboutUsAlumniMapRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
-  GetClassesRequest,
   GetCourseLevelTypeRequest,
   GetCoursesRequest,
   GetFacultyRequest,
@@ -66,19 +65,6 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
-      // let data = res?.data;
-
-      // // 根据courseId, pageName, eventId做筛选，根据category做分类
-      // if (courseId && courseId?.length > 0) {
-      //   data = filterByAttribution(data, "courseId", courseId);
-      // }
-      // if (pageName && pageName?.length > 0) {
-      //   data = filterByAttribution(data, "pageName", pageName);
-      // }
-      // if (eventId && eventId?.length > 0) {
-      //   data = filterByAttribution(data, "eventId", eventId);
-      // }
-      // return data;
       let data = [];
       if (!courseId && !pageName && !eventId) {
         // 如果三个选项都没填则取所有的
@@ -166,18 +152,7 @@ export const useGetAboutUsAchievementsAward = () => {
   return useRequest(
     async (params: GetAboutUsAchievementsAwardRequest) => {
       const res = await client.getAboutUsAchievementsAward(params);
-
-      function groupArray(
-        arr: StrapiResponseDataItem<GetAboutUsAchievementsAward>[]
-      ) {
-        const result: StrapiResponseDataItem<GetAboutUsAchievementsAward>[][] =
-          [];
-        for (let i = 0; i < arr.length; i += 3) {
-          result.push(arr.slice(i, i + 3));
-        }
-        return result;
-      }
-      return isArray(res?.data) ? groupArray(res.data) : [];
+      return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
@@ -397,29 +372,6 @@ export const useGetCourses = ({
           sort: ["order:desc"],
           filters: filters ?? {},
           pagination: pagination ?? {},
-        },
-      ],
-      onError: handleError,
-    }
-  );
-};
-
-/**
- *
- * @returns 获取Course Classes
- */
-export const useGetClasses = () => {
-  const client = useStrapiClient();
-  const handleError = useHandleError();
-  return useRequest(
-    async (params: GetClassesRequest) => {
-      const res = await client.getClasses(params);
-      return isArray(res?.data) ? res.data : [];
-    },
-    {
-      defaultParams: [
-        {
-          populate: "*",
         },
       ],
       onError: handleError,
@@ -682,7 +634,6 @@ export const useSubmitQuestionForm = () => {
   const handleError = useHandleError();
   return useRequest(
     async (params: SubmitUserInfoRequest) => {
-      console.log(params);
       const res = await client.submitQuestionForm(params);
       return res;
     },

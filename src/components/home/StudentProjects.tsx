@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
 import styles from "./StudentProjects.module.scss";
 import { RightOutlined } from "@ant-design/icons";
@@ -14,7 +14,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const StudentProjects: React.FC = () => {
   const { format: t, lang } = useLang();
-
+  const { hash } = window.location;
   const { data } = useGetHomeStudentProjects();
 
   const studentProjectsData = data?.sort(
@@ -24,8 +24,21 @@ const StudentProjects: React.FC = () => {
   const getMediaUrl = (media: StrapiMedia) => {
     return media?.data?.attributes?.url;
   };
+
+
+  const scrollIntoView = (id: string) => {
+    const dom = document.getElementById(id);
+    dom?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+  useEffect(() => {
+    scrollIntoView(hash.slice(1))
+  }, [hash])
+
   return (
-    <div className={`${styles.studentProjects} container`}>
+    <div className={`${styles.studentProjects} container`} id="stu_project">
       <Space direction="vertical" align="center">
         <Title className={styles.title}>{t("StudentProjects")}</Title>
         <Paragraph className={styles.paragraph}>

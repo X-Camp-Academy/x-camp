@@ -32,44 +32,40 @@
         margin-right: 0 !important;
       }
 
-      .col {
+      .colCard {
+        height: 484px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
         margin-bottom: 20px;
         text-align: center;
         padding: 40px;
+        width: 95%;
 
-        .colCard {
-          height: 484px;
-          background-repeat: no-repeat;
-          background-size: cover;
-          position: relative;
+        .infoContainer {
+          position: absolute;
+          bottom: 20px;
+          left: 0;
+          margin: 0 16px;
+          padding: 16px 0;
+          background-color: #fff;
+          border-radius: 12px;
+          width: calc(100% - 32px);
 
-          .infoContainer {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            margin: 0 16px;
-            padding: 16px 0;
-            background-color: #fff;
-            border-radius: 12px;
-            width: calc(100% - 32px);
-
-            .cardTitle {
-              font-size: 36px;
-              font-weight: 600;
-              color: #172142;
-              line-height: 54px;
-              margin: 0;
-            }
-
-            .cardParagraph {
-              font-size: 18px;
-              color: #172142;
-              line-height: 24px;
-            }
+          .cardTitle {
+            font-size: 36px;
+            font-weight: 600;
+            color: #172142;
+            line-height: 54px;
+            margin: 0;
           }
 
+          .cardParagraph {
+            font-size: 18px;
+            color: #172142;
+            line-height: 24px;
+          }
         }
-
       }
     }
 
@@ -84,7 +80,7 @@
       transform: translateY(-50%);
 
       svg path {
-        fill: #FFAD11;
+        fill: #ffad11;
       }
 
       svg path:nth-child(3) {
@@ -97,7 +93,7 @@
       border-radius: 40px;
       background-color: #f5f5f5;
       width: 28px;
-      color: #FFAD11;
+      color: #ffad11;
       position: absolute;
       right: 10px;
       top: 50%;
@@ -105,7 +101,6 @@
     }
 
     .timeLine {
-
       //padding: 0 30px;
       .title {
         font-size: 36px;
@@ -120,8 +115,6 @@
         font-weight: 500;
         color: #172142;
         line-height: 40px;
-
-
       }
 
       .listContainer {
@@ -141,8 +134,6 @@
             line-height: 48px;
             position: relative;
             left: -20px;
-
-
           }
 
           .timeListTitle::before {
@@ -151,12 +142,12 @@
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            background-color: #FFAD11;
+            background-color: #ffad11;
             position: relative;
             //top: 1px;
             left: -20px;
             margin-right: 5px;
-            border: 3px solid #FFD600;
+            border: 3px solid #ffd600;
           }
         }
 
@@ -172,6 +163,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 100px;
+        cursor: pointer;
 
         .downloadText {
           font-size: 21px;
@@ -179,10 +171,7 @@
           color: #d46b14;
           line-height: 40px;
           margin-left: 8px;
-
         }
-
-
       }
 
       .row {
