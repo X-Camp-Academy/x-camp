@@ -17,27 +17,27 @@ const CampIntro = () => {
           <div className={styles.question}>{t("Camp.Problem3")}</div>
           <div className={styles.answer}>{t("Camp.Answer3")}</div>
 
-          <Row gutter={17}>
-            <Col lg={18} md={24}>
+          <Row gutter={16}>
+            <Col xs={24} sm={24} md={24} lg={18}>
               <video controls className={styles.videoBox}>
                 <source
-                  src="https://media.strapi.turingstar.com.cn/production/2023/5/_2cd2122d99.mp4?updated_at=2023-05-14T08:17:12.234Z"
+                  src="https://media.strapi.turingstar.com.cn/production/2023/7/X_Camp2023_Intro_07_12_6306a9d6bd.mp4?updated_at=2023-07-20T01:53:34.680Z"
                   type="video/mp4"
                 />
               </video>
             </Col>
-            <Col lg={6} md={24}>
+            <Col xs={24} sm={24} md={24} lg={6}>
               <Space direction="vertical" style={{ width: "100%" }}>
                 <div className={styles.imgBox}>
                   <img
-                    src="/image/about-us/introduction/top-banner.png"
+                    src="/image/courses/camps/2023Summer Camp-group1.jpeg"
                     alt="img"
                     className={styles.threeImages}
                   />
                 </div>
                 <div className={styles.imgBox}>
                   <img
-                    src="/image/about-us/introduction/top-banner.png"
+                    src="/image/courses/camps/20230720-100319.jpg"
                     alt="img"
                     className={styles.threeImages}
                   />

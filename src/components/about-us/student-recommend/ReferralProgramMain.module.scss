@@ -1,38 +1,35 @@
 .referralProgramMainContainer {
+  .referralProgramMain {
+    padding: 50px;
 
+    .giveAndGetCard {
+      padding: 30px;
 
-    .referralProgramMain {
-        padding: 50px;
+      .title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 48px;
+      }
 
-        .giveAndGetCard {
-            padding: 30px;
+      .description {
+        font-size: 18px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 34px;
+      }
 
-            .title {
-                font-size: 36px;
-                font-weight: 600;
-                color: #172142;
-                line-height: 48px;
-            }
+      .subTitle {
+        font-size: 24px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 36px;
+        margin-bottom: 30px;
 
-            .description {
-                font-size: 18px;
-                font-weight: 500;
-                color: #172142;
-                line-height: 34px;
-            }
-
-            .subTitle {
-                font-size: 24px;
-                font-weight: 600;
-                color: #172142;
-                line-height: 36px;
-                margin-bottom: 30px;
-
-                span {
-                    color: #D46B14;
-                }
-            }
+        span {
+          color: #d46b14;
         }
-
+      }
     }
+  }
 }

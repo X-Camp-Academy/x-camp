@@ -3,12 +3,11 @@ import styles from "./BecomePartner.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
 import { EditOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 const { Title, Paragraph } = Typography;
 
 const BecomePartner = () => {
   const { format: t } = useLang();
-  const router = useRouter();
   return (
     <>
       <div className={styles.becomePartnerContainer}>
@@ -20,7 +19,10 @@ const BecomePartner = () => {
                 {t("BecomeOurPartner.Desc")}
               </Paragraph>
               <Button className={styles.contactBtn}>
-                {t("JoinUs")}
+                {/* TODO: 合作伙伴跳转 */}
+                <Link href={"/"}>
+                  {t("JoinUs")}
+                </Link>
                 <EditOutlined />
               </Button>
             </Space>
