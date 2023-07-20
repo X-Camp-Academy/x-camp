@@ -217,7 +217,7 @@ const PublicCalendar: React.FC = () => {
               slidesToScroll={1}
               vertical={true}
               verticalSwiping={true}
-              autoplay={true}
+            // autoplay={true}
             >
               {newEventData?.data?.map((item, index) => {
                 return (
@@ -253,7 +253,13 @@ const PublicCalendar: React.FC = () => {
                         direction="vertical"
                         className={styles.contentRight}
                       >
-                        <Title ellipsis={{ rows: 1 }} className={styles.titleParagraph}>
+                        <Title ellipsis={{
+                          rows: 1, tooltip: getTransResult(
+                            lang,
+                            item.attributes.titleZh,
+                            item.attributes.titleEn
+                          )
+                        }} className={styles.titleParagraph}>
                           {getTransResult(
                             lang,
                             item.attributes.titleZh,
@@ -264,7 +270,7 @@ const PublicCalendar: React.FC = () => {
                           <Paragraph
                             className={styles.titleParagraph}
                             ellipsis={{
-                              rows: 2,
+                              rows: 1,
                               tooltip: getTransResult(
                                 lang,
                                 item?.attributes?.descriptionZh,
@@ -344,7 +350,7 @@ const PublicCalendar: React.FC = () => {
                                 ? `${formatHourMinute(
                                   item?.startDateTime || ""
                                 )} - 
-                                 ${formatHourMinute(item?.endDateTime || "")}`
+                                ${formatHourMinute(item?.endDateTime || "")}`
                                 : `${formatYMDTime(
                                   item?.startDateTime || ""
                                 )} - ${formatYMDTime(

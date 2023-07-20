@@ -10,6 +10,7 @@ import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -45,7 +46,10 @@ const Stories: React.FC = () => {
             </Paragraph>
           </Space>
           <button className={styles.button}>
-            {t("ViewMoreEvents")} <RightOutlined />
+            <Link href="/resources/weekly-education-forum">
+              {t("ViewMoreEvents")}
+            </Link>
+            <RightOutlined />
           </button>
         </Space>
 

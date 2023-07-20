@@ -42,7 +42,6 @@ const SubscribeNewsletter: React.FC = () => {
                   message: t("Email.Required"),
                 },
               ]}
-              style={isMobile ? { width: 120 } : {}}
             >
               <Input type="email" placeholder="E-mail*" className={styles.formSelect} />
             </Form.Item>
