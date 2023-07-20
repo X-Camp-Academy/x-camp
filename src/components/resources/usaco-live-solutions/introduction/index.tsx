@@ -84,8 +84,9 @@ const UsacoIntro = ({ data }: Props) => {
             href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
             target={"_blank"}
           >
-            <Text underline className={styles.title}>
+            <Text className={styles.title}>
               {t("MoreUSACOSolution")}
+              <Text underline className={styles.title}>{t("MoreUSACOSolution.YoutubePlayList")}</Text>
             </Text>
           </a>
         </div>

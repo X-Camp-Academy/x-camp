@@ -3,7 +3,6 @@ import React from "react";
 import { Space, Button, Image, Typography, Row, Col } from "antd";
 import styles from "./index.module.scss";
 import { StarOutlined } from "@ant-design/icons";
-import { useMobile } from "@/utils";
 import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph, Text } = Typography;
@@ -14,9 +13,6 @@ const XCampFounder = () => {
     <div className={`${styles.XCampFounder} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>{t("X-CampFounder")}</Title>
-        <Paragraph className={styles.description}>
-          {t("X-CampFounder.description")}
-        </Paragraph>
 
         <Row>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>

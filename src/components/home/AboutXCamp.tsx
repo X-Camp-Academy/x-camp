@@ -43,7 +43,7 @@ const AboutXCamp: React.FC = () => {
           <Paragraph className={styles.paragraph}>
             {t("X-Camp.Desc1")}
             <Text className={styles.paragraphText} onClick={() => { router.push("/courses") }}> {t("USACOClasses")}</Text>
-            {getTransResult(lang, '', ' here.')}
+            {getTransResult(lang, '。', ' here.')}
           </Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
@@ -66,7 +66,7 @@ const AboutXCamp: React.FC = () => {
                       />
                       <Text className={styles.cardTitle}>{item?.title}</Text>
                       <Paragraph
-                        ellipsis={{ rows: 5 }}
+                        ellipsis={{ rows: 3, tooltip: item?.desc }}
                         className={styles.cardParagraph}
                       >
                         {item?.desc}

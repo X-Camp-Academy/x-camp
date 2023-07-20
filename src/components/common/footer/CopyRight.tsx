@@ -41,7 +41,7 @@ const CopyRight: React.FC = () => {
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
-                    Email: info@x-camp.academy
+                    Email: mailto info@x-camp.academy
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
