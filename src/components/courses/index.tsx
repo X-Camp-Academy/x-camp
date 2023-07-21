@@ -29,13 +29,13 @@ import { getLangResult, getWeeksDays } from "./utils";
 import { useMobile } from "@/utils";
 import TopBanner from "./catalog/top-banner";
 import ClassCard from "../common/class-card";
-import Testimony from "../home/Testimony";
+import Reviews from "@/components/common/reviews";
 import { COURSE_TYPES } from "./define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import {
   useGetCourseLevelType,
   useGetCourses,
-  useGetTestimony,
+  useGetReviews,
 } from "@/apis/strapi-client/strapi";
 import { GetCourses } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
@@ -70,7 +70,7 @@ const Courses: React.FC = () => {
 
 
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname],
   });
@@ -98,7 +98,7 @@ const Courses: React.FC = () => {
         return courses?.data?.filter(
           (item) => item?.attributes?.classMode === "In-person"
         );
-      case "is Camp":
+      case "Camps Classes":
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
         return courses?.data;
@@ -460,7 +460,7 @@ const Courses: React.FC = () => {
               );
             })}
           </div>
-          <Testimony testimonyData={testimonyData} />
+          <Reviews reviewsData={reviewsData} />
         </Content>
       </Layout>
     </ConfigProvider>

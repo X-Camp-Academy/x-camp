@@ -1,6 +1,6 @@
-.testimoniesContainer {
+.reviewsContainer {
   width: 100%;
-  .testimonies {
+  .reviews {
     padding: 100px 60px 100px;
     position: relative;
     .prev {
@@ -19,12 +19,12 @@
       transform: translateY(-50%);
       z-index: 999;
     }
-    .testimonyContainer {
+    .reviewsContainer {
       padding-left: 15px;
       padding-right: 15px;
       margin-top: 20px;
       margin-bottom: 20px;
-      .testimonyTitle {
+      .reviewsTitle {
         font-size: 18px;
         font-weight: 600;
         line-height: 30px;
@@ -33,14 +33,14 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
       }
-      .testimonyParagraph {
+      .reviewsParagraph {
         color: #666666;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
         height: 96px;
       }
-      .testimonyDate {
+      .reviewsDate {
         font-size: 16px;
         font-weight: 400;
         color: rgba(102, 102, 102, 0.7);

@@ -201,7 +201,7 @@ export const useMenuItems = () => {
           key: "/about-us/news/",
         },
         {
-          label: <Link href="/about-us/help-center">{t("Q&A")}</Link>,
+          label: <Link href="/about-us/help-center">{t("FAQ")}</Link>,
           key: "/about-us/help-center/",
         },
         {

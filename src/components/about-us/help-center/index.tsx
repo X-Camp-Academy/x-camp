@@ -3,11 +3,11 @@ import React from "react";
 import { ConfigProvider, Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
-import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { useGetReviews } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
 
 const TopBanner = dynamic(() => import("./TopBanner"));
-const Testimony = dynamic(() => import("@/components/home/Testimony"));
+const Reviews = dynamic(() => import("@/components/common/reviews"));
 const QAPart = dynamic(() => import("./QAPart"));
 const ContactUs = dynamic(() => import("./ContactUs"));
 
@@ -16,7 +16,7 @@ const { Content } = Layout;
 const HelpCenter = () => {
   const pathname = usePathname();
   //获取师生评价数据
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname],
   });
@@ -33,7 +33,7 @@ const HelpCenter = () => {
           <TopBanner />
           <QAPart />
           <ContactUs />
-          <Testimony testimonyData={testimonyData} />
+          <Reviews reviewsData={reviewsData} />
         </Content>
       </Layout>
     </ConfigProvider>

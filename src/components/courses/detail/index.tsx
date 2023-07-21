@@ -2,13 +2,13 @@
 import React from "react";
 import styles from "./index.module.scss";
 import { ConfigProvider, Layout } from "antd";
-import Testimony from "@/components/home/Testimony";
+import Reviews from "@/components/common/reviews";
 import TopBanner from "./top-banner";
 import UsacoMedal from "@/components/common/usaco-cards";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
 import ProgressionClasses from "./progression-classes";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
-import { useGetFaq, useGetTestimony } from "@/apis/strapi-client/strapi";
+import { useGetFaq, useGetReviews } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import Faqs from "@/components/common/faqs";
 import { useParams } from "next/navigation";
@@ -21,7 +21,7 @@ const CourseDetail = () => {
   const params = useParams();
   const { format: t } = useLang();
   // 请求当前 courseId 的评论
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: true,
     courseId: [params?.courseId],
   });
@@ -66,9 +66,9 @@ const CourseDetail = () => {
           <ProgressionClasses />
           <FacultyCoach />
           <Faqs title={t("CoursesFAQS")} data={faq} />
-          <Testimony
+          <Reviews
             className={styles.comments}
-            testimonyData={testimonyData}
+            reviewsData={reviewsData}
           />
         </Content>
       </Layout>

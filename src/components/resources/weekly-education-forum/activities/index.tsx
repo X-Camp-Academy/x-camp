@@ -17,7 +17,7 @@ import { Pagination, Row, Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 interface ActivityItem {
   title: string;
-  key: EventCategory | "All Education Forums";
+  key: EventCategory | "All";
 }
 const Activities = () => {
   //useGetNewEvent
@@ -32,7 +32,7 @@ const Activities = () => {
     manual: true,
   });
   const [selectedItem, setSelectedItem] = useState<
-    EventCategory | "All Education Forums"
+    EventCategory | "All"
   >(EventCategory.SchoolLifeSharing);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
@@ -50,7 +50,7 @@ const Activities = () => {
         $eq: tag,
       },
     };
-    if (selectedItem !== "All Education Forums") {
+    if (selectedItem !== "All") {
       filters = {
         ...filters,
         eventCategory: {
@@ -83,7 +83,7 @@ const Activities = () => {
     },
     {
       title: t("ActivityItem5"),
-      key: "All Education Forums",
+      key: "All",
     },
   ];
   return (
