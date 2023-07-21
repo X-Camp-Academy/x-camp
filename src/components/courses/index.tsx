@@ -444,7 +444,7 @@ const Courses: React.FC = () => {
                                         ?.courseShortDescriptionZh,
                                       g?.attributes
                                         ?.courseShortDescriptionEn
-                                    )}
+                                    ) as string[]}
                                     time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
                                     href={`/courses/detail/${g?.id}`}
                                   />
