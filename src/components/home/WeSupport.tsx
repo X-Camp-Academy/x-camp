@@ -10,12 +10,14 @@ const { Title, Paragraph } = Typography;
 const WeSupport: React.FC = () => {
   const { format: t } = useLang();
   const images = [
-    "/image/home/we-support-1.png",
+    "/image/home/python.png",
+    "/image/home/java.png",
+    "/image/home/C++.png",
+
+
+    /* "/image/home/we-support-1.png",
     "/image/home/we-support-2.png",
-    "/image/home/we-support-3.png",
-    "/image/home/we-support-1.png",
-    "/image/home/we-support-2.png",
-    "/image/home/we-support-3.png",
+    "/image/home/we-support-3.png", */
   ];
   return (
     <div className={`${styles.weSupport} container`}>
@@ -60,22 +62,17 @@ const WeSupport: React.FC = () => {
               sm={{ span: 24, order: 1 }}
               md={{ span: 24, order: 2 }}
             >
-              <Carousel
-                slidesToShow={3}
-                autoplay={true}
-                infinite={true}
-                dots={false}
-              >
+              <Space direction="horizontal" size={48}>
                 {images.map((item, index) => {
                   return (
-                    <div key={index}>
+                    <div key={index} >
                       <AnimateBox className={styles.imageBox}>
                         <Image src={item} alt="image" preview={false} />
                       </AnimateBox>
                     </div>
                   );
                 })}
-              </Carousel>
+              </Space>
             </Col>
           </Row>
         </Col>

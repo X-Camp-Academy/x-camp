@@ -18,13 +18,12 @@ const BecomePartner = () => {
               <Paragraph className={styles.description}>
                 {t("BecomeOurPartner.Desc")}
               </Paragraph>
-              <Button className={styles.contactBtn}>
-                {/* TODO: 合作伙伴跳转 */}
-                <Link href={"/"}>
+              <a href={"mailto:info@x-camp.academy"}>
+                <Button className={styles.contactBtn}>
                   {t("JoinUs")}
-                </Link>
-                <EditOutlined />
-              </Button>
+                  <EditOutlined />
+                </Button>
+              </a>
             </Space>
           </ColorfulCard>
         </div>

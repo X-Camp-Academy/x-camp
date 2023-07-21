@@ -225,7 +225,7 @@
   "X-Tutors": "X-Tutors",
   "XAlumni": "X-校友",
   "XAlumni.Desc": "自成立以来，X-Camp已成功招收了1000多名学生，目前为全球250多所学校的500多名学生提供服务。如果您想重新连接您的同学，请与我们联系！",
-  "XCampCalendar": "2023 X-Camp日历",
+  "XCampCalendar": "X-Camp日历",
   "XCampFaculty": "X-Camp教职员工",
   "XCampFaculty.Desc": "X-Camp Academy是一家位于硅谷的编程学院，提供专为5至12年级学生量身定制的编程课程。我们全面的课程从初级到高级，为学生准备美国编程奥林匹克比赛和美国训练营。",
   "Year": "年",
@@ -329,5 +329,6 @@
   "COMPATIBILITY_TIP": "您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问信友队。",
   "1On1Consultation": "一对一咨询",
   "AdditionalInfo": "附加信息",
-  "TopicsCovered": "教学大纲"
+  "TopicsCovered": "教学大纲",
+  "ZoomLink": "Zoom链接"
 }

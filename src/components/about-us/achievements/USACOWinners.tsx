@@ -124,7 +124,6 @@ const USACOMedal = () => {
             <div className={styles.timeLine}>
               <Space direction="vertical" align="start">
                 <Title className={styles.title}>{t("Timeline")}</Title>
-                <Text className={styles.intro}>{t("Timeline.Desc")}</Text>
               </Space>
 
               <div className={styles.listContainer}>
@@ -158,6 +157,8 @@ const USACOMedal = () => {
                   )}
                 />
               </div>
+              
+              <Text className={styles.intro}>{t("Timeline.Desc")}</Text>
 
               {/*               <Link className={styles.download} href="/" onClick={() => { message.info(getTransResult(lang,"")) }}>
                 <Image
