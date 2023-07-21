@@ -218,6 +218,7 @@ const PublicCalendar: React.FC = () => {
               vertical={true}
               verticalSwiping={true}
               autoplay={true}
+              autoplaySpeed={2000}
             >
               {newEventData?.data?.map((item, index) => {
                 return (
@@ -286,30 +287,31 @@ const PublicCalendar: React.FC = () => {
                             )}`}
                           </Paragraph>
                         )}
-                        <Text className={styles.date}>
+                        {/* 不跨天显示HH：mm,反之显示 年月日+HH：mm */}
+                        <Text
+                          className={styles.date}
+                          ellipsis={{
+                            tooltip:
+                              (dayjs(item?.attributes?.startDateTime)
+                                .isSame(dayjs(item?.attributes?.endDateTime), "day") ?
+                                formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "") :
+                                formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '')) + ' ' +
+                              formatTimezone(item?.attributes?.startDateTime).timezone
+                          }}
+                        >
                           {`${dayjs(item?.attributes?.startDateTime)
                             .isSame(
                               dayjs(item?.attributes?.endDateTime),
                               "day"
                             )
                             ?
-                            `${formatHourMinute(
-                              item?.attributes?.startDateTime || ""
-                            )} - 
-                                ${formatHourMinute(
-                              item?.attributes?.endDateTime || ""
-                            )} `
+                            `${formatHourMinute(item?.attributes?.startDateTime || "")} - 
+                            ${formatHourMinute(item?.attributes?.endDateTime || "")} `
                             :
-                            `${formatYMDTime(
-                              item?.attributes?.startDateTime || ""
-                            )} - ${formatYMDTime(
-                              item?.attributes?.endDateTime || ""
-                            )}`
-
+                            `${formatYMDTime(item?.attributes?.startDateTime || "")} 
+                             ${item?.attributes?.endDateTime ? '-' + formatYMDTime(item?.attributes?.endDateTime) : ''}`
                             } 
-                            ${formatTimezone(item?.attributes?.startDateTime)
-                              .timezone
-                            } 
+                            ${formatTimezone(item?.attributes?.startDateTime).timezone} 
                             `}
                         </Text>
                       </Space>
