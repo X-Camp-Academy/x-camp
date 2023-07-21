@@ -16,17 +16,17 @@ const UsacoCards = ({ showTitle = false }: UsacoCardsProps) => {
       color: "#00A0E9",
     },
     {
-      count: "30+",
+      count: "30",
       title: t("USACOPlatinum"),
       color: "#FFD600",
     },
     {
-      count: "12+",
+      count: "12",
       title: t("USACOFinalist"),
       color: "#FFAD11",
     },
     {
-      count: "1+",
+      count: "1",
       title: t("USACOTeam"),
       color: "#D46B14",
     },

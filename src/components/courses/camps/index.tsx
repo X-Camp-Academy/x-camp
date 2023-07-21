@@ -4,15 +4,14 @@ import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./top-banner";
 import CampIntro from "./camp-intro";
-import CampCarousel from "./camp-carousel";
 import CourseAbstract from "../detail/top-banner/course-card/course-abstract";
 import ColorfulCard from "@/components/common/colorful-card";
-import Testimony from "@/components/home/Testimony";
+import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";
 import {
   useGetCourses,
   useGetFaq,
-  useGetTestimony,
+  useGetReviews,
 } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import { usePathname } from "next/navigation";
@@ -36,7 +35,7 @@ const CourseCamps = () => {
     pageName: [pathname],
   });
   // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: Boolean(courses),
     courseId: courses?.data?.map((v) => String(v?.id)),
     pageName: [pathname],
@@ -65,7 +64,7 @@ const CourseCamps = () => {
             </div>
           </div>
           <Faqs title={t("CampsFAQs")} data={faq} />
-          <Testimony testimonyData={testimonyData} />
+          <Reviews reviewsData={reviewsData} />
         </Content>
       </Layout>
     </ConfigProvider>

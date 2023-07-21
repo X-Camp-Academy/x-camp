@@ -2,7 +2,7 @@ import { Space, Row, Col, Image, Typography, Button } from "antd";
 import styles from "./JoinUsFaculty.module.scss";
 import { UsergroupAddOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
 const { Paragraph } = Typography;
 
@@ -30,7 +30,7 @@ const JoinUsFaculty = () => {
               <Button
                 className={styles.introBtn}
                 onClick={() => {
-                  router.push("/about-us/introduction");
+                  router.push("/about-us/join-us");
                 }}
               >
                 {t("XCampFaculty")}
