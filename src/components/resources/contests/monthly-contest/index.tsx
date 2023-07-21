@@ -5,6 +5,7 @@ import ContestCard, { ContestCardAlign } from "./contest-card";
 import { ContestsByMonthInterface, Quarter } from "../define";
 import dayjs from "dayjs";
 import { CarouselRef } from "antd/es/carousel";
+import { useMobile } from "@/utils";
 
 interface Props {
   data: ContestsByMonthInterface[][] | undefined;
@@ -12,11 +13,11 @@ interface Props {
 
 const MonthlyContest = ({ data }: Props) => {
   const align = ["left", "center", "right"] as ContestCardAlign[];
-  const defaultSlideToThisMonth = Math.floor((dayjs().month()) / 3);
+  const defaultSlideToThisMonth =  Math.floor(dayjs().month() / 3); 
   const ref = useRef<CarouselRef>(null);
-  useEffect(()=>{
-    ref?.current?.goTo(defaultSlideToThisMonth);
-  },[])
+  useEffect(() => {
+    ref?.current?.goTo(defaultSlideToThisMonth);//默认跳转当前月份的page
+  }, [])
 
   return (
     <div className={styles.content}>
