@@ -94,7 +94,7 @@ export interface GetAboutUsAchievementsAward extends strapiPublicFields {
   order: number;
 }
 
-export interface GetTestimony extends strapiPublicFields {
+export interface GetReviews extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   score: number;
@@ -104,7 +104,7 @@ export interface GetTestimony extends strapiPublicFields {
   courseId: string;
   pageName: string;
   eventId: string;
-  date: string;
+  datetime: string;
 }
 
 export type GetAboutUsAchievementsAwardRequest =
@@ -242,8 +242,8 @@ export interface GetAboutUsAlumniMap extends strapiPublicFields {
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
 
-export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
-export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
+export type GetReviewsRequest = StrapiRequest<GetReviews>;
+export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
 export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
 export type GetAboutUsAlumniMapResponse =

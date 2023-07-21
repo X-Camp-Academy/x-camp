@@ -3,17 +3,17 @@ import { ConfigProvider, Layout } from "antd";
 import dynamic from "next/dynamic";
 import React from "react";
 import styles from "./index.module.scss";
-import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { useGetReviews } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
 const { Content } = Layout;
 const TopBanner = dynamic(() => import("./top-banner"));
 const PartnersIntroduction = dynamic(() => import("./partners-introduction"));
-const Testimony = dynamic(() => import("@/components/home/Testimony"));
+const Reviews = dynamic(() => import("@/components/common/reviews"));
 
 const Partners = () => {
   //获取师生评价数据
   const pathname = usePathname();
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname],
   });
@@ -30,9 +30,9 @@ const Partners = () => {
         <Content>
           <TopBanner />
           <PartnersIntroduction />
-          <Testimony
+          <Reviews
             className={styles.comments}
-            testimonyData={testimonyData}
+            reviewsData={reviewsData}
           />
         </Content>
       </Layout>

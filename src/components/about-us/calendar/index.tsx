@@ -5,8 +5,8 @@ import styles from "./index.module.scss";
 import { Content } from "antd/es/layout/layout";
 
 import dynamic from "next/dynamic";
-import Testimony from "@/components/home/Testimony";
-import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import Reviews from "@/components/common/reviews";
+import { useGetReviews } from "@/apis/strapi-client/strapi";
 
 const TopBanner = dynamic(() => import("./TopBanner"));
 const CalendarContent = dynamic(() => import("./CalendarContent"));
@@ -20,7 +20,7 @@ const DiscoverCourses = dynamic(
 );
 
 const CalendarPage = () => {
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: ["/home/"],
   });
@@ -38,7 +38,7 @@ const CalendarPage = () => {
           <CalendarContent />
           <DiscoverCourses showSubTitle align="flex-start" showBg={false} />
           <RecentActivities />
-          <Testimony testimonyData={testimonyData} />
+          <Reviews reviewsData={reviewsData} />
         </Content>
       </Layout>
     </ConfigProvider>

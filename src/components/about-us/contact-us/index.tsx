@@ -3,12 +3,12 @@ import React, { useEffect } from "react";
 import { ConfigProvider, Layout, message } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
-import { useGetTestimony } from "@/apis/strapi-client/strapi";
+import { useGetReviews } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
 
 const ContactCard = dynamic(() => import("./ContactCard"));
 const TopBanner = dynamic(() => import("./TopBanner"));
-const Testimony = dynamic(() => import("@/components/home/Testimony"));
+const Reviews = dynamic(() => import("@/components/common/reviews"));
 const QuestionForm = dynamic(() => import("./QuestionForm"));
 const AddressMap = dynamic(() => import("./AddressMap"));
 const { Content } = Layout;
@@ -20,7 +20,7 @@ const ContactUsContent = () => {
 
 
   // 请求当前页面的评论
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname],
   });
@@ -39,7 +39,7 @@ const ContactUsContent = () => {
   }, [hash]);
   return (
     <>
-      
+
       <ConfigProvider
         theme={{
           token: {
@@ -49,12 +49,12 @@ const ContactUsContent = () => {
       >
         <Layout className={styles.QAContainer}>
           <Content>
-          {contextHolder}
+            {contextHolder}
             <TopBanner />
             <ContactCard />
             <QuestionForm />
             <AddressMap />
-            <Testimony testimonyData={testimonyData} />
+            <Reviews reviewsData={reviewsData} />
           </Content>
         </Layout>
       </ConfigProvider>

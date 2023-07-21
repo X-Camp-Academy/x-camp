@@ -59,7 +59,7 @@ const XCampFounder = () => {
                 {t("X-CampAcademyPrincipal")}
               </Paragraph>
 
-              <Space direction="vertical" size={0}>
+              <Space direction="vertical">
                 <Paragraph className={styles.paragraph} style={{ marginBottom: 0 }}>
                   {t("Charlie.Desc1")}
                   <Text className={styles.keyText}>{t("Charlie.years")}</Text>
@@ -114,7 +114,6 @@ const XCampFounder = () => {
                 <Paragraph className={styles.paragraph}>
                   {t("Yuan.Desc1")}
                 </Paragraph>
-
                 <Paragraph className={styles.paragraph}>
                   {t("Yuan.Desc2")}
                   <Text className={styles.keyText}> {t("Yuan.Student")} </Text>

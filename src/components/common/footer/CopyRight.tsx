@@ -72,7 +72,7 @@ const CopyRight: React.FC = () => {
                 <Text className={styles.text}>{'Help Center'}</Text>
                 <Link href={"/about-us/contact-us"}>{'Contact Us'}</Link>
                 <Link href={"/about-us/contact-us"}>{'Join Us'}</Link>
-                <Link href={"/about-us/help-center"}>{'Q&A'}</Link>
+                <Link href={"/about-us/help-center"}>{'FAQ'}</Link>
               </Space>
             </Space>
           </Col>

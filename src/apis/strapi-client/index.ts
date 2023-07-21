@@ -17,8 +17,8 @@ import {
   GetResourcesContestResponse,
   GetXAlumniRequest,
   GetXAlumniResponse,
-  GetTestimonyRequest,
-  GetTestimonyResponse,
+  GetReviewsRequest,
+  GetReviewsResponse,
   GetAboutUsAlumniMapRequest,
   GetAboutUsAlumniMapResponse,
   GetNewEventRequest,
@@ -175,13 +175,8 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getTestimony(
-    params: GetTestimonyRequest
-  ): Promise<GetTestimonyResponse> {
-    const res = await this.get(
-      "/xc-testimonies" + getParamsStringify(params),
-      {}
-    );
+  async getReviews(params: GetReviewsRequest): Promise<GetReviewsResponse> {
+    const res = await this.get("/xc-reviews" + getParamsStringify(params), {});
     return res;
   }
 

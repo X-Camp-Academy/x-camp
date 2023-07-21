@@ -3,11 +3,11 @@ import { ConfigProvider, Layout } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./top-banner";
-import Testimony from "@/components/home/Testimony";
+import Reviews from "@/components/common/reviews";
 import Introduction from "./introduction";
 import WhyContest from "./why-contest";
 import MonthlyContest from "./monthly-contest";
-import { useGetNewEvent, useGetTestimony } from "@/apis/strapi-client/strapi";
+import { useGetNewEvent, useGetReviews } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
 import { formatContestsByQuarter } from "./define";
 import { useSize } from "ahooks";
@@ -22,7 +22,7 @@ const Contests = () => {
   });
   const pathname = usePathname();
   // 请求courseId为isCamp课程, pageName 为"/courses/catalog/"的评论
-  const { data: testimonyData } = useGetTestimony({
+  const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname],
   });
@@ -47,7 +47,7 @@ const Contests = () => {
           />
           <Introduction data={resourcesContest?.data} />
           <WhyContest />
-          <Testimony testimonyData={testimonyData} />
+          <Reviews reviewsData={reviewsData} />
         </Content>
       </Layout>
     </ConfigProvider>

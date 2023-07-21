@@ -17,7 +17,7 @@ import {
   GetNewEventResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
-  GetTestimonyRequest,
+  GetReviewsRequest,
   GetXAlumniRequest,
   GetXAlumniResponse,
   NewEventCategory,
@@ -248,7 +248,7 @@ export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
   );
 };
 
-export const useGetTestimony = ({
+export const useGetReviews = ({
   ready,
   courseId,
   pageName,
@@ -262,8 +262,8 @@ export const useGetTestimony = ({
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetTestimonyRequest) => {
-      const res = await client.getTestimony(params);
+    async (params: GetReviewsRequest) => {
+      const res = await client.getReviews(params);
       let data = [];
       if (!courseId && !pageName && !eventId) {
         // 如果三个选项都没填则取所有的
