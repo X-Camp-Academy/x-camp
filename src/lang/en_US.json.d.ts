@@ -226,7 +226,7 @@ declare const json: {
   "X-Tutors": "X-Tutors",
   "XAlumni": "X-Alumni",
   "XAlumni.Desc": "Since its inception, X-Camp has successfully enrolled over 1,000 students and currently serves more than 500 students from over 250 schools worldwide. If you would like to reconnect with your fellow classmates, please contact us!",
-  "XCampCalendar": "2023 X-Camp Calendar",
+  "XCampCalendar": "X-Camp Calendar",
   "XCampFaculty": "X-Camp Faculty",
   "XCampFaculty.Desc": "X-Camp Academy, a coding institute based in Silicon Valley, offers programming classes tailored to students in grades 5-12. Our comprehensive curriculum spans from beginner to advanced levels, preparing students for USACO and the US Camp.",
   "Year": "Year",
@@ -329,6 +329,7 @@ declare const json: {
   "EDGE_BROWSER": "Edge Browser",
   "EDGE_BROWSER_DESC": "Microsoft Edge uses the same technology as Chrome to enhance your browsing experience.",
   "COMPATIBILITY_TIP": "Your browser does not support modern CSS Selectors and has compatibility problems. Please use a modern browser (such as Chrome or Firefox) to access your friend team.",
+  "ZoomLink": "Zoom Link",
   "1On1Consultation": "1 on 1 consultation"
 }
 

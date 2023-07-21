@@ -83,24 +83,25 @@ const PublicCalendar: React.FC = () => {
     pageSize,
   });
 
+  const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
+    if(endDateTime === ''){
+      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+    }
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+  }
+
+
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
-      setFilterDateEventList(
-        newEventData.data
-          ?.filter((item) =>
-            dayjs(selectDate).isBetween(
-              dayjs(item.attributes.startDateTime),
-              dayjs(item.attributes.endDateTime),
-              "days",
-              "[]"
-            )
-          )
-          .map((filteredItem) => ({
-            ...filteredItem?.attributes,
-          }))
-      );
+      const updatedEventDate = newEventData.data
+        ?.filter((item) => judgeDate(dayjs(selectDate), item?.attributes?.startDateTime || '', item?.attributes?.endDateTime || ''))
+        .map((filteredItem) => ({
+          ...filteredItem?.attributes,
+        }));
+      setFilterDateEventList(updatedEventDate);
     }
   };
+
   useEffect(() => {
     run({
       populate: "*",
@@ -129,6 +130,7 @@ const PublicCalendar: React.FC = () => {
     if (selectDate) {
       filterSameDateEvent(selectDate);
     }
+
   }, [selectDate]);
 
   const formatDate = (date: string) => {
@@ -143,13 +145,7 @@ const PublicCalendar: React.FC = () => {
 
   const cellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
-      if (event.startDateTime && event.endDateTime)
-        return value.isBetween(
-          event.startDateTime,
-          event.endDateTime,
-          "days",
-          "[]"
-        );
+      return judgeDate(value, event?.startDateTime || '', event?.endDateTime || '');
     });
     if (eventDataForDate) {
       return (
@@ -218,6 +214,7 @@ const PublicCalendar: React.FC = () => {
               vertical={true}
               verticalSwiping={true}
               autoplay={true}
+              autoplaySpeed={2000}
             >
               {newEventData?.data?.map((item, index) => {
                 return (
@@ -286,30 +283,31 @@ const PublicCalendar: React.FC = () => {
                             )}`}
                           </Paragraph>
                         )}
-                        <Text className={styles.date}>
+                        {/* 不跨天显示HH：mm,反之显示 年月日+HH：mm */}
+                        <Text
+                          className={styles.date}
+                          ellipsis={{
+                            tooltip:
+                              (dayjs(item?.attributes?.startDateTime)
+                                .isSame(dayjs(item?.attributes?.endDateTime), "day") ?
+                                formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "") :
+                                formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '')) + ' ' +
+                              formatTimezone(item?.attributes?.startDateTime).timezone
+                          }}
+                        >
                           {`${dayjs(item?.attributes?.startDateTime)
                             .isSame(
                               dayjs(item?.attributes?.endDateTime),
                               "day"
                             )
                             ?
-                            `${formatHourMinute(
-                              item?.attributes?.startDateTime || ""
-                            )} - 
-                                ${formatHourMinute(
-                              item?.attributes?.endDateTime || ""
-                            )} `
+                            `${formatHourMinute(item?.attributes?.startDateTime || "")} - 
+                            ${formatHourMinute(item?.attributes?.endDateTime || "")} `
                             :
-                            `${formatYMDTime(
-                              item?.attributes?.startDateTime || ""
-                            )} - ${formatYMDTime(
-                              item?.attributes?.endDateTime || ""
-                            )}`
-
+                            `${formatYMDTime(item?.attributes?.startDateTime || "")} 
+                             ${item?.attributes?.endDateTime ? '-' + formatYMDTime(item?.attributes?.endDateTime) : ''}`
                             } 
-                            ${formatTimezone(item?.attributes?.startDateTime)
-                              .timezone
-                            } 
+                            ${formatTimezone(item?.attributes?.startDateTime).timezone} 
                             `}
                         </Text>
                       </Space>
@@ -337,9 +335,9 @@ const PublicCalendar: React.FC = () => {
                   <div className={styles.line}></div>
                 </Space>
                 <div style={{ height: 400, overflow: "scroll" }}>
-                  {filterDateEventList.length != 0 &&
+                  {filterDateEventList.length != 0 ? (
                     filterDateEventList.map((item, index) => {
-                      if (item?.startDateTime && item?.endDateTime)
+                      if (item?.startDateTime)
                         return (
                           <Space
                             key={index}
@@ -382,8 +380,7 @@ const PublicCalendar: React.FC = () => {
                             <div className={styles.itemLine}></div>
                           </Space>
                         );
-                    })}
-                  {filterDateEventList.length === 0 && (
+                    })) : (
                     <div
                       style={{
                         padding: "50px 0",
@@ -395,6 +392,7 @@ const PublicCalendar: React.FC = () => {
                       />
                     </div>
                   )}
+
                 </div>
               </Space>
             </Space>

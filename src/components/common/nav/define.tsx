@@ -219,7 +219,7 @@ export const useMenuItems = () => {
       ],
     },
     {
-      label: <Link href="/">{t("Evaluation")}</Link>,
+      label: <Link href="/Evaluation">{t("Evaluation")}</Link>,
       key: "evaluation",
     },
   ];

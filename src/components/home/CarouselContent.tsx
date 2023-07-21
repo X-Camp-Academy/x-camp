@@ -47,7 +47,7 @@ const CarouselContent: React.FC = () => {
                       {t("OpenHouse.Dec3")}
                     </Paragraph>
                   </div>
-                  <button className={styles.button} onClick={() => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') }}>{t("JoinUs")}</button>
+                  <button className={styles.button} onClick={() => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') }}>{t("ZoomLink")}</button>
                   <Text className={styles.date}>{t("OpenTime")}</Text>
                 </Space>
               </Col>
