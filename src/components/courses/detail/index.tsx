@@ -14,6 +14,7 @@ import Faqs from "@/components/common/faqs";
 import { useParams } from "next/navigation";
 import CourseClassesContext from "./CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
+import CourseSyllabus from "./course-syllabus";
 
 const { Content } = Layout;
 
@@ -53,17 +54,17 @@ const CourseDetail = () => {
             value={coursesData ? coursesData?.data[0] : undefined}
           >
             <TopBanner />
+            <CourseSyllabus />
+            <ProgressionClasses />
           </CourseClassesContext.Provider>
           <div
             className="container"
             style={{
-              marginTop: 100,
+              marginTop: 150,
             }}
           >
             <UsacoMedal showTitle={true} />
           </div>
-
-          <ProgressionClasses />
           <FacultyCoach />
           <Faqs title={t("CoursesFAQS")} data={faq} />
           <Reviews

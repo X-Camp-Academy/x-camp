@@ -327,7 +327,9 @@ declare const json: {
   "EDGE_BROWSER": "Edge 浏览器",
   "EDGE_BROWSER_DESC": "Microsoft Edge 采用与 Chrome 相同的技术，可增强您的浏览体验，并提供一流的性能和速度。",
   "COMPATIBILITY_TIP": "您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问信友队。",
-  "1On1Consultation": "一对一咨询"
+  "1On1Consultation": "一对一咨询",
+  "AdditionalInfo": "附加信息",
+  "TopicsCovered": "教学大纲"
 }
 
 export default json;

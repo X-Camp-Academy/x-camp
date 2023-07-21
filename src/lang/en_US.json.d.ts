@@ -329,7 +329,9 @@ declare const json: {
   "EDGE_BROWSER": "Edge Browser",
   "EDGE_BROWSER_DESC": "Microsoft Edge uses the same technology as Chrome to enhance your browsing experience.",
   "COMPATIBILITY_TIP": "Your browser does not support modern CSS Selectors and has compatibility problems. Please use a modern browser (such as Chrome or Firefox) to access your friend team.",
-  "1On1Consultation": "1 on 1 consultation"
+  "1On1Consultation": "1 on 1 consultation",
+  "AdditionalInfo": "Additional Info",
+  "TopicsCovered": "Topics Covered"
 }
 
 export default json;

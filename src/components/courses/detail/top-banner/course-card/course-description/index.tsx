@@ -25,6 +25,7 @@ const CourseDescription = () => {
     courseTitleEn,
     frequency,
     courseFormat,
+    additionalInfo
   } = courseData?.attributes ?? {};
 
   const formatDate = (date: string) => {
@@ -109,6 +110,12 @@ const CourseDescription = () => {
           <Descriptions.Item label={t("CourseFormat")}>
             {courseFormat}
           </Descriptions.Item>
+          {
+            additionalInfo &&
+            <Descriptions.Item label={t("AdditionalInfo")}>
+              {additionalInfo}
+            </Descriptions.Item>
+          }
         </Descriptions>
         <Button
           id="copyButton"

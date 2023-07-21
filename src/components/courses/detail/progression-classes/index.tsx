@@ -4,25 +4,15 @@ import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import CourseClassesContext from "../CourseClasses";
-import { useParams } from "next/navigation";
-import { useGetCourses } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
 import { getLangResult } from "../../utils";
 const { Title } = Typography;
 
-const ProgressionClasses = () => {
-  // const Data = useContext(CourseClassesContext);
-
-  const params = useParams();
+const ProgressionClasses: React.FC = () => {
   const { format: t, lang } = useLang();
+  const courseData = useContext(CourseClassesContext);
 
-  const { data: courseData } = useGetCourses({
-    filters: {
-      id: { $eq: Number(params?.courseId) },
-    },
-  });
-
-  const data = courseData?.data[0]?.attributes?.recommendedClasses?.data;
+  const data = courseData?.attributes?.recommendedClasses?.data;
   const recommendedCourses = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
 
   return (
@@ -31,26 +21,25 @@ const ProgressionClasses = () => {
         <Title className={styles.title}>{t("ProgressionClasses")}</Title>
         <Space size={24} wrap className={styles.cards}>
           {recommendedCourses?.map((v, index) => {
+            const { courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, lessonNum, frequency } = v?.attributes ?? {};
             return (
               <ClassCard
                 key={v?.id}
                 border={"bottom"}
                 index={index}
                 animate={false}
-                title={`${v?.attributes?.courseCode
+                title={`${courseCode
                   }: ${getTransResult(
                     lang,
-                    v?.attributes?.courseTitleZh,
-                    v?.attributes?.courseTitleEn
+                    courseTitleZh,
+                    courseTitleEn
                   )}`}
                 list={getLangResult(
                   lang,
-                  v?.attributes
-                    ?.courseShortDescriptionZh,
-                  v?.attributes
-                    ?.courseShortDescriptionEn
-                )}
-                time={`${v?.attributes?.lessonNum} ${v?.attributes?.frequency ===
+                  courseShortDescriptionZh,
+                  courseShortDescriptionEn
+                ) as Array<string>}
+                time={`${lessonNum} ${frequency ===
                   "Weekly"
                   ? "weeks"
                   : "days"
