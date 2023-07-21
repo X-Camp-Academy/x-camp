@@ -83,24 +83,25 @@ const PublicCalendar: React.FC = () => {
     pageSize,
   });
 
+  const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
+    if(endDateTime === ''){
+      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+    }
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+  }
+
+
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
-      setFilterDateEventList(
-        newEventData.data
-          ?.filter((item) =>
-            dayjs(selectDate).isBetween(
-              dayjs(item.attributes.startDateTime),
-              dayjs(item.attributes.endDateTime),
-              "days",
-              "[]"
-            )
-          )
-          .map((filteredItem) => ({
-            ...filteredItem?.attributes,
-          }))
-      );
+      const updatedEventDate = newEventData.data
+        ?.filter((item) => judgeDate(dayjs(selectDate), item?.attributes?.startDateTime || '', item?.attributes?.endDateTime || ''))
+        .map((filteredItem) => ({
+          ...filteredItem?.attributes,
+        }));
+      setFilterDateEventList(updatedEventDate);
     }
   };
+
   useEffect(() => {
     run({
       populate: "*",
@@ -129,6 +130,7 @@ const PublicCalendar: React.FC = () => {
     if (selectDate) {
       filterSameDateEvent(selectDate);
     }
+
   }, [selectDate]);
 
   const formatDate = (date: string) => {
@@ -143,13 +145,7 @@ const PublicCalendar: React.FC = () => {
 
   const cellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
-      if (event.startDateTime && event.endDateTime)
-        return value.isBetween(
-          event.startDateTime,
-          event.endDateTime,
-          "days",
-          "[]"
-        );
+      return judgeDate(value, event?.startDateTime || '', event?.endDateTime || '');
     });
     if (eventDataForDate) {
       return (
@@ -339,9 +335,9 @@ const PublicCalendar: React.FC = () => {
                   <div className={styles.line}></div>
                 </Space>
                 <div style={{ height: 400, overflow: "scroll" }}>
-                  {filterDateEventList.length != 0 &&
+                  {filterDateEventList.length != 0 ? (
                     filterDateEventList.map((item, index) => {
-                      if (item?.startDateTime && item?.endDateTime)
+                      if (item?.startDateTime)
                         return (
                           <Space
                             key={index}
@@ -384,8 +380,7 @@ const PublicCalendar: React.FC = () => {
                             <div className={styles.itemLine}></div>
                           </Space>
                         );
-                    })}
-                  {filterDateEventList.length === 0 && (
+                    })) : (
                     <div
                       style={{
                         padding: "50px 0",
@@ -397,6 +392,7 @@ const PublicCalendar: React.FC = () => {
                       />
                     </div>
                   )}
+
                 </div>
               </Space>
             </Space>

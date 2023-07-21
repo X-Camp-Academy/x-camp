@@ -85,7 +85,6 @@ const CourseDescription = () => {
     setIsModalOpen(false);
   };
 
-
   const handlerShareLesson = () => {
     setIsModalOpen(true);
   };
@@ -123,7 +122,10 @@ const CourseDescription = () => {
       </div>
 
       <div className={styles.right}>
-        <Carousel dots={false} ref={ref}>
+        <Carousel
+          dots={false}
+          ref={ref}
+        >
           {media?.data?.map((mediaItem) => {
             return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
               <div key={mediaItem?.id} className={styles.videoBox}>
@@ -146,52 +148,57 @@ const CourseDescription = () => {
           })}
         </Carousel>
         <div className={styles.mediaChoice}>
-          <Space direction="horizontal">
-            {media?.data?.map((mediaItem, index) => {
-              return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
-                <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
-                  <Button
-                    ghost
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    onClick={() => {
-                      ref?.current?.goTo(index);
-                    }}
-                  >
-                    <Image
-                      alt=""
-                      preview={false}
-                      src={mediaItem?.attributes?.url}
-                      width="100%"
-                    />
-                  </Button>
-                </div>
-              ) : (
-                <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
-                  <Button
-                    ghost
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    onClick={() => {
-                      ref?.current?.goTo(index);
-                    }}
-                  >
-                    <video style={{ width: "100%" }}>
-                      <source
+            <Carousel
+              slidesToShow={5}
+              dots={false}
+              autoplay={true}
+              autoplaySpeed={1800}
+            >
+              {media?.data?.map((mediaItem, index) => {
+                return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
+                  <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
+                    <Button
+                      ghost
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      onClick={() => {
+                        ref?.current?.goTo(index);
+                      }}
+                    >
+                      <Image
+                        alt=""
+                        preview={false}
                         src={mediaItem?.attributes?.url}
-                        type="video/mp4"
+                        width="100%"
                       />
-                      {t("VideoProblem")}
-                    </video>
-                  </Button>
-                </div>
-              );
-            })}
-          </Space>
+                    </Button>
+                  </div>
+                ) : (
+                  <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
+                    <Button
+                      ghost
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      onClick={() => {
+                        ref?.current?.goTo(index);
+                      }}
+                    >
+                      <video style={{ width: "100%" }}>
+                        <source
+                          src={mediaItem?.attributes?.url}
+                          type="video/mp4"
+                        />
+                        {t("VideoProblem")}
+                      </video>
+                    </Button>
+                  </div>
+                );
+              })}
+            </Carousel>
         </div>
       </div>
     </Space>

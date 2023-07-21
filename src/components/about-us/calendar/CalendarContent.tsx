@@ -47,27 +47,81 @@ const CalendarContent = () => {
    * @param data
    * @returns 格式化Calendar
    */
+  /*const formatCalendar = (
+    data: StrapiResponseDataItem<GetNewEvent>[] | undefined
+  ): Item[] => {
+    const currentMonth = dayjs().month();
+    console.log("currentMonth", currentMonth); // 6
+
+
+    const groupedData: {
+      [month: string]: Item[];
+    } = { // 对应1-12月
+      0: [],
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: [],
+      7: [],
+      8: [],
+      9: [],
+      10: [],
+      11: [],
+    };
+
+     data?.forEach((item) => {
+      const month = dayjs(item?.attributes?.startDateTime).get("month");
+      if (!groupedData[month] ) {
+        groupedData[month] = [];
+      }
+      groupedData[month].push({
+        label: getTransResult(
+          lang,
+          item?.attributes?.titleZh,
+          item?.attributes?.titleEn
+        )!,
+        children: getTransResult(
+          lang,
+          item?.attributes?.descriptionZh,
+          item?.attributes?.descriptionEn
+        )!,
+      });
+    }); 
+
+
+
+    const res = Object.entries(groupedData).map(([label, children]) => ({
+      label: dayjs().month(+label).format("MMM"),
+      children,
+    }));
+
+    return [...res, { label: t("NEW_YEAR"), children: [] }];
+
+  };*/
+
   const formatCalendar = (
     data: StrapiResponseDataItem<GetNewEvent>[] | undefined
   ): Item[] => {
+    const currentMonth = dayjs().month();
+    console.log("currentMonth", currentMonth); // 6
+  
     const groupedData: {
       [month: string]: Item[];
-    } = {
-      Jan: [],
-      Feb: [],
-      Mar: [],
-      Apr: [],
-      May: [],
-      Jun: [],
-      Jul: [],
-      Aug: [],
-      Sep: [],
-      Oct: [],
-      Nov: [],
-      Dec: [],
-    };
+    } = {};
+  
+    // 从当前月份开始的12个月
+    for (let i = 0; i < 12; i++) {
+      const month = (currentMonth + i) % 12;
+      groupedData[month] = [];
+    }
+
+    console.log("@@",groupedData);
+    
+  
     data?.forEach((item) => {
-      const month = dayjs(item?.attributes?.startDateTime).format("MMM");
+      const month = dayjs(item?.attributes?.startDateTime).month();
       if (!groupedData[month]) {
         groupedData[month] = [];
       }
@@ -84,14 +138,17 @@ const CalendarContent = () => {
         )!,
       });
     });
-
+  
     const res = Object.entries(groupedData).map(([label, children]) => ({
-      label,
+      label: dayjs().month(+label).format("MMM"),
       children,
     }));
-
+  
     return [...res, { label: t("NEW_YEAR"), children: [] }];
   };
+
+  console.log(formatCalendar(schoolCalendar?.data));
+  
 
   return (
     <>
