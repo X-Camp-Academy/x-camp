@@ -13,10 +13,10 @@ const TopBanner = () => {
         <Row>
           <Col xs={24} sm={24} md={14}>
             <Space direction={"vertical"}>
-              <div className={styles.title}>What we provide</div>
+              <div className={styles.title}>{t('WhatWeProvide')}</div>
               <div>
                 <Paragraph className={styles.paragraph}>
-                  {"X-Camp offer different ways to help kids find the best-fit classes. Including self-assessment, coding-based placement test, and 1 on 1 consultation."}
+                  {t('Evaluation.topBanner.description')}
                 </Paragraph>
               </div>
             </Space>

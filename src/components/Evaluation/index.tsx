@@ -21,6 +21,7 @@ const Evalation: React.FC = () => {
     });
 
     const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
     return (
         <ConfigProvider
             theme={{
