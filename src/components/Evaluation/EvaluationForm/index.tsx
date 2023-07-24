@@ -38,7 +38,7 @@ const EvaluationForm: React.FC = () => {
         <div className={styles.title}>
           Quick assessment to match your kid to the right class
         </div>
-        <Row gutter={15}>
+        <Row gutter={24}>
           <Col lg={12} md={24}>
             <Form
               form={form}
@@ -239,11 +239,14 @@ const EvaluationForm: React.FC = () => {
                   ]}
                 />
               </Form.Item>
-              <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
+
+              <Form.Item className={styles.unRequired}>
+                <Button type="primary" htmlType="submit" style={{width:'100%'}}>
                   {t("Submit")}
                 </Button>
               </Form.Item>
+
+
             </Form>
           </Col>
           <Col lg={12} md={24}>
