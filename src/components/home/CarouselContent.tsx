@@ -69,11 +69,11 @@ const CarouselContent: React.FC = () => {
             borderBottom: "none",
           }}
           bodyStyle={{
-            paddingTop: 36,
             paddingBottom: 16,
           }}
           className={styles.card}
         >
+          <div className={styles.cardTitle}>{t('SIGH_UP_USACO_TOOLKIT')}</div>
           <Form name="carouselContent" onFinish={onFinish} className={styles.form}>
             <Form.Item
               name="name"
@@ -130,7 +130,7 @@ const CarouselContent: React.FC = () => {
                 htmlType="submit"
                 className={styles.submit}
               >
-                {t("SubmitOpenHouse")}
+                {t('Submit')}
               </Button>
             </Form.Item>
           </Form>

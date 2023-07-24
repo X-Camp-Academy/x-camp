@@ -78,3 +78,30 @@ export const useSubmitResume = () => {
     }
   );
 };
+
+/**
+ * 上传用户评测
+ * @param Client
+ * @returns
+ */
+export const useSubmitEvaluation = () => {
+  const handleError = useHandleError();
+  const client = useSendEmailClient();
+  const { format: t } = useLang();
+  return useRequest(
+    async (params: FormData) => {
+      const resp = await client.submitEvaluation(params);
+      return resp;
+    },
+    {
+      manual: true,
+      onSuccess: () => {
+        message.success({
+          key: "sendEmailSuccessfully",
+          content: '提交成功',
+        });
+      },
+      onError: handleError,
+    }
+  );
+}

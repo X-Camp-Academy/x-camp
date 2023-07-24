@@ -74,14 +74,15 @@ export const useMenuItems = () => {
       key: "resources",
       dropdown: {
         left: {
-          title: t("SchoolCalendar"),
+          title: t("Resources"),
           description: t("SchoolCalendar.Description"),
-          btn: (
+          /* btn: (
             <>
               <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
-          ),
+          ), */
+          showBtn: false,
         },
       },
       children: [
