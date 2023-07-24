@@ -369,7 +369,7 @@ declare const json: {
   "Evaluation.form.AboutXCamp.WeChatMoments":"微信朋友圈",
   "Evaluation.form.AboutXCamp.Friend":"朋友介绍",
   "Evaluation.form.AboutXCamp.Other":"其他",
-  "Evaluation.form.AboutXCamp.Xiaohongshu":"小红书"
+  "Evaluation.form.AboutXCamp.Xiaohongshu":"小红书",
   "1On1Consultation": "一对一咨询",
   "AdditionalInfo": "附加信息",
   "TopicsCovered": "教学大纲",
