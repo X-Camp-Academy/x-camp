@@ -32,6 +32,7 @@ const XStarMenuItem = ({ menuItem, onClick, selected, children }: Props) => {
           className={styles.dropdown}
           dropdown={menuItem?.dropdown}
           items={children}
+          showBtn={menuItem.dropdown?.left?.showBtn}
         />
       )}
     </div>
