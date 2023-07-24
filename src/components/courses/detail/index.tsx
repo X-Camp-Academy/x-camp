@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import { useParams } from "next/navigation";
 import { useLang } from "@/hoc/with-intl/define";
 import UsacoMedal from "@/components/common/usaco-cards";
@@ -41,39 +41,31 @@ const CourseDetail: React.FC = () => {
   });
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.courseDetail}>
-        <Content>
-          <CourseClassesContext.Provider
-            value={coursesData ? coursesData?.data[0] : undefined}
-          >
-            <CourseBanner />
-            <CourseSyllabus />
-            <ProgressionClasses />
-          </CourseClassesContext.Provider>
-          <div
-            className="container"
-            style={{
-              marginTop: 150,
-            }}
-          >
-            <UsacoMedal showTitle={true} />
-          </div>
-          <FacultyCoach />
-          <Faqs title={t("CoursesFAQS")} data={faq} />
-          <Reviews
-            className={styles.comments}
-            reviewsData={reviewsData}
-          />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.courseDetail}>
+      <Content>
+        <CourseClassesContext.Provider
+          value={coursesData ? coursesData?.data[0] : undefined}
+        >
+          <CourseBanner />
+          <CourseSyllabus />
+          <ProgressionClasses />
+        </CourseClassesContext.Provider>
+        <div
+          className="container"
+          style={{
+            marginTop: 150,
+          }}
+        >
+          <UsacoMedal showTitle={true} />
+        </div>
+        <FacultyCoach />
+        <Faqs title={t("CoursesFAQS")} data={faq} />
+        <Reviews
+          className={styles.comments}
+          reviewsData={reviewsData}
+        />
+      </Content>
+    </Layout>
   );
 };
 

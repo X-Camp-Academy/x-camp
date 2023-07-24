@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import { Content } from "antd/es/layout/layout";
 import dynamic from "next/dynamic";
@@ -19,21 +19,13 @@ const Achievements = () => {
   const { data: projectsDemo } = useGetProjectsDemo();
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.introductionContainer}>
-        <Content>
-          <TopBanner />
-          <USACOWinners />
-          <ArtOfProgrammingResults data={projectsDemo} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.introductionContainer}>
+      <Content>
+        <TopBanner />
+        <USACOWinners />
+        <ArtOfProgrammingResults data={projectsDemo} />
+      </Content>
+    </Layout>
   );
 };
 

@@ -36,8 +36,8 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <Link href="/courses#classify0">{t("OnlineClasses")}</Link>,
-          key: "/courses/#classify0",
+          label: <Link href="/courses#online">{t("OnlineClasses")}</Link>,
+          key: "/courses/#online",
         },
         // {
         //   label: (
@@ -46,8 +46,8 @@ export const useMenuItems = () => {
         //   key: "/courses/100-prob-challenge",
         // },
         {
-          label: <Link href="/courses#classify4">{t("In-personCamps")}</Link>,
-          key: "/courses/#classify4",
+          label: <Link href="/courses#camps">{t("In-personCamps")}</Link>,
+          key: "/courses/#camps",
         },
         {
           label: <Link href="/courses#apcs">{t("APCSClasses")}</Link>,

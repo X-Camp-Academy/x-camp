@@ -7,7 +7,7 @@ import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph, Text } = Typography;
 
-const XCampFounder = () => {
+const XCampFounder: React.FC = () => {
   const { format: t } = useLang();
   return (
     <div className={`${styles.XCampFounder} container`}>

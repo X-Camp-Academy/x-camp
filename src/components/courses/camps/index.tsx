@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import { useParams, usePathname } from "next/navigation";
 import { useLang } from "@/hoc/with-intl/define";
 import ColorfulCard from "@/components/common/colorful-card";
@@ -53,32 +53,24 @@ const CourseCamps: React.FC = () => {
   });
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.courseCamps}>
-        <Content>
-          <TopBanner />
-          <CampIntro />
-          {/* <CampCarousel /> */}
-          <div className={styles.courseCard}>
-            <div className="container">
-              <ColorfulCard border={"bottom"} index={1} animate={false}>
-                <div className={styles.cardContent}>
-                  <CourseAbstract {...coursesData?.data[0]?.attributes} />
-                </div>
-              </ColorfulCard>
-            </div>
+    <Layout className={styles.courseCamps}>
+      <Content>
+        <TopBanner />
+        <CampIntro />
+        {/* <CampCarousel /> */}
+        <div className={styles.courseCard}>
+          <div className="container">
+            <ColorfulCard border={"bottom"} index={1} animate={false}>
+              <div className={styles.cardContent}>
+                <CourseAbstract {...coursesData?.data[0]?.attributes} />
+              </div>
+            </ColorfulCard>
           </div>
-          <Faqs title={t("CampsFAQs")} data={faq} />
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+        </div>
+        <Faqs title={t("CampsFAQs")} data={faq} />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

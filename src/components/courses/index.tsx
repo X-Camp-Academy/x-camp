@@ -6,7 +6,6 @@ import {
   Button,
   Col,
   Collapse,
-  ConfigProvider,
   DatePicker,
   Form,
   Input,
@@ -58,7 +57,6 @@ interface FormatCoursesProps {
 const Courses: React.FC = () => {
   const { hash } = window.location;
   const pathname = usePathname();
-
   const [form] = Form.useForm();
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
@@ -168,10 +166,20 @@ const Courses: React.FC = () => {
     getCourseBySegmented(segmented);
   }, [segmented, courses, courseLevelType]);
 
+
+  const hashSegmentedMap = new Map([
+    ["#online", "Online Classes"],
+    ["#camps", "Camps Classes"],
+    ["#apcs", "APCS Classes"],
+    ["#enhancement", "Enhancement Classes"],
+  ]);
+
+  // TODO hash切换无效
   // 监听hash
   useEffect(() => {
-    if (hash === "#apcs") {
-      setSegmented("APCS Classes");
+    if (hashSegmentedMap.get(hash)) {
+      const hashValue = hashSegmentedMap.get(hash);
+      setSegmented(hashValue as SegmentedValue);
     } else {
       scrollIntoView(hash);
     }
@@ -301,171 +309,163 @@ const Courses: React.FC = () => {
   }
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.courses}>
-        <Content>
-          <TopBanner />
+    <Layout className={styles.courses}>
+      <Content>
+        <TopBanner />
 
-          <div className={`${styles.classContainer} container`}>
-            <Affix
-              offsetTop={100}
-              onChange={(isAffix) => {
-                if (isAffix && segmentedDom.current) {
-                  segmentedDom.current.style.boxShadow =
-                    "0 2px 4px rgba(0, 0, 0, 0.2)";
-                } else if (segmentedDom.current) {
-                  segmentedDom.current.style.boxShadow = "initial";
-                }
-              }}
-            >
-              {
-                isMobile ?
-                  <Radio.Group
-                    optionType="button"
-                    buttonStyle="solid"
-                    onChange={onSegmentedRadioChange}
-                    value={segmented}
-                    className={styles.radioGroup}
-                  >
-                    <Space size={0} style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>
-                      {
-                        COURSE_TYPES?.map(courseType => (
-                          <Radio style={{ width: '100%' }} key={courseType} value={courseType}>{courseType}</Radio>
-                        ))
-                      }
-                    </Space>
-                  </Radio.Group>
-                  :
-                  <Segmented
-                    ref={segmentedDom}
-                    style={{ backgroundColor: "#fff" }}
-                    block
-                    value={segmented}
-                    options={COURSE_TYPES}
-                    onChange={onSegmentedChange}
-                  />
+        <div className={`${styles.classContainer} container`}>
+          <Affix
+            offsetTop={100}
+            onChange={(isAffix) => {
+              if (isAffix && segmentedDom.current) {
+                segmentedDom.current.style.boxShadow =
+                  "0 2px 4px rgba(0, 0, 0, 0.2)";
+              } else if (segmentedDom.current) {
+                segmentedDom.current.style.boxShadow = "initial";
               }
-            </Affix>
+            }}
+          >
+            {
+              isMobile ?
+                <Radio.Group
+                  optionType="button"
+                  buttonStyle="solid"
+                  onChange={onSegmentedRadioChange}
+                  value={segmented}
+                  className={styles.radioGroup}
+                >
+                  <Space size={0} style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>
+                    {
+                      COURSE_TYPES?.map(courseType => (
+                        <Radio style={{ width: '100%' }} key={courseType} value={courseType}>{courseType}</Radio>
+                      ))
+                    }
+                  </Space>
+                </Radio.Group>
+                :
+                <Segmented
+                  ref={segmentedDom}
+                  style={{ backgroundColor: "#fff" }}
+                  block
+                  value={segmented}
+                  options={COURSE_TYPES}
+                  onChange={onSegmentedChange}
+                />
+            }
+          </Affix>
 
-            <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
-              <Row gutter={[32, 8]}>
-                <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 4 }}>
-                  <Form.Item name="category">
-                    <Select
-                      style={isMobile ? { width: '100%' } : { width: 240 }}
-                      placeholder={"Category"}
-                      options={categoryOptions}
-                      allowClear={true}
-                    />
-                  </Form.Item>
-                </Col>
-                {
-                  !isMobile &&
-                  <Col xs={24} sm={24} md={24} lg={6}>
-                    <Form.Item name="rangeDate" >
-                      <RangePicker />
-                    </Form.Item>
-                  </Col>
-                }
-
+          <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
+            <Row gutter={[32, 8]}>
+              <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 4 }}>
+                <Form.Item name="category">
+                  <Select
+                    style={isMobile ? { width: '100%' } : { width: 240 }}
+                    placeholder={"Category"}
+                    options={categoryOptions}
+                    allowClear={true}
+                  />
+                </Form.Item>
+              </Col>
+              {
+                !isMobile &&
                 <Col xs={24} sm={24} md={24} lg={6}>
-                  <Form.Item name="search" >
-                    <Input
-                      suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
-                      allowClear={true}
-                      style={isMobile ? { width: '100%' } : {}}
-                    />
+                  <Form.Item name="rangeDate" >
+                    <RangePicker />
                   </Form.Item>
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={2}>
-                  <Form.Item>
-                    <Button type={"primary"} className={styles.button} style={isMobile ? { width: '100%' } : {}} htmlType="submit">
-                      {t('Search')}
-                    </Button>
-                  </Form.Item>
-                </Col>
-              </Row>
-            </Form>
+              }
 
-            {segmentedData?.map(item => {
-              return (
-                <div key={item?.primaryTitle}>
-                  <div className={styles.title}>{item?.primaryTitle}</div>
-                  {item?.children?.map((v, j) => {
-                    return (
-                      <div key={v?.secondaryTitle} id={"#classify" + j}>
-                        <Collapse
-                          defaultActiveKey={v?.secondaryTitle}
-                          ghost
-                          style={{ marginBottom: 30 }}
-                          expandIcon={({ isActive }) => (
-                            <CaretRightOutlined
-                              rotate={isActive ? 90 : 0}
-                            />
-                          )}
-                        >
-                          <Panel
-                            key={v?.secondaryTitle}
-                            header={
-                              <div className={styles.paneBox}>
-                                <div className={styles.panelTitle}>
-                                  {v?.secondaryTitle}
-                                </div>
-                                <span className={styles.courseNum}>
-                                  {v?.children?.length} courses
-                                </span>
+              <Col xs={24} sm={24} md={24} lg={6}>
+                <Form.Item name="search" >
+                  <Input
+                    suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+                    allowClear={true}
+                    style={isMobile ? { width: '100%' } : {}}
+                  />
+                </Form.Item>
+              </Col>
+              <Col xs={24} sm={24} md={24} lg={2}>
+                <Form.Item>
+                  <Button type={"primary"} className={styles.button} style={isMobile ? { width: '100%' } : {}} htmlType="submit">
+                    {t('Search')}
+                  </Button>
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
+
+          {segmentedData?.map(item => {
+            return (
+              <div key={item?.primaryTitle}>
+                <div className={styles.title}>{item?.primaryTitle}</div>
+                {item?.children?.map((v, j) => {
+                  return (
+                    <div key={v?.secondaryTitle} id={"#classify" + j}>
+                      <Collapse
+                        defaultActiveKey={v?.secondaryTitle}
+                        ghost
+                        style={{ marginBottom: 30 }}
+                        expandIcon={({ isActive }) => (
+                          <CaretRightOutlined
+                            rotate={isActive ? 90 : 0}
+                          />
+                        )}
+                      >
+                        <Panel
+                          key={v?.secondaryTitle}
+                          header={
+                            <div className={styles.paneBox}>
+                              <div className={styles.panelTitle}>
+                                {v?.secondaryTitle}
                               </div>
-                            }
+                              <span className={styles.courseNum}>
+                                {v?.children?.length} courses
+                              </span>
+                            </div>
+                          }
+                        >
+                          <Space
+                            size={27}
+                            style={{ width: "100%", flexWrap: "wrap" }}
                           >
-                            <Space
-                              size={27}
-                              style={{ width: "100%", flexWrap: "wrap" }}
-                            >
-                              {v?.children?.map((g, index) => {
-                                return (
-                                  <ClassCard
-                                    key={g?.id}
-                                    border={"bottom"}
-                                    index={index}
-                                    animate={false}
-                                    title={`${g?.attributes?.courseCode
-                                      }: ${getTransResult(
-                                        lang,
-                                        g?.attributes?.courseTitleZh,
-                                        g?.attributes?.courseTitleEn
-                                      )}`}
-                                    list={getLangResult(
+                            {v?.children?.map((g, index) => {
+                              return (
+                                <ClassCard
+                                  key={g?.id}
+                                  border={"bottom"}
+                                  index={index}
+                                  animate={false}
+                                  title={`${g?.attributes?.courseCode
+                                    }: ${getTransResult(
                                       lang,
-                                      g?.attributes
-                                        ?.courseShortDescriptionZh,
-                                      g?.attributes
-                                        ?.courseShortDescriptionEn
-                                    ) as string[]}
-                                    time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
-                                    href={`/courses/${segmented === 'Camps Classes' ? 'camps' : 'detail'}/${g?.id}`}
-                                  />
-                                );
-                              })}
-                            </Space>
-                          </Panel>
-                        </Collapse>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </div>
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+                                      g?.attributes?.courseTitleZh,
+                                      g?.attributes?.courseTitleEn
+                                    )}`}
+                                  list={getLangResult(
+                                    lang,
+                                    g?.attributes
+                                      ?.courseShortDescriptionZh,
+                                    g?.attributes
+                                      ?.courseShortDescriptionEn
+                                  ) as string[]}
+                                  time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
+                                  href={`/courses/${segmented === 'Camps Classes' ? 'camps' : 'detail'}/${g?.id}`}
+                                />
+                              );
+                            })}
+                          </Space>
+                        </Panel>
+                      </Collapse>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

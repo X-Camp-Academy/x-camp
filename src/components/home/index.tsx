@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
 
@@ -33,29 +33,21 @@ const Home = () => {
   //  TODO ipad屏幕下PublicCalendar style需要修改
   //  TODO ipad屏幕下X-Alumni style需要修改
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.homeContainer}>
-        <Content>
-          <CarouselContent />
-          <DiscoverCourses />
-          <AboutXCamp />
-          <XCampFounder />
-          <WeSupport />
-          <Faculty />
-          <PublicCalendar />
-          <StudentProjects />
-          <XAlumni />
-          <Partners />
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.homeContainer}>
+      <Content>
+        <CarouselContent />
+        <DiscoverCourses />
+        <AboutXCamp />
+        <XCampFounder />
+        <WeSupport />
+        <Faculty />
+        <PublicCalendar />
+        <StudentProjects />
+        <XAlumni />
+        <Partners />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

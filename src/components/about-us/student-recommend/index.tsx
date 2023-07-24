@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { FaqCategory } from "@/apis/strapi-client/define";
@@ -27,23 +27,15 @@ const StudentRecommend: React.FC = () => {
     pageName: [pathname],
   });
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.stuRecommendContainer}>
-        <Content>
-          <TopBanner />
-          <ReferralProgramMain />
-          <GetCredit />
-          <Faq title={FaqCategory.ReferralQA} data={faq} />
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.stuRecommendContainer}>
+      <Content>
+        <TopBanner />
+        <ReferralProgramMain />
+        <GetCredit />
+        <Faq title={FaqCategory.ReferralQA} data={faq} />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 
