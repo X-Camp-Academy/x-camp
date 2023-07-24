@@ -231,8 +231,8 @@ declare const json: {
   "Year": "年",
   "Yes": "是",
   "Yuan": "徐源",
-  "Yuan.Desc1": "袁是一位高级大数据基础设施工程师，专门负责构建和维护处理大规模数据的稳健基础设施。作为X-Camp的教学主管，袁带领我们的教学团队，确保为学生提供最高质量的教育。",
-  "Yuan.Desc2": "在过去的5年里，袁的教学团队已经指导超过",
+  "Yuan.Desc1": "徐源是一位高级大数据基础设施工程师，专门负责构建和维护处理大规模数据的稳健基础设施。作为X-Camp的教学主管，徐源带领我们的教学团队，确保为学生提供最高质量的教育。",
+  "Yuan.Desc2": "在过去的5年里，徐源的教学团队已经指导超过",
   "Yuan.Desc3": "的学生达到了USACO白银级别或更高级别。其中令人瞩目的成就包括12名学生被选入",
   "Yuan.Desc4": "美国编程奥赛美国国家训练队",
   "Yuan.Desc5": "（2020至2023年）。值得注意的是，每年只能选择约",
@@ -327,8 +327,10 @@ declare const json: {
   "EDGE_BROWSER": "Edge 浏览器",
   "EDGE_BROWSER_DESC": "Microsoft Edge 采用与 Chrome 相同的技术，可增强您的浏览体验，并提供一流的性能和速度。",
   "COMPATIBILITY_TIP": "您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问信友队。",
-  "ZoomLink": "Zoom链接",
-  "1On1Consultation": "一对一咨询"
+  "1On1Consultation": "一对一咨询",
+  "AdditionalInfo": "附加信息",
+  "TopicsCovered": "教学大纲",
+  "ZoomLink": "Zoom链接"
 }
 
 export default json;

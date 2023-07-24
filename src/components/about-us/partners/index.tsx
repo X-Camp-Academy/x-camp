@@ -1,5 +1,5 @@
 "use client";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import dynamic from "next/dynamic";
 import React from "react";
 import styles from "./index.module.scss";
@@ -19,24 +19,16 @@ const Partners = () => {
   });
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.content}>
-        <Content>
-          <TopBanner />
-          <PartnersIntroduction />
-          <Reviews
-            className={styles.comments}
-            reviewsData={reviewsData}
-          />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.content}>
+      <Content>
+        <TopBanner />
+        <PartnersIntroduction />
+        <Reviews
+          className={styles.comments}
+          reviewsData={reviewsData}
+        />
+      </Content>
+    </Layout>
   );
 };
 

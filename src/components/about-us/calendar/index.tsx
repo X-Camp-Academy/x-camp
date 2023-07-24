@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout, Space } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import { Content } from "antd/es/layout/layout";
 
@@ -25,23 +25,15 @@ const CalendarPage = () => {
     pageName: ["/home/"],
   });
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.introductionContainer}>
-        <Content>
-          <TopBanner />
-          <CalendarContent />
-          <DiscoverCourses showSubTitle align="flex-start" showBg={false} />
-          <RecentActivities />
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.introductionContainer}>
+      <Content>
+        <TopBanner />
+        <CalendarContent />
+        <DiscoverCourses showSubTitle align="flex-start" showBg={false} />
+        <RecentActivities />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

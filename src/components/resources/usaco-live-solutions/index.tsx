@@ -1,5 +1,5 @@
 "use client";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./top-banner";
@@ -35,25 +35,17 @@ const UsacoLiveSolutions = () => {
   }
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.usacoLiveSolutions}>
-        <Content>
-          <TopBanner />
-          <UsacoIntro data={resort(resourcesLiveSolution)} />
-          <RelateResources />
-          <Reviews
-            className={styles.comments}
-            reviewsData={reviewsData}
-          />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.usacoLiveSolutions}>
+      <Content>
+        <TopBanner />
+        <UsacoIntro data={resort(resourcesLiveSolution)} />
+        <RelateResources />
+        <Reviews
+          className={styles.comments}
+          reviewsData={reviewsData}
+        />
+      </Content>
+    </Layout>
   );
 };
 

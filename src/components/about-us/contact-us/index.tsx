@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { ConfigProvider, Layout, message } from "antd";
+import { Layout, message } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
@@ -38,27 +38,16 @@ const ContactUsContent = () => {
     }
   }, [hash]);
   return (
-    <>
-
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#FFAD11",
-          },
-        }}
-      >
-        <Layout className={styles.QAContainer}>
-          <Content>
-            {contextHolder}
-            <TopBanner />
-            <ContactCard />
-            <QuestionForm />
-            <AddressMap />
-            <Reviews reviewsData={reviewsData} />
-          </Content>
-        </Layout>
-      </ConfigProvider>
-    </>
+    <Layout className={styles.QAContainer}>
+      <Content>
+        {contextHolder}
+        <TopBanner />
+        <ContactCard />
+        <QuestionForm />
+        <AddressMap />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

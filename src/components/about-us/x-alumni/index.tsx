@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
@@ -22,23 +22,15 @@ const XAlumni = () => {
   });
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.xalumniContainer}>
-        <Content>
-          <Banner />
-          <Map />
-          <Stories />
-          <UpcomingEvents />
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.xalumniContainer}>
+      <Content>
+        <Banner />
+        <Map />
+        <Stories />
+        <UpcomingEvents />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

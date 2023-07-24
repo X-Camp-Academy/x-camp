@@ -6,7 +6,7 @@ import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
 
-const TopBanner = () => {
+const TopBanner: React.FC = () => {
   const { format: t } = useLang();
   return (
     <div className={styles.topBannerContainer}>

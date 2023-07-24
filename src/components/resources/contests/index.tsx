@@ -1,5 +1,5 @@
 "use client";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
 import TopBanner from "./top-banner";
@@ -29,28 +29,20 @@ const Contests = () => {
   const size = useSize(document.querySelector("body"));
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.main}>
-        <Content>
-          <TopBanner />
-          <MonthlyContest
-            data={formatContestsByQuarter(
-              resourcesContest?.data!,
-              Number(size?.width) >= 992 ? 3 : 1
-            )}
-          />
-          <Introduction data={resourcesContest?.data} />
-          <WhyContest />
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.main}>
+      <Content>
+        <TopBanner />
+        <MonthlyContest
+          data={formatContestsByQuarter(
+            resourcesContest?.data!,
+            Number(size?.width) >= 992 ? 6 : 1
+          )}
+        />
+        <Introduction data={resourcesContest?.data} />
+        <WhyContest />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 
