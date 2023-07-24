@@ -174,7 +174,6 @@ const Courses: React.FC = () => {
     ["#enhancement", "Enhancement Classes"],
   ]);
 
-  // TODO hash切换无效
   // 监听hash
   useEffect(() => {
     if (hashSegmentedMap.get(hash)) {
