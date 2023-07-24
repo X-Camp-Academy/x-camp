@@ -21,7 +21,7 @@ const TopBanner = () => {
             <div className={styles.dateTime}>{t("JoinWay.Time")}</div>
           </Space>
 
-          <img src="/image/resources/weekly-open-house-banner.png"></img>
+          <img src="/image/resources/weekly-open-house-banner.png" alt=""></img>
         </Space>
       </div>
     </div>

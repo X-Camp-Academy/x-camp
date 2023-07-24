@@ -214,7 +214,7 @@ const ResumeForm: React.FC<{
         <Text className={styles.title}>{t("ApplicationConsent")}</Text>
         <Paragraph className={styles.acceptText}>
           {t("ApplicationConsent.Desc1")}{" "}
-          <a style={{ color: "#FFAD11" }}>
+          <a style={{ color: "#FFAD11" }} href="https://www.google.com/about/careers/privacy/">
             https://www.google.com/about/careers/privacy/
           </a>
           {t("ApplicationConsent.Desc2")}

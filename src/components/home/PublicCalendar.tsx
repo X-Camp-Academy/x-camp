@@ -84,7 +84,7 @@ const PublicCalendar: React.FC = () => {
   });
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
-    if(endDateTime === ''){
+    if (endDateTime === '') {
       return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
     }
     return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
@@ -346,23 +346,14 @@ const PublicCalendar: React.FC = () => {
                           >
                             <Text className={styles.itemDate}>
                               {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
-
-                              {`${dayjs(item?.startDateTime).isSame(
-                                dayjs(item?.endDateTime),
-                                "day"
-                              )
-                                ? `${formatHourMinute(
-                                  item?.startDateTime || ""
-                                )} - 
-                                ${formatHourMinute(item?.endDateTime || "")}`
-                                : `${formatYMDTime(
-                                  item?.startDateTime || ""
-                                )} - ${formatYMDTime(
-                                  item?.endDateTime || ""
-                                )}`
+                              {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day")
+                                ?
+                                `${formatHourMinute(item?.startDateTime || "")} - ${formatHourMinute(item?.endDateTime || "")} `
+                                :
+                                `${formatYMDTime(item?.startDateTime || "")} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
                                 } 
-                                ${formatTimezone(item?.startDateTime).timezone
-                                }`}
+                                ${formatTimezone(item?.startDateTime).timezone} 
+                            `}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`

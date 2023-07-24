@@ -12,15 +12,13 @@ const { Text, Paragraph, Title } = Typography;
 import ActivityCalendar from "@/components/common/activity-calendar";
 import ColorfulCard from "@/components/common/colorful-card";
 import { RightCircleOutlined, AlignRightOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { EventCategory, GetNewEvent } from "@/apis/strapi-client/define";
-import Item from "antd/es/list/Item";
-import { iteratee } from "lodash";
 import Link from "next/link";
 
 const ArticleSider: React.FC<{
@@ -78,22 +76,23 @@ const ArticleSider: React.FC<{
     pageSize,
   });
 
+  const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
+    if (endDateTime === '') {
+      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+    }
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+  }
+
 
 
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
-      setFilterDateEventList(
-        newEventData.data
-          ?.filter((item) =>
-            dayjs(selectDate).isBetween(
-              dayjs(item.attributes.startDateTime),
-              dayjs(item.attributes.endDateTime),
-              "days",
-              "[]"
-            )
-          )
-          .map((filteredItem) => ({ ...filteredItem?.attributes }))
-      );
+      const updatedEventDate = newEventData.data
+        ?.filter((item) => judgeDate(dayjs(selectDate), item?.attributes?.startDateTime || '', item?.attributes?.endDateTime || ''))
+        .map((filteredItem) => ({
+          ...filteredItem?.attributes,
+        }));
+      setFilterDateEventList(updatedEventDate);
     }
   };
 
@@ -124,7 +123,6 @@ const ArticleSider: React.FC<{
       setEventDate(updatedEventDate);
       filterSameDateEvent(selectedDate);
       filterSameEventCategory(EventCategory);
-      console.log(eventThreeCard);
 
     }
   }, [newEventData]);
@@ -192,20 +190,20 @@ const ArticleSider: React.FC<{
           <div style={{ height: 400, overflow: "scroll" }}>
             {filterDateEventList.length != 0 &&
               filterDateEventList.map((item, index) => {
-                if (item?.startDateTime && item?.endDateTime)
+                if (item?.startDateTime)
                   return (
                     <Space direction="vertical" className={styles.calendarItem}>
                       <Text className={styles.itemDate}>
                         {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
-                        {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
+                        {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day")
                           ?
-                          `${formatHourMinute(item?.startDateTime || '')} - 
-                                 ${formatHourMinute(item?.endDateTime || '')}`
+                          `${formatHourMinute(item?.startDateTime || "")} - ${formatHourMinute(item?.endDateTime || "")} `
                           :
-                          `${formatYMDTime(item?.startDateTime || '')} - ${formatYMDTime(item?.endDateTime || '')}`
+                          `${formatYMDTime(item?.startDateTime || "")} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
                           } 
-                          ${formatTimezone(item?.endDateTime).timezone}`}
+                            ${formatTimezone(item?.startDateTime).timezone} 
+                          `}
                       </Text>
                       <Paragraph
                         className={styles.itemParagraph}
@@ -215,7 +213,7 @@ const ArticleSider: React.FC<{
                             lang,
                             item.titleZh,
                             item.titleEn
-                          )} - ${getTransResult(
+                          )} -  ${getTransResult(
                             lang,
                             item.descriptionZh,
                             item.descriptionEn
@@ -223,7 +221,7 @@ const ArticleSider: React.FC<{
                         }}
                       >
                         {getTransResult(lang, item.titleZh, item.titleEn)}
-                        <br />-
+                        <br /> -
                         {getTransResult(
                           lang,
                           item.descriptionZh,

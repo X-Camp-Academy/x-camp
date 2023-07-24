@@ -11,9 +11,10 @@ interface Props {
   className?: string;
   items?: React.ReactNode[];
   dropdown?: XStarMenuItemType['dropdown'];
+  showBtn?: boolean;
 }
 
-const MenuDropdown = ({ className, items, dropdown }: Props) => {
+const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => {
   const scroll = useScroll(document);
   const divideLength = (items?.length || 0) > 6 ? 3 : 2;
   const dividedItems = useMemo(() => {
@@ -47,9 +48,12 @@ const MenuDropdown = ({ className, items, dropdown }: Props) => {
             <div className={styles.description}>
               {dropdown?.left?.description}
             </div>
-            <div className={styles.btn}>
-              <span>{dropdown?.left?.btn}</span>
-            </div>
+            {showBtn && (
+              <div className={styles.btn}>
+                <span>{dropdown?.left?.btn}</span>
+              </div>
+            )}
+
           </Space>
         )}
         <Space direction="vertical" className={styles.items}>
