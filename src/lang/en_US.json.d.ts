@@ -324,6 +324,7 @@ declare const json: {
   "CHROME_BROWSER": "Chrome Browser",
   "CHROME_BROWSER_DESC": "Google Chrome is a fast, secure, and free web browser that works well for new web browsers.",
   "DOWNLOAD_LINK": "Download link",
+  "SIGH_UP_USACO_TOOLKIT":"Sign up and a free USACO Toolkit!",
   "FIREFOX_BROWSER": "Firefox browser",
   "FIREFOX_BROWSER_DESC": "No arcane privacy policies, no backdoors for third parties, just a lightning-fast browser.",
   "EDGE_BROWSER": "Edge Browser",
