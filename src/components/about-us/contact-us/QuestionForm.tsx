@@ -12,7 +12,7 @@ import { UserInfo } from '@/apis/strapi-client/define';
 const { TextArea } = Input;
 const { Title } = Typography;
 
-const QAPart = () => {
+const QAPart: React.FC = () => {
   const { format: t, lang } = useLang();
   const [form] = Form.useForm();
   const pathname = usePathname();
@@ -28,6 +28,7 @@ const QAPart = () => {
     form.resetFields();
     message.success({ key: 'success', content: t('SUCCESSFULLY_SUBMITTED') });
   };
+
   return (
     <div className={`${styles.qaContent} container`}>
       <Title className={styles.title}>{t('Questions')}</Title>

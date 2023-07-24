@@ -1,5 +1,5 @@
 'use client';
-import { ConfigProvider, Layout, Space } from 'antd';
+import { Layout, Space } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 import TopBanner from './top-banner';
@@ -19,25 +19,17 @@ const WeeklyOpenHouse = () => {
   });
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: '#FFAD11',
-        },
-      }}
-    >
-      <Layout className={styles.main}>
-        <Content>
-          <TopBanner />
-          <Space direction="vertical" size={100} className={styles.content}>
-            {/* <JoinWay /> */}
-            <Introduction />
-            <AppointmentCard />
-          </Space>
-          <Reviews reviewsData={reviewsData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.main}>
+      <Content>
+        <TopBanner />
+        <Space direction="vertical" size={100} className={styles.content}>
+          {/* <JoinWay /> */}
+          <Introduction />
+          <AppointmentCard />
+        </Space>
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

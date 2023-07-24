@@ -44,7 +44,7 @@ const CampIntro = () => {
                 </div>
                 <div className={styles.imgBox}>
                   <img
-                    src="/image/about-us/introduction/top-banner.png"
+                    src="/image/courses/camps/D30_1522.JPG"
                     alt="img"
                     className={styles.threeImages}
                   />

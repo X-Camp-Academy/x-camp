@@ -1,5 +1,5 @@
-import CourseDetail from "@/components/courses/detail";
 import React from "react";
+import CourseDetail from "@/components/courses/detail";
 
 export const metadata = {
   title: "X-Camp Academy",

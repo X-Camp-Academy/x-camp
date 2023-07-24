@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { Button, Col, Form, Input, Row, Select } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 

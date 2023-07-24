@@ -140,6 +140,8 @@ export interface GetCourses extends strapiPublicFields {
   courseLongDescriptionZh: string;
   courseShortDescriptionEn: string[];
   courseShortDescriptionZh: string[];
+  courseSyllabusEn: string[];
+  courseSyllabusZh: string[];
   courseTitleEn: string;
   courseTitleZh: string;
   isCamp: boolean;
@@ -165,6 +167,7 @@ export interface GetCourses extends strapiPublicFields {
   startDate: string;
   endDate: string;
   courseFormat: string;
+  additionalInfo: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 
@@ -16,27 +16,19 @@ const Introduction: React.FC = () => {
   // TODO History wait Charlie提供
   // TODO ISPI组件移动端下还可以优化一下
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.introductionContainer}>
-        <Content>
-          <Banner />
-          <XCampFounder />
-          <UsacoMedal />
-          <ISPI />
+    <Layout className={styles.introductionContainer}>
+      <Content>
+        <Banner />
+        <XCampFounder />
+        <UsacoMedal />
+        <ISPI />
 
-          {/* ! TODO */}
-          {/* <Results /> */}
+        {/* ! TODO */}
+        {/* <Results /> */}
 
-          <FacultyCoach />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+        <FacultyCoach />
+      </Content>
+    </Layout>
   );
 };
 
