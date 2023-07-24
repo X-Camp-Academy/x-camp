@@ -46,18 +46,18 @@ export const useMenuItems = () => {
         //   key: "/courses/100-prob-challenge",
         // },
         {
-          label: <Link href="/courses/camps">{t("In-personCamps")}</Link>,
-          key: "/courses/in-person-campus/",
+          label: <Link href="/courses#classify4">{t("In-personCamps")}</Link>,
+          key: "/courses/#classify4",
         },
         {
-          label: <Link href="/courses#classify5">{t("APCSClasses")}</Link>,
-          key: "/courses/#classify5",
+          label: <Link href="/courses#apcs">{t("APCSClasses")}</Link>,
+          key: "/courses/#apcs",
         },
         {
           label: (
-            <Link href="/courses#classify3">{t("EnhancementClasses")}</Link>
+            <Link href="/courses#enhancement">{t("EnhancementClasses")}</Link>
           ),
-          key: "/courses/enhancement-classes/",
+          key: "/courses/#enhancement",
         },
         {
           label: (

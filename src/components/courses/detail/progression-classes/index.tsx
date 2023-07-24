@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
-import CourseClassesContext from "../CourseClasses";
+import CourseClassesContext from "../../CourseClasses";
 import { getTransResult } from "@/utils/public";
 import { getLangResult } from "../../utils";
 const { Title } = Typography;

@@ -58,6 +58,7 @@ interface FormatCoursesProps {
 const Courses: React.FC = () => {
   const { hash } = window.location;
   const pathname = usePathname();
+
   const [form] = Form.useForm();
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
@@ -298,6 +299,7 @@ const Courses: React.FC = () => {
     form.resetFields();
     setSegmented(e?.target?.value);
   }
+
   return (
     <ConfigProvider
       theme={{
@@ -397,7 +399,7 @@ const Courses: React.FC = () => {
                   <div className={styles.title}>{item?.primaryTitle}</div>
                   {item?.children?.map((v, j) => {
                     return (
-                      <div key={v?.secondaryTitle} id={"#classify" + (j + 1)}>
+                      <div key={v?.secondaryTitle} id={"#classify" + j}>
                         <Collapse
                           defaultActiveKey={v?.secondaryTitle}
                           ghost
@@ -446,7 +448,7 @@ const Courses: React.FC = () => {
                                         ?.courseShortDescriptionEn
                                     ) as string[]}
                                     time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
-                                    href={`/courses/detail/${g?.id}`}
+                                    href={`/courses/${segmented === 'Camps Classes' ? 'camps' : 'detail'}/${g?.id}`}
                                   />
                                 );
                               })}

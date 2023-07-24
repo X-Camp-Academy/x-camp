@@ -1,24 +1,24 @@
 "use client";
 import React from "react";
-import styles from "./index.module.scss";
 import { ConfigProvider, Layout } from "antd";
-import Reviews from "@/components/common/reviews";
-import TopBanner from "./top-banner";
+import { useParams } from "next/navigation";
+import { useLang } from "@/hoc/with-intl/define";
 import UsacoMedal from "@/components/common/usaco-cards";
 import FacultyCoach from "@/components/about-us/introduction/FacultyCoach";
+import Reviews from "@/components/common/reviews";
+import Faqs from "@/components/common/faqs";
+import CourseBanner from "./course-banner";
+import CourseSyllabus from "./course-syllabus";
 import ProgressionClasses from "./progression-classes";
+import CourseClassesContext from "../CourseClasses";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
 import { useGetFaq, useGetReviews } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
-import Faqs from "@/components/common/faqs";
-import { useParams } from "next/navigation";
-import CourseClassesContext from "./CourseClasses";
-import { useLang } from "@/hoc/with-intl/define";
-import CourseSyllabus from "./course-syllabus";
+import styles from "./index.module.scss";
 
 const { Content } = Layout;
 
-const CourseDetail = () => {
+const CourseDetail: React.FC = () => {
   const params = useParams();
   const { format: t } = useLang();
   // 请求当前 courseId 的评论
@@ -53,7 +53,7 @@ const CourseDetail = () => {
           <CourseClassesContext.Provider
             value={coursesData ? coursesData?.data[0] : undefined}
           >
-            <TopBanner />
+            <CourseBanner />
             <CourseSyllabus />
             <ProgressionClasses />
           </CourseClassesContext.Provider>
