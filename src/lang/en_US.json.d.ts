@@ -373,10 +373,9 @@ declare const json: {
   "Evaluation.form.AboutXCamp.WeChatMoments":"Wechat Moments",
   "Evaluation.form.AboutXCamp.Friend":"Word of mouth/Friends",
   "Evaluation.form.AboutXCamp.Other":"Other",
-  "Evaluation.form.AboutXCamp.Xiaohongshu":"Xiaohongshu"
-
-
-
+  "Evaluation.form.AboutXCamp.Xiaohongshu":"Xiaohongshu",
+  "Evaluation.form.success":"Successfully submitted",
+  "Evaluation.form.fail":"Failed to submit"
 
 }
 

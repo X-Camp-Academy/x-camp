@@ -12,6 +12,10 @@ const CourseDescription: React.FC = () => {
   const { lang, format: t } = useLang();
   const ref = useRef<CarouselRef>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  message.config({
+    top: 100,
+
+  });
   const courseData = useContext(CourseClassesContext);
   const {
     courseCode,
@@ -57,25 +61,22 @@ const CourseDescription: React.FC = () => {
       .writeText(getTransResult(lang, clipTextZh, clipTextEn) || "")
       .then(
         function () {
-          message.open({
+          message.success({
             content: getTransResult(
               lang,
               "课程信息复制成功",
               "The course information was copied successfully"
             ),
-            duration: 2,
-            type: "success",
+
           });
         },
         function () {
-          message.open({
+          message.error({
             content: getTransResult(
               lang,
               "课程信息复制失败",
               "Course information replication failed"
             ),
-            duration: 2,
-            type: "error",
           });
         }
       );
@@ -88,8 +89,10 @@ const CourseDescription: React.FC = () => {
 
   const handlerShareLesson = () => {
     setIsModalOpen(true);
-    handleOk();
   };
+
+  console.log(media?.data);
+
 
   return (
     <Space className={styles.description}>
@@ -157,60 +160,80 @@ const CourseDescription: React.FC = () => {
         </Carousel>
 
         <div className={styles.mediaChoice}>
-          <Carousel
-            slidesToShow={5}
-            dots={false}
-            autoplay={true}
-            autoplaySpeed={1800}
-          >
-            {media?.data?.map((mediaItem, index) => {
-              return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
-                <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
-                  <Button
-                    ghost
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    onClick={() => {
-                      ref?.current?.goTo(index);
-                    }}
-                  >
-                    <Image
-                      alt=""
-                      preview={false}
-                      src={mediaItem?.attributes?.url}
-                      width="100%"
-                    />
-                  </Button>
-                </div>
-              ) : (
-                <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
-                  <Button
-                    ghost
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    onClick={() => {
-                      ref?.current?.goTo(index);
-                    }}
-                  >
-                    <video style={{ width: "100%" }}>
-                      <source
+          {media?.data && (
+            <Carousel
+              slidesToShow={media?.data?.length > 5 ? 5 : media?.data?.length}
+              dots={false}
+              infinite={true}
+              autoplay={media?.data?.length <= 5 ? false : true}
+              autoplaySpeed={1800}
+            >
+              {media?.data?.map((mediaItem, index) => {
+                return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
+                  <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
+                    <Button
+                      ghost
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      onClick={() => {
+                        ref?.current?.goTo(index);
+                      }}
+                    >
+                      <Image
+                        alt=""
+                        preview={false}
                         src={mediaItem?.attributes?.url}
-                        type="video/mp4"
+                        width="100%"
                       />
-                      {t("VideoProblem")}
-                    </video>
-                  </Button>
-                </div>
-              );
-            })}
-          </Carousel>
+                    </Button>
+                  </div>
+                ) : (
+                  <div key={mediaItem?.id} className={styles.mediaChoiceBox}>
+                    <Button
+                      ghost
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      onClick={() => {
+                        ref?.current?.goTo(index);
+                      }}
+                    >
+                      <video style={{ width: "100%" }}>
+                        <source
+                          src={mediaItem?.attributes?.url}
+                          type="video/mp4"
+                        />
+                        {t("VideoProblem")}
+                      </video>
+                    </Button>
+                  </div>
+                );
+              })}
+            </Carousel>
+          )}
+
+          <Modal
+            title={getTransResult(lang, "分享课程信息", 'Share course information')}
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            closeIcon={false}
+            footer={[
+              <Button key="submit" type="primary" onClick={handleOk}>
+                {getTransResult(lang, '复制课程信息', 'Copy the course information')}
+              </Button>
+            ]}
+          >
+            <div style={{ whiteSpace: 'pre-line' }}>{getTransResult(lang, clipTextZh, clipTextEn)}</div>
+          </Modal>
+
         </div>
       </div>
     </Space>
+
   );
 };
 

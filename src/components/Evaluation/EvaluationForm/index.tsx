@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import { Button, Col, Form, Input, Row, Select } from "antd";
-import { Layout } from "antd";
+import { Button, Col, Form, Input, Row, Select, message } from "antd";
 import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 import { useSubmitEvaluation } from "@/apis/send-email-client/sendEmail";
@@ -17,9 +16,13 @@ const EvaluationForm: React.FC = () => {
 
   const submitEmailValue = async (value: submitEvaluationRequest) => {
     await sendEmail(value);
-    if(data?.msg == 'ok'){
-      
+    if (data?.msg == 'ok') {
+      message.success(t("Evaluation.form.success"));
     }
+    else {
+      message.error(t("Evaluation.form.fail"));
+    }
+    form.resetFields();
   };
 
 
