@@ -32,13 +32,13 @@ const TopBanner = () => {
                   {t("TrialClass")}
                 </Link>
               </Button>
-              <Button
+{/*               <Button
                 type={"primary"}
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
                 {t("PlacementTest")}
-              </Button>
+              </Button> */}
               <Button
                 type={"primary"}
                 className={styles.button}

@@ -1,4 +1,4 @@
-import Evaluation from '@/components/Evaluation';
+import Evaluation from '@/components/evaluation';
 
 export const metadata = {
   title: 'X-Camp Academy',
