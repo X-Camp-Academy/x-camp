@@ -2,6 +2,7 @@ import { useRequest } from "ahooks";
 import { message } from "antd";
 import {
   openClassEmailRequest,
+  submitEvaluationRequest,
   subscribeNewsletterRequest,
   useSendEmailClient,
 } from ".";
@@ -89,7 +90,7 @@ export const useSubmitEvaluation = () => {
   const client = useSendEmailClient();
   const { format: t } = useLang();
   return useRequest(
-    async (params: FormData) => {
+    async (params: submitEvaluationRequest) => {
       const resp = await client.submitEvaluation(params);
       return resp;
     },

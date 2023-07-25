@@ -345,7 +345,7 @@ declare const json: {
   "Evaluation.form.CodingLanguage":"Coding Language",
   "Evaluation.form.ContestExperience":"Programming Contest Experiences(ex. USACO Silver)",
   "Evaluation.form.AboutXCamp":"How did you hear about X-Camp?",
-  "Evaluation.form.stuName.required":"Please iInput your name",
+  "Evaluation.form.stuName.required":"Please input your name",
   "Evaluation.form.Email.required":"Please input your email",
   "Evaluation.form.Phone.required":"Please input your phone number",
   "Evaluation.form.Grade.required":"Please select your grade",
@@ -373,10 +373,9 @@ declare const json: {
   "Evaluation.form.AboutXCamp.WeChatMoments":"Wechat Moments",
   "Evaluation.form.AboutXCamp.Friend":"Word of mouth/Friends",
   "Evaluation.form.AboutXCamp.Other":"Other",
-  "Evaluation.form.AboutXCamp.Xiaohongshu":"Xiaohongshu"
-
-
-
+  "Evaluation.form.AboutXCamp.Xiaohongshu":"Xiaohongshu",
+  "Evaluation.form.success":"Successfully submitted",
+  "Evaluation.form.fail":"Failed to submit"
 
 }
 
