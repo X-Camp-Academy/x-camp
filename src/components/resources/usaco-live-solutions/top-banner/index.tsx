@@ -27,7 +27,7 @@ const TopBanner = () => {
           >
             <Image
               alt="image"
-              src="/image/resources/USACOLiveTopBanner.png"
+              src="/image/resources/usaco-live-banner.png"
               preview={false}
               className={styles.image}
             />

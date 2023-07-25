@@ -15,11 +15,9 @@
 
     .listContainer {
       padding: 40px;
-      //background: url("/logo/x-camp-logo.png") no-repeat;
       margin-right: 0;
       background-position: right bottom;
       position: relative;
-
       .bookButton {
         float: right;
         z-index: 999;
@@ -30,7 +28,7 @@
         border: none;
         font-size: 40px;
         font-weight: 500;
-        color: #FFAD11;
+        color: #ffad11;
 
         &:hover {
           @extend .hoverButton;
@@ -38,5 +36,4 @@
       }
     }
   }
-
 }

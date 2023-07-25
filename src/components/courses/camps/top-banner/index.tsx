@@ -33,7 +33,7 @@ const TopBanner = () => {
               <div className={styles.colorSquare}></div>
               <img
                 alt="image"
-                src="/image/about-us/introduction/top-banner.png"
+                src="/image/about-us/banner-background.png"
                 className={styles.image}
               />
             </div>

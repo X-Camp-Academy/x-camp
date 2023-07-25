@@ -24,7 +24,7 @@ const AppointmentCard = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.imgContain}>
-            <img src="/image/about-us/introduction/top-banner.png" alt="" />
+            <img src="/image/about-us/banner-background.png" alt="" />
           </div>
         </div>
       </div>

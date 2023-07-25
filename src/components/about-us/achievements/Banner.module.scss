@@ -6,18 +6,20 @@
 }
 
 .paragraph {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
   color: #172142;
-  line-height: 34px;
+  line-height: 42px;
 }
 
 .imgContain {
   position: relative;
+
   .image {
     position: relative;
     z-index: 2;
     transform: rotate(-5deg);
+
     @media (max-width: 768px) {
       margin-top: 40px !important;
     }
@@ -32,8 +34,7 @@
     width: 100%;
     height: 100%;
     display: inline-block;
-    background-color: #ffad11;
+    background-color: #f6d79b;
     transform: rotate(-12deg);
-    opacity: 0.4;
   }
 }

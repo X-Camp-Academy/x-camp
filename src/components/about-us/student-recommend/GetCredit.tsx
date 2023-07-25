@@ -46,7 +46,7 @@ const GetCredit = () => {
             <Col lg={10} md={24} xs={24} className={styles.imgCol}>
               <Image
                 alt="img"
-                src="/image/about-us/student-recommend/circleTurtle.png"
+                src="/image/about-us/circle-turtle.png"
                 preview={false}
                 className={styles.image}
               />

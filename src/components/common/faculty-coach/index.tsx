@@ -8,18 +8,12 @@ import {
   StrapiResponseDataItem,
 } from "@/apis/strapi-client/strapiDefine";
 import { GetFaculty } from "@/apis/strapi-client/define";
-import { useGetFaculty } from "@/apis/strapi-client/strapi";
-
-import styles from "./FacultyCoach.module.scss";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
-const FacultyCoach = () => {
+const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | undefined; }> = ({ data }) => {
   const { format: t, lang } = useLang();
-
-  const { data } = useGetFaculty({
-    pageName: ["/about-us/introduction/"],
-  });
 
   const sortData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order

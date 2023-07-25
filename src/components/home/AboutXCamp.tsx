@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
-import styles from "./AboutXCamp.module.scss";
-import { useLang } from "@/hoc/with-intl/define";
 import { useRouter } from "next/navigation";
+import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-
+import styles from "./AboutXCamp.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
