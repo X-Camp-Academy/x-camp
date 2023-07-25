@@ -41,7 +41,7 @@ const CopyRight: React.FC = () => {
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
-                    <a href="mailto:info@x-camp.academy" style={{color:'inherit'}}>Email:info@x-camp.academy</a>
+                    <a href="mailto:info@x-camp.academy" style={{ color: 'inherit' }}>Email:info@x-camp.academy</a>
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
@@ -60,7 +60,7 @@ const CopyRight: React.FC = () => {
                 <Text className={styles.text}>X-Camp Academy</Text>
                 <Link href={"/about-us/calendar"}>{t('SchoolCalendar')}</Link>
                 <Link href={"/courses#classify0"}>{'Online Courses'}</Link>
-                <Link href={"/courses/camps"}>{t('In-personCamps')}</Link>
+                <Link href={"/courses#camps"}>{t('In-personCamps')}</Link>
               </Space>
               <Space direction="vertical">
                 <Text className={styles.text}>Activity</Text>
