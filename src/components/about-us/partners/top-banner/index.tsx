@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Col, Row, Space, Typography } from "antd";
+import { Col, Row, Space, Image, Typography } from "antd";
 import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 const { Title, Paragraph } = Typography;
@@ -40,9 +40,10 @@ const TopBanner = () => {
           >
             <div className={styles.bannerImgContainer}>
               <div className={styles.colorSquare}></div>
-              <img
+              <Image
                 alt="image"
-                src="/image/about-us/introduction/top-banner.png"
+                src="/image/about-us/partners-banner.jpg"
+                preview={false}
                 className={styles.image}
               />
             </div>

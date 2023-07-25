@@ -50,7 +50,7 @@ const TopBanner = ({ year, setYear }: Props) => {
               <div className={styles.colorSquare}></div>
               <img
                 alt="image"
-                src="/image/about-us/introduction/top-banner.png"
+                src="/image/about-us/news.png"
                 className={styles.image}
               />
             </div>

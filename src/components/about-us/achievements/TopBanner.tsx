@@ -27,7 +27,7 @@ const TopBanner = () => {
             <div className={styles.imgContain}>
               <Image
                 alt="image"
-                src="/image/about-us/introduction/top-banner.png"
+                src="/image/about-us/achievements-banner.jpg"
                 preview={false}
                 className={styles.image}
               />

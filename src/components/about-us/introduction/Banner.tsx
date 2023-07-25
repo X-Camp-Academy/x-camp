@@ -29,7 +29,7 @@ const Banner = () => {
             <div className={styles.imgContain}>
               <Image
                 alt="image"
-                src="/image/about-us/introduction/top-banner.png"
+                src="/image/about-us/introduction-banner.jpeg"
                 preview={false}
                 className={styles.image}
               />

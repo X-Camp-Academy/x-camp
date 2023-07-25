@@ -27,7 +27,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       <Carousel autoplay={false} dots={{ className: styles.carouselDots }}>
-        <div className={styles.first}>
+        {/* <div className={styles.content}>
           <div className="container">
             <Row>
               <Col xs={24} sm={24} md={14}>
@@ -49,6 +49,79 @@ const CarouselContent: React.FC = () => {
                   </div>
                   <button className={styles.button} onClick={() => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') }}>{t("ZoomLink")}</button>
                   <Text className={styles.date}>{t("OpenTime")}</Text>
+                </Space>
+              </Col>
+            </Row>
+          </div>
+        </div> */}
+        <div className={styles.content}>
+          <div className="container">
+            <Row>
+              <Col xs={24} sm={24} md={14}>
+                <Space direction="vertical" className={styles.space} size={24}>
+                  <Title className={styles.title}>{"USACO Enhancement Class is open to register!"}</Title>
+                  <div>
+                    <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
+                      {"USACO Authentic Mock Test helps you prepare for the 23/24 season"}
+                    </Paragraph>
+                    <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
+                      {"Real-time live lecture right after the mock test"}
+                    </Paragraph>
+                    <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
+                      {"Community: share and discuss test recap together"}
+                    </Paragraph>
+                    <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
+                      {"Upsolve, upsolve, upsolve!"}
+                    </Paragraph>
+                  </div>
+                  <button className={styles.button} onClick={() => { window.open('https://tinyurl.com/XCamp23-24FallUSACO') }}>{"Join us"}</button>
+                  <Text className={styles.date}>{"09/23/2023 - 12/09/2023, no class Week 11/18 and 11/25"}</Text>
+                </Space>
+              </Col>
+            </Row>
+          </div>
+        </div>
+
+        <div className={styles.content}>
+          <div className="container">
+            <Row>
+              <Col xs={24} sm={24} md={14}>
+                <Space direction="vertical" className={styles.space} size={24}>
+                  <Title className={styles.title}>{"2023 Fall Weekend Class Open to Register!"}</Title>
+                  <div>
+                    <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
+                      {"New 24-hour on-call tutorial forum "}
+                    </Paragraph>
+                    <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
+                      {"New project-based launch in Python classes"}
+                    </Paragraph>
+                    <Paragraph className={styles.paragraph}>
+                      <span className={styles.dot}></span>
+                      {"Worldwide coding community: 14 states, 6 countries"}
+                    </Paragraph>
+                  </div>
+                  <button className={styles.button} onClick={() => { window.open('https://docs.google.com/forms/d/e/1FAIpQLScNm1Mf4lgvdXUObuJu3wl-_wEcYU9N8ao6PGv8RnANNGE_xw/viewform?usp=sf_link') }}>{"Register Link"}</button>
+                  <Text className={styles.date}>{"09/16/23 - 12/03/2023 (No class on 11/18-19 and 11/25-26)"}</Text>
+                </Space>
+              </Col>
+            </Row>
+          </div>
+        </div>
+
+        <div className={styles.content}>
+          <div className="container">
+            <Row>
+              <Col xs={24} sm={24} md={14}>
+                <Space direction="vertical" className={styles.space} size={24}>
+                  <Title className={styles.title}>{"USACO Director Dr. Brian Dean 22/23 Season AMA comes!"}</Title>
+                  <button className={styles.button} onClick={() => { window.open('https://www.youtube.com/watch?v=K2PWgYHZWbw') }}>{"Youtube Recap"}</button>
+                  <Text className={styles.date}>{"09/16/23 - 12/03/2023 (No class on 11/18-19 and 11/25-26)"}</Text>
                 </Space>
               </Col>
             </Row>
