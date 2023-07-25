@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import { Layout } from "antd";
-import styles from "./index.module.scss";
-import { Content } from "antd/es/layout/layout";
 import dynamic from "next/dynamic";
 import { useGetProjectsDemo } from "@/apis/strapi-client/strapi";
-const TopBanner = dynamic(
-  () => import("@/components/about-us/achievements/TopBanner")
+import styles from "./index.module.scss";
+
+const { Content } = Layout;
+const Banner = dynamic(
+  () => import("@/components/about-us/achievements/Banner")
 );
 const USACOWinners = dynamic(
   () => import("@/components/about-us/achievements/USACOWinners")
@@ -21,7 +22,7 @@ const Achievements = () => {
   return (
     <Layout className={styles.introductionContainer}>
       <Content>
-        <TopBanner />
+        <Banner />
         <USACOWinners />
         <ArtOfProgrammingResults data={projectsDemo} />
       </Content>

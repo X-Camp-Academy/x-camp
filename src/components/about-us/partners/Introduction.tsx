@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./index.module.scss";
+import styles from "./Introduction.module.scss";
 import { Button, Space, Typography } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { useGetPartner } from "@/apis/strapi-client/strapi";
@@ -7,7 +7,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 const { Title, Paragraph } = Typography;
 
-const PartnersIntroduction = () => {
+const Introduction = () => {
   const { lang } = useLang();
   const { data: partner } = useGetPartner();
 
@@ -66,4 +66,4 @@ const PartnersIntroduction = () => {
   );
 };
 
-export default PartnersIntroduction;
+export default Introduction;

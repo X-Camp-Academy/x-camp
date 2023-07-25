@@ -110,7 +110,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
           {t("SignUpNow")}
         </Button>
         <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-          <img src="/image/QRCode/weChatAssistance.jpg" alt="weChatAssistance" width={'100%'} height={'100%'} />
+          <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'100%'} height={'100%'} />
         </Modal>
         <div className={styles.tip}>{t("Discount")}</div>
       </div>

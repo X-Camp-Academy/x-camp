@@ -19,7 +19,7 @@ const TopBanner = () => {
             <span>non-X-Camp students</span> to join this challenge.
           </Paragraph>
         </Space>
-        <img src="/image/about-us/introduction/top-banner.png" alt="" />
+        <img src="/image/about-us/banner-background.png" alt="" />
       </div>
     </div>
   );

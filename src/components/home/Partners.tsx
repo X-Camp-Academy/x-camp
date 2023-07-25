@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
 import { Space, Typography, Row, Col, Image } from "antd";
-import styles from "./Partners.module.scss";
-import { useMobile } from "@/utils";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./Partners.module.scss";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const Partners: React.FC = () => {
   const { format: t } = useLang();

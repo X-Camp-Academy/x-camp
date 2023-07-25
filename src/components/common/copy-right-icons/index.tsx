@@ -30,7 +30,7 @@ const CopyRightIcons: React.FC = () => {
     },
   ];
 
-  const QRcodeImg = ["/image/QRCode/weChatQR.jpg", "/image/QRCode/xiaoRedBookQR.png"]
+  const QRcodeImg = ["/image/qr-code/we-chat-qr.jpg", "/image/qr-code/small-red-book-qr.png"]
 
   const source = icons.map((icon) => icon.src);
   const [imageSrc, setImageSrc] = useState(source);

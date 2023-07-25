@@ -1,16 +1,17 @@
 "use client";
+import React from "react";
 import { Layout } from "antd";
 import dynamic from "next/dynamic";
-import React from "react";
-import styles from "./index.module.scss";
-import { useGetReviews } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
+import { useGetReviews } from "@/apis/strapi-client/strapi";
+import styles from "./index.module.scss";
+
 const { Content } = Layout;
-const TopBanner = dynamic(() => import("./top-banner"));
-const PartnersIntroduction = dynamic(() => import("./partners-introduction"));
+const Banner = dynamic(() => import("./Banner"));
+const Introduction = dynamic(() => import("./Introduction"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 
-const Partners = () => {
+const Partners: React.FC = () => {
   //获取师生评价数据
   const pathname = usePathname();
   const { data: reviewsData } = useGetReviews({
@@ -21,8 +22,8 @@ const Partners = () => {
   return (
     <Layout className={styles.content}>
       <Content>
-        <TopBanner />
-        <PartnersIntroduction />
+        <Banner />
+        <Introduction />
         <Reviews
           className={styles.comments}
           reviewsData={reviewsData}

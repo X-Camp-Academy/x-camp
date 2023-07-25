@@ -1,14 +1,12 @@
 "use client";
 import React, { useEffect } from "react";
-import { Space, Typography, Row, Col, Card, Image, Button } from "antd";
-import styles from "./StudentProjects.module.scss";
+import { Space, Typography, Row, Col, Card } from "antd";
 import { RightOutlined } from "@ant-design/icons";
-import { useMobile } from "@/utils";
-import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
+import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
-import Link from "next/link";
+import styles from "./StudentProjects.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -50,14 +48,9 @@ const StudentProjects: React.FC = () => {
         <Row gutter={16} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12}>
             {studentProjectsData && (
-              <iframe
-                width="100%"
-                height="100%"
-                src={getMediaUrl(studentProjectsData[0]?.attributes?.video)}
-                title="X-Camp Academy Intro - 2023"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+              <video className={styles.video} controls>
+                <source src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} type="video/mp4" />
+              </video>
             )}
           </Col>
 

@@ -1,17 +1,16 @@
 'use client';
 import React from 'react';
 import { Layout } from 'antd';
-import styles from './index.module.scss';
 import dynamic from 'next/dynamic';
-import { useGetNewEvent, useGetReviews } from '@/apis/strapi-client/strapi';
-import { Content } from 'antd/es/layout/layout';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
+const { Content } = Layout;
 const EvaluationForm = dynamic(() => import('./EvaluationForm'));
 const TopBanner = dynamic(() => import('./top-banner'));
 const Reviews = dynamic(() => import('../common/reviews'));
 
 const Evalation: React.FC = () => {
-
   //获取师生评价数据
   const { data } = useGetReviews({
     ready: true,

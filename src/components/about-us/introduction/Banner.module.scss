@@ -1,70 +1,51 @@
-.topBannerContainer {
-  width: 100%;
-  background-image: url("/image/home/carousel-bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 100px 0;
+.left {
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #172142;
+    line-height: 72px;
+    position: relative;
+  }
 
-  .col {
+  .titleBg {
+    position: absolute;
+    display: block;
+    top: 104px;
+    width: 180px;
+    height: 22px;
+    background-image: url("/image/common/bar.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .paragraph {
+    font-size: 24px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 42px;
+  }
+}
+.imgContain {
+  position: relative;
+  .image {
+    position: relative;
+    z-index: 2;
+    transform: rotate(-5deg);
     @media (max-width: 768px) {
-      margin-top: 30px !important;
-      padding: 15px;
-      padding-bottom: 0;
-    }
-
-    .title {
-      font-size: 48px;
-      font-weight: bold;
-      color: #172142;
-      line-height: 72px;
-      position: relative;
-    }
-
-    .titleBg {
-      position: absolute;
-      display: block;
-      top: 104px;
-      width: 180px;
-      height: 22px;
-      background-image: url("/image/about-us/introduction/bar.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-
-    .paragraph {
-      font-size: 24px;
-      font-weight: 500;
-      color: #172142;
-      line-height: 42px;
+      margin-top: 40px !important;
     }
   }
-  .imgContain {
-    position: relative;
 
-    .image {
-      position: relative;
-      z-index: 2;
-      transform: rotate(-5deg);
-
-      @media (max-width: 768px) {
-        margin-top: 40px !important;
-      }
-    }
-
-    &::after {
-      border-radius: 8px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: "";
-      width: 100%;
-      height: 100%;
-      display: inline-block;
-      background-color: #f6d79b;
-      transform: rotate(-12deg);
-    }
+  &::after {
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: #f6d79b;
+    transform: rotate(-12deg);
   }
 }

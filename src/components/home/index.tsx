@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
-import dynamic from "next/dynamic";
 import { Layout } from "antd";
-import styles from "./index.module.scss";
+import dynamic from "next/dynamic";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
+import styles from "./index.module.scss";
 
 const CarouselContent = dynamic(() => import("./CarouselContent"));
 const DiscoverCourses = dynamic(
   () => import("@/components/common/discover-courses")
 );
 const AboutXCamp = dynamic(() => import("./AboutXCamp"));
-const XCampFounder = dynamic(() => import("@/components/common/xcamp-founder"));
+const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
 const WeSupport = dynamic(() => import("./WeSupport"));
 const Faculty = dynamic(() => import("./Faculty"));
 const PublicCalendar = dynamic(() => import("./PublicCalendar"));
@@ -21,7 +21,7 @@ const Reviews = dynamic(() => import("@/components/common/reviews"));
 
 const { Content } = Layout;
 
-const Home = () => {
+const Home: React.FC = () => {
   //获取师生评价数据
   const { data } = useGetReviews({
     ready: true,
@@ -29,7 +29,7 @@ const Home = () => {
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-  // TODO 移动端下XCampFounder样式需要优化一下
+  // TODO 移动端下XCampFounders样式需要优化一下
   //  TODO ipad屏幕下PublicCalendar style需要修改
   //  TODO ipad屏幕下X-Alumni style需要修改
   return (
@@ -38,7 +38,7 @@ const Home = () => {
         <CarouselContent />
         <DiscoverCourses />
         <AboutXCamp />
-        <XCampFounder />
+        <XCampFounders />
         <WeSupport />
         <Faculty />
         <PublicCalendar />

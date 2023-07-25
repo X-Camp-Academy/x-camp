@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import { Space, Typography, DatePicker, DatePickerProps, Row, Col } from "antd";
-import styles from "./TopBanner.module.scss";
 import dayjs from "dayjs";
-import classNames from "classnames/bind";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
+import styles from "./Banner.module.scss";
+
 const { Title, Paragraph } = Typography;
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
   setYear: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TopBanner = ({ year, setYear }: Props) => {
+const Banner = ({ year, setYear }: Props) => {
   const { format: t, lang } = useLang();
   const onChange: DatePickerProps["onChange"] = (date) => {
     setYear(String(date?.get("year")));
@@ -50,7 +50,7 @@ const TopBanner = ({ year, setYear }: Props) => {
               <div className={styles.colorSquare}></div>
               <img
                 alt="image"
-                src="/image/about-us/introduction/top-banner.png"
+                src="/image/about-us/news-banner.png"
                 className={styles.image}
               />
             </div>
@@ -61,4 +61,4 @@ const TopBanner = ({ year, setYear }: Props) => {
   );
 };
 
-export default TopBanner;
+export default Banner;
