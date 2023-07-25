@@ -30,21 +30,21 @@ const CampIntro = () => {
               <Space direction="vertical" style={{ width: "100%" }}>
                 <div className={styles.imgBox}>
                   <img
-                    src="/image/courses/camps/2023Summer Camp-group1.jpeg"
+                    src="/image/courses/camps-1.png"
                     alt="img"
                     className={styles.threeImages}
                   />
                 </div>
                 <div className={styles.imgBox}>
                   <img
-                    src="/image/courses/camps/20230720-100319.jpg"
+                    src="/image/courses/camps-2.png"
                     alt="img"
                     className={styles.threeImages}
                   />
                 </div>
                 <div className={styles.imgBox}>
                   <img
-                    src="/image/courses/camps/D30_1522.JPG"
+                    src="/image/courses/camps-3.png"
                     alt="img"
                     className={styles.threeImages}
                   />

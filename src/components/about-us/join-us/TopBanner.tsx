@@ -19,7 +19,7 @@ const TopBanner = () => {
               </Paragraph>
               <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>
                 {t("ContactUs")}
-                <img src="/image/about-us/join-us/comment.png" alt="" />
+                <img src="/image/about-us/comment.png" alt="" />
               </Button>
             </Space>
           </Col>
@@ -27,7 +27,7 @@ const TopBanner = () => {
             <Space direction="vertical">
               <Image
                 alt="image"
-                src="/image/about-us/join-us/JoinUsBannerAnimal.png"
+                src="/image/about-us/join-us-banner.png"
                 preview={false}
                 className={styles.image}
               />

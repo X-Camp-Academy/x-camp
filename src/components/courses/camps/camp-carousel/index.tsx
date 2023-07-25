@@ -28,7 +28,7 @@ const CampCarousel = () => {
                     return (
                       <Col key={item} xs={24} sm={24} md={12} lg={8}>
                         <img
-                          src="/image/about-us/introduction/top-banner.png"
+                          src="/image/about-us/banner-background.png"
                           alt=""
                         ></img>
                       </Col>

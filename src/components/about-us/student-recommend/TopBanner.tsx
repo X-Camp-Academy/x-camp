@@ -28,7 +28,7 @@ const TopBanner = () => {
             <Space direction="vertical">
               <Image
                 alt="image"
-                src="/image/about-us/student-recommend/top-banner.png"
+                src="/image/about-us/banner-background.png"
                 preview={false}
                 className={styles.image}
               />

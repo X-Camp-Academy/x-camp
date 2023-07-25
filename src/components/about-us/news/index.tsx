@@ -7,7 +7,7 @@ import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { NewEventCategory } from '@/apis/strapi-client/define';
 import dayjs from 'dayjs';
 
-const TopBanner = dynamic(() => import('./TopBanner'));
+const Banner = dynamic(() => import('./Banner'));
 const Partners = dynamic(() => import('@/components/home/Partners'));
 const BecomePartner = dynamic(() => import('./BecomePartner'));
 const NewsCard = dynamic(() => import('./news-card'));
@@ -58,7 +58,7 @@ const NewsPage = () => {
   return (
     <Layout className={styles.QAContainer}>
       <Content>
-        <TopBanner year={year} setYear={setYear} />
+        <Banner year={year} setYear={setYear} />
         <NewsCard
           newEventData={newEventData?.data}
           current={current}

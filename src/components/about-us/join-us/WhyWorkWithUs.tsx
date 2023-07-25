@@ -24,7 +24,7 @@ const WhyWorkWithUs = () => {
                   href={"/about-us/contact-us"}
                 >
                   {t("ContactUs")}
-                  <img src="/image/about-us/join-us/comment.png" alt="" />
+                  <img src="/image/about-us/comment.png" alt="" />
                 </Button>
               </Space>
             </Card>

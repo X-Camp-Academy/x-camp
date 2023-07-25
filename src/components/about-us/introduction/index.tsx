@@ -9,7 +9,7 @@ const Banner = dynamic(() => import("./Banner"));
 const ISPI = dynamic(() => import("./ISPI"));
 const UsacoMedal = dynamic(() => import("./UsacoMedal"));
 const Results = dynamic(() => import("./Results"));
-const XCampFounder = dynamic(() => import("@/components/common/xcamp-founder"));
+const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
 const FacultyCoach = dynamic(() => import("@/components/common/faculty-coach"));
 const { Content } = Layout;
 
@@ -24,7 +24,7 @@ const Introduction: React.FC = () => {
     <Layout className={styles.introductionContainer}>
       <Content>
         <Banner />
-        <XCampFounder />
+        <XCampFounders />
         <UsacoMedal />
         <ISPI />
 

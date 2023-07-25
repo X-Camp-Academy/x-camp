@@ -1,23 +1,20 @@
 "use client";
 import React from "react";
-import { Space, Typography, Row, Col, Image, Carousel } from "antd";
+import { Space, Typography, Row, Col, Image } from "antd";
+import { useLang } from "@/hoc/with-intl/define";
+import { useMobile } from "@/utils";
 import AnimateBox from "../common/animate-box";
 import styles from "./WeSupport.module.scss";
-import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
 
 const WeSupport: React.FC = () => {
   const { format: t } = useLang();
+  const isMobile = useMobile();
   const images = [
     "/image/home/python.png",
     "/image/home/java.png",
-    "/image/home/C++.png",
-
-
-    /* "/image/home/we-support-1.png",
-    "/image/home/we-support-2.png",
-    "/image/home/we-support-3.png", */
+    "/image/home/c++.png",
   ];
   return (
     <div className={`${styles.weSupport} container`}>
@@ -62,8 +59,8 @@ const WeSupport: React.FC = () => {
               sm={{ span: 24, order: 1 }}
               md={{ span: 24, order: 2 }}
             >
-              <Space direction="horizontal" size={48}>
-                {images.map((item, index) => {
+              <Space direction="horizontal" size={isMobile ? 8 : 48}>
+                {images?.map((item, index) => {
                   return (
                     <div key={index} >
                       <AnimateBox className={styles.imageBox}>
