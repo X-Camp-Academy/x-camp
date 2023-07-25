@@ -373,7 +373,10 @@ declare const json: {
   "1On1Consultation": "一对一咨询",
   "AdditionalInfo": "附加信息",
   "TopicsCovered": "教学大纲",
-  "ZoomLink": "Zoom链接"
+  "ZoomLink": "Zoom链接",
+  "Evaluation.form.success": "提交成功",
+  "Evaluation.form.fail": "提交失败"
+
 }
 
 export default json;
