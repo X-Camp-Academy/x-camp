@@ -48,14 +48,9 @@ const StudentProjects: React.FC = () => {
         <Row gutter={16} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12}>
             {studentProjectsData && (
-              <iframe
-                width="100%"
-                height="100%"
-                src={getMediaUrl(studentProjectsData[0]?.attributes?.video)}
-                title="X-Camp Academy Intro - 2023"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+              <video className={styles.video} controls>
+                <source src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} type="video/mp4" />
+              </video>
             )}
           </Col>
 

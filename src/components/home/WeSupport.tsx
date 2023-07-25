@@ -24,16 +24,9 @@ const WeSupport: React.FC = () => {
           sm={{ span: 24, order: 2 }}
           md={{ span: 12, order: 1 }}
         >
-          <div className={styles.video}>
-            <iframe
-              width="100%"
-              height="350"
-              src="https://media.strapi.turingstar.com.cn/production/2023/7/1st_Tic_Tac_toe_d73c6e87d5.mp4?updated_at=2023-07-11T17:26:59.659Z"
-              title="X-Camp Academy Intro - 2023"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
+          <video className={styles.video} controls>
+            <source src="https://media.strapi.turingstar.com.cn/production/2023/7/1st_Tic_Tac_toe_d73c6e87d5.mp4?updated_at=2023-07-11T17:26:59.659Z" type="video/mp4" />
+          </video>
         </Col>
         <Col
           xs={{ span: 24, order: 1 }}
