@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { useGetNewEvent, useGetReviews } from '@/apis/strapi-client/strapi';
 import { Content } from 'antd/es/layout/layout';
 
-const EvaluationForm = dynamic(() => import('./EvaluationForm'));
+const EvaluationForm = dynamic(() => import('./evaluation-form'));
 const TopBanner = dynamic(() => import('./top-banner'));
 const Reviews = dynamic(() => import('../common/reviews'));
 
