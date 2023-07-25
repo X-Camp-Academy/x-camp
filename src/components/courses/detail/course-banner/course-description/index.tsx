@@ -88,6 +88,7 @@ const CourseDescription: React.FC = () => {
 
   const handlerShareLesson = () => {
     setIsModalOpen(true);
+    handleOk();
   };
 
   return (

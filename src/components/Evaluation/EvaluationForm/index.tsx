@@ -4,33 +4,22 @@ import { Button, Col, Form, Input, Row, Select } from "antd";
 import { Layout } from "antd";
 import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import { useSubmitEvaluation } from "@/apis/send-email-client/sendEmail";
+import { submitEvaluationRequest } from "@/apis/send-email-client";
 
-interface EvaluationFormProps {
-  stuName: string;
-  Email: string;
-  phoneNumber: string;
-  grade: string;
-  codingBackground: string;
-  codingLanguage: string;
-  programmingExp: string;
-  aboutXcamp: string;
-}
+
 
 const EvaluationForm: React.FC = () => {
   const { lang, format: t } = useLang();
   const [form] = Form.useForm();
-  const submitEmailValue = (value: EvaluationFormProps) => {
-    const requestData = new FormData();
-    requestData.append("stuName", value.stuName);
-    requestData.append("Email", value.Email);
-    requestData.append("phoneNumber", value.phoneNumber);
-    requestData.append("grade", value.grade);
-    requestData.append("codingBackground", value.codingBackground);
-    requestData.append("codingLanguage", value.codingLanguage);
-    if (value.programmingExp)
-      requestData.append("programmingExp", value.programmingExp);
-    requestData.append("aboutXcamp", value.aboutXcamp);
-    console.log(value);
+
+  const { runAsync: sendEmail, data } = useSubmitEvaluation();
+
+  const submitEmailValue = async (value: submitEvaluationRequest) => {
+    await sendEmail(value);
+    if(data?.msg == 'ok'){
+      
+    }
   };
 
 
@@ -68,7 +57,7 @@ const EvaluationForm: React.FC = () => {
                 </Col>
                 <Col span={12}>
                   <Form.Item
-                    name="Email"
+                    name="email"
                     className={styles.required}
                     rules={[
                       {

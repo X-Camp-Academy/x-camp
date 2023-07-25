@@ -27,6 +27,17 @@ export interface submitResumeResponse {
 	msg: string;
 }
 
+export interface submitEvaluationRequest {
+	stuName: string;
+	email: string;
+	phoneNumber: string;
+	grade: string;
+	codingBackground: string;
+	codingLanguage: string;
+	programmingExp: string;
+	aboutXcamp: string;
+}
+
 export interface submitEvaluationResponse {
 	code: number;
 	msg: string;
@@ -60,8 +71,8 @@ export class SendEmailClient extends BaseAxiosClient {
 		return data;
 	}
 
-	async submitEvaluation(req: FormData): Promise<submitEvaluationResponse> {
-		const data = await this.post("/submitEvaluation", req, this.jsonHeaders);
+	async submitEvaluation(req: submitEvaluationRequest): Promise<submitEvaluationResponse> {
+		const data = await this.post("/evaluation", req, this.jsonHeaders);
 		return data;
 	}
 }
