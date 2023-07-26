@@ -11,6 +11,7 @@ import {
   Row,
   Col,
 } from "antd";
+import classNames from "classnames";
 import { useLang } from "@/hoc/with-intl/define";
 import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
 import { openClassEmailRequest } from "@/apis/send-email-client";
@@ -20,6 +21,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
+  const cx = classNames.bind(styles);
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
@@ -27,7 +29,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       <Carousel autoplay={false} dots={{ className: styles.carouselDots }}>
-        {/* <div className={styles.content}>
+        <div className={styles.content}>
           <div className="container">
             <Row>
               <Col xs={24} sm={24} md={14}>
@@ -53,27 +55,28 @@ const CarouselContent: React.FC = () => {
               </Col>
             </Row>
           </div>
-        </div> */}
+        </div>
+
         <div className={styles.content}>
           <div className="container">
             <Row>
               <Col xs={24} sm={24} md={14}>
-                <Space direction="vertical" className={styles.space} size={24}>
-                  <Title className={styles.title}>{"USACO Enhancement Class is open to register!"}</Title>
+                <Space direction="vertical" className={styles.space} size={20}>
+                  <Title className={styles.title} style={{ fontSize: 32 }}>{"USACO Enhancement Class is open to register!"}</Title>
                   <div>
-                    <Paragraph className={styles.paragraph}>
+                    <Paragraph className={cx(styles.paragraph, styles.mb8)}>
                       <span className={styles.dot}></span>
                       {"USACO Authentic Mock Test helps you prepare for the 23/24 season"}
                     </Paragraph>
-                    <Paragraph className={styles.paragraph}>
+                    <Paragraph className={cx(styles.paragraph, styles.mb8)}>
                       <span className={styles.dot}></span>
                       {"Real-time live lecture right after the mock test"}
                     </Paragraph>
-                    <Paragraph className={styles.paragraph}>
+                    <Paragraph className={cx(styles.paragraph, styles.mb8)}>
                       <span className={styles.dot}></span>
                       {"Community: share and discuss test recap together"}
                     </Paragraph>
-                    <Paragraph className={styles.paragraph}>
+                    <Paragraph className={cx(styles.paragraph, styles.mb8)}>
                       <span className={styles.dot}></span>
                       {"Upsolve, upsolve, upsolve!"}
                     </Paragraph>
@@ -90,8 +93,8 @@ const CarouselContent: React.FC = () => {
           <div className="container">
             <Row>
               <Col xs={24} sm={24} md={14}>
-                <Space direction="vertical" className={styles.space} size={24}>
-                  <Title className={styles.title}>{"2023 Fall Weekend Class Open to Register!"}</Title>
+                <Space direction="vertical" className={styles.space} size={20}>
+                  <Title className={styles.title} style={{ fontSize: 32 }}>{"2023 Fall Weekend Class Open to Register!"}</Title>
                   <div>
                     <Paragraph className={styles.paragraph}>
                       <span className={styles.dot}></span>

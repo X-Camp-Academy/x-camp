@@ -44,8 +44,8 @@ const Home: React.FC = () => {
         <PublicCalendar />
         <StudentProjects />
         <XAlumni />
-        <Partners />
         <Reviews reviewsData={reviewsData} />
+        <Partners />
       </Content>
     </Layout>
   );
