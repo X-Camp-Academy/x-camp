@@ -93,10 +93,10 @@ const Courses: React.FC = () => {
         return courses?.data?.filter(
           (item) => item?.attributes?.classMode === "Online Live"
         );
-      case "In-person Classes":
-        return courses?.data?.filter(
-          (item) => item?.attributes?.classMode === "In-person"
-        );
+      // case "In-person Classes":
+      //   return courses?.data?.filter(
+      //     (item) => item?.attributes?.classMode === "In-person"
+      //   );
       case "Camps Classes":
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
