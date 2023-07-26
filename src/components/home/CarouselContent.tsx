@@ -81,7 +81,7 @@ const CarouselContent: React.FC = () => {
                       {"Upsolve, upsolve, upsolve!"}
                     </Paragraph>
                   </div>
-                  <button className={styles.button} onClick={() => { window.open('https://tinyurl.com/XCamp23-24FallUSACO') }}>{"Join us"}</button>
+                  <button className={styles.button} onClick={() => { window.open('https://tinyurl.com/XCamp23-24FallUSACO') }}>{t("JoinUs")}</button>
                   <Text className={styles.date}>{"09/23/2023 - 12/09/2023, no class Week 11/18 and 11/25"}</Text>
                 </Space>
               </Col>
