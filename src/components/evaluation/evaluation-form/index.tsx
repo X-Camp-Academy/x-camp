@@ -15,14 +15,14 @@ const EvaluationForm: React.FC = () => {
   const { runAsync: sendEmail, data } = useSubmitEvaluation();
 
   const submitEmailValue = async (value: submitEvaluationRequest) => {
-    await sendEmail(value);
-    if (data?.msg == 'ok') {
+    const result = await sendEmail(value);
+    if (result.msg == 'ok') {
       message.success(t("Evaluation.form.success"));
+      form.resetFields();
     }
     else {
       message.error(t("Evaluation.form.fail"));
     }
-    form.resetFields();
   };
 
 
