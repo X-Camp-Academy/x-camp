@@ -1,29 +1,35 @@
 .partners {
-  margin-top: 140px;
+  margin-top: 64px;
   margin-bottom: 100px;
+  text-align: center;
   .title {
-    width: 242px;
-    height: 72px;
-    text-align: center;
     color: #172142;
     font-size: 36px;
     font-weight: 600;
     line-height: 72px;
-    background-image: url("/image/home/partners-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    position: relative;
     @media (max-width: 768px) {
       width: 100%;
       padding-left: 15px;
       padding-right: 15px;
     }
   }
+
+  .titleBg {
+    margin-top: -32px;
+    display: block;
+    width: 130px;
+    height: 16px;
+    background-image: url("/image/home/home-title-bg-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .paragraph {
     color: #172142;
     font-size: 18px;
     font-weight: 500;
     line-height: 34px;
-    text-align: center;
     margin: auto 40px 56px 40px;
     @media (max-width: 768px) {
       margin: auto auto 40px;

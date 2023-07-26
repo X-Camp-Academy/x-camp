@@ -25,7 +25,7 @@ const WeSupport: React.FC = () => {
           md={{ span: 12, order: 1 }}
         >
           <video className={styles.video} controls>
-            <source src="https://media.strapi.turingstar.com.cn/production/2023/7/1st_Tic_Tac_toe_d73c6e87d5.mp4?updated_at=2023-07-11T17:26:59.659Z" type="video/mp4" />
+            <source src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?updated_at=2023-07-26T08:23:18.159Z" type="video/mp4" />
           </video>
         </Col>
         <Col

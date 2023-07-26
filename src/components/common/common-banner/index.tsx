@@ -19,6 +19,7 @@ const CommonBanner: React.FC<CommonBannerProps> = ({ leftNode, rightNode }) => {
             xs={24}
             sm={24}
             md={{ span: 8, offset: 2 }}
+            className={styles.right}
           >
             {rightNode}
           </Col>

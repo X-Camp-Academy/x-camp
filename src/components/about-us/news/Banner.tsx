@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import { Space, Typography, DatePicker, DatePickerProps, Row, Col } from "antd";
+import { Space, Typography, DatePicker, DatePickerProps, Image } from "antd";
 import dayjs from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
+import CommonBanner from "@/components/common/common-banner";
 import styles from "./Banner.module.scss";
 
 const { Title, Paragraph } = Typography;
@@ -23,41 +24,32 @@ const Banner = ({ year, setYear }: Props) => {
   const customFormat: DatePickerProps["format"] = (value) =>
     `${value.format("YYYY")}${getTransResult(lang, `${t("Year")}`, ` ${t("Year")}`)}`;
 
-  return (
-    <div className={styles.topBannerContainer}>
-      <div className="container">
-        <Row>
-          <Col xs={24} sm={24} md={14} className={styles.col}>
-            <Space direction="vertical">
-              <Title className={styles.title}>{t("News")}</Title>
-              <Paragraph className={styles.paragraph}>{t("News.Desc")}</Paragraph>
-              <DatePicker
-                className={styles.date}
-                picker="year"
-                format={customFormat}
-                onChange={onChange}
-                defaultValue={dayjs(year)}
-              />
-            </Space>
-          </Col>
-          <Col
-            xs={24}
-            sm={24}
-            md={{ span: 8, offset: 2 }}
-            className={styles.col}
-          >
-            <div className={styles.bannerImgContainer}>
-              <div className={styles.colorSquare}></div>
-              <img
-                alt="image"
-                src="/image/about-us/news-banner.png"
-                className={styles.image}
-              />
-            </div>
-          </Col>
-        </Row>
-      </div>
+
+  const leftNode = (
+    <Space direction="vertical">
+      <Title className={styles.title}>{t("News")}</Title>
+      <Paragraph className={styles.paragraph}>{t("News.Desc")}</Paragraph>
+      <DatePicker
+        className={styles.date}
+        picker="year"
+        format={customFormat}
+        onChange={onChange}
+        defaultValue={dayjs(year)}
+      />
+    </Space>
+  );
+  const rightNode = (
+    <div className={styles.imgContain}>
+      <Image
+        alt="image"
+        src="/image/about-us/news-banner.png"
+        preview={false}
+        className={styles.image}
+      />
     </div>
+  );
+  return (
+    <CommonBanner leftNode={leftNode} rightNode={rightNode} />
   );
 };
 

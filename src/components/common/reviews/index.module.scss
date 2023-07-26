@@ -3,6 +3,26 @@
   .reviews {
     padding: 100px 60px 100px;
     position: relative;
+    .title {
+      width: 242px;
+      height: 72px;
+      text-align: center;
+      color: #172142;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 72px;
+      background-image: url("/image/home/partners-bg.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      @media (max-width: 768px) {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+    .reviewsBox {
+      margin-top: 64px;
+    }
     .prev {
       background-color: #ffad11;
       position: absolute;
