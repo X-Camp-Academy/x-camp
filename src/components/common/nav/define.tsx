@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { XStarMenuItemType } from "./x-star-menu";
 import { useRouter } from "next/navigation";
-import { CalendarOutlined, UserAddOutlined } from "@ant-design/icons";
+import { CalendarOutlined, RightOutlined, UserAddOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 
 export const useMenuItems = () => {
@@ -158,7 +158,7 @@ export const useMenuItems = () => {
           btn: (
             <>
               <span onClick={() => { router.push('/about-us/introduction') }}>{t("LearnMore")}</span>
-              <CalendarOutlined />
+              <RightOutlined />
             </>
           ),
         },
