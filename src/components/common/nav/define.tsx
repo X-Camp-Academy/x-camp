@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { XStarMenuItemType } from "./x-star-menu";
 import { useRouter } from "next/navigation";
-import { CalendarOutlined, UserAddOutlined } from "@ant-design/icons";
+import { CalendarOutlined, RightOutlined, UserAddOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 
 export const useMenuItems = () => {
@@ -76,13 +76,12 @@ export const useMenuItems = () => {
         left: {
           title: t("Resources"),
           description: t("SchoolCalendar.Description"),
-          /* btn: (
+          btn: (
             <>
               <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
-          ), */
-          showBtn: false, // 不显示左下角的按钮
+          ),
         },
       },
       children: [
@@ -155,11 +154,11 @@ export const useMenuItems = () => {
       dropdown: {
         left: {
           title: t("SchoolCalendar"),
-          description: t("SchoolCalendar.Description"),
+          description: t("AboutUs.Description"),
           btn: (
             <>
-              <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
-              <CalendarOutlined />
+              <span onClick={() => { router.push('/about-us/introduction') }}>{t("LearnMore")}</span>
+              <RightOutlined />
             </>
           ),
         },

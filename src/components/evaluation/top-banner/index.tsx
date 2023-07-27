@@ -22,7 +22,7 @@ const TopBanner = () => {
             </Space>
           </Col>
           <Col xs={24} sm={24} md={{ span: 8, offset: 2 }} className={styles.rightCol}>
-            <Space direction={"vertical"} size={32}>
+            <Space direction={"vertical"} size={32} className={styles.btnGroup}>
               <Button
                 type={"primary"}
                 className={styles.button}
