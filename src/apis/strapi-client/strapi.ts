@@ -3,7 +3,6 @@ import { useHandleError } from "@/utils/error";
 import { useRequest } from "ahooks";
 import {
   AboutUsJoinUsCategory,
-  GetAboutUsAchievementsAward,
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAlumniMapRequest,
   GetAboutUsJoinUsRequest,
@@ -14,7 +13,6 @@ import {
   GetFacultyResponse,
   GetHomeStudentProjectsRequest,
   GetNewEventRequest,
-  GetNewEventResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
   GetReviewsRequest,

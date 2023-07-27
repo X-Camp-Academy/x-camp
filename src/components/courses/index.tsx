@@ -93,10 +93,10 @@ const Courses: React.FC = () => {
         return courses?.data?.filter(
           (item) => item?.attributes?.classMode === "Online Live"
         );
-      case "In-person Classes":
-        return courses?.data?.filter(
-          (item) => item?.attributes?.classMode === "In-person"
-        );
+      // case "In-person Classes":
+      //   return courses?.data?.filter(
+      //     (item) => item?.attributes?.classMode === "In-person"
+      //   );
       case "Camps Classes":
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
@@ -130,7 +130,7 @@ const Courses: React.FC = () => {
 
   // 固定所有的数据
   const allCourses = COURSE_TYPES.map((courseType, index) => {
-    if (index < 3) {
+    if (index < 2) {
       return generateCourses(courseType, courseLevelTypeData);
     } else {
       return generateCourses(courseType, [courseType]);
