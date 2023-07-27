@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Image, Typography } from "antd";
-import styles from "./TopBanner.module.scss";
+import styles from "./Banner.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
