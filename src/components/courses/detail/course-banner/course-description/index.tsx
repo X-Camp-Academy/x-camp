@@ -21,9 +21,9 @@ const CourseDescription: React.FC = () => {
     courseCode,
     classMode,
     classLang,
-    classRoomLang,
-    startDate,
-    endDate,
+    spokenLang,
+    startDateTime,
+    endDateTime,
     media,
     courseTitleZh,
     courseTitleEn,
@@ -43,8 +43,8 @@ const CourseDescription: React.FC = () => {
   };
 
   const fullPath = window.location.href;
-  const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${classRoomLang}\n开始结束时间：${formatDate(startDate || '')} ~ ${formatDate(endDate || '')}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}\n更多课程：https://www-new.x-camp.academy/courses/`;
-  const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${classRoomLang}\nCourse time: ${formatDate(startDate || '')} ~ ${formatDate(endDate || '')}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
+  const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatDate(startDateTime || '')} ~ ${formatDate(endDateTime || '')}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}\n更多课程：https://www-new.x-camp.academy/courses/`;
+  const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${spokenLang}\nCourse time: ${formatDate(startDateTime || '')} ~ ${formatDate(endDateTime || '')}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
 
   const imageMimes = [
     "image/jpeg",
@@ -105,10 +105,10 @@ const CourseDescription: React.FC = () => {
             {classLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("ClassroomLanguage")}>
-            {classRoomLang}
+            {spokenLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
-            {`${formatDate(startDate || "")} - ${formatDate(endDate || "")}`}
+            {`${formatDate(startDateTime || "")} - ${formatDate(endDateTime || "")}`}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
             {courseFormat}

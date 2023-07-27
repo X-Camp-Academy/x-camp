@@ -16,9 +16,7 @@ const { Content } = Layout;
 const Introduction: React.FC = () => {
   // TODO History wait Charlie提供
   // TODO ISPI组件移动端下还可以优化一下
-  const { data: facultyData } = useGetFaculty({
-    pageName: ["/about-us/introduction/"],
-  });
+  const { data: facultyData } = useGetFaculty({});
 
   return (
     <Layout className={styles.introductionContainer}>
