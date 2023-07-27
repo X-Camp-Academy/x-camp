@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { Row, Col } from "antd";
-import styles from "./AddressMap.module.scss";
 import { useMobile } from "@/utils";
+import styles from "./AddressMap.module.scss";
 
 const AddressMap: React.FC = () => {
   const isMobile = useMobile();

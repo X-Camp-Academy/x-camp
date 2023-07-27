@@ -16,7 +16,7 @@ const ArtOfProgrammingResults = dynamic(
   () => import("@/components/about-us/achievements/ArtOfProgrammingResults")
 );
 
-const Achievements = () => {
+const Achievements: React.FC = () => {
   const { data: projectsDemo } = useGetProjectsDemo();
 
   return (

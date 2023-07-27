@@ -6,10 +6,10 @@ import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
 
-const TopBanner: React.FC = () => {
+const Banner: React.FC = () => {
   const { format: t } = useLang();
   return (
-    <div className={styles.topBannerContainer}>
+    <div className={styles.bannerContainer}>
       <div className="container">
         <Row>
           <Col xs={24} sm={24} md={14} className={styles.col}>
@@ -32,4 +32,4 @@ const TopBanner: React.FC = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;

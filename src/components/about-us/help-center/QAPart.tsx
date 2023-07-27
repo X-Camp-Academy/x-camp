@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
 import { Typography } from "antd";
-import styles from "./QAPart.module.scss";
-import QACard from "@/components/common/q&a";
-import { useGetFaq } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
+import QACard from "@/components/common/q&a";
+import { useGetFaq } from "@/apis/strapi-client/strapi";
+import styles from "./QAPart.module.scss";
 
 const { Title } = Typography;
 
-const QAPart = () => {
+const QAPart: React.FC = () => {
   const { lang } = useLang();
   const { data: faq } = useGetFaq({
     ready: true,
