@@ -76,13 +76,12 @@ export const useMenuItems = () => {
         left: {
           title: t("Resources"),
           description: t("SchoolCalendar.Description"),
-          /* btn: (
+          btn: (
             <>
               <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
-          ), */
-          showBtn: false, // 不显示左下角的按钮
+          ),
         },
       },
       children: [
@@ -155,10 +154,10 @@ export const useMenuItems = () => {
       dropdown: {
         left: {
           title: t("SchoolCalendar"),
-          description: t("SchoolCalendar.Description"),
+          description: t("AboutUs.Description"),
           btn: (
             <>
-              <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
+              <span onClick={() => { router.push('/about-us/introduction') }}>{t("LearnMore")}</span>
               <CalendarOutlined />
             </>
           ),
