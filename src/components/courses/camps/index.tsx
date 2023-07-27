@@ -1,28 +1,38 @@
 "use client";
-import { ConfigProvider, Layout } from "antd";
 import React from "react";
-import styles from "./index.module.scss";
+import { Layout } from "antd";
+import { useParams, usePathname } from "next/navigation";
+import { useLang } from "@/hoc/with-intl/define";
+import ColorfulCard from "@/components/common/colorful-card";
+import CourseAbstract from "@/components/common/course-abstract";
+import Reviews from "@/components/common/reviews";
+import Faqs from "@/components/common/faqs";
 import TopBanner from "./top-banner";
 import CampIntro from "./camp-intro";
-import CampCarousel from "./camp-carousel";
-import CourseAbstract from "../detail/top-banner/course-card/course-abstract";
-import ColorfulCard from "@/components/common/colorful-card";
-import Testimony from "@/components/home/Testimony";
-import Faqs from "@/components/common/faqs";
 import {
   useGetCourses,
   useGetFaq,
-  useGetTestimony,
+  useGetReviews,
 } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
-import { usePathname } from "next/navigation";
-import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
+
 const { Content } = Layout;
-const CourseCamps = () => {
-  const { format: t } = useLang();
+
+const CourseCamps: React.FC = () => {
+  const params = useParams();
   const pathname = usePathname();
+  const { format: t } = useLang();
+  // 请求当前 courseId 的评论
+
+  const { data: coursesData } = useGetCourses({
+    filters: {
+      id: { $eq: Number(params?.courseId) },
+    },
+  });
+
   // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
-  const { data: courses } = useGetCourses({
+  const { data: campsCourse } = useGetCourses({
     filters: {
       isCamp: {
         $eq: true,
@@ -31,44 +41,36 @@ const CourseCamps = () => {
   });
 
   const { data: faq } = useGetFaq({
-    ready: Boolean(courses),
+    ready: Boolean(campsCourse),
     category: FaqCategory.CampsQA,
     pageName: [pathname],
   });
   // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
-  const { data: testimonyData } = useGetTestimony({
-    ready: Boolean(courses),
-    courseId: courses?.data?.map((v) => String(v?.id)),
+  const { data: reviewsData } = useGetReviews({
+    ready: Boolean(campsCourse),
+    courseId: campsCourse?.data?.map((v) => String(v?.id)),
     pageName: [pathname],
   });
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.courseCamps}>
-        <Content>
-          <TopBanner />
-          <CampIntro />
-          {/* <CampCarousel /> */}
-          <div className={styles.courseCard}>
-            <div className="container">
-              <ColorfulCard border={"bottom"} index={1} animate={false}>
-                <div className={styles.cardContent}>
-                  <CourseAbstract />
-                </div>
-              </ColorfulCard>
-            </div>
+    <Layout className={styles.courseCamps}>
+      <Content>
+        <TopBanner />
+        <CampIntro />
+        {/* <CampCarousel /> */}
+        <div className={styles.courseCard}>
+          <div className="container">
+            <ColorfulCard border={"bottom"} index={1} animate={false}>
+              <div className={styles.cardContent}>
+                <CourseAbstract {...coursesData?.data[0]?.attributes} />
+              </div>
+            </ColorfulCard>
           </div>
-          <Faqs title={t("CampsFAQs")} data={faq} />
-          <Testimony testimonyData={testimonyData} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+        </div>
+        <Faqs title={t("CampsFAQs")} data={faq} />
+        <Reviews reviewsData={reviewsData} />
+      </Content>
+    </Layout>
   );
 };
 

@@ -1,23 +1,21 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Space, Typography, Card, Image, Button, Carousel } from "antd";
-import styles from "./Faculty.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import { useGetFaculty } from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import Link from "next/link";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
 import ColorfulCard from "../common/colorful-card";
+import { useGetFaculty } from "@/apis/strapi-client/strapi";
+import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
+import styles from "./Faculty.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
   const { format: t, lang } = useLang();
-  const { data } = useGetFaculty({
-    pageName: ["/home/"],
-  });
+  const { data } = useGetFaculty({});
 
   const facultyData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order

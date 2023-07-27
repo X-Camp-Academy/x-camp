@@ -1,18 +1,14 @@
 'use client';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  ConfigProvider,
   Layout,
   Space,
   Image,
   Menu,
-  Input,
   Button,
   MenuProps,
-  Select,
-  Spin,
 } from 'antd';
-import { SearchOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { UnorderedListOutlined } from '@ant-design/icons';
 import 'animate.css';
 import styles from './index.module.scss';
 import { useMobile } from '@/utils';
@@ -21,7 +17,6 @@ import XStarMenu from './x-star-menu';
 import { useAuth } from '@/hoc/with-auth/define';
 import DropdownUserMenu from '../dropdown-user-menu';
 import { apiConfig } from '@/config/index';
-
 import { getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
 import { usePathname } from 'next/navigation';
@@ -118,80 +113,72 @@ const Nav = () => {
     }
   };
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: '#FFAD11',
-        },
-      }}
-    >
-      <Layout className={styles.headerContainer}>
-        <Header className={`${styles.header} container`}>
-          <Space align="center" className={styles.space}>
-            <Space>
-              <Image
-                src="/logo/logo.svg"
-                alt="logo"
-                preview={false}
-                className={styles.image}
+    <Layout className={styles.headerContainer}>
+      <Header className={`${styles.header} container`}>
+        <Space align="center" className={styles.space}>
+          <Space>
+            <Image
+              src="/logo/logo.svg"
+              alt="logo"
+              preview={false}
+              className={styles.image}
+            />
+            {!isMobile && ( // 缓存原因需要强制销毁重建组件
+              <XStarMenu
+                selectedKey={current}
+                items={menuItems}
+                className={styles.menu}
+                onClick={setCurrentKey}
               />
-              {!isMobile && ( // 缓存原因需要强制销毁重建组件
-                <XStarMenu
-                  selectedKey={current}
-                  items={menuItems}
-                  className={styles.menu}
-                  onClick={setCurrentKey}
-                />
-              )}
-            </Space>
-            <Space size={'middle'}>
-              <SelectPage />
-              {!isMobile && (
-                <>
-                  {user ? (
-                    <Space size={12}>
-                      <DropdownUserMenu user={user} logout={logout} />
-                      <Button
-                        className={styles.study}
-                        type="primary"
-                        onClick={() => window.open(`${xydApi}/courses`)}
-                      >
-                        {t('ToStudy')}
-                      </Button>
-                    </Space>
-                  ) : (
-                    <Button type="primary" href="/login">
-                      {t('Nav.Login')}
-                    </Button>
-                  )}
-                  <div onClick={toggle} className={styles.intl}>
-                    <div className={styles.img} />
-                    <span>{getTransResult(lang, '中文', 'English')}</span>
-                  </div>
-                </>
-              )}
-              {isMobile && (
-                <Button type="primary" onClick={onChangeShowMenu}>
-                  <UnorderedListOutlined />
-                </Button>
-              )}
-            </Space>
+            )}
           </Space>
-          {isMobile && showMenu && (
-            <Space ref={ref} direction="vertical" className={styles.showMenu}>
-              <Menu
-                mode="inline"
-                openKeys={openKeys}
-                selectedKeys={[current]}
-                onOpenChange={onOpenMobileMenuChange}
-                items={mobileMenuItems}
-                onClick={({ key }) => setCurrentKey(key)}
-              />
-            </Space>
-          )}
-        </Header>
-      </Layout>
-    </ConfigProvider>
+          <Space size={'middle'}>
+            <SelectPage />
+            {!isMobile && (
+              <>
+                {user ? (
+                  <Space size={12}>
+                    <DropdownUserMenu user={user} logout={logout} />
+                    <Button
+                      className={styles.study}
+                      type="primary"
+                      onClick={() => window.open(`${xydApi}/courses`)}
+                    >
+                      {t('ToStudy')}
+                    </Button>
+                  </Space>
+                ) : (
+                  <Button type="primary" href="/login">
+                    {t('Nav.Login')}
+                  </Button>
+                )}
+                <div onClick={toggle} className={styles.intl}>
+                  <div className={styles.img} />
+                  <span>{getTransResult(lang, '中文', 'English')}</span>
+                </div>
+              </>
+            )}
+            {isMobile && (
+              <Button type="primary" onClick={onChangeShowMenu}>
+                <UnorderedListOutlined />
+              </Button>
+            )}
+          </Space>
+        </Space>
+        {isMobile && showMenu && (
+          <Space ref={ref} direction="vertical" className={styles.showMenu}>
+            <Menu
+              mode="inline"
+              openKeys={openKeys}
+              selectedKeys={[current]}
+              onOpenChange={onOpenMobileMenuChange}
+              items={mobileMenuItems}
+              onClick={({ key }) => setCurrentKey(key)}
+            />
+          </Space>
+        )}
+      </Header>
+    </Layout>
   );
 };
 

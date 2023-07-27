@@ -1,40 +1,37 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
+import { useGetFaculty } from "@/apis/strapi-client/strapi";
 
 const Banner = dynamic(() => import("./Banner"));
 const ISPI = dynamic(() => import("./ISPI"));
 const UsacoMedal = dynamic(() => import("./UsacoMedal"));
 const Results = dynamic(() => import("./Results"));
-const XCampFounder = dynamic(() => import("@/components/common/xcamp-founder"));
-const FacultyCoach = dynamic(() => import("./FacultyCoach"));
+const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
+const FacultyCoach = dynamic(() => import("@/components/common/faculty-coach"));
 const { Content } = Layout;
 
 const Introduction: React.FC = () => {
+  // TODO History wait Charlie提供
+  // TODO ISPI组件移动端下还可以优化一下
+  const { data: facultyData } = useGetFaculty({});
+
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.introductionContainer}>
-        <Content>
-          <Banner />
-          <XCampFounder />
-          <UsacoMedal />
-          <ISPI />
+    <Layout className={styles.introductionContainer}>
+      <Content>
+        <Banner />
+        <XCampFounders />
+        <UsacoMedal />
+        <ISPI />
 
-          {/* ! TODO */}
-          {/* <Results /> */}
+        {/* ! TODO */}
+        {/* <Results /> */}
 
-          <FacultyCoach />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+        <FacultyCoach data={facultyData} />
+      </Content>
+    </Layout>
   );
 };
 

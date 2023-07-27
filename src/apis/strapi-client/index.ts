@@ -17,8 +17,8 @@ import {
   GetResourcesContestResponse,
   GetXAlumniRequest,
   GetXAlumniResponse,
-  GetTestimonyRequest,
-  GetTestimonyResponse,
+  GetReviewsRequest,
+  GetReviewsResponse,
   GetAboutUsAlumniMapRequest,
   GetAboutUsAlumniMapResponse,
   GetNewEventRequest,
@@ -43,29 +43,6 @@ import {
 
 const { strapiServer } = apiConfig;
 
-/**
- * @description 将params转换为strapi filter识别的类型
- * @param {Object} params : 参数对象
- * @example  {
-        populate: '*',
-        filters: {
-          $or: [
-            {
-              date: {
-                $eq: '2020-01-01',
-              },
-            },
-            {
-              date: {
-                $eq: '2020-01-02',
-              },
-            },
-          ],
-        },
-      },
-    ],
-  }   to   ?populate=*&filters[$or][0][date][$eq]=2020-01-01&filters[$or][1][date][$eq]=2020-01-02
- */
 export const getParamsStringify: (params: any) => string = (params) => {
   const keyStack: string[] = [];
   let paramStrArr: any[] = [];
@@ -175,13 +152,8 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getTestimony(
-    params: GetTestimonyRequest
-  ): Promise<GetTestimonyResponse> {
-    const res = await this.get(
-      "/xc-testimonies" + getParamsStringify(params),
-      {}
-    );
+  async getReviews(params: GetReviewsRequest): Promise<GetReviewsResponse> {
+    const res = await this.get("/xc-reviews" + getParamsStringify(params), {});
     return res;
   }
 

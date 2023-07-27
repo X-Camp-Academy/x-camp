@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
-import { ConfigProvider, Layout } from "antd";
-import styles from "./index.module.scss";
-import { Content } from "antd/es/layout/layout";
+import { Layout } from "antd";
 import dynamic from "next/dynamic";
 import { useGetProjectsDemo } from "@/apis/strapi-client/strapi";
-const TopBanner = dynamic(
-  () => import("@/components/about-us/achievements/TopBanner")
+import styles from "./index.module.scss";
+
+const { Content } = Layout;
+const Banner = dynamic(
+  () => import("@/components/about-us/achievements/Banner")
 );
 const USACOWinners = dynamic(
   () => import("@/components/about-us/achievements/USACOWinners")
@@ -19,21 +20,13 @@ const Achievements = () => {
   const { data: projectsDemo } = useGetProjectsDemo();
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.introductionContainer}>
-        <Content>
-          <TopBanner />
-          <USACOWinners />
-          <ArtOfProgrammingResults data={projectsDemo} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.introductionContainer}>
+      <Content>
+        <Banner />
+        <USACOWinners />
+        <ArtOfProgrammingResults data={projectsDemo} />
+      </Content>
+    </Layout>
   );
 };
 

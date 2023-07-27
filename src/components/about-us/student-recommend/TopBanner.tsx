@@ -1,10 +1,11 @@
 import { Space, Row, Col, Image, Typography } from "antd";
 import styles from "./TopBanner.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
 const { Title, Paragraph } = Typography;
 
 const TopBanner = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   return (
     <div className={styles.topBannerContainer}>
       <div className="container">
@@ -16,9 +17,9 @@ const TopBanner = () => {
                 {t("ReferralProgram.Desc1")}
                 <br></br>
                 {t("Earn")}
-                <span> $100 </span>
+                <span>{getTransResult(lang, '$100', ' $100 ')}</span>
                 {t("ReferralProgram.Desc2")}
-                <span> $50 </span>
+                <span>{getTransResult(lang, '$50', ' $50 ')}</span>
                 {t("ReferralProgram.Desc3")}
               </Paragraph>
             </Space>
@@ -27,7 +28,7 @@ const TopBanner = () => {
             <Space direction="vertical">
               <Image
                 alt="image"
-                src="/image/about-us/student-recommend/top-banner.png"
+                src="/image/about-us/banner-background.png"
                 preview={false}
                 className={styles.image}
               />

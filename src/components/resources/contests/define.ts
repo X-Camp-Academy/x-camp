@@ -17,24 +17,6 @@ enum MonthAbbreviation {
   Dec = "Dec",
 }
 
-/**
- * 映射为对应的季度
- */
-export const Quarter = {
-  [MonthAbbreviation.Jan]: 1,
-  [MonthAbbreviation.Feb]: 1,
-  [MonthAbbreviation.Mar]: 1,
-  [MonthAbbreviation.Apr]: 2,
-  [MonthAbbreviation.May]: 2,
-  [MonthAbbreviation.Jun]: 2,
-  [MonthAbbreviation.Jul]: 3,
-  [MonthAbbreviation.Aug]: 3,
-  [MonthAbbreviation.Sep]: 3,
-  [MonthAbbreviation.Oct]: 4,
-  [MonthAbbreviation.Nov]: 4,
-  [MonthAbbreviation.Dec]: 4,
-};
-
 export interface ContestsByMonthInterface {
   month: MonthAbbreviation;
   contests?: StrapiResponseDataItem<GetNewEvent>[];

@@ -15,13 +15,13 @@ const TopBanner = () => {
             <div className={styles.title}>{t("WeeklyOpenHouse")}</div>
             <div className={styles.description}>{t("OpenHouse.Desc")}</div>
             <Button className={styles.btn} onClick={() => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') }}>
-              <span>{"Join The Meeting"}</span>
+              <span>{t("ZoomLink")}</span>
               <img src="/image/resources/weekly-open-house-btn.png" alt="" />
             </Button>
             <div className={styles.dateTime}>{t("JoinWay.Time")}</div>
           </Space>
 
-          <img src="/image/resources/weekly-open-house-banner.png"></img>
+          <img src="/image/resources/weekly-open-house-banner.png" alt=""></img>
         </Space>
       </div>
     </div>

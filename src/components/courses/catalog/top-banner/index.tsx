@@ -45,7 +45,9 @@ const TopBanner = () => {
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
-                {t("PlacementTest")}
+                <Link href="/Evaluation" target="_blank">
+                  {t("PlacementTest")}
+                </Link>
               </Button>
               <Button
                 type={"primary"}
@@ -53,7 +55,7 @@ const TopBanner = () => {
                 icon={<CaretRightOutlined />}
               >
                 <Link href="/" target="_blank">
-                  {t("TrialCourse")}
+                  {t("1On1Consultation")}
                 </Link>
               </Button>
             </Space>

@@ -10,18 +10,11 @@ import dayjs from "dayjs";
 const cx = classNames.bind(styles);
 const { Paragraph } = Typography;
 
-export enum ContestCardAlign {
-  Center = "center",
-  Left = "left",
-  Right = "right",
-}
-
 interface Props {
   data: ContestsByMonthInterface;
-  align?: ContestCardAlign;
 }
 
-const ContestCard = ({ data, align }: Props) => {
+const ContestCard = ({ data }: Props) => {
   const { lang } = useLang();
   return (
     <div className={styles.card}>
@@ -31,9 +24,7 @@ const ContestCard = ({ data, align }: Props) => {
         direction="vertical"
         className={cx(
           styles.content,
-          align === ContestCardAlign.Left && styles.contentLeft,
-          align === ContestCardAlign.Center && styles.contentCenter,
-          align === ContestCardAlign.Right && styles.contentRight
+          styles.contentCenter
         )}
       >
         {data?.contests?.map((v, index) => {

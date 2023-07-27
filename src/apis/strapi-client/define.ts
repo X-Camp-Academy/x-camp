@@ -94,7 +94,7 @@ export interface GetAboutUsAchievementsAward extends strapiPublicFields {
   order: number;
 }
 
-export interface GetTestimony extends strapiPublicFields {
+export interface GetReviews extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   score: number;
@@ -104,7 +104,7 @@ export interface GetTestimony extends strapiPublicFields {
   courseId: string;
   pageName: string;
   eventId: string;
-  date: string;
+  datetime: string;
 }
 
 export type GetAboutUsAchievementsAwardRequest =
@@ -120,8 +120,8 @@ export type GetCourseLevelTypeResponse = StrapiResponse<GetCourseLevelType>;
 
 export interface GetClasses extends strapiPublicFields {
   classCode: string;
-  startTime: string;
-  endTime: string;
+  startDateTime: string;
+  endDateTime: string;
   isFull: boolean;
   location: string;
   order: number;
@@ -130,7 +130,7 @@ export interface GetClasses extends strapiPublicFields {
 export interface GetCourses extends strapiPublicFields {
   classMode: string;
   classLang: string;
-  classRoomLang: string;
+  spokenLang: string;
   courseCode: string;
   classes: {
     data: StrapiResponseDataItem<GetClasses>[];
@@ -140,6 +140,8 @@ export interface GetCourses extends strapiPublicFields {
   courseLongDescriptionZh: string;
   courseShortDescriptionEn: string[];
   courseShortDescriptionZh: string[];
+  courseSyllabusEn: string[];
+  courseSyllabusZh: string[];
   courseTitleEn: string;
   courseTitleZh: string;
   isCamp: boolean;
@@ -162,9 +164,10 @@ export interface GetCourses extends strapiPublicFields {
   registerLink: string;
   isBundle: boolean;
   bundleRegisterLink: string;
-  startDate: string;
-  endDate: string;
+  startDateTime: string;
+  endDateTime: string;
   courseFormat: string;
+  additionalInfo: string;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
@@ -242,8 +245,8 @@ export interface GetAboutUsAlumniMap extends strapiPublicFields {
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
 
-export type GetTestimonyRequest = StrapiRequest<GetTestimony>;
-export type GetTestimonyResponse = StrapiResponse<GetTestimony>;
+export type GetReviewsRequest = StrapiRequest<GetReviews>;
+export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
 export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
 export type GetAboutUsAlumniMapResponse =

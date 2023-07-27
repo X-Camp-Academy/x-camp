@@ -12,6 +12,19 @@
     margin-bottom: 120px;
   }
 
+  .MoreUSACO::before{
+    content: '';
+    display: inline-block;
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background: #FFAD11;
+    border: 3px solid #FFD600;
+  }
+
+
+
   :global(.ant-collapse) {
     border-block-start: none
   }

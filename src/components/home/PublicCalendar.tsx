@@ -1,14 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Typography, Calendar, Badge, Empty, Carousel } from "antd";
-import type { Dayjs } from "dayjs";
-import styles from "./PublicCalendar.module.scss";
+import { Space, Row, Col, Typography, Calendar, Badge, Empty, Carousel, Image } from "antd";
 import dayjs from "dayjs";
+import type { Dayjs } from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
+import { useLang } from "@/hoc/with-intl/define";
+import { formatTimezone, getTransResult } from "@/utils/public";
 import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
-import isBetween from "dayjs/plugin/isBetween";
+import styles from "./PublicCalendar.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -83,24 +83,25 @@ const PublicCalendar: React.FC = () => {
     pageSize,
   });
 
+  const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
+    if (endDateTime === '') {
+      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+    }
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+  }
+
+
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
-      setFilterDateEventList(
-        newEventData.data
-          ?.filter((item) =>
-            dayjs(selectDate).isBetween(
-              dayjs(item.attributes.startDateTime),
-              dayjs(item.attributes.endDateTime),
-              "days",
-              "[]"
-            )
-          )
-          .map((filteredItem) => ({
-            ...filteredItem?.attributes,
-          }))
-      );
+      const updatedEventDate = newEventData.data
+        ?.filter((item) => judgeDate(dayjs(selectDate), item?.attributes?.startDateTime || '', item?.attributes?.endDateTime || ''))
+        .map((filteredItem) => ({
+          ...filteredItem?.attributes,
+        }));
+      setFilterDateEventList(updatedEventDate);
     }
   };
+
   useEffect(() => {
     run({
       populate: "*",
@@ -129,6 +130,7 @@ const PublicCalendar: React.FC = () => {
     if (selectDate) {
       filterSameDateEvent(selectDate);
     }
+
   }, [selectDate]);
 
   const formatDate = (date: string) => {
@@ -143,13 +145,7 @@ const PublicCalendar: React.FC = () => {
 
   const cellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
-      if (event.startDateTime && event.endDateTime)
-        return value.isBetween(
-          event.startDateTime,
-          event.endDateTime,
-          "days",
-          "[]"
-        );
+      return judgeDate(value, event?.startDateTime || '', event?.endDateTime || '');
     });
     if (eventDataForDate) {
       return (
@@ -204,8 +200,8 @@ const PublicCalendar: React.FC = () => {
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
         <Title className={styles.title}>
-          X-Camp {t("Public")}
-          <Text className={styles.titleText}>{t("Calendar")}</Text>
+          X-Camp {t("Public")} {t("Calendar")}
+          <Image alt="" className={styles.titleImage} preview={false} src="/image/home/founding-team-bg.png" />
         </Title>
 
         <Row>
@@ -217,15 +213,17 @@ const PublicCalendar: React.FC = () => {
               slidesToScroll={1}
               vertical={true}
               verticalSwiping={true}
-            // autoplay={true}
+              autoplay={true}
+              autoplaySpeed={2000}
             >
               {newEventData?.data?.map((item, index) => {
                 return (
                   <div key={item?.id} className={styles.eventCard} >
                     <Space
-                      size={isMobile ? 8 : 72}
+                      size={isMobile ? 8 : 60}
                       align="center"
                       className={styles.eventContent}
+
                     >
                       <Space
                         direction="vertical"
@@ -285,25 +283,31 @@ const PublicCalendar: React.FC = () => {
                             )}`}
                           </Paragraph>
                         )}
-                        <Text className={styles.date}>
-                          {`${dayjs(item?.attributes?.startDateTime).isSame(
-                            dayjs(item?.attributes?.endDateTime),
-                            "day"
-                          )
-                            ? `${formatHourMinute(
-                              item?.attributes?.startDateTime || ""
-                            )} - 
-                                ${formatHourMinute(
-                              item?.attributes?.endDateTime || ""
-                            )} `
-                            : `${formatYMDTime(
-                              item?.attributes?.startDateTime || ""
-                            )} - ${formatYMDTime(
-                              item?.attributes?.endDateTime || ""
-                            )}`
-                            } ${formatTimezone(item?.attributes?.startDateTime)
-                              .timezone
+                        {/* 不跨天显示HH：mm,反之显示 年月日+HH：mm */}
+                        <Text
+                          className={styles.date}
+                          ellipsis={{
+                            tooltip:
+                              (dayjs(item?.attributes?.startDateTime)
+                                .isSame(dayjs(item?.attributes?.endDateTime), "day") ?
+                                formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "") :
+                                formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '')) + ' ' +
+                              formatTimezone(item?.attributes?.startDateTime).timezone
+                          }}
+                        >
+                          {`${dayjs(item?.attributes?.startDateTime)
+                            .isSame(
+                              dayjs(item?.attributes?.endDateTime),
+                              "day"
+                            )
+                            ?
+                            `${formatHourMinute(item?.attributes?.startDateTime || "")} - 
+                            ${formatHourMinute(item?.attributes?.endDateTime || "")} `
+                            :
+                            `${formatYMDTime(item?.attributes?.startDateTime || "")} 
+                             ${item?.attributes?.endDateTime ? '-' + formatYMDTime(item?.attributes?.endDateTime) : ''}`
                             } 
+                            ${formatTimezone(item?.attributes?.startDateTime).timezone} 
                             `}
                         </Text>
                       </Space>
@@ -331,9 +335,9 @@ const PublicCalendar: React.FC = () => {
                   <div className={styles.line}></div>
                 </Space>
                 <div style={{ height: 400, overflow: "scroll" }}>
-                  {filterDateEventList.length != 0 &&
+                  {filterDateEventList.length != 0 ? (
                     filterDateEventList.map((item, index) => {
-                      if (item?.startDateTime && item?.endDateTime)
+                      if (item?.startDateTime)
                         return (
                           <Space
                             key={index}
@@ -342,23 +346,14 @@ const PublicCalendar: React.FC = () => {
                           >
                             <Text className={styles.itemDate}>
                               {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
-
-                              {`${dayjs(item?.startDateTime).isSame(
-                                dayjs(item?.endDateTime),
-                                "day"
-                              )
-                                ? `${formatHourMinute(
-                                  item?.startDateTime || ""
-                                )} - 
-                                ${formatHourMinute(item?.endDateTime || "")}`
-                                : `${formatYMDTime(
-                                  item?.startDateTime || ""
-                                )} - ${formatYMDTime(
-                                  item?.endDateTime || ""
-                                )}`
+                              {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day")
+                                ?
+                                `${formatHourMinute(item?.startDateTime || "")} - ${formatHourMinute(item?.endDateTime || "")} `
+                                :
+                                `${formatYMDTime(item?.startDateTime || "")} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
                                 } 
-                                ${formatTimezone(item?.startDateTime).timezone
-                                }`}
+                                ${formatTimezone(item?.startDateTime).timezone} 
+                            `}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`
@@ -376,8 +371,7 @@ const PublicCalendar: React.FC = () => {
                             <div className={styles.itemLine}></div>
                           </Space>
                         );
-                    })}
-                  {filterDateEventList.length === 0 && (
+                    })) : (
                     <div
                       style={{
                         padding: "50px 0",
@@ -389,6 +383,7 @@ const PublicCalendar: React.FC = () => {
                       />
                     </div>
                   )}
+
                 </div>
               </Space>
             </Space>

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./index.module.scss";
-import { ConfigProvider, Layout } from "antd";
+import { Layout } from "antd";
 import TopBanner from "./top-banner";
 import Introduction from "./introduction";
 import Levels from "./5-levels";
@@ -32,22 +32,14 @@ const ProbsChallenge = () => {
   });
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#FFAD11",
-        },
-      }}
-    >
-      <Layout className={styles.page}>
-        <Content>
-          <TopBanner />
-          <Introduction />
-          <Levels />
-          <Faqs title={t("CampsFAQs")} data={faq} />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.page}>
+      <Content>
+        <TopBanner />
+        <Introduction />
+        <Levels />
+        <Faqs title={t("CampsFAQs")} data={faq} />
+      </Content>
+    </Layout>
   );
 };
 

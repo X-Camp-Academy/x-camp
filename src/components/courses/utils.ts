@@ -5,8 +5,8 @@ export const getWeeksDays = (frequency?: string) => {
 // 获取非空数据
 export const getLangResult = (
   lang: "zh" | "en",
-  zhData: string[],
-  enData: string[]
+  zhData?: string[],
+  enData?: string[]
 ) => {
   if (zhData === null && enData === null) {
     return [];

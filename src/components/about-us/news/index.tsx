@@ -1,13 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { ConfigProvider, Layout } from 'antd';
+import { Layout } from 'antd';
 import styles from './index.module.scss';
 import dynamic from 'next/dynamic';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { NewEventCategory } from '@/apis/strapi-client/define';
 import dayjs from 'dayjs';
 
-const TopBanner = dynamic(() => import('./TopBanner'));
+const Banner = dynamic(() => import('./Banner'));
 const Partners = dynamic(() => import('@/components/home/Partners'));
 const BecomePartner = dynamic(() => import('./BecomePartner'));
 const NewsCard = dynamic(() => import('./news-card'));
@@ -34,9 +34,6 @@ const NewsPage = () => {
 
   useEffect(() => {
     if (current && year) {
-      console.log(String(dayjs(year).valueOf()));
-      console.log(String(dayjs(String(+year + 1)).valueOf()));
-
       getNewEvent({
         populate: '*',
         sort: ['order:desc'],
@@ -59,28 +56,20 @@ const NewsPage = () => {
   }, [current, year]);
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: '#FFAD11',
-        },
-      }}
-    >
-      <Layout className={styles.QAContainer}>
-        <Content>
-          <TopBanner year={year} setYear={setYear} />
-          <NewsCard
-            newEventData={newEventData?.data}
-            current={current}
-            setCurrent={setCurrent}
-            pageSize={PAGE_SIZE}
-            total={total}
-          />
-          <Partners />
-          <BecomePartner />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+    <Layout className={styles.QAContainer}>
+      <Content>
+        <Banner year={year} setYear={setYear} />
+        <NewsCard
+          newEventData={newEventData?.data}
+          current={current}
+          setCurrent={setCurrent}
+          pageSize={PAGE_SIZE}
+          total={total}
+        />
+        <Partners />
+        <BecomePartner />
+      </Content>
+    </Layout>
   );
 };
 

@@ -2,59 +2,80 @@ import { File } from "buffer";
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
 
 export interface openClassEmailRequest {
-  name: string;
-  email: string;
-  grade: string;
-  phone: string; //手机或wechatID
+	name: string;
+	email: string;
+	grade: string;
+	phone: string; //手机或wechatID
 }
 
 export interface openClassEmailResponse {
-  code: number;
-  msg: string;
+	code: number;
+	msg: string;
 }
 
 export interface subscribeNewsletterRequest {
-  email: string;
+	email: string;
 }
 
 export interface subscribeNewsletterResponse {
-  code: number;
-  msg: string;
+	code: number;
+	msg: string;
 }
 
 export interface submitResumeResponse {
-  code: number;
-  msg: string;
+	code: number;
+	msg: string;
+}
+
+export interface submitEvaluationRequest {
+	stuName: string;
+	email: string;
+	phoneNumber: string;
+	grade: string;
+	codingBackground: string;
+	codingLanguage: string;
+	programmingExp: string;
+	aboutXcamp: string;
+}
+
+export interface submitEvaluationResponse {
+	code: number;
+	msg: string;
 }
 
 export class SendEmailClient extends BaseAxiosClient {
-  async sendOpenClassEmail(
-    req: openClassEmailRequest
-  ): Promise<openClassEmailResponse> {
-    const data: openClassEmailResponse = await this.post(
-      "/openClassEmail",
-      req,
-      this.jsonHeaders
-    );
-    return data;
-  }
+	async sendOpenClassEmail(
+		req: openClassEmailRequest
+	): Promise<openClassEmailResponse> {
+		const data: openClassEmailResponse = await this.post(
+			"/openClassEmail",
+			req,
+			this.jsonHeaders
+		);
+		return data;
+	}
 
-  async subscribeNewsletter(
-    req: subscribeNewsletterRequest
-  ): Promise<subscribeNewsletterResponse> {
-    const data: openClassEmailResponse = await this.post(
-      "/subscribeNewsletter",
-      req,
-      this.jsonHeaders
-    );
-    return data;
-  }
+	async subscribeNewsletter(
+		req: subscribeNewsletterRequest
+	): Promise<subscribeNewsletterResponse> {
+		const data: openClassEmailResponse = await this.post(
+			"/subscribeNewsletter",
+			req,
+			this.jsonHeaders
+		);
+		return data;
+	}
 
-  async submitResume(req: FormData): Promise<submitResumeResponse> {
-    const data = await this.post("/submitResume", req, this.dataHeaders);
-    return data;
-  }
+	async submitResume(req: FormData): Promise<submitResumeResponse> {
+		const data = await this.post("/submitResume", req, this.dataHeaders);
+		return data;
+	}
+
+	async submitEvaluation(req: submitEvaluationRequest): Promise<submitEvaluationResponse> {
+		const data = await this.post("/evaluation", req, this.jsonHeaders);
+		return data;
+	}
 }
 
 export const useSendEmailClient = () =>
-  useClient("sendEmail", SendEmailClient, "/v1");
+	useClient("sendEmail", SendEmailClient, "/v1");

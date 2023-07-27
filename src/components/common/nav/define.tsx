@@ -36,8 +36,8 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <Link href="/courses#classify0">{t("OnlineClasses")}</Link>,
-          key: "/courses/#classify0",
+          label: <a href="/courses#online">{t("OnlineClasses")}</a>,
+          key: "/courses/#online",
         },
         // {
         //   label: (
@@ -46,18 +46,18 @@ export const useMenuItems = () => {
         //   key: "/courses/100-prob-challenge",
         // },
         {
-          label: <Link href="/courses/camps">{t("In-personCamps")}</Link>,
-          key: "/courses/in-person-campus/",
+          label: <a href="/courses#camps">{t("In-personCamps")}</a>,
+          key: "/courses/#camps",
         },
         {
-          label: <Link href="/courses#classify5">{t("APCSClasses")}</Link>,
-          key: "/courses/#classify5",
+          label: <a href="/courses#apcs">{t("APCSClasses")}</a>,
+          key: "/courses/#apcs",
         },
         {
           label: (
-            <Link href="/courses#classify3">{t("EnhancementClasses")}</Link>
+            <a href="/courses#enhancement">{t("EnhancementClasses")}</a>
           ),
-          key: "/courses/enhancement-classes/",
+          key: "/courses/#enhancement",
         },
         {
           label: (
@@ -74,14 +74,15 @@ export const useMenuItems = () => {
       key: "resources",
       dropdown: {
         left: {
-          title: t("SchoolCalendar"),
+          title: t("Resources"),
           description: t("SchoolCalendar.Description"),
-          btn: (
+          /* btn: (
             <>
               <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
-          ),
+          ), */
+          showBtn: false, // 不显示左下角的按钮
         },
       },
       children: [
@@ -121,10 +122,10 @@ export const useMenuItems = () => {
           key: "calico",
         },
         {
-          label: <a href="https://www.stanfordacm.org/proco">Proco</a>,
+          label: <a href="https://www.stanfordacm.org/proco">ProCo</a>,
           key: "proco",
         },
-        
+
         {
           label: (
             <Link href="/resources/usaco-live-solutions">
@@ -201,7 +202,7 @@ export const useMenuItems = () => {
           key: "/about-us/news/",
         },
         {
-          label: <Link href="/about-us/help-center">{t("Q&A")}</Link>,
+          label: <Link href="/about-us/help-center">{t("FAQ")}</Link>,
           key: "/about-us/help-center/",
         },
         {
@@ -219,7 +220,7 @@ export const useMenuItems = () => {
       ],
     },
     {
-      label: <Link href="/">{t("Evaluation")}</Link>,
+      label: <Link href="/Evaluation">{t("Evaluation")}</Link>,
       key: "evaluation",
     },
   ];

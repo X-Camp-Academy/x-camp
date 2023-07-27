@@ -15,6 +15,8 @@ interface Props {
 
 const UsacoIntro = ({ data }: Props) => {
   const { format: t, lang } = useLang();
+
+
   return (
     <div className={styles.introduction}>
       <div className={"container"}>
@@ -79,13 +81,14 @@ const UsacoIntro = ({ data }: Props) => {
             </div>
           );
         })}
-        <div>
+        <div className={styles.MoreUSACO}>
           <a
             href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
             target={"_blank"}
           >
-            <Text underline className={styles.title}>
+            <Text className={styles.title}>
               {t("MoreUSACOSolution")}
+              <Text underline className={styles.title}>{t("MoreUSACOSolution.YoutubePlayList")}</Text>
             </Text>
           </a>
         </div>

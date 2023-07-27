@@ -64,10 +64,16 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
 
 
-  const dateCellRender = (value: Dayjs) => {
+  const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
+    if (endDateTime === '') {
+      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+    }
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+  }
+
+  const cellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
-      if (event.startDateTime && event.endDateTime)
-        return value.isBetween(event.startDateTime, event.endDateTime, 'days', '[]');
+      return judgeDate(value, event?.startDateTime || '', event?.endDateTime || '');
     });
     if (eventDataForDate) {
       return (
@@ -97,7 +103,7 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
       <Calendar
         fullscreen={false}
         className={className}
-        cellRender={dateCellRender}
+        cellRender={cellRender}
         onSelect={(date) => {
           setSelectDate(date.toString());
           onSelectDate(date.toString()); // 将选择的日期传递给父组件

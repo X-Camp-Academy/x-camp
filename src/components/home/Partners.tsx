@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { Space, Typography, Row, Col, Image } from "antd";
-import styles from "./Partners.module.scss";
-import { useMobile } from "@/utils";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./Partners.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -41,6 +40,7 @@ const Partners: React.FC = () => {
     <div className={`${styles.partners} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>{t("Partners")}</Title>
+        <Text className={styles.titleBg}></Text>
         <Paragraph className={styles.paragraph}>{t("Partners.Desc")}</Paragraph>
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>

@@ -1,0 +1,64 @@
+.evaluationFormContainer {
+  background-image: url("/image/evaluation/background.png");
+  background-repeat: no-repeat;
+  /* 背景图片固定左下角 */
+  background-position: 0% 100%;
+  padding-bottom: 70px;
+  .evaluationForm {
+    width: 100%;
+    .title {
+      font-size: 36px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 54px;
+      text-align: center;
+      margin: 90px 0;
+    }
+
+    :global {
+      .ant-select-selector {
+        border-radius: 4px;
+        border: 1px solid #d8d8d8;
+      }
+
+      .ant-input-lg {
+        border-radius: 4px;
+        border: 1px solid #d8d8d8;
+      }
+
+      .ant-btn.ant-btn-lg {
+        border-radius: 4px;
+      }
+
+      .ant-form-item .ant-form-item-explain-error {
+        margin-left: 20px;
+      }
+    }
+
+    .required {
+      :global(.ant-form-item-control-input::before) {
+        content: "*";
+        color: red;
+        font-size: 24px;
+        display: inline;
+        margin-right: 10px;
+      }
+    }
+
+    .unRequired {
+      :global(.ant-form-item-control-input::before) {
+        content: "*";
+        display: inline;
+        font-size: 24px;
+        margin-right: 10px;
+        opacity: 0;
+      }
+    }
+
+    .right {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}

@@ -13,9 +13,11 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import CourseCard from "../course-card";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
+import { useMobile } from "@/utils";
 
 const ScheduleTable = () => {
   const { format: t } = useLang();
+  const isMobile = useMobile();
   const [form] = Form.useForm();
   const defaultPagination = { page: 1, pageSize: 10 };
   const [pagination, setPagination] = useState(defaultPagination);
@@ -121,7 +123,7 @@ const ScheduleTable = () => {
     schoolQuarter ? newFilters['schoolQuarter'] = { $eq: schoolQuarter } : delete newFilters['schoolQuarter'];
 
 
-    const searchFields = ['classLang', 'classMode', 'classRoomLang', 'courseCode', 'courseTitleZh', 'courseTitleEn', 'courseShortDescriptionZh', 'courseShortDescriptionEn', 'courseLongDescriptionZh', 'courseLongDescriptionEn'];
+    const searchFields = ['classLang', 'classMode', 'spokenLang', 'courseCode', 'courseTitleZh', 'courseTitleEn', 'courseShortDescriptionZh', 'courseShortDescriptionEn', 'courseLongDescriptionZh', 'courseLongDescriptionEn'];
     const allSearchFields = searchFields?.map(searchField => {
       const item: { [key: string]: { $containsi: string } } = {};
       item[searchField] = { $containsi: search };
@@ -143,7 +145,7 @@ const ScheduleTable = () => {
     <div className={styles.scheduleTable}>
       <div className={"container"}>
 
-        <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
+        <Form layout={isMobile ? 'vertical' : 'inline'} form={form} className={styles.form} onFinish={onFinish}>
           <Row gutter={[16, 8]} className={styles.row}>
             {
               selectItems?.map((selectItem, index) => (
@@ -164,6 +166,7 @@ const ScheduleTable = () => {
                 <Input
                   suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
                   allowClear={true}
+
                 />
               </Form.Item>
             </Col>
@@ -191,7 +194,7 @@ const ScheduleTable = () => {
           style={{ textAlign: "center", marginTop: "56px" }}
         />
       </div>
-    </div>
+    </div >
   );
 };
 

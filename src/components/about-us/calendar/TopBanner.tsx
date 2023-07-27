@@ -21,7 +21,7 @@ const TopBanner = () => {
           <Col xs={24} sm={24} md={12} className={styles.col}>
             <Image
               alt="image"
-              src="/image/about-us/calendar/top-banner.png"
+              src="/image/about-us/banner-background.png"
               preview={false}
               className={styles.image}
             />
