@@ -123,7 +123,7 @@ const ScheduleTable = () => {
     schoolQuarter ? newFilters['schoolQuarter'] = { $eq: schoolQuarter } : delete newFilters['schoolQuarter'];
 
 
-    const searchFields = ['classLang', 'classMode', 'classRoomLang', 'courseCode', 'courseTitleZh', 'courseTitleEn', 'courseShortDescriptionZh', 'courseShortDescriptionEn', 'courseLongDescriptionZh', 'courseLongDescriptionEn'];
+    const searchFields = ['classLang', 'classMode', 'spokenLang', 'courseCode', 'courseTitleZh', 'courseTitleEn', 'courseShortDescriptionZh', 'courseShortDescriptionEn', 'courseLongDescriptionZh', 'courseLongDescriptionEn'];
     const allSearchFields = searchFields?.map(searchField => {
       const item: { [key: string]: { $containsi: string } } = {};
       item[searchField] = { $containsi: search };

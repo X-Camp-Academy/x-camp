@@ -39,13 +39,13 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
 
 
   const classesData = classes?.data?.map((classItem) => {
-    const { classCode, isFull, startTime, endTime, location } =
+    const { classCode, isFull, startDateTime, endDateTime, location } =
       classItem?.attributes;
     return {
       classCode,
       isFull,
-      startTime: startTime?.slice(0, -7),
-      endTime: endTime?.slice(0, -7),
+      startTime: startDateTime?.slice(0, -7),
+      endTime: endDateTime?.slice(0, -7),
       location,
     };
   });
