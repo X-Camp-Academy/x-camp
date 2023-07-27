@@ -185,14 +185,14 @@ const Courses: React.FC = () => {
   }, [hash, segmentedData]);
 
   const searchDate = (startDate: Dayjs, endDate: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
-    return dayjs(course?.attributes?.startDate)?.isBetween(startDate, endDate) &&
-      dayjs(course?.attributes?.endDate)?.isBetween(startDate, endDate);
+    return dayjs(course?.attributes?.startDateTime)?.isBetween(startDate, endDate) &&
+      dayjs(course?.attributes?.endDateTime)?.isBetween(startDate, endDate);
   }
   const searchInput = (inputValue: string, course: StrapiResponseDataItem<GetCourses>) => {
     const {
       classLang,
       classMode,
-      classRoomLang,
+      spokenLang,
       courseCode,
       courseTitleZh,
       courseTitleEn,
@@ -205,7 +205,7 @@ const Courses: React.FC = () => {
     const searchFields = [
       classLang,
       classMode,
-      classRoomLang,
+      spokenLang,
       courseCode,
       courseTitleZh,
       courseTitleEn,

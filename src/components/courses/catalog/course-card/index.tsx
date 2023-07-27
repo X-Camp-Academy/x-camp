@@ -17,8 +17,8 @@ const CourseCard: React.FC<GetCourses> = (props) => {
     recommendedLowerGrade,
     recommendedUpperGrade,
     classLang,
-    startDate,
-    endDate,
+    startDateTime,
+    endDateTime,
     lessonNum,
     frequency,
     tuitionRMB,
@@ -65,7 +65,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
               {classLang}
             </Descriptions.Item>
             <Descriptions.Item label={t("ClassesTime")}>
-              {`${dayjs(startDate)?.format('MM/DD/YYYY')} - ${dayjs(endDate)?.format('MM/DD/YYYY')}`}
+              {`${dayjs(startDateTime)?.format('MM/DD/YYYY')} - ${dayjs(endDateTime)?.format('MM/DD/YYYY')}`}
             </Descriptions.Item>
           </Descriptions>
         </Col>
