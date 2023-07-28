@@ -388,7 +388,6 @@ declare const json: {
   "USACO.youtube.recap": "Youtube回顾",
   "Fall.Director.noclass": "2023年09/16 - 12/03开课（11/18-19和11/25-26没课）",
   "LearnMore": "了解更多",
-  "AboutUs.Description": "X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。",
   "Reviews": "评论",
   "Login_Successful": "登录成功",
   "Login_Failed": "登录失败",
@@ -396,4 +395,5 @@ declare const json: {
   "Exit_Failed": "退出失败",
   "Loading": "加载中"
 }
+
 export default json;

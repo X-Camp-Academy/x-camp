@@ -385,17 +385,15 @@ declare const json: {
   "Fall.launch.classes": "New project-based launch in Python classes",
   "Fall.worldwide.coding": "Worldwide coding community: 14 states, 6 countries",
   "Fall.register.link": "Register Link",
-  "Fall.weekend.class": " 09/16/23 - 12/03/2023 (No class on 11/18-19 and 11/25-26)",
   "USACO.Director.BrianDean": "USACO Director Dr. Brian Dean 22/23 Season AMA comes!",
   "USACO.youtube.recap": "Youtube Recap",
   "Fall.Director.noclass": "09/16/23 - 12/03/2023 (No class on 11/18-19 and 11/25-26)",
-  "LearnMore": "Learn More",
-  "AboutUs.Description": "X-Camp Academy is an institute based in the Silicon Valley that offers coding classes for middle and high school students.",
-  "Reviews": "Reviews"
+  "Reviews": "Reviews",
   "Login_Successful": "Login Successful",
   "Login_Failed": "Login Failed",
   "Exit_Successfully": "Exit Successfully",
   "Exit_Failed": "Exit Failed",
   "Loading": "Loading"
 }
+
 export default json;
