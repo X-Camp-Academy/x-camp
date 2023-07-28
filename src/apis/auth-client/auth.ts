@@ -1,13 +1,10 @@
-import { useCookieState, useRequest } from 'ahooks';
+import { useRequest } from 'ahooks';
 import { useAuthClient, useIdAuthClient } from '.';
 import { apiConfig } from '@/config';
-import { message } from 'antd';
 const { server, clientId } = apiConfig;
 export const useGetUserInfo = () => {
   const client = useAuthClient();
-  //const [cookie] = useCookieState('xcamp');
   const idClient = useIdAuthClient();
-  // const router = useRouter();
   return useRequest(
     async () => {
       try {
@@ -22,7 +19,7 @@ export const useGetUserInfo = () => {
           const code = await idClient.authorize({
             response_type: 'code',
             state: location?.pathname,
-            redirect_uri: String(server) + '/login',
+            redirect_uri: String(server) + '/v1/login',
             client_id: String(clientId),
             xmode: 'notredirect',
           });
@@ -34,7 +31,6 @@ export const useGetUserInfo = () => {
           const resp = await client.getUserInfo();
           return resp?.data;
         } catch (error: any) {
-          message.error({ content: error.message, key: 'authMsg' });
           return null;
         }
       }
