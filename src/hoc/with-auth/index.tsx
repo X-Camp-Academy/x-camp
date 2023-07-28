@@ -1,17 +1,16 @@
-"use client";
-import React, { useState, useEffect, useCallback } from "react";
-import { message } from "antd";
-import { useAuthClient } from "@/apis/auth-client";
-import { RainbowCat } from "@/components/common/rainbow-cat";
-import { AuthContext } from "./define";
-import { useLang } from "../with-intl/define";
-import { useGetUserInfo } from "@/apis/auth-client/auth";
+'use client';
+import React, { useState, useEffect, useCallback } from 'react';
+import { message } from 'antd';
+import { useAuthClient } from '@/apis/auth-client';
+import { RainbowCat } from '@/components/common/rainbow-cat';
+import { AuthContext } from './define';
+import { useLang } from '../with-intl/define';
+import { useGetUserInfo } from '@/apis/auth-client/auth';
 
 export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   const [initialized, setInitialized] = useState(false);
   const client = useAuthClient();
   const { format: t } = useLang();
-
   const { data: user, loading, refreshAsync } = useGetUserInfo();
 
   useEffect(() => {
@@ -22,11 +21,11 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
 
   const login = useCallback(async () => {
     // 清除local storage
-    localStorage.removeItem("codeInfo");
+    localStorage.removeItem('codeInfo');
     if (await refreshAsync()) {
-      message.success({ content: "登陆成功", key: "authMsg" });
+      message.success({ content: t('Login_Successful'), key: 'authMsg' });
     } else {
-      message.error({ content: "登陆失败", key: "authMsg" });
+      message.error({ content: t('Login_Failed'), key: 'authMsg' });
     }
   }, [refreshAsync, t]);
 
@@ -36,13 +35,13 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
 
   const logout = useCallback(async () => {
     // 清除local storage
-    localStorage.removeItem("codeInfo");
+    localStorage.removeItem('codeInfo');
     try {
       await client.logout();
       if (!(await refreshAsync())) {
-        message.success({ content: "退出成功", key: "authMsg" });
+        message.success({ content: t('Exit_Successfully'), key: 'authMsg' });
       } else {
-        message.error({ content: "退出失败", key: "authMsg" });
+        message.error({ content: t('Exit_Failed'), key: 'authMsg' });
       }
     } catch (error: any) {
       message.error(error.message);
@@ -50,7 +49,7 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   }, [client, refreshAsync, t]);
 
   if (!initialized) {
-    return <RainbowCat text={"加载中"} />;
+    return <RainbowCat text={t('Loading')} />;
   }
 
   return (

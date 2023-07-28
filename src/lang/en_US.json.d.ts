@@ -9,7 +9,7 @@ declare const json: {
   "AboutUs.Achievements.Desc": "Since X-Camp’s founding, many of our students have achieved remarkable results at USACO as a milestone on their lifelong coding journeys.",
   "AboutUs.Introduction": "X-Camp Academy",
   "AboutUs.Introduction.Desc": "An institute based in the Silicon Valley, X-Camp offers coding classes for students grades 5 through 12. Courses range from beginner to IOI level and allow for self-paced, structured curriculum.",
-  "AboutUs.Description":"X-Camp Academy is an institute based in the Silicon Valley that offers coding classes for middle and high school students.",
+  "AboutUs.Description": "X-Camp Academy is an institute based in the Silicon Valley that offers coding classes for middle and high school students.",
   "AboutX-Camp": "About X-Camp",
   "Achievements": "Achievements",
   "Achievements.Des": "More than 200 X-Camp students have been qualified for USACO Silver division and above, including 30 in the Platinum division and 12 selected for the US Training Camp, 7 of which are fresh from the 2023 season.",
@@ -114,7 +114,6 @@ declare const json: {
   "ISPI.Text3": "Foster Independent Individuals",
   "ISPI.Title": "Let's change the world with coding!",
   "JoinUs": "Join Us",
-
   "Language": "Language",
   "LastName": "Last Name",
   "LearnMore": "Learn More",
@@ -393,6 +392,10 @@ declare const json: {
   "LearnMore": "Learn More",
   "AboutUs.Description": "X-Camp Academy is an institute based in the Silicon Valley that offers coding classes for middle and high school students.",
   "Reviews": "Reviews"
+  "Login_Successful": "Login Successful",
+  "Login_Failed": "Login Failed",
+  "Exit_Successfully": "Exit Successfully",
+  "Exit_Failed": "Exit Failed",
+  "Loading": "Loading"
 }
-
 export default json;
