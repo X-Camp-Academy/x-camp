@@ -16,6 +16,7 @@ import React from "react";
 import { UploadChangeParam } from "antd/es/upload";
 import { useSubmitResume } from "@/apis/send-email-client/sendEmail";
 import { useLang } from "@/hoc/with-intl/define";
+import Link from "next/link";
 const { Title, Text, Paragraph } = Typography;
 
 interface submitResumeProps {
@@ -214,9 +215,9 @@ const ResumeForm: React.FC<{
         <Text className={styles.title}>{t("ApplicationConsent")}</Text>
         <Paragraph className={styles.acceptText}>
           {t("ApplicationConsent.Desc1")}{" "}
-          <a style={{ color: "#FFAD11" }} href="https://www.google.com/about/careers/privacy/">
-            https://www.google.com/about/careers/privacy/
-          </a>
+          <Link style={{ color: "#FFAD11" }} href="/about-us/privacy-policy">
+            our privacy policy
+          </Link>
           {t("ApplicationConsent.Desc2")}
         </Paragraph>
 
