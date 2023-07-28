@@ -123,6 +123,7 @@ export interface GetClasses extends strapiPublicFields {
   startDateTime: string;
   endDateTime: string;
   isFull: boolean;
+  timeSuffix: string;
   location: string;
   order: number;
 }

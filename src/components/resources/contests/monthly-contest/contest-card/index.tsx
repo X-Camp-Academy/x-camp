@@ -6,7 +6,7 @@ import { CalendarOutlined } from "@ant-design/icons";
 import { ContestsByMonthInterface } from "../../define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 const cx = classNames.bind(styles);
 const { Paragraph } = Typography;
 
@@ -28,9 +28,13 @@ const ContestCard = ({ data }: Props) => {
         )}
       >
         {data?.contests?.map((v, index) => {
-          const { utcTime, timezone } = formatTimezone(
+          const { utcTime: startDateTime } = formatTimezone(
             v?.attributes?.startDateTime
           );
+          const { utcTime: endDateTime } = formatTimezone(
+            v?.attributes?.endDateTime
+          );
+          const noInvalid = (dateTime: Dayjs) => dayjs(dateTime).toString() !== "Invalid Date";
           return (
             <Popover
               title={
@@ -45,7 +49,8 @@ const ContestCard = ({ data }: Props) => {
                     </div>
                     <Space className={styles.time}>
                       <CalendarOutlined />
-                      <span>{dayjs(utcTime).format("ddd, MMM DD")}</span>
+
+                      <span>{noInvalid(startDateTime) && dayjs(startDateTime).format("ddd, MMM DD")}{noInvalid(endDateTime) && `-${dayjs(endDateTime).format("ddd, MMM DD")}`}</span>
                     </Space>
                   </div>
                   <div className={styles.right}>
@@ -105,7 +110,7 @@ const ContestCard = ({ data }: Props) => {
                 </div>
                 <div className={styles.bottom}>
                   <div className={styles.time}>
-                    {dayjs(utcTime).format("MMM DD")}
+                    {noInvalid(startDateTime) && dayjs(startDateTime).format("MMM DD")}{noInvalid(endDateTime) && `-${dayjs(endDateTime).format("MMM DD")}`}
                   </div>
                   {v?.attributes?.contestLogo?.data && (
                     <div className={styles.logo}>
@@ -117,6 +122,7 @@ const ContestCard = ({ data }: Props) => {
                   )}
                 </div>
               </div>
+              6666
             </Popover>
           );
         })}

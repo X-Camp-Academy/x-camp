@@ -4,7 +4,7 @@ import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import dayjs from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
+import { formatTimezone, getTransResult } from "@/utils/public";
 import CourseClassesContext from "@/components/courses/CourseClasses";
 import styles from "./index.module.scss";
 
@@ -43,8 +43,8 @@ const CourseDescription: React.FC = () => {
   };
 
   const fullPath = window.location.href;
-  const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatDate(startDateTime || '')} ~ ${formatDate(endDateTime || '')}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}\n更多课程：https://www-new.x-camp.academy/courses/`;
-  const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${spokenLang}\nCourse time: ${formatDate(startDateTime || '')} ~ ${formatDate(endDateTime || '')}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
+  const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatTimezone(startDateTime)?.utcTime?.format('DD/MM/YYYY')} ~ ${formatTimezone(endDateTime)?.utcTime?.format('DD/MM/YYYY')}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}\n更多课程：https://www-new.x-camp.academy/courses/`;
+  const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${spokenLang}\nCourse time: ${formatTimezone(startDateTime)?.utcTime?.format('DD/MM/YYYY')} ~ ${formatTimezone(endDateTime)?.utcTime?.format('DD/MM/YYYY')}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
 
   const imageMimes = [
     "image/jpeg",
@@ -108,7 +108,8 @@ const CourseDescription: React.FC = () => {
             {spokenLang}
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
-            {`${formatDate(startDateTime || "")} - ${formatDate(endDateTime || "")}`}
+
+            {`${formatTimezone(startDateTime)?.utcTime?.format('DD/MM/YYYY')} - ${formatTimezone(endDateTime)?.utcTime?.format('DD/MM/YYYY')} (${formatTimezone(endDateTime)?.timezone})`}
           </Descriptions.Item>
           <Descriptions.Item label={t("CourseFormat")}>
             {courseFormat}
