@@ -8,12 +8,7 @@ declare const json: {
   "AboutUs": "关于我们",
   "AboutUs.Achievements.Desc": "自X-Camp成立以来，我们的许多学生在USACO取得了显著的成就，这是他们编程学习之旅的里程碑。",
   "AboutUs.Introduction": "X-Camp学院",
-<<<<<<< HEAD
   "AboutUs.Introduction.Desc": "X-Camp是一家位于硅谷的青少年编程学院，为5至12年级学生提供编程课程。课程从初学者到国际奥林匹克信息学竞赛IOI级别，拥有高度结构化、自主设计的课程体系。",
-=======
-  "AboutUs.Introduction.Desc": "X-Camp是一家位于硅谷的学院，为5至12年级学生提供编程课程。课程从初学者到IOI级别，提供自主学习和结构化课程。",
-  "AboutUs.Description":"X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。",
->>>>>>> 14fe432df45847ef4b2a969b9bbc9fd9dc07e8e2
   "AboutX-Camp": "关于X-Camp",
   "Achievements": "成就",
   "Achievements.Des": "超过200名X-Camp学生已经进入USACO银级及以上的组别，其中包括30名白金级别的学生和12名被选入美国国家集训队的学生，其中7名来自2023年新赛季，1名入选美国女子国家队。",
@@ -120,7 +115,6 @@ declare const json: {
   "JoinUs": "加入我们",
   "Language": "语言",
   "LastName": "姓",
-  "LearnMore": "了解更多",
   "Level": "级别",
   "LinkedInProfile": "LinkedIn个人资料",
   "MainCampus": "主校区",
@@ -170,11 +164,7 @@ declare const json: {
   "Resources": "资源",
   "ResumeCV": "简历/CV",
   "SchoolCalendar": "学校日历",
-<<<<<<< HEAD
-  "SchoolCalendar.Description": "这里可查看X-Camp学校未来一年的关键日期",
-=======
   "SchoolCalendar.Description": "查看我们的日历，了解即将举行的令人兴奋的活动！",
->>>>>>> 14fe432df45847ef4b2a969b9bbc9fd9dc07e8e2
   "Search": "搜索",
   "sendOpenClassEmail.Success": "有关公开讲座的信息已发送到您的电子邮箱，敬请查看您的收件箱",
   "sendResume.Success": "简历已发送到X-Camp的电子邮箱。",
@@ -336,8 +326,6 @@ declare const json: {
   "EDGE_BROWSER": "Edge 浏览器",
   "EDGE_BROWSER_DESC": "Microsoft Edge 采用与 Chrome 相同的技术，可增强您的浏览体验，并提供一流的性能和速度。",
   "COMPATIBILITY_TIP": "您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问X-Camp。",
-  "ZoomLink": "Zoom链接",
-  "1On1Consultation": "一对一咨询",
   "WhatWeProvide": "我们提供",
   "Evaluation.topBanner.description": "课程顾问将评估学生的编程水平，并提供个性化的学习计划，为不同学习需求提供对应的课程和资源。",
   "Evaluation.form.title": "快速评估以匹配适合您的孩子的班级",
@@ -395,7 +383,6 @@ declare const json: {
   "Fall.launch.classes": "全新基于Python课打造的项目",
   "Fall.worldwide.coding": "编程社区遍布全球：6个国家，全美14州",
   "Fall.register.link": "注册链接",
-  "Fall.weekend.class": "2023年09/16 - 12/03开课（11/18-19和11/25-26没课）",
   "USACO.Director.BrianDean": "USACO官方负责人Dr.Brian Dean 22/23赛季问答来了！",
   "USACO.youtube.recap": "Youtube回顾",
   "Fall.Director.noclass": "2023年09/16 - 12/03开课（11/18-19和11/25-26没课）",
