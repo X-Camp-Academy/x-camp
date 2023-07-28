@@ -11,7 +11,7 @@ import { useGetReviews } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
 const { Content } = Layout;
 
-const WeeklyEducationForum = () => {
+const EducationForum = () => {
   const pathname = usePathname();
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
@@ -32,4 +32,4 @@ const WeeklyEducationForum = () => {
   );
 };
 
-export default WeeklyEducationForum;
+export default EducationForum;

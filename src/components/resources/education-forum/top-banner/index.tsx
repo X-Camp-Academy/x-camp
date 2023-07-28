@@ -12,9 +12,9 @@ const TopBanner = () => {
       <div className={cx("container", styles.content)}>
         <Space className={styles.carousel}>
           <div className={styles.item}>
-            <div className={styles.title}>{t("EducationForum")}</div>
+            <div className={styles.title}>{t("educationalForum")}</div>
             <div className={styles.description}>
-              {t("WeeklyEducationForum.Desc")}
+              {t("EducationForum.Desc")}
             </div>
           </div>
           <img src="/image/resources/weekly-education-forum-banner.png"></img>

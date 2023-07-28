@@ -2,12 +2,10 @@ import { Space, Typography, Button, Card } from "antd";
 import styles from "./WhyWorkWithUs.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
 import { useLang } from "@/hoc/with-intl/define";
-import { useRouter } from "next/navigation";
 const { Title, Paragraph } = Typography;
 
 const WhyWorkWithUs = () => {
   const { format: t } = useLang();
-  const router = useRouter();
   return (
     <>
       <div className={styles.WhyWorkWithUsContainer}>
@@ -17,7 +15,10 @@ const WhyWorkWithUs = () => {
               <Space direction="vertical" className={styles.cardContent}>
                 <Title className={styles.title}>{t("WhyWorkWithUs")}</Title>
                 <Paragraph className={styles.description}>
-                  {t("WhyWorkWithUs.Desc")}
+                  {t("WhyWorkWithUs.Desc1")}
+                </Paragraph>
+                <Paragraph className={styles.description}>
+                  {t("WhyWorkWithUs.Desc2")}
                 </Paragraph>
                 <Button
                   className={styles.contactBtn}
