@@ -1,13 +1,15 @@
+import React from "react";
 import { Space, Row, Col, Image, Typography } from "antd";
-import styles from "./TopBanner.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./Banner.module.scss";
+
 const { Title, Paragraph } = Typography;
 
-const TopBanner = () => {
+const Banner: React.FC = () => {
   const { format: t } = useLang();
 
   return (
-    <div className={styles.topBannerContainer}>
+    <div className={styles.bannerContainer}>
       <div className="container">
         <Row>
           <Col xs={24} sm={24} md={12} className={styles.col}>
@@ -33,4 +35,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;

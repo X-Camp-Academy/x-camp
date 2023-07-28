@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
 import { Typography, Button, Space } from "antd";
-import styles from "./ContactUs.module.scss";
-import Link from "next/link";
 import { CommentOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useLang } from "@/hoc/with-intl/define";
+import styles from "./ContactUs.module.scss";
 
 const { Title, Paragraph } = Typography;
 
-const ContactUs = () => {
+const ContactUs: React.FC = () => {
   const { format: t } = useLang();
   const router = useRouter();
   return (

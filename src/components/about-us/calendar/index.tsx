@@ -1,25 +1,24 @@
 "use client";
 import React from "react";
 import { Layout } from "antd";
-import styles from "./index.module.scss";
-import { Content } from "antd/es/layout/layout";
-
 import dynamic from "next/dynamic";
 import Reviews from "@/components/common/reviews";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
+import styles from "./index.module.scss";
 
-const TopBanner = dynamic(() => import("./TopBanner"));
+const Banner = dynamic(() => import("./Banner"));
 const CalendarContent = dynamic(() => import("./CalendarContent"));
-
 const RecentActivities = dynamic(
   () =>
-    import("@/components/resources/weekly-education-forum/recent-activities")
+    import("@/components/resources/education-forum/recent-activities")
 );
 const DiscoverCourses = dynamic(
   () => import("@/components/common/discover-courses")
 );
 
-const CalendarPage = () => {
+const { Content } = Layout;
+
+const Calendar: React.FC = () => {
   const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: ["/home/"],
@@ -27,7 +26,7 @@ const CalendarPage = () => {
   return (
     <Layout className={styles.introductionContainer}>
       <Content>
-        <TopBanner />
+        <Banner />
         <CalendarContent />
         <DiscoverCourses showSubTitle align="flex-start" showBg={false} />
         <RecentActivities />
@@ -37,4 +36,4 @@ const CalendarPage = () => {
   );
 };
 
-export default CalendarPage;
+export default Calendar;

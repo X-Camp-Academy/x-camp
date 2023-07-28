@@ -14,7 +14,7 @@ const AboutXCamp: React.FC = () => {
     {
       icon: "/image/home/faculty-icon.png",
       title: t("Faculty"),
-      desc: t("Faculty.Des"),
+      desc: t("Faculty.Desc"),
       url: '/about-us/introduction/#faculty'
     },
     {

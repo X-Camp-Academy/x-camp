@@ -5,6 +5,8 @@ import ColorfulCard from "@/components/common/colorful-card";
 import { useLang } from "@/hoc/with-intl/define";
 import CopyRightIcons from "@/components/common/copy-right-icons";
 import { getTransResult } from "@/utils/public";
+import { sFormat } from "@/utils";
+
 const { Title, Paragraph } = Typography;
 
 const ReferralProgramMain: React.FC = () => {
@@ -20,10 +22,9 @@ const ReferralProgramMain: React.FC = () => {
                 {t("Refer.Desc")}
               </Paragraph>
               <Title className={styles.subTitle}>
-                {t("Earn")}<span>{getTransResult(lang, '$50', ' $50 ')}</span>
-                {t("ForYouAnd")}
-                <span>{getTransResult(lang, '$50', '$50 ')}</span>
-                {t("ForYourFriend")}
+                {
+                  sFormat(getTransResult(lang, `${t("ForYouAnd")}${t("ForYourFriend")}`, `${t("Earn")} {0} ${t("ForYouAnd")} {1} ${t("ForYourFriend")}`), <span>$50</span>, <span>$50</span>)
+                }
               </Title>
               <CopyRightIcons />
             </Card>

@@ -87,11 +87,11 @@ export const useMenuItems = () => {
       children: [
         {
           label: (
-            <Link href="/resources/weekly-education-forum">
-              {t("EducationForum")}
+            <Link href="/resources/education-forum">
+              {t("educationalForum")}
             </Link>
           ),
-          key: "/resources/weekly-education-forum/",
+          key: "/resources/education-forum/",
         },
         {
           label: <Link href="/resources/contests#contest-31">{t("TuringCup")}</Link>,
