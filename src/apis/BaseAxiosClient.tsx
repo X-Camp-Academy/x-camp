@@ -1,9 +1,9 @@
-"use client";
-import React, { useContext, useRef } from "react";
-import Axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { useRouter } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { LangKey, useLang } from "@/hoc/with-intl/define";
+'use client';
+import React, { useContext, useRef } from 'react';
+import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { useRouter } from 'next/navigation';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+import { LangKey, useLang } from '@/hoc/with-intl/define';
 
 /**
  * Client 上下文，保存不同种类的 Client
@@ -43,7 +43,7 @@ export interface ConstructorProps {
 export const useClient = <T extends BaseAxiosClient>(
   type: string,
   ClientClass: new (props: ConstructorProps) => T,
-  baseURL = "",
+  baseURL = '',
   config: AxiosRequestConfig = {},
   server = process.env.NEXT_PUBLIC_API_SERVER
 ): T => {
@@ -76,7 +76,7 @@ export const convertKeysToNumber = (
   for (const key in formData) {
     if (keys.includes(key) && formData[key] !== undefined) {
       formData[key] = Number(formData[key]);
-    } else if (formData[key] === "") {
+    } else if (formData[key] === '') {
       formData[key] = undefined;
     }
   }
@@ -85,12 +85,12 @@ export const convertKeysToNumber = (
 
 export class BaseAxiosClient {
   private axios: AxiosInstance;
-  public t: (id: LangKey) => string = () => "";
+  public t: (id: LangKey) => string = () => '';
   public router: AppRouterInstance | undefined;
 
-  formHeaders = { "content-type": "application/x-www-form-urlencoded" };
-  jsonHeaders = { "content-type": "application/json" };
-  dataHeaders = { "content-type": "multipart/form-data" };
+  formHeaders = { 'content-type': 'application/x-www-form-urlencoded' };
+  jsonHeaders = { 'content-type': 'application/json' };
+  dataHeaders = { 'content-type': 'multipart/form-data' };
 
   codeMessage: Record<string, number> = {
     SUCCESS: 200,
@@ -121,7 +121,7 @@ export class BaseAxiosClient {
       },
       (error) => {
         throw new Error(
-          (error?.response?.status || "") + " 网络错误（Network Error）"
+          (error?.response?.status || '') + ' 网络错误（Network Error）'
         );
       }
     );
@@ -157,10 +157,10 @@ export class BaseAxiosClient {
     const { code } = data;
     switch (code) {
       case this.codeMessage.ACCESS_DENIED:
-        this.router?.push("/403");
+        this.router?.push('/403');
         break;
       case this.codeMessage.NOT_FOUND:
-        this.router?.push("/404");
+        this.router?.push('/404');
         break;
     }
     throw new Error(code.toString());

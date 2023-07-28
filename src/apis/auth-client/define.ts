@@ -30,3 +30,21 @@ export interface LogoutResponse {
   msg: string;
   data: string;
 }
+
+export interface AuthorizeRequest {
+  response_type: string;
+  state: string;
+  redirect_uri: string;
+  client_id: string;
+  xmode?: 'notredirect';
+}
+export interface AuthorizeResponse {
+  code: number;
+  msg: string;
+  data: string;
+}
+export interface LoginRequest {
+  code: string;
+  state: string;
+  xmode?: 'notredirect';
+}
