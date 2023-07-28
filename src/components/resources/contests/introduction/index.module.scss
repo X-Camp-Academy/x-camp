@@ -8,8 +8,7 @@
   }
 
   .contest {
-    padding: 100px 0;
-
+    padding: 16px 0 64px;
     @media (max-width: 992px) {
       padding: 50px 0;
     }
@@ -64,7 +63,6 @@
 
       .right {
         padding-left: 36px;
-        height: 248px;
         @media (max-width: 768px) {
           padding-left: 0;
           padding-top: 20px;

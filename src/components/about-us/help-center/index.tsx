@@ -1,19 +1,19 @@
 "use client";
 import React from "react";
 import { Layout } from "antd";
-import styles from "./index.module.scss";
+import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
-import { usePathname } from "next/navigation";
+import styles from "./index.module.scss";
 
-const TopBanner = dynamic(() => import("./TopBanner"));
+const TopBanner = dynamic(() => import("./Banner"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 const QAPart = dynamic(() => import("./QAPart"));
 const ContactUs = dynamic(() => import("./ContactUs"));
 
 const { Content } = Layout;
 
-const HelpCenter = () => {
+const HelpCenter: React.FC = () => {
   const pathname = usePathname();
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({

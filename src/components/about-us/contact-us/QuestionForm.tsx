@@ -1,16 +1,16 @@
 'use client';
 import React from 'react';
 import { Row, Col, Card, Typography, Form, Input, Button, message } from 'antd';
-import styles from './QuestionForm.module.scss';
-import QACard from '@/components/common/q&a';
-import { useLang } from '@/hoc/with-intl/define';
 import { usePathname } from 'next/navigation';
-import { useGetFaq, useSubmitQuestionForm } from '@/apis/strapi-client/strapi';
 import { getTransResult } from '@/utils/public';
+import { useLang } from '@/hoc/with-intl/define';
+import QACard from '@/components/common/q&a';
+import { useGetFaq, useSubmitQuestionForm } from '@/apis/strapi-client/strapi';
 import { UserInfo } from '@/apis/strapi-client/define';
+import styles from './QuestionForm.module.scss';
 
-const { TextArea } = Input;
 const { Title } = Typography;
+const { TextArea } = Input;
 
 const QAPart: React.FC = () => {
   const { format: t, lang } = useLang();

@@ -1,20 +1,19 @@
-import { Button, Typography } from "antd";
-
 import React, { useEffect } from "react";
-
-const { Title } = Typography;
-import styles from "./CalendarContent.module.scss";
+import { Typography } from "antd";
 import { ScheduleOutlined } from "@ant-design/icons";
-import TimelineComponent from "@/components/common/timeline";
 import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
+import dayjs from "dayjs";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import TimelineComponent from "@/components/common/timeline";
 import { GetNewEvent, NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import dayjs from "dayjs";
-import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
-import { getTransResult } from "@/utils/public";
+import styles from "./CalendarContent.module.scss";
 
-const CalendarContent = () => {
+const { Title } = Typography;
+
+const CalendarContent: React.FC = () => {
   const { lang, format: t } = useLang();
   dayjs.extend(isSameOrAfter);
   const { data: schoolCalendar, runAsync: getSchoolCalendar } = useGetNewEvent({
@@ -103,7 +102,7 @@ const CalendarContent = () => {
 
   };*/
 
-  const isPastMonth = (datetime:string) => {
+  const isPastMonth = (datetime: string) => {
     const now = dayjs();
     const month = dayjs(datetime).month();
     return dayjs().month(month).isBefore(now, 'month');
@@ -125,15 +124,13 @@ const CalendarContent = () => {
       groupedData[month] = [];
     }
 
-    console.log("@@", groupedData);
-
 
     data?.forEach((item) => {
       const month = dayjs(item?.attributes?.startDateTime).month();
       if (!groupedData[(month + currentMonth) % 12]) {
         groupedData[(month + currentMonth) % 12] = [];
       }
-      if (dayjs(item?.attributes.startDateTime).isSameOrAfter(dayjs(),'months')) {
+      if (dayjs(item?.attributes.startDateTime).isSameOrAfter(dayjs(), 'months')) {
         groupedData[(month + currentMonth) % 12].push({
           label: getTransResult(
             lang,
@@ -149,11 +146,6 @@ const CalendarContent = () => {
       }
     });
 
-
-    /* ({
-      label: dayjs().month(+label).format("MMM"),
-      children,
-    }) */
     const res = Object.entries(groupedData).map(([label, children]) => {
       const month = (currentMonth + +label) % 12;
       return {
@@ -165,23 +157,19 @@ const CalendarContent = () => {
     return [...res, { label: "...", children: [] }];
   };
 
-  console.log(formatCalendar(schoolCalendar?.data));
-
 
   return (
-    <>
-      <div className={styles.calendarContent}>
-        <div className={`${styles.calendarContainer} container`}>
-          <Title className={styles.title}>{t("XCampCalendar")}</Title>
-          <div className={styles.listContainer}>
-            <div className={styles.bookButton}>
-              <ScheduleOutlined />
-            </div>
-            <TimelineComponent items={formatCalendar(schoolCalendar?.data)} />
+    <div className={styles.calendarContent}>
+      <div className={`${styles.calendarContainer} container`}>
+        <Title className={styles.title}>{t("XCampCalendar")}</Title>
+        <div className={styles.listContainer}>
+          <div className={styles.bookButton}>
+            <ScheduleOutlined />
           </div>
+          <TimelineComponent items={formatCalendar(schoolCalendar?.data)} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

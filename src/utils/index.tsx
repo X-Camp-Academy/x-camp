@@ -43,3 +43,28 @@ export const removeAnimate = (
 ) => {
   (ref?.current as HTMLDivElement)?.classList?.remove(name);
 };
+
+/**
+ * @param content 文本内容
+ * @returns 格式化文本内容
+ * sFormat('Hello, {0}', 'OI') => Hello, OI
+ * sFormat('{0} {1}', '{1}', '{0}') => {1} {0}
+ */
+export function sFormat(
+  content: string | undefined,
+  ...args: React.ReactNode[]
+): React.ReactNode {
+  const parts = content?.split(/{(\d+)}/g);
+  return (
+    <div>
+      {parts?.map((part) => {
+        if (/^\d+$/.test(part)) {
+          // 是数字则按顺序替换
+          return args[+part];
+        } else {
+          return part;
+        }
+      })}
+    </div>
+  );
+}

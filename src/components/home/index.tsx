@@ -25,7 +25,6 @@ const Home: React.FC = () => {
   //获取师生评价数据
   const { data } = useGetReviews({
     ready: true,
-    pageName: ["/home/"], // 因为首页的路由是空字符串，约定用/home/表示
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
@@ -45,7 +44,7 @@ const Home: React.FC = () => {
         <StudentProjects />
         <XAlumni />
         <Reviews reviewsData={reviewsData} />
-        <Partners />
+        {/* <Partners /> */}
       </Content>
     </Layout>
   );

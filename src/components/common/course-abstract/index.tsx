@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Descriptions, Modal, Space, Typography } from "antd";
 import dayjs from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
+import { formatTimezone, getTransResult } from "@/utils/public";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetClasses } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
@@ -39,13 +39,15 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
 
 
   const classesData = classes?.data?.map((classItem) => {
-    const { classCode, isFull, startDateTime, endDateTime, location } =
+    const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } =
       classItem?.attributes;
+    const { utcTime: utcStartDateTime } = formatTimezone(startDateTime);
+    const { utcTime: utcEndDateTime, timezone } = formatTimezone(endDateTime);
     return {
       classCode,
       isFull,
-      startTime: startDateTime?.slice(0, -7),
-      endTime: endDateTime?.slice(0, -7),
+      startTime: timeSuffix + ' ' + utcStartDateTime?.format("hh:mm a"),
+      endTime: utcEndDateTime?.format("hh:mm a") + `（${timezone}）`,
       location,
     };
   });

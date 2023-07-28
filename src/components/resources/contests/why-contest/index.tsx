@@ -35,7 +35,7 @@ const WhyContest = () => {
           <div className={styles.title}>{t("WhyContest")}</div>
           <div className={styles.description}>{t("WhyContest.Desc")}</div>
         </div>
-        <Space direction="vertical" className={styles.intro} size={20}>
+        <Space direction="vertical" className={styles.intro}>
           {items?.map((v, index) => (
             <div key={index}>
               <div className={styles.title}>{v?.title}</div>

@@ -8,9 +8,10 @@ import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Text } = Typography;
 
-const ISPI = () => {
+const ISPI: React.FC = () => {
   const isMobile = useMobile();
   const { format: t } = useLang();
+
   return (
     <div className={styles.ispiContainer}>
       <div className="container">
