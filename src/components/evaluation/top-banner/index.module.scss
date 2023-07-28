@@ -47,18 +47,24 @@
 			@media (max-width: 768px) {
 				margin-top: 48px;
 			}
-			.button {
-				width: 296px;
-				height: 72px;
-				background-color: #fff;
-				border-radius: 12px;
-				font-size: 24px;
-				font-weight: 600;
-				color: #d46b14;
-				border-color: #d46b14;
-				line-height: 40px;
-				text-align: left;
-				padding-left: 36px;
+			.btnGroup {
+				height: 280px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				.button {
+					width: 296px;
+					height: 72px;
+					background-color: #fff;
+					border-radius: 12px;
+					font-size: 24px;
+					font-weight: 600;
+					color: #d46b14;
+					border-color: #d46b14;
+					line-height: 40px;
+					text-align: left;
+					padding-left: 36px;
+				}
 			}
 		}
 	}

@@ -8,7 +8,12 @@ declare const json: {
   "AboutUs": "关于我们",
   "AboutUs.Achievements.Desc": "自X-Camp成立以来，我们的许多学生在USACO取得了显著的成就，这是他们编程学习之旅的里程碑。",
   "AboutUs.Introduction": "X-Camp学院",
+<<<<<<< HEAD
   "AboutUs.Introduction.Desc": "X-Camp是一家位于硅谷的青少年编程学院，为5至12年级学生提供编程课程。课程从初学者到国际奥林匹克信息学竞赛IOI级别，拥有高度结构化、自主设计的课程体系。",
+=======
+  "AboutUs.Introduction.Desc": "X-Camp是一家位于硅谷的学院，为5至12年级学生提供编程课程。课程从初学者到IOI级别，提供自主学习和结构化课程。",
+  "AboutUs.Description":"X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。",
+>>>>>>> 14fe432df45847ef4b2a969b9bbc9fd9dc07e8e2
   "AboutX-Camp": "关于X-Camp",
   "Achievements": "成就",
   "Achievements.Des": "超过200名X-Camp学生已经进入USACO银级及以上的组别，其中包括30名白金级别的学生和12名被选入美国国家集训队的学生，其中7名来自2023年新赛季，1名入选美国女子国家队。",
@@ -115,6 +120,7 @@ declare const json: {
   "JoinUs": "加入我们",
   "Language": "语言",
   "LastName": "姓",
+  "LearnMore": "了解更多",
   "Level": "级别",
   "LinkedInProfile": "LinkedIn个人资料",
   "MainCampus": "主校区",
@@ -164,7 +170,11 @@ declare const json: {
   "Resources": "资源",
   "ResumeCV": "简历/CV",
   "SchoolCalendar": "学校日历",
+<<<<<<< HEAD
   "SchoolCalendar.Description": "这里可查看X-Camp学校未来一年的关键日期",
+=======
+  "SchoolCalendar.Description": "查看我们的日历，了解即将举行的令人兴奋的活动！",
+>>>>>>> 14fe432df45847ef4b2a969b9bbc9fd9dc07e8e2
   "Search": "搜索",
   "sendOpenClassEmail.Success": "有关公开讲座的信息已发送到您的电子邮箱，敬请查看您的收件箱",
   "sendResume.Success": "简历已发送到X-Camp的电子邮箱。",
