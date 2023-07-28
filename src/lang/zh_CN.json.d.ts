@@ -9,7 +9,7 @@ declare const json: {
   "AboutUs.Achievements.Desc": "自X-Camp成立以来，我们的许多学生在USACO取得了显著的成就，这是他们终生编码之旅的里程碑。",
   "AboutUs.Introduction": "X-Camp学院",
   "AboutUs.Introduction.Desc": "X-Camp是一家位于硅谷的学院，为5至12年级学生提供编程课程。课程从初学者到IOI级别，提供自主学习和结构化课程。",
-  "AboutUs.Description":"X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。",
+  "AboutUs.Description": "X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。",
   "AboutX-Camp": "关于X-Camp",
   "Achievements": "成就",
   "Achievements.Des": "超过200名X-Camp学生已经通过USACO银级及以上的资格考试，其中包括30名白金级别的学生和12名被选入美国训练营的学生，其中7名来自2023年新赛季。",
@@ -378,7 +378,11 @@ declare const json: {
   "ZoomLink": "Zoom链接",
   "Evaluation.form.success": "提交成功",
   "Evaluation.form.fail": "提交失败",
-  "Reviews": "评价"
+  "Reviews": "评价",
+  "Login_Successful": "登录成功",
+  "Login_Failed": "登录失败",
+  "Exit_Successfully": "退出成功",
+  "Exit_Failed": "退出失败",
+  "Loading": "加载中"
 }
-
 export default json;
