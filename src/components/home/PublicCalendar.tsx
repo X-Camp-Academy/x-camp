@@ -201,7 +201,7 @@ const PublicCalendar: React.FC = () => {
       <div className={`${styles.publicCalendar} container`}>
         <Title className={styles.title}>
           X-Camp {t("Public")} {t("Calendar")}
-          <Image alt="" className={styles.titleImage} preview={false} src="/image/home/founding-team-bg.png" />
+          <Image alt="" className={styles.titleImage} preview={false} src="/image/home/home-title-bg-1.png" />
         </Title>
 
         <Row>

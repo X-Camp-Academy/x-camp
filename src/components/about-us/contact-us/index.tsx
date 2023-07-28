@@ -1,19 +1,19 @@
 "use client";
 import React, { useEffect } from "react";
 import { Layout, message } from "antd";
-import styles from "./index.module.scss";
+import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
-import { usePathname } from "next/navigation";
+import styles from "./index.module.scss";
 
 const ContactCard = dynamic(() => import("./ContactCard"));
-const TopBanner = dynamic(() => import("./TopBanner"));
+const Banner = dynamic(() => import("./Banner"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 const QuestionForm = dynamic(() => import("./QuestionForm"));
 const AddressMap = dynamic(() => import("./AddressMap"));
 const { Content } = Layout;
 
-const ContactUsContent = () => {
+const ContactUs: React.FC = () => {
   const pathname = usePathname();
   const { hash } = window.location;
   const [messageApi, contextHolder] = message.useMessage();
@@ -41,7 +41,7 @@ const ContactUsContent = () => {
     <Layout className={styles.QAContainer}>
       <Content>
         {contextHolder}
-        <TopBanner />
+        <Banner />
         <ContactCard />
         <QuestionForm />
         <AddressMap />
@@ -51,4 +51,4 @@ const ContactUsContent = () => {
   );
 };
 
-export default ContactUsContent;
+export default ContactUs;

@@ -1,4 +1,4 @@
-import WeeklyEducationForum from "@/components/resources/weekly-education-forum";
+import EducationForum from "@/components/resources/education-forum";
 
 export const metadata = {
   title: "X-Camp Academy",
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <WeeklyEducationForum />;
+  return <EducationForum />;
 }

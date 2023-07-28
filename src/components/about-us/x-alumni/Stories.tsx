@@ -46,7 +46,7 @@ const Stories: React.FC = () => {
             </Paragraph>
           </Space>
           <button className={styles.button}>
-            <Link href="/resources/weekly-education-forum">
+            <Link href="/resources/education-forum">
               {t("ViewMoreEvents")}
             </Link>
             <RightOutlined />

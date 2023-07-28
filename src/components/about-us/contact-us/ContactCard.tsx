@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Card, Typography } from "antd";
-import styles from "./ContactCard.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
 import { LaptopOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import ColorfulCard from "@/components/common/colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
+import styles from "./ContactCard.module.scss";
 
 const { Title, Paragraph } = Typography;
 

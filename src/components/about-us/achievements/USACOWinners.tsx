@@ -1,7 +1,6 @@
+import React, { useRef } from "react";
 import {
   Space,
-  Row,
-  Col,
   Card,
   Image,
   Typography,
@@ -13,25 +12,22 @@ import {
 import { CarouselRef } from "antd/es/carousel";
 import {
   LeftCircleOutlined,
-  LeftCircleTwoTone,
   RightCircleOutlined,
   setTwoToneColor,
 } from "@ant-design/icons";
-import styles from "./USACOWinners.module.scss";
-import React, { useRef } from "react";
-import Link from "next/link";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
+import { XStarViewer } from "@/utils/x-star-editor-beta";
 import UsacoCards from "@/components/common/usaco-cards";
 import {
   useGetAboutUsAchievementsAward,
   useGetAchievementsTimeLine,
 } from "@/apis/strapi-client/strapi";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
-import { XStarViewer } from "@/utils/x-star-editor-beta";
+import styles from "./USACOWinners.module.scss";
 
 const { Title, Text } = Typography;
 
-const USACOMedal = () => {
+const USACOMedal: React.FC = () => {
   const { lang, format: t } = useLang();
   const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor("#D46B14");
@@ -39,128 +35,127 @@ const USACOMedal = () => {
   const { data: timeLine } = useGetAchievementsTimeLine();
 
   return (
-    <>
-      <div className={styles.USACOMedalContainer}>
-        <div className={`${styles.USACOMedal} container`}>
-          <Space direction="vertical" align="start">
-            <Title className={styles.title}>{t("USACOMedal")}</Title>
-            <Text className={styles.intro}>{t("USACOMedal.Desc")}</Text>
-          </Space>
+    <div className={styles.USACOMedalContainer}>
+      <div className={`${styles.USACOMedal} container`}>
+        <Space direction="vertical" align="start">
+          <Title className={styles.title}>{t("USACOMedal")}</Title>
+          <Text className={styles.intro}>{t("USACOMedal.Desc")}</Text>
+        </Space>
 
-          <div className={styles.medalIntro}>
-            <Button
-              className={styles.prev}
-              onClick={() => {
-                carouselEL?.current?.prev();
-              }}
-              icon={<LeftCircleOutlined style={{ fontSize: 25 }} />}
-            ></Button>
-            <Carousel
-              ref={carouselEL}
-              dots={false}
-              slidesToShow={3}
-              slidesToScroll={1}
-              swipeToSlide={true}
-              infinite={true}
-              responsive={[
-                {
-                  breakpoint: 992,
-                  settings: {
-                    slidesToShow: 2,
-                  },
+        <div className={styles.medalIntro}>
+          <Button
+            className={styles.prev}
+            onClick={() => {
+              carouselEL?.current?.prev();
+            }}
+            icon={<LeftCircleOutlined style={{ fontSize: 25 }} />}
+          ></Button>
+          <Carousel
+            ref={carouselEL}
+            dots={false}
+            slidesToShow={3}
+            slidesToScroll={1}
+            swipeToSlide={true}
+            infinite={true}
+            responsive={[
+              {
+                breakpoint: 992,
+                settings: {
+                  slidesToShow: 2,
                 },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 1,
-                  },
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
                 },
-              ]}
-            >
-              {awards?.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <Card
-                      style={{
-                        backgroundImage: `url(${item?.attributes?.avatar?.data?.attributes?.url})`,
-                      }}
-                      className={styles.colCard}
+              },
+            ]}
+          >
+            {awards?.map((item, index) => {
+              return (
+                <div key={index}>
+                  <Card
+                    style={{
+                      backgroundImage: `url(${item?.attributes?.avatar?.data?.attributes?.url})`,
+                    }}
+                    className={styles.colCard}
+                  >
+                    <Space
+                      direction="vertical"
+                      className={styles.infoContainer}
                     >
-                      <Space
-                        direction="vertical"
-                        className={styles.infoContainer}
-                      >
-                        <Title className={styles.cardTitle}>
+                      <Title className={styles.cardTitle}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Title>
+                      <Text className={styles.cardText}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
+                        )}
+                      </Text>
+                    </Space>
+                  </Card>
+                </div>
+              )
+            })}
+          </Carousel>
+
+          <Button
+            className={styles.next}
+            onClick={() => {
+              carouselEL?.current?.next();
+            }}
+            icon={<RightCircleOutlined style={{ fontSize: 25 }} />}
+          ></Button>
+        </div>
+
+        <div className={styles.timeLineContainer}>
+          <div className={styles.timeLine}>
+            <Space direction="vertical" align="start">
+              <Title className={styles.title}>{t("Timeline")}</Title>
+            </Space>
+
+            <div className={styles.listContainer}>
+              <List
+                dataSource={timeLine}
+                split={false}
+                renderItem={(item) => (
+                  <List.Item className={styles.timeListItem}>
+                    <List.Item.Meta
+                      title={
+                        <Text className={styles.timeListTitle}>
                           {getTransResult(
                             lang,
                             item?.attributes?.titleZh,
                             item?.attributes?.titleEn
                           )}
-                        </Title>
-                        <Text className={styles.cardText}>
-                          {getTransResult(
+                        </Text>
+                      }
+                      description={
+                        <XStarViewer
+                          className={styles.timeListDetail}
+                          value={getTransResult(
                             lang,
                             item?.attributes?.descriptionZh,
                             item?.attributes?.descriptionEn
                           )}
-                        </Text>
-                      </Space>
-                    </Card>
-                  </div>
-                )
-              })}
-            </Carousel>
+                        />
+                      }
+                    />
+                  </List.Item>
+                )}
+              />
+            </div>
 
-            <Button
-              className={styles.next}
-              onClick={() => {
-                carouselEL?.current?.next();
-              }}
-              icon={<RightCircleOutlined style={{ fontSize: 25 }} />}
-            ></Button>
-          </div>
+            <Text className={styles.intro}>{t("Timeline.Desc")}</Text>
 
-          <div className={styles.timeLineContainer}>
-            <div className={styles.timeLine}>
-              <Space direction="vertical" align="start">
-                <Title className={styles.title}>{t("Timeline")}</Title>
-              </Space>
-
-              <div className={styles.listContainer}>
-                <List
-                  dataSource={timeLine}
-                  split={false}
-                  renderItem={(item) => (
-                    <List.Item className={styles.timeListItem}>
-                      <List.Item.Meta
-                        title={
-                          <Text className={styles.timeListTitle}>
-                            {getTransResult(
-                              lang,
-                              item?.attributes?.titleZh,
-                              item?.attributes?.titleEn
-                            )}
-                          </Text>
-                        }
-                        description={
-                          <XStarViewer
-                            className={styles.timeListDetail}
-                            value={getTransResult(
-                              lang,
-                              item?.attributes?.descriptionZh,
-                              item?.attributes?.descriptionEn
-                            )}
-                          />
-                        }
-                      />
-                    </List.Item>
-                  )}
-                />
-              </div>
-              
-              <Text className={styles.intro}>{t("Timeline.Desc")}</Text>
-
-              {/*               <Link className={styles.download} href="/" onClick={() => { message.info(getTransResult(lang,"")) }}>
+            {/*               <Link className={styles.download} href="/" onClick={() => { message.info(getTransResult(lang,"")) }}>
                 <Image
                   alt="download"
                   src="/image/about-us/achievement/download-outlined.png"
@@ -170,30 +165,29 @@ const USACOMedal = () => {
                   {t("USACO.DownloadPackage")}
                 </Text>
               </Link> */}
-              <div className={styles.download}
-                onClick={() => {
-                  message.info(getTransResult(
-                    lang,
-                    "点击页面下方subscribe newsletter ，获取X-Camp更多信息，领取USACO大礼包",
-                    "Click the 'Subscribe Newsletter' at the bottom of the page to receive more information from X-Camp and get the USACO gift package."
-                  ))
-                }}>
-                <Image
-                  alt="download"
-                  src="/image/about-us/achievement/download-outlined.png"
-                  preview={false}
-                ></Image>
-                <Text className={styles.downloadText} underline>
-                  {t("USACO.DownloadPackage")}
-                </Text>
-              </div>
-
-              <UsacoCards showTitle />
+            <div className={styles.download}
+              onClick={() => {
+                message.info(getTransResult(
+                  lang,
+                  "点击页面下方subscribe newsletter ，获取X-Camp更多信息，领取USACO大礼包",
+                  "Click the 'Subscribe Newsletter' at the bottom of the page to receive more information from X-Camp and get the USACO gift package."
+                ))
+              }}>
+              <Image
+                alt="download"
+                src="/image/about-us/achievement/download-outlined.png"
+                preview={false}
+              ></Image>
+              <Text className={styles.downloadText} underline>
+                {t("USACO.DownloadPackage")}
+              </Text>
             </div>
+
+            <UsacoCards showTitle />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
