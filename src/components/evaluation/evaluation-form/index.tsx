@@ -251,7 +251,7 @@ const EvaluationForm: React.FC = () => {
           </Col>
           <Col lg={12} md={24}>
             <div className={styles.right}>
-              <img src="/image/Evaluation/light.png" alt="" />
+              <img src="/image/evaluation/light.png" alt="img" />
             </div>
           </Col>
         </Row>

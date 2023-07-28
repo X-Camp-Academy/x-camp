@@ -8,7 +8,7 @@ import { getTransResult } from "@/utils/public";
 const { Title, Paragraph } = Typography;
 
 const Introduction = () => {
-  const { lang } = useLang();
+  const { lang, format: t } = useLang();
   const { data: partner } = useGetPartner();
 
   return (
@@ -51,7 +51,7 @@ const Introduction = () => {
                         className={styles.btn}
                         href={card?.attributes?.link}
                       >
-                        {"Learn More "}
+                        {t("LearnMore")}
                         <RightOutlined style={{ color: "#333333" }} />
                       </Button>
                     </div>
