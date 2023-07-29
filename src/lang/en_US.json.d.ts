@@ -278,7 +278,7 @@ declare const json: {
   "ActivityItem3": "Career Paths",
   "ActivityItem4": "Research",
   "ActivityItem5": "All",
-  "educationalForum": "educational forum(s)",
+  "EducationalForum": "Educational Forum",
   "EducationForum.Desc": "At X-Camp, we actively invite experienced speakers to share their knowledge and insights within our community. These esteemed speakers contribute valuable perspectives, inspiring and guiding both students and parents alike in their programming education journey. We are committed to fostering a vibrant and inclusive community where knowledge is shared and celebrated.",
   "OpenHouse.Conflict": "Time Conflict? We’re Here for You!",
   "OpenHouse.Conflict.Desc": "X-Camp course consultants are happy to provide 1-on-1 meetings at times that work for you.",

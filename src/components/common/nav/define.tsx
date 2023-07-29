@@ -88,7 +88,7 @@ export const useMenuItems = () => {
         {
           label: (
             <Link href="/resources/education-forum">
-              {t("educationalForum")}
+              {t("EducationalForum")}
             </Link>
           ),
           key: "/resources/education-forum/",
