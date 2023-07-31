@@ -32,7 +32,7 @@ const QAPart: React.FC = () => {
   return (
     <div className={`${styles.qaContent} container`}>
       <Title className={styles.title}>{t('Questions')}</Title>
-      <Row gutter={[32, 32]}>
+      <Row gutter={[32, 32]} className={styles.row}>
         <Col
           xs={{ span: 24 }}
           sm={{ span: 24 }}

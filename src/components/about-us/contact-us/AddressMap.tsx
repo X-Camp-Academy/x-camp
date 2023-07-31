@@ -9,7 +9,7 @@ const AddressMap: React.FC = () => {
 
   return (
     <div className={`${styles.addressMapContent} container`}>
-      <Row gutter={[32, 16]}>
+      <Row gutter={[32, 16]} className={styles.row}>
         <Col
           xs={{ span: 24 }}
           sm={{ span: 24 }}

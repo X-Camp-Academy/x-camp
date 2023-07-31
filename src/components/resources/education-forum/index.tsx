@@ -3,7 +3,7 @@ import React from "react";
 import { Layout } from "antd";
 import styles from "./index.module.scss";
 import Reviews from "@/components/common/reviews";
-import TopBanner from "./top-banner";
+import Banner from "./banner";
 import UpcomingEvents from "./upcoming-events";
 import RecentActivities from "./recent-activities";
 import Activities from "./activities";
@@ -22,7 +22,7 @@ const EducationForum = () => {
   return (
     <Layout className={styles.main}>
       <Content>
-        <TopBanner />
+        <Banner />
         <UpcomingEvents />
         <RecentActivities />
         <Activities />

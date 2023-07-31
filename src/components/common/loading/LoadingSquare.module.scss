@@ -11,12 +11,12 @@
   border-radius: 50%;
 }
 .loading:before {
-  background: orange;
+  background-color: #ffad11;
   -webkit-animation: loading-1 0.8s infinite ease-in-out;
   animation: loading-1 0.8s infinite ease-in-out;
 }
 .loading:after {
-  background: yellow;
+  background-color: #ffd600;
   left: 22px;
   -webkit-animation: loading-2 0.8s infinite ease-in-out;
   animation: loading-2 0.8s infinite ease-in-out;
