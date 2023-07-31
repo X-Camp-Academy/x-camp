@@ -59,19 +59,15 @@ const Nav = () => {
     // 手机端则去除dropdown
     const loginSignUp = [
       {
-        label: <Link href="/login">Log In</Link>,
+        label: <a href="/login">{t('Nav.Login')}</a>,
         key: '/login',
       },
       {
-        label: <Link href="/login">Sign Up</Link>,
-        key: '/login',
+        label: (
+          <a onClick={toggle}>{getTransResult(lang, '中文', 'English')}</a>
+        ),
+        key: '',
       },
-      // {
-      //   label: (
-      //     <a onClick={toggle}>{getTransResult(lang, '中文', 'English')}</a>
-      //   ),
-      //   key: '',
-      // },
     ];
     return isMobile
       ? removeDropdown(menuItems)?.concat(loginSignUp)
