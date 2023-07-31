@@ -59,7 +59,7 @@ const Nav = () => {
     // 手机端则去除dropdown
     const loginSignUp = [
       {
-        label: <Link href="/login">{t('Nav.Login')}</Link>,
+        label: <a href="/login">{t('Nav.Login')}</a>,
         key: '/login',
       },
       {
