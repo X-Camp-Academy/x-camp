@@ -5,7 +5,6 @@ const { server, clientId } = apiConfig;
 export const useGetUserInfo = () => {
   const client = useAuthClient();
   const idClient = useIdAuthClient();
-  const [cookie] = useCookieState("xcamp");
   return useRequest(
     async () => {
       try {
@@ -36,6 +35,6 @@ export const useGetUserInfo = () => {
         }
       }
     },
-    { throttleWait: 1000, ready: !!cookie }
+    { throttleWait: 1000 }
   );
 };
