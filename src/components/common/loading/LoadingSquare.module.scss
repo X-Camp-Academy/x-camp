@@ -1,133 +1,73 @@
-.loader {
+.loading {
   position: relative;
-  width: 86px;
-  height: 20px;
-  margin: auto;
+  margin-bottom: 100px;
 }
-
-.loadingSquare {
+.loading:before,
+.loading:after {
   position: absolute;
-  top: 0px;
+  content: "";
   width: 20px;
   height: 20px;
+  border-radius: 50%;
 }
-
-.loadingSquare:nth-child(1) {
-  left: 0px;
-  animation: square1 1.5s linear forwards infinite;
+.loading:before {
+  background: orange;
+  -webkit-animation: loading-1 0.8s infinite ease-in-out;
+  animation: loading-1 0.8s infinite ease-in-out;
 }
-
-.loadingSquare:nth-child(2) {
+.loading:after {
+  background: yellow;
   left: 22px;
-  animation: square2 1.5s linear forwards infinite;
+  -webkit-animation: loading-2 0.8s infinite ease-in-out;
+  animation: loading-2 0.8s infinite ease-in-out;
 }
 
-.loadingSquare:nth-child(3) {
-  left: 44px;
-  animation: square3 1.5s linear forwards infinite;
-}
-
-.loadingSquare:nth-child(4) {
-  left: 66px;
-  animation: square4 1.5s linear forwards infinite;
-}
-
-@keyframes square1 {
-  0% {
-    background-color: #096dd9;
-    transform: translate(0px, 0px);
-  }
-  9.09091% {
-    background-color: #096dd9;
-    transform: translate(0px, -22px);
-  }
-  18.18182% {
-    background-color: #022679;
-    transform: translate(22px, -22px);
-  }
-  27.27273% {
-    transform: translate(22px, 0px);
-  }
+@-webkit-keyframes loading-1 {
+  0%,
   100% {
-    background-color: #022679;
-    transform: translate(22px, 0px);
+    -webkit-transform: translateX(0) rotate(0);
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    -webkit-transform: translateX(50px) scale(1.2) rotate(260deg);
+    transform: translateX(50px) scale(1.2) rotate(260deg);
+    border-radius: 0;
   }
 }
 
-@keyframes square2 {
-  0% {
-    background-color: #022679;
-    transform: translate(0px, 0px);
-  }
-  18.18182% {
-    transform: translate(0px, 0px);
-  }
-  27.27273% {
-    background-color: #022679;
-    transform: translate(0px, 22px);
-  }
-  36.36364% {
-    background-color: #f57712;
-    transform: translate(22px, 22px);
-  }
-  45.45455% {
-    transform: translate(22px, 0px);
-  }
+@keyframes loading-1 {
+  0%,
   100% {
-    background-color: #f57712;
-    transform: translate(22px, 0px);
+    -webkit-transform: translateX(0) rotate(0);
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    -webkit-transform: translateX(50px) scale(1.2) rotate(260deg);
+    transform: translateX(50px) scale(1.2) rotate(260deg);
+    border-radius: 0;
   }
 }
-
-@keyframes square3 {
-  0% {
-    background-color: #f57712;
-    transform: translate(0px, 0px);
-  }
-  36.36364% {
-    transform: translate(0px, 0px);
-  }
-  45.45455% {
-    background-color: #f57712;
-    transform: translate(0px, -22px);
-  }
-  54.54545% {
-    background-color: #ffd600;
-    transform: translate(22px, -22px);
-  }
-  63.63636% {
-    transform: translate(22px, 0px);
-  }
+@-webkit-keyframes loading-2 {
+  0%,
   100% {
-    background-color: #ffd600;
-    transform: translate(22px, 0px);
+    -webkit-transform: translateX(0) rotate(0);
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    -webkit-transform: translateX(-50px) scale(1.2) rotate(-260deg);
+    transform: translateX(-50px) scale(1.2) rotate(-260deg);
+    border-radius: 0;
   }
 }
-
-@keyframes square4 {
-  0% {
-    background-color: #ffd600;
-    transform: translate(0px, 0px);
-  }
-  54.54545% {
-    transform: translate(0px, 0px);
-  }
-  63.63636% {
-    background-color: #ffd600;
-    transform: translate(0px, 22px);
-  }
-  72.72727% {
-    background-color: #f57712;
-  }
-  81.81818% {
-    background-color: #022679;
-  }
-  90.90909% {
-    background-color: #096dd9;
-    transform: translate(-66px, 22px);
-  }
+@keyframes loading-2 {
+  0%,
   100% {
-    background-color: #096dd9;
-    transform: translate(-66px, 0px);
+    -webkit-transform: translateX(0) rotate(0);
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    -webkit-transform: translateX(-50px) scale(1.2) rotate(-260deg);
+    transform: translateX(-50px) scale(1.2) rotate(-260deg);
+    border-radius: 0;
   }
 }
