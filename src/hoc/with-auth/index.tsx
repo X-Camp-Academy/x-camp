@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { message } from 'antd';
 import { useAuthClient } from '@/apis/auth-client';
-import { RainbowCat } from '@/components/common/rainbow-cat';
+import LoadingMask from '@/components/common/loading/LoadingMask';
 import { AuthContext } from './define';
 import { useLang } from '../with-intl/define';
 import { useGetUserInfo } from '@/apis/auth-client/auth';
@@ -49,7 +49,7 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   }, [client, refreshAsync, t]);
 
   if (!initialized) {
-    return <RainbowCat text={t('Loading')} />;
+    return <LoadingMask loading={loading} />;
   }
 
   return (
