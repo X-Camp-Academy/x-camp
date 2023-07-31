@@ -2,7 +2,6 @@ export type ApiConfig = {
   server: string;
   debug?: boolean; // enable dev tools for all clients
   idApi: string;
-  baseApi: string;
   clientId: string;
   strapiServer: string;
   xydApi: string;
