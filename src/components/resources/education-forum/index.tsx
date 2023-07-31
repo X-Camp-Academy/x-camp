@@ -11,7 +11,7 @@ import { useGetReviews } from "@/apis/strapi-client/strapi";
 import { usePathname } from "next/navigation";
 const { Content } = Layout;
 
-const EducationForum = () => {
+const EducationForum: React.FC = () => {
   const pathname = usePathname();
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({

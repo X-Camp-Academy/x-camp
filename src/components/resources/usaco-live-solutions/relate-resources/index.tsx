@@ -3,8 +3,10 @@ import styles from "./index.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
 import { Card, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
+
 const { Text } = Typography;
-const RelateResources = () => {
+
+const RelateResources: React.FC = () => {
   const { format: t } = useLang();
   const QAData = [
     {

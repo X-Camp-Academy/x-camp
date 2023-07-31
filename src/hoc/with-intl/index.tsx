@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import cookie from 'react-cookies';
 import { IntlProvider, useIntl } from 'react-intl';
 import dayjs from 'dayjs';

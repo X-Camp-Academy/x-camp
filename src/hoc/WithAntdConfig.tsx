@@ -21,6 +21,7 @@ const WithAntdConfig = ({ children }: Props) => {
         },
       }}
     >
+      {/* TODO: 移动端检查完以后再恢复 */}
       {/* {compatibility ? children : <BrowserCompatibilityPage />} */}
       {children}
     </ConfigProvider>
