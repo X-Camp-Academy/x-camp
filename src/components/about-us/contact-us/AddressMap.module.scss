@@ -1,10 +1,4 @@
 .addressMapContent {
   margin-top: 3.25rem;
   padding-bottom: 6.25rem;
-  .row {
-    @media (max-width: 768px) {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-  }
 }

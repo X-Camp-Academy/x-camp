@@ -64,7 +64,7 @@ const QAPart: React.FC = () => {
           xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 24 }}
-          lg={{ span: 12 }}
+          lg={{ span: 10, offset: 2 }}
         >
           <Card className={styles.card}>
             <Title className={styles.formTitle}>{t('SubmitAQuestion')}</Title>
@@ -154,7 +154,7 @@ const QAPart: React.FC = () => {
           </Card>
         </Col>
       </Row>
-    </div>
+    </div >
   );
 };
 
