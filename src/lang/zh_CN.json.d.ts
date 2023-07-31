@@ -277,7 +277,7 @@ declare const json: {
   "ActivityItem3": "职业分享",
   "ActivityItem4": "学术研究",
   "ActivityItem5": "所有教育论坛",
-  "educationalForum": "教育论坛",
+  "EducationalForum": "教育论坛",
   "EducationForum.Desc": "X-Camp邀请不同演讲者在我们社区跟学生和家长进行分享，激发他们在编程教育道路上的学习之旅。我们致力于培养充满活力和包容性的社区，共享知识。",
   "OpenHouse.Conflict": "时间有冲突？我们在这里！",
   "OpenHouse.Conflict.Desc": "X-Camp课程顾问在适合您的时间提供1对1的咨询。",

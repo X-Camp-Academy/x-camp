@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./index.module.scss";
 import {
   Button,
@@ -10,14 +10,13 @@ import {
   Form,
 } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { useSize } from "ahooks";
 import { useLang } from "@/hoc/with-intl/define";
 import CourseCard from "../course-card";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
-import { useMobile } from "@/utils";
 
 const ScheduleTable = () => {
   const { format: t } = useLang();
-  const isMobile = useMobile();
   const [form] = Form.useForm();
   const defaultPagination = { page: 1, pageSize: 10 };
   const [pagination, setPagination] = useState(defaultPagination);
@@ -26,6 +25,12 @@ const ScheduleTable = () => {
     | { [key: string]: string | { type: { $eq: string } } }
     | any
   >({});
+
+
+  const ref = useRef(null);
+  const size = useSize(ref);
+
+
   const { data: courses, runAsync } = useGetCourses({});
 
   const selectItems = [
@@ -141,11 +146,16 @@ const ScheduleTable = () => {
     };
     setPagination(newPagination);
   };
-  return (
-    <div className={styles.scheduleTable}>
-      <div className={"container"}>
 
-        <Form layout={isMobile ? 'vertical' : 'inline'} form={form} className={styles.form} onFinish={onFinish}>
+  return (
+    <div className={styles.scheduleTable} ref={ref}>
+      <div className={"container"}>
+        <Form
+          layout={(size && size?.width < 1400) ? 'vertical' : 'inline'}
+          form={form}
+          className={styles.form}
+          onFinish={onFinish}
+        >
           <Row gutter={[16, 8]} className={styles.row}>
             {
               selectItems?.map((selectItem, index) => (
@@ -161,15 +171,16 @@ const ScheduleTable = () => {
                 </Col>
               ))
             }
+
             <Col xs={24} sm={24} md={24} lg={4}>
               <Form.Item name="search" >
                 <Input
                   suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
                   allowClear={true}
-
                 />
               </Form.Item>
             </Col>
+
             <Col xs={24} sm={24} md={24} lg={2}>
               <Form.Item>
                 <Button type={"primary"} className={styles.button} htmlType="submit">

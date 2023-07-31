@@ -116,6 +116,7 @@ const USACOMedal: React.FC = () => {
         </div>
 
         <div className={styles.timeLineContainer}>
+          <UsacoCards showTitle />
           <div className={styles.timeLine}>
             <Space direction="vertical" align="start">
               <Title className={styles.title}>{t("Timeline")}</Title>
@@ -155,16 +156,6 @@ const USACOMedal: React.FC = () => {
 
             <Text className={styles.intro}>{t("Timeline.Desc")}</Text>
 
-            {/*               <Link className={styles.download} href="/" onClick={() => { message.info(getTransResult(lang,"")) }}>
-                <Image
-                  alt="download"
-                  src="/image/about-us/achievement/download-outlined.png"
-                  preview={false}
-                ></Image>
-                <Text className={styles.downloadText} underline>
-                  {t("USACO.DownloadPackage")}
-                </Text>
-              </Link> */}
             <div className={styles.download}
               onClick={() => {
                 message.info(getTransResult(
@@ -175,15 +166,13 @@ const USACOMedal: React.FC = () => {
               }}>
               <Image
                 alt="download"
-                src="/image/about-us/achievement/download-outlined.png"
+                src="/image/about-us/download-outlined.png"
                 preview={false}
               ></Image>
               <Text className={styles.downloadText} underline>
                 {t("USACO.DownloadPackage")}
               </Text>
             </div>
-
-            <UsacoCards showTitle />
           </div>
         </div>
       </div>

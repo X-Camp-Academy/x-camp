@@ -108,7 +108,7 @@ const Activities = () => {
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{selectedItem}</div>
           <div className={styles.pageTotal}>
-            {newEventData?.data?.length} {t("educationalForum")}
+            {newEventData?.data?.length} {t("EducationalForum")}
           </div>
         </Space>
         <Row gutter={[32, 32]}>

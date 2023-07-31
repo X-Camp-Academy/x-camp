@@ -59,7 +59,7 @@ const ArticleContent = ({ props }: Props) => {
           {
             title: (
               <Link href="/resources/education-forum">
-                {t("educationalForum")}
+                {t("EducationalForum")}
               </Link>
             ),
           },
