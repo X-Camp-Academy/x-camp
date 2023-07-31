@@ -17,16 +17,16 @@
   .baseImgBackground {
     position: relative;
     border-radius: 12px;
-    width: 350px;
-    height: 380px;
+    width: 368px;
+    height: 416px;
     @media (max-width: 768px) {
       display: none;
     }
   }
   .baseImg {
     position: absolute;
-    width: 380px;
-    height: 430px;
+    width: 384px;
+    height: 480px;
   }
 
   .charlieImgCol {
@@ -38,8 +38,8 @@
     }
     .charlieImg {
       @extend .baseImg;
-      top: 30px;
-      right: 30px;
+      top: 48px;
+      right: 48px;
       @media (max-width: 768px) {
         position: static;
       }
@@ -55,8 +55,8 @@
     }
     .yuanImg {
       @extend .baseImg;
-      right: 30px;
-      bottom: 30px;
+      right: 48px;
+      bottom: 48px;
       @media (max-width: 768px) {
         position: static;
       }
