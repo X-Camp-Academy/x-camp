@@ -184,9 +184,9 @@ const Courses: React.FC = () => {
     }
   }, [hash, segmentedData]);
 
-  const searchDate = (startDate: Dayjs, endDate: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
-    return dayjs(course?.attributes?.startDateTime)?.isBetween(startDate, endDate) &&
-      dayjs(course?.attributes?.endDateTime)?.isBetween(startDate, endDate);
+  const searchDate = (startDateTime: Dayjs, endDateTime: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
+    return dayjs(course?.attributes?.startDateTime)?.isBetween(startDateTime, endDateTime) &&
+      dayjs(course?.attributes?.endDateTime)?.isBetween(startDateTime, endDateTime);
   }
   const searchInput = (inputValue: string, course: StrapiResponseDataItem<GetCourses>) => {
     const {
@@ -307,6 +307,7 @@ const Courses: React.FC = () => {
     setSegmented(e?.target?.value);
   }
 
+
   return (
     <Layout className={styles.courses}>
       <Content>
@@ -358,7 +359,7 @@ const Courses: React.FC = () => {
               <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 4 }}>
                 <Form.Item name="category">
                   <Select
-                    style={isMobile ? { width: '100%' } : { width: 240 }}
+                    style={isMobile ? { width: '100%' } : { width: 216 }}
                     placeholder={"Category"}
                     options={categoryOptions}
                     allowClear={true}
@@ -373,7 +374,6 @@ const Courses: React.FC = () => {
                   </Form.Item>
                 </Col>
               }
-
               <Col xs={24} sm={24} md={24} lg={6}>
                 <Form.Item name="search" >
                   <Input
@@ -424,7 +424,7 @@ const Courses: React.FC = () => {
                           }
                         >
                           <Space
-                            size={27}
+                            size={24}
                             style={{ width: "100%", flexWrap: "wrap" }}
                           >
                             {v?.children?.map((g, index) => {
