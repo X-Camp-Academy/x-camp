@@ -48,7 +48,7 @@ const StudentProjects: React.FC = () => {
         <Row gutter={16} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12}>
             {studentProjectsData && (
-              <video width="360" height="328" controls>
+              <video width="100%" height="100%" controls>
                 <source src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} type="video/mp4" />
               </video>
             )}
