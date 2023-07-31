@@ -1,7 +1,12 @@
 .contactCardContent {
   margin-top: 6.25rem;
   padding-bottom: 3.25rem;
-
+  .row {
+    @media (max-width: 768px) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
   .card {
     height: 250px;
     width: 100%;

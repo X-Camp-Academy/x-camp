@@ -50,10 +50,10 @@ export const removeAnimate = (
  * sFormat('Hello, {0}', 'OI') => Hello, OI
  * sFormat('{0} {1}', '{1}', '{0}') => {1} {0}
  */
-export function sFormat(
+export const sFormat = (
   content: string | undefined,
   ...args: React.ReactNode[]
-): React.ReactNode {
+): React.ReactNode => {
   const parts = content?.split(/{(\d+)}/g);
   return (
     <div>

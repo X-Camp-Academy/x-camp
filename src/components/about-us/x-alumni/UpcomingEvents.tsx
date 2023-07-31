@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Space, Row, Col, Card, Image, Button, Typography } from "antd";
 import styles from "./UpcomingEvents.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
@@ -14,22 +14,20 @@ import { useLang } from "@/hoc/with-intl/define";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { getTransResult } from "@/utils/public";
-import dayjs from "dayjs";
 import { formatTimezone } from "@/utils/public";
 import Link from "next/link";
+import { useMobile } from "@/utils";
 
 const { Title, Paragraph, Text } = Typography;
 
 const UpcomingEvents: React.FC = () => {
-  const pageSize = 25;
   const { lang, format: t } = useLang();
-  const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
+  const isMobile = useMobile();
 
   const { data: newEventData } = useGetNewEvent({
-    tag,
-    current,
-    pageSize,
+    tag: NewEventCategory.Event,
+    current: 1,
+    pageSize: 25,
   });
 
   const upComingEvent = newEventData?.data?.filter((item, index) => {
@@ -44,7 +42,7 @@ const UpcomingEvents: React.FC = () => {
   return (
     <div className={styles.upcomingEventsContainer}>
       <div className="container">
-        <Space className={styles.topSpace}>
+        <Space className={styles.topSpace} direction={isMobile ? "vertical" : "horizontal"}>
           <Space direction="vertical" >
             <Title className={styles.title}>{t("UpcomingEvents")}</Title>
             <Paragraph className={styles.paragraph}>

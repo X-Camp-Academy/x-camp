@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { Collapse, Divider, Space, Typography } from "antd";
+import { Collapse, Space, Typography } from "antd";
 import { ClockCircleOutlined, DownOutlined } from "@ant-design/icons";
 import { GetResourcesLiveSolution } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
@@ -15,7 +15,6 @@ interface Props {
 
 const UsacoIntro = ({ data }: Props) => {
   const { format: t, lang } = useLang();
-
 
   return (
     <div className={styles.introduction}>

@@ -11,7 +11,6 @@ import {
 import {
   AndOrFilters,
   FilterFields,
-  StrapiMedia,
 } from "@/apis/strapi-client/strapiDefine";
 import { Pagination, Row, Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
@@ -19,7 +18,7 @@ interface ActivityItem {
   title: string;
   key: EventCategory | "All";
 }
-const Activities = () => {
+const Activities: React.FC = () => {
   //useGetNewEvent
   const pageSize = 12;
   const { format: t } = useLang();

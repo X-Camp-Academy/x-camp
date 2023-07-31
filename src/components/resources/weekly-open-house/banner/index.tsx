@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import { useLang } from "@/hoc/with-intl/define";
 const cx = classNames.bind(styles);
 
-const TopBanner = () => {
+const Banner: React.FC = () => {
   const { format: t } = useLang();
   return (
     <div className={styles.banner}>
@@ -28,4 +28,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;

@@ -5,7 +5,7 @@ import Paragraph from "antd/es/typography/Paragraph";
 import Title from "antd/es/typography/Title";
 import { useLang } from "@/hoc/with-intl/define";
 
-const TopBanner = () => {
+const Banner: React.FC = () => {
   const { format: t } = useLang();
   return (
     <div className={styles.topBannerContainer}>
@@ -38,4 +38,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;

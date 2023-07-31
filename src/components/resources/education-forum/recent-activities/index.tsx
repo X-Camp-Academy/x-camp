@@ -1,6 +1,6 @@
 import XCollapse from "@/components/common/collapse";
 import styles from "./index.module.scss";
-import React, { useState } from "react";
+import React from "react";
 import { Button, Col, Row, Space, Typography } from "antd";
 import ColorfulCard from "@/components/common/colorful-card";
 import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
@@ -9,20 +9,15 @@ import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import { useRouter } from "next/navigation";
-const { Paragraph, Text } = Typography;
+const { Text } = Typography;
 import Link from "next/link";
 
-const RecentActivities = () => {
-  const router = useRouter();
-  const pageSize = 25;
-  const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
+const RecentActivities: React.FC = () => {
   const { format: t, lang } = useLang();
   const { data: newEventData } = useGetNewEvent({
-    tag,
-    current,
-    pageSize,
+    tag: NewEventCategory.Event,
+    current: 1,
+    pageSize: 25,
   });
 
   const getImgUrl = (img: StrapiMedia) => {
