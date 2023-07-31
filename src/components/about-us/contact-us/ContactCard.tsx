@@ -30,7 +30,7 @@ const ContactCard: React.FC = () => {
 
   return (
     <div className={`${styles.contactCardContent} container`}>
-      <Row gutter={[32, 32]}>
+      <Row gutter={[32, 32]} className={styles.row}>
         {contactInfo.map((item, index) => (
           <Col
             key={index}

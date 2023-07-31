@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 
 const EvaluationForm = dynamic(() => import('./evaluation-form'));
 const { Content } = Layout;
-const TopBanner = dynamic(() => import('./top-banner'));
+const Banner = dynamic(() => import('./banner'));
 const Reviews = dynamic(() => import('../common/reviews'));
 
 const Evalation: React.FC = () => {
@@ -22,7 +22,7 @@ const Evalation: React.FC = () => {
   return (
     <Layout className={styles.evaluationFormContainer}>
       <Content>
-        <TopBanner />
+        <Banner />
         <EvaluationForm />
         <Reviews reviewsData={reviewsData} />
       </Content>

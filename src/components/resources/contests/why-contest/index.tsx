@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import { Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 
-const WhyContest = () => {
+const WhyContest: React.FC = () => {
   const { format: t } = useLang();
   const items = [
     {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./index.module.scss";
 import { Button, Col, Descriptions, Row } from "antd";
 import {
@@ -13,18 +13,13 @@ import { useLang } from "@/hoc/with-intl/define";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { formatTimezone, getTransResult } from "@/utils/public";
-import { useRouter } from "next/navigation";
 
-const UpcomingEvents = () => {
-  const pageSize = 25;
-  const router = useRouter();
+const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
-  const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.Event);
   const { data: newEventData } = useGetNewEvent({
-    tag,
-    current,
-    pageSize,
+    tag: NewEventCategory.Event,
+    current: 1,
+    pageSize: 25,
   });
 
   const upComingEvent = newEventData?.data?.filter((item, index) => {

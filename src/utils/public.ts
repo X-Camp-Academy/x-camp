@@ -1,7 +1,5 @@
 "use client";
-
-import { useLang } from "@/hoc/with-intl/define";
-import dayjs, { Dayjs, tz } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 /**
  * 选择语言

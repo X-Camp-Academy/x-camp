@@ -28,7 +28,7 @@ const Banner: React.FC = () => {
           >
             <Image
               alt="image"
-              src="/image/about-us/help-center/helpCenterTopBanner.png"
+              src="/image/about-us/help-center.png"
               preview={false}
               className={styles.image}
             />

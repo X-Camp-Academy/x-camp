@@ -4,8 +4,10 @@ import { Button, Col, Row, Space, Typography } from "antd";
 import { CaretRightOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import Link from "next/link";
+
 const { Paragraph } = Typography;
-const TopBanner = () => {
+
+const Banner: React.FC = () => {
   const { format: t } = useLang();
   return (
     <div className={styles.topBanner}>
@@ -32,7 +34,7 @@ const TopBanner = () => {
                   {t("TrialClass")}
                 </Link>
               </Button>
-{/*               <Button
+              {/*               <Button
                 type={"primary"}
                 className={styles.button}
                 icon={<CaretRightOutlined />}
@@ -56,4 +58,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;

@@ -2,10 +2,6 @@
   width: 100%;
   padding: 100px 0;
 
-  @media (max-width: 768px) {
-    padding: 30px 0;
-  }
-
   .cards {
     .card {
       background: #ffffff;
@@ -48,8 +44,6 @@
         @media (max-width: 768px) {
           margin: 12px 0;
         }
-
-
       }
 
       .descriptions {
@@ -58,11 +52,10 @@
           position: absolute;
           color: #ffad11;
           font-size: 18px;
-          
           right: 0;
         }
         :global {
-          .ant-descriptions-row>td {
+          .ant-descriptions-row > td {
             padding-bottom: 8px;
           }
 

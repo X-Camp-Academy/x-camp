@@ -7,7 +7,7 @@ interface CommonBannerProps {
   rightNode: React.ReactNode;
 }
 
-const CommonBanner: React.FC<CommonBannerProps> = ({ leftNode, rightNode }) => {
+const CommonBanner: React.FC<CommonBannerProps> = ({ leftNode = null, rightNode = null }) => {
   return (
     <div className={styles.bannerContainer}>
       <div className="container">

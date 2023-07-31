@@ -2,7 +2,7 @@
 import { Layout } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
-import TopBanner from "./top-banner";
+import Banner from "./banner";
 import Reviews from "@/components/common/reviews";
 import Introduction from "./introduction";
 import WhyContest from "./why-contest";
@@ -31,7 +31,7 @@ const Contests = () => {
   return (
     <Layout className={styles.main}>
       <Content>
-        <TopBanner />
+        <Banner />
         <MonthlyContest
           data={formatContestsByQuarter(
             resourcesContest?.data!,

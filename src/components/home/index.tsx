@@ -44,7 +44,7 @@ const Home: React.FC = () => {
         <StudentProjects />
         <XAlumni />
         <Reviews reviewsData={reviewsData} />
-        {/* <Partners /> */}
+        <Partners />
       </Content>
     </Layout>
   );

@@ -32,7 +32,7 @@ const QAPart: React.FC = () => {
   return (
     <div className={`${styles.qaContent} container`}>
       <Title className={styles.title}>{t('Questions')}</Title>
-      <Row gutter={[32, 32]}>
+      <Row gutter={[32, 32]} className={styles.row}>
         <Col
           xs={{ span: 24 }}
           sm={{ span: 24 }}
@@ -64,7 +64,7 @@ const QAPart: React.FC = () => {
           xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 24 }}
-          lg={{ span: 12 }}
+          lg={{ span: 10, offset: 2 }}
         >
           <Card className={styles.card}>
             <Title className={styles.formTitle}>{t('SubmitAQuestion')}</Title>
@@ -154,7 +154,7 @@ const QAPart: React.FC = () => {
           </Card>
         </Col>
       </Row>
-    </div>
+    </div >
   );
 };
 

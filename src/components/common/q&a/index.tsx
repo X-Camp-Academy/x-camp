@@ -2,7 +2,8 @@
 import React from 'react';
 import styles from './index.module.scss';
 import { Collapse, Space } from 'antd';
-import { DownCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
+import { DownCircleOutlined } from '@ant-design/icons';
+import { useMobile } from '@/utils';
 
 const { Panel } = Collapse;
 
@@ -18,6 +19,7 @@ const QACard: React.FC<Props> = ({
   index,
   className = '',
 }) => {
+  const isMobile = useMobile();
   const threeColors = ['#FFD600', '#FFAD11', '#D46B14'];
   const computedStyle = (index: number) => {
     const defaultStyle = {
@@ -43,7 +45,7 @@ const QACard: React.FC<Props> = ({
     >
       <Panel
         header={
-          <Space size={12}>
+          <Space size={12} direction={isMobile ? "vertical" : "horizontal"}>
             <div
               className={`${styles.questionAndAnswerIcon} ${styles.question}`}
             >

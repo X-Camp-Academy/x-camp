@@ -1,21 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.scss";
 import { Col, Empty, Layout, Row } from "antd";
 import ArticleContent from "./article-content";
 import ArticleSider from "./article-sider";
 import { useParams } from "next/navigation";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+
 const { Content } = Layout;
 
-const Article = () => {
+const Article: React.FC = () => {
   const articleId = useParams()?.articleId;
-  const pageSize = 1;
-  const [current, setCurrent] = useState<number>(1);
-
   const { data: newEventData, run } = useGetNewEvent({
-    current,
-    pageSize,
+    current: 1,
+    pageSize: 1,
   });
 
   useEffect(() => {

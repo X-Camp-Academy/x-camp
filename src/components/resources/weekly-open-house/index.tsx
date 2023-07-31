@@ -2,7 +2,7 @@
 import { Layout, Space } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
-import TopBanner from './top-banner';
+import Banner from './banner';
 import Reviews from '@/components/common/reviews';
 import Introduction from './introduction';
 import AppointmentCard from './appointment-card';
@@ -21,7 +21,7 @@ const WeeklyOpenHouse = () => {
   return (
     <Layout className={styles.main}>
       <Content>
-        <TopBanner />
+        <Banner />
         <Space direction="vertical" size={100} className={styles.content}>
           {/* <JoinWay /> */}
           <Introduction />

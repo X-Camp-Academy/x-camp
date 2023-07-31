@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Space, Row, Col, Card, Image, Button, Typography } from "antd";
 import styles from "./Stories.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
@@ -11,20 +11,19 @@ import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import { getTransResult } from "@/utils/public";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useMobile } from "@/utils";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const Stories: React.FC = () => {
   const router = useRouter();
-  const pageSize = 3;
+  const isMobile = useMobile();
   const { lang, format: t } = useLang();
-  const [current, setCurrent] = useState<number>(1);
-  const [tag, setTag] = useState<NewEventCategory>(NewEventCategory.XAlumni);
 
   const { data: newEventData } = useGetNewEvent({
-    tag,
-    current,
-    pageSize,
+    tag: NewEventCategory.XAlumni,
+    current: 1,
+    pageSize: 3,
   });
 
   const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
@@ -38,7 +37,7 @@ const Stories: React.FC = () => {
   return (
     <div className={styles.storiesContainer}>
       <div className="container">
-        <Space className={styles.topSpace}>
+        <Space className={styles.topSpace} direction={isMobile ? "vertical" : "horizontal"}>
           <Space direction="vertical">
             <Title className={styles.title}>{t("XAlumniEvents")}</Title>
             <Paragraph className={styles.paragraph}>

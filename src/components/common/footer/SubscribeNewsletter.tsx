@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Space, Image, Typography, Button, Input, Select, Form } from "antd";
+import { Space, Image, Typography, Button, Input, Form } from "antd";
 import styles from "./SubscribeNewsletter.module.scss";
 import { useMobile } from "@/utils";
 import { subscribeNewsletterRequest } from "@/apis/send-email-client";

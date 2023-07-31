@@ -2,7 +2,7 @@
 import { Layout } from "antd";
 import React from "react";
 import styles from "./index.module.scss";
-import TopBanner from "./top-banner";
+import Banner from "./banner";
 import UsacoIntro from "./introduction";
 import RelateResources from "./relate-resources";
 import Reviews from "@/components/common/reviews";
@@ -15,7 +15,7 @@ import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetResourcesLiveSolution } from "@/apis/strapi-client/define";
 const { Content } = Layout;
 
-const UsacoLiveSolutions = () => {
+const UsacoLiveSolutions: React.FC = () => {
   const pathname = usePathname();
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
@@ -37,7 +37,7 @@ const UsacoLiveSolutions = () => {
   return (
     <Layout className={styles.usacoLiveSolutions}>
       <Content>
-        <TopBanner />
+        <Banner />
         <UsacoIntro data={resort(resourcesLiveSolution)} />
         <RelateResources />
         <Reviews
