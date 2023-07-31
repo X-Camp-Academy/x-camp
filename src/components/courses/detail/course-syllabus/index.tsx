@@ -11,7 +11,6 @@ const CourseSyllabus: React.FC = () => {
   const { format: t, lang } = useLang();
   const courseData = useContext(CourseClassesContext);
   const courseSyllabus = getLangResult(lang, courseData?.attributes?.courseSyllabusZh, courseData?.attributes?.courseSyllabusEn);
-  console.log(courseSyllabus);
 
   return (
     <div className={styles.content}>
