@@ -20,9 +20,8 @@ const StudentProjects: React.FC = () => {
   );
 
   const getMediaUrl = (media: StrapiMedia) => {
-    return media?.data?.attributes?.url;
+    return `${media?.data?.attributes?.url}?autoplay=0`;
   };
-
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
@@ -46,15 +45,16 @@ const StudentProjects: React.FC = () => {
         </Paragraph>
 
         <Row gutter={16} className={styles.row}>
-          <Col xs={24} sm={24} md={24} lg={12}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={12}>
             {studentProjectsData && (
-              <video width="100%" height="100%" controls>
-                <source src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} type="video/mp4" />
-              </video>
+              <iframe src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} width="100%" height="100%" sandbox=""></iframe>
+              // <video width="100%" height={360} controls>
+              //   <source src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} type="video/mp4" />
+              // </video>
             )}
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={12}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={12}>
             <div className={styles.cardContainer}>
               {studentProjectsData &&
                 studentProjectsData.slice(1).map((item) => (
@@ -66,9 +66,10 @@ const StudentProjects: React.FC = () => {
                       padding: 16,
                     }}
                     cover={
-                      <video width="360" height="164" controls>
-                        <source src={getMediaUrl(item?.attributes?.video)} type="video/mp4" />
-                      </video>
+                      <iframe src={getMediaUrl(item?.attributes?.video)} width="100%" height="100%" sandbox=""></iframe>
+                      // <video width={311} height={175} controls>
+                      //   <source src={getMediaUrl(item?.attributes?.video)} type="video/mp4" />
+                      // </video>
                     }
                   >
                     <Space direction="vertical" size={24}>
