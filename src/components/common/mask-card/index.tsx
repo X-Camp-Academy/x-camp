@@ -6,11 +6,13 @@ interface MaskCardProps extends CardProps {
   ref?: React.RefObject<any>;
   maskChildren?: React.ReactNode;
   maskBackGroundColor?: string;
+  maskBorderRadius?: number;
 }
 const MaskCard = ({
   maskChildren,
   children,
   maskBackGroundColor,
+  maskBorderRadius = 8,
   ...props
 }: MaskCardProps) => {
   return (
@@ -18,7 +20,7 @@ const MaskCard = ({
       <div className={styles.content}>{children}</div>
       <div
         className={styles.mask}
-        style={{ backgroundColor: maskBackGroundColor }}
+        style={{ backgroundColor: maskBackGroundColor, borderRadius: maskBorderRadius }}
       >
         {maskChildren}
       </div>
