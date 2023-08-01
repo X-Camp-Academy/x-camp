@@ -16,8 +16,6 @@ const XAlumni: React.FC = () => {
   const { data } = useGetXAlumni();
   const xAlumni = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
   const router = useRouter();
-
-
   const generateMaskChildren = (title?: string, description?: string) => {
     return (
       <Space direction="vertical">

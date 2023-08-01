@@ -14,7 +14,7 @@ const XCampFounder: React.FC = () => {
       <Space direction="vertical" align="center">
         <Title className={styles.title}>{t("X-CampFounder")}</Title>
 
-        <Row>
+        <Row gutter={[32, 124]}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
             <div className={styles.charlieImgBackground}></div>
             <Image
@@ -75,7 +75,7 @@ const XCampFounder: React.FC = () => {
           </Col>
         </Row>
 
-        <Row style={{ marginTop: 120 }}>
+        <Row gutter={[32, 124]} style={{ marginTop: 120 }}>
           <Col
             xs={24}
             sm={24}

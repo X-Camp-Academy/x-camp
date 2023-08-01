@@ -16,28 +16,30 @@ const WeSupport: React.FC = () => {
     "/image/home/java.png",
     "/image/home/c++.png",
   ];
+
   return (
     <div className={`${styles.weSupport} container`}>
       <Row>
         <Col
           xs={{ span: 24, order: 2 }}
           sm={{ span: 24, order: 2 }}
-          md={{ span: 12, order: 1 }}
+          md={{ span: 24, order: 2 }}
+          lg={{ span: 12, order: 1 }}
         >
-          <video className={styles.video} controls>
-            <source src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?updated_at=2023-07-26T08:23:18.159Z" type="video/mp4" />
-          </video>
+          <iframe src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0" width="100%" height="100%" sandbox=""></iframe>
         </Col>
         <Col
           xs={{ span: 24, order: 1 }}
           sm={{ span: 24, order: 1 }}
-          md={{ span: 11, order: 2, offset: 1 }}
+          md={{ span: 24, order: 1 }}
+          lg={{ span: 11, order: 2, offset: 1 }}
         >
           <Row>
             <Col
               xs={{ span: 24, order: 2 }}
               sm={{ span: 24, order: 2 }}
-              md={{ span: 24, order: 1 }}
+              md={{ span: 24, order: 2 }}
+              lg={{ span: 24, order: 1 }}
             >
               <Space size={24} direction="vertical">
                 <Title className={styles.title}>{t("WeSupport")}</Title>
@@ -50,7 +52,8 @@ const WeSupport: React.FC = () => {
             <Col
               xs={{ span: 24, order: 1 }}
               sm={{ span: 24, order: 1 }}
-              md={{ span: 24, order: 2 }}
+              md={{ span: 24, order: 1 }}
+              lg={{ span: 24, order: 2 }}
             >
               <Space direction="horizontal" size={isMobile ? 8 : 48}>
                 {images?.map((item, index) => {

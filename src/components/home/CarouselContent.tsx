@@ -32,7 +32,7 @@ const CarouselContent: React.FC = () => {
         <div className={styles.content}>
           <div className="container">
             <Row>
-              <Col xs={24} sm={24} md={14}>
+              <Col xs={24} sm={24} md={24} lg={14}>
                 <Space direction="vertical" className={styles.space} size={24}>
                   <Title className={styles.title}>{t("WeeklyOpenHouse")}</Title>
                   <div>
@@ -60,7 +60,7 @@ const CarouselContent: React.FC = () => {
         <div className={styles.content}>
           <div className="container">
             <Row>
-              <Col xs={24} sm={24} md={14}>
+              <Col xs={24} sm={24} md={24} lg={14}>
                 <Space direction="vertical" className={styles.space} size={20}>
                   <Title className={styles.title} style={{ fontSize: 32 }}>{t("USACO.enhancement.register")}</Title>
                   <div>
@@ -92,7 +92,7 @@ const CarouselContent: React.FC = () => {
         <div className={styles.content}>
           <div className="container">
             <Row>
-              <Col xs={24} sm={24} md={14}>
+              <Col xs={24} sm={24} md={24} lg={14}>
                 <Space direction="vertical" className={styles.space} size={20}>
                   <Title className={styles.title} style={{ fontSize: 32 }}>{t("Fall.weekend.class")}</Title>
                   <div>
@@ -120,7 +120,7 @@ const CarouselContent: React.FC = () => {
         <div className={styles.content}>
           <div className="container">
             <Row>
-              <Col xs={24} sm={24} md={14}>
+              <Col xs={24} sm={24} md={24} lg={14}>
                 <Space direction="vertical" className={styles.space} size={24}>
                   <Title className={styles.title}>{t("USACO.Director.BrianDean")}</Title>
                   <button className={styles.button} onClick={() => { window.open('https://www.youtube.com/watch?v=K2PWgYHZWbw') }}>{t("USACO.youtube.recap")}</button>
