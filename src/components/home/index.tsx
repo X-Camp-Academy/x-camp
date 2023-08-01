@@ -28,9 +28,6 @@ const Home: React.FC = () => {
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-  // TODO 移动端下XCampFounders样式需要优化一下
-  //  TODO ipad屏幕下PublicCalendar style需要修改
-  //  TODO ipad屏幕下X-Alumni style需要修改
   return (
     <Layout className={styles.homeContainer}>
       <Content>

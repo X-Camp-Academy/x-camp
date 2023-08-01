@@ -48,9 +48,6 @@ const StudentProjects: React.FC = () => {
           <Col xs={24} sm={24} md={24} lg={24} xl={12}>
             {studentProjectsData && (
               <iframe src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} width="100%" height="100%" sandbox=""></iframe>
-              // <video width="100%" height={360} controls>
-              //   <source src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} type="video/mp4" />
-              // </video>
             )}
           </Col>
 
@@ -67,9 +64,6 @@ const StudentProjects: React.FC = () => {
                     }}
                     cover={
                       <iframe src={getMediaUrl(item?.attributes?.video)} width="100%" height="100%" sandbox=""></iframe>
-                      // <video width={311} height={175} controls>
-                      //   <source src={getMediaUrl(item?.attributes?.video)} type="video/mp4" />
-                      // </video>
                     }
                   >
                     <Space direction="vertical" size={24}>
