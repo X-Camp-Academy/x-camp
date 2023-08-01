@@ -26,7 +26,7 @@ const WeSupport: React.FC = () => {
           md={{ span: 24, order: 2 }}
           lg={{ span: 12, order: 1 }}
         >
-          <iframe src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0" width="100%" height="100%" sandbox=""></iframe>
+          <iframe src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0" width="100%" height="100%"></iframe>
         </Col>
         <Col
           xs={{ span: 24, order: 1 }}

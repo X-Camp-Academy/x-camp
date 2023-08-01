@@ -113,12 +113,14 @@ const Nav = () => {
       <Header className={`${styles.header} container`}>
         <Space align="center" className={styles.space}>
           <Space>
-            <Image
-              src="/logo/logo.svg"
-              alt="logo"
-              preview={false}
-              className={styles.image}
-            />
+            <Link href="/">
+              <Image
+                src="/logo/logo.svg"
+                alt="logo"
+                preview={false}
+                className={styles.image}
+              />
+            </Link>
             {!isMobile && ( // 缓存原因需要强制销毁重建组件
               <XStarMenu
                 selectedKey={current}
