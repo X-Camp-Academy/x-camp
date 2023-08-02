@@ -64,7 +64,7 @@ const XAlumni: React.FC = () => {
                 },
               },
               {
-                breakpoint: 576,
+                breakpoint: 768,
                 settings: {
                   slidesToShow: 1,
                 },
