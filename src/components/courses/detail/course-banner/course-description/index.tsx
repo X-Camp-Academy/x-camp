@@ -2,7 +2,6 @@ import React, { useState, useRef, useContext } from "react";
 import { Carousel, Descriptions, Space, Image, Button, message, Modal } from "antd";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import dayjs from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import CourseClassesContext from "@/components/courses/CourseClasses";
@@ -32,19 +31,12 @@ const CourseDescription: React.FC = () => {
     additionalInfo
   } = courseData?.attributes ?? {};
 
-  const formatDate = (date: string) => {
-    const formatStringZh = "YYYY/MM/DD";
-    const formatStringEn = "YYYY/MM/DD";
-    return getTransResult(
-      lang,
-      dayjs(date).format(formatStringZh),
-      dayjs(date).format(formatStringEn)
-    );
-  };
-
+  const formatDate = (dateTime?: string) => {
+    return formatTimezone(dateTime)?.utcTime?.format('DD/MM/YYYY');
+  }
   const fullPath = window.location.href;
-  const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatTimezone(startDateTime)?.utcTime?.format('DD/MM/YYYY')} ~ ${formatTimezone(endDateTime)?.utcTime?.format('DD/MM/YYYY')}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}\n更多课程：https://www-new.x-camp.academy/courses/`;
-  const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${spokenLang}\nCourse time: ${formatTimezone(startDateTime)?.utcTime?.format('DD/MM/YYYY')} ~ ${formatTimezone(endDateTime)?.utcTime?.format('DD/MM/YYYY')}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
+  const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatDate(startDateTime)} ~ ${formatDate(endDateTime)}\n课程周期：${frequency}\n开课方式：${classMode}\n课程链接：${fullPath}\n更多课程：https://www-new.x-camp.academy/courses/`;
+  const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${spokenLang}\nCourse time: ${formatDate(startDateTime)} ~ ${formatDate(endDateTime)}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
 
   const imageMimes = [
     "image/jpeg",
@@ -91,9 +83,6 @@ const CourseDescription: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  console.log(media?.data);
-
-
   return (
     <Space className={styles.description}>
       <div className={styles.left}>
@@ -109,11 +98,14 @@ const CourseDescription: React.FC = () => {
           </Descriptions.Item>
           <Descriptions.Item label={t("Duration")}>
 
-            {`${formatTimezone(startDateTime)?.utcTime?.format('DD/MM/YYYY')} - ${formatTimezone(endDateTime)?.utcTime?.format('DD/MM/YYYY')} (${formatTimezone(endDateTime)?.timezone})`}
+            {`${formatDate(startDateTime)} - ${formatDate(endDateTime)} (${formatTimezone(endDateTime)?.timezone})`}
           </Descriptions.Item>
-          <Descriptions.Item label={t("CourseFormat")}>
-            {courseFormat}
-          </Descriptions.Item>
+          {
+            courseFormat &&
+            <Descriptions.Item label={t("CourseFormat")}>
+              {courseFormat}
+            </Descriptions.Item>
+          }
           {
             additionalInfo &&
             <Descriptions.Item label={t("AdditionalInfo")}>
