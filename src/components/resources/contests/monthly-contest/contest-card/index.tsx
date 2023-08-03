@@ -122,7 +122,6 @@ const ContestCard = ({ data }: Props) => {
                   )}
                 </div>
               </div>
-              6666
             </Popover>
           );
         })}

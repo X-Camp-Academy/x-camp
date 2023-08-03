@@ -6,6 +6,7 @@ import { Grid } from "antd";
  * sm 屏幕 >= 576px
  * md 屏幕 >= 768px iPad Mini
  * lg 屏幕 >= 992px
+ * xl 屏幕 >= 1200px
  * @returns boolean
  */
 export const useMobile = () => {

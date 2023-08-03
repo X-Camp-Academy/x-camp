@@ -17,7 +17,7 @@ const TopBanner = () => {
                 {t("ReferralProgram.Desc1")}
                 <br></br>
                 {t("Earn")}
-                <span>{getTransResult(lang, '$100', ' $100 ')}</span>
+                <span>{getTransResult(lang, '$50', ' $50 ')}</span>
                 {t("ReferralProgram.Desc2")}
                 <span>{getTransResult(lang, '$50', ' $50 ')}</span>
                 {t("ReferralProgram.Desc3")}
