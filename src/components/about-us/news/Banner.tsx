@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Space, Typography, DatePicker, DatePickerProps, Image } from "antd";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import CommonBanner from "@/components/common/common-banner";
@@ -24,6 +24,10 @@ const Banner = ({ year, setYear }: Props) => {
   const customFormat: DatePickerProps["format"] = (value) =>
     `${value.format("YYYY")}${getTransResult(lang, `${t("Year")}`, ` ${t("Year")}`)}`;
 
+  const disabledDate = (current: Dayjs) => {
+    const year = current.year();
+    return year < 2017 || year > 2023;
+  };
 
   const leftNode = (
     <Space direction="vertical">
@@ -32,6 +36,7 @@ const Banner = ({ year, setYear }: Props) => {
       <DatePicker
         className={styles.date}
         picker="year"
+        disabledDate={disabledDate}
         format={customFormat}
         onChange={onChange}
         defaultValue={dayjs(year)}
