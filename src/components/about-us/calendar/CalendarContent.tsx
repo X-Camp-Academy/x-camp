@@ -112,7 +112,6 @@ const CalendarContent: React.FC = () => {
     data: StrapiResponseDataItem<GetNewEvent>[] | undefined
   ): Item[] => {
     const currentMonth = dayjs().month();
-    console.log("currentMonth", currentMonth); // 6
 
     const groupedData: {
       [month: string]: Item[];
@@ -124,14 +123,13 @@ const CalendarContent: React.FC = () => {
       groupedData[month] = [];
     }
 
-
     data?.forEach((item) => {
       const month = dayjs(item?.attributes?.startDateTime).month();
       if (!groupedData[(month + currentMonth) % 12]) {
         groupedData[(month + currentMonth) % 12] = [];
       }
       if (dayjs(item?.attributes.startDateTime).isSameOrAfter(dayjs(), 'months')) {
-        groupedData[(month + currentMonth) % 12].push({
+        groupedData[(month + currentMonth - 2) % 12].push({
           label: getTransResult(
             lang,
             item?.attributes?.titleZh,
