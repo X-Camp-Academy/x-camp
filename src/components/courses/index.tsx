@@ -98,6 +98,8 @@ const Courses: React.FC = () => {
       //     (item) => item?.attributes?.classMode === "In-person"
       //   );
       case "Camps Classes":
+        // console.log(courses?.data?.filter((item) => item?.attributes?.isCamp));
+
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
         return courses?.data;
@@ -151,6 +153,8 @@ const Courses: React.FC = () => {
     const segmentedData = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
     );
+    console.log(segmentedData);
+
     const result = removeEmptyChildren(segmentedData);
 
     setSegmentedData(result);
