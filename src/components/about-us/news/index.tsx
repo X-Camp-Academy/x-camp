@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { NewEventCategory } from '@/apis/strapi-client/define';
 import dayjs from 'dayjs';
+import { usePathname } from 'next/navigation';
 
 const Banner = dynamic(() => import('./Banner'));
 const Partners = dynamic(() => import('@/components/home/Partners'));
@@ -17,11 +18,13 @@ const { Content } = Layout;
 const NewsPage = () => {
   const [year, setYear] = useState('2023');
   const [current, setCurrent] = useState(1);
+  const pathname = usePathname();
   const PAGE_SIZE = 15;
   const { data: newEventData, run: getNewEvent } = useGetNewEvent({
     current,
     pageSize: PAGE_SIZE,
     manual: true,
+    pageName: [pathname]
   });
 
   const total = newEventData?.meta?.pagination?.total;

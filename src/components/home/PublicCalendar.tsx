@@ -9,13 +9,14 @@ import { formatTimezone, getTransResult } from "@/utils/public";
 import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import styles from "./PublicCalendar.module.scss";
+import { usePathname } from "next/navigation";
 
 const { Title, Paragraph, Text } = Typography;
 
 const PublicCalendar: React.FC = () => {
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
-
+  const pathname = usePathname();
   //引入dayjs插件
   dayjs.extend(isBetween);
 
@@ -81,6 +82,7 @@ const PublicCalendar: React.FC = () => {
   const { data: newEventData, run } = useGetNewEvent({
     current,
     pageSize,
+    pageName: ['/home/']
   });
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {

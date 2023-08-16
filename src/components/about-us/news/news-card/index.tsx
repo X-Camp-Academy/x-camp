@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { Col, Pagination, Row, Space } from "antd";
+import { Col, Pagination, Row, Space, Image } from "antd";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
@@ -30,17 +30,17 @@ const NewsCard = ({ current, setCurrent, newEventData, pageSize, total }: Props)
     <div className={styles.content}>
       <div className={"container"}>
         <div className={styles.partner}>
-          <Row gutter={[16, 16]}>
+          <Row gutter={[32, 48]}>
             {newEventData?.map((item, index) => {
               const { utcTime: startTime } = formatTimezone(
                 item?.attributes?.startDateTime
               );
               return (
-                <Col key={index}>
+                <Col key={index} xs={24} sm={24} md={24} lg={8}>
                   <Space direction={"vertical"} className={styles.card}>
                     <img
-                      src={getTranslateImg(item.attributes?.imgZh, item.attributes?.imgEn)}
                       alt=""
+                      src={getTranslateImg(item.attributes?.imgZh, item.attributes?.imgEn)}
                     />
                     <Space className={styles.description} size={"middle"}>
                       {item?.attributes?.editor}
