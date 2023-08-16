@@ -30,6 +30,7 @@ import {
   GetPartnerRequest,
   GetUserSearchRequest,
   SubmitUserInfoRequest,
+  GetNewEventResponse,
 } from "./define";
 import { isArray } from "lodash";
 import {
@@ -119,11 +120,12 @@ export const useGetNewEvent = ({
 
   return useRequest(
     async (params: GetNewEventRequest) => {
-      const res = await client.getNewEvent(params);
-      const result = res;
+      const res: GetNewEventResponse = await client.getNewEvent(params);
+
+      let result: GetNewEventResponse = { ...res, data: [] };
       if (!courseId && !pageName && !eventId) {
         // 如果三个选项都没填则取所有的
-        return result || {};
+        result["data"] = res.data;
       } else {
         // 根据courseId, pageName, eventId做筛选，根据category做分类
         if (courseId) {
