@@ -102,11 +102,17 @@ export const useGetNewEvent = ({
   current,
   pageSize,
   manual = false,
+  courseId,
+  pageName,
+  eventId,
 }: {
   tag?: NewEventCategory;
   current: number;
   pageSize: number;
   manual?: boolean;
+  courseId?: string[];
+  pageName?: string[];
+  eventId?: string[];
 }) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -114,7 +120,30 @@ export const useGetNewEvent = ({
   return useRequest(
     async (params: GetNewEventRequest) => {
       const res = await client.getNewEvent(params);
-      return res || {};
+      const result = res;
+      if (!courseId && !pageName && !eventId) {
+        // 如果三个选项都没填则取所有的
+        return result || {};
+      } else {
+        // 根据courseId, pageName, eventId做筛选，根据category做分类
+        if (courseId) {
+          result["data"].push(
+            ...filterByAttribution(res?.data, "courseId", courseId)
+          );
+        }
+        if (pageName) {
+          result["data"].push(
+            ...filterByAttribution(res?.data, "pageName", pageName)
+          );
+        }
+        if (eventId) {
+          result["data"].push(
+            ...filterByAttribution(res?.data, "eventId", eventId)
+          );
+        }
+      }
+      result["data"] = deduplicateArray(result?.data);
+      return result || {};
     },
     {
       manual,
