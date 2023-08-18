@@ -4,8 +4,8 @@ import { Space, Typography, Row, Col, Card } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
+import { GetHomeStudentProjects } from "@/apis/strapi-client/define";
 import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
 import styles from "./StudentProjects.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
@@ -14,14 +14,11 @@ const StudentProjects: React.FC = () => {
   const { format: t, lang } = useLang();
   const { hash } = window.location;
   const { data } = useGetHomeStudentProjects();
+  const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
   const studentProjectsData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order
   );
-
-  const getMediaUrl = (media: StrapiMedia) => {
-    return `${media?.data?.attributes?.url}?autoplay=0`;
-  };
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
@@ -34,6 +31,11 @@ const StudentProjects: React.FC = () => {
     scrollIntoView(hash.slice(1))
   }, [hash])
 
+  const getVideoByLang = (attributes: GetHomeStudentProjects) => {
+    const { video, videoZh, videoEn } = attributes;
+
+    return video?.data ? `${video?.data?.attributes?.url}?autoplay=0` : (videoZh || videoEn) ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
+  }
   return (
     <div className={`${styles.studentProjects} container`} id="stu_project">
       <Space direction="vertical" align="center">
@@ -47,7 +49,7 @@ const StudentProjects: React.FC = () => {
         <Row gutter={16} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={24} xl={12}>
             {studentProjectsData && (
-              <iframe src={getMediaUrl(studentProjectsData[0]?.attributes?.video)} width="100%" height="100%" sandbox=""></iframe>
+              <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" sandbox=""></iframe>
             )}
           </Col>
 
@@ -63,7 +65,7 @@ const StudentProjects: React.FC = () => {
                       padding: 16,
                     }}
                     cover={
-                      <iframe src={getMediaUrl(item?.attributes?.video)} width="100%" height="100%" sandbox=""></iframe>
+                      <iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" sandbox=""></iframe>
                     }
                   >
                     <Space direction="vertical" size={24}>
@@ -84,7 +86,7 @@ const StudentProjects: React.FC = () => {
                           item?.attributes?.descriptionEn
                         )}
                       </Paragraph>
-                      <a href={item?.attributes?.link} className={styles.cardMore}>
+                      <a href={getTransResult(lang, item?.attributes?.videoZh, item?.attributes?.videoEn)} className={styles.cardMore}>
                         {"More"} <RightOutlined />
                       </a>
                     </Space>

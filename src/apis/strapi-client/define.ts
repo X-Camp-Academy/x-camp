@@ -78,7 +78,8 @@ export interface GetHomeStudentProjects extends strapiPublicFields {
   descriptionEn: string;
   video: StrapiMedia;
   order: number;
-  link: string;
+  videoZh: string;
+  videoEn: string;
 }
 export type GetHomeStudentProjectsRequest =
   StrapiRequest<GetHomeStudentProjects>;
@@ -220,11 +221,6 @@ export interface GetAboutUsJoinUs extends strapiPublicFields {
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  video: StrapiMedia;
-  order: number;
-}
-
-export interface GetAboutUsJoinUs extends strapiPublicFields {
   category: AboutUsJoinUsCategory;
   place: AboutUsJoinUsPlace;
   contentZh: string;
@@ -299,6 +295,8 @@ export interface GetResourcesLiveSolution extends strapiPublicFields {
   category: string;
   video: StrapiMedia;
   order: number;
+  videoZh: string;
+  videoEn: string;
 }
 
 export type GetResourcesLiveSolutionRequest =
