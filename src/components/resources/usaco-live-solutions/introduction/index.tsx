@@ -15,7 +15,14 @@ interface Props {
 
 const UsacoIntro = ({ data }: Props) => {
   const { format: t, lang } = useLang();
+  const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
+
+  const getVideoByLang = (attributes: GetResourcesLiveSolution) => {
+    const { video, videoZh, videoEn } = attributes;
+
+    return video?.data ? video?.data?.attributes?.url : (videoZh || videoEn) ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
+  }
   return (
     <div className={styles.introduction}>
       <div className={"container"}>
@@ -54,7 +61,7 @@ const UsacoIntro = ({ data }: Props) => {
                         >
                           <video controls className={styles.videoBox}>
                             <source
-                              src={g?.attributes?.video?.data?.attributes?.url}
+                              src={getVideoByLang(g?.attributes)}
                               type="video/mp4"
                             />
                           </video>
