@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Space, Row, Col, Typography } from "antd";
+import { Space, Row, Col, Typography, Image } from "antd";
 import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 const { Text } = Typography;
@@ -41,13 +41,26 @@ const UsacoCards = ({ showTitle = false }: UsacoCardsProps) => {
         </Space>
       )}
       <Row gutter={16} className={styles.row}>
+        <Col
+          xs={24}
+          sm={24}
+          md={4}
+          lg={4}
+        >
+          <Image
+            alt=""
+            preview={false}
+            src={"/image/about-us/x-camp-logo.png"}
+            className={styles.logo}
+          />
+        </Col>
         {cardsData.map((item, index) => (
           <Col
             key={index}
             xs={24}
             sm={24}
-            md={12}
-            lg={6}
+            md={5}
+            lg={5}
             className={index === 3 ? styles.col4 : styles.col}
           >
             <div className={styles.cardContainer}>

@@ -65,7 +65,6 @@ const ISPI: React.FC = () => {
             </div>
           </Col>
         </Row>
-        <Space></Space>
       </div>
     </div>
   );

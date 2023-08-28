@@ -4,9 +4,7 @@ import UsacoCards from "@/components/common/usaco-cards";
 
 const UsacoMedal: React.FC = () => {
   return (
-    <div className="container">
-      <UsacoCards showTitle />
-    </div>
+    <UsacoCards showTitle />
   );
 };
 

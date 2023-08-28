@@ -50,14 +50,56 @@ const History: React.FC = () => {
           <div className={styles.line}></div>
         </div>
 
-        <div className={styles.timeImage}>
-          <img src={images[0].src} alt="" className={styles.image1} />
-          <img src={images[0].src} alt="" className={styles.image2} />
-          <img src={images[0].src} alt="" className={styles.image3} />
-          <img src={images[0].src} alt="" className={styles.image4} />
-          <img src={images[0].src} alt="" className={styles.image5} />
-          <img src={images[0].src} alt="" className={styles.image6} />
-        </div>
+        <Row gutter={[16, 16]} className={styles.timeImage}>
+          <Col xs={24} sm={24} md={8} lg={4}>
+            <Image
+              alt=""
+              preview={false}
+              src={images[0].src}
+              className={styles.image1}
+            />
+          </Col>
+          <Col xs={24} sm={24} md={8} lg={4}>
+            <Image
+              alt=""
+              preview={false}
+              src={images[0].src}
+              className={styles.image2}
+            />
+          </Col>
+          <Col xs={24} sm={24} md={8} lg={4}>
+            <Image
+              alt=""
+              preview={false}
+              src={images[0].src}
+              className={styles.image3}
+            />
+          </Col>
+          <Col xs={24} sm={24} md={8} lg={4}>
+            <Image
+              alt=""
+              preview={false}
+              src={images[0].src}
+              className={styles.image4}
+            />
+          </Col>
+          <Col xs={24} sm={24} md={8} lg={4}>
+            <Image
+              alt=""
+              preview={false}
+              src={images[0].src}
+              className={styles.image5}
+            />
+          </Col>
+          <Col xs={24} sm={24} md={8} lg={4}>
+            <Image
+              alt=""
+              preview={false}
+              src={images[0].src}
+              className={styles.image6}
+            />
+          </Col>
+        </Row>
       </div>
     </div>
   );

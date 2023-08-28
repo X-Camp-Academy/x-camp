@@ -56,10 +56,13 @@
     .interest {
       position: absolute;
       z-index: 996;
-      top: 32px;
+      top: 16px;
       color: #172142;
       transform: rotate(-24deg);
       background-color: #ffd600;
+      @media (max-width: 992px) {
+        top: 192px;
+      }
       @media (max-width: 768px) {
         position: static;
         transform: translateX(0);
@@ -69,10 +72,16 @@
     .skills {
       position: absolute;
       z-index: 997;
-      top: 128px;
+      top: 136px;
       right: 0;
       transform: rotate(30deg);
       background-color: #d46b14;
+      @media (max-width: 1200px) {
+        top: 196px;
+      }
+      @media (max-width: 992px) {
+        top: 348px;
+      }
       @media (max-width: 768px) {
         position: static;
         transform: translateX(0);
