@@ -1,5 +1,5 @@
 import React from "react";
-import { Space, Typography, Image } from "antd";
+import { Space, Typography, Image, Row, Col } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import styles from "./History.module.scss";
 import dayjs from "dayjs";
@@ -14,45 +14,21 @@ const History: React.FC = () => {
   const images = [
     {
       src: "/image/about-us/introduction-banner.png",
-      styles: {
-        top: 50,
-        bottom: 100
-      }
     },
     {
       src: "/image/about-us/introduction-banner.png",
-      styles: {
-        top: 50,
-        bottom: 100
-      }
     },
     {
       src: "/image/about-us/introduction-banner.png",
-      styles: {
-        top: 50,
-        bottom: 100
-      }
     },
     {
       src: "/image/about-us/introduction-banner.png",
-      styles: {
-        top: 50,
-        bottom: 100
-      }
     },
     {
       src: "/image/about-us/introduction-banner.png",
-      styles: {
-        top: 50,
-        bottom: 100
-      }
     },
     {
       src: "/image/about-us/introduction-banner.png",
-      styles: {
-        top: 50,
-        bottom: 100
-      }
     },
   ]
   return (
@@ -74,20 +50,14 @@ const History: React.FC = () => {
           <div className={styles.line}></div>
         </div>
 
-        {/* 
         <div className={styles.timeImage}>
-          {
-            images?.map((item, index) => (
-              <Image
-                key={index}
-                alt=""
-                preview={false}
-                src={item?.src}
-                className={`${styles.image}${item?.styles}`}
-              />
-            ))
-          }
-        </div> */}
+          <img src={images[0].src} alt="" className={styles.image1} />
+          <img src={images[0].src} alt="" className={styles.image2} />
+          <img src={images[0].src} alt="" className={styles.image3} />
+          <img src={images[0].src} alt="" className={styles.image4} />
+          <img src={images[0].src} alt="" className={styles.image5} />
+          <img src={images[0].src} alt="" className={styles.image6} />
+        </div>
       </div>
     </div>
   );

@@ -70,18 +70,45 @@
       }
     }
   }
+
   .timeImage {
+    margin-top: 56px;
     height: 482px;
     position: relative;
     .image {
       width: 200px;
-      height: 300px;
+      height: 264px;
+      position: absolute;
     }
     .image1 {
       @extend .image;
-      position: absolute;
       left: 0;
       top: 50px;
+    }
+    .image2 {
+      @extend .image;
+      left: 218px;
+      bottom: 0;
+    }
+    .image3 {
+      @extend .image;
+      left: 436px;
+      top: 100px;
+    }
+    .image4 {
+      @extend .image;
+      right: 436px;
+      top: 0;
+    }
+    .image5 {
+      @extend .image;
+      right: 218px;
+      top: 50px;
+    }
+    .image6 {
+      @extend .image;
+      right: 0;
+      top: 150px;
     }
   }
 }
