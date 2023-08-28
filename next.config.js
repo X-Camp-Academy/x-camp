@@ -9,6 +9,7 @@ const nextConfig = {
     typedRoutes: true,
   },
   swcMinify: true,
+  output: "standalone",
 };
 
 module.exports = nextConfig;
