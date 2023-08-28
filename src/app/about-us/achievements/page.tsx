@@ -1,4 +1,6 @@
-import Achievements from "@/components/about-us/achievements";
+import dynamic from "next/dynamic";
+const Achievements = dynamic(() => import("@/components/about-us/achievements"));
+
 
 export const metadata = {
   title: "X-Camp Academy",

@@ -1,4 +1,5 @@
-import PrivacyPolicy from "@/components/common/privacy-policy";
+import dynamic from "next/dynamic";
+const PrivacyPolicy = dynamic(() => import("@/components/common/privacy-policy"));
 
 export const metadata = {
   title: "X-Camp Academy",

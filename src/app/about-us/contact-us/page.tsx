@@ -1,4 +1,6 @@
-import ContactUsContent from "@/components/about-us/contact-us";
+import dynamic from "next/dynamic";
+const ContactUsContent = dynamic(() => import("@/components/about-us/contact-us"), { ssr: false });
+
 
 export const metadata = {
   title: "X-Camp Academy",

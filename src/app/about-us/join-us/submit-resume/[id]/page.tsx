@@ -1,4 +1,6 @@
-import SubmitResume from '@/components/about-us/join-us/submit-resume';
+import dynamic from "next/dynamic";
+const SubmitResume = dynamic(() => import('@/components/about-us/join-us/submit-resume'));
+
 
 export const metadata = {
   title: "X-Camp Academy",

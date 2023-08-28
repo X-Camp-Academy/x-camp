@@ -1,4 +1,5 @@
-import NewsPage from "@/components/about-us/news";
+import dynamic from "next/dynamic";
+const NewsPage = dynamic(() => import("@/components/about-us/news"));
 
 export const metadata = {
   title: "X-Camp Academy",

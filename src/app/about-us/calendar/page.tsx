@@ -1,4 +1,6 @@
-import CalendarPage from "@/components/about-us/calendar";
+import dynamic from "next/dynamic";
+const CalendarPage = dynamic(() => import("@/components/about-us/calendar"));
+
 
 export const metadata = {
   title: "X-Camp Academy",

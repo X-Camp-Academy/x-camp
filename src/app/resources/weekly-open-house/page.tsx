@@ -1,4 +1,5 @@
-import WeeklyOpenHouse from "@/components/resources/weekly-open-house";
+import dynamic from "next/dynamic";
+const WeeklyOpenHouse = dynamic(() => import('@/components/resources/weekly-open-house'));
 
 export const metadata = {
   title: "X-Camp Academy",

@@ -1,4 +1,5 @@
-import HelpCenter from "@/components/about-us/help-center";
+import dynamic from "next/dynamic";
+const HelpCenter = dynamic(() => import("@/components/about-us/help-center"));
 
 export const metadata = {
   title: "X-Camp Academy",
