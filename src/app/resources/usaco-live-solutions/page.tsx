@@ -1,5 +1,5 @@
-import UsacoLiveSolutions from '@/components/resources/usaco-live-solutions';
-import React from 'react';
+import dynamic from "next/dynamic";
+const UsacoLiveSolutions = dynamic(() => import('@/components/resources/usaco-live-solutions'));
 
 export const metadata = {
   title: 'X-Camp Academy',

@@ -1,4 +1,5 @@
-import Login from "@/components/login";
+import dynamic from "next/dynamic";
+const Login = dynamic(() => import("@/components/login"), { ssr: false });
 
 export const metadata = {
   title: "X-Camp Academy",

@@ -1,4 +1,5 @@
-import Courses from '@/components/courses';
+import dynamic from "next/dynamic";
+const Courses = dynamic(() => import('@/components/courses'), { ssr: false });
 
 export const metadata = {
   title: 'X-Camp Academy',

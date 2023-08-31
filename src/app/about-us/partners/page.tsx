@@ -1,4 +1,5 @@
-import Partners from "@/components/about-us/partners";
+import dynamic from "next/dynamic";
+const Partners = dynamic(() => import("@/components/about-us/partners"));
 
 export const metadata = {
   title: "X-Camp Academy",

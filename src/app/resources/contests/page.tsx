@@ -1,5 +1,5 @@
-import Contests from '@/components/resources/contests';
-import React from 'react';
+import dynamic from "next/dynamic";
+const Contests = dynamic(() => import('@/components/resources/contests'));
 
 export const metadata = {
   title: 'X-Camp Academy',

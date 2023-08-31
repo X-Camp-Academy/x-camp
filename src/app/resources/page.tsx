@@ -1,4 +1,5 @@
-import Article from "@/components/resources/article";
+import dynamic from "next/dynamic";
+const Article = dynamic(() => import('@/components/resources/article'));
 
 export const metadata = {
   title: "X-Camp Academy",

@@ -1,4 +1,5 @@
-import StudentRecommend from "@/components/about-us/student-recommend";
+import dynamic from "next/dynamic";
+const StudentRecommend = dynamic(() => import("@/components/about-us/x-alumni"));
 
 export const metadata = {
   title: "X-Camp Academy",

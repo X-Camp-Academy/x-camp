@@ -1,5 +1,5 @@
-import React from "react";
-import CourseCamps from '@/components/courses/camps';
+import dynamic from "next/dynamic";
+const CourseCamps = dynamic(() => import('@/components/courses/camps'));
 
 export const metadata = {
   title: 'X-Camp Academy',

@@ -1,4 +1,5 @@
-import JoinUs from '@/components/about-us/join-us';
+import dynamic from "next/dynamic";
+const JoinUs = dynamic(() => import('@/components/about-us/join-us'));
 
 export const metadata = {
   title: "X-Camp Academy",

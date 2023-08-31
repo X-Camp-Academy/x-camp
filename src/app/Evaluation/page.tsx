@@ -1,4 +1,5 @@
-import Evaluation from '@/components/evaluation';
+import dynamic from "next/dynamic";
+const Evaluation = dynamic(() => import('@/components/evaluation'));
 
 export const metadata = {
   title: 'X-Camp Academy',

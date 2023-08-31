@@ -1,4 +1,5 @@
-import XAlumni from "@/components/about-us/x-alumni";
+import dynamic from "next/dynamic";
+const XAlumni = dynamic(() => import("@/components/about-us/x-alumni"));
 
 export const metadata = {
   title: "X-Camp Academy",

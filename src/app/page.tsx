@@ -1,4 +1,5 @@
-import Home from "@/components/home";
+import dynamic from 'next/dynamic';
+const Home = dynamic(() => import('@/components/home'));
 
 export const metadata = {
   title: "X-Camp Academy",

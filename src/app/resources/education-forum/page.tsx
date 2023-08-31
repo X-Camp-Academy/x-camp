@@ -1,4 +1,5 @@
-import EducationForum from "@/components/resources/education-forum";
+import dynamic from "next/dynamic";
+const EducationForum = dynamic(() => import("@/components/resources/education-forum"));
 
 export const metadata = {
   title: "X-Camp Academy",
