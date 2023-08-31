@@ -9,6 +9,7 @@ const nextConfig = {
     typedRoutes: true,
   },
   swcMinify: true,
+  fastRefresh: true,
 };
 
 module.exports = nextConfig;
