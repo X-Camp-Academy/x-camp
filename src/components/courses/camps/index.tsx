@@ -25,6 +25,8 @@ const CourseCamps: React.FC = () => {
   const { format: t } = useLang();
   // 请求当前 courseId 的评论
 
+  console.log(pathname);
+
   const { data: coursesData } = useGetCourses({
     filters: {
       id: { $eq: Number(params?.courseId) },
