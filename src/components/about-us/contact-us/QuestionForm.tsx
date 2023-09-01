@@ -18,7 +18,7 @@ const QAPart: React.FC = () => {
   const pathname = usePathname();
   const { data: faq } = useGetFaq({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   const { runAsync: submitQuestionForm } = useSubmitQuestionForm();
   const onFinish = async (values: UserInfo) => {

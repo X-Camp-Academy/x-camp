@@ -15,7 +15,7 @@ const CourseCatalog = () => {
   // 请求 pageName 为"/courses/catalog/"的评论
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
 
   return (

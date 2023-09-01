@@ -45,13 +45,13 @@ const CourseCamps: React.FC = () => {
   const { data: faq } = useGetFaq({
     ready: Boolean(campsCourse),
     category: FaqCategory.CampsQA,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
   const { data: reviewsData } = useGetReviews({
     ready: Boolean(campsCourse),
     courseId: campsCourse?.data?.map((v) => String(v?.id)),
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
 
   return (

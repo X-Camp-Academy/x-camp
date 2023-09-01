@@ -22,7 +22,7 @@ const ContactUs: React.FC = () => {
   // 请求当前页面的评论
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
 
   useEffect(() => {

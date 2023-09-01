@@ -28,7 +28,7 @@ const ProbsChallenge = () => {
     ready: Boolean(courses),
     category: FaqCategory.CoursesQA,
     courseId: courses?.data?.map((v) => String(v?.id)),
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
 
   return (

@@ -71,7 +71,7 @@ const Courses: React.FC = () => {
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   // 获取所有的courseLevelType分类
   const courseLevelTypeData = courseLevelType?.map(

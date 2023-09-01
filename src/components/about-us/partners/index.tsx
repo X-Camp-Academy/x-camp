@@ -16,7 +16,7 @@ const Partners: React.FC = () => {
   const pathname = usePathname();
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
 
   return (

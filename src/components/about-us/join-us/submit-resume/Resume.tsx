@@ -14,7 +14,7 @@ const Resume = () => {
     useGetAboutUsJoinUs();
 
   useEffect(() => {
-    if (+params?.id) {
+    if (params?.id) {
       getAboutUsJoinUs({
         populate: "*",
         sort: ["order:desc"],
@@ -25,7 +25,7 @@ const Resume = () => {
         },
       });
     }
-  }, [+params?.id]);
+  }, [params?.id]);
 
   return (
     <>
