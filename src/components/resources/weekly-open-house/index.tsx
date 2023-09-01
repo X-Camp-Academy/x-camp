@@ -15,7 +15,7 @@ const WeeklyOpenHouse = () => {
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
 
   return (

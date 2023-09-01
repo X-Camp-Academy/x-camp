@@ -20,11 +20,11 @@ const StudentRecommend: React.FC = () => {
   const { data: faq } = useGetFaq({
     ready: true,
     category: FaqCategory.ReferralQA,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   return (
     <Layout className={styles.stuRecommendContainer}>

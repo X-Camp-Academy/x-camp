@@ -20,7 +20,7 @@ const UsacoLiveSolutions: React.FC = () => {
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   const { data: resourcesLiveSolution } = useGetResourcesLiveSolution();
 

@@ -24,7 +24,7 @@ const Contests = () => {
   // 请求courseId为isCamp课程, pageName 为"/courses/catalog/"的评论
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   const size = useSize(document.querySelector("body"));
 

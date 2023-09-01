@@ -24,7 +24,7 @@ const CourseDetail: React.FC = () => {
   // 请求当前 courseId 的评论
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    courseId: [params?.courseId],
+    courseId: [params?.courseId as string],
   });
 
   const { data: coursesData } = useGetCourses({
@@ -37,7 +37,7 @@ const CourseDetail: React.FC = () => {
   const { data: faqData } = useGetFaq({
     ready: true,
     category: FaqCategory.CoursesQA,
-    courseId: [params?.courseId],
+    courseId: [params?.courseId as string],
   });
 
   const { data: facultyData } = useGetFaculty({});
