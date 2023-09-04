@@ -131,7 +131,6 @@ const CarouselContent: React.FC = () => {
           </div>
         </div>
       </Carousel>
-
       <div className={styles.cardFrom}>
         <Card
           title={t("FreeConsultation")}

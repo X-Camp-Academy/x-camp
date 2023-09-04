@@ -2,16 +2,48 @@
 
 .dropdown {
   position: fixed;
-  left: 70px;
   top: 72px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: calc(100% - 140px);
+  width: 1290px;
   height: 196px;
   background-color: #fff;
   border-radius: 0px 0px 4px 4px;
+
+  @media (min-width: 576px) {
+    & {
+      width: 540px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    & {
+      width: 720px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    & {
+      width: 960px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    & {
+      width: 1140px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    & {
+      width: 1320px;
+    }
+  }
 
   .dropdownContainer {
     .left {
