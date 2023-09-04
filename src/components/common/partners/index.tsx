@@ -2,7 +2,7 @@
 import React from "react";
 import { Space, Typography, Row, Col, Image } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
-import styles from "./Partners.module.scss";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -12,6 +12,10 @@ const Partners: React.FC = () => {
     {
       src: "/image/home/partners-1.png",
       link: 'https://calico.cs.berkeley.edu/'
+    },
+    {
+      src: "/image/home/partners-2.png",
+      link: 'https://www.stanfordacm.org/proco'
     },
     {
       src: "/image/home/partners-3.png",
@@ -37,7 +41,7 @@ const Partners: React.FC = () => {
   ];
 
   return (
-    <div className={`${styles.partners} container`}>
+    <div className={styles.partners}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>{t("Partners")}</Title>
         <Text className={styles.titleBg}></Text>

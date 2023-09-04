@@ -5,8 +5,11 @@ import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 const { Title, Text } = Typography;
 
+interface USACOMedalProps {
+  showTitle?: boolean;
+}
 
-const USACOMedal: React.FC = () => {
+const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
   const { format: t } = useLang();
   const data = [
     {
@@ -47,16 +50,14 @@ const USACOMedal: React.FC = () => {
         />
       </Col>
 
-
-      <div className={styles.titleContainer}>
-        <Title className={styles.title}>
-          Our&nbsp;
-          <Text className={styles.title} style={{ color: "#ffad11" }}>Achievements</Text>
-        </Title>
-      </div>
-
-
-
+      {
+        showTitle && <div className={styles.titleContainer}>
+          <Title className={styles.title}>
+            Our&nbsp;
+            <Text className={styles.title} style={{ color: "#ffad11" }}>Achievements</Text>
+          </Title>
+        </div>
+      }
 
       {data?.map((item, index) => (
         <Col

@@ -19,7 +19,6 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
   const [segmented, setSegmented] = useState<SegmentedValue>("Basic Level");
   const { format: t, lang } = useLang();
 
-
   const sortData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order
   );

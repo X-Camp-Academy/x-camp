@@ -200,6 +200,7 @@ declare const json: {
   "USACOMedal.Desc": "过去5年，X-Camp学生在美国信息学奥林匹克竞赛中取得了令人瞩目的成绩：超过200名X-Camp学生达到USACO白银级别及以上，其中包括30人达到白金级别，12人入选美国国家集训队，其中7人在2023年最新赛季入选，1人入选美国女子国家队。",
   "USACOPlatinum": "USACO 白金级别",
   "USACOSilverAndAbove": "USACO 白银级别及以上",
+  "USACOSpotlight": "USACO Spotlight",
   "EGOIGoldMedalist": "USACO 团队",
   "User.Logout": "注销",
   "User.PersonalCenter": "个人中心",

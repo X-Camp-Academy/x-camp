@@ -97,6 +97,50 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
             </React.Fragment>
           ))}
         </div>
+        <div className={styles.projectDemo}>
+          <Title className={styles.title}>{"Game Design"}</Title>
+          {data?.map((v, index) => (
+            <React.Fragment key={index}>
+              <Title className={styles.subTitle}>
+                {getTransResult(
+                  lang,
+                  v?.[0]?.attributes?.categoryZh,
+                  v?.[0]?.attributes?.categoryEn
+                )}
+              </Title>
+              <List
+                grid={{
+                  gutter: 16,
+                  xs: 1,
+                  sm: 1,
+                  md: 1,
+                  lg: 3,
+                  xl: 3,
+                  xxl: 3,
+                }}
+                dataSource={v}
+                className={styles.videoList}
+                renderItem={(g) => (
+                  <List.Item>
+                    <Card className={styles.videoItem}>
+                      <video
+                        controls
+                        src={g?.attributes?.url?.data?.attributes?.url}
+                      ></video>
+                      <div className={styles.videoTitle}>
+                        {getTransResult(
+                          lang,
+                          g?.attributes?.titleZh,
+                          g?.attributes?.titleEn
+                        )}
+                      </div>
+                    </Card>
+                  </List.Item>
+                )}
+              />
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </div>
   );
