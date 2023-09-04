@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
 
 const Banner = dynamic(() => import("./Banner"));
-const ISPI = dynamic(() => import("./ISPI"));
 const UsacoMedal = dynamic(() => import("./UsacoMedal"));
 const Results = dynamic(() => import("./Results"));
 const History = dynamic(() => import("./History"));
@@ -15,8 +14,6 @@ const FacultyCoach = dynamic(() => import("@/components/common/faculty-coach"));
 const { Content } = Layout;
 
 const Introduction: React.FC = () => {
-  // TODO History wait Charlie提供
-  // TODO ISPI组件移动端下还可以优化一下
   const { data: facultyData } = useGetFaculty({});
 
   return (
@@ -26,7 +23,6 @@ const Introduction: React.FC = () => {
         <History />
         <XCampFounders />
         <UsacoMedal />
-        <ISPI />
 
         {/* ! TODO */}
         {/* <Results /> */}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Space, Image, Typography } from "antd";
+import { Space, Image, Typography, Row, Col } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import CommonBanner from "@/components/common/common-banner";
 import styles from "./Banner.module.scss";
@@ -30,7 +30,28 @@ const Banner: React.FC = () => {
     </div>
   );
   return (
-    <CommonBanner leftNode={leftNode} rightNode={rightNode} />
+    <Image
+      src="/image/about-us/introduction-banner.png"
+      alt=""
+      width={"100%"}
+      preview={false}
+    >
+      <div className="container">
+        <Row>
+          <Col xs={24} sm={24} md={14}>
+            {leftNode}
+          </Col>
+          <Col
+            xs={24}
+            sm={24}
+            md={{ span: 8, offset: 2 }}
+            className={styles.right}
+          >
+            {rightNode}
+          </Col>
+        </Row>
+      </div>
+    </Image>
   );
 };
 

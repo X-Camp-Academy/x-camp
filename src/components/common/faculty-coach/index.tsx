@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Space, Row, Col, Card, Typography, Avatar } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
@@ -9,11 +9,16 @@ import {
 } from "@/apis/strapi-client/strapiDefine";
 import { GetFaculty } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
+import { SegmentedValue } from "antd/es/segmented";
+import { LEVEL_TYPES } from "./define";
+import SegmentedRadioGroup from "../segmented-radio-group";
 
 const { Title, Paragraph, Text } = Typography;
 
 const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | undefined; }> = ({ data }) => {
+  const [segmented, setSegmented] = useState<SegmentedValue>("Basic Level");
   const { format: t, lang } = useLang();
+
 
   const sortData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order
@@ -29,7 +34,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
     }
     return groups;
   };
-  const facultyData = splitIntoGroups(sortData, 3);
+  const facultyData = splitIntoGroups(sortData, 4);
 
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
@@ -42,10 +47,10 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
       marginTop: 16,
     };
 
-    const colors = ["#D46B14", "#FFAD11", "#FFD600"];
+    const colors = ["#00A0E9", "#D46B14", "#FFAD11", "#FFD600"];
     const cardStyle = {
       ...defaultStyle,
-      backgroundColor: colors[index % 3],
+      backgroundColor: colors[index % 4],
     };
 
     return cardStyle;
@@ -63,15 +68,25 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
   useEffect(() => {
     scrollIntoView(hash.slice(1));
   }, [hash]);
+
   return (
     <div className={`${styles.facultyCoach} container`} id="faculty">
       <Space direction="vertical" size={48}>
         <Space direction="vertical">
-          <Title className={styles.title}>{t("Faculty&Coach")}</Title>
+          <Title className={styles.title}>
+            <Text className={styles.title} style={{ color: '#FFAD11' }}>{t("Faculty")}</Text>&nbsp;&&nbsp;
+            {t("Coach")}
+          </Title>
           <Paragraph className={styles.titleParagraph}>
             {t("Faculty.Desc")}
           </Paragraph>
         </Space>
+
+        <SegmentedRadioGroup
+          segmented={segmented}
+          setSegmented={setSegmented}
+          data={LEVEL_TYPES}
+        />
 
         {facultyData?.map((faculty, facultyIndex) => (
           <Row
@@ -87,7 +102,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
                 xs={{ span: 24 }}
                 sm={{ span: 24 }}
                 md={{ span: 24 }}
-                lg={{ span: 8 }}
+                lg={{ span: 6 }}
               >
                 <div style={computedStyle(index)}>
                   <Card>

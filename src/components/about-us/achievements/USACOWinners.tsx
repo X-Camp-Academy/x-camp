@@ -18,7 +18,7 @@ import {
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import { XStarViewer } from "@/utils/x-star-editor-beta";
-import UsacoCards from "@/components/common/usaco-cards";
+import UsacoCards from "@/components/common/usaco-medal";
 import {
   useGetAboutUsAchievementsAward,
   useGetAchievementsTimeLine,
