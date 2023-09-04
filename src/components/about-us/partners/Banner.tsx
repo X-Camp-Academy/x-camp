@@ -41,7 +41,8 @@ const TopBanner: React.FC = () => {
     </div>
   );
   return (
-    <CommonBanner leftNode={leftNode} rightNode={rightNode} />
+    // <CommonBanner leftNode={leftNode} rightNode={rightNode} />
+    <></>
   );
 };
 

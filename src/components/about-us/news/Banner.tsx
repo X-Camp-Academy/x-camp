@@ -54,7 +54,8 @@ const Banner = ({ year, setYear }: Props) => {
     </div>
   );
   return (
-    <CommonBanner leftNode={leftNode} rightNode={rightNode} />
+    // <CommonBanner leftNode={leftNode} rightNode={rightNode} />
+    <></>
   );
 };
 
