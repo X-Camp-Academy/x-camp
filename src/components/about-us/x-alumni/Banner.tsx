@@ -1,36 +1,23 @@
-"use client";
 import React from "react";
-import { Space, Image, Typography } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
 import CommonBanner from "@/components/common/common-banner";
-import styles from "./Banner.module.scss";
-
-const { Title, Paragraph } = Typography;
 
 const Banner: React.FC = () => {
-  const { format: t } = useLang();
+  const paragraph = (
+    <>
+      Since its inception, X - Camp has had over 1,000 students
+      <br />
+      cand is currently enrolling over 500 + students in 250 +
+      <br />
+      schools around the world.
+    </>
+  )
 
-  const leftNode = (
-    <Space direction="vertical">
-      <Title className={styles.title}>{t("XAlumni")}</Title>
-      <Paragraph className={styles.paragraph}>
-        {t("XAlumni.Desc")}
-      </Paragraph>
-    </Space>
-  );
-  const rightNode = (
-    <div className={styles.imgContain}>
-      <Image
-        alt="image"
-        src="/image/about-us/x-alumni-banner.png"
-        preview={false}
-        className={styles.image}
-      />
-    </div>
-  );
   return (
-    // <CommonBanner leftNode={leftNode} rightNode={rightNode} />
-    <></>
+    <CommonBanner
+      image={"/image/about-us/achievements-banner.png"}
+      title="X-Alumni"
+      paragraph={paragraph}
+    />
   );
 };
 

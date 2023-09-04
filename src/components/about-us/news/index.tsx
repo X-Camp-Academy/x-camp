@@ -61,7 +61,7 @@ const NewsPage = () => {
   return (
     <Layout className={styles.QAContainer}>
       <Content>
-        <Banner year={year} setYear={setYear} />
+        <Banner />
         <NewsCard
           newEventData={newEventData?.data}
           current={current}
