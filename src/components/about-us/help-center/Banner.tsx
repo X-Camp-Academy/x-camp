@@ -1,41 +1,23 @@
-"use client";
 import React from "react";
-import { Space, Row, Col, Image, Typography } from "antd";
-import styles from "./Banner.module.scss";
-import { useLang } from "@/hoc/with-intl/define";
-
-const { Title, Paragraph } = Typography;
+import CommonBanner from "@/components/common/common-banner";
 
 const Banner: React.FC = () => {
-  const { format: t } = useLang();
+  const paragraph = (
+    <>
+      Here we provide helpful instructions to ensure a
+      <br />
+      seamless and efficient resolution to any concerns or
+      <br />
+      challenges you may encounter.
+    </>
+  )
+
   return (
-    <div className={styles.bannerContainer}>
-      <div className="container">
-        <Row>
-          <Col xs={24} sm={24} md={14} className={styles.col}>
-            <Space direction="vertical">
-              <Title className={styles.title}>{t("HelpCenter")}</Title>
-              <Paragraph className={styles.paragraph}>
-                {t("HelpCenter.Desc")}
-              </Paragraph>
-            </Space>
-          </Col>
-          <Col
-            xs={24}
-            sm={24}
-            md={{ span: 8, offset: 2 }}
-            className={styles.col}
-          >
-            <Image
-              alt="image"
-              src="/image/about-us/help-center.png"
-              preview={false}
-              className={styles.image}
-            />
-          </Col>
-        </Row>
-      </div>
-    </div>
+    <CommonBanner
+      image={"/image/about-us/student-recommend-banner.png"}
+      title="Help Center "
+      paragraph={paragraph}
+    />
   );
 };
 

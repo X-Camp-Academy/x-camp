@@ -16,6 +16,9 @@ const QAPart: React.FC = () => {
     isClassify: true,
   });
 
+
+  console.log(faq);
+
   return (
     <div className={`${styles.qaContent} container`}>
       {faq?.map((v, index) => (
