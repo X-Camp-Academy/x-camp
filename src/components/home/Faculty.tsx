@@ -36,7 +36,8 @@ const Faculty: React.FC = () => {
   return (
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>{t("Faculty")}</Title>
+        <Title className={styles.title}> <span>{t("Founders")}</span> & {t("Faculty")}</Title>
+        <Text className={styles.titleBg}></Text>
         <Paragraph className={styles.paragraph}>{t("Faculty.Desc")}</Paragraph>
       </Space>
 

@@ -35,9 +35,12 @@ const Home: React.FC = () => {
         {/*why x-camp*/}
         <AboutXCamp />
         <DiscoverCourses />
+
+        <Faculty />
+
         <XCampFounders />
         <WeSupport />
-        <Faculty />
+
         <PublicCalendar />
         <StudentProjects />
         <XAlumni />
