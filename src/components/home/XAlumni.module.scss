@@ -1,25 +1,37 @@
+@import "@/styles/variables.scss";
 .xalumniContainer {
   width: 100%;
-  margin-top: 120px;
+  padding: 100px 70px;
   .xalumni {
     text-align: center;
     padding-left: 15px;
     padding-right: 15px;
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     .title {
-      font-size: 36px;
-      font-weight: 600;
-      color: #172142;
-      line-height: 54px;
+     @include title('home-content');
+      margin: 0;
+    }
+    .titleBg {
+      display: block;
+      width: 240px;
+      height: 26px;
+      background-image: url("/image/home/home-title-bg-1.png");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
     .paragraph {
-      font-size: 18px;
+      padding: 0 120px;
+      @include text(18px, 34px);
       font-weight: 500;
-      color: #172142;
-      line-height: 34px;
     }
 
     .carouselContainer {
-      margin-top: 36px;
+      margin-top: 56px;
       .maskCard {
         width: 288px;
         height: 320px;
