@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { Col, Pagination, Row, Space, Image } from "antd";
+import { Col, Pagination, Row, Space } from "antd";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 
-interface Props {
+interface NewsCardProps {
   current: number;
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
   newEventData: StrapiResponseDataItem<GetNewEvent>[] | undefined;
@@ -14,9 +14,8 @@ interface Props {
   total?: number;
 }
 
-const NewsCard = ({ current, setCurrent, newEventData, pageSize, total }: Props) => {
+const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, pageSize, total }) => {
   const { lang } = useLang();
-
 
   const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
     return getTransResult(
