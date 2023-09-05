@@ -3,7 +3,7 @@ import React from "react";
 import { Layout } from "antd";
 import { useParams } from "next/navigation";
 import { useLang } from "@/hoc/with-intl/define";
-import UsacoMedal from "@/components/common/usaco-cards";
+import UsacoMedal from "@/components/common/usaco-medal";
 import FacultyCoach from "@/components/common/faculty-coach";
 import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";

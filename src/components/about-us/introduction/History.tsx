@@ -13,22 +13,22 @@ const History: React.FC = () => {
   const currentYear = dayjs().year();
   const images = [
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
   ]
   return (

@@ -204,7 +204,8 @@ export const useMenuItems = () => {
         {
           label: (
             <Link href="/about-us/introduction#faculty">
-              {t("Faculty&Coach")}
+              {t("Faculty")}&
+              {t("Coach")}
             </Link>
           ),
           key: "/about-us/introduction#faculty",

@@ -12,7 +12,12 @@ const XCampFounder: React.FC = () => {
   return (
     <div className={`${styles.XCampFounder} container`}>
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>{t("X-CampFounder")}</Title>
+        <Title className={styles.title}>
+          X-Camp&nbsp;
+          <Text className={styles.title} style={{ color: "#FFAD11" }}>{t("Founders")}</Text>
+        </Title>
+
+        <Paragraph className={styles.paragraph}>Founded on August 22, 2017, 4 students currently trained have entered the US National Training Team, with more than 500 students currently studying in 300+ schools around the world.</Paragraph>
 
         <Row gutter={[32, 124]}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
@@ -44,30 +49,18 @@ const XCampFounder: React.FC = () => {
                 >
                   <StarOutlined />
                 </Button>
-                {t("Co-Founder")}
-              </Paragraph>
-
-              <Paragraph className={styles.founderTag}>
-                <Button
-                  type="primary"
-                  shape="circle"
-                  size="small"
-                  className={styles.founderTagButton}
-                >
-                  <StarOutlined />
-                </Button>
-                {t("X-CampAcademyPrincipal")}
+                {t("Co-Founder-Charlie")}
               </Paragraph>
 
               <Space direction="vertical">
-                <Paragraph className={styles.paragraph} style={{ marginBottom: 0 }}>
+                <Paragraph className={styles.founderParagraph}>
                   {t("Charlie.Desc1")}
                   <Text className={styles.keyText}>{t("Charlie.years")}</Text>
                   {t("Charlie.Desc2")}
                   <Text className={styles.keyText}>{t("Charlie.paper")}</Text>
                   {t("Charlie.Desc3")}
                 </Paragraph>
-                <Paragraph className={styles.paragraph}>
+                <Paragraph className={styles.founderParagraph}>
                   {t("Charlie.Desc4")}
                 </Paragraph>
               </Space>
@@ -85,7 +78,6 @@ const XCampFounder: React.FC = () => {
           >
             <Space direction="vertical">
               <Title className={styles.founderName}>{t("Yuan")}</Title>
-
               <Paragraph className={styles.founderTag}>
                 <Button
                   type="primary"
@@ -95,26 +87,14 @@ const XCampFounder: React.FC = () => {
                 >
                   <StarOutlined />
                 </Button>
-                {t("Co-Founder")}
-              </Paragraph>
-
-              <Paragraph className={styles.founderTag}>
-                <Button
-                  type="primary"
-                  shape="circle"
-                  size="small"
-                  className={styles.founderTagButton}
-                >
-                  <StarOutlined />
-                </Button>
-                {t("X-CampSeniorCodingCoach")}
+                {t("Co-Founder-Yuan")}
               </Paragraph>
 
               <Space direction="vertical">
-                <Paragraph className={styles.paragraph}>
+                <Paragraph className={styles.founderParagraph}>
                   {t("Yuan.Desc1")}
                 </Paragraph>
-                <Paragraph className={styles.paragraph}>
+                <Paragraph className={styles.founderParagraph}>
                   {t("Yuan.Desc2")}
                   <Text className={styles.keyText}> {t("Yuan.Student")} </Text>
                   {t("Yuan.Desc3")}

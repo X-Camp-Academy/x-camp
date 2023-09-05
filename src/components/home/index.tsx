@@ -16,7 +16,6 @@ const Faculty = dynamic(() => import("./Faculty"));
 const PublicCalendar = dynamic(() => import("./PublicCalendar"));
 const StudentProjects = dynamic(() => import("./StudentProjects"));
 const XAlumni = dynamic(() => import("./XAlumni"));
-const Partners = dynamic(() => import("./Partners"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 
 const { Content } = Layout;

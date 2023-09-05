@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import { usePathname } from 'next/navigation';
 
 const Banner = dynamic(() => import('./Banner'));
-const Partners = dynamic(() => import('@/components/home/Partners'));
+const Partners = dynamic(() => import('@/components/common/partners'));
 const BecomePartner = dynamic(() => import('./BecomePartner'));
 const NewsCard = dynamic(() => import('./news-card'));
 
@@ -61,7 +61,7 @@ const NewsPage = () => {
   return (
     <Layout className={styles.QAContainer}>
       <Content>
-        <Banner year={year} setYear={setYear} />
+        <Banner />
         <NewsCard
           newEventData={newEventData?.data}
           current={current}
