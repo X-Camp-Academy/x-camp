@@ -93,9 +93,13 @@ declare const json: {
   "Enroll": "Enroll",
   "Evaluation": "Evaluation",
   "Faculty": "Faculty",
+<<<<<<< HEAD
   "Founders": "Founders",
   "Faculty.Desc": "World-class faculties comprise experienced senior engineers from leading tech companies, accomplished students \n from prestigious computer science majors, and top-ranking members of competitive \n programming contests like IOI, ICPC, and USACO.",
   "Faculty&Coach": "Faculty & Coaches",
+=======
+  "Faculty.Desc": "World-class faculties comprise experienced senior engineers from leading tech companies, top-ranking members of competitive programming contests like IOI, ICPC, and USACO.",
+>>>>>>> de1a822c9b71747d19659325e05a7dd74190a933
   "FAQs": "FAQs",
   "FirstName": "First Name",
   "FreeConsultation": "Free Consultation",
@@ -220,11 +224,19 @@ declare const json: {
   "WinterCamp": "Winter On-Site Camps",
   "X_ALUMNI": "Community",
   "X_ALUMNI_INTRODUCTION": "Since its inception, X-Camp has successfully enrolled over 1,000 students and currently serves more than 500 students from over 250 schools worldwide. If you would like to reconnect with your fellow classmates, please contact us!",
+<<<<<<< HEAD
+=======
+  "Founders": "Founders",
+>>>>>>> de1a822c9b71747d19659325e05a7dd74190a933
   "X_Alumni.Desc": "Since its inception, X-Camp has had over 1,000 students and is currently enrolling over 500+ students in 250+ schools around the world. If you would like to find your classmates, please contact us!",
   "X-Camp.Desc1": "X-Camp Academy, a Silicon Valley-based coding institute, offers beginner-level to IOI level's.",
   "X-CampAcademyPrincipal": "X-Camp Academy Principal",
   "X-CampFounder": "X-Camp Founders",
   "X-CampSeniorCodingCoach": "X-Camp Senior Coding Coach",
+<<<<<<< HEAD
+=======
+  "Coach": "Coach",
+>>>>>>> de1a822c9b71747d19659325e05a7dd74190a933
   "X-Cup": "X-Cup",
   "X-Tutors": "X-Tutors",
   "XAlumni": "X-Alumni",
