@@ -1,21 +1,31 @@
+@import "@/styles/variables.scss";
 .studentProjects {
+  padding: 80px 70px;
+  background: #FDF6F1;
   .title {
-    color: #172142;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 54px;
+    margin: 0;
+    @include title('home-content');
+  }
+  .titleBg {
+    margin-left: 130px;
+    display: block;
+    width: 160px;
+    height: 20px;
+    background-image: url("/image/home/home-title-bg-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .paragraphText {
-    color: #172142;
-    font-size: 18px;
+    @include text(18px, 34px, $primary-color);
     font-weight: 500;
-    line-height: 34px;
+
   }
   .paragraph {
+    padding: 0 200px;
     @extend .paragraphText;
     color: #172142;
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     @media (max-width: 768px) {
       margin: auto;
       margin-bottom: 80px;

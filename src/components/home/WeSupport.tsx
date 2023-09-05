@@ -42,7 +42,7 @@ const WeSupport: React.FC = () => {
               lg={{ span: 24, order: 1 }}
             >
               { lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
-                <Title className={styles.title}>We Support</Title>
+                <Title className={styles.title}>We <span>Support</span></Title>
                 <Text className={styles.titleBg}></Text>
               </div> }
               <Paragraph className={styles.paragraph}>
