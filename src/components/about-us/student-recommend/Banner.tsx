@@ -4,18 +4,18 @@ import CommonBanner from "@/components/common/common-banner";
 const Banner: React.FC = () => {
   const paragraph = (
     <>
-      Here we provide helpful instructions to ensure a
+      {"Encourage your friend's kids AND your kid's friends to"}
       <br />
-      seamless and efficient resolution to any concerns or
+      join our coding program.
       <br />
-      challenges you may encounter.
+      Earn $100 for you and $50  for each friend that signs up.
     </>
   )
 
   return (
     <CommonBanner
       image={"/image/about-us/student-recommend-banner.png"}
-      title="Help Center "
+      title="Referral Program"
       paragraph={paragraph}
     />
   );
