@@ -6,7 +6,7 @@ import styles from "./ReferralProgramWork.module.scss";
 
 const { Title } = Typography;
 
-const ReferralProgramWork = () => {
+const ReferralProgramWork: React.FC = () => {
   const { format: t } = useLang();
   const listData = [
     t("Credit.Desc1"),
