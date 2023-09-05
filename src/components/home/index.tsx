@@ -31,15 +31,19 @@ const Home: React.FC = () => {
     <Layout className={styles.homeContainer}>
       <Content>
         <CarouselContent />
-        <DiscoverCourses />
+        {/*why x-camp*/}
         <AboutXCamp />
-        <XCampFounders />
-        <WeSupport />
+        <DiscoverCourses />
         <Faculty />
+        <WeSupport />
         <PublicCalendar />
+
+        {/*<XCampFounders />*/}
         <StudentProjects />
+        {/*Community*/}
         <XAlumni />
         <Reviews reviewsData={reviewsData} />
+        {/*<Partners />*/}
       </Content>
     </Layout>
   );

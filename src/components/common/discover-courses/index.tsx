@@ -50,15 +50,15 @@ const DiscoverCourses = ({
       ),
     },
     {
-      title: t("C++.Title"),
-      desc: t("C++.Grade"),
+      title: t("USACOK.Title"),
+      desc: t("USACOK.Grade"),
       url: "/image/home/course-2.png",
-      bgc: "#FFD600",
-      maskBgc: "rgb(255 214 0 / 40%)",
+      bgc: "#FFAD11",
+      maskBgc: "rgb(255 173 17 / 40%)",
       maskChildren: generateMaskChildren(
-        t("C++.Title"),
-        t("C++.Mask.Desc"),
-        "/courses/#classify1"
+          t("USACO.Title"),
+          t("USACO.Mask.Desc"),
+          "/courses/#classify3"
       ),
     },
     {
@@ -68,13 +68,26 @@ const DiscoverCourses = ({
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
       maskChildren: generateMaskChildren(
-        t("USACO.Title"),
-        t("USACO.Mask.Desc"),
-        "/courses/#classify3"
+          t("USACO.Title"),
+          t("USACO.Mask.Desc"),
+          "/courses/#classify3"
       ),
     },
+
+    // {
+    //   title: t("C++.Title"),
+    //   desc: t("C++.Grade"),
+    //   url: "/image/home/course-2.png",
+    //   bgc: "#FFD600",
+    //   maskBgc: "rgb(255 214 0 / 40%)",
+    //   maskChildren: generateMaskChildren(
+    //     t("C++.Title"),
+    //     t("C++.Mask.Desc"),
+    //     "/courses/#classify1"
+    //   ),
+    // },
     {
-      title: "APCS",
+      title: "Java & APCS",
       desc: t("APCS.Grade"),
       url: "/image/home/course-4.png",
       bgc: "#D46B14",
@@ -91,14 +104,11 @@ const DiscoverCourses = ({
       className={`${styles.discoverCourses} container`}
       style={{ alignItems: align }}
     >
-      <Texty
-        duration={100}
-        type={"left"}
-        interval={20}
+      <Text
         className={styles.title}
       >
-        {t("DiscoverOurCourses")}
-      </Texty>
+        Discover Our <span>Courses</span>
+      </Text>
       {showSubTitle && (
         <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
       )}
@@ -111,25 +121,22 @@ const DiscoverCourses = ({
               <MaskCard
                 className={styles.card}
                 bodyStyle={{
-                  backgroundColor: item?.bgc,
+                  padding: 0,
                   borderRadius: 8,
                   paddingBottom: 0,
                 }}
                 maskChildren={item.maskChildren}
                 maskBackGroundColor={item?.maskBgc}
               >
-                <Space direction="vertical">
-                  <Title className={styles.cardTitle}>{item?.title}</Title>
-                  <Paragraph className={styles.cardParagraph}>
-                    {item?.desc}
-                  </Paragraph>
-                  <Image
-                    src={item?.url}
-                    alt="image"
-                    preview={false}
-                    className={styles.cardImage}
-                  />
-                </Space>
+                <div className={styles.infoContainer} style={{ background: `url('${item?.url}')  no-repeat`, backgroundSize: 'cover' }}>
+                  <div className={styles.info}>
+                    <Title className={styles.cardTitle}>{item?.title}</Title>
+                    <Paragraph className={styles.cardParagraph}>
+                      {item?.desc}
+                    </Paragraph>
+                  </div>
+                </div>
+
               </MaskCard>
             </Col>
           );

@@ -1,20 +1,24 @@
+@import "@/styles/variables.scss";
 .weSupport {
-  margin-top: 30px;
+  padding: 80px 70px;
+  background: #EFEFEF;
   .title {
-    color: #172142;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 54px;
-    margin-bottom: 0;
-    @media (min-width: 768px) {
-      margin-top: 0;
-    }
+    @include title('home-content');
+    margin: 0;
+  }
+  .titleBg {
+    margin-left: 60px;
+    display: block;
+    width: 160px;
+    height: 20px;
+    background-image: url("/image/home/home-title-bg-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .paragraph {
-    color: #172142;
-    font-size: 18px;
+    margin-top: 10px;
+    @include text(18px, 34px);
     font-weight: 500;
-    line-height: 34px;
   }
 
   .imageBox {

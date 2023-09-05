@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
     <Layout className={styles.footerContainer}>
       <Content>
         <CopyRight />
-        <SubscribeNewsletter />
+        {/*<SubscribeNewsletter />*/}
       </Content>
     </Layout>
   );
