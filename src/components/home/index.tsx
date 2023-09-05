@@ -17,6 +17,7 @@ const PublicCalendar = dynamic(() => import("./PublicCalendar"));
 const StudentProjects = dynamic(() => import("./StudentProjects"));
 const XAlumni = dynamic(() => import("./XAlumni"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
+const FixedButtons = dynamic(() => import("@/components/common/FixedButtons"));
 
 const { Content } = Layout;
 
@@ -43,6 +44,7 @@ const Home: React.FC = () => {
         {/*Community*/}
         <XAlumni />
         <Reviews reviewsData={reviewsData} />
+        <FixedButtons></FixedButtons>
         {/*<Partners />*/}
       </Content>
     </Layout>

@@ -3,18 +3,12 @@ import React from "react";
 import {
   Carousel,
   Space,
-  Button,
-  Card,
-  Form,
-  Input,
   Typography,
   Row,
   Col,
 } from "antd";
 import classNames from "classnames";
 import { useLang } from "@/hoc/with-intl/define";
-import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
-import { openClassEmailRequest } from "@/apis/send-email-client";
 import styles from "./CarouselContent.module.scss";
 import dynamic from "next/dynamic";
 
@@ -26,10 +20,6 @@ const UsacoMedal = dynamic(
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
   const cx = classNames.bind(styles);
-  const { runAsync: sendMailToUser } = useSendOpenClassEmail();
-  const onFinish = async (values: openClassEmailRequest) => {
-    await sendMailToUser(values);
-  };
   return (
     <div className={styles.bannerContainer}>
       <Carousel autoplay={false} dots={{ className: styles.carouselDots }}>
@@ -135,86 +125,7 @@ const CarouselContent: React.FC = () => {
           </div>
         </div>
       </Carousel>
-      <div className={styles.cardFrom}>
-        <Card
-          title={t("FreeConsultation")}
-          headStyle={{
-            color: "#172142",
-            fontSize: 24,
-            fontWeight: "normal",
-            height: 64,
-            lineHeight: 36,
-            textAlign: "center",
-            borderBottom: "none",
-          }}
-          bodyStyle={{
-            paddingBottom: 16,
-          }}
-          className={styles.card}
-        >
-          <div className={styles.cardTitle}>{t('SIGH_UP_USACO_TOOLKIT')}</div>
-          <Form name="carouselContent" onFinish={onFinish} className={styles.form}>
-            <Form.Item
-              name="name"
-              rules={[
-                {
-                  required: true,
-                  message: t("Name.Required"),
-                },
-              ]}
-            >
-              <Input placeholder={t("Nickname")} />
-            </Form.Item>
 
-            <Form.Item
-              name="grade"
-              rules={[
-                {
-                  required: true,
-                  message: t("Grade.Required"),
-                },
-              ]}
-            >
-              <Input placeholder={t("Grade")} />
-            </Form.Item>
-
-            <Form.Item
-              name="email"
-              rules={[
-                { type: "email" },
-                {
-                  required: true,
-                  message: t("Email.Required"),
-                },
-              ]}
-            >
-              <Input type="email" placeholder="E-mail*" />
-            </Form.Item>
-
-            <Form.Item
-              name="phone"
-              rules={[
-                {
-                  required: true,
-                  message: t("Phone/Wechat.Required"),
-                },
-              ]}
-            >
-              <Input placeholder={t("Phone/Wechat")} />
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className={styles.submit}
-              >
-                {t('Submit')}
-              </Button>
-            </Form.Item>
-          </Form>
-        </Card>
-      </div>
       <UsacoMedal showTitle={false}></UsacoMedal>
     </div>
   );
