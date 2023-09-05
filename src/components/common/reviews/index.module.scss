@@ -1,36 +1,16 @@
+@import "@/styles/variables.scss";
 .reviewsContainer {
   width: 100%;
-  margin-top: 120px;
-  margin-bottom: 100px;
+  background: #FDF6F1;
   .reviews {
-    padding-left: 48px;
-    padding-right: 48px;
+    padding: 70px 120px;
     position: relative;
-    text-align: center;
-    .title {
-      width: 242px;
-      height: 72px;
-      text-align: center;
-      color: #172142;
-      font-size: 36px;
-      font-weight: 600;
-      line-height: 72px;
-      background-image: url("/image/home/partners-bg.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      @media (max-width: 768px) {
-        width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-    }
-    .reviewsBox {
-      margin-top: 64px;
-    }
+    background: url("/image/home/icon-home-reviews.png") no-repeat right;
+
     .prev {
       background-color: #ffad11;
       position: absolute;
-      left: 15px;
+      left: 45px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 999;
@@ -38,30 +18,26 @@
     .next {
       background-color: #ffad11;
       position: absolute;
-      right: 15px;
+      right: 45px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 999;
     }
-    .reviewsContainer {
-      padding-left: 15px;
-      padding-right: 15px;
-      margin-top: 20px;
-      margin-bottom: 20px;
+    & .reviewsContainer {
+      padding: 22px 15px;
+      background: transparent;
+
       .reviewsTitle {
-        font-size: 18px;
+        @include text(18px, 30px);
         font-weight: 600;
-        line-height: 30px;
+
         display: -webkit-box;
         overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
       }
       .reviewsParagraph {
-        color: #666666;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
+       @include text(16px, 24px, #666);
         height: 96px;
       }
       .reviewsDate {
