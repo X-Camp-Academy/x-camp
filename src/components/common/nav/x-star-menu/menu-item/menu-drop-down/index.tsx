@@ -37,23 +37,19 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
       style={{
         boxShadow:
           scroll?.top === 0
-            ? 'inset 0px 9px 20px -4px #D8D8D8'
-            : 'inset 0px 9px 20px -4px #D8D8D8, 0px 9px 25px -4px #D8D8D8',
+            ? '0px 9px 20px -4px #D8D8D8'
+            : '0px 9px 20px -4px #D8D8D8, 0px 9px 25px -4px #D8D8D8',
       }}
     >
       <Space className={cx('container', styles.dropdownContainer)}>
         {dropdown?.left && (
-          <Space direction="vertical" className={styles.left}>
+          <Space direction="vertical" className={styles.left} size={"middle"}>
             <div className={styles.title}>{dropdown?.left?.title}</div>
-            <div className={styles.description}>
-              {dropdown?.left?.description}
-            </div>
             {showBtn && (
               <div className={styles.btn}>
                 <span>{dropdown?.left?.btn}</span>
               </div>
             )}
-
           </Space>
         )}
         <Space direction="vertical" className={styles.items}>

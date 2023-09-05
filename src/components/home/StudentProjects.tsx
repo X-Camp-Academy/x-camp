@@ -39,7 +39,10 @@ const StudentProjects: React.FC = () => {
   return (
     <div className={`${styles.studentProjects} container`} id="stu_project">
       <Space direction="vertical" align="center">
-        <Title className={styles.title}>{t("StudentProjects")}</Title>
+        { lang === 'zh' ? <Title className={styles.title}>学生课程</Title> : <>
+          <Title className={styles.title}>Student <span>Project</span></Title>
+          <Text className={styles.titleBg}></Text>
+        </> }
         <Paragraph className={styles.paragraph}>
           {t("StudentProjects.Desc1")}
           <Text className={styles.paragraphText}> {t("greatOpportunity")}</Text>

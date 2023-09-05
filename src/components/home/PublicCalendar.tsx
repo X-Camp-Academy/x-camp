@@ -202,10 +202,11 @@ const PublicCalendar: React.FC = () => {
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
         <Title className={styles.title}>
-          X-Camp {t("Public")} {t("Calendar")}
-          <Image alt="" className={styles.titleImage} preview={false} src="/image/home/home-title-bg-1.png" />
+          X-Camp {t("Public")} <span>{t("Calendar")}</span>
         </Title>
-
+        <div style={{display: "flex", justifyContent: 'center', width: '100%'}}>
+          <Text className={styles.titleBg}></Text>
+        </div>
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Carousel
@@ -336,7 +337,7 @@ const PublicCalendar: React.FC = () => {
                   </Text>
                   <div className={styles.line}></div>
                 </Space>
-                <div style={{ height: 400, overflow: "scroll" }}>
+                <div style={{ height: 200, overflow: "scroll" }}>
                   {filterDateEventList.length != 0 ? (
                     filterDateEventList.map((item, index) => {
                       if (item?.startDateTime)
@@ -376,7 +377,7 @@ const PublicCalendar: React.FC = () => {
                     })) : (
                     <div
                       style={{
-                        padding: "50px 0",
+                        padding: "25px 0",
                       }}
                     >
                       <Empty

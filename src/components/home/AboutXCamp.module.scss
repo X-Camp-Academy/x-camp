@@ -1,28 +1,32 @@
+@import "@/styles/variables.scss";
 .aboutXCampContainer {
   width: 100%;
+  padding: 100px 0;
   .aboutXCamp {
     .aboutXCampTop {
       text-align: center;
-      margin-bottom: 20px;
       position: relative;
+      width: 100%;
       .title {
-        font-size: 36px;
-        font-weight: 600;
-        line-height: 54px;
+        margin: 0;
+        @include title('home-content');
+        span {
+          color: $primary-color
+        }
+      }
+      .titleBg {
+        margin-left: -10px;
+        display: block;
+        width: 108px;
+        height: 17px;
+        background-image: url("/image/home/home-title-bg-1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
       }
       .paragraph {
-        color: #172142;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 34px;
-        margin-top: 18px;
+        @include text(18px, 34px);
+        margin-top: 12px;
         margin-bottom: 0;
-      }
-      .paragraphText {
-        @extend .paragraph;
-        color: #d46b14;
-        cursor: pointer;
-        text-decoration: underline;
       }
     }
     .row {
@@ -32,9 +36,9 @@
         margin-right: 0 !important;
       }
       .card {
-        margin-top: 24px;
+        margin-top: 56px;
         background-color: #fff;
-        text-align: center;
+        text-align: left;
         &:hover {
           box-shadow: 0px 9px 25px -4px #d8d8d8;
         }
@@ -49,17 +53,13 @@
           background-color: #fff;
         }
         .cardTitle {
-          font-size: 24px;
+          @include text(22px, 28px);
           font-weight: 600;
-          color: #172142;
-          line-height: 36px;
         }
         .cardParagraph {
           color: #666666;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 28px;
-          height: 144px;
+          @include text(16px, 28px);
+          margin-top: 4px;
         }
       }
     }
