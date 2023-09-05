@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import UsacoCards from "@/components/common/usaco-cards";
+import USACOMedal from "@/components/common/usaco-medal";
 
 const UsacoMedal: React.FC = () => {
   return (
-    <UsacoCards showTitle />
+    <USACOMedal />
   );
 };
 

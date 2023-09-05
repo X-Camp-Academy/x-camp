@@ -311,7 +311,6 @@ const Courses: React.FC = () => {
     setSegmented(e?.target?.value);
   }
 
-
   return (
     <Layout className={styles.courses}>
       <Content>
