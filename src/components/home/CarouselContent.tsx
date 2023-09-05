@@ -16,9 +16,13 @@ import { useLang } from "@/hoc/with-intl/define";
 import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
 import { openClassEmailRequest } from "@/apis/send-email-client";
 import styles from "./CarouselContent.module.scss";
+import dynamic from "next/dynamic";
 
 const { Title, Paragraph, Text } = Typography;
 
+const UsacoMedal = dynamic(
+    () => import("@/components/common/usaco-medal")
+);
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
   const cx = classNames.bind(styles);
@@ -211,6 +215,7 @@ const CarouselContent: React.FC = () => {
           </Form>
         </Card>
       </div>
+      <UsacoMedal showTitle={false}></UsacoMedal>
     </div>
   );
 };
