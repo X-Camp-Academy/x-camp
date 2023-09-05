@@ -37,9 +37,9 @@ const Home: React.FC = () => {
         <DiscoverCourses />
         <Faculty />
         <WeSupport />
+        <PublicCalendar />
 
         <XCampFounders />
-        <PublicCalendar />
         <StudentProjects />
         <XAlumni />
         <Reviews reviewsData={reviewsData} />
