@@ -13,6 +13,13 @@
       color: $primary-color;
     }
   }
+  @else if($type == 'about') {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $text-color;
+    margin: 0;
+  }
 }
 
 @mixin text($fontSize: 14px, $lineHeight: 20px, $color: $text-color) {
