@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import { Col, Pagination, Row, Space } from "antd";
+import { Col, Pagination, Row, Space, Typography } from "antd";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { SegmentedValue } from "antd/es/segmented";
+import SegmentedRadioGroup from "@/components/common/segmented-radio-group";
+import { NEWS_TYPES } from "../define";
+import ColorfulCard from "@/components/common/colorful-card";
 
+
+const { Title, Text } = Typography;
 interface NewsCardProps {
   current: number;
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
@@ -16,6 +22,7 @@ interface NewsCardProps {
 
 const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, pageSize, total }) => {
   const { lang } = useLang();
+  const [segmented, setSegmented] = useState<SegmentedValue>("School Experience");
 
   const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
     return getTransResult(
@@ -25,9 +32,18 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
     )
   }
 
+  useEffect(() => {
+    console.log(segmented);
+  }, [segmented]);
   return (
     <div className={styles.content}>
       <div className={"container"}>
+        <SegmentedRadioGroup
+          segmented={segmented}
+          setSegmented={setSegmented}
+          data={NEWS_TYPES}
+        />
+
         <div className={styles.partner}>
           <Row gutter={[32, 48]}>
             {newEventData?.map((item, index) => {
@@ -36,23 +52,26 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
               );
               return (
                 <Col key={index} xs={24} sm={24} md={24} lg={8}>
-                  <Space direction={"vertical"} className={styles.card}>
-                    <img
-                      alt=""
-                      src={getTranslateImg(item.attributes?.imgZh, item.attributes?.imgEn)}
-                    />
-                    <Space className={styles.description} size={"middle"}>
-                      {item?.attributes?.editor}
-                      {startTime.format("YYYY-MM-DD")}
+                  <ColorfulCard border={"bottom"} index={index} animate={false}>
+                    <Space direction={"vertical"} className={styles.card}>
+                      <img
+                        alt=""
+                        src={getTranslateImg(item.attributes?.imgZh, item.attributes?.imgEn)}
+                      />
+                      <Title className={styles.title} ellipsis={{ rows: 2 }}>
+                        {getTransResult(
+                          lang,
+                          item?.attributes?.titleZh,
+                          item?.attributes?.titleEn
+                        )}
+                      </Title>
+
+                      <Text className={styles.date}>
+                        {item?.attributes?.editor}
+                        {startTime.format("YYYY-MM-DD")}
+                      </Text>
                     </Space>
-                    <div className={styles.title}>
-                      {getTransResult(
-                        lang,
-                        item?.attributes?.titleZh,
-                        item?.attributes?.titleEn
-                      )}
-                    </div>
-                  </Space>
+                  </ColorfulCard>
                 </Col>
               );
             })}

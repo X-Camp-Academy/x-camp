@@ -1,16 +1,15 @@
 "use client";
 import React from "react";
-import { Space, Image, Typography, Button, Input, Form } from "antd";
-import styles from "./SubscribeNewsletter.module.scss";
-import { useMobile } from "@/utils";
+import { Space, Typography, Button, Input, Form } from "antd";
+import { useLang } from "@/hoc/with-intl/define";
+import ColorfulCard from "@/components/common/colorful-card";
 import { subscribeNewsletterRequest } from "@/apis/send-email-client";
 import { useSubscribeNewsletter } from "@/apis/send-email-client/sendEmail";
-import { useLang } from "@/hoc/with-intl/define";
+import styles from "./SubscribeNewsletter.module.scss";
 
-const { Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const SubscribeNewsletter: React.FC = () => {
-  const isMobile = useMobile();
   const { format: t } = useLang();
   const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
 
@@ -18,21 +17,18 @@ const SubscribeNewsletter: React.FC = () => {
     await subscribeNewsletterRun(values);
   };
   return (
-    <div className={styles.subscribeNewsletterContainer}>
-      <div className={`${styles.subscribeNewsletter} container`}>
-        <Space align="center" className={styles.space}>
-          <div className={styles.imgAndText}>
-            <Image
-              alt=""
-              src="/image/home/course-4.png"
-              preview={false}
-              className={styles.image}
-            />
-            {!isMobile && (
-              <Text className={styles.text}>{t("FreeProgrammingPack")}</Text>
-            )}
-          </div>
-          <Form name="subscribeNewsletter" onFinish={onFinish} layout="inline">
+    <div className={`${styles.subscribeNewsletter} container`}>
+      <ColorfulCard border={"bottom"} index={1} animate={false}>
+        <Space direction="vertical" className={styles.space}>
+          <Title className={styles.title}>{"Subscribe Newsletter"}</Title>
+
+          <Paragraph className={styles.paragraph}>
+            X-Camp is committed to establishing a nurturing and all-encompassing coding
+            <br />
+            community, fueled by our devoted partners.
+          </Paragraph>
+
+          <Form name="subscribeNewsletter" onFinish={onFinish} layout="inline" className={styles.form}>
             <Form.Item
               name="email"
               rules={[
@@ -57,7 +53,7 @@ const SubscribeNewsletter: React.FC = () => {
             </Form.Item>
           </Form>
         </Space>
-      </div>
+      </ColorfulCard>
     </div>
   );
 };
