@@ -1,34 +1,28 @@
 "use client";
 import React from "react";
-import { Space, Row, Col, Image, Typography } from "antd";
-import styles from "./Banner.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import CommonBanner from "@/components/common/common-banner";
 
-const { Title, Paragraph } = Typography;
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
+  const paragraph = (
+    <>
+      X-Camp Academy focuses on improving the coding abilities and
+      <br />
+      problem-solving skills of our students. We strive to teach not only
+      <br />
+      persistence in analytical thought, but also genuine curiosity whilst
+      <br/>
+      facing new challenges.
+    </>
+  )
   return (
-    <div className={styles.bannerContainer}>
-      <div className="container">
-        <Row>
-          <Col xs={24} sm={24} md={14} className={styles.col}>
-            <Space direction="vertical">
-              <Title className={styles.title}>{t("ContactXCamp")}</Title>
-              <Paragraph className={styles.paragraph}>
-                {t("ContactXCamp.Desc")}
-              </Paragraph>
-            </Space>
-          </Col>
-          <Image
-            alt="image"
-            src="/image/home/course-3.png"
-            preview={false}
-            className={styles.image}
-          />
-        </Row>
-      </div>
-    </div>
+    <CommonBanner
+      image={"/image/about-us/achievements-banner.png"}
+      title={t("ContactXCamp")}
+      paragraph={paragraph}
+    />
   );
 };
 
