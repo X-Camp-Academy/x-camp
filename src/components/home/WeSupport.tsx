@@ -6,10 +6,10 @@ import { useMobile } from "@/utils";
 import AnimateBox from "../common/animate-box";
 import styles from "./WeSupport.module.scss";
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 const WeSupport: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const isMobile = useMobile();
   const images = [
     "/image/home/python.png",
@@ -41,12 +41,13 @@ const WeSupport: React.FC = () => {
               md={{ span: 24, order: 2 }}
               lg={{ span: 24, order: 1 }}
             >
-              <Space size={24} direction="vertical">
-                <Title className={styles.title}>{t("WeSupport")}</Title>
-                <Paragraph className={styles.paragraph}>
-                  {t("WeSupport.Desc")}
-                </Paragraph>
-              </Space>
+              { lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
+                <Title className={styles.title}>We Support</Title>
+                <Text className={styles.titleBg}></Text>
+              </div> }
+              <Paragraph className={styles.paragraph}>
+                {t("WeSupport.Desc")}
+              </Paragraph>
             </Col>
 
             <Col

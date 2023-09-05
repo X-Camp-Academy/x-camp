@@ -213,7 +213,7 @@ declare const json: {
   "Website": "Website",
   "WeeklyOpenHouse": "Weekly Open House",
   "WeSupport": "We Support",
-  "WeSupport.Desc": "X-Camp's programming courses are tailored for students grades 5 through 12, and offer support for three mainstream programming languages: Python, Java, and C++. Our Intro to Python course serves as a good general introduction to coding, and our Intro to Java course prepares students for APCS. Our C++ courses are offered at the Beginner, Intermediate, and Advanced levels.",
+  "WeSupport.Desc": "X-Camp's programming courses support the three most mainstream and popular programming languages, including Intro to Python, Intro to Java (APCS), Beginner / Intermediate / Advanced level C++, for students in grades 5-12th.",
   "WhyWorkWithUs": "Why Work With Us",
   "WhyWorkWithUs.Desc1": "X-Camp strives to cultivate an inclusive and dynamic environment by attracting top students from diverse backgrounds. We highly value and respect the contributions of all individuals.",
   "WhyWorkWithUs.Desc2": "As part of our commitment to excellence, if a candidate is recommended by parents of X-Camp students and subsequently offered a position, the referring student will receive a one-time $500 tuition waiver.",
