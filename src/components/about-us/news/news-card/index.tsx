@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import { Col, Pagination, Row, Space, Typography } from "antd";
+import { Button, Col, Pagination, Row, Space, Typography } from "antd";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
@@ -9,6 +9,8 @@ import { SegmentedValue } from "antd/es/segmented";
 import SegmentedRadioGroup from "@/components/common/segmented-radio-group";
 import { NEWS_TYPES } from "../define";
 import ColorfulCard from "@/components/common/colorful-card";
+import Link from "next/link";
+import { RightCircleOutlined } from "@ant-design/icons";
 
 
 const { Title, Text } = Typography;
@@ -66,10 +68,22 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
                         )}
                       </Title>
 
-                      <Text className={styles.date}>
-                        {item?.attributes?.editor}
-                        {startTime.format("YYYY-MM-DD")}
-                      </Text>
+                      <Space align="center">
+
+                        <Text className={styles.date}>
+                          {item?.attributes?.editor}
+                          {startTime.format("YYYY-MM-DD")}
+                        </Text>
+
+
+                        <Link href={`/resources/${item?.id}`}>
+                          <Button
+                            type="link"
+                            className={styles.btn}
+                            icon={<RightCircleOutlined />}
+                          />
+                        </Link>
+                      </Space>
                     </Space>
                   </ColorfulCard>
                 </Col>
