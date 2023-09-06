@@ -6,7 +6,7 @@ export interface IConfig {
 }
 interface IProps {
   title: string,
-  config: IConfig[],
+  config: IConfig[] | IConfig,
   className: string
 }
 
@@ -26,15 +26,10 @@ const replaceStrWithColor = (val: string, color: string) => `<span style="color:
 const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
   const html = useMemo(() => {
     let result = title
-    config.forEach((config) => {
-
+    let configArr: IConfig[] = []
+    Array.isArray(config) ? configArr.concat(config) : configArr.push(config)
+    configArr.forEach((config) => {
       result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color))
-      console.log('------------------------')
-      console.log(result)
-      console.log(getRegExp(config.text))
-      console.log(config.text, config.color)
-      console.log('------------------------')
-
     })
     return result
   }, [title, config])
