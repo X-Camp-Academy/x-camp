@@ -2,7 +2,7 @@ import React from "react";
 import { Image, Space, Typography } from "antd";
 import styles from "./index.module.scss";
 
-const { Title, Paragraph } = Typography
+const { Title, Paragraph } = Typography;
 interface CommonBannerProps {
   image: string;
   title: string;

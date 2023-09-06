@@ -1,16 +1,16 @@
-import XCollapse from "@/components/common/collapse";
-import styles from "./index.module.scss";
 import React from "react";
-import { Button, Col, Row, Space, Typography, Image } from "antd";
-import ColorfulCard from "@/components/common/colorful-card";
+import Link from "next/link";
+import { Button, Col, Row, Space, Typography } from "antd";
 import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
+import ColorfulCard from "@/components/common/colorful-card";
+import XCollapse from "@/components/common/collapse";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
-const { Text, Paragraph  } = Typography;
-import Link from "next/link";
+import styles from "./RecentActivities.module.scss";
+
+const { Title, Text } = Typography;
 
 const RecentActivities: React.FC = () => {
   const { format: t, lang } = useLang();
@@ -20,19 +20,7 @@ const RecentActivities: React.FC = () => {
     pageSize: 25,
   });
 
-  const getImgUrl = (img: StrapiMedia) => {
-    return img?.data?.attributes?.url;
-  };
-
-  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
-    return getTransResult(
-      lang,
-      getImgUrl(imgZh),
-      getImgUrl(imgEn),
-    )
-  }
-
-  const RecentActivities = newEventData?.data?.filter((item, index) => {
+  const RecentActivities = newEventData?.data?.filter(item => {
     return (
       item?.attributes?.startDateTime &&
       new Date(item?.attributes?.startDateTime).getTime() -
@@ -52,26 +40,15 @@ const RecentActivities: React.FC = () => {
             {RecentActivities?.slice(0, 3).map((v, index) => (
               <Col key={index} xs={24} sm={24} md={12} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
-                  <div className={styles.card} >
-                    <div className={styles.img}>
-                      <Image src={getTranslateImg(v.attributes?.imgZh, v.attributes?.imgEn)} alt="img" />
-                    </div>
-                    <Paragraph
-                      className={styles.cardTitle}
-                      ellipsis={{
-                        rows: 2,
-                        tooltip: getTransResult(
-                          lang,
-                          v?.attributes?.titleZh,
-                          v?.attributes?.titleEn
-                        ) }}
-                    >
+                  <Space direction="vertical" className={styles.card} >
+                    <img src={getTransResult(lang, v.attributes?.imgZh?.data?.attributes?.url, v.attributes?.imgEn?.data?.attributes?.url)} alt="img" />
+                    <Title className={styles.title} ellipsis={{ rows: 1 }}>
                       {getTransResult(
                         lang,
                         v?.attributes?.titleZh,
                         v?.attributes?.titleEn
                       )}
-                    </Paragraph >
+                    </Title>
                     <div className={styles.description}>
                       <Text
                         ellipsis={{
@@ -96,7 +73,7 @@ const RecentActivities: React.FC = () => {
                         <RightCircleOutlined />
                       </Link>
                     </div>
-                  </div>
+                  </Space>
                 </ColorfulCard>
               </Col>
             ))}

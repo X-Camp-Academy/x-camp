@@ -93,19 +93,9 @@ declare const json: {
   "Enroll": "Enroll",
   "Evaluation": "Evaluation",
   "Faculty": "Faculty",
-<<<<<<< HEAD
-<<<<<<< HEAD
   "Founders": "Founders",
   "Faculty.Desc": "World-class faculties comprise experienced senior engineers from leading tech companies, accomplished students \n from prestigious computer science majors, and top-ranking members of competitive \n programming contests like IOI, ICPC, and USACO.",
   "Faculty&Coach": "Faculty & Coaches",
-=======
-  "Faculty.Desc": "World-class faculties comprise experienced senior engineers from leading tech companies, top-ranking members of competitive programming contests like IOI, ICPC, and USACO.",
->>>>>>> de1a822c9b71747d19659325e05a7dd74190a933
-=======
-  "Founders": "Founders",
-  "Faculty.Desc": "World-class faculties comprise experienced senior engineers from leading tech companies, accomplished students \n from prestigious computer science majors, and top-ranking members of competitive \n programming contests like IOI, ICPC, and USACO.",
-  "Faculty&Coach": "Faculty & Coaches",
->>>>>>> 90cffd2801f1328f5dd16cba8c80616098602c62
   "FAQs": "FAQs",
   "FirstName": "First Name",
   "FreeConsultation": "Free Consultation",
@@ -167,8 +157,8 @@ declare const json: {
   "Python.Title": "Python Beginner",
   "FAQ": "FAQ",
   "QuickLinks": "Quick Links",
-  "RecentPopularEvents": "DisCover Our Events",
-  "RecentPopularEvents.Desc": "Stay updated on trending topics, gain insights from experts, and engage in the dynamic world of coding.",
+  "RecentPopularEvents": "Recent Popular Events",
+  "RecentPopularEvents.Desc": "Stay updated on trending topics, gain insights from experts, and engage in the dynamic world of coding education.",
   "ReferralProgram": "Referral Program",
   "ReferralProgram.Desc1": "Encourage your friends' children AND your childrens’ friends to join our coding program! ",
   "ReferralProgram.Desc2": "for yourself and",
@@ -232,26 +222,12 @@ declare const json: {
   "WinterCamp": "Winter On-Site Camps",
   "X_ALUMNI": "Community",
   "X_ALUMNI_INTRODUCTION": "Since its inception, X-Camp has successfully enrolled over 1,000 students and currently serves more than 500 students from over 250 schools worldwide. If you would like to reconnect with your fellow classmates, please contact us!",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  "Founders": "Founders",
->>>>>>> de1a822c9b71747d19659325e05a7dd74190a933
-=======
->>>>>>> 90cffd2801f1328f5dd16cba8c80616098602c62
   "X_Alumni.Desc": "Since its inception, X-Camp has had over 1,000 students and is currently enrolling over 500+ students in 250+ schools around the world. If you would like to find your classmates, please contact us!",
   "X-Camp.Desc1": "X-Camp Academy, a Silicon Valley-based coding institute, offers beginner-level to IOI level's.",
   "X-CampAcademyPrincipal": "X-Camp Academy Principal",
   "X-CampFounder": "X-Camp Founders",
   "X-CampSeniorCodingCoach": "X-Camp Senior Coding Coach",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   "Coach": "Coach",
->>>>>>> de1a822c9b71747d19659325e05a7dd74190a933
-=======
-  "Coach": "Coach",
->>>>>>> 90cffd2801f1328f5dd16cba8c80616098602c62
   "X-Cup": "X-Cup",
   "X-Tutors": "X-Tutors",
   "XAlumni": "X-Alumni",
@@ -276,7 +252,7 @@ declare const json: {
   "XAlumniEvents.Desc": "Explore news, views, and perspectives from our alumni community.",
   "ViewMoreEvents": "View More Events",
   "UpcomingEvents": "Upcoming Events",
-  "UpcomingEvents.Desc": "Take a sneak peek at some upcoming alumni events that are just around the corner! We have a range of exciting gatherings and activities planned to connect and engage with our alumni community. Stay tuned for updates on these events, and mark your calendars to join us soon!",
+  "UpcomingEvents.Desc": "Peek at some alumni events happening just around the corner.",
   "ArticleContent.Desc": "Note: This document is an original work created by X-Camp, and its copyright belongs to our company.",
   "Contest.Desc": "X-Camp organizes yearly opportunities for students to participate in different competitive programming contests. We establish partnerships with distinguished contest partners, including prestigious universities, high schools, and NGOs. These collaborations ensure the delivery of high-quality contests and foster a vibrant community for our students.",
   "Contest.Title1": "Challenge and Competition",

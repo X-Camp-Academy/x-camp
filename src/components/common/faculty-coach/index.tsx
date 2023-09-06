@@ -12,6 +12,7 @@ import styles from "./index.module.scss";
 import { SegmentedValue } from "antd/es/segmented";
 import { LEVEL_TYPES } from "./define";
 import SegmentedRadioGroup from "../segmented-radio-group";
+import ColorfulCard from "../colorful-card";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -37,22 +38,6 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
 
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
-  };
-
-  const computedStyle = (index: number) => {
-    const defaultStyle = {
-      borderRadius: 10,
-      paddingBottom: 6,
-      marginTop: 16,
-    };
-
-    const colors = ["#00A0E9", "#D46B14", "#FFAD11", "#FFD600"];
-    const cardStyle = {
-      ...defaultStyle,
-      backgroundColor: colors[index % 4],
-    };
-
-    return cardStyle;
   };
 
   const { hash } = window.location;
@@ -106,7 +91,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
                 md={{ span: 24 }}
                 lg={{ span: 6 }}
               >
-                <div style={computedStyle(index)}>
+                <ColorfulCard border="bottom" split={4} index={index}>
                   <Card>
                     <Space direction="vertical">
                       <Avatar
@@ -139,7 +124,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
                       </Paragraph>
                     </Space>
                   </Card>
-                </div>
+                </ColorfulCard>
               </Col>
             ))}
           </Row>
