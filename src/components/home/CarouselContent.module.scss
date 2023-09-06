@@ -1,22 +1,54 @@
-@import "@/styles/variables";
+@import "@/styles/variables.scss";
 
 .bannerContainer {
   width: 100%;
   position: relative;
   .carouselDots {
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+    right: 80px;
+    top: calc((100% - 340px)/2);
+    transform: translateY(-50%);
+    z-index: 1;
+    list-style-type: none;
+    .li {
+      width: 42px;
+      margin-bottom: 30px;
+      text-align: right;
+      @include text(14px, 24px,#C1C1C1);
+      cursor: pointer;
+      .divider {
+        margin: 0;
+        border-block-color: #C1C1C1;
+      }
+      &.active {
+        color: $primary-color;
+        .divider {
+          border-block-color:  $primary-color;
+        }
+      }
+    }
+
+  }
+  .background {
+    width: 100%;
+    height: 540px;
+    background-size: cover;
   }
   .content {
+    position: relative;
     width: 100%;
-    height: 640px;
-    overflow: hidden;
-    background-image: url("/image/home/carousel-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    @media (max-width: 992px) {
-      height: 920px;
+    height: 540px;
+
+    .info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: auto;
     }
     .space {
       width: 100%;
@@ -27,48 +59,34 @@
         justify-content: center;
       }
       .title {
-        font-size: 48px;
-        font-weight: 900;
-        color: #172142;
-        line-height: 58px;
+        @include title('about');
+        font-weight: 800;
       }
       .paragraph {
-        font-size: 28px;
-        font-weight: 500;
-        color: #172142;
-        line-height: 42px;
-        .dot {
-          display: inline-block;
-          vertical-align: middle;
-          margin-right: 12px;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: #172142;
-        }
+        @include text(21px, 32px);
+        font-weight: 600;
+        margin: 0;
+        min-height: 64px;
       }
       .mb8 {
         margin-bottom: 8px;
       }
       .button {
-        padding: 16px 52px;
-        background: #ffad11;
+        padding: 10px 36px;
+        background: $primary-color;
         border-radius: 12px;
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 600;
         color: #ffffff;
-        line-height: 36px;
+        line-height: 24px;
         border: 1px solid #ffad11;
-        cursor: pointer;
         &:hover {
           @extend .hoverButton;
         }
       }
       .date {
-        font-size: 21px;
-        font-weight: 600;
-        color: #172a88;
-        line-height: 46px;
+        @include text(16px, 24px, #666);
+        font-weight: 500;
       }
     }
   }
