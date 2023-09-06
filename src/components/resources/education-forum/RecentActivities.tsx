@@ -32,21 +32,23 @@ const RecentActivities: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <div>
-          <div className={styles.title}>
-            {t("RecentPopularEvents")}
-          </div>
+        <XCollapse
+          header={{
+            title: t("RecentPopularEvents"),
+            description: t("RecentPopularEvents.Desc"),
+          }}
+        >
           <Row className={styles.cards} gutter={[32, 32]}>
-            {RecentActivities?.slice(0, 3).map((v, index) => (
+            {RecentActivities?.slice(0, 3)?.map((item, index) => (
               <Col key={index} xs={24} sm={24} md={12} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card} >
-                    <img src={getTransResult(lang, v.attributes?.imgZh?.data?.attributes?.url, v.attributes?.imgEn?.data?.attributes?.url)} alt="img" />
+                    <img src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} alt="img" />
                     <Title className={styles.title} ellipsis={{ rows: 1 }}>
                       {getTransResult(
                         lang,
-                        v?.attributes?.titleZh,
-                        v?.attributes?.titleEn
+                        item?.attributes?.titleZh,
+                        item?.attributes?.titleEn
                       )}
                     </Title>
                     <div className={styles.description}>
@@ -54,8 +56,8 @@ const RecentActivities: React.FC = () => {
                         ellipsis={{
                           tooltip: `${getTransResult(
                             lang,
-                            v?.attributes.descriptionZh,
-                            v?.attributes.descriptionEn
+                            item?.attributes?.descriptionZh,
+                            item?.attributes?.descriptionEn
                           )
                             }`
                         }}
@@ -64,12 +66,12 @@ const RecentActivities: React.FC = () => {
                         <AlignRightOutlined className={styles.icon} />
                         {getTransResult(
                           lang,
-                          v?.attributes.descriptionZh,
-                          v?.attributes.descriptionEn
+                          item?.attributes?.descriptionZh,
+                          item?.attributes?.descriptionEn
                         )}
                       </Text>
 
-                      <Link className={styles.arrow} href={`/resources/${v.id}`}>
+                      <Link className={styles.arrow} href={`/resources/${item?.id}`}>
                         <RightCircleOutlined />
                       </Link>
                     </div>
@@ -78,7 +80,7 @@ const RecentActivities: React.FC = () => {
               </Col>
             ))}
           </Row>
-        </div>
+        </XCollapse>
       </div>
     </div >
   );
