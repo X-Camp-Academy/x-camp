@@ -1,13 +1,26 @@
 @import "@/styles/variables.scss";
 .bannerContainer {
   position: relative;
+  .image {
+    @media (max-width: 768px) {
+      height: 288px;
+    }
+  }
   .content {
     position: absolute;
     top: 120px;
     left: 100px;
+    @media (max-width: 768px) {
+      left: 32px;
+      top: 32px;
+    }
     .title {
       @include title('about');
       margin-bottom: 21px;
+      @media (max-width: 768px) {
+        font-size: 32px;
+        line-height: 32px;
+      }
     }
     .paragraph {
       font-size: 21px;
@@ -15,6 +28,10 @@
       color: #172142;
       line-height: 40px;
       text-shadow: 0px 2px 10px #ffffff;
+      @media (max-width: 768px) {
+        font-size: 16px;
+        line-height: 32px;
+      }
     }
   }
 }

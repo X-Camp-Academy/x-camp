@@ -68,6 +68,9 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
     scrollIntoView(hash.slice(1));
   }, [hash]);
 
+  useEffect(() => {
+    console.log(segmented);
+  }, [segmented]);
   return (
     <div className={`${styles.facultyCoach} container`} id="faculty">
       <Space direction="vertical" size={48}>

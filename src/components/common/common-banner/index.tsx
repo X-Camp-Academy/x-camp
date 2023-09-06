@@ -18,6 +18,7 @@ const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph, pa
         src={image}
         alt=""
         width={"100%"}
+        className={styles.image}
         preview={false}
       />
       <div className={styles.content}>

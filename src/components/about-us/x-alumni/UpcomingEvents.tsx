@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Space, Row, Col, Card, Image, Button, Typography } from "antd";
+import { Space, Row, Col, Card, Button, Typography } from "antd";
 import styles from "./UpcomingEvents.module.scss";
 import ColorfulCard from "@/components/common/colorful-card";
 import {
