@@ -8,7 +8,7 @@ interface CommonBannerProps {
   title: string;
   paragraph: React.ReactNode;
   paragraphClassName?: string;
-  titleClassName: string;
+  titleClassName?: string;
 }
 
 const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph, paragraphClassName, titleClassName }) => {

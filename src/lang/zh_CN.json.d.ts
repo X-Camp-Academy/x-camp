@@ -155,7 +155,7 @@ declare const json: {
   "Python.Title": "Python初学者",
   "FAQ": "常见问答",
   "QuickLinks": "快速链接",
-  "RecentPopularEvents": "近期活动",
+  "RecentPopularEvents": "了解热门活动",
   "RecentPopularEvents.Desc": "了解热门话题，与专家一同探讨，参与充满活力的编程世界。",
   "ReferralProgram": "老生推荐计划",
   "ReferralProgram.Desc1": "鼓励您朋友的孩子，和您孩子的朋友加入我们的编程学习！ ",

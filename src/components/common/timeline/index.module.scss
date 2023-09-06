@@ -1,3 +1,4 @@
+@import "@/styles/variables.scss";
 .timeline {
 
     position: relative;
@@ -6,15 +7,15 @@
     :global(.ant-timeline-item-tail) {
         border-inline-start: 2px solid #172142;
         position: absolute;
+        height: 100%;
     }
 
 
     :global(.ant-timeline-item-head) {
-        width: 24px;
-        height: 24px;
-        background: #172142;
-        border: none;
-        margin-left: -6px;
+        @include arrow;
+        background: transparent;
+        margin-left: -3px;
+        margin-top: 12px;
     }
 
     .month {
@@ -48,15 +49,14 @@
     }
 
     .subTitle {
-        color: #172142;
-        font-size: 24px;
+        @include text(24px, 42px);
         font-weight: 600;
         margin-left: 15px;
     }
 
     .subContent {
-        color: #172142;
-        font-size: 21px;
+        @include text(18px, 42px);
+
         margin-left: 56px;
         margin-bottom: 30px;
     }

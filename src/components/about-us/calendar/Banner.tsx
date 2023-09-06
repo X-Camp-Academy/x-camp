@@ -2,35 +2,31 @@ import React from "react";
 import { Space, Row, Col, Image, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import styles from "./Banner.module.scss";
-
-const { Title, Paragraph } = Typography;
+import CommonBanner from "@/components/common/common-banner";
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
+  const paragraph = (
+    <>
+      Since X-Camp was established, USACO has achieved
+      <br />
+      problem-solving skills of our students. We strive to teach not only
+      <br />
+      remarkable results as our students&apos; side project on
+      <br/>
+      their learning journey.
+    </>
+  )
 
   return (
     <div className={styles.bannerContainer}>
-      <div className="container">
-        <Row>
-          <Col xs={24} sm={24} md={12} className={styles.col}>
-            <Space direction="vertical">
-              <Title className={styles.title}>{t("SchoolCalendar")}</Title>
-              <Paragraph className={styles.paragraph}>
-                {t("AboutUs.Achievements.Desc")}
-              </Paragraph>
-            </Space>
-          </Col>
-          <Col xs={24} sm={24} md={12} className={styles.col}>
-            <Image
-              alt="image"
-              src="/image/about-us/banner-background.png"
-              preview={false}
-              className={styles.image}
-            />
-          </Col>
-        </Row>
-        <Space></Space>
-      </div>
+      <CommonBanner
+        image={"/image/about-us/banner-joinUs.png"}
+        title={t("SchoolCalendar")}
+        titleClassName={styles.title}
+        paragraphClassName={styles.paragraph}
+        paragraph={paragraph}
+      />
     </div>
   );
 };

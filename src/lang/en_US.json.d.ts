@@ -156,7 +156,7 @@ declare const json: {
   "Python.Title": "Python Beginner",
   "FAQ": "FAQ",
   "QuickLinks": "Quick Links",
-  "RecentPopularEvents": "Recent Popular Events",
+  "RecentPopularEvents": "DisCover Our Events",
   "RecentPopularEvents.Desc": "Stay updated on trending topics, gain insights from experts, and engage in the dynamic world of coding.",
   "ReferralProgram": "Referral Program",
   "ReferralProgram.Desc1": "Encourage your friends' children AND your childrens’ friends to join our coding program! ",

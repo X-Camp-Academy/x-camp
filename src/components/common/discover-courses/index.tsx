@@ -101,7 +101,7 @@ const DiscoverCourses = ({
   ];
   return (
     <div
-      style={{ alignItems: align,  background: '#FDF6F1' }}
+      style={{ alignItems: align }}
     >
       <div  className={`${styles.discoverCourses} container`}>
         <Text
