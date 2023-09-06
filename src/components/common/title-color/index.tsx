@@ -27,7 +27,13 @@ const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
   const html = useMemo(() => {
     let result = title
     let configArr: IConfig[] = []
-    Array.isArray(config) ? configArr.concat(config) : configArr.push(config)
+
+    if(Array.isArray(config)) {
+      configArr = configArr.concat(...config)
+    } else {
+      configArr.push(config)
+    }
+
     configArr.forEach((config) => {
       result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color))
     })
