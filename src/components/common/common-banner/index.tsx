@@ -7,9 +7,11 @@ interface CommonBannerProps {
   image: string;
   title: string;
   paragraph: React.ReactNode;
+  paragraphClassName?: string;
+  titleClassName?: string;
 }
 
-const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph }) => {
+const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph, paragraphClassName, titleClassName }) => {
   return (
     <div className={styles.bannerContainer}>
       <Image
@@ -21,10 +23,10 @@ const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph }) 
       />
       <div className={styles.content}>
         <Space direction="vertical">
-          <Title className={styles.title}>
+          <Title className={titleClassName || styles.title}>
             {title}
           </Title>
-          <Paragraph className={styles.paragraph}>
+          <Paragraph className={`${paragraphClassName || styles.paragraph}`}>
             {paragraph}
           </Paragraph>
         </Space>

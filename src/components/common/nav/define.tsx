@@ -174,7 +174,7 @@ export const useMenuItems = () => {
       key: "about-us",
       dropdown: {
         left: {
-          title: t("SchoolCalendar"),
+          title: t("AboutUs"),
           description: t("AboutUs.Description"),
           btn: (
             <>

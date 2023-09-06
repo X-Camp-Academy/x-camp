@@ -18,60 +18,63 @@ const WeSupport: React.FC = () => {
   ];
 
   return (
-    <div className={`${styles.weSupport} container`}>
-      <Row>
-        <Col
-          xs={{ span: 24, order: 2 }}
-          sm={{ span: 24, order: 2 }}
-          md={{ span: 24, order: 2 }}
-          lg={{ span: 12, order: 1 }}
-        >
-          <iframe src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0" width="100%" height="100%"></iframe>
-        </Col>
-        <Col
-          xs={{ span: 24, order: 1 }}
-          sm={{ span: 24, order: 1 }}
-          md={{ span: 24, order: 1 }}
-          lg={{ span: 11, order: 2, offset: 1 }}
-        >
+      <div style={{ background: '#EFEFEF' }}>
+        <div className={`${styles.weSupport} container`}>
           <Row>
             <Col
-              xs={{ span: 24, order: 2 }}
-              sm={{ span: 24, order: 2 }}
-              md={{ span: 24, order: 2 }}
-              lg={{ span: 24, order: 1 }}
+                xs={{ span: 24, order: 2 }}
+                sm={{ span: 24, order: 2 }}
+                md={{ span: 24, order: 2 }}
+                lg={{ span: 12, order: 1 }}
             >
-              { lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
-                <Title className={styles.title}>We <span>Support</span></Title>
-                <Text className={styles.titleBg}></Text>
-              </div> }
-              <Paragraph className={styles.paragraph}>
-                {t("WeSupport.Desc")}
-              </Paragraph>
+              <iframe src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0" width="100%" height="100%"></iframe>
             </Col>
-
             <Col
-              xs={{ span: 24, order: 1 }}
-              sm={{ span: 24, order: 1 }}
-              md={{ span: 24, order: 1 }}
-              lg={{ span: 24, order: 2 }}
+                xs={{ span: 24, order: 1 }}
+                sm={{ span: 24, order: 1 }}
+                md={{ span: 24, order: 1 }}
+                lg={{ span: 11, order: 2, offset: 1 }}
             >
-              <Space direction="horizontal" size={isMobile ? 8 : 48}>
-                {images?.map((item, index) => {
-                  return (
-                    <div key={index} >
-                      <AnimateBox className={styles.imageBox}>
-                        <Image src={item} alt="image" preview={false} />
-                      </AnimateBox>
-                    </div>
-                  );
-                })}
-              </Space>
+              <Row>
+                <Col
+                    xs={{ span: 24, order: 2 }}
+                    sm={{ span: 24, order: 2 }}
+                    md={{ span: 24, order: 2 }}
+                    lg={{ span: 24, order: 1 }}
+                >
+                  { lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
+                    <Title className={styles.title}>We <span>Support</span></Title>
+                    <Text className={styles.titleBg}></Text>
+                  </div> }
+                  <Paragraph className={styles.paragraph}>
+                    {t("WeSupport.Desc")}
+                  </Paragraph>
+                </Col>
+
+                <Col
+                    xs={{ span: 24, order: 1 }}
+                    sm={{ span: 24, order: 1 }}
+                    md={{ span: 24, order: 1 }}
+                    lg={{ span: 24, order: 2 }}
+                >
+                  <Space direction="horizontal" size={isMobile ? 8 : 48}>
+                    {images?.map((item, index) => {
+                      return (
+                          <div key={index} >
+                            <AnimateBox className={styles.imageBox}>
+                              <Image src={item} alt="image" preview={false} />
+                            </AnimateBox>
+                          </div>
+                      );
+                    })}
+                  </Space>
+                </Col>
+              </Row>
             </Col>
           </Row>
-        </Col>
-      </Row>
-    </div>
+        </div>
+
+      </div>
   );
 };
 

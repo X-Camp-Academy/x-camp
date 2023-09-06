@@ -13,6 +13,13 @@
       color: $primary-color;
     }
   }
+  @else if($type == 'about') {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $text-color;
+    margin: 0;
+  }
 }
 
 @mixin text($fontSize: 14px, $lineHeight: 20px, $color: $text-color) {
@@ -47,4 +54,25 @@
   display: $flex;
   align-items: $alignItems;
   justify-content: $justContent;
+}
+
+@mixin arrow($direction: 'down', $size: 8px, $color: $text-color) {
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-width: $size;
+  border-radius: 0;
+
+  @if $direction == 'down' {
+    border-top-color: $color;
+  }
+  @else if $direction == 'up' {
+    border-bottom-color: $color;
+  }
+  @else if $direction == 'left' {
+    border-right-color: $color;
+  }
+  @else if $direction == 'right' {
+    border-left-color: $color;
+  }
 }

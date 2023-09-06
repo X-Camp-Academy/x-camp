@@ -1,40 +1,36 @@
-import { Space, Row, Col, Image, Typography, Button } from "antd";
+import { Button } from "antd";
 import styles from "./TopBanner.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 import { useRouter } from "next/navigation";
-const { Title, Paragraph } = Typography;
+import CommonBanner from "@/components/common/common-banner";
+import React from "react";
+
 
 const TopBanner = () => {
   const { format: t } = useLang();
   const router = useRouter();
+  const paragraph = (
+    <>
+      X-Camp offers a wide range of career opportunities within
+      <br />
+      our company. Please note that all openings are based in
+      <br />
+      the Silicon Valley except for TAs.
+    </>
+  )
   return (
     <div className={styles.topBannerContainer}>
-      <div className="container">
-        <Row className={styles.content}>
-          <Col sm={24} lg={14} className={styles.col1}>
-            <Space direction="vertical">
-              <Title className={styles.title}>{t("Careers")}</Title>
-              <Paragraph className={styles.paragraph}>
-                {t("Careers.Desc")}
-              </Paragraph>
-              <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>
-                {t("ContactUs")}
-                <img src="/image/about-us/comment.png" alt="" />
-              </Button>
-            </Space>
-          </Col>
-          <Col sm={24} lg={{ span: 8, offset: 2 }} className={styles.col2}>
-            <Space direction="vertical">
-              <Image
-                alt="image"
-                src="/image/about-us/join-us-banner.png"
-                preview={false}
-                className={styles.image}
-              />
-            </Space>
-          </Col>
-        </Row>
-      </div>
+      <CommonBanner
+        image={"/image/about-us/banner-joinUs.png"}
+        title={t("Careers")}
+        titleClassName={styles.title}
+        paragraphClassName={styles.paragraph}
+        paragraph={paragraph}
+      />
+      <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>
+        {t("ContactUs")}
+        <img src="/image/about-us/comment.png" alt="" />
+      </Button>
     </div>
   );
 };
