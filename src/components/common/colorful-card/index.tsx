@@ -1,8 +1,8 @@
 "use client";
 import React, { ReactNode, useRef } from "react";
+import { Collapse } from "antd";
 import { addAnimate, removeAnimate } from "@/utils";
 import "hover.css";
-import { Collapse, CollapseProps } from "antd";
 
 export interface ColorfulCardProps {
   border: "top" | "bottom";

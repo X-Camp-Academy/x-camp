@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./index.module.scss";
-import ActivityItem from "./activity-item";
+import styles from "./Activities.module.scss";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import {
   EventCategory,
@@ -12,8 +11,12 @@ import {
   AndOrFilters,
   FilterFields,
 } from "@/apis/strapi-client/strapiDefine";
-import { Pagination, Row, Space } from "antd";
+import { Button, Col, Pagination, Row, Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
+import ColorfulCard from "@/components/common/colorful-card";
+import { formatTimezone, getTransResult } from "@/utils/public";
+import { useRouter } from "next/navigation";
+import { ClockCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
 interface ActivityItem {
   title: string;
   key: EventCategory | "All";
@@ -85,21 +88,24 @@ const Activities: React.FC = () => {
       key: "All",
     },
   ];
+
+  const router = useRouter();
+  const { lang } = useLang();
   return (
     <div className={styles.content}>
       <div className="container">
         <div className={styles.toolBar}>
-          {items.map((v) => {
+          {items?.map((item) => {
             return (
               <div
-                className={`${styles.toolBarItem} ${v.key === selectedItem ? styles.selectedToolBarItem : ""
+                className={`${styles.toolBarItem} ${item?.key === selectedItem ? styles.selectedToolBarItem : ""
                   }`}
-                key={v.key}
+                key={item?.key}
                 onClick={() => {
-                  setSelectedItem(v.key);
+                  setSelectedItem(item?.key);
                 }}
               >
-                {v.title}
+                {item?.title}
               </div>
             );
           })}
@@ -110,10 +116,35 @@ const Activities: React.FC = () => {
             {newEventData?.data?.length} {t("EducationalForum")}
           </div>
         </Space>
+
         <Row gutter={[32, 32]}>
           {newEventData?.data?.map((v, index) => (
-            /* 新版UI的分页器待完成 */
-            <ActivityItem {...v} key={index} index={index} />
+            <Col key={index} xs={24} sm={24} md={12} lg={8}>
+              <ColorfulCard border={'bottom'} animate={false} index={index}>
+                <div className={styles.card}>
+                  <div className={styles.imgBox}>
+                    <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
+                  </div>
+                  <Space direction="vertical" className={styles.cardContent}>
+                    <div className={styles.title}>
+                      {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
+                    </div>
+                    <div className={styles.description}>
+                      <div>
+                        <ClockCircleOutlined className={styles.icon} />
+                        {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
+                      </div>
+                      <Button
+                        type="link"
+                        className={styles.btn}
+                        icon={<RightCircleOutlined />}
+                        onClick={() => { router.push(`/resources/${v?.id}`) }}
+                      />
+                    </div>
+                  </Space>
+                </div>
+              </ColorfulCard>
+            </Col>
           ))}
         </Row>
 
