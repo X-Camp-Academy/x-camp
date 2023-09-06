@@ -2,25 +2,28 @@
 import React, { ReactNode, useRef } from "react";
 import { addAnimate, removeAnimate } from "@/utils";
 import "hover.css";
+import { Collapse, CollapseProps } from "antd";
 
 export interface ColorfulCardProps {
   border: "top" | "bottom";
   index: number;
   children: ReactNode;
-  total?: number;
+  split?: number;
   reverse?: boolean;
   animate?: boolean;
   className?: string;
+  collapse?: boolean;
 }
 
 const ColorfulCard: React.FC<ColorfulCardProps> = ({
   border = "top",
   index = 0,
   children = null,
-  total = 3,
+  split = 3,
   reverse = false,
   animate = true,
   className = "",
+  collapse = false,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const threeColors = ["#D46B14", "#FFAD11", "#FFD600"];
@@ -35,32 +38,41 @@ const ColorfulCard: React.FC<ColorfulCardProps> = ({
       paddingTop: border === "top" ? 6 : 0,
       paddingBottom: border === "bottom" ? 6 : 0,
     };
-    const getBackGroundColor = (total: number, reverse: boolean) => {
-      return total === 3
+    const getBackGroundColor = (split: number, reverse: boolean) => {
+      return split === 3
         ? reverse
           ? threeColors?.reverse()[index % 3]
           : threeColors[index % 3]
         : reverse
-        ? fourColors?.reverse()[index % 4]
-        : fourColors[index % 4];
+          ? fourColors?.reverse()[index % 4]
+          : fourColors[index % 4];
     };
 
     return {
       ...defaultStyle,
-      backgroundColor: getBackGroundColor(total, reverse),
+      backgroundColor: getBackGroundColor(split, reverse),
     };
   };
 
   return (
-    <div
-      ref={animate ? ref : null}
-      style={computedStyle(border, index, reverse)}
-      onMouseEnter={() => addAnimate(ref)}
-      onMouseLeave={() => removeAnimate(ref)}
-      className={className}
-    >
-      {children}
-    </div>
+    collapse ?
+      <Collapse
+        style={computedStyle(border, index, reverse)}
+        className={className}
+        ghost={true}
+      >
+        {children}
+      </Collapse>
+      :
+      <div
+        ref={animate ? ref : null}
+        style={computedStyle(border, index, reverse)}
+        onMouseEnter={() => addAnimate(ref)}
+        onMouseLeave={() => removeAnimate(ref)}
+        className={className}
+      >
+        {children}
+      </div>
   );
 };
 
