@@ -3,7 +3,7 @@
   border: none;
   background-color: #ffffff;
   border-radius: 0;
-  padding-top: 20px;
+  padding: 20px 36px 0;
 
   @media (max-width: 768px) {
     padding: 0 20px;
@@ -52,9 +52,9 @@
     .applyBtn {
       display: flex;
       align-items: center;
-      padding: 20px 36px;
+      padding: 12px 36px;
       background: #ffad11;
-      border-radius: 6px;
+      border-radius: 12px;
       font-size: 16px;
       font-weight: 500;
       color: #ffffff;
