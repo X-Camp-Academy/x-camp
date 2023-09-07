@@ -3,7 +3,7 @@ import { Breadcrumb, Divider, Space, Typography } from "antd";
 import classNames from "classnames/bind";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult, getWeeksDays } from "@/utils/public";
-import CourseClassesContext from "../../CourseClasses";
+import CourseClassesContext from "../../CourseClassesContext";
 import CourseAbstract from "@/components/common/course-abstract";
 import CourseDescription from "./course-description";
 import styles from "./index.module.scss";
@@ -47,7 +47,6 @@ const CourseBanner: React.FC = () => {
         />
         <Title className={styles.title}>{courseCodeTitle}</Title>
 
-
         <div className={styles.courseCard}>
           <Space
             className={styles.cardContent}
@@ -55,6 +54,7 @@ const CourseBanner: React.FC = () => {
             split={<Divider className={styles.divider} />}
           >
             <CourseAbstract {...courseData?.attributes} />
+
             <CourseDescription />
           </Space>
         </div>

@@ -4,7 +4,7 @@ import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
-import CourseClassesContext from "@/components/courses/CourseClasses";
+import CourseClassesContext from "@/components/courses/CourseClassesContext";
 import styles from "./index.module.scss";
 
 const CourseDescription: React.FC = () => {
@@ -13,7 +13,6 @@ const CourseDescription: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   message.config({
     top: 100,
-
   });
   const courseData = useContext(CourseClassesContext);
   const {

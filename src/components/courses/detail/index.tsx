@@ -1,20 +1,20 @@
 "use client";
 import React from "react";
-import { Layout } from "antd";
 import { useParams } from "next/navigation";
+import { Layout } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import UsacoMedal from "@/components/common/usaco-medal";
 import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";
 import CourseBanner from "./course-banner";
-import CourseSyllabus from "./course-syllabus";
-import ProgressionClasses from "./progression-classes";
-import CourseClassesContext from "../CourseClasses";
+import CourseSyllabus from "./CourseSyllabus";
+import ProgressionClasses from "./ProgressionClasses";
+import Faculty from "@/components/common/faculty";
+import CourseClassesContext from "../CourseClassesContext";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
 import { useGetFaq, useGetReviews } from "@/apis/strapi-client/strapi";
 import { FaqCategory } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
-import Faculty from "@/components/common/faculty";
 
 const { Content } = Layout;
 
@@ -33,13 +33,11 @@ const CourseDetail: React.FC = () => {
     },
   });
 
-
   const { data: faqData } = useGetFaq({
     ready: true,
     category: FaqCategory.CoursesQA,
     courseId: [params?.courseId as string],
   });
-
 
   return (
     <Layout className={styles.courseDetail}>
@@ -52,10 +50,8 @@ const CourseDetail: React.FC = () => {
           <ProgressionClasses />
         </CourseClassesContext.Provider>
 
-        <UsacoMedal showTitle />
-
+        <UsacoMedal />
         <Faculty />
-
         <Faqs title={t("CoursesFAQS")} data={faqData} />
         <Reviews
           className={styles.comments}
