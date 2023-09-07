@@ -40,7 +40,6 @@ const CourseDetail: React.FC = () => {
     courseId: [params?.courseId as string],
   });
 
-  const { data: facultyData } = useGetFaculty({});
 
   return (
     <Layout className={styles.courseDetail}>
@@ -52,15 +51,11 @@ const CourseDetail: React.FC = () => {
           <CourseSyllabus />
           <ProgressionClasses />
         </CourseClassesContext.Provider>
-        <div
-          className="container"
-          style={{
-            marginTop: 150,
-          }}
-        >
-          <UsacoMedal showTitle={true} />
-        </div>
-        <FacultyCoach data={facultyData} />
+
+        <UsacoMedal showTitle={true} />
+
+
+
         <Faqs title={t("CoursesFAQS")} data={faqData} />
         <Reviews
           className={styles.comments}

@@ -6,10 +6,10 @@ import { CarouselRef } from "antd/es/carousel";
 import Link from "next/link";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import ColorfulCard from "../common/colorful-card";
+import ColorfulCard from "../colorful-card";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
-import styles from "./Faculty.module.scss";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 

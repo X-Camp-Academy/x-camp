@@ -12,7 +12,7 @@ const DiscoverCourses = dynamic(
 const AboutXCamp = dynamic(() => import("./AboutXCamp"));
 const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
 const WeSupport = dynamic(() => import("./WeSupport"));
-const Faculty = dynamic(() => import("./Faculty"));
+const Faculty = dynamic(() => import("@/components/common/faculty"));
 const PublicCalendar = dynamic(() => import("./PublicCalendar"));
 const StudentProjects = dynamic(() => import("./StudentProjects"));
 const XAlumni = dynamic(() => import("./XAlumni"));

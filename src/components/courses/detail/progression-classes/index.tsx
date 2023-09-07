@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import styles from "./index.module.scss";
-import ClassCard from "@/components/common/class-card";
 import { Space, Typography } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
+import ClassCard from "@/components/common/class-card";
 import CourseClassesContext from "../../CourseClasses";
+import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import { getLangResult } from "../../utils";
+import styles from "./index.module.scss";
+
+
 const { Title } = Typography;
 
 const ProgressionClasses: React.FC = () => {
@@ -14,6 +16,9 @@ const ProgressionClasses: React.FC = () => {
 
   const data = courseData?.attributes?.recommendedClasses?.data;
   const recommendedCourses = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
+
+  console.log(courseData);
 
   return (
     <div className={styles.content}>
