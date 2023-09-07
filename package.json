@@ -53,5 +53,6 @@
     "husky": "^8.0.3",
     "postcss-pxtorem": "^6.0.0",
     "unplugin-json-dts": "^1.2.0"
-  }
+  },
+  "husky": {}
 }
