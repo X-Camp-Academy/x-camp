@@ -1,19 +1,20 @@
 import React from "react";
-import { Button, Col, Descriptions, Row } from "antd";
+import { Row, Col, Descriptions, Button } from "antd";
 import {
   ClockCircleOutlined,
   LaptopOutlined,
   RightCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
-import XCollapse from "@/components/common/collapse";
 import { useLang } from "@/hoc/with-intl/define";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import styles from "./UpcomingEvents.module.scss";
+import dynamic from "next/dynamic";
 
+const ColorfulCard = dynamic(() => import("@/components/common/colorful-card"));
+const XCollapse = dynamic(() => import("@/components/common/collapse"));
 
 const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
@@ -100,7 +101,6 @@ const UpcomingEvents: React.FC = () => {
                               href={item.attributes.link}
                             />
                           )}
-
                         </Descriptions.Item>
                       </Descriptions>
                     </div>

@@ -1,15 +1,16 @@
 import React from "react";
 import Link from "next/link";
-import { Button, Col, Row, Space, Typography } from "antd";
+import dynamic from "next/dynamic";
+import { Row, Col, Space, Typography } from "antd";
 import { AlignRightOutlined, RightCircleOutlined } from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
-import XCollapse from "@/components/common/collapse";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import styles from "./RecentActivities.module.scss";
 
+const ColorfulCard = dynamic(() => import("@/components/common/colorful-card"));
+const XCollapse = dynamic(() => import("@/components/common/collapse"));
 const { Title, Text } = Typography;
 
 const RecentActivities: React.FC = () => {

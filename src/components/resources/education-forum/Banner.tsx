@@ -1,5 +1,7 @@
 import React from "react";
-import CommonBanner from "@/components/common/common-banner";
+import dynamic from "next/dynamic";
+
+const CommonBanner = dynamic(() => import("@/components/common/common-banner"));
 
 const Banner: React.FC = () => {
   const paragraph = (

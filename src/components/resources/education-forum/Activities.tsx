@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Activities.module.scss";
+import { useRouter } from "next/navigation";
+import { Button, Col, Pagination, Row, Space } from "antd";
+import { ClockCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
+import ColorfulCard from "@/components/common/colorful-card";
+import { useLang } from "@/hoc/with-intl/define";
+import { formatTimezone, getTransResult } from "@/utils/public";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import {
   EventCategory,
@@ -11,26 +16,23 @@ import {
   AndOrFilters,
   FilterFields,
 } from "@/apis/strapi-client/strapiDefine";
-import { Button, Col, Pagination, Row, Space } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import ColorfulCard from "@/components/common/colorful-card";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { useRouter } from "next/navigation";
-import { ClockCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
+import styles from "./Activities.module.scss";
+
 interface ActivityItem {
   title: string;
   key: EventCategory | "All";
 }
+
 const Activities: React.FC = () => {
-  //useGetNewEvent
-  const pageSize = 12;
+  const router = useRouter();
   const { format: t } = useLang();
+  const { lang } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const tag = NewEventCategory.Event;
   const { data: newEventData, runAsync: getNewEventData } = useGetNewEvent({
     tag,
     current,
-    pageSize,
+    pageSize: 12,
     manual: true,
   });
   const [selectedItem, setSelectedItem] = useState<
@@ -42,7 +44,7 @@ const Activities: React.FC = () => {
       sort: ["order:desc"],
       pagination: {
         page: current,
-        pageSize,
+        pageSize: 12,
       },
     };
     let filters:
@@ -89,8 +91,7 @@ const Activities: React.FC = () => {
     },
   ];
 
-  const router = useRouter();
-  const { lang } = useLang();
+
   return (
     <div className={styles.content}>
       <div className="container">
@@ -150,7 +151,7 @@ const Activities: React.FC = () => {
 
         <Pagination
           className={styles.pagination}
-          pageSize={pageSize}
+          pageSize={12}
           current={current}
           total={newEventData?.meta?.pagination?.total}
           onChange={(page) => setCurrent(page)}
