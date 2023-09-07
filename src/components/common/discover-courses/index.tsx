@@ -103,42 +103,42 @@ const DiscoverCourses = ({
     <div
       style={{ alignItems: align }}
     >
-      <div  className={`${styles.discoverCourses} container`}>
+      <div className={`${styles.discoverCourses} container`}>
         <Text
-            className={styles.title}
+          className={styles.title}
         >
           Discover Our <span>Courses</span>
         </Text>
         {showSubTitle && (
-            <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
+        <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
         )}
-        {showBg && <Text className={styles.titleBg}></Text>}
+        {showBg && <Text className={styles.titleBg} />}
 
         <Row className={styles.row} gutter={16} align="middle">
           {courseCards.map((item) => {
             return (
-                <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>
-                  <MaskCard
-                      className={styles.card}
-                      bodyStyle={{
+              <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>
+                <MaskCard
+                  className={styles.card}
+                  bodyStyle={{
                         padding: 0,
                         borderRadius: 8,
                         paddingBottom: 0,
                       }}
-                      maskChildren={item.maskChildren}
-                      maskBackGroundColor={item?.maskBgc}
-                  >
-                    <div className={styles.infoContainer} style={{ background: `url('${item?.url}')  no-repeat`, backgroundSize: 'cover' }}>
-                      <div className={styles.info}>
-                        <Title className={styles.cardTitle}>{item?.title}</Title>
-                        <Paragraph className={styles.cardParagraph}>
-                          {item?.desc}
-                        </Paragraph>
-                      </div>
+                  maskChildren={item.maskChildren}
+                  maskBackGroundColor={item?.maskBgc}
+                >
+                  <div className={styles.infoContainer} style={{ background: `url('${item?.url}')  no-repeat`, backgroundSize: 'cover' }}>
+                    <div className={styles.info}>
+                      <Title className={styles.cardTitle}>{item?.title}</Title>
+                      <Paragraph className={styles.cardParagraph}>
+                        {item?.desc}
+                      </Paragraph>
                     </div>
+                  </div>
 
-                  </MaskCard>
-                </Col>
+                </MaskCard>
+              </Col>
             );
           })}
         </Row>

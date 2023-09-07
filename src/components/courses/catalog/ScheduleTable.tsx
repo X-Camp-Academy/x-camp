@@ -138,7 +138,7 @@ const ScheduleTable: React.FC = () => {
 
     setFilters({ ...newFilters });
     setPagination(defaultPagination);
-  }
+  };
   const onPaginationChange = (page: number, pageSize: number) => {
     const newPagination = {
       page,
@@ -165,7 +165,7 @@ const ScheduleTable: React.FC = () => {
                       placeholder={"Show All"}
                       options={selectItem?.options}
                       className={styles.select}
-                      allowClear={true}
+                      allowClear
                     />
                   </Form.Item>
                 </Col>
@@ -176,7 +176,7 @@ const ScheduleTable: React.FC = () => {
               <Form.Item name="search" >
                 <Input
                   suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
-                  allowClear={true}
+                  allowClear
                 />
               </Form.Item>
             </Col>
@@ -201,7 +201,7 @@ const ScheduleTable: React.FC = () => {
           current={pagination?.page}
           pageSize={pagination?.pageSize}
           total={courses?.meta?.pagination?.total}
-          showSizeChanger={true}
+          showSizeChanger
           style={{ textAlign: "center", marginTop: "56px" }}
         />
       </div>

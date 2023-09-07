@@ -52,7 +52,7 @@ const CourseDetail: React.FC = () => {
           <ProgressionClasses />
         </CourseClassesContext.Provider>
 
-        <UsacoMedal showTitle={true} />
+        <UsacoMedal showTitle />
 
         <Faculty />
 

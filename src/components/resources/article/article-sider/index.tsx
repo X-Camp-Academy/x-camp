@@ -81,7 +81,7 @@ const ArticleSider: React.FC<{
       return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
     }
     return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
-  }
+  };
 
 
 
@@ -101,7 +101,7 @@ const ArticleSider: React.FC<{
       const filteredData = newEventData?.data?.filter(item => item.attributes.eventCategory === eventCategory && item.id != articleId).slice(0, 3);
       setEventThreeCard(filteredData);
     }
-  }
+  };
 
   useEffect(() => {
     run({
@@ -165,8 +165,8 @@ const ArticleSider: React.FC<{
       lang,
       imgZh.data?.attributes.url,
       imgEn.data?.attributes.url,
-    )
-  }
+    );
+  };
 
 
   return (
@@ -185,7 +185,7 @@ const ArticleSider: React.FC<{
             <Text className={styles.text}>
               {selectedDate && formatDate(selectedDate)}
             </Text>
-            <div className={styles.line}></div>
+            <div className={styles.line} />
           </Space>
           <div style={{ height: 400, overflow: "scroll" }}>
             {filterDateEventList.length != 0 &&
@@ -228,7 +228,7 @@ const ArticleSider: React.FC<{
                           item.descriptionEn
                         )}
                       </Paragraph>
-                      <div className={styles.itemLine}></div>
+                      <div className={styles.itemLine} />
                     </Space>
                   );
               })}

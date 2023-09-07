@@ -56,34 +56,34 @@ const CopyRight: React.FC = () => {
 
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space align="start" className={styles.spaceRight}>
-             <div>
-               <Title className={styles.text}>X-Camp Academy</Title>
-               <Space direction="vertical">
-                 <Link href={"/about-us/calendar"}>{t('SchoolCalendar')}</Link>
-                 <Link href={"/courses#classify0"}>{'Online Courses'}</Link>
-                 <Link href={"/courses#camps"}>{t('In-personCamps')}</Link>
-               </Space>
-             </div>
-             <div>
-               <Title className={styles.text}>Activity</Title>
-               <Space direction="vertical">
-                 <Link href={"/resources/weekly-open-house"}>{t('WeeklyOpenHouse')}</Link>
-                 <Link href={"/about-us/calendar"}>{'Event Calendar'}</Link>
-                 <a href={"/resources/usaco-live-solutions"}>{'USACO'}</a>
-               </Space>
-             </div>
-             <div>
-               <Title className={styles.text}>{'Help Center'}</Title>
-               <Space direction="vertical">
-                 <Link href={"/about-us/contact-us"}>{'Contact Us'}</Link>
-                 <Link href={"/about-us/contact-us"}>{'Join Us'}</Link>
-                 <Link href={"/about-us/help-center"}>{'FAQ'}</Link>
-               </Space>
-             </div>
+              <div>
+                <Title className={styles.text}>X-Camp Academy</Title>
+                <Space direction="vertical">
+                  <Link href={"/about-us/calendar"}>{t('SchoolCalendar')}</Link>
+                  <Link href={"/courses#classify0"}>{'Online Courses'}</Link>
+                  <Link href={"/courses#camps"}>{t('In-personCamps')}</Link>
+                </Space>
+              </div>
+              <div>
+                <Title className={styles.text}>Activity</Title>
+                <Space direction="vertical">
+                  <Link href={"/resources/weekly-open-house"}>{t('WeeklyOpenHouse')}</Link>
+                  <Link href={"/about-us/calendar"}>{'Event Calendar'}</Link>
+                  <a href={"/resources/usaco-live-solutions"}>{'USACO'}</a>
+                </Space>
+              </div>
+              <div>
+                <Title className={styles.text}>{'Help Center'}</Title>
+                <Space direction="vertical">
+                  <Link href={"/about-us/contact-us"}>{'Contact Us'}</Link>
+                  <Link href={"/about-us/contact-us"}>{'Join Us'}</Link>
+                  <Link href={"/about-us/help-center"}>{'FAQ'}</Link>
+                </Space>
+              </div>
             </Space>
           </Col>
         </Row>
-        <div className={styles.bar}></div>
+        <div className={styles.bar} />
 
         <div className={styles.bottomContainer}>
           <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>

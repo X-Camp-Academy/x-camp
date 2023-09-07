@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
       <br />
       schools around the world.
     </>
-  )
+  );
 
   return (
     <CommonBanner

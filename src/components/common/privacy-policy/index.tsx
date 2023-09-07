@@ -23,7 +23,7 @@ const PrivacyPolicy = () => {
       "How we use that information; and",
       "How to access and update that information.",
     ]
-  }
+  };
 
   const typesInformationWeCollect = {
     en: {
@@ -58,7 +58,7 @@ const PrivacyPolicy = () => {
         "与您作为面试筛选过程一部分可能参加的任何评估有关的信息。 "
       ]
     }
-  }
+  };
 
   const howWeUseInformationWeCollect = {
     en: {
@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
         "作为我们对平等就业机会承诺的一部分，我们可能会处理有关您在各种组织中成员资格的信息，以支持我们多元化和包容性工作。这可能包括将参与者成员资格与敏感和/或人口统计信息相关联"
       ]
     }
-  }
+  };
 
   const whoMayHaveAccessToYourInformation = {
     en: {
@@ -159,7 +159,7 @@ const PrivacyPolicy = () => {
         
       ]
     }
-  }
+  };
 
   const categoriesOfInformationWeCollect = [
     { head: 'Identifiers and similar information', content: ', such as your name, phone number, and address; username and password; and unique identifiers tied to the browser, application, or device you’re using.' },
@@ -171,7 +171,7 @@ const PrivacyPolicy = () => {
     { head: 'Health information', content: ', if you choose to provide it, in connection with the application or recruitment process, such as data you may provide in connection with an accommodations request.' },
     { head: 'Professional, employment, and education information', content: ', such as information you provide in connection with the application and recruitment process, as well as information X-Camp Academy may otherwise collect through reference checks, criminal and financial background checks (where applicable) and information from publicly available sources, including online, that may be relevant.' },
     { head: 'Other information you create or provide', content: ', such as the content you create, upload, or otherwise provide in connection with the application and recruitment process.' },
-  ]
+  ];
 
   const businessPurposes = [
     { head: 'Administrative purposes', content: ': X-Camp Academy uses and may disclose information for purposes related to carrying out its application and recruitment process, including for assessing candidates; verifying information and conducting reference checks and criminal and financial background checks (where applicable); communicating with you; responding to requests for assistance with obtaining an immigration visa or work permit (where required); diversity, equity, inclusion and belonging; and other related activities.' },
@@ -181,14 +181,14 @@ const PrivacyPolicy = () => {
     { head: 'Use of service providers', content: ': X-Camp Academy shares information with service providers to perform services on our behalf, in compliance with this privacy policy and other appropriate confidentiality and security measures. For example, we may rely on service providers to help perform criminal and financial background checks (where applicable).' },
     { head: 'Legal reasons', content: ': X-Camp Academy also uses information to satisfy applicable laws or regulations, and discloses information in response to legal process or enforceable government requests, including to law enforcement.' },
 
-  ]
+  ];
 
   const partiesWithInformation = [
     { head: 'Other people with whom you choose to share your information', content: ', such as the content you create, upload, or otherwise provide in connection with the application and recruitment process.' },
     { head: 'Third parties with your consent', content: ', for example if you have given us permission to contact your references.' },
     { head: 'Service providers', content: ', trusted businesses or persons that process information on X-Camp’s behalf, based on our instructions and in compliance with this privacy policy and any other appropriate confidentiality and security measures.' },
     { head: 'Law enforcement or other third parties', content: ', in response to legal process or enforceable government requests, and as necessary to identify, report on and investigate violations of applicable laws and regulations.' },
-  ]
+  ];
 
 
 
@@ -419,7 +419,7 @@ const PrivacyPolicy = () => {
 
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PrivacyPolicy;

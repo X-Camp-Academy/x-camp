@@ -29,6 +29,7 @@ const JobCardHeader = ({ data, showExpandBtn = true }: Props) => {
     <>
       <Card
         className={styles.cardContainer}
+        bodyStyle={{ padding: 0}}
         style={
           isExpand ? { borderRadius: "10px 10px 0 0" } : { borderRadius: 10 }
         }

@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
       <br />
       Please send your inquiry to info@x-camp.org
     </>
-  )
+  );
 
   return (
     <CommonBanner

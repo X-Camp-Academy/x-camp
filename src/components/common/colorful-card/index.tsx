@@ -59,7 +59,7 @@ const ColorfulCard: React.FC<ColorfulCardProps> = ({
       <Collapse
         style={computedStyle(border, index, reverse)}
         className={className}
-        ghost={true}
+        ghost
       >
         {children}
       </Collapse>

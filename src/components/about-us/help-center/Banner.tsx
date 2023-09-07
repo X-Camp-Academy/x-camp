@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
       <br />
       challenges you may encounter.
     </>
-  )
+  );
 
   return (
     <CommonBanner

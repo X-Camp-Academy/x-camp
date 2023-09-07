@@ -90,7 +90,7 @@ const PublicCalendar: React.FC = () => {
       return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
     }
     return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
-  }
+  };
 
 
   const filterSameDateEvent = (selectDate: string) => {
@@ -205,18 +205,18 @@ const PublicCalendar: React.FC = () => {
           X-Camp {t("Public")} <span>{t("Calendar")}</span>
         </Title>
         <div style={{display: "flex", justifyContent: 'center', width: '100%'}}>
-          <Text className={styles.titleBg}></Text>
+          <Text className={styles.titleBg} />
         </div>
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Carousel
               dots={false}
-              infinite={true}
+              infinite
               slidesToShow={4}
               slidesToScroll={1}
-              vertical={true}
-              verticalSwiping={true}
-              autoplay={true}
+              vertical
+              verticalSwiping
+              autoplay
               autoplaySpeed={2000}
             >
               {newEventData?.data?.map((item, index) => {
@@ -254,13 +254,16 @@ const PublicCalendar: React.FC = () => {
                         direction="vertical"
                         className={styles.contentRight}
                       >
-                        <Title ellipsis={{
+                        <Title
+                          ellipsis={{
                           rows: 1, tooltip: getTransResult(
                             lang,
                             item.attributes.titleZh,
                             item.attributes.titleEn
                           )
-                        }} className={styles.titleParagraph}>
+                        }}
+                          className={styles.titleParagraph}
+                        >
                           {getTransResult(
                             lang,
                             item.attributes.titleZh,
@@ -335,7 +338,7 @@ const PublicCalendar: React.FC = () => {
                   <Text className={styles.text}>
                     {selectDate && formatDate(selectDate)}
                   </Text>
-                  <div className={styles.line}></div>
+                  <div className={styles.line} />
                 </Space>
                 <div style={{ height: 250, overflow: "scroll" }}>
                   {filterDateEventList.length != 0 ? (
@@ -371,20 +374,20 @@ const PublicCalendar: React.FC = () => {
                                 item.descriptionEn
                               )}`}
                             </Paragraph>
-                            <div className={styles.itemLine}></div>
+                            <div className={styles.itemLine} />
                           </Space>
                         );
                     })) : (
-                    <div
-                      style={{
+                      <div
+                        style={{
                         padding: "25px 0",
                       }}
-                    >
-                      <Empty
-                        image={Empty.PRESENTED_IMAGE_SIMPLE}
-                        description={t("NoEventToday")}
-                      />
-                    </div>
+                      >
+                        <Empty
+                          image={Empty.PRESENTED_IMAGE_SIMPLE}
+                          description={t("NoEventToday")}
+                        />
+                      </div>
                   )}
 
                 </div>

@@ -13,10 +13,10 @@ const Banner: React.FC = () => {
       problem-solving skills of our students. We strive to teach not only
       <br />
       persistence in analytical thought, but also genuine curiosity whilst
-      <br/>
+      <br />
       facing new challenges.
     </>
-  )
+  );
   return (
     <CommonBanner
       image={"/image/about-us/achievements-banner.png"}

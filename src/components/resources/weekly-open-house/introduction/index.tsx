@@ -6,12 +6,12 @@ import styles from "./index.module.scss";
 const Introduction: React.FC = () => {
   const { format: t } = useLang();
   return (
-    <div className={"container"}>
+    <div className={`container ${styles.introductionContainer}`}>
       <div className={styles.title}>{t("DeepDiveIOfX-CampClass")}</div>
       <p className={styles.description}>{t("DeepDiveIOfX.Desc")}</p>
       <Space className={styles.images} wrap>
-        {[1, 2, 3]?.map((_, index) => (
-          <img key={index} src="/image/about-us/banner-background.png" alt="" />
+        {[1, 2, 3]?.map((_) => (
+          <img key={_} src="/image/home/charlie.png" alt="" />
         ))}
       </Space>
     </div>

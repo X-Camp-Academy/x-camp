@@ -18,10 +18,10 @@ const FixedButtons: React.FC<any> = () => {
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
-    setOpen(false)
+    setOpen(false);
   };
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
@@ -96,7 +96,7 @@ const FixedButtons: React.FC<any> = () => {
                 <Input placeholder={t("Phone/Wechat")} />
               </Form.Item>
 
-              <Form.Item  name="subscribe">
+              <Form.Item name="subscribe">
                 <Checkbox >Subscribe to our newsletter for a free Programming Pack!</Checkbox>
               </Form.Item>
 
@@ -155,17 +155,17 @@ const FixedButtons: React.FC<any> = () => {
       ),
       key: '1'
     }
-  ]
+  ];
 
   return (
     <div className={styles.buttonContainer}>
-      {menu.map((item) => <FixedButton key={item.key} menu={item.label} icon={item.icon} state={item.state}>
+      {menu.map((item) => (<FixedButton key={item.key} menu={item.label} icon={item.icon} state={item.state}>
         <span>
           {item.text}
         </span>
-      </FixedButton>)}
+      </FixedButton>))}
     </div>
-  )
-}
+  );
+};
 
-export default FixedButtons
+export default FixedButtons;

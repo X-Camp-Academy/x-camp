@@ -139,7 +139,7 @@ const Activities: React.FC = () => {
                         type="link"
                         className={styles.btn}
                         icon={<RightCircleOutlined />}
-                        onClick={() => { router.push(`/resources/${v?.id}`) }}
+                        onClick={() => { router.push(`/resources/${v?.id}`); }}
                       />
                     </div>
                   </Space>

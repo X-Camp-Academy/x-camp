@@ -17,7 +17,7 @@ const JobCard: React.FC<JobCardProps> = ({ index, data }) => {
     <ColorfulCard
       border="bottom"
       index={index}
-      collapse={true}
+      collapse
       animate={false}
       className={styles.ColorfulCardContainer}
     >

@@ -27,7 +27,7 @@ const Evaluation: React.FC = () => {
         <Reviews reviewsData={reviewsData} />
       </Content>
     </Layout>
-  )
-}
+  );
+};
 
 export default Evaluation;

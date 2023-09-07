@@ -31,7 +31,7 @@ const ContactUs: React.FC = () => {
             <strong>{t("NeedMoreHelp.Desc")}</strong>
           </Paragraph>
           <Link href="/about-us/contact-us">
-            <Button className={styles.button} onClick={() => { router.push('/about-us/contact-us') }}>
+            <Button className={styles.button} onClick={() => { router.push('/about-us/contact-us'); }}>
               {t("ContactUs")}
               <CommentOutlined />
             </Button>

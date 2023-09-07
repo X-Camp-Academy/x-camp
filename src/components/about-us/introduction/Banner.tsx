@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
       <br />
       on their learning journey.
     </>
-  )
+  );
   return (
     <CommonBanner
       image={"/image/about-us/introduction-banner.png"}

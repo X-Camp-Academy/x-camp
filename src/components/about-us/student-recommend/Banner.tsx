@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
       <br />
       Earn $100 for you and $50  for each friend that signs up.
     </>
-  )
+  );
 
   return (
     <CommonBanner

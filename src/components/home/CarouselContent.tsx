@@ -34,11 +34,11 @@ interface IItem {
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
   const cx = classNames.bind(styles);
-  const sliderRef: any = useRef(null)
+  const sliderRef: any = useRef(null);
 
   const goTo = (index: number) => {
-    sliderRef.current?.goTo(index)
-  }
+    sliderRef.current?.goTo(index);
+  };
 
   const carouselItems: IItem[] = [
     {
@@ -56,7 +56,7 @@ const CarouselContent: React.FC = () => {
       descStyle: {
         color: '#FFF'
       },
-      onClick: () => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') },
+      onClick: () => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09'); },
       date: t("OpenTime"),
       backgroundUrl: "/image/about-us/banner-joinUs.png",
       buttonText: t("ZoomLink")
@@ -72,7 +72,7 @@ const CarouselContent: React.FC = () => {
         t("USACO.mock.test"),
         t("USACO.live.lecture"),
       ],
-      onClick: () => { window.open('https://tinyurl.com/XCamp23-24FallUSACO') },
+      onClick: () => { window.open('https://tinyurl.com/XCamp23-24FallUSACO'); },
       date: t("USACO.no.class"),
       backgroundUrl: "/image/home/banner-2.png",
       buttonText: t("VideoRecap")
@@ -91,42 +91,44 @@ const CarouselContent: React.FC = () => {
           color: '#FFAD11'
         }
       ],
-      onClick: () => { window.open('https://docs.google.com/forms/d/e/1FAIpQLScNm1Mf4lgvdXUObuJu3wl-_wEcYU9N8ao6PGv8RnANNGE_xw/viewform?usp=sf_link') },
+      onClick: () => { window.open('https://docs.google.com/forms/d/e/1FAIpQLScNm1Mf4lgvdXUObuJu3wl-_wEcYU9N8ao6PGv8RnANNGE_xw/viewform?usp=sf_link'); },
       date: '',
       backgroundUrl: "/image/home/banner-3.png",
       buttonText:t("Home.Banner3.buttonText")
-    }]
+    }];
 
   return (
     <div className={styles.bannerContainer}>
-      <CarouselDots goTo={goTo} dots={3}/>
+      <CarouselDots goTo={goTo} dots={3} />
       <Carousel autoplay={false} dots={false} ref={sliderRef}>
         {
-          carouselItems.map((item: IItem) => <div className={styles.content} key={item.title}>
-            <div className={styles.background} style={{ background: `url("${item.backgroundUrl}") center no-repeat`, backgroundSize: 'cover' }}></div>
-            <div className={`container ${styles.info}`}>
-              <Row>
-                <Col xs={24} sm={24} md={24} lg={12}>
-                  <Space direction="vertical" className={styles.space} size={20}>
-                    <TitleColor className={styles.title} title={item.title} config={item?.titleConfig || []}></TitleColor>
-                    <div>
-                      {
-                        item.desc.map(desc => <Paragraph className={styles.paragraph} key={desc} style={item?.descStyle}>
-                          {desc}
-                        </Paragraph>)
-                      }
-                    </div>
-                    <button className={styles.button} onClick={item.onClick}>{item.buttonText}</button>
-                    <Text className={styles.date} style={item?.descStyle}>{item.date}</Text>
-                  </Space>
-                </Col>
-              </Row>
-            </div>
-          </div>)
+          carouselItems.map((item: IItem) => (
+            <div className={styles.content} key={item.title}>
+              <div className={styles.background} style={{ background: `url("${item.backgroundUrl}") center no-repeat`, backgroundSize: 'cover' }} />
+              <div className={`container ${styles.info}`}>
+                <Row>
+                  <Col xs={24} sm={24} md={24} lg={12}>
+                    <Space direction="vertical" className={styles.space} size={20}>
+                      <TitleColor className={styles.title} title={item.title} config={item?.titleConfig || []} />
+                      <div>
+                        {
+                          item.desc.map(desc => (
+                            <Paragraph className={styles.paragraph} key={desc} style={item?.descStyle}>
+                              {desc}
+                            </Paragraph>))
+                        }
+                      </div>
+                      <button className={styles.button} onClick={item.onClick}>{item.buttonText}</button>
+                      <Text className={styles.date} style={item?.descStyle}>{item.date}</Text>
+                    </Space>
+                  </Col>
+                </Row>
+              </div>
+            </div>))
         }
       </Carousel>
 
-      <UsacoMedal showTitle={false}></UsacoMedal>
+      <UsacoMedal showTitle={false} />
     </div>
   );
 };

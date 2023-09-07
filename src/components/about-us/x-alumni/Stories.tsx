@@ -87,7 +87,7 @@ const Stories: React.FC = () => {
                       <Button
                         type="primary"
                         size="small"
-                        ghost={true}
+                        ghost
                         shape="circle"
                         className={styles.cardButton}
                         onClick={() => router.push(`/resources/${item.id}`)}

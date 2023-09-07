@@ -16,7 +16,7 @@ const AppointmentCard: React.FC = () => {
           <div className={styles.description}>
             {t("OpenHouse.Conflict.Desc")}
           </div>
-          <Button className={styles.btn} onClick={() => { router.push('/') }}>
+          <Button className={styles.btn} onClick={() => { router.push('/'); }}>
             {t("MakeAnAppointment")}
             <CarryOutOutlined />
           </Button>

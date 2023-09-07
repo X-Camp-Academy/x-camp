@@ -83,7 +83,7 @@ const Courses: React.FC = () => {
     return {
       label: item,
       value: item
-    }
+    };
   });
 
   // 根据online in person isCamp划分
@@ -147,7 +147,7 @@ const Courses: React.FC = () => {
         children: data[0]?.children?.filter(item => item?.children?.length !== 0)
       }];
     }
-  }
+  };
   // 根据segmented来筛选课程数据
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const segmentedData = allCourses?.filter(
@@ -191,7 +191,7 @@ const Courses: React.FC = () => {
   const searchDate = (startDateTime: Dayjs, endDateTime: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
     return dayjs(course?.attributes?.startDateTime)?.isBetween(startDateTime, endDateTime) &&
       dayjs(course?.attributes?.endDateTime)?.isBetween(startDateTime, endDateTime);
-  }
+  };
   const searchInput = (inputValue: string, course: StrapiResponseDataItem<GetCourses>) => {
     const {
       classLang,
@@ -225,7 +225,7 @@ const Courses: React.FC = () => {
       }
     });
 
-  }
+  };
   // 前端根据当前的segmentedData来筛选
   const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
     const { category, rangeDate, search } = values;
@@ -302,14 +302,14 @@ const Courses: React.FC = () => {
     }
     const filteredResult = removeEmptyChildren(result as FormatCoursesProps[]);
     setSegmentedData(filteredResult);
-  }
+  };
 
   // 执行和onSegmentedChange同样的操作
   const onSegmentedRadioChange = (e: RadioChangeEvent) => {
     history.replaceState(null, "", pathname);
     form.resetFields();
     setSegmented(e?.target?.value);
-  }
+  };
 
   return (
     <Layout className={styles.courses}>
@@ -365,7 +365,7 @@ const Courses: React.FC = () => {
                     style={isMobile ? { width: '100%' } : { width: 216 }}
                     placeholder={"Category"}
                     options={categoryOptions}
-                    allowClear={true}
+                    allowClear
                   />
                 </Form.Item>
               </Col>
@@ -381,7 +381,7 @@ const Courses: React.FC = () => {
                 <Form.Item name="search" >
                   <Input
                     suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
-                    allowClear={true}
+                    allowClear
                     style={isMobile ? { width: '100%' } : {}}
                   />
                 </Form.Item>
