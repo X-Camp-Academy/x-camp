@@ -11,6 +11,7 @@ git add $STAGE_FILES
 eslint_output=$(npx next lint)
 # Check if there are any ESLint errors
 if [ $? -ne 0 ]; then
+  echo "ESLint has detected errors. Please fix them before committing."
   exit 1
 fi
 

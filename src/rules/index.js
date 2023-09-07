@@ -1,5 +1,6 @@
 module.exports = {
     rules: {
+        "no-const-assign": "error",
         "semi": ['warn', 'always'],
         // https://github.com/alibaba/f2e-spec/issues/95
         // 防止 React 组件定义中缺少 displayName
