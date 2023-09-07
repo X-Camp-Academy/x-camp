@@ -34,7 +34,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
       result = result + '-' + recommendedUpperGrade;
     }
     return result + ' Grade';
-  }
+  };
   return (
     <>
       <Row className={styles.row}>

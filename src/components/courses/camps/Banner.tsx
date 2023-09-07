@@ -31,7 +31,7 @@ const Banner: React.FC = () => {
             className={styles.col}
           >
             <div className={styles.bannerImgContainer}>
-              <div className={styles.colorSquare}></div>
+              <div className={styles.colorSquare} />
               <img
                 alt="image"
                 src="/image/about-us/banner-background.png"

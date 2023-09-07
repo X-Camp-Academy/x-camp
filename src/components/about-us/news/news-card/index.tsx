@@ -31,8 +31,8 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
       lang,
       imgZh.data?.attributes.url,
       imgEn.data?.attributes.url,
-    )
-  }
+    );
+  };
 
   useEffect(() => {
     console.log(segmented);

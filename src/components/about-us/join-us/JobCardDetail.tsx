@@ -17,7 +17,7 @@ const JobCardDetail = ({ data }: Props) => {
   return (
     <>
       <div className={styles.cardListContainer}>
-        <Divider style={{ borderColor: "#FFAD11" }} className={styles.divider}/>
+        <Divider style={{ borderColor: "#FFAD11" }} className={styles.divider} />
         <div>
           <XStarViewer
             className={styles.viewer}

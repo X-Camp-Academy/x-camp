@@ -22,7 +22,7 @@ const UsacoIntro = ({ data }: Props) => {
     const { video, videoZh, videoEn } = attributes;
 
     return video?.data ? video?.data?.attributes?.url : (videoZh || videoEn) ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
-  }
+  };
   return (
     <div className={styles.introduction}>
       <div className={"container"}>
@@ -91,6 +91,7 @@ const UsacoIntro = ({ data }: Props) => {
           <a
             href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
             target={"_blank"}
+            rel="noreferrer"
           >
             <Text underline className={styles.title}>
               {t("MoreUSACOSolution")}

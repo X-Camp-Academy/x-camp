@@ -11,11 +11,11 @@ interface IProps {
 }
 
 const getRegExp = (searchVal: string): RegExp => {
-  searchVal.replace('.', '\.')
-  return new RegExp(`(?!<)${searchVal.replace('.', '\\.')}`)
-}
+  searchVal.replace('.', '\.');
+  return new RegExp(`(?!<)${searchVal.replace('.', '\\.')}`);
+};
 
-const replaceStrWithColor = (val: string, color: string) => `<span style="color: ${color}">${val}</span>`
+const replaceStrWithColor = (val: string, color: string) => `<span style="color: ${color}">${val}</span>`;
 /**
  * 将一个字符串赋予不同颜色
  * @param title
@@ -25,23 +25,23 @@ const replaceStrWithColor = (val: string, color: string) => `<span style="color:
  */
 const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
   const html = useMemo(() => {
-    let result = title
-    let configArr: IConfig[] = []
+    let result = title;
+    let configArr: IConfig[] = [];
 
     if(Array.isArray(config)) {
-      configArr = configArr.concat(...config)
+      configArr = configArr.concat(...config);
     } else {
-      configArr.push(config)
+      configArr.push(config);
     }
 
     configArr.forEach((config) => {
-      result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color))
-    })
-    return result
-  }, [title, config])
-  return <>
-    <span className={className} dangerouslySetInnerHTML={{__html: html }}></span>
-  </>
-}
+      result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color));
+    });
+    return result;
+  }, [title, config]);
+  return (<>
+    <span className={className} dangerouslySetInnerHTML={{__html: html }} />
+          </>);
+};
 
-export default TitleColor
+export default TitleColor;

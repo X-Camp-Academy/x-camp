@@ -13,10 +13,10 @@ const Banner: React.FC = () => {
       problem-solving skills of our students. We strive to teach not only
       <br />
       remarkable results as our students&apos; side project on
-      <br/>
+      <br />
       their learning journey.
     </>
-  )
+  );
 
   return (
     <div className={styles.bannerContainer}>

@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
       <br />
       only in X-Camp.
     </>
-  )
+  );
   return (
     <div className={styles.topBannerContainer}>
       <CommonBanner

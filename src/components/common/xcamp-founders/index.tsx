@@ -21,7 +21,7 @@ const XCampFounder: React.FC = () => {
 
         <Row gutter={[32, 124]}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
-            <div className={styles.charlieImgBackground}></div>
+            <div className={styles.charlieImgBackground} />
             <Image
               src={"/image/home/charlie.png"}
               alt="image"
@@ -108,7 +108,7 @@ const XCampFounder: React.FC = () => {
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={12} className={styles.yuanImgCol}>
-            <div className={styles.yuanImgBackground}></div>
+            <div className={styles.yuanImgBackground} />
             <Image
               src={"/image/home/yuan.png"}
               alt="image"

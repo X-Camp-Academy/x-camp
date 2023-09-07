@@ -68,4 +68,4 @@ export const sFormat = (
       })}
     </div>
   );
-}
+};

@@ -37,7 +37,7 @@ const Faculty: React.FC = () => {
     <div className={`${styles.faculty} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}> <span>{t("Founders")}</span> & {t("Faculty")}</Title>
-        <Text className={styles.titleBg}></Text>
+        <Text className={styles.titleBg} />
         <Paragraph className={styles.paragraph}>{t("Faculty.Desc")}</Paragraph>
       </Space>
 
@@ -54,8 +54,8 @@ const Faculty: React.FC = () => {
           ref={carouselRef}
           slidesToShow={3}
           slidesToScroll={1}
-          swipeToSlide={true}
-          infinite={true}
+          swipeToSlide
+          infinite
           responsive={[
             {
               breakpoint: 1200,

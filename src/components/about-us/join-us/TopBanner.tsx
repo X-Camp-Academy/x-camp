@@ -17,7 +17,7 @@ const TopBanner = () => {
       <br />
       the Silicon Valley except for TAs.
     </>
-  )
+  );
   return (
     <div className={styles.topBannerContainer}>
       <CommonBanner
@@ -27,7 +27,7 @@ const TopBanner = () => {
         paragraphClassName={styles.paragraph}
         paragraph={paragraph}
       />
-      <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>
+      <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us'); }}>
         {t("ContactUs")}
         <img src="/image/about-us/comment.png" alt="" />
       </Button>

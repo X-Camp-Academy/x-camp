@@ -325,4 +325,4 @@ module.exports = {
         // @link https://reactjs.org/docs/hooks-rules.html
         'react-hooks/exhaustive-deps': 'warn',
     }
-}
+};

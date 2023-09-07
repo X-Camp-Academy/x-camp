@@ -11,11 +11,11 @@ const backgroundMap = [
   '#FDF6F1',
   '#F7F7F7',
   '#EFEFEF'
-]
+];
 
 const getBackgroundFromIndex = (index: number) => {
-  return index > 2 ? backgroundMap[index % 3] : backgroundMap[index]
-}
+  return index > 2 ? backgroundMap[index % 3] : backgroundMap[index];
+};
 const Introduction = () => {
   const { lang, format: t } = useLang();
   const { data: partner } = useGetPartner();

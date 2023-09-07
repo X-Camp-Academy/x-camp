@@ -68,19 +68,21 @@ const TimeLine: React.FC = () => {
 
         <Text className={styles.intro}>{t("Timeline.Desc")}</Text>
 
-        <div className={styles.download}
+        <div
+          className={styles.download}
           onClick={() => {
             message.info(getTransResult(
               lang,
               "点击页面下方subscribe newsletter ，获取X-Camp更多信息，领取USACO大礼包",
               "Click the 'Subscribe Newsletter' at the bottom of the page to receive more information from X-Camp and get the USACO gift package."
-            ))
-          }}>
+            ));
+          }}
+        >
           <Image
             alt="download"
             src="/image/about-us/download-outlined.png"
             preview={false}
-          ></Image>
+          />
           <Text className={styles.downloadText} underline>
             {t("USACO.DownloadPackage")}
           </Text>

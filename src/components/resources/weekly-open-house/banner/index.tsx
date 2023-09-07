@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 import { Button } from "antd";
-import { LaptopOutlined } from '@ant-design/icons'
+import { LaptopOutlined } from '@ant-design/icons';
 import { useLang } from "@/hoc/with-intl/define";
 import CommonBanner from "@/components/common/common-banner";
 import {useRouter} from "next/navigation";
@@ -9,14 +9,14 @@ import {useRouter} from "next/navigation";
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
-  const router = useRouter()
+  const router = useRouter();
   const paragraph = (
     <>
       Get a glimpse into our programs, curriculum, and
       <br />
       teaching approach as we answer your questions.
     </>
-  )
+  );
   return (
     <div className={styles.banner}>
       <CommonBanner
@@ -27,7 +27,7 @@ const Banner: React.FC = () => {
         paragraph={paragraph}
       />
       <div className={styles.bottomInfo}>
-        <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>
+        <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us'); }}>
           <span>{t("ZoomLink")}</span>
           <LaptopOutlined />
         </Button>

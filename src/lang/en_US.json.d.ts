@@ -407,6 +407,6 @@ declare const json: {
   "Exit_Successfully": "Exit Successfully",
   "Exit_Failed": "Exit Failed",
   "Loading": "Loading"
-}
+};
 
 export default json;

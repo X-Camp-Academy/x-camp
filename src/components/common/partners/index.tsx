@@ -44,7 +44,7 @@ const Partners: React.FC = () => {
     <div className={styles.partners}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>{t("Partners")}</Title>
-        <Text className={styles.titleBg}></Text>
+        <Text className={styles.titleBg} />
         <Paragraph className={styles.paragraph}>{t("Partners.Desc")}</Paragraph>
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>

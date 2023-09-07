@@ -58,8 +58,8 @@ const USACOSpotlight: React.FC = () => {
             dots={false}
             slidesToShow={3}
             slidesToScroll={1}
-            swipeToSlide={true}
-            infinite={true}
+            swipeToSlide
+            infinite
             responsive={[
               {
                 breakpoint: 992,
@@ -105,7 +105,7 @@ const USACOSpotlight: React.FC = () => {
                     </Space>
                   </Card>
                 </div>
-              )
+              );
             })}
           </Carousel>
 

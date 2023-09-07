@@ -404,6 +404,6 @@ declare const json: {
   "Exit_Successfully": "退出成功",
   "Exit_Failed": "退出失败",
   "Loading": "加载中"
-}
+};
 
 export default json;

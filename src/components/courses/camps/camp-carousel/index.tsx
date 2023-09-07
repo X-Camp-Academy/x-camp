@@ -30,7 +30,7 @@ const CampCarousel = () => {
                         <img
                           src="/image/about-us/banner-background.png"
                           alt=""
-                        ></img>
+                        />
                       </Col>
                     );
                   })}
