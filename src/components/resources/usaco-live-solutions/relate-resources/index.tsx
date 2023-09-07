@@ -32,9 +32,9 @@ const RelateResources: React.FC = () => {
         <ColorfulCard border={"bottom"} index={1} animate={false}>
           <Card className={styles.card}>
             <div className={styles.title}>{t("MoreUSACORelatedResources")}</div>
-            {QAData.map((item, index) => {
+            {QAData.map((item) => {
               return (
-                <div key={index}>
+                <div key={item.title}>
                   <Text className={styles.question} underline>
                     <a href={item.url} style={{ color: "inherit" }}>
                       {item.title}

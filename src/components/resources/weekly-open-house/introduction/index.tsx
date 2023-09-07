@@ -9,7 +9,7 @@ const Introduction: React.FC = () => {
     <div className={`container ${styles.introductionContainer}`}>
       <div className={styles.title}>{t("DeepDiveIOfX-CampClass")}</div>
       <p className={styles.description}>{t("DeepDiveIOfX.Desc")}</p>
-      <Space className={styles.images}>
+      <Space className={styles.images} wrap>
         {[1, 2, 3]?.map((_) => (
           <img key={_} src="/image/home/charlie.png" alt="" />
         ))}

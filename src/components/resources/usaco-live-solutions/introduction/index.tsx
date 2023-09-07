@@ -29,7 +29,7 @@ const UsacoIntro = ({ data }: Props) => {
         <div className={styles.description}>{t("USACOSolution.Intro")}</div>
         {data?.map((v, index) => {
           return (
-            <div key={"video" + index} style={{ marginBottom: 42 }}>
+            <div key={"video" + index} style={{ marginBottom: 92 }}>
               <Collapse
                 ghost
                 defaultActiveKey={index}
@@ -92,9 +92,8 @@ const UsacoIntro = ({ data }: Props) => {
             href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
             target={"_blank"}
           >
-            <Text className={styles.title}>
+            <Text underline className={styles.title}>
               {t("MoreUSACOSolution")}
-              <Text underline className={styles.title}>{t("MoreUSACOSolution.YoutubePlayList")}</Text>
             </Text>
           </a>
         </div>

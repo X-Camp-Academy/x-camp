@@ -1,27 +1,22 @@
-@import "@/styles/variables";
+@import "@/styles/variables.scss";
 
 .relateResources {
   width: 100%;
   background-color: #F5F5F5;
-  padding: 60px 0;
+  padding-top: 100px;
+  margin-bottom: 100px;
 
   .card {
-    padding: 56px 50px;
+    padding: 56px;
 
     .title {
-      font-size: 36px;
-      font-weight: 600;
-      color: #172142;
-      line-height: 48px;
+      @include title('about');
       margin-bottom: 42px;
     }
 
     .question {
-      font-size: 24px;
-      color: #172142;
-      line-height: 48px;
+      @include text(24px, 48px);
       font-weight: Bold;
-
     }
 
     .question::before {
