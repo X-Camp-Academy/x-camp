@@ -45,7 +45,7 @@ const WeSupport: React.FC = () => {
                 { lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
                   <Title className={styles.title}>We <span>Support</span></Title>
                   <Text className={styles.titleBg} />
-                                                                                 </div> }
+                </div> }
                 <Paragraph className={styles.paragraph}>
                   {t("WeSupport.Desc")}
                 </Paragraph>

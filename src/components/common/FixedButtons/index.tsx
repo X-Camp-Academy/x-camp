@@ -163,7 +163,7 @@ const FixedButtons: React.FC<any> = () => {
         <span>
           {item.text}
         </span>
-                           </FixedButton>))}
+      </FixedButton>))}
     </div>
   );
 };

@@ -24,7 +24,7 @@ const FixedButton: React.FC<IProps> = ({ menu, icon, children, state }: IProps) 
           <img src={`${icon}`} alt="" />
         </Button>
       </Dropdown>
-            </>);
+    </>);
 };
 
 export default FixedButton;

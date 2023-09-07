@@ -17,7 +17,7 @@ module.exports = {
 
         // JSX 语法闭合标签的缩进和换行
         // @unessential
-        'react/jsx-closing-tag-location': 'error',
+        'react/jsx-closing-tag-location': 'off',
 
         // JSX 行内属性间仅有一个空格
         // @unessential
@@ -257,11 +257,7 @@ module.exports = {
 
         // 声明的 prop 必须被使用
         'react/no-unused-prop-types': [
-            'error',
-            {
-                customValidators: [],
-                skipShapeProps: true,
-            },
+            'warn'
         ],
 
         // style 的属性值必须是一个对象

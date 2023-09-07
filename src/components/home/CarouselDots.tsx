@@ -36,7 +36,7 @@ const CarouselDots: React.FC<IProps> = ({ dots, goTo }) => {
         </li>))
       }
     </ul>
-          </>);
+  </>);
 };
 
 export default CarouselDots;

@@ -41,7 +41,7 @@ const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
   }, [title, config]);
   return (<>
     <span className={className} dangerouslySetInnerHTML={{__html: html }} />
-          </>);
+  </>);
 };
 
 export default TitleColor;

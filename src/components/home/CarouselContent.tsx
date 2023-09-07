@@ -102,27 +102,29 @@ const CarouselContent: React.FC = () => {
       <CarouselDots goTo={goTo} dots={3} />
       <Carousel autoplay={false} dots={false} ref={sliderRef}>
         {
-          carouselItems.map((item: IItem) => (<div className={styles.content} key={item.title}>
-            <div className={styles.background} style={{ background: `url("${item.backgroundUrl}") center no-repeat`, backgroundSize: 'cover' }} />
-            <div className={`container ${styles.info}`}>
-              <Row>
-                <Col xs={24} sm={24} md={24} lg={12}>
-                  <Space direction="vertical" className={styles.space} size={20}>
-                    <TitleColor className={styles.title} title={item.title} config={item?.titleConfig || []} />
-                    <div>
-                      {
-                        item.desc.map(desc => (<Paragraph className={styles.paragraph} key={desc} style={item?.descStyle}>
-                          {desc}
-                        </Paragraph>))
-                      }
-                    </div>
-                    <button className={styles.button} onClick={item.onClick}>{item.buttonText}</button>
-                    <Text className={styles.date} style={item?.descStyle}>{item.date}</Text>
-                  </Space>
-                </Col>
-              </Row>
-            </div>
-                                              </div>))
+          carouselItems.map((item: IItem) => (
+            <div className={styles.content} key={item.title}>
+              <div className={styles.background} style={{ background: `url("${item.backgroundUrl}") center no-repeat`, backgroundSize: 'cover' }} />
+              <div className={`container ${styles.info}`}>
+                <Row>
+                  <Col xs={24} sm={24} md={24} lg={12}>
+                    <Space direction="vertical" className={styles.space} size={20}>
+                      <TitleColor className={styles.title} title={item.title} config={item?.titleConfig || []} />
+                      <div>
+                        {
+                          item.desc.map(desc => (
+                            <Paragraph className={styles.paragraph} key={desc} style={item?.descStyle}>
+                              {desc}
+                            </Paragraph>))
+                        }
+                      </div>
+                      <button className={styles.button} onClick={item.onClick}>{item.buttonText}</button>
+                      <Text className={styles.date} style={item?.descStyle}>{item.date}</Text>
+                    </Space>
+                  </Col>
+                </Row>
+              </div>
+            </div>))
         }
       </Carousel>
 
