@@ -1,28 +1,39 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { Button, Space } from "antd";
-import classNames from "classnames/bind";
+import { Button } from "antd";
+import { LaptopOutlined } from '@ant-design/icons'
 import { useLang } from "@/hoc/with-intl/define";
-const cx = classNames.bind(styles);
+import CommonBanner from "@/components/common/common-banner";
+import {useRouter} from "next/navigation";
+
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
+  const router = useRouter()
+  const paragraph = (
+    <>
+      Get a glimpse into our programs, curriculum, and
+      <br />
+      teaching approach as we answer your questions.
+    </>
+  )
   return (
     <div className={styles.banner}>
-      <div className={cx("container", styles.content)}>
-        <Space className={styles.bannerContent}>
-          <Space direction={"vertical"}>
-            <div className={styles.title}>{t("WeeklyOpenHouse")}</div>
-            <div className={styles.description}>{t("OpenHouse.Desc")}</div>
-            <Button className={styles.btn} onClick={() => { window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09') }}>
-              <span>{t("ZoomLink")}</span>
-              <img src="/image/resources/weekly-open-house-btn.png" alt="" />
-            </Button>
-            <div className={styles.dateTime}>{t("JoinWay.Time")}</div>
-          </Space>
-
-          <img src="/image/resources/weekly-open-house-banner.png" alt=""></img>
-        </Space>
+      <CommonBanner
+        image={"/image/about-us/banner-joinUs.png"}
+        title={t("WeeklyOpenHouse1")}
+        titleClassName={styles.title}
+        paragraphClassName={styles.paragraph}
+        paragraph={paragraph}
+      />
+      <div className={styles.bottomInfo}>
+        <Button size="large" className={styles.contactBtn} onClick={() => { router.push('/about-us/contact-us') }}>
+          <span>{t("ZoomLink")}</span>
+          <LaptopOutlined />
+        </Button>
+        <div className={styles.dateTime}>
+          {t("JoinWay.Time")}
+        </div>
       </div>
     </div>
   );
