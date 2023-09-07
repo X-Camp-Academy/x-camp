@@ -1,6 +1,6 @@
 .content {
   width: 100%;
-
+  margin-bottom: 100px;
   .toolBar {
     width: 100%;
     background-color: #fff;
@@ -58,6 +58,63 @@
       font-weight: 500;
       color: #6a6a6a;
       line-height: 24px;
+    }
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 8px 8px 12px 12px;
+    height: 400px;
+
+    .imgBox {
+      height: 226px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .cardContent {
+      padding: 36px;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        padding: 24px;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 32px;
+        text-overflow: ellipsis;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        /* 行数 */
+        -webkit-box-orient: vertical;
+      }
+
+      .description {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 400;
+        color: #666666;
+        line-height: 28px;
+        align-items: center;
+
+        .btn {
+          color: #ffad11;
+          font-size: 18px;
+        }
+
+        .icon {
+          margin-right: 4px;
+          font-size: 14px;
+        }
+      }
     }
   }
 

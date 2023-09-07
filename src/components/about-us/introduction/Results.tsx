@@ -62,8 +62,6 @@ const Results = () => {
           </Row>
         </Space>
       ))}
-
-      <Space></Space>
     </div>
   );
 };

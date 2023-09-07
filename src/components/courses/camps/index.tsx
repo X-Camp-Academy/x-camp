@@ -7,7 +7,7 @@ import ColorfulCard from "@/components/common/colorful-card";
 import CourseAbstract from "@/components/common/course-abstract";
 import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";
-import TopBanner from "./top-banner";
+import Banner from "./Banner";
 import CampIntro from "./camp-intro";
 import {
   useGetCourses,
@@ -24,8 +24,6 @@ const CourseCamps: React.FC = () => {
   const pathname = usePathname();
   const { format: t } = useLang();
   // 请求当前 courseId 的评论
-
-  console.log(pathname);
 
   const { data: coursesData } = useGetCourses({
     filters: {
@@ -57,7 +55,7 @@ const CourseCamps: React.FC = () => {
   return (
     <Layout className={styles.courseCamps}>
       <Content>
-        <TopBanner />
+        <Banner />
         <CampIntro />
         {/* <CampCarousel /> */}
         <div className={styles.courseCard}>

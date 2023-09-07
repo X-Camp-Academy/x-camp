@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./index.module.scss";
 import { Col, Row, Typography, Descriptions, Divider } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { GetCourses } from "@/apis/strapi-client/define";
-import { getTransResult } from "@/utils/public";
 import dayjs from 'dayjs';
-import { getWeeksDays } from "../../utils";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult, getWeeksDays } from "@/utils/public";
+import { GetCourses } from "@/apis/strapi-client/define";
+import styles from "./index.module.scss";
+
 const { Text, Title } = Typography;
 
 const CourseCard: React.FC<GetCourses> = (props) => {

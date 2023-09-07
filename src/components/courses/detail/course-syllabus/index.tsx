@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Space, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
-import { getLangResult } from "../../utils";
+import { getLangResult } from "@/utils/public";
 import CourseClassesContext from "../../CourseClasses";
 import styles from "./index.module.scss";
 
