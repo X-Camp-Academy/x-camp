@@ -3,8 +3,7 @@ import { Space, Typography } from "antd";
 import ClassCard from "@/components/common/class-card";
 import CourseClassesContext from "../../CourseClasses";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import { getLangResult } from "../../utils";
+import { getTransResult, getLangResult } from "@/utils/public";
 import styles from "./index.module.scss";
 
 

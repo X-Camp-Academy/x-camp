@@ -2,8 +2,7 @@ import React from "react";
 import { Col, Row, Typography, Descriptions, Divider } from "antd";
 import dayjs from 'dayjs';
 import { useLang } from "@/hoc/with-intl/define";
-import { getWeeksDays } from "../../utils";
-import { getTransResult } from "@/utils/public";
+import { getTransResult, getWeeksDays } from "@/utils/public";
 import { GetCourses } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
 
