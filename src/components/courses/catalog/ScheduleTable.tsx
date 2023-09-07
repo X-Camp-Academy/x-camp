@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "./index.module.scss";
 import {
   Button,
   Col,
@@ -12,10 +11,12 @@ import {
 import { SearchOutlined } from "@ant-design/icons";
 import { useSize } from "ahooks";
 import { useLang } from "@/hoc/with-intl/define";
-import CourseCard from "../course-card";
+import CourseCard from "./course-card";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
+import styles from "./ScheduleTable.module.scss";
 
-const ScheduleTable = () => {
+
+const ScheduleTable: React.FC = () => {
   const { format: t } = useLang();
   const [form] = Form.useForm();
   const defaultPagination = { page: 1, pageSize: 10 };
@@ -29,7 +30,6 @@ const ScheduleTable = () => {
 
   const ref = useRef(null);
   const size = useSize(ref);
-
 
   const { data: courses, runAsync } = useGetCourses({});
 

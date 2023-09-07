@@ -21,7 +21,7 @@ const { Content } = Layout;
 const CourseDetail: React.FC = () => {
   const params = useParams();
   const { format: t } = useLang();
-  // 请求当前 courseId 的评论
+
   const { data: reviewsData } = useGetReviews({
     ready: true,
     courseId: [params?.courseId as string],

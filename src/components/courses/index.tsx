@@ -26,10 +26,10 @@ import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult, scrollIntoView } from "@/utils/public";
 import { getLangResult, getWeeksDays } from "./utils";
 import { useMobile } from "@/utils";
-import TopBanner from "./catalog/top-banner";
+import Banner from "./catalog/Banner";
 import ClassCard from "../common/class-card";
 import Reviews from "@/components/common/reviews";
-import { COURSE_TYPES } from "./define";
+import { CourseMode, CourseTypes } from "./define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import {
   useGetCourseLevelType,
@@ -66,6 +66,7 @@ const Courses: React.FC = () => {
   const [copySegmentedData, setCopySegmentedData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
+  const COURSE_TYPES = Object.values(CourseTypes);
 
 
   //获取师生评价数据
@@ -89,15 +90,15 @@ const Courses: React.FC = () => {
   // 根据online in person isCamp划分
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
-      case "Online Classes":
+      case CourseTypes.OnlineClasses:
         return courses?.data?.filter(
-          (item) => item?.attributes?.classMode === "Online Live"
+          (item) => item?.attributes?.classMode === CourseMode.OnlineLive
         );
-      // case "In-person Classes":
+      // case CourseTypes.InPersonClasses:
       //   return courses?.data?.filter(
-      //     (item) => item?.attributes?.classMode === "In-person"
+      //     (item) => item?.attributes?.classMode === CourseMode.InPerson
       //   );
-      case "Camps Classes":
+      case CourseTypes.CampsClasses:
         // console.log(courses?.data?.filter((item) => item?.attributes?.isCamp));
 
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
@@ -131,7 +132,7 @@ const Courses: React.FC = () => {
   };
 
   // 固定所有的数据
-  const allCourses = COURSE_TYPES.map((courseType, index) => {
+  const allCourses = COURSE_TYPES?.map((courseType, index) => {
     if (index < 2) {
       return generateCourses(courseType, courseLevelTypeData);
     } else {
@@ -153,7 +154,7 @@ const Courses: React.FC = () => {
     const segmentedData = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
     );
-    console.log(segmentedData);
+    // console.log(segmentedData);
 
     const result = removeEmptyChildren(segmentedData);
 
@@ -172,10 +173,10 @@ const Courses: React.FC = () => {
 
 
   const hashSegmentedMap = new Map([
-    ["#online", "Online Classes"],
-    ["#camps", "Camps Classes"],
-    ["#apcs", "APCS Classes"],
-    ["#enhancement", "Enhancement Classes"],
+    ["#online", CourseTypes.OnlineClasses],
+    ["#camps", CourseTypes.CampsClasses],
+    ["#apcs", CourseTypes.APCSClasses],
+    ["#enhancement", CourseTypes.EnhancementClasses],
   ]);
 
   // 监听hash
@@ -314,7 +315,7 @@ const Courses: React.FC = () => {
   return (
     <Layout className={styles.courses}>
       <Content>
-        <TopBanner />
+        <Banner />
 
         <div className={`${styles.classContainer} container`}>
           <Affix
@@ -451,7 +452,7 @@ const Courses: React.FC = () => {
                                       ?.courseShortDescriptionEn
                                   ) as string[]}
                                   time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
-                                  href={`/courses/${segmented === 'Camps Classes' ? 'camps' : 'detail'}/${g?.id}`}
+                                  href={`/courses/${segmented === CourseTypes.CampsClasses ? 'camps' : 'detail'}/${g?.id}`}
                                 />
                               );
                             })}
