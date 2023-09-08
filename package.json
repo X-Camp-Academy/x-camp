@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix"
+    "lint": "next lint --fix",
+    "prepare": "npx husky install && chmod +x .husky/pre-commit"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.2",
