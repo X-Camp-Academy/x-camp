@@ -71,27 +71,29 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
     const eventDataForDate = eventDate.find((event) => {
       return judgeDate(value, event?.startDateTime || '', event?.endDateTime || '');
     });
+
+    const dotStyle: React.CSSProperties = {
+         width: 8,
+        height: 8,
+        backgroundColor: '#FF4D4F',
+        borderRadius: 4,
+        margin: '0 auto'
+    }
+
     if (eventDataForDate) {
       return (
-        <Badge dot>
-          <div />
-        </Badge>
+        <div style={dotStyle} />
       );
     } else {
-      return (
-        <>
-          <Badge dot color="white">
-            <div />
-          </Badge>
-        </>
-      );
+      return <></>;
     }
   };
 
-  const wrapperStyle = {
-    width: 300,
+  const wrapperStyle: React.CSSProperties = {
+    width: 420,
     border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: token.borderRadiusLG,
+    boxShadow: '0 6px 16px 0 #D8D8D8',
   };
 
   return (
