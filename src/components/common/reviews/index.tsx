@@ -53,8 +53,8 @@ const Reviews = ({ className = "", reviewsData }: Props) => {
               dots={false}
               slidesToShow={3}
               slidesToScroll={1}
-              swipeToSlide={true}
-              infinite={true}
+              swipeToSlide
+              infinite
               responsive={[
                 {
                   breakpoint: 992,

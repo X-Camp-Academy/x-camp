@@ -74,7 +74,7 @@ export const useMenuItems = () => {
         // },
         {
           label: (
-            <a href="https://x-tutors.org/" target="_blank">
+            <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
               {t("X-Tutors")}
             </a>
           ),
@@ -91,7 +91,7 @@ export const useMenuItems = () => {
           description: t("SchoolCalendar.Description"),
           btn: (
             <>
-              <span onClick={() => { router.push('/about-us/calendar') }}>{t("ViewCalendar")}</span>
+              <span onClick={() => { router.push('/about-us/calendar'); }}>{t("ViewCalendar")}</span>
               <CalendarOutlined />
             </>
           ),
@@ -174,11 +174,11 @@ export const useMenuItems = () => {
       key: "about-us",
       dropdown: {
         left: {
-          title: t("SchoolCalendar"),
+          title: t("AboutUs"),
           description: t("AboutUs.Description"),
           btn: (
             <>
-              <span onClick={() => { router.push('/about-us/introduction') }}>{t("LearnMore")}</span>
+              <span onClick={() => { router.push('/about-us/introduction'); }}>{t("LearnMore")}</span>
               <RightOutlined />
             </>
           ),
@@ -225,9 +225,9 @@ export const useMenuItems = () => {
         // },
         {
           label: (
-              <Link href="/about-us/student-recommend">
-                {t("ReferralProgram")}
-              </Link>
+            <Link href="/about-us/student-recommend">
+              {t("ReferralProgram")}
+            </Link>
           ),
           key: "/about-us/student-recommend/",
         },

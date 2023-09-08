@@ -2,33 +2,33 @@ import { Collapse } from "antd";
 import styles from "./JobCard.module.scss";
 import JobCardHeader from "./JobCardHeader";
 import JobCardDetail from "./JobCardDetail";
-import CollapseColorfulCard from "@/components/common/collapse-colorful-card";
+import ColorfulCard from "@/components/common/colorful-card";
 import { GetAboutUsJoinUs } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 const { Panel } = Collapse;
 
-interface Props {
+interface JobCardProps {
   index: number;
   data: StrapiResponseDataItem<GetAboutUsJoinUs>;
 }
 
-const JobCard = ({ index, data }: Props) => {
+const JobCard: React.FC<JobCardProps> = ({ index, data }) => {
   return (
-    <>
-      <CollapseColorfulCard
-        border="bottom"
-        index={index}
-        className={styles.ColorfulCardContainer}
+    <ColorfulCard
+      border="bottom"
+      index={index}
+      collapse
+      animate={false}
+      className={styles.ColorfulCardContainer}
+    >
+      <Panel
+        header={<JobCardHeader data={data} />}
+        key={index}
+        showArrow={false}
       >
-        <Panel
-          header={<JobCardHeader data={data} />}
-          key={index}
-          showArrow={false}
-        >
-          <JobCardDetail data={data} />
-        </Panel>
-      </CollapseColorfulCard>
-    </>
+        <JobCardDetail data={data} />
+      </Panel>
+    </ColorfulCard>
   );
 };
 

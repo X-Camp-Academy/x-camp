@@ -1,0 +1,36 @@
+.referralProgramWorkContainer {
+  margin-bottom: 100px;
+
+  .referralProgramWork {
+    padding: 50px;
+
+    .title {
+      font-size: 36px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 48px;
+    }
+
+    .description {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 34px;
+
+      span {
+        margin-right: 8px;
+      }
+    }
+
+    .imgCol {
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

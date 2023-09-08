@@ -25,8 +25,8 @@ const Article: React.FC = () => {
           $eq: Number(articleId)
         }
       },
-    })
-  }, [])
+    });
+  }, []);
 
 
   return (

@@ -82,7 +82,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                       <video
                         controls
                         src={g?.attributes?.url?.data?.attributes?.url}
-                      ></video>
+                      />
                       <div className={styles.videoTitle}>
                         {getTransResult(
                           lang,
@@ -126,7 +126,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                       <video
                         controls
                         src={g?.attributes?.url?.data?.attributes?.url}
-                      ></video>
+                      />
                       <div className={styles.videoTitle}>
                         {getTransResult(
                           lang,

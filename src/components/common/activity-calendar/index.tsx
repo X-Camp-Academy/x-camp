@@ -65,7 +65,7 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
       return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
     }
     return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
-  }
+  };
 
   const cellRender = (value: Dayjs) => {
     const eventDataForDate = eventDate.find((event) => {
@@ -132,12 +132,12 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
                     className={styles.changeMonthBtn}
                     onClick={backMonth}
                     style={{ marginRight: 10 }}
-                  ></Button>
+                  />
                   <Button
                     icon={<RightOutlined />}
                     className={styles.changeMonthBtn}
                     onClick={forwardMonth}
-                  ></Button>
+                  />
                 </Col>
               </Row>
             </div>

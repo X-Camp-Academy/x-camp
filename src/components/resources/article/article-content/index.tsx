@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from "react";
 import styles from "./index.module.scss";
 import { Breadcrumb, Space, Typography } from "antd";
@@ -44,8 +44,8 @@ const ArticleContent = ({ props }: Props) => {
       lang,
       dayjsDate.format(formatStringZh),
       monthNameEn[dayjsDate.month()] + dayjsDate.format(formatStringEn)
-    )
-  }
+    );
+  };
 
 
   return (

@@ -5,16 +5,16 @@ import dynamic from 'next/dynamic';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
 import styles from './index.module.scss';
 
-const EvaluationForm = dynamic(() => import('./evaluation-form'));
-const { Content } = Layout;
 const Banner = dynamic(() => import('./banner'));
+const EvaluationForm = dynamic(() => import('./evaluation-form'));
 const Reviews = dynamic(() => import('../common/reviews'));
 
-const Evalation: React.FC = () => {
-  //获取师生评价数据
+const { Content } = Layout;
+
+const Evaluation: React.FC = () => {
   const { data } = useGetReviews({
     ready: true,
-    pageName: ["/home/"], // 因为首页的路由是空字符串，约定用/home/表示
+    pageName: ["/home/"],
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
@@ -27,7 +27,7 @@ const Evalation: React.FC = () => {
         <Reviews reviewsData={reviewsData} />
       </Content>
     </Layout>
-  )
-}
+  );
+};
 
-export default Evalation;
+export default Evaluation;

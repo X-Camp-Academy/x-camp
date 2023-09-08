@@ -29,10 +29,10 @@ const UsacoLiveSolutions: React.FC = () => {
     if (resourcesLiveSolution) {
       const firstItem = resourcesLiveSolution?.shift();
       resourcesLiveSolution?.push(firstItem || []);
-      return resourcesLiveSolution
+      return resourcesLiveSolution;
     }
     return [];
-  }
+  };
 
   return (
     <Layout className={styles.usacoLiveSolutions}>

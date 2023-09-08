@@ -10,7 +10,7 @@ const Banner: React.FC = () => {
       <br />
       students and partners.
     </>
-  )
+  );
 
   return (
     <CommonBanner

@@ -44,7 +44,7 @@ const AboutXCamp: React.FC = () => {
         >
           <Title className={styles.title}>
             <span>Why</span> X-Camp
-            <Text className={styles.titleBg}></Text>
+            <Text className={styles.titleBg} />
           </Title>
 
           <Paragraph className={styles.paragraph}>
@@ -72,7 +72,7 @@ const AboutXCamp: React.FC = () => {
                       <Text className={styles.cardTitle}>
                         {item?.title}
                         {
-                          !!item.title2 && <><br/> {item.title2}</>
+                          !!item.title2 && <><br /> {item.title2}</>
                         }
                       </Text>
                       <Paragraph

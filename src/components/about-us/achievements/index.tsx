@@ -30,7 +30,6 @@ const Achievements: React.FC = () => {
       <Content>
         <Banner />
         <USACOSpotlight />
-
         <TimeLine />
         <UsacoMedal />
         <ArtOfProgrammingResults data={projectsDemo} />

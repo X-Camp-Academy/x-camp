@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --fix",
+    "prepare": "npx husky install && chmod +x .husky/pre-commit"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.2",
@@ -50,7 +51,9 @@
     "@types/randomcolor": "^0.5.6",
     "@types/react": "^18.2.6",
     "@types/react-dom": "18.2.4",
+    "husky": "^8.0.3",
     "postcss-pxtorem": "^6.0.0",
     "unplugin-json-dts": "^1.2.0"
-  }
+  },
+  "husky": {}
 }
