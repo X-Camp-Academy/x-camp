@@ -21,10 +21,10 @@ const Banner: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       <CommonBanner
-       image={"/image/about-us/achievements-banner.png"}
-       title={t("In-personCamps")}
-       paragraph={paragraph}
-        />
+        image={"/image/about-us/achievements-banner.png"}
+        title={t("In-personCamps")}
+        paragraph={paragraph}
+      />
     </div>
   );
 };
