@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix",
-    "prepare": "npx husky install && chmod +x .husky/pre-commit"
+    "lint": "next lint --fix"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.2",
@@ -19,8 +18,8 @@
     "dayjs": "^1.11.8",
     "echarts": "^5.4.2",
     "eslint": "8.41.0",
-    "eslint-config-next": "13.4.3",
-    "hast-util-to-jsx-runtime": "^1.2.0",
+    "eslint-config-next": "13.4.19",
+    "hast-util-to-jsx-runtime": "2.1.1",
     "hover.css": "^2.3.2",
     "lodash": "^4.17.21",
     "next": "13.4.19",
@@ -30,7 +29,6 @@
     "react-cookies": "^0.1.1",
     "react-dom": "18.2.0",
     "react-intl": "^6.4.3",
-    "react-reveal": "^1.2.2",
     "react-router-dom": "^6.14.1",
     "react-slick": "^0.29.0",
     "rehype-katex": "^6.0.2",
@@ -51,9 +49,7 @@
     "@types/randomcolor": "^0.5.6",
     "@types/react": "^18.2.6",
     "@types/react-dom": "18.2.4",
-    "husky": "^8.0.3",
     "postcss-pxtorem": "^6.0.0",
     "unplugin-json-dts": "^1.2.0"
-  },
-  "husky": {}
+  }
 }
