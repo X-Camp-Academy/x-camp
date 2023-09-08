@@ -187,7 +187,7 @@ const ArticleSider: React.FC<{
             </Text>
             <div className={styles.line} />
           </Space>
-          <div style={{ height: 400, overflow: "scroll" }}>
+          <div style={{ maxHeight: 400, overflow: "scroll" }}>
             {filterDateEventList.length != 0 &&
               filterDateEventList.map((item, index) => {
                 if (item?.startDateTime)
