@@ -2,4 +2,3 @@
 public/
 *.json.d.ts
 node_modules/
-.husky/
