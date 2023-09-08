@@ -1,0 +1,72 @@
+.partners {
+  text-align: center;
+  background-color: #fdf6f1;
+  padding-top: 40px;
+  padding-bottom: 88px;
+  .title {
+    color: #172142;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 72px;
+    position: relative;
+    @media (max-width: 768px) {
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  .titleBg {
+    margin-top: -32px;
+    display: block;
+    width: 130px;
+    height: 16px;
+    background-image: url("/image/home/home-title-bg-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .paragraph {
+    color: #172142;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 34px;
+    margin: auto 40px 56px 40px;
+    @media (max-width: 768px) {
+      margin: auto auto 40px;
+    }
+  }
+  .space {
+    display: flex;
+    justify-content: space-between;
+  }
+  .topImage {
+    width: 160px;
+    height: 64px;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .bottomLeftImage {
+    width: 80px;
+    height: 64px;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  .bottomCenterImage {
+    width: 160px;
+    height: 64px;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  .bottomRightImage {
+    width: 160px;
+    height: 64px;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}

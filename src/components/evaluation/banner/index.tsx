@@ -1,16 +1,16 @@
 import React from "react";
-import styles from "./index.module.scss";
+import Link from "next/link";
 import { Button, Col, Row, Space, Typography } from "antd";
 import { CaretRightOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
-import Link from "next/link";
+import styles from "./index.module.scss";
 
 const { Paragraph } = Typography;
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
   return (
-    <div className={styles.topBanner}>
+    <div className={styles.banner}>
       <div className={`${styles.content} container`}>
         <Row>
           <Col xs={24} sm={24} md={14}>
@@ -34,13 +34,6 @@ const Banner: React.FC = () => {
                   {t("TrialClass")}
                 </Link>
               </Button>
-              {/*               <Button
-                type={"primary"}
-                className={styles.button}
-                icon={<CaretRightOutlined />}
-              >
-                {t("PlacementTest")}
-              </Button> */}
               <Button
                 type={"primary"}
                 className={styles.button}

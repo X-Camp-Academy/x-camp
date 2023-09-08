@@ -1,22 +1,25 @@
 "use client";
 import React from "react";
-import { Layout } from "antd";
-import styles from "./index.module.scss";
-import Reviews from "@/components/common/reviews";
-import Banner from "./banner";
-import UpcomingEvents from "./upcoming-events";
-import RecentActivities from "./recent-activities";
-import Activities from "./activities";
-import { useGetReviews } from "@/apis/strapi-client/strapi";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
+import { Layout } from "antd";
+import { useGetReviews } from "@/apis/strapi-client/strapi";
+import styles from "./index.module.scss";
+
+const Banner = dynamic(() => import("./Banner"));
+const UpcomingEvents = dynamic(() => import("./UpcomingEvents"));
+const RecentActivities = dynamic(() => import("./RecentActivities"));
+const Activities = dynamic(() => import("./Activities"));
+const Reviews = dynamic(() => import("@/components/common/reviews"));
+
+
 const { Content } = Layout;
 
 const EducationForum: React.FC = () => {
   const pathname = usePathname();
-  //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
 
   return (

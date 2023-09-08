@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styles from './index.module.scss';
-import { Button, Carousel, Col, Row, Space } from 'antd';
+import { Button, Carousel, Col, Row } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { CarouselRef } from 'antd/es/carousel';
 
@@ -30,7 +30,7 @@ const CampCarousel = () => {
                         <img
                           src="/image/about-us/banner-background.png"
                           alt=""
-                        ></img>
+                        />
                       </Col>
                     );
                   })}

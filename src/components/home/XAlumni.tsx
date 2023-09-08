@@ -9,7 +9,7 @@ import { useGetXAlumni } from "@/apis/strapi-client/strapi";
 import styles from "./XAlumni.module.scss";
 import MaskCard from "../common/mask-card";
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 const XAlumni: React.FC = () => {
   const { lang, format: t } = useLang();
@@ -35,20 +35,21 @@ const XAlumni: React.FC = () => {
   return (
     <div className={styles.xalumniContainer}>
       <div className={`${styles.xalumni} container`}>
-        <Space direction="vertical">
-          <Title className={styles.title}>{t("X_ALUMNI")}</Title>
+        <div className={styles.info}>
+          <Title className={styles.title}><span>{t("X_ALUMNI")}</span></Title>
+          <Text className={styles.titleBg} />
           <Paragraph className={styles.paragraph}>
             {t("X_Alumni.Desc")}
           </Paragraph>
-        </Space>
+        </div>
 
         <div className={styles.carouselContainer}>
           <Carousel
             slidesToShow={4}
             slidesToScroll={1}
-            swipeToSlide={true}
-            infinite={true}
-            autoplay={true}
+            swipeToSlide
+            infinite
+            autoplay
             dots={false}
             responsive={[
               {
@@ -101,7 +102,8 @@ const XAlumni: React.FC = () => {
                       lang,
                       item?.attributes?.titleZh,
                       item?.attributes?.titleEn
-                    )}</Title>
+                    )}
+                    </Title>
                   </MaskCard>
                 </div>
               );

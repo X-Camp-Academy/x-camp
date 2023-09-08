@@ -1,29 +1,35 @@
 import React from "react";
-import { Row, Col } from "antd";
+import { Image, Space, Typography } from "antd";
 import styles from "./index.module.scss";
 
+const { Title, Paragraph } = Typography;
 interface CommonBannerProps {
-  leftNode: React.ReactNode;
-  rightNode: React.ReactNode;
+  image: string;
+  title: string;
+  paragraph: React.ReactNode;
+  paragraphClassName?: string;
+  titleClassName?: string;
 }
 
-const CommonBanner: React.FC<CommonBannerProps> = ({ leftNode = null, rightNode = null }) => {
+const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph, paragraphClassName, titleClassName }) => {
   return (
     <div className={styles.bannerContainer}>
-      <div className="container">
-        <Row>
-          <Col xs={24} sm={24} md={14}>
-            {leftNode}
-          </Col>
-          <Col
-            xs={24}
-            sm={24}
-            md={{ span: 8, offset: 2 }}
-            className={styles.right}
-          >
-            {rightNode}
-          </Col>
-        </Row>
+      <Image
+        src={image}
+        alt=""
+        width={"100%"}
+        className={styles.image}
+        preview={false}
+      />
+      <div className={styles.content}>
+        <Space direction="vertical">
+          <Title className={titleClassName || styles.title}>
+            {title}
+          </Title>
+          <Paragraph className={`${paragraphClassName || styles.paragraph}`}>
+            {paragraph}
+          </Paragraph>
+        </Space>
       </div>
     </div>
   );

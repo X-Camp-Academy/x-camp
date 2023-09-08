@@ -16,7 +16,7 @@ const JoinUs: React.FC = () => {
     <Layout className={styles.joinUsContainer}>
       <Content>
         <TopBanner />
-        <WhyWorkWithUs />
+        {/*<WhyWorkWithUs />*/}
         <JobSelection />
         <JoinUsFaculty />
       </Content>

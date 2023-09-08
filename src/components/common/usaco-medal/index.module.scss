@@ -1,0 +1,64 @@
+.row {
+  width: 100%;
+  height: 338px;
+  background-color: #efefef;
+  position: relative;
+  @media (max-width: 768px) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    height: auto;
+  }
+
+  .logo {
+    height: 338px;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .titleContainer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+    .title {
+      font-size: 36px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 48px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      position: relative;
+    }
+  }
+
+  .medalContainer {
+    width: 192px;
+    height: 128px;
+    margin-top: 150px;
+    background-image: url("/image/common/usaco-medal.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    @media (max-width: 768px) {
+      margin: 0 auto;
+      margin-top: 96px;
+    }
+    .medalCount {
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 48px;
+    }
+
+    .medalTitle {
+      font-size: 16px;
+      font-weight: 500;
+      color: #666666;
+      line-height: 48px;
+    }
+    &:last-child {
+      margin-bottom: 64px;
+    }
+  }
+}

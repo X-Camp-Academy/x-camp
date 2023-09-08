@@ -1,32 +1,36 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
-import { useRouter } from "next/navigation";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
 import styles from "./AboutXCamp.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
-  const { format: t, lang } = useLang();
-  const router = useRouter();
+  const { format: t } = useLang();
   const aboutContents = [
     {
-      icon: "/image/home/faculty-icon.png",
-      title: t("Faculty"),
-      desc: t("Faculty.Desc"),
+      icon: "/image/home/icon-why-book.png",
+      title: 'Comprehensive curriculum',
+      desc: 'X-Camp Academy, a Silicon Valley-based coding institute, offers beginner-level to IOI level\'s.',
       url: '/about-us/introduction/#faculty'
     },
     {
-      icon: "/image/home/achievement-icon.png",
-      title: t("Achievements"),
-      desc: t("Achievements.Des"),
+      icon: "/image/home/icon-why-concat.png",
+      title: 'Top-notch staff and coaches',
+      desc: 'Prestigious students from CS top schools, Experienced in tech, contest medalists in world class.',
+      url: '/about-us/introduction/#faculty'
+    },
+    {
+      icon: "/image/home/icon-why-house.png",
+      title: 'Sense of',
+      title2: 'community',
+      desc: 'Supportive, inclusive community for our students pursuing their coding aspirations.',
       url: '/about-us/achievements/'
     },
     {
-      icon: "/image/home/community-icon.png",
-      title: t("Community"),
-      desc: t("Community.Des"),
+      icon: "/image/home/icon-why-track.png",
+      title: 'Customized learning track',
+      desc: 'Weekly homework rate tracking, 24-hour online edu forum, make your learning time valued',
       url: '/about-us/x-alumni/'
     },
   ];
@@ -38,17 +42,19 @@ const AboutXCamp: React.FC = () => {
           align="center"
           className={styles.aboutXCampTop}
         >
-          <Title className={styles.title}>{t("AboutX-Camp")}</Title>
+          <Title className={styles.title}>
+            <span>Why</span> X-Camp
+            <Text className={styles.titleBg} />
+          </Title>
+
           <Paragraph className={styles.paragraph}>
             {t("X-Camp.Desc1")}
-            <Text className={styles.paragraphText} onClick={() => { router.push("/courses") }}> {t("USACOClasses")}</Text>
-            {getTransResult(lang, '。', ' here.')}
           </Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
           {aboutContents.map((item) => {
             return (
-              <Col key={item?.icon} xs={24} sm={24} md={24} lg={8}>
+              <Col key={item?.icon} xs={24} sm={24} md={24} lg={6}>
                 <Card
                   className={styles.card}
                   bodyStyle={{
@@ -63,7 +69,12 @@ const AboutXCamp: React.FC = () => {
                         preview={false}
                         className={styles.cardIcon}
                       />
-                      <Text className={styles.cardTitle}>{item?.title}</Text>
+                      <Text className={styles.cardTitle}>
+                        {item?.title}
+                        {
+                          !!item.title2 && <><br /> {item.title2}</>
+                        }
+                      </Text>
                       <Paragraph
                         ellipsis={{ rows: 3, tooltip: item?.desc }}
                         className={styles.cardParagraph}

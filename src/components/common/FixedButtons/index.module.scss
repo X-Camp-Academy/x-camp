@@ -1,0 +1,127 @@
+@import "@/styles/variables.scss";
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 64px;
+  top: 40%;
+
+  z-index: 10;
+  //border-radius: 4px;
+  @media (max-width: 768px) {
+    right: 24px;
+  }
+
+  .fixedButton {
+    position: relative;
+    height: 26px;
+    padding: 0;
+    margin-bottom: 60px;
+    background-color: $primary-color;
+
+    @include flex(flex-end);
+    @include text(14px, 20px);
+    font-weight: bold;
+    span {
+      margin: 0 20px;
+    }
+    img {
+      align-self: flex-end;
+
+      width: 46px;
+      height: 46px;
+    }
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  .title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 64px;
+    text-align: center;
+  }
+
+  .cardContent {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .qaCard {
+      width: 70%;
+      margin: 10px 0;
+    }
+  }
+}
+.cardFrom {
+  width: 420px;
+  margin-top: 10px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: static;
+    transform: translateX(0);
+  }
+  .card {
+    width: 100%;
+    border: none !important;
+    box-shadow: 0px 9px 25px -4px rgba(216,216,216,1);
+    @media (max-width: 768px) {
+      margin-top: 64px;
+    }
+    :global(.ant-card-body) {
+      padding: 0 24px 24px 24px;
+    }
+    .cardTitle {
+      @include text(16px, 24px);
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .desc {
+      height: 128px;
+      padding: 12px;
+      margin: 24px 0;
+      border: 1px solid $primary-color;
+      @include text(16px, 34px);
+      box-sizing: border-box;
+      li {
+        margin-left: 24px;
+      }
+    }
+    .buttonList {
+      display: flex;
+      flex-direction: column;
+      .button {
+        height: 48px;
+        margin-bottom: 16px;
+      }
+    }
+    .tips {
+      margin-bottom: 20px;
+      @include text(14px, 22px, $primary-color);
+    }
+    .form {
+      margin-left: 10px;
+      margin-right: 10px;
+      input {
+        width: 100%;
+        height: 46px;
+      }
+      .submit {
+        width: 100%;
+        height: 48px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        &:hover {
+          @extend .hoverButton;
+        }
+      }
+    }
+  }
+}

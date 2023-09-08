@@ -13,24 +13,24 @@ const History: React.FC = () => {
   const currentYear = dayjs().year();
   const images = [
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
     {
-      src: "/image/about-us/introduction-banner.png",
+      src: "/image/about-us/camps-1.png",
     },
-  ]
+  ];
   return (
     <div className={styles.historyContainer}>
       <div className="container">
@@ -42,12 +42,12 @@ const History: React.FC = () => {
           {
             years?.map(item => (
               <Space direction="vertical" key={item}>
-                <i className={item === currentYear ? styles.activeTimeLineIcon : styles.timelineIcon}></i>
+                <i className={item === currentYear ? styles.activeTimeLineIcon : styles.timelineIcon} />
                 <span className={item === currentYear ? styles.activeTimelineText : styles.timelineText}>{item}</span>
               </Space>
             ))
           }
-          <div className={styles.line}></div>
+          <div className={styles.line} />
         </div>
 
         <Row gutter={[16, 16]} className={styles.timeImage}>

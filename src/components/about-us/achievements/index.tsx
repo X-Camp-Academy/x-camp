@@ -9,8 +9,14 @@ const { Content } = Layout;
 const Banner = dynamic(
   () => import("@/components/about-us/achievements/Banner")
 );
-const USACOWinners = dynamic(
-  () => import("@/components/about-us/achievements/USACOWinners")
+const USACOSpotlight = dynamic(
+  () => import("@/components/about-us/achievements/USACOSpotlight")
+);
+const TimeLine = dynamic(
+  () => import("@/components/about-us/achievements/TimeLine")
+);
+const UsacoMedal = dynamic(
+  () => import("@/components/common/usaco-medal")
 );
 const ArtOfProgrammingResults = dynamic(
   () => import("@/components/about-us/achievements/ArtOfProgrammingResults")
@@ -23,7 +29,9 @@ const Achievements: React.FC = () => {
     <Layout className={styles.introductionContainer}>
       <Content>
         <Banner />
-        <USACOWinners />
+        <USACOSpotlight />
+        <TimeLine />
+        <UsacoMedal />
         <ArtOfProgrammingResults data={projectsDemo} />
       </Content>
     </Layout>

@@ -50,15 +50,15 @@ const DiscoverCourses = ({
       ),
     },
     {
-      title: t("C++.Title"),
-      desc: t("C++.Grade"),
+      title: t("USACOK.Title"),
+      desc: t("USACOK.Grade"),
       url: "/image/home/course-2.png",
-      bgc: "#FFD600",
-      maskBgc: "rgb(255 214 0 / 40%)",
+      bgc: "#FFAD11",
+      maskBgc: "rgb(255 173 17 / 40%)",
       maskChildren: generateMaskChildren(
-        t("C++.Title"),
-        t("C++.Mask.Desc"),
-        "/courses/#classify1"
+          t("USACO.Title"),
+          t("USACO.Mask.Desc"),
+          "/courses/#classify3"
       ),
     },
     {
@@ -68,13 +68,26 @@ const DiscoverCourses = ({
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
       maskChildren: generateMaskChildren(
-        t("USACO.Title"),
-        t("USACO.Mask.Desc"),
-        "/courses/#classify3"
+          t("USACO.Title"),
+          t("USACO.Mask.Desc"),
+          "/courses/#classify3"
       ),
     },
+
+    // {
+    //   title: t("C++.Title"),
+    //   desc: t("C++.Grade"),
+    //   url: "/image/home/course-2.png",
+    //   bgc: "#FFD600",
+    //   maskBgc: "rgb(255 214 0 / 40%)",
+    //   maskChildren: generateMaskChildren(
+    //     t("C++.Title"),
+    //     t("C++.Mask.Desc"),
+    //     "/courses/#classify1"
+    //   ),
+    // },
     {
-      title: "APCS",
+      title: "Java & APCS",
       desc: t("APCS.Grade"),
       url: "/image/home/course-4.png",
       bgc: "#D46B14",
@@ -88,53 +101,49 @@ const DiscoverCourses = ({
   ];
   return (
     <div
-      className={`${styles.discoverCourses} container`}
       style={{ alignItems: align }}
     >
-      <Texty
-        duration={100}
-        type={"left"}
-        interval={20}
-        className={styles.title}
-      >
-        {t("DiscoverOurCourses")}
-      </Texty>
-      {showSubTitle && (
+      <div className={`${styles.discoverCourses} container`}>
+        <Text
+          className={styles.title}
+        >
+          Discover Our <span>Courses</span>
+        </Text>
+        {showSubTitle && (
         <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
-      )}
-      {showBg && <Text className={styles.titleBg}></Text>}
+        )}
+        {showBg && <Text className={styles.titleBg} />}
 
-      <Row className={styles.row} gutter={16} align="middle">
-        {courseCards.map((item) => {
-          return (
-            <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>
-              <MaskCard
-                className={styles.card}
-                bodyStyle={{
-                  backgroundColor: item?.bgc,
-                  borderRadius: 8,
-                  paddingBottom: 0,
-                }}
-                maskChildren={item.maskChildren}
-                maskBackGroundColor={item?.maskBgc}
-              >
-                <Space direction="vertical">
-                  <Title className={styles.cardTitle}>{item?.title}</Title>
-                  <Paragraph className={styles.cardParagraph}>
-                    {item?.desc}
-                  </Paragraph>
-                  <Image
-                    src={item?.url}
-                    alt="image"
-                    preview={false}
-                    className={styles.cardImage}
-                  />
-                </Space>
-              </MaskCard>
-            </Col>
-          );
-        })}
-      </Row>
+        <Row className={styles.row} gutter={16} align="middle">
+          {courseCards.map((item) => {
+            return (
+              <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>
+                <MaskCard
+                  className={styles.card}
+                  bodyStyle={{
+                        padding: 0,
+                        borderRadius: 8,
+                        paddingBottom: 0,
+                      }}
+                  maskChildren={item.maskChildren}
+                  maskBackGroundColor={item?.maskBgc}
+                >
+                  <div className={styles.infoContainer} style={{ background: `url('${item?.url}')  no-repeat`, backgroundSize: 'cover' }}>
+                    <div className={styles.info}>
+                      <Title className={styles.cardTitle}>{item?.title}</Title>
+                      <Paragraph className={styles.cardParagraph}>
+                        {item?.desc}
+                      </Paragraph>
+                    </div>
+                  </div>
+
+                </MaskCard>
+              </Col>
+            );
+          })}
+        </Row>
+      </div>
+
     </div>
   );
 };

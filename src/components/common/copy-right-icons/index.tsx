@@ -30,7 +30,7 @@ const CopyRightIcons: React.FC = () => {
     },
   ];
 
-  const QRcodeImg = ["/image/qr-code/we-chat-qr.jpg", "/image/qr-code/small-red-book-qr.png"]
+  const QRcodeImg = ["/image/qr-code/we-chat-qr.jpg", "/image/qr-code/small-red-book-qr.png"];
 
   const source = icons.map((icon) => icon.src);
   const [imageSrc, setImageSrc] = useState(source);
@@ -48,7 +48,7 @@ const CopyRightIcons: React.FC = () => {
       {icons.map((item, index) => {
         if (index <= 2) {
           return (
-            <a href={item?.link} target="_blank" key={index}>
+            <a href={item?.link} target="_blank" key={index} rel="noreferrer">
               <Image
                 alt=""
                 src={imageSrc[index]}
@@ -59,7 +59,7 @@ const CopyRightIcons: React.FC = () => {
                 onMouseLeave={onMouseLeave}
               />
             </a>
-          )
+          );
         }
         else {
           return (
@@ -74,7 +74,7 @@ const CopyRightIcons: React.FC = () => {
                 onMouseLeave={onMouseLeave}
               />
             </Popover>
-          )
+          );
         }
       })}
     </Space>

@@ -121,11 +121,11 @@ const Map = () => {
       <div
         ref={worldDOM as LegacyRef<HTMLDivElement>}
         className={styles.mapContainer}
-      ></div>
+      />
       <div
         ref={usaDOM as LegacyRef<HTMLDivElement>}
         className={styles.mapContainer}
-      ></div>
+      />
     </div>
   );
 };

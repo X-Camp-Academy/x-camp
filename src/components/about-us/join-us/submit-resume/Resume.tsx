@@ -14,7 +14,7 @@ const Resume = () => {
     useGetAboutUsJoinUs();
 
   useEffect(() => {
-    if (+params?.id) {
+    if (params?.id) {
       getAboutUsJoinUs({
         populate: "*",
         sort: ["order:desc"],
@@ -25,13 +25,13 @@ const Resume = () => {
         },
       });
     }
-  }, [+params?.id]);
+  }, [params?.id]);
 
   return (
     <>
       <div className={styles.resumeContainer}>
         <div className={`${styles.resume} container`}>
-          <Card className={styles.cardContainer}>
+          <Card className={styles.cardContainer} bodyStyle={{ padding: '36px' }}>
             <JobCardHeader showExpandBtn={false} data={aboutUsJoinUs?.[0]} />
             <JobCardDetail data={aboutUsJoinUs?.[0]} />
             <ResumeForm

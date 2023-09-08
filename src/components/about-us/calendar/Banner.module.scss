@@ -1,5 +1,17 @@
+@import "@/styles/variables.scss";
 .bannerContainer {
   width: 100%;
+
+  .paragraph{
+    @include text(21px, 40px, #fff);
+    font-weight: 500;
+  }
+
+  .title {
+    @include text(36px, 48px, #fbfbfb);
+    margin: 0;
+    font-weight: bold;
+  }
 
   .col {
     @media (max-width: 768px) {
@@ -7,21 +19,6 @@
       padding: 15px;
       padding-bottom: 0;
     }
-  }
-
-  .title {
-    font-size: 48px;
-    font-weight: bold;
-    color: #172142;
-    line-height: 64px;
-    margin-top: 110px;
-  }
-
-  .paragraph {
-    font-size: 24px;
-    font-weight: 500;
-    color: #172142;
-    line-height: 42px;
   }
 
   .image {

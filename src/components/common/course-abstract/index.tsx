@@ -56,7 +56,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
     const currentDate = dayjs();
     const diff = currentDate.diff(openDate, 'day');
     return diff <= 7;
-  }
+  };
 
   const handlerSighUp = (startDate: string) => {
     if (judgeInWeek(startDate) && registerLink) {
@@ -65,7 +65,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
     else {
       setIsModalOpen(true);
     }
-  }
+  };
 
   const handleOk = () => {
     setIsModalOpen(false);

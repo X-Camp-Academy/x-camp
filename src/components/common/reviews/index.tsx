@@ -35,9 +35,9 @@ const Reviews = ({ className = "", reviewsData }: Props) => {
       {
         reviewsData && reviewsData?.length > 0 &&
         <div className={cx(styles.reviews, "container")}>
-          <Space direction="horizontal" align="center">
-            <Title className={styles.title}>{t("Reviews")}</Title>
-          </Space>
+          {/*<Space direction="horizontal" align="center">*/}
+          {/*  <Title className={styles.title}>{t("Reviews")}</Title>*/}
+          {/*</Space>*/}
 
           <div className={styles.reviewsBox}>
             <Button
@@ -53,8 +53,8 @@ const Reviews = ({ className = "", reviewsData }: Props) => {
               dots={false}
               slidesToShow={3}
               slidesToScroll={1}
-              swipeToSlide={true}
-              infinite={true}
+              swipeToSlide
+              infinite
               responsive={[
                 {
                   breakpoint: 992,

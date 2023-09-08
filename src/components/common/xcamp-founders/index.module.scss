@@ -7,7 +7,14 @@
     font-size: 36px;
     font-weight: 600;
     line-height: 54px;
-    margin-bottom: 100px;
+  }
+
+  .paragraph {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #172142;
+    line-height: 36px;
   }
 
   .baseImgCol {
@@ -51,7 +58,8 @@
     align-items: end;
     .yuanImgBackground {
       @extend .baseImgBackground;
-      background-color: #d9e9ff;
+      background-color: #ffb323;
+      opacity: 0.2;
     }
     .yuanImg {
       @extend .baseImg;
@@ -80,7 +88,7 @@
         cursor: default;
       }
     }
-    .paragraph {
+    .founderParagraph {
       font-size: 18px;
       font-weight: 500;
       color: #172142;
@@ -88,7 +96,7 @@
     }
     .keyText {
       @extend .paragraph;
-      color: #d46b14;
+      color: #ffad11;
     }
   }
 }

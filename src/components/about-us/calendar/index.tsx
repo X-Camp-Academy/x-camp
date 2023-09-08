@@ -12,9 +12,9 @@ const RecentActivities = dynamic(
   () =>
     import("@/components/resources/education-forum/recent-activities")
 );
-const DiscoverCourses = dynamic(
-  () => import("@/components/common/discover-courses")
-);
+// const DiscoverCourses = dynamic(
+//   () => import("@/components/common/discover-courses")
+// );
 
 const { Content } = Layout;
 
@@ -28,7 +28,7 @@ const Calendar: React.FC = () => {
       <Content>
         <Banner />
         <CalendarContent />
-        <DiscoverCourses showSubTitle align="flex-start" showBg={false} />
+        {/*<DiscoverCourses showSubTitle align="flex-start" showBg={false} />*/}
         <RecentActivities />
         <Reviews reviewsData={reviewsData} />
       </Content>

@@ -23,13 +23,12 @@ import type { Dayjs } from 'dayjs';
 import isBetween from "dayjs/plugin/isBetween";
 import { SegmentedValue } from "antd/es/segmented";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult, scrollIntoView } from "@/utils/public";
-import { getLangResult, getWeeksDays } from "./utils";
+import { getTransResult, scrollIntoView, getLangResult, getWeeksDays } from "@/utils/public";
 import { useMobile } from "@/utils";
-import TopBanner from "./catalog/top-banner";
+import Banner from "./catalog/Banner";
 import ClassCard from "../common/class-card";
 import Reviews from "@/components/common/reviews";
-import { COURSE_TYPES } from "./define";
+import { CourseMode, CourseTypes } from "./define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import {
   useGetCourseLevelType,
@@ -66,12 +65,13 @@ const Courses: React.FC = () => {
   const [copySegmentedData, setCopySegmentedData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
+  const COURSE_TYPES = Object.values(CourseTypes);
 
 
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   // 获取所有的courseLevelType分类
   const courseLevelTypeData = courseLevelType?.map(
@@ -83,21 +83,21 @@ const Courses: React.FC = () => {
     return {
       label: item,
       value: item
-    }
+    };
   });
 
   // 根据online in person isCamp划分
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
-      case "Online Classes":
+      case CourseTypes.OnlineClasses:
         return courses?.data?.filter(
-          (item) => item?.attributes?.classMode === "Online Live"
+          (item) => item?.attributes?.classMode === CourseMode.OnlineLive
         );
-      // case "In-person Classes":
+      // case CourseTypes.InPersonClasses:
       //   return courses?.data?.filter(
-      //     (item) => item?.attributes?.classMode === "In-person"
+      //     (item) => item?.attributes?.classMode === CourseMode.InPerson
       //   );
-      case "Camps Classes":
+      case CourseTypes.CampsClasses:
         // console.log(courses?.data?.filter((item) => item?.attributes?.isCamp));
 
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
@@ -131,7 +131,7 @@ const Courses: React.FC = () => {
   };
 
   // 固定所有的数据
-  const allCourses = COURSE_TYPES.map((courseType, index) => {
+  const allCourses = COURSE_TYPES?.map((courseType, index) => {
     if (index < 2) {
       return generateCourses(courseType, courseLevelTypeData);
     } else {
@@ -147,13 +147,13 @@ const Courses: React.FC = () => {
         children: data[0]?.children?.filter(item => item?.children?.length !== 0)
       }];
     }
-  }
+  };
   // 根据segmented来筛选课程数据
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const segmentedData = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
     );
-    console.log(segmentedData);
+    // console.log(segmentedData);
 
     const result = removeEmptyChildren(segmentedData);
 
@@ -172,10 +172,10 @@ const Courses: React.FC = () => {
 
 
   const hashSegmentedMap = new Map([
-    ["#online", "Online Classes"],
-    ["#camps", "Camps Classes"],
-    ["#apcs", "APCS Classes"],
-    ["#enhancement", "Enhancement Classes"],
+    ["#online", CourseTypes.OnlineClasses],
+    ["#camps", CourseTypes.CampsClasses],
+    ["#apcs", CourseTypes.APCSClasses],
+    ["#enhancement", CourseTypes.EnhancementClasses],
   ]);
 
   // 监听hash
@@ -191,7 +191,7 @@ const Courses: React.FC = () => {
   const searchDate = (startDateTime: Dayjs, endDateTime: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
     return dayjs(course?.attributes?.startDateTime)?.isBetween(startDateTime, endDateTime) &&
       dayjs(course?.attributes?.endDateTime)?.isBetween(startDateTime, endDateTime);
-  }
+  };
   const searchInput = (inputValue: string, course: StrapiResponseDataItem<GetCourses>) => {
     const {
       classLang,
@@ -225,7 +225,7 @@ const Courses: React.FC = () => {
       }
     });
 
-  }
+  };
   // 前端根据当前的segmentedData来筛选
   const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
     const { category, rangeDate, search } = values;
@@ -302,20 +302,19 @@ const Courses: React.FC = () => {
     }
     const filteredResult = removeEmptyChildren(result as FormatCoursesProps[]);
     setSegmentedData(filteredResult);
-  }
+  };
 
   // 执行和onSegmentedChange同样的操作
   const onSegmentedRadioChange = (e: RadioChangeEvent) => {
     history.replaceState(null, "", pathname);
     form.resetFields();
     setSegmented(e?.target?.value);
-  }
-
+  };
 
   return (
     <Layout className={styles.courses}>
       <Content>
-        <TopBanner />
+        <Banner />
 
         <div className={`${styles.classContainer} container`}>
           <Affix
@@ -366,7 +365,7 @@ const Courses: React.FC = () => {
                     style={isMobile ? { width: '100%' } : { width: 216 }}
                     placeholder={"Category"}
                     options={categoryOptions}
-                    allowClear={true}
+                    allowClear
                   />
                 </Form.Item>
               </Col>
@@ -382,7 +381,7 @@ const Courses: React.FC = () => {
                 <Form.Item name="search" >
                   <Input
                     suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
-                    allowClear={true}
+                    allowClear
                     style={isMobile ? { width: '100%' } : {}}
                   />
                 </Form.Item>
@@ -452,7 +451,7 @@ const Courses: React.FC = () => {
                                       ?.courseShortDescriptionEn
                                   ) as string[]}
                                   time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
-                                  href={`/courses/${segmented === 'Camps Classes' ? 'camps' : 'detail'}/${g?.id}`}
+                                  href={`/courses/${segmented === CourseTypes.CampsClasses ? 'camps' : 'detail'}/${g?.id}`}
                                 />
                               );
                             })}

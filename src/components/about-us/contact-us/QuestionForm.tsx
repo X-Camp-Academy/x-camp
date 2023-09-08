@@ -18,7 +18,7 @@ const QAPart: React.FC = () => {
   const pathname = usePathname();
   const { data: faq } = useGetFaq({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname as string],
   });
   const { runAsync: submitQuestionForm } = useSubmitQuestionForm();
   const onFinish = async (values: UserInfo) => {
@@ -64,7 +64,7 @@ const QAPart: React.FC = () => {
           xs={{ span: 24 }}
           sm={{ span: 24 }}
           md={{ span: 24 }}
-          lg={{ span: 10, offset: 2 }}
+          lg={{ span: 12 }}
         >
           <Card className={styles.card}>
             <Title className={styles.formTitle}>{t('SubmitAQuestion')}</Title>

@@ -1,0 +1,66 @@
+@import "@/styles/variables.scss";
+.faculty {
+  padding: 100px 15px;
+  text-align: center;
+  .title {
+    margin: 0;
+    @include title("home-content");
+  }
+  .titleBg {
+    margin-left: -175px;
+    display: block;
+    width: 180px;
+    height: 20px;
+    background-image: url("/image/home/home-title-bg-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .paragraph {
+    margin-top: 10px;
+    padding: 0 120px;
+    @include text(18px, 34px);
+  }
+
+  .carouselContainer {
+    position: relative;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-top: 32px;
+    .prev {
+      background-color: $primary-color;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+    .next {
+      background-color: $primary-color;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+    .cardContainer {
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-top: 16px;
+      text-align: left;
+      .name {
+        @include text(24px, 36px);
+        font-weight: bold;
+      }
+      .description {
+        @include text(18px, 26px, #666);
+      }
+      .more {
+        @include text(14px, 16px);
+      }
+      .cardImage {
+        width: 150px;
+        height: 168px;
+      }
+    }
+  }
+}
