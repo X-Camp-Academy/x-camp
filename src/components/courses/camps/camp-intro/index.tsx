@@ -17,7 +17,7 @@ const CampIntro = () => {
           <div className={styles.question}>{t("Camp.Problem3")}</div>
           <div className={styles.answer}>{t("Camp.Answer3")}</div>
 
-          <Row gutter={16}>
+          <Row gutter={16} style={{marginTop: 100}}>
             <Col xs={24} sm={24} md={24} lg={18}>
               <video controls className={styles.videoBox}>
                 <source
