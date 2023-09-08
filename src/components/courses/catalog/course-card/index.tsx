@@ -24,6 +24,10 @@ const CourseCard: React.FC<GetCourses> = (props) => {
     tuitionRMB,
     tuitionUSD,
   } = props;
+
+
+
+
   const { format: t, lang } = useLang();
   const recommendedGradeLevel = (recommendedLowerGrade: number, recommendedUpperGrade: number) => {
     let result = '';
