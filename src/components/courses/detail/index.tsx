@@ -6,7 +6,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import UsacoMedal from "@/components/common/usaco-medal";
 import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";
-import CourseBanner from "./course-banner";
+import CourseBanner from "./CourseBanner";
 import CourseSyllabus from "./CourseSyllabus";
 import ProgressionClasses from "./ProgressionClasses";
 import Faculty from "@/components/common/faculty";
@@ -54,7 +54,6 @@ const CourseDetail: React.FC = () => {
         <Faculty />
         <Faqs title={t("CoursesFAQS")} data={faqData} />
         <Reviews
-          className={styles.comments}
           reviewsData={reviewsData}
         />
       </Content>

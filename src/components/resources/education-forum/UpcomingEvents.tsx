@@ -31,7 +31,6 @@ const UpcomingEvents: React.FC = () => {
       new Date().getTime() > 0
     );
   });
-
   return (
     <div className={styles.content}>
       <div className="container">
@@ -49,7 +48,7 @@ const UpcomingEvents: React.FC = () => {
               const { utcTime: endTime, timezone: endTimeZone } =
                 formatTimezone(item?.attributes?.endDateTime);
               return (
-                <Col key={index} xs={24} sm={24} md={12} lg={8}>
+                <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
                   <ColorfulCard border={"bottom"} animate={false} index={index}>
                     <div className={styles.card}>
                       <div className={styles.date}>
