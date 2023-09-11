@@ -14,11 +14,9 @@ import dynamic from "next/dynamic";
 import CarouselDots from "@/components/home/CarouselDots";
 import TitleColor, {IConfig} from "@/components/common/title-color";
 
-const { Title, Paragraph, Text } = Typography;
+const { Paragraph, Text } = Typography;
 
-const UsacoMedal = dynamic(
-    () => import("@/components/common/usaco-medal")
-);
+const UsacoMedal = dynamic(() => import("@/components/common/usaco-medal"));
 
 interface IItem {
   title: string,
