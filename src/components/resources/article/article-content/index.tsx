@@ -1,16 +1,17 @@
 'use client';
 import React from "react";
-import styles from "./index.module.scss";
-import { Breadcrumb, Space, Typography } from "antd";
 import Link from "next/link";
+import { Breadcrumb, Space, Typography } from "antd";
 import { ClockCircleOutlined, ReadOutlined } from "@ant-design/icons";
-import { XStarMdViewer } from "x-star-editor";
-import { viewerVideoPlugin } from "@/utils/x-star-editor/plugins/viewer-video";
+import dayjs from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import dayjs from "dayjs";
+import { XStarMdViewer } from "x-star-editor";
+import { viewerVideoPlugin } from "@/utils/x-star-editor/plugins/viewer-video";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import styles from "./index.module.scss";
+
 const { Title } = Typography;
 
 interface Props {

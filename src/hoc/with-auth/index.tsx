@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
 import { message } from 'antd';
+import { useLang } from '../with-intl/define';
 import { useAuthClient } from '@/apis/auth-client';
 import LoadingMask from '@/components/common/loading/LoadingMask';
-import { AuthContext } from './define';
-import { useLang } from '../with-intl/define';
 import { useGetUserInfo } from '@/apis/auth-client/auth';
+import { AuthContext } from './define';
 
 export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   const [initialized, setInitialized] = useState(false);

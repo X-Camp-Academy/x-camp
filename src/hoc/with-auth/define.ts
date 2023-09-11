@@ -1,5 +1,5 @@
-import { UserInfo } from "@/apis/auth-client/define";
 import { createContext, useContext } from "react";
+import { UserInfo } from "@/apis/auth-client/define";
 
 type AuthInfo = {
   user?: UserInfo | null;
