@@ -18,7 +18,7 @@ const FixedButton: React.FC<IProps> = ({ menu, icon, children, state }: IProps) 
         setOpen(v);
     };
     return (<>
-      <Dropdown open={open} onOpenChange={onOpenChange} placement={'bottomRight'} dropdownRender={dropdownRender} trigger={['click']}>
+      <Dropdown open={open} onOpenChange={onOpenChange} dropdownRender={dropdownRender} trigger={['click']}>
         <Button shape={'round'} className={styles.fixedButton}>
           {children}
           <img src={`${icon}`} alt="" />

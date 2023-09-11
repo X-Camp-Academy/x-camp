@@ -28,7 +28,7 @@ const FixedButtons: React.FC<any> = () => {
       state: [open, setOpen],
       text: 'Free Consultation',
       label: (
-        <div className={styles.cardFrom}>
+        <div className={`${styles.cardFrom} ${styles.autoSize}`}>
           <Card
             title={t("FreeConsultation")}
             headStyle={{
