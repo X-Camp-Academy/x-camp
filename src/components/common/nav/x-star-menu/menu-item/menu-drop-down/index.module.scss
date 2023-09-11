@@ -23,7 +23,7 @@
 
   @media (min-width: 768px) {
     & {
-      width: 720px;
+      width: 100%;
     }
   }
 
@@ -46,7 +46,13 @@
   }
 
   .dropdownContainer {
+    @media (max-width: 992px) and  (min-width: 768px){
+      max-width: 100%;
+    }
     .left {
+      @media (max-width: 992px) and  (min-width: 768px){
+        width: 210px;
+      }
       .title {
         @include title('normal');
       }
@@ -112,6 +118,10 @@
       border-radius: 12px;
       background: #FFF4ED;
       cursor: pointer;
+
+      @media (max-width: 992px) and  (min-width: 768px){
+       padding: 20px 10px;
+      }
 
       .title {
         @include text(18px, 28px);
