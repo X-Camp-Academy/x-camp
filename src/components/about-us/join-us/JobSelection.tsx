@@ -1,11 +1,12 @@
-import { Button, Empty } from "antd";
-import styles from "./JobSelection.module.scss";
+
 import { useEffect, useState } from "react";
+import { Button, Empty } from "antd";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
 import JobCard from "./JobCard";
 import { useGetAboutUsJoinUs } from "@/apis/strapi-client/strapi";
 import { AboutUsJoinUsCategory } from "@/apis/strapi-client/define";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
+import styles from "./JobSelection.module.scss";
 
 const JobSelection = () => {
   const { lang } = useLang();
@@ -50,7 +51,7 @@ const JobSelection = () => {
 
           <div className={styles.jobCardContainer}>
             {aboutUsJoinUs?.length != 0 ? aboutUsJoinUs?.map((v, index) => (
-              <JobCard key={index} index={index} data={v} />
+              <JobCard key={v?.id} index={index} data={v} />
             )) : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={getTransResult(lang, '目前暂无职位', 'There are currently no positions')} />}
 
           </div>

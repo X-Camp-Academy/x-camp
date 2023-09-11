@@ -2,12 +2,9 @@ import React, { useRef } from "react";
 import {
   Space,
   Card,
-  Image,
   Typography,
   Carousel,
   Button,
-  List,
-  message
 } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 import {
@@ -17,11 +14,8 @@ import {
 } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import { XStarViewer } from "@/utils/x-star-editor-beta";
-import UsacoCards from "@/components/common/usaco-medal";
 import {
   useGetAboutUsAchievementsAward,
-  useGetAchievementsTimeLine,
 } from "@/apis/strapi-client/strapi";
 import styles from "./USACOWinners.module.scss";
 
@@ -32,7 +26,6 @@ const USACOSpotlight: React.FC = () => {
   const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor("#D46B14");
   const { data: awards } = useGetAboutUsAchievementsAward();
-  const { data: timeLine } = useGetAchievementsTimeLine();
 
   return (
     <div className={styles.USACOSpotlightContainer}>

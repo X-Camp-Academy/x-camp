@@ -4,8 +4,8 @@ import styles from "./index.module.scss";
 import { Breadcrumb, Space, Typography } from "antd";
 import Link from "next/link";
 import { ClockCircleOutlined, ReadOutlined } from "@ant-design/icons";
-import { XStarViewer } from "@/utils/x-star-editor-beta";
-import { viewerVideoPlugin } from "@/utils/x-star-editor-beta/plugins/viewer-video";
+import { XStarMdViewer } from "x-star-editor";
+import { viewerVideoPlugin } from "@/utils/x-star-editor/plugins/viewer-video";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import dayjs from "dayjs";
@@ -75,7 +75,7 @@ const ArticleContent = ({ props }: Props) => {
         <ClockCircleOutlined className={styles.icon} />
         <div className={styles.videoDate}>{formatDate(props?.attributes?.startDateTime || '')} ~ {formatDate(props?.attributes.endDateTime || '')}</div>
       </Space>
-      <XStarViewer
+      <XStarMdViewer
         className={styles.viewer}
         value={props?.attributes?.detailContent}
         plugins={[viewerVideoPlugin()]}
