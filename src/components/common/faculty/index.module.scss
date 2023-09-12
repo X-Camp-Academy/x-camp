@@ -23,8 +23,6 @@
 
   .carouselContainer {
     position: relative;
-    padding-left: 45px;
-    padding-right: 45px;
     margin-top: 32px;
     .prev {
       background-color: $primary-color;
@@ -71,6 +69,7 @@
 
 .cardListMobileContainer {
   @include flex;
+  margin: 0 15px;
   width: 100%;
   overflow: auto;
 }

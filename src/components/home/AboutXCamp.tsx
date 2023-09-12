@@ -69,12 +69,15 @@ const AboutXCamp: React.FC = () => {
                         preview={false}
                         className={styles.cardIcon}
                       />
-                      <Text className={styles.cardTitle}>
+                      <Paragraph
+                        ellipsis={{ rows: 2 }}
+                        className={styles.cardTitle}
+                      >
                         {item?.title}
                         {
                           !!item.title2 && <><br /> {item.title2}</>
                         }
-                      </Text>
+                      </Paragraph>
                       <Paragraph
                         ellipsis={{ rows: 3, tooltip: item?.desc }}
                         className={styles.cardParagraph}
