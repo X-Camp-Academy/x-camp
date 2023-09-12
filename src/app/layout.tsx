@@ -1,3 +1,4 @@
+'use client'
 import dynamic from 'next/dynamic';
 import { LocalStateProvider } from '@/utils/local-state';
 import { WithAuth } from '@/hoc/with-auth';
@@ -13,14 +14,16 @@ const WithIntl = dynamic(() => import('@/hoc/with-intl'), {
   ssr: false,
 });
 import './globals.scss';
+import {useMobile} from "@/utils";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const isMobile = useMobile()
   return (
-    <html lang="en">
+    <html lang="en" className={isMobile ? 'mobile' : 'pc'}>
       <meta
         name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"

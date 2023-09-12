@@ -3,6 +3,9 @@
 .bannerContainer {
   width: 100%;
   position: relative;
+  background: #fff;
+  box-shadow: 0 11px 26px -4px rgba(216,216,216,0.3);
+
   .carouselDots {
     position: absolute;
     right: 80px;
