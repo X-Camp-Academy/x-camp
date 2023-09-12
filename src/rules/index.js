@@ -208,7 +208,7 @@ module.exports = {
             {
                 declaration: true,
                 assignment: true,
-                return: true,
+                return: false,
                 arrow: true,
             },
         ],

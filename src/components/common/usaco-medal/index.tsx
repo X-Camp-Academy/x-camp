@@ -37,16 +37,15 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
 
   return (
     <div className={`${styles.usacoContainer} `}>
+      {
+        showTitle && <Col span={24} className={styles.titleContainer}>
+          <Title className={styles.title}>
+            Our&nbsp;
+            <Text className={styles.title} style={{ color: "#ffad11" }}>Achievements</Text>
+          </Title>
+        </Col>
+      }
       <Row gutter={16} className={`container ${styles.row}`}>
-        {
-          showTitle && <div className={styles.titleContainer}>
-            <Title className={styles.title}>
-              Our&nbsp;
-              <Text className={styles.title} style={{ color: "#ffad11" }}>Achievements</Text>
-            </Title>
-          </div>
-        }
-
         {data?.map((item, index) => (
           <Col
             key={index}
@@ -62,8 +61,9 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
               </Space>
             </div>
           </Col>
-          ))}
+        ))}
       </Row>
+
     </div>
   );
 };
