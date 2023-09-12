@@ -35,49 +35,35 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
   ];
 
   return (
-    <Row gutter={16} className={styles.row}>
-      <Col
-        xs={24}
-        sm={24}
-        md={4}
-        lg={4}
-      >
-        <Image
-          alt=""
-          preview={false}
-          src={"/image/common/x-camp-logo.png"}
-          className={styles.logo}
-        />
-      </Col>
-
-      {
-        showTitle && <div className={styles.titleContainer}>
-          <Title className={styles.title}>
-            Our&nbsp;
-            <Text className={styles.title} style={{ color: "#ffad11" }}>Achievements</Text>
-          </Title>
-        </div>
-      }
-
-      {data?.map((item, index) => (
-        <Col
-          key={index}
-          xs={24}
-          sm={24}
-          md={5}
-          lg={5}
-        >
-          <div className={styles.medalContainer}>
-            <Space direction="vertical">
-              <Text className={styles.medalCount} style={{ color: item?.color }}>
-                {item?.count}
-              </Text>
-              <Text className={styles.medalTitle}>{item?.title}</Text>
-            </Space>
+    <div className={`${styles.usacoContainer} `}>
+      <Row gutter={16} className={`container ${styles.row}`}>
+        {
+          showTitle && <div className={styles.titleContainer}>
+            <Title className={styles.title}>
+              Our&nbsp;
+              <Text className={styles.title} style={{ color: "#ffad11" }}>Achievements</Text>
+            </Title>
           </div>
-        </Col>
-      ))}
-    </Row>
+        }
+
+        {data?.map((item, index) => (
+          <Col
+            key={index}
+            span={6}
+            className={styles.col}
+          >
+            <div className={styles.medalContainer}>
+              <Space direction="vertical">
+                <Text className={styles.medalCount} style={{ color: item?.color }}>
+                  {item?.count}
+                </Text>
+                <Text className={styles.medalTitle}>{item?.title}</Text>
+              </Space>
+            </div>
+          </Col>
+          ))}
+      </Row>
+    </div>
   );
 };
 

@@ -1,12 +1,25 @@
+@import "@/styles/variables.scss";
+.usacoContainer {
+  @include flex(center);
+  width: 100%;
+  background: url("/image/common/x-camp-logo.png") no-repeat;
+  background-size: contain;
+}
+
 .row {
+  position: relative;
   width: 100%;
   height: 338px;
-  background-color: #efefef;
-  position: relative;
+  padding: 0 160px;
+
   @media (max-width: 768px) {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    height: auto;
+    padding: 0;
+    height: 220px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 992px) {
+    padding: 0;
   }
 
   .logo {
@@ -32,33 +45,27 @@
       position: relative;
     }
   }
-
+  .col {
+    @include flex(center);
+  }
   .medalContainer {
-    width: 192px;
-    height: 128px;
-    margin-top: 150px;
-    background-image: url("/image/common/usaco-medal.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    width: 230px;
     text-align: center;
+    background: url("/image/common/usaco-medal.png") no-repeat center;
+    background-size: 140px 90px;
     @media (max-width: 768px) {
-      margin: 0 auto;
-      margin-top: 96px;
     }
     .medalCount {
       font-size: 48px;
       font-weight: 600;
       line-height: 48px;
+      width: 100%;
     }
 
     .medalTitle {
-      font-size: 16px;
+      display: block;
+      @include text(16px, 24px, #666);
       font-weight: 500;
-      color: #666666;
-      line-height: 48px;
-    }
-    &:last-child {
-      margin-bottom: 64px;
     }
   }
 }

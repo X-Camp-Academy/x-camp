@@ -10,7 +10,6 @@ const DiscoverCourses = dynamic(
   () => import("@/components/common/discover-courses")
 );
 const AboutXCamp = dynamic(() => import("./AboutXCamp"));
-const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
 const WeSupport = dynamic(() => import("./WeSupport"));
 const Faculty = dynamic(() => import("@/components/common/faculty"));
 const PublicCalendar = dynamic(() => import("./PublicCalendar"));

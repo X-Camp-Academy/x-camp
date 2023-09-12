@@ -8,7 +8,7 @@ import {
   Button,
   MenuProps,
 } from 'antd';
-import { UnorderedListOutlined } from '@ant-design/icons';
+import { AlignRightOutlined, CloseOutlined } from '@ant-design/icons';
 import 'animate.css';
 import styles from './index.module.scss';
 import { useMobile } from '@/utils';
@@ -93,18 +93,23 @@ const Nav = () => {
   const { user, logout } = useAuth();
 
   const onChangeShowMenu = () => {
+    let timer: any = null
+    if (timer) {
+      return
+    }
     if (!showMenu) {
       setShowMenu(true);
     } else {
-      (ref?.current as HTMLDivElement)?.classList?.remove(
-        'animate__slideInRight'
-      );
       (ref?.current as HTMLDivElement)?.classList?.add(
         'animate__animated',
         'animate__slideOutRight'
       );
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setShowMenu(false);
+        (ref?.current as HTMLDivElement)?.classList?.remove(
+            'animate__slideInRight'
+        );
+        clearTimeout(timer)
       }, 1000);
     }
   };
@@ -131,9 +136,10 @@ const Nav = () => {
             )}
           </Space>
           <Space size={'middle'}>
-            <SelectPage />
-            {!isMobile && (
+
+            {!isMobile ? (
               <>
+                <SelectPage />
                 {user ? (
                   <Space size={12}>
                     <DropdownUserMenu user={user} logout={logout} />
@@ -155,11 +161,10 @@ const Nav = () => {
                   <span>{getTransResult(lang, '中文', 'English')}</span>
                 </div>
               </>
-            )}
-            {isMobile && (
-              <Button type="primary" onClick={onChangeShowMenu}>
-                <UnorderedListOutlined />
-              </Button>
+            ) : (
+              <span onClick={onChangeShowMenu}>
+                {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
+              </span>
             )}
           </Space>
         </Space>
