@@ -9,7 +9,7 @@
       width: 100%;
       .title {
         margin: 0;
-        @include title('home-content');
+        @include title('default');
         span {
           color: $primary-color
         }

@@ -1,21 +1,29 @@
-@mixin title($type: 'normal') {
-  font-family: 'MontserratAlternates';
+@mixin title($type: 'default') {
   @if $type == 'normal' {
     width: 300px;
     font-size: 30px;
     font-weight: bold;
     line-height: 42px;
   }
-  @else if($type == 'home-content') {
+  @else if($type == 'default') {
+    font-family: 'MontserratAlternates';
     font-size: 36px;
     font-weight: bold;
-    line-height: 54px;
+    line-height: 48px;
     span {
       font-family: 'MontserratAlternates';
       color: $primary-color;
     }
   }
   @else if($type == 'about') {
+    font-family: 'MontserratAlternates';
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $text-color;
+    margin: 0;
+  }
+  @else if($type == 'banner') {
     font-size: 36px;
     font-weight: bold;
     line-height: 48px;

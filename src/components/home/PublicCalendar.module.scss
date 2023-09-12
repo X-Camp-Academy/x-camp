@@ -5,7 +5,7 @@
   .publicCalendar {
     .title {
       margin: 0;
-      @include title('home-content');
+      @include title('default');
       text-align: center;
     }
     .titleBg {

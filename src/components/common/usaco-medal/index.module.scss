@@ -11,10 +11,7 @@
 .titleContainer {
   margin: 24px;
   .title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
-    line-height: 48px;
+    @include title();
     text-align: center;
     margin: 0;
   }
