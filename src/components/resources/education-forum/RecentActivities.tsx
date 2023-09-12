@@ -33,12 +33,8 @@ const RecentActivities: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <XCollapse
-          header={{
-            title: t("RecentPopularEvents"),
-            description: t("RecentPopularEvents.Desc"),
-          }}
-        >
+        <div>
+          <div className={styles.mainTitle}>{t("RecentPopularEvents")}</div>
           <Row className={styles.cards} gutter={[32, 32]}>
             {RecentActivities?.slice(0, 3)?.map((item, index) => (
               <Col key={index} xs={24} sm={24} md={12} lg={8}>
@@ -81,7 +77,7 @@ const RecentActivities: React.FC = () => {
               </Col>
             ))}
           </Row>
-        </XCollapse>
+        </div>
       </div>
     </div >
   );
