@@ -2,7 +2,6 @@ import React, { useState, useRef, useContext } from "react";
 import { Breadcrumb, Button, Descriptions, Divider, Space, Typography, Image, Carousel, Modal, message } from "antd";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import classNames from "classnames/bind";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult, getWeeksDays } from "@/utils/public";
 import CourseAbstract from "@/components/common/course-abstract";
@@ -11,7 +10,6 @@ import styles from "./CourseBanner.module.scss";
 
 
 const { Title } = Typography;
-const cx = classNames.bind(styles);
 
 const CourseBanner: React.FC = () => {
   const { format: t, lang } = useLang();
@@ -97,11 +95,9 @@ const CourseBanner: React.FC = () => {
     { key: t("AdditionalInfo"), value: additionalInfo },
   ];
   return (
-    <div className={styles.topBanner}>
-      <div className={styles.banner} />
-
+    <div className={styles.banner}>
       <div
-        className={cx("container", styles.content)}
+        className={`${styles.content} container`}
         style={{ height: "100%" }}
       >
         <Breadcrumb

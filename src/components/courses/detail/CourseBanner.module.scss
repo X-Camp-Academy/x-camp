@@ -1,15 +1,10 @@
 @import "@/styles/variables";
 
-.topBanner {
-  .banner {
-    position: absolute;
-    top: 0;
-    height: 494px;
-    width: 100%;
-    background-image: url("/image/home/carousel-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.banner {
+  width: 100%;
+  background-image: url("/image/home/carousel-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 
   .content {
     position: relative;

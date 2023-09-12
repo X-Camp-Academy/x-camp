@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 
 const Banner = dynamic(() => import("./Banner"));
 const Map = dynamic(() => import("./Map"));
+const Flag = dynamic(() => import("./Flag"));
 const Stories = dynamic(() => import("./Stories"));
 const UpcomingEvents = dynamic(() => import("./UpcomingEvents"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
@@ -18,14 +19,15 @@ const XAlumni = () => {
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname],
   });
 
   return (
     <Layout className={styles.xalumniContainer}>
       <Content>
         <Banner />
-        <Map />
+        {/* <Map /> */}
+        <Flag />
         <Stories />
         <UpcomingEvents />
         <Reviews reviewsData={reviewsData} />

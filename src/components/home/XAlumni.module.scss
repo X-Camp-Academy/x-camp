@@ -13,7 +13,7 @@
       justify-content: center;
     }
     .title {
-     @include title('home-content');
+      @include title("home-content");
       margin: 0;
     }
     .titleBg {
