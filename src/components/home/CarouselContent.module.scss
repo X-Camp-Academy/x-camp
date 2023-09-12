@@ -6,10 +6,15 @@
   .carouselDots {
     position: absolute;
     right: 80px;
-    top: calc((100% - 340px)/2);
+    top: 270px;
     transform: translateY(-50%);
     z-index: 1;
     list-style-type: none;
+    @media (max-width: 992px){
+      right: 40px;
+      top: 240px;
+    }
+
     .li {
       width: 42px;
       margin-bottom: 30px;

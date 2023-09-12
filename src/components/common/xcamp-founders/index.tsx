@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { Space, Button, Image, Typography, Row, Col } from "antd";
-import styles from "./index.module.scss";
 import { StarOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -19,7 +19,7 @@ const XCampFounder: React.FC = () => {
 
         <Paragraph className={styles.paragraph}>Founded on August 22, 2017, 4 students currently trained have entered the US National Training Team, with more than 500 students currently studying in 300+ schools around the world.</Paragraph>
 
-        <Row gutter={[32, 124]}>
+        <Row gutter={[32, 124]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
             <div className={styles.charlieImgBackground} />
             <Image
@@ -68,7 +68,7 @@ const XCampFounder: React.FC = () => {
           </Col>
         </Row>
 
-        <Row gutter={[32, 124]} style={{ marginTop: 120 }}>
+        <Row gutter={[32, 124]} style={{ marginTop: 120 }} className={styles.row}>
           <Col
             xs={24}
             sm={24}

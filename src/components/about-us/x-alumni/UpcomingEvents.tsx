@@ -70,7 +70,7 @@ const UpcomingEvents: React.FC = () => {
               item.attributes.link &&
               item.attributes.onlinePlatform;
             return (
-              <Col key={index} xs={24} sm={24} md={8} style={{ marginTop: 20 }}>
+              <Col key={item?.id} xs={24} sm={24} md={8} style={{ marginTop: 20 }}>
                 <ColorfulCard border="bottom" index={index}>
                   <Card>
                     <Space direction="vertical">

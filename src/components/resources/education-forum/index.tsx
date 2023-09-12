@@ -12,14 +12,13 @@ const RecentActivities = dynamic(() => import("./RecentActivities"));
 const Activities = dynamic(() => import("./Activities"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 
-
 const { Content } = Layout;
 
 const EducationForum: React.FC = () => {
   const pathname = usePathname();
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname],
   });
 
   return (

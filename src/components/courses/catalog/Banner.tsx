@@ -47,7 +47,7 @@ const Banner: React.FC = () => {
                 className={styles.button}
                 icon={<CaretRightOutlined />}
               >
-                <Link href="/Evaluation" target="_blank">
+                <Link href="/evaluation" target="_blank">
                   {t("PlacementTest")}
                 </Link>
               </Button>

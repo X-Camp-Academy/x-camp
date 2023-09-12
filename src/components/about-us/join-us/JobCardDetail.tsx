@@ -1,9 +1,9 @@
-import { Space, Typography, Divider, List } from "antd";
+import { Divider } from "antd";
 import styles from "./JobCardDetail.module.scss";
 import { GetAboutUsJoinUs } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { XStarViewer } from "@/utils/x-star-editor-beta";
-import { viewerVideoPlugin } from "@/utils/x-star-editor-beta/plugins/viewer-video";
+import { XStarMdViewer } from "x-star-editor";
+import { viewerVideoPlugin } from "@/utils/x-star-editor/plugins/viewer-video";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
 
@@ -19,7 +19,7 @@ const JobCardDetail = ({ data }: Props) => {
       <div className={styles.cardListContainer}>
         <Divider style={{ borderColor: "#FFAD11" }} className={styles.divider} />
         <div>
-          <XStarViewer
+          <XStarMdViewer
             className={styles.viewer}
             value={getTransResult(
               lang,

@@ -17,6 +17,13 @@
     line-height: 36px;
   }
 
+  .row {
+    @media (max-width: 768px) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+
   .baseImgCol {
     display: flex;
     justify-content: center;

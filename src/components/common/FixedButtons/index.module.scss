@@ -4,7 +4,7 @@
   flex-direction: column;
   position: fixed;
   right: 64px;
-  top: 40%;
+  top: 73%;
 
   z-index: 10;
   //border-radius: 4px;
@@ -16,7 +16,7 @@
     position: relative;
     height: 26px;
     padding: 0;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     background-color: $primary-color;
 
     @include flex(flex-end);
@@ -56,9 +56,15 @@
     }
   }
 }
+.autoSize {
+  @media (max-device-width: 600px) {
+    height: 80vh;
+  }
+}
 .cardFrom {
   width: 420px;
   margin-top: 10px;
+  overflow: auto;
 
   @media (max-width: 768px) {
     width: 100%;

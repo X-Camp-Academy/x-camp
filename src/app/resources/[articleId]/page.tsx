@@ -6,6 +6,8 @@ export const metadata = {
   description: "X-Camp Academy | Programming and Education news from X-Camp",
 };
 
-export default function Page() {
+const Page: React.FC = () => {
   return <Article />;
-}
+};
+
+export default Page;

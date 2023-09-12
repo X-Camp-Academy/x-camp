@@ -1,0 +1,33 @@
+.flag {
+  padding-top: 70px;
+  padding-bottom: 80px;
+  text-align: center;
+  position: relative;
+
+  .title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 64px;
+  }
+
+  .text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 34px;
+    display: block;
+  }
+
+  .topRow {
+    margin-top: 56px;
+  }
+  .bottomRow {
+    margin-top: 100px;
+  }
+
+  .image {
+    width: 260px;
+    height: 140px;
+  }
+}
