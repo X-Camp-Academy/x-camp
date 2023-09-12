@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import styles from "./index.module.scss";
 import { Divider } from "antd";
-import { GetNewEvent } from "@/apis/strapi-client/define";
-import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
+import { GetNewEvent } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import styles from "./index.module.scss";
 
 interface Props {
   data: StrapiResponseDataItem<GetNewEvent>[] | undefined;

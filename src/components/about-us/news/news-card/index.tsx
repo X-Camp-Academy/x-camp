@@ -47,13 +47,13 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
         />
 
         <div className={styles.partner}>
-          <Row gutter={[32, 48]}>
+          <Row gutter={[32, 48]} className={styles.row}>
             {newEventData?.map((item, index) => {
               const { utcTime: startTime } = formatTimezone(
                 item?.attributes?.startDateTime
               );
               return (
-                <Col key={index} xs={24} sm={24} md={24} lg={8}>
+                <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
                   <ColorfulCard border={"bottom"} index={index} animate={false}>
                     <Space direction={"vertical"} className={styles.card}>
                       <img

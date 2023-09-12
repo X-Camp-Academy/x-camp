@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   Space,
   Image,
@@ -6,15 +6,13 @@ import {
   List,
   message
 } from "antd";
-import { CarouselRef } from "antd/es/carousel";
 import {
   setTwoToneColor,
 } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import { XStarViewer } from "@/utils/x-star-editor-beta";
+import { XStarMdViewer } from "x-star-editor";
 import {
-  useGetAboutUsAchievementsAward,
   useGetAchievementsTimeLine,
 } from "@/apis/strapi-client/strapi";
 import styles from "./TimeLine.module.scss";
@@ -23,9 +21,9 @@ const { Title, Text } = Typography;
 
 const TimeLine: React.FC = () => {
   const { lang, format: t } = useLang();
-  const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor("#D46B14");
   const { data: timeLine } = useGetAchievementsTimeLine();
+
 
   return (
     <div className={`${styles.timeLineContainer} container`}>
@@ -51,7 +49,7 @@ const TimeLine: React.FC = () => {
                     </Text>
                   }
                   description={
-                    <XStarViewer
+                    <XStarMdViewer
                       className={styles.timeListDetail}
                       value={getTransResult(
                         lang,

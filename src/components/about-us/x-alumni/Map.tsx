@@ -116,7 +116,7 @@ const Map = () => {
   return (
     <div className={`${styles.map} container`}>
       <Title className={styles.title}>{t("OneBigFamily")}</Title>
-      <Text className={styles.text}>{t("AlumniLocations")}</Text>
+      <Text className={styles.text}>{t("JoinBigFamily")}</Text>
 
       <div
         ref={worldDOM as LegacyRef<HTMLDivElement>}

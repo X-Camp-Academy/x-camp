@@ -1,22 +1,12 @@
-.resumeContainer {
-  .resume {
-    width: 900px;
+.cardContainer {
+  margin-top: 80px;
+  background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 60px;
 
-    @media (max-width: 1200px) {
-      width: 800px;
-    }
-
-    .cardContainer {
-      margin-top: 80px;
-      background: #ffffff;
-      border-radius: 12px;
-      margin-bottom: 60px;
-
-      :global(.ant-card-body) {
-        @media (max-width: 768px) {
-          padding: 24px 0;
-        }
-      }
+  :global(.ant-card-body) {
+    @media (max-width: 768px) {
+      padding: 24px 0;
     }
   }
 }

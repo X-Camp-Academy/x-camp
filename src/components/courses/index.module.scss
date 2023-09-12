@@ -19,7 +19,7 @@
     }
 
     :global(.ant-affix) {
-      z-index: 1000;
+      z-index: 9999;
     }
     :global(.ant-segmented-item-label) {
       font-size: 18px;

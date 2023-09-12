@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import { Typography, Row, Col, Space, Image } from "antd";
-import Texty from "rc-texty";
+import { Typography, Row, Col, Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import MaskCard from "../mask-card";
 import styles from "./index.module.scss";
@@ -56,9 +55,9 @@ const DiscoverCourses = ({
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
       maskChildren: generateMaskChildren(
-          t("USACO.Title"),
-          t("USACO.Mask.Desc"),
-          "/courses/#classify3"
+        t("USACO.Title"),
+        t("USACO.Mask.Desc"),
+        "/courses/#classify3"
       ),
     },
     {
@@ -68,9 +67,9 @@ const DiscoverCourses = ({
       bgc: "#FFAD11",
       maskBgc: "rgb(255 173 17 / 40%)",
       maskChildren: generateMaskChildren(
-          t("USACO.Title"),
-          t("USACO.Mask.Desc"),
-          "/courses/#classify3"
+        t("USACO.Title"),
+        t("USACO.Mask.Desc"),
+        "/courses/#classify3"
       ),
     },
 
@@ -110,7 +109,7 @@ const DiscoverCourses = ({
           Discover Our <span>Courses</span>
         </Text>
         {showSubTitle && (
-        <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
+          <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
         )}
         {showBg && <Text className={styles.titleBg} />}
 
@@ -121,10 +120,10 @@ const DiscoverCourses = ({
                 <MaskCard
                   className={styles.card}
                   bodyStyle={{
-                        padding: 0,
-                        borderRadius: 8,
-                        paddingBottom: 0,
-                      }}
+                    padding: 0,
+                    borderRadius: 8,
+                    paddingBottom: 0,
+                  }}
                   maskChildren={item.maskChildren}
                   maskBackGroundColor={item?.maskBgc}
                 >
