@@ -71,6 +71,7 @@ const NewsPage = () => {
           pageSize={PAGE_SIZE}
           total={total}
         />
+
         {/* <Partners />
         <BecomePartner /> */}
 

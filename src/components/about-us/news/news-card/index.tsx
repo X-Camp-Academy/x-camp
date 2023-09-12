@@ -47,7 +47,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
         />
 
         <div className={styles.partner}>
-          <Row gutter={[32, 48]}>
+          <Row gutter={[32, 48]} className={styles.row}>
             {newEventData?.map((item, index) => {
               const { utcTime: startTime } = formatTimezone(
                 item?.attributes?.startDateTime
