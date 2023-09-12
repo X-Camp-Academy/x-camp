@@ -9,12 +9,11 @@
 .row {
   position: relative;
   width: 100%;
-  height: 338px;
+  height: 200px;
   padding: 0 160px;
 
   @media (max-width: 768px) {
     padding: 0;
-    height: 220px;
     max-width: 100%;
   }
 
@@ -51,6 +50,7 @@
   .medalContainer {
     width: 230px;
     text-align: center;
+    margin-top: 20px;
     background: url("/image/common/usaco-medal.png") no-repeat center;
     background-size: 140px 90px;
     @media (max-width: 768px) {
