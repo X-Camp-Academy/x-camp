@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import { Typography, Row, Col, Space, Image } from "antd";
-import Texty from "rc-texty";
+import { Typography, Row, Col, Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import MaskCard from "../mask-card";
 import styles from "./index.module.scss";
@@ -117,7 +116,7 @@ const DiscoverCourses = ({
         <Row className={styles.row} gutter={16} align="middle">
           {courseCards.map((item) => {
             return (
-              <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>
+              <Col key={item?.url} xs={12} sm={12} md={12} lg={12} xl={6}>
                 <MaskCard
                   className={styles.card}
                   bodyStyle={{

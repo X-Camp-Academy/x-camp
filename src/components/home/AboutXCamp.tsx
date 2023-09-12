@@ -54,7 +54,7 @@ const AboutXCamp: React.FC = () => {
         <Row className={styles.row} gutter={16} justify="center" align="middle">
           {aboutContents.map((item) => {
             return (
-              <Col key={item?.icon} xs={24} sm={24} md={24} lg={6}>
+              <Col key={item?.icon} xs={12} sm={12} md={12} lg={6}>
                 <Card
                   className={styles.card}
                   bodyStyle={{

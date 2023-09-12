@@ -17,7 +17,7 @@
   }
   .paragraph {
     margin-top: 10px;
-    padding: 0 120px;
+    padding: 0 15px;
     @include text(18px, 34px);
   }
 
@@ -42,10 +42,13 @@
       transform: translateY(-50%);
       z-index: 999;
     }
+    .mobile.cardContainer {
+      &:first-of-type, &:last-of-type {
+        margin: 0;
+      }
+    }
     .cardContainer {
-      margin-left: 15px;
-      margin-right: 15px;
-      margin-top: 16px;
+      margin: 0 15px;
       text-align: left;
       .name {
         @include text(24px, 36px);
@@ -56,6 +59,7 @@
       }
       .more {
         @include text(14px, 16px);
+
       }
       .cardImage {
         width: 150px;
@@ -63,4 +67,10 @@
       }
     }
   }
+}
+
+.cardListMobileContainer {
+  @include flex;
+  width: 100%;
+  overflow: auto;
 }
