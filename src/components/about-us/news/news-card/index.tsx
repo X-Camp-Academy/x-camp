@@ -53,7 +53,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
                 item?.attributes?.startDateTime
               );
               return (
-                <Col key={index} xs={24} sm={24} md={24} lg={8}>
+                <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
                   <ColorfulCard border={"bottom"} index={index} animate={false}>
                     <Space direction={"vertical"} className={styles.card}>
                       <img

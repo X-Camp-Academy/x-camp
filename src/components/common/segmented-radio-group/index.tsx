@@ -29,7 +29,7 @@ const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({
             value={segmented}
             className={styles.radioGroup}
           >
-            <Space size={0} style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>
+            <Space style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>
               {
                 data?.map(type => (
                   <Radio style={{ width: '100%' }} key={type} value={type}>{type}</Radio>

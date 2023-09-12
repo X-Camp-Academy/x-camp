@@ -1,4 +1,6 @@
 "use client";
+import React from "react";
+import Link from "next/link";
 import {
   Typography,
   Divider,
@@ -11,12 +13,12 @@ import {
   UploadFile,
   message,
 } from "antd";
-import styles from "./ResumeForm.module.scss";
-import React from "react";
 import { UploadChangeParam } from "antd/es/upload";
-import { useSubmitResume } from "@/apis/send-email-client/sendEmail";
 import { useLang } from "@/hoc/with-intl/define";
-import Link from "next/link";
+import { useSubmitResume } from "@/apis/send-email-client/sendEmail";
+import styles from "./ResumeForm.module.scss";
+
+
 const { Title, Text, Paragraph } = Typography;
 
 interface submitResumeProps {

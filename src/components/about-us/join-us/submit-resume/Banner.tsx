@@ -1,12 +1,12 @@
-import { Button } from "antd";
-import styles from "./TopBanner.module.scss";
-import { useLang } from "@/hoc/with-intl/define";
-import { useRouter } from "next/navigation";
-import CommonBanner from "@/components/common/common-banner";
 import React from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "antd";
+import CommonBanner from "@/components/common/common-banner";
+import { useLang } from "@/hoc/with-intl/define";
+import styles from "./Banner.module.scss";
 
 
-const TopBanner = () => {
+const Banner: React.FC = () => {
   const { format: t } = useLang();
   const router = useRouter();
   const paragraph = (
@@ -35,4 +35,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;
