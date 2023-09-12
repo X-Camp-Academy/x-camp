@@ -1,9 +1,9 @@
 "use client";
 import React, { useRef } from "react";
+import Link from "next/link";
 import { Space, Typography, Card, Image, Button, Carousel } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
-import Link from "next/link";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import ColorfulCard from "../colorful-card";

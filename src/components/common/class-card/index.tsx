@@ -1,8 +1,9 @@
+import React from "react";
 import { ClockCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
 import { Card, Space, Button, Typography } from "antd";
-import React from "react";
 import ColorfulCard, { ColorfulCardProps } from "../colorful-card";
 import styles from "./index.module.scss";
+
 const { Title, Paragraph } = Typography;
 
 type ClassCardProps = Omit<ColorfulCardProps, "children"> & {

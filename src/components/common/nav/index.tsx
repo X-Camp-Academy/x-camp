@@ -1,5 +1,7 @@
 'use client';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import {
   Layout,
   Space,
@@ -9,8 +11,6 @@ import {
   MenuProps,
 } from 'antd';
 import { UnorderedListOutlined } from '@ant-design/icons';
-import 'animate.css';
-import styles from './index.module.scss';
 import { useMobile } from '@/utils';
 import { removeDropdown, useMenuItems } from './define';
 import XStarMenu from './x-star-menu';
@@ -19,13 +19,13 @@ import DropdownUserMenu from '../dropdown-user-menu';
 import { apiConfig } from '@/config/index';
 import { getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import SelectPage from './SelectPage';
+import styles from './index.module.scss';
+import 'animate.css';
 
 const { Header } = Layout;
 
-const Nav = () => {
+const Nav: React.FC = () => {
   const { format: t, toggle, lang } = useLang();
   const pathname = usePathname();
   const url = new URL(window.location.href);

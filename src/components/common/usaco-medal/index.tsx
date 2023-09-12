@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Typography, Image } from "antd";
-import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
+
 const { Title, Text } = Typography;
 
 interface USACOMedalProps {

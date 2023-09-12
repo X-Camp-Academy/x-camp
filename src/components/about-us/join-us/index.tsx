@@ -5,7 +5,7 @@ import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import WhyWorkWithUs from "./WhyWorkWithUs";
 
-const TopBanner = dynamic(() => import("./TopBanner"));
+const Banner = dynamic(() => import("./Banner"));
 const JobSelection = dynamic(() => import("./JobSelection"));
 const JoinUsFaculty = dynamic(() => import("./JoinUsFaculty"));
 
@@ -15,7 +15,7 @@ const JoinUs: React.FC = () => {
   return (
     <Layout className={styles.joinUsContainer}>
       <Content>
-        <TopBanner />
+        <Banner />
         {/*<WhyWorkWithUs />*/}
         <JobSelection />
         <JoinUsFaculty />

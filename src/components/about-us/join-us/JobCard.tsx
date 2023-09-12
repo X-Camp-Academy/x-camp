@@ -1,10 +1,11 @@
 import { Collapse } from "antd";
-import styles from "./JobCard.module.scss";
 import JobCardHeader from "./JobCardHeader";
 import JobCardDetail from "./JobCardDetail";
 import ColorfulCard from "@/components/common/colorful-card";
 import { GetAboutUsJoinUs } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import styles from "./JobCard.module.scss";
+
 const { Panel } = Collapse;
 
 interface JobCardProps {

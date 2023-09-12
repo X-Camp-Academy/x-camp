@@ -135,14 +135,12 @@ const DiscoverCourses = ({
                       </Paragraph>
                     </div>
                   </div>
-
                 </MaskCard>
               </Col>
             );
           })}
         </Row>
       </div>
-
     </div>
   );
 };

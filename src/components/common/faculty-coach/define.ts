@@ -1,8 +1,7 @@
-// 前三个需要二次分类
-export const LEVEL_TYPES = [
-  "Basic Level",
-  "USACO Bronze Level",
-  "USACO Silver Level",
-  "Grandmaster Class Level",
-  "All",
-];
+export enum LevelTypes {
+  BasicLevel = "Basic Level",
+  USACOBronzeLevel = "USACO Bronze Level",
+  USACOSilverLevel = "USACO Silver Level",
+  GrandmasterClassLevel = "Grandmaster Class Level",
+  All = "All",
+}

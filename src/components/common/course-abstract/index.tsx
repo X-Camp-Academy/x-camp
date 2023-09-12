@@ -7,7 +7,7 @@ import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetClasses } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
 
-const { Title, Paragraph, Text } = Typography;
+const { Paragraph } = Typography;
 
 interface CourseAbstractProps {
   courseCode?: string;
@@ -67,14 +67,6 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
     }
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <Space className={styles.abstract} size={24}>
       <div className={styles.left}>
@@ -111,7 +103,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
         <Button type="primary" className={styles.btn} onClick={() => handlerSighUp(startDate || '')}>
           {t("SignUpNow")}
         </Button>
-        <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Modal open={isModalOpen} onOk={() => setIsModalOpen(false)} onCancel={() => setIsModalOpen(false)}>
           <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'100%'} height={'100%'} />
         </Modal>
         <div className={styles.tip}>{t("Discount")}</div>

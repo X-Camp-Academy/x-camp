@@ -1,20 +1,18 @@
 "use client";
 import React, { useState } from "react";
-import "dayjs/locale/zh-cn";
 import {
   Calendar,
   Col,
   Row,
   theme,
   Button,
-  Badge,
 } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import styles from "./index.module.scss";
+import dayjs, { Dayjs } from "dayjs";
+import "dayjs/locale/zh-cn";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import dayjs, { Dayjs } from "dayjs";
-
+import styles from "./index.module.scss";
 interface Props {
   className?: string;
   onSelectDate: (date: string) => void;
@@ -73,20 +71,14 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
     });
 
     const dotStyle: React.CSSProperties = {
-         width: 8,
-        height: 8,
-        backgroundColor: '#FF4D4F',
-        borderRadius: 4,
-        margin: '0 auto'
-    }
+      width: 8,
+      height: 8,
+      backgroundColor: '#FF4D4F',
+      borderRadius: 4,
+      margin: '0 auto'
+    };
 
-    if (eventDataForDate) {
-      return (
-        <div style={dotStyle} />
-      );
-    } else {
-      return <></>;
-    }
+    return eventDataForDate ? <div style={dotStyle} /> : <></>;
   };
 
   const wrapperStyle: React.CSSProperties = {
@@ -104,9 +96,8 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
         cellRender={cellRender}
         onSelect={(date) => {
           setSelectDate(date.toString());
-          onSelectDate(date.toString()); // 将选择的日期传递给父组件
+          onSelectDate(date.toString());
         }}
-        //style={{ padding: 10, borderRadius: 0 }}
         headerRender={({ value, onChange }) => {
           const year = value.year();
           const month = value.month();

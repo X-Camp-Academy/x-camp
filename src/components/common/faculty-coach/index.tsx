@@ -10,15 +10,16 @@ import {
 import { GetFaculty } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
 import { SegmentedValue } from "antd/es/segmented";
-import { LEVEL_TYPES } from "./define";
+import { LevelTypes } from "./define";
 import SegmentedRadioGroup from "../segmented-radio-group";
 import ColorfulCard from "../colorful-card";
 
 const { Title, Paragraph, Text } = Typography;
 
 const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | undefined; }> = ({ data }) => {
-  const [segmented, setSegmented] = useState<SegmentedValue>("Basic Level");
+  const [segmented, setSegmented] = useState<SegmentedValue>(LevelTypes.BasicLevel);
   const { format: t, lang } = useLang();
+  const LEVEL_TYPES = Object.values(LevelTypes);
 
   const sortData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order

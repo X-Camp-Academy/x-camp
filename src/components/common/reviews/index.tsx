@@ -1,26 +1,26 @@
 "use client";
 import React, { useRef } from "react";
 import { Space, Rate, Typography, Carousel, Button } from "antd";
-import styles from "./index.module.scss";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import classNames from "classnames/bind";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { GetReviews } from "@/apis/strapi-client/define";
-import { useLang } from "@/hoc/with-intl/define";
 import dayjs from "dayjs";
+import { useLang } from "@/hoc/with-intl/define";
+import { formatTimezone, getTransResult } from "@/utils/public";
+import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { GetReviews } from "@/apis/strapi-client/define";
+import styles from "./index.module.scss";
 
-const { Title, Paragraph, Text } = Typography;
+const { Paragraph, Text } = Typography;
 
 const cx = classNames.bind(styles);
-interface Props {
+interface ReviewsProps {
   className?: string;
   reviewsData?: StrapiResponseDataItem<GetReviews>[] | undefined;
 }
 
-const Reviews = ({ className = "", reviewsData }: Props) => {
-  const { format: t, lang } = useLang();
+const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
+  const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
 
   const onPrev = () => {
@@ -35,10 +35,6 @@ const Reviews = ({ className = "", reviewsData }: Props) => {
       {
         reviewsData && reviewsData?.length > 0 &&
         <div className={cx(styles.reviews, "container")}>
-          {/*<Space direction="horizontal" align="center">*/}
-          {/*  <Title className={styles.title}>{t("Reviews")}</Title>*/}
-          {/*</Space>*/}
-
           <div className={styles.reviewsBox}>
             <Button
               type="primary"
