@@ -57,7 +57,7 @@
   }
 
   .title {
-    @include title('about');
+    @include title();
   }
 
 

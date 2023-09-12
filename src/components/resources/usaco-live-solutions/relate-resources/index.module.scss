@@ -10,7 +10,7 @@
     padding: 56px;
 
     .title {
-      @include title('about');
+      @include title();
       margin-bottom: 42px;
     }
 
