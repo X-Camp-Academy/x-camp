@@ -1,13 +1,12 @@
 @import "@/styles/variables.scss";
 .publicCalendarContainer {
   width: 100%;
-  padding: 100px 70px;
+  padding: 100px 0px;
   .publicCalendar {
     .title {
       margin: 0;
       @include title('home-content');
       text-align: center;
-
     }
     .titleBg {
       margin-left: 260px;
@@ -18,11 +17,17 @@
       background-image: url("/image/home/home-title-bg-1.png");
       background-repeat: no-repeat;
       background-size: cover;
+      @media (max-width: 768px) {
+        margin: 0 auto 45px;
+      }
     }
     .eventCard {
 
       height: 200px;
       padding-left: 12px;
+      @media (max-width: 768px) {
+        padding: 0;
+      }
       .eventContent {
         width: 100%;
         height: 95%;

@@ -37,8 +37,8 @@ const WeSupport: React.FC = () => {
           >
             <Row>
               <Col
-                xs={{ span: 24, order: 2 }}
-                sm={{ span: 24, order: 2 }}
+                xs={{ span: 24, order: 1 }}
+                sm={{ span: 24, order: 1 }}
                 md={{ span: 24, order: 2 }}
                 lg={{ span: 24, order: 1 }}
               >
@@ -52,15 +52,15 @@ const WeSupport: React.FC = () => {
               </Col>
 
               <Col
-                xs={{ span: 24, order: 1 }}
-                sm={{ span: 24, order: 1 }}
+                xs={{ span: 24, order: 3 }}
+                sm={{ span: 24, order: 3 }}
                 md={{ span: 24, order: 1 }}
                 lg={{ span: 24, order: 2 }}
               >
-                <Space direction="horizontal" size={isMobile ? 8 : 48}>
-                  {images?.map((item, index) => {
+                <Space direction="horizontal" size={isMobile ? 8 : 48} className={styles.imageContainer}>
+                  {images?.map((item) => {
                       return (
-                        <div key={index} >
+                        <div key={item} >
                           <AnimateBox className={styles.imageBox}>
                             <Image src={item} alt="image" preview={false} />
                           </AnimateBox>

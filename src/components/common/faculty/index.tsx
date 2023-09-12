@@ -1,37 +1,31 @@
 "use client";
-import React, { useRef } from "react";
-import { Space, Typography, Card, Image, Button, Carousel } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { CarouselRef } from "antd/es/carousel";
-import Link from "next/link";
+import React, { useMemo } from "react";
+import { Space, Typography } from "antd";
+import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import ColorfulCard from "../colorful-card";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
 import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
-import styles from "./index.module.scss";
+import { useMobile } from "@/utils";
+import CardListMobile from "@/components/common/faculty/CardListMobile";
+import CarouselWithButton from "@/components/common/faculty/CarouselWithButton";
+import CardItem, {IItem} from "@/components/common/faculty/CardItem";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
-  const { format: t, lang } = useLang();
+  const { format: t } = useLang();
+  const isMobile = useMobile();
   const { data } = useGetFaculty({});
-
-  const facultyData = data?.sort(
-    (a, b) => b?.attributes?.order - a?.attributes?.order
-  );
-
-  const carouselRef = useRef<CarouselRef>(null);
-  const onPrev = () => {
-    carouselRef?.current?.prev();
-  };
-  const onNext = () => {
-    carouselRef?.current?.next();
-  };
 
   const getImgUrl = (img: StrapiMedia) => {
     return img?.data?.attributes?.url;
   };
+
+  const facultyData: IItem[] | undefined = useMemo(() => {
+    return data?.sort(
+      (a, b) => b?.attributes?.order - a?.attributes?.order
+    ).map(item => ({ id: item.id, attributes: { ...item?.attributes, imgUrl: getImgUrl(item?.attributes?.img) } }));
+  }, [data]);
 
   return (
     <div className={`${styles.faculty} container`}>
@@ -42,88 +36,17 @@ const Faculty: React.FC = () => {
       </Space>
 
       <div className={styles.carouselContainer}>
-        <Button
-          type="primary"
-          shape="circle"
-          className={styles.prev}
-          onClick={onPrev}
-        >
-          <LeftOutlined />
-        </Button>
-        <Carousel
-          ref={carouselRef}
-          slidesToShow={3}
-          slidesToScroll={1}
-          swipeToSlide
-          infinite
-          responsive={[
-            {
-              breakpoint: 1200,
-              settings: {
-                slidesToShow: 2,
-              },
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1,
-              },
-            },
-          ]}
-          dots={false}
-        >
-          {facultyData?.map((item, index) => {
-            return (
-              <ColorfulCard
-                key={item?.id}
-                border={"bottom"}
-                index={index}
-                className={styles.cardContainer}
-              >
-                <Card>
-                  <Space align="center">
-                    <Space direction="vertical">
-                      <Text className={styles.name}>
-                        {getTransResult(
-                          lang,
-                          item?.attributes?.titleZh,
-                          item?.attributes?.titleEn
-                        )}
-                      </Text>
-                      <Paragraph
-                        ellipsis={{ rows: 3 }}
-                        className={styles.description}
-                      >
-                        {getTransResult(
-                          lang,
-                          item?.attributes?.descriptionZh,
-                          item?.attributes?.descriptionEn
-                        )}
-                      </Paragraph>
-                      <Link href="/" className={styles.more}>
-                        {t("More")} <RightOutlined />
-                      </Link>
-                    </Space>
-                    <Image
-                      src={getImgUrl(item?.attributes?.img)}
-                      alt="avatar"
-                      preview={false}
-                      className={styles.cardImage}
-                    />
-                  </Space>
-                </Card>
-              </ColorfulCard>
-            );
-          })}
-        </Carousel>
-        <Button
-          type="primary"
-          shape="circle"
-          className={styles.next}
-          onClick={onNext}
-        >
-          <RightOutlined />
-        </Button>
+        {
+          !isMobile ? <CarouselWithButton>
+            { facultyData?.map((item, index) => {
+              return <CardItem item={item} index={index} key={item.id} />;
+            }) }
+          </CarouselWithButton> : <CardListMobile>
+            { facultyData?.map((item, index) => {
+                return <CardItem item={item} index={index} key={item.id} />;
+              }) }
+          </CardListMobile>
+        }
       </div>
     </div>
   );
