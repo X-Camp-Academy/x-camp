@@ -49,7 +49,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
       block: "center",
     });
   };
-  // 监听hash
+
   useEffect(() => {
     scrollIntoView(hash.slice(1));
   }, [hash]);
@@ -86,7 +86,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
           >
             {faculty?.map((item, index) => (
               <Col
-                key={index}
+                key={item?.id}
                 xs={{ span: 24 }}
                 sm={{ span: 24 }}
                 md={{ span: 24 }}

@@ -1,19 +1,19 @@
-@mixin title($type: 'normal') {
-  @if $type == 'normal' {
+@mixin title($type: "normal") {
+  font-family: "Montserrat-Regular";
+  @if $type == "normal" {
     width: 300px;
     font-size: 30px;
     font-weight: bold;
     line-height: 42px;
-  }
-  @else if($type == 'home-content') {
+  } @else if($type == "home-content") {
     font-size: 36px;
     font-weight: bold;
     line-height: 54px;
     span {
+      font-family: "Montserrat-Regular";
       color: $primary-color;
     }
-  }
-  @else if($type == 'about') {
+  } @else if($type == "about") {
     font-size: 36px;
     font-weight: bold;
     line-height: 48px;
@@ -28,8 +28,8 @@
   color: $color;
 }
 
-@mixin button($type: 'normal') {
-  @if $type == 'nav' {
+@mixin button($type: "normal") {
+  @if $type == "nav" {
     padding: 5px 15px;
     display: inline-flex;
     align-items: center;
@@ -56,23 +56,20 @@
   justify-content: $justContent;
 }
 
-@mixin arrow($direction: 'down', $size: 8px, $color: $text-color) {
+@mixin arrow($direction: "down", $size: 8px, $color: $text-color) {
   width: 0;
   height: 0;
   border-color: transparent;
   border-width: $size;
   border-radius: 0;
 
-  @if $direction == 'down' {
+  @if $direction == "down" {
     border-top-color: $color;
-  }
-  @else if $direction == 'up' {
+  } @else if $direction == "up" {
     border-bottom-color: $color;
-  }
-  @else if $direction == 'left' {
+  } @else if $direction == "left" {
     border-right-color: $color;
-  }
-  @else if $direction == 'right' {
+  } @else if $direction == "right" {
     border-left-color: $color;
   }
 }
