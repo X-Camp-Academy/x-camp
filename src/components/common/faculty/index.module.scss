@@ -17,7 +17,7 @@
   }
   .paragraph {
     margin-top: 10px;
-    padding: 0 15px;
+    padding: 0;
     @include text(18px, 34px);
   }
 
@@ -69,7 +69,6 @@
 
 .cardListMobileContainer {
   @include flex;
-  margin: 0 15px;
   width: 100%;
   overflow: auto;
 }
