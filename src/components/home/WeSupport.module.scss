@@ -2,7 +2,7 @@
 .weSupport {
   padding: 80px 15px;
   .title {
-    @include title('home-content');
+    @include title('default');
     margin: 0;
   }
   .titleBg {

@@ -1,12 +1,10 @@
+@import "@/styles/variables.scss";
 .historyContainer {
   text-align: center;
   margin-top: 120px;
   margin-bottom: 20px;
   .title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
-    line-height: 48px;
+   @include title();
   }
   .paragraph {
     font-size: 18px;

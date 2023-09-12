@@ -9,7 +9,6 @@ const Banner = dynamic(() => import("./Banner"));
 const History = dynamic(() => import("./History"));
 const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
 const UsacoMedal = dynamic(() => import("@/components/common/usaco-medal"));
-const Results = dynamic(() => import("./Results"));
 const FacultyCoach = dynamic(() => import("@/components/common/faculty-coach"));
 const Partners = dynamic(() => import("@/components/common/partners"));
 const { Content } = Layout;

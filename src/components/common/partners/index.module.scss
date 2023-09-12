@@ -1,13 +1,12 @@
+@import "@/styles/variables";
 .partners {
   text-align: center;
   background-color: #fdf6f1;
-  padding-top: 40px;
+  padding-top: 88px;
   padding-bottom: 88px;
   .title {
-    color: #172142;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 72px;
+    @include title();
+    color: $primary-color;
     position: relative;
     @media (max-width: 768px) {
       width: 100%;

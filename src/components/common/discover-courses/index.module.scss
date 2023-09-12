@@ -8,7 +8,7 @@
   .title {
     position: relative;
     text-align: center;
-    @include title('home-content');
+    @include title('default');
   }
 
   .subTitle {

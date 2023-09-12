@@ -12,6 +12,52 @@ import styles from "./PublicCalendar.module.scss";
 import { usePathname } from "next/navigation";
 
 const { Title, Paragraph, Text } = Typography;
+interface IFilterDataEvent {
+  titleZh?: string;
+  titleEn?: string;
+  descriptionZh?: string;
+  descriptionEn?: string;
+  start?: string;
+  end?: string;
+  timeZone?: number;
+  startDateTime?: string;
+  endDateTime?: string;
+}
+
+const weekdaysEn = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+
+const monthNameEn = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const monthNameAbbrEn = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+const pageSize = 999;
 
 const PublicCalendar: React.FC = () => {
   const { format: t, lang } = useLang();
@@ -22,18 +68,7 @@ const PublicCalendar: React.FC = () => {
 
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
   const [filterDateEventList, setFilterDateEventList] = useState<
-    {
-      titleZh?: string;
-      titleEn?: string;
-      descriptionZh?: string;
-      descriptionEn?: string;
-      start?: string;
-      end?: string;
-      timeZone?: number;
-
-      startDateTime?: string;
-      endDateTime?: string;
-    }[]
+    IFilterDataEvent[]
   >([]);
 
   const [eventDate, setEventDate] = useState<
@@ -42,41 +77,6 @@ const PublicCalendar: React.FC = () => {
       endDateTime?: string;
     }[]
   >([]);
-
-  const weekdaysEn = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-  const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
-
-  const monthNameEn = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const monthNameAbbrEn = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
-  const pageSize = 999;
   const [current, setCurrent] = useState<number>(1);
 
   const { data: newEventData, run } = useGetNewEvent({
@@ -126,13 +126,10 @@ const PublicCalendar: React.FC = () => {
     }
   }, [newEventData]);
 
-  //
-
   useEffect(() => {
     if (selectDate) {
       filterSameDateEvent(selectDate);
     }
-
   }, [selectDate]);
 
   const formatDate = (date: string) => {

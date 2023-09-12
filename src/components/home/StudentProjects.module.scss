@@ -4,7 +4,7 @@
   background: #FDF6F1;
   .title {
     margin: 0;
-    @include title('home-content');
+    @include title('default');
   }
   .titleBg {
     margin-left: 130px;

@@ -1,12 +1,10 @@
+@import "@/styles/variables";
 .facultyCoach {
   margin-top: 120px;
   margin-bottom: 156px;
   text-align: center;
   .title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
-    line-height: 48px;
+    @include title();
   }
   .titleParagraph {
     font-size: 18px;
