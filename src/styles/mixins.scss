@@ -1,0 +1,89 @@
+@mixin title($type: 'default') {
+  @if $type == 'normal' {
+    width: 300px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 42px;
+  }
+  @else if($type == 'default') {
+    font-family: 'MontserratAlternates';
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $text-color;
+    span {
+      font-family: 'MontserratAlternates';
+      color: $primary-color;
+    }
+  }
+  @else if($type == 'about') {
+    font-family: 'MontserratAlternates';
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $text-color;
+    margin: 0;
+  }
+  @else if($type == 'banner') {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $text-color;
+    margin: 0;
+  }
+}
+
+@mixin text($fontSize: 14px, $lineHeight: 20px, $color: $text-color) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $color;
+}
+
+@mixin button($type: 'normal') {
+  @if $type == 'nav' {
+    padding: 5px 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid #172142;
+
+    span {
+      span {
+        line-height: 20px;
+      }
+      @include text;
+      svg {
+        margin-left: 4px;
+      }
+    }
+  }
+}
+
+@mixin flex($justContent: flex-start, $alignItems: center, $flex: flex) {
+  display: $flex;
+  align-items: $alignItems;
+  justify-content: $justContent;
+}
+
+@mixin arrow($direction: 'down', $size: 8px, $color: $text-color) {
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-width: $size;
+  border-radius: 0;
+
+  @if $direction == 'down' {
+    border-top-color: $color;
+  }
+  @else if $direction == 'up' {
+    border-bottom-color: $color;
+  }
+  @else if $direction == 'left' {
+    border-right-color: $color;
+  }
+  @else if $direction == 'right' {
+    border-left-color: $color;
+  }
+}

@@ -17,7 +17,7 @@
     justify-content: center;
 
     .title {
-     @include title('about');
+     @include title();
     }
 
     .description {

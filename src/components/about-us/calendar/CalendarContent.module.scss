@@ -1,13 +1,13 @@
 @import "@/styles/variables.scss";
 .calendarContent {
   width: 100%;
-  padding: 100px 0;
+  padding: 100px 0 0;
 
   .calendarContainer {
     padding: 0 30px;
 
     .title {
-      @include title('about');
+      @include title();
     }
 
     .listContainer {

@@ -67,7 +67,7 @@
         justify-content: center;
       }
       .title {
-        @include title('about');
+        @include title('banner');
         font-weight: 800;
       }
       .paragraph {
