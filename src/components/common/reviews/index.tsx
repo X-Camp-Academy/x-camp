@@ -10,6 +10,7 @@ import { formatTimezone, getTransResult } from "@/utils/public";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetReviews } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
+import {useMobile} from "@/utils";
 
 const { Paragraph, Text } = Typography;
 
@@ -22,7 +23,7 @@ interface ReviewsProps {
 const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
   const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
-
+  const isMobile = useMobile();
   const onPrev = () => {
     carouselRef?.current?.prev();
   };
@@ -36,14 +37,25 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
         reviewsData && reviewsData?.length > 0 &&
         <div className={cx(styles.reviews, "container")}>
           <div className={styles.reviewsBox}>
-            <Button
-              type="primary"
-              shape="circle"
-              className={styles.prev}
-              onClick={onPrev}
-            >
-              <LeftOutlined />
-            </Button>
+            {!isMobile && <>
+              <Button
+                type="primary"
+                shape="circle"
+                className={styles.prev}
+                onClick={onPrev}
+              >
+                <LeftOutlined />
+              </Button>
+              <Button
+                type="primary"
+                shape="circle"
+                className={styles.next}
+                onClick={onNext}
+              >
+                <RightOutlined />
+              </Button>
+            </>
+          }
             <Carousel
               ref={carouselRef}
               dots={false}
@@ -67,7 +79,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
                 {
                   breakpoint: 576,
                   settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                   },
                 },
               ]}
@@ -106,14 +118,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
                 );
               })}
             </Carousel>
-            <Button
-              type="primary"
-              shape="circle"
-              className={styles.next}
-              onClick={onNext}
-            >
-              <RightOutlined />
-            </Button>
+
           </div>
         </div>
       }

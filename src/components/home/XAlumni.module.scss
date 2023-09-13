@@ -16,6 +16,7 @@
     .title {
       @include title("default");
       margin: 0;
+      color: $primary-color;
     }
     .titleBg {
       display: block;
