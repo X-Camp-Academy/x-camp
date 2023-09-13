@@ -4,7 +4,7 @@
   text-align: center;
   .title {
     margin: 0;
-    @include title("home-content");
+    @include title();
   }
   .titleBg {
     margin-left: -175px;
