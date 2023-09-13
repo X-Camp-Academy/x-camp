@@ -15,6 +15,7 @@
     .title {
       @include title("home-content");
       margin: 0;
+      color: $primary-color;
     }
     .titleBg {
       display: block;
