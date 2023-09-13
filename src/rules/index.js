@@ -37,7 +37,11 @@ module.exports = {
     // JSX 属性使用 2 个空格缩进
     // @unessential
     'react/jsx-indent-props': ['error', 2],
-    'indent': ['error', 2],
+
+    // 两个缩进
+    'indent': ['error', 2,  { "SwitchCase": 1 }],
+    // 支持制表符
+    'no-tabs': 'off',
 
     // JSX 语法检查数组和迭代器的 key
     'react/jsx-key': 'off',
