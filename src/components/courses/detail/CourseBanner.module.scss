@@ -14,11 +14,8 @@
     }
 
     .title {
-      font-size: 36px;
-      font-weight: 600;
-      color: #172142;
+      @include title("default");
       line-height: 48px;
-
       @media (max-width: 1140px) {
         font-size: 24px;
       }

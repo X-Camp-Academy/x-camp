@@ -1,6 +1,6 @@
 @import "@/styles/variables.scss";
 .usacoContainer {
-  @include flex('center');
+  @include flex("center");
   flex-direction: column;
   width: 100%;
   background: url("/image/common/x-camp-logo.png") no-repeat;
@@ -40,7 +40,6 @@
       display: none;
     }
   }
-
 
   .col {
     @include flex(center);

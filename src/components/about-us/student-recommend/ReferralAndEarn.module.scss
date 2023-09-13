@@ -1,3 +1,5 @@
+@import "@/styles/variables.scss";
+
 .referralAndEarnContainer {
   .referralAndEarn {
     padding: 50px;
@@ -6,9 +8,7 @@
       padding: 30px;
 
       .title {
-        font-size: 36px;
-        font-weight: 600;
-        color: #172142;
+        @include title("default");
         line-height: 48px;
       }
 

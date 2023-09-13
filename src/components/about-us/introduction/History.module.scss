@@ -1,10 +1,11 @@
 @import "@/styles/variables.scss";
+
 .historyContainer {
   text-align: center;
   margin-top: 120px;
   margin-bottom: 20px;
   .title {
-   @include title();
+    @include title("default");
   }
   .paragraph {
     font-size: 18px;

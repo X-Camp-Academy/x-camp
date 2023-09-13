@@ -2,7 +2,7 @@
 .topBannerContainer {
   width: 100%;
 
-  .paragraph{
+  .paragraph {
     @include text(21px, 40px, #fff);
     font-weight: 500;
   }
@@ -14,7 +14,7 @@
   }
 
   .contactBtn {
-    @include button('nav');
+    @include button("nav");
     @include flex(center);
     @include text(16px, 24px);
 
@@ -29,5 +29,4 @@
       margin-left: 4px;
     }
   }
-
 }

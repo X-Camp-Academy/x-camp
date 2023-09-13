@@ -1,4 +1,5 @@
 @import "@/styles/variables.scss";
+
 .xalumniContainer {
   width: 100%;
   padding: 100px 15px;
@@ -13,7 +14,7 @@
       justify-content: center;
     }
     .title {
-      @include title("home-content");
+      @include title("default");
       margin: 0;
     }
     .titleBg {

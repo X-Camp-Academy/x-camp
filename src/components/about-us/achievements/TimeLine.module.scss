@@ -1,13 +1,10 @@
+@import "@/styles/variables.scss";
+
 .timeLineContainer {
   margin-top: 100px;
   .timeLine {
-    //padding: 0 30px;
     .title {
-      font-size: 36px;
-
-      font-weight: 600;
-      color: #172142;
-      line-height: 48px;
+      @include title("default");
     }
 
     .listContainer {
@@ -17,8 +14,6 @@
 
       .timeListItem {
         position: relative;
-        /* 添加相对定位 */
-
         .timeListTitle {
           font-size: 24px;
 
@@ -37,7 +32,6 @@
           border-radius: 50%;
           background-color: #ffad11;
           position: relative;
-          //top: 1px;
           left: -20px;
           margin-right: 5px;
           border: 3px solid #ffd600;

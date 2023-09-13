@@ -7,9 +7,7 @@
 
   .left {
     .title {
-      font-size: 36px;
-      font-weight: 600;
-      color: #172142;
+      @include title();
       line-height: 56px;
 
       @media (max-width: 1140px) {
@@ -38,17 +36,16 @@
     :global(.ant-descriptions-item-label) {
       font-size: 18px;
       font-weight: 600;
-      color: #D46B14;
+      color: #d46b14;
       line-height: 36px;
-
 
       &::before {
         content: "";
         box-sizing: border-box;
         width: 12px;
         height: 12px;
-        background: #FFAD11;
-        border: 2px solid #FFD600;
+        background: #ffad11;
+        border: 2px solid #ffd600;
         border-radius: 50%;
         margin-right: 10px;
       }
