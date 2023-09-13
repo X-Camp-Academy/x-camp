@@ -14,7 +14,7 @@ const WithIntl = dynamic(() => import('@/hoc/with-intl'), {
   ssr: false,
 });
 import './globals.scss';
-import {useMobile} from "@/utils";
+import { useMobile } from "@/utils";
 
 export default function RootLayout({
   children,

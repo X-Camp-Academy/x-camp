@@ -5,9 +5,9 @@ interface IProps {
 	children: React.ReactNode
 }
 const CardListMobile: React.FC<IProps> = ({ children }: IProps) => {
-	return (<div className={styles.cardListMobileContainer}>
-  	{children}
-	</div>);
+  return (<div className={styles.cardListMobileContainer}>
+    {children}
+  </div>);
 };
 
 export default CardListMobile;

@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, { useMemo } from "react";
 
 export interface IConfig {
   text: string,
@@ -40,7 +40,7 @@ const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
     return result;
   }, [title, config]);
   return (<>
-    <span className={className} dangerouslySetInnerHTML={{__html: html }} />
+    <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
   </>);
 };
 

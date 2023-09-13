@@ -1,5 +1,5 @@
 "use client";
-import React, {CSSProperties, useRef} from "react";
+import React, { CSSProperties, useRef } from "react";
 import {
   Carousel,
   Space,
@@ -12,7 +12,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import styles from "./CarouselContent.module.scss";
 import dynamic from "next/dynamic";
 import CarouselDots from "@/components/home/CarouselDots";
-import TitleColor, {IConfig} from "@/components/common/title-color";
+import TitleColor, { IConfig } from "@/components/common/title-color";
 
 const { Paragraph, Text } = Typography;
 

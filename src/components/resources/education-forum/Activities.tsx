@@ -50,10 +50,10 @@ const Activities: React.FC = () => {
     let filters:
       | Partial<FilterFields<GetNewEvent>>
       | AndOrFilters<FilterFields<GetNewEvent>> = {
-      tags: {
-        $eq: tag,
-      },
-    };
+        tags: {
+          $eq: tag,
+        },
+      };
     if (selectedItem !== "All") {
       filters = {
         ...filters,

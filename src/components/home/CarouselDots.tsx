@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Space, Divider} from "antd";
+import React, { useEffect, useState } from 'react';
+import { Space, Divider } from "antd";
 import styles from './CarouselContent.module.scss';
 
 interface IProps {

@@ -163,7 +163,7 @@ const Nav: React.FC = () => {
           <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
             <div className={styles.mobileIntl}>
               <SelectPage />
-              <ToggleLanguage className={styles.toggleMargin}/>
+              <ToggleLanguage className={styles.toggleMargin} />
             </div>
             <Menu
               mode="inline"
