@@ -81,8 +81,8 @@ export const deduplicateArray = <
     id: number;
   }
 >(
-  array: T[]
-): T[] => {
+    array: T[]
+  ): T[] => {
   const deduplicatedArray: T[] = [];
   const idSet = new Set<number>();
   for (const item of array) {

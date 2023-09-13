@@ -59,14 +59,14 @@ const WeSupport: React.FC = () => {
               >
                 <Space direction="horizontal" size={isMobile ? 8 : 48} className={styles.imageContainer}>
                   {images?.map((item) => {
-                      return (
-                        <div key={item} >
-                          <AnimateBox className={styles.imageBox}>
-                            <Image src={item} alt="image" preview={false} />
-                          </AnimateBox>
-                        </div>
-                      );
-                    })}
+                    return (
+                      <div key={item} >
+                        <AnimateBox className={styles.imageBox}>
+                          <Image src={item} alt="image" preview={false} />
+                        </AnimateBox>
+                      </div>
+                    );
+                  })}
                 </Space>
               </Col>
             </Row>

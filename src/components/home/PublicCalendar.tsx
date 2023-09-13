@@ -201,7 +201,7 @@ const PublicCalendar: React.FC = () => {
         <Title className={styles.title}>
           X-Camp {t("Public")} <span>{t("Calendar")}</span>
         </Title>
-        <div style={{display: "flex", justifyContent: 'center', width: '100%'}}>
+        <div style={{ display: "flex", justifyContent: 'center', width: '100%' }}>
           <Text className={styles.titleBg} />
         </div>
         <Row>
@@ -241,7 +241,7 @@ const PublicCalendar: React.FC = () => {
                             `${getMonth(item?.attributes?.startDateTime || "") + 1
                             }月`,
                             monthNameAbbrEn[
-                            getMonth(item?.attributes?.startDateTime || "")
+                              getMonth(item?.attributes?.startDateTime || "")
                             ]
                           )}
                         </Text>
@@ -253,12 +253,12 @@ const PublicCalendar: React.FC = () => {
                       >
                         <Title
                           ellipsis={{
-                          rows: 1, tooltip: getTransResult(
-                            lang,
-                            item.attributes.titleZh,
-                            item.attributes.titleEn
-                          )
-                        }}
+                            rows: 1, tooltip: getTransResult(
+                              lang,
+                              item.attributes.titleZh,
+                              item.attributes.titleEn
+                            )
+                          }}
                           className={styles.titleParagraph}
                         >
                           {getTransResult(
@@ -374,19 +374,14 @@ const PublicCalendar: React.FC = () => {
                             <div className={styles.itemLine} />
                           </Space>
                         );
-                    })) : (
-                      <div
-                        style={{
-                        padding: "25px 0",
-                      }}
-                      >
-                        <Empty
-                          image={Empty.PRESENTED_IMAGE_SIMPLE}
-                          description={t("NoEventToday")}
-                        />
-                      </div>
-                  )}
-
+                    })) :
+                    <div style={{ padding: "25px 0", }}>
+                      <Empty
+                        image={Empty.PRESENTED_IMAGE_SIMPLE}
+                        description={t("NoEventToday")}
+                      />
+                    </div>
+                  }
                 </div>
               </Space>
             </Space>

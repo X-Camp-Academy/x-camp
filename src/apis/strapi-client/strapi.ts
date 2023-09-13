@@ -156,8 +156,8 @@ export const useGetNewEvent = ({
           filters: {
             tags: tag
               ? {
-                  $eq: tag,
-                }
+                $eq: tag,
+              }
               : {},
           },
           pagination: {
@@ -444,9 +444,9 @@ export const useGetProjectsDemo = () => {
       const res = await client.getProjectsDemo(params);
       return isArray(res?.data)
         ? classifyByAttribution(
-            res.data,
-            lang === "zh" ? "categoryZh" : "categoryEn"
-          )
+          res.data,
+          lang === "zh" ? "categoryZh" : "categoryEn"
+        )
         : [];
     },
     {
@@ -544,13 +544,13 @@ export const useGetFaq = <
     ? StrapiResponseDataItem<GetFaq>[][]
     : StrapiResponseDataItem<GetFaq>[]
 >({
-  ready,
-  isClassify,
-  category,
-  courseId,
-  pageName,
-  eventId,
-}: {
+    ready,
+    isClassify,
+    category,
+    courseId,
+    pageName,
+    eventId,
+  }: {
   ready: boolean; // 是否发请求，用于等待其他请求
   isClassify?: T; // 是否分组
   category?: FaqCategory; // 类别
@@ -594,8 +594,8 @@ export const useGetFaq = <
           filters: {
             category: category
               ? {
-                  $eq: category,
-                }
+                $eq: category,
+              }
               : {},
           },
         },

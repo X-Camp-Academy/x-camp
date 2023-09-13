@@ -10,7 +10,7 @@ import { formatTimezone, getTransResult } from "@/utils/public";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetReviews } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
-import {useMobile} from "@/utils";
+import { useMobile } from "@/utils";
 
 const { Paragraph, Text } = Typography;
 
@@ -55,7 +55,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
                 <RightOutlined />
               </Button>
             </>
-          }
+            }
             <Carousel
               ref={carouselRef}
               dots={false}

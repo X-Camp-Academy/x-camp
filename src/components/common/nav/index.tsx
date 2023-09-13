@@ -17,9 +17,9 @@ import XStarMenu from './x-star-menu';
 import { useAuth } from '@/hoc/with-auth/define';
 import DropdownUserMenu from '../dropdown-user-menu';
 import { apiConfig } from '@/config/index';
-import { getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
 import SelectPage from './SelectPage';
+import ToggleLanguage from "@/components/common/ToggleLanguage";
 import styles from './index.module.scss';
 import 'animate.css';
 
@@ -150,10 +150,7 @@ const Nav: React.FC = () => {
                     {t('Nav.Login')}
                   </Button>
                 )}
-                <div onClick={toggle} className={styles.intl}>
-                  <div className={styles.img} />
-                  <span>{getTransResult(lang, '中文', 'English')}</span>
-                </div>
+                <ToggleLanguage />
               </>
             ) : (
               <span onClick={onChangeShowMenu}>
@@ -166,10 +163,7 @@ const Nav: React.FC = () => {
           <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
             <div className={styles.mobileIntl}>
               <SelectPage />
-              <div onClick={toggle} className={styles.intl}>
-                <div className={styles.img} />
-                <span>{getTransResult(lang, '中文', 'English')}</span>
-              </div>
+              <ToggleLanguage className={styles.toggleMargin} />
             </div>
             <Menu
               mode="inline"
