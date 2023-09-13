@@ -11,7 +11,6 @@ import {
   MenuProps,
 } from 'antd';
 import { AlignRightOutlined, CloseOutlined } from '@ant-design/icons';
-import 'animate.css';
 import { useMobile } from '@/utils';
 import { removeDropdown, useMenuItems } from './define';
 import XStarMenu from './x-star-menu';

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import dynamic from 'next/dynamic';
 import { LocalStateProvider } from '@/utils/local-state';
 import { WithAuth } from '@/hoc/with-auth';
@@ -21,7 +21,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isMobile = useMobile()
+  const isMobile = useMobile();
   return (
     <html lang="en" className={isMobile ? 'mobile' : 'pc'}>
       <meta
