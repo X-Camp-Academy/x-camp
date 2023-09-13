@@ -2,6 +2,10 @@
 const nextConfig = {
   webpack(config) {
     config.plugins.push(require("unplugin-json-dts/webpack")());
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"]
+    });
     return config;
   },
   trailingSlash: true,
