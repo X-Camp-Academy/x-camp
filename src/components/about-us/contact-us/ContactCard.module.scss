@@ -1,3 +1,5 @@
+@import "@/styles/variables.scss";
+
 .contactCardContent {
   margin-top: 6.25rem;
   padding-bottom: 3.25rem;
@@ -18,9 +20,7 @@
     }
 
     .title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #172142;
+      @include title("thin");
       line-height: 64px;
     }
 

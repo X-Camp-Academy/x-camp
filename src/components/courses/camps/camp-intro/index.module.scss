@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .campIntro {
   padding: 50px 0;
   width: 100%;
@@ -13,10 +15,8 @@
 
   .content {
     .question {
-      font-size: 24px;
-      color: #172142;
+      @include title("thin");
       line-height: 48px;
-      font-weight: Bold;
     }
 
     .question::before {
@@ -27,8 +27,8 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: #FFAD11;
-      border: 2px solid #FFD600;
+      background-color: #ffad11;
+      border: 2px solid #ffd600;
     }
 
     .answer {
@@ -41,8 +41,7 @@
     }
 
     .usacoTitle {
-      font-size: 48px;
-      font-weight: 600;
+      @include title("bold");
       color: #d46b14;
       line-height: 64px;
       text-align: center;
@@ -51,7 +50,7 @@
     .videoBox {
       width: 100%;
       border-radius: 12px;
-      
+
       video {
         width: 100%;
       }

@@ -52,10 +52,8 @@
     }
 
     .cardMonth {
-      font-size: 24px;
-      font-weight: 600;
+      @include title("thin");
       color: #666666;
-      line-height: 36px;
     }
 
     .cardDay {

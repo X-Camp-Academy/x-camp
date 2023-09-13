@@ -46,15 +46,15 @@
   }
 
   .dropdownContainer {
-    @media (max-width: 992px) and  (min-width: 768px){
+    @media (max-width: 992px) and (min-width: 768px) {
       max-width: 100%;
     }
     .left {
-      @media (max-width: 992px) and  (min-width: 768px){
+      @media (max-width: 992px) and (min-width: 768px) {
         width: 210px;
       }
       .title {
-        @include title('normal');
+        @include title("normal");
       }
 
       :global(.ant-space-item) {
@@ -62,7 +62,7 @@
       }
 
       .btn {
-       @include button('nav')
+        @include button("nav");
       }
     }
 
@@ -116,11 +116,11 @@
     .right {
       padding: 20px 32px;
       border-radius: 12px;
-      background: #FFF4ED;
+      background: #fff4ed;
       cursor: pointer;
 
-      @media (max-width: 992px) and  (min-width: 768px){
-       padding: 20px 10px;
+      @media (max-width: 992px) and (min-width: 768px) {
+        padding: 20px 10px;
       }
 
       .title {

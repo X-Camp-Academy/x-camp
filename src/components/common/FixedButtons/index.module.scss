@@ -37,9 +37,7 @@
   }
 
   .title {
-    font-size: 48px;
-    font-weight: 600;
-    color: #172142;
+    @include title("bold");
     line-height: 64px;
     text-align: center;
   }

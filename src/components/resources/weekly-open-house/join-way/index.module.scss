@@ -9,10 +9,8 @@
 }
 
 .title {
-  color: #172142;
-  font-size: 24px;
+  @include title("thin");
   line-height: 40px;
-  font-weight: 600;
   margin-bottom: 10px;
 
   &::before {
@@ -20,8 +18,8 @@
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: #FFAD11;
-    border: 3px solid #FFD600;
+    background-color: #ffad11;
+    border: 3px solid #ffd600;
     border-radius: 50%;
     margin-right: 10px;
   }
@@ -37,12 +35,12 @@
 
 .link {
   font-size: 20px;
-  color: #D46B14;
+  color: #d46b14;
   text-decoration: underline;
   margin-left: 24px;
 
   &:hover {
-    color: #D46B14;
+    color: #d46b14;
     opacity: 0.8;
   }
 }

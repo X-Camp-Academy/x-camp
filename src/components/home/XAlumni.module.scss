@@ -26,7 +26,6 @@
       background-size: cover;
     }
     .paragraph {
-      //padding: 0 120px;
       @include text(18px, 34px);
       font-weight: 500;
     }
@@ -59,10 +58,8 @@
         }
 
         .maskCardTitle {
-          font-size: 24px;
-          font-weight: 600;
+          @include title("thin");
           color: #ffffff;
-          line-height: 36px;
           text-align: left;
         }
         .maskCardParagraph {

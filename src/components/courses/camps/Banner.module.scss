@@ -1,6 +1,7 @@
-.topBannerContainer {
-  width: 100%;
+@import "@/styles/variables";
 
+.bannerContainer {
+  width: 100%;
   overflow: hidden;
   background-image: url("/image/home/carousel-bg.png");
   background-repeat: no-repeat;
@@ -15,17 +16,13 @@
   }
 
   .title {
-    font-size: 48px;
-    font-weight: bold;
-    color: #172142;
+    @include title("bold");
     line-height: 64px;
     margin-top: 110px;
   }
 
   .paragraph {
-    font-size: 24px;
-    font-weight: 500;
-    color: #172142;
+    @include title("thin");
     line-height: 48px;
   }
 

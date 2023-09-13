@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .content {
   width: 100%;
   padding: 100px 0;
@@ -29,10 +31,7 @@
       }
 
       .title {
-        font-size: 24px;
-        font-weight: 600;
-        color: #172142;
-        line-height: 36px;
+        @include title("thin");
         margin: 24px 0;
         text-overflow: ellipsis;
         display: -webkit-box;

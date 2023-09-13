@@ -11,9 +11,7 @@
     padding-top: 85px;
 
     .title {
-      font-size: 48px;
-      font-weight: 900;
-      color: #172142;
+      @include title("bold");
       line-height: 58px;
     }
 

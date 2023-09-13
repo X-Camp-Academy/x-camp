@@ -15,10 +15,7 @@
       .timeListItem {
         position: relative;
         .timeListTitle {
-          font-size: 24px;
-
-          font-weight: 600;
-          color: #172142;
+          @include title("thin");
           line-height: 48px;
           position: relative;
           left: -20px;

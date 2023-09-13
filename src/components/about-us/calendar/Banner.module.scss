@@ -1,8 +1,9 @@
 @import "@/styles/variables.scss";
+
 .bannerContainer {
   width: 100%;
 
-  .paragraph{
+  .paragraph {
     @include text(21px, 40px, #fff);
     font-weight: 500;
   }

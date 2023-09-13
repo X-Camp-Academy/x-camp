@@ -1,4 +1,5 @@
 @import "@/styles/variables";
+
 .content {
   width: 100%;
   padding-bottom: 100px;
@@ -24,9 +25,7 @@
       }
 
       .title {
-        font-size: 24px;
-        font-weight: 600;
-        color: #172142;
+        @include title("thin");
         line-height: 32px;
       }
 
