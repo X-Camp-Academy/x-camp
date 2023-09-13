@@ -63,12 +63,6 @@ const Nav: React.FC = () => {
         label: <a href="/login">{t('Nav.Login')}</a>,
         key: '/login',
       },
-      {
-        label: (
-          <a onClick={toggle}>{getTransResult(lang, '中文', 'English')}</a>
-        ),
-        key: '',
-      },
     ];
     return isMobile
       ? removeDropdown(menuItems)?.concat(loginSignUp)
@@ -170,7 +164,14 @@ const Nav: React.FC = () => {
           </Space>
         </Space>
         {isMobile && showMenu && (
-          <Space ref={ref} direction="vertical" className={styles.showMenu}>
+          <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
+            <div className={styles.mobileIntl}>
+              <SelectPage />
+              <div onClick={toggle} className={styles.intl}>
+                <div className={styles.img} />
+                <span>{getTransResult(lang, '中文', 'English')}</span>
+              </div>
+            </div>
             <Menu
               mode="inline"
               openKeys={openKeys}
