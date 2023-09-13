@@ -1,5 +1,4 @@
-import { log } from "console";
-import React, { useMemo } from "react";
+import React from "react";
 
 interface ISvgProps {
   icon: string
