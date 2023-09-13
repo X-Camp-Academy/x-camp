@@ -15,6 +15,7 @@
       color: $primary-color;
     }
   } @else if($type == "bold") {
+    font-family: "MontserratAlternates";
     font-size: 48px;
     font-weight: 600;
     line-height: 48px;
