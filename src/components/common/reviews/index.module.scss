@@ -7,6 +7,9 @@
     position: relative;
     background: url("/image/home/icon-home-reviews.png") no-repeat right;
     background-size: contain;
+    @media (max-width: 768px) {
+      padding: 70px 30px;
+    }
     .prev {
       background-color: #ffad11;
       position: absolute;
