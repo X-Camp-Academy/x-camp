@@ -1,11 +1,10 @@
+@import "@/styles/variables.scss";
+
 .space {
   margin-top: 152px;
   text-align: center;
   .title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
-    line-height: 48px;
+    @include title("default");
   }
   .paragraph {
     font-size: 18px;

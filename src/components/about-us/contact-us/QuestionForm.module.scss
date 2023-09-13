@@ -9,11 +9,8 @@
     }
   }
   .title {
-    font-size: 36px;
-    font-weight: bold;
-    color: #172142;
-    line-height: 64px;
     text-align: center;
+    @include title("default");
   }
 
   .card {
@@ -32,9 +29,7 @@
 
     .formTitle {
       margin-top: 12px;
-      font-size: 36px;
-      font-weight: bold;
-      color: #172142;
+      @include title("default");
     }
 
     .formTextArea {
@@ -48,7 +43,6 @@
       background: #ffad11;
       border-radius: 8px;
       border: none;
-
       font-size: 16px;
       font-weight: 500;
       color: #ffffff;

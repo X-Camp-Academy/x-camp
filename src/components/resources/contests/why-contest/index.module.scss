@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .content {
   width: 100%;
   padding: 130px 50px;
@@ -5,10 +7,7 @@
   .top,
   .bottom {
     .title {
-      font-size: 48px;
-      font-weight: 600;
-      color: #172142;
-      line-height: 48px;
+      @include title("bold");
       margin-bottom: 48px;
     }
 
@@ -23,9 +22,7 @@
 
   .intro {
     .title {
-      font-size: 24px;
-      font-weight: 600;
-      color: #172142;
+      @include title("thin");
       line-height: 48px;
       margin-bottom: 10px;
 
@@ -36,8 +33,8 @@
         border-radius: 50%;
         width: 8px;
         height: 8px;
-        background: #FFAD11;
-        border: 2px solid #FFD600;
+        background: #ffad11;
+        border: 2px solid #ffd600;
         margin-right: 10px;
         top: -1.5px;
       }

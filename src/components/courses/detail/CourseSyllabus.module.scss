@@ -1,10 +1,10 @@
+@import "@/styles/variables";
+
 .content {
   width: 100%;
   margin-top: 150px;
   .title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
+    @include title("default");
     line-height: 48px;
     text-align: center;
   }

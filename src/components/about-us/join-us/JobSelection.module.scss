@@ -1,60 +1,50 @@
 .jobSelectionContainer {
-    .jobSelection {
+  .jobSelection {
+    padding: 100px 50px;
+    text-align: center;
 
-        padding: 100px 50px;
-        text-align: center;
+    .btnContainer {
+      display: flex;
+      justify-content: space-around;
 
-        .btnContainer {
+      @media (max-width: 768px) {
+        display: block;
+      }
 
-            display: flex;
-            justify-content: space-around;
+      .choiceBtn {
+        margin: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 60px;
+        font-size: 24px;
+        font-weight: 500;
+        color: #6a6a6a;
+        line-height: 36px;
+        border-radius: 12px;
 
-            //padding: 0 60px;
-            @media (max-width: 768px) {
-                display: block;
+        background: #f5f5f5;
+        border: 2px solid #d8d8d8;
 
-            }
-
-            .choiceBtn {
-                margin: 0 20px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 25px 60px;
-                font-size: 24px;
-                font-weight: 500;
-                color: #6A6A6A;
-                line-height: 36px;
-                border-radius: 12px;
-
-                background: #F5F5F5;
-                border: 2px solid #D8D8D8;
-
-                @media (max-width: 768px) {
-                    margin: 20px auto;
-                }
-
-            }
-
-            .selectedBtn {
-                border: none;
-                background-color: #FFAD11;
-                color: #FFFFFF;
-            }
+        @media (max-width: 768px) {
+          margin: 20px auto;
         }
+      }
 
-
-
-
-
-
-        .jobCardContainer {
-            margin-top: 50px;
-
-            .collapseCard {
-                width: 100%;
-                margin-bottom: 30px;
-            }
-        }
+      .selectedBtn {
+        border: none;
+        background-color: #ffad11;
+        color: #ffffff;
+      }
     }
+
+    .jobCardContainer {
+      margin-top: 50px;
+
+      .collapseCard {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
 }

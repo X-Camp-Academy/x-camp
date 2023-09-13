@@ -1,7 +1,7 @@
 @import "@/styles/variables.scss";
 .reviewsContainer {
   width: 100%;
-  background: #FDF6F1;
+  background: #fdf6f1;
   .reviews {
     padding: 70px 120px;
     position: relative;
@@ -40,7 +40,7 @@
         -webkit-line-clamp: 1;
       }
       .reviewsParagraph {
-       @include text(16px, 24px, #666);
+        @include text(16px, 24px, #666);
         height: 96px;
       }
       .reviewsDate {

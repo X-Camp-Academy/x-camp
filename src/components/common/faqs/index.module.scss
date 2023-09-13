@@ -1,12 +1,12 @@
+@import "@/styles/variables";
+
 .campFAQS {
   padding: 50px 0;
   margin-bottom: 50px;
   width: 100%;
 
   .title {
-    font-size: 48px;
-    font-weight: 600;
-    color: #172142;
+    @include title("bold");
     line-height: 64px;
     text-align: center;
   }

@@ -1,11 +1,12 @@
 @import "@/styles/variables.scss";
+
 .content {
   width: 100%;
   background-color: #f5f5f5;
 
   .partner {
     .title {
-      @include title();
+      @include title("default");
       text-align: center;
       margin-bottom: 48px;
     }

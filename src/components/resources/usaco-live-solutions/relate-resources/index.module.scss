@@ -2,7 +2,7 @@
 
 .relateResources {
   width: 100%;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   padding-top: 100px;
   margin-bottom: 100px;
 
@@ -20,14 +20,14 @@
     }
 
     .question::before {
-      content: '';
+      content: "";
       display: inline-block;
       margin-right: 15px;
       border-radius: 50%;
       width: 16px;
       height: 16px;
-      background: #FFAD11;
-      border: 3px solid #FFD600;
+      background: #ffad11;
+      border: 3px solid #ffd600;
     }
 
     .answer {
@@ -39,6 +39,4 @@
       margin-bottom: 25px;
     }
   }
-
-
 }

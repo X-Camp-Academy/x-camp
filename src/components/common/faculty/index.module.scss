@@ -41,7 +41,8 @@
       z-index: 999;
     }
     .mobile.cardContainer {
-      &:first-of-type, &:last-of-type {
+      &:first-of-type,
+      &:last-of-type {
         margin: 0;
       }
     }
@@ -58,7 +59,6 @@
       }
       .more {
         @include text(14px, 16px);
-
       }
       .cardImage {
         width: 150px;

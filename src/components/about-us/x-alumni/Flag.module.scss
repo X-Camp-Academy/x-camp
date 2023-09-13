@@ -1,3 +1,5 @@
+@import "@/styles/variables.scss";
+
 .flag {
   padding-top: 70px;
   padding-bottom: 80px;
@@ -5,9 +7,7 @@
   position: relative;
 
   .title {
-    font-size: 48px;
-    font-weight: 600;
-    color: #172142;
+    @include title("bold");
     line-height: 64px;
   }
 

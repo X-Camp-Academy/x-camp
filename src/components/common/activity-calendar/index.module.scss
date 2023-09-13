@@ -1,23 +1,22 @@
 .row {
+  display: flex;
+  justify-content: space-between;
+
+  .dateTextCol {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.88);
+    line-height: 24px;
+  }
 
-    .dateTextCol {
-        display: flex;
-        align-items: center;
-        font-size: 18px;
-        font-weight: 500;
-        color: rgba(0, 0, 0, 0.88);
-        line-height: 24px;
+  .btnCol {
+    display: flex;
+    align-items: center;
+
+    .changeMonthBtn {
+      border: none;
     }
-
-    .btnCol {
-        display: flex;
-        align-items: center;
-
-        .changeMonthBtn {
-            border: none;
-        }
-    }
-
+  }
 }

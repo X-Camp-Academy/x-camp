@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .content {
   width: 100%;
   margin-bottom: 100px;
@@ -21,7 +23,6 @@
       line-height: 24px;
       border-radius: 4px;
       cursor: pointer;
-
       @media (max-width: 768px) {
         font-size: 14px;
         display: block;
@@ -47,9 +48,7 @@
     margin: 40px 0;
 
     .activityTitle {
-      font-size: 36px;
-      font-weight: 600;
-      color: #172142;
+      @include title();
       line-height: 48px;
     }
 
@@ -89,16 +88,13 @@
         }
 
         .title {
-          font-size: 24px;
-          font-weight: 600;
-          color: #172142;
+          @include title("thin");
           line-height: 32px;
           text-overflow: ellipsis;
           width: 100%;
           display: -webkit-box;
           -webkit-line-clamp: 3;
           overflow: hidden;
-          /* 行数 */
           -webkit-box-orient: vertical;
         }
 

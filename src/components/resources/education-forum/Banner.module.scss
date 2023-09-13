@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .educationForumBanner {
   .left {
     margin-top: 56px;
@@ -6,16 +8,12 @@
       padding-top: 0;
     }
     .title {
-      font-size: 48px;
-      font-weight: bold;
-      color: #172142;
+      @include title("bold");
       line-height: 64px;
     }
 
     .description {
-      font-size: 24px;
-      font-weight: 500;
-      color: #172142;
+      @include title("thin");
       line-height: 42px;
       margin: 40px 0 32px 0;
     }
