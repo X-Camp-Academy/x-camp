@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import {
   Space,
   Image,
@@ -11,12 +12,15 @@ import {
 } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import { XStarMdViewer } from "x-star-editor";
 import {
   useGetAchievementsTimeLine,
 } from "@/apis/strapi-client/strapi";
 import styles from "./TimeLine.module.scss";
 
+const XStarMdViewer = dynamic(
+  () => import("x-star-editor").then((v) => v.XStarMdViewer),
+  { ssr: false }
+);
 const { Title, Text } = Typography;
 
 const TimeLine: React.FC = () => {
