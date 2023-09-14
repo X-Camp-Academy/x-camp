@@ -4,7 +4,8 @@ interface ISvgProps {
   icon: string
   color?: string,
   width?: number,
-  height?: number
+  height?: number,
+  className?: string
 }
 
 const importAll = (r: { [key: string]: any }) => {
@@ -26,14 +27,14 @@ const convertToCamelCase = (str: string) => {
 // @ts-ignore
 const files: Module[] = importAll(require.context('@/assets/svgs', false, /\.svg$/));
 
-const SvgIcon: React.FC<ISvgProps> = ({ icon, ...props }: ISvgProps) => {
+const SvgIcon: React.FC<ISvgProps> = ({ icon, className, ...props }: ISvgProps) => {
   
   const defaultAttr = {
     width: '1em',
     height: '1em'
   };
 
-  return <span style={{ lineHeight: 1, display: 'inline-block' }}>
+  return <span style={{ lineHeight: 1, display: 'inline-block' }} className={className} >
     {
       files
         .filter((file) => file.default.name === `Svg${convertToCamelCase(icon)}`)
