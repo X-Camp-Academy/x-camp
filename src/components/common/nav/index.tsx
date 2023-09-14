@@ -20,6 +20,7 @@ import { apiConfig } from '@/config/index';
 import { useLang } from '@/hoc/with-intl/define';
 import SelectPage from './SelectPage';
 import ToggleLanguage from "@/components/common/ToggleLanguage";
+import SvgIcon from "@/components/common/SvgIcon";
 import styles from './index.module.scss';
 import 'animate.css';
 
@@ -163,6 +164,7 @@ const Nav: React.FC = () => {
           <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
             <div className={styles.mobileIntl}>
               <SelectPage />
+              <SvgIcon icon={'RightOutlined'} color={'#fff'}/>
               <ToggleLanguage className={styles.toggleMargin} />
             </div>
             <Menu
