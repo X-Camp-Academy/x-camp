@@ -4,44 +4,27 @@ import { Space, Row, Col, Card, Typography, Avatar } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import {
-  StrapiMedia,
   StrapiResponseDataItem,
 } from "@/apis/strapi-client/strapiDefine";
-import { GetFaculty } from "@/apis/strapi-client/define";
+import { FacultyLevelCategory, GetFaculty } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
 import { SegmentedValue } from "antd/es/segmented";
-import { LevelTypes } from "./define";
 import SegmentedRadioGroup from "../segmented-radio-group";
 import ColorfulCard from "../colorful-card";
 
 const { Title, Paragraph, Text } = Typography;
 
 const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | undefined; }> = ({ data }) => {
-  const [segmented, setSegmented] = useState<SegmentedValue>(LevelTypes.BasicLevel);
+  const [segmented, setSegmented] = useState<SegmentedValue>(FacultyLevelCategory.All);
+  const [facultyData, setFacultyData] = useState<StrapiResponseDataItem<GetFaculty>[]>();
   const { format: t, lang } = useLang();
-  const LEVEL_TYPES = Object.values(LevelTypes);
+  const { hash } = window.location;
+  const LEVEL_TYPES = Object.values(FacultyLevelCategory);
 
   const sortData = data?.sort(
     (a, b) => b?.attributes?.order - a?.attributes?.order
   );
 
-  const splitIntoGroups = (
-    arr: StrapiResponseDataItem<GetFaculty>[] | undefined,
-    groupSize: number
-  ) => {
-    const groups = [];
-    for (let i = 0; arr && i < arr.length; i += groupSize) {
-      groups.push(arr?.slice(i, i + groupSize));
-    }
-    return groups;
-  };
-  const facultyData = splitIntoGroups(sortData, 4);
-
-  const getImgUrl = (img: StrapiMedia) => {
-    return img?.data?.attributes?.url;
-  };
-
-  const { hash } = window.location;
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
@@ -55,8 +38,13 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
   }, [hash]);
 
   useEffect(() => {
-    console.log(segmented);
-  }, [segmented]);
+    if (segmented === FacultyLevelCategory.All) {
+      setFacultyData(sortData);
+    } else {
+      const filteredData = sortData?.filter(item => item?.attributes?.level === segmented);
+      setFacultyData(filteredData);
+    }
+  }, [segmented, sortData]);
   return (
     <div className={`${styles.facultyCoach} container`} id="faculty">
       <Space direction="vertical" size={48}>
@@ -76,60 +64,58 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
           data={LEVEL_TYPES}
         />
 
-        {facultyData?.map((faculty, facultyIndex) => (
-          <Row
-            key={facultyIndex}
-            justify="center"
-            align="middle"
-            gutter={48}
-            className={styles.row}
-          >
-            {faculty?.map((item, index) => (
-              <Col
-                key={item?.id}
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 24 }}
-                lg={{ span: 6 }}
-              >
-                <ColorfulCard border="bottom" split={4} index={index}>
-                  <Card>
-                    <Space direction="vertical">
-                      <Avatar
-                        src={getImgUrl(item?.attributes?.img)}
-                        className={styles.avatar}
-                      />
-                      <Text className={styles.name}>
-                        {getTransResult(
-                          lang,
-                          item?.attributes?.titleZh,
-                          item?.attributes?.titleEn
-                        )}
-                      </Text>
-                      <Paragraph
-                        ellipsis={{
-                          rows: 3,
-                          tooltip: getTransResult(
-                            lang,
-                            item?.attributes?.descriptionZh,
-                            item?.attributes?.descriptionEn
-                          ),
-                        }}
-                        className={styles.description}
-                      >
-                        {getTransResult(
+        <Row
+          justify="center"
+          align="middle"
+          gutter={48}
+          className={styles.row}
+        >
+          {facultyData?.map((item, index) => (
+            <Col
+              key={item?.id}
+              xs={{ span: 24 }}
+              sm={{ span: 24 }}
+              md={{ span: 24 }}
+              lg={{ span: 6 }}
+              className={styles.col}
+            >
+              <ColorfulCard border="bottom" split={4} index={index}>
+                <Card bodyStyle={{ padding: 0 }}>
+                  <Space direction="vertical" >
+                    <Avatar
+                      src={item?.attributes?.img?.data?.attributes?.url}
+                      className={styles.avatar}
+                    />
+                    <Text className={styles.name}>
+                      {getTransResult(
+                        lang,
+                        item?.attributes?.titleZh,
+                        item?.attributes?.titleEn
+                      )}
+                    </Text>
+                    <Paragraph
+                      ellipsis={{
+                        rows: 3,
+                        tooltip: getTransResult(
                           lang,
                           item?.attributes?.descriptionZh,
                           item?.attributes?.descriptionEn
-                        )}
-                      </Paragraph>
-                    </Space>
-                  </Card>
-                </ColorfulCard>
-              </Col>
-            ))}
-          </Row>
-        ))}
+                        ),
+                      }}
+                      className={styles.description}
+                    >
+                      {getTransResult(
+                        lang,
+                        item?.attributes?.descriptionZh,
+                        item?.attributes?.descriptionEn
+                      )}
+                    </Paragraph>
+                  </Space>
+                </Card>
+              </ColorfulCard>
+            </Col>
+          ))}
+        </Row>
       </Space>
     </div>
   );
