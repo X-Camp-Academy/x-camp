@@ -4,7 +4,7 @@ import { Layout } from "antd";
 import { useParams, usePathname } from "next/navigation";
 import { useLang } from "@/hoc/with-intl/define";
 import ColorfulCard from "@/components/common/colorful-card";
-import CourseAbstract from "@/components/common/course-abstract";
+import CourseAbstract from "../course-abstract";
 import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";
 import Banner from "./banner";
@@ -23,8 +23,6 @@ const CourseCamps: React.FC = () => {
   const params = useParams();
   const pathname = usePathname();
   const { format: t } = useLang();
-  // 请求当前 courseId 的评论
-
   const { data: coursesData } = useGetCourses({
     filters: {
       id: { $eq: Number(params?.courseId) },

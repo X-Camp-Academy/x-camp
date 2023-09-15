@@ -4,7 +4,7 @@ import { ShareAltOutlined } from "@ant-design/icons";
 import { CarouselRef } from "antd/es/carousel";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult, getWeeksDays } from "@/utils/public";
-import CourseAbstract from "@/components/common/course-abstract";
+import CourseAbstract from "../../course-abstract";
 import CourseClassesContext from "../../CourseClassesContext";
 import styles from "./index.module.scss";
 

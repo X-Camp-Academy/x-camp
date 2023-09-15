@@ -15,10 +15,12 @@ import CourseCard from "./course-card";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
 import styles from "./index.module.scss";
 
-
 const ScheduleTable: React.FC = () => {
+  const ref = useRef(null);
+  const size = useSize(ref);
   const { format: t } = useLang();
   const [form] = Form.useForm();
+  const { data: courses, runAsync } = useGetCourses({});
   const defaultPagination = { page: 1, pageSize: 10 };
   const [pagination, setPagination] = useState(defaultPagination);
   const [filters, setFilters] = useState<
@@ -26,12 +28,6 @@ const ScheduleTable: React.FC = () => {
     | { [key: string]: string | { type: { $eq: string } } }
     | any
   >({});
-
-
-  const ref = useRef(null);
-  const size = useSize(ref);
-
-  const { data: courses, runAsync } = useGetCourses({});
 
   const selectItems = [
     {
