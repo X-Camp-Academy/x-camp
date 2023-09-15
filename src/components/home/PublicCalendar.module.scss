@@ -108,6 +108,26 @@
     }
 
     .rightSpace {
+      .calenderHeader {
+        padding: 20px;
+      }
+      :global(.ant-picker-body) {
+        padding: 20px 0;
+      }
+      :global(.ant-picker-content thead) {
+        height: 48px;
+      }
+      :global(.ant-picker-cell .ant-picker-cell-inner) {
+        @include flex(center);
+        display: inline-flex;
+        flex-direction: column;
+        height: 48px;
+        width: 48px;
+        border-radius: 24px;
+        &:before {
+          border-radius: 24px;
+        }
+      }
       @media (max-width: 768px) {
         margin-top: 64px;
       }
@@ -165,4 +185,5 @@
       }
     }
   }
+
 }

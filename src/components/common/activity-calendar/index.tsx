@@ -16,43 +16,45 @@ import styles from "./index.module.scss";
 interface Props {
   className?: string;
   onSelectDate: (date: string) => void;
+  headerClassName?: string,
   eventDate: {
     startDateTime?: string;
     endDateTime?: string;
   }[];
 }
 
-const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, eventDate }) => {
-  const { lang } = useLang();
-  const monthNameEn = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+const monthNameEn = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-  const monthNameZH = [
-    "一月",
-    "二月",
-    "三月",
-    "四月",
-    "五月",
-    "六月",
-    "七月",
-    "八月",
-    "九月",
-    "十月",
-    "十一月",
-    "十二月",
-  ];
+const monthNameZH = [
+  "一月",
+  "二月",
+  "三月",
+  "四月",
+  "五月",
+  "六月",
+  "七月",
+  "八月",
+  "九月",
+  "十月",
+  "十一月",
+  "十二月",
+];
+
+const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, eventDate, headerClassName }) => {
+  const { lang } = useLang();
 
   const { token } = theme.useToken();
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
@@ -82,14 +84,14 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
   };
 
   const wrapperStyle: React.CSSProperties = {
-    width: 420,
+    width: '100%',
     border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: token.borderRadiusLG,
     boxShadow: '0 6px 16px 0 #D8D8D8',
   };
 
   return (
-    <div style={wrapperStyle}>
+    <div style={wrapperStyle} className={`${styles.wrapper}`}>
       <Calendar
         fullscreen={false}
         className={className}
@@ -113,27 +115,25 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
           };
 
           return (
-            <div style={{ padding: 8 }}>
-              <Row gutter={8} className={styles.row}>
-                <Col className={styles.dateTextCol}>
-                  {getTransResult(lang, monthNameZH[month], monthNameEn[month])}
-                  {" " + year}
-                </Col>
-                <Col className={styles.btnCol}>
-                  <Button
-                    icon={<LeftOutlined />}
-                    className={styles.changeMonthBtn}
-                    onClick={backMonth}
-                    style={{ marginRight: 10 }}
-                  />
-                  <Button
-                    icon={<RightOutlined />}
-                    className={styles.changeMonthBtn}
-                    onClick={forwardMonth}
-                  />
-                </Col>
-              </Row>
-            </div>
+            <Row gutter={8} className={`${styles.row} ${headerClassName}`}>
+              <Col className={styles.dateTextCol}>
+                {getTransResult(lang, monthNameZH[month], monthNameEn[month])}
+                {" " + year}
+              </Col>
+              <Col className={styles.btnCol}>
+                <Button
+                  icon={<LeftOutlined />}
+                  className={styles.changeMonthBtn}
+                  onClick={backMonth}
+                  style={{ marginRight: 10 }}
+                />
+                <Button
+                  icon={<RightOutlined />}
+                  className={styles.changeMonthBtn}
+                  onClick={forwardMonth}
+                />
+              </Col>
+            </Row>
           );
         }}
       />
