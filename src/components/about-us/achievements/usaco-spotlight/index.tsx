@@ -68,9 +68,9 @@ const USACOSpotlight: React.FC = () => {
               },
             ]}
           >
-            {awards?.map((item, index) => {
+            {awards?.map(item => {
               return (
-                <div key={index}>
+                <div key={item?.id}>
                   <Card
                     style={{
                       backgroundImage: `url(${item?.attributes?.avatar?.data?.attributes?.url})`,

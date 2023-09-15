@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { Layout } from "antd";
-import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
+import { Layout } from "antd";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
+import styles from "./index.module.scss";
 
 const Banner = dynamic(() => import("./banner"));
 const History = dynamic(() => import("./history"));

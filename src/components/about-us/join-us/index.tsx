@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
+import dynamic from "next/dynamic";
 import { Layout } from "antd";
 import styles from "./index.module.scss";
-import dynamic from "next/dynamic";
-import WhyWorkWithUs from "./WhyWorkWithUs";
 
-const Banner = dynamic(() => import("./Banner"));
-const JobSelection = dynamic(() => import("./JobSelection"));
-const JoinUsFaculty = dynamic(() => import("./JoinUsFaculty"));
+const Banner = dynamic(() => import("./banner"));
+const JobSelection = dynamic(() => import("./job-selection"));
+const JoinUsFaculty = dynamic(() => import("./join-us-faculty"));
+const WhyWorkWithUs = dynamic(() => import("./why-work-with-us"));
 
 const { Content } = Layout;
 

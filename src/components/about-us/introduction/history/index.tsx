@@ -1,7 +1,7 @@
 import React from "react";
 import { Space, Typography, Image, Row, Col } from "antd";
-import styles from "./History.module.scss";
 import dayjs from "dayjs";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph } = Typography;
 

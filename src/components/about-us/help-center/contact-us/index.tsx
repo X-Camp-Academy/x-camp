@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { Typography, Button, Space } from "antd";
 import { CommentOutlined } from "@ant-design/icons";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLang } from "@/hoc/with-intl/define";
 import styles from "./index.module.scss";

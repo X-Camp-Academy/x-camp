@@ -42,7 +42,6 @@ const ContactCard: React.FC = () => {
             <ColorfulCard
               border={"top"}
               index={contactInfo.length - index - 1}
-              key={index}
               animate={false}
             >
               <Card className={styles.card}>
