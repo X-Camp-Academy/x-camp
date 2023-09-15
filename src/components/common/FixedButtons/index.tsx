@@ -144,7 +144,6 @@ const FixedButtons: React.FC = () => {
           >
             <div className={styles.cardTitle}>{t('weeklyOpenHouseOpen')}</div>
             <ul className={styles.desc}>
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
               {labels.map(str => <li key={str}>{str}</li>)}
             </ul>
             <div className={styles.buttonList}>
