@@ -9,10 +9,9 @@ import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { NewEventCategory } from '@/apis/strapi-client/define';
 import styles from './index.module.scss';
 
-
-const Banner = dynamic(() => import('./banner'));
-const Partners = dynamic(() => import('@/components/common/partners'));
-const BecomePartner = dynamic(() => import('./become-partner'));
+const Banner = dynamic(() => import('./Banner'));
+// const Partners = dynamic(() => import('@/components/common/partners'));
+// const BecomePartner = dynamic(() => import('./BecomePartner'));
 const NewsCard = dynamic(() => import('./news-card'));
 
 const { Content } = Layout;

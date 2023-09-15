@@ -37,7 +37,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
     index={index}
     className={`${styles.cardContainer} ${isMobile ? styles.mobile: ''}`}
   >
-    <Card bodyStyle={{ width: 265 }}>
+    <Card bodyStyle={isMobile ? { width: 265 } : undefined}>
       <Space align="center">
         <Space direction="vertical">
           <Paragraph

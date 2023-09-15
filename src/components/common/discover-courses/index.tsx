@@ -4,6 +4,7 @@ import { Typography, Row, Col, Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import MaskCard from "../mask-card";
 import styles from "./index.module.scss";
+import TitleColor from "@/components/common/title-color";
 
 const { Title, Paragraph, Text } = Typography;
 interface DiscoverCoursesProps {
@@ -72,19 +73,6 @@ const DiscoverCourses = ({
         "/courses/#classify3"
       ),
     },
-
-    // {
-    //   title: t("C++.Title"),
-    //   desc: t("C++.Grade"),
-    //   url: "/image/home/course-2.png",
-    //   bgc: "#FFD600",
-    //   maskBgc: "rgb(255 214 0 / 40%)",
-    //   maskChildren: generateMaskChildren(
-    //     t("C++.Title"),
-    //     t("C++.Mask.Desc"),
-    //     "/courses/#classify1"
-    //   ),
-    // },
     {
       title: "Java & APCS",
       desc: t("APCS.Grade"),
@@ -103,11 +91,14 @@ const DiscoverCourses = ({
       style={{ alignItems: align }}
     >
       <div className={`${styles.discoverCourses} container`}>
-        <Text
+        <TitleColor
+          title={t('DiscoverOurCourses')}
+          config={[{
+            text: t("DiscoverOurCourses_Color"),
+            color: '#FFAD11'
+          }]}
           className={styles.title}
-        >
-          Discover Our <span>Courses</span>
-        </Text>
+        />
         {showSubTitle && (
           <div className={styles.subTitle}>{t("RecentPopularEvents")}</div>
         )}
