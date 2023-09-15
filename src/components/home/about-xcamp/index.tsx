@@ -2,8 +2,8 @@
 import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
-import styles from "./AboutXCamp.module.scss";
 import TitleColor from "@/components/common/title-color";
+import styles from "./index.module.scss";
 
 const { Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
@@ -12,25 +12,25 @@ const AboutXCamp: React.FC = () => {
     {
       icon: "/image/home/icon-why-book.png",
       title: t("XCamp.title1"),
-      desc:  t("XCamp.Desc1"),
+      desc: t("XCamp.Desc1"),
       url: '/about-us/introduction/#faculty'
     },
     {
       icon: "/image/home/icon-why-concat.png",
       title: t("XCamp.title2"),
-      desc:  t("XCamp.Desc2"),
+      desc: t("XCamp.Desc2"),
       url: '/about-us/introduction/#faculty'
     },
     {
       icon: "/image/home/icon-why-house.png",
       title: t("XCamp.title3"),
-      desc:  t("XCamp.Desc3"),
+      desc: t("XCamp.Desc3"),
       url: '/about-us/achievements/'
     },
     {
       icon: "/image/home/icon-why-track.png",
       title: t("XCamp.title4"),
-      desc:  t("XCamp.Desc4"),
+      desc: t("XCamp.Desc4"),
       url: '/about-us/x-alumni/'
     },
   ];

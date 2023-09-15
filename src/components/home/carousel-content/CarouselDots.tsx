@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Space, Divider } from "antd";
-import styles from './CarouselContent.module.scss';
+import styles from "./index.module.scss";
 
 interface IProps {
   dots: number,

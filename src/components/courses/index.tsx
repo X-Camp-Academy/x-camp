@@ -65,7 +65,7 @@ const Courses: React.FC = () => {
   const { data: courses } = useGetCourses({});
   const COURSE_TYPES = Object.values(CourseTypes);
 
-  const { dayjs } = useDayJs(lang)
+  const { dayjs } = useDayJs(lang);
 
 
   //获取师生评价数据

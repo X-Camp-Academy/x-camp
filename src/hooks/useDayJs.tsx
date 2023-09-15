@@ -31,7 +31,7 @@ const FORMAT_M = 'MM月';
 const FORMAT_H_m = "HH:mm";
 const FORMAT_YYYY_MM_DD_H_m_ZH = "YYYY年MM月DD日 HH:mm";
 const FORMAT_YYYY_MM_DD_H_m_EN = " DD, YYYY HH:mm";
-const FORMAT_MM_DD = 'MM月DD日'
+const FORMAT_MM_DD = 'MM月DD日';
 
 
 dayjs.extend(isBetween);
