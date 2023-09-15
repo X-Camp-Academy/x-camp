@@ -25,7 +25,7 @@ import { SegmentedValue } from "antd/es/segmented";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult, scrollIntoView, getLangResult, getWeeksDays } from "@/utils/public";
 import { useMobile } from "@/utils";
-import Banner from "./catalog/Banner";
+import Banner from "./banner";
 import ClassCard from "../common/class-card";
 import Reviews from "@/components/common/reviews";
 import { CourseMode, CourseTypes } from "./define";
@@ -71,7 +71,7 @@ const Courses: React.FC = () => {
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname],
   });
   // 获取所有的courseLevelType分类
   const courseLevelTypeData = courseLevelType?.map(

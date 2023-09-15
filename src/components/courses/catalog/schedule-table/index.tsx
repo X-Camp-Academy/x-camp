@@ -13,7 +13,7 @@ import { useSize } from "ahooks";
 import { useLang } from "@/hoc/with-intl/define";
 import CourseCard from "./course-card";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
-import styles from "./ScheduleTable.module.scss";
+import styles from "./index.module.scss";
 
 
 const ScheduleTable: React.FC = () => {

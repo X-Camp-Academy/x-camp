@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Space, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { getLangResult } from "@/utils/public";
-import CourseClassesContext from "../CourseClassesContext";
-import styles from "./CourseSyllabus.module.scss";
+import CourseClassesContext from "../../CourseClassesContext";
+import styles from "./index.module.scss";
 
 const { Title, Text } = Typography;
 

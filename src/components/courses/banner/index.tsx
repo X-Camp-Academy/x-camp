@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button, Col, Row, Space, Typography } from "antd";
 import { CaretRightOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
-import styles from "./Banner.module.scss";
+import styles from "./index.module.scss";
 
 const { Paragraph } = Typography;
 

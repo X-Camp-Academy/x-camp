@@ -7,8 +7,8 @@ import ColorfulCard from "@/components/common/colorful-card";
 import CourseAbstract from "@/components/common/course-abstract";
 import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";
-import Banner from "./Banner";
-import CampIntro from "./camp-intro";
+import Banner from "./banner";
+import Introduction from "./introduction";
 import {
   useGetCourses,
   useGetFaq,
@@ -56,8 +56,7 @@ const CourseCamps: React.FC = () => {
     <Layout className={styles.courseCamps}>
       <Content>
         <Banner />
-        <CampIntro />
-        {/* <CampCarousel /> */}
+        <Introduction />
         <div className={styles.courseCard}>
           <div className="container">
             <ColorfulCard border={"bottom"} index={1} animate={false}>

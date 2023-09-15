@@ -5,8 +5,8 @@ import { CarouselRef } from "antd/es/carousel";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult, getWeeksDays } from "@/utils/public";
 import CourseAbstract from "@/components/common/course-abstract";
-import CourseClassesContext from "../CourseClassesContext";
-import styles from "./CourseBanner.module.scss";
+import CourseClassesContext from "../../CourseClassesContext";
+import styles from "./index.module.scss";
 
 
 const { Title } = Typography;

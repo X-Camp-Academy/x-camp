@@ -6,7 +6,7 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 const { Title, Paragraph } = Typography;
 
-const TopBanner = () => {
+const Banner = () => {
   return (
     <div className={styles.topBannerContainer}>
       <div className={cx("container", styles.content)}>
@@ -25,4 +25,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default Banner;

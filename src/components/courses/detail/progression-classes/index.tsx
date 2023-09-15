@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Space, Typography } from "antd";
 import ClassCard from "@/components/common/class-card";
-import CourseClassesContext from "../CourseClassesContext";
+import CourseClassesContext from "../../CourseClassesContext";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult, getLangResult } from "@/utils/public";
-import styles from "./ProgressionClasses.module.scss";
+import styles from "./index.module.scss";
 
 
 const { Title } = Typography;
