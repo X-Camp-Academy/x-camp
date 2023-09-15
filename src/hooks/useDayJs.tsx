@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import dayjs from "dayjs";
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
@@ -36,7 +36,7 @@ const FORMAT_MM_DD = 'MM月DD日'
 
 dayjs.extend(isBetween);
 
-const useDayJs = (lang: string) => {
+const useDayJs = (lang?: string) => {
 
   useEffect(() => {
     const locale = lang === 'zh' ? ILocal.zh : ILocal.en;
