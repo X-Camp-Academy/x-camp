@@ -8,14 +8,14 @@ import { useLang } from "@/hoc/with-intl/define";
 
 const { Title, Paragraph } = Typography;
 
-const Results = () => {
+const Results: React.FC = () => {
   const { lang } = useLang();
   const { data: introArticle } = useGetAboutUsIntroArticle();
   return (
     <div className="container">
-      {introArticle?.map((item, index) => (
+      {introArticle?.map(item => (
         <Space
-          key={index}
+          key={item?.id}
           direction="vertical"
           size={16}
           className={styles.space}

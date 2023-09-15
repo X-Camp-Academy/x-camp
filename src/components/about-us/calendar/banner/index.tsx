@@ -1,8 +1,7 @@
 import React from "react";
-import { Space, Row, Col, Image, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
-import styles from "./Banner.module.scss";
 import CommonBanner from "@/components/common/common-banner";
+import styles from "./index.module.scss";
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();

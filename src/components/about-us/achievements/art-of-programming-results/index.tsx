@@ -4,7 +4,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import { GetProjectsDemo } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import styles from "./ArtOfProgrammingResults.module.scss";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 interface Props {

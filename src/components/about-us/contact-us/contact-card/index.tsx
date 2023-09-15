@@ -4,7 +4,7 @@ import { Space, Row, Col, Card, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { LaptopOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import ColorfulCard from "@/components/common/colorful-card";
-import styles from "./ContactCard.module.scss";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph } = Typography;
 

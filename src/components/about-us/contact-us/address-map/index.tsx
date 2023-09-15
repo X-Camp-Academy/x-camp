@@ -2,7 +2,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import { useMobile } from "@/utils";
-import styles from "./AddressMap.module.scss";
+import styles from "./index.module.scss";
 
 const AddressMap: React.FC = () => {
   const isMobile = useMobile();

@@ -5,7 +5,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import QACard from "@/components/common/q&a";
 import { useGetFaq } from "@/apis/strapi-client/strapi";
-import styles from "./QAPart.module.scss";
+import styles from "./index.module.scss";
 
 const { Title } = Typography;
 
@@ -21,9 +21,9 @@ const QAPart: React.FC = () => {
       {faq?.map((v, index) => (
         <React.Fragment key={index}>
           <Title className={styles.title}>{v?.[0]?.attributes?.category}</Title>
-          {v.map((g, index) => (
+          {v?.map((g, index) => (
             <QACard
-              key={"referral" + index}
+              key={g?.id}
               question={
                 getTransResult(
                   lang,

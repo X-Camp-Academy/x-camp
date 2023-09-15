@@ -6,15 +6,12 @@ import Reviews from "@/components/common/reviews";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
 import styles from "./index.module.scss";
 
-const Banner = dynamic(() => import("./Banner"));
-const CalendarContent = dynamic(() => import("./CalendarContent"));
+const Banner = dynamic(() => import("./banner"));
+const CalendarContent = dynamic(() => import("./calendar-content"));
 const RecentActivities = dynamic(
   () =>
     import("@/components/resources/education-forum/recent-activities")
 );
-// const DiscoverCourses = dynamic(
-//   () => import("@/components/common/discover-courses")
-// );
 
 const { Content } = Layout;
 
@@ -28,7 +25,6 @@ const Calendar: React.FC = () => {
       <Content>
         <Banner />
         <CalendarContent />
-        {/*<DiscoverCourses showSubTitle align="flex-start" showBg={false} />*/}
         <RecentActivities />
         <Reviews reviewsData={reviewsData} />
       </Content>

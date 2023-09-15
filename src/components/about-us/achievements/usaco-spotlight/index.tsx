@@ -17,7 +17,7 @@ import { getTransResult } from "@/utils/public";
 import {
   useGetAboutUsAchievementsAward,
 } from "@/apis/strapi-client/strapi";
-import styles from "./USACOWinners.module.scss";
+import styles from "./index.module.scss";
 
 const { Title, Text } = Typography;
 

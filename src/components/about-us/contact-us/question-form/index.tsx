@@ -7,7 +7,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import QACard from '@/components/common/q&a';
 import { useGetFaq, useSubmitQuestionForm } from '@/apis/strapi-client/strapi';
 import { UserInfo } from '@/apis/strapi-client/define';
-import styles from './QuestionForm.module.scss';
+import styles from './index.module.scss';
 
 const { Title } = Typography;
 const { TextArea } = Input;

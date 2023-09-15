@@ -1,14 +1,11 @@
 import React from "react";
 import { Space, Typography, Image, Row, Col } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
 import styles from "./History.module.scss";
 import dayjs from "dayjs";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const History: React.FC = () => {
-  const { format: t } = useLang();
-
   const years = [2023, 2022, 2021, 2020, 2019, 2018, 2017];
   const currentYear = dayjs().year();
   const images = [

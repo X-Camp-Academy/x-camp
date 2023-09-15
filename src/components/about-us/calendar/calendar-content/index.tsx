@@ -9,7 +9,7 @@ import TimelineComponent from "@/components/common/timeline";
 import { GetNewEvent, NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import styles from "./CalendarContent.module.scss";
+import styles from "./index.module.scss";
 
 const { Title } = Typography;
 

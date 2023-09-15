@@ -15,7 +15,7 @@ import { getTransResult } from "@/utils/public";
 import {
   useGetAchievementsTimeLine,
 } from "@/apis/strapi-client/strapi";
-import styles from "./TimeLine.module.scss";
+import styles from "./index.module.scss";
 
 const XStarMdViewer = dynamic(
   () => import("x-star-editor").then((v) => v.XStarMdViewer),

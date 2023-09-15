@@ -5,8 +5,8 @@ import styles from "./index.module.scss";
 import dynamic from "next/dynamic";
 import { useGetFaculty } from "@/apis/strapi-client/strapi";
 
-const Banner = dynamic(() => import("./Banner"));
-const History = dynamic(() => import("./History"));
+const Banner = dynamic(() => import("./banner"));
+const History = dynamic(() => import("./history"));
 const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
 const UsacoMedal = dynamic(() => import("@/components/common/usaco-medal"));
 const FacultyCoach = dynamic(() => import("@/components/common/faculty-coach"));
