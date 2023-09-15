@@ -1,16 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Typography, Calendar, Badge, Empty, Carousel, Image } from "antd";
-import dayjs from "dayjs";
+import { Space, Row, Col, Typography, Empty, Carousel } from "antd";
 import type { Dayjs } from "dayjs";
-import isBetween from "dayjs/plugin/isBetween";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import styles from "./PublicCalendar.module.scss";
-import { usePathname } from "next/navigation";
 import ActivityCalendar from "@/components/common/activity-calendar";
+import useDayJs from "@/hooks/useDayJs";
 
 const { Title, Paragraph, Text } = Typography;
 interface IFilterDataEvent {
@@ -25,47 +23,12 @@ interface IFilterDataEvent {
   endDateTime?: string;
 }
 
-const weekdaysEn = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-const weekdaysZh = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
-
-const monthNameEn = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const monthNameAbbrEn = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
 const pageSize = 999;
 
 const PublicCalendar: React.FC = () => {
   const { format: t, lang } = useLang();
+  const { getMonth, getDate, getWeekDay, formatHourMinute, formatYMDTime, formatDate, dayjs } = useDayJs(lang);
   const isMobile = useMobile();
-  const pathname = usePathname();
-  //引入dayjs插件
-  dayjs.extend(isBetween);
 
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
   const [filterDateEventList, setFilterDateEventList] = useState<
@@ -93,7 +56,6 @@ const PublicCalendar: React.FC = () => {
     return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
   };
 
-
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
       const updatedEventDate = newEventData.data
@@ -104,6 +66,33 @@ const PublicCalendar: React.FC = () => {
       setFilterDateEventList(updatedEventDate);
     }
   };
+
+  /**
+   * 获取轮播图中课程格式化后的时间
+   * 不跨天显示HH：mm,反之显示 年月日+HH：mm
+   * @param item
+   */
+  const getCourseDateStr = (item: any): string => {
+    const isSame = dayjs(item?.attributes?.startDateTime).isSame(dayjs(item?.attributes?.endDateTime), "day")
+    const sameStr = formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "")
+    const diffStr = formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '')
+    return `${isSame?  sameStr: diffStr} ${formatTimezone(item?.attributes?.startDateTime).timezone}`
+  }
+
+  /**
+   * 获取日历选中之后出现的课程格式化后的时间
+   * 当活动跨天显示完整的年月日时间，否则仅显示时间
+   * @param item
+   */
+  const getCourseDateStrInCalendar = (item: {
+    startDateTime?: string;
+    endDateTime?: string;
+  }): string => {
+    const isSame = dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day")
+    const sameStr = `${formatHourMinute(item?.startDateTime)} - ${formatHourMinute(item?.endDateTime)} `
+    const diffStr =  `${formatYMDTime(item?.startDateTime)} ${item?.endDateTime ? `- ${formatYMDTime(item?.endDateTime)}` : ''}`
+    return `${isSame ? sameStr :diffStr} ${formatTimezone(item?.startDateTime).timezone}`
+  }
 
   useEffect(() => {
     run({
@@ -133,63 +122,6 @@ const PublicCalendar: React.FC = () => {
     }
   }, [selectDate]);
 
-  const formatDate = (date: string) => {
-    const dateInfo = dayjs(date);
-    const month = dateInfo.month();
-    if (lang === "en") {
-      return monthNameEn[month] + " " + dateInfo.date();
-    } else {
-      return dateInfo.format("MM月DD日");
-    }
-  };
-
-  const cellRender = (value: Dayjs) => {
-    const eventDataForDate = eventDate.find((event) => {
-      return judgeDate(value, event?.startDateTime || '', event?.endDateTime || '');
-    });
-    const dotStyle: React.CSSProperties = {
-      width: 8,
-      height: 8,
-      backgroundColor: '#FF4D4F',
-      borderRadius: 4,
-      margin: '0 auto'
-    };
-
-    return eventDataForDate ? <div style={dotStyle} /> : <></>;
-  };
-
-  const getMonth = (date: string) => {
-    return dayjs(date).month();
-  };
-
-  const getDate = (date: string) => {
-    return dayjs(date).date();
-  };
-
-  const getWeekDay = (date: string) => {
-    return getTransResult(
-      lang,
-      weekdaysZh[dayjs(date).day()],
-      weekdaysEn[dayjs(date).day()]
-    );
-  };
-
-  const formatHourMinute = (time: string) => {
-    const timeInfo = dayjs(time);
-    const formatString = "HH:mm";
-    return timeInfo.format(formatString);
-  };
-
-  const formatYMDTime = (date: string) => {
-    const formatStringZh = "YYYY年MM月DD日 HH:mm";
-    const formatStringEn = " DD, YYYY HH:mm";
-    return getTransResult(
-      lang,
-      dayjs(date).format(formatStringZh),
-      `${monthNameEn[dayjs(date).month()]}` + dayjs(date).format(formatStringEn)
-    );
-  };
-
   return (
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
@@ -211,14 +143,13 @@ const PublicCalendar: React.FC = () => {
               autoplay
               autoplaySpeed={2000}
             >
-              {newEventData?.data?.map((item, index) => {
+              {newEventData?.data?.map((item) => {
                 return (
                   <div key={item?.id} className={styles.eventCard} >
                     <Space
                       size={isMobile ? 8 : 60}
                       align="center"
                       className={styles.eventContent}
-
                     >
                       <Space
                         direction="vertical"
@@ -228,27 +159,20 @@ const PublicCalendar: React.FC = () => {
                           {getWeekDay(item?.attributes?.startDateTime || "")}
                         </Text>
                         <Text className={styles.day}>
-                          {getDate(item?.attributes?.startDateTime || "")}
+                          {getDate(item?.attributes?.startDateTime)}
                         </Text>
                         <Text className={styles.weekMonth}>
-                          {getTransResult(
-                            lang,
-                            `${getMonth(item?.attributes?.startDateTime || "") + 1
-                            }月`,
-                            monthNameAbbrEn[
-                              getMonth(item?.attributes?.startDateTime || "")
-                            ]
-                          )}
+                          {getMonth(item?.attributes?.startDateTime)?.slice(0, 3)}
                         </Text>
                       </Space>
-
                       <Space
                         direction="vertical"
                         className={styles.contentRight}
                       >
                         <Title
                           ellipsis={{
-                            rows: 1, tooltip: getTransResult(
+                            rows: 1, 
+                            tooltip: getTransResult(
                               lang,
                               item.attributes.titleZh,
                               item.attributes.titleEn
@@ -281,32 +205,13 @@ const PublicCalendar: React.FC = () => {
                             )}`}
                           </Paragraph>
                         )}
-                        {/* 不跨天显示HH：mm,反之显示 年月日+HH：mm */}
                         <Text
                           className={styles.date}
                           ellipsis={{
-                            tooltip:
-                              (dayjs(item?.attributes?.startDateTime)
-                                .isSame(dayjs(item?.attributes?.endDateTime), "day") ?
-                                formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "") :
-                                formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '')) + ' ' +
-                              formatTimezone(item?.attributes?.startDateTime).timezone
+                            tooltip: getCourseDateStr(item)
                           }}
                         >
-                          {`${dayjs(item?.attributes?.startDateTime)
-                            .isSame(
-                              dayjs(item?.attributes?.endDateTime),
-                              "day"
-                            )
-                            ?
-                            `${formatHourMinute(item?.attributes?.startDateTime || "")} - 
-                            ${formatHourMinute(item?.attributes?.endDateTime || "")} `
-                            :
-                            `${formatYMDTime(item?.attributes?.startDateTime || "")} 
-                             ${item?.attributes?.endDateTime ? '-' + formatYMDTime(item?.attributes?.endDateTime) : ''}`
-                            } 
-                            ${formatTimezone(item?.attributes?.startDateTime).timezone} 
-                            `}
+                          {getCourseDateStr(item)}
                         </Text>
                       </Space>
                     </Space>
@@ -333,7 +238,7 @@ const PublicCalendar: React.FC = () => {
                   <div className={styles.line} />
                 </Space>
                 <div style={{ height: 250, overflow: "scroll" }}>
-                  {filterDateEventList.length != 0 ? (
+                  {!!filterDateEventList.length ? (
                     filterDateEventList.map((item, index) => {
                       if (item?.startDateTime)
                         return (
@@ -343,28 +248,10 @@ const PublicCalendar: React.FC = () => {
                             className={styles.calendarItem}
                           >
                             <Text className={styles.itemDate}>
-                              {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
-                              {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day")
-                                ?
-                                `${formatHourMinute(item?.startDateTime || "")} - ${formatHourMinute(item?.endDateTime || "")} `
-                                :
-                                `${formatYMDTime(item?.startDateTime || "")} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
-                                } 
-                                ${formatTimezone(item?.startDateTime).timezone} 
-                            `}
+                              {getCourseDateStrInCalendar(item)}
                             </Text>
                             <Paragraph className={styles.itemParagraph}>
-                              {`
-                              ${getTransResult(
-                                lang,
-                                item.titleZh,
-                                item.titleEn
-                              )} - 
-                              ${getTransResult(
-                                lang,
-                                item.descriptionZh,
-                                item.descriptionEn
-                              )}`}
+                              {`${getTransResult(lang,item.titleZh,item.titleEn)} - ${getTransResult(lang,item.descriptionZh,item.descriptionEn)}`}
                             </Paragraph>
                             <div className={styles.itemLine} />
                           </Space>
