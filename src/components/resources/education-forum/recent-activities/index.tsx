@@ -7,7 +7,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import styles from "./RecentActivities.module.scss";
+import styles from "./index.module.scss";
 
 const ColorfulCard = dynamic(() => import("@/components/common/colorful-card"));
 const XCollapse = dynamic(() => import("@/components/common/collapse"));
@@ -33,11 +33,15 @@ const RecentActivities: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <div>
-          <div className={styles.mainTitle}>{t("RecentPopularEvents")}</div>
+        <XCollapse
+          header={{
+            title: t("RecentPopularEvents"),
+            description: t("RecentPopularEvents.Desc"),
+          }}
+        >
           <Row className={styles.cards} gutter={[32, 32]}>
             {RecentActivities?.slice(0, 3)?.map((item, index) => (
-              <Col key={index} xs={24} sm={24} md={12} lg={8}>
+              <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
                 <ColorfulCard border={"bottom"} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card} >
                     <img src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} alt="img" />
@@ -77,7 +81,7 @@ const RecentActivities: React.FC = () => {
               </Col>
             ))}
           </Row>
-        </div>
+        </XCollapse>
       </div>
     </div >
   );

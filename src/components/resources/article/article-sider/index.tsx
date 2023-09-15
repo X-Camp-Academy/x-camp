@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./index.module.scss";
+import Link from "next/link";
 import {
   Button,
   Card,
@@ -8,24 +8,26 @@ import {
   Typography,
   Image,
 } from "antd";
-const { Text, Paragraph, Title } = Typography;
-import ActivityCalendar from "@/components/common/activity-calendar";
-import ColorfulCard from "@/components/common/colorful-card";
 import { RightCircleOutlined, AlignRightOutlined } from "@ant-design/icons";
 import dayjs, { Dayjs } from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
+import ActivityCalendar from "@/components/common/activity-calendar";
+import ColorfulCard from "@/components/common/colorful-card";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
 import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { EventCategory, GetNewEvent } from "@/apis/strapi-client/define";
-import Link from "next/link";
+import styles from "./index.module.scss";
+dayjs.extend(isBetween);
+
+const { Text, Paragraph, Title } = Typography;
 
 const ArticleSider: React.FC<{
   eventCategory: EventCategory | undefined,
   articleId: number
 }> = ({ eventCategory: EventCategory, articleId }) => {
-  const { format: t, lang } = useLang();
+  const { lang } = useLang();
 
   const monthNameEn = [
     "January",
@@ -42,8 +44,6 @@ const ArticleSider: React.FC<{
     "December",
   ];
 
-  //引入dayjs插件
-  dayjs.extend(isBetween);
   const [selectedDate, setSelectedDate] = useState<string>(dayjs().toString());
   const [eventThreeCard, setEventThreeCard] = useState<StrapiResponseDataItem<GetNewEvent>[]>([]); //日历下面三张卡片
   const [filterDateEventList, setFilterDateEventList] = useState<
@@ -84,7 +84,6 @@ const ArticleSider: React.FC<{
   };
 
 
-
   const filterSameDateEvent = (selectDate: string) => {
     if (newEventData) {
       const updatedEventDate = newEventData.data
@@ -123,7 +122,6 @@ const ArticleSider: React.FC<{
       setEventDate(updatedEventDate);
       filterSameDateEvent(selectedDate);
       filterSameEventCategory(EventCategory);
-
     }
   }, [newEventData]);
 

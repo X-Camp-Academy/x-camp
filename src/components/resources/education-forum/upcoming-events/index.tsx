@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import { Row, Col, Descriptions, Button } from "antd";
 import {
   ClockCircleOutlined,
@@ -10,8 +11,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import { NewEventCategory } from "@/apis/strapi-client/define";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import { formatTimezone, getTransResult } from "@/utils/public";
-import styles from "./UpcomingEvents.module.scss";
-import dynamic from "next/dynamic";
+import styles from "./index.module.scss";
 
 const ColorfulCard = dynamic(() => import("@/components/common/colorful-card"));
 const XCollapse = dynamic(() => import("@/components/common/collapse"));
@@ -83,15 +83,15 @@ const UpcomingEvents: React.FC = () => {
                           {!item.attributes.geographicallyAddress &&
                             item.attributes.link &&
                             item.attributes.onlinePlatform ? (
-                              <a
-                                href={item.attributes.link}
-                                style={{ color: "#666666" }}
-                              >
-                                {item.attributes.onlinePlatform}
-                              </a>
-                            ) : (
-                              item.attributes.geographicallyAddress
-                            )}
+                            <a
+                              href={item.attributes.link}
+                              style={{ color: "#666666" }}
+                            >
+                              {item.attributes.onlinePlatform}
+                            </a>
+                          ) : (
+                            item.attributes.geographicallyAddress
+                          )}
                           {item.attributes.link && (
                             <Button
                               type="link"

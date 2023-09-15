@@ -16,7 +16,7 @@ import {
   AndOrFilters,
   FilterFields,
 } from "@/apis/strapi-client/strapiDefine";
-import styles from "./Activities.module.scss";
+import styles from "./index.module.scss";
 
 interface ActivityItem {
   title: string;
@@ -50,10 +50,10 @@ const Activities: React.FC = () => {
     let filters:
       | Partial<FilterFields<GetNewEvent>>
       | AndOrFilters<FilterFields<GetNewEvent>> = {
-        tags: {
-          $eq: tag,
-        },
-      };
+      tags: {
+        $eq: tag,
+      },
+    };
     if (selectedItem !== "All") {
       filters = {
         ...filters,

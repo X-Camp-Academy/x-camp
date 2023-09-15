@@ -10,7 +10,7 @@ const Banner = dynamic(() => import("./Banner"));
 const CalendarContent = dynamic(() => import("./CalendarContent"));
 const RecentActivities = dynamic(
   () =>
-    import("@/components/resources/education-forum/RecentActivities")
+    import("@/components/resources/education-forum/recent-activities")
 );
 // const DiscoverCourses = dynamic(
 //   () => import("@/components/common/discover-courses")
