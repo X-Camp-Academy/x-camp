@@ -40,7 +40,7 @@ const WeSupport: React.FC = () => {
               <Col
                 xs={{ span: 24, order: 1 }}
                 sm={{ span: 24, order: 1 }}
-                md={{ span: 24, order: 2 }}
+                md={{ span: 24, order: 1 }}
                 lg={{ span: 24, order: 1 }}
               >
                 <div>
@@ -55,7 +55,7 @@ const WeSupport: React.FC = () => {
               <Col
                 xs={{ span: 24, order: 3 }}
                 sm={{ span: 24, order: 3 }}
-                md={{ span: 24, order: 1 }}
+                md={{ span: 24, order: 2 }}
                 lg={{ span: 24, order: 2 }}
               >
                 <Space direction="horizontal" size={isMobile ? 8 : 48} className={styles.imageContainer}>

@@ -5,33 +5,32 @@ import { useLang } from "@/hoc/with-intl/define";
 import styles from "./AboutXCamp.module.scss";
 import TitleColor from "@/components/common/title-color";
 
-const { Title, Paragraph, Text } = Typography;
+const { Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
   const { format: t } = useLang();
   const aboutContents = [
     {
       icon: "/image/home/icon-why-book.png",
-      title: 'Comprehensive curriculum',
-      desc: 'X-Camp Academy, a Silicon Valley-based coding institute, offers beginner-level to IOI level\'s.',
+      title: t("XCamp.title1"),
+      desc:  t("XCamp.Desc1"),
       url: '/about-us/introduction/#faculty'
     },
     {
       icon: "/image/home/icon-why-concat.png",
-      title: 'Top-notch staff and coaches',
-      desc: 'Prestigious students from CS top schools, Experienced in tech, contest medalists in world class.',
+      title: t("XCamp.title2"),
+      desc:  t("XCamp.Desc2"),
       url: '/about-us/introduction/#faculty'
     },
     {
       icon: "/image/home/icon-why-house.png",
-      title: 'Sense of',
-      title2: 'community',
-      desc: 'Supportive, inclusive community for our students pursuing their coding aspirations.',
+      title: t("XCamp.title3"),
+      desc:  t("XCamp.Desc3"),
       url: '/about-us/achievements/'
     },
     {
       icon: "/image/home/icon-why-track.png",
-      title: 'Customized learning track',
-      desc: 'Weekly homework rate tracking, 24-hour online edu forum, make your learning time valued',
+      title: t("XCamp.title4"),
+      desc:  t("XCamp.Desc4"),
       url: '/about-us/x-alumni/'
     },
   ];
@@ -72,9 +71,6 @@ const AboutXCamp: React.FC = () => {
                         className={styles.cardTitle}
                       >
                         {item?.title}
-                        {
-                          !!item.title2 && <><br /> {item.title2}</>
-                        }
                       </Paragraph>
                       <Paragraph
                         ellipsis={{ rows: 3, tooltip: item?.desc }}
