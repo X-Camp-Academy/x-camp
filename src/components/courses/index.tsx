@@ -18,9 +18,7 @@ import {
   Space,
 } from "antd";
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
-import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
-import isBetween from "dayjs/plugin/isBetween";
 import { SegmentedValue } from "antd/es/segmented";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult, scrollIntoView, getLangResult, getWeeksDays } from "@/utils/public";
@@ -37,11 +35,11 @@ import {
 } from "@/apis/strapi-client/strapi";
 import { GetCourses } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
+import useDayJs from "@/hooks/useDayJs";
 
 const { Panel } = Collapse;
 const { Content } = Layout;
 const { RangePicker } = DatePicker;
-dayjs.extend(isBetween);
 
 interface FormatCoursesProps {
   primaryTitle: string;
@@ -66,6 +64,8 @@ const Courses: React.FC = () => {
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
   const COURSE_TYPES = Object.values(CourseTypes);
+
+  const { dayjs } = useDayJs(lang)
 
 
   //获取师生评价数据
