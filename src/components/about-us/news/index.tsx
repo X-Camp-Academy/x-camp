@@ -10,8 +10,8 @@ import styles from './index.module.scss';
 import SubscribeNewsletter from './SubscribeNewsletter';
 
 const Banner = dynamic(() => import('./Banner'));
-const Partners = dynamic(() => import('@/components/common/partners'));
-const BecomePartner = dynamic(() => import('./BecomePartner'));
+// const Partners = dynamic(() => import('@/components/common/partners'));
+// const BecomePartner = dynamic(() => import('./BecomePartner'));
 const NewsCard = dynamic(() => import('./news-card'));
 
 const { Content } = Layout;
