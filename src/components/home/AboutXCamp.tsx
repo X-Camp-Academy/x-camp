@@ -3,6 +3,7 @@ import React from "react";
 import { Space, Row, Col, Card, Image, Typography } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import styles from "./AboutXCamp.module.scss";
+import TitleColor from "@/components/common/title-color";
 
 const { Title, Paragraph, Text } = Typography;
 const AboutXCamp: React.FC = () => {
@@ -42,11 +43,8 @@ const AboutXCamp: React.FC = () => {
           align="center"
           className={styles.aboutXCampTop}
         >
-          <Title className={styles.title}>
-            <span>Why</span> X-Camp
-            <Text className={styles.titleBg} />
-          </Title>
-
+          <TitleColor title={t('AboutX-Camp')} config={[{ text: t('AboutX-Camp_Color') }]} className={styles.title} />
+          <Text className={styles.titleBg} />
           <Paragraph className={styles.paragraph}>
             {t("X-Camp.Desc1")}
           </Paragraph>
