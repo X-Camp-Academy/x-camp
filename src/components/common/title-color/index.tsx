@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 
 export interface IConfig {
   text: string,
-  color: string
+  color?: string
 }
 interface IProps {
   title: string,
@@ -35,7 +35,7 @@ const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
     }
 
     configArr.forEach((config) => {
-      result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color));
+      result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color || '#FFAD11'));
     });
     return result;
   }, [title, config]);

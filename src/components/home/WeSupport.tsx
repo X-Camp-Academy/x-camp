@@ -5,6 +5,7 @@ import { useLang } from "@/hoc/with-intl/define";
 import { useMobile } from "@/utils";
 import AnimateBox from "../common/animate-box";
 import styles from "./WeSupport.module.scss";
+import TitleColor from "@/components/common/title-color";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -39,13 +40,13 @@ const WeSupport: React.FC = () => {
               <Col
                 xs={{ span: 24, order: 1 }}
                 sm={{ span: 24, order: 1 }}
-                md={{ span: 24, order: 2 }}
+                md={{ span: 24, order: 1 }}
                 lg={{ span: 24, order: 1 }}
               >
-                { lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
-                  <Title className={styles.title}>We <span>Support</span></Title>
+                <div>
+                  <TitleColor title={t("WeSupport")} config={[{text: t("WeSupport_Color")}]} className={styles.title} />
                   <Text className={styles.titleBg} />
-                </div> }
+                </div>
                 <Paragraph className={styles.paragraph}>
                   {t("WeSupport.Desc")}
                 </Paragraph>
@@ -54,7 +55,7 @@ const WeSupport: React.FC = () => {
               <Col
                 xs={{ span: 24, order: 3 }}
                 sm={{ span: 24, order: 3 }}
-                md={{ span: 24, order: 1 }}
+                md={{ span: 24, order: 2 }}
                 lg={{ span: 24, order: 2 }}
               >
                 <Space direction="horizontal" size={isMobile ? 8 : 48} className={styles.imageContainer}>
