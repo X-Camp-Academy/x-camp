@@ -10,6 +10,7 @@ import { useMobile } from "@/utils";
 import { useGetNewEvent } from "@/apis/strapi-client/strapi";
 import styles from "./PublicCalendar.module.scss";
 import { usePathname } from "next/navigation";
+import ActivityCalendar from "@/components/common/activity-calendar";
 
 const { Title, Paragraph, Text } = Typography;
 interface IFilterDataEvent {
@@ -146,21 +147,15 @@ const PublicCalendar: React.FC = () => {
     const eventDataForDate = eventDate.find((event) => {
       return judgeDate(value, event?.startDateTime || '', event?.endDateTime || '');
     });
-    if (eventDataForDate) {
-      return (
-        <Badge dot>
-          <div />
-        </Badge>
-      );
-    } else {
-      return (
-        <>
-          <Badge dot color="white">
-            <div />
-          </Badge>
-        </>
-      );
-    }
+    const dotStyle: React.CSSProperties = {
+      width: 8,
+      height: 8,
+      backgroundColor: '#FF4D4F',
+      borderRadius: 4,
+      margin: '0 auto'
+    };
+
+    return eventDataForDate ? <div style={dotStyle} /> : <></>;
   };
 
   const getMonth = (date: string) => {
@@ -322,11 +317,11 @@ const PublicCalendar: React.FC = () => {
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
-            <Space size={48} direction="vertical" className={styles.rightSpace}>
-              <Calendar
-                fullscreen={false}
-                cellRender={cellRender}
-                onSelect={(date) => {
+            <Space size={30} direction="vertical" className={styles.rightSpace}>
+              <ActivityCalendar
+                eventDate={eventDate}
+                headerClassName={styles.calenderHeader}
+                onSelectDate={(date) => {
                   setSelectDate(date.toString());
                 }}
               />
