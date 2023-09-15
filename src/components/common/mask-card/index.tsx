@@ -1,5 +1,5 @@
-import { Card, CardProps } from 'antd';
 import React from 'react';
+import { Card, CardProps } from 'antd';
 import styles from './index.module.scss';
 
 interface MaskCardProps extends CardProps {

@@ -10,9 +10,9 @@ import styles from "./index.module.scss";
 
 const { Content } = Layout;
 
-const Banner = dynamic(() => import("./Banner"));
-const ReferralAndEarn = dynamic(() => import("./ReferralAndEarn"));
-const GetCredit = dynamic(() => import("./ReferralProgramWork"));
+const Banner = dynamic(() => import("./banner"));
+const ReferralAndEarn = dynamic(() => import("./referral-and-earn"));
+const GetCredit = dynamic(() => import("./referral-program-work"));
 const Faq = dynamic(() => import("@/components/common/faqs"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 

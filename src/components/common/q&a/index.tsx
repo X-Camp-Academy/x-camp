@@ -1,19 +1,20 @@
 'use client';
 import React from 'react';
-import styles from './index.module.scss';
 import { Collapse, Space } from 'antd';
 import { DownCircleOutlined } from '@ant-design/icons';
 import { useMobile } from '@/utils';
+import styles from './index.module.scss';
+
 
 const { Panel } = Collapse;
 
-interface Props {
+interface QACardProps {
   question: string;
   answer: string;
   index: number;
   className?: string;
 }
-const QACard: React.FC<Props> = ({
+const QACard: React.FC<QACardProps> = ({
   question,
   answer,
   index,

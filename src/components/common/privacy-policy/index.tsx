@@ -1,15 +1,14 @@
 "use client";
 import React from "react";
 import { List, Space, Typography } from "antd";
-import dynamic from "next/dynamic";
-import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
+
+
 const { Title, Paragraph, Text } = Typography;
 
 
-
-
-const PrivacyPolicy = () => {
+const PrivacyPolicy: React.FC = () => {
   const { lang } = useLang();
 
   const policyExplains = {
@@ -156,7 +155,7 @@ const PrivacyPolicy = () => {
             "欧盟-美国和瑞士-美国隐私护盾框架。正如我们的隐私盾认证中所述，我们遵守美国商务部制定的关于收集、使用和保留来自欧洲经济区成员国、英国 (UK) 以及瑞士的个人信息的欧盟-美国和瑞士-美国隐私保护框架。如上所述，X-Camp Academy 仍对根据继续传输原则与第三方共享以进行外部处理的任何个人信息负责。要了解有关隐私护盾计划的更多信息，请访问隐私护盾网站。X-Camp Academy受美国联邦贸易委员会 (FTC) 的调查和执法权约束。您还可以将投诉提交给当地的数据保护机构，我们将与他们合作解决您的问题。在某些情况下，隐私护盾框架提供了援引具有约束力的仲裁的权利，以解决通过其他方式无法解决的投诉，如隐私护盾原则附件一所述。自 2020 年 7 月 16 日起，我们不再依赖欧盟-美国隐私护盾将源自欧洲经济区或英国的数据传输到美国。"
           ]
         },
-        
+
       ]
     }
   };
@@ -189,9 +188,6 @@ const PrivacyPolicy = () => {
     { head: 'Service providers', content: ', trusted businesses or persons that process information on X-Camp’s behalf, based on our instructions and in compliance with this privacy policy and any other appropriate confidentiality and security measures.' },
     { head: 'Law enforcement or other third parties', content: ', in response to legal process or enforceable government requests, and as necessary to identify, report on and investigate violations of applicable laws and regulations.' },
   ];
-
-
-
 
   return (
     <div className={styles.privacyPolicyContainer}>

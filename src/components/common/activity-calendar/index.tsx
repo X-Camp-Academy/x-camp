@@ -1,60 +1,60 @@
 "use client";
 import React, { useState } from "react";
-import "dayjs/locale/zh-cn";
 import {
   Calendar,
   Col,
   Row,
   theme,
   Button,
-  Badge,
 } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import styles from "./index.module.scss";
+import dayjs, { Dayjs } from "dayjs";
+import "dayjs/locale/zh-cn";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import dayjs, { Dayjs } from "dayjs";
-
+import styles from "./index.module.scss";
 interface Props {
   className?: string;
   onSelectDate: (date: string) => void;
+  headerClassName?: string,
   eventDate: {
     startDateTime?: string;
     endDateTime?: string;
   }[];
 }
 
-const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, eventDate }) => {
-  const { lang } = useLang();
-  const monthNameEn = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+const monthNameEn = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-  const monthNameZH = [
-    "一月",
-    "二月",
-    "三月",
-    "四月",
-    "五月",
-    "六月",
-    "七月",
-    "八月",
-    "九月",
-    "十月",
-    "十一月",
-    "十二月",
-  ];
+const monthNameZH = [
+  "一月",
+  "二月",
+  "三月",
+  "四月",
+  "五月",
+  "六月",
+  "七月",
+  "八月",
+  "九月",
+  "十月",
+  "十一月",
+  "十二月",
+];
+
+const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, eventDate, headerClassName }) => {
+  const { lang } = useLang();
 
   const { token } = theme.useToken();
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
@@ -73,40 +73,33 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
     });
 
     const dotStyle: React.CSSProperties = {
-         width: 8,
-        height: 8,
-        backgroundColor: '#FF4D4F',
-        borderRadius: 4,
-        margin: '0 auto'
-    }
+      width: 8,
+      height: 8,
+      backgroundColor: '#FF4D4F',
+      borderRadius: 4,
+      margin: '0 auto'
+    };
 
-    if (eventDataForDate) {
-      return (
-        <div style={dotStyle} />
-      );
-    } else {
-      return <></>;
-    }
+    return eventDataForDate ? <div style={dotStyle} /> : <></>;
   };
 
   const wrapperStyle: React.CSSProperties = {
-    width: 420,
+    width: '100%',
     border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: token.borderRadiusLG,
     boxShadow: '0 6px 16px 0 #D8D8D8',
   };
 
   return (
-    <div style={wrapperStyle}>
+    <div style={wrapperStyle} className={`${styles.wrapper}`}>
       <Calendar
         fullscreen={false}
         className={className}
         cellRender={cellRender}
         onSelect={(date) => {
           setSelectDate(date.toString());
-          onSelectDate(date.toString()); // 将选择的日期传递给父组件
+          onSelectDate(date.toString());
         }}
-        //style={{ padding: 10, borderRadius: 0 }}
         headerRender={({ value, onChange }) => {
           const year = value.year();
           const month = value.month();
@@ -122,27 +115,25 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
           };
 
           return (
-            <div style={{ padding: 8 }}>
-              <Row gutter={8} className={styles.row}>
-                <Col className={styles.dateTextCol}>
-                  {getTransResult(lang, monthNameZH[month], monthNameEn[month])}
-                  {" " + year}
-                </Col>
-                <Col className={styles.btnCol}>
-                  <Button
-                    icon={<LeftOutlined />}
-                    className={styles.changeMonthBtn}
-                    onClick={backMonth}
-                    style={{ marginRight: 10 }}
-                  />
-                  <Button
-                    icon={<RightOutlined />}
-                    className={styles.changeMonthBtn}
-                    onClick={forwardMonth}
-                  />
-                </Col>
-              </Row>
-            </div>
+            <Row gutter={8} className={`${styles.row} ${headerClassName}`}>
+              <Col className={styles.dateTextCol}>
+                {getTransResult(lang, monthNameZH[month], monthNameEn[month])}
+                {" " + year}
+              </Col>
+              <Col className={styles.btnCol}>
+                <Button
+                  icon={<LeftOutlined />}
+                  className={styles.changeMonthBtn}
+                  onClick={backMonth}
+                  style={{ marginRight: 10 }}
+                />
+                <Button
+                  icon={<RightOutlined />}
+                  className={styles.changeMonthBtn}
+                  onClick={forwardMonth}
+                />
+              </Col>
+            </Row>
           );
         }}
       />

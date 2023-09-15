@@ -1,0 +1,80 @@
+@import "@/styles/variables";
+
+.content {
+  width: 100%;
+  padding: 100px 0;
+
+  .cards {
+    .card {
+      background: #ffffff;
+      border-radius: 8px 8px 12px 12px;
+      padding: 48px 36px;
+      height: 550px;
+
+      @media (max-width: 768px) {
+        padding: 24px 18px;
+        height: fit-content;
+      }
+
+      .date {
+        .month {
+          font-size: 24px;
+          font-weight: 600;
+          color: #666666;
+        }
+
+        .day {
+          font-size: 80px;
+          font-weight: 600;
+          color: #172142;
+        }
+      }
+
+      .title {
+        @include title("thin");
+        margin: 24px 0;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        /* 行数 */
+        -webkit-box-orient: vertical;
+
+        @media (max-width: 768px) {
+          margin: 12px 0;
+        }
+      }
+
+      .descriptions {
+        position: relative;
+        .btn {
+          position: absolute;
+          color: #ffad11;
+          font-size: 18px;
+          right: 0;
+        }
+        :global {
+          .ant-descriptions-row > td {
+            padding-bottom: 8px;
+          }
+
+          .ant-descriptions-item-label::after {
+            content: "";
+          }
+
+          .ant-descriptions-item-label {
+            margin-top: 7px;
+            align-items: start;
+          }
+
+          .ant-descriptions-item-content {
+            justify-content: space-between;
+            align-items: end;
+            color: #666666;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

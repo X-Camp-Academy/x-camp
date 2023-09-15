@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import { Space, Row, Col, Typography, Image } from "antd";
-import styles from "./index.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
+
 const { Title, Text } = Typography;
 
 interface USACOMedalProps {
@@ -35,49 +36,35 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
   ];
 
   return (
-    <Row gutter={16} className={styles.row}>
-      <Col
-        xs={24}
-        sm={24}
-        md={4}
-        lg={4}
-      >
-        <Image
-          alt=""
-          preview={false}
-          src={"/image/common/x-camp-logo.png"}
-          className={styles.logo}
-        />
-      </Col>
-
+    <div className={`${styles.usacoContainer} `}>
       {
-        showTitle && <div className={styles.titleContainer}>
+        showTitle && <Col span={24} className={styles.titleContainer}>
           <Title className={styles.title}>
             Our&nbsp;
             <Text className={styles.title} style={{ color: "#ffad11" }}>Achievements</Text>
           </Title>
-        </div>
-      }
-
-      {data?.map((item, index) => (
-        <Col
-          key={index}
-          xs={24}
-          sm={24}
-          md={5}
-          lg={5}
-        >
-          <div className={styles.medalContainer}>
-            <Space direction="vertical">
-              <Text className={styles.medalCount} style={{ color: item?.color }}>
-                {item?.count}
-              </Text>
-              <Text className={styles.medalTitle}>{item?.title}</Text>
-            </Space>
-          </div>
         </Col>
-      ))}
-    </Row>
+      }
+      <Row gutter={16} className={`container ${styles.row}`}>
+        {data?.map((item, index) => (
+          <Col
+            key={index}
+            span={6}
+            className={styles.col}
+          >
+            <div className={styles.medalContainer}>
+              <Space direction="vertical">
+                <Text className={styles.medalCount} style={{ color: item?.color }}>
+                  {item?.count}
+                </Text>
+                <Text className={styles.medalTitle}>{item?.title}</Text>
+              </Space>
+            </div>
+          </Col>
+        ))}
+      </Row>
+
+    </div>
   );
 };
 

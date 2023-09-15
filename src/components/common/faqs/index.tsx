@@ -1,17 +1,18 @@
 import React from "react";
-import styles from "./index.module.scss";
+import { useLang } from "@/hoc/with-intl/define";
+import { getTransResult } from "@/utils/public";
 import QACard from "@/components/common/q&a";
 import { GetFaq } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { getTransResult } from "@/utils/public";
-import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
 
-interface Props {
+
+interface FaqsProps {
   title: string;
   data: StrapiResponseDataItem<GetFaq>[] | undefined;
 }
 
-const Faqs = ({ title, data }: Props) => {
+const Faqs: React.FC<FaqsProps> = ({ title, data }) => {
   const { lang } = useLang();
   return (
     <div className={styles.campFAQS}>

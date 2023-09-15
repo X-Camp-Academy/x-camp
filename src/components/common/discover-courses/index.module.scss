@@ -1,13 +1,15 @@
 @import "@/styles/variables.scss";
+
 .discoverCourses {
-  padding: 0 70px;
+  padding: 0 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .title {
     position: relative;
-    @include title('home-content');
+    text-align: center;
+    @include title("default");
   }
 
   .subTitle {
@@ -18,12 +20,13 @@
   }
 
   .titleBg {
-    margin-left: 223px;
+    position: relative;
+    left: 110px;
     display: block;
+    margin: 0 auto;
     width: 130px;
     height: 16px;
-    background-image: url("/image/home/home-title-bg-1.png");
-    background-repeat: no-repeat;
+    background: url("/image/home/home-title-bg-1.png") no-repeat;
     background-size: cover;
   }
 
@@ -80,10 +83,7 @@
       }
 
       .maskTitle {
-        font-size: 24px;
-        font-weight: 600;
-        color: #172142;
-        line-height: 36px;
+        @include title("thin");
         white-space: nowrap;
       }
 

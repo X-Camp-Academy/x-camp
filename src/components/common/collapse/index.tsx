@@ -1,17 +1,18 @@
-import { Collapse } from "antd";
 import React from "react";
-import styles from "./index.module.scss";
+import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import styles from "./index.module.scss";
+
 const { Panel } = Collapse;
 
 interface Props {
   children: React.ReactNode;
   header?:
-    | React.ReactNode
-    | {
-        title?: React.ReactNode | string | number;
-        description?: React.ReactNode | string | number;
-      };
+  | React.ReactNode
+  | {
+    title?: React.ReactNode | string | number;
+    description?: React.ReactNode | string | number;
+  };
   activeKey?: string | number;
   className?: string;
 }

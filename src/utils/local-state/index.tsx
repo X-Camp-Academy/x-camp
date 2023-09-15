@@ -29,10 +29,10 @@ const LocalStateContext = React.createContext<{
    * 设置本地状态某一项的值
    */
   set: <T extends keyof LocalState>(key: T, value?: LocalState[T]) => void;
-}>({
-  state: {},
-  set: () => console.warn("Missing LocalStateContext.Provider"),
-});
+    }>({
+      state: {},
+      set: () => console.warn("Missing LocalStateContext.Provider"),
+    });
 
 export const LocalStateProvider = ({ children }: { children: ReactNode }) => {
   const [localState, setLocalState] = useLocalStorageState<LocalState>(

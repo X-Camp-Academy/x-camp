@@ -1,14 +1,16 @@
-import { useGetUserSearchMap } from '@/apis/strapi-client/strapi';
-import { SearchOutlined } from '@ant-design/icons';
-import { Select } from 'antd';
-import { useRouter } from 'next/navigation';
 import React, { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Select } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import { useGetUserSearchMap } from '@/apis/strapi-client/strapi';
 import styles from './SelectPage.module.scss';
+
 interface ValueType {
   label: string;
   value: string;
 }
-const SelectPage = () => {
+
+const SelectPage: React.FC = () => {
   const [options, setOptions] = useState<ValueType[]>([]);
   const router = useRouter();
   const { data: searchMap } = useGetUserSearchMap();
@@ -43,7 +45,6 @@ const SelectPage = () => {
       filterOption={false}
       onSearch={handleSearch}
       onSelect={handleSelect}
-      // style={{ width: '20vw', maxWidth: 200 }}
       className={styles.select}
       suffixIcon={<SearchOutlined style={{ color: '#d9d9d9' }} />}
       notFoundContent={null}

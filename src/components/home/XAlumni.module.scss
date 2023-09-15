@@ -1,7 +1,7 @@
 @import "@/styles/variables.scss";
 .xalumniContainer {
   width: 100%;
-  padding: 100px 70px;
+  padding: 100px 15px;
   .xalumni {
     text-align: center;
     padding-left: 15px;
@@ -13,8 +13,9 @@
       justify-content: center;
     }
     .title {
-      @include title("home-content");
+      @include title();
       margin: 0;
+      color: $primary-color;
     }
     .titleBg {
       display: block;
@@ -25,7 +26,6 @@
       background-size: cover;
     }
     .paragraph {
-      //padding: 0 120px;
       @include text(18px, 34px);
       font-weight: 500;
     }
@@ -58,10 +58,8 @@
         }
 
         .maskCardTitle {
-          font-size: 24px;
-          font-weight: 600;
+          @include title("thin");
           color: #ffffff;
-          line-height: 36px;
           text-align: left;
         }
         .maskCardParagraph {

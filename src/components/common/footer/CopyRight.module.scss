@@ -1,12 +1,9 @@
 @import "@/styles/variables.scss";
 .copyRightContainer {
   width: 100%;
-  background-color: #FFE3CC;
+  background-color: #ffe3cc;
   .copyRight {
     padding: 70px;
-    @media (max-width: 768px) {
-      //margin-bottom: 64px;
-    }
     .spaceLeft {
       width: 100%;
       margin-top: 48px;
@@ -32,7 +29,7 @@
         @include text(18px, 30px);
       }
       a {
-       @include text(14px, 36px);
+        @include text(14px, 36px);
       }
     }
     .bar {

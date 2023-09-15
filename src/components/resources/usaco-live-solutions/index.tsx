@@ -13,6 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetResourcesLiveSolution } from "@/apis/strapi-client/define";
+
 const { Content } = Layout;
 
 const UsacoLiveSolutions: React.FC = () => {
@@ -20,7 +21,7 @@ const UsacoLiveSolutions: React.FC = () => {
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname],
   });
   const { data: resourcesLiveSolution } = useGetResourcesLiveSolution();
 

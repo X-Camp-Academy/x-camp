@@ -1,0 +1,39 @@
+@import "@/styles/variables.scss";
+
+.contactCardContent {
+  margin-top: 6.25rem;
+  padding-bottom: 3.25rem;
+  .row {
+    @media (max-width: 768px) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+  .card {
+    height: 250px;
+    width: 100%;
+    padding: 24px 40px;
+
+    @media (max-width: 1200px) {
+      height: initial;
+      padding: 0;
+    }
+
+    .title {
+      @include title("thin");
+      line-height: 64px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      font-size: 21px;
+      border-radius: 8px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      color: #ffad11;
+      background-color: #ffeddf;
+    }
+  }
+}

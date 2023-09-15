@@ -1,12 +1,11 @@
+@import "@/styles/variables";
+
 .XCampFounder {
   margin-top: 120px;
   padding-bottom: 120px;
   position: relative;
   .title {
-    color: #172142;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 54px;
+    @include title();
   }
 
   .paragraph {
@@ -80,9 +79,7 @@
 
   .founderDescription {
     .founderName {
-      font-size: 36px;
-      font-weight: 600;
-      color: #172142;
+      @include title();
       line-height: 54px;
     }
     .founderTag {

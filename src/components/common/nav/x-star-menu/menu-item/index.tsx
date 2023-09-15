@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './index.module.scss';
 import { XStarMenuItemType } from '..';
 import { CaretUpOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
 import MenuDropdown from './menu-drop-down';
+import styles from './index.module.scss';
 
 interface Props {
   menuItem: XStarMenuItemType;

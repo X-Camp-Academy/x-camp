@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import FixedButton from "@/components/common/FixedButtons/FixedButton";
-import styles from "@/components/common/FixedButtons/index.module.scss";
-import {Button, Card, Form, Input, Checkbox,Space} from "antd";
-import {useLang} from "@/hoc/with-intl/define";
-import {useSendOpenClassEmail} from "@/apis/send-email-client/sendEmail";
-import {openClassEmailRequest} from "@/apis/send-email-client";
+import React, { useState } from 'react';
+import { Button, Card, Form, Input, Checkbox } from "antd";
+import FixedButton from "./FixedButton";
+import { useLang } from "@/hoc/with-intl/define";
+import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
+import { openClassEmailRequest } from "@/apis/send-email-client";
+import styles from "./index.module.scss";
+
 
 interface IMenuItem {
   icon: string,
@@ -13,7 +14,7 @@ interface IMenuItem {
   key: string,
   text: string
 }
-const FixedButtons: React.FC<any> = () => {
+const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const onFinish = async (values: openClassEmailRequest) => {

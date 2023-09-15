@@ -54,7 +54,7 @@ const StudentProjects: React.FC = () => {
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
               {studentProjectsData && (
                 <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" sandbox="" />
-                )}
+              )}
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
@@ -65,30 +65,30 @@ const StudentProjects: React.FC = () => {
                           key={item?.id}
                           className={styles.card}
                           bodyStyle={{
-                                overflow: "hidden",
-                                padding: 16,
-                              }}
+                            overflow: "hidden",
+                            padding: 16,
+                          }}
                           cover={
                             <iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" sandbox="" />
-                              }
+                          }
                         >
                           <Space direction="vertical" size={24}>
                             <Text className={styles.cardTitle}>
                               {getTransResult(
-                                    lang,
-                                    item?.attributes?.titleZh,
-                                    item?.attributes?.titleEn
-                                )}
+                                lang,
+                                item?.attributes?.titleZh,
+                                item?.attributes?.titleEn
+                              )}
                             </Text>
                             <Paragraph
                               ellipsis={{ rows: 3 }}
                               className={styles.cardParagraph}
                             >
                               {getTransResult(
-                                    lang,
-                                    item?.attributes?.descriptionZh,
-                                    item?.attributes?.descriptionEn
-                                )}
+                                lang,
+                                item?.attributes?.descriptionZh,
+                                item?.attributes?.descriptionEn
+                              )}
                             </Paragraph>
                             <a href={getTransResult(lang, item?.attributes?.videoZh, item?.attributes?.videoEn)} className={styles.cardMore}>
                               {"More"} <RightOutlined />

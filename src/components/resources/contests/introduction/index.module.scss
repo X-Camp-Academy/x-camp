@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .content {
   width: 100%;
 
@@ -18,9 +20,7 @@
     }
 
     .title {
-      font-size: 48px;
-      font-weight: 600;
-      color: #d46b14;
+      @include title("bold");
       line-height: 64px;
 
       @media (max-width: 992px) {
@@ -70,7 +70,6 @@
         }
 
         img {
-          //width: 366px;
           height: 33%;
           background: #ffeddf;
           border-radius: 12px;

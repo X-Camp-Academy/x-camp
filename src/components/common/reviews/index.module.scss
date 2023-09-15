@@ -1,12 +1,15 @@
 @import "@/styles/variables.scss";
 .reviewsContainer {
   width: 100%;
-  background: #FDF6F1;
+  background: #fdf6f1;
   .reviews {
     padding: 70px 120px;
     position: relative;
     background: url("/image/home/icon-home-reviews.png") no-repeat right;
     background-size: contain;
+    @media (max-width: 768px) {
+      padding: 70px 30px;
+    }
     .prev {
       background-color: #ffad11;
       position: absolute;
@@ -37,7 +40,7 @@
         -webkit-line-clamp: 1;
       }
       .reviewsParagraph {
-       @include text(16px, 24px, #666);
+        @include text(16px, 24px, #666);
         height: 96px;
       }
       .reviewsDate {
