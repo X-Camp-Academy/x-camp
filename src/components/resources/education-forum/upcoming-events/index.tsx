@@ -83,15 +83,15 @@ const UpcomingEvents: React.FC = () => {
                           {!item.attributes.geographicallyAddress &&
                             item.attributes.link &&
                             item.attributes.onlinePlatform ? (
-                            <a
-                              href={item.attributes.link}
-                              style={{ color: "#666666" }}
-                            >
-                              {item.attributes.onlinePlatform}
-                            </a>
-                          ) : (
-                            item.attributes.geographicallyAddress
-                          )}
+                              <a
+                                href={item.attributes.link}
+                                style={{ color: "#666666" }}
+                              >
+                                {item.attributes.onlinePlatform}
+                              </a>
+                            ) : (
+                              item.attributes.geographicallyAddress
+                            )}
                           {item.attributes.link && (
                             <Button
                               type="link"
