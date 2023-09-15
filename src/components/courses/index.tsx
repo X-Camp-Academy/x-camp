@@ -174,8 +174,8 @@ const Courses: React.FC = () => {
   const hashSegmentedMap = new Map([
     ["#online", CourseTypes.OnlineClasses],
     ["#camps", CourseTypes.CampsClasses],
-    ["#apcs", CourseTypes.APCSClasses],
-    ["#enhancement", CourseTypes.EnhancementClasses],
+    ["#apcs", CourseTypes.JavaAPCSClasses],
+    ["#mocktestclasses", CourseTypes.MockTestClasses],
   ]);
 
   // 监听hash

@@ -3,8 +3,8 @@ import React from "react";
 import { Space, Typography, Row, Col, Image } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { useMobile } from "@/utils";
-import AnimateBox from "../common/animate-box";
-import styles from "./WeSupport.module.scss";
+import AnimateBox from "@/components/common/animate-box";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -42,10 +42,10 @@ const WeSupport: React.FC = () => {
                 md={{ span: 24, order: 2 }}
                 lg={{ span: 24, order: 1 }}
               >
-                { lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
+                {lang === 'zh' ? <Title className={styles.title}>我们支持</Title> : <div>
                   <Title className={styles.title}>We <span>Support</span></Title>
                   <Text className={styles.titleBg} />
-                </div> }
+                </div>}
                 <Paragraph className={styles.paragraph}>
                   {t("WeSupport.Desc")}
                 </Paragraph>
