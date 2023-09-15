@@ -23,11 +23,16 @@ const FixedButtons: React.FC = () => {
   };
 
   const [open, setOpen] = useState(false);
+  const labels: string[] = [
+    t('weeklyOpenHouseDesc1'),
+    t('weeklyOpenHouseDesc2'),
+    t('weeklyOpenHouseDesc3'),
+  ]
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
       state: [open, setOpen],
-      text: 'Free Consultation',
+      text: t('FreeConsultation'),
       label: (
         <div className={`${styles.cardFrom} ${styles.autoSize}`}>
           <Card
@@ -98,7 +103,7 @@ const FixedButtons: React.FC = () => {
               </Form.Item>
 
               <Form.Item name="subscribe">
-                <Checkbox >Subscribe to our newsletter for a free Programming Pack!</Checkbox>
+                <Checkbox >{t('FreeProgrammingPack')}</Checkbox>
               </Form.Item>
 
               <Form.Item>
@@ -118,11 +123,11 @@ const FixedButtons: React.FC = () => {
     },
     {
       icon: '/image/home/turtle-2.png',
-      text: 'Weekly Open House',
+      text: t('WeeklyOpenHouse'),
       label: (
         <div className={styles.cardFrom}>
           <Card
-            title={'Weekly Open House'}
+            title={t('WeeklyOpenHouse')}
             headStyle={{
               color: "#172142",
               fontSize: 24,
@@ -137,19 +142,17 @@ const FixedButtons: React.FC = () => {
             }}
             className={styles.card}
           >
-            <div className={styles.cardTitle}>Tue night 6:30-7:30 on Zoom</div>
+            <div className={styles.cardTitle}>{t('weeklyOpenHouseOpen')}</div>
             <ul className={styles.desc}>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <li>Evaluate student's programming level</li>
-              <li>Create a programming learning plan</li>
-              <li> Weekly meetings with us online</li>
+              {labels.map(str => <li key={str}>{str}</li>)}
             </ul>
             <div className={styles.buttonList}>
-              <Button type="primary" className={styles.button}>Zoom Link</Button>
+              <Button type="primary" className={styles.button}>{t('ZoomLink')}</Button>
               <Button type="primary" className={styles.button}>1 On 1 </Button>
             </div>
             <div className={styles.tips}>
-              *Time conflict? Schedule 1 on 1
+              *{t('weeklyOpenHouseTips')}
             </div>
           </Card>
         </div>
