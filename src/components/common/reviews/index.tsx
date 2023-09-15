@@ -118,7 +118,6 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
                 );
               })}
             </Carousel>
-
           </div>
         </div>
       }

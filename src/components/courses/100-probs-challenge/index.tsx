@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 import { Layout } from "antd";
-import TopBanner from "./top-banner";
+import Banner from "./banner";
 import Introduction from "./introduction";
 import Levels from "./5-levels";
 import Faqs from "@/components/common/faqs";
@@ -34,7 +34,7 @@ const ProbsChallenge = () => {
   return (
     <Layout className={styles.page}>
       <Content>
-        <TopBanner />
+        <Banner />
         <Introduction />
         <Levels />
         <Faqs title={t("CampsFAQs")} data={faq} />

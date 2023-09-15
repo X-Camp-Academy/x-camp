@@ -6,9 +6,9 @@ import { useLang } from "@/hoc/with-intl/define";
 import UsacoMedal from "@/components/common/usaco-medal";
 import Reviews from "@/components/common/reviews";
 import Faqs from "@/components/common/faqs";
-import CourseBanner from "./CourseBanner";
-import CourseSyllabus from "./CourseSyllabus";
-import ProgressionClasses from "./ProgressionClasses";
+import Banner from "./banner";
+import Syllabus from "./syllabus";
+import ProgressionClasses from "./progression-classes";
 import Faculty from "@/components/common/faculty";
 import CourseClassesContext from "../CourseClassesContext";
 import { useGetCourses } from "@/apis/strapi-client/strapi";
@@ -45,8 +45,8 @@ const CourseDetail: React.FC = () => {
         <CourseClassesContext.Provider
           value={coursesData ? coursesData?.data[0] : undefined}
         >
-          <CourseBanner />
-          <CourseSyllabus />
+          <Banner />
+          <Syllabus />
           <ProgressionClasses />
         </CourseClassesContext.Provider>
 
