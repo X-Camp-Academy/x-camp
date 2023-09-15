@@ -8,6 +8,14 @@ import {
   strapiPublicFields,
 } from "./strapiDefine";
 
+export enum FacultyLevelCategory {
+  BasicLevel = "Basic Level",
+  USACOBronzeLevel = "USACO Bronze Level",
+  USACOSilverLevel = "USACO Silver Level",
+  GrandmasterClassLevel = "Grandmaster Class Level",
+  All = "All",
+}
+
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -18,6 +26,7 @@ export interface GetFaculty extends strapiPublicFields {
   courseId: string;
   pageName: string;
   eventId: string;
+  level: FacultyLevelCategory;
 }
 export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;

@@ -1,17 +1,21 @@
 'use client';
 import React from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Breadcrumb, Space, Typography } from "antd";
 import { ClockCircleOutlined, ReadOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
-import { XStarMdViewer } from "x-star-editor";
 import { viewerVideoPlugin } from "@/utils/x-star-editor/plugins/viewer-video";
 import { GetNewEvent } from "@/apis/strapi-client/define";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import styles from "./index.module.scss";
 
+const XStarMdViewer = dynamic(
+  () => import("x-star-editor").then((v) => v.XStarMdViewer),
+  { ssr: false }
+);
 const { Title } = Typography;
 
 interface Props {
