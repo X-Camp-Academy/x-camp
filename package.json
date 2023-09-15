@@ -32,9 +32,10 @@
     "sass": "1.62.1",
     "typescript": "5.0.4",
     "unified": "^10.1.2",
-    "x-star-editor": "^0.1.2"
+    "x-star-editor": "0.3.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/lodash": "^4.14.195",
     "@types/node": "20.2.3",
     "@types/randomcolor": "^0.5.6",

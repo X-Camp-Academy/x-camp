@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { Space, Row, Col, Image, Typography } from "antd";
 import { HistoryOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
-import Link from "next/link";
-import styles from "./CopyRight.module.scss";
 import { useLang } from "@/hoc/with-intl/define";
 import CopyRightIcons from "../copy-right-icons";
+import styles from "./CopyRight.module.scss";
+
 
 const { Title, Paragraph, Text } = Typography;
 

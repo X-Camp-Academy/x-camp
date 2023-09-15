@@ -1,13 +1,12 @@
 @import "@/styles/variables.scss";
 .publicCalendarContainer {
   width: 100%;
-  padding: 100px 70px;
+  padding: 100px 0px;
   .publicCalendar {
     .title {
       margin: 0;
-      @include title('home-content');
+      @include title('default');
       text-align: center;
-
     }
     .titleBg {
       margin-left: 260px;
@@ -18,11 +17,17 @@
       background-image: url("/image/home/home-title-bg-1.png");
       background-repeat: no-repeat;
       background-size: cover;
+      @media (max-width: 768px) {
+        margin: 0 auto 45px;
+      }
     }
     .eventCard {
 
       height: 200px;
       padding-left: 12px;
+      @media (max-width: 768px) {
+        padding: 0;
+      }
       .eventContent {
         width: 100%;
         height: 95%;
@@ -103,6 +108,26 @@
     }
 
     .rightSpace {
+      .calenderHeader {
+        padding: 20px;
+      }
+      :global(.ant-picker-body) {
+        padding: 20px 0;
+      }
+      :global(.ant-picker-content thead) {
+        height: 48px;
+      }
+      :global(.ant-picker-cell .ant-picker-cell-inner) {
+        @include flex(center);
+        display: inline-flex;
+        flex-direction: column;
+        height: 48px;
+        width: 48px;
+        border-radius: 24px;
+        &:before {
+          border-radius: 24px;
+        }
+      }
       @media (max-width: 768px) {
         margin-top: 64px;
       }
@@ -160,4 +185,5 @@
       }
     }
   }
+
 }

@@ -1,10 +1,11 @@
-import { UserInfo } from "@/apis/auth-client/define";
-import { apiConfig } from "@/config/index";
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import { Divider, Dropdown, MenuProps, Space, theme } from "antd";
 import React from "react";
-import RealNameAvatar from "../avatar";
+import { Divider, Dropdown, MenuProps, Space, theme } from "antd";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
+import { apiConfig } from "@/config/index";
+import { UserInfo } from "@/apis/auth-client/define";
+import RealNameAvatar from "../avatar";
+
 
 type UserMenuProps = {
   user: UserInfo | null;

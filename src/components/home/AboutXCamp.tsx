@@ -54,7 +54,7 @@ const AboutXCamp: React.FC = () => {
         <Row className={styles.row} gutter={16} justify="center" align="middle">
           {aboutContents.map((item) => {
             return (
-              <Col key={item?.icon} xs={24} sm={24} md={24} lg={6}>
+              <Col key={item?.icon} xs={12} sm={12} md={12} lg={6}>
                 <Card
                   className={styles.card}
                   bodyStyle={{
@@ -69,12 +69,15 @@ const AboutXCamp: React.FC = () => {
                         preview={false}
                         className={styles.cardIcon}
                       />
-                      <Text className={styles.cardTitle}>
+                      <Paragraph
+                        ellipsis={{ rows: 2 }}
+                        className={styles.cardTitle}
+                      >
                         {item?.title}
                         {
                           !!item.title2 && <><br /> {item.title2}</>
                         }
-                      </Text>
+                      </Paragraph>
                       <Paragraph
                         ellipsis={{ rows: 3, tooltip: item?.desc }}
                         className={styles.cardParagraph}

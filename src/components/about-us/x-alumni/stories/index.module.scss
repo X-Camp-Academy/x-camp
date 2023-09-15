@@ -1,0 +1,86 @@
+@import "@/styles/variables.scss";
+
+.storiesContainer {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding-top: 70px;
+  padding-bottom: 128px;
+
+  .topSpace {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      @include title("default");
+      line-height: 56px;
+    }
+
+    .paragraph {
+      font-size: 18px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 34px;
+    }
+
+    .button {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 24px;
+      background: #f5f5f5;
+      padding: 20px 56px;
+      border: none;
+      border-radius: 12px;
+      border: 2px solid #172142;
+      white-space: nowrap;
+      cursor: pointer;
+      text-align: center;
+      a {
+        color: #172142;
+      }
+      @media (max-width: 1200px) {
+        padding: 15px;
+      }
+    }
+  }
+
+  .row {
+    margin-top: 64px;
+
+    @media (max-width: 768px) {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .colorfulCard {
+      height: 100%;
+      overflow: hidden;
+
+      .card {
+        height: 100%;
+
+        .cardImage {
+          height: 286px;
+          width: 100%;
+        }
+
+        .cardTitle {
+          @include title("thin");
+          padding-left: 24px;
+          padding-right: 24px;
+          .cardButton {
+            margin-left: 8px;
+            vertical-align: middle;
+          }
+        }
+
+        .cardParagraph {
+          font-size: 18px;
+          font-weight: 500;
+          color: #172142;
+          line-height: 30px;
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+    }
+  }
+}

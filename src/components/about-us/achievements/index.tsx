@@ -7,19 +7,19 @@ import styles from "./index.module.scss";
 
 const { Content } = Layout;
 const Banner = dynamic(
-  () => import("@/components/about-us/achievements/Banner")
+  () => import("@/components/about-us/achievements/banner")
 );
 const USACOSpotlight = dynamic(
-  () => import("@/components/about-us/achievements/USACOSpotlight")
+  () => import("@/components/about-us/achievements/usaco-spotlight")
 );
 const TimeLine = dynamic(
-  () => import("@/components/about-us/achievements/TimeLine")
+  () => import("@/components/about-us/achievements/time-line")
 );
 const UsacoMedal = dynamic(
   () => import("@/components/common/usaco-medal")
 );
 const ArtOfProgrammingResults = dynamic(
-  () => import("@/components/about-us/achievements/ArtOfProgrammingResults")
+  () => import("@/components/about-us/achievements/art-of-programming-results")
 );
 
 const Achievements: React.FC = () => {

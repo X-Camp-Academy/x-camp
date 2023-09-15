@@ -1,0 +1,13 @@
+@import "@/styles/variables.scss";
+
+.qaContent {
+  margin-top: 6.25rem;
+  padding-bottom: 6.25rem;
+
+  .title {
+    @include title("default");
+    text-align: center;
+    line-height: 56px;
+    margin: 90px 0 40px 0;
+  }
+}

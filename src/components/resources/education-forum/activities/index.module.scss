@@ -1,0 +1,129 @@
+@import "@/styles/variables";
+
+.content {
+  width: 100%;
+  margin-bottom: 100px;
+  .toolBar {
+    width: 100%;
+    background-color: #fff;
+    min-height: 65px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+
+    .toolBarItem {
+      text-align: center;
+      padding: 14px 48px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #6a6a6a;
+      line-height: 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      @media (max-width: 768px) {
+        font-size: 14px;
+        display: block;
+        width: 100%;
+      }
+
+      &:hover {
+        @extend .selectedToolBarItem;
+      }
+    }
+
+    .selectedToolBarItem {
+      background-color: #ffad11;
+      box-shadow: 0px 2px 3px 0px rgba(125, 125, 125, 0.2);
+      color: #fff;
+    }
+  }
+
+  .titleContain {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: 40px 0;
+
+    .activityTitle {
+      @include title();
+      line-height: 48px;
+    }
+
+    .pageTotal {
+      font-size: 18px;
+      font-weight: 500;
+      color: #6a6a6a;
+      line-height: 24px;
+    }
+  }
+
+  .row {
+    @media (max-width: 768px) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 8px 8px 12px 12px;
+      height: 400px;
+
+      .imgBox {
+        height: 226px;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .cardContent {
+        padding: 36px;
+        width: 100%;
+
+        @media (max-width: 768px) {
+          padding: 24px;
+        }
+
+        .title {
+          @include title("thin");
+          line-height: 32px;
+          text-overflow: ellipsis;
+          width: 100%;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+        }
+
+        .description {
+          display: flex;
+          justify-content: space-between;
+          font-size: 16px;
+          font-weight: 400;
+          color: #666666;
+          line-height: 28px;
+          align-items: center;
+
+          .btn {
+            color: #ffad11;
+            font-size: 18px;
+          }
+
+          .icon {
+            margin-right: 4px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}

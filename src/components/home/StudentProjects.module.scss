@@ -1,10 +1,11 @@
 @import "@/styles/variables.scss";
 .studentProjects {
-  padding: 80px 70px;
-  background: #FDF6F1;
+  @include flex(center);
+  padding: 80px 15px;
+  background: #fdf6f1;
   .title {
     margin: 0;
-    @include title('home-content');
+    @include title();
   }
   .titleBg {
     margin-left: 130px;
@@ -20,7 +21,6 @@
     font-weight: 500;
   }
   .paragraph {
-    //padding: 0 200px;
     @extend .paragraphText;
     color: #172142;
     text-align: center;
@@ -44,8 +44,7 @@
         border-radius: 0;
         position: relative;
         .cardTitle {
-          font-size: 24px;
-          font-weight: 600;
+          @include title("thin");
           line-height: 54px;
         }
         .cardParagraph {

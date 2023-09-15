@@ -4,7 +4,7 @@ import { Button } from "antd";
 import { LaptopOutlined } from '@ant-design/icons';
 import { useLang } from "@/hoc/with-intl/define";
 import CommonBanner from "@/components/common/common-banner";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
 const Banner: React.FC = () => {

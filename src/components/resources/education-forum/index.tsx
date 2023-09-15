@@ -6,10 +6,10 @@ import { Layout } from "antd";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
 import styles from "./index.module.scss";
 
-const Banner = dynamic(() => import("./Banner"));
-const UpcomingEvents = dynamic(() => import("./UpcomingEvents"));
-const RecentActivities = dynamic(() => import("./RecentActivities"));
-const Activities = dynamic(() => import("./Activities"));
+const Banner = dynamic(() => import("./banner"));
+const UpcomingEvents = dynamic(() => import("./upcoming-events"));
+const RecentActivities = dynamic(() => import("./recent-activities"));
+const Activities = dynamic(() => import("./activities"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 
 const { Content } = Layout;

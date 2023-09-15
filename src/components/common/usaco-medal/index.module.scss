@@ -1,12 +1,38 @@
-.row {
+@import "@/styles/variables.scss";
+
+.usacoContainer {
+  @include flex("center");
+  flex-direction: column;
   width: 100%;
-  height: 338px;
-  background-color: #efefef;
-  position: relative;
+  background: url("/image/common/x-camp-logo.png") no-repeat;
+  background-size: contain;
+  padding: 50px 0;
+}
+
+.titleContainer {
+  margin: 24px;
+  .title {
+    @include title();
+    text-align: center;
+    margin: 0;
+  }
   @media (max-width: 768px) {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    height: auto;
+    position: relative;
+  }
+}
+
+.row {
+  position: relative;
+  width: 100%;
+  padding: 0 160px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  @media (max-width: 992px) {
+    padding: 0;
   }
 
   .logo {
@@ -16,49 +42,28 @@
     }
   }
 
-  .titleContainer {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 40px;
-    .title {
-      font-size: 36px;
-      font-weight: 600;
-      color: #172142;
-      line-height: 48px;
-      text-align: center;
-    }
-    @media (max-width: 768px) {
-      position: relative;
-    }
+  .col {
+    @include flex(center);
   }
-
   .medalContainer {
-    width: 192px;
-    height: 128px;
-    margin-top: 150px;
-    background-image: url("/image/common/usaco-medal.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    width: 230px;
     text-align: center;
+    margin-top: 20px;
+    background: url("/image/common/usaco-medal.png") no-repeat center;
+    background-size: 140px 90px;
     @media (max-width: 768px) {
-      margin: 0 auto;
-      margin-top: 96px;
     }
     .medalCount {
       font-size: 48px;
       font-weight: 600;
       line-height: 48px;
+      width: 100%;
     }
 
     .medalTitle {
-      font-size: 16px;
+      display: block;
+      @include text(16px, 24px, #666);
       font-weight: 500;
-      color: #666666;
-      line-height: 48px;
-    }
-    &:last-child {
-      margin-bottom: 64px;
     }
   }
 }

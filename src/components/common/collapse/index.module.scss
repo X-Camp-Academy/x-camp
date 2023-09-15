@@ -1,12 +1,12 @@
+@import "@/styles/variables";
+
 .panel {
   :global(.ant-collapse-header) {
     align-items: center !important;
   }
 
   .title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
+    @include title();
     line-height: 64px;
     margin-bottom: 10px;
 
