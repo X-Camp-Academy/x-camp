@@ -6,29 +6,14 @@
   justify-content: center;
   cursor: pointer;
   width: 40px;
-
-  .img {
-    background-image: url("/image/header/intl.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 24px;
-    height: 24px;
-    transition: background-image 0.2s;
-}
-
-  span {
-    line-height: initial;
-    font-size: 12px;
-    transition: color 0.2s;
-}
+  font-size: 24PX;
 
   &:hover {
-    .img {
-      background-image: url("/image/header/intl-hover.png");
+    color: $primary-color;
   }
 
-    span {
-      color: $primary-color;
+  .text {
+    font-size: 8px;
+    line-height: 1;
   }
-}
 }
