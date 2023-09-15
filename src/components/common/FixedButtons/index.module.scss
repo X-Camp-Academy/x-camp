@@ -14,7 +14,7 @@
 
   .fixedButton {
     position: relative;
-    height: 26px;
+    height: 32px;
     padding: 0;
     margin-bottom: 40px;
     background-color: $primary-color;
@@ -28,8 +28,8 @@
     img {
       align-self: flex-end;
 
-      width: 46px;
-      height: 46px;
+      width: 3.6rem;
+      height: 3.6rem;
     }
     &:hover {
       color: $text-color;
