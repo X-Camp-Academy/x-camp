@@ -73,11 +73,11 @@ const PublicCalendar: React.FC = () => {
    * @param item
    */
   const getCourseDateStr = (item: any): string => {
-    const isSame = dayjs(item?.attributes?.startDateTime).isSame(dayjs(item?.attributes?.endDateTime), "day")
-    const sameStr = formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "")
-    const diffStr = formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '')
-    return `${isSame?  sameStr: diffStr} ${formatTimezone(item?.attributes?.startDateTime).timezone}`
-  }
+    const isSame = dayjs(item?.attributes?.startDateTime).isSame(dayjs(item?.attributes?.endDateTime), "day");
+    const sameStr = formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "");
+    const diffStr = formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '');
+    return `${isSame?  sameStr: diffStr} ${formatTimezone(item?.attributes?.startDateTime).timezone}`;
+  };
 
   /**
    * 获取日历选中之后出现的课程格式化后的时间
@@ -88,11 +88,11 @@ const PublicCalendar: React.FC = () => {
     startDateTime?: string;
     endDateTime?: string;
   }): string => {
-    const isSame = dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day")
-    const sameStr = `${formatHourMinute(item?.startDateTime)} - ${formatHourMinute(item?.endDateTime)} `
-    const diffStr =  `${formatYMDTime(item?.startDateTime)} ${item?.endDateTime ? `- ${formatYMDTime(item?.endDateTime)}` : ''}`
-    return `${isSame ? sameStr :diffStr} ${formatTimezone(item?.startDateTime).timezone}`
-  }
+    const isSame = dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day");
+    const sameStr = `${formatHourMinute(item?.startDateTime)} - ${formatHourMinute(item?.endDateTime)} `;
+    const diffStr =  `${formatYMDTime(item?.startDateTime)} ${item?.endDateTime ? `- ${formatYMDTime(item?.endDateTime)}` : ''}`;
+    return `${isSame ? sameStr :diffStr} ${formatTimezone(item?.startDateTime).timezone}`;
+  };
 
   useEffect(() => {
     run({

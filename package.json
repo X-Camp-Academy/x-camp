@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix && next lint"
+    "lint": "next lint --fix && git add . && next lint"
   },
   "pre-commit": "lint",
   "dependencies": {
