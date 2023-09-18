@@ -28,7 +28,7 @@ const Introduction: React.FC = () => {
         {/* <Results /> */}
 
         <FacultyCoach data={facultyData} />
-        {/* 111111111111111111 */}
+
         <Partners />
       </Content>
     </Layout>
