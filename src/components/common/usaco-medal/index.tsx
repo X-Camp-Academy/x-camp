@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import { Space, Row, Col, Typography, Image } from "antd";
+import { Space, Row, Col, Typography } from "antd";
+import CountUp from 'react-countup';
 import { useLang } from "@/hoc/with-intl/define";
 import styles from "./index.module.scss";
 
@@ -12,28 +13,33 @@ interface USACOMedalProps {
 
 const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
   const { format: t } = useLang();
+
+
   const data = [
     {
-      count: "200+",
+      count: 200,
       title: t("USACOSilverAndAbove"),
       color: "#00A0E9",
+      suffix: true
     },
     {
-      count: "30",
+      count: 30,
       title: t("USACOPlatinum"),
       color: "#FFD600",
     },
     {
-      count: "12",
+      count: 12,
       title: t("USACOFinalist"),
       color: "#FFAD11",
     },
     {
-      count: "1",
+      count: 1,
       title: t("EGOIGoldMedalist"),
       color: "#D46B14",
     },
   ];
+
+
 
   return (
     <div className={`${styles.usacoContainer} `}>
@@ -46,17 +52,23 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
         </Col>
       }
       <Row gutter={16} className={`container ${styles.row}`}>
-        {data?.map((item, index) => (
+        {data?.map(item => (
           <Col
-            key={index}
+            key={item?.title}
             span={6}
             className={styles.col}
           >
             <div className={styles.medalContainer}>
               <Space direction="vertical">
-                <Text className={styles.medalCount} style={{ color: item?.color }}>
-                  {item?.count}
-                </Text>
+                <CountUp
+                  className={styles.medalCount}
+                  style={{ color: item?.color }}
+                  end={item?.count}
+                  duration={20}
+                  suffix={item?.suffix ? "+" : undefined}
+                  scrollSpyDelay={1000}
+                  enableScrollSpy
+                />
                 <Text className={styles.medalTitle}>{item?.title}</Text>
               </Space>
             </div>

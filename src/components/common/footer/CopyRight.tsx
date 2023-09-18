@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Space, Row, Col, Image, Typography } from "antd";
-import { HistoryOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import { HistoryOutlined, MailOutlined, PhoneOutlined, HighlightOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import CopyRightIcons from "../copy-right-icons";
 import styles from "./CopyRight.module.scss";
@@ -38,6 +38,10 @@ const CopyRight: React.FC = () => {
                 <Paragraph className={styles.paragraph}>
                   <PhoneOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t("Tel")}+1 - 510-708-8390</Text>
+                </Paragraph>
+                <Paragraph className={styles.paragraph}>
+                  <HighlightOutlined />
+                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t("Text")}408-634-0218</Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
