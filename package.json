@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix"
+    "lint": "next lint --fix && git add . && next lint"
   },
+  "pre-commit": "lint",
   "dependencies": {
     "@ant-design/icons": "^5.1.2",
     "ahooks": "^3.7.7",
@@ -42,6 +43,7 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "18.2.4",
     "postcss-pxtorem": "^6.0.0",
+    "pre-commit": "^1.2.2",
     "unplugin-json-dts": "^1.2.0"
   }
 }

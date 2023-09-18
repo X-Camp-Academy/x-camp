@@ -27,7 +27,7 @@ const FixedButtons: React.FC = () => {
     t('weeklyOpenHouseDesc1'),
     t('weeklyOpenHouseDesc2'),
     t('weeklyOpenHouseDesc3'),
-  ]
+  ];
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
