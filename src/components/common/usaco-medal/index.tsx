@@ -14,32 +14,33 @@ interface USACOMedalProps {
 const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
   const { format: t } = useLang();
 
-
   const data = [
     {
       count: 200,
       title: t("USACOSilverAndAbove"),
       color: "#00A0E9",
+      style: styles.bronzeMedal,
       suffix: true
     },
     {
       count: 30,
       title: t("USACOPlatinum"),
       color: "#FFD600",
+      style: styles.silverMedal,
     },
     {
       count: 12,
       title: t("USACOFinalist"),
       color: "#FFAD11",
+      style: styles.goldMedal,
     },
     {
       count: 1,
       title: t("EGOIGoldMedalist"),
       color: "#D46B14",
+      style: styles.platinumMedal,
     },
   ];
-
-
 
   return (
     <div className={`${styles.usacoContainer} `}>
@@ -58,7 +59,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
             span={6}
             className={styles.col}
           >
-            <div className={styles.medalContainer}>
+            <div className={item?.style}>
               <Space direction="vertical">
                 <CountUp
                   className={styles.medalCount}
