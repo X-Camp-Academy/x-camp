@@ -90,7 +90,7 @@ const DiscoverCourses = ({
     <div
       style={{ alignItems: align }}
     >
-      <div className={`${styles.discoverCourses} container`}>
+      <div className={styles.discoverCourses}>
         <TitleColor
           title={t('DiscoverOurCourses')}
           config={[{
@@ -105,7 +105,7 @@ const DiscoverCourses = ({
         {showBg && <Text className={styles.titleBg} />}
 
         <Row className={styles.row} gutter={16} align="middle">
-          {courseCards.map((item) => {
+          {courseCards?.map((item) => {
             return (
               <Col key={item?.url} xs={12} sm={12} md={12} lg={12} xl={6}>
                 <MaskCard
@@ -115,7 +115,7 @@ const DiscoverCourses = ({
                     borderRadius: 8,
                     paddingBottom: 0,
                   }}
-                  maskChildren={item.maskChildren}
+                  maskChildren={item?.maskChildren}
                   maskBackGroundColor={item?.maskBgc}
                 >
                   <div className={styles.infoContainer} style={{ background: `url('${item?.url}')  no-repeat`, backgroundSize: 'cover' }}>

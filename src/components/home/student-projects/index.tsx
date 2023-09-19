@@ -41,7 +41,7 @@ const StudentProjects: React.FC = () => {
       <div className={`${styles.studentProjects} container`} id="stu_project">
         <Space direction="vertical" align="center">
           {lang === 'zh' ? <Title className={styles.title}>学生课程</Title> : <>
-            <Title className={styles.title}>Student <span>Project</span></Title>
+            <Title className={styles.title}>Student <span>Projects</span></Title>
             <Text className={styles.titleBg} />
           </>}
           <Paragraph className={styles.paragraph}>
@@ -101,7 +101,6 @@ const StudentProjects: React.FC = () => {
           </Row>
         </Space>
       </div>
-
     </div>
   );
 };
