@@ -46,15 +46,23 @@
     @include flex(center);
   }
   .baseMedalContainer {
-    width: 230px;
+    width: 240px;
     text-align: center;
     margin-top: 20px;
     background-size: 160px 96px !important;
+    @media (max-width: 768px) {
+      width: 96px;
+      background-size: 80px 48px !important;
+    }
     .medalCount {
       font-size: 48px;
       font-weight: 600;
       line-height: 48px;
       width: 100%;
+      @media (max-width: 768px) {
+        font-size: 32px;
+        line-height: 32px;
+      }
     }
 
     .medalTitle {

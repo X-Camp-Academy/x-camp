@@ -23,10 +23,10 @@ const TimelineComponent: React.FC<Props> = ({ items }) => {
                 <div className={styles.line} />
               </div>
               <div className={styles.circle} />
-              <div className={styles.subTitle}>{childrenEvent.label}</div>
+              <div className={styles.subTitle}>{childrenEvent?.label}</div>
             </Space>
-            {!Array.isArray(childrenEvent.children) && (
-              <div className={styles.subContent}>{childrenEvent.children}</div>
+            {!Array.isArray(childrenEvent?.children) && (
+              <div className={styles.subContent}>{childrenEvent?.children}</div>
             )}
           </div>
         ))}

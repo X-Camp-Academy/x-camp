@@ -49,7 +49,7 @@ const AboutXCamp: React.FC = () => {
           </Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
-          {aboutContents.map((item) => {
+          {aboutContents?.map((item) => {
             return (
               <Col key={item?.icon} xs={12} sm={12} md={12} lg={6}>
                 <Card
@@ -58,7 +58,7 @@ const AboutXCamp: React.FC = () => {
                     borderRadius: 8,
                   }}
                 >
-                  <a href={item.url}>
+                  <a href={item?.url}>
                     <Space direction="vertical">
                       <Image
                         src={item?.icon}

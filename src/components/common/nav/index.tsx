@@ -19,7 +19,7 @@ import DropdownUserMenu from '../dropdown-user-menu';
 import { apiConfig } from '@/config/index';
 import { useLang } from '@/hoc/with-intl/define';
 import SelectPage from './SelectPage';
-import ToggleLanguage from "@/components/common/ToggleLanguage";
+import ToggleLanguage from "@/components/common/toggle-language";
 import styles from './index.module.scss';
 import 'animate.css';
 

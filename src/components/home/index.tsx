@@ -16,7 +16,7 @@ const PublicCalendar = dynamic(() => import("./public-calendar"));
 const StudentProjects = dynamic(() => import("./student-projects"));
 const XAlumni = dynamic(() => import("./xalumni"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
-const FixedButtons = dynamic(() => import("@/components/common/FixedButtons"));
+const FixedButtons = dynamic(() => import("@/components/common/fixed-buttons"));
 
 const { Content } = Layout;
 

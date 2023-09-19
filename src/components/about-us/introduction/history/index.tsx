@@ -1,11 +1,13 @@
 import React from "react";
 import { Space, Typography, Image, Row, Col } from "antd";
 import dayjs from "dayjs";
+import { useMobile } from "@/utils";
 import styles from "./index.module.scss";
 
 const { Title, Paragraph } = Typography;
 
 const History: React.FC = () => {
+  const isMobile = useMobile();
   const years = [2023, 2022, 2021, 2020, 2019, 2018, 2017];
   const currentYear = dayjs().year();
   const images = [
@@ -34,7 +36,6 @@ const History: React.FC = () => {
         <Title className={styles.title}>History of X-Camp</Title>
         <Paragraph className={styles.paragraph}>{"With nearly 2,000 students trained in just six years, X-Camp's impact on their coding journeys remains unparalleled."}</Paragraph>
 
-
         <div className={styles.timeline}>
           {
             years?.map(item => (
@@ -48,52 +49,52 @@ const History: React.FC = () => {
         </div>
 
         <Row gutter={[16, 16]} className={styles.timeImage}>
-          <Col xs={24} sm={24} md={8} lg={4}>
+          <Col xs={8} sm={8} md={8} lg={4}>
             <Image
               alt=""
               preview={false}
               src={images[0].src}
-              className={styles.image1}
+              className={isMobile ? styles.mobileImage : styles.image1}
             />
           </Col>
-          <Col xs={24} sm={24} md={8} lg={4}>
+          <Col xs={8} sm={8} md={8} lg={4}>
             <Image
               alt=""
               preview={false}
               src={images[0].src}
-              className={styles.image2}
+              className={isMobile ? styles.mobileImage : styles.image2}
             />
           </Col>
-          <Col xs={24} sm={24} md={8} lg={4}>
+          <Col xs={8} sm={8} md={8} lg={4}>
             <Image
               alt=""
               preview={false}
               src={images[0].src}
-              className={styles.image3}
+              className={isMobile ? styles.mobileImage : styles.image3}
             />
           </Col>
-          <Col xs={24} sm={24} md={8} lg={4}>
+          <Col xs={8} sm={8} md={8} lg={4}>
             <Image
               alt=""
               preview={false}
               src={images[0].src}
-              className={styles.image4}
+              className={isMobile ? styles.mobileImage : styles.image4}
             />
           </Col>
-          <Col xs={24} sm={24} md={8} lg={4}>
+          <Col xs={8} sm={8} md={8} lg={4}>
             <Image
               alt=""
               preview={false}
               src={images[0].src}
-              className={styles.image5}
+              className={isMobile ? styles.mobileImage : styles.image5}
             />
           </Col>
-          <Col xs={24} sm={24} md={8} lg={4}>
+          <Col xs={8} sm={8} md={8} lg={4}>
             <Image
               alt=""
               preview={false}
               src={images[0].src}
-              className={styles.image6}
+              className={isMobile ? styles.mobileImage : styles.image6}
             />
           </Col>
         </Row>
