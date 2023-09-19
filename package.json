@@ -20,6 +20,7 @@
     "echarts": "^5.4.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.19",
+    "eslint-config-x-star": "^1.0.2",
     "hover.css": "^2.3.2",
     "lodash": "^4.17.21",
     "next": "13.4.19",
