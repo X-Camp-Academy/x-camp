@@ -3,8 +3,8 @@ export enum CourseTypes {
   OnlineClasses = "Online Classes",
   // InPersonClasses = "In-person Classes",
   CampsClasses = "Camps Classes",
-  EnhancementClasses = "Enhancement Classes",
-  APCSClasses = "APCS Classes",
+  MockTestClasses = "Mock Test Classes",
+  JavaAPCSClasses = "Java & APCS Classes",
   // XTutors = "X-Tutors",
 }
 

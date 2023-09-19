@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Space, Typography, Carousel, Image, Row, Col } from "antd";
+import { Space, Typography, Carousel, Image } from "antd";
 import { AppstoreAddOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
+import MaskCard from "@/components/common/mask-card";
 import { useGetXAlumni } from "@/apis/strapi-client/strapi";
-import styles from "./XAlumni.module.scss";
-import MaskCard from "../common/mask-card";
+import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -72,9 +72,9 @@ const XAlumni: React.FC = () => {
               },
             ]}
           >
-            {xAlumni?.map((item, index) => {
+            {xAlumni?.map(item => {
               return (
-                <div key={index}>
+                <div key={item?.id}>
                   <MaskCard
                     className={styles.maskCard}
                     bodyStyle={{

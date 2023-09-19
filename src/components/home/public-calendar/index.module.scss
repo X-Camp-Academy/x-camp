@@ -5,7 +5,7 @@
   .publicCalendar {
     .title {
       margin: 0;
-      @include title('default');
+      @include title("default");
       text-align: center;
     }
     .titleBg {
@@ -22,7 +22,6 @@
       }
     }
     .eventCard {
-
       height: 200px;
       padding-left: 12px;
       @media (max-width: 768px) {
@@ -185,5 +184,4 @@
       }
     }
   }
-
 }

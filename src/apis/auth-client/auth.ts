@@ -1,4 +1,4 @@
-import { useCookieState, useRequest } from "ahooks";
+import { useRequest } from "ahooks";
 import { useAuthClient, useIdAuthClient } from ".";
 import { apiConfig } from "@/config";
 const { server, clientId } = apiConfig;

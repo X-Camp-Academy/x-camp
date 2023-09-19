@@ -45,14 +45,11 @@
   .col {
     @include flex(center);
   }
-  .medalContainer {
+  .baseMedalContainer {
     width: 230px;
     text-align: center;
     margin-top: 20px;
-    background: url("/image/common/usaco-medal.png") no-repeat center;
-    background-size: 140px 90px;
-    @media (max-width: 768px) {
-    }
+    background-size: 160px 96px !important;
     .medalCount {
       font-size: 48px;
       font-weight: 600;
@@ -65,5 +62,21 @@
       @include text(16px, 24px, #666);
       font-weight: 500;
     }
+  }
+  .bronzeMedal {
+    @extend .baseMedalContainer;
+    background: url("/image/common/usaco-bronze.png") no-repeat center;
+  }
+  .silverMedal {
+    @extend .baseMedalContainer;
+    background: url("/image/common/usaco-silver.png") no-repeat center;
+  }
+  .goldMedal {
+    @extend .baseMedalContainer;
+    background: url("/image/common/usaco-gold.png") no-repeat center;
+  }
+  .platinumMedal {
+    @extend .baseMedalContainer;
+    background: url("/image/common/usaco-platinum.png") no-repeat center;
   }
 }
