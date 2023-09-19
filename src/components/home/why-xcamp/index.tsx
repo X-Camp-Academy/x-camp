@@ -6,7 +6,7 @@ import TitleColor from "@/components/common/title-color";
 import styles from "./index.module.scss";
 
 const { Paragraph, Text } = Typography;
-const AboutXCamp: React.FC = () => {
+const WhyXCamp: React.FC = () => {
   const { format: t } = useLang();
   const aboutContents = [
     {
@@ -91,4 +91,4 @@ const AboutXCamp: React.FC = () => {
   );
 };
 
-export default AboutXCamp;
+export default WhyXCamp;

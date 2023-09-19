@@ -75,7 +75,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
               key={item?.id}
               xs={{ span: 24 }}
               sm={{ span: 24 }}
-              md={{ span: 24 }}
+              md={{ span: 12 }}
               lg={{ span: 6 }}
               className={styles.col}
             >

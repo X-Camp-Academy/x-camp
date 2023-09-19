@@ -1,6 +1,18 @@
-import { useStrapiClient } from ".";
-import { useHandleError } from "@/utils/error";
 import { useRequest } from "ahooks";
+import { isArray } from "lodash";
+import { useLang } from "@/hoc/with-intl/define";
+import {
+  classifyByAttribution,
+  deduplicateArray,
+  filterByAttribution,
+} from "@/utils/public";
+import { useHandleError } from "@/utils/error";
+import { useStrapiClient } from ".";
+import {
+  AndOrFilters,
+  FilterFields,
+  StrapiResponseDataItem,
+} from "./strapiDefine";
 import {
   AboutUsJoinUsCategory,
   GetAboutUsAchievementsAwardRequest,
@@ -13,11 +25,12 @@ import {
   GetFacultyResponse,
   GetHomeStudentProjectsRequest,
   GetNewEventRequest,
+  GetNewEventResponse,
   GetResourcesContestRequest,
   GetResourcesContestResponse,
   GetReviewsRequest,
-  GetXAlumniRequest,
-  GetXAlumniResponse,
+  GetCommunityRequest,
+  GetCommunityResponse,
   NewEventCategory,
   GetProjectsDemoRequest,
   GetAchievementsTimeLineRequest,
@@ -30,20 +43,7 @@ import {
   GetPartnerRequest,
   GetUserSearchRequest,
   SubmitUserInfoRequest,
-  GetNewEventResponse,
 } from "./define";
-import { isArray } from "lodash";
-import {
-  classifyByAttribution,
-  deduplicateArray,
-  filterByAttribution,
-} from "@/utils/public";
-import {
-  AndOrFilters,
-  FilterFields,
-  StrapiResponseDataItem,
-} from "./strapiDefine";
-import { useLang } from "@/hoc/with-intl/define";
 
 // 被用在哪些course 以英文逗号连接的字符串
 // 被用在哪些page 以英文逗号连接的字符串
@@ -54,9 +54,10 @@ interface Props {
   pageName?: string[];
   eventId?: string[];
 }
+
 /**
- *
- * @returns 获取Faculty
+ * 获取Faculty
+ * @returns
  */
 export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   const client = useStrapiClient();
@@ -96,7 +97,8 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
 };
 
 /**
- * @return 获取NewEvent
+ * 获取News，Event
+ * @returns
  */
 export const useGetNewEvent = ({
   tag,
@@ -172,8 +174,8 @@ export const useGetNewEvent = ({
 };
 
 /**
- *
- * @returns 获取AboutUs Achievements Usaco Medal
+ * 获取AboutUs Achievements Usaco Medal
+ * @returns
  */
 export const useGetAboutUsAchievementsAward = () => {
   const client = useStrapiClient();
@@ -196,15 +198,15 @@ export const useGetAboutUsAchievementsAward = () => {
 };
 
 /**
- *
- * @returns 获取XAlumni 毕业生
+ * 获取首页Community
+ * @returns
  */
-export const useGetXAlumni = () => {
+export const useGetCommunity = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetXAlumniRequest) => {
-      const res: GetXAlumniResponse = await client.getXAlumni(params);
+    async (params: GetCommunityRequest) => {
+      const res: GetCommunityResponse = await client.getCommunity(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -220,8 +222,8 @@ export const useGetXAlumni = () => {
 };
 
 /**
- *
- * @returns 获取资源目录下的比赛列表
+ * 获取资源目录下的比赛列表
+ * @returns
  */
 export const useGetResourcesContest = () => {
   const client = useStrapiClient();
@@ -246,8 +248,8 @@ export const useGetResourcesContest = () => {
 };
 
 /**
- *
- * @returns 获取关于我们目录下的Join Us
+ * 获取关于我们目录下的Join Us
+ * @returns
  */
 export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
   const client = useStrapiClient();
@@ -277,6 +279,10 @@ export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
   );
 };
 
+/**
+ * 获取评价
+ * @returns
+ */
 export const useGetReviews = ({
   ready,
   courseId,
@@ -324,8 +330,8 @@ export const useGetReviews = ({
 };
 
 /**
- *
- * @returns 获取Home Student Projects
+ * 获取首页 Student Projects
+ * @returns
  */
 export const useGetHomeStudentProjects = () => {
   const client = useStrapiClient();
@@ -347,8 +353,8 @@ export const useGetHomeStudentProjects = () => {
 };
 
 /**
- *
- * @returns 获取Course Level Type
+ * 获取Course Level Type
+ * @returns
  */
 export const useGetCourseLevelType = () => {
   const client = useStrapiClient();
@@ -368,11 +374,11 @@ export const useGetCourseLevelType = () => {
     }
   );
 };
-/**
- *
- * @returns 获取Courses
- */
 
+/**
+ * 获取所有的课程数据
+ * @returns
+ */
 export const useGetCourses = ({
   filters,
   pagination,
@@ -409,8 +415,8 @@ export const useGetCourses = ({
 };
 
 /**
- *
- * @returns 获取AboutUs Alumni Map
+ * 获取关于我们毕业生地图数据
+ * @returns
  */
 export const useGetAboutUsAlumniMap = () => {
   const client = useStrapiClient();
@@ -432,8 +438,8 @@ export const useGetAboutUsAlumniMap = () => {
 };
 
 /**
- *
- * @returns 获取关于我们目录下的achievements的Projects Demo
+ * 获取关于我们目录下的achievements的Projects Demo
+ * @returns
  */
 export const useGetProjectsDemo = () => {
   const client = useStrapiClient();
@@ -462,8 +468,8 @@ export const useGetProjectsDemo = () => {
 };
 
 /**
- *
- * @returns 获取关于我们目录下的achievements的Time Line
+ * 获取关于我们目录下的achievements的Time Line
+ * @returns
  */
 export const useGetAchievementsTimeLine = () => {
   const client = useStrapiClient();
@@ -485,8 +491,8 @@ export const useGetAchievementsTimeLine = () => {
 };
 
 /**
- *
- * @returns 获取AboutUs Intro Article
+ * 获取AboutUs Intro Article
+ * @returns
  */
 export const useGetAboutUsIntroArticle = () => {
   const client = useStrapiClient();
@@ -509,8 +515,8 @@ export const useGetAboutUsIntroArticle = () => {
 };
 
 /**
- *
- * @returns 获取Resources目录下的Live Solution
+ * 获取Resources目录下的Live Solution
+ * @returns
  */
 export const useGetResourcesLiveSolution = () => {
   const client = useStrapiClient();
@@ -535,8 +541,8 @@ export const useGetResourcesLiveSolution = () => {
 };
 
 /**
- *
- * @returns 获取Faq
+ * 获取Faq
+ * @returns
  */
 export const useGetFaq = <
   T extends boolean = false,
@@ -607,8 +613,8 @@ export const useGetFaq = <
 };
 
 /**
- *
- * @returns 获取about us目录下的Partner
+ * 获取about us目录下的Partner
+ * @returns
  */
 export const useGetPartner = () => {
   const client = useStrapiClient();
@@ -631,6 +637,7 @@ export const useGetPartner = () => {
     }
   );
 };
+
 /**
  * 获取用户可搜索的关键词以及对应链接
  * @returns

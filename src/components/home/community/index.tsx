@@ -6,14 +6,14 @@ import { AppstoreAddOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import MaskCard from "@/components/common/mask-card";
-import { useGetXAlumni } from "@/apis/strapi-client/strapi";
+import { useGetCommunity } from "@/apis/strapi-client/strapi";
 import styles from "./index.module.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
-const XAlumni: React.FC = () => {
+const Community: React.FC = () => {
   const { lang, format: t } = useLang();
-  const { data } = useGetXAlumni();
+  const { data } = useGetCommunity();
   const xAlumni = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
   const router = useRouter();
   const generateMaskChildren = (title?: string, description?: string) => {
@@ -123,4 +123,4 @@ const XAlumni: React.FC = () => {
   );
 };
 
-export default XAlumni;
+export default Community;

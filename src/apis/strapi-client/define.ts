@@ -39,14 +39,12 @@ export enum NewEventCategory {
   XAlumni = "X-Alumni",
   All = "All",
 }
-
 export enum EventCategory {
   SchoolLifeSharing = "School life's sharing",
   CodingEducation = "Coding Education",
   CareerPath = "Career Path",
   Research = "Research",
 }
-
 export interface GetNewEvent extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -183,7 +181,7 @@ export interface GetCourses extends strapiPublicFields {
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
 
-export interface GetXAlumni extends strapiPublicFields {
+export interface GetCommunity extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
@@ -192,8 +190,8 @@ export interface GetXAlumni extends strapiPublicFields {
   order: number;
 }
 
-export type GetXAlumniRequest = StrapiRequest<GetXAlumni>;
-export type GetXAlumniResponse = StrapiResponse<GetXAlumni>;
+export type GetCommunityRequest = StrapiRequest<GetCommunity>;
+export type GetCommunityResponse = StrapiResponse<GetCommunity>;
 
 export interface GetResourcesContest extends strapiPublicFields {
   titleZh: string;
