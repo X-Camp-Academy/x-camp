@@ -5,16 +5,16 @@ import dynamic from "next/dynamic";
 import { useGetReviews } from "@/apis/strapi-client/strapi";
 import styles from "./index.module.scss";
 
-const CarouselContent = dynamic(() => import("./CarouselContent"));
+const CarouselContent = dynamic(() => import("./carousel-content"));
 const DiscoverCourses = dynamic(
   () => import("@/components/common/discover-courses")
 );
-const AboutXCamp = dynamic(() => import("./AboutXCamp"));
-const WeSupport = dynamic(() => import("./WeSupport"));
+const AboutXCamp = dynamic(() => import("./about-xcamp"));
+const WeSupport = dynamic(() => import("./we-support"));
 const Faculty = dynamic(() => import("@/components/common/faculty"));
-const PublicCalendar = dynamic(() => import("./PublicCalendar"));
-const StudentProjects = dynamic(() => import("./StudentProjects"));
-const XAlumni = dynamic(() => import("./XAlumni"));
+const PublicCalendar = dynamic(() => import("./public-calendar"));
+const StudentProjects = dynamic(() => import("./student-projects"));
+const XAlumni = dynamic(() => import("./xalumni"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
 const FixedButtons = dynamic(() => import("@/components/common/FixedButtons"));
 

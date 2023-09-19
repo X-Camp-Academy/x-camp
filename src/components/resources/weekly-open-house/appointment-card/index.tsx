@@ -23,7 +23,7 @@ const AppointmentCard: React.FC = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.imgContain}>
-            <img src="/image/about-us/banner-background.png" alt="" />
+            <img src="/image/about-us/camps-1.png" alt="" />
           </div>
         </div>
       </div>

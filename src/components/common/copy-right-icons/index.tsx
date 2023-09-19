@@ -45,38 +45,32 @@ const CopyRightIcons: React.FC = () => {
   };
   return (
     <Space>
-      {icons.map((item, index) => {
-        if (index <= 2) {
-          return (
-            <a href={item?.link} target="_blank" key={index} rel="noreferrer">
-              <Image
-                alt=""
-                src={imageSrc[index]}
-                preview={false}
-                width={28}
-                height={28}
-                onMouseOver={() => onMouseOver(index)}
-                onMouseLeave={onMouseLeave}
-              />
-            </a>
-          );
-        }
-        else {
-          return (
-            <Popover content={<img src={QRcodeImg[index - 3]} alt="" style={{ width: '100px', height: '100px' }} />} key={index}>
-              <Image
-                alt=""
-                src={imageSrc[index]}
-                preview={false}
-                width={28}
-                height={28}
-                onMouseOver={() => onMouseOver(index)}
-                onMouseLeave={onMouseLeave}
-              />
-            </Popover>
-          );
-        }
-      })}
+      {icons?.map((item, index) => (
+        item?.link ?
+          <a href={item?.link} target="_blank" key={item?.src} rel="noreferrer">
+            <Image
+              alt=""
+              src={imageSrc[index]}
+              preview={false}
+              width={28}
+              height={28}
+              onMouseOver={() => onMouseOver(index)}
+              onMouseLeave={onMouseLeave}
+            />
+          </a>
+          :
+          <Popover content={<img src={QRcodeImg[index - 3]} alt="" style={{ width: '100px', height: '100px' }} />} key={index}>
+            <Image
+              alt=""
+              src={imageSrc[index]}
+              preview={false}
+              width={28}
+              height={28}
+              onMouseOver={() => onMouseOver(index)}
+              onMouseLeave={onMouseLeave}
+            />
+          </Popover>
+      ))}
     </Space>
   );
 };

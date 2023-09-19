@@ -2,7 +2,6 @@
 import React, { ReactNode } from "react";
 import { ConfigProvider } from "antd";
 import { useCheckBrowserCompatibility } from "@/hooks";
-import BrowserCompatibilityPage from "@/components/common/browser-compatibility";
 
 interface Props {
   children: ReactNode;

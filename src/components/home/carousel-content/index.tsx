@@ -1,5 +1,6 @@
 "use client";
 import React, { CSSProperties, useRef } from "react";
+import dynamic from "next/dynamic";
 import {
   Carousel,
   Space,
@@ -9,10 +10,9 @@ import {
 } from "antd";
 import classNames from "classnames";
 import { useLang } from "@/hoc/with-intl/define";
-import styles from "./CarouselContent.module.scss";
-import dynamic from "next/dynamic";
-import CarouselDots from "@/components/home/CarouselDots";
+import CarouselDots from "./CarouselDots";
 import TitleColor, { IConfig } from "@/components/common/title-color";
+import styles from "./index.module.scss";
 
 const { Paragraph, Text } = Typography;
 
@@ -58,7 +58,7 @@ const CarouselContent: React.FC = () => {
       date: t("OpenTime"),
       backgroundUrl: "/image/about-us/banner-joinUs.png",
       buttonText: t("ZoomLink")
-    },{
+    }, {
       title: t("USACO.enhancement.register"),
       titleConfig: [
         {
@@ -74,7 +74,7 @@ const CarouselContent: React.FC = () => {
       date: t("USACO.no.class"),
       backgroundUrl: "/image/home/banner-2.png",
       buttonText: t("VideoRecap")
-    },{
+    }, {
       title: t("Home.Banner3.title"),
       desc: [
         t("Home.Banner3.desc")
@@ -92,7 +92,7 @@ const CarouselContent: React.FC = () => {
       onClick: () => { window.open('https://docs.google.com/forms/d/e/1FAIpQLScNm1Mf4lgvdXUObuJu3wl-_wEcYU9N8ao6PGv8RnANNGE_xw/viewform?usp=sf_link'); },
       date: '',
       backgroundUrl: "/image/home/banner-3.png",
-      buttonText:t("Home.Banner3.buttonText")
+      buttonText: t("Home.Banner3.buttonText")
     }];
 
   return (

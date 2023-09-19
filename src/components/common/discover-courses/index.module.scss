@@ -1,11 +1,12 @@
 @import "@/styles/variables.scss";
 
 .discoverCourses {
-  padding: 0 15px;
+  width: 100%;
+  padding: 80px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  background-color: #fff5e8;
   .title {
     position: relative;
     text-align: center;
@@ -21,10 +22,10 @@
 
   .titleBg {
     position: relative;
-    left: 110px;
+    left: 128px;
     display: block;
     margin: 0 auto;
-    width: 130px;
+    width: 144px;
     height: 16px;
     background: url("/image/home/home-title-bg-1.png") no-repeat;
     background-size: cover;

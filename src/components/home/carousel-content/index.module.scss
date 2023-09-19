@@ -4,7 +4,7 @@
   width: 100%;
   position: relative;
   background: #fff;
-  box-shadow: 0 11px 26px -4px rgba(216,216,216,0.3);
+  box-shadow: 0 11px 26px -4px rgba(216, 216, 216, 0.3);
 
   .carouselDots {
     position: absolute;
@@ -13,7 +13,7 @@
     transform: translateY(-50%);
     z-index: 1;
     list-style-type: none;
-    @media (max-width: 992px){
+    @media (max-width: 992px) {
       right: 40px;
       top: 240px;
     }
@@ -22,20 +22,19 @@
       width: 42px;
       margin-bottom: 30px;
       text-align: right;
-      @include text(14px, 24px,#C1C1C1);
+      @include text(14px, 24px, #c1c1c1);
       cursor: pointer;
       .divider {
         margin: 0;
-        border-block-color: #C1C1C1;
+        border-block-color: #c1c1c1;
       }
       &.active {
         color: $primary-color;
         .divider {
-          border-block-color:  $primary-color;
+          border-block-color: $primary-color;
         }
       }
     }
-
   }
   .background {
     width: 100%;
@@ -67,7 +66,7 @@
         justify-content: center;
       }
       .title {
-        @include title('banner');
+        @include title("banner");
         font-weight: 800;
       }
       .paragraph {
@@ -98,5 +97,4 @@
       }
     }
   }
-
 }
