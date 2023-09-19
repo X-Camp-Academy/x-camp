@@ -13,8 +13,8 @@ const ToggleLanguage: React.FC<IProps> = ({ className }) => {
 
   return (
     <div onClick={toggle} className={`${styles.intl} ${className}`}>
-      <SvgIcon icon="Earth" className={styles.svgIcon} /> 
-      <span className={styles.text}>{getTransResult(lang, 'English', '中文')}</span>
+      <SvgIcon icon="Earth" className={styles.svgIcon} />
+      <span className={styles.text}>{getTransResult(lang, '中文', 'English')}</span>
     </div>
   );
 };

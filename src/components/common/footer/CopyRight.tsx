@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Space, Row, Col, Image, Typography } from "antd";
-import { HistoryOutlined, MailOutlined, PhoneOutlined, HighlightOutlined } from "@ant-design/icons";
+import { HistoryOutlined, MailOutlined, PhoneOutlined, CommentOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
 import CopyRightIcons from "../copy-right-icons";
 import styles from "./CopyRight.module.scss";
@@ -40,13 +40,13 @@ const CopyRight: React.FC = () => {
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t("Tel")}+1 - 510-708-8390</Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
-                  <HighlightOutlined />
+                  <CommentOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t("Text")}408-634-0218</Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
-                    <a href="mailto:info@x-camp.academy" style={{ color: 'inherit' }}>Email:info@x-camp.academy</a>
+                    <a href="mailto:info@x-camp.academy" style={{ color: 'inherit' }}>Email: info@x-camp.academy</a>
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>

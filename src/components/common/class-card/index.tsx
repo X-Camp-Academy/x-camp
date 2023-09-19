@@ -12,10 +12,10 @@ type ClassCardProps = Omit<ColorfulCardProps, "children"> & {
   href: string;
   list: string[];
   time: string;
-  children?: React.ReactNode;
+  bilingual?: boolean;
 };
 
-const ClassCard = ({ index, href, title, list, time }: ClassCardProps) => {
+const ClassCard = ({ index, title, href, list, time, bilingual }: ClassCardProps) => {
   return (
     <ColorfulCard
       border={"bottom"}
@@ -53,6 +53,11 @@ const ClassCard = ({ index, href, title, list, time }: ClassCardProps) => {
             />
           </Space>
         </Space>
+        {
+          bilingual && <div className={styles.bilingual}>
+            Bilingual
+          </div>
+        }
       </Card>
     </ColorfulCard>
   );

@@ -1,5 +1,5 @@
-import { getBrowserCompatibility } from "@/utils/public";
 import { useState, useEffect } from "react";
+import { getBrowserCompatibility } from "@/utils/public";
 
 /**
  * 控制组件是否挂载、是否可见的 Hook

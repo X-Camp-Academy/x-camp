@@ -2,9 +2,14 @@
 
 .colorfulCard {
   width: 380px;
-
+  position: relative;
   .card {
+    :global(.ant-card) {
+      position: relative;
+    }
     :global(.ant-card-body) {
+      padding-top: 32px;
+      padding-right: 36px;
       height: 360px;
     }
 
@@ -44,6 +49,24 @@
       .link {
         color: #ffad11;
       }
+    }
+
+    .bilingual {
+      position: absolute;
+      width: 156px;
+      height: 32px;
+      border-bottom: 32px solid #ffad11;
+      border-top: 32px solid transparent;
+      border-left: 32px solid transparent;
+      border-right: 32px solid transparent;
+      top: 0;
+      right: -46px;
+      transform: rotate(45deg);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 32px;
+      color: #ffffff;
     }
   }
 }

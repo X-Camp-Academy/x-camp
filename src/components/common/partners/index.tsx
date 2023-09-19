@@ -49,11 +49,11 @@ const Partners: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space className={styles.space}>
-              {topImages.map((item) => (
-                <a href={item.link} key={item.src}>
+              {topImages?.map((item) => (
+                <a href={item?.link} key={item?.src}>
                   <Image
                     alt=""
-                    src={item.src}
+                    src={item?.src}
                     preview={false}
                     className={styles.topImage}
                   />
@@ -63,13 +63,13 @@ const Partners: React.FC = () => {
           </Col>
           <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
             <Space className={styles.space}>
-              {bottomImages.map((item, index) => (
-                <a href={item.link} key={item.src}>
+              {bottomImages?.map(item => (
+                <a href={item?.link} key={item?.src}>
                   <Image
                     alt=""
                     src={item?.src}
                     preview={false}
-                    className={item.style}
+                    className={item?.style}
                   />
                 </a>
 

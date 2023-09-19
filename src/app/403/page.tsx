@@ -3,7 +3,7 @@ export const metadata = {
   description: "X-Camp Academy | Programming and Education news from X-Camp",
 };
 
-const Page = () => {
+const Page: React.FC = () => {
   return <div>403</div>;
 };
 
