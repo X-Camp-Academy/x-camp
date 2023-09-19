@@ -11,7 +11,7 @@ declare const json: {
   "AboutUs.Introduction.Desc": "X-Camp是一家位于硅谷的青少年编程学院，为5至12年级学生提供编程课程。课程从初学者到国际奥林匹克信息学竞赛IOI级别，拥有高度结构化、自主设计的课程体系。",
   "AboutUs.Description": "X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。",
   "AboutX-Camp": "关于X-Camp",
-  "AboutX-Camp_Color": "X-Camp",
+  "AboutX-Camp_Color": "关于",
   "XCamp.title1": "综合课程",
   "XCamp.Desc1": "X-Camp Academy是一家总部位于硅谷的编码学院，提供初级到IOI级别的课程。",
   "XCamp.title2": "顶尖员工和教练",
