@@ -102,16 +102,16 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
  */
 export const useGetNewEvent = ({
   tag,
-  current,
-  pageSize,
+  current = 1,
+  pageSize = 999,
   manual = false,
   courseId,
   pageName,
   eventId,
 }: {
   tag?: NewEventCategory;
-  current: number;
-  pageSize: number;
+  current?: number;
+  pageSize?: number;
   manual?: boolean;
   courseId?: string[];
   pageName?: string[];

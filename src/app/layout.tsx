@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import { LocalStateProvider } from '@/utils/local-state';
 import { WithAuth } from '@/hoc/with-auth';
 import { WithClient } from '@/apis/BaseAxiosClient';
+import { useMobile } from "@/utils";
+import './globals.scss';
 const WithLayout = dynamic(() => import('@/hoc/WithLayout'), { ssr: false });
 const WithAntdConfig = dynamic(() => import('@/hoc/WithAntdConfig'), { ssr: false });
 const Nav = dynamic(() => import('@/components/common/nav'), { ssr: false });
@@ -13,8 +15,6 @@ const BackTop = dynamic(() => import('@/components/common/back-top'), {
 const WithIntl = dynamic(() => import('@/hoc/with-intl'), {
   ssr: false,
 });
-import './globals.scss';
-import { useMobile } from "@/utils";
 
 export default function RootLayout({
   children,
