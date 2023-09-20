@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Space, Row, Col, Image, Typography } from "antd";
 import { HistoryOutlined, MailOutlined, PhoneOutlined, CommentOutlined } from "@ant-design/icons";
 import { useLang } from "@/hoc/with-intl/define";
+import { useMobile } from "@/utils";
 import CopyRightIcons from "../copy-right-icons";
 import styles from "./CopyRight.module.scss";
 
@@ -12,27 +13,36 @@ const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
   const { format: t } = useLang();
+  const isMobile = useMobile();
   return (
     <div className={styles.copyRightContainer}>
       <div className={`${styles.copyRight} container`}>
         <Row justify="space-between" align="middle">
-          <Col xs={24} sm={24} md={24} lg={12}>
+          <Col xs={24} sm={24} md={24} lg={12} order={isMobile ? 2 : 1}>
             <Space direction="vertical" className={styles.spaceLeft} size={48}>
-              <Space direction="vertical">
-                <Image
-                  alt=""
-                  src="/logo/logo.png"
-                  preview={false}
-                  className={styles.image}
-                />
-                <Image
-                  alt="slogan"
-                  preview={false}
-                  src="/image/home/footer-slogan.png"
-                  width={220}
-                  height={24}
-                />
-              </Space>
+              {
+                isMobile ?
+                  <>
+                    <div className={styles.bar} />
+                    <CopyRightIcons />
+                  </>
+                  :
+                  <Space direction="vertical">
+                    <Image
+                      alt="logo"
+                      src="/logo/logo.png"
+                      preview={false}
+                      className={styles.image}
+                    />
+                    <Image
+                      alt="slogan"
+                      preview={false}
+                      src="/image/home/footer-slogan.png"
+                      width={220}
+                      height={24}
+                    />
+                  </Space>
+              }
 
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
@@ -59,7 +69,7 @@ const CopyRight: React.FC = () => {
             </Space>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={12}>
+          <Col xs={24} sm={24} md={24} lg={12} order={isMobile ? 1 : 2}>
             <Space align="start" className={styles.spaceRight}>
               <div>
                 <Title className={styles.text}>X-Camp Academy</Title>
@@ -69,6 +79,7 @@ const CopyRight: React.FC = () => {
                   <Link href={"/courses#camps"}>{t('In-personCamps')}</Link>
                 </Space>
               </div>
+
               <div>
                 <Title className={styles.text}>Activity</Title>
                 <Space direction="vertical">
@@ -77,6 +88,7 @@ const CopyRight: React.FC = () => {
                   <a href={"/resources/usaco-live-solutions"}>{'USACO'}</a>
                 </Space>
               </div>
+
               <div>
                 <Title className={styles.text}>{'Help Center'}</Title>
                 <Space direction="vertical">
@@ -88,13 +100,22 @@ const CopyRight: React.FC = () => {
             </Space>
           </Col>
         </Row>
-        <div className={styles.bar} />
 
-        <div className={styles.bottomContainer}>
-          <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
-          <CopyRightIcons />
-        </div>
+        {
+          !isMobile &&
+          <>
+            <div className={styles.bar} />
+            <div className={styles.bottomContainer}>
+              <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
+              <CopyRightIcons />
+            </div>
+          </>
+        }
       </div>
+      {
+        isMobile &&
+        <div className={styles.mobileCopyRight}>Copyright @ 2023 X-Camp</div>
+      }
     </div>
   );
 };
