@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./index.module.scss";
 import { Space } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
 
 const WhyContest: React.FC = () => {
   const { format: t } = useLang();
