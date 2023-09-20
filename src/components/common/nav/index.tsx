@@ -26,10 +26,10 @@ import 'animate.css';
 const { Header } = Layout;
 
 const Nav: React.FC = () => {
-  const { format: t, toggle, lang } = useLang();
+  const { format: t } = useLang();
   const pathname = usePathname();
   const url = new URL(window.location.href);
-  const hash = url.hash; // 获取哈希部分
+  const hash = url.hash;
   const [current, setCurrent] = useState(pathname + hash);
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();
