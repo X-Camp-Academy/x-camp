@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 interface ISvgProps {
   icon: string
@@ -34,11 +34,15 @@ const SvgIcon: React.FC<ISvgProps> = ({ icon, className, ...props }: ISvgProps) 
     height: '1em'
   };
 
+  const SvgIconMemo = useMemo(() => {
+    return  files
+      .filter((file) => file.default.name === `Svg${convertToCamelCase(icon)}`)
+      .map(file => <file.default className="svg" key={file.default.name} {...{ ...defaultAttr, ...props }} />);
+  }, [icon]);
+
   return <span style={{ lineHeight: 1, display: 'inline-block' }} className={className} >
     {
-      files
-        .filter((file) => file.default.name === `Svg${convertToCamelCase(icon)}`)
-        .map(file => <file.default className="svg" key={file.default.name} {...{ ...defaultAttr, ...props }} />)
+      !!SvgIconMemo.length && SvgIconMemo.map(item => item)
     }
   </span>;
 };
