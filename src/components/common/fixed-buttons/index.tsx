@@ -3,7 +3,7 @@ import { Button, Card, Form, Input, Checkbox } from "antd";
 import FixedButton from "./FixedButton";
 import { useLang } from "@/hoc/with-intl/define";
 import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
-import { openClassEmailRequest } from "@/apis/send-email-client";
+import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import styles from "./index.module.scss";
 
 
