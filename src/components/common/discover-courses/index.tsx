@@ -22,11 +22,11 @@ const DiscoverCourses = ({
     return (
       <Space
         direction={"vertical"}
-        style={{ height: "100%", justifyContent: "space-between" }}
+        style={{ height: "100%", justifyContent: "space-between", width: '100%' }}
       >
-        <Space direction={"vertical"}>
+        <Space direction={"vertical"} style={{ width: '100%' }}>
           <Title className={styles.maskTitle}>{title}</Title>
-          <Paragraph className={styles.maskDesc}>{desc}</Paragraph>
+          <Paragraph className={styles.maskDesc} ellipsis={{ rows: 6 }}>{desc}</Paragraph>
         </Space>
 
         <div className={styles.more}>
@@ -121,7 +121,7 @@ const DiscoverCourses = ({
                   <div className={styles.infoContainer} style={{ background: `url('${item?.url}')  no-repeat`, backgroundSize: 'cover' }}>
                     <div className={styles.info}>
                       <Title className={styles.cardTitle}>{item?.title}</Title>
-                      <Paragraph className={styles.cardParagraph}>
+                      <Paragraph className={styles.cardParagraph} ellipsis={{ rows: 7 }}>
                         {item?.desc}
                       </Paragraph>
                     </div>

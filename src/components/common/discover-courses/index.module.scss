@@ -86,7 +86,7 @@
 
       .maskTitle {
         @include title("thin");
-        white-space: nowrap;
+        word-wrap:break-word;
       }
 
       .maskDesc {
