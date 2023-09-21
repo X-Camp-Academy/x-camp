@@ -12,13 +12,15 @@
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "next lint --fix",
-      "prettier --write"
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
     ],
-    "src/**/*.{ts,tsx}": [
-      "next lint --fix",
-      "prettier --parser=typescript --write"
+    "*.{ts,tsx}": [
+      "prettier --parser=typescript --write",
+      "eslint --fix",
+      "git add"
     ]
   },
   "dependencies": {
