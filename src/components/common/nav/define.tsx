@@ -55,11 +55,11 @@ export const useMenuItems = () => {
           key: '/courses/#camps',
         },
         {
-          label: <a href="">{'Mock Test Classes'}</a>,
+          label: <a href="/courses#mock-test-classes">{'Mock Test Classes'}</a>,
           key: 'Mock Test Classes',
         },
         {
-          label: <a href="">{'Java/APCS Classes'}</a>,
+          label: <a href="/courses#apcs">{'Java/APCS Classes'}</a>,
           key: 'Java/APCS Classes',
         },
         // {
