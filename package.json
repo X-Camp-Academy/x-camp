@@ -12,15 +12,14 @@
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
-    "*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "next lint --fix",
       "prettier --write"
     ],
-    "*.{ts,tsx}": [
+    "src/**/*.{ts,tsx}": [
       "next lint --fix",
       "prettier --parser=typescript --write"
     ]
-    "!**/node_modules/**": false
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.2",
