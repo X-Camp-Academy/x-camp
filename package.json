@@ -6,9 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix && git add . && next lint"
+    "lint": "next lint --fix && git add . && next lint",
+    "lintStaged": "echo 'a'",
+    "prettier": "prettier --write ./src"
   },
-  "pre-commit": "lint",
+  "pre-commit": "lintStaged",
+  "lint-staged": {
+    "src/*.js": [
+      "next lint --fix",
+      "prettier --write"
+    ],
+    "!**/node_modules/**": false
+  },
   "dependencies": {
     "@ant-design/icons": "^5.1.2",
     "ahooks": "^3.7.7",
@@ -44,8 +53,11 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "18.2.4",
     "eslint-config-x-star": "^1.0.5",
+    "lint-staged": "^14.0.1",
     "postcss-pxtorem": "^6.0.0",
     "pre-commit": "^1.2.2",
+    "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^3.2.3",
     "unplugin-json-dts": "^1.2.0"
   }
 }
