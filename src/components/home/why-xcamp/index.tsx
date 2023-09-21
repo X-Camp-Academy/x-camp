@@ -6,7 +6,7 @@ import TitleColor from "@/components/common/title-color";
 import styles from "./index.module.scss";
 
 const { Paragraph, Text } = Typography;
-const AboutXCamp: React.FC = () => {
+const WhyXCamp: React.FC = () => {
   const { format: t } = useLang();
   const aboutContents = [
     {
@@ -49,7 +49,7 @@ const AboutXCamp: React.FC = () => {
           </Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
-          {aboutContents.map((item) => {
+          {aboutContents?.map((item) => {
             return (
               <Col key={item?.icon} xs={12} sm={12} md={12} lg={6}>
                 <Card
@@ -58,7 +58,7 @@ const AboutXCamp: React.FC = () => {
                     borderRadius: 8,
                   }}
                 >
-                  <a href={item.url}>
+                  <a href={item?.url}>
                     <Space direction="vertical">
                       <Image
                         src={item?.icon}
@@ -91,4 +91,4 @@ const AboutXCamp: React.FC = () => {
   );
 };
 
-export default AboutXCamp;
+export default WhyXCamp;

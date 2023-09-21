@@ -3,13 +3,13 @@ import React from "react";
 import { Button, Col, Form, Input, Row, Select, message } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import { useSubmitEvaluation } from "@/apis/send-email-client/sendEmail";
-import { submitEvaluationRequest } from "@/apis/send-email-client";
+import { submitEvaluationRequest } from "@/apis/send-email-client/define";
 import styles from "./index.module.scss";
 
 const EvaluationForm: React.FC = () => {
   const { format: t } = useLang();
   const [form] = Form.useForm();
-  const { runAsync: sendEmail, data } = useSubmitEvaluation();
+  const { runAsync: sendEmail } = useSubmitEvaluation();
 
   const submitEmailValue = async (value: submitEvaluationRequest) => {
     const result = await sendEmail(value);
@@ -39,7 +39,7 @@ const EvaluationForm: React.FC = () => {
               onFinish={submitEmailValue}
 
             >
-              <Row gutter={17}>
+              <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item
                     name="stuName"
@@ -75,7 +75,7 @@ const EvaluationForm: React.FC = () => {
                 </Col>
               </Row>
 
-              <Row gutter={17}>
+              <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item
                     name="phoneNumber"

@@ -87,7 +87,12 @@ const Courses: React.FC = () => {
     };
   });
 
-  // 根据online in person isCamp划分
+  /**
+   * 第一次分类
+   * 将所有的课程根据online或者in-person或者isCamp来划分三大类课程
+   * @param type online/in-person/isCamp
+   * @returns 返回online或者in-person或者camp的课程集合
+   */
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
       case CourseTypes.OnlineClasses:
@@ -99,21 +104,23 @@ const Courses: React.FC = () => {
       //     (item) => item?.attributes?.classMode === CourseMode.InPerson
       //   );
       case CourseTypes.CampsClasses:
-        // console.log(courses?.data?.filter((item) => item?.attributes?.isCamp));
-
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
         return courses?.data;
     }
   };
 
-  // 根据online  或者 in person 或者enhancement classes 等
+  /**
+   * 生成online或者in-person或者camps或者其他类别的所有一级二级课程数据
+   * @param courseType 本地要展示在页面的一级分类
+   * @param primaryData strapi上的二级分类
+   * @returns 分类好的课程数据
+   */
   const generateCourses = (
     courseType: string,
     primaryData: string[] | undefined
   ) => {
     const filteredCourses = getOnlineInPersonIsCamp(courseType);
-    // 排序二级数据
     const sortFilteredCourses = filteredCourses?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
     return {
       primaryTitle: courseType,
@@ -121,7 +128,6 @@ const Courses: React.FC = () => {
         return {
           secondaryTitle: levelType,
           children: sortFilteredCourses?.filter(
-            // 根据第一次分类过滤的courses或者原始的课程直接进行二层过滤
             (filteredCourse) =>
               filteredCourse?.attributes?.courseLevelType?.data?.attributes
                 ?.type === levelType
@@ -131,7 +137,10 @@ const Courses: React.FC = () => {
     };
   };
 
-  // 固定所有的数据
+  /**
+   * online和in-person和camps的课程需要一级嵌套二级展示所有课程数据
+   * 除了上面三个都是只展示二级课程数据
+   */
   const allCourses = COURSE_TYPES?.map((courseType, index) => {
     if (index < 2) {
       return generateCourses(courseType, courseLevelTypeData);
@@ -139,6 +148,7 @@ const Courses: React.FC = () => {
       return generateCourses(courseType, [courseType]);
     }
   });
+
 
   // 移除二级课程为空的数据
   const removeEmptyChildren = (data: FormatCoursesProps[]) => {
@@ -154,7 +164,6 @@ const Courses: React.FC = () => {
     const segmentedData = allCourses?.filter(
       (item) => item?.primaryTitle === segmented
     );
-    // console.log(segmentedData);
 
     const result = removeEmptyChildren(segmentedData);
 

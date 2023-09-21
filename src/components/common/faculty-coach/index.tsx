@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Space, Row, Col, Card, Typography, Avatar } from "antd";
+import { SegmentedValue } from "antd/es/segmented";
+import SegmentedRadioGroup from "../segmented-radio-group";
+import ColorfulCard from "../colorful-card";
 import { useLang } from "@/hoc/with-intl/define";
 import { getTransResult } from "@/utils/public";
 import {
@@ -8,9 +11,7 @@ import {
 } from "@/apis/strapi-client/strapiDefine";
 import { FacultyLevelCategory, GetFaculty } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
-import { SegmentedValue } from "antd/es/segmented";
-import SegmentedRadioGroup from "../segmented-radio-group";
-import ColorfulCard from "../colorful-card";
+
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -75,7 +76,7 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
               key={item?.id}
               xs={{ span: 24 }}
               sm={{ span: 24 }}
-              md={{ span: 24 }}
+              md={{ span: 12 }}
               lg={{ span: 6 }}
               className={styles.col}
             >

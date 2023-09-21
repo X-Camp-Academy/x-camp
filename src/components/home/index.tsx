@@ -9,19 +9,18 @@ const CarouselContent = dynamic(() => import("./carousel-content"));
 const DiscoverCourses = dynamic(
   () => import("@/components/common/discover-courses")
 );
-const AboutXCamp = dynamic(() => import("./about-xcamp"));
+const WhyXCamp = dynamic(() => import("./why-xcamp"));
 const WeSupport = dynamic(() => import("./we-support"));
 const Faculty = dynamic(() => import("@/components/common/faculty"));
 const PublicCalendar = dynamic(() => import("./public-calendar"));
 const StudentProjects = dynamic(() => import("./student-projects"));
-const XAlumni = dynamic(() => import("./xalumni"));
+const Community = dynamic(() => import("./community"));
 const Reviews = dynamic(() => import("@/components/common/reviews"));
-const FixedButtons = dynamic(() => import("@/components/common/FixedButtons"));
+const FixedButtons = dynamic(() => import("@/components/common/fixed-buttons"));
 
 const { Content } = Layout;
 
 const Home: React.FC = () => {
-  //获取师生评价数据
   const { data } = useGetReviews({
     ready: true,
   });
@@ -31,8 +30,7 @@ const Home: React.FC = () => {
     <Layout className={styles.homeContainer}>
       <Content>
         <CarouselContent />
-        {/*why x-camp*/}
-        <AboutXCamp />
+        <WhyXCamp />
         <DiscoverCourses />
         <Faculty />
         <WeSupport />
@@ -40,8 +38,7 @@ const Home: React.FC = () => {
 
         {/*<XCampFounders />*/}
         <StudentProjects />
-        {/*Community*/}
-        <XAlumni />
+        <Community />
         <Reviews reviewsData={reviewsData} />
         <FixedButtons />
         {/*<Partners />*/}

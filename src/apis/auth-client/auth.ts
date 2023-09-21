@@ -2,6 +2,7 @@ import { useRequest } from "ahooks";
 import { useAuthClient, useIdAuthClient } from ".";
 import { apiConfig } from "@/config";
 const { server, clientId } = apiConfig;
+
 export const useGetUserInfo = () => {
   const client = useAuthClient();
   const idClient = useIdAuthClient();

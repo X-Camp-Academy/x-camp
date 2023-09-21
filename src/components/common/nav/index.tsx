@@ -19,17 +19,17 @@ import DropdownUserMenu from '../dropdown-user-menu';
 import { apiConfig } from '@/config/index';
 import { useLang } from '@/hoc/with-intl/define';
 import SelectPage from './SelectPage';
-import ToggleLanguage from "@/components/common/ToggleLanguage";
+import ToggleLanguage from "@/components/common/toggle-language";
 import styles from './index.module.scss';
 import 'animate.css';
 
 const { Header } = Layout;
 
 const Nav: React.FC = () => {
-  const { format: t, toggle, lang } = useLang();
+  const { format: t } = useLang();
   const pathname = usePathname();
   const url = new URL(window.location.href);
-  const hash = url.hash; // 获取哈希部分
+  const hash = url.hash;
   const [current, setCurrent] = useState(pathname + hash);
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();

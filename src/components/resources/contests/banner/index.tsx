@@ -1,10 +1,11 @@
 import React from "react";
-import styles from "./index.module.scss";
 import classNames from "classnames/bind";
 import { useLang } from "@/hoc/with-intl/define";
+import styles from "./index.module.scss";
+
 const cx = classNames.bind(styles);
 
-const Banner = () => {
+const Banner: React.FC = () => {
   const { format: t } = useLang();
   return (
     <div className={styles.banner}>

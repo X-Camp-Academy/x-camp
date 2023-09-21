@@ -1,13 +1,13 @@
 import { useRequest } from "ahooks";
 import { message } from "antd";
+import { useSendEmailClient } from ".";
+import { useHandleError } from "@/utils/error";
+import { useLang } from "@/hoc/with-intl/define";
 import {
   openClassEmailRequest,
   submitEvaluationRequest,
   subscribeNewsletterRequest,
-  useSendEmailClient,
-} from ".";
-import { useHandleError } from "@/utils/error";
-import { useLang } from "@/hoc/with-intl/define";
+} from "./define";
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
@@ -99,7 +99,7 @@ export const useSubmitEvaluation = () => {
       onSuccess: () => {
         message.success({
           key: "sendEmailSuccessfully",
-          content: '提交成功',
+          content: "提交成功",
         });
       },
       onError: handleError,

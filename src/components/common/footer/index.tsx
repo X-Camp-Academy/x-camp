@@ -8,6 +8,7 @@ const CopyRight = dynamic(() => import("./CopyRight"));
 const { Content } = Layout;
 
 const Footer: React.FC = () => {
+
   return (
     <Layout className={styles.footerContainer}>
       <Content>

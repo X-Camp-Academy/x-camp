@@ -3,8 +3,8 @@ import React from "react";
 import { Space, Typography, Button, Input, Form } from "antd";
 import { useLang } from "@/hoc/with-intl/define";
 import ColorfulCard from "@/components/common/colorful-card";
-import { subscribeNewsletterRequest } from "@/apis/send-email-client";
 import { useSubscribeNewsletter } from "@/apis/send-email-client/sendEmail";
+import { subscribeNewsletterRequest } from "@/apis/send-email-client/define";
 import styles from "./index.module.scss";
 
 const { Title, Paragraph } = Typography;

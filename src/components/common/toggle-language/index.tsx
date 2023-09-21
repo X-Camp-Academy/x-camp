@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.scss";
 import { getTransResult } from "@/utils/public";
 import { useLang } from "@/hoc/with-intl/define";
-import SvgIcon from "../SvgIcon";
+import SvgIcon from "../svg-icon";
 
 interface IProps {
   className?: string

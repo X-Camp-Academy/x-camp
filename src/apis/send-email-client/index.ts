@@ -1,46 +1,13 @@
 import { BaseAxiosClient, useClient } from "../BaseAxiosClient";
-
-export interface openClassEmailRequest {
-	name: string;
-	email: string;
-	grade: string;
-	phone: string; //手机或wechatID
-}
-
-export interface openClassEmailResponse {
-	code: number;
-	msg: string;
-}
-
-export interface subscribeNewsletterRequest {
-	email: string;
-}
-
-export interface subscribeNewsletterResponse {
-	code: number;
-	msg: string;
-}
-
-export interface submitResumeResponse {
-	code: number;
-	msg: string;
-}
-
-export interface submitEvaluationRequest {
-	stuName: string;
-	email: string;
-	phoneNumber: string;
-	grade: string;
-	codingBackground: string;
-	codingLanguage: string;
-	programmingExp: string;
-	aboutXcamp: string;
-}
-
-export interface submitEvaluationResponse {
-	code: number;
-	msg: string;
-}
+import {
+  openClassEmailRequest,
+  openClassEmailResponse,
+  submitEvaluationRequest,
+  submitEvaluationResponse,
+  submitResumeResponse,
+  subscribeNewsletterRequest,
+  subscribeNewsletterResponse,
+} from "./define";
 
 export class SendEmailClient extends BaseAxiosClient {
   async sendOpenClassEmail(
@@ -70,7 +37,9 @@ export class SendEmailClient extends BaseAxiosClient {
     return data;
   }
 
-  async submitEvaluation(req: submitEvaluationRequest): Promise<submitEvaluationResponse> {
+  async submitEvaluation(
+    req: submitEvaluationRequest
+  ): Promise<submitEvaluationResponse> {
     const data = await this.post("/evaluation", req, this.jsonHeaders);
     return data;
   }

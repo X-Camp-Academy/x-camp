@@ -8,7 +8,6 @@ import {
   Row,
   Col,
 } from "antd";
-import classNames from "classnames";
 import { useLang } from "@/hoc/with-intl/define";
 import CarouselDots from "./CarouselDots";
 import TitleColor, { IConfig } from "@/components/common/title-color";
@@ -31,7 +30,6 @@ interface IItem {
 
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
-  const cx = classNames.bind(styles);
   const sliderRef: any = useRef(null);
 
   const goTo = (index: number) => {
@@ -101,23 +99,23 @@ const CarouselContent: React.FC = () => {
       <Carousel autoplay={false} dots={false} ref={sliderRef}>
         {
           carouselItems.map((item: IItem) => (
-            <div className={styles.content} key={item.title}>
-              <div className={styles.background} style={{ background: `url("${item.backgroundUrl}") center no-repeat`, backgroundSize: 'cover' }} />
+            <div className={styles.content} key={item?.title}>
+              <div className={styles.background} style={{ background: `url("${item?.backgroundUrl}") center no-repeat`, backgroundSize: 'cover' }} />
               <div className={`container ${styles.info}`}>
                 <Row>
                   <Col xs={24} sm={24} md={24} lg={12}>
                     <Space direction="vertical" className={styles.space} size={20}>
-                      <TitleColor className={styles.title} title={item.title} config={item?.titleConfig || []} />
+                      <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
                       <div>
                         {
-                          item.desc.map(desc => (
+                          item?.desc?.map(desc => (
                             <Paragraph className={styles.paragraph} key={desc} style={item?.descStyle}>
                               {desc}
                             </Paragraph>))
                         }
                       </div>
-                      <button className={styles.button} onClick={item.onClick}>{item.buttonText}</button>
-                      <Text className={styles.date} style={item?.descStyle}>{item.date}</Text>
+                      <button className={styles.button} onClick={item?.onClick}>{item?.buttonText}</button>
+                      <Text className={styles.date} style={item?.descStyle}>{item?.date}</Text>
                     </Space>
                   </Col>
                 </Row>
@@ -125,7 +123,6 @@ const CarouselContent: React.FC = () => {
             </div>))
         }
       </Carousel>
-
       <UsacoMedal showTitle={false} />
     </div>
   );

@@ -7,10 +7,11 @@ import classNames from "classnames/bind";
 import dayjs from "dayjs";
 import { useLang } from "@/hoc/with-intl/define";
 import { formatTimezone, getTransResult } from "@/utils/public";
+import { useMobile } from "@/utils";
 import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
 import { GetReviews } from "@/apis/strapi-client/define";
 import styles from "./index.module.scss";
-import { useMobile } from "@/utils";
+
 
 const { Paragraph, Text } = Typography;
 

@@ -1,30 +1,31 @@
 "use client";
-import { Layout } from "antd";
 import React from "react";
-import styles from "./index.module.scss";
+import { usePathname } from "next/navigation";
+import { Layout } from "antd";
+import { useSize } from "ahooks";
 import Banner from "./banner";
-import Reviews from "@/components/common/reviews";
+import MonthlyContest from "./monthly-contest";
 import Introduction from "./introduction";
 import WhyContest from "./why-contest";
-import MonthlyContest from "./monthly-contest";
+import Reviews from "@/components/common/reviews";
 import { useGetNewEvent, useGetReviews } from "@/apis/strapi-client/strapi";
-import { usePathname } from "next/navigation";
 import { formatContestsByQuarter } from "./define";
-import { useSize } from "ahooks";
 import { NewEventCategory } from "@/apis/strapi-client/define";
+import styles from "./index.module.scss";
+
+
 const { Content } = Layout;
 
-const Contests = () => {
+const Contests: React.FC = () => {
   const { data: resourcesContest } = useGetNewEvent({
     tag: NewEventCategory.EventContest,
     current: 1,
     pageSize: 9999,
   });
   const pathname = usePathname();
-  // 请求courseId为isCamp课程, pageName 为"/courses/catalog/"的评论
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname],
   });
   const size = useSize(document.querySelector("body"));
 
