@@ -270,7 +270,10 @@ const Courses: React.FC = () => {
   };
 
 
-  // 前端根据当前的segmentedData来筛选
+  /**
+   * 筛选当前选中的segmented课程数据
+   * @param values 筛选的参数
+   */
   const onFinish = (values: { category: string, rangeDate: [Dayjs, Dayjs], search: string }) => {
     const { category, rangeDate, search } = values;
     let result;
@@ -344,6 +347,8 @@ const Courses: React.FC = () => {
         }];
       }
     }
+    console.log(result);
+
     const filteredResult = removeEmptyChildren(result as SegmentedCoursesProps[]);
     setSegmentedData(filteredResult);
   };
