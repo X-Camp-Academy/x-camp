@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Dropdown, Button } from "antd";
-import styles from "./index.module.scss";
+import { Dropdown, Button } from 'antd';
+import styles from './index.module.scss';
 
 
 interface IProps {

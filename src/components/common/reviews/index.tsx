@@ -1,16 +1,16 @@
-"use client";
-import React, { useRef } from "react";
-import { Space, Rate, Typography, Carousel, Button } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { CarouselRef } from "antd/es/carousel";
-import classNames from "classnames/bind";
-import dayjs from "dayjs";
-import { useLang } from "@/hoc/with-intl/define";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { useMobile } from "@/utils";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { GetReviews } from "@/apis/strapi-client/define";
-import styles from "./index.module.scss";
+'use client';
+import React, { useRef } from 'react';
+import { Space, Rate, Typography, Carousel, Button } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { CarouselRef } from 'antd/es/carousel';
+import classNames from 'classnames/bind';
+import dayjs from 'dayjs';
+import { useLang } from '@/hoc/with-intl/define';
+import { formatTimezone, getTransResult } from '@/utils/public';
+import { useMobile } from '@/utils';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { GetReviews } from '@/apis/strapi-client/define';
+import styles from './index.module.scss';
 
 
 const { Paragraph, Text } = Typography;
@@ -21,7 +21,7 @@ interface ReviewsProps {
   reviewsData?: StrapiResponseDataItem<GetReviews>[] | undefined;
 }
 
-const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
+const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
   const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
   const isMobile = useMobile();
@@ -36,7 +36,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
     <div className={cx(className, styles.reviewsContainer)}>
       {
         reviewsData && reviewsData?.length > 0 &&
-        <div className={cx(styles.reviews, "container")}>
+        <div className={cx(styles.reviews, 'container')}>
           <div className={styles.reviewsBox}>
             {!isMobile && <>
               <Button
@@ -90,7 +90,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
                 const { utcTime } = formatTimezone(reviews?.datetime);
                 return (
                   <div key={item?.id} className={styles.reviewsContainer}>
-                    <Space direction="vertical" style={{ width: "100%" }}>
+                    <Space direction="vertical" style={{ width: '100%' }}>
                       <Text className={styles.reviewsTitle}>
                         {getTransResult(
                           lang,
@@ -112,7 +112,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = "", reviewsData }) => {
                         )}
                       </Paragraph>
                       <Text className={styles.reviewsDate}>
-                        {dayjs(utcTime).format("YYYY-MM-DD")}
+                        {dayjs(utcTime).format('YYYY-MM-DD')}
                       </Text>
                     </Space>
                   </div>

@@ -1,6 +1,6 @@
-import React from "react";
-import { Space, Timeline } from "antd";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Space, Timeline } from 'antd';
+import styles from './index.module.scss';
 
 interface Item {
   label: string;

@@ -1,20 +1,20 @@
-import { GetNewEvent } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import dayjs from "dayjs";
+import { GetNewEvent } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import dayjs from 'dayjs';
 
 enum MonthAbbreviation {
-  Jan = "Jan",
-  Feb = "Feb",
-  Mar = "Mar",
-  Apr = "Apr",
-  May = "May",
-  Jun = "Jun",
-  Jul = "Jul",
-  Aug = "Aug",
-  Sep = "Sep",
-  Oct = "Oct",
-  Nov = "Nov",
-  Dec = "Dec",
+  Jan = 'Jan',
+  Feb = 'Feb',
+  Mar = 'Mar',
+  Apr = 'Apr',
+  May = 'May',
+  Jun = 'Jun',
+  Jul = 'Jul',
+  Aug = 'Aug',
+  Sep = 'Sep',
+  Oct = 'Oct',
+  Nov = 'Nov',
+  Dec = 'Dec',
 }
 
 export interface ContestsByMonthInterface {
@@ -37,7 +37,7 @@ export const formatContestsByMonth = (
     contests: [],
   }));
   data?.forEach((contest) => {
-    const month = dayjs(contest.attributes.startDateTime).get("month");
+    const month = dayjs(contest.attributes.startDateTime).get('month');
     if (!isNaN(month)) {
       contestsByMonth?.[month]?.contests?.push(contest);
     }

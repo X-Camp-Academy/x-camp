@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 const Contests = dynamic(() => import('@/components/resources/contests'));
 
 export const metadata = {

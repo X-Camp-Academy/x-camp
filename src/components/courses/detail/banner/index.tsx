@@ -1,12 +1,12 @@
-import React, { useState, useRef, useContext } from "react";
-import { Breadcrumb, Button, Descriptions, Divider, Space, Typography, Image, Carousel, Modal, message } from "antd";
-import { ShareAltOutlined } from "@ant-design/icons";
-import { CarouselRef } from "antd/es/carousel";
-import { useLang } from "@/hoc/with-intl/define";
-import { formatTimezone, getTransResult, getWeeksDays } from "@/utils/public";
-import CourseAbstract from "../../course-abstract";
-import CourseClassesContext from "../../CourseClassesContext";
-import styles from "./index.module.scss";
+import React, { useState, useRef, useContext } from 'react';
+import { Breadcrumb, Button, Descriptions, Divider, Space, Typography, Image, Carousel, Modal, message } from 'antd';
+import { ShareAltOutlined } from '@ant-design/icons';
+import { CarouselRef } from 'antd/es/carousel';
+import { useLang } from '@/hoc/with-intl/define';
+import { formatTimezone, getTransResult, getWeeksDays } from '@/utils/public';
+import CourseAbstract from '../../course-abstract';
+import CourseClassesContext from '../../CourseClassesContext';
+import styles from './index.module.scss';
 
 
 const { Title } = Typography;
@@ -50,25 +50,25 @@ const CourseBanner: React.FC = () => {
   const clipTextEn = `Course name: ${courseTitleEn}\nCourse code: ${courseCode}\nProgramming language: ${classLang}\nLanguage of instruction: ${spokenLang}\nCourse time: ${formatDate(startDateTime)} ~ ${formatDate(endDateTime)}\nCourse cycle: ${frequency}\nHow the course starts: ${classMode}\nCourse Links: ${fullPath}\nMore Courses: https://www-new.x-camp.academy/courses/`;
 
   const imageMimes = [
-    "image/jpeg",
-    "image/png",
-    "image/gif",
-    "image/bmp",
-    "image/tiff",
-    "image/svg+xml",
-    "image/webp",
+    'image/jpeg',
+    'image/png',
+    'image/gif',
+    'image/bmp',
+    'image/tiff',
+    'image/svg+xml',
+    'image/webp',
   ];
 
   const handleOk = () => {
     navigator.clipboard
-      .writeText(getTransResult(lang, clipTextZh, clipTextEn) || "")
+      .writeText(getTransResult(lang, clipTextZh, clipTextEn) || '')
       .then(
         function () {
           message.success({
             content: getTransResult(
               lang,
-              "课程信息复制成功",
-              "The course information was copied successfully"
+              '课程信息复制成功',
+              'The course information was copied successfully'
             ),
 
           });
@@ -77,8 +77,8 @@ const CourseBanner: React.FC = () => {
           message.error({
             content: getTransResult(
               lang,
-              "课程信息复制失败",
-              "Course information replication failed"
+              '课程信息复制失败',
+              'Course information replication failed'
             ),
           });
         }
@@ -87,27 +87,27 @@ const CourseBanner: React.FC = () => {
   };
 
   const DescriptionsItems = [
-    { key: t("ClassMode"), value: classMode },
-    { key: t("CodeLanguage"), value: classLang },
-    { key: t("ClassroomLanguage"), value: spokenLang },
-    { key: t("Duration"), value: `${formatDate(startDateTime)} - ${formatDate(endDateTime)} (${formatTimezone(endDateTime)?.timezone})` },
-    { key: t("CourseFormat"), value: courseFormat },
-    { key: t("AdditionalInfo"), value: additionalInfo },
+    { key: t('ClassMode'), value: classMode },
+    { key: t('CodeLanguage'), value: classLang },
+    { key: t('ClassroomLanguage'), value: spokenLang },
+    { key: t('Duration'), value: `${formatDate(startDateTime)} - ${formatDate(endDateTime)} (${formatTimezone(endDateTime)?.timezone})` },
+    { key: t('CourseFormat'), value: courseFormat },
+    { key: t('AdditionalInfo'), value: additionalInfo },
   ];
   return (
     <div className={styles.banner}>
       <div
         className={`${styles.content} container`}
-        style={{ height: "100%" }}
+        style={{ height: '100%' }}
       >
         <Breadcrumb
           className={styles.breadcrumb}
           items={[
             {
-              title: t("Home"),
+              title: t('Home'),
             },
             {
-              title: <a href="/courses">{t("Courses")}</a>,
+              title: <a href="/courses">{t('Courses')}</a>,
             },
             {
               title: courseCodeTitle,
@@ -142,7 +142,7 @@ const CourseBanner: React.FC = () => {
                   className={styles.btn}
                   onClick={() => setIsModalOpen(true)}
                 >
-                  {t("ShareLessons")}
+                  {t('ShareLessons')}
                   <ShareAltOutlined />
                 </Button>
               </div>
@@ -167,7 +167,7 @@ const CourseBanner: React.FC = () => {
                       <div key={mediaItem?.id} className={styles.videoBox}>
                         <video controls>
                           <source src={mediaItem?.attributes?.url} type="video/mp4" />
-                          {t("VideoProblem")}
+                          {t('VideoProblem')}
                         </video>
                       </div>
                     );
@@ -189,8 +189,8 @@ const CourseBanner: React.FC = () => {
                             <Button
                               ghost
                               style={{
-                                width: "100%",
-                                height: "100%",
+                                width: '100%',
+                                height: '100%',
                               }}
                               onClick={() => {
                                 ref?.current?.goTo(index);
@@ -209,19 +209,19 @@ const CourseBanner: React.FC = () => {
                             <Button
                               ghost
                               style={{
-                                width: "100%",
-                                height: "100%",
+                                width: '100%',
+                                height: '100%',
                               }}
                               onClick={() => {
                                 ref?.current?.goTo(index);
                               }}
                             >
-                              <video style={{ width: "100%" }}>
+                              <video style={{ width: '100%' }}>
                                 <source
                                   src={mediaItem?.attributes?.url}
                                   type="video/mp4"
                                 />
-                                {t("VideoProblem")}
+                                {t('VideoProblem')}
                               </video>
                             </Button>
                           </div>
@@ -231,7 +231,7 @@ const CourseBanner: React.FC = () => {
                   )}
 
                   <Modal
-                    title={getTransResult(lang, "分享课程信息", 'Share course information')}
+                    title={getTransResult(lang, '分享课程信息', 'Share course information')}
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={() => setIsModalOpen(false)}

@@ -1,25 +1,25 @@
-"use client";
-import React from "react";
-import { Layout } from "antd";
-import dynamic from "next/dynamic";
-import { useGetProjectsDemo } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { Layout } from 'antd';
+import dynamic from 'next/dynamic';
+import { useGetProjectsDemo } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Content } = Layout;
 const Banner = dynamic(
-  () => import("@/components/about-us/achievements/banner")
+  () => import('@/components/about-us/achievements/banner')
 );
 const USACOSpotlight = dynamic(
-  () => import("@/components/about-us/achievements/usaco-spotlight")
+  () => import('@/components/about-us/achievements/usaco-spotlight')
 );
 const TimeLine = dynamic(
-  () => import("@/components/about-us/achievements/time-line")
+  () => import('@/components/about-us/achievements/time-line')
 );
 const UsacoMedal = dynamic(
-  () => import("@/components/common/usaco-medal")
+  () => import('@/components/common/usaco-medal')
 );
 const ArtOfProgrammingResults = dynamic(
-  () => import("@/components/about-us/achievements/art-of-programming-results")
+  () => import('@/components/about-us/achievements/art-of-programming-results')
 );
 
 const Achievements: React.FC = () => {

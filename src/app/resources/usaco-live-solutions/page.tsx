@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 const UsacoLiveSolutions = dynamic(() => import('@/components/resources/usaco-live-solutions'));
 
 export const metadata = {

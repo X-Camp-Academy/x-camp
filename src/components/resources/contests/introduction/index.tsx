@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { Divider } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import { GetNewEvent } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import styles from "./index.module.scss";
+import React, { useEffect } from 'react';
+import { Divider } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { GetNewEvent } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import styles from './index.module.scss';
 
 interface Props {
   data: StrapiResponseDataItem<GetNewEvent>[] | undefined;
@@ -20,8 +20,8 @@ const Introduction = ({ data }: Props) => {
       const dom = document.getElementById(id);
       if (dom) {
         dom.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
+          behavior: 'smooth',
+          block: 'start',
         });
       }
     };

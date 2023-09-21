@@ -1,12 +1,12 @@
-import React from "react";
-import { Divider, Popover, Space, Typography } from "antd";
-import { CalendarOutlined } from "@ant-design/icons";
-import classNames from "classnames/bind";
-import dayjs, { Dayjs } from "dayjs";
-import { useLang } from "@/hoc/with-intl/define";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { ContestsByMonthInterface } from "../../define";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Divider, Popover, Space, Typography } from 'antd';
+import { CalendarOutlined } from '@ant-design/icons';
+import classNames from 'classnames/bind';
+import dayjs, { Dayjs } from 'dayjs';
+import { useLang } from '@/hoc/with-intl/define';
+import { formatTimezone, getTransResult } from '@/utils/public';
+import { ContestsByMonthInterface } from '../../define';
+import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 const { Paragraph } = Typography;
@@ -22,7 +22,7 @@ const ContestCard = ({ data }: Props) => {
     <div className={styles.card}>
       <div className={styles.month}>{data?.month}</div>
       <Space
-        size={"middle"}
+        size={'middle'}
         direction="vertical"
         className={cx(
           styles.content,
@@ -36,7 +36,7 @@ const ContestCard = ({ data }: Props) => {
           const { utcTime: endDateTime } = formatTimezone(
             v?.attributes?.endDateTime
           );
-          const noInvalid = (dateTime: Dayjs) => dayjs(dateTime).toString() !== "Invalid Date";
+          const noInvalid = (dateTime: Dayjs) => dayjs(dateTime).toString() !== 'Invalid Date';
           return (
             <Popover
               title={
@@ -52,7 +52,7 @@ const ContestCard = ({ data }: Props) => {
                     <Space className={styles.time}>
                       <CalendarOutlined />
 
-                      <span>{noInvalid(startDateTime) && dayjs(startDateTime).format("ddd, MMM DD")}{noInvalid(endDateTime) && `-${dayjs(endDateTime).format("ddd, MMM DD")}`}</span>
+                      <span>{noInvalid(startDateTime) && dayjs(startDateTime).format('ddd, MMM DD')}{noInvalid(endDateTime) && `-${dayjs(endDateTime).format('ddd, MMM DD')}`}</span>
                     </Space>
                   </div>
                   <div className={styles.right}>
@@ -68,7 +68,7 @@ const ContestCard = ({ data }: Props) => {
               content={
                 <div className={styles.popoverContent}>
                   <Divider className={styles.divider} />
-                  <div className={styles.description}>{"Description"}</div>
+                  <div className={styles.description}>{'Description'}</div>
                   <div className={styles.descriptionContent}>
                     <Paragraph ellipsis={{ rows: 8 }}>
                       {getTransResult(
@@ -90,9 +90,9 @@ const ContestCard = ({ data }: Props) => {
                   // 滚动到对应的比赛
                   const element = document.getElementById(`contest-${v?.id}`);
                   element?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                    inline: "nearest",
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'nearest',
                   });
                 }}
               >
@@ -112,7 +112,7 @@ const ContestCard = ({ data }: Props) => {
                 </div>
                 <div className={styles.bottom}>
                   <div className={styles.time}>
-                    {noInvalid(startDateTime) && dayjs(startDateTime).format("MMM DD")}{noInvalid(endDateTime) && `-${dayjs(endDateTime).format("MMM DD")}`}
+                    {noInvalid(startDateTime) && dayjs(startDateTime).format('MMM DD')}{noInvalid(endDateTime) && `-${dayjs(endDateTime).format('MMM DD')}`}
                   </div>
                   {v?.attributes?.contestLogo?.data && (
                     <div className={styles.logo}>

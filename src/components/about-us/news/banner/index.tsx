@@ -1,5 +1,5 @@
-import React from "react";
-import CommonBanner from "@/components/common/common-banner";
+import React from 'react';
+import CommonBanner from '@/components/common/common-banner';
 
 const Banner: React.FC = () => {
   const paragraph = (
@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
 
   return (
     <CommonBanner
-      image={"/image/about-us/achievements-banner.png"}
+      image={'/image/about-us/achievements-banner.png'}
       title="News"
       paragraph={paragraph}
     />

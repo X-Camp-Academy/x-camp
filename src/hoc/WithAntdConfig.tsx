@@ -1,7 +1,7 @@
-"use client";
-import React, { ReactNode } from "react";
-import { ConfigProvider } from "antd";
-import { useCheckBrowserCompatibility } from "@/hooks";
+'use client';
+import React, { ReactNode } from 'react';
+import { ConfigProvider } from 'antd';
+import { useCheckBrowserCompatibility } from '@/hooks';
 
 interface Props {
   children: ReactNode;
@@ -13,7 +13,7 @@ const WithAntdConfig = ({ children }: Props) => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#FFAD11",
+          colorPrimary: '#FFAD11',
           fontFamily: `Poppins, Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI,
           Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif,
           Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;`,

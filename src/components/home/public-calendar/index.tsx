@@ -1,14 +1,14 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Typography, Empty, Carousel } from "antd";
-import type { Dayjs } from "dayjs";
-import { useLang } from "@/hoc/with-intl/define";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { useMobile } from "@/utils";
-import useDayJs from "@/hooks/useDayJs";
-import ActivityCalendar from "@/components/common/activity-calendar";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { Space, Row, Col, Typography, Empty, Carousel } from 'antd';
+import type { Dayjs } from 'dayjs';
+import { useLang } from '@/hoc/with-intl/define';
+import { formatTimezone, getTransResult } from '@/utils/public';
+import { useMobile } from '@/utils';
+import useDayJs from '@/hooks/useDayJs';
+import ActivityCalendar from '@/components/common/activity-calendar';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 interface IFilterDataEvent {
@@ -51,9 +51,9 @@ const PublicCalendar: React.FC = () => {
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
     if (endDateTime === '') {
-      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+      return dayjs(selectDate).isSame(dayjs(startDateTime), 'days');
     }
-    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), 'days', '[]');
   };
 
   const filterSameDateEvent = (selectDate: string) => {
@@ -73,9 +73,9 @@ const PublicCalendar: React.FC = () => {
    * @param item
    */
   const getCourseDateStr = (item: any): string => {
-    const isSame = dayjs(item?.attributes?.startDateTime).isSame(dayjs(item?.attributes?.endDateTime), "day");
-    const sameStr = formatHourMinute(item?.attributes?.startDateTime || "") + '-' + formatHourMinute(item?.attributes?.endDateTime || "");
-    const diffStr = formatYMDTime(item?.attributes?.startDateTime || "") + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '');
+    const isSame = dayjs(item?.attributes?.startDateTime).isSame(dayjs(item?.attributes?.endDateTime), 'day');
+    const sameStr = formatHourMinute(item?.attributes?.startDateTime || '') + '-' + formatHourMinute(item?.attributes?.endDateTime || '');
+    const diffStr = formatYMDTime(item?.attributes?.startDateTime || '') + (item?.attributes?.endDateTime ? ' - ' + formatYMDTime(item?.attributes?.endDateTime) : '');
     return `${isSame ? sameStr : diffStr} ${formatTimezone(item?.attributes?.startDateTime).timezone}`;
   };
 
@@ -88,7 +88,7 @@ const PublicCalendar: React.FC = () => {
     startDateTime?: string;
     endDateTime?: string;
   }): string => {
-    const isSame = dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day");
+    const isSame = dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day');
     const sameStr = `${formatHourMinute(item?.startDateTime)} - ${formatHourMinute(item?.endDateTime)} `;
     const diffStr = `${formatYMDTime(item?.startDateTime)} ${item?.endDateTime ? `- ${formatYMDTime(item?.endDateTime)}` : ''}`;
     return `${isSame ? sameStr : diffStr} ${formatTimezone(item?.startDateTime).timezone}`;
@@ -96,8 +96,8 @@ const PublicCalendar: React.FC = () => {
 
   useEffect(() => {
     run({
-      populate: "*",
-      sort: ["order:desc"],
+      populate: '*',
+      sort: ['order:desc'],
       pagination: {
         page: current,
         pageSize,
@@ -126,9 +126,9 @@ const PublicCalendar: React.FC = () => {
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
         <Title className={styles.title}>
-          X-Camp {t("Public")} <span>{t("Calendar")}</span>
+          X-Camp {t('Public')} <span>{t('Calendar')}</span>
         </Title>
-        <div style={{ display: "flex", justifyContent: 'center', width: '100%' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
           <Text className={styles.titleBg} />
         </div>
         <Row>
@@ -156,7 +156,7 @@ const PublicCalendar: React.FC = () => {
                         className={styles.contentLeft}
                       >
                         <Text className={styles.weekMonth}>
-                          {getWeekDay(item?.attributes?.startDateTime || "")}
+                          {getWeekDay(item?.attributes?.startDateTime || '')}
                         </Text>
                         <Text className={styles.day}>
                           {getDate(item?.attributes?.startDateTime)}
@@ -237,7 +237,7 @@ const PublicCalendar: React.FC = () => {
                   </Text>
                   <div className={styles.line} />
                 </Space>
-                <div style={{ height: 250, overflow: "scroll" }}>
+                <div style={{ height: 250, overflow: 'scroll' }}>
                   {!!filterDateEventList.length ? (
                     filterDateEventList.map((item, index) => {
                       if (item?.startDateTime)
@@ -257,10 +257,10 @@ const PublicCalendar: React.FC = () => {
                           </Space>
                         );
                     })) :
-                    <div style={{ padding: "25px 0", }}>
+                    <div style={{ padding: '25px 0', }}>
                       <Empty
                         image={Empty.PRESENTED_IMAGE_SIMPLE}
-                        description={t("NoEventToday")}
+                        description={t('NoEventToday')}
                       />
                     </div>
                   }

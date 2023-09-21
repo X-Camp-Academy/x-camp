@@ -1,11 +1,11 @@
-"use client";
-import React, { ReactNode, useRef } from "react";
-import { Collapse } from "antd";
-import { addAnimate, removeAnimate } from "@/utils";
-import "hover.css";
+'use client';
+import React, { ReactNode, useRef } from 'react';
+import { Collapse } from 'antd';
+import { addAnimate, removeAnimate } from '@/utils';
+import 'hover.css';
 
 export interface ColorfulCardProps {
-  border: "top" | "bottom";
+  border: 'top' | 'bottom';
   index: number;
   children: ReactNode;
   split?: number;
@@ -16,27 +16,27 @@ export interface ColorfulCardProps {
 }
 
 const ColorfulCard: React.FC<ColorfulCardProps> = ({
-  border = "top",
+  border = 'top',
   index = 0,
   children = null,
   split = 3,
   reverse = false,
   animate = true,
-  className = "",
+  className = '',
   collapse = false,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const threeColors = ["#D46B14", "#FFAD11", "#FFD600"];
-  const fourColors = ["#00A0E9", ...threeColors];
+  const threeColors = ['#D46B14', '#FFAD11', '#FFD600'];
+  const fourColors = ['#00A0E9', ...threeColors];
   const computedStyle = (
-    border: "top" | "bottom",
+    border: 'top' | 'bottom',
     index: number,
     reverse: boolean
   ) => {
     const defaultStyle = {
       borderRadius: 10,
-      paddingTop: border === "top" ? 6 : 0,
-      paddingBottom: border === "bottom" ? 6 : 0,
+      paddingTop: border === 'top' ? 6 : 0,
+      paddingBottom: border === 'bottom' ? 6 : 0,
     };
     const getBackGroundColor = (split: number, reverse: boolean) => {
       return split === 3

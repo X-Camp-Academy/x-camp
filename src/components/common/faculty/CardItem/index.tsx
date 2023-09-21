@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "@/components/common/faculty/index.module.scss";
-import { Card, Image, Space, Typography } from "antd";
-import { getTransResult } from "@/utils/public";
-import Link from "next/link";
-import { RightOutlined } from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
-import { useMobile } from "@/utils";
+import React from 'react';
+import styles from '@/components/common/faculty/index.module.scss';
+import { Card, Image, Space, Typography } from 'antd';
+import { getTransResult } from '@/utils/public';
+import Link from 'next/link';
+import { RightOutlined } from '@ant-design/icons';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 
 const { Paragraph } = Typography;
 
@@ -33,7 +33,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
   const isMobile = useMobile();
   return (<ColorfulCard
     key={item?.id}
-    border={"bottom"}
+    border={'bottom'}
     index={index}
     className={`${styles.cardContainer} ${isMobile ? styles.mobile: ''}`}
   >
@@ -61,7 +61,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
             )}
           </Paragraph>
           <Link href="/" className={styles.more}>
-            {t("More")} <RightOutlined />
+            {t('More')} <RightOutlined />
           </Link>
         </Space>
         <Image

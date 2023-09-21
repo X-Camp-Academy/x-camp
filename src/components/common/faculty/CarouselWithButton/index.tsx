@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
-import { Button, Carousel } from "antd";
-import styles from "@/components/common/faculty/index.module.scss";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { CarouselRef } from "antd/es/carousel";
+import React, { useRef } from 'react';
+import { Button, Carousel } from 'antd';
+import styles from '@/components/common/faculty/index.module.scss';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { CarouselRef } from 'antd/es/carousel';
 
 interface IProps {
 	children: React.ReactNode
@@ -16,7 +16,7 @@ const CarouselWithButton: React.FC<IProps> = ({ children }:IProps) => {
     carouselRef?.current?.next();
   };
   return (
-    <div style={{ margin: `0 45px` }}>
+    <div style={{ margin: '0 45px' }}>
       <Button
         type="primary"
         shape="circle"

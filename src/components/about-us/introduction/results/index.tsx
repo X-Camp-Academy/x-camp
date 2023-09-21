@@ -1,10 +1,10 @@
-"use client";
-import React from "react";
-import { Space, Row, Col, Image, Typography } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import { useGetAboutUsIntroArticle } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { Space, Row, Col, Image, Typography } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { useGetAboutUsIntroArticle } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 

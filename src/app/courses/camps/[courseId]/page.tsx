@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 const CourseCamps = dynamic(() => import('@/components/courses/camps'));
 
 export const metadata = {

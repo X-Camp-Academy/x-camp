@@ -1,12 +1,12 @@
-"use client";
-import React, { useEffect } from "react";
-import { Space, Typography, Row, Col, Card } from "antd";
-import { RightOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import { GetHomeStudentProjects } from "@/apis/strapi-client/define";
-import { useGetHomeStudentProjects } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React, { useEffect } from 'react';
+import { Space, Typography, Row, Col, Card } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { GetHomeStudentProjects } from '@/apis/strapi-client/define';
+import { useGetHomeStudentProjects } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -23,8 +23,8 @@ const StudentProjects: React.FC = () => {
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+      behavior: 'smooth',
+      block: 'start',
     });
   };
   useEffect(() => {
@@ -37,7 +37,7 @@ const StudentProjects: React.FC = () => {
     return video?.data ? `${video?.data?.attributes?.url}?autoplay=0` : (videoZh || videoEn) ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
   return (
-    <div style={{ background: "#FDF6F1" }}>
+    <div style={{ background: '#FDF6F1' }}>
       <div className={`${styles.studentProjects} container`} id="stu_project">
         <Space direction="vertical" align="center">
           {lang === 'zh' ? <Title className={styles.title}>学生课程</Title> : <>
@@ -45,9 +45,9 @@ const StudentProjects: React.FC = () => {
             <Text className={styles.titleBg} />
           </>}
           <Paragraph className={styles.paragraph}>
-            {t("StudentProjects.Desc1")}
-            <Text className={styles.paragraphText}> {t("greatOpportunity")}</Text>
-            {t("StudentProjects.Desc2")}
+            {t('StudentProjects.Desc1')}
+            <Text className={styles.paragraphText}> {t('greatOpportunity')}</Text>
+            {t('StudentProjects.Desc2')}
           </Paragraph>
 
           <Row gutter={16} className={styles.row}>
@@ -65,7 +65,7 @@ const StudentProjects: React.FC = () => {
                       key={item?.id}
                       className={styles.card}
                       bodyStyle={{
-                        overflow: "hidden",
+                        overflow: 'hidden',
                         padding: 16,
                       }}
                       cover={
@@ -91,7 +91,7 @@ const StudentProjects: React.FC = () => {
                           )}
                         </Paragraph>
                         <a href={getTransResult(lang, item?.attributes?.videoZh, item?.attributes?.videoEn)} className={styles.cardMore}>
-                          {"More"} <RightOutlined />
+                          {'More'} <RightOutlined />
                         </a>
                       </Space>
                     </Card>

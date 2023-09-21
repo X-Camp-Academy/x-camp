@@ -1,7 +1,7 @@
-import React from "react";
-import { Collapse } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Collapse } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import styles from './index.module.scss';
 
 const { Panel } = Collapse;
 
@@ -24,8 +24,8 @@ interface Props {
  */
 function isReactNode(variable: any): variable is React.ReactNode {
   return (
-    typeof variable === "string" ||
-    typeof variable === "number" ||
+    typeof variable === 'string' ||
+    typeof variable === 'number' ||
     React.isValidElement(variable)
   );
 }
@@ -35,8 +35,8 @@ const XCollapse = ({ children, header, activeKey, className }: Props) => {
     <Collapse
       className={className}
       ghost
-      defaultActiveKey={activeKey ?? "active"}
-      expandIconPosition={"end"}
+      defaultActiveKey={activeKey ?? 'active'}
+      expandIconPosition={'end'}
       expandIcon={({ isActive }) => (
         <div className={styles.changeBtn}>
           <DownOutlined rotate={isActive ? 180 : 0} className={styles.icon} />
@@ -44,7 +44,7 @@ const XCollapse = ({ children, header, activeKey, className }: Props) => {
       )}
     >
       <Panel
-        key={activeKey ?? "active"}
+        key={activeKey ?? 'active'}
         className={styles.panel}
         header={
           isReactNode(header) ? (

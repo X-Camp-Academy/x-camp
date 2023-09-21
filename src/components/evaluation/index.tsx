@@ -14,7 +14,7 @@ const { Content } = Layout;
 const Evaluation: React.FC = () => {
   const { data } = useGetReviews({
     ready: true,
-    pageName: ["/home/"],
+    pageName: ['/home/'],
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);

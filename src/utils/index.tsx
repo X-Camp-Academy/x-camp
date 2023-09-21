@@ -1,5 +1,5 @@
-import { RefObject } from "react";
-import { Grid } from "antd";
+import { RefObject } from 'react';
+import { Grid } from 'antd';
 
 /**
  * xs 屏幕 < 576px
@@ -15,7 +15,7 @@ export const useMobile = () => {
   const breakpoints = Object.entries(screens)
     ?.filter((screen) => !!screen[1])
     ?.map((screen) => screen[0]);
-  const isMobile = !breakpoints?.includes("md");
+  const isMobile = !breakpoints?.includes('md');
   return isMobile;
 };
 
@@ -27,7 +27,7 @@ export const useMobile = () => {
  */
 export const addAnimate = (
   ref: RefObject<HTMLDivElement>,
-  name: string = "hvr-float"
+  name: string = 'hvr-float'
 ) => {
   (ref?.current as HTMLDivElement)?.classList?.add(name);
 };
@@ -40,7 +40,7 @@ export const addAnimate = (
  */
 export const removeAnimate = (
   ref: RefObject<HTMLDivElement>,
-  name: string = "hvr-float"
+  name: string = 'hvr-float'
 ) => {
   (ref?.current as HTMLDivElement)?.classList?.remove(name);
 };

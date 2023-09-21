@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "./index.module.scss";
-import { Button, Space } from "antd";
-import { EditOutlined } from "@ant-design/icons";
+import React from 'react';
+import styles from './index.module.scss';
+import { Button, Space } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
 
 const Introduction = () => {
   return (
     <div className="container">
-      <Space direction="vertical" size={"large"} className={styles.content}>
+      <Space direction="vertical" size={'large'} className={styles.content}>
         <div>
           <div className={styles.title}>Prerequisites:</div>
           <div className={styles.description}>
@@ -22,11 +22,11 @@ const Introduction = () => {
         </div>
         <Space>
           <Button className={styles.btn}>
-            {"Registration"}
+            {'Registration'}
             <EditOutlined />
           </Button>
           <div className={styles.tip}>
-            {"*Fall Challenge will be held in October"}
+            {'*Fall Challenge will be held in October'}
           </div>
         </Space>
         <div>

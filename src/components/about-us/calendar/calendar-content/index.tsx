@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { Typography } from "antd";
-import { ScheduleOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import dayjs from "dayjs";
-import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
-import TimelineComponent from "@/components/common/timeline";
-import { GetNewEvent, NewEventCategory } from "@/apis/strapi-client/define";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import styles from "./index.module.scss";
+import React, { useEffect } from 'react';
+import { Typography } from 'antd';
+import { ScheduleOutlined } from '@ant-design/icons';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import dayjs from 'dayjs';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import TimelineComponent from '@/components/common/timeline';
+import { GetNewEvent, NewEventCategory } from '@/apis/strapi-client/define';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import styles from './index.module.scss';
 
 const { Title } = Typography;
 
@@ -24,8 +24,8 @@ const CalendarContent: React.FC = () => {
 
   useEffect(() => {
     getSchoolCalendar({
-      populate: "*",
-      sort: ["startDateTime"],
+      populate: '*',
+      sort: ['startDateTime'],
       filters: {
         tags: {
           $eq: NewEventCategory.SchoolCalendar,
@@ -82,19 +82,19 @@ const CalendarContent: React.FC = () => {
     const res = Object.entries(groupedData).map(([label, children]) => {
       const month = (currentMonth + +label) % 12;
       return {
-        label: dayjs().month(month).format("MMM"),
+        label: dayjs().month(month).format('MMM'),
         children,
       };
     });
 
-    return [...res, { label: "...", children: [] }];
+    return [...res, { label: '...', children: [] }];
   };
 
 
   return (
     <div className={styles.calendarContent}>
       <div className={`${styles.calendarContainer} container`}>
-        <Title className={styles.title}>{t("XCampCalendar")}</Title>
+        <Title className={styles.title}>{t('XCampCalendar')}</Title>
         <div className={styles.listContainer}>
           <div className={styles.bookButton}>
             <ScheduleOutlined />

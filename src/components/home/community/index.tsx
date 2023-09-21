@@ -1,13 +1,13 @@
-"use client";
-import React from "react";
-import { useRouter } from "next/navigation";
-import { Space, Typography, Carousel, Image } from "antd";
-import { AppstoreAddOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import MaskCard from "@/components/common/mask-card";
-import { useGetCommunity } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { Space, Typography, Carousel, Image } from 'antd';
+import { AppstoreAddOutlined } from '@ant-design/icons';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import MaskCard from '@/components/common/mask-card';
+import { useGetCommunity } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -36,10 +36,10 @@ const Community: React.FC = () => {
     <div className={styles.xalumniContainer}>
       <div className={`${styles.xalumni} container`}>
         <div className={styles.info}>
-          <Title className={styles.title}><span>{t("X_ALUMNI")}</span></Title>
+          <Title className={styles.title}><span>{t('X_ALUMNI')}</span></Title>
           <Text className={styles.titleBg} />
           <Paragraph className={styles.paragraph}>
-            {t("X_Alumni.Desc")}
+            {t('X_Alumni.Desc')}
           </Paragraph>
         </div>
 
@@ -89,7 +89,7 @@ const Community: React.FC = () => {
                       item?.attributes?.descriptionZh,
                       item?.attributes?.descriptionEn
                     ))}
-                    maskBackGroundColor={"rgb(23 33 66 / 80%)"}
+                    maskBackGroundColor={'rgb(23 33 66 / 80%)'}
                     maskBorderRadius={12}
                   >
                     <Image
@@ -113,9 +113,9 @@ const Community: React.FC = () => {
 
         <button
           className={styles.moreAlumniInfo}
-          onClick={() => router.push("/about-us/x-alumni")}
+          onClick={() => router.push('/about-us/x-alumni')}
         >
-          {t("MoreAlumniInformation")}
+          {t('MoreAlumniInformation')}
           <AppstoreAddOutlined className={styles.icon} />
         </button>
       </div>

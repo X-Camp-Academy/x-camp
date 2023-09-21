@@ -1,18 +1,18 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+import React, { useState } from 'react';
 import {
   Calendar,
   Col,
   Row,
   theme,
   Button,
-} from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import dayjs, { Dayjs } from "dayjs";
-import "dayjs/locale/zh-cn";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import styles from "./index.module.scss";
+} from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import dayjs, { Dayjs } from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import styles from './index.module.scss';
 interface Props {
   className?: string;
   onSelectDate: (date: string) => void;
@@ -24,36 +24,36 @@ interface Props {
 }
 
 const monthNameEn = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 const monthNameZH = [
-  "一月",
-  "二月",
-  "三月",
-  "四月",
-  "五月",
-  "六月",
-  "七月",
-  "八月",
-  "九月",
-  "十月",
-  "十一月",
-  "十二月",
+  '一月',
+  '二月',
+  '三月',
+  '四月',
+  '五月',
+  '六月',
+  '七月',
+  '八月',
+  '九月',
+  '十月',
+  '十一月',
+  '十二月',
 ];
 
-const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, eventDate, headerClassName }) => {
+const ActivityCalendar: React.FC<Props> = ({ className = '', onSelectDate, eventDate, headerClassName }) => {
   const { lang } = useLang();
 
   const { token } = theme.useToken();
@@ -62,9 +62,9 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
     if (endDateTime === '') {
-      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+      return dayjs(selectDate).isSame(dayjs(startDateTime), 'days');
     }
-    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), 'days', '[]');
   };
 
   const cellRender = (value: Dayjs) => {
@@ -118,7 +118,7 @@ const ActivityCalendar: React.FC<Props> = ({ className = "", onSelectDate, event
             <Row gutter={8} className={`${styles.row} ${headerClassName}`}>
               <Col className={styles.dateTextCol}>
                 {getTransResult(lang, monthNameZH[month], monthNameEn[month])}
-                {" " + year}
+                {' ' + year}
               </Col>
               <Col className={styles.btnCol}>
                 <Button

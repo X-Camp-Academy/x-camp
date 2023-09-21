@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 const Evaluation = dynamic(() => import('@/components/evaluation'));
 
 export const metadata = {

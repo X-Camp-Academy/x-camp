@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useParams } from "next/navigation";
-import { Card } from "antd";
-import JobCardHeader from "../../job-selection/job-card/iob-card-header";
-import JobCardDetail from "../../job-selection/job-card/job-card-detail";
-import ResumeForm from "../resume-form";
-import { useGetAboutUsJoinUs } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+import React, { useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { Card } from 'antd';
+import JobCardHeader from '../../job-selection/job-card/iob-card-header';
+import JobCardDetail from '../../job-selection/job-card/job-card-detail';
+import ResumeForm from '../resume-form';
+import { useGetAboutUsJoinUs } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const Resume: React.FC = () => {
   const params = useParams();
@@ -16,8 +16,8 @@ const Resume: React.FC = () => {
   useEffect(() => {
     if (params?.id) {
       getAboutUsJoinUs({
-        populate: "*",
-        sort: ["order:desc"],
+        populate: '*',
+        sort: ['order:desc'],
         filters: {
           id: {
             $eq: +params?.id,

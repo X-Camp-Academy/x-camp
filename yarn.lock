@@ -2975,10 +2975,10 @@ eslint-config-next@13.4.19:
     eslint-plugin-react "^7.31.7"
     eslint-plugin-react-hooks "^4.5.0 || 5.0.0-canary-7118f5dd7-20230705"
 
-eslint-config-x-star@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-x-star/-/eslint-config-x-star-1.0.2.tgz#ea3bd1205cfad95c61889f7a20b1d6f28e0d4501"
-  integrity sha512-cDgccjFtY7rASOQM6np4lyjNgvHYnczywfNW0sFLcb9rRPOylH5iDzlUcBsdgUp5O5GdIUK36XInSXhhbceUJA==
+eslint-config-x-star@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-x-star/-/eslint-config-x-star-1.0.5.tgz#9439157621aeb51482a7baa4ee93c13ecce2fea5"
+  integrity sha512-zdAWMQ+lxst/XzgkaZtqZKq6/Z2JX8VXcAzVuqKCWDquJOZF6jhiJRmWElid8jYi9XtcTVLf6IDZew6sxmY0ow==
   dependencies:
     eslint-plugin-unused-imports "^3.0.0"
 

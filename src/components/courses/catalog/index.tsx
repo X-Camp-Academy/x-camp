@@ -1,12 +1,12 @@
-"use client";
-import React from "react";
-import { usePathname } from "next/navigation";
-import { Layout } from "antd";
-import Banner from "../banner";
-import ScheduleTable from "./schedule-table";
-import Reviews from "@/components/common/reviews";
-import { useGetReviews } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { usePathname } from 'next/navigation';
+import { Layout } from 'antd';
+import Banner from '../banner';
+import ScheduleTable from './schedule-table';
+import Reviews from '@/components/common/reviews';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Content } = Layout;
 

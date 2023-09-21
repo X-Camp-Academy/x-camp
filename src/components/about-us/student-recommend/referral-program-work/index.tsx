@@ -1,21 +1,21 @@
 
-import React from "react";
-import { Space, Row, Col, Image, Typography, List } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Space, Row, Col, Image, Typography, List } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import styles from './index.module.scss';
 
 const { Title } = Typography;
 
 const ReferralProgramWork: React.FC = () => {
   const { format: t } = useLang();
   const listData = [
-    t("Credit.Desc1"),
-    t("Credit.Desc2"),
-    t("Credit.Desc3"),
-    t("Credit.Desc4"),
-    t("Credit.Desc5"),
-    t("Credit.Desc6"),
-    t("Credit.Desc7"),
+    t('Credit.Desc1'),
+    t('Credit.Desc2'),
+    t('Credit.Desc3'),
+    t('Credit.Desc4'),
+    t('Credit.Desc5'),
+    t('Credit.Desc6'),
+    t('Credit.Desc7'),
   ];
 
   return (
@@ -25,7 +25,7 @@ const ReferralProgramWork: React.FC = () => {
           <Col lg={14} md={24} xs={24}>
             <Space direction="vertical">
               <Title className={styles.title}>
-                {t("ReferralProgramWork")}
+                {t('ReferralProgramWork')}
               </Title>
               <List
                 dataSource={listData}

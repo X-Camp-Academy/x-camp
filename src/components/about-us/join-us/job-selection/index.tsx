@@ -1,12 +1,12 @@
 
-import React, { useEffect, useState } from "react";
-import { Button, Empty } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import JobCard from "./job-card";
-import { useGetAboutUsJoinUs } from "@/apis/strapi-client/strapi";
-import { AboutUsJoinUsCategory } from "@/apis/strapi-client/define";
-import styles from "./index.module.scss";
+import React, { useEffect, useState } from 'react';
+import { Button, Empty } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import JobCard from './job-card';
+import { useGetAboutUsJoinUs } from '@/apis/strapi-client/strapi';
+import { AboutUsJoinUsCategory } from '@/apis/strapi-client/define';
+import styles from './index.module.scss';
 
 const JobSelection: React.FC = () => {
   const { lang } = useLang();
@@ -18,8 +18,8 @@ const JobSelection: React.FC = () => {
 
   useEffect(() => {
     getAboutUsJoinUs({
-      populate: "*",
-      sort: ["order:desc"],
+      populate: '*',
+      sort: ['order:desc'],
       filters: {
         category: {
           $eq: category,
@@ -39,7 +39,7 @@ const JobSelection: React.FC = () => {
           ]?.map((v) => (
             <Button
               key={v}
-              className={`${styles.choiceBtn} ${category === v ? styles.selectedBtn : ""
+              className={`${styles.choiceBtn} ${category === v ? styles.selectedBtn : ''
                 }`}
               onClick={() => setCategory(v)}
             >
@@ -49,7 +49,7 @@ const JobSelection: React.FC = () => {
         </div>
 
         <div className={styles.jobCardContainer}>
-          {aboutUsJoinUs?.length != 0 ? aboutUsJoinUs?.map((v, index) => (
+          {aboutUsJoinUs?.length !== 0 ? aboutUsJoinUs?.map((v, index) => (
             <JobCard key={v?.id} index={index} data={v} />
           )) : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={getTransResult(lang, '目前暂无职位', 'There are currently no positions')} />}
 

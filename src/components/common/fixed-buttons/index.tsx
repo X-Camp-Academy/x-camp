@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Card, Form, Input, Checkbox } from "antd";
-import FixedButton from "./FixedButton";
-import { useLang } from "@/hoc/with-intl/define";
-import { useSendOpenClassEmail } from "@/apis/send-email-client/sendEmail";
+import { Button, Card, Form, Input, Checkbox } from 'antd';
+import FixedButton from './FixedButton';
+import { useLang } from '@/hoc/with-intl/define';
+import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 
 interface IMenuItem {
@@ -36,15 +36,15 @@ const FixedButtons: React.FC = () => {
       label: (
         <div className={`${styles.cardFrom} ${styles.autoSize}`}>
           <Card
-            title={t("FreeConsultation")}
+            title={t('FreeConsultation')}
             headStyle={{
-              color: "#172142",
+              color: '#172142',
               fontSize: 24,
-              fontWeight: "bold",
+              fontWeight: 'bold',
               height: 36,
               lineHeight: '36px',
-              textAlign: "center",
-              borderBottom: "none",
+              textAlign: 'center',
+              borderBottom: 'none',
             }}
             bodyStyle={{
               paddingBottom: 16,
@@ -58,11 +58,11 @@ const FixedButtons: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t("Name.Required"),
+                    message: t('Name.Required'),
                   },
                 ]}
               >
-                <Input placeholder={t("Nickname")} />
+                <Input placeholder={t('Nickname')} />
               </Form.Item>
 
               <Form.Item
@@ -70,20 +70,20 @@ const FixedButtons: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t("Grade.Required"),
+                    message: t('Grade.Required'),
                   },
                 ]}
               >
-                <Input placeholder={t("Grade")} />
+                <Input placeholder={t('Grade')} />
               </Form.Item>
 
               <Form.Item
                 name="email"
                 rules={[
-                  { type: "email" },
+                  { type: 'email' },
                   {
                     required: true,
-                    message: t("Email.Required"),
+                    message: t('Email.Required'),
                   },
                 ]}
               >
@@ -95,11 +95,11 @@ const FixedButtons: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t("Phone/Wechat.Required"),
+                    message: t('Phone/Wechat.Required'),
                   },
                 ]}
               >
-                <Input placeholder={t("Phone/Wechat")} />
+                <Input placeholder={t('Phone/Wechat')} />
               </Form.Item>
 
               <Form.Item name="subscribe">
@@ -129,13 +129,13 @@ const FixedButtons: React.FC = () => {
           <Card
             title={t('WeeklyOpenHouse')}
             headStyle={{
-              color: "#172142",
+              color: '#172142',
               fontSize: 24,
-              fontWeight: "bold",
+              fontWeight: 'bold',
               height: 36,
               lineHeight: '36px',
-              textAlign: "center",
-              borderBottom: "none",
+              textAlign: 'center',
+              borderBottom: 'none',
             }}
             bodyStyle={{
               paddingBottom: 16,

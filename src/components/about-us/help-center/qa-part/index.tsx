@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import { Typography } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import QACard from "@/components/common/q&a";
-import { useGetFaq } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { Typography } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import QACard from '@/components/common/q&a';
+import { useGetFaq } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Title } = Typography;
 

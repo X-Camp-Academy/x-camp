@@ -1,33 +1,33 @@
-import React from "react";
-import styles from "./index.module.scss";
-import { Space } from "antd";
+import React from 'react';
+import styles from './index.module.scss';
+import { Space } from 'antd';
 
 const Levels = () => {
   const levels = [
     {
-      level: "Silver",
+      level: 'Silver',
       description:
-        "Plan to pass the USACO Silver this season. X-Camp CS302+ Students.",
+        'Plan to pass the USACO Silver this season. X-Camp CS302+ Students.',
     },
     {
-      level: "Gold",
+      level: 'Gold',
       description:
-        "Plan to pass the USACO Gold this season. X-Camp CS402+ Students.",
+        'Plan to pass the USACO Gold this season. X-Camp CS402+ Students.',
     },
     {
-      level: "Platinum",
+      level: 'Platinum',
       description:
-        "Plan to Join the USACO US Camp this season. X-Camp CS602+ Students.",
+        'Plan to Join the USACO US Camp this season. X-Camp CS602+ Students.',
     },
     {
-      level: "Pre-Bronze",
+      level: 'Pre-Bronze',
       description:
-        "X-Camp CS102, CS200, CS201 Students. One year coding experience for non-X-Camp students.",
+        'X-Camp CS102, CS200, CS201 Students. One year coding experience for non-X-Camp students.',
     },
     {
-      level: "Bronze",
+      level: 'Bronze',
       description:
-        "Plan to pass the USACO Silver this season. X-Camp CS302+ Students.",
+        'Plan to pass the USACO Silver this season. X-Camp CS302+ Students.',
     },
   ];
 

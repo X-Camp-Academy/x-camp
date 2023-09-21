@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Button, Col, Pagination, Row, Space } from "antd";
-import { ClockCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button, Col, Pagination, Row, Space } from 'antd';
+import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { formatTimezone, getTransResult } from '@/utils/public';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import {
   EventCategory,
   GetNewEvent,
   GetNewEventRequest,
   NewEventCategory,
-} from "@/apis/strapi-client/define";
+} from '@/apis/strapi-client/define';
 import {
   AndOrFilters,
   FilterFields,
-} from "@/apis/strapi-client/strapiDefine";
-import styles from "./index.module.scss";
+} from '@/apis/strapi-client/strapiDefine';
+import styles from './index.module.scss';
 
 interface ActivityItem {
   title: string;
-  key: EventCategory | "All";
+  key: EventCategory | 'All';
 }
 
 const Activities: React.FC = () => {
@@ -36,12 +36,12 @@ const Activities: React.FC = () => {
     manual: true,
   });
   const [selectedItem, setSelectedItem] = useState<
-    EventCategory | "All"
+    EventCategory | 'All'
   >(EventCategory.SchoolLifeSharing);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
-      populate: "*",
-      sort: ["order:desc"],
+      populate: '*',
+      sort: ['order:desc'],
       pagination: {
         page: current,
         pageSize: 12,
@@ -54,7 +54,7 @@ const Activities: React.FC = () => {
           $eq: tag,
         },
       };
-    if (selectedItem !== "All") {
+    if (selectedItem !== 'All') {
       filters = {
         ...filters,
         eventCategory: {
@@ -70,24 +70,24 @@ const Activities: React.FC = () => {
 
   const items: ActivityItem[] = [
     {
-      title: t("ActivityItem1"),
+      title: t('ActivityItem1'),
       key: EventCategory.SchoolLifeSharing,
     },
     {
-      title: t("ActivityItem2"),
+      title: t('ActivityItem2'),
       key: EventCategory.CodingEducation,
     },
     {
-      title: t("ActivityItem3"),
+      title: t('ActivityItem3'),
       key: EventCategory.CareerPath,
     },
     {
-      title: t("ActivityItem4"),
+      title: t('ActivityItem4'),
       key: EventCategory.Research,
     },
     {
-      title: t("ActivityItem5"),
-      key: "All",
+      title: t('ActivityItem5'),
+      key: 'All',
     },
   ];
 
@@ -99,7 +99,7 @@ const Activities: React.FC = () => {
           {items?.map((item) => {
             return (
               <div
-                className={`${styles.toolBarItem} ${item?.key === selectedItem ? styles.selectedToolBarItem : ""
+                className={`${styles.toolBarItem} ${item?.key === selectedItem ? styles.selectedToolBarItem : ''
                   }`}
                 key={item?.key}
                 onClick={() => {
@@ -114,7 +114,7 @@ const Activities: React.FC = () => {
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{selectedItem}</div>
           <div className={styles.pageTotal}>
-            {newEventData?.data?.length} {t("EducationalForum")}
+            {newEventData?.data?.length} {t('EducationalForum')}
           </div>
         </Space>
 

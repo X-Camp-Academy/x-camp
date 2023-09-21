@@ -1,11 +1,11 @@
-"use client";
-import React, { useContext } from "react";
-import zh_CN from "@/lang/zh_CN.json";
-import en_US from "@/lang/en_US.json";
+'use client';
+import React, { useContext } from 'react';
+import zh_CN from '@/lang/zh_CN.json';
+import en_US from '@/lang/en_US.json';
 
-type LangType = "zh" | "en";
+type LangType = 'zh' | 'en';
 
-const LANG_ZH_CN: LangType = "zh";
+const LANG_ZH_CN: LangType = 'zh';
 export type LangKey = keyof typeof zh_CN & keyof typeof en_US;
 
 // format 定义
@@ -21,7 +21,7 @@ type LangInfo = {
 
 const showWarning = () => {
   console.warn(
-    "LangContext has not been provided. You are calling a noop function."
+    'LangContext has not been provided. You are calling a noop function.'
   );
 };
 

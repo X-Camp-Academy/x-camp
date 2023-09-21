@@ -1,6 +1,6 @@
-import React from "react";
-import { Image, Space, Typography } from "antd";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Image, Space, Typography } from 'antd';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 interface CommonBannerProps {
@@ -17,7 +17,7 @@ const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph, pa
       <Image
         src={image}
         alt=""
-        width={"100%"}
+        width={'100%'}
         className={styles.image}
         preview={false}
       />

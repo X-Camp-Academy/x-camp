@@ -1,12 +1,12 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { Space, Row, Col, Image, Typography } from "antd";
-import { HistoryOutlined, MailOutlined, PhoneOutlined, CommentOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
-import { useMobile } from "@/utils";
-import CopyRightIcons from "../copy-right-icons";
-import styles from "./CopyRight.module.scss";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { Space, Row, Col, Image, Typography } from 'antd';
+import { HistoryOutlined, MailOutlined, PhoneOutlined, CommentOutlined } from '@ant-design/icons';
+import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
+import CopyRightIcons from '../copy-right-icons';
+import styles from './CopyRight.module.scss';
 
 
 const { Title, Paragraph, Text } = Typography;
@@ -47,11 +47,11 @@ const CopyRight: React.FC = () => {
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
                   <PhoneOutlined />
-                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t("Tel")}+1 - 510-708-8390</Text>
+                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t('Tel')}+1 - 510-708-8390</Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <CommentOutlined />
-                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t("Text")}408-634-0218</Text>
+                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t('Text')}408-634-0218</Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
@@ -74,27 +74,27 @@ const CopyRight: React.FC = () => {
               <div>
                 <Title className={styles.text}>X-Camp Academy</Title>
                 <Space direction="vertical">
-                  <Link href={"/about-us/calendar"}>{t('SchoolCalendar')}</Link>
-                  <Link href={"/courses#classify0"}>{'Online Courses'}</Link>
-                  <Link href={"/courses#camps"}>{t('In-personCamps')}</Link>
+                  <Link href={'/about-us/calendar'}>{t('SchoolCalendar')}</Link>
+                  <Link href={'/courses#classify0'}>{'Online Courses'}</Link>
+                  <Link href={'/courses#camps'}>{t('In-personCamps')}</Link>
                 </Space>
               </div>
 
               <div>
                 <Title className={styles.text}>Activity</Title>
                 <Space direction="vertical">
-                  <Link href={"/resources/weekly-open-house"}>{t('WeeklyOpenHouse')}</Link>
-                  <Link href={"/about-us/calendar"}>{'Event Calendar'}</Link>
-                  <a href={"/resources/usaco-live-solutions"}>{'USACO'}</a>
+                  <Link href={'/resources/weekly-open-house'}>{t('WeeklyOpenHouse')}</Link>
+                  <Link href={'/about-us/calendar'}>{'Event Calendar'}</Link>
+                  <a href={'/resources/usaco-live-solutions'}>{'USACO'}</a>
                 </Space>
               </div>
 
               <div>
                 <Title className={styles.text}>{'Help Center'}</Title>
                 <Space direction="vertical">
-                  <Link href={"/about-us/contact-us"}>{'Contact Us'}</Link>
-                  <Link href={"/about-us/contact-us"}>{'Join Us'}</Link>
-                  <Link href={"/about-us/help-center"}>{'FAQ'}</Link>
+                  <Link href={'/about-us/contact-us'}>{'Contact Us'}</Link>
+                  <Link href={'/about-us/contact-us'}>{'Join Us'}</Link>
+                  <Link href={'/about-us/help-center'}>{'FAQ'}</Link>
                 </Space>
               </div>
             </Space>

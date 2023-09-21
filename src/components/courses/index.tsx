@@ -1,6 +1,6 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import {
   Affix,
   Button,
@@ -16,26 +16,26 @@ import {
   Segmented,
   Select,
   Space,
-} from "antd";
-import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
+} from 'antd';
+import { CaretRightOutlined, SearchOutlined } from '@ant-design/icons';
 import type { Dayjs } from 'dayjs';
-import { SegmentedValue } from "antd/es/segmented";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult, scrollIntoView, getLangResult, getWeeksDays } from "@/utils/public";
-import { useMobile } from "@/utils";
-import Banner from "./banner";
-import ClassCard from "../common/class-card";
-import Reviews from "@/components/common/reviews";
-import { CourseMode, CourseTypes } from "./define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
+import { SegmentedValue } from 'antd/es/segmented';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult, scrollIntoView, getLangResult, getWeeksDays } from '@/utils/public';
+import { useMobile } from '@/utils';
+import Banner from './banner';
+import ClassCard from '../common/class-card';
+import Reviews from '@/components/common/reviews';
+import { CourseMode, CourseTypes } from './define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import {
   useGetCourseLevelType,
   useGetCourses,
   useGetReviews,
-} from "@/apis/strapi-client/strapi";
-import { GetCourses } from "@/apis/strapi-client/define";
-import styles from "./index.module.scss";
-import useDayJs from "@/hooks/useDayJs";
+} from '@/apis/strapi-client/strapi';
+import { GetCourses } from '@/apis/strapi-client/define';
+import styles from './index.module.scss';
+import useDayJs from '@/hooks/useDayJs';
 
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -58,7 +58,7 @@ const Courses: React.FC = () => {
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
   const segmentedDom = useRef<HTMLDivElement>(null);
-  const [segmented, setSegmented] = useState<SegmentedValue>("Online Classes");
+  const [segmented, setSegmented] = useState<SegmentedValue>('Online Classes');
   const [segmentedData, setSegmentedData] = useState<FormatCoursesProps[]>();
   const [copySegmentedData, setCopySegmentedData] = useState<FormatCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
@@ -172,7 +172,7 @@ const Courses: React.FC = () => {
   };
 
   const onSegmentedChange = (value: SegmentedValue) => {
-    history.replaceState(null, "", pathname);
+    history.replaceState(null, '', pathname);
     form.resetFields();
     setSegmented(value);
   };
@@ -182,10 +182,10 @@ const Courses: React.FC = () => {
 
 
   const hashSegmentedMap = new Map([
-    ["#online", CourseTypes.OnlineClasses],
-    ["#camps", CourseTypes.CampsClasses],
-    ["#apcs", CourseTypes.JavaAPCSClasses],
-    ["#mocktestclasses", CourseTypes.MockTestClasses],
+    ['#online', CourseTypes.OnlineClasses],
+    ['#camps', CourseTypes.CampsClasses],
+    ['#apcs', CourseTypes.JavaAPCSClasses],
+    ['#mocktestclasses', CourseTypes.MockTestClasses],
   ]);
 
   // 监听hash
@@ -316,7 +316,7 @@ const Courses: React.FC = () => {
 
   // 执行和onSegmentedChange同样的操作
   const onSegmentedRadioChange = (e: RadioChangeEvent) => {
-    history.replaceState(null, "", pathname);
+    history.replaceState(null, '', pathname);
     form.resetFields();
     setSegmented(e?.target?.value);
   };
@@ -332,9 +332,9 @@ const Courses: React.FC = () => {
             onChange={(isAffix) => {
               if (isAffix && segmentedDom.current) {
                 segmentedDom.current.style.boxShadow =
-                  "0 2px 4px rgba(0, 0, 0, 0.2)";
+                  '0 2px 4px rgba(0, 0, 0, 0.2)';
               } else if (segmentedDom.current) {
-                segmentedDom.current.style.boxShadow = "initial";
+                segmentedDom.current.style.boxShadow = 'initial';
               }
             }}
           >
@@ -358,7 +358,7 @@ const Courses: React.FC = () => {
                 :
                 <Segmented
                   ref={segmentedDom}
-                  style={{ backgroundColor: "#fff" }}
+                  style={{ backgroundColor: '#fff' }}
                   block
                   value={segmented}
                   options={COURSE_TYPES}
@@ -373,7 +373,7 @@ const Courses: React.FC = () => {
                 <Form.Item name="category">
                   <Select
                     style={isMobile ? { width: '100%' } : { width: 216 }}
-                    placeholder={"Category"}
+                    placeholder={'Category'}
                     options={categoryOptions}
                     allowClear
                   />
@@ -390,7 +390,7 @@ const Courses: React.FC = () => {
               <Col xs={24} sm={24} md={24} lg={6}>
                 <Form.Item name="search" >
                   <Input
-                    suffix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+                    suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />}
                     allowClear
                     style={isMobile ? { width: '100%' } : {}}
                   />
@@ -398,7 +398,7 @@ const Courses: React.FC = () => {
               </Col>
               <Col xs={24} sm={24} md={24} lg={2}>
                 <Form.Item>
-                  <Button type={"primary"} className={styles.button} style={isMobile ? { width: '100%' } : {}} htmlType="submit">
+                  <Button type={'primary'} className={styles.button} style={isMobile ? { width: '100%' } : {}} htmlType="submit">
                     {t('Search')}
                   </Button>
                 </Form.Item>
@@ -412,7 +412,7 @@ const Courses: React.FC = () => {
                 <div className={styles.title}>{item?.primaryTitle}</div>
                 {item?.children?.map((v, j) => {
                   return (
-                    <div key={v?.secondaryTitle} id={"#classify" + j}>
+                    <div key={v?.secondaryTitle} id={'#classify' + j}>
                       <Collapse
                         defaultActiveKey={v?.secondaryTitle}
                         ghost
@@ -438,13 +438,13 @@ const Courses: React.FC = () => {
                         >
                           <Space
                             size={24}
-                            style={{ width: "100%", flexWrap: "wrap" }}
+                            style={{ width: '100%', flexWrap: 'wrap' }}
                           >
                             {v?.children?.map((g, index) => {
                               return (
                                 <ClassCard
                                   key={g?.id}
-                                  border={"bottom"}
+                                  border={'bottom'}
                                   index={index}
                                   animate={false}
                                   title={`${g?.attributes?.courseCode

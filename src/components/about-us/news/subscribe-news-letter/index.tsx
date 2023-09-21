@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import { Space, Typography, Button, Input, Form } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useSubscribeNewsletter } from "@/apis/send-email-client/sendEmail";
-import { subscribeNewsletterRequest } from "@/apis/send-email-client/define";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { Space, Typography, Button, Input, Form } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useSubscribeNewsletter } from '@/apis/send-email-client/sendEmail';
+import { subscribeNewsletterRequest } from '@/apis/send-email-client/define';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 
@@ -18,9 +18,9 @@ const SubscribeNewsletter: React.FC = () => {
   };
   return (
     <div className={`${styles.subscribeNewsletter} container`}>
-      <ColorfulCard border={"bottom"} index={1} animate={false}>
+      <ColorfulCard border={'bottom'} index={1} animate={false}>
         <Space direction="vertical" className={styles.space}>
-          <Title className={styles.title}>{"Subscribe Newsletter"}</Title>
+          <Title className={styles.title}>{'Subscribe Newsletter'}</Title>
 
           <Paragraph className={styles.paragraph}>
             X-Camp is committed to establishing a nurturing and all-encompassing coding
@@ -32,10 +32,10 @@ const SubscribeNewsletter: React.FC = () => {
             <Form.Item
               name="email"
               rules={[
-                { type: "email" },
+                { type: 'email' },
                 {
                   required: true,
-                  message: t("Email.Required"),
+                  message: t('Email.Required'),
                 },
               ]}
             >
@@ -48,7 +48,7 @@ const SubscribeNewsletter: React.FC = () => {
                 htmlType="submit"
                 className={styles.submit}
               >
-                {t("SubscribeNewsletter")}
+                {t('SubscribeNewsletter')}
               </Button>
             </Form.Item>
           </Form>

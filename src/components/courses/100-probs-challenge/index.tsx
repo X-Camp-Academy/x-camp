@@ -1,15 +1,15 @@
-"use client";
-import React from "react";
-import styles from "./index.module.scss";
-import { Layout } from "antd";
-import Banner from "./banner";
-import Introduction from "./introduction";
-import Levels from "./5-levels";
-import Faqs from "@/components/common/faqs";
-import { usePathname } from "next/navigation";
-import { FaqCategory } from "@/apis/strapi-client/define";
-import { useGetCourses, useGetFaq } from "@/apis/strapi-client/strapi";
-import { useLang } from "@/hoc/with-intl/define";
+'use client';
+import React from 'react';
+import styles from './index.module.scss';
+import { Layout } from 'antd';
+import Banner from './banner';
+import Introduction from './introduction';
+import Levels from './5-levels';
+import Faqs from '@/components/common/faqs';
+import { usePathname } from 'next/navigation';
+import { FaqCategory } from '@/apis/strapi-client/define';
+import { useGetCourses, useGetFaq } from '@/apis/strapi-client/strapi';
+import { useLang } from '@/hoc/with-intl/define';
 const { Content } = Layout;
 
 const ProbsChallenge = () => {
@@ -37,7 +37,7 @@ const ProbsChallenge = () => {
         <Banner />
         <Introduction />
         <Levels />
-        <Faqs title={t("CampsFAQs")} data={faq} />
+        <Faqs title={t('CampsFAQs')} data={faq} />
       </Content>
     </Layout>
   );

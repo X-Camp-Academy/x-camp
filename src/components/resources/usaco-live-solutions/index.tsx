@@ -1,18 +1,18 @@
-"use client";
-import { Layout } from "antd";
-import React from "react";
-import styles from "./index.module.scss";
-import Banner from "./banner";
-import UsacoIntro from "./introduction";
-import RelateResources from "./relate-resources";
-import Reviews from "@/components/common/reviews";
+'use client';
+import { Layout } from 'antd';
+import React from 'react';
+import styles from './index.module.scss';
+import Banner from './banner';
+import UsacoIntro from './introduction';
+import RelateResources from './relate-resources';
+import Reviews from '@/components/common/reviews';
 import {
   useGetResourcesLiveSolution,
   useGetReviews,
-} from "@/apis/strapi-client/strapi";
-import { usePathname } from "next/navigation";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { GetResourcesLiveSolution } from "@/apis/strapi-client/define";
+} from '@/apis/strapi-client/strapi';
+import { usePathname } from 'next/navigation';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { GetResourcesLiveSolution } from '@/apis/strapi-client/define';
 
 const { Content } = Layout;
 

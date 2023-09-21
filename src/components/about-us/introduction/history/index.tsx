@@ -1,8 +1,8 @@
-import React from "react";
-import { Space, Typography, Image, Row, Col } from "antd";
-import dayjs from "dayjs";
-import { useMobile } from "@/utils";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Space, Typography, Image, Row, Col } from 'antd';
+import dayjs from 'dayjs';
+import { useMobile } from '@/utils';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 
@@ -12,22 +12,22 @@ const History: React.FC = () => {
   const currentYear = dayjs().year();
   const images = [
     {
-      src: "/image/about-us/camps-1.png",
+      src: '/image/about-us/camps-1.png',
     },
     {
-      src: "/image/about-us/camps-1.png",
+      src: '/image/about-us/camps-1.png',
     },
     {
-      src: "/image/about-us/camps-1.png",
+      src: '/image/about-us/camps-1.png',
     },
     {
-      src: "/image/about-us/camps-1.png",
+      src: '/image/about-us/camps-1.png',
     },
     {
-      src: "/image/about-us/camps-1.png",
+      src: '/image/about-us/camps-1.png',
     },
     {
-      src: "/image/about-us/camps-1.png",
+      src: '/image/about-us/camps-1.png',
     },
   ];
   return (

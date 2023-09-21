@@ -1,10 +1,10 @@
-import React from "react";
-import { useRouter } from "next/navigation";
-import { Space, Row, Col, Image, Typography, Button } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { UsergroupAddOutlined } from "@ant-design/icons";
-import { useGetFaculty } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { Space, Row, Col, Image, Typography, Button } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import { UsergroupAddOutlined } from '@ant-design/icons';
+import { useGetFaculty } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Paragraph } = Typography;
 
@@ -12,7 +12,7 @@ const JoinUsFaculty: React.FC = () => {
   const { format: t } = useLang();
   const router = useRouter();
   const { data: imgUrlList } = useGetFaculty({
-    pageName: ["/about-us/join-us/"],
+    pageName: ['/about-us/join-us/'],
   });
   return (
     <div className={styles.joinUsFacultyContainer}>
@@ -26,15 +26,15 @@ const JoinUsFaculty: React.FC = () => {
               className={styles.logo}
             />
             <Paragraph className={styles.introText}>
-              {t("XCampFaculty.Desc")}
+              {t('XCampFaculty.Desc')}
             </Paragraph>
             <Button
               className={styles.introBtn}
               onClick={() => {
-                router.push("/about-us/join-us");
+                router.push('/about-us/join-us');
               }}
             >
-              {t("XCampFaculty")}
+              {t('XCampFaculty')}
               <UsergroupAddOutlined />
             </Button>
           </Space>
@@ -54,7 +54,7 @@ const JoinUsFaculty: React.FC = () => {
               );
             })}
           </Row>
-          <Row gutter={16} style={{ marginTop: "20px" }}>
+          <Row gutter={16} style={{ marginTop: '20px' }}>
             {imgUrlList?.slice(2, 5)?.map(item => {
               return (
                 <Col span={8} key={item?.id}>

@@ -1,10 +1,10 @@
-import React from "react";
-import { Button, Space, Typography } from "antd";
-import { RightOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import { useGetPartner } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Button, Space, Typography } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { useGetPartner } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 const backgroundMap = [
@@ -28,7 +28,7 @@ const Introduction: React.FC = () => {
             <div className={styles.title}>
               {items?.[0]?.attributes?.category}
             </div>
-            <Space direction="vertical" style={{ width: "100%" }} size={52}>
+            <Space direction="vertical" style={{ width: '100%' }} size={52}>
               {items?.map(card => (
                 <div className={styles.card} key={card?.id}>
                   <div className={styles.img}>
@@ -59,8 +59,8 @@ const Introduction: React.FC = () => {
                       className={styles.btn}
                       href={card?.attributes?.link}
                     >
-                      {t("LearnMore")}
-                      <RightOutlined style={{ color: "#333333" }} />
+                      {t('LearnMore')}
+                      <RightOutlined style={{ color: '#333333' }} />
                     </Button>
                   </div>
                 </div>

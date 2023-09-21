@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import {
   Button,
   Card,
@@ -7,18 +7,18 @@ import {
   Space,
   Typography,
   Image,
-} from "antd";
-import { RightCircleOutlined, AlignRightOutlined } from "@ant-design/icons";
-import dayjs, { Dayjs } from "dayjs";
-import isBetween from "dayjs/plugin/isBetween";
-import ActivityCalendar from "@/components/common/activity-calendar";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
-import { formatTimezone, getTransResult } from "@/utils/public";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { StrapiMedia, StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { EventCategory, GetNewEvent } from "@/apis/strapi-client/define";
-import styles from "./index.module.scss";
+} from 'antd';
+import { RightCircleOutlined, AlignRightOutlined } from '@ant-design/icons';
+import dayjs, { Dayjs } from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import ActivityCalendar from '@/components/common/activity-calendar';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { formatTimezone, getTransResult } from '@/utils/public';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import { StrapiMedia, StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { EventCategory, GetNewEvent } from '@/apis/strapi-client/define';
+import styles from './index.module.scss';
 dayjs.extend(isBetween);
 
 const { Title, Paragraph, Text } = Typography;
@@ -30,18 +30,18 @@ const ArticleSider: React.FC<{
   const { lang } = useLang();
 
   const monthNameEn = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
 
   const [selectedDate, setSelectedDate] = useState<string>(dayjs().toString());
@@ -68,9 +68,9 @@ const ArticleSider: React.FC<{
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
     if (endDateTime === '') {
-      return dayjs(selectDate).isSame(dayjs(startDateTime), "days");
+      return dayjs(selectDate).isSame(dayjs(startDateTime), 'days');
     }
-    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), "days", "[]");
+    return dayjs(selectDate).isBetween(dayjs(startDateTime), dayjs(endDateTime), 'days', '[]');
   };
 
   const filterSameDateEvent = (selectDate: string) => {
@@ -86,7 +86,7 @@ const ArticleSider: React.FC<{
 
   const filterSameEventCategory = (eventCategory: EventCategory | undefined) => {
     if (articleData) {
-      const filteredData = articleData?.data?.filter(item => item.attributes.eventCategory === eventCategory && item.id != articleId).slice(0, 3);
+      const filteredData = articleData?.data?.filter(item => item.attributes.eventCategory === eventCategory && item.id !== articleId).slice(0, 3);
       setEventThreeCard(filteredData);
     }
   };
@@ -112,22 +112,22 @@ const ArticleSider: React.FC<{
   const formatDate = (date: string) => {
     const dateInfo = dayjs(date);
     const month = dateInfo.month();
-    if (lang === "en") {
-      return monthNameEn[month] + " " + dateInfo.date();
+    if (lang === 'en') {
+      return monthNameEn[month] + ' ' + dateInfo.date();
     } else {
-      return dateInfo.format("MM月DD日");
+      return dateInfo.format('MM月DD日');
     }
   };
 
   const formatHourMinute = (time: string) => {
     const timeInfo = dayjs(time);
-    const formatString = "HH:mm";
+    const formatString = 'HH:mm';
     return timeInfo.format(formatString);
   };
 
   const formatYMDTime = (date: string) => {
-    const formatStringZh = "YYYY年MM月DD日 HH:mm";
-    const formatStringEn = " DD, YYYY HH:mm";
+    const formatStringZh = 'YYYY年MM月DD日 HH:mm';
+    const formatStringEn = ' DD, YYYY HH:mm';
     return getTransResult(
       lang,
       dayjs(date).format(formatStringZh),
@@ -161,18 +161,18 @@ const ArticleSider: React.FC<{
             </Text>
             <div className={styles.line} />
           </Space>
-          <div style={{ maxHeight: 400, overflow: "scroll" }}>
-            {filterDateEventList.length != 0 &&
+          <div style={{ maxHeight: 400, overflow: 'scroll' }}>
+            {filterDateEventList.length !== 0 &&
               filterDateEventList?.map(item => (
                 item?.startDateTime && <Space key={item?.titleZh} direction="vertical" className={styles.calendarItem}>
                   <Text className={styles.itemDate}>
                     {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
-                    {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), "day")
+                    {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
                       ?
-                      `${formatHourMinute(item?.startDateTime || "")} - ${formatHourMinute(item?.endDateTime || "")} `
+                      `${formatHourMinute(item?.startDateTime || '')} - ${formatHourMinute(item?.endDateTime || '')} `
                       :
-                      `${formatYMDTime(item?.startDateTime || "")} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
+                      `${formatYMDTime(item?.startDateTime || '')} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
                       } 
                             ${formatTimezone(item?.startDateTime).timezone} 
                           `}
@@ -211,14 +211,14 @@ const ArticleSider: React.FC<{
         {eventThreeCard?.map((v, index) => {
           return (
             <ColorfulCard
-              border={"bottom"}
+              border={'bottom'}
               animate={false}
               index={index}
               className={styles.card}
               key={index}
             >
               <Card>
-                <Space direction="vertical" style={{ width: "100%" }}>
+                <Space direction="vertical" style={{ width: '100%' }}>
                   <Image
                     src={getTranslateImg(v?.attributes?.imgZh, v?.attributes?.imgEn)}
                     alt="image"
@@ -232,12 +232,12 @@ const ArticleSider: React.FC<{
                   </Row>
                   <Row
                     style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
                     }}
                   >
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
                       <AlignRightOutlined style={{ fontSize: 16 }} />
                       <Paragraph
                         className={styles.description}
@@ -262,7 +262,7 @@ const ArticleSider: React.FC<{
                         type="link"
                         className={styles.btn}
                         icon={<RightCircleOutlined />}
-                        style={{ color: "#FFAD11", fontSize: 24 }}
+                        style={{ color: '#FFAD11', fontSize: 24 }}
                       />
                     </Link>
                   </Row>

@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { Space, Typography } from "antd";
-import ClassCard from "@/components/common/class-card";
-import CourseClassesContext from "../../CourseClassesContext";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult, getLangResult } from "@/utils/public";
-import styles from "./index.module.scss";
+import React, { useContext } from 'react';
+import { Space, Typography } from 'antd';
+import ClassCard from '@/components/common/class-card';
+import CourseClassesContext from '../../CourseClassesContext';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult, getLangResult } from '@/utils/public';
+import styles from './index.module.scss';
 
 
 const { Title } = Typography;
@@ -19,14 +19,14 @@ const ProgressionClasses: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <Title className={styles.title}>{t("ProgressionClasses")}</Title>
+        <Title className={styles.title}>{t('ProgressionClasses')}</Title>
         <Space size={24} wrap className={styles.cards}>
           {recommendedCourses?.map((v, index) => {
             const { courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, lessonNum, frequency } = v?.attributes ?? {};
             return (
               <ClassCard
                 key={v?.id}
-                border={"bottom"}
+                border={'bottom'}
                 index={index}
                 animate={false}
                 title={`${courseCode
@@ -41,9 +41,9 @@ const ProgressionClasses: React.FC = () => {
                   courseShortDescriptionEn
                 ) as Array<string>}
                 time={`${lessonNum} ${frequency ===
-                  "Weekly"
-                  ? "weeks"
-                  : "days"
+                  'Weekly'
+                  ? 'weeks'
+                  : 'days'
                   }`}
                 href={`/courses/detail/${v?.id}`}
               />

@@ -1,10 +1,10 @@
-import React from "react";
-import { Card, Typography, List } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import { GetProjectsDemo } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import styles from "./index.module.scss";
+import React from 'react';
+import { Card, Typography, List } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { GetProjectsDemo } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 interface Props {
@@ -16,22 +16,22 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
 
   const listData = [
     {
-      title: t("Art.Contestants"),
-      content: t("Art.Contestants.Desc"),
+      title: t('Art.Contestants'),
+      content: t('Art.Contestants.Desc'),
     },
     {
-      title: t("Art.Rules"),
-      content: t("Art.Rules.Desc"),
+      title: t('Art.Rules'),
+      content: t('Art.Rules.Desc'),
     },
   ];
   return (
     <div className={styles.ArtOfProgrammingResultsContainer}>
       <div className={`${styles.ArtOfProgrammingResults} container`}>
         <Title className={styles.firstTitle}>
-          {t("ArtProgrammingResults")}
+          {t('ArtProgrammingResults')}
         </Title>
         <Text className={styles.intro}>
-          {t("ArtProgrammingResults.Desc")}
+          {t('ArtProgrammingResults.Desc')}
         </Text>
 
         <List
@@ -54,7 +54,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
         />
 
         <div className={styles.projectDemo}>
-          <Title className={styles.title}>{t("ProjectsDemo")}</Title>
+          <Title className={styles.title}>{t('ProjectsDemo')}</Title>
           {data?.map((v, index) => (
             <React.Fragment key={index}>
               <Title className={styles.subTitle}>
@@ -98,7 +98,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
           ))}
         </div>
         <div className={styles.projectDemo}>
-          <Title className={styles.title}>{"Game Design"}</Title>
+          <Title className={styles.title}>{'Game Design'}</Title>
           {data?.map((v, index) => (
             <React.Fragment key={index}>
               <Title className={styles.subTitle}>

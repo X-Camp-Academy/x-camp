@@ -1,10 +1,10 @@
-import React from "react";
-import { Col, Row, Typography, Descriptions, Divider } from "antd";
+import React from 'react';
+import { Col, Row, Typography, Descriptions, Divider } from 'antd';
 import dayjs from 'dayjs';
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult, getWeeksDays } from "@/utils/public";
-import { GetCourses } from "@/apis/strapi-client/define";
-import styles from "./index.module.scss";
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult, getWeeksDays } from '@/utils/public';
+import { GetCourses } from '@/apis/strapi-client/define';
+import styles from './index.module.scss';
 
 const { Text, Title } = Typography;
 
@@ -56,16 +56,16 @@ const CourseCard: React.FC<GetCourses> = (props) => {
       <Row style={{ marginTop: 20 }} className={styles.row}>
         <Col lg={12} className={styles.col}>
           <Descriptions column={1}>
-            <Descriptions.Item label={t("CourseStyle")}>
+            <Descriptions.Item label={t('CourseStyle')}>
               {classMode}
             </Descriptions.Item>
-            <Descriptions.Item label={t("Level")}>
+            <Descriptions.Item label={t('Level')}>
               {recommendedGradeLevel(recommendedLowerGrade, recommendedUpperGrade)}
             </Descriptions.Item>
-            <Descriptions.Item label={t("Language")}>
+            <Descriptions.Item label={t('Language')}>
               {classLang}
             </Descriptions.Item>
-            <Descriptions.Item label={t("ClassesTime")}>
+            <Descriptions.Item label={t('ClassesTime')}>
               {`${dayjs(startDateTime)?.format('MM/DD/YYYY')} - ${dayjs(endDateTime)?.format('MM/DD/YYYY')}`}
             </Descriptions.Item>
           </Descriptions>
@@ -73,7 +73,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
         <Col
           lg={12}
           className={styles.col}
-          style={{ justifyContent: "flex-end" }}
+          style={{ justifyContent: 'flex-end' }}
         >
           <Text className={styles.fee}>
             {getTransResult(lang, `￥${tuitionRMB}`, `$${tuitionUSD}`)}

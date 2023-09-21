@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import { Space, Radio, Segmented, RadioChangeEvent } from "antd";
-import { SegmentedValue } from "antd/es/segmented";
-import { useMobile } from "@/utils";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { Space, Radio, Segmented, RadioChangeEvent } from 'antd';
+import { SegmentedValue } from 'antd/es/segmented';
+import { useMobile } from '@/utils';
+import styles from './index.module.scss';
 
 export interface SegmentedRadioGroupProps {
   segmented: SegmentedValue;
@@ -40,7 +40,7 @@ const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({
           :
           <Segmented
             ref={segmentedDom}
-            style={{ backgroundColor: "#fff" }}
+            style={{ backgroundColor: '#fff' }}
             block
             value={segmented}
             options={data}

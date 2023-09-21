@@ -1,11 +1,11 @@
-"use client";
-import React, { useEffect } from "react";
-import styles from "./index.module.scss";
-import { Col, Empty, Layout, Row } from "antd";
-import ArticleContent from "./article-content";
-import ArticleSider from "./article-sider";
-import { useParams } from "next/navigation";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
+'use client';
+import React, { useEffect } from 'react';
+import styles from './index.module.scss';
+import { Col, Empty, Layout, Row } from 'antd';
+import ArticleContent from './article-content';
+import ArticleSider from './article-sider';
+import { useParams } from 'next/navigation';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 
 const { Content } = Layout;
 

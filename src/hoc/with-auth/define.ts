@@ -1,5 +1,5 @@
-import { createContext, useContext } from "react";
-import { UserInfo } from "@/apis/auth-client/define";
+import { createContext, useContext } from 'react';
+import { UserInfo } from '@/apis/auth-client/define';
 
 type AuthInfo = {
   user?: UserInfo | null;
@@ -10,7 +10,7 @@ type AuthInfo = {
 
 const showWarning = async () => {
   console.warn(
-    "AuthContext has not been provided. You are calling a noop function."
+    'AuthContext has not been provided. You are calling a noop function.'
   );
 };
 

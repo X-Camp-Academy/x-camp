@@ -1,10 +1,10 @@
-import React from "react";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import QACard from "@/components/common/q&a";
-import { GetFaq } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import styles from "./index.module.scss";
+import React from 'react';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import QACard from '@/components/common/q&a';
+import { GetFaq } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import styles from './index.module.scss';
 
 
 interface FaqsProps {
@@ -21,7 +21,7 @@ const Faqs: React.FC<FaqsProps> = ({ title, data }) => {
         <div className={styles.cardContent}>
           {data?.map((item, index) => (
             <QACard
-              key={"referral" + index}
+              key={'referral' + index}
               question={
                 getTransResult(
                   lang,

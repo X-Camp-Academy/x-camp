@@ -1,22 +1,22 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { Space, Row, Col, Card, Button, Typography } from "antd";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { Space, Row, Col, Card, Button, Typography } from 'antd';
 import {
   HistoryOutlined,
   LaptopOutlined,
   RightCircleOutlined,
   RightOutlined,
   UserOutlined,
-} from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
-import { formatTimezone } from "@/utils/public";
-import { useMobile } from "@/utils";
-import { NewEventCategory } from "@/apis/strapi-client/define";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+} from '@ant-design/icons';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { formatTimezone } from '@/utils/public';
+import { useMobile } from '@/utils';
+import { NewEventCategory } from '@/apis/strapi-client/define';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -42,16 +42,16 @@ const UpcomingEvents: React.FC = () => {
   return (
     <div className={styles.upcomingEventsContainer}>
       <div className="container">
-        <Space className={styles.topSpace} direction={isMobile ? "vertical" : "horizontal"}>
+        <Space className={styles.topSpace} direction={isMobile ? 'vertical' : 'horizontal'}>
           <Space direction="vertical" >
-            <Title className={styles.title}>{t("UpcomingEvents")}</Title>
+            <Title className={styles.title}>{t('UpcomingEvents')}</Title>
             <Paragraph className={styles.paragraph}>
-              {t("UpcomingEvents.Desc")}
+              {t('UpcomingEvents.Desc')}
             </Paragraph>
           </Space>
           <button className={styles.button}>
             <Link href="/resources/education-forum">
-              {t("ViewMoreEvents")}
+              {t('ViewMoreEvents')}
             </Link>
             <RightOutlined />
           </button>
@@ -75,10 +75,10 @@ const UpcomingEvents: React.FC = () => {
                   <Card>
                     <Space direction="vertical">
                       <Text className={styles.cardMonth}>
-                        {startTime.format("MMMM")}
+                        {startTime.format('MMMM')}
                       </Text>
                       <Text className={styles.cardDay}>
-                        {startTime.format("DD")}
+                        {startTime.format('DD')}
                       </Text>
                       <Paragraph
                         ellipsis={{
@@ -109,9 +109,9 @@ const UpcomingEvents: React.FC = () => {
                         <Text className={styles.cardText}>
                           <HistoryOutlined className={styles.cardIcon} />
                           {`${startTime.format(
-                            "dddd, MMMM DD, YYYY hh:mm A"
+                            'dddd, MMMM DD, YYYY hh:mm A'
                           )} - ${endTime.format(
-                            "dddd, MMMM DD, YYYY hh:mm A"
+                            'dddd, MMMM DD, YYYY hh:mm A'
                           )} ${endTimeZone}`}
                         </Text>
                         <Text className={styles.cardText}>
@@ -119,7 +119,7 @@ const UpcomingEvents: React.FC = () => {
                           {isLinked ? (
                             <a
                               href={item.attributes.link}
-                              style={{ color: "#666666" }}
+                              style={{ color: '#666666' }}
                             >
                               {item.attributes.onlinePlatform}
                             </a>

@@ -1,25 +1,25 @@
-import { useEffect } from "react";
-import dayjs from "dayjs";
+import { useEffect } from 'react';
+import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
-import isBetween from "dayjs/plugin/isBetween";
+import isBetween from 'dayjs/plugin/isBetween';
 
-const WEEKDAY_EN = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-const WEEKDAY_ZH = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+const WEEKDAY_EN = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
+const WEEKDAY_ZH = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
 const MONTH_EN = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 enum ILocal {
@@ -28,9 +28,9 @@ enum ILocal {
 }
 
 const FORMAT_M = 'MM月';
-const FORMAT_H_m = "HH:mm";
-const FORMAT_YYYY_MM_DD_H_m_ZH = "YYYY年MM月DD日 HH:mm";
-const FORMAT_YYYY_MM_DD_H_m_EN = " DD, YYYY HH:mm";
+const FORMAT_H_m = 'HH:mm';
+const FORMAT_YYYY_MM_DD_H_m_ZH = 'YYYY年MM月DD日 HH:mm';
+const FORMAT_YYYY_MM_DD_H_m_EN = ' DD, YYYY HH:mm';
 const FORMAT_MM_DD = 'MM月DD日';
 
 dayjs.extend(isBetween);

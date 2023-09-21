@@ -1,17 +1,17 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Space, Row, Col, Card, Image, Button, Typography } from "antd";
-import { RightOutlined } from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
-import { useMobile } from "@/utils";
-import { getTransResult } from "@/utils/public";
-import { NewEventCategory } from "@/apis/strapi-client/define";
-import { useGetNewEvent } from "@/apis/strapi-client/strapi";
-import { StrapiMedia } from "@/apis/strapi-client/strapiDefine";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Space, Row, Col, Card, Image, Button, Typography } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
+import { getTransResult } from '@/utils/public';
+import { NewEventCategory } from '@/apis/strapi-client/define';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import { StrapiMedia } from '@/apis/strapi-client/strapiDefine';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 
@@ -38,16 +38,16 @@ const Stories: React.FC = () => {
   return (
     <div className={styles.storiesContainer}>
       <div className="container">
-        <Space className={styles.topSpace} direction={isMobile ? "vertical" : "horizontal"}>
+        <Space className={styles.topSpace} direction={isMobile ? 'vertical' : 'horizontal'}>
           <Space direction="vertical">
-            <Title className={styles.title}>{t("XAlumniEvents")}</Title>
+            <Title className={styles.title}>{t('XAlumniEvents')}</Title>
             <Paragraph className={styles.paragraph}>
-              {t("XAlumniEvents.Desc")}
+              {t('XAlumniEvents.Desc')}
             </Paragraph>
           </Space>
           <button className={styles.button}>
             <Link href="/resources/education-forum">
-              {t("ViewMoreEvents")}
+              {t('ViewMoreEvents')}
             </Link>
             <RightOutlined />
           </button>

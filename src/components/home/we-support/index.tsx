@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import { Space, Typography, Row, Col, Image } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { useMobile } from "@/utils";
-import AnimateBox from "@/components/common/animate-box";
-import TitleColor from "@/components/common/title-color";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { Space, Typography, Row, Col, Image } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
+import AnimateBox from '@/components/common/animate-box';
+import TitleColor from '@/components/common/title-color';
+import styles from './index.module.scss';
 
 const { Paragraph, Text } = Typography;
 
@@ -13,9 +13,9 @@ const WeSupport: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const images = [
-    "/image/home/python.png",
-    "/image/home/java.png",
-    "/image/home/c++.png",
+    '/image/home/python.png',
+    '/image/home/java.png',
+    '/image/home/c++.png',
   ];
 
   return (
@@ -44,11 +44,11 @@ const WeSupport: React.FC = () => {
                 lg={{ span: 24, order: 1 }}
               >
                 <div>
-                  <TitleColor title={t("WeSupport")} config={[{ text: t("WeSupport_Color") }]} className={styles.title} />
+                  <TitleColor title={t('WeSupport')} config={[{ text: t('WeSupport_Color') }]} className={styles.title} />
                   <Text className={styles.titleBg} />
                 </div>
                 <Paragraph className={styles.paragraph}>
-                  {t("WeSupport.Desc")}
+                  {t('WeSupport.Desc')}
                 </Paragraph>
               </Col>
 

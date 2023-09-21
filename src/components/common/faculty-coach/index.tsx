@@ -1,16 +1,16 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { Space, Row, Col, Card, Typography, Avatar } from "antd";
-import { SegmentedValue } from "antd/es/segmented";
-import SegmentedRadioGroup from "../segmented-radio-group";
-import ColorfulCard from "../colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { Space, Row, Col, Card, Typography, Avatar } from 'antd';
+import { SegmentedValue } from 'antd/es/segmented';
+import SegmentedRadioGroup from '../segmented-radio-group';
+import ColorfulCard from '../colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
 import {
   StrapiResponseDataItem,
-} from "@/apis/strapi-client/strapiDefine";
-import { FacultyLevelCategory, GetFaculty } from "@/apis/strapi-client/define";
-import styles from "./index.module.scss";
+} from '@/apis/strapi-client/strapiDefine';
+import { FacultyLevelCategory, GetFaculty } from '@/apis/strapi-client/define';
+import styles from './index.module.scss';
 
 
 const { Title, Paragraph, Text } = Typography;
@@ -29,8 +29,8 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
+      behavior: 'smooth',
+      block: 'center',
     });
   };
 
@@ -51,11 +51,11 @@ const FacultyCoach: React.FC<{ data: StrapiResponseDataItem<GetFaculty>[] | unde
       <Space direction="vertical" size={48}>
         <Space direction="vertical">
           <Title className={styles.title}>
-            <Text className={styles.title} style={{ color: '#FFAD11' }}>{t("Faculty")}</Text>&nbsp;&&nbsp;
-            {t("Coach")}
+            <Text className={styles.title} style={{ color: '#FFAD11' }}>{t('Faculty')}</Text>&nbsp;&&nbsp;
+            {t('Coach')}
           </Title>
           <Paragraph className={styles.titleParagraph}>
-            {t("Faculty.Desc")}
+            {t('Faculty.Desc')}
           </Paragraph>
         </Space>
 

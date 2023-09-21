@@ -1,16 +1,16 @@
-"use client";
-import React from "react";
-import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
-import { Layout } from "antd";
-import { useGetReviews } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import { Layout } from 'antd';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
-const Banner = dynamic(() => import("./banner"));
-const UpcomingEvents = dynamic(() => import("./upcoming-events"));
-const RecentActivities = dynamic(() => import("./recent-activities"));
-const Activities = dynamic(() => import("./activities"));
-const Reviews = dynamic(() => import("@/components/common/reviews"));
+const Banner = dynamic(() => import('./banner'));
+const UpcomingEvents = dynamic(() => import('./upcoming-events'));
+const RecentActivities = dynamic(() => import('./recent-activities'));
+const Activities = dynamic(() => import('./activities'));
+const Reviews = dynamic(() => import('@/components/common/reviews'));
 
 const { Content } = Layout;
 

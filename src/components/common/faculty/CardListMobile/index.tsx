@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "@/components/common/faculty/index.module.scss";
+import React from 'react';
+import styles from '@/components/common/faculty/index.module.scss';
 
 interface IProps {
 	children: React.ReactNode

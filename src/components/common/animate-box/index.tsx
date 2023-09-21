@@ -1,5 +1,5 @@
-import React, { ReactNode, useRef } from "react";
-import { addAnimate, removeAnimate } from "@/utils";
+import React, { ReactNode, useRef } from 'react';
+import { addAnimate, removeAnimate } from '@/utils';
 
 interface AnimateBoxProps {
   className?: string;

@@ -43,7 +43,7 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
     >
       <Space className={cx('container', styles.dropdownContainer)}>
         {dropdown?.left && (
-          <Space direction="vertical" className={styles.left} size={"middle"}>
+          <Space direction="vertical" className={styles.left} size={'middle'}>
             <div className={styles.title}>{dropdown?.left?.title}</div>
             {showBtn && (
               <div className={styles.btn}>

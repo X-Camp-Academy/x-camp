@@ -1,11 +1,11 @@
-import React from "react";
-import styles from "./index.module.scss";
-import { Collapse, Space, Typography } from "antd";
-import { ClockCircleOutlined, DownOutlined } from "@ant-design/icons";
-import { GetResourcesLiveSolution } from "@/apis/strapi-client/define";
-import { StrapiResponseDataItem } from "@/apis/strapi-client/strapiDefine";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult } from "@/utils/public";
+import React from 'react';
+import styles from './index.module.scss';
+import { Collapse, Space, Typography } from 'antd';
+import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
+import { GetResourcesLiveSolution } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
 const { Panel } = Collapse;
 const { Text } = Typography;
 
@@ -25,15 +25,15 @@ const UsacoIntro = ({ data }: Props) => {
   };
   return (
     <div className={styles.introduction}>
-      <div className={"container"}>
-        <div className={styles.description}>{t("USACOSolution.Intro")}</div>
+      <div className={'container'}>
+        <div className={styles.description}>{t('USACOSolution.Intro')}</div>
         {data?.map((v, index) => {
           return (
-            <div key={"video" + index} style={{ marginBottom: 92 }}>
+            <div key={'video' + index} style={{ marginBottom: 92 }}>
               <Collapse
                 ghost
                 defaultActiveKey={index}
-                expandIconPosition={"end"}
+                expandIconPosition={'end'}
                 expandIcon={({ isActive }) => (
                   <div className={styles.changeBtn}>
                     <DownOutlined
@@ -55,9 +55,9 @@ const UsacoIntro = ({ data }: Props) => {
                     {v?.map((g) => {
                       return (
                         <Space
-                          direction={"vertical"}
+                          direction={'vertical'}
                           className={styles.videoPanel}
-                          key={"panel" + g}
+                          key={'panel' + g}
                         >
                           <video controls className={styles.videoBox}>
                             <source
@@ -90,11 +90,11 @@ const UsacoIntro = ({ data }: Props) => {
         <div className={styles.MoreUSACO}>
           <a
             href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT"
-            target={"_blank"}
+            target={'_blank'}
             rel="noreferrer"
           >
             <Text underline className={styles.title}>
-              {t("MoreUSACOSolution")}
+              {t('MoreUSACOSolution')}
             </Text>
           </a>
         </div>

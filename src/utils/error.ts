@@ -1,6 +1,6 @@
-import { useLang } from "@/hoc/with-intl/define";
-import { message } from "antd";
-import { notFound, useRouter } from "next/navigation";
+import { useLang } from '@/hoc/with-intl/define';
+import { message } from 'antd';
+import { notFound, useRouter } from 'next/navigation';
 
 const codeMessage: Record<string, number> = {
   ACCESS_DENIED: 403,
@@ -27,14 +27,14 @@ export const useHandleError = (
 ): ErrorHandler => {
   const { format: t } = useLang();
   const router = useRouter();
-  const key = "error";
+  const key = 'error';
   const errorMap: Record<number, () => void> = {
     [codeMessage.ACCESS_DENIED]: () => {
-      message.error({ content: t("403"), key });
-      isRedirect && router.push("/403");
+      message.error({ content: t('403'), key });
+      isRedirect && router.push('/403');
     },
     [codeMessage.NOT_FOUND]: () => {
-      message.error({ content: t("404"), key });
+      message.error({ content: t('404'), key });
       isRedirect && notFound();
     },
     // 额外的自定义处理,这是一个使用样例

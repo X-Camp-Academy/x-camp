@@ -46,7 +46,7 @@ const QACard: React.FC<QACardProps> = ({
     >
       <Panel
         header={
-          <Space size={12} direction={isMobile ? "vertical" : "horizontal"}>
+          <Space size={12} direction={isMobile ? 'vertical' : 'horizontal'}>
             <div
               className={`${styles.questionAndAnswerIcon} ${styles.question}`}
             >

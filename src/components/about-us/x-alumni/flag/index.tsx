@@ -1,8 +1,8 @@
-"use client";
-import React from "react";
-import { Row, Col, Typography, Image } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import { Row, Col, Typography, Image } from 'antd';
+import { useLang } from '@/hoc/with-intl/define';
+import styles from './index.module.scss';
 
 const { Title, Text } = Typography;
 
@@ -22,8 +22,8 @@ const Flag: React.FC = () => {
   ];
   return (
     <div className={`${styles.flag} container`}>
-      <Title className={styles.title}>{t("OneBigFamily")}</Title>
-      <Text className={styles.text}>{t("JoinBigFamily")}</Text>
+      <Title className={styles.title}>{t('OneBigFamily')}</Title>
+      <Text className={styles.text}>{t('JoinBigFamily')}</Text>
 
       <Row gutter={[32, 32]} className={styles.topRow}>
         {

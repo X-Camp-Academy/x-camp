@@ -1,20 +1,20 @@
-"use client";
-import React from "react";
-import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
-import { Layout } from "antd";
-import { FaqCategory } from "@/apis/strapi-client/define";
-import { useGetFaq } from "@/apis/strapi-client/strapi";
-import { useGetReviews } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import React from 'react';
+import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import { Layout } from 'antd';
+import { FaqCategory } from '@/apis/strapi-client/define';
+import { useGetFaq } from '@/apis/strapi-client/strapi';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Content } = Layout;
 
-const Banner = dynamic(() => import("./banner"));
-const ReferralAndEarn = dynamic(() => import("./referral-and-earn"));
-const GetCredit = dynamic(() => import("./referral-program-work"));
-const Faq = dynamic(() => import("@/components/common/faqs"));
-const Reviews = dynamic(() => import("@/components/common/reviews"));
+const Banner = dynamic(() => import('./banner'));
+const ReferralAndEarn = dynamic(() => import('./referral-and-earn'));
+const GetCredit = dynamic(() => import('./referral-program-work'));
+const Faq = dynamic(() => import('@/components/common/faqs'));
+const Reviews = dynamic(() => import('@/components/common/reviews'));
 
 const StudentRecommend: React.FC = () => {
   const pathname = usePathname();
