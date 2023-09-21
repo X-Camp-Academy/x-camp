@@ -1,6 +1,6 @@
 import { Collapse } from 'antd';
-import JobCardHeader from './iob-card-header';
-import JobCardDetail from './iob-card-header';
+import JobCardHeader from './job-card-header';
+import JobCardDetail from './job-card-detail';
 import ColorfulCard from '@/components/common/colorful-card';
 import { GetAboutUsJoinUs } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';

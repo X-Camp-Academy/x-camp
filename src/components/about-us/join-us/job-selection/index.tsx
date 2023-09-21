@@ -27,7 +27,6 @@ const JobSelection: React.FC = () => {
       },
     });
   }, [category]);
-
   return (
     <div className={styles.jobSelectionContainer}>
       <div className={`${styles.jobSelection} container`}>
@@ -52,7 +51,6 @@ const JobSelection: React.FC = () => {
           {aboutUsJoinUs?.length !== 0 ? aboutUsJoinUs?.map((v, index) => (
             <JobCard key={v?.id} index={index} data={v} />
           )) : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={getTransResult(lang, '目前暂无职位', 'There are currently no positions')} />}
-
         </div>
       </div>
     </div>
