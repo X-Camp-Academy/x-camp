@@ -1,22 +1,26 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .space {
   margin-top: 152px;
   text-align: center;
+
   .title {
     @include title('default');
   }
+
   .paragraph {
     font-size: 18px;
     font-weight: 500;
     color: #172142;
     line-height: 34px;
   }
+
   .row {
-    @media (max-width: 768px) {
-      padding-left: 0 !important;
+    @media (width <= 768px) {
       padding-right: 0 !important;
+      padding-left: 0 !important;
     }
+
     .image {
       margin-top: 20px;
     }

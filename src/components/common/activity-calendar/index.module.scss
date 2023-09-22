@@ -4,26 +4,26 @@
   :global(.ant-picker-panel .ant-picker-body) {
     padding: 18px 0;
   }
+
   :global(.ant-picker-content thead) {
     min-height: 38px;
   }
+
   :global(.ant-picker-cell .ant-picker-cell-inner) {
     @include flex(center);
+
     display: inline-flex;
-    flex-direction: column;
-    min-height: 38px;
     min-width: 38px;
+    min-height: 38px;
+    border-radius: 50%;
+    flex-direction: column;
+  }
+
+  :global(.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before) {
     border-radius: 50%;
   }
-  :global(
-      .ant-picker-cell-in-view.ant-picker-cell-today
-        .ant-picker-cell-inner::before
-    ) {
-    border-radius: 50%;
-  }
-  :global(
-      .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner
-    ) {
+
+  :global(.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner) {
     background: $primary-color;
   }
 }
@@ -38,7 +38,7 @@
     align-items: center;
     font-size: 18px;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.88);
+    color: rgb(0 0 0 / 88%);
     line-height: 24px;
   }
 

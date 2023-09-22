@@ -1,9 +1,11 @@
 @import 'mixins';
+
 $primary-color: #ffad11;
 $text-color: #172142;
+
 .hoverButton {
-  color: $primary-color;
   border: 1px solid $primary-color;
+  color: $primary-color;
   background-color: #fff;
 }
 

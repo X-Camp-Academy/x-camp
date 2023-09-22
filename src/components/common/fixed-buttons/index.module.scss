@@ -1,36 +1,38 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .buttonContainer {
+  position: fixed;
+  top: 73%;
+  right: 64px;
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  right: 64px;
-  top: 73%;
 
-  z-index: 10;
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     right: 24px;
   }
 
   .fixedButton {
     position: relative;
-    height: 32px;
-    padding: 0;
     margin-bottom: 40px;
+    padding: 0;
+    height: 32px;
+    font-weight: bold;
     background-color: $primary-color;
 
     @include flex(flex-end);
     @include text(14px, 20px);
-    font-weight: bold;
+
     span {
       margin: 0 20px;
     }
+
     img {
       align-self: flex-end;
-
       width: 3.6rem;
       height: 3.6rem;
     }
+
     &:hover {
       color: $text-color;
     }
@@ -38,90 +40,109 @@
 
   .title {
     @include title('bold');
+
     line-height: 64px;
     text-align: center;
   }
 
   .cardContent {
-    margin-top: 50px;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
 
     .qaCard {
-      width: 70%;
       margin: 10px 0;
+      width: 70%;
     }
   }
 }
+
 .autoSize {
-  @media (max-device-width: 600px) {
+  @media (device-width <= 600px) {
     height: 80vh;
   }
 }
-.cardFrom {
-  width: 420px;
-  margin-top: 10px;
-  overflow: auto;
 
-  @media (max-width: 768px) {
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
+.cardFrom {
+  overflow: auto;
+  margin-top: 10px;
+  width: 420px;
+
+  @media (width <= 768px) {
     position: static;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
     transform: translateX(0);
   }
+
   .card {
     width: 100%;
     border: none !important;
-    box-shadow: 0px 9px 25px -4px rgba(216, 216, 216, 1);
-    @media (max-width: 768px) {
+    box-shadow: 0 9px 25px -4px rgb(216 216 216 / 100%);
+
+    @media (width <= 768px) {
       margin-top: 64px;
     }
+
     :global(.ant-card-body) {
-      padding: 0 24px 24px 24px;
+      padding: 0 24px 24px;
     }
+
     .cardTitle {
       @include text(16px, 24px);
-      text-align: center;
+
       margin-bottom: 15px;
+      text-align: center;
     }
+
     .desc {
-      height: 128px;
-      padding: 12px;
       margin: 24px 0;
+      padding: 12px;
+      height: 128px;
       border: 1px solid $primary-color;
-      @include text(16px, 34px);
       box-sizing: border-box;
+
+      @include text(16px, 34px);
+
       li {
         margin-left: 24px;
       }
     }
+
     .buttonList {
       display: flex;
       flex-direction: column;
+
       .button {
-        height: 48px;
         margin-bottom: 16px;
+        height: 48px;
       }
     }
+
     .tips {
       margin-bottom: 20px;
+
       @include text(14px, 22px, $primary-color);
     }
+
     .form {
-      margin-left: 10px;
       margin-right: 10px;
+      margin-left: 10px;
+
       input {
         width: 100%;
         height: 46px;
       }
+
       .submit {
         width: 100%;
         height: 48px;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
+
         &:hover {
           @extend .hoverButton;
         }

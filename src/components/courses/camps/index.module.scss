@@ -1,36 +1,36 @@
 @import '@/styles/variables';
 
 .courseCamps {
-  width: 100%;
   position: relative;
   top: 72px;
   margin: 0 auto;
+  width: 100%;
 
   .courseCard {
-    width: 100%;
-    padding-bottom: 50px;
     padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
 
     .cardContent {
       padding: 56px;
-      background-color: #fff;
       width: 100%;
       height: 100%;
       border-radius: 10px;
+      background-color: #fff;
 
-      @media (max-width: 992px) {
+      @media (width <= 992px) {
         padding: 40px;
       }
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         padding: 20px;
       }
     }
   }
 
   .video {
-    width: 100%;
     margin-bottom: 50px;
+    width: 100%;
     height: 675px;
 
     .videoBox {

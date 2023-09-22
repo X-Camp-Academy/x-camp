@@ -15,12 +15,14 @@
 
     .title {
       @include title('default');
+
       line-height: 48px;
-      @media (max-width: 1140px) {
+
+      @media (width <= 1140px) {
         font-size: 24px;
       }
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         font-size: 20px;
         line-height: 32px;
       }
@@ -29,67 +31,67 @@
     .courseCard {
       .cardContent {
         padding: 56px;
-        background-color: #fff;
         width: 100%;
         height: 100%;
         border-radius: 12px;
+        background-color: #fff;
 
-        @media (max-width: 992px) {
+        @media (width <= 992px) {
           padding: 40px;
         }
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           padding: 20px;
         }
 
         .divider {
           margin: 80px 0;
-          background-color: $primary-color;
           height: 4px;
           border-radius: 4px;
+          background-color: $primary-color;
 
-          @media (max-width: 992px) {
+          @media (width <= 992px) {
             margin: 40px 0;
           }
         }
 
         .description {
-          width: 100%;
           align-items: flex-start;
+          width: 100%;
 
-          @media (max-width: 1200px) {
+          @media (width <= 1200px) {
             flex-direction: column;
             align-items: center;
           }
 
           .left {
-            @media (max-width: 1200px) {
+            @media (width <= 1200px) {
               margin-top: 30px;
             }
 
             margin-left: 50px;
 
             :global(.ant-descriptions-item-label) {
-              color: #172142;
               font-size: 18px;
-              line-height: 40px;
               font-weight: 600;
+              color: #172142;
+              line-height: 40px;
 
               &::before {
-                content: '';
-                box-sizing: border-box;
+                margin-right: 10px;
                 width: 12px;
                 height: 12px;
-                background: #ffad11;
                 border: 2px solid #ffd600;
                 border-radius: 50%;
-                margin-right: 10px;
+                background: #ffad11;
+                content: '';
+                box-sizing: border-box;
               }
             }
 
             :global(.ant-descriptions-item-content) {
-              color: #172142;
               font-size: 18px;
+              color: #172142;
               line-height: 40px;
             }
 
@@ -100,25 +102,24 @@
             .btn {
               width: 226px;
               height: 56px;
-              background: #ffffff;
-              border-radius: 12px;
               border: 2px solid #172142;
-
+              border-radius: 12px;
               font-size: 18px;
               font-weight: 500;
               color: #172142;
+              background: #fff;
               line-height: 24px;
             }
           }
 
           .right {
-            width: 550px;
-            padding-left: 30px;
             padding-right: 10px;
+            padding-left: 30px;
+            width: 550px;
 
-            @media (max-width: 1140px) {
-              width: 368px;
+            @media (width <= 1140px) {
               margin-top: 50px;
+              width: 368px;
             }
 
             .dots {
@@ -132,15 +133,15 @@
             }
 
             .videoBox {
+              overflow: hidden;
               width: 100%;
               height: 380px;
               border-radius: 8px;
-              overflow: hidden;
 
-              @media (max-width: 992px) {
+              @media (width <= 992px) {
+                padding: 0 50px;
                 width: 100%;
                 height: 100%;
-                padding: 0 50px;
               }
 
               video {
@@ -152,6 +153,7 @@
 
             .mediaChoice {
               margin-top: 20px;
+
               .mediaChoiceBox {
                 width: 100px;
                 height: 100px;

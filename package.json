@@ -7,11 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix && git add . && next lint",
-    "next-lint": "next lint --fix",
-    "eslint": "eslint --fix ./src",
     "lint-staged": "lint-staged",
     "prettier": "prettier --write ./src",
-    "prettier-ts": "prettier --parser=typescript --write ./src/**/*.{ts,tsx}"
+    "lint:style": "stylelint \"./src/**/*.{css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .gitignore"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
@@ -22,6 +20,10 @@
     "*.{ts,tsx}": [
       "prettier --parser=typescript --write",
       "eslint --fix"
+    ],
+    "*.{scss,css}": [
+      "stylelint --fix",
+      "prettier --write"
     ]
   },
   "dependencies": {
@@ -64,6 +66,10 @@
     "pre-commit": "^1.2.2",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.2.1",
     "unplugin-json-dts": "^1.2.0"
   }
 }

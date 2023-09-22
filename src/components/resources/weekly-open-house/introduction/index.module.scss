@@ -1,25 +1,26 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
+
 .title {
   @include title('about');
 
-  @media (max-width: 992px) {
+  @media (width <= 992px) {
     font-size: 30px;
   }
 }
 
 .description {
+  margin-bottom: 50px;
   font-size: 18px;
   font-weight: 500;
   color: #172142;
   line-height: 34px;
-  margin-bottom: 50px;
 }
 
 .images {
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
 
-  @media (max-width: 992px) {
+  @media (width <= 992px) {
     justify-content: center;
   }
 

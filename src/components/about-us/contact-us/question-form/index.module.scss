@@ -2,14 +2,17 @@
 
 .qaContent {
   padding-bottom: 6.25rem;
+
   .row {
-    @media (max-width: 768px) {
-      margin-left: 0 !important;
+    @media (width <= 768px) {
       margin-right: 0 !important;
+      margin-left: 0 !important;
     }
   }
+
   .title {
     text-align: center;
+
     @include title('default');
   }
 
@@ -23,12 +26,13 @@
     }
 
     :global(.ant-input) {
-      border: 1px solid #ffad11;
       padding: 10px;
+      border: 1px solid #ffad11;
     }
 
     .formTitle {
       margin-top: 12px;
+
       @include title('default');
     }
 
@@ -40,12 +44,12 @@
     .formButton {
       width: 100%;
       height: 56px;
-      background: #ffad11;
-      border-radius: 8px;
       border: none;
+      border-radius: 8px;
       font-size: 16px;
       font-weight: 500;
-      color: #ffffff;
+      color: #fff;
+      background: #ffad11;
       line-height: 24px;
 
       &:hover {

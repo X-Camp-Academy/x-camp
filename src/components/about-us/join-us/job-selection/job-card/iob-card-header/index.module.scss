@@ -1,16 +1,18 @@
-@import '@/styles/variables.scss';
-.cardContainer {
-  border: none;
-  background-color: #ffffff;
-  border-radius: 0;
-  padding: 20px 36px 0;
+@import '@/styles/variables';
 
-  @media (max-width: 768px) {
+.cardContainer {
+  padding: 20px 36px 0;
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+
+  @media (width <= 768px) {
     padding: 0 20px;
   }
 
   .jobCardTitle {
     @include text(24px, 36px);
+
     margin: 0;
   }
 
@@ -20,20 +22,20 @@
   }
 
   .jobCardDescription {
-    text-align: left;
     font-size: 18px;
     font-weight: 400;
-    color: #666666;
+    text-align: left;
+    color: #666;
     line-height: 28px;
   }
 
   .iconsButtonRow {
-    width: 100%;
-    padding: 32px 0;
     display: flex;
     justify-content: space-between;
+    padding: 32px 0;
+    width: 100%;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       display: block;
     }
 
@@ -44,7 +46,7 @@
         margin-left: 10px;
         font-size: 18px;
         font-weight: 400;
-        color: #666666;
+        color: #666;
         line-height: 28px;
       }
     }
@@ -53,14 +55,14 @@
       display: flex;
       align-items: center;
       padding: 12px 36px;
-      background: #ffad11;
       border-radius: 12px;
       font-size: 16px;
       font-weight: 500;
-      color: #ffffff;
+      color: #fff;
+      background: #ffad11;
       line-height: 24px;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         margin: 20px auto;
         margin-bottom: 0;
       }

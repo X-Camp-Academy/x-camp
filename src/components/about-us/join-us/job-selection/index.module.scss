@@ -7,34 +7,33 @@
       display: flex;
       justify-content: space-around;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         display: block;
       }
 
       .choiceBtn {
-        margin: 0 20px;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: 0 20px;
         padding: 25px 60px;
+        border: 2px solid #d8d8d8;
+        border-radius: 12px;
         font-size: 24px;
         font-weight: 500;
         color: #6a6a6a;
-        line-height: 36px;
-        border-radius: 12px;
-
         background: #f5f5f5;
-        border: 2px solid #d8d8d8;
+        line-height: 36px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           margin: 20px auto;
         }
       }
 
       .selectedBtn {
         border: none;
+        color: #fff;
         background-color: #ffad11;
-        color: #ffffff;
       }
     }
 
@@ -42,8 +41,8 @@
       margin-top: 50px;
 
       .collapseCard {
-        width: 100%;
         margin-bottom: 30px;
+        width: 100%;
       }
     }
   }

@@ -1,18 +1,19 @@
 @import '@/styles/variables';
+
 .content {
+  padding: 30px 16px;
   width: 100%;
   background-color: #f5f5f5;
-  padding: 30px 16px;
 
   .calendarContainer {
-    width: 100%;
     display: flex;
     justify-content: center;
+    width: 100%;
 
     .activityCalendar {
       :global(.ant-picker-panel) {
-        border-top: 1px solid #ffad11;
         width: 100%;
+        border-top: 1px solid #ffad11;
       }
     }
   }
@@ -27,11 +28,11 @@
         width: 100%;
 
         .text {
-          color: #000000;
           font-size: 18px;
           font-weight: 400;
-          line-height: 25px;
           white-space: nowrap;
+          color: #000;
+          line-height: 25px;
         }
 
         :global(.ant-space-item:nth-child(2)) {
@@ -46,22 +47,21 @@
       }
 
       .calendarItem {
-        width: 100%;
         margin-top: 24px;
+        width: 100%;
 
         .itemDate {
           font-size: 14px;
           font-weight: 400;
-          color: rgba(0, 0, 0, 0.45);
+          color: rgb(0 0 0 / 45%);
           line-height: 20px;
-          font-weight: 400;
         }
 
         .itemParagraph {
           width: 100%;
           font-size: 18px;
           font-weight: 600;
-          color: rgba(0, 0, 0, 0.88);
+          color: rgb(0 0 0 / 88%);
           line-height: 26px;
         }
 
@@ -78,8 +78,8 @@
     margin-top: 20px;
 
     .card {
-      border: none;
       margin-bottom: 20px;
+      border: none;
 
       :global(.ant-image) {
         display: block;
@@ -87,16 +87,17 @@
 
       .title {
         @include title('thin');
+
         line-height: 32px;
       }
 
       .description {
         padding: 10px;
+        width: 150px;
         font-size: 18px;
         font-weight: 400;
-        color: #666666;
+        color: #666;
         line-height: 28px;
-        width: 150px;
       }
 
       .btn {

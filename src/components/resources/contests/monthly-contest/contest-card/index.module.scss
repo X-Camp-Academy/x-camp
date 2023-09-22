@@ -1,27 +1,54 @@
 @import '@/styles/variables';
 
+.popoverContent {
+  width: 328px;
+
+  .divider {
+    margin: 16px 0;
+  }
+
+  .description {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 24px;
+  }
+
+  .descriptionContent {
+    font-size: 16px;
+    font-weight: 400;
+    color: #b9b9b9;
+    line-height: 24px;
+    word-break: break-all;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
 .card {
   width: 100%;
 
   .month {
+    padding-bottom: 33px;
     width: 100%;
-    @include title();
     border-bottom: #d8d8d8 1px solid;
     text-align: center;
-    padding-bottom: 33px;
+
+    @include title;
   }
 
   .content {
-    padding: 30px 0 0 0;
+    padding: 30px 0 0;
     width: 80%;
     height: calc(100% - 80px);
 
     .item {
-      background: #ffe1c7;
-      border-radius: 12px;
       padding: 11px 20px;
-      cursor: pointer;
+      border-radius: 12px;
+      background: #ffe1c7;
       transition: all 0.3s;
+      cursor: pointer;
 
       &:hover {
         background: #00a0e9;
@@ -29,12 +56,13 @@
         .title,
         .description,
         .bottom .time {
-          color: #ffffff;
+          color: #fff;
         }
       }
 
       .title {
         @include title('thin');
+
         transition: all 0.3s;
       }
 
@@ -63,11 +91,11 @@
         }
 
         .logo {
-          width: 23px;
-          height: 23px;
           display: flex;
           justify-content: center;
           align-items: center;
+          width: 23px;
+          height: 23px;
 
           img {
             width: 14px;
@@ -88,12 +116,12 @@
   }
 
   .contentCenter {
-    width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-    border-left: #d8d8d8 1px solid;
-    border-right: #d8d8d8 1px solid;
     justify-content: center;
+    padding-right: 10%;
+    padding-left: 10%;
+    width: 100%;
+    border-right: #d8d8d8 1px solid;
+    border-left: #d8d8d8 1px solid;
   }
 }
 
@@ -120,44 +148,18 @@
   }
 
   .right {
-    width: 47px;
-    height: 47px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 6px;
+    width: 47px;
+    height: 47px;
 
     img {
       width: 40px;
       height: 40px;
-      border-radius: 50%;
       border: #d8d8d8 1px solid;
+      border-radius: 50%;
     }
-  }
-}
-
-.popoverContent {
-  width: 328px;
-
-  .divider {
-    margin: 16px 0;
-  }
-
-  .description {
-    font-size: 16px;
-    font-weight: 500;
-    color: #172142;
-    line-height: 24px;
-    margin-bottom: 8px;
-  }
-
-  .descriptionContent {
-    font-size: 16px;
-    font-weight: 400;
-    color: #b9b9b9;
-    line-height: 24px;
-    word-break: break-all;
-    word-wrap: break-word;
-    hyphens: auto;
   }
 }

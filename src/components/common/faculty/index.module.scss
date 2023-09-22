@@ -1,65 +1,80 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
+
 .faculty {
   padding: 100px 15px;
   text-align: center;
+
   .title {
     margin: 0;
-    @include title();
+
+    @include title;
   }
+
   .titleBg {
-    margin-left: -175px;
     display: block;
+    margin-left: -175px;
     width: 180px;
     height: 20px;
-    background-image: url('/image/home/home-title-bg-1.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url('/image/home/home-title-bg-1.png');
   }
+
   .paragraph {
     margin-top: 10px;
     padding: 0;
+
     @include text(18px, 34px);
   }
 
   .carouselContainer {
     position: relative;
     margin-top: 32px;
+
     .prev {
-      background-color: $primary-color;
       position: absolute;
+      top: 50%;
       left: 0;
-      top: 50%;
-      transform: translateY(-50%);
       z-index: 999;
-    }
-    .next {
       background-color: $primary-color;
-      position: absolute;
-      right: 0;
-      top: 50%;
       transform: translateY(-50%);
-      z-index: 999;
     }
+
+    .next {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      z-index: 999;
+      background-color: $primary-color;
+      transform: translateY(-50%);
+    }
+
     .mobile.cardContainer {
       &:first-of-type,
       &:last-of-type {
         margin: 0;
       }
     }
+
     .cardContainer {
       display: block;
       margin: 0 15px;
       text-align: left;
+
       .name {
         @include text(24px, 36px);
+
         font-weight: bold;
       }
+
       .description {
         @include text(18px, 26px, #666);
       }
+
       .more {
         @include text(14px, 16px);
       }
+
       .cardImage {
         width: 150px;
         height: 168px;
@@ -70,6 +85,7 @@
 
 .cardListMobileContainer {
   @include flex;
-  width: 100%;
+
   overflow: auto;
+  width: 100%;
 }

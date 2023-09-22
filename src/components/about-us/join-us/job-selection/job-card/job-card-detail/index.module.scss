@@ -1,27 +1,27 @@
 @import '@/styles/variables';
 
 .cardListContainer {
-  background-color: #ffffff;
-  border-radius: 0 0 10px 10px;
   padding: 0 36px;
+  border-radius: 0 0 10px 10px;
+  background-color: #fff;
 
   :global(.ant-divider-horizontal) {
     margin: 0;
   }
 
   .divider {
-    width: 100%;
     margin-bottom: 42px;
+    width: 100%;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     padding: 35px 20px;
   }
 
   .viewer {
+    margin-left: -20px;
     padding: 0;
     border: none;
-    margin-left: -20px;
 
     * {
       text-align: left;
@@ -43,10 +43,9 @@
   }
 
   .cardListTitle {
-    text-align: left;
     font-size: 21px;
-
     font-weight: 600;
+    text-align: left;
     color: #172142;
     line-height: 30px;
   }
@@ -55,21 +54,21 @@
     .cardListItem {
       .listItemCircle {
         display: inline-block;
+        margin-right: 8px;
         width: 6px;
         height: 6px;
         border-radius: 50%;
         background-color: #ffad11;
-        margin-right: 8px;
       }
 
       .cardText {
         font-size: 16px;
         font-weight: 400;
-        color: #666666;
-        line-height: 30px;
         text-align: left;
+        color: #666;
+        line-height: 30px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           vertical-align: text-top;
         }
       }

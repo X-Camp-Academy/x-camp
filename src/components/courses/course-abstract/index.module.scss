@@ -1,29 +1,30 @@
 @import '@/styles/variables';
 
 .abstract {
-  @media (max-width: 992px) {
+  @media (width <= 992px) {
     flex-direction: column;
   }
 
   .left {
     .title {
-      @include title();
+      @include title;
+
       line-height: 56px;
 
-      @media (max-width: 1140px) {
+      @media (width <= 1140px) {
         font-size: 24px;
         line-height: 40px;
       }
     }
 
     .abstract {
+      margin-top: 30px;
       font-size: 18px;
       font-weight: 500;
       color: #172142;
       line-height: 36px;
-      margin-top: 30px;
 
-      @media (max-width: 1140px) {
+      @media (width <= 1140px) {
         font-size: 16px;
         line-height: 30px;
       }
@@ -40,38 +41,38 @@
       line-height: 36px;
 
       &::before {
-        content: '';
-        box-sizing: border-box;
+        margin-right: 10px;
         width: 12px;
         height: 12px;
-        background: #ffad11;
         border: 2px solid #ffd600;
         border-radius: 50%;
-        margin-right: 10px;
+        background: #ffad11;
+        content: '';
+        box-sizing: border-box;
       }
     }
 
     :global(.ant-descriptions-item-content) {
       display: block;
-      color: #172142;
-      font-size: 18px;
-      line-height: 40px;
       padding-left: 20px;
+      font-size: 18px;
+      color: #172142;
+      line-height: 40px;
     }
   }
 
   .right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 40px;
     width: 420px;
     height: 310px;
-    background: #ffeddf;
     border-radius: 8px;
-    display: flex;
+    background: #ffeddf;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 30px 40px;
 
-    @media (max-width: 576px) {
+    @media (width <= 576px) {
       width: 100%;
     }
 
@@ -90,18 +91,18 @@
     }
 
     .btn {
-      font-size: 24px;
-      font-weight: 500;
-      color: #ffffff;
-      line-height: 36px;
-      width: 270px;
-      height: 64px;
-      background: #d46b14;
-      border-radius: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 270px;
+      height: 64px;
+      border-radius: 12px;
+      font-size: 24px;
+      font-weight: 500;
+      color: #fff;
+      background: #d46b14;
       transition: opacity 0.5s;
+      line-height: 36px;
 
       &:hover {
         opacity: 0.8;

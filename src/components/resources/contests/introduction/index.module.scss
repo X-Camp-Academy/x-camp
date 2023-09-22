@@ -4,26 +4,28 @@
   width: 100%;
 
   .divider {
-    background-color: #ffad11;
-    height: 2px;
     margin: 0;
+    height: 2px;
+    background-color: #ffad11;
   }
 
   .contest {
     padding: 16px 0 64px;
-    @media (max-width: 992px) {
+
+    @media (width <= 992px) {
       padding: 50px 0;
     }
 
-    @media (max-width: 768px) {
-      padding: 20px 0 30px 0;
+    @media (width <= 768px) {
+      padding: 20px 0 30px;
     }
 
     .title {
       @include title('bold');
+
       line-height: 64px;
 
-      @media (max-width: 992px) {
+      @media (width <= 992px) {
         font-size: 36px;
       }
     }
@@ -32,24 +34,24 @@
       display: flex;
       justify-content: space-between;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         flex-direction: column;
       }
 
       .left {
         .description {
+          margin: 32px 0 24px;
           font-size: 18px;
           font-weight: 500;
           color: #172142;
           line-height: 34px;
-          margin: 32px 0 24px 0;
           word-break: break-all;
           word-wrap: break-word;
           hyphens: auto;
 
-          @media (max-width: 992px) {
+          @media (width <= 992px) {
+            margin: 16px 0 12px;
             font-size: 16px;
-            margin: 16px 0 12px 0;
           }
         }
 
@@ -63,16 +65,17 @@
 
       .right {
         padding-left: 36px;
-        @media (max-width: 768px) {
-          padding-left: 0;
-          padding-top: 20px;
+
+        @media (width <= 768px) {
           margin: 0 auto;
+          padding-top: 20px;
+          padding-left: 0;
         }
 
         img {
           height: 33%;
-          background: #ffeddf;
           border-radius: 12px;
+          background: #ffeddf;
         }
       }
     }

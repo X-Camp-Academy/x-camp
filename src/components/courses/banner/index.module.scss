@@ -1,17 +1,18 @@
 @import '@/styles/variables';
 
 .banner {
-  width: 100%;
   padding-bottom: 64px;
-  background-image: url('/image/home/carousel-bg.png');
+  width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url('/image/home/carousel-bg.png');
 
   .content {
     padding-top: 85px;
 
     .title {
       @include title('bold');
+
       line-height: 58px;
     }
 
@@ -30,28 +31,29 @@
       a {
         font-size: 21px;
         font-weight: 600;
+        text-decoration: underline;
         color: #d46b14;
         line-height: 46px;
-        text-decoration: underline;
       }
     }
 
     .rightCol {
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         margin-top: 48px;
       }
+
       .button {
+        padding-left: 36px;
         width: 296px;
         height: 72px;
-        background-color: #fff;
+        border-color: #d46b14;
         border-radius: 12px;
         font-size: 24px;
         font-weight: 600;
-        color: #d46b14;
-        border-color: #d46b14;
-        line-height: 40px;
         text-align: left;
-        padding-left: 36px;
+        color: #d46b14;
+        background-color: #fff;
+        line-height: 40px;
       }
     }
   }

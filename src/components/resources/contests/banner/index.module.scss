@@ -4,38 +4,40 @@
   width: 100%;
   height: 488px;
 
-  @media (max-width: 992px) {
+  @media (width <= 992px) {
     height: 300px;
   }
 
-  @media (max-width: 1400px) {
+  @media (width <= 1400px) {
     margin-top: 100px;
   }
 
   .content {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 
     .left {
       .title {
         @include title('bold');
+
         line-height: 64px;
         margin-bottom: 24px;
 
-        @media (max-width: 992px) {
+        @media (width <= 992px) {
+          margin-bottom: 12px;
           font-size: 32px;
           line-height: 48px;
-          margin-bottom: 12px;
         }
       }
 
       .description {
         @include title('thin');
+
         line-height: 42px;
 
-        @media (max-width: 992px) {
+        @media (width <= 992px) {
           font-size: 20px;
           line-height: 32px;
         }
@@ -46,15 +48,15 @@
       img {
         width: 700px;
 
-        @media (max-width: 1200px) {
+        @media (width <= 1200px) {
           width: 500px;
         }
 
-        @media (max-width: 992px) {
+        @media (width <= 992px) {
           width: 300px;
         }
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           display: none;
         }
       }

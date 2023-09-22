@@ -1,36 +1,36 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .contactUs {
   padding-bottom: 6.35em;
 
   .card {
-    background-color: #f5f5f5;
-    padding: 60px 50px;
-    text-align: center;
-    border-radius: 12px;
-    border: 2px solid #ffad11;
     position: relative;
+    padding: 60px 50px;
+    border: 2px solid #ffad11;
+    border-radius: 12px;
+    text-align: center;
+    background-color: #f5f5f5;
 
     .circleRight {
       position: absolute;
+      top: 0;
+      right: 20px;
       width: 180px;
       height: 90px;
+      border-radius: 0 0 100px 100px;
       background: #ffc24d;
       opacity: 0.28;
-      border-radius: 0 0 100px 100px;
-      right: 20px;
-      top: 0;
     }
 
     .circleLeft {
       position: absolute;
+      bottom: 0;
+      left: 0;
       width: 180px;
       height: 90px;
+      border-radius: 100px 100px 0 0;
       background: #ffc24d;
       opacity: 0.28;
-      border-radius: 100px 100px 0 0;
-      left: 0px;
-      bottom: 0;
     }
 
     .title {
@@ -40,13 +40,13 @@
     .button {
       width: 288px;
       height: 64px;
-      background: #f5f5f5;
+      border: 2px solid #172142;
+      border-radius: 12px;
       font-size: 18px;
       font-weight: 500;
       color: #172142;
+      background: #f5f5f5;
       line-height: 24px;
-      border-radius: 12px;
-      border: 2px solid #172142;
     }
   }
 }

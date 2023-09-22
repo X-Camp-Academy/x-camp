@@ -1,42 +1,44 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .relateResources {
+  margin-bottom: 100px;
+  padding-top: 100px;
   width: 100%;
   background-color: #f5f5f5;
-  padding-top: 100px;
-  margin-bottom: 100px;
 
   .card {
     padding: 56px;
 
     .title {
-      @include title();
+      @include title;
+
       margin-bottom: 42px;
     }
 
     .question {
       @include text(24px, 48px);
-      font-weight: Bold;
+
+      font-weight: bold;
     }
 
     .question::before {
-      content: '';
       display: inline-block;
       margin-right: 15px;
-      border-radius: 50%;
       width: 16px;
       height: 16px;
-      background: #ffad11;
       border: 3px solid #ffd600;
+      border-radius: 50%;
+      background: #ffad11;
+      content: '';
     }
 
     .answer {
-      margin-left: 30px;
-      color: #172142;
-      font-size: 18px;
-      line-height: 48px;
-      font-weight: 600;
       margin-bottom: 25px;
+      margin-left: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 48px;
     }
   }
 }

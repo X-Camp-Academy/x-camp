@@ -1,9 +1,9 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .bannerContainer {
-  width: 100%;
-  padding-bottom: 100px;
   position: relative;
+  padding-bottom: 100px;
+  width: 100%;
 
   .col {
     margin-top: 100px;
@@ -11,22 +11,24 @@
 
   .title {
     @include title('bold');
+
     line-height: 64px;
   }
 
   .paragraph {
     @include title('thin');
+
     font-weight: 500;
     line-height: 42px;
   }
 
   .image {
     position: absolute;
-    width: 300px;
     bottom: -100px;
     left: 150px;
+    width: 300px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       display: none;
     }
   }

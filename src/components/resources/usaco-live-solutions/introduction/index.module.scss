@@ -1,24 +1,25 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .introduction {
-  width: 100%;
   padding-top: 100px;
+  width: 100%;
 
   .description {
     @include text(18px, 34px);
-    font-weight: 500;
+
     margin-bottom: 100px;
+    font-weight: 500;
   }
 
   .MoreUSACO::before {
-    content: '';
     display: inline-block;
     margin-right: 15px;
-    border-radius: 50%;
     width: 16px;
     height: 16px;
-    background: #ffad11;
     border: 3px solid #ffd600;
+    border-radius: 50%;
+    background: #ffad11;
+    content: '';
   }
 
   :global(.ant-collapse) {
@@ -40,13 +41,13 @@
   }
 
   .changeBtn {
-    width: 36px;
-    height: 36px;
-    background: #ffad11;
-    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    background: #ffad11;
 
     .icon {
       font-size: 24px;
@@ -55,12 +56,12 @@
   }
 
   .title {
-    @include title();
+    @include title;
   }
 
   .videoPane {
-    width: 100%;
     justify-content: space-between;
+    width: 100%;
     flex-wrap: wrap;
 
     .videoPanel {
@@ -80,12 +81,12 @@
       }
 
       .icon {
-        color: #666666;
+        color: #666;
       }
 
       .videoDate {
-        color: #666666;
         font-size: 18px;
+        color: #666;
       }
     }
   }

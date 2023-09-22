@@ -6,39 +6,40 @@
   }
 
   .title {
-    @include title();
+    @include title;
+
     line-height: 64px;
     margin-bottom: 10px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       font-size: 32px;
       line-height: 48px;
     }
   }
 
   .description {
+    margin-bottom: 12px;
     font-size: 18px;
     font-weight: 500;
     color: #172142;
     line-height: 34px;
-    margin-bottom: 12px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       font-size: 16px;
       line-height: 24px;
     }
   }
 
   .changeBtn {
-    width: 48px;
-    height: 48px;
-    background: #ffad11;
-    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    background: #ffad11;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       width: 36px;
       height: 36px;
       border-radius: 8px;
@@ -48,7 +49,7 @@
       font-size: 20px;
       color: #fff;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         font-size: 18px;
       }
     }

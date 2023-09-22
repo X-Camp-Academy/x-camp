@@ -1,8 +1,8 @@
 .courses {
-  width: 100%;
   position: relative;
   top: 72px;
   margin: 0 auto;
+  width: 100%;
 
   .classContainer {
     padding-top: 50px;
@@ -13,7 +13,8 @@
 
     :global(.ant-segmented-group) {
       padding: 8px 36px;
-      @media (max-width: 768px) {
+
+      @media (width <= 768px) {
         padding: 0;
       }
     }
@@ -21,35 +22,39 @@
     :global(.ant-affix) {
       z-index: 1000;
     }
+
     :global(.ant-segmented-item-label) {
       font-size: 18px;
       font-weight: 500;
       line-height: 36px;
-      @media (max-width: 768px) {
+
+      @media (width <= 768px) {
         font-size: 14px;
       }
     }
+
     :global(.ant-segmented-item-selected) {
       color: #fff;
       background-color: #ffad11;
     }
 
     .form {
-      margin-top: 64px;
       display: flex;
       justify-content: end;
-      padding-left: 12px;
+      margin-top: 64px;
       padding-right: 12px;
+      padding-left: 12px;
     }
 
     .title {
+      margin-top: -48px;
+      margin-bottom: 56px;
       font-size: 42px;
       font-weight: 600;
       color: #172142;
       line-height: 56px;
-      margin-top: -48px;
-      margin-bottom: 56px;
-      @media (max-width: 1200px) {
+
+      @media (width <= 1200px) {
         margin-top: 48px;
       }
     }
@@ -58,6 +63,7 @@
       width: 100%;
       text-align: center;
     }
+
     :global(.ant-collapse-expand-icon) {
       height: 60px !important;
       color: #d46b14;
@@ -66,9 +72,11 @@
     :global(.ant-collapse-expand-icon > span) {
       font-size: 24px !important;
     }
+
     :global(.ant-collapse-header) {
       align-items: center;
     }
+
     :global(.ant-collapse-header),
     :global(.ant-collapse-content-box) {
       padding: 12px 0;
@@ -77,14 +85,17 @@
     .paneBox {
       display: flex;
       justify-content: space-between;
+
       .panelTitle {
         font-size: 36px;
         font-weight: 600;
         color: #172a88;
-        @media (max-width: 768px) {
+
+        @media (width <= 768px) {
           font-size: 24px;
         }
       }
+
       .courseNum {
         font-size: 18px;
         font-weight: 500;

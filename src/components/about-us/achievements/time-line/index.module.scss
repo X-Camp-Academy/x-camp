@@ -1,76 +1,79 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
 
 .timeLineContainer {
   margin-top: 100px;
+
   .timeLine {
     .title {
       @include title('default');
     }
 
     .listContainer {
-      padding: 40px;
       margin-right: 0;
+      padding: 40px;
       background-position: right bottom;
 
       .timeListItem {
         position: relative;
+
         .timeListTitle {
           @include title('thin');
+
           line-height: 48px;
           position: relative;
           left: -20px;
         }
 
         .timeListTitle::before {
-          content: '';
-          display: inline-block;
-          width: 15px;
-          height: 15px;
-          border-radius: 50%;
-          background-color: #ffad11;
           position: relative;
           left: -20px;
+          display: inline-block;
           margin-right: 5px;
+          width: 15px;
+          height: 15px;
           border: 3px solid #ffd600;
+          border-radius: 50%;
+          background-color: #ffad11;
+          content: '';
         }
       }
 
       .timeListDetail {
         border: none;
-        color: #172142;
         font-size: 21px;
+        color: #172142;
         line-height: 48px;
       }
     }
 
     .intro {
+      margin-top: 30px;
       font-size: 21px;
       font-weight: 500;
       color: #172142;
       line-height: 40px;
-      margin-top: 30px;
     }
 
     .download {
       display: flex;
       align-items: center;
-      margin-bottom: 100px;
       margin-top: 50px;
+      margin-bottom: 100px;
       cursor: pointer;
 
       .downloadText {
+        margin-left: 8px;
         font-size: 21px;
         font-weight: 500;
         color: #d46b14;
         line-height: 40px;
-        margin-left: 8px;
       }
     }
 
     .row {
-      @media (max-width: 768px) {
-        padding-left: 0 !important;
+      @media (width <= 768px) {
         padding-right: 0 !important;
+        padding-left: 0 !important;
       }
 
       .col {
@@ -79,10 +82,10 @@
       }
 
       .cardItem {
-        border-radius: 10px;
-        padding-bottom: 6px;
-        text-align: center;
         margin-top: 64px;
+        padding-bottom: 6px;
+        border-radius: 10px;
+        text-align: center;
 
         .title {
           font-size: 72px;

@@ -1,12 +1,12 @@
 .mask {
   position: fixed;
-  inset: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f5ff;
   z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f5ff;
   transition: all 0.3s;
+  inset: 0;
 }
 
 .hide {

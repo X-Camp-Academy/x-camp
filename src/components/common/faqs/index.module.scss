@@ -1,25 +1,26 @@
 @import '@/styles/variables';
 
 .campFAQS {
-  padding: 50px 0;
   margin-bottom: 50px;
+  padding: 50px 0;
   width: 100%;
 
   .title {
     @include title('bold');
+
     line-height: 64px;
     text-align: center;
   }
 
   .cardContent {
-    margin-top: 50px;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
 
     .qaCard {
-      width: 70%;
       margin: 10px 0;
+      width: 70%;
     }
   }
 }
