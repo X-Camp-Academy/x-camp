@@ -1,6 +1,6 @@
-import React from 'react';
-import classNames from 'classnames/bind';
 import { useLang } from '@/hoc/with-intl/define';
+import classNames from 'classnames/bind';
+import React from 'react';
 import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);

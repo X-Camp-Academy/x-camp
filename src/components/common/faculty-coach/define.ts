@@ -3,5 +3,5 @@ export enum LevelTypes {
   USACOBronzeLevel = 'USACO Bronze Level',
   USACOSilverLevel = 'USACO Silver Level',
   GrandmasterClassLevel = 'Grandmaster Class Level',
-  All = 'All',
+  All = 'All'
 }

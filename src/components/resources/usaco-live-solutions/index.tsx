@@ -1,18 +1,15 @@
 'use client';
+import { GetResourcesLiveSolution } from '@/apis/strapi-client/define';
+import { useGetResourcesLiveSolution, useGetReviews } from '@/apis/strapi-client/strapi';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import Reviews from '@/components/common/reviews';
 import { Layout } from 'antd';
+import { usePathname } from 'next/navigation';
 import React from 'react';
-import styles from './index.module.scss';
 import Banner from './banner';
+import styles from './index.module.scss';
 import UsacoIntro from './introduction';
 import RelateResources from './relate-resources';
-import Reviews from '@/components/common/reviews';
-import {
-  useGetResourcesLiveSolution,
-  useGetReviews,
-} from '@/apis/strapi-client/strapi';
-import { usePathname } from 'next/navigation';
-import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
-import { GetResourcesLiveSolution } from '@/apis/strapi-client/define';
 
 const { Content } = Layout;
 
@@ -21,7 +18,7 @@ const UsacoLiveSolutions: React.FC = () => {
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname]
   });
   const { data: resourcesLiveSolution } = useGetResourcesLiveSolution();
 
@@ -41,10 +38,7 @@ const UsacoLiveSolutions: React.FC = () => {
         <Banner />
         <UsacoIntro data={resort(resourcesLiveSolution)} />
         <RelateResources />
-        <Reviews
-          className={styles.comments}
-          reviewsData={reviewsData}
-        />
+        <Reviews className={styles.comments} reviewsData={reviewsData} />
       </Content>
     </Layout>
   );

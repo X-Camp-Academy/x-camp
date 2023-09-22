@@ -1,11 +1,11 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 .publicCalendarContainer {
   width: 100%;
   padding: 100px 0px;
   .publicCalendar {
     .title {
       margin: 0;
-      @include title("default");
+      @include title('default');
       text-align: center;
     }
     .titleBg {
@@ -14,7 +14,7 @@
       display: block;
       width: 160px;
       height: 20px;
-      background-image: url("/image/home/home-title-bg-1.png");
+      background-image: url('/image/home/home-title-bg-1.png');
       background-repeat: no-repeat;
       background-size: cover;
       @media (max-width: 768px) {

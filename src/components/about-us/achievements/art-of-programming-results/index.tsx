@@ -1,9 +1,9 @@
-import React from 'react';
-import { Card, Typography, List } from 'antd';
-import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult } from '@/utils/public';
 import { GetProjectsDemo } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { Card, List, Typography } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -17,38 +17,25 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
   const listData = [
     {
       title: t('Art.Contestants'),
-      content: t('Art.Contestants.Desc'),
+      content: t('Art.Contestants.Desc')
     },
     {
       title: t('Art.Rules'),
-      content: t('Art.Rules.Desc'),
-    },
+      content: t('Art.Rules.Desc')
+    }
   ];
   return (
     <div className={styles.ArtOfProgrammingResultsContainer}>
       <div className={`${styles.ArtOfProgrammingResults} container`}>
-        <Title className={styles.firstTitle}>
-          {t('ArtProgrammingResults')}
-        </Title>
-        <Text className={styles.intro}>
-          {t('ArtProgrammingResults.Desc')}
-        </Text>
+        <Title className={styles.firstTitle}>{t('ArtProgrammingResults')}</Title>
+        <Text className={styles.intro}>{t('ArtProgrammingResults.Desc')}</Text>
 
         <List
           dataSource={listData}
           split={false}
           renderItem={(item) => (
             <List.Item className={styles.timeListItem}>
-              <List.Item.Meta
-                title={
-                  <Text className={styles.timeListTitle}>{item.title}</Text>
-                }
-                description={
-                  <Paragraph className={styles.timeListDetail}>
-                    {item.content}
-                  </Paragraph>
-                }
-              />
+              <List.Item.Meta title={<Text className={styles.timeListTitle}>{item.title}</Text>} description={<Paragraph className={styles.timeListDetail}>{item.content}</Paragraph>} />
             </List.Item>
           )}
         />
@@ -57,13 +44,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
           <Title className={styles.title}>{t('ProjectsDemo')}</Title>
           {data?.map((v, index) => (
             <React.Fragment key={index}>
-              <Title className={styles.subTitle}>
-                {getTransResult(
-                  lang,
-                  v?.[0]?.attributes?.categoryZh,
-                  v?.[0]?.attributes?.categoryEn
-                )}
-              </Title>
+              <Title className={styles.subTitle}>{getTransResult(lang, v?.[0]?.attributes?.categoryZh, v?.[0]?.attributes?.categoryEn)}</Title>
               <List
                 grid={{
                   gutter: 16,
@@ -72,24 +53,15 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                   md: 1,
                   lg: 3,
                   xl: 3,
-                  xxl: 3,
+                  xxl: 3
                 }}
                 dataSource={v}
                 className={styles.videoList}
                 renderItem={(g) => (
                   <List.Item>
                     <Card className={styles.videoItem}>
-                      <video
-                        controls
-                        src={g?.attributes?.url?.data?.attributes?.url}
-                      />
-                      <div className={styles.videoTitle}>
-                        {getTransResult(
-                          lang,
-                          g?.attributes?.titleZh,
-                          g?.attributes?.titleEn
-                        )}
-                      </div>
+                      <video controls src={g?.attributes?.url?.data?.attributes?.url} />
+                      <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
                     </Card>
                   </List.Item>
                 )}
@@ -101,13 +73,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
           <Title className={styles.title}>{'Game Design'}</Title>
           {data?.map((v, index) => (
             <React.Fragment key={index}>
-              <Title className={styles.subTitle}>
-                {getTransResult(
-                  lang,
-                  v?.[0]?.attributes?.categoryZh,
-                  v?.[0]?.attributes?.categoryEn
-                )}
-              </Title>
+              <Title className={styles.subTitle}>{getTransResult(lang, v?.[0]?.attributes?.categoryZh, v?.[0]?.attributes?.categoryEn)}</Title>
               <List
                 grid={{
                   gutter: 16,
@@ -116,24 +82,15 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                   md: 1,
                   lg: 3,
                   xl: 3,
-                  xxl: 3,
+                  xxl: 3
                 }}
                 dataSource={v}
                 className={styles.videoList}
                 renderItem={(g) => (
                   <List.Item>
                     <Card className={styles.videoItem}>
-                      <video
-                        controls
-                        src={g?.attributes?.url?.data?.attributes?.url}
-                      />
-                      <div className={styles.videoTitle}>
-                        {getTransResult(
-                          lang,
-                          g?.attributes?.titleZh,
-                          g?.attributes?.titleEn
-                        )}
-                      </div>
+                      <video controls src={g?.attributes?.url?.data?.attributes?.url} />
+                      <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
                     </Card>
                   </List.Item>
                 )}

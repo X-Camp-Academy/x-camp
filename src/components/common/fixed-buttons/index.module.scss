@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .buttonContainer {
   display: flex;
@@ -37,7 +37,7 @@
   }
 
   .title {
-    @include title("bold");
+    @include title('bold');
     line-height: 64px;
     text-align: center;
   }

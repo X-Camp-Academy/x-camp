@@ -1,13 +1,12 @@
 'use client';
-import React from 'react';
-import Link from 'next/link';
-import { Space, Row, Col, Image, Typography } from 'antd';
-import { HistoryOutlined, MailOutlined, PhoneOutlined, CommentOutlined } from '@ant-design/icons';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
+import { CommentOutlined, HistoryOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import { Col, Image, Row, Space, Typography } from 'antd';
+import Link from 'next/link';
+import React from 'react';
 import CopyRightIcons from '../copy-right-icons';
 import styles from './CopyRight.module.scss';
-
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -20,50 +19,42 @@ const CopyRight: React.FC = () => {
         <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={24} lg={12} order={isMobile ? 2 : 1}>
             <Space direction="vertical" className={styles.spaceLeft} size={48}>
-              {
-                isMobile ?
-                  <>
-                    <div className={styles.bar} />
-                    <CopyRightIcons />
-                  </>
-                  :
-                  <Space direction="vertical">
-                    <Image
-                      alt="logo"
-                      src="/logo/logo.png"
-                      preview={false}
-                      className={styles.image}
-                    />
-                    <Image
-                      alt="slogan"
-                      preview={false}
-                      src="/image/home/footer-slogan.png"
-                      width={220}
-                      height={24}
-                    />
-                  </Space>
-              }
+              {isMobile ? (
+                <>
+                  <div className={styles.bar} />
+                  <CopyRightIcons />
+                </>
+              ) : (
+                <Space direction="vertical">
+                  <Image alt="logo" src="/logo/logo.png" preview={false} className={styles.image} />
+                  <Image alt="slogan" preview={false} src="/image/home/footer-slogan.png" width={220} height={24} />
+                </Space>
+              )}
 
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
                   <PhoneOutlined />
-                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t('Tel')}+1 - 510-708-8390</Text>
+                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>
+                    {t('Tel')}+1 - 510-708-8390
+                  </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <CommentOutlined />
-                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>{t('Text')}408-634-0218</Text>
+                  <Text className={styles.text} style={{ textDecoration: 'underline' }}>
+                    {t('Text')}408-634-0218
+                  </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <MailOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
-                    <a href="mailto:info@x-camp.academy" style={{ color: 'inherit' }}>Email: info@x-camp.academy</a>
+                    <a href="mailto:info@x-camp.academy" style={{ color: 'inherit' }}>
+                      Email: info@x-camp.academy
+                    </a>
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <HistoryOutlined />
-                  <Text className={styles.text}>
-                    Office Hour: Tue - Sun (Monday Off)
-                  </Text>
+                  <Text className={styles.text}>Office Hour: Tue - Sun (Monday Off)</Text>
                 </Paragraph>
               </Space>
             </Space>
@@ -101,8 +92,7 @@ const CopyRight: React.FC = () => {
           </Col>
         </Row>
 
-        {
-          !isMobile &&
+        {!isMobile && (
           <>
             <div className={styles.bar} />
             <div className={styles.bottomContainer}>
@@ -110,12 +100,9 @@ const CopyRight: React.FC = () => {
               <CopyRightIcons />
             </div>
           </>
-        }
+        )}
       </div>
-      {
-        isMobile &&
-        <div className={styles.mobileCopyRight}>Copyright @ 2023 X-Camp</div>
-      }
+      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2023 X-Camp</div>}
     </div>
   );
 };

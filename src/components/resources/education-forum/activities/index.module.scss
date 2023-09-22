@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .content {
   width: 100%;
@@ -88,7 +88,7 @@
         }
 
         .title {
-          @include title("thin");
+          @include title('thin');
           line-height: 32px;
           text-overflow: ellipsis;
           width: 100%;

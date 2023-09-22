@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .campIntro {
   padding: 50px 0;
@@ -15,13 +15,13 @@
 
   .content {
     .question {
-      @include title("thin");
+      @include title('thin');
       line-height: 48px;
     }
 
     .question::before {
       box-sizing: border-box;
-      content: "";
+      content: '';
       display: inline-block;
       margin-right: 15px;
       width: 12px;
@@ -41,7 +41,7 @@
     }
 
     .usacoTitle {
-      @include title("bold");
+      @include title('bold');
       color: #d46b14;
       line-height: 64px;
       text-align: center;

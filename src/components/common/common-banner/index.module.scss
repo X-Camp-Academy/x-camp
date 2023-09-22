@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 .bannerContainer {
   position: relative;
   .image {
@@ -15,7 +15,7 @@
       top: 32px;
     }
     .title {
-      @include title("banner");
+      @include title('banner');
       margin-bottom: 21px;
       @media (max-width: 768px) {
         font-size: 32px;

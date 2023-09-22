@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .description {
   font-size: 18px;
@@ -9,12 +9,12 @@
 }
 
 .title {
-  @include title("thin");
+  @include title('thin');
   line-height: 40px;
   margin-bottom: 10px;
 
   &::before {
-    content: "";
+    content: '';
     display: inline-block;
     width: 10px;
     height: 10px;

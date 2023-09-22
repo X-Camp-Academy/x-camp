@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .banner {
   width: 100%;
@@ -20,7 +20,7 @@
 
     .left {
       .title {
-        @include title("bold");
+        @include title('bold');
         line-height: 64px;
         margin-bottom: 24px;
 
@@ -32,7 +32,7 @@
       }
 
       .description {
-        @include title("thin");
+        @include title('thin');
         line-height: 42px;
 
         @media (max-width: 992px) {

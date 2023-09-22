@@ -78,7 +78,9 @@
 .dropdown {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s, visibility 0s 0.3s;
+  transition:
+    opacity 0.5s,
+    visibility 0s 0.3s;
 
   &:hover {
     visibility: visible;

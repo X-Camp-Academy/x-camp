@@ -1,29 +1,16 @@
-import { useEffect } from 'react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
+import 'dayjs/locale/zh-cn';
 import isBetween from 'dayjs/plugin/isBetween';
+import { useEffect } from 'react';
 
 const WEEKDAY_EN = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
 const WEEKDAY_ZH = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
-const MONTH_EN = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+const MONTH_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 enum ILocal {
-  zh  = 'zh-cn',
+  zh = 'zh-cn',
   en = 'en'
 }
 
@@ -36,7 +23,6 @@ const FORMAT_MM_DD = 'MM月DD日';
 dayjs.extend(isBetween);
 
 const useDayJs = (lang?: string) => {
-
   useEffect(() => {
     const locale = lang === 'zh' ? ILocal.zh : ILocal.en;
     dayjs.locale(locale);
@@ -49,7 +35,7 @@ const useDayJs = (lang?: string) => {
   const getMonth = (date: string) => {
     if (!date) return '';
     const month = dayjs(date).month();
-    return lang === 'zh' ? `${month + 1}月` :  MONTH_EN[month];
+    return lang === 'zh' ? `${month + 1}月` : MONTH_EN[month];
   };
 
   /**
@@ -82,8 +68,7 @@ const useDayJs = (lang?: string) => {
    * @param date
    */
   const formatYMDTime = (date: string | undefined) => {
-    return lang === 'zh' ? dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_ZH) :
-      `${MONTH_EN[dayjs(date).month()]}${dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_EN)}`;
+    return lang === 'zh' ? dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_ZH) : `${MONTH_EN[dayjs(date).month()]}${dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_EN)}`;
   };
 
   /**

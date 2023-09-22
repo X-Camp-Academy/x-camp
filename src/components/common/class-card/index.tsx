@@ -1,6 +1,5 @@
-import React from 'react';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
-import { Card, Space, Button, Typography } from 'antd';
+import { Button, Card, Space, Typography } from 'antd';
 import ColorfulCard, { ColorfulCardProps } from '../colorful-card';
 import styles from './index.module.scss';
 
@@ -17,19 +16,14 @@ type ClassCardProps = Omit<ColorfulCardProps, 'children'> & {
 
 const ClassCard = ({ index, title, href, list, time, bilingual }: ClassCardProps) => {
   return (
-    <ColorfulCard
-      border={'bottom'}
-      index={index}
-      animate={false}
-      className={styles.colorfulCard}
-    >
+    <ColorfulCard border={'bottom'} index={index} animate={false} className={styles.colorfulCard}>
       <Card className={styles.card}>
         <Space
           direction="vertical"
           style={{
             width: '100%',
             height: '100%',
-            justifyContent: 'space-between',
+            justifyContent: 'space-between'
           }}
         >
           <Title className={styles.cardTitle}>{title}</Title>
@@ -45,19 +39,10 @@ const ClassCard = ({ index, title, href, list, time, bilingual }: ClassCardProps
               <ClockCircleOutlined />
               <span>{time}</span>
             </Space>
-            <Button
-              href={href}
-              icon={<RightCircleOutlined />}
-              className={styles.link}
-              type="link"
-            />
+            <Button href={href} icon={<RightCircleOutlined />} className={styles.link} type="link" />
           </Space>
         </Space>
-        {
-          bilingual && <div className={styles.bilingual}>
-            Bilingual
-          </div>
-        }
+        {bilingual && <div className={styles.bilingual}>Bilingual</div>}
       </Card>
     </ColorfulCard>
   );

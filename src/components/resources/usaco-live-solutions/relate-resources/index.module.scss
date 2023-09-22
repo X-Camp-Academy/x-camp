@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .relateResources {
   width: 100%;
@@ -20,7 +20,7 @@
     }
 
     .question::before {
-      content: "";
+      content: '';
       display: inline-block;
       margin-right: 15px;
       border-radius: 50%;

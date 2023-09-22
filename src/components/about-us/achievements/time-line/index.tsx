@@ -1,33 +1,21 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
-import {
-  Space,
-  Image,
-  Typography,
-  List,
-  message
-} from 'antd';
-import {
-  setTwoToneColor,
-} from '@ant-design/icons';
+import { useGetAchievementsTimeLine } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
-import {
-  useGetAchievementsTimeLine,
-} from '@/apis/strapi-client/strapi';
+import { setTwoToneColor } from '@ant-design/icons';
+import { Image, List, Space, Typography, message } from 'antd';
+import dynamic from 'next/dynamic';
+import React from 'react';
 import styles from './index.module.scss';
 
-const XStarMdViewer = dynamic(
-  () => import('x-star-editor').then((v) => v.XStarMdViewer),
-  { ssr: false }
-);
+const XStarMdViewer = dynamic(() => import('x-star-editor').then((v) => v.XStarMdViewer), {
+  ssr: false
+});
 const { Title, Text } = Typography;
 
 const TimeLine: React.FC = () => {
   const { lang, format: t } = useLang();
   setTwoToneColor('#D46B14');
   const { data: timeLine } = useGetAchievementsTimeLine();
-
 
   return (
     <div className={`${styles.timeLineContainer} container`}>
@@ -43,25 +31,8 @@ const TimeLine: React.FC = () => {
             renderItem={(item) => (
               <List.Item className={styles.timeListItem}>
                 <List.Item.Meta
-                  title={
-                    <Text className={styles.timeListTitle}>
-                      {getTransResult(
-                        lang,
-                        item?.attributes?.titleZh,
-                        item?.attributes?.titleEn
-                      )}
-                    </Text>
-                  }
-                  description={
-                    <XStarMdViewer
-                      className={styles.timeListDetail}
-                      value={getTransResult(
-                        lang,
-                        item?.attributes?.descriptionZh,
-                        item?.attributes?.descriptionEn
-                      )}
-                    />
-                  }
+                  title={<Text className={styles.timeListTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>}
+                  description={<XStarMdViewer className={styles.timeListDetail} value={getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)} />}
                 />
               </List.Item>
             )}
@@ -73,18 +44,16 @@ const TimeLine: React.FC = () => {
         <div
           className={styles.download}
           onClick={() => {
-            message.info(getTransResult(
-              lang,
-              '点击页面下方subscribe newsletter ，获取X-Camp更多信息，领取USACO大礼包',
-              "Click the 'Subscribe Newsletter' at the bottom of the page to receive more information from X-Camp and get the USACO gift package."
-            ));
+            message.info(
+              getTransResult(
+                lang,
+                '点击页面下方subscribe newsletter ，获取X-Camp更多信息，领取USACO大礼包',
+                "Click the 'Subscribe Newsletter' at the bottom of the page to receive more information from X-Camp and get the USACO gift package."
+              )
+            );
           }}
         >
-          <Image
-            alt="download"
-            src="/image/about-us/download-outlined.png"
-            preview={false}
-          />
+          <Image alt="download" src="/image/about-us/download-outlined.png" preview={false} />
           <Text className={styles.downloadText} underline>
             {t('USACO.DownloadPackage')}
           </Text>

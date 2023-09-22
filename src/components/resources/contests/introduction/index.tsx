@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { Divider } from 'antd';
-import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult } from '@/utils/public';
 import { GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { Divider } from 'antd';
+import { useEffect } from 'react';
 import styles from './index.module.scss';
 
 interface Props {
@@ -21,7 +21,7 @@ const Introduction = ({ data }: Props) => {
       if (dom) {
         dom.scrollIntoView({
           behavior: 'smooth',
-          block: 'start',
+          block: 'start'
         });
       }
     };
@@ -40,35 +40,16 @@ const Introduction = ({ data }: Props) => {
         {data?.map((v) => (
           <div key={v?.id} id={`contest-${v?.id}`}>
             <div className={styles.contest}>
-              <div className={styles.title}>
-                {getTransResult(
-                  lang,
-                  v?.attributes?.titleZh,
-                  v?.attributes?.titleEn
-                )}
-              </div>
+              <div className={styles.title}>{getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}</div>
               <div className={styles.intro}>
                 <div className={styles.left}>
-                  <div className={styles.description}>
-                    {getTransResult(
-                      lang,
-                      v?.attributes?.descriptionZh,
-                      v?.attributes?.descriptionEn
-                    )}
-                  </div>
+                  <div className={styles.description}>{getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}</div>
                   <a href={v?.attributes?.link} className={styles.link}>
                     {v?.attributes?.link}
                   </a>
                 </div>
                 <div className={styles.right}>
-                  <img
-                    src={getTransResult(
-                      lang,
-                      v?.attributes?.contestImgZh?.data?.attributes?.url,
-                      v?.attributes?.contestImgEn?.data?.attributes?.url
-                    )}
-                    alt=""
-                  />
+                  <img src={getTransResult(lang, v?.attributes?.contestImgZh?.data?.attributes?.url, v?.attributes?.contestImgEn?.data?.attributes?.url)} alt="" />
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .referralProgramWorkContainer {
   margin-bottom: 100px;
@@ -7,7 +7,7 @@
     padding: 50px;
 
     .title {
-      @include title("default");
+      @include title('default');
       line-height: 48px;
     }
 

@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .dropdown {
   position: fixed;
@@ -54,7 +54,7 @@
         width: 210px;
       }
       .title {
-        @include title("normal");
+        @include title('normal');
       }
 
       :global(.ant-space-item) {
@@ -62,7 +62,7 @@
       }
 
       .btn {
-        @include button("nav");
+        @include button('nav');
       }
     }
 
@@ -78,7 +78,7 @@
           font-weight: bold;
 
           &::before {
-            content: "";
+            content: '';
             position: absolute;
             left: 12px;
             top: 5px;
@@ -98,7 +98,7 @@
             font-weight: 800;
 
             &::before {
-              content: "";
+              content: '';
               position: absolute;
               left: 12px;
               top: 5px;

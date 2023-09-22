@@ -1,11 +1,11 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .banner {
   width: 100%;
   position: relative;
   overflow: hidden;
 
-  .paragraph{
+  .paragraph {
     @include text(21px, 40px, #fff);
     font-weight: 500;
   }
@@ -30,7 +30,6 @@
       font-size: 16px;
       @include flex(center);
     }
-
   }
 
   .dateTime {

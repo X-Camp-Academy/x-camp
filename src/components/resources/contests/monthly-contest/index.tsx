@@ -1,6 +1,5 @@
-import React from 'react';
-import ContestCard from './contest-card';
 import { ContestsByMonthInterface } from '../define';
+import ContestCard from './contest-card';
 import styles from './index.module.scss';
 
 interface Props {

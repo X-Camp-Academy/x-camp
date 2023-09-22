@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .WhyWorkWithUsContainer {
   margin-top: 40px;
@@ -16,7 +16,7 @@
         text-align: center;
 
         .title {
-          @include title("bold");
+          @include title('bold');
           line-height: 64px;
         }
 

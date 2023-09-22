@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .wrapper {
   :global(.ant-picker-panel .ant-picker-body) {
@@ -15,10 +15,15 @@
     min-width: 38px;
     border-radius: 50%;
   }
-  :global(.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before) {
+  :global(
+      .ant-picker-cell-in-view.ant-picker-cell-today
+        .ant-picker-cell-inner::before
+    ) {
     border-radius: 50%;
   }
-  :global(.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner) {
+  :global(
+      .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner
+    ) {
     background: $primary-color;
   }
 }
@@ -46,5 +51,3 @@
     }
   }
 }
-
-

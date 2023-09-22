@@ -1,7 +1,7 @@
-import React from 'react';
-import { Space, Typography, Card } from 'antd';
 import ColorfulCard from '@/components/common/colorful-card';
 import { useLang } from '@/hoc/with-intl/define';
+import { Card, Space, Typography } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
@@ -15,12 +15,8 @@ const WhyWorkWithUs: React.FC = () => {
           <Card className={styles.card}>
             <Space direction="vertical" className={styles.cardContent}>
               <Title className={styles.title}>{t('WhyWorkWithUs')}</Title>
-              <Paragraph className={styles.description}>
-                {t('WhyWorkWithUs.Desc1')}
-              </Paragraph>
-              <Paragraph className={styles.description}>
-                {t('WhyWorkWithUs.Desc2')}
-              </Paragraph>
+              <Paragraph className={styles.description}>{t('WhyWorkWithUs.Desc1')}</Paragraph>
+              <Paragraph className={styles.description}>{t('WhyWorkWithUs.Desc2')}</Paragraph>
             </Space>
           </Card>
         </ColorfulCard>

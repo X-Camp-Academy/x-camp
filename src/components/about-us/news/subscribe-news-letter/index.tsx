@@ -1,10 +1,10 @@
 'use client';
-import React from 'react';
-import { Space, Typography, Button, Input, Form } from 'antd';
-import { useLang } from '@/hoc/with-intl/define';
-import ColorfulCard from '@/components/common/colorful-card';
-import { useSubscribeNewsletter } from '@/apis/send-email-client/sendEmail';
 import { subscribeNewsletterRequest } from '@/apis/send-email-client/define';
+import { useSubscribeNewsletter } from '@/apis/send-email-client/sendEmail';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { Button, Form, Input, Space, Typography } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
@@ -35,19 +35,15 @@ const SubscribeNewsletter: React.FC = () => {
                 { type: 'email' },
                 {
                   required: true,
-                  message: t('Email.Required'),
-                },
+                  message: t('Email.Required')
+                }
               ]}
             >
               <Input type="email" placeholder="E-mail*" className={styles.formSelect} />
             </Form.Item>
 
             <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className={styles.submit}
-              >
+              <Button type="primary" htmlType="submit" className={styles.submit}>
                 {t('SubscribeNewsletter')}
               </Button>
             </Form.Item>

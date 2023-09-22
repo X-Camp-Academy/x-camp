@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
-import styles from './index.module.scss';
-import classNames from 'classnames/bind';
-import { Col, Row, Space } from 'antd';
-import { XStarMenuItemType } from '../..';
 import { useScroll } from 'ahooks';
+import { Col, Row, Space } from 'antd';
+import classNames from 'classnames/bind';
+import React, { useMemo } from 'react';
+import { XStarMenuItemType } from '../..';
+import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -35,10 +35,7 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
     <div
       className={cx(className, styles.dropdown)}
       style={{
-        boxShadow:
-          scroll?.top === 0
-            ? '0px 9px 20px -4px #D8D8D8'
-            : '0px 9px 20px -4px #D8D8D8, 0px 9px 25px -4px #D8D8D8',
+        boxShadow: scroll?.top === 0 ? '0px 9px 20px -4px #D8D8D8' : '0px 9px 20px -4px #D8D8D8, 0px 9px 25px -4px #D8D8D8'
       }}
     >
       <Space className={cx('container', styles.dropdownContainer)}>
@@ -56,11 +53,7 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
           {dividedItems?.map((row, rowIndex) => (
             <Row key={rowIndex} gutter={divideLength * 16}>
               {row?.map((item, colIndex) => (
-                <Col
-                  key={colIndex}
-                  span={24 / divideLength}
-                  className={styles.item}
-                >
+                <Col key={colIndex} span={24 / divideLength} className={styles.item}>
                   {item}
                 </Col>
               ))}
@@ -75,9 +68,7 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
             }}
           >
             <div className={styles.title}>{dropdown?.right?.title}</div>
-            <div className={styles.description}>
-              {dropdown?.right?.description}
-            </div>
+            <div className={styles.description}>{dropdown?.right?.description}</div>
           </div>
         )}
       </Space>

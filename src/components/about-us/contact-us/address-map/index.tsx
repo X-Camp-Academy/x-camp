@@ -1,7 +1,7 @@
 'use client';
-import React from 'react';
-import { Row, Col } from 'antd';
 import { useMobile } from '@/utils';
+import { Col, Row } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const AddressMap: React.FC = () => {
@@ -10,12 +10,7 @@ const AddressMap: React.FC = () => {
   return (
     <div className={`${styles.addressMapContent} container`}>
       <Row>
-        <Col
-          xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 24 }}
-          lg={{ span: 24 }}
-        >
+        <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
           <iframe
             title="Google Maps"
             aria-label="Google Maps"

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Button, Descriptions, Modal, Space, Typography } from 'antd';
-import dayjs from 'dayjs';
+import { GetClasses } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
-import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
-import { GetClasses } from '@/apis/strapi-client/define';
+import { Button, Descriptions, Modal, Space, Typography } from 'antd';
+import dayjs from 'dayjs';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 
 const { Paragraph } = Typography;
@@ -32,15 +32,13 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
   startDate,
   registerLink,
   isBundle,
-  bundleRegisterLink,
+  bundleRegisterLink
 }) => {
   const { format: t, lang } = useLang();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-
   const classesData = classes?.data?.map((classItem) => {
-    const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } =
-      classItem?.attributes;
+    const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } = classItem?.attributes;
     const { utcTime: utcStartDateTime } = formatTimezone(startDateTime);
     const { utcTime: utcEndDateTime, timezone } = formatTimezone(endDateTime);
     return {
@@ -48,7 +46,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
       isFull,
       startTime: timeSuffix + ' ' + utcStartDateTime?.format('hh:mm a'),
       endTime: utcEndDateTime?.format('hh:mm a') + `（${timezone}）`,
-      location,
+      location
     };
   });
 
@@ -61,8 +59,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
   const handlerSighUp = (startDate: string) => {
     if (judgeInWeek(startDate) && registerLink) {
       isBundle ? window.open(bundleRegisterLink) : window.open(registerLink);
-    }
-    else {
+    } else {
       setIsModalOpen(true);
     }
   };
@@ -73,23 +70,15 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
         <div className={styles.title}>{courseCode}:</div>
         <div className={styles.title}>{t('Description')}</div>
         <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
-          {getTransResult(
-            lang,
-            courseLongDescriptionZh,
-            courseLongDescriptionEn
-          )}
+          {getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn)}
         </Paragraph>
         <Descriptions column={1} layout="vertical">
           <Descriptions.Item label={t('ClassesTime')}>
             <Space direction="vertical">
               {classesData?.map((item, index) => {
                 return (
-                  <div
-                    key={index}
-                    className={item?.isFull ? `${styles.full}` : ''}
-                  >
-                    {`${item?.classCode}: ${item?.startTime}-${item?.endTime}`}{' '}
-                    {item?.isFull ? '(Full)' : ''}
+                  <div key={index} className={item?.isFull ? `${styles.full}` : ''}>
+                    {`${item?.classCode}: ${item?.startTime}-${item?.endTime}`} {item?.isFull ? '(Full)' : ''}
                   </div>
                 );
               })}

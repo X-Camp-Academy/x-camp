@@ -1,11 +1,11 @@
-import React from 'react';
-import styles from './index.module.scss';
-import { getTransResult } from '@/utils/public';
 import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import React from 'react';
 import SvgIcon from '../svg-icon';
+import styles from './index.module.scss';
 
 interface IProps {
-  className?: string
+  className?: string;
 }
 
 const ToggleLanguage: React.FC<IProps> = ({ className }) => {

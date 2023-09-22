@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .qaContent {
   padding-bottom: 6.25rem;
@@ -10,7 +10,7 @@
   }
   .title {
     text-align: center;
-    @include title("default");
+    @include title('default');
   }
 
   .card {
@@ -29,7 +29,7 @@
 
     .formTitle {
       margin-top: 12px;
-      @include title("default");
+      @include title('default');
     }
 
     .formTextArea {

@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 .xalumniContainer {
   width: 100%;
   padding: 100px 15px;
@@ -21,7 +21,7 @@
       display: block;
       width: 240px;
       height: 26px;
-      background-image: url("/image/home/home-title-bg-1.png");
+      background-image: url('/image/home/home-title-bg-1.png');
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -58,7 +58,7 @@
         }
 
         .maskCardTitle {
-          @include title("thin");
+          @include title('thin');
           color: #ffffff;
           text-align: left;
         }

@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
+import { Layout } from 'antd';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { Layout } from 'antd';
-import { useGetReviews } from '@/apis/strapi-client/strapi';
+import React from 'react';
 import styles from './index.module.scss';
 
 const Banner = dynamic(() => import('./banner'));
@@ -18,7 +18,7 @@ const EducationForum: React.FC = () => {
   const pathname = usePathname();
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname]
   });
 
   return (

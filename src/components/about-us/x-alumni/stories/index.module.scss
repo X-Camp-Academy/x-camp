@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .storiesContainer {
   width: 100%;
@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     .title {
-      @include title("default");
+      @include title('default');
       line-height: 56px;
     }
 
@@ -63,7 +63,7 @@
         }
 
         .cardTitle {
-          @include title("thin");
+          @include title('thin');
           padding-left: 24px;
           padding-right: 24px;
           .cardButton {

@@ -1,17 +1,16 @@
 'use client';
-import React, { useRef } from 'react';
-import { Space, Rate, Typography, Carousel, Button } from 'antd';
+import { GetReviews } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
+import { formatTimezone, getTransResult } from '@/utils/public';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { Button, Carousel, Rate, Space, Typography } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
 import classNames from 'classnames/bind';
 import dayjs from 'dayjs';
-import { useLang } from '@/hoc/with-intl/define';
-import { formatTimezone, getTransResult } from '@/utils/public';
-import { useMobile } from '@/utils';
-import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
-import { GetReviews } from '@/apis/strapi-client/define';
+import React, { useRef } from 'react';
 import styles from './index.module.scss';
-
 
 const { Paragraph, Text } = Typography;
 
@@ -34,29 +33,19 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
 
   return (
     <div className={cx(className, styles.reviewsContainer)}>
-      {
-        reviewsData && reviewsData?.length > 0 &&
+      {reviewsData && reviewsData?.length > 0 && (
         <div className={cx(styles.reviews, 'container')}>
           <div className={styles.reviewsBox}>
-            {!isMobile && <>
-              <Button
-                type="primary"
-                shape="circle"
-                className={styles.prev}
-                onClick={onPrev}
-              >
-                <LeftOutlined />
-              </Button>
-              <Button
-                type="primary"
-                shape="circle"
-                className={styles.next}
-                onClick={onNext}
-              >
-                <RightOutlined />
-              </Button>
-            </>
-            }
+            {!isMobile && (
+              <>
+                <Button type="primary" shape="circle" className={styles.prev} onClick={onPrev}>
+                  <LeftOutlined />
+                </Button>
+                <Button type="primary" shape="circle" className={styles.next} onClick={onNext}>
+                  <RightOutlined />
+                </Button>
+              </>
+            )}
             <Carousel
               ref={carouselRef}
               dots={false}
@@ -68,21 +57,21 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
                 {
                   breakpoint: 992,
                   settings: {
-                    slidesToShow: 3,
-                  },
+                    slidesToShow: 3
+                  }
                 },
                 {
                   breakpoint: 768,
                   settings: {
-                    slidesToShow: 2,
-                  },
+                    slidesToShow: 2
+                  }
                 },
                 {
                   breakpoint: 576,
                   settings: {
-                    slidesToShow: 2,
-                  },
-                },
+                    slidesToShow: 2
+                  }
+                }
               ]}
             >
               {reviewsData?.map((item) => {
@@ -91,29 +80,17 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
                 return (
                   <div key={item?.id} className={styles.reviewsContainer}>
                     <Space direction="vertical" style={{ width: '100%' }}>
-                      <Text className={styles.reviewsTitle}>
-                        {getTransResult(
-                          lang,
-                          reviews?.titleZh,
-                          reviews?.titleEn
-                        )}
-                      </Text>
+                      <Text className={styles.reviewsTitle}>{getTransResult(lang, reviews?.titleZh, reviews?.titleEn)}</Text>
                       <Rate disabled defaultValue={reviews?.score} />
                       <Paragraph
                         className={styles.reviewsParagraph}
                         ellipsis={{
-                          rows: 5,
+                          rows: 5
                         }}
                       >
-                        {getTransResult(
-                          lang,
-                          reviews?.descriptionZh,
-                          reviews?.descriptionEn
-                        )}
+                        {getTransResult(lang, reviews?.descriptionZh, reviews?.descriptionEn)}
                       </Paragraph>
-                      <Text className={styles.reviewsDate}>
-                        {dayjs(utcTime).format('YYYY-MM-DD')}
-                      </Text>
+                      <Text className={styles.reviewsDate}>{dayjs(utcTime).format('YYYY-MM-DD')}</Text>
                     </Space>
                   </div>
                 );
@@ -121,7 +98,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
             </Carousel>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 };

@@ -1,8 +1,7 @@
 'use client';
-import React from 'react';
 import { Space, Typography } from 'antd';
-import styles from './index.module.scss';
 import classNames from 'classnames/bind';
+import styles from './index.module.scss';
 const cx = classNames.bind(styles);
 const { Title, Paragraph } = Typography;
 
@@ -13,9 +12,7 @@ const Banner = () => {
         <Space direction="vertical">
           <Title className={styles.title}>100-Probs-Challenge</Title>
           <Paragraph className={styles.paragraph}>
-            This is a <span>public welfare activity</span> aimed at helping
-            students consolidate computer knowledge and prepare for USACO
-            competitions. We welcome both X-Camp students and{' '}
+            This is a <span>public welfare activity</span> aimed at helping students consolidate computer knowledge and prepare for USACO competitions. We welcome both X-Camp students and{' '}
             <span>non-X-Camp students</span> to join this challenge.
           </Paragraph>
         </Space>

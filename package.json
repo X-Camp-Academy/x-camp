@@ -7,8 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix && git add . && next lint",
+    "next-lint": "next lint --fix",
+    "eslint": "eslint --fix ./src",
     "lint-staged": "lint-staged",
-    "prettier": "prettier --write ./src"
+    "prettier": "prettier --write ./src",
+    "prettier-ts": "prettier --parser=typescript --write ./src/**/*.{ts,tsx}"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {

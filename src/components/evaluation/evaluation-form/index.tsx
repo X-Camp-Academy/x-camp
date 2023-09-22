@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
-import { Button, Col, Form, Input, Row, Select, message } from 'antd';
-import { useLang } from '@/hoc/with-intl/define';
-import { useSubmitEvaluation } from '@/apis/send-email-client/sendEmail';
 import { submitEvaluationRequest } from '@/apis/send-email-client/define';
+import { useSubmitEvaluation } from '@/apis/send-email-client/sendEmail';
+import { useLang } from '@/hoc/with-intl/define';
+import { Button, Col, Form, Input, Row, Select, message } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const EvaluationForm: React.FC = () => {
@@ -16,8 +16,7 @@ const EvaluationForm: React.FC = () => {
     if (result.msg === 'ok') {
       message.success(t('Evaluation.form.success'));
       form.resetFields();
-    }
-    else {
+    } else {
       message.error(t('Evaluation.form.fail'));
     }
   };
@@ -25,20 +24,10 @@ const EvaluationForm: React.FC = () => {
   return (
     <div className={styles.evaluationFormContainer}>
       <div className={`${styles.evaluationForm} container`}>
-        <div className={styles.title}>
-          {t('Evaluation.form.title')}
-        </div>
+        <div className={styles.title}>{t('Evaluation.form.title')}</div>
         <Row gutter={24}>
           <Col lg={12} md={24}>
-            <Form
-              form={form}
-              name="EvaluationForm"
-              size="large"
-              autoComplete="off"
-              colon={false}
-              onFinish={submitEmailValue}
-
-            >
+            <Form form={form} name="EvaluationForm" size="large" autoComplete="off" colon={false} onFinish={submitEmailValue}>
               <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item
@@ -48,7 +37,7 @@ const EvaluationForm: React.FC = () => {
                       {
                         required: true,
                         message: t('Evaluation.form.stuName.required')
-                      },
+                      }
                     ]}
                   >
                     <Input placeholder={t('Evaluation.form.stuName')} />
@@ -61,12 +50,11 @@ const EvaluationForm: React.FC = () => {
                     rules={[
                       {
                         required: true,
-                        message: t('Evaluation.form.Email.required'),
-
+                        message: t('Evaluation.form.Email.required')
                       },
                       {
                         type: 'email',
-                        message: t('Evaluation.form.Email.format'),
+                        message: t('Evaluation.form.Email.format')
                       }
                     ]}
                   >
@@ -83,8 +71,8 @@ const EvaluationForm: React.FC = () => {
                     rules={[
                       {
                         required: true,
-                        message: t('Evaluation.form.Phone.required'),
-                      },
+                        message: t('Evaluation.form.Phone.required')
+                      }
                     ]}
                   >
                     <Input placeholder={t('Evaluation.form.Phone')} />
@@ -97,8 +85,8 @@ const EvaluationForm: React.FC = () => {
                     rules={[
                       {
                         required: true,
-                        message: t('Evaluation.form.Grade.required'),
-                      },
+                        message: t('Evaluation.form.Grade.required')
+                      }
                     ]}
                   >
                     <Select
@@ -111,7 +99,7 @@ const EvaluationForm: React.FC = () => {
                         { value: '9', label: '9' },
                         { value: '10', label: '10' },
                         { value: '11', label: '11' },
-                        { value: '12', label: '12' },
+                        { value: '12', label: '12' }
                       ]}
                     />
                   </Form.Item>
@@ -124,8 +112,8 @@ const EvaluationForm: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Evaluation.form.CodingBackground.required'),
-                  },
+                    message: t('Evaluation.form.CodingBackground.required')
+                  }
                 ]}
               >
                 <Select
@@ -133,24 +121,24 @@ const EvaluationForm: React.FC = () => {
                   options={[
                     {
                       value: 'No coding experiences',
-                      label: t('Evaluation.form.CodingBackground.NoCodingExperience'),
+                      label: t('Evaluation.form.CodingBackground.NoCodingExperience')
                     },
                     {
                       value: '< half year coding experience',
-                      label: t('Evaluation.form.CodingBackground.LessThanHalfYear'),
+                      label: t('Evaluation.form.CodingBackground.LessThanHalfYear')
                     },
                     {
                       value: '< 1 year coding experiences',
-                      label: t('Evaluation.form.CodingBackground.LessThanOneYear'),
+                      label: t('Evaluation.form.CodingBackground.LessThanOneYear')
                     },
                     {
                       value: '> 1 year coding experiences',
-                      label: t('Evaluation.form.CodingBackground.MoreThanOneYear'),
+                      label: t('Evaluation.form.CodingBackground.MoreThanOneYear')
                     },
                     {
                       value: '> 2 year coding experiences',
-                      label: t('Evaluation.form.CodingBackground.MoreThanTwoYear'),
-                    },
+                      label: t('Evaluation.form.CodingBackground.MoreThanTwoYear')
+                    }
                   ]}
                 />
               </Form.Item>
@@ -160,8 +148,8 @@ const EvaluationForm: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Evaluation.form.CodingLanguage.required'),
-                  },
+                    message: t('Evaluation.form.CodingLanguage.required')
+                  }
                 ]}
               >
                 <Select
@@ -169,20 +157,20 @@ const EvaluationForm: React.FC = () => {
                   options={[
                     {
                       value: 'No coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.NoCodingExperience'),
+                      label: t('Evaluation.form.CodingLanguage.NoCodingExperience')
                     },
                     {
                       value: 'Java coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.Java'),
+                      label: t('Evaluation.form.CodingLanguage.Java')
                     },
                     {
                       value: 'Python coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.Python'),
+                      label: t('Evaluation.form.CodingLanguage.Python')
                     },
                     {
                       value: 'C++ coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.C++'),
-                    },
+                      label: t('Evaluation.form.CodingLanguage.C++')
+                    }
                   ]}
                 />
               </Form.Item>
@@ -195,43 +183,61 @@ const EvaluationForm: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Evaluation.form.AboutXCamp.required'),
-                  },
+                    message: t('Evaluation.form.AboutXCamp.required')
+                  }
                 ]}
               >
                 <Select
                   placeholder={t('Evaluation.form.AboutXCamp')}
                   options={[
-                    { value: 'X-Camp Consultant', label: t('Evaluation.form.AboutXCamp.Consultant') },
+                    {
+                      value: 'X-Camp Consultant',
+                      label: t('Evaluation.form.AboutXCamp.Consultant')
+                    },
                     {
                       value: 'X-Camp WeChat Official Account',
-                      label: t('Evaluation.form.AboutXCamp.OfficialAccount'),
+                      label: t('Evaluation.form.AboutXCamp.OfficialAccount')
                     },
-                    { value: 'X-Camp Events', label: t('Evaluation.form.AboutXCamp.Events') },
+                    {
+                      value: 'X-Camp Events',
+                      label: t('Evaluation.form.AboutXCamp.Events')
+                    },
                     {
                       value: 'X-Camp Social Media (FB, Linkedin, Twitter)',
-                      label: t('Evaluation.form.AboutXCamp.SocialMedia'),
+                      label: t('Evaluation.form.AboutXCamp.SocialMedia')
                     },
                     {
                       value: 'Contest (HPI, Turing Cup)',
-                      label: t('Evaluation.form.AboutXCamp.Contest'),
+                      label: t('Evaluation.form.AboutXCamp.Contest')
                     },
-                    { value: 'usaco.org', label: t('Evaluation.form.AboutXCamp.USACO') },
+                    {
+                      value: 'usaco.org',
+                      label: t('Evaluation.form.AboutXCamp.USACO')
+                    },
                     {
                       value: 'Discord (Teamscode, CinT, LiT)',
-                      label: t('Evaluation.form.AboutXCamp.Discord'),
+                      label: t('Evaluation.form.AboutXCamp.Discord')
                     },
-                    { value: 'Google Search', label: t('Evaluation.form.AboutXCamp.GoogleSearch') },
-                    { value: 'Wechat Moments', label: t('Evaluation.form.AboutXCamp.WeChatMoments') },
+                    {
+                      value: 'Google Search',
+                      label: t('Evaluation.form.AboutXCamp.GoogleSearch')
+                    },
+                    {
+                      value: 'Wechat Moments',
+                      label: t('Evaluation.form.AboutXCamp.WeChatMoments')
+                    },
                     {
                       value: 'Word of mouth/Friends',
-                      label: t('Evaluation.form.AboutXCamp.Friend'),
+                      label: t('Evaluation.form.AboutXCamp.Friend')
                     },
                     {
                       value: 'Xiaohongshu(小红书)',
-                      label: t('Evaluation.form.AboutXCamp.Xiaohongshu'),
+                      label: t('Evaluation.form.AboutXCamp.Xiaohongshu')
                     },
-                    { value: 'Others', label: t('Evaluation.form.AboutXCamp.Other') },
+                    {
+                      value: 'Others',
+                      label: t('Evaluation.form.AboutXCamp.Other')
+                    }
                   ]}
                 />
               </Form.Item>
@@ -241,8 +247,6 @@ const EvaluationForm: React.FC = () => {
                   {t('Submit')}
                 </Button>
               </Form.Item>
-
-
             </Form>
           </Col>
           <Col lg={12} md={24}>

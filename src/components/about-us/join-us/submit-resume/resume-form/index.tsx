@@ -1,23 +1,11 @@
 'use client';
-import React from 'react';
-import Link from 'next/link';
-import {
-  Typography,
-  Divider,
-  Form,
-  Button,
-  Input,
-  Radio,
-  Space,
-  Upload,
-  UploadFile,
-  message,
-} from 'antd';
-import { UploadChangeParam } from 'antd/es/upload';
-import { useLang } from '@/hoc/with-intl/define';
 import { useSubmitResume } from '@/apis/send-email-client/sendEmail';
+import { useLang } from '@/hoc/with-intl/define';
+import { Button, Divider, Form, Input, Radio, Space, Typography, Upload, UploadFile, message } from 'antd';
+import { UploadChangeParam } from 'antd/es/upload';
+import Link from 'next/link';
+import React from 'react';
 import styles from './index.module.scss';
-
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -54,9 +42,7 @@ const ResumeForm: React.FC<{
   function beforeLetterUpload(file: any) {
     const isSizeValid = file.size <= fileSizeLimit;
     if (!isSizeValid) {
-      message.error(
-        'File size must be less than or equal to 10MB. Please Upload again!'
-      );
+      message.error('File size must be less than or equal to 10MB. Please Upload again!');
     }
     return false;
   }
@@ -71,9 +57,7 @@ const ResumeForm: React.FC<{
   const submitResumeOnFinish = async (formValues: submitResumeProps) => {
     const requestData = new FormData();
     if (formValues.resume[0].originFileObj.size >= fileSizeLimit) {
-      message.error(
-        'File size must be less than or equal to 10MB. Please Upload again!'
-      );
+      message.error('File size must be less than or equal to 10MB. Please Upload again!');
       return;
     }
 
@@ -86,8 +70,7 @@ const ResumeForm: React.FC<{
     requestData.append('acRelocate', formValues.acRelocate);
     requestData.append('alphabetEmployee', formValues.alphabetEmployee);
     requestData.append('resume', formValues.resume[0].originFileObj);
-    if (formValues.letter)
-      requestData.append('letter', formValues.letter[0].originFileObj);
+    if (formValues.letter) requestData.append('letter', formValues.letter[0].originFileObj);
     if (formValues.linkedIn) requestData.append('linkIn', formValues.linkedIn);
     if (formValues.website) requestData.append('website', formValues.website);
     await submitResume(requestData);
@@ -96,14 +79,7 @@ const ResumeForm: React.FC<{
   return (
     <>
       <Divider style={{ borderColor: '#FFAD11' }} />
-      <Form
-        form={form}
-        layout="vertical"
-        autoComplete="off"
-        size="large"
-        className={styles.formContainer}
-        onFinish={submitResumeOnFinish}
-      >
+      <Form form={form} layout="vertical" autoComplete="off" size="large" className={styles.formContainer} onFinish={submitResumeOnFinish}>
         <Title className={styles.title}>{t('ApplyNow')}</Title>
         <Text className={styles.description}>{t('RequiredFields')}</Text>
 
@@ -114,10 +90,7 @@ const ResumeForm: React.FC<{
           <Form.Item name="lastName" rules={[{ required: true }]}>
             <Input placeholder={`${t('LastName')} *`} />
           </Form.Item>
-          <Form.Item
-            name="email"
-            rules={[{ type: 'email' }, { required: true }]}
-          >
+          <Form.Item name="email" rules={[{ type: 'email' }, { required: true }]}>
             <Input type="email" placeholder={`${t('Email')} *`} />
           </Form.Item>
           <Form.Item name="phone" rules={[{ required: true }]}>
@@ -132,7 +105,7 @@ const ResumeForm: React.FC<{
             beforeUpload={beforePDFUpload}
             onChange={(info) => submitCvPDF(info)}
             showUploadList={{
-              showRemoveIcon: false,
+              showRemoveIcon: false
             }}
             disabled={false}
           >
@@ -149,7 +122,7 @@ const ResumeForm: React.FC<{
             beforeUpload={beforeLetterUpload}
             onChange={(info) => submitLetter(info)}
             showUploadList={{
-              showRemoveIcon: false,
+              showRemoveIcon: false
             }}
             disabled={false}
           >
@@ -160,10 +133,7 @@ const ResumeForm: React.FC<{
         </Form.Item>
 
         <Form.Item name="linkedIn">
-          <Input
-            placeholder={t('LinkedInProfile')}
-            className={styles.inputInfo}
-          />
+          <Input placeholder={t('LinkedInProfile')} className={styles.inputInfo} />
         </Form.Item>
 
         <Form.Item name="website">
@@ -176,10 +146,7 @@ const ResumeForm: React.FC<{
             {' *'}
           </Text>
         </div>
-        <Form.Item
-          name="acRelocate"
-          rules={[{ required: true, message: 'please choose the radio' }]}
-        >
+        <Form.Item name="acRelocate" rules={[{ required: true, message: 'please choose the radio' }]}>
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
@@ -198,10 +165,7 @@ const ResumeForm: React.FC<{
             {' *'}
           </Text>
         </div>
-        <Form.Item
-          name="alphabetEmployee"
-          rules={[{ required: true, message: 'please choose the radio' }]}
-        >
+        <Form.Item name="alphabetEmployee" rules={[{ required: true, message: 'please choose the radio' }]}>
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
@@ -223,10 +187,7 @@ const ResumeForm: React.FC<{
           {t('ApplicationConsent.Desc2')}
         </Paragraph>
 
-        <Form.Item
-          name="accept"
-          rules={[{ required: true, message: 'please choose the answer' }]}
-        >
+        <Form.Item name="accept" rules={[{ required: true, message: 'please choose the answer' }]}>
           <Radio.Group>
             <Radio value="1" className={styles.problem}>
               {t('IAccept')}

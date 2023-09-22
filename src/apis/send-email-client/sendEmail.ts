@@ -1,13 +1,9 @@
+import { useLang } from '@/hoc/with-intl/define';
+import { useHandleError } from '@/utils/error';
 import { useRequest } from 'ahooks';
 import { message } from 'antd';
 import { useSendEmailClient } from '.';
-import { useHandleError } from '@/utils/error';
-import { useLang } from '@/hoc/with-intl/define';
-import {
-  openClassEmailRequest,
-  submitEvaluationRequest,
-  subscribeNewsletterRequest,
-} from './define';
+import { openClassEmailRequest, submitEvaluationRequest, subscribeNewsletterRequest } from './define';
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
@@ -23,10 +19,10 @@ export const useSendOpenClassEmail = () => {
       onSuccess: () => {
         message.success({
           key: 'sendEmailSuccessfully',
-          content: t('sendOpenClassEmail.Success'),
+          content: t('sendOpenClassEmail.Success')
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -45,10 +41,10 @@ export const useSubscribeNewsletter = () => {
       onSuccess: () => {
         message.success({
           key: 'sendEmailSuccessfully',
-          content: t('subscribeNewsLetter.Success'),
+          content: t('subscribeNewsLetter.Success')
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -72,10 +68,10 @@ export const useSubmitResume = () => {
       onSuccess: () => {
         message.success({
           key: 'sendEmailSuccessfully',
-          content: t('sendResume.Success'),
+          content: t('sendResume.Success')
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -99,10 +95,10 @@ export const useSubmitEvaluation = () => {
       onSuccess: () => {
         message.success({
           key: 'sendEmailSuccessfully',
-          content: '提交成功',
+          content: '提交成功'
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };

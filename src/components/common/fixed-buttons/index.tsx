@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { Button, Card, Form, Input, Checkbox } from 'antd';
-import FixedButton from './FixedButton';
-import { useLang } from '@/hoc/with-intl/define';
-import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
+import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
+import { useLang } from '@/hoc/with-intl/define';
+import { Button, Card, Checkbox, Form, Input } from 'antd';
+import React, { useState } from 'react';
+import FixedButton from './FixedButton';
 import styles from './index.module.scss';
 
-
 interface IMenuItem {
-  icon: string,
-  label: React.ReactElement,
-  state?: [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined,
-  key: string,
-  text: string
+  icon: string;
+  label: React.ReactElement;
+  state?: [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined;
+  key: string;
+  text: string;
 }
 const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
@@ -23,11 +22,7 @@ const FixedButtons: React.FC = () => {
   };
 
   const [open, setOpen] = useState(false);
-  const labels: string[] = [
-    t('weeklyOpenHouseDesc1'),
-    t('weeklyOpenHouseDesc2'),
-    t('weeklyOpenHouseDesc3'),
-  ];
+  const labels: string[] = [t('weeklyOpenHouseDesc1'), t('weeklyOpenHouseDesc2'), t('weeklyOpenHouseDesc3')];
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
@@ -44,10 +39,10 @@ const FixedButtons: React.FC = () => {
               height: 36,
               lineHeight: '36px',
               textAlign: 'center',
-              borderBottom: 'none',
+              borderBottom: 'none'
             }}
             bodyStyle={{
-              paddingBottom: 16,
+              paddingBottom: 16
             }}
             className={styles.card}
           >
@@ -58,8 +53,8 @@ const FixedButtons: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Name.Required'),
-                  },
+                    message: t('Name.Required')
+                  }
                 ]}
               >
                 <Input placeholder={t('Nickname')} />
@@ -70,8 +65,8 @@ const FixedButtons: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Grade.Required'),
-                  },
+                    message: t('Grade.Required')
+                  }
                 ]}
               >
                 <Input placeholder={t('Grade')} />
@@ -83,8 +78,8 @@ const FixedButtons: React.FC = () => {
                   { type: 'email' },
                   {
                     required: true,
-                    message: t('Email.Required'),
-                  },
+                    message: t('Email.Required')
+                  }
                 ]}
               >
                 <Input type="email" placeholder="E-mail*" />
@@ -95,23 +90,19 @@ const FixedButtons: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Phone/Wechat.Required'),
-                  },
+                    message: t('Phone/Wechat.Required')
+                  }
                 ]}
               >
                 <Input placeholder={t('Phone/Wechat')} />
               </Form.Item>
 
               <Form.Item name="subscribe">
-                <Checkbox >{t('FreeProgrammingPack')}</Checkbox>
+                <Checkbox>{t('FreeProgrammingPack')}</Checkbox>
               </Form.Item>
 
               <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className={styles.submit}
-                >
+                <Button type="primary" htmlType="submit" className={styles.submit}>
                   {t('Submit')}
                 </Button>
               </Form.Item>
@@ -135,24 +126,28 @@ const FixedButtons: React.FC = () => {
               height: 36,
               lineHeight: '36px',
               textAlign: 'center',
-              borderBottom: 'none',
+              borderBottom: 'none'
             }}
             bodyStyle={{
-              paddingBottom: 16,
+              paddingBottom: 16
             }}
             className={styles.card}
           >
             <div className={styles.cardTitle}>{t('weeklyOpenHouseOpen')}</div>
             <ul className={styles.desc}>
-              {labels.map(str => <li key={str}>{str}</li>)}
+              {labels.map((str) => (
+                <li key={str}>{str}</li>
+              ))}
             </ul>
             <div className={styles.buttonList}>
-              <Button type="primary" className={styles.button}>{t('ZoomLink')}</Button>
-              <Button type="primary" className={styles.button}>1 On 1 </Button>
+              <Button type="primary" className={styles.button}>
+                {t('ZoomLink')}
+              </Button>
+              <Button type="primary" className={styles.button}>
+                1 On 1{' '}
+              </Button>
             </div>
-            <div className={styles.tips}>
-              *{t('weeklyOpenHouseTips')}
-            </div>
+            <div className={styles.tips}>*{t('weeklyOpenHouseTips')}</div>
           </Card>
         </div>
       ),
@@ -162,11 +157,11 @@ const FixedButtons: React.FC = () => {
 
   return (
     <div className={styles.buttonContainer}>
-      {menu.map((item) => (<FixedButton key={item.key} menu={item.label} icon={item.icon} state={item.state}>
-        <span>
-          {item.text}
-        </span>
-      </FixedButton>))}
+      {menu.map((item) => (
+        <FixedButton key={item.key} menu={item.label} icon={item.icon} state={item.state}>
+          <span>{item.text}</span>
+        </FixedButton>
+      ))}
     </div>
   );
 };

@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { Space, Typography } from 'antd';
 import ClassCard from '@/components/common/class-card';
-import CourseClassesContext from '../../CourseClassesContext';
 import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult, getLangResult } from '@/utils/public';
+import { getLangResult, getTransResult } from '@/utils/public';
+import { Space, Typography } from 'antd';
+import React, { useContext } from 'react';
+import CourseClassesContext from '../../CourseClassesContext';
 import styles from './index.module.scss';
-
 
 const { Title } = Typography;
 
@@ -29,22 +28,9 @@ const ProgressionClasses: React.FC = () => {
                 border={'bottom'}
                 index={index}
                 animate={false}
-                title={`${courseCode
-                  }: ${getTransResult(
-                    lang,
-                    courseTitleZh,
-                    courseTitleEn
-                  )}`}
-                list={getLangResult(
-                  lang,
-                  courseShortDescriptionZh,
-                  courseShortDescriptionEn
-                ) as Array<string>}
-                time={`${lessonNum} ${frequency ===
-                  'Weekly'
-                  ? 'weeks'
-                  : 'days'
-                  }`}
+                title={`${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)}`}
+                list={getLangResult(lang, courseShortDescriptionZh, courseShortDescriptionEn) as Array<string>}
+                time={`${lessonNum} ${frequency === 'Weekly' ? 'weeks' : 'days'}`}
                 href={`/courses/detail/${v?.id}`}
               />
             );

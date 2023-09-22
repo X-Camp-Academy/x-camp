@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .referralAndEarnContainer {
   .referralAndEarn {
@@ -8,7 +8,7 @@
       padding: 30px;
 
       .title {
-        @include title("default");
+        @include title('default');
         line-height: 48px;
       }
 

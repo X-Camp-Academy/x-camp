@@ -1,7 +1,7 @@
-import React from 'react';
-import LoadingSquare from './LoadingSquare';
 import { useDelayedMount } from '@/hooks';
+import React from 'react';
 import styles from './LoadingMask.module.scss';
+import LoadingSquare from './LoadingSquare';
 
 interface LoadingMaskProps {
   loading: boolean;

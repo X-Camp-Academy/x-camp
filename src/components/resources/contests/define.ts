@@ -14,7 +14,7 @@ enum MonthAbbreviation {
   Sep = 'Sep',
   Oct = 'Oct',
   Nov = 'Nov',
-  Dec = 'Dec',
+  Dec = 'Dec'
 }
 
 export interface ContestsByMonthInterface {
@@ -27,14 +27,10 @@ export interface ContestsByMonthInterface {
  * @param data
  * @returns 将data按照月份进行分组
  */
-export const formatContestsByMonth = (
-  data: StrapiResponseDataItem<GetNewEvent>[]
-) => {
-  const contestsByMonth: ContestsByMonthInterface[] = Object.values(
-    MonthAbbreviation
-  )?.map((v) => ({
+export const formatContestsByMonth = (data: StrapiResponseDataItem<GetNewEvent>[]) => {
+  const contestsByMonth: ContestsByMonthInterface[] = Object.values(MonthAbbreviation)?.map((v) => ({
     month: v,
-    contests: [],
+    contests: []
   }));
   data?.forEach((contest) => {
     const month = dayjs(contest.attributes.startDateTime).get('month');
@@ -50,11 +46,6 @@ export const formatContestsByMonth = (
  * @param data
  * @returns 将data按照月份进行分组，然后按照size进行分组
  */
-export const formatContestsByQuarter = (
-  data: StrapiResponseDataItem<GetNewEvent>[],
-  size: number
-) => {
-  return Array.from({ length: Math.ceil(12 / size) }, (_, i) =>
-    formatContestsByMonth(data).slice(i * size, (i + 1) * size)
-  );
+export const formatContestsByQuarter = (data: StrapiResponseDataItem<GetNewEvent>[], size: number) => {
+  return Array.from({ length: Math.ceil(12 / size) }, (_, i) => formatContestsByMonth(data).slice(i * size, (i + 1) * size));
 };

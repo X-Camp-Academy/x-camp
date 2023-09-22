@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
-import zh_CN from './zh_CN.json';
 import en_US from './en_US.json';
+import zh_CN from './zh_CN.json';
 
 export type ILocales = 'zh-CN' | 'en-US';
 
@@ -17,5 +17,5 @@ export function getLocales(lang: ILocales) {
 
 export default {
   'zh-CN': zh_CN,
-  'en-US': en_US,
+  'en-US': en_US
 };

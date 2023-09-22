@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { getBrowserCompatibility } from '@/utils/public';
+import { useEffect, useState } from 'react';
 
 /**
  * 控制组件是否挂载、是否可见的 Hook
@@ -12,10 +12,7 @@ import { getBrowserCompatibility } from '@/utils/public';
  * @param delay 组件卸载延迟，一般与淡出效果时间相同
  * @returns 组件是否挂载、是否可见
  */
-export const useDelayedMount = (
-  show: boolean,
-  delay: number
-): [boolean, boolean] => {
+export const useDelayedMount = (show: boolean, delay: number): [boolean, boolean] => {
   const [mount, setMount] = useState(show);
   const [visible, setVisible] = useState(show);
 
@@ -37,7 +34,7 @@ export const useDelayedMount = (
 };
 
 /**
- * 
+ *
  * @returns 浏览器兼容性检测
  */
 export const useCheckBrowserCompatibility = (): Boolean => {

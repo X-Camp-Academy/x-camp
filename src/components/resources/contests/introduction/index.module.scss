@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .content {
   width: 100%;
@@ -20,7 +20,7 @@
     }
 
     .title {
-      @include title("bold");
+      @include title('bold');
       line-height: 64px;
 
       @media (max-width: 992px) {

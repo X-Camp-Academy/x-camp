@@ -1,10 +1,9 @@
 'use client';
-import React from 'react';
-import { Collapse, Space } from 'antd';
-import { DownCircleOutlined } from '@ant-design/icons';
 import { useMobile } from '@/utils';
+import { DownCircleOutlined } from '@ant-design/icons';
+import { Collapse, Space } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
-
 
 const { Panel } = Collapse;
 
@@ -14,44 +13,30 @@ interface QACardProps {
   index: number;
   className?: string;
 }
-const QACard: React.FC<QACardProps> = ({
-  question,
-  answer,
-  index,
-  className = '',
-}) => {
+const QACard: React.FC<QACardProps> = ({ question, answer, index, className = '' }) => {
   const isMobile = useMobile();
   const threeColors = ['#FFD600', '#FFAD11', '#D46B14'];
   const computedStyle = (index: number) => {
     const defaultStyle = {
-      borderRadius: 12,
+      borderRadius: 12
     };
     return {
       ...defaultStyle,
-      backgroundColor: threeColors[index % 3],
+      backgroundColor: threeColors[index % 3]
     };
   };
 
   return (
     <Collapse
       expandIconPosition="end"
-      expandIcon={({ isActive }) => (
-        <DownCircleOutlined
-          rotate={isActive ? 180 : 0}
-          style={{ color: '#FFAD11', fontSize: 24 }}
-        />
-      )}
+      expandIcon={({ isActive }) => <DownCircleOutlined rotate={isActive ? 180 : 0} style={{ color: '#FFAD11', fontSize: 24 }} />}
       className={`${styles.collapse} ${className}`}
       style={computedStyle(index)}
     >
       <Panel
         header={
           <Space size={12} direction={isMobile ? 'vertical' : 'horizontal'}>
-            <div
-              className={`${styles.questionAndAnswerIcon} ${styles.question}`}
-            >
-              Q
-            </div>
+            <div className={`${styles.questionAndAnswerIcon} ${styles.question}`}>Q</div>
             <strong>{question}</strong>
           </Space>
         }
@@ -60,9 +45,7 @@ const QACard: React.FC<QACardProps> = ({
         style={{ borderRadius: 12 }}
       >
         <Space size={12} align="start">
-          <div className={`${styles.questionAndAnswerIcon} ${styles.answer}`}>
-            A
-          </div>
+          <div className={`${styles.questionAndAnswerIcon} ${styles.answer}`}>A</div>
           {answer}
         </Space>
       </Panel>

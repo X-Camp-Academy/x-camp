@@ -1,10 +1,9 @@
 'use client';
-import React from 'react';
-import { Layout } from 'antd';
-import styles from './index.module.scss';
-import dynamic from 'next/dynamic';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
+import { Layout } from 'antd';
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
+import styles from './index.module.scss';
 
 const Banner = dynamic(() => import('./banner'));
 const Map = dynamic(() => import('./map'));
@@ -18,7 +17,7 @@ const XAlumni = () => {
   const pathname = usePathname();
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname],
+    pageName: [pathname]
   });
 
   return (

@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .upcomingEventsContainer {
   width: 100%;
@@ -11,7 +11,7 @@
     justify-content: space-between;
 
     .title {
-      @include title("default");
+      @include title('default');
       line-height: 56px;
     }
 
@@ -52,7 +52,7 @@
     }
 
     .cardMonth {
-      @include title("thin");
+      @include title('thin');
       color: #666666;
     }
 

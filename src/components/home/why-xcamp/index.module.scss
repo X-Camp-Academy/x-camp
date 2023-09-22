@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 .aboutXCampContainer {
   width: 100%;
   padding: 100px 0;
@@ -9,7 +9,7 @@
       width: 100%;
       .title {
         margin: 0;
-        @include title("default");
+        @include title('default');
         span {
           color: $primary-color;
         }
@@ -19,7 +19,7 @@
         display: block;
         width: 108px;
         height: 16px;
-        background-image: url("/image/home/home-title-bg-1.png");
+        background-image: url('/image/home/home-title-bg-1.png');
         background-repeat: no-repeat;
         background-size: cover;
       }

@@ -3,7 +3,7 @@ const UsacoLiveSolutions = dynamic(() => import('@/components/resources/usaco-li
 
 export const metadata = {
   title: 'X-Camp Academy',
-  description: 'X-Camp Academy | Programming and Education news from X-Camp',
+  description: 'X-Camp Academy | Programming and Education news from X-Camp'
 };
 
 const Page: React.FC = () => {

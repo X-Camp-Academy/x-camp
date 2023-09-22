@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .privacyPolicyContainer {
   ul {
@@ -28,7 +28,7 @@
     }
 
     .subTitle {
-      @include title("thin");
+      @include title('thin');
       font-weight: 400;
       line-height: 30px;
       margin-top: 55px !important;
@@ -60,7 +60,7 @@
     .list::before {
       position: relative;
       top: 12px;
-      content: "";
+      content: '';
       margin-right: 10px;
       width: 5px;
       height: 5px;
@@ -71,7 +71,7 @@
     }
 
     .list_::before {
-      content: "";
+      content: '';
       margin-right: 10px;
       width: 5px;
       height: 5px;

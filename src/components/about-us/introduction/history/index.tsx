@@ -1,7 +1,7 @@
-import React from 'react';
-import { Space, Typography, Image, Row, Col } from 'antd';
-import dayjs from 'dayjs';
 import { useMobile } from '@/utils';
+import { Col, Image, Row, Space, Typography } from 'antd';
+import dayjs from 'dayjs';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
@@ -12,23 +12,23 @@ const History: React.FC = () => {
   const currentYear = dayjs().year();
   const images = [
     {
-      src: '/image/about-us/camps-1.png',
+      src: '/image/about-us/camps-1.png'
     },
     {
-      src: '/image/about-us/camps-1.png',
+      src: '/image/about-us/camps-1.png'
     },
     {
-      src: '/image/about-us/camps-1.png',
+      src: '/image/about-us/camps-1.png'
     },
     {
-      src: '/image/about-us/camps-1.png',
+      src: '/image/about-us/camps-1.png'
     },
     {
-      src: '/image/about-us/camps-1.png',
+      src: '/image/about-us/camps-1.png'
     },
     {
-      src: '/image/about-us/camps-1.png',
-    },
+      src: '/image/about-us/camps-1.png'
+    }
   ];
   return (
     <div className={styles.historyContainer}>
@@ -37,65 +37,33 @@ const History: React.FC = () => {
         <Paragraph className={styles.paragraph}>{"With nearly 2,000 students trained in just six years, X-Camp's impact on their coding journeys remains unparalleled."}</Paragraph>
 
         <div className={styles.timeline}>
-          {
-            years?.map(item => (
-              <Space direction="vertical" key={item}>
-                <i className={item === currentYear ? styles.activeTimeLineIcon : styles.timelineIcon} />
-                <span className={item === currentYear ? styles.activeTimelineText : styles.timelineText}>{item}</span>
-              </Space>
-            ))
-          }
+          {years?.map((item) => (
+            <Space direction="vertical" key={item}>
+              <i className={item === currentYear ? styles.activeTimeLineIcon : styles.timelineIcon} />
+              <span className={item === currentYear ? styles.activeTimelineText : styles.timelineText}>{item}</span>
+            </Space>
+          ))}
           <div className={styles.line} />
         </div>
 
         <Row gutter={[16, 16]} className={styles.timeImage}>
           <Col xs={8} sm={8} md={8} lg={4}>
-            <Image
-              alt=""
-              preview={false}
-              src={images[0].src}
-              className={isMobile ? styles.mobileImage : styles.image1}
-            />
+            <Image alt="" preview={false} src={images[0].src} className={isMobile ? styles.mobileImage : styles.image1} />
           </Col>
           <Col xs={8} sm={8} md={8} lg={4}>
-            <Image
-              alt=""
-              preview={false}
-              src={images[0].src}
-              className={isMobile ? styles.mobileImage : styles.image2}
-            />
+            <Image alt="" preview={false} src={images[0].src} className={isMobile ? styles.mobileImage : styles.image2} />
           </Col>
           <Col xs={8} sm={8} md={8} lg={4}>
-            <Image
-              alt=""
-              preview={false}
-              src={images[0].src}
-              className={isMobile ? styles.mobileImage : styles.image3}
-            />
+            <Image alt="" preview={false} src={images[0].src} className={isMobile ? styles.mobileImage : styles.image3} />
           </Col>
           <Col xs={8} sm={8} md={8} lg={4}>
-            <Image
-              alt=""
-              preview={false}
-              src={images[0].src}
-              className={isMobile ? styles.mobileImage : styles.image4}
-            />
+            <Image alt="" preview={false} src={images[0].src} className={isMobile ? styles.mobileImage : styles.image4} />
           </Col>
           <Col xs={8} sm={8} md={8} lg={4}>
-            <Image
-              alt=""
-              preview={false}
-              src={images[0].src}
-              className={isMobile ? styles.mobileImage : styles.image5}
-            />
+            <Image alt="" preview={false} src={images[0].src} className={isMobile ? styles.mobileImage : styles.image5} />
           </Col>
           <Col xs={8} sm={8} md={8} lg={4}>
-            <Image
-              alt=""
-              preview={false}
-              src={images[0].src}
-              className={isMobile ? styles.mobileImage : styles.image6}
-            />
+            <Image alt="" preview={false} src={images[0].src} className={isMobile ? styles.mobileImage : styles.image6} />
           </Col>
         </Row>
       </div>

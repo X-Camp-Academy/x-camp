@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .subscribeNewsletter {
   text-align: center;
@@ -10,7 +10,7 @@
     padding-top: 50px;
     padding-bottom: 80px;
     .title {
-      @include title("default");
+      @include title('default');
       line-height: 56px;
     }
     .paragraph {

@@ -1,10 +1,10 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .timeLineContainer {
   margin-top: 100px;
   .timeLine {
     .title {
-      @include title("default");
+      @include title('default');
     }
 
     .listContainer {
@@ -15,14 +15,14 @@
       .timeListItem {
         position: relative;
         .timeListTitle {
-          @include title("thin");
+          @include title('thin');
           line-height: 48px;
           position: relative;
           left: -20px;
         }
 
         .timeListTitle::before {
-          content: "";
+          content: '';
           display: inline-block;
           width: 15px;
           height: 15px;

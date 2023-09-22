@@ -1,9 +1,9 @@
 'use client';
-import React, { useEffect } from 'react';
-import { Layout, message } from 'antd';
-import { usePathname } from 'next/navigation';
-import dynamic from 'next/dynamic';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
+import { Layout, message } from 'antd';
+import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const ContactCard = dynamic(() => import('./contact-card'));
@@ -18,11 +18,10 @@ const ContactUs: React.FC = () => {
   const { hash } = window.location;
   const [messageApi, contextHolder] = message.useMessage();
 
-
   // 请求当前页面的评论
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname as string]
   });
 
   useEffect(() => {
@@ -32,8 +31,8 @@ const ContactUs: React.FC = () => {
         content: 'Welcome to contact us for your interested class. ',
         className: 'custom-class',
         style: {
-          marginTop: '20vh',
-        },
+          marginTop: '20vh'
+        }
       });
     }
   }, [hash]);

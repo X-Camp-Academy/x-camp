@@ -1,6 +1,6 @@
+import { apiConfig } from '@/config';
 import { useRequest } from 'ahooks';
 import { useAuthClient, useIdAuthClient } from '.';
-import { apiConfig } from '@/config';
 const { server, clientId } = apiConfig;
 
 export const useGetUserInfo = () => {
@@ -22,12 +22,12 @@ export const useGetUserInfo = () => {
             state: location?.pathname,
             redirect_uri: String(server) + '/v1/login',
             client_id: String(clientId),
-            xmode: 'notredirect',
+            xmode: 'notredirect'
           });
           await client.login({
             code,
             state: location?.pathname,
-            xmode: 'notredirect',
+            xmode: 'notredirect'
           });
           const resp = await client.getUserInfo();
           return resp?.data;

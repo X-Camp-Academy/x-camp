@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .content {
   width: 100%;
@@ -7,7 +7,7 @@
   .top,
   .bottom {
     .title {
-      @include title("bold");
+      @include title('bold');
       margin-bottom: 48px;
     }
 
@@ -22,13 +22,13 @@
 
   .intro {
     .title {
-      @include title("thin");
+      @include title('thin');
       line-height: 48px;
       margin-bottom: 10px;
 
       &::before {
         position: relative;
-        content: "";
+        content: '';
         display: inline-block;
         border-radius: 50%;
         width: 8px;

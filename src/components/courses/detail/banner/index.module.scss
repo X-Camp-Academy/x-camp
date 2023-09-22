@@ -1,8 +1,8 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .banner {
   width: 100%;
-  background-image: url("/image/home/carousel-bg.png");
+  background-image: url('/image/home/carousel-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -14,7 +14,7 @@
     }
 
     .title {
-      @include title("default");
+      @include title('default');
       line-height: 48px;
       @media (max-width: 1140px) {
         font-size: 24px;
@@ -76,7 +76,7 @@
               font-weight: 600;
 
               &::before {
-                content: "";
+                content: '';
                 box-sizing: border-box;
                 width: 12px;
                 height: 12px;

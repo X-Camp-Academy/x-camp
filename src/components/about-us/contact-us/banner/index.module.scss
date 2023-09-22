@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .bannerContainer {
   width: 100%;
@@ -10,12 +10,12 @@
   }
 
   .title {
-    @include title("bold");
+    @include title('bold');
     line-height: 64px;
   }
 
   .paragraph {
-    @include title("thin");
+    @include title('thin');
     font-weight: 500;
     line-height: 42px;
   }

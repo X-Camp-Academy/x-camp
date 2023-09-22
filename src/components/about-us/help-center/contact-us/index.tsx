@@ -1,10 +1,10 @@
 'use client';
-import React from 'react';
-import Link from 'next/link';
-import { Typography, Button, Space } from 'antd';
-import { CommentOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
 import { useLang } from '@/hoc/with-intl/define';
+import { CommentOutlined } from '@ant-design/icons';
+import { Button, Space, Typography } from 'antd';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
@@ -25,13 +25,18 @@ const ContactUs: React.FC = () => {
               fontSize: '18px',
               fontWeight: 500,
               color: '#172142',
-              lineHeight: '34px',
+              lineHeight: '34px'
             }}
           >
             <strong>{t('NeedMoreHelp.Desc')}</strong>
           </Paragraph>
           <Link href="/about-us/contact-us">
-            <Button className={styles.button} onClick={() => { router.push('/about-us/contact-us'); }}>
+            <Button
+              className={styles.button}
+              onClick={() => {
+                router.push('/about-us/contact-us');
+              }}
+            >
               {t('ContactUs')}
               <CommentOutlined />
             </Button>

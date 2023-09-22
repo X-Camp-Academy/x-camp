@@ -1,6 +1,6 @@
-import React from 'react';
-import { Space } from 'antd';
 import { useLang } from '@/hoc/with-intl/define';
+import { Space } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const WhyContest: React.FC = () => {
@@ -8,24 +8,24 @@ const WhyContest: React.FC = () => {
   const items = [
     {
       title: t('Contest.Title1'),
-      description: t('Contest.Detail1'),
+      description: t('Contest.Detail1')
     },
     {
       title: t('Contest.Title2'),
-      description: t('Contest.Detail2'),
+      description: t('Contest.Detail2')
     },
     {
       title: t('Contest.Title3'),
-      description: t('Contest.Detail3'),
+      description: t('Contest.Detail3')
     },
     {
       title: t('Contest.Title4'),
-      description: t('Contest.Detail4'),
+      description: t('Contest.Detail4')
     },
     {
       title: t('Contest.Title5'),
-      description: t('Contest.Detail5'),
-    },
+      description: t('Contest.Detail5')
+    }
   ];
 
   return (

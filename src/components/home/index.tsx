@@ -1,14 +1,12 @@
 'use client';
-import React from 'react';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
 import dynamic from 'next/dynamic';
-import { useGetReviews } from '@/apis/strapi-client/strapi';
+import React from 'react';
 import styles from './index.module.scss';
 
 const CarouselContent = dynamic(() => import('./carousel-content'));
-const DiscoverCourses = dynamic(
-  () => import('@/components/common/discover-courses')
-);
+const DiscoverCourses = dynamic(() => import('@/components/common/discover-courses'));
 const WhyXCamp = dynamic(() => import('./why-xcamp'));
 const WeSupport = dynamic(() => import('./we-support'));
 const Faculty = dynamic(() => import('@/components/common/faculty'));
@@ -22,7 +20,7 @@ const { Content } = Layout;
 
 const Home: React.FC = () => {
   const { data } = useGetReviews({
-    ready: true,
+    ready: true
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);

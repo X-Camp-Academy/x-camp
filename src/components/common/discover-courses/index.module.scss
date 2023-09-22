@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .discoverCourses {
   width: 100%;
@@ -10,7 +10,7 @@
   .title {
     position: relative;
     text-align: center;
-    @include title("default");
+    @include title('default');
   }
 
   .subTitle {
@@ -27,7 +27,7 @@
     margin: 0 auto;
     width: 144px;
     height: 16px;
-    background: url("/image/home/home-title-bg-1.png") no-repeat;
+    background: url('/image/home/home-title-bg-1.png') no-repeat;
     background-size: cover;
   }
 
@@ -85,8 +85,8 @@
       }
 
       .maskTitle {
-        @include title("thin");
-        word-wrap:break-word;
+        @include title('thin');
+        word-wrap: break-word;
       }
 
       .maskDesc {

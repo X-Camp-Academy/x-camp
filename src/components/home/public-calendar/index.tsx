@@ -1,13 +1,13 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Space, Row, Col, Typography, Empty, Carousel } from 'antd';
-import type { Dayjs } from 'dayjs';
-import { useLang } from '@/hoc/with-intl/define';
-import { formatTimezone, getTransResult } from '@/utils/public';
-import { useMobile } from '@/utils';
-import useDayJs from '@/hooks/useDayJs';
-import ActivityCalendar from '@/components/common/activity-calendar';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import ActivityCalendar from '@/components/common/activity-calendar';
+import { useLang } from '@/hoc/with-intl/define';
+import useDayJs from '@/hooks/useDayJs';
+import { useMobile } from '@/utils';
+import { formatTimezone, getTransResult } from '@/utils/public';
+import { Carousel, Col, Empty, Row, Space, Typography } from 'antd';
+import type { Dayjs } from 'dayjs';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -31,9 +31,7 @@ const PublicCalendar: React.FC = () => {
   const isMobile = useMobile();
 
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
-  const [filterDateEventList, setFilterDateEventList] = useState<
-    IFilterDataEvent[]
-  >([]);
+  const [filterDateEventList, setFilterDateEventList] = useState<IFilterDataEvent[]>([]);
 
   const [eventDate, setEventDate] = useState<
     {
@@ -61,7 +59,7 @@ const PublicCalendar: React.FC = () => {
       const updatedEventDate = newEventData.data
         ?.filter((item) => judgeDate(dayjs(selectDate), item?.attributes?.startDateTime || '', item?.attributes?.endDateTime || ''))
         .map((filteredItem) => ({
-          ...filteredItem?.attributes,
+          ...filteredItem?.attributes
         }));
       setFilterDateEventList(updatedEventDate);
     }
@@ -84,10 +82,7 @@ const PublicCalendar: React.FC = () => {
    * 当活动跨天显示完整的年月日时间，否则仅显示时间
    * @param item
    */
-  const getCourseDateStrInCalendar = (item: {
-    startDateTime?: string;
-    endDateTime?: string;
-  }): string => {
+  const getCourseDateStrInCalendar = (item: { startDateTime?: string; endDateTime?: string }): string => {
     const isSame = dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day');
     const sameStr = `${formatHourMinute(item?.startDateTime)} - ${formatHourMinute(item?.endDateTime)} `;
     const diffStr = `${formatYMDTime(item?.startDateTime)} ${item?.endDateTime ? `- ${formatYMDTime(item?.endDateTime)}` : ''}`;
@@ -100,8 +95,8 @@ const PublicCalendar: React.FC = () => {
       sort: ['order:desc'],
       pagination: {
         page: current,
-        pageSize,
-      },
+        pageSize
+      }
     });
   }, []);
 
@@ -109,7 +104,7 @@ const PublicCalendar: React.FC = () => {
     if (newEventData) {
       const updatedEventDate = newEventData.data?.map((item) => ({
         startDateTime: item.attributes?.startDateTime,
-        endDateTime: item.attributes?.endDateTime,
+        endDateTime: item.attributes?.endDateTime
       }));
       setEventDate(updatedEventDate);
       filterSameDateEvent(selectDate);
@@ -133,76 +128,35 @@ const PublicCalendar: React.FC = () => {
         </div>
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
-            <Carousel
-              dots={false}
-              infinite
-              slidesToShow={4}
-              slidesToScroll={1}
-              vertical
-              verticalSwiping
-              autoplay
-              autoplaySpeed={2000}
-            >
+            <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
               {newEventData?.data?.map((item) => {
                 return (
-                  <div key={item?.id} className={styles.eventCard} >
-                    <Space
-                      size={isMobile ? 8 : 60}
-                      align="center"
-                      className={styles.eventContent}
-                    >
-                      <Space
-                        direction="vertical"
-                        className={styles.contentLeft}
-                      >
-                        <Text className={styles.weekMonth}>
-                          {getWeekDay(item?.attributes?.startDateTime || '')}
-                        </Text>
-                        <Text className={styles.day}>
-                          {getDate(item?.attributes?.startDateTime)}
-                        </Text>
-                        <Text className={styles.weekMonth}>
-                          {getMonth(item?.attributes?.startDateTime)?.slice(0, 3)}
-                        </Text>
+                  <div key={item?.id} className={styles.eventCard}>
+                    <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>
+                      <Space direction="vertical" className={styles.contentLeft}>
+                        <Text className={styles.weekMonth}>{getWeekDay(item?.attributes?.startDateTime || '')}</Text>
+                        <Text className={styles.day}>{getDate(item?.attributes?.startDateTime)}</Text>
+                        <Text className={styles.weekMonth}>{getMonth(item?.attributes?.startDateTime)?.slice(0, 3)}</Text>
                       </Space>
-                      <Space
-                        direction="vertical"
-                        className={styles.contentRight}
-                      >
+                      <Space direction="vertical" className={styles.contentRight}>
                         <Title
                           ellipsis={{
                             rows: 1,
-                            tooltip: getTransResult(
-                              lang,
-                              item.attributes.titleZh,
-                              item.attributes.titleEn
-                            )
+                            tooltip: getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)
                           }}
                           className={styles.titleParagraph}
                         >
-                          {getTransResult(
-                            lang,
-                            item.attributes.titleZh,
-                            item.attributes.titleEn
-                          )}
+                          {getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}
                         </Title>
                         {!isMobile && (
                           <Paragraph
                             className={styles.titleParagraph}
                             ellipsis={{
                               rows: 1,
-                              tooltip: getTransResult(
-                                lang,
-                                item?.attributes?.descriptionZh,
-                                item?.attributes?.descriptionEn
-                              ),
+                              tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
                             }}
                           >
-                            {`- ${getTransResult(
-                              lang,
-                              item.attributes.descriptionZh,
-                              item.attributes.descriptionEn
-                            )}`}
+                            {`- ${getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}`}
                           </Paragraph>
                         )}
                         <Text
@@ -232,9 +186,7 @@ const PublicCalendar: React.FC = () => {
               />
               <Space direction="vertical" className={styles.calendarSpace}>
                 <Space className={styles.spaceDate}>
-                  <Text className={styles.text}>
-                    {selectDate && formatDate(selectDate)}
-                  </Text>
+                  <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
                   <div className={styles.line} />
                 </Space>
                 <div style={{ height: 250, overflow: 'scroll' }}>
@@ -242,28 +194,20 @@ const PublicCalendar: React.FC = () => {
                     filterDateEventList.map((item, index) => {
                       if (item?.startDateTime)
                         return (
-                          <Space
-                            key={index}
-                            direction="vertical"
-                            className={styles.calendarItem}
-                          >
-                            <Text className={styles.itemDate}>
-                              {getCourseDateStrInCalendar(item)}
-                            </Text>
+                          <Space key={index} direction="vertical" className={styles.calendarItem}>
+                            <Text className={styles.itemDate}>{getCourseDateStrInCalendar(item)}</Text>
                             <Paragraph className={styles.itemParagraph}>
                               {`${getTransResult(lang, item.titleZh, item.titleEn)} - ${getTransResult(lang, item.descriptionZh, item.descriptionEn)}`}
                             </Paragraph>
                             <div className={styles.itemLine} />
                           </Space>
                         );
-                    })) :
-                    <div style={{ padding: '25px 0', }}>
-                      <Empty
-                        image={Empty.PRESENTED_IMAGE_SIMPLE}
-                        description={t('NoEventToday')}
-                      />
+                    })
+                  ) : (
+                    <div style={{ padding: '25px 0' }}>
+                      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={t('NoEventToday')} />
                     </div>
-                  }
+                  )}
                 </div>
               </Space>
             </Space>

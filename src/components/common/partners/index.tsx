@@ -1,7 +1,7 @@
 'use client';
-import React from 'react';
-import { Space, Typography, Row, Col, Image } from 'antd';
 import { useLang } from '@/hoc/with-intl/define';
+import { Col, Image, Row, Space, Typography } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -37,7 +37,7 @@ const Partners: React.FC = () => {
       src: '/image/home/partners-6.png',
       style: styles.bottomRightImage,
       link: 'https://www.harkerprogrammingclub.org/'
-    },
+    }
   ];
 
   return (
@@ -51,28 +51,17 @@ const Partners: React.FC = () => {
             <Space className={styles.space}>
               {topImages?.map((item) => (
                 <a href={item?.link} key={item?.src}>
-                  <Image
-                    alt=""
-                    src={item?.src}
-                    preview={false}
-                    className={styles.topImage}
-                  />
+                  <Image alt="" src={item?.src} preview={false} className={styles.topImage} />
                 </a>
               ))}
             </Space>
           </Col>
           <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
             <Space className={styles.space}>
-              {bottomImages?.map(item => (
+              {bottomImages?.map((item) => (
                 <a href={item?.link} key={item?.src}>
-                  <Image
-                    alt=""
-                    src={item?.src}
-                    preview={false}
-                    className={item?.style}
-                  />
+                  <Image alt="" src={item?.src} preview={false} className={item?.style} />
                 </a>
-
               ))}
             </Space>
           </Col>

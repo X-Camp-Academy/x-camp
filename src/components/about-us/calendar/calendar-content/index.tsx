@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { Typography } from 'antd';
-import { ScheduleOutlined } from '@ant-design/icons';
-import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult } from '@/utils/public';
-import dayjs from 'dayjs';
-import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import TimelineComponent from '@/components/common/timeline';
 import { GetNewEvent, NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import TimelineComponent from '@/components/common/timeline';
+import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
+import { ScheduleOutlined } from '@ant-design/icons';
+import { Typography } from 'antd';
+import dayjs from 'dayjs';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const { Title } = Typography;
@@ -19,7 +19,7 @@ const CalendarContent: React.FC = () => {
   const { data: schoolCalendar, runAsync: getSchoolCalendar } = useGetNewEvent({
     current: 1,
     pageSize: 9999,
-    manual: true,
+    manual: true
   });
 
   useEffect(() => {
@@ -28,13 +28,13 @@ const CalendarContent: React.FC = () => {
       sort: ['startDateTime'],
       filters: {
         tags: {
-          $eq: NewEventCategory.SchoolCalendar,
-        },
+          $eq: NewEventCategory.SchoolCalendar
+        }
       },
       pagination: {
         page: 1,
-        pageSize: 9999,
-      },
+        pageSize: 9999
+      }
     });
   }, []);
 
@@ -43,9 +43,7 @@ const CalendarContent: React.FC = () => {
     children: Item[] | string;
   }
 
-  const formatCalendar = (
-    data: StrapiResponseDataItem<GetNewEvent>[] | undefined
-  ): Item[] => {
+  const formatCalendar = (data: StrapiResponseDataItem<GetNewEvent>[] | undefined): Item[] => {
     const currentMonth = dayjs().month();
 
     const groupedData: {
@@ -65,16 +63,8 @@ const CalendarContent: React.FC = () => {
       }
       if (dayjs(item?.attributes.startDateTime).isSameOrAfter(dayjs(), 'months')) {
         groupedData[(month + currentMonth - 2) % 12].push({
-          label: getTransResult(
-            lang,
-            item?.attributes?.titleZh,
-            item?.attributes?.titleEn
-          )!,
-          children: getTransResult(
-            lang,
-            item?.attributes?.descriptionZh,
-            item?.attributes?.descriptionEn
-          )!,
+          label: getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)!,
+          children: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)!
         });
       }
     });
@@ -83,13 +73,12 @@ const CalendarContent: React.FC = () => {
       const month = (currentMonth + +label) % 12;
       return {
         label: dayjs().month(month).format('MMM'),
-        children,
+        children
       };
     });
 
     return [...res, { label: '...', children: [] }];
   };
-
 
   return (
     <div className={styles.calendarContent}>

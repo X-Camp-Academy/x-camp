@@ -1,5 +1,5 @@
-import React from 'react';
 import { Space } from 'antd';
+import React from 'react';
 import XStarMenuItem from './menu-item';
 
 export interface XStarMenuItemType {
@@ -30,29 +30,16 @@ interface Props {
 }
 
 const XStarMenu = ({ items, className = '', selectedKey, onClick }: Props) => {
-  const renderMenuItems = (
-    menuItems: XStarMenuItemType[]
-  ): React.ReactNode[] => {
+  const renderMenuItems = (menuItems: XStarMenuItemType[]): React.ReactNode[] => {
     return menuItems?.map((menuItem) => {
       if (menuItem?.children && menuItem?.children?.length > 0) {
         return (
-          <XStarMenuItem
-            key={menuItem.key}
-            menuItem={menuItem}
-            selected={selectedKey?.includes(menuItem?.key)}
-          >
+          <XStarMenuItem key={menuItem.key} menuItem={menuItem} selected={selectedKey?.includes(menuItem?.key)}>
             {renderMenuItems(menuItem?.children)}
           </XStarMenuItem>
         );
       }
-      return (
-        <XStarMenuItem
-          menuItem={menuItem}
-          key={menuItem?.key}
-          selected={selectedKey === menuItem?.key}
-          onClick={onClick}
-        />
-      );
+      return <XStarMenuItem menuItem={menuItem} key={menuItem?.key} selected={selectedKey === menuItem?.key} onClick={onClick} />;
     });
   };
 

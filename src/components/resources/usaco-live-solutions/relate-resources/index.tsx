@@ -1,8 +1,8 @@
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { Card, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
-import ColorfulCard from '@/components/common/colorful-card';
-import { Card, Typography } from 'antd';
-import { useLang } from '@/hoc/with-intl/define';
 
 const { Text } = Typography;
 
@@ -12,18 +12,18 @@ const RelateResources: React.FC = () => {
     {
       title: t('USACO.Activity1'),
       url: '/about-us/contact-us/',
-      description: t('USACO.Desc1'),
+      description: t('USACO.Desc1')
     },
     {
       title: t('USACO.Activity2'),
       url: '/',
-      description: t('USACO.Desc2'),
+      description: t('USACO.Desc2')
     },
     {
       title: t('USACO.Activity3'),
       url: 'https://www.youtube.com/watch?v=K2PWgYHZWbw&t=3s',
-      description: t('USACO.Desc3'),
-    },
+      description: t('USACO.Desc3')
+    }
   ];
 
   return (
