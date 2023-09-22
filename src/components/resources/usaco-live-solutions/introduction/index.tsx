@@ -5,6 +5,7 @@ import { getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
 import { Collapse, Space, Typography } from 'antd';
 import styles from './index.module.scss';
+
 const { Panel } = Collapse;
 const { Text } = Typography;
 
@@ -18,7 +19,6 @@ const UsacoIntro = ({ data }: Props) => {
 
   const getVideoByLang = (attributes: GetResourcesLiveSolution) => {
     const { video, videoZh, videoEn } = attributes;
-
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
   return (

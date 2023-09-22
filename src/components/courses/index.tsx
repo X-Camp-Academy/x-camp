@@ -22,7 +22,7 @@ const { Panel } = Collapse;
 const { Content } = Layout;
 const { RangePicker } = DatePicker;
 
-interface FormatCoursesProps {
+interface SegmentedCoursesProps {
   primaryTitle: string;
   children:
     | {
@@ -40,8 +40,8 @@ const Courses: React.FC = () => {
   const isMobile = useMobile();
   const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>('Online Classes');
-  const [segmentedData, setSegmentedData] = useState<FormatCoursesProps[]>();
-  const [copySegmentedData, setCopySegmentedData] = useState<FormatCoursesProps[]>();
+  const [segmentedData, setSegmentedData] = useState<SegmentedCoursesProps[]>();
+  const [copySegmentedData, setCopySegmentedData] = useState<SegmentedCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
   const COURSE_TYPES = Object.values(CourseTypes);
@@ -118,8 +118,12 @@ const Courses: React.FC = () => {
     }
   });
 
-  // 移除二级课程为空的数据
-  const removeEmptyChildren = (data: FormatCoursesProps[]) => {
+  /**
+   * 去除二级课程为空的数据
+   * @param data 选中的segmented的课程数据
+   * @returns
+   */
+  const removeEmptyChildren = (data: SegmentedCoursesProps[]) => {
     if (data) {
       return [
         {
@@ -129,7 +133,11 @@ const Courses: React.FC = () => {
       ];
     }
   };
-  // 根据segmented来筛选课程数据
+
+  /**
+   * 根据segmented获取当前选中的课程数据
+   * @param segmented 选中的segmented
+   */
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const segmentedData = allCourses?.filter((item) => item?.primaryTitle === segmented);
 
@@ -139,23 +147,33 @@ const Courses: React.FC = () => {
     setCopySegmentedData(result);
   };
 
-  const onSegmentedChange = (value: SegmentedValue) => {
+  /**
+   * hash跳转，清空筛选的表单
+   * @param value 选中的segmented
+   */
+  const onSegmentedChange = (value: SegmentedValue | RadioChangeEvent) => {
     history.replaceState(null, '', pathname);
     form.resetFields();
-    setSegmented(value);
+    setSegmented(typeof value === 'object' ? value.target.value : value);
   };
+
   useEffect(() => {
     getCourseBySegmented(segmented);
   }, [segmented, courses, courseLevelType]);
 
+  /**
+   * hash key要与nav跳转的href对应
+   */
   const hashSegmentedMap = new Map([
     ['#online', CourseTypes.OnlineClasses],
     ['#camps', CourseTypes.CampsClasses],
-    ['#apcs', CourseTypes.JavaAPCSClasses],
-    ['#mocktestclasses', CourseTypes.MockTestClasses]
+    ['#mock-test-classes', CourseTypes.MockTestClasses],
+    ['#apcs', CourseTypes.JavaAPCSClasses]
   ]);
 
-  // 监听hash
+  /**
+   * 监听从link跳转过来的hash值
+   */
   useEffect(() => {
     if (hashSegmentedMap.get(hash)) {
       const hashValue = hashSegmentedMap.get(hash);
@@ -165,9 +183,23 @@ const Courses: React.FC = () => {
     }
   }, [hash, segmentedData]);
 
+  /**
+   * 判断输入的课程是否在对应的开始结束时间内
+   * @param startDateTime 选择的开始时间
+   * @param endDateTime 选择的结束时间
+   * @param course 课程数据
+   * @returns
+   */
   const searchDate = (startDateTime: Dayjs, endDateTime: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
     return dayjs(course?.attributes?.startDateTime)?.isBetween(startDateTime, endDateTime) && dayjs(course?.attributes?.endDateTime)?.isBetween(startDateTime, endDateTime);
   };
+
+  /**
+   * 判断输入的课程是否包含输入的关键词
+   * @param inputValue 输入的关键词
+   * @param course 要匹配的课程
+   * @returns
+   */
   const searchInput = (inputValue: string, course: StrapiResponseDataItem<GetCourses>) => {
     const { classLang, classMode, spokenLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } =
       course?.attributes;
@@ -191,7 +223,11 @@ const Courses: React.FC = () => {
       }
     });
   };
-  // 前端根据当前的segmentedData来筛选
+
+  /**
+   * 筛选当前选中的segmented课程数据
+   * @param values 筛选的参数
+   */
   const onFinish = (values: { category: string; rangeDate: [Dayjs, Dayjs]; search: string }) => {
     const { category, rangeDate, search } = values;
     let result;
@@ -283,15 +319,10 @@ const Courses: React.FC = () => {
         ];
       }
     }
-    const filteredResult = removeEmptyChildren(result as FormatCoursesProps[]);
-    setSegmentedData(filteredResult);
-  };
+    console.log(result);
 
-  // 执行和onSegmentedChange同样的操作
-  const onSegmentedRadioChange = (e: RadioChangeEvent) => {
-    history.replaceState(null, '', pathname);
-    form.resetFields();
-    setSegmented(e?.target?.value);
+    const filteredResult = removeEmptyChildren(result as SegmentedCoursesProps[]);
+    setSegmentedData(filteredResult);
   };
 
   return (
@@ -311,7 +342,7 @@ const Courses: React.FC = () => {
             }}
           >
             {isMobile ? (
-              <Radio.Group optionType="button" buttonStyle="solid" onChange={onSegmentedRadioChange} value={segmented} className={styles.radioGroup}>
+              <Radio.Group optionType="button" buttonStyle="solid" onChange={onSegmentedChange} value={segmented} className={styles.radioGroup}>
                 <Space size={0} style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>
                   {COURSE_TYPES?.map((courseType) => (
                     <Radio style={{ width: '100%' }} key={courseType} value={courseType}>

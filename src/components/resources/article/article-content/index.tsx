@@ -11,9 +11,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import styles from './index.module.scss';
 
-const XStarMdViewer = dynamic(() => import('x-star-editor').then((v) => v.XStarMdViewer), {
-  ssr: false
-});
+const XStarMdViewer = dynamic(() => import('x-star-editor').then((v) => v.XStarMdViewer), { ssr: false });
 const { Title } = Typography;
 
 interface Props {

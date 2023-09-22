@@ -3,7 +3,8 @@ import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
 import { Collapse } from 'antd';
 import styles from './index.module.scss';
-import { default as JobCardDetail, default as JobCardHeader } from './iob-card-header';
+import JobCardDetail from './job-card-detail';
+import JobCardHeader from './job-card-header';
 
 const { Panel } = Collapse;
 

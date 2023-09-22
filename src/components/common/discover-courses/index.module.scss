@@ -96,6 +96,10 @@
         @include title('thin');
 
         word-wrap: break-word;
+
+        @media (width <= 768px) {
+          font-size: 16px;
+        }
       }
 
       .maskDesc {

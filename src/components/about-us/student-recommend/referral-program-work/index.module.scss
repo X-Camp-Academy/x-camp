@@ -3,6 +3,10 @@
 .referralProgramWorkContainer {
   margin-bottom: 100px;
 
+  @media (width <= 768px) {
+    margin-bottom: 0;
+  }
+
   .referralProgramWork {
     padding: 50px;
 

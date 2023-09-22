@@ -20,7 +20,7 @@ const JobCardHeader: React.FC<JobCardHeaderProps> = ({ data, showExpandBtn = tru
   const [isExpand, setIsExpand] = useState<boolean>(false);
 
   return (
-    <Card className={styles.cardContainer} bodyStyle={{ padding: 0 }} style={isExpand ? { borderRadius: '10px 10px 0 0' } : { borderRadius: 10 }} onClick={() => setIsExpand(!isExpand)}>
+    <Card className={styles.cardContainer} bodyStyle={{ padding: 0 }} style={isExpand ? { borderRadius: '8px 8px 0 0' } : { borderRadius: 8 }} onClick={() => setIsExpand(!isExpand)}>
       <Row>
         <div
           style={{

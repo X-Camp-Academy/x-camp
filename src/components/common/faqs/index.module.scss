@@ -20,7 +20,11 @@
 
     .qaCard {
       margin: 10px 0;
-      width: 70%;
+      width: 50%;
+
+      @media (width <= 768px) {
+        width: 100%;
+      }
     }
   }
 }

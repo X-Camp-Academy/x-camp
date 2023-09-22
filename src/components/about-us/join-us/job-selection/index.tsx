@@ -23,7 +23,6 @@ const JobSelection: React.FC = () => {
       }
     });
   }, [category]);
-
   return (
     <div className={styles.jobSelectionContainer}>
       <div className={`${styles.jobSelection} container`}>

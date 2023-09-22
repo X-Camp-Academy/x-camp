@@ -2,8 +2,8 @@ import { useGetAboutUsJoinUs } from '@/apis/strapi-client/strapi';
 import { Card } from 'antd';
 import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react';
-import JobCardHeader from '../../job-selection/job-card/iob-card-header';
 import JobCardDetail from '../../job-selection/job-card/job-card-detail';
+import JobCardHeader from '../../job-selection/job-card/job-card-header';
 import ResumeForm from '../resume-form';
 import styles from './index.module.scss';
 
