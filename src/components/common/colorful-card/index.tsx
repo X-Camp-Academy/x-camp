@@ -34,6 +34,7 @@ const ColorfulCard: React.FC<ColorfulCardProps> = ({
     reverse: boolean
   ) => {
     const defaultStyle = {
+      overflow: 'hidden',
       borderRadius: 10,
       paddingTop: border === 'top' ? 6 : 0,
       paddingBottom: border === 'bottom' ? 6 : 0,
