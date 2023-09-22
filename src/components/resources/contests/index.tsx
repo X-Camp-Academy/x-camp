@@ -16,17 +16,18 @@ import styles from './index.module.scss';
 const { Content } = Layout;
 
 const Contests: React.FC = () => {
+  const pathname = usePathname();
+  const size = useSize(document.querySelector('body'));
   const { data: resourcesContest } = useGetNewEvent({
     tag: NewEventCategory.EventContest,
     current: 1,
     pageSize: 9999,
   });
-  const pathname = usePathname();
+
   const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname],
   });
-  const size = useSize(document.querySelector('body'));
 
   return (
     <Layout className={styles.main}>
