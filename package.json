@@ -14,13 +14,11 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{ts,tsx}": [
       "prettier --parser=typescript --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "dependencies": {
