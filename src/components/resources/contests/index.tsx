@@ -13,7 +13,6 @@ import { formatContestsByQuarter } from './define';
 import { NewEventCategory } from '@/apis/strapi-client/define';
 import styles from './index.module.scss';
 
-
 const { Content } = Layout;
 
 const Contests: React.FC = () => {

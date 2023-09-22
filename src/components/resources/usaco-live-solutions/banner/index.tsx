@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './index.module.scss';
 import { useLang } from '@/hoc/with-intl/define';
 import CommonBanner from '@/components/common/common-banner';
+import styles from './index.module.scss';
 
 
 const Banner: React.FC = () => {

@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from './index.module.scss';
+import { useRouter } from 'next/navigation';
 import { Button } from 'antd';
 import { LaptopOutlined } from '@ant-design/icons';
 import { useLang } from '@/hoc/with-intl/define';
 import CommonBanner from '@/components/common/common-banner';
-import { useRouter } from 'next/navigation';
-
+import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();

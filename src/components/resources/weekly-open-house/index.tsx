@@ -1,21 +1,22 @@
 'use client';
-import { Layout, Space } from 'antd';
 import React from 'react';
-import styles from './index.module.scss';
+import { usePathname } from 'next/navigation';
+import { Layout, Space } from 'antd';
 import Banner from './banner';
-import Reviews from '@/components/common/reviews';
 import Introduction from './introduction';
 import AppointmentCard from './appointment-card';
+import Reviews from '@/components/common/reviews';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
-import { usePathname } from 'next/navigation';
+import styles from './index.module.scss';
+
+
 const { Content } = Layout;
 
 const WeeklyOpenHouse = () => {
   const pathname = usePathname();
-  //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname],
   });
 
   return (

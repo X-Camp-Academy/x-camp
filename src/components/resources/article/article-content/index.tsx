@@ -25,7 +25,6 @@ interface Props {
 const ArticleContent = ({ props }: Props) => {
   const { format: t, lang } = useLang();
 
-
   const monthNameEn = [
     'January',
     'February',
@@ -51,7 +50,6 @@ const ArticleContent = ({ props }: Props) => {
       monthNameEn[dayjsDate.month()] + dayjsDate.format(formatStringEn)
     );
   };
-
 
   return (
     <div className={styles.content}>

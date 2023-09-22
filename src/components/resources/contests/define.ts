@@ -1,6 +1,6 @@
+import dayjs from 'dayjs';
 import { GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
-import dayjs from 'dayjs';
 
 enum MonthAbbreviation {
   Jan = 'Jan',

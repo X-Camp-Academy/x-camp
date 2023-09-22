@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './index.module.scss';
 import { Collapse, Space, Typography } from 'antd';
 import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
-import { GetResourcesLiveSolution } from '@/apis/strapi-client/define';
-import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
+import { GetResourcesLiveSolution } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import styles from './index.module.scss';
+
 const { Panel } = Collapse;
 const { Text } = Typography;
 
@@ -20,7 +21,6 @@ const UsacoIntro = ({ data }: Props) => {
 
   const getVideoByLang = (attributes: GetResourcesLiveSolution) => {
     const { video, videoZh, videoEn } = attributes;
-
     return video?.data ? video?.data?.attributes?.url : (videoZh || videoEn) ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
   return (

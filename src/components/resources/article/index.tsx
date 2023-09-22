@@ -1,11 +1,11 @@
 'use client';
 import React, { useEffect } from 'react';
-import styles from './index.module.scss';
+import { useParams } from 'next/navigation';
 import { Col, Empty, Layout, Row } from 'antd';
 import ArticleContent from './article-content';
 import ArticleSider from './article-sider';
-import { useParams } from 'next/navigation';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
+import styles from './index.module.scss';
 
 const { Content } = Layout;
 
@@ -27,7 +27,6 @@ const Article: React.FC = () => {
       },
     });
   }, []);
-
 
   return (
     <Layout className={styles.main}>

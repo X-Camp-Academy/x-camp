@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from './index.module.scss';
+import { useRouter } from 'next/navigation';
 import { Button } from 'antd';
 import { CarryOutOutlined } from '@ant-design/icons';
 import { useLang } from '@/hoc/with-intl/define';
-import { useRouter } from 'next/navigation';
+import styles from './index.module.scss';
+
 
 const AppointmentCard: React.FC = () => {
   const { format: t } = useLang();
