@@ -27,8 +27,6 @@ import {
   GetNewEventResponse,
   GetPartnerRequest,
   GetProjectsDemoRequest,
-  GetResourcesContestRequest,
-  GetResourcesContestResponse,
   GetResourcesLiveSolutionRequest,
   GetReviewsRequest,
   GetUserSearchRequest,
@@ -208,30 +206,6 @@ export const useGetCommunity = () => {
 };
 
 /**
- * 获取资源目录下的比赛列表
- * @returns
- */
-export const useGetResourcesContest = () => {
-  const client = useStrapiClient();
-  const handleError = useHandleError();
-  return useRequest(
-    async (params: GetResourcesContestRequest) => {
-      const res: GetResourcesContestResponse = await client.getResourcesContest(params);
-      return isArray(res?.data) ? res.data : [];
-    },
-    {
-      defaultParams: [
-        {
-          populate: '*',
-          sort: ['order:desc']
-        }
-      ],
-      onError: handleError
-    }
-  );
-};
-
-/**
  * 获取关于我们目录下的Join Us
  * @returns
  */
@@ -394,6 +368,7 @@ export const useGetCourses = ({
 };
 
 /**
+ * !暂时保留
  * 获取关于我们毕业生地图数据
  * @returns
  */

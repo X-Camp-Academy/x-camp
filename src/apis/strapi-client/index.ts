@@ -29,8 +29,6 @@ import {
   GetPartnerResponse,
   GetProjectsDemoRequest,
   GetProjectsDemoResponse,
-  GetResourcesContestRequest,
-  GetResourcesContestResponse,
   GetResourcesLiveSolutionRequest,
   GetResourcesLiveSolutionResponse,
   GetReviewsRequest,
@@ -96,17 +94,12 @@ export class StrapiClient extends BaseAxiosClient {
   }
 
   async getCommunity(params: GetCommunityRequest): Promise<GetCommunityResponse> {
-    const res: GetCommunityResponse = await this.get('/xc-x-alumnis' + getParamsStringify(params), {});
+    const res: GetCommunityResponse = await this.get('/xc-communities' + getParamsStringify(params), {});
     return res;
   }
 
   async getCourses(params: GetCoursesRequest): Promise<GetCoursesResponse> {
     const res: GetCoursesResponse = await this.get('/xc-courses' + getParamsStringify(params), {});
-    return res;
-  }
-
-  async getResourcesContest(params: GetResourcesContestRequest): Promise<GetResourcesContestResponse> {
-    const res: GetResourcesContestResponse = await this.get('/xc-resources-contests' + getParamsStringify(params), {});
     return res;
   }
 

@@ -11,6 +11,7 @@ const { Title, Paragraph } = Typography;
 const Results: React.FC = () => {
   const { lang } = useLang();
   const { data: introArticle } = useGetAboutUsIntroArticle();
+
   return (
     <div className="container">
       {introArticle?.map((item) => (
