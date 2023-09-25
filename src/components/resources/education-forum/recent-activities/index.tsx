@@ -54,7 +54,7 @@ const RecentActivities: React.FC = () => {
                         {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
                       </Text>
 
-                      <Link className={styles.arrow} href={`/resources/${item?.id}`}>
+                      <Link className={styles.arrow} href={`/resources/education-forum/${item?.id}`}>
                         <RightCircleOutlined />
                       </Link>
                     </div>

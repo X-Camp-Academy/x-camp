@@ -124,7 +124,7 @@ const Activities: React.FC = () => {
                         className={styles.btn}
                         icon={<RightCircleOutlined />}
                         onClick={() => {
-                          router.push(`/resources/${v?.id}`);
+                          router.push(`/resources/education-forum/${v?.id}`);
                         }}
                       />
                     </div>

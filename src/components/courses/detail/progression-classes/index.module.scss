@@ -13,8 +13,13 @@
     line-height: 48px;
   }
 
-  .cards {
+  .betweenCards {
     justify-content: space-between;
+    width: 100%;
+  }
+
+  .centerCards {
+    justify-content: center;
     width: 100%;
   }
 }
