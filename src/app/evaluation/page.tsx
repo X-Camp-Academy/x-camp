@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
+import { PageTitle, generateMetadata } from '../metadata';
+
 const Evaluation = dynamic(() => import('@/components/evaluation'));
 
 export const metadata = {
-  title: 'X-Camp Academy',
-  description: 'X-Camp Academy | Programming and Education news from X-Camp'
+  ...generateMetadata(PageTitle.Evaluation)
 };
 
 export default function Page() {

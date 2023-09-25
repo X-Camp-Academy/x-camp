@@ -1,10 +1,10 @@
-import { generateMetadata } from '@/utils/metadata';
 import dynamic from 'next/dynamic';
+import { PageTitle, generateMetadata } from './metadata';
 
 const Home = dynamic(() => import('@/components/home'));
 
 export const metadata = {
-  ...generateMetadata('home')
+  ...generateMetadata(PageTitle.Home)
 };
 
 const Page: React.FC = () => {

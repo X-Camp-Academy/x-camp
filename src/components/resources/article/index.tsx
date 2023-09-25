@@ -16,6 +16,8 @@ const Article: React.FC = () => {
     pageSize: 1
   });
 
+  console.log(useParams());
+
   useEffect(() => {
     run({
       populate: '*',
