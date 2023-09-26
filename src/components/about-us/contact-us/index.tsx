@@ -21,17 +21,18 @@ const ContactUs: React.FC = () => {
   // 请求当前页面的评论
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
 
   useEffect(() => {
     if (hash === '#trial-class') {
       messageApi.open({
-        type: 'success',
         content: 'Welcome to contact us for your interested class. ',
-        className: 'custom-class',
+        icon: <></>,
         style: {
-          marginTop: '20vh'
+          marginTop: '20vh',
+          fontSize: 28,
+          color: '#ffad11'
         }
       });
     }
