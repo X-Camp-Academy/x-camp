@@ -7,7 +7,6 @@ import { formatTimezone, getTransResult } from '@/utils/public';
 import { RightCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { NEWS_TYPES } from '../define';
 import styles from './index.module.scss';
@@ -56,9 +55,9 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
                           {startTime.format('YYYY-MM-DD')}
                         </Text>
 
-                        <Link href={`/resources/${item?.id}`}>
+                        <a href={`/resources/${item?.id}`}>
                           <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
-                        </Link>
+                        </a>
                       </Space>
                     </Space>
                   </ColorfulCard>
