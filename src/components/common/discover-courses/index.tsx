@@ -47,20 +47,20 @@ const DiscoverCourses = ({ showSubTitle = false, align = 'center', showBg = true
       maskChildren: generateMaskChildren(t('Python.Title'), t('Python.Mask.Desc'), '/courses/#classify0')
     },
     {
-      title: t('USACOK.Title'),
-      desc: t('USACOK.Grade'),
+      title: t('USACO.Knowledge.Title'),
+      desc: t('USACO.Knowledge.Grade'),
       url: '/image/home/course-2.png',
       bgc: '#FFAD11',
       maskBgc: 'rgb(255 173 17 / 40%)',
-      maskChildren: generateMaskChildren(t('USACO.Title'), t('USACO.Mask.Desc'), '/courses/#classify3')
+      maskChildren: generateMaskChildren(t('USACO.Knowledge.Title'), t('USACO.Knowledge.Mask.Desc'), '/courses/#classify1')
     },
     {
-      title: t('USACO.Title'),
-      desc: t('USACO.Grade'),
+      title: t('USACO.Grandmaster.Title'),
+      desc: t('USACO.Grandmaster.Grade'),
       url: '/image/home/course-3.png',
       bgc: '#FFAD11',
       maskBgc: 'rgb(255 173 17 / 40%)',
-      maskChildren: generateMaskChildren(t('USACO.Title'), t('USACO.Mask.Desc'), '/courses/#classify3')
+      maskChildren: generateMaskChildren(t('USACO.Grandmaster.Title'), t('USACO.Grandmaster.Mask.Desc'), '/courses/#classify3')
     },
     {
       title: 'Java & APCS',

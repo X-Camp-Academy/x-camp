@@ -205,10 +205,10 @@ declare const json: {
   TuringCup: 'Turing Cup';
   UploadFile: 'Upload File';
   'USACO.DownloadPackage': 'Download our free USACO Intro Package';
-  'USACO.Grade': '7th+ Grades';
-  'USACO.Title': 'USACO Grandmaster';
-  'USACOK.Grade': '6th+ Grades';
-  'USACOK.Title': 'USACO  Knowledge';
+  'USACO.Knowledge.Grade': '6th+ Grades';
+  'USACO.Knowledge.Title': 'USACO Knowledge';
+  'USACO.Grandmaster.Grade': '7th+ Grades';
+  'USACO.Grandmaster.Title': 'USACO  Grandmaster';
   USACOClasses: 'USACO classes';
   USACOFinalist: 'USACO Finalist';
   USACOLiveSolution: 'USACO Live Solutions';
@@ -327,8 +327,8 @@ declare const json: {
   'Contact.OfficeHour.info': '7:00 AM - 5:00 PM PT (Monday Off)';
   Questions: 'Questions?';
   'Python.Mask.Desc': 'Recommended for grades 5+ with no coding background required. Our program consists of three courses designed to provide a comprehensive learning experience.';
-  'C++.Mask.Desc': 'Recommended for grades 6+ with a minimum of 1-year coding background required. Our program comprises six courses that offer a comprehensive learning experience.';
-  'USACO.Mask.Desc': 'Recommended for grades 7+ with a minimum of 2-year coding background required. We provide top-notch faculty experienced in teaching at the US Camp level.';
+  'USACO.Knowledge.Mask.Desc': 'Recommended for grades 6+ with a minimum of 1-year coding background required. Our program comprises six courses that offer a comprehensive learning experience.';
+  'USACO.Grandmaster.Mask.Desc': 'Recommended for grades 7+ with a minimum of 2-year coding background required. We provide top-notch faculty experienced in teaching at the US Camp level.';
   'APCS.Mask.Desc': 'Recommended for grades 7+ with no coding background required. The program consists of three courses designed to provide a solid foundation and prepare students for success in APCS A.';
   Message: 'Message';
   YourMessageHere: 'Your message here';

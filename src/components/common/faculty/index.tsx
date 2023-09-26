@@ -1,6 +1,5 @@
 'use client';
 import { useGetFaculty } from '@/apis/strapi-client/strapi';
-import { StrapiMedia } from '@/apis/strapi-client/strapiDefine';
 import CardItem, { IItem } from '@/components/common/faculty/CardItem';
 import CardListMobile from '@/components/common/faculty/CardListMobile';
 import CarouselWithButton from '@/components/common/faculty/CarouselWithButton';
@@ -17,10 +16,6 @@ const Faculty: React.FC = () => {
   const isMobile = useMobile();
   const { data } = useGetFaculty({});
 
-  const getImgUrl = (img: StrapiMedia) => {
-    return img?.data?.attributes?.url;
-  };
-
   const facultyData: IItem[] | undefined = useMemo(() => {
     return data
       ?.sort((a, b) => b?.attributes?.order - a?.attributes?.order)
@@ -28,7 +23,7 @@ const Faculty: React.FC = () => {
         id: item.id,
         attributes: {
           ...item?.attributes,
-          imgUrl: getImgUrl(item?.attributes?.img)
+          imgUrl: item?.attributes?.img?.data?.attributes?.url
         }
       }));
   }, [data]);

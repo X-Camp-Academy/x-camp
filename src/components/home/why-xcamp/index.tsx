@@ -25,13 +25,13 @@ const WhyXCamp: React.FC = () => {
       icon: '/image/home/icon-why-house.png',
       title: t('XCamp.title3'),
       desc: t('XCamp.Desc3'),
-      url: '/about-us/achievements/'
+      url: '/about-us/x-alumni'
     },
     {
       icon: '/image/home/icon-why-track.png',
       title: t('XCamp.title4'),
       desc: t('XCamp.Desc4'),
-      url: '/about-us/x-alumni/'
+      url: '/courses'
     }
   ];
   return (

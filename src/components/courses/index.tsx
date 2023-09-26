@@ -319,7 +319,6 @@ const Courses: React.FC = () => {
         ];
       }
     }
-    console.log(result);
 
     const filteredResult = removeEmptyChildren(result as SegmentedCoursesProps[]);
     setSegmentedData(filteredResult);
