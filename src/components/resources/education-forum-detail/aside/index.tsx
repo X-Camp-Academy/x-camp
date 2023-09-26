@@ -9,7 +9,6 @@ import { AlignRightOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Image, Row, Space, Typography } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 dayjs.extend(isBetween);
@@ -193,9 +192,9 @@ const ArticleSider: React.FC<{
                         {getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}
                       </Paragraph>
                     </div>
-                    <Link href={`/resources/${v.id}`}>
+                    <a href={`/resources/${v.id}`}>
                       <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} style={{ color: '#FFAD11', fontSize: 24 }} />
-                    </Link>
+                    </a>
                   </Row>
                 </Space>
               </Card>
