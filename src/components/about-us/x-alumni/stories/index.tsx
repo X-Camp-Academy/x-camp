@@ -9,14 +9,12 @@ import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Image, Row, Space, Typography } from 'antd';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 
 const Stories: React.FC = () => {
-  const router = useRouter();
   const isMobile = useMobile();
   const { lang, format: t } = useLang();
 
@@ -59,11 +57,12 @@ const Stories: React.FC = () => {
 
                     <Title ellipsis={{ rows: 2 }} className={styles.cardTitle}>
                       {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
-                      <Button type="primary" size="small" ghost shape="circle" className={styles.cardButton} onClick={() => router.push(`/resources/${item.id}`)}>
-                        <RightOutlined />
+                      <Button type="primary" size="small" ghost shape="circle" className={styles.cardButton}>
+                        <a href={`/resources/${item.id}`}>
+                          <RightOutlined />
+                        </a>
                       </Button>
                     </Title>
-
                     <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
                       {getTransResult(lang, item?.attributes.descriptionZh, item?.attributes.descriptionEn)}
                     </Paragraph>
