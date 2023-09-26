@@ -1,6 +1,7 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
 import { Col, Row, Space, Typography } from 'antd';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import CountUp from 'react-countup';
 import styles from './index.module.scss';
@@ -12,6 +13,7 @@ interface USACOMedalProps {
 }
 
 const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
+  const router = useRouter();
   const { format: t } = useLang();
 
   const data = [
@@ -46,7 +48,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
     <div className={`${styles.usacoContainer} `}>
       {showTitle && (
         <Col span={24} className={styles.titleContainer}>
-          <Title className={styles.title}>
+          <Title className={styles.title} onClick={() => router.push('/about-us/achievements')}>
             Our&nbsp;
             <Text className={styles.title} style={{ color: '#ffad11' }}>
               Achievements

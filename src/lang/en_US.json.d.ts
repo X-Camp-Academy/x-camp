@@ -271,7 +271,7 @@ declare const json: {
   ViewMoreEvents: 'View More Events';
   UpcomingEvents: 'Upcoming Events';
   'UpcomingEvents.Desc': 'Peek at some alumni events happening just around the corner.';
-  'ArticleContent.Desc': 'Note: This document is an original work created by X-Camp, and its copyright belongs to our company.';
+  'ArticleContent.Desc': 'Note: This content is an original work created by X-Camp, and its copyright belongs to our company.';
   'Contest.Desc': 'X-Camp organizes yearly opportunities for students to participate in different competitive programming contests. We establish partnerships with distinguished contest partners, including prestigious universities, high schools, and NGOs. These collaborations ensure the delivery of high-quality contests and foster a vibrant community for our students.';
   'Contest.Title1': 'Challenge and Competition';
   'Contest.Detail1': 'Programming contests offer a valuable opportunity for students to engage in intellectual challenges and showcase their programming skills.';

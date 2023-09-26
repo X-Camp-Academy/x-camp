@@ -18,6 +18,12 @@
 
     margin: 0;
     text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $primary-color;
+    }
   }
 
   @media (width <= 768px) {
