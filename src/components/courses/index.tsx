@@ -219,7 +219,15 @@ const Courses: React.FC = () => {
 
     return searchFields?.some((field) => {
       if (field) {
-        return (field as string)?.toLowerCase()?.indexOf(inputValue?.toLowerCase()) > -1;
+        if (Array.isArray(field)) {
+          return field?.some((fieldItem) => {
+            if (fieldItem) {
+              return (fieldItem as string)?.toLowerCase()?.indexOf(inputValue?.toLowerCase()) > -1;
+            }
+          });
+        } else {
+          return (field as string)?.toLowerCase()?.indexOf(inputValue?.toLowerCase()) > -1;
+        }
       }
     });
   };
@@ -319,6 +327,8 @@ const Courses: React.FC = () => {
         ];
       }
     }
+
+    console.log(result);
 
     const filteredResult = removeEmptyChildren(result as SegmentedCoursesProps[]);
     setSegmentedData(filteredResult);
