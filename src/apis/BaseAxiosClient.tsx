@@ -1,7 +1,7 @@
 'use client';
 import { LangKey, useLang } from '@/hoc/with-intl/define';
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
 import React, { useContext, useRef } from 'react';
 
