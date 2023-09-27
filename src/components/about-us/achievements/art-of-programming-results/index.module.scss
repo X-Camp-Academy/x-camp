@@ -1,18 +1,21 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
 
 .ArtOfProgrammingResultsContainer {
   margin-top: 100px;
+
   .ArtOfProgrammingResults {
     padding-bottom: 100px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       padding: 30px;
     }
 
     .firstTitle {
-      @include title("bold");
+      @include title('bold');
+
       margin-top: 0;
-      @media (max-width: 768px) {
+
+      @media (width <= 768px) {
         line-height: 58px;
       }
     }
@@ -25,65 +28,68 @@
     }
 
     .timeListItem {
-      padding-left: 40px;
       padding-right: 40px;
+      padding-left: 40px;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         font-size: 20px;
       }
 
       .timeListTitle {
-        @include title("thin");
+        @include title('thin');
+
         line-height: 48px;
         position: relative;
         left: -20px;
       }
 
       .timeListTitle::before {
-        content: "";
+        position: relative;
+        left: -20px;
         display: inline-block;
         width: 15px;
         height: 15px;
+        border: 3px solid #ffd600;
         border-radius: 50%;
         background-color: #ffad11;
-        position: relative;
-        left: -20px;
-        border: 3px solid #ffd600;
+        content: '';
       }
 
       .timeListDetail {
-        color: #172142;
         font-size: 18px;
-        line-height: 48px;
         font-weight: 500;
+        color: #172142;
+        line-height: 48px;
       }
     }
 
     .projectDemo {
       .title {
-        @include title();
+        @include title;
+
         margin-top: 60px;
       }
 
       .subTitle {
-        @include title("thin");
+        @include title('thin');
+
         line-height: 48px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           margin-left: 5px;
         }
 
         &::before {
-          content: "";
-          display: inline-block;
-          width: 15px;
-          height: 15px;
-          border-radius: 50%;
-          background-color: #ffad11;
           position: relative;
           left: 0;
-          border: 3px solid #ffd600;
+          display: inline-block;
           margin-right: 20px;
+          width: 15px;
+          height: 15px;
+          border: 3px solid #ffd600;
+          border-radius: 50%;
+          background-color: #ffad11;
+          content: '';
         }
       }
 
@@ -93,7 +99,7 @@
         .videoItem {
           background-color: #fff;
 
-          @media (max-width: 768px) {
+          @media (width <= 768px) {
             display: block;
           }
 
@@ -104,12 +110,11 @@
 
           .videoTitle {
             font-size: 24px;
-
             font-weight: 600;
             color: #172142;
             line-height: 32px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
               font-size: 21px;
             }
           }

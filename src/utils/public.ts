@@ -1,5 +1,5 @@
-"use client";
-import dayjs, { Dayjs } from "dayjs";
+'use client';
+import dayjs, { Dayjs } from 'dayjs';
 
 /**
  * 选择语言
@@ -8,30 +8,21 @@ import dayjs, { Dayjs } from "dayjs";
  * @param enText 英文字段
  * @returns string
  */
-export const getTransResult = (
-  lang: "zh" | "en",
-  zhText: string | undefined,
-  enText: string | undefined
-) => {
-  if (zhText === undefined && enText === undefined) return "";
-  if (lang == "zh") return zhText ? zhText : enText;
+export const getTransResult = (lang: 'zh' | 'en', zhText: string | undefined, enText: string | undefined) => {
+  if (zhText === undefined && enText === undefined) return '';
+  if (lang === 'zh') return zhText ? zhText : enText;
   else return enText ? enText : zhText;
 };
 
 /**
  * 将扁平化数据根据某个字段分类
  */
-export const classifyByAttribution = <T extends { attributes: any }>(
-  data: T[],
-  field: string
-): T[][] => {
+export const classifyByAttribution = <T extends { attributes: any }>(data: T[], field: string): T[][] => {
   const groupedData: T[][] = [];
 
   data.forEach((item) => {
     const fieldValue = item?.attributes?.[field];
-    const index = groupedData?.findIndex(
-      (group) => group[0]?.attributes?.[field] === fieldValue
-    );
+    const index = groupedData?.findIndex((group) => group[0]?.attributes?.[field] === fieldValue);
 
     if (index === -1) {
       groupedData.push([item]);
@@ -50,19 +41,12 @@ export const classifyByAttribution = <T extends { attributes: any }>(
  * @param values 筛选的属性值
  * @returns
  */
-export const filterByAttribution = <T extends { attributes: any }>(
-  data: T[],
-  attribution: keyof T["attributes"] & string,
-  values?: string[]
-): T[] => {
+export const filterByAttribution = <T extends { attributes: any }>(data: T[], attribution: keyof T['attributes'] & string, values?: string[]): T[] => {
   if (values === undefined) return data;
   const filteredData: T[] = data?.filter((item) => {
     const fieldValue = item?.attributes?.[attribution];
-    const formattedFieldValue: string[] = fieldValue?.split(",") ?? [];
-    if (
-      formattedFieldValue?.length === 0 ||
-      values?.some((value) => formattedFieldValue?.includes(value))
-    ) {
+    const formattedFieldValue: string[] = fieldValue?.split(',') ?? [];
+    if (formattedFieldValue?.length === 0 || values?.some((value) => formattedFieldValue?.includes(value))) {
       // 这一项空的没填，或者填的内容分割之后在values中则留下
       return true;
     }
@@ -101,7 +85,7 @@ export enum StandardTimeZone {
   PacificStandardTime = -8, // North America
   CentralStandardTime = -6, // North America  Central America
   EasternStandardTime = -5, // North America  Caribbean  Central America
-  ChinaStandardTime = 8, // 	Asia
+  ChinaStandardTime = 8 // 	Asia
 }
 
 export enum DaylightTimeZone {
@@ -110,7 +94,7 @@ export enum DaylightTimeZone {
   MountainDaylightTime = -6, // North America
   CentralDaylightTime = -5, // North America  Central America
   EasternDaylightTime = -4, // North America  Caribbean  Central America
-  ChinaStandardTime = 8, // 	Asia
+  ChinaStandardTime = 8 // 	Asia
 }
 
 /**
@@ -125,8 +109,8 @@ const isDaylightTime = (date: Dayjs): boolean => {
   }
 
   // 判断是否是第二个星期日到第一个星期日之间
-  const secondSunday = date.startOf("month").add(1, "week").day(0).date();
-  const firstSunday = date.endOf("month").subtract(1, "week").day(0).date();
+  const secondSunday = date.startOf('month').add(1, 'week').day(0).date();
+  const firstSunday = date.endOf('month').subtract(1, 'week').day(0).date();
   const currentDay = date.date();
 
   return currentDay >= secondSunday && currentDay <= firstSunday;
@@ -153,34 +137,34 @@ export const formatTimezone = (original: string | undefined) => {
       // 夏令时
       switch (utcOffset) {
         case DaylightTimeZone.HawaiiDaylightTime:
-          return "HDT";
+          return 'HDT';
         case DaylightTimeZone.PacificDaylightTime:
-          return "PDT";
+          return 'PDT';
         case DaylightTimeZone.MountainDaylightTime:
-          return "MDT";
+          return 'MDT';
         case DaylightTimeZone.CentralDaylightTime:
-          return "CDT";
+          return 'CDT';
         case DaylightTimeZone.EasternDaylightTime:
-          return "EDT";
+          return 'EDT';
         case DaylightTimeZone.ChinaStandardTime:
-          return "CST";
+          return 'CST';
         default:
           return `GMT${utcOffset >= 0 ? `+${utcOffset}` : utcOffset}`;
       }
     } else {
       switch (utcOffset) {
         case StandardTimeZone.HawaiiStandardTime:
-          return "HST";
+          return 'HST';
         case StandardTimeZone.PacificStandardTime:
-          return "PST";
+          return 'PST';
         case StandardTimeZone.MountainStandardTime:
-          return "MST";
+          return 'MST';
         case StandardTimeZone.CentralStandardTime:
-          return "CST";
+          return 'CST';
         case StandardTimeZone.EasternStandardTime:
-          return "EST";
+          return 'EST';
         case DaylightTimeZone.ChinaStandardTime:
-          return "CST";
+          return 'CST';
         default:
           return `GMT${utcOffset >= 0 ? `+${utcOffset}` : utcOffset}`;
       }
@@ -188,7 +172,7 @@ export const formatTimezone = (original: string | undefined) => {
   };
   return {
     timezone: convertTimeZone(),
-    utcTime,
+    utcTime
   } as const;
 };
 
@@ -200,12 +184,9 @@ export const formatTimezone = (original: string | undefined) => {
  * compareVersion('1.2', '1.10.5') // -1
  * compareVersion('1.00.03', '1.0.03') // 0
  */
-export const compareVersion = (
-  version1: string,
-  version2: string
-): 1 | 0 | -1 => {
-  const arr1 = version1?.split(".");
-  const arr2 = version2?.split(".");
+export const compareVersion = (version1: string, version2: string): 1 | 0 | -1 => {
+  const arr1 = version1?.split('.');
+  const arr2 = version2?.split('.');
   const length1 = arr1?.length;
   const length2 = arr2?.length;
   const minlength = Math.min(length1, length2);
@@ -221,14 +202,14 @@ export const compareVersion = (
   }
   if (length1 > length2) {
     for (let j = i; j < length1; j++) {
-      if (parseInt(arr1[j]) != 0) {
+      if (parseInt(arr1[j]) !== 0) {
         return 1;
       }
     }
     return 0;
   } else if (length1 < length2) {
     for (let j = i; j < length2; j++) {
-      if (parseInt(arr2[j]) != 0) {
+      if (parseInt(arr2[j]) !== 0) {
         return -1;
       }
     }
@@ -256,12 +237,12 @@ export const judgeSystem = (): SysInterface => {
     firefox: /firefox\/([\d.]+)/,
     chrome: /chrome\/([\d.]+)/,
     opera: /opera.([\d.]+)/,
-    safari: /version\/([\d.]+).*safari/,
+    safari: /version\/([\d.]+).*safari/
   };
   const Sys: SysInterface = Object?.keys(systemMatch)?.reduce((pre, item) => {
     return {
       ...pre,
-      [item]: ua.match(systemMatch[item as keyof SysInterface])?.[1],
+      [item]: ua.match(systemMatch[item as keyof SysInterface])?.[1]
     };
   }, {});
   return Sys;
@@ -274,21 +255,15 @@ export const judgeSystem = (): SysInterface => {
 export const getBrowserCompatibility = (): boolean => {
   const system = judgeSystem();
   const minBrowserVersion = {
-    ie: "9999.0",
-    firefox: "80.0",
-    chrome: "88.0",
-    opera: "80.0",
-    safari: "14.1",
+    ie: '9999.0',
+    firefox: '80.0',
+    chrome: '88.0',
+    opera: '80.0',
+    safari: '14.1'
   };
   const browsers = Object?.keys(minBrowserVersion);
   for (const item of browsers) {
-    if (
-      system?.[item as keyof SysInterface] &&
-      compareVersion(
-        system?.[item as keyof SysInterface]!,
-        minBrowserVersion[item as keyof SysInterface]
-      ) === 1
-    ) {
+    if (system?.[item as keyof SysInterface] && compareVersion(system?.[item as keyof SysInterface]!, minBrowserVersion[item as keyof SysInterface]) === 1) {
       return true;
     }
   }
@@ -302,21 +277,17 @@ export const getBrowserCompatibility = (): boolean => {
 export const scrollIntoView = (id: string) => {
   const dom = document.getElementById(id);
   dom?.scrollIntoView({
-    behavior: "smooth",
-    block: "center",
+    behavior: 'smooth',
+    block: 'center'
   });
 };
 
 // 获取非空数据
-export const getLangResult = (
-  lang: "zh" | "en",
-  zhData?: string[],
-  enData?: string[]
-) => {
+export const getLangResult = (lang: 'zh' | 'en', zhData?: string[], enData?: string[]) => {
   if (zhData === null && enData === null) {
     return [];
   } else {
-    if (lang === "zh") {
+    if (lang === 'zh') {
       return zhData ? zhData : enData;
     } else {
       return enData ? enData : zhData;
@@ -325,5 +296,5 @@ export const getLangResult = (
 };
 
 export const getWeeksDays = (frequency?: string) => {
-  return frequency === "Daily" ? "days" : "weeks";
+  return frequency === 'Daily' ? 'days' : 'weeks';
 };

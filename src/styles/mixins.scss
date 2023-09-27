@@ -1,43 +1,45 @@
-@mixin title($type: "default") {
-  @if $type == "normal" {
+/* stylelint-disable order/properties-order */
+@mixin title($type: 'default') {
+  @if $type == 'normal' {
     width: 300px;
     font-size: 30px;
     font-weight: 600;
     line-height: 42px;
-  } @else if($type == "default") {
-    font-family: "MontserratAlternates";
+  } @else if $type == 'default' {
     font-size: 36px;
+    font-family: MontserratAlternates, Arial;
     font-weight: 600;
     line-height: 48px;
     color: $text-color;
+
     span {
-      font-family: "MontserratAlternates";
+      font-family: MontserratAlternates, Arial;
       color: $primary-color;
     }
-  } @else if($type == "bold") {
-    font-family: "MontserratAlternates";
+  } @else if $type == 'bold' {
     font-size: 48px;
+    font-family: MontserratAlternates, Arial;
     font-weight: 600;
     line-height: 48px;
     color: $text-color;
-  } @else if($type == "thin") {
+  } @else if $type == 'thin' {
     font-size: 24px;
     font-weight: 600;
     line-height: 36px;
     color: $text-color;
-  } @else if($type == "about") {
-    font-family: "MontserratAlternates";
+  } @else if $type == 'about' {
     font-size: 36px;
+    font-family: MontserratAlternates, Arial;
     font-weight: 600;
     line-height: 48px;
     color: $text-color;
     margin: 0;
-  } @else if($type == "banner") {
+  } @else if $type == 'banner' {
+    margin: 0;
     font-size: 36px;
     font-weight: 600;
     line-height: 48px;
     color: $text-color;
-    margin: 0;
   }
 }
 
@@ -47,21 +49,23 @@
   color: $color;
 }
 
-@mixin button($type: "normal") {
-  @if $type == "nav" {
-    padding: 5px 15px;
+@mixin button($type: 'normal') {
+  @if $type == 'nav' {
     display: inline-flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
     cursor: pointer;
-    border-radius: 4px;
     border: 2px solid #172142;
+    border-radius: 4px;
 
     span {
       span {
         line-height: 20px;
       }
+
       @include text;
+
       svg {
         margin-left: 4px;
       }
@@ -71,24 +75,24 @@
 
 @mixin flex($justContent: flex-start, $alignItems: center, $flex: flex) {
   display: $flex;
-  align-items: $alignItems;
   justify-content: $justContent;
+  align-items: $alignItems;
 }
 
-@mixin arrow($direction: "down", $size: 8px, $color: $text-color) {
+@mixin arrow($direction: 'down', $size: 8px, $color: $text-color) {
   width: 0;
   height: 0;
-  border-color: transparent;
   border-width: $size;
+  border-color: transparent;
   border-radius: 0;
 
-  @if $direction == "down" {
+  @if $direction == 'down' {
     border-top-color: $color;
-  } @else if $direction == "up" {
+  } @else if $direction == 'up' {
     border-bottom-color: $color;
-  } @else if $direction == "left" {
+  } @else if $direction == 'left' {
     border-right-color: $color;
-  } @else if $direction == "right" {
+  } @else if $direction == 'right' {
     border-left-color: $color;
   }
 }

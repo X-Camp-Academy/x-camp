@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Select } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
 import { useGetUserSearchMap } from '@/apis/strapi-client/strapi';
+import { SearchOutlined } from '@ant-design/icons';
+import { Select } from 'antd';
+import { useRouter } from 'next/navigation';
+import React, { useMemo, useState } from 'react';
 import styles from './SelectPage.module.scss';
 
 interface ValueType {
@@ -19,7 +19,7 @@ const SelectPage: React.FC = () => {
       searchMap?.keywords
         ? Object.entries(searchMap.keywords).map(([label, value]) => ({
           label,
-          value,
+          value
         }))
         : [],
     [searchMap]
@@ -29,9 +29,7 @@ const SelectPage: React.FC = () => {
       setOptions([]);
       return;
     }
-    const filteredOptions = searchUserMap.filter((option) =>
-      option.label.toLowerCase().includes(value.toLowerCase())
-    );
+    const filteredOptions = searchUserMap.filter((option) => option.label.toLowerCase().includes(value.toLowerCase()));
     setOptions(filteredOptions);
   };
   const handleSelect = (keyValue: ValueType) => {

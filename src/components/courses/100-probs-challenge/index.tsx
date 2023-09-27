@@ -1,15 +1,14 @@
-"use client";
-import React from "react";
-import styles from "./index.module.scss";
-import { Layout } from "antd";
-import Banner from "./banner";
-import Introduction from "./introduction";
-import Levels from "./5-levels";
-import Faqs from "@/components/common/faqs";
-import { usePathname } from "next/navigation";
-import { FaqCategory } from "@/apis/strapi-client/define";
-import { useGetCourses, useGetFaq } from "@/apis/strapi-client/strapi";
-import { useLang } from "@/hoc/with-intl/define";
+'use client';
+import { FaqCategory } from '@/apis/strapi-client/define';
+import { useGetCourses, useGetFaq } from '@/apis/strapi-client/strapi';
+import Faqs from '@/components/common/faqs';
+import { useLang } from '@/hoc/with-intl/define';
+import { Layout } from 'antd';
+import { usePathname } from 'next/navigation';
+import Levels from './5-levels';
+import Banner from './banner';
+import styles from './index.module.scss';
+import Introduction from './introduction';
 const { Content } = Layout;
 
 const ProbsChallenge = () => {
@@ -19,16 +18,16 @@ const ProbsChallenge = () => {
   const { data: courses } = useGetCourses({
     filters: {
       isCamp: {
-        $eq: true,
-      },
-    },
+        $eq: true
+      }
+    }
   });
 
   const { data: faq } = useGetFaq({
     ready: Boolean(courses),
     category: FaqCategory.CoursesQA,
     courseId: courses?.data?.map((v) => String(v?.id)),
-    pageName: [pathname as string],
+    pageName: [pathname as string]
   });
 
   return (
@@ -37,7 +36,7 @@ const ProbsChallenge = () => {
         <Banner />
         <Introduction />
         <Levels />
-        <Faqs title={t("CampsFAQs")} data={faq} />
+        <Faqs title={t('CampsFAQs')} data={faq} />
       </Content>
     </Layout>
   );

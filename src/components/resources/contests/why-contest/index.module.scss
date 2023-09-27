@@ -1,52 +1,54 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .content {
-  width: 100%;
   padding: 130px 50px;
+  width: 100%;
 
   .top,
   .bottom {
     .title {
-      @include title("bold");
+      @include title('bold');
+
       margin-bottom: 48px;
     }
 
     .description {
+      margin-bottom: 24px;
       font-size: 21px;
       font-weight: 500;
       color: #172142;
       line-height: 40px;
-      margin-bottom: 24px;
     }
   }
 
   .intro {
     .title {
-      @include title("thin");
+      @include title('thin');
+
       line-height: 48px;
       margin-bottom: 10px;
 
       &::before {
         position: relative;
-        content: "";
+        top: -1.5px;
         display: inline-block;
-        border-radius: 50%;
+        margin-right: 10px;
         width: 8px;
         height: 8px;
-        background: #ffad11;
         border: 2px solid #ffd600;
-        margin-right: 10px;
-        top: -1.5px;
+        border-radius: 50%;
+        background: #ffad11;
+        content: '';
       }
     }
 
     .description {
+      margin-bottom: 20px;
       margin-left: 24px;
       font-size: 21px;
       font-weight: 500;
       color: #172142;
       line-height: 40px;
-      margin-bottom: 20px;
     }
   }
 }

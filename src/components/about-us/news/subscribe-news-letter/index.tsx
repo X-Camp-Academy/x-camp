@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import { Space, Typography, Button, Input, Form } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useSubscribeNewsletter } from "@/apis/send-email-client/sendEmail";
-import { subscribeNewsletterRequest } from "@/apis/send-email-client/define";
-import styles from "./index.module.scss";
+'use client';
+import { subscribeNewsletterRequest } from '@/apis/send-email-client/define';
+import { useSubscribeNewsletter } from '@/apis/send-email-client/sendEmail';
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { Button, Form, Input, Space, Typography } from 'antd';
+import React from 'react';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 
@@ -18,9 +18,9 @@ const SubscribeNewsletter: React.FC = () => {
   };
   return (
     <div className={`${styles.subscribeNewsletter} container`}>
-      <ColorfulCard border={"bottom"} index={1} animate={false}>
+      <ColorfulCard border={'bottom'} index={1} animate={false}>
         <Space direction="vertical" className={styles.space}>
-          <Title className={styles.title}>{"Subscribe Newsletter"}</Title>
+          <Title className={styles.title}>{'Subscribe Newsletter'}</Title>
 
           <Paragraph className={styles.paragraph}>
             X-Camp is committed to establishing a nurturing and all-encompassing coding
@@ -32,23 +32,19 @@ const SubscribeNewsletter: React.FC = () => {
             <Form.Item
               name="email"
               rules={[
-                { type: "email" },
+                { type: 'email' },
                 {
                   required: true,
-                  message: t("Email.Required"),
-                },
+                  message: t('Email.Required')
+                }
               ]}
             >
               <Input type="email" placeholder="E-mail*" className={styles.formSelect} />
             </Form.Item>
 
             <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className={styles.submit}
-              >
-                {t("SubscribeNewsletter")}
+              <Button type="primary" htmlType="submit" className={styles.submit}>
+                {t('SubscribeNewsletter')}
               </Button>
             </Form.Item>
           </Form>

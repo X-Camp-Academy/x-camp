@@ -8,18 +8,18 @@
     line-height: 48px;
 
     &::before {
-      content: "";
+      position: relative;
+      top: 4px;
+      left: 0;
       display: inline-block;
+      margin-right: 10px;
       width: 8px;
       height: 8px;
+      border: 2px solid #ffd600;
       border-radius: 50%;
       background-color: #ffad11;
-      position: relative;
-      left: 0;
-      top: 4px;
+      content: '';
       transform: translate(0, -50%);
-      border: 2px solid #ffd600;
-      margin-right: 10px;
     }
   }
 
@@ -38,15 +38,15 @@
   }
 
   .btn {
+    margin: 40px 0;
     width: 208px;
     height: 56px;
-    border-radius: 12px;
     border: 2px solid #172142;
+    border-radius: 12px;
     font-size: 18px;
     font-weight: 500;
     color: #172142;
     line-height: 24px;
-    margin: 40px 0;
   }
 
   .tip {

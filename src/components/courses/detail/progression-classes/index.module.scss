@@ -1,17 +1,25 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
+
 .content {
-  width: 100%;
   margin-top: 100px;
   margin-bottom: 100px;
+  width: 100%;
+
   .title {
-    @include title("default");
-    text-align: center;
+    @include title('default');
+
     margin-bottom: 50px;
+    text-align: center;
     line-height: 48px;
   }
 
-  .cards {
-    width: 100%;
+  .betweenCards {
     justify-content: space-between;
+    width: 100%;
+  }
+
+  .centerCards {
+    justify-content: center;
+    width: 100%;
   }
 }

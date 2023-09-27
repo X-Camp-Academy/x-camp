@@ -1,9 +1,9 @@
 'use client';
-import React, { useContext, useRef } from 'react';
-import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { useRouter } from 'next/navigation';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
 import { LangKey, useLang } from '@/hoc/with-intl/define';
+import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+import { useRouter } from 'next/navigation';
+import React, { useContext, useRef } from 'react';
 
 /**
  * Client 上下文，保存不同种类的 Client
@@ -16,11 +16,7 @@ const ClientContext = React.createContext<Record<string, BaseAxiosClient>>({});
 export const WithClient = ({ children }: { children: React.ReactNode }) => {
   const clients = useRef<Record<string, BaseAxiosClient>>({});
 
-  return (
-    <ClientContext.Provider value={clients.current}>
-      {children}
-    </ClientContext.Provider>
-  );
+  return <ClientContext.Provider value={clients.current}>{children}</ClientContext.Provider>;
 };
 
 /**
@@ -55,7 +51,7 @@ export const useClient = <T extends BaseAxiosClient>(
   if (!clients[type]) {
     clients[type] = new ClientClass({
       baseURL: `${server}${baseURL}`,
-      ...config,
+      ...config
     });
   }
   clients[type].t = t;
@@ -69,10 +65,7 @@ export const useClient = <T extends BaseAxiosClient>(
  * @param keys 字段数组
  * @returns 更新后的表单数据
  */
-export const convertKeysToNumber = (
-  formData: Record<string, unknown>,
-  keys: string[]
-) => {
+export const convertKeysToNumber = (formData: Record<string, unknown>, keys: string[]) => {
   for (const key in formData) {
     if (keys.includes(key) && formData[key] !== undefined) {
       formData[key] = Number(formData[key]);
@@ -96,7 +89,7 @@ export class BaseAxiosClient {
     SUCCESS: 200,
     GRPC_SUCCESS: 0,
     ACCESS_DENIED: 403,
-    NOT_FOUND: 404,
+    NOT_FOUND: 404
   };
 
   constructor(props: ConstructorProps) {
@@ -105,45 +98,39 @@ export class BaseAxiosClient {
       baseURL,
       headers: {},
       withCredentials: true, // 默认需要鉴权
-      ...config,
+      ...config
     });
     this.axios.interceptors.response.use(
       (resp) => {
         const { data } = resp;
-        if (
-          data.code &&
-          data.code !== this.codeMessage.SUCCESS &&
-          data.code !== this.codeMessage.GRPC_SUCCESS
-        ) {
+        if (data.code && data.code !== this.codeMessage.SUCCESS && data.code !== this.codeMessage.GRPC_SUCCESS) {
           this.handleUnknownError(data);
         }
         return resp;
       },
       (error) => {
-        throw new Error(
-          (error?.response?.status || '') + ' 网络错误（Network Error）'
-        );
+        throw new Error((error?.response?.status || '') + ' 网络错误（Network Error）');
       }
     );
   }
 
   async get(methodName: string, req: any): Promise<any> {
     const { data } = await this.axios.get(methodName, {
-      params: req,
+      params: req
     });
     return data;
   }
 
   async post(methodName: string, req: any, headers: any): Promise<any> {
     const { data } = await this.axios.post(methodName, req, {
-      headers,
+      headers
     });
     return data;
   }
 
   async put(methodName: string, req: any, headers: any): Promise<any> {
     const { data } = await this.axios.put(methodName, req, {
-      headers,
+      headers
     });
     return data;
   }

@@ -1,6 +1,7 @@
 .ColorfulCardContainer {
-  border-color: #ffffff;
   margin-bottom: 30px;
+  border-color: #fff;
+
   :global(.ant-collapse-expand-icon) {
     display: none !important;
   }

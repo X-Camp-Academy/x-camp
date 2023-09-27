@@ -1,63 +1,81 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
+
 .studentProjects {
   @include flex(center);
+
   padding: 80px 15px;
   background-color: #fff5e8;
+
   .title {
     margin: 0;
-    @include title();
+
+    @include title;
   }
+
   .titleBg {
-    margin-left: 144px;
     display: block;
+    margin-left: 144px;
     width: 160px;
     height: 16px;
-    background-image: url("/image/home/home-title-bg-1.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url('/image/home/home-title-bg-1.png');
   }
+
   .paragraphText {
     @include text(18px, 34px, $primary-color);
+
     font-weight: 500;
   }
+
   .paragraph {
     @extend .paragraphText;
-    color: #172142;
-    text-align: center;
+
     margin-bottom: 50px;
-    @media (max-width: 768px) {
+    text-align: center;
+    color: #172142;
+
+    @media (width <= 768px) {
       margin: auto;
       margin-bottom: 80px;
     }
   }
+
   .row {
     width: 100%;
-    @media (max-width: 768px) {
-      margin-left: 0 !important;
+
+    @media (width <= 768px) {
       margin-right: 0 !important;
+      margin-left: 0 !important;
     }
+
     .cardContainer {
       display: flex;
       justify-content: space-between;
+
       .card {
+        position: relative;
         width: 50%;
         border-radius: 0;
-        position: relative;
+
         .cardTitle {
-          @include title("thin");
+          @include title('thin');
+
           line-height: 54px;
         }
+
         .cardParagraph {
-          color: #666666;
           font-size: 14px;
           font-weight: 400;
-          line-height: 24px;
           text-align: left;
+          color: #666;
+          line-height: 24px;
         }
+
         .cardMore {
           position: absolute;
-          left: 16px;
           bottom: 16px;
+          left: 16px;
           color: #172142;
         }
       }

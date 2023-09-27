@@ -1,49 +1,39 @@
-import { useRequest } from "ahooks";
-import { isArray } from "lodash";
-import { useLang } from "@/hoc/with-intl/define";
-import {
-  classifyByAttribution,
-  deduplicateArray,
-  filterByAttribution,
-} from "@/utils/public";
-import { useHandleError } from "@/utils/error";
-import { useStrapiClient } from ".";
-import {
-  AndOrFilters,
-  FilterFields,
-  StrapiResponseDataItem,
-} from "./strapiDefine";
+import { useLang } from '@/hoc/with-intl/define';
+import { useHandleError } from '@/utils/error';
+import { classifyByAttribution, deduplicateArray, filterByAttribution } from '@/utils/public';
+import { useRequest } from 'ahooks';
+import { isArray } from 'lodash';
+import { useStrapiClient } from '.';
 import {
   AboutUsJoinUsCategory,
+  FaqCategory,
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAlumniMapRequest,
+  GetAboutUsIntroArticleRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
+  GetAchievementsTimeLineRequest,
+  GetCommunityRequest,
+  GetCommunityResponse,
   GetCourseLevelTypeRequest,
+  GetCourses,
   GetCoursesRequest,
   GetFacultyRequest,
   GetFacultyResponse,
+  GetFaq,
+  GetFaqRequest,
   GetHomeStudentProjectsRequest,
   GetNewEventRequest,
   GetNewEventResponse,
-  GetResourcesContestRequest,
-  GetResourcesContestResponse,
-  GetReviewsRequest,
-  GetCommunityRequest,
-  GetCommunityResponse,
-  NewEventCategory,
-  GetProjectsDemoRequest,
-  GetAchievementsTimeLineRequest,
-  GetResourcesLiveSolutionRequest,
-  GetFaqRequest,
-  GetFaq,
-  FaqCategory,
-  GetAboutUsIntroArticleRequest,
-  GetCourses,
   GetPartnerRequest,
+  GetProjectsDemoRequest,
+  GetResourcesLiveSolutionRequest,
+  GetReviewsRequest,
   GetUserSearchRequest,
-  SubmitUserInfoRequest,
-} from "./define";
+  NewEventCategory,
+  SubmitUserInfoRequest
+} from './define';
+import { AndOrFilters, FilterFields, StrapiResponseDataItem } from './strapiDefine';
 
 // 被用在哪些course 以英文逗号连接的字符串
 // 被用在哪些page 以英文逗号连接的字符串
@@ -72,13 +62,13 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
       } else {
         // 根据courseId, pageName, eventId做筛选，根据category做分类
         if (courseId) {
-          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
         }
         if (pageName) {
-          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
         }
         if (eventId) {
-          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
         }
       }
       data = deduplicateArray(data); // 去重
@@ -87,11 +77,11 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
-        },
+          populate: '*',
+          sort: ['order:desc']
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -107,7 +97,7 @@ export const useGetNewEvent = ({
   manual = false,
   courseId,
   pageName,
-  eventId,
+  eventId
 }: {
   tag?: NewEventCategory;
   current?: number;
@@ -127,48 +117,42 @@ export const useGetNewEvent = ({
       let result: GetNewEventResponse = { ...res, data: [] };
       if (!courseId && !pageName && !eventId) {
         // 如果三个选项都没填则取所有的
-        result["data"] = res.data;
+        result['data'] = res.data;
       } else {
         // 根据courseId, pageName, eventId做筛选，根据category做分类
         if (courseId) {
-          result["data"].push(
-            ...filterByAttribution(res?.data, "courseId", courseId)
-          );
+          result['data'].push(...filterByAttribution(res?.data, 'courseId', courseId));
         }
         if (pageName) {
-          result["data"].push(
-            ...filterByAttribution(res?.data, "pageName", pageName)
-          );
+          result['data'].push(...filterByAttribution(res?.data, 'pageName', pageName));
         }
         if (eventId) {
-          result["data"].push(
-            ...filterByAttribution(res?.data, "eventId", eventId)
-          );
+          result['data'].push(...filterByAttribution(res?.data, 'eventId', eventId));
         }
       }
-      result["data"] = deduplicateArray(result?.data);
+      result['data'] = deduplicateArray(result?.data);
       return result || {};
     },
     {
       manual,
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: {
             tags: tag
               ? {
-                $eq: tag,
+                $eq: tag
               }
-              : {},
+              : {}
           },
           pagination: {
             page: current,
-            pageSize,
-          },
-        },
+            pageSize
+          }
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -188,11 +172,11 @@ export const useGetAboutUsAchievementsAward = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
-        },
+          populate: '*',
+          sort: ['order:desc']
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -212,37 +196,11 @@ export const useGetCommunity = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
-        },
+          populate: '*',
+          sort: ['order:desc']
+        }
       ],
-      onError: handleError,
-    }
-  );
-};
-
-/**
- * 获取资源目录下的比赛列表
- * @returns
- */
-export const useGetResourcesContest = () => {
-  const client = useStrapiClient();
-  const handleError = useHandleError();
-  return useRequest(
-    async (params: GetResourcesContestRequest) => {
-      const res: GetResourcesContestResponse = await client.getResourcesContest(
-        params
-      );
-      return isArray(res?.data) ? res.data : [];
-    },
-    {
-      defaultParams: [
-        {
-          populate: "*",
-          sort: ["order:desc"],
-        },
-      ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -256,25 +214,23 @@ export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
   const handleError = useHandleError();
   return useRequest(
     async (params: GetAboutUsJoinUsRequest) => {
-      const res: GetAboutUsJoinUsResponse = await client.getAboutUsJoinUs(
-        params
-      );
+      const res: GetAboutUsJoinUsResponse = await client.getAboutUsJoinUs(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
       manual: true,
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: {
             category: {
-              $eq: category,
-            },
-          },
-        },
+              $eq: category
+            }
+          }
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -287,7 +243,7 @@ export const useGetReviews = ({
   ready,
   courseId,
   pageName,
-  eventId,
+  eventId
 }: {
   ready: boolean; // 是否发请求，用于等待其他请求
   courseId?: string[]; // 被用在哪些course 以英文逗号连接的字符串
@@ -306,13 +262,13 @@ export const useGetReviews = ({
       } else {
         // 根据courseId, pageName, eventId做筛选，根据category做分类
         if (courseId) {
-          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
         }
         if (pageName) {
-          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
         }
         if (eventId) {
-          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
         }
       }
       return deduplicateArray(data); // 去重
@@ -320,11 +276,11 @@ export const useGetReviews = ({
     {
       defaultParams: [
         {
-          populate: "*",
-        },
+          populate: '*'
+        }
       ],
       ready: ready,
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -344,10 +300,10 @@ export const useGetHomeStudentProjects = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-        },
+          populate: '*'
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -367,10 +323,10 @@ export const useGetCourseLevelType = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-        },
+          populate: '*'
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -382,12 +338,9 @@ export const useGetCourseLevelType = () => {
 export const useGetCourses = ({
   filters,
   pagination,
-  manual = false,
+  manual = false
 }: {
-  filters?:
-    | Partial<FilterFields<GetCourses>>
-    | AndOrFilters<FilterFields<GetCourses>>
-    | undefined;
+  filters?: Partial<FilterFields<GetCourses>> | AndOrFilters<FilterFields<GetCourses>> | undefined;
   pagination?: { page: number; pageSize: number };
   manual?: boolean;
 }) => {
@@ -403,18 +356,19 @@ export const useGetCourses = ({
       manual,
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: filters ?? {},
-          pagination: pagination ?? {},
-        },
+          pagination: pagination ?? {}
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
 
 /**
+ * !暂时保留
  * 获取关于我们毕业生地图数据
  * @returns
  */
@@ -429,10 +383,10 @@ export const useGetAboutUsAlumniMap = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-        },
+          populate: '*'
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -448,21 +402,16 @@ export const useGetProjectsDemo = () => {
   return useRequest(
     async (params: GetProjectsDemoRequest) => {
       const res = await client.getProjectsDemo(params);
-      return isArray(res?.data)
-        ? classifyByAttribution(
-          res.data,
-          lang === "zh" ? "categoryZh" : "categoryEn"
-        )
-        : [];
+      return isArray(res?.data) ? classifyByAttribution(res.data, lang === 'zh' ? 'categoryZh' : 'categoryEn') : [];
     },
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
-        },
+          populate: '*',
+          sort: ['order:desc']
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -482,15 +431,16 @@ export const useGetAchievementsTimeLine = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-        },
+          populate: '*'
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
 
 /**
+ * !暂时保留
  * 获取AboutUs Intro Article
  * @returns
  */
@@ -505,11 +455,11 @@ export const useGetAboutUsIntroArticle = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
-        },
+          populate: '*',
+          sort: ['order:desc']
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -524,18 +474,16 @@ export const useGetResourcesLiveSolution = () => {
   return useRequest(
     async (params: GetResourcesLiveSolutionRequest) => {
       const res = await client.getResourcesLiveSolution(params);
-      return isArray(res?.data)
-        ? classifyByAttribution(res.data, "category")
-        : [];
+      return isArray(res?.data) ? classifyByAttribution(res.data, 'category') : [];
     },
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
-        },
+          populate: '*',
+          sort: ['order:desc']
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -544,19 +492,14 @@ export const useGetResourcesLiveSolution = () => {
  * 获取Faq
  * @returns
  */
-export const useGetFaq = <
-  T extends boolean = false,
-  R = T extends true
-    ? StrapiResponseDataItem<GetFaq>[][]
-    : StrapiResponseDataItem<GetFaq>[]
->({
-    ready,
-    isClassify,
-    category,
-    courseId,
-    pageName,
-    eventId,
-  }: {
+export const useGetFaq = <T extends boolean = false, R = T extends true ? StrapiResponseDataItem<GetFaq>[][] : StrapiResponseDataItem<GetFaq>[]>({
+  ready,
+  isClassify,
+  category,
+  courseId,
+  pageName,
+  eventId
+}: {
   ready: boolean; // 是否发请求，用于等待其他请求
   isClassify?: T; // 是否分组
   category?: FaqCategory; // 类别
@@ -576,18 +519,18 @@ export const useGetFaq = <
       } else {
         // 根据courseId, pageName, eventId做筛选，根据category做分类
         if (courseId) {
-          data.push(...filterByAttribution(res?.data, "courseId", courseId));
+          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
         }
         if (pageName) {
-          data.push(...filterByAttribution(res?.data, "pageName", pageName));
+          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
         }
         if (eventId) {
-          data.push(...filterByAttribution(res?.data, "eventId", eventId));
+          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
         }
       }
       data = deduplicateArray(data); // 去重
       if (isClassify) {
-        return classifyByAttribution(res?.data, "category") as R;
+        return classifyByAttribution(res?.data, 'category') as R;
       } else {
         return data as R;
       }
@@ -595,19 +538,19 @@ export const useGetFaq = <
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
+          populate: '*',
+          sort: ['order:desc'],
           filters: {
             category: category
               ? {
-                $eq: category,
+                $eq: category
               }
-              : {},
-          },
-        },
+              : {}
+          }
+        }
       ],
       ready: ready,
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -622,18 +565,16 @@ export const useGetPartner = () => {
   return useRequest(
     async (params: GetPartnerRequest) => {
       const res = await client.getPartner(params);
-      return isArray(res?.data)
-        ? classifyByAttribution(res.data, "category")
-        : [];
+      return isArray(res?.data) ? classifyByAttribution(res.data, 'category') : [];
     },
     {
       defaultParams: [
         {
-          populate: "*",
-          sort: ["order:desc"],
-        },
+          populate: '*',
+          sort: ['order:desc']
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -653,10 +594,10 @@ export const useGetUserSearchMap = () => {
     {
       defaultParams: [
         {
-          populate: "*",
-        },
+          populate: '*'
+        }
       ],
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -675,7 +616,7 @@ export const useSubmitQuestionForm = () => {
     },
     {
       manual: true,
-      onError: handleError,
+      onError: handleError
     }
   );
 };

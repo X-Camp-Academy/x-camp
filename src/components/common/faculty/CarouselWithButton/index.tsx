@@ -1,13 +1,13 @@
-import React, { useRef } from "react";
-import { Button, Carousel } from "antd";
-import styles from "@/components/common/faculty/index.module.scss";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { CarouselRef } from "antd/es/carousel";
+import styles from '@/components/common/faculty/index.module.scss';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { Button, Carousel } from 'antd';
+import { CarouselRef } from 'antd/es/carousel';
+import React, { useRef } from 'react';
 
 interface IProps {
-	children: React.ReactNode
+  children: React.ReactNode;
 }
-const CarouselWithButton: React.FC<IProps> = ({ children }:IProps) => {
+const CarouselWithButton: React.FC<IProps> = ({ children }: IProps) => {
   const carouselRef = useRef<CarouselRef>(null);
   const onPrev = () => {
     carouselRef?.current?.prev();
@@ -16,21 +16,11 @@ const CarouselWithButton: React.FC<IProps> = ({ children }:IProps) => {
     carouselRef?.current?.next();
   };
   return (
-    <div style={{ margin: `0 45px` }}>
-      <Button
-        type="primary"
-        shape="circle"
-        className={styles.prev}
-        onClick={onPrev}
-      >
+    <div style={{ margin: '0 45px' }}>
+      <Button type="primary" shape="circle" className={styles.prev} onClick={onPrev}>
         <LeftOutlined />
       </Button>
-      <Button
-        type="primary"
-        shape="circle"
-        className={styles.next}
-        onClick={onNext}
-      >
+      <Button type="primary" shape="circle" className={styles.next} onClick={onNext}>
         <RightOutlined />
       </Button>
       <Carousel
@@ -43,15 +33,15 @@ const CarouselWithButton: React.FC<IProps> = ({ children }:IProps) => {
           {
             breakpoint: 1200,
             settings: {
-              slidesToShow: 2,
-            },
+              slidesToShow: 2
+            }
           },
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1,
-            },
-          },
+              slidesToShow: 1
+            }
+          }
         ]}
         dots={false}
       >

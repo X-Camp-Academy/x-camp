@@ -1,17 +1,17 @@
-$ip: "https://media.strapi.turingstar.com.cn/production/2023/3/_31e3aca7f2.png?updated_at=2023-03-06T06:33:20.724Z";
-$planets: "https://media.strapi.turingstar.com.cn/production/2023/3/background_right_6ff67955bc.png?updated_at=2023-03-06T06:42:07.160Z";
-$hello: "https://media.strapi.turingstar.com.cn/production/2023/3/hello_0dd8b00bbf.png?updated_at=2023-03-06T06:54:19.121Z";
+$ip: 'https://media.strapi.turingstar.com.cn/production/2023/3/_31e3aca7f2.png?updated_at=2023-03-06T06:33:20.724Z';
+$planets: 'https://media.strapi.turingstar.com.cn/production/2023/3/background_right_6ff67955bc.png?updated_at=2023-03-06T06:42:07.160Z';
+$hello: 'https://media.strapi.turingstar.com.cn/production/2023/3/hello_0dd8b00bbf.png?updated_at=2023-03-06T06:54:19.121Z';
 
 .page {
   position: relative;
-  background-color: #3872e6;
   width: 100vw;
   height: 100vh;
+  background-color: #3872e6;
 
   .hello {
     position: absolute;
-    left: 100px;
     bottom: 240px;
+    left: 100px;
     width: 204px;
     height: 96px;
     background: url($hello) 100% no-repeat;
@@ -42,15 +42,15 @@ $hello: "https://media.strapi.turingstar.com.cn/production/2023/3/hello_0dd8b00b
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     width: 50vw;
     height: 70vh;
     max-height: 500px;
     color: #fff;
-    display: flex;
+    transform: translate(-50%, -50%);
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
 
     .reason {
       font-size: 18px;
@@ -65,46 +65,45 @@ $hello: "https://media.strapi.turingstar.com.cn/production/2023/3/hello_0dd8b00b
 
       .card {
         width: 30%;
-        box-sizing: border-box;
-        font-size: 14px;
-        line-height: 1.5;
-        list-style: none;
-        border-radius: 8px;
         border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        font-size: 14px;
+        color: rgb(0 0 0 / 88%);
         background: #fff;
-        color: rgba(0, 0, 0, 0.88);
+        list-style: none;
+        box-sizing: border-box;
+        line-height: 1.5;
 
         .cardBody {
           padding: 24px;
 
           .title {
-            font-weight: bold;
-            font-size: 16px;
             overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
             margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
 
           .description {
-            color: rgba(0, 0, 0, 0.45);
+            color: rgb(0 0 0 / 45%);
           }
         }
 
         .actions {
-          background: #fff;
-          border-top: 1px solid #f0f0f0;
-          display: flex;
-          border-radius: 0 0 8px 8px;
-          padding: 12px 0;
           display: flex;
           justify-content: center;
+          padding: 12px 0;
+          border-top: 1px solid #f0f0f0;
+          border-radius: 0 0 8px 8px;
+          background: #fff;
 
           .link {
-            color: rgba(0, 0, 0, 0.45);
-            transition: color 0.2s;
             padding: 0 20px;
             text-decoration: none;
+            color: rgb(0 0 0 / 45%);
+            transition: color 0.2s;
 
             &:hover {
               color: #167fff;

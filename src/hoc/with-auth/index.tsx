@@ -1,10 +1,10 @@
 'use client';
-import React, { useState, useEffect, useCallback } from 'react';
-import { message } from 'antd';
-import { useLang } from '../with-intl/define';
 import { useAuthClient } from '@/apis/auth-client';
-import LoadingMask from '@/components/common/loading/LoadingMask';
 import { useGetUserInfo } from '@/apis/auth-client/auth';
+import LoadingMask from '@/components/common/loading/LoadingMask';
+import { message } from 'antd';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useLang } from '../with-intl/define';
 import { AuthContext } from './define';
 
 export const WithAuth = ({ children }: { children: React.ReactNode }) => {
@@ -58,7 +58,7 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
         user,
         login,
         refresh,
-        logout,
+        logout
       }}
     >
       {children}

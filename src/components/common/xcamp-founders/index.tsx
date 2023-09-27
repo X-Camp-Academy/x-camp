@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import { Space, Button, Image, Typography, Row, Col } from "antd";
-import { StarOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
-import styles from "./index.module.scss";
+'use client';
+import { useLang } from '@/hoc/with-intl/define';
+import { StarOutlined } from '@ant-design/icons';
+import { Button, Col, Image, Row, Space, Typography } from 'antd';
+import React from 'react';
+import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -14,94 +14,67 @@ const XCampFounder: React.FC = () => {
       <Space direction="vertical" align="center">
         <Title className={styles.title}>
           X-Camp&nbsp;
-          <Text className={styles.title} style={{ color: "#FFAD11" }}>{t("Founders")}</Text>
+          <Text className={styles.title} style={{ color: '#FFAD11' }}>
+            {t('Founders')}
+          </Text>
         </Title>
 
-        <Paragraph className={styles.paragraph}>Founded on August 22, 2017, 4 students currently trained have entered the US National Training Team, with more than 500 students currently studying in 300+ schools around the world.</Paragraph>
+        <Paragraph className={styles.paragraph}>
+          Founded on August 22, 2017, 4 students currently trained have entered the US National Training Team, with more than 500 students currently studying in 300+ schools around the world.
+        </Paragraph>
 
         <Row gutter={[32, 124]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
             <div className={styles.charlieImgBackground} />
-            <Image
-              src={"/image/home/charlie.png"}
-              alt="image"
-              preview={false}
-              className={styles.charlieImg}
-            />
+            <Image src={'/image/home/charlie.png'} alt="image" preview={false} className={styles.charlieImg} />
           </Col>
 
-          <Col
-            xs={24}
-            sm={24}
-            md={24}
-            lg={12}
-            className={styles.founderDescription}
-          >
+          <Col xs={24} sm={24} md={24} lg={12} className={styles.founderDescription}>
             <Space direction="vertical">
-              <Title className={styles.founderName}>{t("Charlie")}</Title>
+              <Title className={styles.founderName}>{t('Charlie')}</Title>
 
               <Paragraph className={styles.founderTag}>
-                <Button
-                  type="primary"
-                  shape="circle"
-                  size="small"
-                  className={styles.founderTagButton}
-                >
+                <Button type="primary" shape="circle" size="small" className={styles.founderTagButton}>
                   <StarOutlined />
                 </Button>
-                {t("Co-Founder-Charlie")}
+                {t('Co-Founder-Charlie')}
               </Paragraph>
 
               <Space direction="vertical">
                 <Paragraph className={styles.founderParagraph}>
-                  {t("Charlie.Desc1")}
-                  <Text className={styles.keyText}>{t("Charlie.years")}</Text>
-                  {t("Charlie.Desc2")}
-                  <Text className={styles.keyText}>{t("Charlie.paper")}</Text>
-                  {t("Charlie.Desc3")}
+                  {t('Charlie.Desc1')}
+                  <Text className={styles.keyText}>{t('Charlie.years')}</Text>
+                  {t('Charlie.Desc2')}
+                  <Text className={styles.keyText}>{t('Charlie.paper')}</Text>
+                  {t('Charlie.Desc3')}
                 </Paragraph>
-                <Paragraph className={styles.founderParagraph}>
-                  {t("Charlie.Desc4")}
-                </Paragraph>
+                <Paragraph className={styles.founderParagraph}>{t('Charlie.Desc4')}</Paragraph>
               </Space>
             </Space>
           </Col>
         </Row>
 
         <Row gutter={[32, 124]} style={{ marginTop: 120 }} className={styles.row}>
-          <Col
-            xs={24}
-            sm={24}
-            md={24}
-            lg={12}
-            className={styles.founderDescription}
-          >
+          <Col xs={24} sm={24} md={24} lg={12} className={styles.founderDescription}>
             <Space direction="vertical">
-              <Title className={styles.founderName}>{t("Yuan")}</Title>
+              <Title className={styles.founderName}>{t('Yuan')}</Title>
               <Paragraph className={styles.founderTag}>
-                <Button
-                  type="primary"
-                  shape="circle"
-                  size="small"
-                  className={styles.founderTagButton}
-                >
+                <Button type="primary" shape="circle" size="small" className={styles.founderTagButton}>
                   <StarOutlined />
                 </Button>
-                {t("Co-Founder-Yuan")}
+                {t('Co-Founder-Yuan')}
               </Paragraph>
 
               <Space direction="vertical">
+                <Paragraph className={styles.founderParagraph}>{t('Yuan.Desc1')}</Paragraph>
                 <Paragraph className={styles.founderParagraph}>
-                  {t("Yuan.Desc1")}
-                </Paragraph>
-                <Paragraph className={styles.founderParagraph}>
-                  {t("Yuan.Desc2")}
-                  <Text className={styles.keyText}> {t("Yuan.Student")} </Text>
-                  {t("Yuan.Desc3")}
-                  <Text className={styles.keyText}> {t("Yuan.Desc4")} </Text>
-                  {t("Yuan.Desc5")}
+                  {t('Yuan.Desc2')}
+                  <Text className={styles.keyText}> {t('Yuan.Student')} </Text>
+                  {t('Yuan.Desc3')}
+                  <Text className={styles.keyText}> {t('Yuan.Desc4')} </Text>
+                  {t('Yuan.Desc5')}
                   <Text className={styles.keyText}> 25-27 </Text>
-                  {t("Yuan.Desc6")}
+                  {t('Yuan.Desc6')}
                 </Paragraph>
               </Space>
             </Space>
@@ -109,12 +82,7 @@ const XCampFounder: React.FC = () => {
 
           <Col xs={24} sm={24} md={24} lg={12} className={styles.yuanImgCol}>
             <div className={styles.yuanImgBackground} />
-            <Image
-              src={"/image/home/yuan.png"}
-              alt="image"
-              preview={false}
-              className={styles.yuanImg}
-            />
+            <Image src={'/image/home/yuan.png'} alt="image" preview={false} className={styles.yuanImg} />
           </Col>
         </Row>
       </Space>

@@ -1,12 +1,11 @@
 .menuContent {
   .menuItem {
-    -webkit-user-select: none;
-    user-select: none;
-    white-space: nowrap;
-    padding: 0 10px 4px 10px;
-    margin-left: 6px;
     margin-right: 6px;
+    margin-left: 6px;
+    padding: 0 10px 4px;
     border-bottom: transparent 2px solid;
+    white-space: nowrap;
+    user-select: none;
 
     &:has(~ .dropdown:hover) {
       .icon {
@@ -38,13 +37,13 @@
     }
 
     .icon {
-      font-size: 12px;
       margin-left: 2px;
+      font-size: 12px;
       transition: all 0.5s ease 0s;
     }
 
     a {
-      color: rgba(0, 0, 0, 0.88);
+      color: rgb(0 0 0 / 88%);
     }
 
     :global(.selectedItem) {
@@ -78,10 +77,12 @@
 .dropdown {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s, visibility 0s 0.3s;
+  transition:
+    opacity 0.5s,
+    visibility 0s 0.3s;
 
   &:hover {
-    visibility: visible;
     opacity: 1 !important;
+    visibility: visible;
   }
 }

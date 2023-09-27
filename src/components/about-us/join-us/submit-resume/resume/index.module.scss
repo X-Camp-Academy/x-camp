@@ -1,11 +1,11 @@
 .cardContainer {
   margin-top: 80px;
-  background: #ffffff;
-  border-radius: 12px;
   margin-bottom: 60px;
+  border-radius: 12px;
+  background: #fff;
 
   :global(.ant-card-body) {
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       padding: 24px 0;
     }
   }

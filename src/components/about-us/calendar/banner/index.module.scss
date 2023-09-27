@@ -1,21 +1,23 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
 
 .bannerContainer {
   width: 100%;
 
   .paragraph {
     @include text(21px, 40px, #fff);
+
     font-weight: 500;
   }
 
   .title {
     @include text(36px, 48px, #fbfbfb);
+
     margin: 0;
     font-weight: bold;
   }
 
   .col {
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       margin-top: 30px !important;
       padding: 15px;
       padding-bottom: 0;
@@ -25,7 +27,7 @@
   .image {
     margin-top: 100px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       margin-top: 40px !important;
     }
   }

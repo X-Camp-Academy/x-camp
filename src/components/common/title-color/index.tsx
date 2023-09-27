@@ -1,17 +1,17 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
 export interface IConfig {
-  text: string,
-  color?: string
+  text: string;
+  color?: string;
 }
 interface IProps {
-  title: string,
-  config: IConfig[] | IConfig,
-  className: string
+  title: string;
+  config: IConfig[] | IConfig;
+  className: string;
 }
 
 const getRegExp = (searchVal: string): RegExp => {
-  searchVal.replace('.', '\.');
+  searchVal.replace('.', '.');
   return new RegExp(`(?!<)${searchVal.replace('.', '\\.')}`);
 };
 
@@ -28,7 +28,7 @@ const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
     let result = title;
     let configArr: IConfig[] = [];
 
-    if(Array.isArray(config)) {
+    if (Array.isArray(config)) {
       configArr = configArr.concat(...config);
     } else {
       configArr.push(config);
@@ -39,9 +39,11 @@ const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
     });
     return result;
   }, [title, config]);
-  return (<>
-    <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
-  </>);
+  return (
+    <>
+      <span className={className} dangerouslySetInnerHTML={{ __html: html }} />
+    </>
+  );
 };
 
 export default TitleColor;

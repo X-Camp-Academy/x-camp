@@ -1,11 +1,10 @@
-import React from "react";
-import { Divider, Dropdown, MenuProps, Space, theme } from "antd";
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
-import { apiConfig } from "@/config/index";
-import { UserInfo } from "@/apis/auth-client/define";
-import RealNameAvatar from "../avatar";
-
+import { UserInfo } from '@/apis/auth-client/define';
+import { apiConfig } from '@/config/index';
+import { useLang } from '@/hoc/with-intl/define';
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { Divider, Dropdown, MenuProps, Space, theme } from 'antd';
+import React from 'react';
+import RealNameAvatar from '../avatar';
 
 type UserMenuProps = {
   user: UserInfo | null;
@@ -15,12 +14,12 @@ type UserMenuProps = {
 const DropdownUserMenu = ({ user, logout }: UserMenuProps) => {
   const { idApi } = apiConfig;
   const { format: t } = useLang();
-  const onClickMenu: MenuProps["onClick"] = (e) => {
+  const onClickMenu: MenuProps['onClick'] = (e) => {
     switch (e.key) {
-      case "user":
+      case 'user':
         window.open(`${idApi}/user?refer=${window.location.href}`);
         break;
-      case "logout":
+      case 'logout':
         logout();
         break;
       default:
@@ -28,30 +27,30 @@ const DropdownUserMenu = ({ user, logout }: UserMenuProps) => {
     }
   };
 
-  const items: MenuProps["items"] = [
+  const items: MenuProps['items'] = [
     {
-      label: <a>{t("User.PersonalCenter")}</a>,
-      key: "user",
-      icon: <UserOutlined />,
+      label: <a>{t('User.PersonalCenter')}</a>,
+      key: 'user',
+      icon: <UserOutlined />
     },
     {
-      label: <a>{t("User.Logout")}</a>,
-      key: "logout",
-      icon: <LogoutOutlined />,
-    },
+      label: <a>{t('User.Logout')}</a>,
+      key: 'logout',
+      icon: <LogoutOutlined />
+    }
   ];
 
   const { useToken } = theme;
   const { token } = useToken();
 
   const menuStyle = {
-    boxShadow: "none",
+    boxShadow: 'none'
   };
 
   const contentStyle = {
     backgroundColor: token.colorBgElevated,
     borderRadius: token.borderRadiusLG,
-    boxShadow: token.boxShadowSecondary,
+    boxShadow: token.boxShadowSecondary
   };
 
   return (
@@ -59,10 +58,7 @@ const DropdownUserMenu = ({ user, logout }: UserMenuProps) => {
       menu={{ items: items, onClick: onClickMenu }}
       dropdownRender={(menu) => (
         <div style={contentStyle}>
-          <Space
-            split={<Divider style={{ margin: 0 }} type="vertical" />}
-            style={{ padding: "4px 10px" }}
-          >
+          <Space split={<Divider style={{ margin: 0 }} type="vertical" />} style={{ padding: '4px 10px' }}>
             {user?.user_name}
             {user?.real_name}
           </Space>

@@ -1,17 +1,18 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
 
 .upcomingEventsContainer {
-  width: 100%;
-  background-color: #f5f5f5;
   padding-top: 70px;
   padding-bottom: 32px;
+  width: 100%;
+  background-color: #f5f5f5;
 
   .topSpace {
     display: flex;
     justify-content: space-between;
 
     .title {
-      @include title("default");
+      @include title('default');
+
       line-height: 56px;
     }
 
@@ -24,20 +25,22 @@
 
     .button {
       display: block;
+      padding: 20px 56px;
+      border: 2px solid #172142;
+      border-radius: 12px;
       font-size: 18px;
       font-weight: 500;
-      line-height: 24px;
-      background: #f5f5f5;
-      padding: 20px 56px;
       text-align: center;
-      border-radius: 12px;
-      border: 2px solid #172142;
       white-space: nowrap;
+      background: #f5f5f5;
+      line-height: 24px;
       cursor: pointer;
+
       a {
         color: #172142;
       }
-      @media (max-width: 1200px) {
+
+      @media (width <= 1200px) {
         padding: 15px;
       }
     }
@@ -46,14 +49,15 @@
   .row {
     margin-top: 64px;
 
-    @media (max-width: 768px) {
-      padding-left: 0 !important;
+    @media (width <= 768px) {
       padding-right: 0 !important;
+      padding-left: 0 !important;
     }
 
     .cardMonth {
-      @include title("thin");
-      color: #666666;
+      @include title('thin');
+
+      color: #666;
     }
 
     .cardDay {
@@ -77,7 +81,7 @@
     .cardText {
       font-size: 18px;
       font-weight: 400;
-      color: #666666;
+      color: #666;
       line-height: 30px;
 
       .cardIcon {

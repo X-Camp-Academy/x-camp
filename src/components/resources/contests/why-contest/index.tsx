@@ -1,39 +1,39 @@
-import React from "react";
-import { Space } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import styles from "./index.module.scss";
+import { useLang } from '@/hoc/with-intl/define';
+import { Space } from 'antd';
+import React from 'react';
+import styles from './index.module.scss';
 
 const WhyContest: React.FC = () => {
   const { format: t } = useLang();
   const items = [
     {
-      title: t("Contest.Title1"),
-      description: t("Contest.Detail1"),
+      title: t('Contest.Title1'),
+      description: t('Contest.Detail1')
     },
     {
-      title: t("Contest.Title2"),
-      description: t("Contest.Detail2"),
+      title: t('Contest.Title2'),
+      description: t('Contest.Detail2')
     },
     {
-      title: t("Contest.Title3"),
-      description: t("Contest.Detail3"),
+      title: t('Contest.Title3'),
+      description: t('Contest.Detail3')
     },
     {
-      title: t("Contest.Title4"),
-      description: t("Contest.Detail4"),
+      title: t('Contest.Title4'),
+      description: t('Contest.Detail4')
     },
     {
-      title: t("Contest.Title5"),
-      description: t("Contest.Detail5"),
-    },
+      title: t('Contest.Title5'),
+      description: t('Contest.Detail5')
+    }
   ];
 
   return (
     <div className="container">
       <div className={styles.content}>
         <div className={styles.top}>
-          <div className={styles.title}>{t("WhyContest")}</div>
-          <div className={styles.description}>{t("WhyContest.Desc")}</div>
+          <div className={styles.title}>{t('WhyContest')}</div>
+          <div className={styles.description}>{t('WhyContest.Desc')}</div>
         </div>
         <Space direction="vertical" className={styles.intro}>
           {items?.map((v, index) => (
@@ -44,7 +44,7 @@ const WhyContest: React.FC = () => {
           ))}
         </Space>
         <div className={styles.bottom}>
-          <div className={styles.description}>{t("WhyContest.Desc1")}</div>
+          <div className={styles.description}>{t('WhyContest.Desc1')}</div>
         </div>
       </div>
     </div>

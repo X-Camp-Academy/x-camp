@@ -1,7 +1,7 @@
-import React from "react";
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
+import React from 'react';
 
-const CommonBanner = dynamic(() => import("@/components/common/common-banner"));
+const CommonBanner = dynamic(() => import('@/components/common/common-banner'));
 
 const Banner: React.FC = () => {
   const paragraph = (
@@ -14,13 +14,7 @@ const Banner: React.FC = () => {
     </>
   );
 
-  return (
-    <CommonBanner
-      image={"/image/about-us/student-recommend-banner.png"}
-      title="Education Forum"
-      paragraph={paragraph}
-    />
-  );
+  return <CommonBanner image={'/image/about-us/student-recommend-banner.png'} title="Education Forum" paragraph={paragraph} />;
 };
 
 export default Banner;

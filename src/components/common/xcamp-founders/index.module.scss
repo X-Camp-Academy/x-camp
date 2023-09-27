@@ -1,25 +1,26 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .XCampFounder {
+  position: relative;
   margin-top: 120px;
   padding-bottom: 120px;
-  position: relative;
+
   .title {
-    @include title();
+    @include title;
   }
 
   .paragraph {
-    text-align: center;
     font-size: 18px;
     font-weight: 400;
+    text-align: center;
     color: #172142;
     line-height: 36px;
   }
 
   .row {
-    @media (max-width: 768px) {
-      margin-left: 0 !important;
+    @media (width <= 768px) {
       margin-right: 0 !important;
+      margin-left: 0 !important;
     }
   }
 
@@ -27,15 +28,18 @@
     display: flex;
     justify-content: center;
   }
+
   .baseImgBackground {
     position: relative;
-    border-radius: 12px;
     width: 368px;
     height: 416px;
-    @media (max-width: 768px) {
+    border-radius: 12px;
+
+    @media (width <= 768px) {
       display: none;
     }
   }
+
   .baseImg {
     position: absolute;
     width: 384px;
@@ -44,16 +48,22 @@
 
   .charlieImgCol {
     @extend .baseImgCol;
+
     align-items: start;
+
     .charlieImgBackground {
       @extend .baseImgBackground;
+
       background-color: #ffe1c7;
     }
+
     .charlieImg {
       @extend .baseImg;
+
       top: 48px;
       right: 48px;
-      @media (max-width: 768px) {
+
+      @media (width <= 768px) {
         position: static;
       }
     }
@@ -61,17 +71,23 @@
 
   .yuanImgCol {
     @extend .baseImgCol;
+
     align-items: end;
+
     .yuanImgBackground {
       @extend .baseImgBackground;
+
       background-color: #ffb323;
       opacity: 0.2;
     }
+
     .yuanImg {
       @extend .baseImg;
+
       right: 48px;
       bottom: 48px;
-      @media (max-width: 768px) {
+
+      @media (width <= 768px) {
         position: static;
       }
     }
@@ -79,27 +95,33 @@
 
   .founderDescription {
     .founderName {
-      @include title();
+      @include title;
+
       line-height: 54px;
     }
+
     .founderTag {
       font-size: 24px;
       font-weight: 600;
       color: #172142;
       line-height: 36px;
+
       .founderTagButton {
         margin-right: 16px;
         cursor: default;
       }
     }
+
     .founderParagraph {
       font-size: 18px;
       font-weight: 500;
       color: #172142;
       line-height: 33px;
     }
+
     .keyText {
       @extend .paragraph;
+
       color: #ffad11;
     }
   }

@@ -1,14 +1,14 @@
-"use client";
-import React, { ReactNode, useContext } from "react";
-import { useLocalStorageState } from "ahooks";
+'use client';
+import { useLocalStorageState } from 'ahooks';
+import React, { ReactNode, useContext } from 'react';
 
-type LangType = "zh" | "en";
+type LangType = 'zh' | 'en';
 /**
  * 默认本地状态
  */
 const DefaultState = {
-  lang: "zh" as LangType,
-  loginState: "",
+  lang: 'zh' as LangType,
+  loginState: ''
 };
 
 /**
@@ -31,14 +31,13 @@ const LocalStateContext = React.createContext<{
   set: <T extends keyof LocalState>(key: T, value?: LocalState[T]) => void;
     }>({
       state: {},
-      set: () => console.warn("Missing LocalStateContext.Provider"),
+      set: () => console.warn('Missing LocalStateContext.Provider')
     });
 
 export const LocalStateProvider = ({ children }: { children: ReactNode }) => {
-  const [localState, setLocalState] = useLocalStorageState<LocalState>(
-    "local-state",
-    { defaultValue: DefaultState }
-  );
+  const [localState, setLocalState] = useLocalStorageState<LocalState>('local-state', {
+    defaultValue: DefaultState
+  });
 
   return (
     <LocalStateContext.Provider
@@ -47,8 +46,8 @@ export const LocalStateProvider = ({ children }: { children: ReactNode }) => {
         set: (key, value) =>
           setLocalState({
             ...localState,
-            [key]: value,
-          }),
+            [key]: value
+          })
       }}
     >
       {children}
@@ -64,9 +63,5 @@ export const LocalStateProvider = ({ children }: { children: ReactNode }) => {
 export const useLocalState = <T extends keyof LocalState>(key: T) => {
   const { state, set } = useContext(LocalStateContext);
 
-  return [
-    state?.[key],
-    state?.[key] ?? DefaultState[key],
-    (value?: LocalState[T]) => set(key, value),
-  ] as const;
+  return [state?.[key], state?.[key] ?? DefaultState[key], (value?: LocalState[T]) => set(key, value)] as const;
 };

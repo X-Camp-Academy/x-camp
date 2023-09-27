@@ -1,16 +1,16 @@
-"use client";
-import React from "react";
-import dynamic from "next/dynamic";
-import { Layout } from "antd";
-import { useGetFaculty } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import { useGetFaculty } from '@/apis/strapi-client/strapi';
+import { Layout } from 'antd';
+import dynamic from 'next/dynamic';
+import React from 'react';
+import styles from './index.module.scss';
 
-const Banner = dynamic(() => import("./banner"));
-const History = dynamic(() => import("./history"));
-const XCampFounders = dynamic(() => import("@/components/common/xcamp-founders"));
-const UsacoMedal = dynamic(() => import("@/components/common/usaco-medal"));
-const FacultyCoach = dynamic(() => import("@/components/common/faculty-coach"));
-const Partners = dynamic(() => import("@/components/common/partners"));
+const Banner = dynamic(() => import('./banner'));
+const History = dynamic(() => import('./history'));
+const XCampFounders = dynamic(() => import('@/components/common/xcamp-founders'));
+const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
+const FacultyCoach = dynamic(() => import('@/components/common/faculty-coach'));
+const Partners = dynamic(() => import('@/components/common/partners'));
 const { Content } = Layout;
 
 const Introduction: React.FC = () => {

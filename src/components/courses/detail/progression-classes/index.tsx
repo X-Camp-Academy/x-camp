@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
-import { Space, Typography } from "antd";
-import ClassCard from "@/components/common/class-card";
-import CourseClassesContext from "../../CourseClassesContext";
-import { useLang } from "@/hoc/with-intl/define";
-import { getTransResult, getLangResult } from "@/utils/public";
-import styles from "./index.module.scss";
-
+import ClassCard from '@/components/common/class-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { getLangResult, getTransResult } from '@/utils/public';
+import { Empty, Space, Typography } from 'antd';
+import React, { useContext } from 'react';
+import CourseClassesContext from '../../CourseClassesContext';
+import styles from './index.module.scss';
 
 const { Title } = Typography;
 
@@ -15,40 +14,33 @@ const ProgressionClasses: React.FC = () => {
 
   const data = courseData?.attributes?.recommendedClasses?.data;
   const recommendedCourses = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-
+  const exist = recommendedCourses && recommendedCourses?.length > 0;
   return (
     <div className={styles.content}>
       <div className="container">
-        <Title className={styles.title}>{t("ProgressionClasses")}</Title>
-        <Space size={24} wrap className={styles.cards}>
-          {recommendedCourses?.map((v, index) => {
-            const { courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, lessonNum, frequency } = v?.attributes ?? {};
-            return (
-              <ClassCard
-                key={v?.id}
-                border={"bottom"}
-                index={index}
-                animate={false}
-                title={`${courseCode
-                  }: ${getTransResult(
-                    lang,
-                    courseTitleZh,
-                    courseTitleEn
-                  )}`}
-                list={getLangResult(
-                  lang,
-                  courseShortDescriptionZh,
-                  courseShortDescriptionEn
-                ) as Array<string>}
-                time={`${lessonNum} ${frequency ===
-                  "Weekly"
-                  ? "weeks"
-                  : "days"
-                  }`}
-                href={`/courses/detail/${v?.id}`}
-              />
-            );
-          })}
+        <Title className={styles.title}>{t('ProgressionClasses')}</Title>
+        <Space size={24} wrap className={exist ? styles.betweenCards : styles.centerCards}>
+          {exist ? (
+            <>
+              {recommendedCourses?.map((v, index) => {
+                const { courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, lessonNum, frequency } = v?.attributes ?? {};
+                return (
+                  <ClassCard
+                    key={v?.id}
+                    border={'bottom'}
+                    index={index}
+                    animate={false}
+                    title={`${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)}`}
+                    list={getLangResult(lang, courseShortDescriptionZh, courseShortDescriptionEn) as Array<string>}
+                    time={`${lessonNum} ${frequency === 'Weekly' ? 'weeks' : 'days'}`}
+                    href={`/courses/detail/${v?.id}`}
+                  />
+                );
+              })}
+            </>
+          ) : (
+            <Empty />
+          )}
         </Space>
       </div>
     </div>
