@@ -1050,7 +1050,14 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@babel/runtime@^7.22.11", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.22.11":
+  version "7.23.1"
+  resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.23.1.tgz#72741dc4d413338a91dcb044a86f3c0bc402646d"
+  integrity sha512-hC2v6p8ZSI/W0HUzh3V8C5g+NwSKzKPtJwSpTjwl0o297GP9+ZLQSkdvHz46CM3LqyoXxq+5G9komY+eSqSO0g==
+  dependencies:
+    regenerator-runtime "^0.14.0"
+
+"@babel/runtime@^7.8.4":
   version "7.22.15"
   resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.22.15.tgz#38f46494ccf6cf020bd4eed7124b425e83e523b8"
   integrity sha512-T0O+aa+4w0u06iNmapipJXMV4HoUir03hpx3/YqXXhu9xim3w+dVphjFWl1OH8NbZHw5Lbm9k45drDkgq2VNNA==
@@ -1585,21 +1592,21 @@
   integrity sha512-dsoJGEIShosKVRBZB0Vo3C8nqSDqVGujJU6tPznsBJxNJNwMF8utmS83nvCBKQYPpjCzaaHcrf66iTRpZosLPw==
 
 "@types/d3-scale@^4.0.3":
-  version "4.0.4"
-  resolved "https://registry.npmmirror.com/@types/d3-scale/-/d3-scale-4.0.4.tgz#3c5e2263eea5a3670cd91043b9f4d150a94c43f1"
-  integrity sha512-eq1ZeTj0yr72L8MQk6N6heP603ubnywSDRfNpi5enouR112HzGLS6RIvExCzZTraFF4HdzNpJMwA/zGiMoHUUw==
+  version "4.0.5"
+  resolved "https://registry.npmmirror.com/@types/d3-scale/-/d3-scale-4.0.5.tgz#daa4faa5438315a37a1f5eb1bcdc5aeb3d3e5a2d"
+  integrity sha512-w/C++3W394MHzcLKO2kdsIn5KKNTOqeQVzyPSGPLzQbkPw/jpeaGtSRlakcKevGgGsjJxGsbqS0fPrVFDbHrDA==
   dependencies:
     "@types/d3-time" "*"
 
 "@types/d3-time@*":
-  version "3.0.0"
-  resolved "https://registry.npmmirror.com/@types/d3-time/-/d3-time-3.0.0.tgz#e1ac0f3e9e195135361fa1a1d62f795d87e6e819"
-  integrity sha512-sZLCdHvBUcNby1cB6Fd3ZBrABbjz3v1Vm90nysCQ6Vt7vd6e/h9Lt7SiJUoEX0l4Dzc7P5llKyhqSi1ycSf1Hg==
+  version "3.0.1"
+  resolved "https://registry.npmmirror.com/@types/d3-time/-/d3-time-3.0.1.tgz#f0c8f9037632cc4511ae55e7e1459dcb95fb3619"
+  integrity sha512-5j/AnefKAhCw4HpITmLDTPlf4vhi8o/dES+zbegfPb7LaGfNyqkLxBR6E+4yvTAgnJLmhe80EXFMzUs38fw4oA==
 
 "@types/debug@^4.0.0":
-  version "4.1.8"
-  resolved "https://registry.npmmirror.com/@types/debug/-/debug-4.1.8.tgz#cef723a5d0a90990313faec2d1e22aee5eecb317"
-  integrity sha512-/vPO1EPOs306Cvhwv7KfVfYvOJqA/S/AXjaHQiJboCZzcNDb+TIJFN9/2C9DZ//ijSKWioNyUxD792QmDJ+HKQ==
+  version "4.1.9"
+  resolved "https://registry.npmmirror.com/@types/debug/-/debug-4.1.9.tgz#906996938bc672aaf2fb8c0d3733ae1dda05b005"
+  integrity sha512-8Hz50m2eoS56ldRlepxSBa6PWEVCtzUo/92HgLc2qTMnotJNIm7xP+UZhyWoYsyOdd5dxZ+NZLb24rsKyFs2ow==
   dependencies:
     "@types/ms" "*"
 
@@ -1609,9 +1616,9 @@
   integrity sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==
 
 "@types/extend@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.npmmirror.com/@types/extend/-/extend-3.0.1.tgz#923dc2d707d944382433e01d6cc0c69030ab2c75"
-  integrity sha512-R1g/VyKFFI2HLC1QGAeTtCBWCo6n75l41OnsVYNbmKG+kempOESaodf6BeJyUM3Q0rKa/NQcTHbB2+66lNnxLw==
+  version "3.0.2"
+  resolved "https://registry.npmmirror.com/@types/extend/-/extend-3.0.2.tgz#cabe436ca01e981f4ec6a49b55effe5e4eb1b8c2"
+  integrity sha512-CqDQhn7jxaN9zw7zAu926zIx51ZzMaX8U8Wa4jGpKI6jeBr9ejFE68AQ+h+ztfrNJD+leo7K1cLbvMjpHfZSRg==
 
 "@types/hast@^2.0.0":
   version "2.3.6"
@@ -1686,9 +1693,9 @@
   integrity sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==
 
 "@types/prismjs@^1.0.0":
-  version "1.26.0"
-  resolved "https://registry.npmmirror.com/@types/prismjs/-/prismjs-1.26.0.tgz#a1c3809b0ad61c62cac6d4e0c56d610c910b7654"
-  integrity sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==
+  version "1.26.1"
+  resolved "https://registry.npmmirror.com/@types/prismjs/-/prismjs-1.26.1.tgz#aae6739d8f0d14a3bc9e6dd83e6d791ad75d4d76"
+  integrity sha512-Q7jDsRbzcNHIQje15CS/piKhu6lMLb9jwjxSfEIi4KcFKXW23GoJMkwQiJ8VObyfx+VmUaDcJxXaWN+cTCjVog==
 
 "@types/prop-types@*":
   version "15.7.5"
@@ -5511,9 +5518,9 @@ pidtree@0.6.0:
   integrity sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==
 
 playwright-core@^1.0.0:
-  version "1.38.0"
-  resolved "https://registry.npmmirror.com/playwright-core/-/playwright-core-1.38.0.tgz#cb8e135da1c0b1918b070642372040ed9aa7009a"
-  integrity sha512-f8z1y8J9zvmHoEhKgspmCvOExF2XdcxMW8jNRuX4vkQFrzV4MlZ55iwb5QeyiFQgOFCUolXiRHgpjSEnqvO48g==
+  version "1.38.1"
+  resolved "https://registry.npmmirror.com/playwright-core/-/playwright-core-1.38.1.tgz#75a3c470aa9576b7d7c4e274de3d79977448ba08"
+  integrity sha512-tQqNFUKa3OfMf4b2jQ7aGLB8o9bS3bOY0yMEtldtC2+spf8QXG9zvXLTXUeRsoNuxEYMgLYR+NXfAa1rjKRcrg==
 
 postcss-media-query-parser@^0.2.3:
   version "0.2.3"
@@ -7456,10 +7463,10 @@ write-file-atomic@^5.0.1:
     imurmurhash "^0.1.4"
     signal-exit "^4.0.1"
 
-x-star-editor@0.3.2:
-  version "0.3.2"
-  resolved "https://registry.npmmirror.com/x-star-editor/-/x-star-editor-0.3.2.tgz#ff6e549941069dd4d3fad081c42204e985074f65"
-  integrity sha512-c0iyeobPIkOsHEP2vN6dhZOcv+6B4OvyNdZ1DS+wi8HnxED+ZThCUqAGw++vFpfF7bCD/2ALEa8fCkBokKLW5Q==
+x-star-editor@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.npmmirror.com/x-star-editor/-/x-star-editor-0.3.8.tgz#e2a9895e27b9d6ea84e6adf15aa87793560c3a5a"
+  integrity sha512-FSraoAEHCm5sF8vYEGlQRoLq058ApyHMeEPZIHmwsHYgWTbkFzTCpp01T3Hat91t6nc8iHn6xMrZjWOuWveh2Q==
   dependencies:
     "@babel/runtime" "^7.22.11"
     classnames "^2.3.2"
