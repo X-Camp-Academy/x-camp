@@ -1,13 +1,9 @@
-import { useRequest } from "ahooks";
-import { message } from "antd";
-import {
-  openClassEmailRequest,
-  submitEvaluationRequest,
-  subscribeNewsletterRequest,
-  useSendEmailClient,
-} from ".";
-import { useHandleError } from "@/utils/error";
-import { useLang } from "@/hoc/with-intl/define";
+import { useLang } from '@/hoc/with-intl/define';
+import { useHandleError } from '@/utils/error';
+import { useRequest } from 'ahooks';
+import { message } from 'antd';
+import { useSendEmailClient } from '.';
+import { openClassEmailRequest, submitEvaluationRequest, subscribeNewsletterRequest } from './define';
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
@@ -22,11 +18,11 @@ export const useSendOpenClassEmail = () => {
       manual: true,
       onSuccess: () => {
         message.success({
-          key: "sendEmailSuccessfully",
-          content: t("sendOpenClassEmail.Success"),
+          key: 'sendEmailSuccessfully',
+          content: t('sendOpenClassEmail.Success')
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -44,11 +40,11 @@ export const useSubscribeNewsletter = () => {
       manual: true,
       onSuccess: () => {
         message.success({
-          key: "sendEmailSuccessfully",
-          content: t("subscribeNewsLetter.Success"),
+          key: 'sendEmailSuccessfully',
+          content: t('subscribeNewsLetter.Success')
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -71,11 +67,11 @@ export const useSubmitResume = () => {
       manual: true,
       onSuccess: () => {
         message.success({
-          key: "sendEmailSuccessfully",
-          content: t("sendResume.Success"),
+          key: 'sendEmailSuccessfully',
+          content: t('sendResume.Success')
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };
@@ -98,11 +94,11 @@ export const useSubmitEvaluation = () => {
       manual: true,
       onSuccess: () => {
         message.success({
-          key: "sendEmailSuccessfully",
-          content: '提交成功',
+          key: 'sendEmailSuccessfully',
+          content: '提交成功'
         });
       },
-      onError: handleError,
+      onError: handleError
     }
   );
 };

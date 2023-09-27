@@ -6,9 +6,26 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix && git add . && next lint"
+    "lint": "next lint --fix && git add . && next lint",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --write ./src",
+    "lint:style": "stylelint \"./src/**/*.{css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .gitignore"
   },
-  "pre-commit": "lint",
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --parser=typescript --write",
+      "eslint --fix"
+    ],
+    "*.{scss,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@ant-design/icons": "^5.1.2",
     "ahooks": "^3.7.7",
@@ -20,7 +37,6 @@
     "echarts": "^5.4.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.19",
-    "eslint-config-x-star": "^1.0.2",
     "hover.css": "^2.3.2",
     "lodash": "^4.17.21",
     "next": "13.4.19",
@@ -44,8 +60,16 @@
     "@types/randomcolor": "^0.5.6",
     "@types/react": "^18.2.6",
     "@types/react-dom": "18.2.4",
+    "eslint-config-x-star": "^1.0.5",
+    "lint-staged": "^14.0.1",
     "postcss-pxtorem": "^6.0.0",
     "pre-commit": "^1.2.2",
+    "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.2.1",
     "unplugin-json-dts": "^1.2.0"
   }
 }

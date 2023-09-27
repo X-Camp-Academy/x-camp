@@ -1,15 +1,15 @@
-"use client";
-import React from "react";
-import { Layout } from "antd";
-import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
-import { useGetReviews } from "@/apis/strapi-client/strapi";
-import styles from "./index.module.scss";
+'use client';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
+import { Layout } from 'antd';
+import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import React from 'react';
+import styles from './index.module.scss';
 
-const TopBanner = dynamic(() => import("./banner"));
-const Reviews = dynamic(() => import("@/components/common/reviews"));
-const QAPart = dynamic(() => import("./qa-part"));
-const ContactUs = dynamic(() => import("./contact-us"));
+const TopBanner = dynamic(() => import('./banner'));
+const Reviews = dynamic(() => import('@/components/common/reviews'));
+const QAPart = dynamic(() => import('./qa-part'));
+const ContactUs = dynamic(() => import('./contact-us'));
 
 const { Content } = Layout;
 
@@ -17,7 +17,7 @@ const HelpCenter: React.FC = () => {
   const pathname = usePathname();
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string],
+    pageName: [pathname as string]
   });
 
   return (

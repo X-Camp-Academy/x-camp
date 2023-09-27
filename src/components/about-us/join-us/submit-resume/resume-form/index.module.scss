@@ -18,9 +18,9 @@
   }
 
   .inputInfo {
-    background: #ffffff;
-    border-radius: 8px;
     border: 1px solid #ffad11;
+    border-radius: 8px;
+    background: #fff;
   }
 
   .upBtn {
@@ -28,11 +28,11 @@
     align-items: center;
     padding: 24px 36px;
     border: none;
-    background: #ffad11;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
     color: #fcfcfc;
+    background: #ffad11;
     line-height: 24px;
   }
 

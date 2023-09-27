@@ -1,40 +1,49 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
 
 .weSupport {
   padding: 80px 15px;
   background-color: #efefef;
+
   .title {
-    @include title("default");
+    @include title('default');
+
     margin: 0;
   }
+
   .titleBg {
-    margin-left: 60px;
     display: block;
+    margin-left: 60px;
     width: 160px;
     height: 20px;
-    background-image: url("/image/home/home-title-bg-1.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url('/image/home/home-title-bg-1.png');
   }
+
   .paragraph {
     margin-top: 10px;
+
     @include text(18px, 34px);
+
     font-weight: 500;
   }
+
   .imageContainer {
-    @media (max-width: 992px) {
-      background: #e7e7e7;
+    @media (width <= 992px) {
       margin-bottom: 15px;
+      background: #e7e7e7;
     }
   }
+
   .imageBox {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80px;
-    @media (max-width: 768px) {
-      padding-left: 15px;
+
+    @media (width <= 768px) {
       padding-right: 15px;
+      padding-left: 15px;
     }
   }
 }

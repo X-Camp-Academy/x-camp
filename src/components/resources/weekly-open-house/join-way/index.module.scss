@@ -1,43 +1,44 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
 
 .description {
+  margin-bottom: 40px;
   font-size: 18px;
   font-weight: 500;
   color: #172142;
   line-height: 34px;
-  margin-bottom: 40px;
 }
 
 .title {
-  @include title("thin");
+  @include title('thin');
+
   line-height: 40px;
   margin-bottom: 10px;
 
   &::before {
-    content: "";
     display: inline-block;
+    margin-right: 10px;
     width: 10px;
     height: 10px;
-    background-color: #ffad11;
     border: 3px solid #ffd600;
     border-radius: 50%;
-    margin-right: 10px;
+    background-color: #ffad11;
+    content: '';
   }
 }
 
 .time {
+  margin-left: 24px;
   font-size: 20px;
   font-weight: 500;
   color: #172142;
   line-height: 34px;
-  margin-left: 24px;
 }
 
 .link {
-  font-size: 20px;
-  color: #d46b14;
-  text-decoration: underline;
   margin-left: 24px;
+  font-size: 20px;
+  text-decoration: underline;
+  color: #d46b14;
 
   &:hover {
     color: #d46b14;

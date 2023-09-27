@@ -1,5 +1,5 @@
-import React from 'react';
 import { Card, CardProps } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 interface MaskCardProps extends CardProps {
@@ -8,19 +8,16 @@ interface MaskCardProps extends CardProps {
   maskBackGroundColor?: string;
   maskBorderRadius?: number;
 }
-const MaskCard = ({
-  maskChildren,
-  children,
-  maskBackGroundColor,
-  maskBorderRadius = 8,
-  ...props
-}: MaskCardProps) => {
+const MaskCard = ({ maskChildren, children, maskBackGroundColor, maskBorderRadius = 8, ...props }: MaskCardProps) => {
   return (
     <Card {...props} className={`${styles.maskCard} ${props.className}`}>
       <div className={styles.content}>{children}</div>
       <div
         className={styles.mask}
-        style={{ backgroundColor: maskBackGroundColor, borderRadius: maskBorderRadius }}
+        style={{
+          backgroundColor: maskBackGroundColor,
+          borderRadius: maskBorderRadius
+        }}
       >
         {maskChildren}
       </div>

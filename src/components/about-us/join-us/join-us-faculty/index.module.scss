@@ -1,21 +1,26 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
 
 .joinUsFacultyContainer {
   margin-bottom: 100px;
-  @media (max-width: 768px) {
+
+  @media (width <= 768px) {
     padding: 20px;
   }
+
   .joinUsFaculty {
     display: flex;
-    @media (max-width: 768px) {
+
+    @media (width <= 768px) {
       display: block;
     }
 
     .xCampIntro {
       padding-top: 60px;
-      @media (max-width: 1200px) {
-        padding-top: 0px;
+
+      @media (width <= 1200px) {
+        padding-top: 0;
       }
+
       .logo {
         width: 40%;
       }
@@ -29,10 +34,10 @@
       }
 
       .introBtn {
-        height: 48px;
         padding: 10px 24px;
-        border-radius: 12px;
+        height: 48px;
         border: 2px solid #172142;
+        border-radius: 12px;
         font-size: 18px;
         font-weight: 500;
         color: #172142;
@@ -43,7 +48,8 @@
     .facultyImgs {
       padding: 30px;
       width: 100%;
-      @media (max-width: 768px) {
+
+      @media (width <= 768px) {
         padding: 30px;
       }
     }

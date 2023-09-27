@@ -4,34 +4,39 @@
   border: none;
 
   .panel {
-    background: white;
-    border: none;
     padding: 20px 40px;
+    border: none;
     font-size: 18px;
+    background: white;
+
     :global(.ant-collapse-header) {
-      min-height: 88px;
       display: flex;
-      width: 100%;
       align-items: center;
       padding: 16px;
+      width: 100%;
+      min-height: 88px;
     }
+
     :global(.ant-collapse-content) {
       border-top: 2px solid #ffad11;
     }
   }
+
   .questionAndAnswerIcon {
-    width: 40px;
-    height: 40px;
-    font-size: 21px;
-    border-radius: 8px;
-    align-items: center;
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 21px;
   }
+
   .question {
     color: #ffad11;
     background-color: #ffeddf;
   }
+
   .answer {
     color: #00a0e9;
     background-color: #009fe933;

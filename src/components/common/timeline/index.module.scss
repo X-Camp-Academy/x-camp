@@ -1,4 +1,5 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
+
 .timeline {
   position: relative;
   padding: 16px 0;
@@ -11,47 +12,50 @@
 
   :global(.ant-timeline-item-head) {
     @include arrow;
-    background: transparent;
-    margin-left: -3px;
+
     margin-top: 10px;
+    margin-left: -3px;
+    background: transparent;
   }
 
   .month {
-    @include title();
+    @include title;
+
+    margin-bottom: 30px;
     height: 48px;
     font-size: 36px;
-    font-family: Poppins-SemiBold, Poppins;
+    font-family: Poppins-SemiBold, Poppins, Arial;
     line-height: 40px;
-    margin-bottom: 30px;
   }
 
   .line {
-    border-bottom: 3px solid #172142;
-    width: 36px;
     position: absolute;
     left: -20px;
+    width: 36px;
+    border-bottom: 3px solid #172142;
   }
 
   .circle {
+    margin-top: 1px;
+    margin-left: 8px;
     width: 16px;
     height: 16px;
-    background: #ffad11;
     border: 4px solid #ffd600;
     border-radius: 8px;
-    margin-left: 8px;
-    margin-top: 1px;
+    background: #ffad11;
   }
 
   .subTitle {
     @include text(24px, 42px);
-    font-weight: 600;
+
     margin-left: 15px;
+    font-weight: 600;
   }
 
   .subContent {
     @include text(18px, 42px);
 
-    margin-left: 56px;
     margin-bottom: 30px;
+    margin-left: 56px;
   }
 }

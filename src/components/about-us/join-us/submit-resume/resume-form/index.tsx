@@ -1,23 +1,11 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import {
-  Typography,
-  Divider,
-  Form,
-  Button,
-  Input,
-  Radio,
-  Space,
-  Upload,
-  UploadFile,
-  message,
-} from "antd";
-import { UploadChangeParam } from "antd/es/upload";
-import { useLang } from "@/hoc/with-intl/define";
-import { useSubmitResume } from "@/apis/send-email-client/sendEmail";
-import styles from "./index.module.scss";
-
+'use client';
+import { useSubmitResume } from '@/apis/send-email-client/sendEmail';
+import { useLang } from '@/hoc/with-intl/define';
+import { Button, Divider, Form, Input, Radio, Space, Typography, Upload, UploadFile, message } from 'antd';
+import { UploadChangeParam } from 'antd/es/upload';
+import Link from 'next/link';
+import React from 'react';
+import styles from './index.module.scss';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -43,7 +31,7 @@ const ResumeForm: React.FC<{
   function beforePDFUpload(file: any) {
     const isSizeValid = file.size <= fileSizeLimit;
     if (!isSizeValid) {
-      message.error("File size must be less than or equal to 10MB");
+      message.error('File size must be less than or equal to 10MB');
     }
     return false;
   }
@@ -54,9 +42,7 @@ const ResumeForm: React.FC<{
   function beforeLetterUpload(file: any) {
     const isSizeValid = file.size <= fileSizeLimit;
     if (!isSizeValid) {
-      message.error(
-        "File size must be less than or equal to 10MB. Please Upload again!"
-      );
+      message.error('File size must be less than or equal to 10MB. Please Upload again!');
     }
     return false;
   }
@@ -71,60 +57,47 @@ const ResumeForm: React.FC<{
   const submitResumeOnFinish = async (formValues: submitResumeProps) => {
     const requestData = new FormData();
     if (formValues.resume[0].originFileObj.size >= fileSizeLimit) {
-      message.error(
-        "File size must be less than or equal to 10MB. Please Upload again!"
-      );
+      message.error('File size must be less than or equal to 10MB. Please Upload again!');
       return;
     }
 
-    if (job) requestData.append("job", job);
-    if (department) requestData.append("department", department);
-    requestData.append("firstName", formValues.firstName);
-    requestData.append("lastName", formValues.lastName);
-    requestData.append("email", formValues.email);
-    requestData.append("phone", formValues.phone);
-    requestData.append("acRelocate", formValues.acRelocate);
-    requestData.append("alphabetEmployee", formValues.alphabetEmployee);
-    requestData.append("resume", formValues.resume[0].originFileObj);
-    if (formValues.letter)
-      requestData.append("letter", formValues.letter[0].originFileObj);
-    if (formValues.linkedIn) requestData.append("linkIn", formValues.linkedIn);
-    if (formValues.website) requestData.append("website", formValues.website);
+    if (job) requestData.append('job', job);
+    if (department) requestData.append('department', department);
+    requestData.append('firstName', formValues.firstName);
+    requestData.append('lastName', formValues.lastName);
+    requestData.append('email', formValues.email);
+    requestData.append('phone', formValues.phone);
+    requestData.append('acRelocate', formValues.acRelocate);
+    requestData.append('alphabetEmployee', formValues.alphabetEmployee);
+    requestData.append('resume', formValues.resume[0].originFileObj);
+    if (formValues.letter) requestData.append('letter', formValues.letter[0].originFileObj);
+    if (formValues.linkedIn) requestData.append('linkIn', formValues.linkedIn);
+    if (formValues.website) requestData.append('website', formValues.website);
     await submitResume(requestData);
   };
 
   return (
     <>
-      <Divider style={{ borderColor: "#FFAD11" }} />
-      <Form
-        form={form}
-        layout="vertical"
-        autoComplete="off"
-        size="large"
-        className={styles.formContainer}
-        onFinish={submitResumeOnFinish}
-      >
-        <Title className={styles.title}>{t("ApplyNow")}</Title>
-        <Text className={styles.description}>{t("RequiredFields")}</Text>
+      <Divider style={{ borderColor: '#FFAD11' }} />
+      <Form form={form} layout="vertical" autoComplete="off" size="large" className={styles.formContainer} onFinish={submitResumeOnFinish}>
+        <Title className={styles.title}>{t('ApplyNow')}</Title>
+        <Text className={styles.description}>{t('RequiredFields')}</Text>
 
         <div className={styles.basicInfoContainer}>
           <Form.Item name="firstName" rules={[{ required: true }]}>
-            <Input placeholder={`${t("FirstName")} *`} />
+            <Input placeholder={`${t('FirstName')} *`} />
           </Form.Item>
           <Form.Item name="lastName" rules={[{ required: true }]}>
-            <Input placeholder={`${t("LastName")} *`} />
+            <Input placeholder={`${t('LastName')} *`} />
           </Form.Item>
-          <Form.Item
-            name="email"
-            rules={[{ type: "email" }, { required: true }]}
-          >
-            <Input type="email" placeholder={`${t("Email")} *`} />
+          <Form.Item name="email" rules={[{ type: 'email' }, { required: true }]}>
+            <Input type="email" placeholder={`${t('Email')} *`} />
           </Form.Item>
           <Form.Item name="phone" rules={[{ required: true }]}>
-            <Input placeholder={`${t("Phone")} *`} />
+            <Input placeholder={`${t('Phone')} *`} />
           </Form.Item>
         </div>
-        <Title className={styles.title}>{`${t("ResumeCV")} *`}</Title>
+        <Title className={styles.title}>{`${t('ResumeCV')} *`}</Title>
         <Form.Item name="resume" rules={[{ required: true }]}>
           <Upload
             accept=".pdf"
@@ -132,16 +105,16 @@ const ResumeForm: React.FC<{
             beforeUpload={beforePDFUpload}
             onChange={(info) => submitCvPDF(info)}
             showUploadList={{
-              showRemoveIcon: false,
+              showRemoveIcon: false
             }}
             disabled={false}
           >
             <Button type="primary" className={styles.upBtn}>
-              {t("UploadFile")}
+              {t('UploadFile')}
             </Button>
           </Upload>
         </Form.Item>
-        <Title className={styles.title}>{t("CoverLetter")}</Title>
+        <Title className={styles.title}>{t('CoverLetter')}</Title>
         <Form.Item name="letter">
           <Upload
             accept=".pdf"
@@ -149,44 +122,38 @@ const ResumeForm: React.FC<{
             beforeUpload={beforeLetterUpload}
             onChange={(info) => submitLetter(info)}
             showUploadList={{
-              showRemoveIcon: false,
+              showRemoveIcon: false
             }}
             disabled={false}
           >
             <Button type="primary" className={styles.upBtn}>
-              {t("UploadFile")}
+              {t('UploadFile')}
             </Button>
           </Upload>
         </Form.Item>
 
         <Form.Item name="linkedIn">
-          <Input
-            placeholder={t("LinkedInProfile")}
-            className={styles.inputInfo}
-          />
+          <Input placeholder={t('LinkedInProfile')} className={styles.inputInfo} />
         </Form.Item>
 
         <Form.Item name="website">
-          <Input placeholder={t("Website")} className={styles.inputInfo} />
+          <Input placeholder={t('Website')} className={styles.inputInfo} />
         </Form.Item>
 
         <div style={{ marginBottom: 20 }}>
           <Text className={styles.problem}>
-            {t("RelocationQuestion")}
-            {" *"}
+            {t('RelocationQuestion')}
+            {' *'}
           </Text>
         </div>
-        <Form.Item
-          name="acRelocate"
-          rules={[{ required: true, message: "please choose the radio" }]}
-        >
+        <Form.Item name="acRelocate" rules={[{ required: true, message: 'please choose the radio' }]}>
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
-                {t("Yes")}
+                {t('Yes')}
               </Radio>
               <Radio value="No" className={styles.problem}>
-                {t("No")}
+                {t('No')}
               </Radio>
             </Space>
           </Radio.Group>
@@ -194,49 +161,43 @@ const ResumeForm: React.FC<{
 
         <div style={{ marginBottom: 20 }}>
           <Text className={styles.problem}>
-            {t("AlphabetEmployeeQuestion")}
-            {" *"}
+            {t('AlphabetEmployeeQuestion')}
+            {' *'}
           </Text>
         </div>
-        <Form.Item
-          name="alphabetEmployee"
-          rules={[{ required: true, message: "please choose the radio" }]}
-        >
+        <Form.Item name="alphabetEmployee" rules={[{ required: true, message: 'please choose the radio' }]}>
           <Radio.Group>
             <Space direction="vertical">
               <Radio value="Yes" className={styles.problem}>
-                {t("Yes")}
+                {t('Yes')}
               </Radio>
               <Radio value="No" className={styles.problem}>
-                {t("No")}
+                {t('No')}
               </Radio>
             </Space>
           </Radio.Group>
         </Form.Item>
 
-        <Text className={styles.title}>{t("ApplicationConsent")}</Text>
+        <Text className={styles.title}>{t('ApplicationConsent')}</Text>
         <Paragraph className={styles.acceptText}>
-          {t("ApplicationConsent.Desc1")}{" "}
-          <Link style={{ color: "#FFAD11" }} href="/about-us/privacy-policy">
+          {t('ApplicationConsent.Desc1')}{' '}
+          <Link style={{ color: '#FFAD11' }} href="/about-us/privacy-policy">
             our privacy policy
           </Link>
-          {t("ApplicationConsent.Desc2")}
+          {t('ApplicationConsent.Desc2')}
         </Paragraph>
 
-        <Form.Item
-          name="accept"
-          rules={[{ required: true, message: "please choose the answer" }]}
-        >
+        <Form.Item name="accept" rules={[{ required: true, message: 'please choose the answer' }]}>
           <Radio.Group>
             <Radio value="1" className={styles.problem}>
-              {t("IAccept")}
+              {t('IAccept')}
             </Radio>
           </Radio.Group>
         </Form.Item>
 
         <Form.Item>
           <Button type="primary" htmlType="submit" className={styles.upBtn}>
-            {t("Submit")}
+            {t('Submit')}
           </Button>
         </Form.Item>
       </Form>

@@ -1,5 +1,5 @@
-import { RefObject } from "react";
-import { Grid } from "antd";
+import { Grid } from 'antd';
+import { RefObject } from 'react';
 
 /**
  * xs 屏幕 < 576px
@@ -15,7 +15,7 @@ export const useMobile = () => {
   const breakpoints = Object.entries(screens)
     ?.filter((screen) => !!screen[1])
     ?.map((screen) => screen[0]);
-  const isMobile = !breakpoints?.includes("md");
+  const isMobile = !breakpoints?.includes('md');
   return isMobile;
 };
 
@@ -25,10 +25,7 @@ export const useMobile = () => {
  * name 动画名
  * @returns
  */
-export const addAnimate = (
-  ref: RefObject<HTMLDivElement>,
-  name: string = "hvr-float"
-) => {
+export const addAnimate = (ref: RefObject<HTMLDivElement>, name: string = 'hvr-float') => {
   (ref?.current as HTMLDivElement)?.classList?.add(name);
 };
 
@@ -38,10 +35,7 @@ export const addAnimate = (
  * name 动画名
  * @returns
  */
-export const removeAnimate = (
-  ref: RefObject<HTMLDivElement>,
-  name: string = "hvr-float"
-) => {
+export const removeAnimate = (ref: RefObject<HTMLDivElement>, name: string = 'hvr-float') => {
   (ref?.current as HTMLDivElement)?.classList?.remove(name);
 };
 
@@ -51,10 +45,7 @@ export const removeAnimate = (
  * sFormat('Hello, {0}', 'OI') => Hello, OI
  * sFormat('{0} {1}', '{1}', '{0}') => {1} {0}
  */
-export const sFormat = (
-  content: string | undefined,
-  ...args: React.ReactNode[]
-): React.ReactNode => {
+export const sFormat = (content: string | undefined, ...args: React.ReactNode[]): React.ReactNode => {
   const parts = content?.split(/{(\d+)}/g);
   return (
     <div>

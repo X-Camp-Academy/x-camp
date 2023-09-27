@@ -1,48 +1,56 @@
-@import "@/styles/variables";
+@import '@/styles/variables';
+
 .partners {
-  text-align: center;
-  background-color: #fdf6f1;
   padding-top: 88px;
   padding-bottom: 88px;
+  text-align: center;
+  background-color: #fdf6f1;
+
   .title {
-    @include title();
-    color: $primary-color;
+    @include title;
+
     position: relative;
-    @media (max-width: 768px) {
-      width: 100%;
-      padding-left: 15px;
+    color: $primary-color;
+
+    @media (width <= 768px) {
       padding-right: 15px;
+      padding-left: 15px;
+      width: 100%;
     }
   }
 
   .titleBg {
-    margin-top: -32px;
     display: block;
+    margin-top: -32px;
     width: 130px;
     height: 16px;
-    background-image: url("/image/home/home-title-bg-1.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url('/image/home/home-title-bg-1.png');
   }
 
   .paragraph {
-    color: #172142;
+    margin: auto 40px 56px;
     font-size: 18px;
     font-weight: 500;
+    color: #172142;
     line-height: 34px;
-    margin: auto 40px 56px 40px;
-    @media (max-width: 768px) {
+
+    @media (width <= 768px) {
       margin: auto auto 40px;
     }
   }
+
   .space {
     display: flex;
     justify-content: space-between;
   }
+
   .topImage {
     width: 160px;
     height: 64px;
-    @media (max-width: 768px) {
+
+    @media (width <= 768px) {
       width: 100%;
     }
   }
@@ -50,21 +58,26 @@
   .bottomLeftImage {
     width: 80px;
     height: 64px;
-    @media (max-width: 768px) {
+
+    @media (width <= 768px) {
       width: 100%;
     }
   }
+
   .bottomCenterImage {
     width: 160px;
     height: 64px;
-    @media (max-width: 768px) {
+
+    @media (width <= 768px) {
       width: 100%;
     }
   }
+
   .bottomRightImage {
     width: 160px;
     height: 64px;
-    @media (max-width: 768px) {
+
+    @media (width <= 768px) {
       width: 100%;
     }
   }

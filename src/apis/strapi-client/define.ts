@@ -1,19 +1,11 @@
-import {
-  StrapiMedia,
-  StrapiMedias,
-  StrapiRequest,
-  StrapiResponse,
-  StrapiResponseDataItem,
-  StrapiResponseSingleDataItem,
-  strapiPublicFields,
-} from "./strapiDefine";
+import { StrapiMedia, StrapiMedias, StrapiRequest, StrapiResponse, StrapiResponseDataItem, StrapiResponseSingleDataItem, strapiPublicFields } from './strapiDefine';
 
 export enum FacultyLevelCategory {
-  BasicLevel = "Basic Level",
-  USACOBronzeLevel = "USACO Bronze Level",
-  USACOSilverLevel = "USACO Silver Level",
-  GrandmasterClassLevel = "Grandmaster Class Level",
-  All = "All",
+  BasicLevel = 'Basic Level',
+  USACOBronzeLevel = 'USACO Bronze Level',
+  USACOSilverLevel = 'USACO Silver Level',
+  GrandmasterClassLevel = 'Grandmaster Class Level',
+  All = 'All'
 }
 
 export interface GetFaculty extends strapiPublicFields {
@@ -32,21 +24,19 @@ export type GetFacultyRequest = StrapiRequest<GetFaculty>;
 export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
 export enum NewEventCategory {
-  News = "News",
-  Event = "Events",
-  SchoolCalendar = "School Calendar",
-  EventContest = "Event Contest",
-  XAlumni = "X-Alumni",
-  All = "All",
+  News = 'News',
+  Event = 'Events',
+  SchoolCalendar = 'School Calendar',
+  EventContest = 'Event Contest',
+  XAlumni = 'X-Alumni',
+  All = 'All'
 }
-
 export enum EventCategory {
   SchoolLifeSharing = "School life's sharing",
-  CodingEducation = "Coding Education",
-  CareerPath = "Career Path",
-  Research = "Research",
+  CodingEducation = 'Coding Education',
+  CareerPath = 'Career Path',
+  Research = 'Research'
 }
-
 export interface GetNewEvent extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -90,10 +80,8 @@ export interface GetHomeStudentProjects extends strapiPublicFields {
   videoZh: string;
   videoEn: string;
 }
-export type GetHomeStudentProjectsRequest =
-  StrapiRequest<GetHomeStudentProjects>;
-export type GetHomeStudentProjectsResponse =
-  StrapiResponse<GetHomeStudentProjects>;
+export type GetHomeStudentProjectsRequest = StrapiRequest<GetHomeStudentProjects>;
+export type GetHomeStudentProjectsResponse = StrapiResponse<GetHomeStudentProjects>;
 
 export interface GetAboutUsAchievementsAward extends strapiPublicFields {
   titleZh: string;
@@ -117,10 +105,8 @@ export interface GetReviews extends strapiPublicFields {
   datetime: string;
 }
 
-export type GetAboutUsAchievementsAwardRequest =
-  StrapiRequest<GetAboutUsAchievementsAward>;
-export type GetAboutUsAchievementsAwardResponse =
-  StrapiResponse<GetAboutUsAchievementsAward>;
+export type GetAboutUsAchievementsAwardRequest = StrapiRequest<GetAboutUsAchievementsAward>;
+export type GetAboutUsAchievementsAwardResponse = StrapiResponse<GetAboutUsAchievementsAward>;
 
 export interface GetCourseLevelType extends strapiPublicFields {
   type: string;
@@ -183,7 +169,7 @@ export interface GetCourses extends strapiPublicFields {
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;
 
-export interface GetXAlumni extends strapiPublicFields {
+export interface GetCommunity extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
@@ -192,8 +178,8 @@ export interface GetXAlumni extends strapiPublicFields {
   order: number;
 }
 
-export type GetXAlumniRequest = StrapiRequest<GetXAlumni>;
-export type GetXAlumniResponse = StrapiResponse<GetXAlumni>;
+export type GetCommunityRequest = StrapiRequest<GetCommunity>;
+export type GetCommunityResponse = StrapiResponse<GetCommunity>;
 
 export interface GetResourcesContest extends strapiPublicFields {
   titleZh: string;
@@ -215,14 +201,14 @@ export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
 export enum AboutUsJoinUsCategory {
-  PartTime = "Part Time",
-  FullTime = "Full Time",
-  XTutor = "X-Tutor",
+  PartTime = 'Part Time',
+  FullTime = 'Full Time',
+  XTutor = 'X-Tutor'
 }
 
 export enum AboutUsJoinUsPlace {
-  Remote = "Remote",
-  OnSite = "On Site",
+  Remote = 'Remote',
+  OnSite = 'On Site'
 }
 
 export interface GetAboutUsJoinUs extends strapiPublicFields {
@@ -255,8 +241,7 @@ export type GetReviewsRequest = StrapiRequest<GetReviews>;
 export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
 export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
-export type GetAboutUsAlumniMapResponse =
-  StrapiResponseSingleDataItem<GetAboutUsAlumniMap>;
+export type GetAboutUsAlumniMapResponse = StrapiResponseSingleDataItem<GetAboutUsAlumniMap>;
 export interface GetProjectsDemo extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -277,10 +262,8 @@ export interface GetAchievementsTimeLine extends strapiPublicFields {
   order: number;
 }
 
-export type GetAchievementsTimeLineRequest =
-  StrapiRequest<GetAchievementsTimeLine>;
-export type GetAchievementsTimeLineResponse =
-  StrapiResponse<GetAchievementsTimeLine>;
+export type GetAchievementsTimeLineRequest = StrapiRequest<GetAchievementsTimeLine>;
+export type GetAchievementsTimeLineResponse = StrapiResponse<GetAchievementsTimeLine>;
 
 export interface GetAboutUsIntroArticle extends strapiPublicFields {
   titleZh: string;
@@ -292,10 +275,8 @@ export interface GetAboutUsIntroArticle extends strapiPublicFields {
   img2: StrapiMedia;
   img3: StrapiMedia;
 }
-export type GetAboutUsIntroArticleRequest =
-  StrapiRequest<GetAboutUsIntroArticle>;
-export type GetAboutUsIntroArticleResponse =
-  StrapiResponse<GetAboutUsIntroArticle>;
+export type GetAboutUsIntroArticleRequest = StrapiRequest<GetAboutUsIntroArticle>;
+export type GetAboutUsIntroArticleResponse = StrapiResponse<GetAboutUsIntroArticle>;
 
 export interface GetResourcesLiveSolution extends strapiPublicFields {
   titleZh: string;
@@ -308,15 +289,13 @@ export interface GetResourcesLiveSolution extends strapiPublicFields {
   videoEn: string;
 }
 
-export type GetResourcesLiveSolutionRequest =
-  StrapiRequest<GetResourcesLiveSolution>;
-export type GetResourcesLiveSolutionResponse =
-  StrapiResponse<GetResourcesLiveSolution>;
+export type GetResourcesLiveSolutionRequest = StrapiRequest<GetResourcesLiveSolution>;
+export type GetResourcesLiveSolutionResponse = StrapiResponse<GetResourcesLiveSolution>;
 
 export enum FaqCategory {
-  ReferralQA = "Referral QA",
-  CoursesQA = "Courses QA",
-  CampsQA = "Camps QA",
+  ReferralQA = 'Referral QA',
+  CoursesQA = 'Courses QA',
+  CampsQA = 'Camps QA'
 }
 
 export interface GetFaq extends strapiPublicFields {
@@ -335,10 +314,10 @@ export type GetFaqRequest = StrapiRequest<GetFaq>;
 export type GetFaqResponse = StrapiResponse<GetFaq>;
 
 export enum PartnerCategory {
-  ChinaPartners = "China Partners",
-  UniversityPartners = "University Partners",
-  CommunityPartners = "Community Partners",
-  EducationPartners = "Education Partners",
+  ChinaPartners = 'China Partners',
+  UniversityPartners = 'University Partners',
+  CommunityPartners = 'Community Partners',
+  EducationPartners = 'Education Partners'
 }
 
 export interface GetPartner extends strapiPublicFields {

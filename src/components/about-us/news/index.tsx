@@ -1,13 +1,13 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { usePathname } from 'next/navigation';
+import { NewEventCategory } from '@/apis/strapi-client/define';
+import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
 import dayjs from 'dayjs';
-import SubscribeNewsletter from './subscribe-news-letter';
-import { useGetNewEvent } from '@/apis/strapi-client/strapi';
-import { NewEventCategory } from '@/apis/strapi-client/define';
+import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './index.module.scss';
+import SubscribeNewsletter from './subscribe-news-letter';
 
 const Banner = dynamic(() => import('./banner'));
 // const Partners = dynamic(() => import('@/components/common/partners'));
@@ -44,19 +44,18 @@ const NewsPage = () => {
         sort: ['order:desc'],
         filters: {
           tags: {
-            $eq: NewEventCategory.News,
+            $eq: NewEventCategory.News
           },
           startDateTime: {
             $gte: String(dayjs(year).valueOf()),
-            $lte: String(dayjs(String(+year + 1)).valueOf()),
-          },
+            $lte: String(dayjs(String(+year + 1)).valueOf())
+          }
         },
         pagination: {
           page: current,
-          pageSize: PAGE_SIZE,
-        },
+          pageSize: PAGE_SIZE
+        }
       });
-
     }
   }, [current, year]);
 
@@ -64,13 +63,7 @@ const NewsPage = () => {
     <Layout className={styles.QAContainer}>
       <Content>
         <Banner />
-        <NewsCard
-          newEventData={newEventData?.data}
-          current={current}
-          setCurrent={setCurrent}
-          pageSize={PAGE_SIZE}
-          total={total}
-        />
+        <NewsCard newEventData={newEventData?.data} current={current} setCurrent={setCurrent} pageSize={PAGE_SIZE} total={total} />
 
         {/* <Partners />
         <BecomePartner /> */}

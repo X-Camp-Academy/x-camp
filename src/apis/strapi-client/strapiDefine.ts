@@ -61,7 +61,7 @@ type sortDesc<Fields> = {
 
 // strapi 公共 请求
 export interface StrapiRequest<Fields extends strapiPublicFields> {
-  populate?: Array<keyof Fields> | "*"; // 可请求 资源
+  populate?: Array<keyof Fields> | '*'; // 可请求 资源
   filters?: Partial<FilterFields<Fields>> | AndOrFilters<FilterFields<Fields>>; // 请求筛选
   fields?: Array<keyof Fields>; // 结果显示的字段
   sort?: Array<keyof Fields> | Array<keyof sortDesc<Fields>>; // 按照字段排序  'key:desc' 降序   'key:asc' or 'key'  升序

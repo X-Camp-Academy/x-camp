@@ -1,12 +1,6 @@
 import { apiConfig } from '@/config';
 import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
-import {
-  AuthorizeRequest,
-  AuthorizeResponse,
-  GetUserInfoResponse,
-  LoginRequest,
-  LogoutResponse,
-} from './define';
+import { AuthorizeRequest, AuthorizeResponse, GetUserInfoResponse, LoginRequest, LogoutResponse } from './define';
 const { idBackendApi } = apiConfig;
 export class AuthClient extends BaseAxiosClient {
   async getUserInfo() {
@@ -34,5 +28,4 @@ export class IdAuthClient extends BaseAxiosClient {
   }
 }
 
-export const useIdAuthClient = () =>
-  useClient('idAuth', IdAuthClient, '', {}, idBackendApi);
+export const useIdAuthClient = () => useClient('idAuth', IdAuthClient, '', {}, idBackendApi);

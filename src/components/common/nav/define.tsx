@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { XStarMenuItemType } from "./x-star-menu";
-import { useRouter } from "next/navigation";
-import { CalendarOutlined, RightOutlined, UserAddOutlined } from "@ant-design/icons";
-import { useLang } from "@/hoc/with-intl/define";
+import { useLang } from '@/hoc/with-intl/define';
+import { CalendarOutlined, RightOutlined, UserAddOutlined } from '@ant-design/icons';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { XStarMenuItemType } from './x-star-menu';
 
 export const useMenuItems = () => {
   const router = useRouter();
@@ -10,39 +10,37 @@ export const useMenuItems = () => {
   // TODO children label 国际化待提供
   const menuItems: XStarMenuItemType[] = [
     {
-      label: <Link href="/">{t("Home")}</Link>,
-      key: "/",
+      label: <Link href="/">{t('Home')}</Link>,
+      key: '/'
     },
     {
-      label: <a>{t("Courses")}</a>,
-      key: "/courses/",
+      label: <a>{t('Courses')}</a>,
+      key: '/courses/',
       dropdown: {
         left: {
-          title: t("ClassRoadMap"),
-          description: t("Courses.LeftDescription"),
+          title: t('ClassRoadMap'),
+          description: t('Courses.LeftDescription'),
           btn: (
             <>
-              <span onClick={() => router.push("/courses")}>
-                {t("Courses.Btn")}
-              </span>
+              <span onClick={() => router.push('/courses')}>{t('Courses.Btn')}</span>
               <UserAddOutlined />
             </>
-          ),
+          )
         },
         right: {
-          title: t("CourseCatalog"),
-          description: t("Courses.RightDescription"),
-          action: () => router.push("/courses/catalog"),
-        },
+          title: t('CourseCatalog'),
+          description: t('Courses.RightDescription'),
+          action: () => router.push('/courses/catalog')
+        }
       },
       children: [
         {
-          label: <a href="/courses#online">{t("OnlineClasses")}</a>,
-          key: "/courses/#online",
+          label: <a href="/courses#online">{t('OnlineClasses')}</a>,
+          key: '/courses/#online'
         },
         {
           label: <a href="">{'USACO Grandmaster'}</a>,
-          key: "USACO Grandmaster",
+          key: 'USACO Grandmaster'
         },
         // {
         //   label: (
@@ -51,16 +49,16 @@ export const useMenuItems = () => {
         //   key: "/courses/100-prob-challenge",
         // },
         {
-          label: <a href="/courses#camps">{t("In-personCamps")}</a>,
-          key: "/courses/#camps",
+          label: <a href="/courses#camps">{t('In-personCamps')}</a>,
+          key: '/courses/#camps'
         },
         {
-          label: <a href="">{'Mock Test Classes'}</a>,
-          key: "Mock Test Classes",
+          label: <a href="/courses#mock-test-classes">{'Mock Test Classes'}</a>,
+          key: 'Mock Test Classes'
         },
         {
-          label: <a href="">{'Java/APCS Classes'}</a>,
-          key: "Java/APCS Classes",
+          label: <a href="/courses#apcs">{'Java/APCS Classes'}</a>,
+          key: 'Java/APCS Classes'
         },
         // {
         //   label: <a href="/courses#apcs">{t("APCSClasses")}</a>,
@@ -75,36 +73,38 @@ export const useMenuItems = () => {
         {
           label: (
             <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
-              {t("X-Tutors")}
+              {t('X-Tutors')}
             </a>
           ),
-          key: "x-tutors",
-        },
-      ],
+          key: 'x-tutors'
+        }
+      ]
     },
     {
-      label: <Link href="/">{t("Resources")}</Link>,
-      key: "resources",
+      label: <Link href="/">{t('Resources')}</Link>,
+      key: 'resources',
       dropdown: {
         left: {
-          title: t("Resources"),
-          description: t("SchoolCalendar.Description"),
+          title: t('Resources'),
+          description: t('SchoolCalendar.Description'),
           btn: (
             <>
-              <span onClick={() => { router.push('/about-us/calendar'); }}>{t("ViewCalendar")}</span>
+              <span
+                onClick={() => {
+                  router.push('/about-us/calendar');
+                }}
+              >
+                {t('ViewCalendar')}
+              </span>
               <CalendarOutlined />
             </>
-          ),
-        },
+          )
+        }
       },
       children: [
         {
-          label: (
-            <Link href="/resources/education-forum">
-              {t("EducationalForum")}
-            </Link>
-          ),
-          key: "/resources/education-forum/",
+          label: <Link href="/resources/education-forum">{t('EducationalForum')}</Link>,
+          key: '/resources/education-forum/'
         },
         // {
         //   label: <Link href="/resources/contests#contest-31">{t("TuringCup")}</Link>,
@@ -112,17 +112,15 @@ export const useMenuItems = () => {
         // },
         {
           label: <a href="http://usaco.org/ ">USACO</a>,
-          key: "/resources/usaco/",
+          key: '/resources/usaco/'
         },
         {
           label: <a href="http://usaco.org/ ">Internal Contests</a>,
-          key: "Internal Contests",
+          key: 'Internal Contests'
         },
         {
-          label: (
-            <Link href="/resources/weekly-open-house">{t("OpenHouse")}</Link>
-          ),
-          key: "/resources/weekly-open-house/",
+          label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
+          key: '/resources/weekly-open-house/'
         },
         /*         {
                   label: <Link href="/">{t("X-Cup")}</Link>,
@@ -143,12 +141,8 @@ export const useMenuItems = () => {
         // },
 
         {
-          label: (
-            <Link href="/resources/usaco-live-solutions">
-              {t("USACOLiveSolution")}
-            </Link>
-          ),
-          key: "/resources/usaco-live-solution/",
+          label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
+          key: '/resources/usaco-live-solution/'
         },
         //
         // {
@@ -165,24 +159,30 @@ export const useMenuItems = () => {
         // },
         {
           label: <Link href="/resources/contests">External Contests</Link>,
-          key: "/resources/contests/",
-        },
-      ],
+          key: '/resources/contests/'
+        }
+      ]
     },
     {
-      label: <Link href="/about-us/introduction">{t("AboutUs")}</Link>,
-      key: "about-us",
+      label: <Link href="/about-us/introduction">{t('AboutUs')}</Link>,
+      key: 'about-us',
       dropdown: {
         left: {
-          title: t("AboutUs"),
-          description: t("AboutUs.Description"),
+          title: t('AboutUs'),
+          description: t('AboutUs.Description'),
           btn: (
             <>
-              <span onClick={() => { router.push('/about-us/introduction'); }}>{t("LearnMore")}</span>
+              <span
+                onClick={() => {
+                  router.push('/about-us/introduction');
+                }}
+              >
+                {t('LearnMore')}
+              </span>
               <RightOutlined />
             </>
-          ),
-        },
+          )
+        }
       },
       children: [
         // {
@@ -198,54 +198,48 @@ export const useMenuItems = () => {
         //   key: "/about-us/contact-us/",
         // },
         {
-          label: <Link href="/about-us/achievements">{t("Achievements")}</Link>,
-          key: "/about-us/achievements/",
+          label: <Link href="/about-us/achievements">{t('Achievements')}</Link>,
+          key: '/about-us/achievements/'
         },
         {
           label: (
             <Link href="/about-us/introduction#faculty">
-              {t("Faculty")}&
-              {t("Coach")}
+              {t('Faculty')}&{t('Coach')}
             </Link>
           ),
-          key: "/about-us/introduction#faculty",
+          key: '/about-us/introduction#faculty'
         },
         {
-          label: <Link href="/about-us/join-us">{t("JoinUs")}</Link>,
-          key: "/about-us/join-us/",
+          label: <Link href="/about-us/join-us">{t('JoinUs')}</Link>,
+          key: '/about-us/join-us/'
         },
 
         {
-          label: <Link href="/about-us/news">{t("News")}</Link>,
-          key: "/about-us/news/",
+          label: <Link href="/about-us/news">{t('News')}</Link>,
+          key: '/about-us/news/'
         },
         // {
         //   label: <Link href="/about-us/help-center">{t("FAQ")}</Link>,
         //   key: "/about-us/help-center/",
         // },
         {
-          label: (
-            <Link href="/about-us/student-recommend">
-              {t("ReferralProgram")}
-            </Link>
-          ),
-          key: "/about-us/student-recommend/",
+          label: <Link href="/about-us/student-recommend">{t('ReferralProgram')}</Link>,
+          key: '/about-us/student-recommend/'
         },
         {
-          label: <Link href="/about-us/partners">{t("Partners")}</Link>,
-          key: "/about-us/partners/",
-        },
+          label: <Link href="/about-us/partners">{t('Partners')}</Link>,
+          key: '/about-us/partners/'
+        }
         // {
         //   label: <Link href="/about-us/x-alumni">{t("X_ALUMNI")}</Link>,
         //   key: "/about-us/x-alumni/",
         // },
-
-      ],
+      ]
     },
     {
-      label: <Link href="/evaluation">{t("Evaluation")}</Link>,
-      key: "evaluation",
-    },
+      label: <Link href="/evaluation">{t('Evaluation')}</Link>,
+      key: 'evaluation'
+    }
   ];
   return menuItems;
 };

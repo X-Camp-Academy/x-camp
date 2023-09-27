@@ -1,9 +1,9 @@
-import React from "react";
-import { Space, Typography, Button } from "antd";
-import { EditOutlined } from "@ant-design/icons";
-import ColorfulCard from "@/components/common/colorful-card";
-import { useLang } from "@/hoc/with-intl/define";
-import styles from "./index.module.scss";
+import ColorfulCard from '@/components/common/colorful-card';
+import { useLang } from '@/hoc/with-intl/define';
+import { EditOutlined } from '@ant-design/icons';
+import { Button, Space, Typography } from 'antd';
+import React from 'react';
+import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
 
@@ -12,15 +12,13 @@ const BecomePartner: React.FC = () => {
   return (
     <div className={styles.becomePartnerContainer}>
       <div className={`${styles.becomePartner} container`}>
-        <ColorfulCard border={"bottom"} index={0} animate={false}>
+        <ColorfulCard border={'bottom'} index={0} animate={false}>
           <Space direction="vertical" className={styles.content}>
-            <Title className={styles.title}>{t("BecomeOurPartner")}</Title>
-            <Paragraph className={styles.description}>
-              {t("BecomeOurPartner.Desc")}
-            </Paragraph>
-            <a href={"mailto:info@x-camp.academy"}>
+            <Title className={styles.title}>{t('BecomeOurPartner')}</Title>
+            <Paragraph className={styles.description}>{t('BecomeOurPartner.Desc')}</Paragraph>
+            <a href={'mailto:info@x-camp.academy'}>
               <Button className={styles.contactBtn}>
-                {t("JoinUs")}
+                {t('JoinUs')}
                 <EditOutlined />
               </Button>
             </a>

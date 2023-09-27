@@ -3,11 +3,11 @@
   text-align: center;
 
   .title {
+    margin-bottom: 48px;
     font-size: 36px;
     font-weight: 600;
     color: #172142;
     line-height: 48px;
-    margin-bottom: 48px;
   }
 
   .cards {
@@ -40,12 +40,12 @@
     }
 
     .card {
+      padding: 28px 50px;
       width: 376px;
       height: 252px;
-      background: #ffffff;
-      box-shadow: 0px 9px 25px -4px rgba(216, 216, 216, 0.4);
       border-radius: 12px;
-      padding: 28px 50px;
+      background: #fff;
+      box-shadow: 0 9px 25px -4px rgb(216 216 216 / 40%);
 
       .level {
         font-size: 40px;

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { Space, Typography } from "antd";
-import { useLang } from "@/hoc/with-intl/define";
-import { getLangResult } from "@/utils/public";
-import CourseClassesContext from "../../CourseClassesContext";
-import styles from "./index.module.scss";
+import { useLang } from '@/hoc/with-intl/define';
+import { getLangResult } from '@/utils/public';
+import { Space, Typography } from 'antd';
+import React, { useContext } from 'react';
+import CourseClassesContext from '../../CourseClassesContext';
+import styles from './index.module.scss';
 
 const { Title, Text } = Typography;
 
@@ -15,18 +15,14 @@ const CourseSyllabus: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <Title className={styles.title}>{t("TopicsCovered")}</Title>
+        <Title className={styles.title}>{t('TopicsCovered')}</Title>
         <Space size={24} direction="vertical" className={styles.syllabus}>
-          {
-            courseSyllabus?.map((item, index) => (
-              <Space key={item} align="center">
-                <Text className={styles.text}>{index + 1}</Text>
-                <Text className={styles.paragraph}>
-                  {item}
-                </Text>
-              </Space>
-            ))
-          }
+          {courseSyllabus?.map((item, index) => (
+            <Space key={item} align="center">
+              <Text className={styles.text}>{index + 1}</Text>
+              <Text className={styles.paragraph}>{item}</Text>
+            </Space>
+          ))}
         </Space>
       </div>
     </div>

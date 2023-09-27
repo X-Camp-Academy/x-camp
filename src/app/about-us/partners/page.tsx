@@ -1,9 +1,10 @@
-import dynamic from "next/dynamic";
-const Partners = dynamic(() => import("@/components/about-us/partners"));
+import { PageTitle, generateMetadata } from '@/app/metadata';
+import dynamic from 'next/dynamic';
+
+const Partners = dynamic(() => import('@/components/about-us/partners'));
 
 export const metadata = {
-  title: "X-Camp Academy",
-  description: "X-Camp Academy | Programming and Education news from X-Camp",
+  ...generateMetadata(PageTitle.Partners)
 };
 
 const Page: React.FC = () => {

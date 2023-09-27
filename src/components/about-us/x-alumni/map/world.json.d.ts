@@ -1,9 +1,9 @@
 declare const json: {
-  type: "FeatureCollection";
+  type: 'FeatureCollection';
   features: [
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [74.54140625000002, 37.02216796875],
@@ -163,11 +163,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Afghanistan"; childNum: 1 };
+      properties: { name: 'Afghanistan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -311,11 +311,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Angola"; childNum: 2 };
+      properties: { name: 'Angola'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [20.06396484375, 42.547265624999994],
@@ -338,11 +338,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Albania"; childNum: 1 };
+      properties: { name: 'Albania'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [56.29785156250003, 25.650683593750045],
@@ -369,11 +369,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "United Arab Emirates"; childNum: 1 };
+      properties: { name: 'United Arab Emirates'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -586,11 +586,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Argentina"; childNum: 2 };
+      properties: { name: 'Argentina'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [46.490624999999994, 38.90668945312498],
@@ -622,11 +622,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Armenia"; childNum: 1 };
+      properties: { name: 'Armenia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [69.18486328125002, -49.10957031250004],
@@ -637,11 +637,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "France"; childNum: 1 };
+      properties: { name: 'France'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -926,11 +926,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Australia"; childNum: 5 };
+      properties: { name: 'Australia'; childNum: 5 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [16.953125, 48.598828125],
@@ -1002,11 +1002,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Austria"; childNum: 1 };
+      properties: { name: 'Austria'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -1055,11 +1055,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Azerbaijan"; childNum: 2 };
+      properties: { name: 'Azerbaijan'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [30.553613281250023, -2.4000976562500114],
@@ -1085,11 +1085,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Burundi"; childNum: 1 };
+      properties: { name: 'Burundi'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [5.693554687500011, 50.774755859375006],
@@ -1124,11 +1124,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Belgium"; childNum: 1 };
+      properties: { name: 'Belgium'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [3.5954101562500114, 11.6962890625],
@@ -1171,11 +1171,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Benin"; childNum: 1 };
+      properties: { name: 'Benin'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [0.21748046875001137, 14.911474609374991],
@@ -1234,11 +1234,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Burkina Faso"; childNum: 1 };
+      properties: { name: 'Burkina Faso'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [88.94072265625002, 26.24536132812497],
@@ -1334,11 +1334,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Bangladesh"; childNum: 1 };
+      properties: { name: 'Bangladesh'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [28.585351562500023, 43.742236328124996],
@@ -1423,11 +1423,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Bulgaria"; childNum: 1 };
+      properties: { name: 'Bulgaria'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-77.74384765625001, 24.707421874999994],
@@ -1438,11 +1438,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "The Bahamas"; childNum: 1 };
+      properties: { name: 'The Bahamas'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [19.007128906250045, 44.86918945312502],
@@ -1470,11 +1470,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Bosnia and Herzegovina"; childNum: 1 };
+      properties: { name: 'Bosnia and Herzegovina'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [28.14794921875, 56.142919921875],
@@ -1570,11 +1570,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Belarus"; childNum: 1 };
+      properties: { name: 'Belarus'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-89.2328125, 15.888671875],
@@ -1590,11 +1590,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Belize"; childNum: 1 };
+      properties: { name: 'Belize'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-58.15976562499999, -20.164648437500006],
@@ -1743,11 +1743,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Bolivia"; childNum: 1 };
+      properties: { name: 'Bolivia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -2191,11 +2191,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Brazil"; childNum: 3 };
+      properties: { name: 'Brazil'; childNum: 3 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [115.02675781250005, 4.899707031249989],
@@ -2208,11 +2208,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Brunei"; childNum: 1 };
+      properties: { name: 'Brunei'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [91.63193359375003, 27.759960937499997],
@@ -2263,11 +2263,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Bhutan"; childNum: 1 };
+      properties: { name: 'Bhutan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [25.2587890625, -17.793554687500006],
@@ -2339,11 +2339,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Botswana"; childNum: 1 };
+      properties: { name: 'Botswana'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [22.86005859375001, 10.919677734375],
@@ -2408,11 +2408,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Central African Republic"; childNum: 1 };
+      properties: { name: 'Central African Republic'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -3455,11 +3455,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Canada"; childNum: 36 };
+      properties: { name: 'Canada'; childNum: 36 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [9.524023437500006, 47.524218749999996],
@@ -3506,11 +3506,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Switzerland"; childNum: 1 };
+      properties: { name: 'Switzerland'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -3795,11 +3795,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Chile"; childNum: 10 };
+      properties: { name: 'Chile'; childNum: 10 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -4402,11 +4402,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "China"; childNum: 2 };
+      properties: { name: 'China'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-5.262304687499977, 10.319677734374991],
@@ -4487,11 +4487,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Ivory Coast"; childNum: 1 };
+      properties: { name: 'Ivory Coast'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [15.480078125000006, 7.5237792968749915],
@@ -4575,11 +4575,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Cameroon"; childNum: 1 };
+      properties: { name: 'Cameroon'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [27.4033203125, 5.109179687499989],
@@ -4750,11 +4750,14 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Democratic Republic of the Congo"; childNum: 1 };
+      properties: {
+        name: 'Democratic Republic of the Congo';
+        childNum: 1;
+      };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [18.6103515625, 3.4784179687499943],
@@ -4819,11 +4822,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Republic of the Congo"; childNum: 1 };
+      properties: { name: 'Republic of the Congo'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-71.31972656249997, 11.861914062500048],
@@ -4949,11 +4952,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Colombia"; childNum: 1 };
+      properties: { name: 'Colombia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-83.6419921875, 10.917236328125],
@@ -4986,11 +4989,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Costa Rica"; childNum: 1 };
+      properties: { name: 'Costa Rica'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -5042,11 +5045,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Cuba"; childNum: 2 };
+      properties: { name: 'Cuba'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [34.004492187500006, 35.065234374999996],
@@ -5057,11 +5060,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Northern Cyprus"; childNum: 1 };
+      properties: { name: 'Northern Cyprus'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [32.71269531250002, 35.171044921874994],
@@ -5073,11 +5076,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Cyprus"; childNum: 1 };
+      properties: { name: 'Cyprus'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [14.809375000000017, 50.858984375],
@@ -5110,11 +5113,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Czech Republic"; childNum: 1 };
+      properties: { name: 'Czech Republic'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [9.739746093750028, 54.82553710937498],
@@ -5207,11 +5210,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Germany"; childNum: 1 };
+      properties: { name: 'Germany'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [43.24599609375002, 11.499804687499989],
@@ -5233,11 +5236,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Djibouti"; childNum: 1 };
+      properties: { name: 'Djibouti'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -5277,11 +5280,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Denmark"; childNum: 3 };
+      properties: { name: 'Denmark'; childNum: 3 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-71.647216796875, 19.195947265624994],
@@ -5304,11 +5307,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Dominican Republic"; childNum: 1 };
+      properties: { name: 'Dominican Republic'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [8.207617187500006, 36.518945312499994],
@@ -5438,11 +5441,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Algeria"; childNum: 1 };
+      properties: { name: 'Algeria'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -5537,11 +5540,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Ecuador"; childNum: 2 };
+      properties: { name: 'Ecuador'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [34.24531250000001, 31.208300781249996],
@@ -5593,11 +5596,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Egypt"; childNum: 1 };
+      properties: { name: 'Egypt'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [40.938574218750006, 13.983105468749997],
@@ -5670,20 +5673,13 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Eritrea"; childNum: 1 };
+      properties: { name: 'Eritrea'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [-16.33447265624997, 28.37993164062499],
-              [-16.65800781249999, 28.007177734374977],
-              [-16.905322265625017, 28.33959960937503],
-              [-16.33447265624997, 28.37993164062499]
-            ]
-          ],
+          [[[-16.33447265624997, 28.37993164062499], [-16.65800781249999, 28.007177734374977], [-16.905322265625017, 28.33959960937503], [-16.33447265624997, 28.37993164062499]]],
           [
             [
               [3.145312500000017, 39.79008789062499],
@@ -5752,11 +5748,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Spain"; childNum: 3 };
+      properties: { name: 'Spain'; childNum: 3 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -5799,11 +5795,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Estonia"; childNum: 2 };
+      properties: { name: 'Estonia'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [38.43144531250002, 14.428613281249994],
@@ -5900,11 +5896,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Ethiopia"; childNum: 1 };
+      properties: { name: 'Ethiopia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [28.96582031250003, 69.02197265625],
@@ -5958,11 +5954,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Finland"; childNum: 1 };
+      properties: { name: 'Finland'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -5990,20 +5986,13 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Fiji"; childNum: 2 };
+      properties: { name: 'Fiji'; childNum: 2 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [-60.28623046874995, -51.461914062500014],
-              [-59.26806640625, -51.42753906250003],
-              [-59.92138671874997, -51.969531250000045],
-              [-60.28623046874995, -51.461914062500014]
-            ]
-          ],
+          [[[-60.28623046874995, -51.461914062500014], [-59.26806640625, -51.42753906250003], [-59.92138671874997, -51.969531250000045], [-60.28623046874995, -51.461914062500014]]],
           [
             [
               [-58.85019531249995, -51.26992187499998],
@@ -6019,11 +6008,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "United Kingdom"; childNum: 2 };
+      properties: { name: 'United Kingdom'; childNum: 2 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -6157,11 +6146,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "France"; childNum: 4 };
+      properties: { name: 'France'; childNum: 4 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [13.293554687500006, 2.161572265624997],
@@ -6209,11 +6198,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Gabon"; childNum: 1 };
+      properties: { name: 'Gabon'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -6283,11 +6272,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "United Kingdom"; childNum: 2 };
+      properties: { name: 'United Kingdom'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [46.30546875000002, 41.507714843749994],
@@ -6358,11 +6347,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Georgia"; childNum: 1 };
+      properties: { name: 'Georgia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-0.068603515625, 11.115624999999994],
@@ -6403,11 +6392,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Ghana"; childNum: 1 };
+      properties: { name: 'Ghana'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-11.389404296875, 12.404394531249991],
@@ -6491,11 +6480,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Guinea"; childNum: 1 };
+      properties: { name: 'Guinea'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-16.763330078124994, 13.064160156249997],
@@ -6508,11 +6497,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Gambia"; childNum: 1 };
+      properties: { name: 'Gambia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-13.759765625, 12.262353515624994],
@@ -6548,11 +6537,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Guinea Bissau"; childNum: 1 };
+      properties: { name: 'Guinea Bissau'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -6583,11 +6572,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Equatorial Guinea"; childNum: 2 };
+      properties: { name: 'Equatorial Guinea'; childNum: 2 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -6686,11 +6675,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Greece"; childNum: 3 };
+      properties: { name: 'Greece'; childNum: 3 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -6869,11 +6858,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Denmark"; childNum: 3 };
+      properties: { name: 'Denmark'; childNum: 3 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-89.2328125, 15.888671875],
@@ -6919,11 +6908,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Guatemala"; childNum: 1 };
+      properties: { name: 'Guatemala'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-57.194775390625, 5.5484374999999915],
@@ -7020,11 +7009,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Guyana"; childNum: 1 };
+      properties: { name: 'Guyana'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-83.635498046875, 14.876416015624997],
@@ -7090,11 +7079,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Honduras"; childNum: 1 };
+      properties: { name: 'Honduras'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [18.905371093750006, 45.931738281250034],
@@ -7143,11 +7132,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Croatia"; childNum: 1 };
+      properties: { name: 'Croatia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-71.647216796875, 19.195947265624994],
@@ -7171,11 +7160,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Haiti"; childNum: 1 };
+      properties: { name: 'Haiti'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [22.1318359375, 48.405322265624996],
@@ -7215,11 +7204,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Hungary"; childNum: 1 };
+      properties: { name: 'Hungary'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -7447,14 +7436,7 @@ declare const json: {
               [124.96953125000007, -1.70546874999998]
             ]
           ],
-          [
-            [
-              [135.47421875000006, -1.5917968750000142],
-              [136.20156250000005, -1.6549804687499972],
-              [136.19257812500004, -1.859179687499946],
-              [135.47421875000006, -1.5917968750000142]
-            ]
-          ],
+          [[[135.47421875000006, -1.5917968750000142], [136.20156250000005, -1.6549804687499972], [136.19257812500004, -1.859179687499946], [135.47421875000006, -1.5917968750000142]]],
           [
             [
               [106.04570312500002, -1.6694335937500142],
@@ -7468,14 +7450,7 @@ declare const json: {
               [106.04570312500002, -1.6694335937500142]
             ]
           ],
-          [
-            [
-              [128.1530273437501, -1.66054687499998],
-              [127.56162109375012, -1.7285156249999716],
-              [127.74296875000002, -1.3602539062499943],
-              [128.1530273437501, -1.66054687499998]
-            ]
-          ],
+          [[[128.1530273437501, -1.66054687499998], [127.56162109375012, -1.7285156249999716], [127.74296875000002, -1.3602539062499943], [128.1530273437501, -1.66054687499998]]],
           [
             [
               [99.16386718750007, -1.7779296875000057],
@@ -7486,14 +7461,7 @@ declare const json: {
               [99.16386718750007, -1.7779296875000057]
             ]
           ],
-          [
-            [
-              [135.38300781250004, -0.6513671875],
-              [135.89355468749997, -0.7257812499999687],
-              [135.83876953125, -1.1194335937499602],
-              [135.38300781250004, -0.6513671875]
-            ]
-          ],
+          [[[135.38300781250004, -0.6513671875], [135.89355468749997, -0.7257812499999687], [135.83876953125, -1.1194335937499602], [135.38300781250004, -0.6513671875]]],
           [
             [
               [140.97343750000007, -2.6097656250000085],
@@ -7794,11 +7762,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Indonesia"; childNum: 30 };
+      properties: { name: 'Indonesia'; childNum: 30 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [78.71972656250009, 31.887646484374983],
@@ -8229,11 +8197,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "India"; childNum: 1 };
+      properties: { name: 'India'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-6.218017578125, 54.08872070312506],
@@ -8257,11 +8225,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Ireland"; childNum: 1 };
+      properties: { name: 'Ireland'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [46.1144531250001, 38.877783203125034],
@@ -8413,11 +8381,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Iran"; childNum: 1 };
+      properties: { name: 'Iran'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [47.14824218750002, 30.0009765625],
@@ -8511,11 +8479,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Iraq"; childNum: 1 };
+      properties: { name: 'Iraq'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-15.543115234374994, 66.228515625],
@@ -8548,11 +8516,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Iceland"; childNum: 1 };
+      properties: { name: 'Iceland'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [35.78730468750001, 32.734912109374996],
@@ -8583,11 +8551,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Israel"; childNum: 1 };
+      properties: { name: 'Israel'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -8712,11 +8680,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Italy"; childNum: 3 };
+      properties: { name: 'Italy'; childNum: 3 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-77.261474609375, 18.457421874999994],
@@ -8731,11 +8699,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Jamaica"; childNum: 1 };
+      properties: { name: 'Jamaica'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [39.14541015625002, 32.12451171875],
@@ -8778,11 +8746,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Jordan"; childNum: 1 };
+      properties: { name: 'Jordan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -8918,25 +8886,18 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Japan"; childNum: 4 };
+      properties: { name: 'Japan'; childNum: 4 };
     },
     {
       geometry: {
-        type: "Polygon";
-        coordinates: [
-          [
-            [77.04863281249999, 35.109912109374996],
-            [76.76689453124999, 35.66171875],
-            [77.44648437500001, 35.4755859375],
-            [77.04863281249999, 35.109912109374996]
-          ]
-        ];
+        type: 'Polygon';
+        coordinates: [[[77.04863281249999, 35.109912109374996], [76.76689453124999, 35.66171875], [77.44648437500001, 35.4755859375], [77.04863281249999, 35.109912109374996]]];
       };
-      properties: { name: "Kashmir"; childNum: 1 };
+      properties: { name: 'Kashmir'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [87.32285156250012, 49.085791015625006],
@@ -9121,11 +9082,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Kazakhstan"; childNum: 1 };
+      properties: { name: 'Kazakhstan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [35.325292968750006, 5.364892578124994],
@@ -9202,11 +9163,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Kenya"; childNum: 1 };
+      properties: { name: 'Kenya'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [72.63994140625002, 39.385986328125],
@@ -9336,11 +9297,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Kyrgyzstan"; childNum: 1 };
+      properties: { name: 'Kyrgyzstan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [104.42636718750006, 10.411230468749991],
@@ -9401,11 +9362,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Cambodia"; childNum: 1 };
+      properties: { name: 'Cambodia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [128.37460937500012, 38.623437499999994],
@@ -9431,11 +9392,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "South Korea"; childNum: 1 };
+      properties: { name: 'South Korea'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [21.5625, 42.247509765625],
@@ -9454,11 +9415,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Kosovo"; childNum: 1 };
+      properties: { name: 'Kosovo'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [48.442480468750006, 28.542919921874983],
@@ -9478,11 +9439,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Kuwait"; childNum: 1 };
+      properties: { name: 'Kuwait'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [102.12744140625011, 22.37919921874999],
@@ -9667,11 +9628,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Laos"; childNum: 1 };
+      properties: { name: 'Laos'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [35.869140625, 33.43173828125],
@@ -9685,11 +9646,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Lebanon"; childNum: 1 };
+      properties: { name: 'Lebanon'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-8.486425781249977, 7.558496093749994],
@@ -9727,11 +9688,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Liberia"; childNum: 1 };
+      properties: { name: 'Liberia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [25.150488281250006, 31.654980468749997],
@@ -9816,11 +9777,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Libya"; childNum: 1 };
+      properties: { name: 'Libya'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [79.98232421875, 9.812695312500011],
@@ -9841,11 +9802,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Sri Lanka"; childNum: 1 };
+      properties: { name: 'Sri Lanka'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [28.128710937500017, -30.52509765625001],
@@ -9869,11 +9830,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Lesotho"; childNum: 1 };
+      properties: { name: 'Lesotho'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [25.573046875000017, 54.139892578125],
@@ -9919,11 +9880,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Lithuania"; childNum: 1 };
+      properties: { name: 'Lithuania'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [6.4873046875, 49.798486328124994],
@@ -9960,11 +9921,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Luxembourg"; childNum: 1 };
+      properties: { name: 'Luxembourg'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [28.14794921875, 56.142919921875],
@@ -10018,11 +9979,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Latvia"; childNum: 1 };
+      properties: { name: 'Latvia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-1.16259765625, 32.399169921875],
@@ -10167,11 +10128,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Morocco"; childNum: 1 };
+      properties: { name: 'Morocco'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [28.212500000000006, 45.450439453125],
@@ -10221,11 +10182,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Moldova"; childNum: 1 };
+      properties: { name: 'Moldova'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [49.53828125000004, -12.432128906250014],
@@ -10282,11 +10243,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Madagascar"; childNum: 1 };
+      properties: { name: 'Madagascar'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-97.14624023437494, 25.961474609375045],
@@ -10460,11 +10421,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Mexico"; childNum: 1 };
+      properties: { name: 'Mexico'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [22.344042968750017, 42.31396484375],
@@ -10497,11 +10458,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Macedonia"; childNum: 1 };
+      properties: { name: 'Macedonia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [4.227636718750006, 19.142773437499997],
@@ -10619,11 +10580,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Mali"; childNum: 1 };
+      properties: { name: 'Mali'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [101.1388671875001, 21.567480468749977],
@@ -10744,11 +10705,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Myanmar"; childNum: 1 };
+      properties: { name: 'Myanmar'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [19.670996093750006, 43.163964843749994],
@@ -10769,11 +10730,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Montenegro"; childNum: 1 };
+      properties: { name: 'Montenegro'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [116.68330078125001, 49.823779296874996],
@@ -11047,11 +11008,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Mongolia"; childNum: 1 };
+      properties: { name: 'Mongolia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [32.112890625000006, -26.839453125000006],
@@ -11180,11 +11141,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Mozambique"; childNum: 1 };
+      properties: { name: 'Mozambique'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-5.359912109374989, 16.282861328124994],
@@ -11281,11 +11242,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Mauritania"; childNum: 1 };
+      properties: { name: 'Mauritania'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [34.95947265625003, -11.578125000000028],
@@ -11364,11 +11325,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Malawi"; childNum: 1 };
+      properties: { name: 'Malawi'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -11454,11 +11415,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Malaysia"; childNum: 2 };
+      properties: { name: 'Malaysia'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [23.380664062500017, -17.640625],
@@ -11535,11 +11496,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Namibia"; childNum: 1 };
+      properties: { name: 'Namibia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [164.20234375000004, -20.246093749999957],
@@ -11556,11 +11517,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "France"; childNum: 1 };
+      properties: { name: 'France'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [14.97900390625, 22.99619140624999],
@@ -11637,11 +11598,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Niger"; childNum: 1 };
+      properties: { name: 'Niger'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [6.804296875000006, 13.107666015625],
@@ -11745,11 +11706,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Nigeria"; childNum: 1 };
+      properties: { name: 'Nigeria'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-83.6419921875, 10.917236328125],
@@ -11807,20 +11768,13 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Nicaragua"; childNum: 1 };
+      properties: { name: 'Nicaragua'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [4.226171875000034, 51.38647460937503],
-              [3.9020507812500114, 51.20766601562502],
-              [3.35009765625, 51.37768554687503],
-              [4.226171875000034, 51.38647460937503]
-            ]
-          ],
+          [[[4.226171875000034, 51.38647460937503], [3.9020507812500114, 51.20766601562502], [3.35009765625, 51.37768554687503], [4.226171875000034, 51.38647460937503]]],
           [
             [
               [4.226171875000034, 51.38647460937503],
@@ -11844,11 +11798,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Netherlands"; childNum: 2 };
+      properties: { name: 'Netherlands'; childNum: 2 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -11982,11 +11936,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Norway"; childNum: 4 };
+      properties: { name: 'Norway'; childNum: 4 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [88.10976562500002, 27.87060546875],
@@ -12086,11 +12040,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Nepal"; childNum: 1 };
+      properties: { name: 'Nepal'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -12173,11 +12127,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "New Zealand"; childNum: 2 };
+      properties: { name: 'New Zealand'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [56.38798828125002, 24.97919921875004],
@@ -12214,11 +12168,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Oman"; childNum: 1 };
+      properties: { name: 'Oman'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [76.76689453124999, 35.66171875],
@@ -12403,11 +12357,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Pakistan"; childNum: 1 };
+      properties: { name: 'Pakistan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-77.37421874999993, 8.65830078125002],
@@ -12449,11 +12403,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Panama"; childNum: 1 };
+      properties: { name: 'Panama'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-73.137353515625, -6.4658203125],
@@ -12657,11 +12611,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Peru"; childNum: 1 };
+      properties: { name: 'Peru'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -12845,11 +12799,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Philippines"; childNum: 10 };
+      properties: { name: 'Philippines'; childNum: 10 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -12953,11 +12907,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Papua New Guinea"; childNum: 4 };
+      properties: { name: 'Papua New Guinea'; childNum: 4 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [23.484667968750017, 53.939794921875],
@@ -13024,11 +12978,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Poland"; childNum: 1 };
+      properties: { name: 'Poland'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-66.12939453125003, 18.444921875000034],
@@ -13040,11 +12994,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "United States of America"; childNum: 1 };
+      properties: { name: 'United States of America'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [130.52695312500012, 42.535400390625],
@@ -13085,11 +13039,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "North Korea"; childNum: 1 };
+      properties: { name: 'North Korea'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-7.4061523437499375, 37.17944335937497],
@@ -13120,11 +13074,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Portugal"; childNum: 1 };
+      properties: { name: 'Portugal'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-58.15976562499999, -20.164648437500006],
@@ -13211,11 +13165,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Paraguay"; childNum: 1 };
+      properties: { name: 'Paraguay'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [34.880468750000006, 31.3681640625],
@@ -13236,11 +13190,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Israel"; childNum: 1 };
+      properties: { name: 'Israel'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [51.26796875000002, 24.607226562500003],
@@ -13262,11 +13216,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Qatar"; childNum: 1 };
+      properties: { name: 'Qatar'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [28.212500000000006, 45.450439453125],
@@ -13315,20 +13269,13 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Romania"; childNum: 1 };
+      properties: { name: 'Romania'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [148.59951171875, 45.317626953125],
-              [147.91376953125004, 44.99038085937502],
-              [147.76943359375, 45.19072265624999],
-              [148.59951171875, 45.317626953125]
-            ]
-          ],
+          [[[148.59951171875, 45.317626953125], [147.91376953125004, 44.99038085937502], [147.76943359375, 45.19072265624999], [148.59951171875, 45.317626953125]]],
           [
             [
               [142.76103515625002, 54.393945312499966],
@@ -13379,14 +13326,7 @@ declare const json: {
               [21.235742187500023, 55.26411132812498]
             ]
           ],
-          [
-            [
-              [163.63515625000005, 58.603369140625006],
-              [163.7609375000001, 59.01503906250002],
-              [164.61572265624997, 58.885595703125034],
-              [163.63515625000005, 58.603369140625006]
-            ]
-          ],
+          [[[163.63515625000005, 58.603369140625006], [163.7609375000001, 59.01503906250002], [164.61572265624997, 58.885595703125034], [163.63515625000005, 58.603369140625006]]],
           [
             [
               [-179.79853515625, 68.9404296875],
@@ -14357,11 +14297,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Russia"; childNum: 22 };
+      properties: { name: 'Russia'; childNum: 22 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [30.50996093750001, -1.0672851562500085],
@@ -14397,11 +14337,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Rwanda"; childNum: 1 };
+      properties: { name: 'Rwanda'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-8.683349609375, 27.285937499999996],
@@ -14493,11 +14433,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Western Sahara"; childNum: 1 };
+      properties: { name: 'Western Sahara'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [46.53144531250004, 29.09624023437499],
@@ -14600,11 +14540,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Saudi Arabia"; childNum: 1 };
+      properties: { name: 'Saudi Arabia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [36.87138671875002, 21.996728515624994],
@@ -14707,11 +14647,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Sudan"; childNum: 1 };
+      properties: { name: 'Sudan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [34.078125, 9.461523437499991],
@@ -14788,11 +14728,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "South Sudan"; childNum: 1 };
+      properties: { name: 'South Sudan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-12.280615234374977, 14.809033203124997],
@@ -14838,11 +14778,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Senegal"; childNum: 1 };
+      properties: { name: 'Senegal'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-37.10332031249996, -54.06562500000004],
@@ -14853,11 +14793,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "United Kingdom"; childNum: 1 };
+      properties: { name: 'United Kingdom'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -14901,11 +14841,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Solomon Islands"; childNum: 4 };
+      properties: { name: 'Solomon Islands'; childNum: 4 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-10.758593749999989, 9.385351562499991],
@@ -14938,11 +14878,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Sierra Leone"; childNum: 1 };
+      properties: { name: 'Sierra Leone'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-89.36259765624999, 14.416015625],
@@ -14968,11 +14908,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "El Salvador"; childNum: 1 };
+      properties: { name: 'El Salvador'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [48.938574218750006, 11.258447265624994],
@@ -14998,11 +14938,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Somaliland"; childNum: 1 };
+      properties: { name: 'Somaliland'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [41.88398437500001, 3.977734374999997],
@@ -15049,11 +14989,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Somalia"; childNum: 1 };
+      properties: { name: 'Somalia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [21.431445312500017, 45.192529296874994],
@@ -15112,11 +15052,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Republic of Serbia"; childNum: 1 };
+      properties: { name: 'Republic of Serbia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-54.03422851562499, 3.62939453125],
@@ -15174,11 +15114,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Suriname"; childNum: 1 };
+      properties: { name: 'Suriname'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [22.538671875000006, 49.072705078125],
@@ -15208,11 +15148,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Slovakia"; childNum: 1 };
+      properties: { name: 'Slovakia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [16.516210937500006, 46.499902343749994],
@@ -15246,11 +15186,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Slovenia"; childNum: 1 };
+      properties: { name: 'Slovenia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -15328,11 +15268,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Sweden"; childNum: 2 };
+      properties: { name: 'Sweden'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [31.9482421875, -25.957617187500006],
@@ -15357,11 +15297,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Swaziland"; childNum: 1 };
+      properties: { name: 'Swaziland'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [42.358984375000006, 37.10859375],
@@ -15410,11 +15350,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Syria"; childNum: 1 };
+      properties: { name: 'Syria'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [23.980273437500017, 19.496630859375003],
@@ -15480,11 +15420,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Chad"; childNum: 1 };
+      properties: { name: 'Chad'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [0.9004882812500057, 10.993261718749991],
@@ -15509,11 +15449,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Togo"; childNum: 1 };
+      properties: { name: 'Togo'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [100.12246093750005, 20.316650390625057],
@@ -15646,11 +15586,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Thailand"; childNum: 1 };
+      properties: { name: 'Thailand'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [70.95800781250003, 40.238867187500034],
@@ -15761,11 +15701,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Tajikistan"; childNum: 1 };
+      properties: { name: 'Tajikistan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [66.52226562500007, 37.34848632812506],
@@ -15863,11 +15803,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Turkmenistan"; childNum: 1 };
+      properties: { name: 'Turkmenistan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [125.06816406250002, -9.511914062499997],
@@ -15882,11 +15822,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "East Timor"; childNum: 1 };
+      properties: { name: 'East Timor'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-61.012109374999966, 10.134326171874989],
@@ -15897,11 +15837,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Trinidad and Tobago"; childNum: 1 };
+      properties: { name: 'Trinidad and Tobago'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [10.274609375000011, 31.684960937499994],
@@ -15968,11 +15908,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Tunisia"; childNum: 1 };
+      properties: { name: 'Tunisia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -16119,11 +16059,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Turkey"; childNum: 2 };
+      properties: { name: 'Turkey'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [33.90322265625005, -1.002050781250034],
@@ -16240,11 +16180,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "United Republic of Tanzania"; childNum: 1 };
+      properties: { name: 'United Republic of Tanzania'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [30.50996093750001, -1.0672851562500085],
@@ -16301,11 +16241,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Uganda"; childNum: 1 };
+      properties: { name: 'Uganda'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [38.21435546875003, 47.091455078124966],
@@ -16435,11 +16375,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Ukraine"; childNum: 1 };
+      properties: { name: 'Ukraine'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-57.81059570312499, -30.85859375000001],
@@ -16501,11 +16441,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Uruguay"; childNum: 1 };
+      properties: { name: 'Uruguay'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -16518,14 +16458,7 @@ declare const json: {
               [-155.58134765624996, 19.012011718750017]
             ]
           ],
-          [
-            [
-              [-72.50976562500003, 40.98603515625001],
-              [-73.19428710937495, 40.654199218749994],
-              [-73.573828125, 40.91962890624998],
-              [-72.50976562500003, 40.98603515625001]
-            ]
-          ],
+          [[[-72.50976562500003, 40.98603515625001], [-73.19428710937495, 40.654199218749994], [-73.573828125, 40.91962890624998], [-72.50976562500003, 40.98603515625001]]],
           [
             [
               [-94.80346679687497, 49.0029296875],
@@ -16806,14 +16739,7 @@ declare const json: {
               [-133.36621093750006, 57.003515625000034]
             ]
           ],
-          [
-            [
-              [-134.96977539062496, 57.351416015625034],
-              [-134.62070312499998, 56.71831054687502],
-              [-135.78710937500003, 57.31728515625002],
-              [-134.96977539062496, 57.351416015625034]
-            ]
-          ],
+          [[[-134.96977539062496, 57.351416015625034], [-134.62070312499998, 56.71831054687502], [-135.78710937500003, 57.31728515625002], [-134.96977539062496, 57.351416015625034]]],
           [
             [
               [-152.89804687499998, 57.82392578125004],
@@ -16856,14 +16782,7 @@ declare const json: {
               [-166.13544921875, 60.38354492187503]
             ]
           ],
-          [
-            [
-              [-171.46303710937494, 63.640039062499994],
-              [-170.430419921875, 63.69882812499998],
-              [-169.77778320312498, 63.09375],
-              [-171.46303710937494, 63.640039062499994]
-            ]
-          ],
+          [[[-171.46303710937494, 63.640039062499994], [-170.430419921875, 63.69882812499998], [-169.77778320312498, 63.09375], [-171.46303710937494, 63.640039062499994]]],
           [
             [
               [-141.00214843750004, 68.77416992187506],
@@ -17032,11 +16951,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "United States of America"; childNum: 14 };
+      properties: { name: 'United States of America'; childNum: 14 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [70.94677734374997, 42.24868164062505],
@@ -17136,11 +17055,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Uzbekistan"; childNum: 1 };
+      properties: { name: 'Uzbekistan'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-60.742138671874926, 5.202050781250037],
@@ -17256,11 +17175,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Venezuela"; childNum: 1 };
+      properties: { name: 'Venezuela'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [107.97265624999997, 21.507958984375023],
@@ -17398,20 +17317,13 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Vietnam"; childNum: 1 };
+      properties: { name: 'Vietnam'; childNum: 1 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [167.41250000000005, -16.095898437499997],
-              [167.83662109375004, -16.449707031249957],
-              [167.44931640625012, -16.554980468750003],
-              [167.41250000000005, -16.095898437499997]
-            ]
-          ],
+          [[[167.41250000000005, -16.095898437499997], [167.83662109375004, -16.449707031249957], [167.44931640625012, -16.554980468750003], [167.41250000000005, -16.095898437499997]]],
           [
             [
               [166.74580078125004, -14.826855468750011],
@@ -17426,11 +17338,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Vanuatu"; childNum: 2 };
+      properties: { name: 'Vanuatu'; childNum: 2 };
     },
     {
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -17486,11 +17398,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Yemen"; childNum: 2 };
+      properties: { name: 'Yemen'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [31.921679687500017, -25.96875],
@@ -17643,11 +17555,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "South Africa"; childNum: 2 };
+      properties: { name: 'South Africa'; childNum: 2 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [33.148046875000006, -9.603515625],
@@ -17749,11 +17661,11 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Zambia"; childNum: 1 };
+      properties: { name: 'Zambia'; childNum: 1 };
     },
     {
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [31.287890625000017, -22.40205078125001],
@@ -17799,8 +17711,9 @@ declare const json: {
           ]
         ];
       };
-      properties: { name: "Zimbabwe"; childNum: 1 };
+      properties: { name: 'Zimbabwe'; childNum: 1 };
     }
   ];
 };
+
 export default json;

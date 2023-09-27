@@ -1,12 +1,12 @@
 declare const json: {
-  type: "FeatureCollection";
+  type: 'FeatureCollection';
   features: [
     {
-      type: "Feature";
-      id: "01";
-      properties: { name: "Alabama" };
+      type: 'Feature';
+      id: '01';
+      properties: { name: 'Alabama' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-87.359296, 35.00118],
@@ -47,42 +47,15 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "02";
-      properties: { name: "Alaska" };
+      type: 'Feature';
+      id: '02';
+      properties: { name: 'Alaska' };
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [-131.602021, 55.117982],
-              [-131.569159, 55.28229],
-              [-131.355558, 55.183705],
-              [-131.38842, 55.01392],
-              [-131.645836, 55.035827],
-              [-131.602021, 55.117982]
-            ]
-          ],
-          [
-            [
-              [-131.832052, 55.42469],
-              [-131.645836, 55.304197],
-              [-131.749898, 55.128935],
-              [-131.832052, 55.189182],
-              [-131.832052, 55.42469]
-            ]
-          ],
-          [
-            [
-              [-132.976733, 56.437924],
-              [-132.735747, 56.459832],
-              [-132.631685, 56.421493],
-              [-132.664547, 56.273616],
-              [-132.878148, 56.240754],
-              [-133.069841, 56.333862],
-              [-132.976733, 56.437924]
-            ]
-          ],
+          [[[-131.602021, 55.117982], [-131.569159, 55.28229], [-131.355558, 55.183705], [-131.38842, 55.01392], [-131.645836, 55.035827], [-131.602021, 55.117982]]],
+          [[[-131.832052, 55.42469], [-131.645836, 55.304197], [-131.749898, 55.128935], [-131.832052, 55.189182], [-131.832052, 55.42469]]],
+          [[[-132.976733, 56.437924], [-132.735747, 56.459832], [-132.631685, 56.421493], [-132.664547, 56.273616], [-132.878148, 56.240754], [-133.069841, 56.333862], [-132.976733, 56.437924]]],
           [
             [
               [-133.595627, 56.350293],
@@ -128,17 +101,7 @@ declare const json: {
               [-133.595627, 56.350293]
             ]
           ],
-          [
-            [
-              [-133.738027, 55.556137],
-              [-133.546335, 55.490413],
-              [-133.414888, 55.572568],
-              [-133.283441, 55.534229],
-              [-133.420365, 55.386352],
-              [-133.633966, 55.430167],
-              [-133.738027, 55.556137]
-            ]
-          ],
+          [[[-133.738027, 55.556137], [-133.546335, 55.490413], [-133.414888, 55.572568], [-133.283441, 55.534229], [-133.420365, 55.386352], [-133.633966, 55.430167], [-133.738027, 55.556137]]],
           [
             [
               [-133.907813, 56.930849],
@@ -227,17 +190,7 @@ declare const json: {
               [-134.712923, 58.223407]
             ]
           ],
-          [
-            [
-              [-135.857603, 57.330665],
-              [-135.715203, 57.330665],
-              [-135.567326, 57.149926],
-              [-135.633049, 57.023957],
-              [-135.857603, 56.996572],
-              [-135.824742, 57.193742],
-              [-135.857603, 57.330665]
-            ]
-          ],
+          [[[-135.857603, 57.330665], [-135.715203, 57.330665], [-135.567326, 57.149926], [-135.633049, 57.023957], [-135.857603, 56.996572], [-135.824742, 57.193742], [-135.857603, 57.330665]]],
           [
             [
               [-136.279328, 58.206976],
@@ -279,16 +232,7 @@ declare const json: {
               [-147.079854, 60.200582]
             ]
           ],
-          [
-            [
-              [-147.561825, 60.578491],
-              [-147.616594, 60.370367],
-              [-147.758995, 60.156767],
-              [-147.956165, 60.227967],
-              [-147.791856, 60.474429],
-              [-147.561825, 60.578491]
-            ]
-          ],
+          [[[-147.561825, 60.578491], [-147.616594, 60.370367], [-147.758995, 60.156767], [-147.956165, 60.227967], [-147.791856, 60.474429], [-147.561825, 60.578491]]],
           [
             [
               [-147.786379, 70.245291],
@@ -991,34 +935,9 @@ declare const json: {
               [-153.958891, 57.538789]
             ]
           ],
-          [
-            [
-              [-154.53397, 56.602232],
-              [-154.742094, 56.399586],
-              [-154.807817, 56.432447],
-              [-154.53397, 56.602232]
-            ]
-          ],
-          [
-            [
-              [-155.634835, 55.923092],
-              [-155.476004, 55.912138],
-              [-155.530773, 55.704014],
-              [-155.793666, 55.731399],
-              [-155.837482, 55.802599],
-              [-155.634835, 55.923092]
-            ]
-          ],
-          [
-            [
-              [-159.890418, 55.28229],
-              [-159.950664, 55.068689],
-              [-160.257373, 54.893427],
-              [-160.109495, 55.161797],
-              [-160.005433, 55.134412],
-              [-159.890418, 55.28229]
-            ]
-          ],
+          [[[-154.53397, 56.602232], [-154.742094, 56.399586], [-154.807817, 56.432447], [-154.53397, 56.602232]]],
+          [[[-155.634835, 55.923092], [-155.476004, 55.912138], [-155.530773, 55.704014], [-155.793666, 55.731399], [-155.837482, 55.802599], [-155.634835, 55.923092]]],
+          [[[-159.890418, 55.28229], [-159.950664, 55.068689], [-160.257373, 54.893427], [-160.109495, 55.161797], [-160.005433, 55.134412], [-159.890418, 55.28229]]],
           [
             [
               [-160.520266, 55.358967],
@@ -1032,50 +951,11 @@ declare const json: {
               [-160.520266, 55.358967]
             ]
           ],
-          [
-            [
-              [-162.256456, 54.981058],
-              [-162.234548, 54.893427],
-              [-162.349564, 54.838658],
-              [-162.437195, 54.931766],
-              [-162.256456, 54.981058]
-            ]
-          ],
-          [
-            [
-              [-162.415287, 63.634624],
-              [-162.563165, 63.536039],
-              [-162.612457, 63.62367],
-              [-162.415287, 63.634624]
-            ]
-          ],
-          [
-            [
-              [-162.80415, 54.488133],
-              [-162.590549, 54.449795],
-              [-162.612457, 54.367641],
-              [-162.782242, 54.373118],
-              [-162.80415, 54.488133]
-            ]
-          ],
-          [
-            [
-              [-165.548097, 54.29644],
-              [-165.476897, 54.181425],
-              [-165.630251, 54.132132],
-              [-165.685021, 54.252625],
-              [-165.548097, 54.29644]
-            ]
-          ],
-          [
-            [
-              [-165.73979, 54.15404],
-              [-166.046499, 54.044501],
-              [-166.112222, 54.121178],
-              [-165.980775, 54.219763],
-              [-165.73979, 54.15404]
-            ]
-          ],
+          [[[-162.256456, 54.981058], [-162.234548, 54.893427], [-162.349564, 54.838658], [-162.437195, 54.931766], [-162.256456, 54.981058]]],
+          [[[-162.415287, 63.634624], [-162.563165, 63.536039], [-162.612457, 63.62367], [-162.415287, 63.634624]]],
+          [[[-162.80415, 54.488133], [-162.590549, 54.449795], [-162.612457, 54.367641], [-162.782242, 54.373118], [-162.80415, 54.488133]]],
+          [[[-165.548097, 54.29644], [-165.476897, 54.181425], [-165.630251, 54.132132], [-165.685021, 54.252625], [-165.548097, 54.29644]]],
+          [[[-165.73979, 54.15404], [-166.046499, 54.044501], [-166.112222, 54.121178], [-165.980775, 54.219763], [-165.73979, 54.15404]]],
           [
             [
               [-166.364161, 60.359413],
@@ -1147,32 +1027,9 @@ declare const json: {
               [-168.790446, 53.157237]
             ]
           ],
-          [
-            [
-              [-169.74891, 52.894344],
-              [-169.705095, 52.795759],
-              [-169.962511, 52.790282],
-              [-169.989896, 52.856005],
-              [-169.74891, 52.894344]
-            ]
-          ],
-          [
-            [
-              [-170.148727, 57.221127],
-              [-170.28565, 57.128019],
-              [-170.313035, 57.221127],
-              [-170.148727, 57.221127]
-            ]
-          ],
-          [
-            [
-              [-170.669036, 52.697174],
-              [-170.603313, 52.604066],
-              [-170.789529, 52.538343],
-              [-170.816914, 52.636928],
-              [-170.669036, 52.697174]
-            ]
-          ],
+          [[[-169.74891, 52.894344], [-169.705095, 52.795759], [-169.962511, 52.790282], [-169.989896, 52.856005], [-169.74891, 52.894344]]],
+          [[[-170.148727, 57.221127], [-170.28565, 57.128019], [-170.313035, 57.221127], [-170.148727, 57.221127]]],
+          [[[-170.669036, 52.697174], [-170.603313, 52.604066], [-170.789529, 52.538343], [-170.816914, 52.636928], [-170.669036, 52.697174]]],
           [
             [
               [-171.742517, 63.716778],
@@ -1202,25 +1059,8 @@ declare const json: {
               [-171.742517, 63.716778]
             ]
           ],
-          [
-            [
-              [-172.432611, 52.390465],
-              [-172.41618, 52.275449],
-              [-172.607873, 52.253542],
-              [-172.569535, 52.352127],
-              [-172.432611, 52.390465]
-            ]
-          ],
-          [
-            [
-              [-173.626584, 52.14948],
-              [-173.495138, 52.105664],
-              [-173.122706, 52.111141],
-              [-173.106275, 52.07828],
-              [-173.549907, 52.028987],
-              [-173.626584, 52.14948]
-            ]
-          ],
+          [[[-172.432611, 52.390465], [-172.41618, 52.275449], [-172.607873, 52.253542], [-172.569535, 52.352127], [-172.432611, 52.390465]]],
+          [[[-173.626584, 52.14948], [-173.495138, 52.105664], [-173.122706, 52.111141], [-173.106275, 52.07828], [-173.549907, 52.028987], [-173.626584, 52.14948]]],
           [
             [
               [-174.322156, 52.280926],
@@ -1253,45 +1093,18 @@ declare const json: {
               [-176.469116, 51.853725]
             ]
           ],
-          [
-            [
-              [-177.153734, 51.946833],
-              [-177.044195, 51.897541],
-              [-177.120872, 51.727755],
-              [-177.274226, 51.678463],
-              [-177.279703, 51.782525],
-              [-177.153734, 51.946833]
-            ]
-          ],
-          [
-            [
-              [-178.123152, 51.919448],
-              [-177.953367, 51.913971],
-              [-177.800013, 51.793479],
-              [-177.964321, 51.651078],
-              [-178.123152, 51.919448]
-            ]
-          ],
-          [
-            [
-              [-186.892443, 52.992929],
-              [-186.706227, 52.927205],
-              [-186.695274, 52.823143],
-              [-187.09509, 52.762897],
-              [-187.357983, 52.927205],
-              [-187.357983, 53.003883],
-              [-186.892443, 52.992929]
-            ]
-          ]
+          [[[-177.153734, 51.946833], [-177.044195, 51.897541], [-177.120872, 51.727755], [-177.274226, 51.678463], [-177.279703, 51.782525], [-177.153734, 51.946833]]],
+          [[[-178.123152, 51.919448], [-177.953367, 51.913971], [-177.800013, 51.793479], [-177.964321, 51.651078], [-178.123152, 51.919448]]],
+          [[[-186.892443, 52.992929], [-186.706227, 52.927205], [-186.695274, 52.823143], [-187.09509, 52.762897], [-187.357983, 52.927205], [-187.357983, 53.003883], [-186.892443, 52.992929]]]
         ];
       };
     },
     {
-      type: "Feature";
-      id: "04";
-      properties: { name: "Arizona" };
+      type: 'Feature';
+      id: '04';
+      properties: { name: 'Arizona' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-109.042503, 37.000263],
@@ -1331,11 +1144,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "05";
-      properties: { name: "Arkansas" };
+      type: 'Feature';
+      id: '05';
+      properties: { name: 'Arkansas' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-94.473842, 36.501861],
@@ -1380,11 +1193,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "06";
-      properties: { name: "California" };
+      type: 'Feature';
+      id: '06';
+      properties: { name: 'California' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-123.233256, 42.006186],
@@ -1485,11 +1298,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "08";
-      properties: { name: "Colorado" };
+      type: 'Feature';
+      id: '08';
+      properties: { name: 'Colorado' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-107.919731, 41.003906],
@@ -1513,11 +1326,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "09";
-      properties: { name: "Connecticut" };
+      type: 'Feature';
+      id: '09';
+      properties: { name: 'Connecticut' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-73.053528, 42.039048],
@@ -1541,11 +1354,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "10";
-      properties: { name: "Delaware" };
+      type: 'Feature';
+      id: '10';
+      properties: { name: 'Delaware' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-75.414089, 39.804456],
@@ -1566,28 +1379,20 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "11";
-      properties: { name: "District of Columbia" };
+      type: 'Feature';
+      id: '11';
+      properties: { name: 'District of Columbia' };
       geometry: {
-        type: "Polygon";
-        coordinates: [
-          [
-            [-77.035264, 38.993869],
-            [-76.909294, 38.895284],
-            [-77.040741, 38.791222],
-            [-77.117418, 38.933623],
-            [-77.035264, 38.993869]
-          ]
-        ];
+        type: 'Polygon';
+        coordinates: [[[-77.035264, 38.993869], [-76.909294, 38.895284], [-77.040741, 38.791222], [-77.117418, 38.933623], [-77.035264, 38.993869]]];
       };
     },
     {
-      type: "Feature";
-      id: "12";
-      properties: { name: "Florida" };
+      type: 'Feature';
+      id: '12';
+      properties: { name: 'Florida' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-85.497137, 30.997536],
@@ -1673,11 +1478,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "13";
-      properties: { name: "Georgia" };
+      type: 'Feature';
+      id: '13';
+      properties: { name: 'Georgia' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-83.109191, 35.00118],
@@ -1736,11 +1541,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "15";
-      properties: { name: "Hawaii" };
+      type: 'Feature';
+      id: '15';
+      properties: { name: 'Hawaii' };
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -1779,26 +1584,8 @@ declare const json: {
               [-156.587823, 21.029505]
             ]
           ],
-          [
-            [
-              [-156.982162, 21.210244],
-              [-157.080747, 21.106182],
-              [-157.310779, 21.106182],
-              [-157.239579, 21.221198],
-              [-156.982162, 21.210244]
-            ]
-          ],
-          [
-            [
-              [-157.951581, 21.697691],
-              [-157.842042, 21.462183],
-              [-157.896811, 21.325259],
-              [-158.110412, 21.303352],
-              [-158.252813, 21.582676],
-              [-158.126843, 21.588153],
-              [-157.951581, 21.697691]
-            ]
-          ],
+          [[[-156.982162, 21.210244], [-157.080747, 21.106182], [-157.310779, 21.106182], [-157.239579, 21.221198], [-156.982162, 21.210244]]],
+          [[[-157.951581, 21.697691], [-157.842042, 21.462183], [-157.896811, 21.325259], [-158.110412, 21.303352], [-158.252813, 21.582676], [-158.126843, 21.588153], [-157.951581, 21.697691]]],
           [
             [
               [-159.468693, 22.228955],
@@ -1815,11 +1602,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "16";
-      properties: { name: "Idaho" };
+      type: 'Feature';
+      id: '16';
+      properties: { name: 'Idaho' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-116.04751, 49.000239],
@@ -1893,11 +1680,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "17";
-      properties: { name: "Illinois" };
+      type: 'Feature';
+      id: '17';
+      properties: { name: 'Illinois' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-90.639984, 42.510065],
@@ -1972,11 +1759,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "18";
-      properties: { name: "Indiana" };
+      type: 'Feature';
+      id: '18';
+      properties: { name: 'Indiana' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-85.990061, 41.759724],
@@ -2030,11 +1817,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "19";
-      properties: { name: "Iowa" };
+      type: 'Feature';
+      id: '19';
+      properties: { name: 'Iowa' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-91.368417, 43.501391],
@@ -2092,11 +1879,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "20";
-      properties: { name: "Kansas" };
+      type: 'Feature';
+      id: '20';
+      properties: { name: 'Kansas' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-101.90605, 40.001626],
@@ -2117,11 +1904,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "21";
-      properties: { name: "Kentucky" };
+      type: 'Feature';
+      id: '21';
+      properties: { name: 'Kentucky' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-83.903347, 38.769315],
@@ -2204,11 +1991,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "22";
-      properties: { name: "Louisiana" };
+      type: 'Feature';
+      id: '22';
+      properties: { name: 'Louisiana' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-93.608485, 33.018527],
@@ -2292,11 +2079,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "23";
-      properties: { name: "Maine" };
+      type: 'Feature';
+      id: '23';
+      properties: { name: 'Maine' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-70.703921, 43.057759],
@@ -2370,20 +2157,13 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "24";
-      properties: { name: "Maryland" };
+      type: 'Feature';
+      id: '24';
+      properties: { name: 'Maryland' };
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [-75.994645, 37.95325],
-              [-76.016553, 37.95325],
-              [-76.043938, 37.95325],
-              [-75.994645, 37.95325]
-            ]
-          ],
+          [[[-75.994645, 37.95325], [-76.016553, 37.95325], [-76.043938, 37.95325], [-75.994645, 37.95325]]],
           [
             [
               [-79.477979, 39.722302],
@@ -2452,11 +2232,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "25";
-      properties: { name: "Massachusetts" };
+      type: 'Feature';
+      id: '25';
+      properties: { name: 'Massachusetts' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-70.917521, 42.887974],
@@ -2499,11 +2279,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "26";
-      properties: { name: "Michigan" };
+      type: 'Feature';
+      id: '26';
+      properties: { name: 'Michigan' };
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -2573,15 +2353,7 @@ declare const json: {
               [-83.454238, 41.732339]
             ]
           ],
-          [
-            [
-              [-85.508091, 45.730506],
-              [-85.49166, 45.610013],
-              [-85.623106, 45.588105],
-              [-85.568337, 45.75789],
-              [-85.508091, 45.730506]
-            ]
-          ],
+          [[[-85.508091, 45.730506], [-85.49166, 45.610013], [-85.623106, 45.588105], [-85.568337, 45.75789], [-85.508091, 45.730506]]],
           [
             [
               [-87.589328, 45.095181],
@@ -2662,26 +2434,16 @@ declare const json: {
               [-87.589328, 45.095181]
             ]
           ],
-          [
-            [
-              [-88.805209, 47.976051],
-              [-89.057148, 47.850082],
-              [-89.188594, 47.833651],
-              [-89.177641, 47.937713],
-              [-88.547792, 48.173221],
-              [-88.668285, 48.008913],
-              [-88.805209, 47.976051]
-            ]
-          ]
+          [[[-88.805209, 47.976051], [-89.057148, 47.850082], [-89.188594, 47.833651], [-89.177641, 47.937713], [-88.547792, 48.173221], [-88.668285, 48.008913], [-88.805209, 47.976051]]]
         ];
       };
     },
     {
-      type: "Feature";
-      id: "27";
-      properties: { name: "Minnesota" };
+      type: 'Feature';
+      id: '27';
+      properties: { name: 'Minnesota' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-92.014696, 46.705401],
@@ -2772,11 +2534,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "28";
-      properties: { name: "Mississippi" };
+      type: 'Feature';
+      id: '28';
+      properties: { name: 'Mississippi' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-88.471115, 34.995703],
@@ -2830,11 +2592,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "29";
-      properties: { name: "Missouri" };
+      type: 'Feature';
+      id: '29';
+      properties: { name: 'Missouri' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-91.833957, 40.609566],
@@ -2895,11 +2657,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "30";
-      properties: { name: "Montana" };
+      type: 'Feature';
+      id: '30';
+      properties: { name: 'Montana' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-104.047534, 49.000239],
@@ -2959,11 +2721,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "31";
-      properties: { name: "Nebraska" };
+      type: 'Feature';
+      id: '31';
+      properties: { name: 'Nebraska' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-103.324578, 43.002989],
@@ -3000,11 +2762,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "32";
-      properties: { name: "Nevada" };
+      type: 'Feature';
+      id: '32';
+      properties: { name: 'Nevada' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-117.027882, 42.000709],
@@ -3033,11 +2795,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "33";
-      properties: { name: "New Hampshire" };
+      type: 'Feature';
+      id: '33';
+      properties: { name: 'New Hampshire' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-71.08183, 45.303304],
@@ -3073,11 +2835,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "34";
-      properties: { name: "New Jersey" };
+      type: 'Feature';
+      id: '34';
+      properties: { name: 'New Jersey' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-74.236547, 41.14083],
@@ -3117,11 +2879,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "35";
-      properties: { name: "New Mexico" };
+      type: 'Feature';
+      id: '35';
+      properties: { name: 'New Mexico' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-107.421329, 37.000263],
@@ -3146,11 +2908,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "36";
-      properties: { name: "New York" };
+      type: 'Feature';
+      id: '36';
+      properties: { name: 'New York' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-73.343806, 45.013027],
@@ -3226,11 +2988,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "37";
-      properties: { name: "North Carolina" };
+      type: 'Feature';
+      id: '37';
+      properties: { name: 'North Carolina' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-80.978661, 36.562108],
@@ -3299,11 +3061,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "38";
-      properties: { name: "North Dakota" };
+      type: 'Feature';
+      id: '38';
+      properties: { name: 'North Dakota' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-97.228743, 49.000239],
@@ -3327,11 +3089,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "39";
-      properties: { name: "Ohio" };
+      type: 'Feature';
+      id: '39';
+      properties: { name: 'Ohio' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-80.518598, 41.978802],
@@ -3386,11 +3148,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "40";
-      properties: { name: "Oklahoma" };
+      type: 'Feature';
+      id: '40';
+      properties: { name: 'Oklahoma' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-100.087706, 37.000263],
@@ -3443,11 +3205,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "41";
-      properties: { name: "Oregon" };
+      type: 'Feature';
+      id: '41';
+      properties: { name: 'Oregon' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-123.211348, 46.174138],
@@ -3511,11 +3273,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "42";
-      properties: { name: "Pennsylvania" };
+      type: 'Feature';
+      id: '42';
+      properties: { name: 'Pennsylvania' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-79.76278, 42.252649],
@@ -3556,20 +3318,13 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "44";
-      properties: { name: "Rhode Island" };
+      type: 'Feature';
+      id: '44';
+      properties: { name: 'Rhode Island' };
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
-          [
-            [
-              [-71.196845, 41.67757],
-              [-71.120168, 41.496831],
-              [-71.317338, 41.474923],
-              [-71.196845, 41.67757]
-            ]
-          ],
+          [[[-71.196845, 41.67757], [-71.120168, 41.496831], [-71.317338, 41.474923], [-71.196845, 41.67757]]],
           [
             [
               [-71.530939, 42.01714],
@@ -3589,11 +3344,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "45";
-      properties: { name: "South Carolina" };
+      type: 'Feature';
+      id: '45';
+      properties: { name: 'South Carolina' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-82.764143, 35.066903],
@@ -3645,11 +3400,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "46";
-      properties: { name: "South Dakota" };
+      type: 'Feature';
+      id: '46';
+      properties: { name: 'South Dakota' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-104.047534, 45.944106],
@@ -3686,11 +3441,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "47";
-      properties: { name: "Tennessee" };
+      type: 'Feature';
+      id: '47';
+      properties: { name: 'Tennessee' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-88.054868, 36.496384],
@@ -3741,11 +3496,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "48";
-      properties: { name: "Texas" };
+      type: 'Feature';
+      id: '48';
+      properties: { name: 'Texas' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-101.812942, 36.501861],
@@ -3905,11 +3660,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "49";
-      properties: { name: "Utah" };
+      type: 'Feature';
+      id: '49';
+      properties: { name: 'Utah' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-112.164359, 41.995232],
@@ -3929,11 +3684,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "50";
-      properties: { name: "Vermont" };
+      type: 'Feature';
+      id: '50';
+      properties: { name: 'Vermont' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-71.503554, 45.013027],
@@ -3969,11 +3724,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "51";
-      properties: { name: "Virginia" };
+      type: 'Feature';
+      id: '51';
+      properties: { name: 'Virginia' };
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -3990,14 +3745,7 @@ declare const json: {
               [-75.397659, 38.013497]
             ]
           ],
-          [
-            [
-              [-76.016553, 37.95325],
-              [-75.994645, 37.95325],
-              [-76.043938, 37.95325],
-              [-76.016553, 37.95325]
-            ]
-          ],
+          [[[-76.016553, 37.95325], [-75.994645, 37.95325], [-76.043938, 37.95325], [-76.016553, 37.95325]]],
           [
             [
               [-78.349729, 39.464886],
@@ -4071,11 +3819,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "53";
-      properties: { name: "Washington" };
+      type: 'Feature';
+      id: '53';
+      properties: { name: 'Washington' };
       geometry: {
-        type: "MultiPolygon";
+        type: 'MultiPolygon';
         coordinates: [
           [
             [
@@ -4142,34 +3890,17 @@ declare const json: {
               [-117.033359, 49.000239]
             ]
           ],
-          [
-            [
-              [-122.718423, 48.310145],
-              [-122.586977, 48.35396],
-              [-122.608885, 48.151313],
-              [-122.767716, 48.227991],
-              [-122.718423, 48.310145]
-            ]
-          ],
-          [
-            [
-              [-123.025132, 48.583992],
-              [-122.915593, 48.715438],
-              [-122.767716, 48.556607],
-              [-122.811531, 48.419683],
-              [-123.041563, 48.458022],
-              [-123.025132, 48.583992]
-            ]
-          ]
+          [[[-122.718423, 48.310145], [-122.586977, 48.35396], [-122.608885, 48.151313], [-122.767716, 48.227991], [-122.718423, 48.310145]]],
+          [[[-123.025132, 48.583992], [-122.915593, 48.715438], [-122.767716, 48.556607], [-122.811531, 48.419683], [-123.041563, 48.458022], [-123.025132, 48.583992]]]
         ];
       };
     },
     {
-      type: "Feature";
-      id: "54";
-      properties: { name: "West Virginia" };
+      type: 'Feature';
+      id: '54';
+      properties: { name: 'West Virginia' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-80.518598, 40.636951],
@@ -4242,11 +3973,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "55";
-      properties: { name: "Wisconsin" };
+      type: 'Feature';
+      id: '55';
+      properties: { name: 'Wisconsin' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-90.415429, 46.568478],
@@ -4329,11 +4060,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "56";
-      properties: { name: "Wyoming" };
+      type: 'Feature';
+      id: '56';
+      properties: { name: 'Wyoming' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-109.080842, 45.002073],
@@ -4354,11 +4085,11 @@ declare const json: {
       };
     },
     {
-      type: "Feature";
-      id: "72";
-      properties: { name: "Puerto Rico" };
+      type: 'Feature';
+      id: '72';
+      properties: { name: 'Puerto Rico' };
       geometry: {
-        type: "Polygon";
+        type: 'Polygon';
         coordinates: [
           [
             [-66.448338, 17.984326],
@@ -4384,4 +4115,5 @@ declare const json: {
     }
   ];
 };
+
 export default json;

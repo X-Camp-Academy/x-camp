@@ -1,5 +1,5 @@
-import React from "react";
-import CommonBanner from "@/components/common/common-banner";
+import CommonBanner from '@/components/common/common-banner';
+import React from 'react';
 
 const Banner: React.FC = () => {
   const paragraph = (
@@ -8,17 +8,11 @@ const Banner: React.FC = () => {
       <br />
       join our coding program.
       <br />
-      Earn $100 for you and $50  for each friend that signs up.
+      Earn $100 for you and $50 for each friend that signs up.
     </>
   );
 
-  return (
-    <CommonBanner
-      image={"/image/about-us/student-recommend-banner.png"}
-      title="Referral Program"
-      paragraph={paragraph}
-    />
-  );
+  return <CommonBanner image={'/image/about-us/student-recommend-banner.png'} title="Referral Program" paragraph={paragraph} />;
 };
 
 export default Banner;

@@ -1,46 +1,53 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables';
 
 .bannerContainer {
-  width: 100%;
   position: relative;
+  width: 100%;
   background: #fff;
-  box-shadow: 0 11px 26px -4px rgba(216, 216, 216, 0.3);
+  box-shadow: 0 11px 26px -4px rgb(216 216 216 / 30%);
 
   .carouselDots {
     position: absolute;
-    right: 80px;
     top: 270px;
-    transform: translateY(-50%);
+    right: 80px;
     z-index: 1;
+    transform: translateY(-50%);
     list-style-type: none;
-    @media (max-width: 992px) {
-      right: 40px;
+
+    @media (width <= 992px) {
       top: 240px;
+      right: 40px;
     }
 
     .li {
-      width: 42px;
       margin-bottom: 30px;
+      width: 42px;
       text-align: right;
-      @include text(14px, 24px, #c1c1c1);
       cursor: pointer;
+
+      @include text(14px, 24px, #c1c1c1);
+
       .divider {
         margin: 0;
         border-block-color: #c1c1c1;
       }
+
       &.active {
         color: $primary-color;
+
         .divider {
           border-block-color: $primary-color;
         }
       }
     }
   }
+
   .background {
     width: 100%;
     height: 540px;
     background-size: cover;
   }
+
   .content {
     position: relative;
     width: 100%;
@@ -48,51 +55,59 @@
 
     .info {
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
+      inset: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       margin: auto;
     }
+
     .space {
-      width: 100%;
       padding-top: 48px;
       padding-bottom: 64px;
-      @media (max-width: 992px) {
+      width: 100%;
+
+      @media (width <= 992px) {
         display: flex;
         justify-content: center;
       }
+
       .title {
-        @include title("banner");
+        @include title('banner');
+
         font-weight: 800;
       }
+
       .paragraph {
         @include text(21px, 32px);
-        font-weight: 600;
+
         margin: 0;
         min-height: 64px;
+        font-weight: 600;
       }
+
       .mb8 {
         margin-bottom: 8px;
       }
+
       .button {
         padding: 10px 36px;
-        background: $primary-color;
+        border: 1px solid #ffad11;
         border-radius: 12px;
         font-size: 18px;
         font-weight: 600;
-        color: #ffffff;
+        color: #fff;
+        background: $primary-color;
         line-height: 24px;
-        border: 1px solid #ffad11;
+
         &:hover {
           @extend .hoverButton;
         }
       }
+
       .date {
         @include text(16px, 24px, #666);
+
         font-weight: 500;
       }
     }

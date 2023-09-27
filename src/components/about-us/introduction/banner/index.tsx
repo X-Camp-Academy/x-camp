@@ -1,5 +1,5 @@
-import React from "react";
-import CommonBanner from "@/components/common/common-banner";
+import CommonBanner from '@/components/common/common-banner';
+import React from 'react';
 
 const Banner: React.FC = () => {
   const paragraph = (
@@ -11,13 +11,7 @@ const Banner: React.FC = () => {
       on their learning journey.
     </>
   );
-  return (
-    <CommonBanner
-      image={"/image/about-us/introduction-banner.png"}
-      title="X-Camp Academy"
-      paragraph={paragraph}
-    />
-  );
+  return <CommonBanner image={'/image/about-us/introduction-banner.png'} title="X-Camp Academy" paragraph={paragraph} />;
 };
 
 export default Banner;

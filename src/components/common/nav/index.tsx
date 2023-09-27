@@ -1,35 +1,28 @@
 'use client';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import {
-  Layout,
-  Space,
-  Image,
-  Menu,
-  Button,
-  MenuProps,
-} from 'antd';
-import { AlignRightOutlined, CloseOutlined } from '@ant-design/icons';
-import { useMobile } from '@/utils';
-import { removeDropdown, useMenuItems } from './define';
-import XStarMenu from './x-star-menu';
-import { useAuth } from '@/hoc/with-auth/define';
-import DropdownUserMenu from '../dropdown-user-menu';
+import ToggleLanguage from '@/components/common/toggle-language';
 import { apiConfig } from '@/config/index';
+import { useAuth } from '@/hoc/with-auth/define';
 import { useLang } from '@/hoc/with-intl/define';
-import SelectPage from './SelectPage';
-import ToggleLanguage from "@/components/common/ToggleLanguage";
-import styles from './index.module.scss';
+import { useMobile } from '@/utils';
+import { AlignRightOutlined, CloseOutlined } from '@ant-design/icons';
 import 'animate.css';
+import { Button, Image, Layout, Menu, MenuProps, Space } from 'antd';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import DropdownUserMenu from '../dropdown-user-menu';
+import SelectPage from './SelectPage';
+import { removeDropdown, useMenuItems } from './define';
+import styles from './index.module.scss';
+import XStarMenu from './x-star-menu';
 
 const { Header } = Layout;
 
 const Nav: React.FC = () => {
-  const { format: t, toggle, lang } = useLang();
+  const { format: t } = useLang();
   const pathname = usePathname();
   const url = new URL(window.location.href);
-  const hash = url.hash; // 获取哈希部分
+  const hash = url.hash;
   const [current, setCurrent] = useState(pathname + hash);
   const [showMenu, setShowMenu] = useState(false);
   const isMobile = useMobile();
@@ -43,15 +36,9 @@ const Nav: React.FC = () => {
 
   useEffect(() => {
     if (showMenu) {
-      (ref?.current as HTMLDivElement)?.classList?.add(
-        'animate__animated',
-        'animate__slideInRight'
-      );
+      (ref?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__slideInRight');
     } else {
-      (ref?.current as HTMLDivElement)?.classList?.remove(
-        'animate__animated',
-        'animate__slideInRight'
-      );
+      (ref?.current as HTMLDivElement)?.classList?.remove('animate__animated', 'animate__slideInRight');
     }
   }, [showMenu]);
 
@@ -60,12 +47,10 @@ const Nav: React.FC = () => {
     const loginSignUp = [
       {
         label: <a href="/login">{t('Nav.Login')}</a>,
-        key: '/login',
-      },
+        key: '/login'
+      }
     ];
-    return isMobile
-      ? removeDropdown(menuItems)?.concat(loginSignUp)
-      : menuItems;
+    return isMobile ? removeDropdown(menuItems)?.concat(loginSignUp) : menuItems;
   }, [menuItems, isMobile]);
 
   const [openKeys, setOpenKeys] = useState(['']);
@@ -94,15 +79,10 @@ const Nav: React.FC = () => {
     if (!showMenu) {
       setShowMenu(true);
     } else {
-      (ref?.current as HTMLDivElement)?.classList?.add(
-        'animate__animated',
-        'animate__slideOutRight'
-      );
+      (ref?.current as HTMLDivElement)?.classList?.add('animate__animated', 'animate__slideOutRight');
       timer = setTimeout(() => {
         setShowMenu(false);
-        (ref?.current as HTMLDivElement)?.classList?.remove(
-          'animate__slideInRight'
-        );
+        (ref?.current as HTMLDivElement)?.classList?.remove('animate__slideInRight');
         clearTimeout(timer);
       }, 1000);
     }
@@ -113,35 +93,20 @@ const Nav: React.FC = () => {
         <Space align="center" className={styles.space}>
           <Space>
             <Link href="/">
-              <Image
-                src="/logo/logo.svg"
-                alt="logo"
-                preview={false}
-                className={styles.image}
-              />
+              <Image src="/logo/logo.svg" alt="logo" preview={false} className={styles.image} />
             </Link>
             {!isMobile && ( // 缓存原因需要强制销毁重建组件
-              <XStarMenu
-                selectedKey={current}
-                items={menuItems}
-                className={styles.menu}
-                onClick={setCurrentKey}
-              />
+              <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
             )}
           </Space>
           <Space size={'middle'}>
-
             {!isMobile ? (
               <>
                 <SelectPage />
                 {user ? (
                   <Space size={12}>
                     <DropdownUserMenu user={user} logout={logout} />
-                    <Button
-                      className={styles.study}
-                      type="primary"
-                      onClick={() => window.open(`${xydApi}/courses`)}
-                    >
+                    <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
                       {t('ToStudy')}
                     </Button>
                   </Space>
@@ -153,9 +118,7 @@ const Nav: React.FC = () => {
                 <ToggleLanguage />
               </>
             ) : (
-              <span onClick={onChangeShowMenu}>
-                {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
-              </span>
+              <span onClick={onChangeShowMenu}>{!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}</span>
             )}
           </Space>
         </Space>
@@ -165,14 +128,7 @@ const Nav: React.FC = () => {
               <SelectPage />
               <ToggleLanguage className={styles.toggleMargin} />
             </div>
-            <Menu
-              mode="inline"
-              openKeys={openKeys}
-              selectedKeys={[current]}
-              onOpenChange={onOpenMobileMenuChange}
-              items={mobileMenuItems}
-              onClick={({ key }) => setCurrentKey(key)}
-            />
+            <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
           </Space>
         )}
       </Header>

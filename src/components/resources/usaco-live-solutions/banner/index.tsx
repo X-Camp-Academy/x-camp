@@ -1,8 +1,7 @@
-import React from "react";
-import styles from "./index.module.scss";
-import { useLang } from "@/hoc/with-intl/define";
-import CommonBanner from "@/components/common/common-banner";
-
+import CommonBanner from '@/components/common/common-banner';
+import { useLang } from '@/hoc/with-intl/define';
+import React from 'react';
+import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
@@ -17,11 +16,7 @@ const Banner: React.FC = () => {
   );
   return (
     <div className={styles.bannerContainer}>
-      <CommonBanner
-        image={"/image/about-us/achievements-banner.png"}
-        title={t("USACOLiveSolution")}
-        paragraph={paragraph}
-      />
+      <CommonBanner image={'/image/about-us/achievements-banner.png'} title={t('USACOLiveSolution')} paragraph={paragraph} />
     </div>
   );
 };

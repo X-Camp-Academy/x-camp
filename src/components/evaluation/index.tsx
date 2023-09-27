@@ -1,8 +1,8 @@
 'use client';
-import React from 'react';
+import { useGetReviews } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
 import dynamic from 'next/dynamic';
-import { useGetReviews } from '@/apis/strapi-client/strapi';
+import React from 'react';
 import styles from './index.module.scss';
 
 const Banner = dynamic(() => import('./banner'));
@@ -14,7 +14,7 @@ const { Content } = Layout;
 const Evaluation: React.FC = () => {
   const { data } = useGetReviews({
     ready: true,
-    pageName: ["/home/"],
+    pageName: ['/home/']
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
