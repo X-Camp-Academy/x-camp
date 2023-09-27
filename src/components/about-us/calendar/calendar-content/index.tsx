@@ -61,19 +61,20 @@ const CalendarContent: React.FC = () => {
       if (!groupedData[(month + currentMonth) % 12]) {
         groupedData[(month + currentMonth) % 12] = [];
       }
-      if (dayjs(item?.attributes.startDateTime).isSameOrAfter(dayjs(), 'months')) {
-        groupedData[(month + currentMonth - 2) % 12].push({
+      if (dayjs(item?.attributes.startDateTime).isSameOrAfter(dayjs(), 'month')) {
+        groupedData[month].push({
           label: getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)!,
           children: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)!
         });
       }
     });
 
-    const res = Object.entries(groupedData).map(([label, children]) => {
+    const res = Object.entries(groupedData).map(([label], _, array) => {
       const month = (currentMonth + +label) % 12;
+
       return {
         label: dayjs().month(month).format('MMM'),
-        children
+        children: array[month][1]
       };
     });
 
