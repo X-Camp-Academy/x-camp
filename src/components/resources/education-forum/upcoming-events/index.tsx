@@ -13,15 +13,21 @@ const XCollapse = dynamic(() => import('@/components/common/collapse'));
 
 const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
-  const { data: newEventData } = useGetNewEvent({
+  const { data } = useGetNewEvent({
     tag: NewEventCategory.Event,
     current: 1,
     pageSize: 25
   });
 
-  const upComingEvent = newEventData?.data?.filter((item) => {
+  const newEventData = data?.data?.filter((item) => {
     return item?.attributes?.startDateTime && new Date(item?.attributes?.startDateTime).getTime() - new Date().getTime() > 0;
   });
+  const upComingEvent = newEventData?.sort((a, b) => {
+    const dateA = new Date(a?.attributes?.startDateTime).toLocaleString();
+    const dateB = new Date(b?.attributes?.startDateTime).toLocaleString();
+    return dateA.localeCompare(dateB);
+  });
+
   return (
     <div className={styles.content}>
       <div className="container">

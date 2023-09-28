@@ -26,7 +26,7 @@ const NewsPage = () => {
     current,
     pageSize: PAGE_SIZE,
     manual: true,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
 
   const total = newEventData?.meta?.pagination?.total;
