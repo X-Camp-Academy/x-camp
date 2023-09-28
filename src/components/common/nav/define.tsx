@@ -39,7 +39,7 @@ export const useMenuItems = () => {
           key: '/courses/#online'
         },
         {
-          label: <a href="">{'USACO Grandmaster'}</a>,
+          label: <a href="/courses/#classify3">{'USACO Grandmaster'}</a>,
           key: 'USACO Grandmaster'
         },
         // {

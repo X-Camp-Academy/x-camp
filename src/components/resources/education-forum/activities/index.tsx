@@ -21,7 +21,7 @@ const Activities: React.FC = () => {
   const { lang } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const tag = NewEventCategory.Event;
-  const { data: newEventData, runAsync: getNewEventData } = useGetNewEvent({
+  const { data, runAsync: getNewEventData } = useGetNewEvent({
     tag,
     current,
     pageSize: 12,
@@ -79,6 +79,11 @@ const Activities: React.FC = () => {
     }
   ];
 
+  const newEventData = data?.data?.sort((a, b) => {
+    const dateA = new Date(a?.attributes?.startDateTime).toLocaleString();
+    const dateB = new Date(b?.attributes?.startDateTime).toLocaleString();
+    return dateA.localeCompare(dateB);
+  });
   return (
     <div className={styles.content}>
       <div className="container">
@@ -100,12 +105,12 @@ const Activities: React.FC = () => {
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{selectedItem}</div>
           <div className={styles.pageTotal}>
-            {newEventData?.data?.length} {t('EducationalForum')}
+            {data?.data?.length} {t('EducationalForum')}
           </div>
         </Space>
 
         <Row gutter={[32, 32]} className={styles.row}>
-          {newEventData?.data?.map((v, index) => (
+          {newEventData?.map((v, index) => (
             <Col key={v?.id} xs={24} sm={24} md={12} lg={8}>
               <ColorfulCard border={'bottom'} animate={false} index={index}>
                 <div className={styles.card}>
@@ -135,7 +140,7 @@ const Activities: React.FC = () => {
           ))}
         </Row>
 
-        <Pagination className={styles.pagination} pageSize={12} current={current} total={newEventData?.meta?.pagination?.total} onChange={(page) => setCurrent(page)} />
+        <Pagination className={styles.pagination} pageSize={12} current={current} total={data?.meta?.pagination?.total} onChange={(page) => setCurrent(page)} />
       </div>
     </div>
   );

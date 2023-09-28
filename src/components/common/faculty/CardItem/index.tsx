@@ -5,7 +5,6 @@ import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
 import { Card, Image, Space, Typography } from 'antd';
-import Link from 'next/link';
 import React from 'react';
 
 const { Paragraph } = Typography;
@@ -41,9 +40,9 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
             <Paragraph ellipsis={{ rows: 3 }} className={styles.description}>
               {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
             </Paragraph>
-            <Link href="/" className={styles.more}>
+            <a href="/about-us/introduction/#faculty" className={styles.more}>
               {t('More')} <RightOutlined />
-            </Link>
+            </a>
           </Space>
           <Image src={item?.attributes?.imgUrl} alt="avatar" preview={false} className={styles.cardImage} />
         </Space>
