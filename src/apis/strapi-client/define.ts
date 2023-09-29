@@ -35,7 +35,8 @@ export enum EventCategory {
   SchoolLifeSharing = "School life's sharing",
   CodingEducation = 'Coding Education',
   CareerPath = 'Career Path',
-  Research = 'Research'
+  Research = 'Research',
+  All = 'All'
 }
 export interface GetNewEvent extends strapiPublicFields {
   titleZh: string;

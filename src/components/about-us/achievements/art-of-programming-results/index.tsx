@@ -29,7 +29,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
       behavior: 'smooth',
-      block: 'end'
+      block: 'start'
     });
   };
   useEffect(() => {

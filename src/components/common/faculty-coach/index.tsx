@@ -27,7 +27,7 @@ const FacultyCoach: React.FC<{
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
       behavior: 'smooth',
-      block: 'center'
+      block: 'start'
     });
   };
 
