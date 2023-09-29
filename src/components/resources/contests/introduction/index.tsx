@@ -49,7 +49,7 @@ const Introduction = ({ data }: Props) => {
                   </a>
                 </div>
                 <div className={styles.right}>
-                  <img src={getTransResult(lang, v?.attributes?.contestImgZh?.data?.attributes?.url, v?.attributes?.contestImgEn?.data?.attributes?.url)} alt="" />
+                  <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
                 </div>
               </div>
             </div>
