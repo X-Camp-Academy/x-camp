@@ -64,6 +64,7 @@ const CourseBanner: React.FC = () => {
     { key: t('CourseFormat'), value: courseFormat },
     { key: t('AdditionalInfo'), value: additionalInfo }
   ];
+
   return (
     <div className={styles.banner}>
       <div className={`${styles.content} container`} style={{ height: '100%' }}>

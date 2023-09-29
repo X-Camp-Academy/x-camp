@@ -20,7 +20,7 @@ const Activities: React.FC = () => {
   const { format: t } = useLang();
   const { lang } = useLang();
   const [current, setCurrent] = useState<number>(1);
-  const tag = NewEventCategory.Event;
+  const tag = NewEventCategory.Events;
   const { data, runAsync: getNewEventData } = useGetNewEvent({
     tag,
     current,

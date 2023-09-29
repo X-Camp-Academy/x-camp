@@ -15,7 +15,7 @@ const Partners: React.FC = () => {
     },
     {
       src: '/image/home/partners-2.png',
-      link: 'https://www.stanfordacm.org/proco'
+      link: 'https://joincpi.org/'
     },
     {
       src: '/image/home/partners-3.png',

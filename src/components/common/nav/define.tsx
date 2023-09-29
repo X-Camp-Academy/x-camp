@@ -115,7 +115,7 @@ export const useMenuItems = () => {
           key: '/resources/usaco/'
         },
         {
-          label: <a href="http://usaco.org/ ">Internal Contests</a>,
+          label: <a href="/about-us/achievements#art-of-programming-results">Internal Contests</a>,
           key: 'Internal Contests'
         },
         {

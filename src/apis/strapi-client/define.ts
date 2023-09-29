@@ -25,7 +25,7 @@ export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
 export enum NewEventCategory {
   News = 'News',
-  Event = 'Events',
+  Events = 'Events',
   SchoolCalendar = 'School Calendar',
   EventContest = 'Event Contest',
   XAlumni = 'X-Alumni',
@@ -123,9 +123,12 @@ export interface GetClasses extends strapiPublicFields {
   location: string;
   order: number;
 }
-
+export enum ClassMode {
+  OnlineLive = 'Online Live',
+  InPerson = 'In-person'
+}
 export interface GetCourses extends strapiPublicFields {
-  classMode: string;
+  classMode: ClassMode;
   classLang: string;
   spokenLang: string;
   courseCode: string;

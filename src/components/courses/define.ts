@@ -7,9 +7,3 @@ export enum CourseTypes {
   JavaAPCSClasses = 'Java & APCS Classes'
   // XTutors = "X-Tutors",
 }
-
-// 上课的形式
-export enum CourseMode {
-  OnlineLive = 'Online Live',
-  InPerson = 'In-person'
-}

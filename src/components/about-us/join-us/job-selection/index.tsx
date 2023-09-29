@@ -27,7 +27,7 @@ const JobSelection: React.FC = () => {
     <div className={styles.jobSelectionContainer}>
       <div className={`${styles.jobSelection} container`}>
         <div className={styles.btnContainer}>
-          {[AboutUsJoinUsCategory.PartTime, AboutUsJoinUsCategory.FullTime, AboutUsJoinUsCategory.XTutor]?.map((v) => (
+          {[AboutUsJoinUsCategory.FullTime, AboutUsJoinUsCategory.PartTime, AboutUsJoinUsCategory.XTutor]?.map((v) => (
             <Button key={v} className={`${styles.choiceBtn} ${category === v ? styles.selectedBtn : ''}`} onClick={() => setCategory(v)}>
               {v}
             </Button>

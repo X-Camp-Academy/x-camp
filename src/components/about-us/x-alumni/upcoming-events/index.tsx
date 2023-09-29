@@ -18,7 +18,7 @@ const UpcomingEvents: React.FC = () => {
   const isMobile = useMobile();
 
   const { data: newEventData } = useGetNewEvent({
-    tag: NewEventCategory.Event,
+    tag: NewEventCategory.Events,
     current: 1,
     pageSize: 25
   });

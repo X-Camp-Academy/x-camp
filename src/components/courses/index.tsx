@@ -1,5 +1,5 @@
 'use client';
-import { GetCourses } from '@/apis/strapi-client/define';
+import { ClassMode, GetCourses } from '@/apis/strapi-client/define';
 import { useGetCourseLevelType, useGetCourses, useGetReviews } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import Reviews from '@/components/common/reviews';
@@ -15,7 +15,7 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import ClassCard from '../common/class-card';
 import Banner from './banner';
-import { CourseMode, CourseTypes } from './define';
+import { CourseTypes } from './define';
 import styles from './index.module.scss';
 
 const { Panel } = Collapse;
@@ -74,10 +74,10 @@ const Courses: React.FC = () => {
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
       case CourseTypes.OnlineClasses:
-        return courses?.data?.filter((item) => item?.attributes?.classMode === CourseMode.OnlineLive);
+        return courses?.data?.filter((item) => item?.attributes?.classMode === ClassMode.OnlineLive);
       // case CourseTypes.InPersonClasses:
       //   return courses?.data?.filter(
-      //     (item) => item?.attributes?.classMode === CourseMode.InPerson
+      //     (item) => item?.attributes?.classMode === ClassMode.InPerson
       //   );
       case CourseTypes.CampsClasses:
         return courses?.data?.filter((item) => item?.attributes?.isCamp);

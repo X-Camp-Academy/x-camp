@@ -17,6 +17,19 @@ const TimeLine: React.FC = () => {
   setTwoToneColor('#D46B14');
   const { data: timeLine } = useGetAchievementsTimeLine();
 
+  const downloadUSACOPackage = () => {
+    fetch('https://media.strapi.turingstar.com.cn/production/2023/9/USACO_ced1822e5c.pdf?updated_at=2023-09-29T06:38:53.858Z')
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'USACO 学习礼包.pdf';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
+  };
+
   return (
     <div className={`${styles.timeLineContainer} container`}>
       <div className={styles.timeLine}>
@@ -54,7 +67,7 @@ const TimeLine: React.FC = () => {
           }}
         >
           <Image alt="download" src="/image/about-us/download-outlined.png" preview={false} />
-          <Text className={styles.downloadText} underline>
+          <Text className={styles.downloadText} underline onClick={downloadUSACOPackage}>
             {t('USACO.DownloadPackage')}
           </Text>
         </div>

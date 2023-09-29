@@ -16,7 +16,7 @@ const { Title, Text } = Typography;
 const RecentActivities: React.FC = () => {
   const { format: t, lang } = useLang();
   const { data: newEventData } = useGetNewEvent({
-    tag: NewEventCategory.Event,
+    tag: NewEventCategory.Events,
     current: 1,
     pageSize: 25
   });

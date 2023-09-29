@@ -14,7 +14,7 @@ const XCollapse = dynamic(() => import('@/components/common/collapse'));
 const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
   const { data } = useGetNewEvent({
-    tag: NewEventCategory.Event,
+    tag: NewEventCategory.Events,
     current: 1,
     pageSize: 25
   });
