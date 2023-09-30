@@ -25,12 +25,14 @@ export const useMenuItems = () => {
               <span onClick={() => router.push('/courses')}>{t('Courses.Btn')}</span>
               <UserAddOutlined />
             </>
-          )
+          ),
+          key: '/courses'
         },
         right: {
           title: t('CourseCatalog'),
           description: t('Courses.RightDescription'),
-          action: () => router.push('/courses/catalog')
+          action: () => router.push('/courses/catalog'),
+          key: '/courses'
         }
       },
       children: [
@@ -60,16 +62,6 @@ export const useMenuItems = () => {
           label: <a href="/courses#apcs">{'Java/APCS Classes'}</a>,
           key: 'Java/APCS Classes'
         },
-        // {
-        //   label: <a href="/courses#apcs">{t("APCSClasses")}</a>,
-        //   key: "/courses/#apcs",
-        // },
-        // {
-        //   label: (
-        //     <a href="/courses#enhancement">{t("EnhancementClasses")}</a>
-        //   ),
-        //   key: "/courses/#enhancement",
-        // },
         {
           label: (
             <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
@@ -106,10 +98,6 @@ export const useMenuItems = () => {
           label: <Link href="/resources/education-forum">{t('EducationalForum')}</Link>,
           key: '/resources/education-forum/'
         },
-        // {
-        //   label: <Link href="/resources/contests#contest-31">{t("TuringCup")}</Link>,
-        //   key: "/resources/contests#contest-31",
-        // },
         {
           label: <a href="http://usaco.org/ ">USACO</a>,
           key: '/resources/usaco/'

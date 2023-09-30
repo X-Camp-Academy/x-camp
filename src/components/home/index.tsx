@@ -6,7 +6,7 @@ import React from 'react';
 import styles from './index.module.scss';
 
 const CarouselContent = dynamic(() => import('./carousel-content'));
-const DiscoverCourses = dynamic(() => import('@/components/common/discover-courses'));
+const DiscoverOurCourses = dynamic(() => import('./discover-our-courses'));
 const WhyXCamp = dynamic(() => import('./why-xcamp'));
 const WeSupport = dynamic(() => import('./we-support'));
 const Faculty = dynamic(() => import('@/components/common/faculty'));
@@ -29,7 +29,7 @@ const Home: React.FC = () => {
       <Content>
         <CarouselContent />
         <WhyXCamp />
-        <DiscoverCourses />
+        <DiscoverOurCourses />
         <Faculty />
         <WeSupport />
         <PublicCalendar />
