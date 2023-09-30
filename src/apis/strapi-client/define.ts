@@ -1,11 +1,9 @@
 import { StrapiMedia, StrapiMedias, StrapiRequest, StrapiResponse, StrapiResponseDataItem, StrapiResponseSingleDataItem, strapiPublicFields } from './strapiDefine';
 
 export enum FacultyLevelCategory {
-  BasicLevel = 'Basic Level',
-  USACOBronzeLevel = 'USACO Bronze Level',
-  USACOSilverLevel = 'USACO Silver Level',
-  GrandmasterClassLevel = 'Grandmaster Class Level',
-  All = 'All'
+  Basic = 'Basic',
+  Intermediate = 'Intermediate',
+  Grandmaster = 'Grandmaster'
 }
 
 export interface GetFaculty extends strapiPublicFields {

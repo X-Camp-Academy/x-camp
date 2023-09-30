@@ -1,4 +1,6 @@
+import { GetCourses } from '@/apis/strapi-client/define';
 import { useGetCourses } from '@/apis/strapi-client/strapi';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { SearchOutlined } from '@ant-design/icons';
 import { useSize } from 'ahooks';
@@ -140,6 +142,12 @@ const ScheduleTable: React.FC = () => {
     setPagination(newPagination);
   };
 
+  const handleObject = (item: StrapiResponseDataItem<GetCourses>) => {
+    return {
+      ...item?.attributes,
+      id: item?.id
+    };
+  };
   return (
     <div className={styles.scheduleTable} ref={ref}>
       <div className={'container'}>
@@ -171,7 +179,7 @@ const ScheduleTable: React.FC = () => {
 
         <div style={{ marginTop: 35 }}>
           {courses?.data?.map((item) => {
-            return <CourseCard {...item?.attributes} key={item?.id} />;
+            return <CourseCard {...handleObject(item)} key={item?.id} />;
           })}
         </div>
         <Pagination

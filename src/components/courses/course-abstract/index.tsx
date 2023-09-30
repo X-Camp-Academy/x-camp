@@ -99,6 +99,8 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
           <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'50%'} height={'100%'} />
         </Modal>
         {classMode !== ClassMode.InPerson && <div className={styles.tip}>{t('Discount')}</div>}
+        {true && <div className={styles.bilingual}>BILINGUAL</div>}
+        {false && <div className={styles.continuity}>CONTINUITY</div>}
       </div>
     </Space>
   );

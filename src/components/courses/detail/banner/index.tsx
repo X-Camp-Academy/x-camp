@@ -1,3 +1,4 @@
+import CopyRightIcons from '@/components/common/copy-right-icons';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult, getWeeksDays } from '@/utils/public';
 import { ShareAltOutlined } from '@ant-design/icons';
@@ -8,7 +9,7 @@ import CourseClassesContext from '../../CourseClassesContext';
 import CourseAbstract from '../../course-abstract';
 import styles from './index.module.scss';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const CourseBanner: React.FC = () => {
   const { format: t, lang } = useLang();
@@ -101,10 +102,15 @@ const CourseBanner: React.FC = () => {
                       )
                   )}
                 </Descriptions>
-                <Button id="copyButton" className={styles.btn} onClick={() => setIsModalOpen(true)}>
-                  {t('ShareLessons')}
-                  <ShareAltOutlined />
-                </Button>
+
+                <Space direction="vertical" size={32}>
+                  <Button id="copyButton" className={styles.btn} onClick={() => setIsModalOpen(true)}>
+                    {t('ShareLessons')}
+                    <ShareAltOutlined />
+                  </Button>
+
+                  <Button className={styles.consultation}>{t('1On1Consultation')}</Button>
+                </Space>
               </div>
 
               <div className={styles.right}>
@@ -182,6 +188,11 @@ const CourseBanner: React.FC = () => {
                     <div style={{ whiteSpace: 'pre-line' }}>{getTransResult(lang, clipTextZh, clipTextEn)}</div>
                   </Modal>
                 </div>
+
+                <Space direction="vertical" size={16} align="end" className={styles.rightBottom}>
+                  <Text className={styles.rightBottomText}> * Get $75 off for each/ Get up to $150 off!</Text>
+                  <CopyRightIcons />
+                </Space>
               </div>
             </Space>
           </Space>
