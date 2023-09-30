@@ -29,7 +29,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
     return data?.sort((a, b) => {
       const dateA = new Date(a?.attributes?.startDateTime).toLocaleString();
       const dateB = new Date(b?.attributes?.startDateTime).toLocaleString();
-      return dateA.localeCompare(dateB);
+      return dateB.localeCompare(dateA);
     });
   };
 

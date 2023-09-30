@@ -12,7 +12,7 @@ import styles from './index.module.scss';
 
 interface ActivityItem {
   title: string;
-  key: EventCategory | 'All';
+  key: EventCategory;
 }
 
 const Activities: React.FC = () => {
@@ -27,7 +27,7 @@ const Activities: React.FC = () => {
     pageSize: 12,
     manual: true
   });
-  const [selectedItem, setSelectedItem] = useState<EventCategory | 'All'>(EventCategory.SchoolLifeSharing);
+  const [selectedItem, setSelectedItem] = useState<EventCategory>(EventCategory.SchoolLifeSharing);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
       populate: '*',
@@ -42,7 +42,7 @@ const Activities: React.FC = () => {
         $eq: tag
       }
     };
-    if (selectedItem !== 'All') {
+    if (selectedItem !== EventCategory.All) {
       filters = {
         ...filters,
         eventCategory: {
@@ -75,14 +75,14 @@ const Activities: React.FC = () => {
     },
     {
       title: t('ActivityItem5'),
-      key: 'All'
+      key: EventCategory.All
     }
   ];
 
   const newEventData = data?.data?.sort((a, b) => {
-    const dateA = new Date(a?.attributes?.startDateTime).toLocaleString();
-    const dateB = new Date(b?.attributes?.startDateTime).toLocaleString();
-    return dateA.localeCompare(dateB);
+    const dateA = new Date(a?.attributes?.startDateTime);
+    const dateB = new Date(b?.attributes?.startDateTime);
+    return dateB.getTime() - dateA.getTime();
   });
   return (
     <div className={styles.content}>
