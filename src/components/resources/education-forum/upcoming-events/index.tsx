@@ -1,4 +1,4 @@
-import { NewEventCategory } from '@/apis/strapi-client/define';
+import { EventLanguage, NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
@@ -57,7 +57,7 @@ const UpcomingEvents: React.FC = () => {
 
                         <Descriptions.Item label={<UserOutlined />}>{`Organizer ${item?.attributes?.organizer ? '| ' + item?.attributes?.organizer : ''} `}</Descriptions.Item>
 
-                        <Descriptions.Item label={<GlobalOutlined />}>{'English'}</Descriptions.Item>
+                        <Descriptions.Item label={<GlobalOutlined />}>{item?.attributes?.eventLanguage === EventLanguage.Chinese ? 'Chinese' : 'English'}</Descriptions.Item>
 
                         <Descriptions.Item label={<LaptopOutlined />}>
                           {!item.attributes.geographicallyAddress && item.attributes.link && item.attributes.onlinePlatform ? (

@@ -1,8 +1,10 @@
 'use client';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
+import { addAnimate, removeAnimate } from '@/utils';
 import { Card, Col, Image, Row, Space, Typography } from 'antd';
-import React from 'react';
+import 'hover.css';
+import React, { useRef } from 'react';
 import styles from './index.module.scss';
 
 const { Paragraph, Text } = Typography;
@@ -13,25 +15,29 @@ const WhyXCamp: React.FC = () => {
       icon: '/image/home/icon-why-book.png',
       title: t('XCamp.title1'),
       desc: t('XCamp.Desc1'),
-      url: '/about-us/introduction/#faculty'
+      url: '/about-us/introduction/#faculty',
+      ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/icon-why-concat.png',
       title: t('XCamp.title2'),
       desc: t('XCamp.Desc2'),
-      url: '/about-us/introduction/#faculty'
+      url: '/about-us/introduction/#faculty',
+      ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/icon-why-house.png',
       title: t('XCamp.title3'),
       desc: t('XCamp.Desc3'),
-      url: '/about-us/x-alumni'
+      url: '/about-us/x-alumni',
+      ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/icon-why-track.png',
       title: t('XCamp.title4'),
       desc: t('XCamp.Desc4'),
-      url: '/courses'
+      url: '/courses',
+      ref: useRef<HTMLDivElement>(null)
     }
   ];
   return (
@@ -51,6 +57,9 @@ const WhyXCamp: React.FC = () => {
                   bodyStyle={{
                     borderRadius: 8
                   }}
+                  ref={item?.ref}
+                  onMouseEnter={() => addAnimate(item?.ref)}
+                  onMouseLeave={() => removeAnimate(item?.ref)}
                 >
                   <a href={item?.url}>
                     <Space direction="vertical">

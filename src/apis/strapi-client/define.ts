@@ -36,6 +36,11 @@ export enum EventCategory {
   Research = 'Research',
   All = 'All'
 }
+
+export enum EventLanguage {
+  English = 'English',
+  Chinese = 'Chinese'
+}
 export interface GetNewEvent extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -65,6 +70,8 @@ export interface GetNewEvent extends strapiPublicFields {
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
   detailContent: string;
+
+  eventLanguage: EventLanguage;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;

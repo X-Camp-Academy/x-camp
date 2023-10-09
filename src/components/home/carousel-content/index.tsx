@@ -47,7 +47,7 @@ const CarouselContent: React.FC = () => {
         window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09');
       },
       date: t('OpenTime'),
-      backgroundUrl: '/image/about-us/banner-joinUs.png',
+      backgroundUrl: '/image/home/banner-1.png',
       buttonText: t('ZoomLink')
     },
     {

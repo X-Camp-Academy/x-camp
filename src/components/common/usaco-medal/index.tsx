@@ -61,7 +61,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
           <Col key={item?.title} span={6} className={styles.col}>
             <div className={item?.style}>
               <Space direction="vertical">
-                <CountUp className={styles.medalCount} style={{ color: item?.color }} end={item?.count} duration={20} suffix={item?.suffix ? '+' : undefined} scrollSpyDelay={1000} enableScrollSpy />
+                <CountUp className={styles.medalCount} style={{ color: item?.color }} end={item?.count} duration={10} suffix={item?.suffix ? '+' : undefined} scrollSpyDelay={1000} enableScrollSpy />
                 <Text className={styles.medalTitle}>{item?.title}</Text>
               </Space>
             </div>
