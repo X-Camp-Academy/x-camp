@@ -1,24 +1,36 @@
 import { useLang } from '@/hoc/with-intl/define';
-import classNames from 'classnames/bind';
+import { useMobile } from '@/utils';
+import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
 
-const cx = classNames.bind(styles);
+const CommonBanner = dynamic(() => import('@/components/common/common-banner'));
 
 const Banner: React.FC = () => {
+  const isMobile = useMobile();
   const { format: t } = useLang();
+  const paragraph = (
+    <>
+      X-Camp will organize students to join different
+      <br />
+      competitive programming contests yearly. We partner
+      <br />
+      with distinguished contest partners from prestigious
+      <br />
+      universities, high schools, and NGOs, for providing
+      <br />
+      high-quality contest and community for students.
+    </>
+  );
+
   return (
-    <div className={styles.banner}>
-      <div className={cx('container', styles.content)}>
-        <div className={styles.left}>
-          <div className={styles.title}>{t('Contests')}</div>
-          <div className={styles.description}>{t('Contest.Desc')}</div>
-        </div>
-        <div className={styles.right}>
-          <img src="/image/resources/contests-banner.png" alt="" />
-        </div>
-      </div>
-    </div>
+    <CommonBanner
+      image={'/image/about-us/student-recommend-banner.png'}
+      title={t('Contests')}
+      paragraph={paragraph}
+      titleStyle={{ color: '#fff', marginTop: isMobile ? 0 : 96 }}
+      paragraphClassName={styles.paragraph}
+    />
   );
 };
 

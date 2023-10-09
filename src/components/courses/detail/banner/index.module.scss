@@ -110,6 +110,17 @@
               background: #fff;
               line-height: 24px;
             }
+
+            .consultation {
+              width: 202px;
+              height: 48px;
+              border-radius: 12px;
+              font-size: 16px;
+              font-weight: 500;
+              color: #fff;
+              background: #ffad11;
+              line-height: 24px;
+            }
           }
 
           .right {
@@ -157,6 +168,18 @@
               .mediaChoiceBox {
                 width: 100px;
                 height: 100px;
+              }
+            }
+
+            .rightBottom {
+              margin-top: 32px;
+              width: 100%;
+
+              .rightBottomText {
+                font-size: 18px;
+                font-weight: 400;
+                color: #d46b14;
+                line-height: 24px;
               }
             }
           }

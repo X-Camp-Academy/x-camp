@@ -7,15 +7,15 @@ import { XStarMenuItemType } from './x-star-menu';
 export const useMenuItems = () => {
   const router = useRouter();
   const { format: t } = useLang();
-  // TODO children label 国际化待提供
+
   const menuItems: XStarMenuItemType[] = [
     {
       label: <Link href="/">{t('Home')}</Link>,
       key: '/'
     },
     {
-      label: <a>{t('Courses')}</a>,
-      key: '/courses/',
+      label: <Link href="/courses">{t('Courses')}</Link>,
+      key: '/courses',
       dropdown: {
         left: {
           title: t('ClassRoadMap'),
@@ -25,12 +25,14 @@ export const useMenuItems = () => {
               <span onClick={() => router.push('/courses')}>{t('Courses.Btn')}</span>
               <UserAddOutlined />
             </>
-          )
+          ),
+          key: '/courses'
         },
         right: {
           title: t('CourseCatalog'),
           description: t('Courses.RightDescription'),
-          action: () => router.push('/courses/catalog')
+          action: () => router.push('/courses/catalog'),
+          key: '/courses'
         }
       },
       children: [
@@ -60,16 +62,6 @@ export const useMenuItems = () => {
           label: <a href="/courses#apcs">{'Java/APCS Classes'}</a>,
           key: 'Java/APCS Classes'
         },
-        // {
-        //   label: <a href="/courses#apcs">{t("APCSClasses")}</a>,
-        //   key: "/courses/#apcs",
-        // },
-        // {
-        //   label: (
-        //     <a href="/courses#enhancement">{t("EnhancementClasses")}</a>
-        //   ),
-        //   key: "/courses/#enhancement",
-        // },
         {
           label: (
             <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
@@ -81,7 +73,7 @@ export const useMenuItems = () => {
       ]
     },
     {
-      label: <Link href="/">{t('Resources')}</Link>,
+      label: <Link href="/resources/education-forum">{t('Resources')}</Link>,
       key: 'resources',
       dropdown: {
         left: {
@@ -106,57 +98,22 @@ export const useMenuItems = () => {
           label: <Link href="/resources/education-forum">{t('EducationalForum')}</Link>,
           key: '/resources/education-forum/'
         },
-        // {
-        //   label: <Link href="/resources/contests#contest-31">{t("TuringCup")}</Link>,
-        //   key: "/resources/contests#contest-31",
-        // },
         {
           label: <a href="http://usaco.org/ ">USACO</a>,
           key: '/resources/usaco/'
         },
         {
-          label: <a href="http://usaco.org/ ">Internal Contests</a>,
+          label: <a href="/about-us/achievements#art-of-programming-results">Internal Contests</a>,
           key: 'Internal Contests'
         },
         {
           label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
           key: '/resources/weekly-open-house/'
         },
-        /*         {
-                  label: <Link href="/">{t("X-Cup")}</Link>,
-                  key: "/resources/x-cup/",
-                },
-                {
-                  label: <Link href="/">ACSL</Link>,
-                  key: "/resources/acsl/",
-                }, */
-
-        // {
-        //   label: <a href="https://calico.cs.berkeley.edu/">Calico</a>,
-        //   key: "calico",
-        // },
-        // {
-        //   label: <a href="https://www.stanfordacm.org/proco">ProCo</a>,
-        //   key: "proco",
-        // },
-
         {
           label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
           key: '/resources/usaco-live-solution/'
         },
-        //
-        // {
-        //   label: <a href="https://www.teamscode.org/">Teamscode</a>,
-        //   key: "teamscode",
-        // },
-        // {
-        //   label: <a href="/#stu_project">{t("ArtOfProgramming")}</a>,
-        //   key: "/#stu_project",
-        // },
-        // {
-        //   label: <Link href="/resources/contests">{t("Contests")}</Link>,
-        //   key: "/resources/contests/",
-        // },
         {
           label: <Link href="/resources/contests">External Contests</Link>,
           key: '/resources/contests/'

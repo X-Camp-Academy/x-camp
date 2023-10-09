@@ -4,7 +4,6 @@
   @include flex(center);
 
   padding: 80px 15px;
-  background-color: #fff5e8;
 
   .title {
     margin: 0;
@@ -32,12 +31,15 @@
     @extend .paragraphText;
 
     margin-bottom: 50px;
+    padding-right: 120px;
+    padding-left: 120px;
     text-align: center;
     color: #172142;
 
     @media (width <= 768px) {
       margin: auto;
       margin-bottom: 80px;
+      padding: 0;
     }
   }
 

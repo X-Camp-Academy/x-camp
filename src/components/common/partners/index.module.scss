@@ -31,6 +31,8 @@
 
   .paragraph {
     margin: auto 40px 56px;
+    padding-right: 120px;
+    padding-left: 120px;
     font-size: 18px;
     font-weight: 500;
     color: #172142;
@@ -38,6 +40,7 @@
 
     @media (width <= 768px) {
       margin: auto auto 40px;
+      padding: 0;
     }
   }
 
@@ -46,8 +49,26 @@
     justify-content: space-between;
   }
 
-  .topImage {
+  .topLeftImage {
     width: 160px;
+    height: 64px;
+
+    @media (width <= 768px) {
+      width: 100%;
+    }
+  }
+
+  .topCenterImage {
+    width: 160px;
+    height: 64px;
+
+    @media (width <= 768px) {
+      width: 100%;
+    }
+  }
+
+  .topRightImage {
+    width: 80px;
     height: 64px;
 
     @media (width <= 768px) {

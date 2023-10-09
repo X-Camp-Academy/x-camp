@@ -8,18 +8,22 @@ const { Title, Paragraph, Text } = Typography;
 
 const Partners: React.FC = () => {
   const { format: t } = useLang();
+
   const topImages = [
     {
       src: '/image/home/partners-1.png',
-      link: 'https://calico.cs.berkeley.edu/'
+      link: 'https://calico.cs.berkeley.edu/',
+      style: styles.topLeftImage
     },
     {
       src: '/image/home/partners-2.png',
-      link: 'https://www.stanfordacm.org/proco'
+      link: 'https://www.stanfordacm.org/proco',
+      style: styles.topCenterImage
     },
     {
       src: '/image/home/partners-3.png',
-      link: 'https://www.stanfordacm.org/proco'
+      link: 'https://www.gsyomusic.org/',
+      style: styles.topRightImage
     }
   ];
   const bottomImages = [
@@ -51,7 +55,7 @@ const Partners: React.FC = () => {
             <Space className={styles.space}>
               {topImages?.map((item) => (
                 <a href={item?.link} key={item?.src}>
-                  <Image alt="" src={item?.src} preview={false} className={styles.topImage} />
+                  <Image alt="" src={item?.src} preview={false} className={item?.style} />
                 </a>
               ))}
             </Space>

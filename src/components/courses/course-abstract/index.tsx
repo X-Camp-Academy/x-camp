@@ -1,4 +1,4 @@
-import { GetClasses } from '@/apis/strapi-client/define';
+import { ClassMode, GetClasses } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
@@ -11,6 +11,7 @@ const { Paragraph } = Typography;
 
 interface CourseAbstractProps {
   courseCode?: string;
+  classMode?: ClassMode;
   courseLongDescriptionEn?: string;
   courseLongDescriptionZh?: string;
   tuitionUSD?: number;
@@ -25,6 +26,7 @@ interface CourseAbstractProps {
 
 const CourseAbstract: React.FC<CourseAbstractProps> = ({
   courseCode,
+  classMode,
   courseLongDescriptionEn,
   courseLongDescriptionZh,
   tuitionUSD,
@@ -93,9 +95,12 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
           {t('SignUpNow')}
         </Button>
         <Modal open={isModalOpen} onOk={() => setIsModalOpen(false)} onCancel={() => setIsModalOpen(false)}>
-          <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'100%'} height={'100%'} />
+          <img src="/image/qr-code/whats-app.png" alt="whatsAppAssistance" width={'50%'} height={'100%'} />
+          <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'50%'} height={'100%'} />
         </Modal>
-        <div className={styles.tip}>{t('Discount')}</div>
+        {classMode !== ClassMode.InPerson && <div className={styles.tip}>{t('Discount')}</div>}
+        {true && <div className={styles.bilingual}>BILINGUAL</div>}
+        {false && <div className={styles.continuity}>CONTINUITY</div>}
       </div>
     </Space>
   );

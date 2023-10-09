@@ -46,6 +46,9 @@
   }
 
   .dropdownContainer {
+    display: flex;
+    justify-content: center;
+
     @media (width <= 992px) and (width >= 768px) {
       max-width: 100%;
     }

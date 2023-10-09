@@ -2,7 +2,7 @@ import { NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
-import { ClockCircleOutlined, LaptopOutlined, RightCircleOutlined, UserOutlined } from '@ant-design/icons';
+import { ClockCircleOutlined, GlobalOutlined, LaptopOutlined, RightCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Col, Descriptions, Row } from 'antd';
 import dynamic from 'next/dynamic';
 import React from 'react';
@@ -14,7 +14,7 @@ const XCollapse = dynamic(() => import('@/components/common/collapse'));
 const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
   const { data } = useGetNewEvent({
-    tag: NewEventCategory.Event,
+    tag: NewEventCategory.Events,
     current: 1,
     pageSize: 25
   });
@@ -56,6 +56,8 @@ const UpcomingEvents: React.FC = () => {
                         </Descriptions.Item>
 
                         <Descriptions.Item label={<UserOutlined />}>{`Organizer ${item?.attributes?.organizer ? '| ' + item?.attributes?.organizer : ''} `}</Descriptions.Item>
+
+                        <Descriptions.Item label={<GlobalOutlined />}>{'English'}</Descriptions.Item>
 
                         <Descriptions.Item label={<LaptopOutlined />}>
                           {!item.attributes.geographicallyAddress && item.attributes.link && item.attributes.onlinePlatform ? (

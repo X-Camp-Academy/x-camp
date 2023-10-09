@@ -13,11 +13,13 @@ export interface XStarMenuItemType {
       btn?: React.ReactNode;
       action?: VoidFunction;
       showBtn?: boolean;
+      key?: string;
     };
     right?: {
       title?: string;
       description?: string;
       action?: VoidFunction;
+      key?: string;
     };
   };
 }

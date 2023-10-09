@@ -11,7 +11,7 @@ interface DiscoverCoursesProps {
   align?: 'center' | 'flex-start' | 'flex-end';
   showBg?: boolean;
 }
-const DiscoverCourses = ({ showSubTitle = false, align = 'center', showBg = true }: DiscoverCoursesProps) => {
+const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = true }: DiscoverCoursesProps) => {
   const { format: t } = useLang();
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
@@ -73,7 +73,7 @@ const DiscoverCourses = ({ showSubTitle = false, align = 'center', showBg = true
   ];
   return (
     <div style={{ alignItems: align }}>
-      <div className={styles.discoverCourses}>
+      <div className={styles.discoverOurCourses}>
         <TitleColor
           title={t('DiscoverOurCourses')}
           config={[
@@ -125,4 +125,4 @@ const DiscoverCourses = ({ showSubTitle = false, align = 'center', showBg = true
   );
 };
 
-export default DiscoverCourses;
+export default DiscoverOurCourses;

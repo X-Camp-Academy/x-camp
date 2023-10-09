@@ -16,7 +16,7 @@ interface Props {
 
 const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => {
   const scroll = useScroll(document);
-  const divideLength = (items?.length || 0) > 6 ? 3 : 2;
+  const divideLength = (items?.length || 0) <= 6 ? 3 : 2;
   const dividedItems = useMemo(() => {
     // 分为若干列，大于6项则3列，否则2列
     const result: React.ReactNode[][] =
@@ -38,7 +38,7 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
         boxShadow: scroll?.top === 0 ? '0px 9px 20px -4px #D8D8D8' : '0px 9px 20px -4px #D8D8D8, 0px 9px 25px -4px #D8D8D8'
       }}
     >
-      <Space className={cx('container', styles.dropdownContainer)}>
+      <Space className={cx('container', styles.dropdownContainer)} style={dropdown?.left?.key === '/courses' ? { paddingLeft: 100, paddingRight: 100 } : {}}>
         {dropdown?.left && (
           <Space direction="vertical" className={styles.left} size={'middle'}>
             <div className={styles.title}>{dropdown?.left?.title}</div>

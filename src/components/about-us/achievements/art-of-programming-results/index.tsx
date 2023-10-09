@@ -3,7 +3,7 @@ import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { Card, List, Typography } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -12,6 +12,7 @@ interface Props {
 }
 
 const ArtOfProgrammingResults = ({ data }: Props) => {
+  const { hash } = window.location;
   const { lang, format: t } = useLang();
 
   const listData = [
@@ -24,8 +25,18 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
       content: t('Art.Rules.Desc')
     }
   ];
+  const scrollIntoView = (id: string) => {
+    const dom = document.getElementById(id);
+    dom?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+  useEffect(() => {
+    scrollIntoView(hash.slice(1));
+  }, [hash]);
   return (
-    <div className={styles.ArtOfProgrammingResultsContainer}>
+    <div className={styles.ArtOfProgrammingResultsContainer} id="art-of-programming-results">
       <div className={`${styles.ArtOfProgrammingResults} container`}>
         <Title className={styles.firstTitle}>{t('ArtProgrammingResults')}</Title>
         <Text className={styles.intro}>{t('ArtProgrammingResults.Desc')}</Text>

@@ -15,7 +15,7 @@ const { Title, Paragraph, Text } = Typography;
 const FacultyCoach: React.FC<{
   data: StrapiResponseDataItem<GetFaculty>[] | undefined;
 }> = ({ data }) => {
-  const [segmented, setSegmented] = useState<SegmentedValue>(FacultyLevelCategory.All);
+  const [segmented, setSegmented] = useState<SegmentedValue>(FacultyLevelCategory.Basic);
   const [facultyData, setFacultyData] = useState<StrapiResponseDataItem<GetFaculty>[]>();
   const { format: t, lang } = useLang();
   const { hash } = window.location;
@@ -27,7 +27,7 @@ const FacultyCoach: React.FC<{
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
       behavior: 'smooth',
-      block: 'center'
+      block: 'start'
     });
   };
 
@@ -36,12 +36,8 @@ const FacultyCoach: React.FC<{
   }, [hash]);
 
   useEffect(() => {
-    if (segmented === FacultyLevelCategory.All) {
-      setFacultyData(sortData);
-    } else {
-      const filteredData = sortData?.filter((item) => item?.attributes?.level === segmented);
-      setFacultyData(filteredData);
-    }
+    const filteredData = sortData?.filter((item) => item?.attributes?.level === segmented);
+    setFacultyData(filteredData);
   }, [segmented, sortData]);
   return (
     <div className={`${styles.facultyCoach} container`} id="faculty">

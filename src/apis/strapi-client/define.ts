@@ -1,11 +1,9 @@
 import { StrapiMedia, StrapiMedias, StrapiRequest, StrapiResponse, StrapiResponseDataItem, StrapiResponseSingleDataItem, strapiPublicFields } from './strapiDefine';
 
 export enum FacultyLevelCategory {
-  BasicLevel = 'Basic Level',
-  USACOBronzeLevel = 'USACO Bronze Level',
-  USACOSilverLevel = 'USACO Silver Level',
-  GrandmasterClassLevel = 'Grandmaster Class Level',
-  All = 'All'
+  Basic = 'Basic',
+  Intermediate = 'Intermediate',
+  Grandmaster = 'Grandmaster'
 }
 
 export interface GetFaculty extends strapiPublicFields {
@@ -25,7 +23,7 @@ export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 
 export enum NewEventCategory {
   News = 'News',
-  Event = 'Events',
+  Events = 'Events',
   SchoolCalendar = 'School Calendar',
   EventContest = 'Event Contest',
   XAlumni = 'X-Alumni',
@@ -35,7 +33,8 @@ export enum EventCategory {
   SchoolLifeSharing = "School life's sharing",
   CodingEducation = 'Coding Education',
   CareerPath = 'Career Path',
-  Research = 'Research'
+  Research = 'Research',
+  All = 'All'
 }
 export interface GetNewEvent extends strapiPublicFields {
   titleZh: string;
@@ -123,9 +122,12 @@ export interface GetClasses extends strapiPublicFields {
   location: string;
   order: number;
 }
-
+export enum ClassMode {
+  OnlineLive = 'Online Live',
+  InPerson = 'In-person'
+}
 export interface GetCourses extends strapiPublicFields {
-  classMode: string;
+  classMode: ClassMode;
   classLang: string;
   spokenLang: string;
   courseCode: string;

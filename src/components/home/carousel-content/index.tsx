@@ -1,13 +1,13 @@
 'use client';
 import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
-import { Carousel, Col, Row, Space, Typography } from 'antd';
+import { Carousel, Col, Image, Row, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
 import React, { CSSProperties, useRef } from 'react';
 import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
 
-const { Paragraph, Text } = Typography;
+const { Text } = Typography;
 
 const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
 
@@ -94,13 +94,7 @@ const CarouselContent: React.FC = () => {
       <Carousel autoplay={false} dots={false} ref={sliderRef}>
         {carouselItems.map((item: IItem) => (
           <div className={styles.content} key={item?.title}>
-            <div
-              className={styles.background}
-              style={{
-                background: `url("${item?.backgroundUrl}") center no-repeat`,
-                backgroundSize: 'cover'
-              }}
-            />
+            <Image alt="" preview={false} className={styles.background} src={item?.backgroundUrl} width={'100%'} />
             <div className={`container ${styles.info}`}>
               <Row>
                 <Col xs={24} sm={24} md={24} lg={12}>
@@ -108,9 +102,9 @@ const CarouselContent: React.FC = () => {
                     <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
                     <div>
                       {item?.desc?.map((desc) => (
-                        <Paragraph className={styles.paragraph} key={desc} style={item?.descStyle}>
+                        <Text className={styles.description} key={desc} style={item?.descStyle}>
                           {desc}
-                        </Paragraph>
+                        </Text>
                       ))}
                     </div>
                     <button className={styles.button} onClick={item?.onClick}>
