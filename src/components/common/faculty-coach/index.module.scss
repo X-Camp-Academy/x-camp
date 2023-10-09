@@ -14,6 +14,8 @@
     font-weight: 500;
     color: #172142;
     line-height: 36px;
+
+    @include margin;
   }
 
   :global(.ant-segmented-group) {

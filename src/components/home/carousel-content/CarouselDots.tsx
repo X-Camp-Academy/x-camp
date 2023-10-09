@@ -5,11 +5,12 @@ import styles from './index.module.scss';
 interface IProps {
   dots: number;
   goTo: (index: number) => void;
+  current: number;
 }
-const CarouselDots: React.FC<IProps> = ({ dots, goTo }) => {
+const CarouselDots: React.FC<IProps> = ({ dots, goTo, current }) => {
   const [dotsArr, setDotsArr] = useState<number[]>([]);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const onClick = (index: number) => {
     goTo(index);
@@ -24,6 +25,9 @@ const CarouselDots: React.FC<IProps> = ({ dots, goTo }) => {
     setDotsArr(arr);
   }, [dots]);
 
+  useEffect(() => {
+    setActiveIndex(current);
+  }, [current]);
   return (
     <>
       <ul className={styles.carouselDots}>

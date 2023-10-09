@@ -189,7 +189,7 @@ const PublicCalendar: React.FC = () => {
                   <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
                   <div className={styles.line} />
                 </Space>
-                <div style={{ height: 250, overflow: 'scroll' }}>
+                <div style={{ height: 250, overflow: 'auto', paddingRight: 16 }}>
                   {!!filterDateEventList.length ? (
                     filterDateEventList.map((item, index) => {
                       if (item?.startDateTime)
