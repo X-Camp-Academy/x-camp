@@ -12,6 +12,10 @@
     right: 24px;
   }
 
+  .buttonItem {
+    @include flex(flex-end);
+  }
+
   .fixedButton {
     position: relative;
     margin-bottom: 40px;
