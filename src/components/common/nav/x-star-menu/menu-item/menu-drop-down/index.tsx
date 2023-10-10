@@ -16,7 +16,7 @@ interface Props {
 
 const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => {
   const scroll = useScroll(document);
-  const divideLength = (items?.length || 0) <= 6 ? 3 : 2;
+  const divideLength = (items?.length || 0) >= 8 ? 2 : 3;
   const dividedItems = useMemo(() => {
     // 分为若干列，大于6项则3列，否则2列
     const result: React.ReactNode[][] =

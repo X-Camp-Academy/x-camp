@@ -14,7 +14,7 @@ const { Title, Paragraph, Text } = Typography;
 const Community: React.FC = () => {
   const { lang, format: t } = useLang();
   const { data } = useGetCommunity();
-  const xAlumni = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+  const community = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
   const router = useRouter();
   const generateMaskChildren = (title?: string, description?: string) => {
     return (
@@ -28,8 +28,8 @@ const Community: React.FC = () => {
   };
 
   return (
-    <div className={styles.xalumniContainer}>
-      <div className={`${styles.xalumni} container`}>
+    <div className={styles.communityContainer}>
+      <div className={`${styles.community} container`}>
         <div className={styles.info}>
           <Title className={styles.title}>
             <span>{t('X_ALUMNI')}</span>
@@ -67,7 +67,7 @@ const Community: React.FC = () => {
               }
             ]}
           >
-            {xAlumni?.map((item) => {
+            {community?.map((item) => {
               return (
                 <div key={item?.id}>
                   <MaskCard

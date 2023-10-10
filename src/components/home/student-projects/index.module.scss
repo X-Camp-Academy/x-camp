@@ -29,10 +29,9 @@
 
   .paragraph {
     @extend .paragraphText;
+    @include margin;
 
     margin-bottom: 50px;
-    padding-right: 120px;
-    padding-left: 120px;
     text-align: center;
     color: #172142;
 
@@ -51,35 +50,30 @@
       margin-left: 0 !important;
     }
 
-    .cardContainer {
-      display: flex;
-      justify-content: space-between;
+    .card {
+      position: relative;
+      width: 100%;
+      border-radius: 0;
 
-      .card {
-        position: relative;
-        width: 50%;
-        border-radius: 0;
+      .cardTitle {
+        @include title('thin');
 
-        .cardTitle {
-          @include title('thin');
+        line-height: 54px;
+      }
 
-          line-height: 54px;
-        }
+      .cardParagraph {
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+        color: #666;
+        line-height: 24px;
+      }
 
-        .cardParagraph {
-          font-size: 14px;
-          font-weight: 400;
-          text-align: left;
-          color: #666;
-          line-height: 24px;
-        }
-
-        .cardMore {
-          position: absolute;
-          bottom: 16px;
-          left: 16px;
-          color: #172142;
-        }
+      .cardMore {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        color: #172142;
       }
     }
   }

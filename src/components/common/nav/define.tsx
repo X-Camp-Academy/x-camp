@@ -63,6 +63,14 @@ export const useMenuItems = () => {
           key: 'Java/APCS Classes'
         },
         {
+          label: <Link href="/about-us/student-recommend">{t('ReferralProgram')}</Link>,
+          key: '/about-us/student-recommend/'
+        },
+        {
+          label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
+          key: '/resources/weekly-open-house/'
+        },
+        {
           label: (
             <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
               {t('X-Tutors')}
@@ -107,10 +115,6 @@ export const useMenuItems = () => {
           key: 'Internal Contests'
         },
         {
-          label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
-          key: '/resources/weekly-open-house/'
-        },
-        {
           label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
           key: '/resources/usaco-live-solution/'
         },
@@ -142,18 +146,6 @@ export const useMenuItems = () => {
         }
       },
       children: [
-        // {
-        //   label: <Link href="/about-us/introduction">{t("Introduction")}</Link>,
-        //   key: "/about-us/introduction/",
-        // },
-        // {
-        //   label: <Link href="/about-us/calendar">{t("SchoolCalendar")}</Link>,
-        //   key: "/about-us/calendar/",
-        // },
-        // {
-        //   label: <Link href="/about-us/contact-us">{t("ContactUs")}</Link>,
-        //   key: "/about-us/contact-us/",
-        // },
         {
           label: <Link href="/about-us/achievements">{t('Achievements')}</Link>,
           key: '/about-us/achievements/'
@@ -170,27 +162,30 @@ export const useMenuItems = () => {
           label: <Link href="/about-us/join-us">{t('JoinUs')}</Link>,
           key: '/about-us/join-us/'
         },
-
         {
           label: <Link href="/about-us/news">{t('News')}</Link>,
           key: '/about-us/news/'
+        },
+        {
+          label: <Link href="/about-us/partners">{t('Partners')}</Link>,
+          key: '/about-us/partners/'
         },
         // {
         //   label: <Link href="/about-us/help-center">{t("FAQ")}</Link>,
         //   key: "/about-us/help-center/",
         // },
+        // {
+        //   label: <Link href="/about-us/calendar">{t("SchoolCalendar")}</Link>,
+        //   key: "/about-us/calendar/",
+        // },
         {
-          label: <Link href="/about-us/student-recommend">{t('ReferralProgram')}</Link>,
-          key: '/about-us/student-recommend/'
+          label: <Link href="/about-us/contact-us">{t('ContactUs')}</Link>,
+          key: '/about-us/contact-us/'
         },
         {
-          label: <Link href="/about-us/partners">{t('Partners')}</Link>,
-          key: '/about-us/partners/'
+          label: <Link href="/about-us/x-alumni">{t('XAlumni')}</Link>,
+          key: '/about-us/x-alumni/'
         }
-        // {
-        //   label: <Link href="/about-us/x-alumni">{t("X_ALUMNI")}</Link>,
-        //   key: "/about-us/x-alumni/",
-        // },
       ]
     },
     {

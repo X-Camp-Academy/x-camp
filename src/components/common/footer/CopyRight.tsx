@@ -33,7 +33,7 @@ const CopyRight: React.FC = () => {
 
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
-                  <PhoneOutlined />
+                  <PhoneOutlined rotate={90} />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
                     {t('Tel')}+1 - 510-708-8390
                   </Text>

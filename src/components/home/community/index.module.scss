@@ -1,10 +1,10 @@
 @import '@/styles/variables';
 
-.xalumniContainer {
+.communityContainer {
   padding: 100px 15px;
   width: 100%;
 
-  .xalumni {
+  .community {
     padding-right: 15px;
     padding-left: 15px;
     text-align: center;
@@ -34,9 +34,8 @@
 
     .paragraph {
       @include text(18px, 34px);
+      @include margin;
 
-      padding-right: 120px;
-      padding-left: 120px;
       font-weight: 500;
 
       @media (width <= 768px) {
@@ -100,7 +99,7 @@
       font-size: 18px;
       font-weight: 500;
       color: #172142;
-      line-height: 24px;
+      line-height: 16px;
       cursor: pointer;
 
       .icon {

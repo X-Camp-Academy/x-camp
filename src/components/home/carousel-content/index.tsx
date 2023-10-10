@@ -3,7 +3,7 @@ import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { Carousel, Col, Image, Row, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
-import React, { CSSProperties, useRef } from 'react';
+import React, { CSSProperties, useRef, useState } from 'react';
 import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
 
@@ -25,6 +25,7 @@ interface IItem {
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
   const sliderRef: any = useRef(null);
+  const [current, setCurrent] = useState(0);
 
   const goTo = (index: number) => {
     sliderRef.current?.goTo(index);
@@ -47,7 +48,7 @@ const CarouselContent: React.FC = () => {
         window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09');
       },
       date: t('OpenTime'),
-      backgroundUrl: '/image/about-us/banner-joinUs.png',
+      backgroundUrl: '/image/home/banner-1.png',
       buttonText: t('ZoomLink')
     },
     {
@@ -90,8 +91,8 @@ const CarouselContent: React.FC = () => {
 
   return (
     <div className={styles.bannerContainer}>
-      <CarouselDots goTo={goTo} dots={3} />
-      <Carousel autoplay={false} dots={false} ref={sliderRef}>
+      <CarouselDots goTo={goTo} dots={3} current={current} />
+      <Carousel autoplay dots={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: IItem) => (
           <div className={styles.content} key={item?.title}>
             <Image alt="" preview={false} className={styles.background} src={item?.backgroundUrl} width={'100%'} />

@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import DropdownUserMenu from '../dropdown-user-menu';
-import SelectPage from './SelectPage';
 import { removeDropdown, useMenuItems } from './define';
 import styles from './index.module.scss';
 import XStarMenu from './x-star-menu';
@@ -102,7 +101,8 @@ const Nav: React.FC = () => {
           <Space size={'middle'}>
             {!isMobile ? (
               <>
-                <SelectPage />
+                {/* ! 下一版更新 */}
+                {/* <SelectPage /> */}
                 {user ? (
                   <Space size={12}>
                     <DropdownUserMenu user={user} logout={logout} />
@@ -125,7 +125,8 @@ const Nav: React.FC = () => {
         {isMobile && showMenu && (
           <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
             <div className={styles.mobileIntl}>
-              <SelectPage />
+              {/* ! 下一版更新 */}
+              {/* <SelectPage /> */}
               <ToggleLanguage className={styles.toggleMargin} />
             </div>
             <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />

@@ -96,3 +96,8 @@
     border-left-color: $color;
   }
 }
+
+@mixin margin($width: 160px) {
+  padding-right: $width;
+  padding-left: $width;
+}

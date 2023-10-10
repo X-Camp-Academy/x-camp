@@ -60,30 +60,32 @@ const StudentProjects: React.FC = () => {
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
-              <div className={styles.cardContainer}>
+              <Row gutter={16}>
                 {studentProjectsData &&
                   studentProjectsData.slice(1).map((item) => (
-                    <Card
-                      key={item?.id}
-                      className={styles.card}
-                      bodyStyle={{
-                        overflow: 'hidden',
-                        padding: 16
-                      }}
-                      cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" sandbox="" />}
-                    >
-                      <Space direction="vertical" size={24}>
-                        <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
-                        <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
-                          {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
-                        </Paragraph>
-                        <a href={getTransResult(lang, item?.attributes?.videoZh, item?.attributes?.videoEn)} className={styles.cardMore}>
-                          {'More'} <RightOutlined />
-                        </a>
-                      </Space>
-                    </Card>
+                    <Col xs={24} sm={24} md={24} lg={24} xl={12} key={item?.id}>
+                      <Card
+                        key={item?.id}
+                        className={styles.card}
+                        bodyStyle={{
+                          overflow: 'hidden',
+                          padding: 16
+                        }}
+                        cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" sandbox="" />}
+                      >
+                        <Space direction="vertical" size={24}>
+                          <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
+                          <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
+                            {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
+                          </Paragraph>
+                          <a href={getTransResult(lang, item?.attributes?.videoZh, item?.attributes?.videoEn)} className={styles.cardMore}>
+                            {'More'} <RightOutlined />
+                          </a>
+                        </Space>
+                      </Card>
+                    </Col>
                   ))}
-              </div>
+              </Row>
             </Col>
           </Row>
         </Space>

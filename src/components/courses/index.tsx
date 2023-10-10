@@ -7,8 +7,8 @@ import { useLang } from '@/hoc/with-intl/define';
 import useDayJs from '@/hooks/useDayJs';
 import { useMobile } from '@/utils';
 import { getLangResult, getTransResult, getWeeksDays, scrollIntoView } from '@/utils/public';
-import { CaretRightOutlined, SearchOutlined } from '@ant-design/icons';
-import { Affix, Button, Col, Collapse, DatePicker, Form, Input, Layout, Radio, RadioChangeEvent, Row, Segmented, Select, Space } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
+import { Affix, Collapse, DatePicker, Form, Layout, Radio, RadioChangeEvent, Segmented, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import type { Dayjs } from 'dayjs';
 import { usePathname } from 'next/navigation';
@@ -329,8 +329,6 @@ const Courses: React.FC = () => {
       }
     }
 
-    console.log(result);
-
     const filteredResult = removeEmptyChildren(result as SegmentedCoursesProps[]);
     setSegmentedData(filteredResult);
   };
@@ -366,7 +364,9 @@ const Courses: React.FC = () => {
             )}
           </Affix>
 
-          <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
+          <div className={styles.form} />
+          {/* 下一版更新 */}
+          {/* <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
             <Row gutter={[32, 8]}>
               <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 4 }}>
                 <Form.Item name="category">
@@ -393,7 +393,7 @@ const Courses: React.FC = () => {
                 </Form.Item>
               </Col>
             </Row>
-          </Form>
+          </Form> */}
 
           {segmentedData?.map((item) => {
             return (

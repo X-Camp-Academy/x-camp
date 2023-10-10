@@ -2,13 +2,18 @@
 
 .reviewsContainer {
   width: 100%;
+  background: url('/image/home/icon-home-reviews.png') no-repeat right;
+  background-size: contain;
+  flex-direction: column;
   background-color: #fff5e8;
+
+  @media (width <= 768px) {
+    display: none;
+  }
 
   .reviews {
     position: relative;
     padding: 70px 120px;
-    background: url('/image/home/icon-home-reviews.png') no-repeat right;
-    background-size: contain;
 
     @media (width <= 768px) {
       padding: 70px 30px;
