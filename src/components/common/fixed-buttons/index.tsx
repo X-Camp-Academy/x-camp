@@ -158,9 +158,11 @@ const FixedButtons: React.FC = () => {
   return (
     <div className={styles.buttonContainer}>
       {menu.map((item) => (
-        <FixedButton key={item.key} menu={item.label} icon={item.icon} state={item.state}>
-          <span>{item.text}</span>
-        </FixedButton>
+        <div className={styles.buttonItem} key={item.key}>
+          <FixedButton menu={item.label} icon={item.icon} state={item.state}>
+            <span>{item.text}</span>
+          </FixedButton>
+        </div>
       ))}
     </div>
   );
