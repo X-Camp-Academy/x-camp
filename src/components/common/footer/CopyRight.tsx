@@ -22,10 +22,7 @@ const CopyRight: React.FC = () => {
               {isMobile ? (
                 <>
                   <div className={styles.bar} />
-                  <Space direction="horizontal">
-                    <Text className={styles.followUs}>Follow us:</Text>
-                    <CopyRightIcons />
-                  </Space>
+                  <CopyRightIcons />
                 </>
               ) : (
                 <Space direction="vertical">

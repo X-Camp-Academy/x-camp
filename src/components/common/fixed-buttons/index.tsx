@@ -1,8 +1,10 @@
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
+import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Card, Checkbox, Form, Input } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FixedButton from './FixedButton';
 import styles from './index.module.scss';
 
@@ -12,9 +14,11 @@ interface IMenuItem {
   state?: [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined;
   key: string;
   text: string;
+  mobileIcon: React.ReactNode;
 }
 const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
+  const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
@@ -27,7 +31,7 @@ const FixedButtons: React.FC = () => {
     {
       icon: '/image/about-us/join-us-banner.png',
       state: [open, setOpen],
-      text: t('FreeConsultation'),
+      text: isMobile ? 'consult' : t('FreeConsultation'),
       label: (
         <div className={`${styles.cardFrom} ${styles.autoSize}`}>
           <Card
@@ -110,11 +114,12 @@ const FixedButtons: React.FC = () => {
           </Card>
         </div>
       ),
-      key: '0'
+      key: '0',
+      mobileIcon: <MessageOutlined style={{ fontSize: 36, marginBottom: 8 }} />
     },
     {
       icon: '/image/home/turtle-2.png',
-      text: t('WeeklyOpenHouse'),
+      text: isMobile ? 'Open House' : t('WeeklyOpenHouse'),
       label: (
         <div className={styles.cardFrom}>
           <Card
@@ -151,15 +156,25 @@ const FixedButtons: React.FC = () => {
           </Card>
         </div>
       ),
-      key: '1'
+      key: '1',
+      mobileIcon: <UsergroupAddOutlined style={{ fontSize: 36, marginBottom: 8 }} />
     }
   ];
 
+  useEffect(() => {
+    const delay = 40000;
+    const timeoutId = setTimeout(() => {
+      setOpen(true);
+    }, delay);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
   return (
     <div className={styles.buttonContainer}>
       {menu.map((item) => (
         <div className={styles.buttonItem} key={item.key}>
-          <FixedButton menu={item.label} icon={item.icon} state={item.state}>
+          <FixedButton menu={item.label} icon={item.icon} state={item.state} mobileIcon={item?.mobileIcon}>
             <span>{item.text}</span>
           </FixedButton>
         </div>
