@@ -12,14 +12,6 @@ declare const json: {
   'AboutUs.Description': 'X-Camp Academy is an institute based in the Silicon Valley that offers coding classes for middle and high school students.';
   'AboutX-Camp': 'Why X-Camp';
   'AboutX-Camp_Color': 'Why';
-  'XCamp.title1': 'Comprehensive curriculum';
-  'XCamp.Desc1': "X-Camp Academy, a Silicon Valley-based coding institute, offers beginner-level to IOI level's.";
-  'XCamp.title2': 'Top-notch staff and coaches';
-  'XCamp.Desc2': 'Prestigious students from CS top schools, Experienced in tech, contest medalists in world class.';
-  'XCamp.title3': 'Sense of community';
-  'XCamp.Desc3': 'Supportive, inclusive community for our students pursuing their coding aspirations.';
-  'XCamp.title4': 'Customized learning track';
-  'XCamp.Desc4': 'Weekly homework rate tracking, 24-hour online edu forum, make your learning time valued';
   Achievements: 'Achievements';
   'Achievements.Des': 'More than 200 X-Camp students have been qualified for USACO Silver division and above, including 30 in the Platinum division and 12 selected for the US Training Camp, 7 of which are fresh from the 2023 season.';
   AlphabetEmployeeQuestion: 'Are you currently or were you previously an X-Camp employee, contractor, or intern?';
@@ -77,8 +69,7 @@ declare const json: {
   'Courses.LeftDescription': 'X-Camp offers programming classes to students in grades 5-12 from beginner to IOI levels with a structured, individual-focused curriculum.';
   'Courses.RightDescription': 'List of all courses in X-Camp 2023';
   CourseSchedule: ' Course Schedule';
-  'CourseSchedule.Desc1': 'We offer a variety of courses tailored to suit each student’s goals and schedule.';
-  'CourseSchedule.Desc2': 'Course content ranges from building programming fundamentals to providing intensive competition-related preparation.';
+
   'CourseSchedule.Question': 'If you have any questions, please contact us';
   CoursesFAQS: 'Courses FAQS';
   CourseStyle: 'Course Style';
@@ -112,7 +103,6 @@ declare const json: {
   FreeProgrammingPack: 'Subscribe to our newsletter for a free Programming Pack!';
   Grade: 'Student’s Grade*';
   'Grade.Required': "Please input child's grade!";
-  greatOpportunity: ' great opportunity ';
   HelpCenter: 'Help Center';
   'HelpCenter.Desc': 'Here we provide helpful instructions to ensure a seamless and efficient resolution to any concerns or challenges you may encounter.';
   Home: 'Home';
@@ -148,10 +138,9 @@ declare const json: {
   'One-TimePayment': 'One-Time Payment';
   OnlineClasses: 'Weekly Classes';
   OpenHouse: 'Open House';
-  'OpenHouse.Dec1': "Evaluate student's programming level";
-  'OpenHouse.Dec2': 'Create a programming learning plan';
-  'OpenHouse.Dec3': 'Weekly meetings with us online';
-  OpenTime: '*Every Tuesday 6:30pm-7:30pm Pacific Time';
+  'Home.Banner1.Desc': "Assessing student's programming proficiency Tailoring a personalized learning path Exploring the specifics of X-Camp's diverse classes";
+  'Home.Banner1.Date1': '*Every Tuesday 6:30pm-7:30pm Pacific Time';
+  'Home.Banner1.Date2': '*Every Wednesday 9:30 AM- 10:30 AM Beijing Time';
   'Partner.Desc': 'X-Camp aims to create a supportive and inclusive coding community that encourages knowledge sharing, skill development, and collaboration with our dedicated partners. We always welcome new partners! If you are interested in partnering with us, please send your inquiries to ';
   Partners: 'Partners';
   'Partners.Desc': ' Thank you to our partners! Our partnerships ensure that X-Camp can provide high-quality learning opportunities and foster a vibrant community for all of our students.';
@@ -186,9 +175,7 @@ declare const json: {
   ShareLessons: 'Share lessons';
   SignUpNow: 'Sign up now';
   Skills: 'Skills';
-  StudentProjects: 'Student Projects';
-  'StudentProjects.Desc1': 'X-Camp has its own Art of Python Programming contest 4.0 award and other projects and event every quarter to inspire students . It is a ';
-  'StudentProjects.Desc2': '   for students to showcase what they have learned from classes .';
+
   Submit: 'Submit';
   SubmitAQuestion: 'Submit a question';
   SubmitOpenHouse: 'Submit and get a free USACO toolkit';
@@ -226,7 +213,7 @@ declare const json: {
   WeeklyOpenHouse: 'Weekly Open House';
   'WeeklyOpenHouse.color': 'X-Camp Online Open House';
   WeeklyOpenHouse1: 'Weekly Open House';
-  weeklyOpenHouseOpen: 'Tue night 6:30-7:30 on Zoom (Pacific Time) - 09/25';
+  weeklyOpenHouseOpen: 'Tue night 6:30-7:30 on Zoom (Pacific Time)';
   weeklyOpenHouseDesc1: "Evaluate student's programming level";
   weeklyOpenHouseDesc2: 'Create a programming learning plan';
   weeklyOpenHouseDesc3: 'Weekly meetings with us online';
@@ -238,10 +225,7 @@ declare const json: {
   'WhyWorkWithUs.Desc1': 'X-Camp strives to cultivate an inclusive and dynamic environment by attracting top students from diverse backgrounds. We highly value and respect the contributions of all individuals.';
   'WhyWorkWithUs.Desc2': 'As part of our commitment to excellence, if a candidate is recommended by parents of X-Camp students and subsequently offered a position, the referring student will receive a one-time $500 tuition waiver.';
   WinterCamp: 'Winter On-Site Camps';
-  X_ALUMNI: 'Community';
   X_ALUMNI_INTRODUCTION: 'Since its inception, X-Camp has successfully enrolled over 1,000 students and currently serves more than 500 students from over 250 schools worldwide. If you would like to reconnect with your fellow classmates, please contact us!';
-  'X_Alumni.Desc': 'Since its inception, X-Camp has had over 1,000 students and is currently enrolling over 500+ students in 250+ schools around the world. If you would like to find your classmates, please contact us!';
-  'X-Camp.Desc1': 'X-Camp Academy, a Silicon Valley-based coding institute, offers courses from beginner level to IOI level.';
   'X-CampAcademyPrincipal': 'X-Camp Academy Principal';
   'X-CampFounder': 'X-Camp Founders';
   'X-CampSeniorCodingCoach': 'X-Camp Senior Coding Coach';
@@ -399,17 +383,15 @@ declare const json: {
   'Evaluation.form.success': 'Successfully submitted';
   'Evaluation.form.fail': 'Failed to submit';
   'USACO.enhancement.register': "USACO Director Dr. BrianDean's sharing comes!";
-  'Home.Banner3.title': '7 X-Camp students Selected for USACO US Camp 2022/2023 Session';
+  'Home.Banner3.title': '7 X-Camp students Selected for USACO US Camp in 2022/2023 Session';
   'Home.Banner3.desc': '12 students selested for US Camp between 2020-2023';
   'Home.Banner3.buttonText': 'More Grades';
   'Home.Banner3.title.color': '7 X-Camp students';
   'Home.Banner3.title.color2': 'USACO US Camp';
   'USACO.enhancement.register.color': "Dr. BrianDean's";
-  'USACO.mock.test': 'About USACO Diversity and trends; ';
-  'USACO.live.lecture': 'USACO new rules in new season？';
   'USACO.community.recap': 'Community: share and discuss test recap together';
   'USACO.upsolve': 'Upsolve, upsolve, upsolve!';
-  'USACO.no.class': '* 06/19/2023 (Mon)';
+
   'Fall.weekend.class': '2023 Fall Weekend Class Open to Register!';
   'Fall.tutorial.forum': 'New 24-hour on-call tutorial forum';
   'Fall.launch.classes': 'New project-based launch in Python classes';
@@ -424,6 +406,26 @@ declare const json: {
   Exit_Successfully: 'Exit Successfully';
   Exit_Failed: 'Exit Failed';
   Loading: 'Loading';
+  'Home.Banner2.Desc1': 'Discover the USACO Latest Trends and New Season Rules.';
+  'Home.Banner2.Desc2': 'Difficulty has definitely gone up, but we are trying not to let the inflation of difficulty proceed too quickly.';
+  'Home.Banner2.Desc3': 'In the Platinum level, everyone will have the exact same 5-hour contest window.';
+  'Home.Banner2.Date': '* 06/19/2023 (Mon) 6:00 PM - 7:00 PM PDT';
+
+  'Home.WhyXCamp.Desc': 'The best competitive coding program in the world！';
+  'Home.WhyXCamp.title1': 'Comprehensive Curriculum';
+  'Home.WhyXCamp.Desc1': 'Offering content from Beginner to USACO Camp levels.';
+  'Home.WhyXCamp.title2': 'Top-notch Staff and Coaches';
+  'Home.WhyXCamp.Desc2': 'Instructors from leading CS institutions, tech experts, and contest medalists.';
+  'Home.WhyXCamp.title3': 'Sense of Community';
+  'Home.WhyXCamp.Desc3': 'A supportive, inclusive environment for students on their coding journey.';
+  'Home.WhyXCamp.title4': 'Customized Learning Tracks';
+  'Home.WhyXCamp.Desc4': 'Track progress with weekly assignments and a 24-hour online forum for valuable learning.';
+  'Home.StudentProjects.Desc': 'At X-Camp, we host the Art of Python Programming contest, engaging game design projects, and the coveted 4.0 Awards every quarter, all aimed at igniting inspiration among our students. Explore the impressive displays of learning from our talented students!';
+  'Home.Community.Title': 'Community';
+  'Home.Community.Desc1': 'Since our establishment, X-Camp has welcomed more than 2,000 students and presently serves a thriving community of 600+ students across 250+ schools worldwide. ';
+  'Home.Community.Desc2': "Looking to reconnect with your fellow classmates? Don't hesitate to get in touch with us!";
+  'CourseSchedule.Banner.Desc1': 'We offer a variety of courses tailored to suit each student’s goals and schedule.';
+  'CourseSchedule.Banner.Desc2': 'Course content ranges from building programming fundamentals to providing intensive competition-related preparation.';
 };
 
 export default json;

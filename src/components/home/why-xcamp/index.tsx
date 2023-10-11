@@ -13,29 +13,29 @@ const WhyXCamp: React.FC = () => {
   const aboutContents = [
     {
       icon: '/image/home/icon-why-book.png',
-      title: t('XCamp.title1'),
-      desc: t('XCamp.Desc1'),
+      title: t('Home.WhyXCamp.title1'),
+      desc: t('Home.WhyXCamp.Desc1'),
       url: '/about-us/introduction/#faculty',
       ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/icon-why-concat.png',
-      title: t('XCamp.title2'),
-      desc: t('XCamp.Desc2'),
+      title: t('Home.WhyXCamp.title2'),
+      desc: t('Home.WhyXCamp.Desc2'),
       url: '/about-us/introduction/#faculty',
       ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/icon-why-house.png',
-      title: t('XCamp.title3'),
-      desc: t('XCamp.Desc3'),
+      title: t('Home.WhyXCamp.title3'),
+      desc: t('Home.WhyXCamp.Desc3'),
       url: '/about-us/x-alumni',
       ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/icon-why-track.png',
-      title: t('XCamp.title4'),
-      desc: t('XCamp.Desc4'),
+      title: t('Home.WhyXCamp.title4'),
+      desc: t('Home.WhyXCamp.Desc4'),
       url: '/courses',
       ref: useRef<HTMLDivElement>(null)
     }
@@ -46,7 +46,7 @@ const WhyXCamp: React.FC = () => {
         <Space direction="vertical" align="center" className={styles.aboutXCampTop}>
           <TitleColor title={t('AboutX-Camp')} config={[{ text: t('AboutX-Camp_Color') }]} className={styles.title} />
           <Text className={styles.titleBg} />
-          <Paragraph className={styles.paragraph}>{t('X-Camp.Desc1')}</Paragraph>
+          <Paragraph className={styles.paragraph}>{t('Home.WhyXCamp.Desc')}</Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
           {aboutContents?.map((item) => {

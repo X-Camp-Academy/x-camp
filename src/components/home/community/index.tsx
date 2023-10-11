@@ -32,10 +32,11 @@ const Community: React.FC = () => {
       <div className={`${styles.community} container`}>
         <div className={styles.info}>
           <Title className={styles.title}>
-            <span>{t('X_ALUMNI')}</span>
+            <span>{t('Home.Community.Title')}</span>
           </Title>
           <Text className={styles.titleBg} />
-          <Paragraph className={styles.paragraph}>{t('X_Alumni.Desc')}</Paragraph>
+          <Paragraph className={styles.paragraph}>{t('Home.Community.Desc1')}</Paragraph>
+          <Paragraph className={styles.paragraph}>{t('Home.Community.Desc2')}</Paragraph>
         </div>
 
         <div className={styles.carouselContainer}>

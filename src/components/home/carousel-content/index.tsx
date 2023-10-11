@@ -16,7 +16,7 @@ interface IItem {
   desc: string[];
   backgroundUrl: string;
   onClick: () => void;
-  date: string;
+  date: string[];
   buttonText: string;
   titleConfig?: IConfig[];
   descStyle?: CSSProperties;
@@ -40,14 +40,14 @@ const CarouselContent: React.FC = () => {
           color: '#FFAD11'
         }
       ],
-      desc: [t('OpenHouse.Dec1'), t('OpenHouse.Dec2')],
+      desc: [t('Home.Banner1.Desc')],
       descStyle: {
         color: '#FFF'
       },
       onClick: () => {
         window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09');
       },
-      date: t('OpenTime'),
+      date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
       backgroundUrl: '/image/home/banner-1.png',
       buttonText: t('ZoomLink')
     },
@@ -59,11 +59,11 @@ const CarouselContent: React.FC = () => {
           color: '#FFAD11'
         }
       ],
-      desc: [t('USACO.mock.test'), t('USACO.live.lecture')],
+      desc: [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2'), t('Home.Banner2.Desc3')],
       onClick: () => {
         window.open('https://tinyurl.com/XCamp23-24FallUSACO');
       },
-      date: t('USACO.no.class'),
+      date: [t('Home.Banner2.Date')],
       backgroundUrl: '/image/home/banner-2.png',
       buttonText: t('VideoRecap')
     },
@@ -83,7 +83,7 @@ const CarouselContent: React.FC = () => {
       onClick: () => {
         window.open('https://docs.google.com/forms/d/e/1FAIpQLScNm1Mf4lgvdXUObuJu3wl-_wEcYU9N8ao6PGv8RnANNGE_xw/viewform?usp=sf_link');
       },
-      date: '',
+      date: [''],
       backgroundUrl: '/image/home/banner-3.png',
       buttonText: t('Home.Banner3.buttonText')
     }
@@ -101,19 +101,23 @@ const CarouselContent: React.FC = () => {
                 <Col xs={24} sm={24} md={24} lg={12}>
                   <Space direction="vertical" className={styles.space} size={20}>
                     <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                    <div>
+                    <Space direction="vertical">
                       {item?.desc?.map((desc) => (
                         <Text className={styles.description} key={desc} style={item?.descStyle}>
                           {desc}
                         </Text>
                       ))}
-                    </div>
+                    </Space>
                     <button className={styles.button} onClick={item?.onClick}>
                       {item?.buttonText}
                     </button>
-                    <Text className={styles.date} style={item?.descStyle}>
-                      {item?.date}
-                    </Text>
+                    <Space direction="vertical">
+                      {item?.date?.map((date) => (
+                        <Text className={styles.date} key={date} style={item?.descStyle}>
+                          {date}
+                        </Text>
+                      ))}
+                    </Space>
                   </Space>
                 </Col>
               </Row>
