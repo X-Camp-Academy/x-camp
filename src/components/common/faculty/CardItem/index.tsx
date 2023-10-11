@@ -4,7 +4,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
-import { Card, Image, Space, Typography } from 'antd';
+import { Avatar, Card, Space, Typography } from 'antd';
 import React from 'react';
 
 const { Paragraph } = Typography;
@@ -44,7 +44,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
               {t('More')} <RightOutlined />
             </a>
           </Space>
-          <Image src={item?.attributes?.imgUrl} alt="avatar" preview={false} className={styles.cardImage} />
+          <Avatar src={item?.attributes?.imgUrl} size={{ xs: 16, sm: 32, md: 48, lg: 64, xl: 80, xxl: 96 }} />
         </Space>
       </Card>
     </ColorfulCard>

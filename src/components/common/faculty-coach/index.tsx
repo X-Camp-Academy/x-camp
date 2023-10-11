@@ -61,7 +61,7 @@ const FacultyCoach: React.FC<{
               <ColorfulCard border="bottom" split={4} index={index}>
                 <Card bodyStyle={{ padding: 0 }}>
                   <Space direction="vertical">
-                    <Avatar src={item?.attributes?.img?.data?.attributes?.url} className={styles.avatar} />
+                    <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 16, sm: 32, md: 48, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
                     <Text className={styles.name}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
                     <Paragraph
                       ellipsis={{

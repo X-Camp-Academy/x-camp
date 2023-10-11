@@ -58,13 +58,7 @@
       margin-bottom: 48px;
 
       .avatar {
-        width: 220px;
-        height: 220px;
-
-        @media (width <= 992px) {
-          width: 96px;
-          height: 96px;
-        }
+        margin-top: 24px;
       }
 
       .name {

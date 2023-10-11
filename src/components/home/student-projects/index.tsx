@@ -48,11 +48,7 @@ const StudentProjects: React.FC = () => {
               <Text className={styles.titleBg} />
             </>
           )}
-          <Paragraph className={styles.paragraph}>
-            {t('StudentProjects.Desc1')}
-            <Text className={styles.paragraphText}> {t('greatOpportunity')}</Text>
-            {t('StudentProjects.Desc2')}
-          </Paragraph>
+          <Paragraph className={styles.paragraph}>{t('Home.StudentProjects.Desc')}</Paragraph>
 
           <Row gutter={16} className={styles.row}>
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>

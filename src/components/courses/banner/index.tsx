@@ -17,8 +17,8 @@ const Banner: React.FC = () => {
             <Space direction={'vertical'}>
               <div className={styles.title}>2023 {t('CourseSchedule')}</div>
               <div>
-                <Paragraph className={styles.paragraph}>{t('CourseSchedule.Desc1')}</Paragraph>
-                <Paragraph className={styles.paragraph}>{t('CourseSchedule.Desc2')}</Paragraph>
+                <Paragraph className={styles.paragraph}>{t('CourseSchedule.Banner.Desc1')}</Paragraph>
+                <Paragraph className={styles.paragraph}>{t('CourseSchedule.Banner.Desc2')}</Paragraph>
               </div>
               <div className={styles.contact}>
                 <Link href="/about-us/contact-us" target="_blank">

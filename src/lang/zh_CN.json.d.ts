@@ -12,14 +12,6 @@ declare const json: {
   'AboutUs.Description': 'X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。';
   'AboutX-Camp': '关于X-Camp';
   'AboutX-Camp_Color': '关于';
-  'XCamp.title1': '综合课程';
-  'XCamp.Desc1': 'X-Camp Academy是一家总部位于硅谷的编码学院，提供初级到IOI级别的课程。';
-  'XCamp.title2': '顶尖员工和教练';
-  'XCamp.Desc2': '来自CS顶尖学校的知名学生，在技术竞赛奖牌获得者世界级。';
-  'XCamp.title3': '社区意识';
-  'XCamp.Desc3': '支持和包容我们的学生追求他们的编码愿望的社区。';
-  'XCamp.title4': '定制学习轨迹';
-  'XCamp.Desc4': '每周作业率跟踪，24小时在线教育论坛，让你的学习时间得到重视';
   Achievements: '成就';
   'Achievements.Des': '超过200名X-Camp学生已经进入USACO银级及以上的组别，其中包括30名白金级别的学生和12名被选入美国国家集训队的学生，其中7名来自2023年新赛季，1名入选美国女子国家队。';
   AlphabetEmployeeQuestion: '您目前或曾经是X-Camp的员工、承包商或实习生吗？';
@@ -111,7 +103,6 @@ declare const json: {
   FreeProgrammingPack: '订阅新闻简报，免费获得编程科普礼包！';
   Grade: '学生的年级*';
   'Grade.Required': '请填写孩子的年级！';
-  greatOpportunity: '绝佳机会';
   HelpCenter: '帮助中心';
   'HelpCenter.Desc': '我们在这里提供帮助，确保您在遇到任何问题或挑战时能够高效、顺利解决。';
   Home: '首页';
@@ -146,10 +137,7 @@ declare const json: {
   'One-TimePayment': '一次性支付';
   OnlineClasses: '在线课程';
   OpenHouse: '校园开放日';
-  'OpenHouse.Dec1': '评估学生的编程水平';
-  'OpenHouse.Dec2': '制定编程学习计划';
-  'OpenHouse.Dec3': '每周与我们线上见面';
-  OpenTime: '*太平洋时间每周二下午6:30至7:30';
+
   'Partner.Desc': 'X-Camp旨在创建一个支持性和包容性的编程社区，鼓励知识共享、技能发展。我们欢迎新的合作伙伴！如果您有兴趣与我们合作，请发送您的请求至';
   Partners: '合作伙伴';
   'Partners.Desc': '感谢合作伙伴！伙伴关系确保X-Camp能够为所有学生提供高质量的学习机会，并培养一个充满活力的社区。';
@@ -184,9 +172,7 @@ declare const json: {
   ShareLessons: '复制课程信息并分享';
   SignUpNow: '立即注册';
   Skills: '技能';
-  StudentProjects: '学生项目';
-  'StudentProjects.Desc1': '每个季度，X-Camp举办自己的Python入门编程比赛，快来看学生展示他们从课程所学的知识！';
-  'StudentProjects.Desc2': ' 以展示学生从课程中学到的知识。';
+
   Submit: '提交';
   SubmitAQuestion: '提交问题';
   SubmitOpenHouse: '提交，还可获得最新USACO科普礼包！';
@@ -236,10 +222,7 @@ declare const json: {
   'WhyWorkWithUs.Desc1': 'X-Camp致力于营造一个包容和充满活力的工作环境，我们非常重视并尊重每个人的贡献。';
   'WhyWorkWithUs.Desc2': '作为我们追求卓越的一部分，如果候选人经X-Camp学生家长推荐并应聘成功，推荐者将获得一次性500美元的学费减免。';
   WinterCamp: '冬令营';
-  X_ALUMNI: '社区';
   X_ALUMNI_INTRODUCTION: '自成立以来，X-Camp已成功招收了1000多名学生，目前为全球300多所学校的500多名学生提供服务。如果您想重新找回您的校友，请与我们联系！';
-  'X_Alumni.Desc': '自成立以来，X-Camp已招收超过1000名学生，目前为全球300多所学校的500多名学生提供服务。如果您想重新找回您的校友，请与我们联系！';
-  'X-Camp.Desc1': 'X-Camp Academy是位于硅谷的编程教育机构，为初高中生提供编程课程，专注于数据结构和算法学习。我们的目标是为学生提供在美国编程奥林匹克竞赛等比赛中脱颖而出所需的技能。在这里，了解我们的最新动态和';
   Founders: '创始人';
   'X-Cup': 'X-Cup';
   'X-Tutors': 'X-Tutors';
@@ -395,16 +378,8 @@ declare const json: {
   'Evaluation.form.fail': '提交失败';
   'USACO.enhancement.register': 'USACO总监BrianDean博士的分享来了！';
   'USACO.enhancement.register.color': 'BrianDean博士';
-  'USACO.mock.test': 'USACO全真模考班为23/24赛季做准备';
-  'USACO.live.lecture': '模考后1小时实时讲解';
   'USACO.community.recap': '学生社区：分享和讨论考后总结';
   'USACO.upsolve': '百分百订正之前的考题！';
-  'USACO.no.class': '* 06/19/2023 (星期一)';
-  'Home.Banner3.title': '7名X-Camp学生入选USACO US Camp 2022/2023课程';
-  'Home.Banner3.desc': '12名学生入选2020-2023年美国夏令营';
-  'Home.Banner3.buttonText': '更多详情';
-  'Home.Banner3.title.color': '7名X-Camp学生';
-  'Home.Banner3.title.color2': 'USACO US Camp';
   'Fall.weekend.class': '2023年秋季周末班开始注册！';
   'Fall.tutorial.forum': '全天候在线辅导论坛';
   'Fall.launch.classes': '全新基于Python课打造的项目';
@@ -420,6 +395,34 @@ declare const json: {
   Exit_Successfully: '退出成功';
   Exit_Failed: '退出失败';
   Loading: '加载中';
+  'Home.Banner1.Desc': '评估学生的编程水平';
+  'Home.Banner1.Date1': '*太平洋时间每周二下午6:30至7:30';
+  'Home.Banner1.Date2': '*太平洋时间每周二下午6:30至7:30';
+  'Home.Banner2.Desc1': 'Discover the USACO Latest Trends and New Season Rules.';
+  'Home.Banner2.Desc2': 'Discover the USACO Latest Trends and New Season Rules.';
+  'Home.Banner2.Desc3': 'Discover the USACO Latest Trends and New Season Rules.';
+  'Home.Banner2.Date': '* 06/19/2023 (Mon) 6:00 PM - 7:00 PM PDT';
+  'Home.Banner3.title': '7名X-Camp学生入选USACO US Camp 2022/2023课程';
+  'Home.Banner3.desc': '12名学生入选2020-2023年美国夏令营';
+  'Home.Banner3.buttonText': '更多详情';
+  'Home.Banner3.title.color': '7名X-Camp学生';
+  'Home.Banner3.title.color2': 'USACO US Camp';
+
+  'Home.WhyXCamp.title1': '综合课程';
+  'Home.WhyXCamp.Desc1': 'X-Camp Academy是一家总部位于硅谷的编码学院，提供初级到IOI级别的课程。';
+  'Home.WhyXCamp.title2': '顶尖员工和教练';
+  'Home.WhyXCamp.Desc2': '来自CS顶尖学校的知名学生，在技术竞赛奖牌获得者世界级。';
+  'Home.WhyXCamp.title3': '社区意识';
+  'Home.WhyXCamp.Desc3': '支持和包容我们的学生追求他们的编码愿望的社区。';
+  'Home.WhyXCamp.title4': '定制学习轨迹';
+  'Home.WhyXCamp.Desc4': '每周作业率跟踪，24小时在线教育论坛，让你的学习时间得到重视';
+  'Home.WhyXCamp.Desc': 'X-Camp Academy是位于硅谷的编程教育机构，为初高中生提供编程课程，专注于数据结构和算法学习。我们的目标是为学生提供在美国编程奥林匹克竞赛等比赛中脱颖而出所需的技能。在这里，了解我们的最新动态和';
+  'Home.StudentProjects.Desc': '每个季度，X-Camp举办自己的Python入门编程比赛，快来看学生展示他们从课程所学的知识！';
+  'Home.Community.Title': 'Community';
+  'Home.Community.Desc1': 'Community';
+  'Home.Community.Desc2': 'Community';
+  'CourseSchedule.Banner.Desc1': 'We offer a variety of courses tailored to suit each student’s goals and schedule.';
+  'CourseSchedule.Banner.Desc2': 'Course content ranges from building programming fundamentals to providing intensive competition-related preparation.';
 };
 
 export default json;
