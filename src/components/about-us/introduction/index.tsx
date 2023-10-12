@@ -6,6 +6,7 @@ import React from 'react';
 import styles from './index.module.scss';
 
 const Banner = dynamic(() => import('./banner'));
+const AboutXCamp = dynamic(() => import('./about-xcamp'));
 const History = dynamic(() => import('./history'));
 const XCampFounders = dynamic(() => import('@/components/common/xcamp-founders'));
 const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
@@ -20,6 +21,9 @@ const Introduction: React.FC = () => {
     <Layout className={styles.introductionContainer}>
       <Content>
         <Banner />
+
+        <AboutXCamp />
+
         <History />
         <XCampFounders />
         <UsacoMedal />

@@ -16,6 +16,10 @@
     line-height: 36px;
 
     @include margin;
+
+    @media (width <= 768px) {
+      @include margin(0);
+    }
   }
 
   :global(.ant-segmented-group) {
