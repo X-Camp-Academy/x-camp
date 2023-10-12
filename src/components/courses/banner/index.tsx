@@ -39,6 +39,11 @@ const Banner: React.FC = () => {
                   {t('1On1Consultation')}
                 </Link>
               </Button>
+              <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
+                <Link href="https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09" target="_blank">
+                  {t('WeeklyOpenHouse')}
+                </Link>
+              </Button>
             </Space>
           </Col>
         </Row>
