@@ -107,9 +107,13 @@ export const useMenuItems = () => {
           key: '/resources/education-forum/'
         },
         {
-          label: <a href="http://usaco.org/ ">USACO</a>,
+          label: <a href="/resources/usaco/">USACO</a>,
           key: '/resources/usaco/'
         },
+        // {
+        //   label: <a href="http://usaco.org/ ">USACO</a>,
+        //   key: '/resources/usaco/'
+        // },
         {
           label: <a href="/about-us/achievements#art-of-programming-results">Internal Contests</a>,
           key: 'Internal Contests'

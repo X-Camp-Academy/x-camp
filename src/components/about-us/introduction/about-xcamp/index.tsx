@@ -39,7 +39,6 @@ const AboutXCamp: React.FC = () => {
 
       <Space direction={isMobile ? 'vertical' : 'horizontal'} size={48} className={styles.space}>
         <Image preview={false} alt="" src={'/image/courses/camps-3.png'} className={styles.leftImage} />
-
         <Space direction="vertical" size={32} className={styles.rightSpace}>
           <Title className={styles.rightTitle}>X-Camp is a programming education company</Title>
           <Paragraph className={styles.rightParagraph}>{"It's a Silicon Valley-based coding institute, offers beginner-level to IOI level's programming classes to 5-12th grade students."}</Paragraph>

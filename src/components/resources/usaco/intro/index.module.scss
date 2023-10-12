@@ -1,0 +1,42 @@
+.introContainer {
+  margin-top: 100px;
+  padding: 48px;
+  background-color: #fff;
+
+  .title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 48px;
+  }
+
+  .subTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 48px;
+  }
+
+  .subParagraph {
+    font-size: 20px;
+    font-weight: 400;
+    color: #172142;
+    line-height: 48px;
+  }
+
+  .space {
+    width: 100%;
+
+    .image {
+      height: 252px;
+      background: #172142;
+      opacity: 0.7;
+
+      @media (width <= 768px) {
+        width: 100%;
+        background: #172142;
+        opacity: 0.7;
+      }
+    }
+  }
+}
