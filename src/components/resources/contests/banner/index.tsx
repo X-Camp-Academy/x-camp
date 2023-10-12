@@ -11,18 +11,17 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      X-Camp will organize students to join different
+      {t('Contests.Banner.Desc1')}
       <br />
-      competitive programming contests yearly. We partner
+      {t('Contests.Banner.Desc2')}
       <br />
-      with distinguished contest partners from prestigious
+      {t('Contests.Banner.Desc3')}
       <br />
-      universities, high schools, and NGOs, for providing
+      {t('Contests.Banner.Desc4')}
       <br />
-      high-quality contest and community for students.
+      {t('Contests.Banner.Desc5')}
     </>
   );
-
   return (
     <CommonBanner
       image={'/image/about-us/student-recommend-banner.png'}

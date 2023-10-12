@@ -1,16 +1,22 @@
+import { useLang } from '@/hoc/with-intl/define';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
 const CommonBanner = dynamic(() => import('@/components/common/common-banner'));
 
 const Banner: React.FC = () => {
+  const { format: t } = useLang();
   const paragraph = (
     <>
-      Provide support to the community of teenagers and
+      {t('EducationForum.Banner.Desc1')}
       <br />
-      parents who love programming education.
+      {t('EducationForum.Banner.Desc2')}
       <br />
-      Invite experienced speakers to share in our community.
+      {t('EducationForum.Banner.Desc3')}
+      <br />
+      {t('EducationForum.Banner.Desc4')}
+      <br />
+      {t('EducationForum.Banner.Desc5')}
     </>
   );
 

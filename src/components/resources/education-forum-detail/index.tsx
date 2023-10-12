@@ -27,8 +27,6 @@ const Article: React.FC = () => {
     });
   }, []);
 
-  console.log(newEventData);
-
   return (
     <Layout className={styles.main}>
       <div className="container">

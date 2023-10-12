@@ -3,6 +3,7 @@ import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { Carousel, Col, Image, Row, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import React, { CSSProperties, useRef, useState } from 'react';
 import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
@@ -24,6 +25,7 @@ interface IItem {
 
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
+  const router = useRouter();
   const sliderRef: any = useRef(null);
   const [current, setCurrent] = useState(0);
 
@@ -81,7 +83,7 @@ const CarouselContent: React.FC = () => {
         }
       ],
       onClick: () => {
-        window.open('https://docs.google.com/forms/d/e/1FAIpQLScNm1Mf4lgvdXUObuJu3wl-_wEcYU9N8ao6PGv8RnANNGE_xw/viewform?usp=sf_link');
+        router.push('/about-us/achievements');
       },
       date: [''],
       backgroundUrl: '/image/home/banner-3.png',

@@ -15,7 +15,7 @@ const Banner: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={14}>
             <Space direction={'vertical'}>
-              <div className={styles.title}>2023 {t('CourseSchedule')}</div>
+              <div className={styles.title}>{t('CourseSchedule')}</div>
               <div>
                 <Paragraph className={styles.paragraph}>{t('CourseSchedule.Banner.Desc1')}</Paragraph>
                 <Paragraph className={styles.paragraph}>{t('CourseSchedule.Banner.Desc2')}</Paragraph>
@@ -29,11 +29,6 @@ const Banner: React.FC = () => {
           </Col>
           <Col xs={24} sm={24} md={{ span: 8, offset: 2 }} className={styles.rightCol}>
             <Space direction={'vertical'} size={32}>
-              {/* <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
-                <Link href="/about-us/contact-us#trial-class" target="_blank">
-                  {t('TrialClass')}
-                </Link>
-              </Button> */}
               <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
                 <Link href="/evaluation" target="_blank">
                   {t('PlacementTest')}

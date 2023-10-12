@@ -20,7 +20,7 @@ const USACOSpotlight: React.FC = () => {
       <div className={`${styles.USACOSpotlight} container`}>
         <Space direction="vertical" align="start">
           <Title className={styles.title}>{t('USACOSpotlight')}</Title>
-          <Text className={styles.intro}>{t('USACOMedal.Desc')}</Text>
+          <Text className={styles.intro}>{t('USACOSpotlight.Desc')}</Text>
         </Space>
 
         <div className={styles.medalIntro}>

@@ -20,6 +20,8 @@
   }
 
   .row {
+    margin-top: 100px;
+
     @media (width <= 768px) {
       margin-right: 0 !important;
       margin-left: 0 !important;

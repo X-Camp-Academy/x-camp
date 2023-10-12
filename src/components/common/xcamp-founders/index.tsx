@@ -19,10 +19,6 @@ const XCampFounder: React.FC = () => {
           </Text>
         </Title>
 
-        <Paragraph className={styles.paragraph}>
-          Founded on August 22, 2017, 4 students currently trained have entered the US National Training Team, with more than 500 students currently studying in 300+ schools around the world.
-        </Paragraph>
-
         <Row gutter={[32, 124]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
             <div className={styles.charlieImgBackground} />

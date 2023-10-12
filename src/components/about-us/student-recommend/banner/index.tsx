@@ -1,14 +1,16 @@
 import CommonBanner from '@/components/common/common-banner';
+import { useLang } from '@/hoc/with-intl/define';
 import React from 'react';
 
 const Banner: React.FC = () => {
+  const { format: t } = useLang();
   const paragraph = (
     <>
-      {"Encourage your friend's kids AND your kid's friends to"}
+      {t('ReferralProgram.Banner.Desc1')}
       <br />
-      join our coding program.
+      {t('ReferralProgram.Banner.Desc2')}
       <br />
-      Earn $100 for you and $50 for each friend that signs up.
+      {t('ReferralProgram.Banner.Desc3')}
     </>
   );
 

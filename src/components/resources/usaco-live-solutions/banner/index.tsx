@@ -7,11 +7,11 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      The first-ever, and most comprehensive live
+      {t('USACOLiveSolutions.Banner.Desc1')}
       <br />
-      problem-solving broadcast on the entire web,
+      {t('USACOLiveSolutions.Banner.Desc2')}
       <br />
-      only in X-Camp.
+      {t('USACOLiveSolutions.Banner.Desc3')}
     </>
   );
   return (

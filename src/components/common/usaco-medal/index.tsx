@@ -28,7 +28,8 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
       count: 30,
       title: t('USACOPlatinum'),
       color: '#FFD600',
-      style: styles.silverMedal
+      style: styles.silverMedal,
+      suffix: true
     },
     {
       count: 12,

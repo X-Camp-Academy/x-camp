@@ -1,14 +1,16 @@
 import CommonBanner from '@/components/common/common-banner';
+import { useLang } from '@/hoc/with-intl/define';
 import React from 'react';
 
 const Banner: React.FC = () => {
+  const { format: t } = useLang();
   const paragraph = (
     <>
-      Stay informed about new program launches
+      {t('News.Banner.Desc1')}
       <br />
-      events, and exciting achievements of our
+      {t('News.Banner.Desc2')}
       <br />
-      students and partners.
+      {t('News.Banner.Desc3')}
     </>
   );
 
