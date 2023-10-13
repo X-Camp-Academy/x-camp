@@ -437,6 +437,7 @@ declare const json: {
   'USACOLiveSolutions.Banner.Desc2': 'problem-solving broadcast on the entire web';
   'USACOLiveSolutions.Banner.Desc3': 'only in X-Camp.';
   'WeeklyOpenHouse.Banner.Desc1': 'Get a glimpse into our programs, curriculum, and';
+  'WeeklyOpenHouse.Banner.Desc2': 'teaching approach as we answer your questions.';
   InternalContests: 'Internal Contests';
   ExternalContests: 'External Contests';
   MockTestClasses: 'Mock Test Classes';
