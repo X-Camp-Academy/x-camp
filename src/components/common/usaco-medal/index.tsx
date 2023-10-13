@@ -28,7 +28,8 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
       count: 30,
       title: t('USACOPlatinum'),
       color: '#FFD600',
-      style: styles.silverMedal
+      style: styles.silverMedal,
+      suffix: true
     },
     {
       count: 12,
@@ -49,9 +50,9 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
       {showTitle && (
         <Col span={24} className={styles.titleContainer}>
           <Title className={styles.title} onClick={() => router.push('/about-us/achievements')}>
-            Our&nbsp;
+            {t('Our')}
             <Text className={styles.title} style={{ color: '#ffad11' }}>
-              Achievements
+              {t('Achievements')}
             </Text>
           </Title>
         </Col>

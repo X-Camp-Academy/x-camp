@@ -2,6 +2,7 @@ import { EventCategory, GetNewEvent, GetNewEventRequest, NewEventCategory } from
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { AndOrFilters, FilterFields } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
+import { EventOptionsProps } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
@@ -9,11 +10,6 @@ import { Button, Col, Pagination, Row, Space } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-
-interface ActivityItem {
-  title: string;
-  key: EventCategory;
-}
 
 const Activities: React.FC = () => {
   const router = useRouter();
@@ -56,26 +52,26 @@ const Activities: React.FC = () => {
     });
   }, [tag, selectedItem, current]);
 
-  const items: ActivityItem[] = [
+  const items: EventOptionsProps[] = [
     {
-      title: t('ActivityItem1'),
-      key: EventCategory.SchoolLifeSharing
+      label: t('SchoolLifeSharing'),
+      value: EventCategory.SchoolLifeSharing
     },
     {
-      title: t('ActivityItem2'),
-      key: EventCategory.CodingEducation
+      label: t('CodingEducation'),
+      value: EventCategory.CodingEducation
     },
     {
-      title: t('ActivityItem3'),
-      key: EventCategory.CareerPath
+      label: t('CareerPath'),
+      value: EventCategory.CareerPath
     },
     {
-      title: t('ActivityItem4'),
-      key: EventCategory.Research
+      label: t('Research'),
+      value: EventCategory.Research
     },
     {
-      title: t('ActivityItem5'),
-      key: EventCategory.All
+      label: t('All'),
+      value: EventCategory.All
     }
   ];
 
@@ -91,13 +87,13 @@ const Activities: React.FC = () => {
           {items?.map((item) => {
             return (
               <div
-                className={`${styles.toolBarItem} ${item?.key === selectedItem ? styles.selectedToolBarItem : ''}`}
-                key={item?.key}
+                className={`${styles.toolBarItem} ${item?.value === selectedItem ? styles.selectedToolBarItem : ''}`}
+                key={item?.value}
                 onClick={() => {
-                  setSelectedItem(item?.key);
+                  setSelectedItem(item?.value);
                 }}
               >
-                {item?.title}
+                {item?.label}
               </div>
             );
           })}

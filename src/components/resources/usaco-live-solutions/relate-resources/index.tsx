@@ -10,19 +10,19 @@ const RelateResources: React.FC = () => {
   const { format: t } = useLang();
   const QAData = [
     {
-      title: t('USACO.Activity1'),
+      title: t('USACOPublicMockTest.Title'),
       url: '/about-us/contact-us/',
-      description: t('USACO.Desc1')
+      description: t('USACOPublicMockTest.Desc')
     },
     {
-      title: t('USACO.Activity2'),
+      title: t('USACOMockTestClass.Title'),
       url: '/',
-      description: t('USACO.Desc2')
+      description: t('USACOMockTestClass.Desc')
     },
     {
-      title: t('USACO.Activity3'),
+      title: t('USACOSharingSession.Title'),
       url: 'https://www.youtube.com/watch?v=K2PWgYHZWbw&t=3s',
-      description: t('USACO.Desc3')
+      description: t('USACOSharingSession.Desc')
     }
   ];
 

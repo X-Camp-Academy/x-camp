@@ -24,7 +24,15 @@ const UsacoIntro = ({ data }: Props) => {
   return (
     <div className={styles.introduction}>
       <div className={'container'}>
-        <div className={styles.description}>{t('USACOSolution.Intro')}</div>
+        <div className={styles.description}>
+          {t('USACOSolution.Intro1')}
+          <br />
+          <br />
+          {t('USACOSolution.Intro2')}
+          <br />
+          <br />
+          {t('USACOSolution.Intro3')}
+        </div>
         {data?.map((v, index) => {
           return (
             <div key={'video' + index} style={{ marginBottom: 92 }}>

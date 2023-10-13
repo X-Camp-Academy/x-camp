@@ -55,7 +55,7 @@ export const useMenuItems = () => {
           key: '/courses/#camps'
         },
         {
-          label: <a href="/courses#mock-test-classes">{'Mock Test Classes'}</a>,
+          label: <a href="/courses#mock-test-classes">{t('MockTestClasses')}</a>,
           key: 'Mock Test Classes'
         },
         {
@@ -107,11 +107,15 @@ export const useMenuItems = () => {
           key: '/resources/education-forum/'
         },
         {
-          label: <a href="http://usaco.org/ ">USACO</a>,
+          label: <a href="/resources/usaco/">USACO</a>,
           key: '/resources/usaco/'
         },
+        // {
+        //   label: <a href="http://usaco.org/ ">USACO</a>,
+        //   key: '/resources/usaco/'
+        // },
         {
-          label: <a href="/about-us/achievements#art-of-programming-results">Internal Contests</a>,
+          label: <a href="/about-us/achievements#art-of-programming-results">{t('InternalContests')}</a>,
           key: 'Internal Contests'
         },
         {
@@ -119,7 +123,7 @@ export const useMenuItems = () => {
           key: '/resources/usaco-live-solution/'
         },
         {
-          label: <Link href="/resources/contests">External Contests</Link>,
+          label: <Link href="/resources/contests">{t('ExternalContests')}</Link>,
           key: '/resources/contests/'
         }
       ]

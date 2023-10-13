@@ -17,9 +17,15 @@
     line-height: 36px;
 
     @include margin;
+
+    @media (width <= 768px) {
+      @include margin(0);
+    }
   }
 
   .row {
+    margin-top: 100px;
+
     @media (width <= 768px) {
       margin-right: 0 !important;
       margin-left: 0 !important;
@@ -122,8 +128,10 @@
     }
 
     .keyText {
-      @extend .paragraph;
-
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      line-height: 36px;
       color: #ffad11;
     }
   }

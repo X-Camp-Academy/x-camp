@@ -1,0 +1,71 @@
+@import '@/styles/variables';
+
+.aboutXcamp {
+  margin-top: 100px;
+
+  .title {
+    text-align: center;
+
+    @include title('default');
+  }
+
+  .paragraph {
+    font-size: 18px;
+    font-weight: 36px;
+    text-align: center;
+    color: #172142;
+
+    @include margin;
+
+    @media (width <= 768px) {
+      @include margin(0);
+    }
+  }
+
+  .space {
+    margin-top: 64px;
+
+    .leftImage {
+      width: 500px;
+      height: 464px;
+      border-radius: 12px;
+      background: #d8d8d8;
+
+      @media (width <= 768px) {
+        width: 100%;
+      }
+    }
+
+    .rightSpace {
+      .rightTitle {
+        @include title('default');
+      }
+
+      .rightParagraph {
+        font-size: 18px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 36px;
+      }
+
+      .iconsBox {
+        display: flex;
+        justify-content: space-between;
+
+        .iconTitle {
+          font-size: 18px;
+          font-weight: 600;
+          color: #172142;
+          line-height: 20px;
+        }
+
+        .iconDesc {
+          font-size: 16px;
+          font-weight: 400;
+          color: #172142;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}

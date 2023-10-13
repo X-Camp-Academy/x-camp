@@ -23,11 +23,6 @@ const Banner: React.FC = () => {
           </Col>
           <Col xs={24} sm={24} md={{ span: 8, offset: 2 }} className={styles.rightCol}>
             <Space direction={'vertical'} size={32} className={styles.btnGroup}>
-              {/* <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
-                <Link href="/about-us/contact-us#trial-class" target="_blank">
-                  {t('TrialClass')}
-                </Link>
-              </Button> */}
               <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
                 <Link href="/" target="_blank">
                   {t('1On1Consultation')}

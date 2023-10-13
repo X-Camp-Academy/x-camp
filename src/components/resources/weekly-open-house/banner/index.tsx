@@ -11,9 +11,9 @@ const Banner: React.FC = () => {
   const router = useRouter();
   const paragraph = (
     <>
-      Get a glimpse into our programs, curriculum, and
+      {t('WeeklyOpenHouse.Banner.Desc1')}
       <br />
-      teaching approach as we answer your questions.
+      {t('WeeklyOpenHouse.Banner.Desc2')}
     </>
   );
   return (

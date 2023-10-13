@@ -1,3 +1,4 @@
+import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import dayjs from 'dayjs';
@@ -7,6 +8,7 @@ import styles from './index.module.scss';
 const { Title, Paragraph } = Typography;
 
 const History: React.FC = () => {
+  const { format: t } = useLang();
   const isMobile = useMobile();
   const years = [2023, 2022, 2021, 2020, 2019, 2018, 2017];
   const currentYear = dayjs().year();
@@ -33,8 +35,8 @@ const History: React.FC = () => {
   return (
     <div className={styles.historyContainer}>
       <div className="container">
-        <Title className={styles.title}>History of X-Camp</Title>
-        <Paragraph className={styles.paragraph}>{"With nearly 2,000 students trained in just six years, X-Camp's impact on their coding journeys remains unparalleled."}</Paragraph>
+        <Title className={styles.title}>{t('HistoryOfXCamp.Title')}</Title>
+        <Paragraph className={styles.paragraph}>{t('HistoryOfXCamp.Desc')}</Paragraph>
 
         <div className={styles.timeline}>
           {years?.map((item) => (

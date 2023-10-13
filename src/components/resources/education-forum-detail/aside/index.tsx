@@ -44,7 +44,6 @@ const ArticleSider: React.FC<{
   >([]);
 
   const { data: articleData } = useGetNewEvent({ manual: false });
-  console.log(articleData);
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
     if (endDateTime === '') {

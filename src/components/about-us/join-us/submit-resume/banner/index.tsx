@@ -10,11 +10,10 @@ const Banner: React.FC = () => {
   const router = useRouter();
   const paragraph = (
     <>
-      X-Camp offers a wide range of career opportunities within
+      {t('JoinUs.Banner.Desc1')}
       <br />
-      our company. Please note that all openings are based in
+      {t('JoinUs.Banner.Desc2')}
       <br />
-      the Silicon Valley except for TAs.
     </>
   );
   return (

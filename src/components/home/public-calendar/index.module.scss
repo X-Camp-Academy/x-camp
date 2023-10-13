@@ -207,5 +207,12 @@
         }
       }
     }
+
+    :global(.ant-picker-calendar-date-content) {
+      div {
+        width: 6px !important;
+        height: 6px !important;
+      }
+    }
   }
 }

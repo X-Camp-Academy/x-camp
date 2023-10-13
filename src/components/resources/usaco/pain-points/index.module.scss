@@ -1,0 +1,47 @@
+.painPointsContainer {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  .colorfulCard {
+    width: 100%;
+
+    .space {
+      padding: 32px;
+      padding-top: 0;
+      width: 100%;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 48px;
+    }
+
+    .list {
+      .circle {
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #ffad11;
+      }
+
+      .text {
+        font-size: 24px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 48px;
+      }
+    }
+
+    .paragraph {
+      margin-top: 24px;
+      font-size: 21px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 40px;
+    }
+  }
+}

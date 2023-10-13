@@ -43,9 +43,6 @@ const WhyContest: React.FC = () => {
             </div>
           ))}
         </Space>
-        <div className={styles.bottom}>
-          <div className={styles.description}>{t('WhyContest.Desc1')}</div>
-        </div>
       </div>
     </div>
   );

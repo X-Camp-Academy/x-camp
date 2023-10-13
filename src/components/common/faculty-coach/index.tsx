@@ -7,7 +7,7 @@ import { Avatar, Card, Col, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React, { useEffect, useState } from 'react';
 import ColorfulCard from '../colorful-card';
-import SegmentedRadioGroup from '../segmented-radio-group';
+import SegmentedRadioGroup, { FacultyOptionsProps } from '../segmented-radio-group';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -19,9 +19,23 @@ const FacultyCoach: React.FC<{
   const [facultyData, setFacultyData] = useState<StrapiResponseDataItem<GetFaculty>[]>();
   const { format: t, lang } = useLang();
   const { hash } = window.location;
-  const LEVEL_TYPES = Object.values(FacultyLevelCategory);
 
   const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
+  const options: FacultyOptionsProps[] = [
+    {
+      label: t('Basic'),
+      value: FacultyLevelCategory.Basic
+    },
+    {
+      label: t('Grandmaster'),
+      value: FacultyLevelCategory.Grandmaster
+    },
+    {
+      label: t('Intermediate'),
+      value: FacultyLevelCategory.Intermediate
+    }
+  ];
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
@@ -53,19 +67,19 @@ const FacultyCoach: React.FC<{
           <Paragraph className={styles.titleParagraph}>{t('Faculty.Desc')}</Paragraph>
         </Space>
 
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} data={LEVEL_TYPES} />
+        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} />
 
         <Row justify="center" align="middle" gutter={48} className={styles.row}>
           {facultyData?.map((item, index) => (
             <Col key={item?.id} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }} className={styles.col}>
               <ColorfulCard border="bottom" split={4} index={index}>
-                <Card bodyStyle={{ padding: 0 }}>
+                <Card bodyStyle={{ padding: 0, height: 360 }}>
                   <Space direction="vertical">
-                    <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 16, sm: 32, md: 48, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
+                    <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
                     <Text className={styles.name}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
                     <Paragraph
                       ellipsis={{
-                        rows: 3,
+                        rows: 6,
                         tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
                       }}
                       className={styles.description}

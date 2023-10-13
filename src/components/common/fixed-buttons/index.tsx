@@ -1,10 +1,10 @@
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
 import { useLang } from '@/hoc/with-intl/define';
-import { useMobile } from '@/utils';
+import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Card, Checkbox, Form, Input } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
 import FixedButton from './FixedButton';
 import styles from './index.module.scss';
 
@@ -15,6 +15,7 @@ interface IMenuItem {
   key: string;
   text: string;
   mobileIcon: React.ReactNode;
+  ref: RefObject<HTMLDivElement>;
 }
 const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
@@ -115,7 +116,8 @@ const FixedButtons: React.FC = () => {
         </div>
       ),
       key: '0',
-      mobileIcon: <MessageOutlined style={{ fontSize: 36, marginBottom: 8 }} />
+      mobileIcon: <MessageOutlined style={{ fontSize: 36, marginBottom: 8 }} />,
+      ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/turtle-2.png',
@@ -157,7 +159,8 @@ const FixedButtons: React.FC = () => {
         </div>
       ),
       key: '1',
-      mobileIcon: <UsergroupAddOutlined style={{ fontSize: 36, marginBottom: 8 }} />
+      mobileIcon: <UsergroupAddOutlined style={{ fontSize: 36, marginBottom: 8 }} />,
+      ref: useRef<HTMLDivElement>(null)
     }
   ];
 
@@ -173,7 +176,7 @@ const FixedButtons: React.FC = () => {
   return (
     <div className={styles.buttonContainer}>
       {menu.map((item) => (
-        <div className={styles.buttonItem} key={item.key}>
+        <div className={styles.buttonItem} key={item.key} ref={item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
           <FixedButton menu={item.label} icon={item.icon} state={item.state} mobileIcon={item?.mobileIcon}>
             <span>{item.text}</span>
           </FixedButton>
