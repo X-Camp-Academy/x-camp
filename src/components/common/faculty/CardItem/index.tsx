@@ -37,7 +37,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
             <Paragraph ellipsis={{ rows: 1 }} className={styles.name}>
               {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
             </Paragraph>
-            <Paragraph ellipsis={{ rows: 6 }} className={styles.description}>
+            <Paragraph ellipsis={{ rows: 3 }} className={styles.description}>
               {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
             </Paragraph>
             <a href="/about-us/introduction/#faculty" className={styles.more}>

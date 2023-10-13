@@ -42,7 +42,7 @@ const CarouselContent: React.FC = () => {
           color: '#FFAD11'
         }
       ],
-      desc: [t('Home.Banner1.Desc')],
+      desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2'), t('Home.Banner1.Desc3')],
       descStyle: {
         color: '#FFF'
       },

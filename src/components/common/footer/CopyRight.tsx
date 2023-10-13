@@ -66,26 +66,26 @@ const CopyRight: React.FC = () => {
                 <Title className={styles.text}>X-Camp Academy</Title>
                 <Space direction="vertical">
                   <Link href={'/about-us/calendar'}>{t('SchoolCalendar')}</Link>
-                  <Link href={'/courses#classify0'}>{'Online Courses'}</Link>
+                  <Link href={'/courses#classify0'}>{t('OnlineClasses')}</Link>
                   <Link href={'/courses#camps'}>{t('In-personCamps')}</Link>
                 </Space>
               </div>
 
               <div>
-                <Title className={styles.text}>Activity</Title>
+                <Title className={styles.text}>{t('Activity')}</Title>
                 <Space direction="vertical">
                   <Link href={'/resources/weekly-open-house'}>{t('WeeklyOpenHouse')}</Link>
-                  <Link href={'/resources/education-forum'}>{'Event Calendar'}</Link>
-                  <a href={'/resources/usaco-live-solutions'}>{'USACO Live Solution'}</a>
+                  <Link href={'/resources/education-forum'}>{t('EventCalendar')}</Link>
+                  <a href={'/resources/usaco-live-solutions'}>{t('USACOLiveSolution')}</a>
                 </Space>
               </div>
 
               <div>
-                <Title className={styles.text}>{'Help Center'}</Title>
+                <Title className={styles.text}>{t('HelpCenter')}</Title>
                 <Space direction="vertical">
-                  <Link href={'/about-us/contact-us'}>{'Contact Us'}</Link>
-                  <Link href={'/about-us/contact-us'}>{'Join Us'}</Link>
-                  <Link href={'/about-us/help-center'}>{'FAQ'}</Link>
+                  <Link href={'/about-us/contact-us'}>{t('ContactUs')}</Link>
+                  <Link href={'/about-us/contact-us'}>{t('JoinUs')}</Link>
+                  <Link href={'/about-us/help-center'}>{t('FAQs')}</Link>
                 </Space>
               </div>
             </Space>

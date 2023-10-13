@@ -20,7 +20,7 @@ const Banner: React.FC = () => {
     </>
   );
 
-  return <CommonBanner image={'/image/about-us/student-recommend-banner.png'} title="Education Forum" paragraph={paragraph} />;
+  return <CommonBanner image={'/image/about-us/student-recommend-banner.png'} title={t('EducationalForum')} paragraph={paragraph} />;
 };
 
 export default Banner;

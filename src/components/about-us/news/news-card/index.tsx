@@ -1,7 +1,7 @@
 import { EventCategory, GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
-import SegmentedRadioGroup from '@/components/common/segmented-radio-group';
+import SegmentedRadioGroup, { EventOptionsProps } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { RightCircleOutlined } from '@ant-design/icons';
@@ -20,8 +20,7 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, pageSize, total }) => {
-  const { lang } = useLang();
-  const NEWS_TYPES = Object.values(EventCategory);
+  const { format: t, lang } = useLang();
   const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.SchoolLifeSharing);
   const [data, setData] = useState<StrapiResponseDataItem<GetNewEvent>[]>();
 
@@ -32,6 +31,29 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
       return dateB.localeCompare(dateA);
     });
   };
+
+  const options: EventOptionsProps[] = [
+    {
+      label: t('SchoolLifeSharing'),
+      value: EventCategory.SchoolLifeSharing
+    },
+    {
+      label: t('CodingEducation'),
+      value: EventCategory.CodingEducation
+    },
+    {
+      label: t('CareerPath'),
+      value: EventCategory.CareerPath
+    },
+    {
+      label: t('Research'),
+      value: EventCategory.Research
+    },
+    {
+      label: t('All'),
+      value: EventCategory.All
+    }
+  ];
 
   useEffect(() => {
     if (segmented === EventCategory.All) {
@@ -47,7 +69,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
   return (
     <div className={styles.content}>
       <div className={'container'}>
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} data={NEWS_TYPES} />
+        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} />
 
         <div className={styles.partner}>
           <Row gutter={[32, 48]} className={styles.row}>

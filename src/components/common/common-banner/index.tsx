@@ -21,7 +21,7 @@ const CommonBanner: React.FC<CommonBannerProps> = ({ image, title, paragraph, ti
           <Title style={titleStyle} className={`${titleClassName || styles.title}`}>
             {title}
           </Title>
-          <Paragraph className={`${paragraphClassName || styles.paragraph}`} ellipsis={{ rows: paragraphClassName ? 4 : 6 }}>
+          <Paragraph className={`${paragraphClassName || styles.paragraph}`} ellipsis={{ rows: 6 }}>
             {paragraph}
           </Paragraph>
         </Space>

@@ -128,8 +128,10 @@
     }
 
     .keyText {
-      @extend .paragraph;
-
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      line-height: 36px;
       color: #ffad11;
     }
   }

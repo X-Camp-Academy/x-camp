@@ -20,12 +20,12 @@ const SubscribeNewsletter: React.FC = () => {
     <div className={`${styles.subscribeNewsletter} container`}>
       <ColorfulCard border={'bottom'} index={1} animate={false}>
         <Space direction="vertical" className={styles.space}>
-          <Title className={styles.title}>{'Subscribe Newsletter'}</Title>
+          <Title className={styles.title}>{t('SubscribeNewsletter')}</Title>
 
           <Paragraph className={styles.paragraph}>
-            X-Camp is committed to establishing a nurturing and all-encompassing coding
+            {t('SubscribeNewsletter.Desc1')}
             <br />
-            community, fueled by our devoted partners.
+            {t('SubscribeNewsletter.Desc2')}
           </Paragraph>
 
           <Form name="subscribeNewsletter" onFinish={onFinish} layout="inline" className={styles.form}>
