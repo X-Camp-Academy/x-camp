@@ -446,7 +446,6 @@ declare const json: {
   'HistoryOfXCamp.Title': 'History of X-Camp';
   'HistoryOfXCamp.Desc': "With nearly 2,000 students trained in just six years, X-Camp's impact on their coding journeys remains unparalleled.";
   Our: 'Our ';
-
   'SubscribeNewsletter.Desc1': 'X-Camp is committed to establishing a nurturing and all-encompassing coding';
   'SubscribeNewsletter.Desc2': 'community, fueled by our devoted partners.';
   Basic: 'Basic';
