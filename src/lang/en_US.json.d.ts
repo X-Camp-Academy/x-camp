@@ -285,10 +285,10 @@ declare const json: {
   'Contact.OfficeHour': 'Office Hours';
   'Contact.OfficeHour.info': '7:00 AM - 5:00 PM PT (Monday Off)';
   Questions: 'Questions?';
-  'Python.Mask.Desc': 'Recommended for grades 5+ with no coding background required. Our program consists of three courses designed to provide a comprehensive learning experience.';
-  'USACO.Knowledge.Mask.Desc': 'Recommended for grades 6+ with a minimum of 1-year coding background required. Our program comprises six courses that offer a comprehensive learning experience.';
-  'USACO.Grandmaster.Mask.Desc': 'Recommended for grades 7+ with a minimum of 2-year coding background required. We provide top-notch faculty experienced in teaching at the US Camp level.';
-  'APCS.Mask.Desc': 'Recommended for grades 7+ with no coding background required. The program consists of three courses designed to provide a solid foundation and prepare students for success in APCS A.';
+  'Python.Mask.Desc': 'Grades 5+, no prior coding experience needed. 3 courses for fun and solid coding foundation learning.';
+  'USACO.Knowledge.Mask.Desc': 'Grades 6+, 1-year coding experience required. 9 courses for robust data structures and algorithms learning.';
+  'USACO.Grandmaster.Mask.Desc': 'Grades 7+, 2-year coding background needed. Exceptional faculty including distinguished IOI, ICPC Medalists.';
+  'APCS.Mask.Desc': 'Grades 6+, no prior coding required. 5 courses for strong APCS A preparation and Java language learning .';
   Message: 'Message';
   YourMessageHere: 'Your message here';
   'News.Desc': 'Stay informed about new program launches, upcoming events, and the remarkable achievements of our students and partners.';
