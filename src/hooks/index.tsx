@@ -1,4 +1,3 @@
-import { getBrowserCompatibility } from '@/utils/public';
 import { useEffect, useState } from 'react';
 
 /**
@@ -31,12 +30,4 @@ export const useDelayedMount = (show: boolean, delay: number): [boolean, boolean
   }, [show, delay]);
 
   return [mount, visible];
-};
-
-/**
- *
- * @returns 浏览器兼容性检测
- */
-export const useCheckBrowserCompatibility = (): Boolean => {
-  return getBrowserCompatibility();
 };

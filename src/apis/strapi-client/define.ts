@@ -174,6 +174,7 @@ export interface GetCourses extends strapiPublicFields {
   endDateTime: string;
   courseFormat: string;
   additionalInfo: string;
+  isBilingual: boolean;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

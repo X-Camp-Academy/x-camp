@@ -24,7 +24,7 @@ const WithLayout = ({ children }: Props) => {
   };
 
   useEffect(() => {
-    importPackage(10); // 重试10次，每次100ms，共10s
+    importPackage(10);
   }, []);
 
   return (

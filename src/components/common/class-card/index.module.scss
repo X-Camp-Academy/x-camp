@@ -54,7 +54,7 @@
       }
     }
 
-    .bilingual {
+    .base {
       position: absolute;
       top: 0;
       right: -46px;
@@ -62,7 +62,6 @@
       height: 32px;
       border-top: 32px solid transparent;
       border-right: 32px solid transparent;
-      border-bottom: 32px solid #ffad11;
       border-left: 32px solid transparent;
       font-size: 12px;
       font-weight: 500;
@@ -72,22 +71,16 @@
       line-height: 32px;
     }
 
+    .bilingual {
+      @extend .base;
+
+      border-bottom: 32px solid #ffad11;
+    }
+
     .continuity {
-      position: absolute;
-      top: 0;
-      right: -46px;
-      width: 156px;
-      height: 32px;
-      border-top: 32px solid transparent;
-      border-right: 32px solid transparent;
+      @extend .base;
+
       border-bottom: 32px solid #00a0e9;
-      border-left: 32px solid transparent;
-      font-size: 12px;
-      font-weight: 500;
-      text-align: center;
-      color: #fff;
-      transform: rotate(45deg);
-      line-height: 32px;
     }
   }
 }

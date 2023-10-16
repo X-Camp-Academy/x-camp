@@ -22,6 +22,7 @@ interface CourseAbstractProps {
   registerLink?: string;
   isBundle?: boolean;
   bundleRegisterLink?: string;
+  isBilingual?: boolean;
 }
 
 const CourseAbstract: React.FC<CourseAbstractProps> = ({
@@ -34,7 +35,8 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
   startDate,
   registerLink,
   isBundle,
-  bundleRegisterLink
+  bundleRegisterLink,
+  isBilingual
 }) => {
   const { format: t, lang } = useLang();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -99,8 +101,8 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
           <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'50%'} height={'100%'} />
         </Modal>
         {classMode !== ClassMode.InPerson && <div className={styles.tip}>{t('Discount')}</div>}
-        {true && <div className={styles.bilingual}>BILINGUAL</div>}
-        {false && <div className={styles.continuity}>CONTINUITY</div>}
+        {isBundle && <div className={styles.continuity}>CONTINUITY</div>}
+        {isBilingual && <div className={styles.bilingual}>BILINGUAL</div>}
       </div>
     </Space>
   );

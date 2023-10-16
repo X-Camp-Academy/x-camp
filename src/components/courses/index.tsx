@@ -45,8 +45,6 @@ const Courses: React.FC = () => {
   const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
   const COURSE_TYPES = Object.values(CourseTypes);
-  const BILINGUAL_ID = 81;
-  const CONTINUITY_ID = 57;
 
   const { dayjs } = useDayJs(lang);
 
@@ -424,8 +422,8 @@ const Courses: React.FC = () => {
                                   list={getLangResult(lang, g?.attributes?.courseShortDescriptionZh, g?.attributes?.courseShortDescriptionEn) as string[]}
                                   time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
                                   href={`/courses/${segmented === CourseTypes.CampsClasses ? 'camps' : 'detail'}/${g?.id}`}
-                                  bilingual={g?.id === BILINGUAL_ID}
-                                  continuity={g?.id === CONTINUITY_ID}
+                                  bilingual={g?.attributes?.isBilingual}
+                                  continuity={g?.attributes?.isBundle}
                                 />
                               );
                             })}
