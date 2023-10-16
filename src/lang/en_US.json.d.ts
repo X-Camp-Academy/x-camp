@@ -360,7 +360,7 @@ declare const json: {
   'Evaluation.form.success': 'Successfully submitted';
   'Evaluation.form.fail': 'Failed to submit';
   'USACO.enhancement.register': "USACO Director Dr. BrianDean's annual sharing comes!";
-  'Home.Banner3.title': '7 X-Camp students Selected for USACO US Camp in 2022/2023 Session';
+  'Home.Banner3.title': '7 X-Camp students Selected for USACO US Camp in 2022/2023 Season';
   'Home.Banner3.desc': '12 students selested for US Camp between 2020-2023';
   'Home.Banner3.buttonText': 'More Achievements';
   'Home.Banner3.title.color': '7 X-Camp students';
@@ -451,6 +451,11 @@ declare const json: {
   Basic: 'Basic';
   Grandmaster: 'Grandmaster';
   Intermediate: 'Intermediate';
+  About: 'About';
+  XCamp: 'X-Camp';
+  'AboutXCamp.Desc1': 'Over the past 5 years, more than 200 X-Camp students have qualified for the USACO Silver division and above';
+  'AboutXCamp.Desc2': 'X-Camp is a programming education company';
+  'AboutXCamp.Desc3': "It's a Silicon Valley-based coding institute, offers beginner-level to IOI level's programming classes to 5-12th grade students.";
 };
 
 export default json;
