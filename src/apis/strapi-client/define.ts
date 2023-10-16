@@ -287,11 +287,17 @@ export interface GetAboutUsIntroArticle extends strapiPublicFields {
 export type GetAboutUsIntroArticleRequest = StrapiRequest<GetAboutUsIntroArticle>;
 export type GetAboutUsIntroArticleResponse = StrapiResponse<GetAboutUsIntroArticle>;
 
+export enum LiveSolutionCategory {
+  XCampUSACOSilver = 'X-Camp USACO Silver',
+  XCampUSACOBronze = 'X-Camp USACO Bronze',
+  XCampUSACOGold = 'X-Camp USACO Gold'
+}
+
 export interface GetResourcesLiveSolution extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   date: string;
-  category: string;
+  category: LiveSolutionCategory;
   video: StrapiMedia;
   order: number;
   videoZh: string;

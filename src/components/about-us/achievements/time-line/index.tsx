@@ -2,7 +2,7 @@ import { useGetAchievementsTimeLine } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { setTwoToneColor } from '@ant-design/icons';
-import { Image, List, Space, Typography, message } from 'antd';
+import { List, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
@@ -54,7 +54,7 @@ const TimeLine: React.FC = () => {
 
         <Text className={styles.intro}>{t('Timeline.Desc')}</Text>
 
-        <div
+        {/* <div
           className={styles.download}
           onClick={() => {
             message.info(
@@ -70,7 +70,7 @@ const TimeLine: React.FC = () => {
           <Text className={styles.downloadText} underline onClick={downloadUSACOPackage}>
             {t('USACO.DownloadPackage')}
           </Text>
-        </div>
+        </div> */}
       </div>
     </div>
   );

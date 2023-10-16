@@ -71,7 +71,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                 renderItem={(g) => (
                   <List.Item>
                     <Card className={styles.videoItem}>
-                      <video controls src={g?.attributes?.url?.data?.attributes?.url} />
+                      <iframe src={g?.attributes?.url?.data?.attributes?.url} width="100%" height={240} sandbox="" />
                       <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
                     </Card>
                   </List.Item>
@@ -100,7 +100,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                 renderItem={(g) => (
                   <List.Item>
                     <Card className={styles.videoItem}>
-                      <video controls src={g?.attributes?.url?.data?.attributes?.url} />
+                      <iframe src={g?.attributes?.url?.data?.attributes?.url} width="100%" height={240} sandbox="" />
                       <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
                     </Card>
                   </List.Item>

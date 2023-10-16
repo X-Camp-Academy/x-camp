@@ -451,6 +451,11 @@ declare const json: {
   Basic: '基础';
   Grandmaster: '大师';
   Intermediate: '中级';
+  About: '关于';
+  XCamp: 'X-Camp';
+  'AboutXCamp.Desc1': '过去 5 年，超过 200 名 X-Camp 学生获得了 USACO 银级及以上级别的资格';
+  'AboutXCamp.Desc2': 'X-Camp是一家编程教育公司';
+  'AboutXCamp.Desc3': '这是一家位于硅谷的编程学校，为 5-12 年级的学生提供初级到 IOI 级别的编程课程。';
 };
 
 export default json;

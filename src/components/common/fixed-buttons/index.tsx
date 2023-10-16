@@ -4,6 +4,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Card, Checkbox, Form, Input } from 'antd';
+import { useRouter } from 'next/navigation';
 import React, { RefObject, useEffect, useRef, useState } from 'react';
 import FixedButton from './FixedButton';
 import styles from './index.module.scss';
@@ -18,6 +19,7 @@ interface IMenuItem {
   ref: RefObject<HTMLDivElement>;
 }
 const FixedButtons: React.FC = () => {
+  const router = useRouter();
   const { format: t } = useLang();
   const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
@@ -147,7 +149,7 @@ const FixedButtons: React.FC = () => {
               ))}
             </ul>
             <div className={styles.buttonList}>
-              <Button type="primary" className={styles.button}>
+              <Button type="primary" className={styles.button} onClick={() => router.push('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09')}>
                 {t('ZoomLink')}
               </Button>
               <Button type="primary" className={styles.button}>

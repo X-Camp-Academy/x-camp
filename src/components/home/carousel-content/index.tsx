@@ -104,11 +104,17 @@ const CarouselContent: React.FC = () => {
                   <Space direction="vertical" className={styles.space} size={20}>
                     <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
                     <Space direction="vertical">
-                      {item?.desc?.map((desc) => (
-                        <Text className={styles.description} key={desc} style={item?.descStyle}>
-                          {desc}
-                        </Text>
-                      ))}
+                      {item?.desc?.map((desc, index) => {
+                        return index === 0 ? (
+                          <Text className={styles.description} key={desc} style={item?.descStyle}>
+                            {desc}
+                          </Text>
+                        ) : (
+                          <Text className={styles.description} key={desc} style={item?.descStyle}>
+                            &quot;{desc}&quot;
+                          </Text>
+                        );
+                      })}
                     </Space>
                     <button className={styles.button} onClick={item?.onClick}>
                       {item?.buttonText}

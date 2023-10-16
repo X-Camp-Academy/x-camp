@@ -1,4 +1,4 @@
-import { GetResourcesLiveSolution } from '@/apis/strapi-client/define';
+import { GetResourcesLiveSolution, LiveSolutionCategory } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
@@ -21,6 +21,23 @@ const UsacoIntro = ({ data }: Props) => {
     const { video, videoZh, videoEn } = attributes;
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
+  const Categories = Object.values(LiveSolutionCategory);
+
+  const resort = (resourcesLiveSolution: StrapiResponseDataItem<GetResourcesLiveSolution>[][] | undefined) => {
+    if (resourcesLiveSolution) {
+      const firstItem = resourcesLiveSolution?.shift();
+      resourcesLiveSolution?.push(firstItem || []);
+      return resourcesLiveSolution;
+    }
+    return [];
+  };
+
+  const sortData = resort(data)?.map((item, index) => {
+    return {
+      category: Categories[index],
+      categoryData: item
+    };
+  });
   return (
     <div className={styles.introduction}>
       <div className={'container'}>
@@ -33,7 +50,7 @@ const UsacoIntro = ({ data }: Props) => {
           <br />
           {t('USACOSolution.Intro3')}
         </div>
-        {data?.map((v, index) => {
+        {sortData?.map((v, index) => {
           return (
             <div key={'video' + index} style={{ marginBottom: 92 }}>
               <Collapse
@@ -46,14 +63,13 @@ const UsacoIntro = ({ data }: Props) => {
                   </div>
                 )}
               >
-                <Panel key={index} header={<div className={styles.title}>{v?.[0]?.attributes?.category}</div>}>
+                <Panel key={index} header={<div className={styles.title}>{v?.category}</div>}>
                   <Space className={styles.videoPane}>
-                    {v?.map((g) => {
+                    {v?.categoryData?.map((g) => {
                       return (
                         <Space direction={'vertical'} className={styles.videoPanel} key={'panel' + g}>
-                          <video controls className={styles.videoBox}>
-                            <source src={getVideoByLang(g?.attributes)} type="video/mp4" />
-                          </video>
+                          <iframe className={styles.videoBox} src={getVideoByLang(g?.attributes)} width="100%" height="100%" sandbox="" />
+
                           <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
                           <Space>
                             <ClockCircleOutlined className={styles.icon} />
