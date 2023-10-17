@@ -3,7 +3,7 @@ import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, GlobalOutlined, LaptopOutlined, RightCircleOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Col, Descriptions, Row } from 'antd';
+import { Button, Col, Descriptions, Row, Typography } from 'antd';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
@@ -11,6 +11,7 @@ import styles from './index.module.scss';
 const ColorfulCard = dynamic(() => import('@/components/common/colorful-card'));
 const XCollapse = dynamic(() => import('@/components/common/collapse'));
 
+const { Title } = Typography;
 const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
   const { data } = useGetNewEvent({
@@ -49,7 +50,9 @@ const UpcomingEvents: React.FC = () => {
                         <div className={styles.month}>{startTime.format('MMMM')}</div>
                         <div className={styles.day}>{startTime.format('DD')}</div>
                       </div>
-                      <div className={styles.title}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</div>
+                      <Title className={styles.title} ellipsis={{ rows: 2 }}>
+                        {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
+                      </Title>
                       <Descriptions column={1} className={styles.descriptions}>
                         <Descriptions.Item label={<ClockCircleOutlined />}>
                           {`${startTime.format('dddd, MMMM DD, YYYY hh:mm A')} - ${endTime.format('dddd, MMMM DD, YYYY hh:mm A')} ${endTimeZone}`}

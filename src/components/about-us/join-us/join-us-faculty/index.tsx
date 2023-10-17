@@ -24,7 +24,7 @@ const JoinUsFaculty: React.FC = () => {
             <Button
               className={styles.introBtn}
               onClick={() => {
-                router.push('/about-us/join-us');
+                router.push('/about-us/introduction#faculty');
               }}
             >
               {t('XCampFaculty')}

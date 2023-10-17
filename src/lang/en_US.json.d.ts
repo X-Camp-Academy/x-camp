@@ -49,7 +49,7 @@ declare const json: {
   'Co-Founder-Charlie': 'Co-founder and CEO of X-Camp';
   'Co-Founder-Yuan': 'Co-founder and President of X-Camp';
   CodeLanguage: 'Code Language';
-  Community: 'Community';
+  'Community.Title': 'Community';
   'Community.Des': 'We are a community dedicated to inspiring and cultivating the next generation of Computer Science and Artificial Intelligence talent.';
   ContactUs: 'Contact Us';
   ContactXCamp: 'Contact X-Camp';
@@ -265,7 +265,7 @@ declare const json: {
   CareerPath: 'Career Path';
   Research: 'Research';
   All: 'All';
-  EducationalForum: 'Educational Forum';
+  EducationForum: 'Education Forum';
   'EducationForum.Desc': 'At X-Camp, we actively invite experienced speakers to share their knowledge and insights within our community. These esteemed speakers contribute valuable perspectives, inspiring and guiding both students and parents alike in their programming education journey. We are committed to fostering a vibrant and inclusive community where knowledge is shared and celebrated.';
   'OpenHouse.Conflict': 'Time Conflict? We’re Here for You!';
   'OpenHouse.Conflict.Desc': 'X-Camp course consultants are happy to provide 1 on 1 meeting at your available time.';
@@ -285,7 +285,7 @@ declare const json: {
   'Contact.Phone': 'Phone/Text';
   'Contact.Phone.info': 'Text us at 408-634-0281, Call us at 510-708-8390';
   'Contact.OfficeHour': 'Office Hours';
-  'Contact.OfficeHour.info': '7:00 AM - 5:00 PM PT (Monday Off)';
+  'Contact.OfficeHour.info': '9:00 AM - 8:00 PM PT (Monday Off)';
   Questions: 'Questions?';
   'Python.Mask.Desc': 'Grades 5+, no prior coding experience needed. 3 courses for fun and solid coding foundation learning.';
   'USACO.Knowledge.Mask.Desc': 'Grades 6+, 1-year coding experience required. 9 courses for robust data structures and algorithms learning.';
@@ -456,6 +456,8 @@ declare const json: {
   'AboutXCamp.Desc1': 'Over the past 5 years, more than 200 X-Camp students have qualified for the USACO Silver division and above';
   'AboutXCamp.Desc2': 'X-Camp is a programming education company';
   'AboutXCamp.Desc3': "It's a Silicon Valley-based coding institute, offers beginner-level to IOI level's programming classes to 5-12th grade students.";
+  'Java/APCS.Classes': 'Java/APCS Classes';
+  'USACO.Grandmaster': 'USACO Grandmaster';
 };
 
 export default json;

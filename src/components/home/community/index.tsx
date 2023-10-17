@@ -3,7 +3,6 @@ import { useGetCommunity } from '@/apis/strapi-client/strapi';
 import MaskCard from '@/components/common/mask-card';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
-import { AppstoreAddOutlined } from '@ant-design/icons';
 import { Carousel, Image, Space, Typography } from 'antd';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -92,10 +91,11 @@ const Community: React.FC = () => {
           </Carousel>
         </div>
 
-        <button className={styles.moreAlumniInfo} onClick={() => router.push('/about-us/x-alumni')}>
+        {/* ! TODO: 先隐藏 */}
+        {/* <button className={styles.moreAlumniInfo} onClick={() => router.push('/about-us/x-alumni')}>
           {t('MoreAlumniInformation')}
           <AppstoreAddOutlined className={styles.icon} />
-        </button>
+        </button> */}
       </div>
     </div>
   );
