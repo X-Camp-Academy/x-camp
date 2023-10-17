@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 
 const { Paragraph, Text } = Typography;
 const WhyXCamp: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const aboutContents = [
     {
       icon: '/image/home/icon-why-book.png',
@@ -29,7 +29,7 @@ const WhyXCamp: React.FC = () => {
       icon: '/image/home/icon-why-house.png',
       title: t('Home.WhyXCamp.title3'),
       desc: t('Home.WhyXCamp.Desc3'),
-      url: '/about-us/x-alumni',
+      url: '/#community',
       ref: useRef<HTMLDivElement>(null)
     },
     {
@@ -45,7 +45,7 @@ const WhyXCamp: React.FC = () => {
       <div className={`${styles.aboutXCamp} container`}>
         <Space direction="vertical" align="center" className={styles.aboutXCampTop}>
           <TitleColor title={t('AboutX-Camp')} config={[{ text: t('AboutX-Camp_Color') }]} className={styles.title} />
-          <Text className={styles.titleBg} />
+          <Text className={lang === 'zh' ? styles.titleBgZh : styles.titleBgEn} />
           <Paragraph className={styles.paragraph}>{t('Home.WhyXCamp.Desc')}</Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">

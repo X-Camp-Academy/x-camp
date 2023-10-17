@@ -17,11 +17,6 @@ interface Props {
   className?: string;
 }
 
-/**
- * 判断是否为ReactNode
- * @param variable
- * @returns
- */
 function isReactNode(variable: any): variable is React.ReactNode {
   return typeof variable === 'string' || typeof variable === 'number' || React.isValidElement(variable);
 }

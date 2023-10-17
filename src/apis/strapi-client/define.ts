@@ -69,9 +69,10 @@ export interface GetNewEvent extends strapiPublicFields {
 
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
-  detailContent: string;
+  detailContent?: string;
 
-  eventLanguage: EventLanguage;
+  eventLanguage?: EventLanguage;
+  isContestEvent?: Boolean;
 }
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
@@ -174,6 +175,7 @@ export interface GetCourses extends strapiPublicFields {
   endDateTime: string;
   courseFormat: string;
   additionalInfo: string;
+  isBilingual: boolean;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

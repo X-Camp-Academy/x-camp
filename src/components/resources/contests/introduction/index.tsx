@@ -14,7 +14,6 @@ const Introduction = ({ data }: Props) => {
   const { lang } = useLang();
   const { hash } = window.location;
 
-  // 这样处理是为了防止组件没挂载时调用
   const scrollIntoView = (id: string) => {
     const handleScroll = () => {
       const dom = document.getElementById(id);
@@ -39,21 +38,27 @@ const Introduction = ({ data }: Props) => {
       <div className="container">
         {data?.map((v) => (
           <div key={v?.id} id={`contest-${v?.id}`}>
-            <div className={styles.contest}>
-              <div className={styles.title}>{getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}</div>
-              <div className={styles.intro}>
-                <div className={styles.left}>
-                  <div className={styles.description}>{getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}</div>
-                  <a href={v?.attributes?.link} className={styles.link}>
-                    {v?.attributes?.link}
-                  </a>
-                </div>
-                <div className={styles.right}>
-                  <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
-                </div>
-              </div>
+            <div>
+              {!v?.attributes?.isContestEvent && (
+                <>
+                  <div className={styles.contest}>
+                    <div className={styles.title}>{getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}</div>
+                    <div className={styles.intro}>
+                      <div className={styles.left}>
+                        <div className={styles.description}>{getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}</div>
+                        <a href={v?.attributes?.link} className={styles.link}>
+                          {v?.attributes?.link}
+                        </a>
+                      </div>
+                      <div className={styles.right}>
+                        <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <Divider className={styles.divider} />
+                </>
+              )}
             </div>
-            <Divider className={styles.divider} />
           </div>
         ))}
       </div>

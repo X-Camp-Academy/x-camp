@@ -1,5 +1,4 @@
 'use client';
-import { useCheckBrowserCompatibility } from '@/hooks';
 import { ConfigProvider } from 'antd';
 import { ReactNode } from 'react';
 
@@ -8,7 +7,6 @@ interface Props {
 }
 
 const WithAntdConfig = ({ children }: Props) => {
-  const compatibility = useCheckBrowserCompatibility(); // 浏览器兼容性检测
   return (
     <ConfigProvider
       theme={{
@@ -20,8 +18,7 @@ const WithAntdConfig = ({ children }: Props) => {
         }
       }}
     >
-      {/* TODO: 移动端检查完以后再恢复 */}
-      {/* {compatibility ? children : <BrowserCompatibilityPage />} */}
+      {/* {isBrowserCompatibility() ? children : <BrowserCompatibilityPage />} */}
       {children}
     </ConfigProvider>
   );

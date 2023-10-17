@@ -25,7 +25,6 @@ const CourseCamps: React.FC = () => {
     }
   });
 
-  // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
   const { data: campsCourse } = useGetCourses({
     filters: {
       isCamp: {
@@ -39,7 +38,6 @@ const CourseCamps: React.FC = () => {
     category: FaqCategory.CampsQA,
     pageName: [pathname as string]
   });
-  // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
   const { data: reviewsData } = useGetReviews({
     ready: Boolean(campsCourse),
     courseId: campsCourse?.data?.map((v) => String(v?.id)),

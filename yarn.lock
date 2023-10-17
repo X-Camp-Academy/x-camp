@@ -2487,7 +2487,7 @@ dayjs@^1.11.1, dayjs@^1.11.8:
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.8.tgz#4282f139c8c19dd6d0c7bd571e30c2d0ba7698ea"
   integrity sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==
 
-dayjs@^1.9.1:
+dayjs@^1.11.7, dayjs@^1.9.1:
   version "1.11.10"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
   integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
@@ -6979,6 +6979,14 @@ x-star-editor@^0.1.2:
     remark-stringify "^10.0.3"
     strip-markdown "^5.0.1"
     unified "^10.1.2"
+
+x-star-utils@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npmmirror.com/x-star-utils/-/x-star-utils-0.0.5.tgz#a870da326fd8491dd68caa8d97cc581672d98e48"
+  integrity sha512-KJVBzRb8GXYZ7CD61HsqaXIDHCDDBA0Mb1CDFO7NFXrAeHlGhernZICTGZh9IGY1nwHQGr5iLKefyvWzt9Kc4A==
+  dependencies:
+    dayjs "^1.11.7"
+    lodash "^4.17.21"
 
 yallist@^2.1.2:
   version "2.1.2"

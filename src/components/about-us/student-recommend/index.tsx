@@ -24,7 +24,7 @@ const StudentRecommend: React.FC = () => {
   });
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
   return (
     <Layout className={styles.stuRecommendContainer}>

@@ -20,14 +20,25 @@
         }
       }
 
-      .titleBg {
+      .titleBgBase {
         display: block;
         margin-left: -128px;
-        width: 108px;
         height: 16px;
         background-repeat: no-repeat;
         background-size: cover;
         background-image: url('/image/home/home-title-bg-1.png');
+      }
+
+      .titleBgZh {
+        @extend .titleBgBase;
+
+        width: 160px;
+      }
+
+      .titleBgEn {
+        @extend .titleBgBase;
+
+        width: 112px;
       }
 
       .paragraph {

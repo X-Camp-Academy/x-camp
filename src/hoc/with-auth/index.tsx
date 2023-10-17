@@ -20,7 +20,6 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   }, [loading]);
 
   const login = useCallback(async () => {
-    // 清除local storage
     localStorage.removeItem('codeInfo');
     if (await refreshAsync()) {
       message.success({ content: t('Login_Successful'), key: 'authMsg' });
@@ -34,7 +33,6 @@ export const WithAuth = ({ children }: { children: React.ReactNode }) => {
   }, [refreshAsync]);
 
   const logout = useCallback(async () => {
-    // 清除local storage
     localStorage.removeItem('codeInfo');
     try {
       await client.logout();

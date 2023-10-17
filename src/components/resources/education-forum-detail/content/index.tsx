@@ -39,7 +39,7 @@ const ArticleContent = ({ props }: Props) => {
             title: <Link href="/">{t('Home')}</Link>
           },
           {
-            title: <Link href="/resources/education-forum">{t('EducationalForum')}</Link>
+            title: <Link href="/resources/education-forum">{t('EducationForum')}</Link>
           },
           {
             title: `${getTransResult(lang, props?.attributes.titleZh, props?.attributes.titleEn)}`

@@ -8,15 +8,15 @@ const CommonBanner = dynamic(() => import('@/components/common/common-banner'));
 
 const Banner: React.FC = () => {
   const isMobile = useMobile();
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const paragraph = (
     <>
       {t('Contests.Banner.Desc1')}
-      <br />
+      {lang === 'en' && <br />}
       {t('Contests.Banner.Desc2')}
       <br />
       {t('Contests.Banner.Desc3')}
-      <br />
+      {lang === 'en' && <br />}
       {t('Contests.Banner.Desc4')}
       <br />
       {t('Contests.Banner.Desc5')}
