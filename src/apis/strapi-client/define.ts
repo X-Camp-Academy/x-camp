@@ -67,8 +67,8 @@ export interface GetNewEvent extends strapiPublicFields {
   contestTitleExplanationZh?: string;
   contestTitleExplanationEn?: string;
 
-  imgEn?: StrapiMedia;
-  imgZh?: StrapiMedia;
+  imgEn: StrapiMedia;
+  imgZh: StrapiMedia;
   detailContent?: string;
 
   eventLanguage?: EventLanguage;
