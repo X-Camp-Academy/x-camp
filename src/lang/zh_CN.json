@@ -456,5 +456,12 @@
   "AboutXCamp.Desc2": "X-Camp是一家编程教育公司",
   "AboutXCamp.Desc3": "这是一家位于硅谷的编程学校，为 5-12 年级的学生提供初级到 IOI 级别的编程课程。",
   "Java/APCS.Classes": "Java/APCS 课程",
-  "USACO.Grandmaster": "USACO大师班"
+  "USACO.Grandmaster": "USACO大师班",
+  "History.2017": "2017年8月22日，两位谷歌软件工程师 Charlie Guo、Yuan Xu 和中国著名的信息学奥赛教练徐先友老师相聚硅谷，决定在美国开办计算机编程培训班。Charlie 从孩子身边的同学找到了十几位首批学生。公司名称定为 X-Camp，X 寓意着对未知未来的创新与开拓。",
+  "History.2018": "2018年，经过一年的教学，很多学生取得了长足的进步。通过家长口碑推荐、宣讲活动、学生分享等方式，迎来了第二批二十几位学生。2018年暑假，首批学生回中国杭州，参加了信友队组织的暑期编程夏令营。",
+  "History.2019": "2019年，X-Camp 的名声开始在硅谷传播，靠着口口相传，X-Camp 的学生达到50人，第二批学生回到杭州参加暑期夏令营。X-Camp 的课程从计算机入门，到计算机竞赛的教学体系初步建立。X-Camp 首批学生通过USACO 比赛，进入 USACO 银组。",
+  "History.2020": "2020年，疫情来临，X-Camp的课程改到线上，在读学生人数突破200人。X-Camp 进一步完善了老师和助教相结合的双师体系。在扩大规模的同时，保证了教学质量。X-Camp 首批学生进入 USACO 金组。",
+  "History.2021": "2021年，X-Camp 开始德州奥斯汀地区开始招生，在读学生突破400名。X-Camp 开始赞助 Teamscode，Harker Programming Invitaitonal, Berkeley Calico，Stanford Proco 等比赛，鼓励更多的学生学习编程。X-Camp 首批学生进入 USACO 白金组。",
+  "History.2022": "2022年，X-Camp 首批培养的4名学生进入美国国家集训队，在读学生超过550名，遍及全球300多个学校。X-Camp 教学教务系统正式上线，老师在自我研发的平台上实现教学，作业发布和学生学习情况追踪。线上答疑Discourse 系统，让学生的问题可以得到随时的解答。",
+  "History.2023": "2023年，X-Camp 7名学生进入美国国家集训队，占据本赛季进入国家集训队名额的超过1/4。在读学生近700名，遍及全美19个州，全球7个国家和地区。X-Camp 确定要成为世界最好的计算机竞赛培训机构的战略。To be The Best Competitive Coding Program in the World。"
 }

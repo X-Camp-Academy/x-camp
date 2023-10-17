@@ -5,13 +5,14 @@ import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { Carousel, Image, Space, Typography } from 'antd';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 
 const Community: React.FC = () => {
   const { lang, format: t } = useLang();
+  const { hash } = window.location;
   const { data } = useGetCommunity();
   const community = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
   const router = useRouter();
@@ -26,8 +27,19 @@ const Community: React.FC = () => {
     );
   };
 
+  const scrollIntoView = (id: string) => {
+    const dom = document.getElementById(id);
+    dom?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
+  useEffect(() => {
+    scrollIntoView(hash.slice(1));
+  }, [hash]);
   return (
-    <div className={styles.communityContainer}>
+    <div className={styles.communityContainer} id="community">
       <div className={`${styles.community} container`}>
         <div className={styles.info}>
           <Title className={styles.title}>

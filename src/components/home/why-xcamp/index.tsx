@@ -29,7 +29,7 @@ const WhyXCamp: React.FC = () => {
       icon: '/image/home/icon-why-house.png',
       title: t('Home.WhyXCamp.title3'),
       desc: t('Home.WhyXCamp.Desc3'),
-      url: '/about-us/x-alumni',
+      url: '/#community',
       ref: useRef<HTMLDivElement>(null)
     },
     {

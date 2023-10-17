@@ -77,89 +77,57 @@
   .timeImage {
     margin-top: 56px;
 
-    .image {
-      width: 100%;
-      height: 256px;
+    @media (width <= 768px) {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
     }
 
-    .mobileImage {
-      width: 100%;
-      height: 200px;
-    }
+    .col {
+      display: flex;
+      justify-content: center;
 
-    .image1 {
-      @extend .image;
+      .maskCard {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        text-align: left;
 
-      margin-top: 50px;
-    }
+        .image {
+          height: 320px;
 
-    .image2 {
-      @extend .image;
+          @media (width <= 768px) {
+            width: 100%;
+            height: 100%;
+          }
+        }
 
-      margin-top: 150px;
+        .cardTitle {
+          position: absolute;
+          bottom: 0;
+          left: 24px;
+          font-size: 16px;
+          font-weight: 600;
+          text-align: left;
+          color: #fff;
+          text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
+          line-height: 48px;
+        }
 
-      @media (width <= 992px) {
-        margin-top: 100px;
-      }
+        .maskCardTitle {
+          @include title('thin');
 
-      @media (width <= 768px) {
-        margin-top: 50px;
-      }
-    }
+          color: #fff;
+        }
 
-    .image3 {
-      @extend .image;
-
-      margin-top: 100px;
-
-      @media (width <= 992px) {
-        margin-top: 0;
-      }
-
-      @media (width <= 768px) {
-        margin-top: 50px;
-      }
-    }
-
-    .image4 {
-      @extend .image;
-
-      margin-top: 0;
-
-      @media (width <= 992px) {
-        margin-top: 50px;
-      }
-
-      @media (width <= 768px) {
-        margin-top: 50px;
-      }
-    }
-
-    .image5 {
-      @extend .image;
-
-      margin-top: 50px;
-
-      @media (width <= 992px) {
-        margin-top: 100px;
-      }
-
-      @media (width <= 768px) {
-        margin-top: 50px;
-      }
-    }
-
-    .image6 {
-      @extend .image;
-
-      margin-top: 150px;
-
-      @media (width <= 992px) {
-        margin-top: 0;
-      }
-
-      @media (width <= 768px) {
-        margin-top: 50px;
+        .maskCardParagraph {
+          font-size: 18px;
+          font-weight: 400;
+          text-align: left;
+          color: #fff;
+          line-height: 26px;
+        }
       }
     }
   }
