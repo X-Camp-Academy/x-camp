@@ -1,3 +1,4 @@
+import { PartnerCategory } from '@/apis/strapi-client/define';
 import { useGetPartner } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -15,14 +16,29 @@ const getBackgroundFromIndex = (index: number) => {
 
 const Introduction: React.FC = () => {
   const { lang, format: t } = useLang();
-  const { data: partner } = useGetPartner();
+  const { data } = useGetPartner();
   const isMobile = useMobile();
+
+  const getTransByCategory = (category: PartnerCategory) => {
+    switch (category) {
+      case PartnerCategory.ChinaPartners:
+        return t('ChinaPartners');
+      case PartnerCategory.CommunityPartners:
+        return t('CommunityPartners');
+      case PartnerCategory.UniversityPartners:
+        return t('UniversityPartners');
+      case PartnerCategory.EducationPartners:
+        return t('EducationPartners');
+      default:
+        return t('ChinaPartners');
+    }
+  };
   return (
     <div className={styles.content}>
-      {partner?.map((items, index) => (
+      {data?.map((items, index) => (
         <div key={index} style={{ background: getBackgroundFromIndex(index), padding: isMobile ? 32 : 80 }}>
           <div className={`${styles.partner} container`}>
-            <div className={styles.title}>{items?.[0]?.attributes?.category}</div>
+            <div className={styles.title}>{getTransByCategory(items?.[0]?.attributes?.category)}</div>
             <Space direction="vertical" style={{ width: '100%' }} size={60}>
               {items?.map((card) => (
                 <div className={styles.card} key={card?.id}>

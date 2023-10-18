@@ -290,8 +290,8 @@ export type GetAboutUsIntroArticleRequest = StrapiRequest<GetAboutUsIntroArticle
 export type GetAboutUsIntroArticleResponse = StrapiResponse<GetAboutUsIntroArticle>;
 
 export enum LiveSolutionCategory {
-  XCampUSACOSilver = 'X-Camp USACO Silver',
   XCampUSACOBronze = 'X-Camp USACO Bronze',
+  XCampUSACOSilver = 'X-Camp USACO Silver',
   XCampUSACOGold = 'X-Camp USACO Gold'
 }
 
@@ -332,8 +332,8 @@ export type GetFaqResponse = StrapiResponse<GetFaq>;
 
 export enum PartnerCategory {
   ChinaPartners = 'China Partners',
-  UniversityPartners = 'University Partners',
   CommunityPartners = 'Community Partners',
+  UniversityPartners = 'University Partners',
   EducationPartners = 'Education Partners'
 }
 

@@ -9,10 +9,12 @@ import styles from './index.module.scss';
 const { Title, Text } = Typography;
 
 interface USACOMedalProps {
+  showLogo?: boolean;
   showTitle?: boolean;
+  rowStyle?: React.CSSProperties;
 }
 
-const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
+const USACOMedal: React.FC<USACOMedalProps> = ({ showLogo = true, showTitle = true, rowStyle }) => {
   const router = useRouter();
   const { format: t } = useLang();
 
@@ -20,33 +22,33 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
     {
       count: 200,
       title: t('USACOSilverAndAbove'),
-      color: '#00A0E9',
+      color: '#050260',
       style: styles.bronzeMedal,
       suffix: true
     },
     {
       count: 30,
       title: t('USACOPlatinum'),
-      color: '#FFD600',
+      color: '#050260',
       style: styles.silverMedal,
       suffix: true
     },
     {
       count: 12,
       title: t('USACOFinalist'),
-      color: '#FFAD11',
+      color: '#D46B14',
       style: styles.goldMedal
     },
     {
       count: 1,
       title: t('EGOIGoldMedalist'),
-      color: '#D46B14',
+      color: '#FFAD11',
       style: styles.platinumMedal
     }
   ];
 
   return (
-    <div className={`${styles.usacoContainer} `}>
+    <div className={showLogo ? `${styles.usacoBgContainer}` : `${styles.usacoContainer}`}>
       {showTitle && (
         <Col span={24} className={styles.titleContainer}>
           <Title className={styles.title} onClick={() => router.push('/about-us/achievements')}>
@@ -57,7 +59,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showTitle = true }) => {
           </Title>
         </Col>
       )}
-      <Row gutter={16} className={`container ${styles.row}`}>
+      <Row gutter={16} className={`container ${styles.row}`} style={rowStyle}>
         {data?.map((item) => (
           <Col key={item?.title} span={6} className={styles.col}>
             <div className={item?.style}>
