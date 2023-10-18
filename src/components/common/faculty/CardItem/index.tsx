@@ -30,7 +30,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
   return (
-    <ColorfulCard key={item?.id} border={'bottom'} reverse={true} index={index} className={`${styles.cardContainer} ${isMobile ? styles.mobile : ''}`}>
+    <ColorfulCard key={item?.id} border={'bottom'} reverse index={index} className={`${styles.cardContainer} ${isMobile ? styles.mobile : ''}`}>
       <Card bodyStyle={isMobile ? { width: 265 } : undefined}>
         <Space align="center">
           <Space direction="vertical">

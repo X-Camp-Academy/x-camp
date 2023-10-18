@@ -446,16 +446,16 @@ declare const json: {
   'HistoryOfXCamp.Title': 'History of X-Camp';
   'HistoryOfXCamp.Desc': "With nearly 2,000 students trained in just six years, X-Camp's impact on their coding journeys remains unparalleled.";
   Our: 'Our ';
-  'SubscribeNewsletter.Desc1': 'X-Camp is committed to establishing a nurturing and all-encompassing coding';
-  'SubscribeNewsletter.Desc2': 'community, fueled by our devoted partners.';
+  'SubscribeNewsletter.Desc1': 'Stay in the loop with our newsletter for exclusive updates';
+  'SubscribeNewsletter.Desc2': 'insightful content, and special offers delivered straight to your inbox!';
   Basic: 'Basic';
-  Grandmaster: 'Grandmaster';
   Intermediate: 'Intermediate';
+  Grandmaster: 'Grandmaster';
   About: 'About';
   XCamp: 'X-Camp';
-  'AboutXCamp.Desc1': 'Over the past 5 years, more than 200 X-Camp students have qualified for the USACO Silver division and above';
-  'AboutXCamp.Desc2': 'X-Camp is a programming education company';
-  'AboutXCamp.Desc3': "It's a Silicon Valley-based coding institute, offers beginner-level to IOI level's programming classes to 5-12th grade students.";
+  'AboutXCamp.SubTitle': 'Unlock Your Coding Potential and Chase Your Competitive Programming Dream, only in X-Camp ';
+  'AboutXCamp.Desc1': 'As a Silicon Valley-based coding institute, we are happy to support 7+ countries, 2000+ students in their coding learning journey.';
+  'AboutXCamp.Desc2': 'Structured Curriculum with 20+ Courses, World-class Faculty up to IOI, ICPC Medalist level coaches and resources, Team-based Community from 7 countries and 19 states in the US.';
   'Java/APCS.Classes': 'Java/APCS Classes';
   'USACO.Grandmaster': 'USACO Grandmaster';
   'History.2017': "On August 22, 2017, two Google software engineers, Charlie Guo and Yuan Xu, met with the renowned Chinese IOI (International Olympiad of Informatics) coach, Teacher Xu Xianyou, in Silicon Valley. They decided to launch a computer coding training program in the United States. Charlie recruited the first batch of students, numbering in the tens, from among his child's peers. The company was named X-Camp, with 'X' symbolizing innovation and exploration into the unknown future.";
@@ -465,6 +465,13 @@ declare const json: {
   'History.2021': 'In 2021, X-Camp began enrolling students in the Austin, Texas area, with total enrollment exceeding 400 students. X-Camp started sponsoring competitions like Teamscode, Harker Programming Invitational, Berkeley Calico, and Stanford Proco, encouraging more students to learn programming. The original batch of students advanced to the USACO Platinum Division.';
   'History.2022': "In 2022, four of X-Camp's students were admitted to the USACO US camp, with total enrollment surpassing 550 students spread across over 300 schools globally. X-Camp's teaching and administrative system officially launched, allowing educators to conduct lessons, assign homework, and track student progress on a self-developed platform. An online Q&A Discourse system ensured students' questions could be addressed promptly.";
   'History.2023': "In 2023, seven X-Camp students joined the USACO US camp, accounting for over a quarter of the spots for the season. With close to 700 students across 19 U.S. states and seven countries and regions globally, X-Camp committed to its strategic vision: 'To be The Best Competitive Coding Program in the World’";
+  ChinaPartners: 'China Partners';
+  UniversityPartners: 'University Partners';
+  CommunityPartners: 'Community Partners';
+  EducationPartners: 'Education Partners';
+  FullTime: 'Full Time';
+  PartTime: 'Part Time';
+  XTutor: 'X-Tutor';
 };
 
 export default json;

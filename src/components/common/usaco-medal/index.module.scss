@@ -6,6 +6,15 @@
   padding-top: 32px;
   padding-bottom: 40px;
   width: 100%;
+  flex-direction: column;
+}
+
+.usacoBgContainer {
+  @include flex('center');
+
+  padding-top: 32px;
+  padding-bottom: 40px;
+  width: 100%;
   background: url('/image/common/x-camp-logo.png') no-repeat;
   background-size: contain;
   flex-direction: column;
@@ -60,7 +69,7 @@
 
   .baseMedalContainer {
     margin-top: 20px;
-    width: 288px;
+    width: 100%;
     text-align: center;
     background-size: 192px 80px !important;
 
@@ -84,7 +93,7 @@
     .medalTitle {
       display: block;
 
-      @include text(16px, 24px, #666);
+      @include text(16px, 24px, #172142);
 
       font-weight: 500;
     }

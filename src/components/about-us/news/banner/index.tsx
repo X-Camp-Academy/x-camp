@@ -3,13 +3,13 @@ import { useLang } from '@/hoc/with-intl/define';
 import React from 'react';
 
 const Banner: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const paragraph = (
     <>
       {t('News.Banner.Desc1')}
-      <br />
+      {lang === 'en' && <br />}
       {t('News.Banner.Desc2')}
-      <br />
+      {lang === 'en' && <br />}
       {t('News.Banner.Desc3')}
     </>
   );

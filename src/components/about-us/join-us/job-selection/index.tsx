@@ -8,7 +8,7 @@ import styles from './index.module.scss';
 import JobCard from './job-card';
 
 const JobSelection: React.FC = () => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const [category, setCategory] = useState<AboutUsJoinUsCategory>(AboutUsJoinUsCategory.PartTime);
   const { data: aboutUsJoinUs, runAsync: getAboutUsJoinUs } = useGetAboutUsJoinUs(category);
 
@@ -23,13 +23,28 @@ const JobSelection: React.FC = () => {
       }
     });
   }, [category]);
+
+  const categoryOptions = [
+    {
+      label: t('FullTime'),
+      value: AboutUsJoinUsCategory.FullTime
+    },
+    {
+      label: t('PartTime'),
+      value: AboutUsJoinUsCategory.PartTime
+    },
+    {
+      label: t('XTutor'),
+      value: AboutUsJoinUsCategory.XTutor
+    }
+  ];
   return (
     <div className={styles.jobSelectionContainer}>
       <div className={`${styles.jobSelection} container`}>
         <div className={styles.btnContainer}>
-          {[AboutUsJoinUsCategory.FullTime, AboutUsJoinUsCategory.PartTime, AboutUsJoinUsCategory.XTutor]?.map((v) => (
-            <Button key={v} className={`${styles.choiceBtn} ${category === v ? styles.selectedBtn : ''}`} onClick={() => setCategory(v)}>
-              {v}
+          {categoryOptions?.map((item) => (
+            <Button key={item?.value} className={`${styles.choiceBtn} ${category === item?.value ? styles.selectedBtn : ''}`} onClick={() => setCategory(item?.value)}>
+              {item?.label}
             </Button>
           ))}
         </div>

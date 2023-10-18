@@ -80,7 +80,9 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
             </React.Fragment>
           ))}
         </div>
-        <div className={styles.projectDemo}>
+
+        {/* ! TDOO: 先隐藏 */}
+        {/* <div className={styles.projectDemo}>
           <Title className={styles.title}>{'Game Design'}</Title>
           {data?.map((v, index) => (
             <React.Fragment key={index}>
@@ -108,7 +110,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
               />
             </React.Fragment>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

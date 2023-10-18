@@ -28,12 +28,12 @@ const FacultyCoach: React.FC<{
       value: FacultyLevelCategory.Basic
     },
     {
-      label: t('Grandmaster'),
-      value: FacultyLevelCategory.Grandmaster
-    },
-    {
       label: t('Intermediate'),
       value: FacultyLevelCategory.Intermediate
+    },
+    {
+      label: t('Grandmaster'),
+      value: FacultyLevelCategory.Grandmaster
     }
   ];
 
