@@ -39,7 +39,7 @@ const RecentActivities: React.FC = () => {
               <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
                 <ColorfulCard border={'bottom'} animate={false} index={index}>
                   <Space direction="vertical" className={styles.card}>
-                    <img src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} alt="img" />
+                    <img alt="img" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
                     <Title className={styles.title} ellipsis={{ rows: 1 }}>
                       {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
                     </Title>
