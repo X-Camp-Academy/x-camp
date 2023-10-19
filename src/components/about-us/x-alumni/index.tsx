@@ -7,7 +7,6 @@ import styles from './index.module.scss';
 
 const Banner = dynamic(() => import('./banner'));
 const Map = dynamic(() => import('./map'));
-const Flag = dynamic(() => import('./flag'));
 const Stories = dynamic(() => import('./stories'));
 const UpcomingEvents = dynamic(() => import('./upcoming-events'));
 const Reviews = dynamic(() => import('@/components/common/reviews'));
@@ -25,7 +24,6 @@ const XAlumni = () => {
       <Content>
         <Banner />
         {/* <Map /> */}
-        {/* <Flag /> */}
         <Stories />
         <UpcomingEvents />
         <Reviews reviewsData={reviewsData} />
