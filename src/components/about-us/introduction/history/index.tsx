@@ -77,8 +77,8 @@ const History: React.FC = () => {
           <div className={styles.line} />
         </div>
 
-        <Row gutter={[48, 32]} className={styles.timeImage}>
-          {historyCards?.slice(0, 4)?.map((item) => (
+        <Row gutter={[48, 32]} className={styles.timeImage} style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {historyCards?.slice(0, 3)?.map((item) => (
             <Col xs={24} sm={24} md={24} lg={6} key={item?.title} className={styles.col}>
               <MaskCard
                 className={styles.maskCard}
@@ -95,8 +95,8 @@ const History: React.FC = () => {
             </Col>
           ))}
         </Row>
-        <Row gutter={[48, 32]} className={styles.timeImage} style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {historyCards?.slice(4)?.map((item) => (
+        <Row gutter={[48, 32]} className={styles.timeImage}>
+          {historyCards?.slice(3)?.map((item) => (
             <Col xs={24} sm={24} md={24} lg={6} key={item?.title} className={styles.col}>
               <MaskCard
                 className={styles.maskCard}

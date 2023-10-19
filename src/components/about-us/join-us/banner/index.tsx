@@ -18,7 +18,7 @@ const Banner: React.FC = () => {
   );
   return (
     <div className={styles.bannerContainer}>
-      <CommonBanner image={'/image/about-us/banner-joinUs.png'} title={t('Careers')} titleClassName={styles.title} paragraphClassName={styles.paragraph} paragraph={paragraph} />
+      <CommonBanner image={'/image/about-us/banner-joinUs.png'} title={t('Careers')} paragraph={paragraph} />
       <Button
         size="large"
         className={styles.contactBtn}

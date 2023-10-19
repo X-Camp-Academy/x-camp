@@ -19,7 +19,7 @@ const Banner: React.FC = () => {
 
   return (
     <div className={styles.bannerContainer}>
-      <CommonBanner image={'/image/about-us/banner-joinUs.png'} title={t('SchoolCalendar')} titleClassName={styles.title} paragraphClassName={styles.paragraph} paragraph={paragraph} />
+      <CommonBanner title={t('SchoolCalendar')} paragraph={paragraph} image={'/image/about-us/calendar-banner.png'} />
     </div>
   );
 };

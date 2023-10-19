@@ -4,19 +4,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-
-  .paragraph {
-    @include text(21px, 40px, #fff);
-
-    font-weight: 500;
-  }
-
-  .title {
-    @include text(36px, 48px, #fbfbfb);
-
-    margin: 0;
-    font-weight: bold;
-  }
+  background-color: #efefef;
 
   .contactBtn {
     @include button('nav');
@@ -39,7 +27,7 @@
   .dateTime {
     margin-top: 20px;
 
-    @include text(16px, 24px, #fff);
+    @include text(16px, 24px, #172142);
 
     font-weight: 600;
   }
