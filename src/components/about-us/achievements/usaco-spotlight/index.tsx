@@ -37,7 +37,7 @@ const USACOSpotlight: React.FC = () => {
           <Carousel
             ref={carouselEL}
             dots={false}
-            slidesToShow={3}
+            slidesToShow={4}
             slidesToScroll={1}
             swipeToSlide
             infinite
@@ -58,7 +58,7 @@ const USACOSpotlight: React.FC = () => {
           >
             {awards?.map((item) => {
               return (
-                <div key={item?.id}>
+                <div key={item?.id} className={styles.cardContainer}>
                   <Card
                     style={{
                       backgroundImage: `url(${item?.attributes?.avatar?.data?.attributes?.url})`
