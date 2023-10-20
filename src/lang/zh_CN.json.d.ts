@@ -465,7 +465,7 @@ declare const json: {
   'History.2022': '2022年，X-Camp 首批培养的4名学生进入美国国家集训队，在读学生超过550名，遍及全球300多个学校。X-Camp 教学教务系统正式上线，老师在自我研发的平台上实现教学，作业发布和学生学习情况追踪。线上答疑Discourse 系统，让学生的问题可以得到随时的解答。';
   'History.2023': '2023年，X-Camp 7名学生进入美国国家集训队，占据本赛季进入国家集训队名额的超过1/4。在读学生近700名，遍及全美19个州，全球7个国家和地区。X-Camp 确定要成为世界最好的计算机竞赛培训机构的战略。To be The Best Competitive Coding Program in the World。';
   ChinaPartners: '中国合作伙伴';
-  UniversityPartners: '大学合作伙';
+  UniversityPartners: '大学合作伙伴';
   CommunityPartners: '社区合作伙伴';
   EducationPartners: '教育合作伙伴';
   FullTime: '全职';
