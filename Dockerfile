@@ -1,5 +1,4 @@
 FROM node:16.14.0-alpine3.14 AS builder
-
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -13,9 +12,6 @@ RUN pnpm config set sharp_binary_host https://npmmirror.com/mirrors/sharp
 RUN pnpm config set sharp_libvips_binary_host https://npmmirror.com/mirrors/sharp-libvips
 
 COPY package.json pnpm-lock.yaml .npmignore ./
-
-# 挂载缓存
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 
 RUN pnpm install
 
