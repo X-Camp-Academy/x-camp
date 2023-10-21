@@ -15,6 +15,7 @@ interface CourseAbstractProps {
   courseLongDescriptionEn?: string;
   courseLongDescriptionZh?: string;
   tuitionUSD?: number;
+  tuitionRMB?: number;
   classes?: {
     data: StrapiResponseDataItem<GetClasses>[];
   };
@@ -31,6 +32,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
   courseLongDescriptionEn,
   courseLongDescriptionZh,
   tuitionUSD,
+  tuitionRMB,
   classes,
   startDate,
   registerLink,
@@ -92,7 +94,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
       </div>
       <div className={styles.right}>
         <div className={styles.title}>{t('One-TimePayment')}</div>
-        <div className={styles.price}>{`$${tuitionUSD}`}</div>
+        <div className={styles.price}>{isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</div>
         <Button type="primary" className={styles.btn} onClick={() => handlerSighUp(startDate || '')}>
           {t('SignUpNow')}
         </Button>
