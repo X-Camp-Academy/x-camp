@@ -4,6 +4,10 @@
   padding-top: 100px;
   width: 100%;
 
+  @media (width <= 768px) {
+    padding-top: 50px;
+  }
+
   .description {
     @include text(18px, 34px);
 

@@ -41,7 +41,7 @@ const CopyRight: React.FC = () => {
                 <Paragraph className={styles.paragraph}>
                   <CommentOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
-                    {t('Text')}408-634-0218
+                    {t('Text')}+1 - 408-634-0218
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>

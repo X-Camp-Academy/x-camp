@@ -1,5 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { StarOutlined } from '@ant-design/icons';
 import { Button, Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
@@ -9,6 +10,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const XCampFounder: React.FC = () => {
   const { format: t } = useLang();
+  const isMobile = useMobile();
   return (
     <div className={`${styles.XCampFounder} container`}>
       <Space direction="vertical" align="center">
@@ -19,7 +21,7 @@ const XCampFounder: React.FC = () => {
           </Text>
         </Title>
 
-        <Row gutter={[32, 124]} className={styles.row}>
+        <Row gutter={isMobile ? [16, 62] : [32, 124]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
             <div className={styles.charlieImgBackground} />
             <Image src={'/image/home/charlie.png'} alt="image" preview={false} className={styles.charlieImg} />
@@ -50,7 +52,7 @@ const XCampFounder: React.FC = () => {
           </Col>
         </Row>
 
-        <Row gutter={[32, 124]} style={{ marginTop: 120 }} className={styles.row}>
+        <Row gutter={isMobile ? [16, 62] : [32, 124]} style={{ marginTop: isMobile ? 60 : 120 }} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.founderDescription}>
             <Space direction="vertical">
               <Title className={styles.founderName}>{t('Yuan')}</Title>

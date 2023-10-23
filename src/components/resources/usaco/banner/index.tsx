@@ -8,9 +8,9 @@ const Banner: React.FC = () => {
 
   const paragraph = (
     <>
-      The first-ever, and most comprehensive live problem-solving
+      {t('USACO.Banner.Desc1')}
       <br />
-      broadcast on the entire web, only in X-Camp.
+      {t('USACO.Banner.Desc2')}
     </>
   );
   return (

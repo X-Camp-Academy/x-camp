@@ -147,6 +147,10 @@ export const useMenuItems = () => {
       },
       children: [
         {
+          label: <Link href="/about-us/introduction">{t('Introduction')}</Link>,
+          key: '/about-us/introduction/'
+        },
+        {
           label: <Link href="/about-us/achievements">{t('Achievements')}</Link>,
           key: '/about-us/achievements/'
         },

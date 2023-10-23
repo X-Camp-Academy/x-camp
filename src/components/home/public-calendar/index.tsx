@@ -1,4 +1,5 @@
 'use client';
+import { NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import ActivityCalendar from '@/components/common/activity-calendar';
 import { useLang } from '@/hoc/with-intl/define';
@@ -41,10 +42,10 @@ const PublicCalendar: React.FC = () => {
   >([]);
   const [current, setCurrent] = useState<number>(1);
 
-  const { data: newEventData, run } = useGetNewEvent({
+  const { data: newEventData } = useGetNewEvent({
+    tag: NewEventCategory.Events,
     current,
-    pageSize,
-    pageName: ['/home/']
+    pageSize
   });
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
@@ -89,16 +90,16 @@ const PublicCalendar: React.FC = () => {
     return `${isSame ? sameStr : diffStr} ${formatTimezone(item?.startDateTime).timezone}`;
   };
 
-  useEffect(() => {
-    run({
-      populate: '*',
-      sort: ['order:desc'],
-      pagination: {
-        page: current,
-        pageSize
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   run({
+  //     populate: '*',
+  //     sort: ['order:desc'],
+  //     pagination: {
+  //       page: current,
+  //       pageSize
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
     if (newEventData) {

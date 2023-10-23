@@ -152,7 +152,8 @@ const FixedButtons: React.FC = () => {
               <Button type="primary" className={styles.button} onClick={() => router.push('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09')}>
                 {t('ZoomLink')}
               </Button>
-              <Button type="primary" className={styles.button}>
+
+              <Button type="primary" className={styles.button} onClick={() => router.push('/resources/weekly-open-house')}>
                 1 On 1{' '}
               </Button>
             </div>
