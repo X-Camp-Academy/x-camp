@@ -1,3 +1,9 @@
+### 运行
+```
+  pnpm i
+
+  pnpm dev
+```
 ### 时区转化
 
 - 使用 formatTimezone 函数进行转化
