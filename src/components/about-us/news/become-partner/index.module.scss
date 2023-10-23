@@ -3,6 +3,10 @@
 .becomePartnerContainer {
   padding: 100px 0;
 
+  @media (width <= 768px) {
+    padding: 50px 0;
+  }
+
   .becomePartner {
     .content {
       padding-top: 100px;
@@ -10,6 +14,11 @@
       border-radius: 8px;
       text-align: center;
       background: #fff;
+
+      @media (width <= 768px) {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
 
       .title {
         @include title('bold');

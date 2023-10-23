@@ -94,7 +94,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       <CarouselDots goTo={goTo} dots={3} current={current} />
-      <Carousel autoplay dots={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel autoplay={false} dots={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: IItem) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             <Image alt="" preview={false} className={styles.background} src={item?.backgroundUrl} width={'100%'} />

@@ -6,6 +6,11 @@
   text-align: center;
   background-color: #fdf6f1;
 
+  @media (width <= 768px) {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
   .title {
     @include title;
 

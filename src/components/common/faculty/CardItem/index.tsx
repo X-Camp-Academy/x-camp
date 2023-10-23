@@ -44,7 +44,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
               {t('More')} <RightOutlined />
             </a>
           </Space>
-          <Avatar src={item?.attributes?.imgUrl} size={{ xs: 16, sm: 32, md: 48, lg: 64, xl: 80, xxl: 96 }} />
+          <Avatar src={item?.attributes?.imgUrl} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} />
         </Space>
       </Card>
     </ColorfulCard>

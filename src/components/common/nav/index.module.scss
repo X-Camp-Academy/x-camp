@@ -97,7 +97,7 @@
       }
 
       .mobileIntl {
-        @include flex(space-around);
+        @include flex(flex-end);
 
         padding: 10px 30px;
 

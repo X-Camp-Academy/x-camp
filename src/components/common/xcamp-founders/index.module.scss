@@ -5,6 +5,11 @@
   margin-top: 120px;
   padding-bottom: 120px;
 
+  @media (width <= 768px) {
+    margin-top: 60px;
+    padding-bottom: 60px;
+  }
+
   .title {
     @include title;
   }
@@ -27,6 +32,7 @@
     margin-top: 100px;
 
     @media (width <= 768px) {
+      margin-top: 50px;
       margin-right: 0 !important;
       margin-left: 0 !important;
     }
@@ -52,6 +58,10 @@
     position: absolute;
     width: 384px;
     height: 480px;
+
+    @media (width <= 768px) {
+      width: 100%;
+    }
   }
 
   .charlieImgCol {
