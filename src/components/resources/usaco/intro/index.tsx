@@ -12,50 +12,50 @@ const Intro: React.FC = () => {
 
   const levels = [
     {
-      title: 'Bronze',
-      desc: '(Knowledge Level)'
+      title: t('Bronze'),
+      desc: t('Knowledge.Level1')
     },
     {
-      title: 'Silver',
-      desc: '(Knowledge & Ability Level Mix)'
+      title: t('Silver'),
+      desc: t('Knowledge.Level2')
     },
     {
-      title: 'Gold',
-      desc: '(Ability Level)'
+      title: t('Gold'),
+      desc: t('Knowledge.Level3')
     },
     {
-      title: 'Platinum',
-      desc: '(Ability Level)'
+      title: t('Platinum'),
+      desc: t('Knowledge.Level3')
     },
     {
-      title: '(US Camp)Finalist',
-      desc: '(Ability Level)'
+      title: t('USCamp'),
+      desc: t('Knowledge.Level3')
     }
   ];
   return (
     <div className={`${styles.introContainer} container`}>
       <Space direction="vertical">
-        <Title className={styles.title}>Intro to USACO（USA Computing Olympiad）</Title>
+        <Title className={styles.title}>{t('USACO.Intro.Title')}</Title>
 
         <Space direction="vertical">
-          <Title className={styles.subTitle}>1. USACO Progression Path</Title>
+          <Title className={styles.subTitle}>1. {t('USACO.Intro.Progression.Path')}</Title>
           <Paragraph className={styles.subParagraph}>
-            Bronze ➡️ Silver ➡️ Gold ➡️ Platinum ➡️ US Camp ➡️ US IOI Team
+            {t('USACO.Intro.Desc1')}
             <br />
-            Four contests each season, typically from December to March
+            {t('USACO.Intro.Desc2')}
             <br />
-            Contest Window: 4 hours, 5 hours for US Open (March)
+            {t('USACO.Intro.Desc3')}
           </Paragraph>
         </Space>
 
         <Space direction="vertical">
-          <Title className={styles.subTitle}>2. USACO National Finalist Journey </Title>
+          <Title className={styles.subTitle}>2. {t('USACO.National.Finalist')}</Title>
           <Paragraph className={styles.subParagraph}>
-            {'Platinum -> US Camp -> US IOI Team'}
+            {t('USACO.Intro.Desc4')}
             <br />
-            Approximately 22 - 27 Finalists each season
+            {t('USACO.Intro.Desc5')}
             <br />
-            The US team selects 4 representatives to compete in the yearly IOI (International Olympiad of Informatics).
+            {t('USACO.Intro.Desc6')}
           </Paragraph>
         </Space>
 
@@ -63,13 +63,13 @@ const Intro: React.FC = () => {
           {images?.map((item) => <Image key={item} alt="" src={item} preview={false} className={styles.image} />)}
         </Space>
 
-        <Title className={styles.chartTitle}>USACO Pre-college contestants in 2020 - 2023</Title>
+        <Title className={styles.chartTitle}>{t('USACO.PreCollege.Title')}</Title>
 
         <Space direction={isMobile ? 'vertical' : 'horizontal'} size={48} className={styles.chart}>
           <Image alt="" preview={false} src={'/image/resources/bar-chart.png'} className={styles.barChart} />
 
           <Space direction="vertical" className={styles.chartRight}>
-            <Title className={styles.subTitle}>Each level difficulties and abilities to master</Title>
+            <Title className={styles.subTitle}>{t('USACO.Chart.Title')}</Title>
             {levels?.map((item) => (
               <div key={item?.title} className={styles.spaceItem}>
                 <Space>

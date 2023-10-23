@@ -28,8 +28,8 @@ const Banner: React.FC = () => {
   return (
     <div className={`${styles.amaContainer} container`}>
       <Space direction="vertical">
-        <Title className={styles.title}>USACO AMA</Title>
-        <Paragraph className={styles.paragraph}>We are privileged to feature an annual Q&A session with USACO Director Dr. Brian Dean. our internal team will host an open Q&A for all.</Paragraph>
+        <Title className={styles.title}>{t('AMA.Title')}</Title>
+        <Paragraph className={styles.paragraph}>{t('AMA.desc')}</Paragraph>
 
         <Space direction={isMobile ? 'vertical' : 'horizontal'} size={16} className={styles.spaceContainer}>
           {data?.map((item) => (

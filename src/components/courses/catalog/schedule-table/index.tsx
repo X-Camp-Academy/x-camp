@@ -39,8 +39,8 @@ const ScheduleTable: React.FC = () => {
       text: t('CourseLevel'),
       options: [
         {
-          label: 'Python',
-          value: 'Python'
+          label: 'Python for Beginner',
+          value: 'Python for Beginner'
         },
         {
           label: 'USACO Bronze Knowledge',
@@ -51,24 +51,20 @@ const ScheduleTable: React.FC = () => {
           value: 'USACO Silver Knowledge'
         },
         {
+          label: 'USACO Gold Knowledge',
+          value: 'USACO Gold Knowledge'
+        },
+        {
           label: 'USACO Grandmaster Classes',
           value: 'USACO Grandmaster Classes'
         },
         {
-          label: 'APCS Classes',
-          value: 'APCS Classes'
+          label: 'Java & APCS Classes',
+          value: 'Java & APCS Classes'
         },
         {
-          label: 'USACO Enhancement Classes',
-          value: 'USACO Enhancement Classes'
-        },
-        {
-          label: '100 Problem Challenge',
-          value: '100 Problem Challenge'
-        },
-        {
-          label: 'Bilingual Classes',
-          value: 'Bilingual Classes'
+          label: 'Mock Test Classes',
+          value: 'Mock Test Classes'
         }
       ]
     },
