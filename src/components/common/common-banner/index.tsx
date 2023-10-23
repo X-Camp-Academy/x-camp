@@ -1,4 +1,4 @@
-import { Col, Image, Row, Space, Typography } from 'antd';
+import { Col, Row, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
@@ -25,7 +25,7 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
         <div className={styles.background} style={{ backgroundColor: barColor }} />
       </Col>
       <Col xs={24} sm={24} md={24} lg={24} xl={14}>
-        <Image alt="img" preview={false} src={image} className={styles.image} />
+        <img alt="img" src={image} className={styles.image} />
       </Col>
     </Row>
   );

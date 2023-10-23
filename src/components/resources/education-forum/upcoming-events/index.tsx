@@ -24,8 +24,8 @@ const UpcomingEvents: React.FC = () => {
     return item?.attributes?.startDateTime && new Date(item?.attributes?.startDateTime).getTime() - new Date().getTime() > 0;
   });
   const upComingEvent = newEventData?.sort((a, b) => {
-    const dateA = new Date(a?.attributes?.startDateTime).toLocaleString();
-    const dateB = new Date(b?.attributes?.startDateTime).toLocaleString();
+    const dateA = new Date(a?.attributes?.startDateTime).toISOString();
+    const dateB = new Date(b?.attributes?.startDateTime).toISOString();
     return dateA.localeCompare(dateB);
   });
 
