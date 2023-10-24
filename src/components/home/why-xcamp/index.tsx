@@ -2,6 +2,7 @@
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate } from '@/utils';
+import { getTransResult } from '@/utils/public';
 import { Card, Col, Image, Row, Space, Typography } from 'antd';
 import 'hover.css';
 import React, { useRef } from 'react';
@@ -45,13 +46,13 @@ const WhyXCamp: React.FC = () => {
       <div className={`${styles.aboutXCamp} container`}>
         <Space direction="vertical" align="center" className={styles.aboutXCampTop}>
           <TitleColor title={t('AboutX-Camp')} config={[{ text: t('AboutX-Camp_Color') }]} className={styles.title} />
-          <Text className={lang === 'zh' ? styles.titleBgZh : styles.titleBgEn} />
+          <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
           <Paragraph className={styles.paragraph}>{t('Home.WhyXCamp.Desc')}</Paragraph>
         </Space>
         <Row className={styles.row} gutter={16} justify="center" align="middle">
           {aboutContents?.map((item) => {
             return (
-              <Col key={item?.icon} xs={12} sm={12} md={12} lg={6}>
+              <Col key={item?.icon} xs={24} sm={24} md={12} lg={6}>
                 <Card
                   className={styles.card}
                   bodyStyle={{

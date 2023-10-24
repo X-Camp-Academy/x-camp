@@ -2,7 +2,7 @@ import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
-import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import { CloseOutlined, MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Card, Checkbox, Form, Input } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { RefObject, useEffect, useRef, useState } from 'react';
@@ -52,6 +52,11 @@ const FixedButtons: React.FC = () => {
               paddingBottom: 16
             }}
             className={styles.card}
+            extra={
+              <a onClick={() => setOpen(false)} style={{ color: '#172142' }}>
+                {<CloseOutlined />}
+              </a>
+            }
           >
             <div className={styles.cardTitle}>{t('SIGH_UP_USACO_TOOLKIT')}</div>
             <Form name="carouselContent" onFinish={onFinish} className={styles.form}>

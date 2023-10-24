@@ -4,6 +4,10 @@
   padding: 100px 0;
   width: 100%;
 
+  @media (width <= 768px) {
+    padding: 50px 0;
+  }
+
   .aboutXCamp {
     .aboutXCampTop {
       position: relative;
@@ -18,9 +22,13 @@
         span {
           color: $primary-color;
         }
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
       }
 
-      .titleBgBase {
+      .baseTitleBg {
         display: block;
         margin-left: -128px;
         height: 16px;
@@ -29,16 +37,26 @@
         background-image: url('/image/home/home-title-bg-1.png');
       }
 
-      .titleBgZh {
-        @extend .titleBgBase;
+      .zhTitleBg {
+        @extend .baseTitleBg;
 
         width: 160px;
+
+        @media (width <= 768px) {
+          margin-left: -80px;
+          width: 120px !important;
+        }
       }
 
-      .titleBgEn {
-        @extend .titleBgBase;
+      .enTitleBg {
+        @extend .baseTitleBg;
 
         width: 112px;
+
+        @media (width <= 768px) {
+          margin-left: -80px;
+          width: 80px !important;
+        }
       }
 
       .paragraph {
@@ -46,6 +64,12 @@
 
         margin-top: 12px;
         margin-bottom: 0;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          margin-top: 0;
+        }
       }
     }
 
@@ -64,7 +88,7 @@
         background-color: #fff;
 
         @media (width <= 768px) or (width <= 992px) {
-          min-height: 278px;
+          min-height: 192px;
         }
 
         &:hover {
@@ -80,12 +104,21 @@
           height: 56px;
           border-radius: 4px;
           background-color: #fff;
+
+          @media (width <= 768px) {
+            width: 40px;
+            height: 40px;
+          }
         }
 
         .cardTitle {
           @include text(22px, 28px);
 
           font-weight: 600;
+
+          @media (width <= 768px) {
+            @include title('mobile');
+          }
         }
 
         .cardParagraph {
@@ -93,6 +126,10 @@
           color: #666;
 
           @include text(16px, 28px);
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
         }
       }
     }

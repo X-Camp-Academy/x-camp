@@ -5,10 +5,18 @@
 
   padding: 80px 15px;
 
+  @media (width <= 768px) {
+    padding: 40px 15px;
+  }
+
   .title {
     margin: 0;
 
     @include title;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .titleBg {
@@ -19,12 +27,21 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url('/image/home/home-title-bg-1.png');
+
+    @media (width <= 768px) {
+      margin-left: 88px;
+      width: 96px;
+    }
   }
 
   .paragraphText {
     @include text(18px, 34px, $primary-color);
 
     font-weight: 500;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
   }
 
   .paragraph {
@@ -37,7 +54,7 @@
 
     @media (width <= 768px) {
       margin: auto;
-      margin-bottom: 80px;
+      margin-bottom: 32px;
       padding: 0;
 
       @include margin(0);
@@ -61,6 +78,10 @@
         @include title('thin');
 
         line-height: 54px;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
       }
 
       .cardParagraph {
@@ -69,6 +90,10 @@
         text-align: left;
         color: #666;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
 
       .cardMore {
@@ -76,6 +101,10 @@
         bottom: 16px;
         left: 16px;
         color: #172142;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

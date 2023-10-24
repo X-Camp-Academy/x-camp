@@ -85,8 +85,8 @@
       line-height: 48px;
 
       @media (width <= 768px) {
-        font-size: 36px;
-        line-height: 36px;
+        font-size: 26px;
+        line-height: 42px;
       }
     }
 
@@ -96,6 +96,11 @@
       @include text(16px, 24px, #172142);
 
       font-weight: 500;
+
+      @media (width <= 768px) {
+        font-size: 10px;
+        line-height: 10px;
+      }
     }
   }
 
