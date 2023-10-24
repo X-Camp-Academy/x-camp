@@ -12,6 +12,10 @@
 
   .title {
     @include title;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .titleParagraph {

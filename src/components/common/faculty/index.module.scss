@@ -4,20 +4,50 @@
   padding: 100px 15px;
   text-align: center;
 
+  @media (width <= 768px) {
+    padding: 50px 15px;
+  }
+
   .title {
     margin: 0;
 
     @include title;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
-  .titleBg {
+  .baseTitleBg {
     display: block;
-    margin-left: -175px;
-    width: 180px;
     height: 20px;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url('/image/home/home-title-bg-1.png');
+  }
+
+  .zhTitleBg {
+    @extend .baseTitleBg;
+
+    margin-left: -160px;
+    width: 128px !important;
+
+    @media (width <= 768px) {
+      margin-left: -108px;
+      width: 108px !important;
+    }
+  }
+
+  .enTitleBg {
+    @extend .baseTitleBg;
+
+    margin-left: -175px;
+    width: 180px;
+
+    @media (width <= 768px) {
+      margin-left: -108px;
+      width: 112px;
+    }
   }
 
   .paragraph {
@@ -31,12 +61,17 @@
       padding: 0;
 
       @include margin(0);
+      @include mobile-text;
     }
   }
 
   .carouselContainer {
     position: relative;
     margin-top: 32px;
+
+    @media (width <= 768px) {
+      margin-top: 16px;
+    }
 
     .prev {
       position: absolute;
@@ -72,14 +107,28 @@
         @include text(24px, 36px);
 
         font-weight: bold;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
       }
 
       .description {
         @include text(18px, 26px, #666);
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          color: #666;
+        }
       }
 
       .more {
         @include text(14px, 16px);
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

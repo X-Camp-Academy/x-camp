@@ -4,6 +4,10 @@
   padding: 100px 0;
   width: 100%;
 
+  @media (width <= 768px) {
+    padding: 50px 0;
+  }
+
   .publicCalendar {
     .title {
       margin: 0;
@@ -11,9 +15,13 @@
       @include title('default');
 
       text-align: center;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
-    .titleBg {
+    .baseTitleBg {
       display: block;
       margin-bottom: 45px;
       margin-left: 260px;
@@ -22,9 +30,33 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-image: url('/image/home/home-title-bg-1.png');
+    }
+
+    .zhTitleBg {
+      @extend .baseTitleBg;
+
+      margin-left: 240px;
+      width: 120px;
 
       @media (width <= 768px) {
-        margin: 0 auto 45px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 160px;
+        width: 112px;
+      }
+    }
+
+    .enTitleBg {
+      @extend .baseTitleBg;
+
+      margin-left: 260px;
+      width: 160px;
+
+      @media (width <= 768px) {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 160px;
+        width: 128px;
       }
     }
 
@@ -34,6 +66,7 @@
 
       @media (width <= 768px) {
         padding: 0;
+        height: 128px;
       }
 
       .eventContent {
@@ -60,6 +93,10 @@
             font-weight: 500;
             color: #6a6a6a;
             line-height: 28px;
+
+            @media (width <= 768px) {
+              @include mobile-text;
+            }
           }
 
           .day {
@@ -67,6 +104,11 @@
             font-weight: 600;
             color: #172142;
             line-height: 48px;
+
+            @media (width <= 768px) {
+              font-size: 20px;
+              line-height: 20px;
+            }
           }
         }
 
@@ -95,6 +137,10 @@
 
             @media (width <= 992px) {
               width: 90%;
+            }
+
+            @media (width <= 768px) {
+              @include text(20px, 20px);
             }
           }
 
@@ -169,6 +215,10 @@
           white-space: nowrap;
           color: #000;
           line-height: 25px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
         }
 
         :global(.ant-space-item:nth-child(2)) {

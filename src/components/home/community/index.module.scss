@@ -4,6 +4,10 @@
   padding: 100px 15px;
   width: 100%;
 
+  @media (width <= 768px) {
+    padding: 50px 15px;
+  }
+
   .community {
     padding-right: 15px;
     padding-left: 15px;
@@ -21,6 +25,10 @@
 
       margin: 0;
       color: $primary-color;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .titleBg {
@@ -30,6 +38,11 @@
       background-image: url('/image/home/home-title-bg-1.png');
       background-repeat: no-repeat;
       background-size: cover;
+
+      @media (width <= 768px) {
+        margin-top: 10px;
+        width: 144px !important;
+      }
     }
 
     .paragraph {
@@ -42,11 +55,16 @@
         padding: 0;
 
         @include margin(0);
+        @include mobile-text;
       }
     }
 
     .carouselContainer {
       margin-top: 56px;
+
+      @media (width <= 768px) {
+        margin-top: 28px;
+      }
 
       .maskCard {
         position: relative;
@@ -67,7 +85,7 @@
 
         .cardTitle {
           position: absolute;
-          bottom: 0;
+          bottom: 16px;
           left: 24px;
           font-size: 16px;
           font-weight: 600;
@@ -75,6 +93,12 @@
           color: #fff;
           text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
           line-height: 48px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+
+            color: #fff;
+          }
         }
 
         .maskCardTitle {
@@ -82,6 +106,12 @@
 
           text-align: left;
           color: #fff;
+
+          @media (width <= 768px) {
+            @include title('mobile');
+
+            color: #fff;
+          }
         }
 
         .maskCardParagraph {
@@ -90,6 +120,12 @@
           text-align: left;
           color: #fff;
           line-height: 26px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+
+            color: #fff;
+          }
         }
       }
     }
@@ -107,6 +143,11 @@
 
       .icon {
         margin-left: 16px;
+      }
+
+      @media (width <= 768px) {
+        font-size: 14px;
+        line-height: 14px;
       }
     }
   }

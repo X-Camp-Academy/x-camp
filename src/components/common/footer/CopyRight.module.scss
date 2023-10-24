@@ -7,6 +7,10 @@
   .copyRight {
     padding: 30px;
 
+    @media (width <= 768px) {
+      padding-top: 0;
+    }
+
     .spaceLeft {
       margin-top: 48px;
       width: 100%;
@@ -21,6 +25,10 @@
 
         .text {
           margin-left: 10px;
+
+          @media (width <= 768px) {
+            @include text(12px, 24px);
+          }
         }
       }
     }
@@ -36,10 +44,18 @@
         font-weight: 600;
 
         @include text(18px, 30px);
+
+        @media (width <= 768px) {
+          @include text(14px, 24px);
+        }
       }
 
       a {
         @include text(14px, 36px);
+
+        @media (width <= 768px) {
+          @include text(12px, 24px);
+        }
       }
     }
 
@@ -78,5 +94,12 @@
     color: #172142;
     background-color: #ffad11;
     line-height: 64px;
+
+    @media (width <= 768px) {
+      padding-top: 20px;
+      height: 56px;
+
+      @include mobile-text;
+    }
   }
 }

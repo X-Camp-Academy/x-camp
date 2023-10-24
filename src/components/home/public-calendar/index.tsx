@@ -125,7 +125,7 @@ const PublicCalendar: React.FC = () => {
           X-Camp {t('Public')} <span>{t('Calendar')}</span>
         </Title>
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <Text className={styles.titleBg} />
+          <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
         </div>
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
@@ -190,7 +190,7 @@ const PublicCalendar: React.FC = () => {
                   <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
                   <div className={styles.line} />
                 </Space>
-                <div style={{ height: 250, overflow: 'auto', paddingRight: 16 }}>
+                <div style={{ height: isMobile ? 125 : 250, overflow: 'auto', paddingRight: 16 }}>
                   {!!filterDateEventList.length ? (
                     filterDateEventList.map((item, index) => {
                       if (item?.startDateTime)

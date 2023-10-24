@@ -32,11 +32,7 @@ body {
 }
 
 html {
-  font-size: 16px; // pc端设计稿为1440px
-
-  @media (width <= 768px) {
-    font-size: 14px; // 移动端设计稿为750px
-  }
+  font-size: 16px;
 }
 
 .container {
