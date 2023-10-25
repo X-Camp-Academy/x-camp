@@ -21,10 +21,7 @@
     }
 
     @media (width <= 768px) {
-      top: 232px;
-      left: 256px;
-      width: 120px;
-      height: 40px;
+      display: none;
     }
   }
 }

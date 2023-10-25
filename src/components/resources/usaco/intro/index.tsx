@@ -59,7 +59,7 @@ const Intro: React.FC = () => {
           </Paragraph>
         </Space>
 
-        <Space size={0} className={styles.space}>
+        <Space direction={isMobile ? 'vertical' : 'horizontal'} size={0} className={styles.space}>
           {images?.map((item) => <Image key={item} alt="" src={item} preview={false} className={styles.image} />)}
         </Space>
 

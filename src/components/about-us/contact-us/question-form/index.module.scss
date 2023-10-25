@@ -14,6 +14,10 @@
     text-align: center;
 
     @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .card {
@@ -34,6 +38,10 @@
       margin-top: 12px;
 
       @include title('default');
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .formTextArea {
@@ -54,6 +62,12 @@
 
       &:hover {
         @extend .hoverButton;
+      }
+
+      @media (width <= 768px) {
+        @include mobile-text;
+
+        color: #fff;
       }
     }
   }

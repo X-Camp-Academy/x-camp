@@ -1,3 +1,5 @@
+@import '@/styles/variables';
+
 .jobSelectionContainer {
   .jobSelection {
     padding: 100px 50px;
@@ -31,6 +33,10 @@
 
         @media (width <= 768px) {
           margin: 20px auto;
+
+          @media (width <= 768px) {
+            @include title('mobile');
+          }
         }
       }
 
@@ -44,8 +50,17 @@
     .jobCardContainer {
       margin-top: 50px;
 
+      @media (width <= 768px) {
+        margin-top: 25px;
+      }
+
       .collapseCard {
         margin-bottom: 30px;
+
+        @media (width <= 768px) {
+          margin-bottom: 15px;
+        }
+
         width: 100%;
       }
     }

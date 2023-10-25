@@ -25,6 +25,10 @@
       @include title('thin');
 
       line-height: 64px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .icon {
@@ -37,6 +41,12 @@
       font-size: 21px;
       color: #ffad11;
       background-color: #ffeddf;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+
+        color: #ffad11;
+      }
     }
   }
 }

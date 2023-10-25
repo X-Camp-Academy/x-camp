@@ -10,6 +10,12 @@
 
       margin-bottom: 48px;
       text-align: center;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        margin-bottom: 24px;
+      }
     }
 
     .card {
@@ -21,8 +27,9 @@
       background: #fff;
 
       @media (width <= 768px) {
-        flex-direction: column;
         padding: 32px 24px;
+        height: 320px;
+        flex-direction: column;
       }
 
       .img {
@@ -59,6 +66,8 @@
 
           @media (width <= 992px) {
             font-size: 24px;
+
+            @include title('mobile');
           }
         }
 
@@ -67,6 +76,10 @@
           font-weight: 500;
           color: #172142;
           line-height: 34px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
         }
 
         .btn {
@@ -76,7 +89,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 199px;
+          width: 200px;
           height: 56px;
           border: 2px solid #172142;
           border-radius: 12px;
@@ -88,6 +101,10 @@
 
           @media (width <= 768px) {
             position: static;
+            width: 144px;
+            height: 48px;
+
+            @include mobile-text;
           }
         }
       }

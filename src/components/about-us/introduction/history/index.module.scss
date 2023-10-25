@@ -7,11 +7,15 @@
 
   @media (width <= 768px) {
     margin-top: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
 
   .title {
     @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .paragraph {
@@ -19,6 +23,10 @@
     font-weight: 500;
     color: #172142;
     line-height: 36px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
   }
 
   .timeline {

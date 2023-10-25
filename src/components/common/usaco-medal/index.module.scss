@@ -7,6 +7,11 @@
   padding-bottom: 40px;
   width: 100%;
   flex-direction: column;
+
+  @media (width <= 768px) {
+    padding-top: 16px;
+    padding-bottom: 20px;
+  }
 }
 
 .usacoBgContainer {
@@ -33,6 +38,10 @@
     &:hover {
       text-decoration: underline;
       text-decoration-color: $primary-color;
+    }
+
+    @media (width <= 768px) {
+      @include title('mobile');
     }
   }
 
@@ -85,8 +94,7 @@
       line-height: 48px;
 
       @media (width <= 768px) {
-        font-size: 26px;
-        line-height: 42px;
+        @include title('mobile');
       }
     }
 
@@ -98,8 +106,7 @@
       font-weight: 500;
 
       @media (width <= 768px) {
-        font-size: 10px;
-        line-height: 10px;
+        @include mobile-text;
       }
     }
   }

@@ -66,7 +66,7 @@ const History: React.FC = () => {
       <div className="container">
         <Title className={styles.title}>{t('HistoryOfXCamp.Title')}</Title>
         <Paragraph className={styles.paragraph}>{t('HistoryOfXCamp.Desc')}</Paragraph>
-
+        {/* 
         <div className={styles.timeline}>
           {years?.map((item) => (
             <Space direction="vertical" key={item}>
@@ -75,7 +75,7 @@ const History: React.FC = () => {
             </Space>
           ))}
           <div className={styles.line} />
-        </div>
+        </div> */}
 
         <Row gutter={[48, 32]} className={styles.timeImage} style={{ display: 'flex', justifyContent: 'space-between' }}>
           {historyCards?.slice(0, 3)?.map((item) => (
