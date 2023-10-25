@@ -12,6 +12,10 @@
     @include title;
 
     margin-bottom: 20px;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .cards {
@@ -23,13 +27,16 @@
 
       img {
         width: 100%;
-        height: 400px;
       }
 
       .title {
         @include title('thin');
 
         line-height: 32px;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
       }
 
       .description {
@@ -41,6 +48,10 @@
           font-weight: 400;
           color: #666;
           line-height: 28px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
         }
 
         .icon {
@@ -50,6 +61,10 @@
         .arrow {
           font-size: 18px;
           color: #ffad11;
+
+          @media (width <= 768px) {
+            font-size: 16px;
+          }
         }
       }
     }

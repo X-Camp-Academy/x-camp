@@ -5,7 +5,7 @@
   width: 100%;
 
   @media (width <= 768px) {
-    padding-top: 50px;
+    padding-top: 48px;
   }
 
   .description {
@@ -13,6 +13,10 @@
 
     margin-bottom: 100px;
     font-weight: 500;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
   }
 
   .MoreUSACO::before {
@@ -56,11 +60,24 @@
     .icon {
       font-size: 24px;
       color: #fff;
+
+      @media (width <= 768px) {
+        font-size: 16px;
+      }
+    }
+
+    @media (width <= 768px) {
+      width: 24px;
+      height: 24px;
     }
   }
 
   .title {
     @include title;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .videoPane {
@@ -70,6 +87,10 @@
 
     .videoPanel {
       width: 366px;
+
+      @media (width <= 768px) {
+        width: 100%;
+      }
 
       .videoBox {
         width: 100%;
@@ -83,6 +104,10 @@
         font-weight: 600;
         color: #172142;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
 
       .icon {
@@ -92,6 +117,12 @@
       .videoDate {
         font-size: 18px;
         color: #666;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          color: #666;
+        }
       }
     }
   }
@@ -101,5 +132,11 @@
     font-weight: 400;
     color: #d46b14;
     line-height: 100px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      color: #d46b14;
+    }
   }
 }

@@ -1,13 +1,24 @@
+@import '@/styles/variables';
+
 .introContainer {
   margin-top: 100px;
   padding: 48px;
   background-color: #fff;
+
+  @media (width <= 768px) {
+    margin-top: 50px;
+    padding: 24px;
+  }
 
   .title {
     font-size: 36px;
     font-weight: 600;
     color: #172142;
     line-height: 48px;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .subTitle {
@@ -15,6 +26,10 @@
     font-weight: 600;
     color: #172142;
     line-height: 48px;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .subParagraph {
@@ -22,6 +37,10 @@
     font-weight: 400;
     color: #172142;
     line-height: 48px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
   }
 
   .space {
@@ -41,12 +60,20 @@
     font-weight: 600;
     color: #172142;
     line-height: 48px;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .chart {
     .barChart {
       width: 100%;
       height: 448px;
+
+      @media (width <= 768px) {
+        height: 320px;
+      }
     }
 
     .chartRight {
@@ -57,6 +84,10 @@
         font-weight: 600;
         color: #172142;
         line-height: 64px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
 
       .spaceItem {
@@ -75,6 +106,10 @@
           font-weight: 600;
           color: #172142;
           line-height: 40px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
         }
       }
     }

@@ -6,7 +6,7 @@
     text-align: center;
 
     @media (width <= 768px) {
-      padding: 50px 25px;
+      padding: 32px 25px;
     }
 
     .btnContainer {
@@ -33,10 +33,7 @@
 
         @media (width <= 768px) {
           margin: 20px auto;
-
-          @media (width <= 768px) {
-            @include title('mobile');
-          }
+          font-size: 20px;
         }
       }
 

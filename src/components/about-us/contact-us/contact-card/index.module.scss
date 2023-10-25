@@ -31,6 +31,14 @@
       }
     }
 
+    .paragraph {
+      font-size: 18px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
+    }
+
     .icon {
       display: flex;
       justify-content: center;

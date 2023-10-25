@@ -12,10 +12,9 @@ type ClassCardProps = Omit<ColorfulCardProps, 'children'> & {
   list: string[];
   time: string;
   bilingual?: boolean;
-  continuity?: boolean;
 };
 
-const ClassCard = ({ index, title, href, list, time, bilingual, continuity }: ClassCardProps) => {
+const ClassCard = ({ index, title, href, list, time, bilingual }: ClassCardProps) => {
   return (
     <ColorfulCard border={'bottom'} index={index} animate={false} className={styles.colorfulCard}>
       <Card className={styles.card}>
@@ -44,7 +43,6 @@ const ClassCard = ({ index, title, href, list, time, bilingual, continuity }: Cl
           </Space>
         </Space>
         {bilingual && <div className={styles.bilingual}>BILINGUAL</div>}
-        {continuity && <div className={styles.continuity}>CONTINUITY</div>}
       </Card>
     </ColorfulCard>
   );

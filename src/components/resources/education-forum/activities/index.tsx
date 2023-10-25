@@ -113,7 +113,7 @@ const Activities: React.FC = () => {
                 <div className={styles.card}>
                   <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
                   <Space direction="vertical" className={styles.cardContent}>
-                    <Title className={styles.title} ellipsis={{ rows: 2 }}>
+                    <Title className={styles.title} ellipsis={{ rows: 1 }}>
                       {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
                     </Title>
                     <div className={styles.description}>

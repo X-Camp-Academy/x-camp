@@ -65,6 +65,8 @@
       }
 
       @media (width <= 768px) {
+        height: 48px;
+
         @include mobile-text;
 
         color: #fff;

@@ -15,19 +15,31 @@
     padding: 56px;
 
     @media (width <= 768px) {
-      padding: 28px;
+      padding: 16px;
     }
 
     .title {
       @include title;
 
       margin-bottom: 42px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        margin-bottom: 20px;
+      }
     }
 
     .question {
       @include text(24px, 48px);
 
       font-weight: bold;
+
+      @media (width <= 768px) {
+        @include text(20px, 24px);
+
+        font-weight: 500;
+      }
     }
 
     .question::before {
@@ -48,6 +60,13 @@
       font-weight: 600;
       color: #172142;
       line-height: 48px;
+
+      @media (width <= 768px) {
+        margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+      }
     }
   }
 }

@@ -9,8 +9,23 @@ import styles from './index.module.scss';
 const { Text, Title } = Typography;
 
 const CourseCard: React.FC<GetCourses> = (props) => {
-  const { id, courseCode, courseTitleEn, courseTitleZh, classMode, recommendedLowerGrade, recommendedUpperGrade, classLang, startDateTime, endDateTime, lessonNum, frequency, tuitionRMB, tuitionUSD } =
-    props;
+  const {
+    id,
+    courseCode,
+    courseTitleEn,
+    courseTitleZh,
+    classMode,
+    recommendedLowerGrade,
+    recommendedUpperGrade,
+    classLang,
+    startDateTime,
+    endDateTime,
+    lessonNum,
+    frequency,
+    tuitionRMB,
+    tuitionUSD,
+    isBilingual
+  } = props;
 
   const { format: t, lang } = useLang();
   const recommendedGradeLevel = (recommendedLowerGrade: number, recommendedUpperGrade: number) => {
@@ -49,7 +64,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
           </Descriptions>
         </Col>
         <Col lg={12} className={styles.col} style={{ justifyContent: 'flex-end' }}>
-          <Text className={styles.fee}>{getTransResult(lang, `￥${tuitionRMB}`, `$${tuitionUSD}`)}</Text>
+          <Text className={styles.fee}>{isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</Text>
         </Col>
       </Row>
       <Divider style={{ marginTop: 35 }} />

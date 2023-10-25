@@ -79,9 +79,10 @@
         margin: 20px auto;
         margin-bottom: 0;
         padding: 10px 18px;
-        color: #fff;
 
         @include mobile-text;
+
+        color: #fff;
       }
     }
   }

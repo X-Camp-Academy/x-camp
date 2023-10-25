@@ -3,6 +3,10 @@
 .bannerContainer {
   width: 100%;
 
+  .paragraph {
+    padding-bottom: 24px;
+  }
+
   .col {
     @media (width <= 768px) {
       margin-top: 30px !important;

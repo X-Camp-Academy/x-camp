@@ -15,7 +15,7 @@ const Banner: React.FC = () => {
   );
   return (
     <div className={styles.bannerContainer}>
-      <CommonBanner image={'/image/resources/usaco-banner.png'} title={'USACO'} paragraph={paragraph} />
+      <CommonBanner image={'/image/resources/usaco-banner.png'} title={'USACO'} paragraph={paragraph} paragraphClassName={styles.paragraph} />
     </div>
   );
 };

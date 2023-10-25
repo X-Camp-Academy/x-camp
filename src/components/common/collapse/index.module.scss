@@ -12,8 +12,7 @@
     margin-bottom: 10px;
 
     @media (width <= 768px) {
-      font-size: 32px;
-      line-height: 48px;
+      @include title('mobile');
     }
   }
 
@@ -25,8 +24,7 @@
     line-height: 34px;
 
     @media (width <= 768px) {
-      font-size: 16px;
-      line-height: 24px;
+      @include mobile-text;
     }
   }
 
@@ -50,7 +48,7 @@
       color: #fff;
 
       @media (width <= 768px) {
-        font-size: 18px;
+        font-size: 16px;
       }
     }
   }

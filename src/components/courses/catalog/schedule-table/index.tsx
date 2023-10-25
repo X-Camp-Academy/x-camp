@@ -1,4 +1,4 @@
-import { GetCourses } from '@/apis/strapi-client/define';
+import { CourseQuarter, GetCourses } from '@/apis/strapi-client/define';
 import { useGetCourses } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
@@ -71,24 +71,12 @@ const ScheduleTable: React.FC = () => {
     {
       name: 'schoolQuarter',
       text: t('Quarter'),
-      options: [
-        {
-          label: 'Spring',
-          value: 'Spring'
-        },
-        {
-          label: 'Summer',
-          value: 'Summer'
-        },
-        {
-          label: 'Fall',
-          value: 'Fall'
-        },
-        {
-          label: 'Winter',
-          value: 'Winter'
-        }
-      ]
+      options: Object.values(CourseQuarter)?.map((item) => {
+        return {
+          label: t(item),
+          value: item
+        };
+      })
     }
   ];
   useEffect(() => {

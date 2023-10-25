@@ -505,6 +505,10 @@ declare const json: {
   'USACO.Pain.Points6': 'Love programming but frustrated by your progress, contemplating giving up?';
   'USACO.Pain.Points7': 'Uncertain about your current standing and what to expect for upcoming USACO seasons?';
   'USACO.Pain.Points.Desc': "If these resonate with you, don't hesitate to reach out to X-Camp! Our dedicated teaching team is here to help you make the most of your learning journey.";
+  Spring: 'Spring';
+  Summer: 'Summer';
+  Fall: 'Fall';
+  Winter: 'Winter';
 };
 
 export default json;
