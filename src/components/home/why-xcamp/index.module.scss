@@ -5,7 +5,7 @@
   width: 100%;
 
   @media (width <= 768px) {
-    padding: 50px 0;
+    padding: 48px 0;
   }
 
   .aboutXCamp {
@@ -55,7 +55,7 @@
 
         @media (width <= 768px) {
           margin-left: -80px;
-          width: 80px !important;
+          width: 68px !important;
         }
       }
 
@@ -89,6 +89,10 @@
 
         @media (width <= 768px) or (width <= 992px) {
           min-height: 192px;
+        }
+
+        @media (width <= 768px) {
+          margin-top: 24px;
         }
 
         &:hover {

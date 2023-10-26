@@ -21,7 +21,7 @@
 
     .li {
       margin-bottom: 30px;
-      width: 42px;
+      width: 32px;
       text-align: right;
       cursor: pointer;
 
@@ -47,7 +47,7 @@
     height: 540px;
 
     @media (width <= 768px) {
-      height: 368px;
+      height: 352px;
     }
   }
 
@@ -57,7 +57,7 @@
     height: 540px;
 
     @media (width <= 768px) {
-      height: 368px;
+      height: 352px;
     }
 
     .info {
@@ -130,7 +130,7 @@
         font-weight: 500;
 
         @media (width <= 768px) {
-          @include text(10px, 12px, #fff);
+          @include text(10px, 12px, #666);
         }
       }
     }

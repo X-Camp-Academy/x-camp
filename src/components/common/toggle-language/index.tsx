@@ -9,12 +9,12 @@ interface IProps {
 }
 
 const ToggleLanguage: React.FC<IProps> = ({ className }) => {
-  const { lang, toggle } = useLang();
+  const { lang, toggle, format: t } = useLang();
 
   return (
     <div onClick={toggle} className={`${styles.intl} ${className}`}>
       <SvgIcon icon="Earth" className={styles.svgIcon} />
-      <span className={styles.text}>{getTransResult(lang, '中文', 'English')}</span>
+      <span className={styles.text}>{getTransResult(lang, '英文', 'Chinese')}</span>
     </div>
   );
 };
