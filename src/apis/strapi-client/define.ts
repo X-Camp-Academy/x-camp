@@ -70,6 +70,8 @@ export interface GetNewEvent extends strapiPublicFields {
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
   detailContent?: string;
+  detailContentZh?: string;
+  detailContentEn?: string;
 
   eventLanguage?: EventLanguage;
   isContestEvent?: Boolean;
@@ -134,6 +136,14 @@ export enum ClassMode {
   OnlineLive = 'Online Live',
   InPerson = 'In-person'
 }
+
+export enum CourseQuarter {
+  Spring = 'Spring',
+  Summer = 'Summer',
+  Fall = 'Fall',
+  Winter = 'Winter'
+}
+
 export interface GetCourses extends strapiPublicFields {
   classMode: ClassMode;
   classLang: string;
@@ -167,10 +177,8 @@ export interface GetCourses extends strapiPublicFields {
   tuitionUSD: number;
   frequency: string;
   schoolYear: string;
-  schoolQuarter: string;
+  schoolQuarter: CourseQuarter;
   registerLink: string;
-  isBundle: boolean;
-  bundleRegisterLink: string;
   startDateTime: string;
   endDateTime: string;
   courseFormat: string;

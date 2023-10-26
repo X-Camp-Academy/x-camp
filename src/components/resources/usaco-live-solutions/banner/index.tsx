@@ -1,6 +1,7 @@
 import CommonBanner from '@/components/common/common-banner';
 import { useLang } from '@/hoc/with-intl/define';
 import React from 'react';
+import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
@@ -13,7 +14,7 @@ const Banner: React.FC = () => {
       {t('USACOLiveSolutions.Banner.Desc3')}
     </>
   );
-  return <CommonBanner image={'/image/resources/usaco-live-solutions-banner.png'} title={t('USACOLiveSolution')} paragraph={paragraph} />;
+  return <CommonBanner image={'/image/resources/usaco-live-solutions-banner.png'} title={t('USACOLiveSolution')} paragraph={paragraph} paragraphClassName={styles.paragraph} />;
 };
 
 export default Banner;

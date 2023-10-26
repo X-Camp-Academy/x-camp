@@ -25,8 +25,8 @@
 
       line-height: 64px;
 
-      @media (width <= 992px) {
-        font-size: 36px;
+      @media (width <= 768px) {
+        @include title('mobile');
       }
     }
 
@@ -49,9 +49,10 @@
           word-wrap: break-word;
           hyphens: auto;
 
-          @media (width <= 992px) {
+          @media (width <= 768px) {
             margin: 16px 0 12px;
-            font-size: 16px;
+
+            @include mobile-text;
           }
         }
 
@@ -60,6 +61,12 @@
           font-weight: 400;
           color: #d46b14;
           line-height: 34px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+
+            color: #d46b14;
+          }
         }
       }
 
@@ -77,6 +84,11 @@
           height: 192px;
           border-radius: 12px;
           background: #ffeddf;
+
+          @media (width <= 768px) {
+            width: 256px;
+            height: 160px;
+          }
         }
       }
     }

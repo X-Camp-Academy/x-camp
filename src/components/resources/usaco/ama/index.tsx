@@ -10,17 +10,17 @@ const Banner: React.FC = () => {
   const isMobile = useMobile();
   const data = [
     {
-      src: '/image/courses/camps-1.png',
+      src: '/image/resources/usaco-ama-1.png',
       title: 'USACO 2023 Feb Gold Problem 3 Live Solution1',
       date: '2023-04-10'
     },
     {
-      src: '/image/courses/camps-2.png',
+      src: '/image/resources/usaco-ama-2.png',
       title: 'USACO 2023 Feb Gold Problem 3 Live Solution2',
       date: '2023-04-10'
     },
     {
-      src: '/image/courses/camps-3.png',
+      src: '/image/resources/usaco-ama-3.png',
       title: 'USACO 2023 Feb Gold Problem 3 Live Solution3',
       date: '2023-04-10'
     }

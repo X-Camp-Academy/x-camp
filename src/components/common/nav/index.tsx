@@ -98,6 +98,7 @@ const Nav: React.FC = () => {
               <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
             )}
           </Space>
+
           <Space size={'middle'}>
             {!isMobile ? (
               <>
@@ -118,10 +119,13 @@ const Nav: React.FC = () => {
                 <ToggleLanguage />
               </>
             ) : (
-              <span onClick={onChangeShowMenu}>{!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}</span>
+              <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
+                {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
+              </span>
             )}
           </Space>
         </Space>
+
         {isMobile && showMenu && (
           <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
             <div className={styles.mobileIntl}>

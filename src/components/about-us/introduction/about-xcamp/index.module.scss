@@ -11,6 +11,10 @@
     text-align: center;
 
     @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .paragraph {
@@ -23,11 +27,16 @@
 
     @media (width <= 768px) {
       @include margin(0);
+      @include mobile-text;
     }
   }
 
   .space {
     margin-top: 64px;
+
+    @media (width <= 768px) {
+      margin-top: 32px;
+    }
 
     .leftImage {
       width: 500px;
@@ -37,12 +46,17 @@
 
       @media (width <= 768px) {
         width: 100%;
+        height: 320px;
       }
     }
 
     .rightSpace {
       .rightTitle {
         @include title('default');
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
       }
 
       .rightParagraph {
@@ -50,6 +64,10 @@
         font-weight: 500;
         color: #172142;
         line-height: 36px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

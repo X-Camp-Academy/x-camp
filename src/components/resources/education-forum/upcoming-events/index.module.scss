@@ -4,6 +4,10 @@
   padding: 100px 0;
   width: 100%;
 
+  @media (width <= 768px) {
+    padding: 40px 0;
+  }
+
   .cards {
     .card {
       padding: 48px 36px;
@@ -45,6 +49,8 @@
 
         @media (width <= 768px) {
           margin: 12px 0;
+
+          @include title('mobile');
         }
       }
 
@@ -56,6 +62,10 @@
           right: 0;
           font-size: 18px;
           color: #ffad11;
+
+          @media (width <= 768px) {
+            font-size: 16px;
+          }
         }
 
         :global {
@@ -77,6 +87,10 @@
             align-items: end;
             font-size: 18px;
             color: #666;
+
+            @media (width <= 768px) {
+              @include mobile-text;
+            }
           }
         }
       }

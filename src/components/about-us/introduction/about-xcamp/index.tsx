@@ -19,9 +19,9 @@ const AboutXCamp: React.FC = () => {
       </Title>
       <Paragraph className={styles.paragraph}>{t('AboutXCamp.Desc1')}</Paragraph>
 
-      <Space direction={isMobile ? 'vertical' : 'horizontal'} size={48} className={styles.space}>
+      <Space direction={isMobile ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 48} className={styles.space}>
         <Image preview={false} alt="" src={'/image/courses/camps-3.png'} className={styles.leftImage} />
-        <Space direction="vertical" size={32} className={styles.rightSpace}>
+        <Space direction="vertical" size={isMobile ? 16 : 32} className={styles.rightSpace}>
           <Title className={styles.rightTitle}>{t('AboutXCamp.SubTitle')}</Title>
           <Paragraph className={styles.rightParagraph}>{t('AboutXCamp.Desc2')}</Paragraph>
 

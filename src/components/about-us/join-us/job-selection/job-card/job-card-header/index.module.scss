@@ -9,6 +9,10 @@
     @include text(24px, 36px);
 
     margin: 0;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .expandBtn {
@@ -22,6 +26,13 @@
     text-align: left;
     color: #666;
     line-height: 28px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      margin-top: 8px;
+      color: #666;
+    }
   }
 
   .iconsButtonRow {
@@ -32,6 +43,7 @@
 
     @media (width <= 768px) {
       display: block;
+      padding: 16px 0;
     }
 
     .iconBox {
@@ -43,6 +55,12 @@
         font-weight: 400;
         color: #666;
         line-height: 28px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          color: #666;
+        }
       }
     }
 
@@ -60,6 +78,11 @@
       @media (width <= 768px) {
         margin: 20px auto;
         margin-bottom: 0;
+        padding: 10px 18px;
+
+        @include mobile-text;
+
+        color: #fff;
       }
     }
   }

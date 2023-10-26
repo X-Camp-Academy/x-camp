@@ -21,7 +21,7 @@
 
     .li {
       margin-bottom: 30px;
-      width: 42px;
+      width: 32px;
       text-align: right;
       cursor: pointer;
 
@@ -47,7 +47,7 @@
     height: 540px;
 
     @media (width <= 768px) {
-      height: 368px;
+      height: 400px;
     }
   }
 
@@ -57,7 +57,7 @@
     height: 540px;
 
     @media (width <= 768px) {
-      height: 368px;
+      height: 400px;
     }
 
     .info {
@@ -85,8 +85,8 @@
         font-weight: 800;
 
         @media (width <= 768px) {
-          font-size: 20px;
-          line-height: 28px;
+          font-size: 32px;
+          color: #fff;
         }
       }
 
@@ -97,7 +97,7 @@
         font-weight: 600;
 
         @media (width <= 768px) {
-          @include text(12px, 18px);
+          @include text(14px, 18px);
         }
       }
 
@@ -130,7 +130,7 @@
         font-weight: 500;
 
         @media (width <= 768px) {
-          @include text(10px, 12px, #fff);
+          @include text(10px, 12px, #666);
         }
       }
     }

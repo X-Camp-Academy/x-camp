@@ -24,7 +24,7 @@
       margin-top: 0;
 
       @media (width <= 768px) {
-        line-height: 58px;
+        @include title('mobile');
       }
     }
 
@@ -33,6 +33,10 @@
       font-weight: 400;
       color: #172142;
       line-height: 34px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
     }
 
     .timeListItem {
@@ -40,6 +44,8 @@
       padding-left: 40px;
 
       @media (width <= 768px) {
+        padding-right: 20px;
+        padding-left: 20px;
         font-size: 20px;
       }
 
@@ -49,6 +55,12 @@
         line-height: 48px;
         position: relative;
         left: -20px;
+
+        @media (width <= 768px) {
+          left: -10px;
+          font-size: 20px;
+          line-height: 20px;
+        }
       }
 
       .timeListTitle::before {
@@ -68,6 +80,10 @@
         font-weight: 500;
         color: #172142;
         line-height: 48px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
 
@@ -75,7 +91,11 @@
       .title {
         @include title;
 
-        margin-top: 60px;
+        @media (width <= 768px) {
+          margin-top: 30px;
+
+          @include title('mobile');
+        }
       }
 
       .subTitle {
@@ -85,6 +105,8 @@
 
         @media (width <= 768px) {
           margin-left: 5px;
+          font-size: 20px;
+          line-height: 20px;
         }
 
         &::before {
@@ -123,7 +145,7 @@
             line-height: 32px;
 
             @media (width <= 768px) {
-              font-size: 21px;
+              @include mobile-text;
             }
           }
         }
