@@ -9,7 +9,7 @@
   flex-direction: column;
 
   @media (width <= 768px) {
-    padding: 40px 0;
+    padding: 32px 0;
   }
 
   .title {
@@ -37,6 +37,10 @@
     height: 16px;
     background: url('/image/home/home-title-bg-1.png') no-repeat;
     background-size: cover;
+
+    @media (width <= 768px) {
+      display: none;
+    }
   }
 
   .zhTitleBg {
@@ -47,7 +51,6 @@
 
     @media (width <= 768px) {
       left: 64px;
-      display: none;
     }
   }
 

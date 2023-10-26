@@ -5,7 +5,7 @@
   width: 100%;
 
   @media (width <= 768px) {
-    padding: 50px 0;
+    padding: 32px 0;
   }
 
   .publicCalendar {
@@ -18,6 +18,8 @@
 
       @media (width <= 768px) {
         @include title('mobile');
+
+        margin-bottom: 32px;
       }
     }
 
@@ -30,6 +32,10 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-image: url('/image/home/home-title-bg-1.png');
+
+      @media (width <= 768px) {
+        display: none;
+      }
     }
 
     .zhTitleBg {
@@ -106,8 +112,7 @@
             line-height: 48px;
 
             @media (width <= 768px) {
-              font-size: 20px;
-              line-height: 20px;
+              @include title('middle');
             }
           }
         }
@@ -140,7 +145,7 @@
             }
 
             @media (width <= 768px) {
-              @include text(20px, 20px);
+              @include title('middle');
             }
           }
 

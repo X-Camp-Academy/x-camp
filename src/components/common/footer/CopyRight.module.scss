@@ -27,7 +27,7 @@
           margin-left: 10px;
 
           @media (width <= 768px) {
-            @include text(12px, 24px);
+            @include mobile-text;
           }
         }
       }
@@ -46,7 +46,7 @@
         @include text(18px, 30px);
 
         @media (width <= 768px) {
-          @include text(14px, 24px);
+          @include title('middle');
         }
       }
 
