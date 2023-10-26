@@ -361,7 +361,7 @@ declare const json: {
   'Evaluation.form.fail': 'Failed to submit';
   'USACO.enhancement.register': "USACO Director Dr. BrianDean's annual sharing comes!";
   'Home.Banner3.title': '7 X-Camp students Selected for USACO US Camp in 2022/2023 Season';
-  'Home.Banner3.desc': '12 students selested for US Camp between 2020-2023';
+  'Home.Banner3.desc': '12 students selected for US Camp between 2020-2023';
   'Home.Banner3.buttonText': 'More Achievements';
   'Home.Banner3.title.color': '7 X-Camp students';
   'Home.Banner3.title.color2': 'USACO US Camp';

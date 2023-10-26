@@ -15,7 +15,7 @@ const Banner: React.FC = () => {
       date: '2023-04-10'
     },
     {
-      src: '/image/courses/camps-2.png',
+      src: '/image/resources/usaco-ama-2.png',
       title: 'USACO 2023 Feb Gold Problem 3 Live Solution2',
       date: '2023-04-10'
     },

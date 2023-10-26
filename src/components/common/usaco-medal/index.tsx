@@ -1,5 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { Col, Row, Space, Typography } from 'antd';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -17,6 +18,7 @@ interface USACOMedalProps {
 const USACOMedal: React.FC<USACOMedalProps> = ({ showLogo = true, showTitle = true, rowStyle }) => {
   const router = useRouter();
   const { format: t } = useLang();
+  const isMobile = useMobile();
 
   const data = [
     {
@@ -63,7 +65,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showLogo = true, showTitle = tr
         {data?.map((item) => (
           <Col key={item?.title} span={6} className={styles.col}>
             <div className={item?.style}>
-              <Space direction="vertical">
+              <Space direction="vertical" align="center" size={isMobile ? 0 : 8}>
                 <CountUp className={styles.medalCount} style={{ color: item?.color }} end={item?.count} duration={10} suffix={item?.suffix ? '+' : undefined} scrollSpyDelay={1000} enableScrollSpy />
                 <Text className={styles.medalTitle}>{item?.title}</Text>
               </Space>

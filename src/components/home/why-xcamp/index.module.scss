@@ -121,7 +121,7 @@
           font-weight: 600;
 
           @media (width <= 768px) {
-            @include title('mobile');
+            @include title('middle');
           }
         }
 
@@ -132,6 +132,8 @@
           @include text(16px, 28px);
 
           @media (width <= 768px) {
+            margin-top: -8px;
+
             @include mobile-text;
           }
         }
