@@ -111,7 +111,9 @@ const Activities: React.FC = () => {
             <Col key={v?.id} xs={24} sm={24} md={12} lg={8}>
               <ColorfulCard border={'bottom'} animate={false} index={index}>
                 <div className={styles.card}>
-                  <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
+                  <div className={styles.imgContainer}>
+                    <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
+                  </div>
                   <Space direction="vertical" className={styles.cardContent}>
                     <Title className={styles.title} ellipsis={{ rows: 1 }}>
                       {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
