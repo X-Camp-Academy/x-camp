@@ -45,7 +45,6 @@ const UsacoIntro = ({ data }: Props) => {
     }
   }, [data]);
 
-  //console.log('@@@',sortData);
   return (
     <div className={styles.introduction}>
       <div className={'container'}>
