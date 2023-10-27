@@ -1,3 +1,4 @@
+import { useModelVisible } from '@/hoc/WithModelVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Button, Col, Row, Space, Typography } from 'antd';
@@ -9,6 +10,7 @@ const { Paragraph } = Typography;
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
+  const { modelVisible, setModelVisible } = useModelVisible();
   return (
     <div className={styles.banner}>
       <div className={`${styles.content} container`}>
@@ -34,14 +36,19 @@ const Banner: React.FC = () => {
                   {t('PlacementTest')}
                 </Link>
               </Button>
-              <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
-                <Link href="/" target="_blank">
-                  {t('1On1Consultation')}
-                </Link>
+              <Button
+                type={'primary'}
+                className={styles.button}
+                icon={<CaretRightOutlined />}
+                onClick={() => {
+                  setModelVisible(true);
+                }}
+              >
+                {t('1On1Consultation')}
               </Button>
               <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
                 <Link href="https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09" target="_blank">
-                  {t('WeeklyOpenHouse')}
+                  {t('TuesdayOpenHouse')}
                 </Link>
               </Button>
             </Space>

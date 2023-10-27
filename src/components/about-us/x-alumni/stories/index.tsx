@@ -52,7 +52,7 @@ const Stories: React.FC = () => {
                     padding: 0
                   }}
                 >
-                  <Space direction="vertical" size={32}>
+                  <Space direction="vertical" size={5}>
                     <Image alt="" preview={false} src={getTranslateImg(item.attributes.imgZh, item.attributes.imgEn)} className={styles.cardImage} />
 
                     <Title ellipsis={{ rows: 2 }} className={styles.cardTitle}>

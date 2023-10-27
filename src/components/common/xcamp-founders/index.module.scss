@@ -3,7 +3,6 @@
 .XCampFounder {
   position: relative;
   margin-top: 120px;
-  padding-bottom: 120px;
 
   @media (width <= 768px) {
     margin-top: 32px;
@@ -97,6 +96,11 @@
     @extend .baseImgCol;
 
     align-items: end;
+    padding-left: 130px !important;
+
+    @media (width <= 768px) {
+      padding-left: unset !important;
+    }
 
     .yuanImgBackground {
       @extend .baseImgBackground;
@@ -141,6 +145,7 @@
       .founderTagButton {
         margin-right: 16px;
         cursor: default;
+        vertical-align: middle;
       }
     }
 

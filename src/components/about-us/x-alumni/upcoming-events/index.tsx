@@ -5,7 +5,7 @@ import ColorfulCard from '@/components/common/colorful-card';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
-import { HistoryOutlined, LaptopOutlined, RightCircleOutlined, RightOutlined, UserOutlined } from '@ant-design/icons';
+import { GlobalOutlined, HistoryOutlined, LaptopOutlined, RightCircleOutlined, RightOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Row, Space, Typography } from 'antd';
 import Link from 'next/link';
 import React from 'react';
@@ -77,6 +77,10 @@ const UpcomingEvents: React.FC = () => {
                           ) : (
                             item.attributes.geographicallyAddress
                           )}
+                        </Text>
+                        <Text className={styles.cardText}>
+                          <GlobalOutlined className={styles.cardIcon} />
+                          {item?.attributes?.eventLanguage || 'English'}
                         </Text>
                         <Text className={styles.cardText}>
                           <UserOutlined className={styles.cardIcon} />

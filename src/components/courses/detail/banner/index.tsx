@@ -28,7 +28,7 @@ const CourseBanner: React.FC = () => {
   const courseCodeTitle = `${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)} (${lessonNum} ${getWeeksDays(frequency)})`;
 
   const formatDate = (dateTime?: string) => {
-    return formatTimezone(dateTime)?.utcTime?.format('DD/MM/YYYY');
+    return formatTimezone(dateTime)?.utcTime?.format('MM/DD/YYYY');
   };
   const fullPath = window.location.href;
   const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatDate(startDateTime)} ~ ${formatDate(

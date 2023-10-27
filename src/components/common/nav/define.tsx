@@ -1,5 +1,5 @@
 import { useLang } from '@/hoc/with-intl/define';
-import { CalendarOutlined, RightOutlined, UserAddOutlined } from '@ant-design/icons';
+import { CalendarOutlined, UserAddOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { XStarMenuItemType } from './x-star-menu';
@@ -69,15 +69,15 @@ export const useMenuItems = () => {
         {
           label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
           key: '/resources/weekly-open-house/'
-        },
-        {
-          label: (
-            <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
-              {t('X-Tutors')}
-            </a>
-          ),
-          key: 'x-tutors'
         }
+        // {
+        //   label: (
+        //     <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
+        //       {t('X-Tutors')}
+        //     </a>
+        //   ),
+        //   key: 'x-tutors'
+        // }
       ]
     },
     {
@@ -131,18 +131,19 @@ export const useMenuItems = () => {
         left: {
           title: t('AboutUs'),
           description: t('AboutUs.Description'),
-          btn: (
-            <>
-              <span
-                onClick={() => {
-                  router.push('/about-us/introduction');
-                }}
-              >
-                {t('LearnMore')}
-              </span>
-              <RightOutlined />
-            </>
-          )
+          showBtn: false
+          // btn: (
+          //   <>
+          //     <span
+          //       onClick={() => {
+          //         router.push('/about-us/introduction');
+          //       }}
+          //     >
+          //       {t('LearnMore')}
+          //     </span>
+          //     <RightOutlined />
+          //   </>
+          // )
         }
       },
       children: [
@@ -181,11 +182,11 @@ export const useMenuItems = () => {
         {
           label: <Link href="/about-us/contact-us">{t('ContactUs')}</Link>,
           key: '/about-us/contact-us/'
+        },
+        {
+          label: <Link href="/about-us/x-alumni">{t('XAlumni')}</Link>,
+          key: '/about-us/x-alumni/'
         }
-        // {
-        //   label: <Link href="/about-us/x-alumni">{t('XAlumni')}</Link>,
-        //   key: '/about-us/x-alumni/'
-        // }
       ]
     },
     {

@@ -28,37 +28,37 @@ const History: React.FC = () => {
     {
       title: 2023,
       desc: t('History.2023'),
-      url: '/image/about-us/introduction-history-1.png'
+      url: '/image/about-us/2023@2x.png'
     },
     {
       title: 2022,
       desc: t('History.2022'),
-      url: '/image/about-us/introduction-history-2.png'
+      url: '/image/about-us/2022@2x.png'
     },
     {
       title: 2021,
       desc: t('History.2021'),
-      url: '/image/about-us/introduction-history-3.png'
+      url: '/image/about-us/2021@2x.png'
     },
     {
       title: 2020,
       desc: t('History.2020'),
-      url: '/image/about-us/introduction-history-4.png'
+      url: '/image/about-us/2020@2x.png'
     },
     {
       title: 2019,
       desc: t('History.2019'),
-      url: '/image/about-us/introduction-history-5.png'
+      url: '/image/about-us/2019@2x.png'
     },
     {
       title: 2018,
       desc: t('History.2018'),
-      url: '/image/about-us/introduction-history-6.png'
+      url: '/image/about-us/2018@2x.png'
     },
     {
       title: 2017,
       desc: t('History.2017'),
-      url: '/image/about-us/introduction-history-7.png'
+      url: '/image/about-us/2017@2x.png'
     }
   ];
   return (

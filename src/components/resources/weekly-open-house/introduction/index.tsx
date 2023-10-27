@@ -5,12 +5,15 @@ import styles from './index.module.scss';
 
 const Introduction: React.FC = () => {
   const { format: t } = useLang();
+
+  const imgList = ['/image/courses/openHouse1.png', '/image/courses/openHouse2.png', '/image/courses/openHouse3.png'];
+
   return (
     <div className={`container ${styles.introductionContainer}`}>
       <div className={styles.title}>{t('DeepDiveIOfX-CampClass')}</div>
       <p className={styles.description}>{t('DeepDiveIOfX.Desc')}</p>
       <Space className={styles.images} wrap>
-        {[1, 2, 3]?.map((_) => <img key={_} src="/image/home/charlie.png" alt="" />)}
+        {imgList?.map((key) => <img key={key} src={key} alt="" />)}
       </Space>
     </div>
   );

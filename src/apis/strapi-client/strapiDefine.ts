@@ -55,7 +55,7 @@ export interface strapiPublicFields {
 }
 
 // 将 Fields 的key 转换成  "key:desc"
-type sortDesc<Fields> = {
+export type sortDesc<Fields> = {
   [p in keyof Fields as `${string & p}:desc`]: Fields[p];
 };
 

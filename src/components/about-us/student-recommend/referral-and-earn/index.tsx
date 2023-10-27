@@ -19,7 +19,7 @@ const ReferralAndEarn: React.FC = () => {
             <Title className={styles.title}>{t('Refer.Title')}</Title>
             <Paragraph className={styles.description}>{t('Refer.Desc')}</Paragraph>
             <Title className={styles.subTitle}>
-              {sFormat(getTransResult(lang, `${t('ForYouAnd')}${t('ForYourFriend')}`, `${t('Earn')} {0} ${t('ForYouAnd')} {1} ${t('ForYourFriend')}`), <span>$100</span>, <span>$50</span>)}
+              {sFormat(getTransResult(lang, `${t('ForYouAnd')}${t('ForYourFriend')}`, `${t('Earn')} {0} ${t('ForYouAnd')} {1} ${t('ForYourFriend')}`), <span>$75</span>, <span>$75</span>)}
             </Title>
             <CopyRightIcons />
           </Card>

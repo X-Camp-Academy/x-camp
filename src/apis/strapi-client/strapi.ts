@@ -23,6 +23,7 @@ import {
   GetFaq,
   GetFaqRequest,
   GetHomeStudentProjectsRequest,
+  GetNewEvent,
   GetNewEventRequest,
   GetNewEventResponse,
   GetPartnerRequest,
@@ -33,7 +34,7 @@ import {
   NewEventCategory,
   SubmitUserInfoRequest
 } from './define';
-import { AndOrFilters, FilterFields, StrapiResponseDataItem } from './strapiDefine';
+import { AndOrFilters, FilterFields, StrapiResponseDataItem, sortDesc } from './strapiDefine';
 
 // 被用在哪些course 以英文逗号连接的字符串
 // 被用在哪些page 以英文逗号连接的字符串
@@ -97,7 +98,8 @@ export const useGetNewEvent = ({
   manual = false,
   courseId,
   pageName,
-  eventId
+  eventId,
+  sortField
 }: {
   tag?: NewEventCategory;
   current?: number;
@@ -106,6 +108,7 @@ export const useGetNewEvent = ({
   courseId?: string[];
   pageName?: string[];
   eventId?: string[];
+  sortField?: string[];
 }) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -138,7 +141,7 @@ export const useGetNewEvent = ({
       defaultParams: [
         {
           populate: '*',
-          sort: ['order:desc'],
+          sort: sortField ? (sortField as Array<keyof GetNewEvent> | Array<keyof sortDesc<GetNewEvent>>) : ['order:desc'],
           filters: {
             tags: tag
               ? {

@@ -21,12 +21,13 @@ export interface SegmentedRadioGroupProps {
   setSegmented: (value: SegmentedValue) => void;
   options: EventOptionsProps[] | FacultyOptionsProps[];
   segmentedDom?: React.Ref<HTMLDivElement>;
+  style?: React.CSSProperties;
 }
 
-const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ segmented = '', setSegmented, options = [], segmentedDom }) => {
+const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ segmented = '', setSegmented, options = [], segmentedDom, style }) => {
   const isMobile = useMobile();
   return (
-    <div className={styles.segmentedRadioGroup}>
+    <div className={styles.segmentedRadioGroup} style={style}>
       {isMobile ? (
         <Radio.Group optionType="button" buttonStyle="solid" onChange={(e: RadioChangeEvent) => setSegmented(e?.target?.value as SegmentedValue)} value={segmented} className={styles.radioGroup}>
           <Space style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>

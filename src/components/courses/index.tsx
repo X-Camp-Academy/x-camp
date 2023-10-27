@@ -144,7 +144,11 @@ const Courses: React.FC = () => {
     const segmentedData = allCourses?.filter((item) => item?.primaryTitle === segmented);
 
     const result = removeEmptyChildren(segmentedData);
-
+    // 将最后一个元素放到第四个位置 Gold 移到 Silver 后面
+    if (result) {
+      let lastItem = result[0].children?.pop();
+      result[0].children?.splice(3, 0, lastItem as any);
+    }
     setSegmentedData(result);
     setCopySegmentedData(result);
   };

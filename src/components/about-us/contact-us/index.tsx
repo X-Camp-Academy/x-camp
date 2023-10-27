@@ -11,6 +11,7 @@ const Banner = dynamic(() => import('./banner'));
 const Reviews = dynamic(() => import('@/components/common/reviews'));
 const QuestionForm = dynamic(() => import('./question-form'));
 const AddressMap = dynamic(() => import('./address-map'));
+const FixedButtons = dynamic(() => import('@/components/common/fixed-buttons'));
 const { Content } = Layout;
 
 const ContactUs: React.FC = () => {

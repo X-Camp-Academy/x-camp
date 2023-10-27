@@ -11,12 +11,12 @@ const RelateResources: React.FC = () => {
   const QAData = [
     {
       title: t('USACOPublicMockTest.Title'),
-      url: '/about-us/contact-us/',
+      url: 'https://tinyurl.com/23-24USACOFreeMockTest',
       description: t('USACOPublicMockTest.Desc')
     },
     {
       title: t('USACOMockTestClass.Title'),
-      url: '/',
+      url: '/courses/#mock-test-classes',
       description: t('USACOMockTestClass.Desc')
     },
     {
