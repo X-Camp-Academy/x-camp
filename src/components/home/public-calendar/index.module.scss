@@ -32,10 +32,6 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-image: url('/image/home/home-title-bg-1.png');
-
-      @media (width <= 768px) {
-        display: none;
-      }
     }
 
     .zhTitleBg {
@@ -45,10 +41,11 @@
       width: 120px;
 
       @media (width <= 768px) {
-        margin-top: 10px;
-        margin-bottom: 20px;
-        margin-left: 160px;
-        width: 112px;
+        margin-top: -16px;
+        margin-bottom: 16px;
+        margin-left: 152px;
+        width: 72px;
+        background-size: contain;
       }
     }
 
@@ -59,10 +56,11 @@
       width: 160px;
 
       @media (width <= 768px) {
-        margin-top: 10px;
-        margin-bottom: 20px;
-        margin-left: 160px;
-        width: 128px;
+        margin-top: -16px;
+        margin-bottom: 16px;
+        margin-left: 168px;
+        width: 96px;
+        background-size: contain;
       }
     }
 

@@ -6,7 +6,7 @@
   text-align: center;
 
   @media (width <= 768px) {
-    margin-top: 60px;
+    margin-top: 32px;
     margin-bottom: 10px;
   }
 
@@ -134,6 +134,12 @@
           @include title('thin');
 
           color: #fff;
+
+          @media (width <= 768px) {
+            @include title('middle');
+
+            color: #fff;
+          }
         }
 
         .maskCardParagraph {
@@ -142,6 +148,12 @@
           text-align: left;
           color: #fff;
           line-height: 26px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+
+            color: #fff;
+          }
         }
       }
     }

@@ -55,7 +55,7 @@
         @include title('default');
 
         @media (width <= 768px) {
-          @include title('mobile');
+          @include title('middle');
         }
       }
 
@@ -67,6 +67,8 @@
 
         @media (width <= 768px) {
           @include mobile-text;
+
+          margin-bottom: 0;
         }
       }
     }
