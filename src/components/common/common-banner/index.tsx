@@ -36,7 +36,6 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
             <Title className={`${titleClassName || styles.title}`} style={titleStyle}>
               {title}
             </Title>
-            {time && <div className={styles.time}>{time}</div>}
             <Paragraph className={`${paragraphClassName || styles.paragraph}`} style={paragraphStyle}>
               {paragraph}
             </Paragraph>
