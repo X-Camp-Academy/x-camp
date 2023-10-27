@@ -18,7 +18,7 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
   return (
     <Row className={styles.row}>
       <Col xs={24} sm={24} md={24} lg={24} xl={10}>
-        <Space direction="vertical" className={styles.leftSpace} style={{ backgroundColor }}>
+        <Space direction="vertical" className={styles.leftSpace} style={{ backgroundColor }} size={24}>
           <Title className={`${titleClassName || styles.title}`}>{title}</Title>
           <Paragraph className={`${paragraphClassName || styles.paragraph}`}>{paragraph}</Paragraph>
         </Space>

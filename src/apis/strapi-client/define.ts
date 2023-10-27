@@ -70,7 +70,7 @@ export interface GetNewEvent extends strapiPublicFields {
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
   detailContent?: string;
-
+  language?: string;
   eventLanguage?: EventLanguage;
   isContestEvent?: Boolean;
 }

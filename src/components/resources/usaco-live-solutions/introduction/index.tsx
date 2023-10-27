@@ -1,9 +1,10 @@
 import { GetResourcesLiveSolution, LiveSolutionCategory } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult } from '@/utils/public';
+import { getTransResult, swapArrayElements } from '@/utils/public';
 import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
 import { Collapse, Space, Typography } from 'antd';
+import { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 
 const { Panel } = Collapse;
@@ -13,31 +14,35 @@ interface Props {
   data: StrapiResponseDataItem<GetResourcesLiveSolution>[][] | undefined;
 }
 
+interface sortDataProps {
+  category: LiveSolutionCategory;
+  categoryData: StrapiResponseDataItem<GetResourcesLiveSolution>[];
+}
+[];
+
 const UsacoIntro = ({ data }: Props) => {
   const { format: t, lang } = useLang();
   const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
-
   const getVideoByLang = (attributes: GetResourcesLiveSolution) => {
     const { video, videoZh, videoEn } = attributes;
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
   const Categories = Object.values(LiveSolutionCategory);
+  const [sortData, setSortData] = useState<sortDataProps[]>([]);
 
-  const resort = (resourcesLiveSolution: StrapiResponseDataItem<GetResourcesLiveSolution>[][] | undefined) => {
-    if (resourcesLiveSolution) {
-      const firstItem = resourcesLiveSolution?.shift();
-      resourcesLiveSolution?.push(firstItem || []);
-      return resourcesLiveSolution;
+  useEffect(() => {
+    if (data) {
+      const sortData = swapArrayElements(data, 1, 2)?.map((item, index) => {
+        return {
+          category: Categories[index],
+          categoryData: item
+        };
+      });
+      setSortData(sortData);
     }
-    return [];
-  };
+  }, [data]);
 
-  const sortData = resort(data)?.map((item, index) => {
-    return {
-      category: Categories[index],
-      categoryData: item
-    };
-  });
+  //console.log('@@@',sortData);
   return (
     <div className={styles.introduction}>
       <div className={'container'}>

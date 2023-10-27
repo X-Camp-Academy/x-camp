@@ -17,7 +17,7 @@ const AppointmentCard: React.FC = () => {
           <Button
             className={styles.btn}
             onClick={() => {
-              router.push('/');
+              router.push('/#appointment');
             }}
           >
             {t('MakeAnAppointment')}

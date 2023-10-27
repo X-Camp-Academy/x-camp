@@ -7,17 +7,19 @@
   padding-bottom: 40px;
   width: 100%;
   flex-direction: column;
+  background-color: #efefef;
 }
 
 .usacoBgContainer {
   @include flex('center');
 
   padding-top: 32px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
   width: 100%;
   background: url('/image/common/x-camp-logo.png') no-repeat;
   background-size: contain;
   flex-direction: column;
+  background-color: #efefef;
 }
 
 .titleContainer {

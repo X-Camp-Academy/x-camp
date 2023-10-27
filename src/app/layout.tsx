@@ -1,5 +1,6 @@
 'use client';
 import { WithClient } from '@/apis/BaseAxiosClient';
+import WithModelVisible from '@/hoc/WithModelVisible';
 import { WithAuth } from '@/hoc/with-auth';
 import { useMobile } from '@/utils';
 import { LocalStateProvider } from '@/utils/local-state';
@@ -19,6 +20,9 @@ const BackTop = dynamic(() => import('@/components/common/back-top'), {
 const WithIntl = dynamic(() => import('@/hoc/with-intl'), {
   ssr: false
 });
+const FixedButtons = dynamic(() => import('@/components/common/fixed-buttons'), {
+  ssr: false
+});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const isMobile = useMobile();
@@ -30,12 +34,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <WithIntl>
             <WithAuth>
               <WithClient>
-                <WithAntdConfig>
-                  <Nav />
-                  <WithLayout>{children}</WithLayout>
-                  <Footer />
-                  <BackTop />
-                </WithAntdConfig>
+                <WithModelVisible>
+                  <WithAntdConfig>
+                    <Nav />
+                    <WithLayout>{children}</WithLayout>
+                    <Footer />
+                    <BackTop />
+                    <FixedButtons />
+                  </WithAntdConfig>
+                </WithModelVisible>
               </WithClient>
             </WithAuth>
           </WithIntl>

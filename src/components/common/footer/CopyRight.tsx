@@ -54,7 +54,7 @@ const CopyRight: React.FC = () => {
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <HistoryOutlined />
-                  <Text className={styles.text}>Office Hour: Tue - Sun (Monday Off)</Text>
+                  <Text className={styles.text}>Tue - Sun 12 Noon - 9PM Pacific Time</Text>
                 </Paragraph>
               </Space>
             </Space>
@@ -84,7 +84,7 @@ const CopyRight: React.FC = () => {
                 <Title className={styles.text}>{t('HelpCenter')}</Title>
                 <Space direction="vertical">
                   <Link href={'/about-us/contact-us'}>{t('ContactUs')}</Link>
-                  <Link href={'/about-us/contact-us'}>{t('JoinUs')}</Link>
+                  <Link href={'/about-us/join-us'}>{t('JoinUs')}</Link>
                   <Link href={'/about-us/help-center'}>{t('FAQs')}</Link>
                 </Space>
               </div>

@@ -18,7 +18,12 @@ type ClassCardProps = Omit<ColorfulCardProps, 'children'> & {
 const ClassCard = ({ index, title, href, list, time, bilingual, continuity }: ClassCardProps) => {
   return (
     <ColorfulCard border={'bottom'} index={index} animate={false} className={styles.colorfulCard}>
-      <Card className={styles.card}>
+      <Card
+        className={styles.card}
+        onClick={() => {
+          window.open(href);
+        }}
+      >
         <Space
           direction="vertical"
           style={{
@@ -40,7 +45,7 @@ const ClassCard = ({ index, title, href, list, time, bilingual, continuity }: Cl
               <ClockCircleOutlined />
               <span>{time}</span>
             </Space>
-            <Button href={href} icon={<RightCircleOutlined />} className={styles.link} type="link" />
+            <Button href={href} icon={<RightCircleOutlined style={{ fontSize: 24 }} />} className={styles.link} type="link" />
           </Space>
         </Space>
         {bilingual && <div className={styles.bilingual}>BILINGUAL</div>}

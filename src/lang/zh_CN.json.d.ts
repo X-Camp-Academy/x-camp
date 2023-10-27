@@ -70,8 +70,8 @@ declare const json: {
   'Credit.Desc1': '与朋友分享X-Camp的课程！';
   'Credit.Desc2': '注册时，请让他们选择"口耳相传"作为推荐来源。';
   'Credit.Desc3': '让他们在"推荐折扣代码"框中输入您孩子的名字。';
-  'Credit.Desc4': '您的朋友将获得50美元的优惠。';
-  'Credit.Desc5': '您将获得100美元的下次学费付款抵扣。';
+  'Credit.Desc4': '您的朋友将获得75美元的优惠。';
+  'Credit.Desc5': '您将获得75美元的下次学费付款抵扣。';
   'Credit.Desc6': '如果您的朋友忘记使用代码或提及您，请在一个月内与我们联系。';
   'Credit.Desc7': '向朋友们推荐我们的课程，使您和您的朋友都受益！';
   Description: '描述';
@@ -191,8 +191,8 @@ declare const json: {
   weeklyOpenHouseDesc2: '创建编程学习计划';
   weeklyOpenHouseDesc3: '每周与我们在线会面';
   weeklyOpenHouseTips: '时间冲突? 安排一对一会议';
-  WeSupport: '我们支持';
-  WeSupport_Color: '支持';
+  WeSupport: '支持语言';
+  WeSupport_Color: '语言';
   'WeSupport.Desc': 'X-Camp的编程课为5至12年级学生量身定制，并支持三种主流编程语言：Python、Java和C++。我们的Python课程是对初学者友好的文本编程入门课，而Java系列适应美国APCS A考试。我们C++课程包括初级、中级和高级水平，对应USACO不同级别知识水平。';
   WhyWorkWithUs: '为什么加入我们';
   'WhyWorkWithUs.Desc1': 'X-Camp致力于营造一个包容和充满活力的工作环境，我们非常重视并尊重每个人的贡献。';
@@ -203,7 +203,7 @@ declare const json: {
   'X-Tutors': '1对1私教';
   XAlumni: 'X-Camp校友';
   'XAlumni.Desc': '自成立以来，X-Camp已成功招收了1000多名学生，目前为全球300多所学校的500多名学生提供服务。如果您想重新找回您的同学，请与我们联系！';
-  XCampCalendar: 'X-Camp日历';
+  XCampCalendar: '2023 - 2024 X-Camp日历';
   XCampFaculty: 'X-Camp教职员工';
   'XCampFaculty.Desc': 'X-Camp Academy是一家位于硅谷的青少年编程教育学院，为5至12年级学生提供个性化编程课程，为学生准备各类信息学编程竞赛，欢迎查看我们的团队。';
   Year: '年';
@@ -377,6 +377,7 @@ declare const json: {
   'Home.WhyXCamp.Desc': '全球领先的编程竞赛培训项目！';
   'Home.StudentProjects.Desc': 'X-Camp每个季度都会举办Python编程艺术竞赛、游戏设计类项目评选，以及4.0成绩奖，均旨在激发同学们的编程灵感。快来探索才华横溢的学生们精彩的学习成果展示！';
   'Home.Community.Title': '强大的社区';
+  'Home.Community.Title.Color': '社区';
   'Home.Community.Desc1': '自成立以来，X-Camp已累计培养了超过2000名学生，目前为全球250多所学校、600多名学生提供教学';
   'Home.Community.Desc2': '希望与你的同学们建立联系吗？请随时联系我们！';
   'CourseSchedule.Banner.Desc1': '我们的教学方式不仅限于授课，均设有课外答疑和全天候的在线学习论坛';
@@ -504,6 +505,7 @@ declare const json: {
   'USACO.Pain.Points6': '热爱编程但对自己的进步感到沮丧，考虑放弃？';
   'USACO.Pain.Points7': '对你目前的状况和未来的USACO竞赛季度有什么期望感到不确定？';
   'USACO.Pain.Points.Desc': '如果这些问题与您共鸣，请毫不犹豫地联系X-Camp！我们专业的教学团队将在这里帮助您充分利用学习之旅。';
+  TuesdayOpenHouse: '周二开放日';
 };
 
 export default json;

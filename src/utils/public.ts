@@ -298,3 +298,25 @@ export const getLangResult = (lang: 'zh' | 'en', zhData?: string[], enData?: str
 export const getWeeksDays = (frequency?: string) => {
   return frequency === 'Daily' ? 'days' : 'weeks';
 };
+
+export const swapArrayElements = <T>(arr: T[], index1: number, index2: number): T[] => {
+  if (index1 < 0 || index1 >= arr.length || index2 < 0 || index2 >= arr.length) {
+    // 索引越界，返回原数组
+    return arr;
+  }
+
+  const temp = arr[index1];
+  arr[index1] = arr[index2];
+  arr[index2] = temp;
+
+  return arr;
+};
+
+export const sortTimeArray = (timeArray: any[] | undefined, sortKey: string): any[] => {
+  if (!timeArray || timeArray.length === 0) return [];
+  return timeArray.sort((a, b) => {
+    const dateA = dayjs(a[sortKey]);
+    const dateB = dayjs(b[sortKey]);
+    return dateA.isBefore(dateB) ? -1 : 1;
+  });
+};

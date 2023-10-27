@@ -6,14 +6,10 @@ const Banner: React.FC = () => {
   const { format: t, lang } = useLang();
   const paragraph = (
     <>
-      {t('Introduction.Banner.Desc1')}
-      {lang === 'en' && <br />}
-      {t('Introduction.Banner.Desc2')}
-      <br />
-      {t('Introduction.Banner.Desc3')}
-      {lang === 'en' && <br />}
-      {t('Introduction.Banner.Desc4')}
-      {lang === 'en' && <br />}
+      {t('Introduction.Banner.Desc1')},&nbsp;
+      {t('Introduction.Banner.Desc2')}.&nbsp;
+      {t('Introduction.Banner.Desc3')},&nbsp;
+      {t('Introduction.Banner.Desc4')}&nbsp;
       {t('Introduction.Banner.Desc5')}
     </>
   );

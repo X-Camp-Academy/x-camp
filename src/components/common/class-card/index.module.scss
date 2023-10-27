@@ -5,6 +5,8 @@
   width: 380px;
 
   .card {
+    cursor: pointer;
+
     :global(.ant-card) {
       position: relative;
     }

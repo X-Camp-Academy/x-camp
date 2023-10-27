@@ -25,11 +25,11 @@
       text-align: right;
       cursor: pointer;
 
-      @include text(14px, 24px, #c1c1c1);
+      @include text(14px, 24px, rgba(23, 33, 66, 0.5));
 
       .divider {
         margin: 0;
-        border-block-color: #c1c1c1;
+        border-block-color: rgb(23 33 66 / 50%);
       }
 
       &.active {

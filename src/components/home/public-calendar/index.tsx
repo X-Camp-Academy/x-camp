@@ -5,7 +5,7 @@ import ActivityCalendar from '@/components/common/activity-calendar';
 import { useLang } from '@/hoc/with-intl/define';
 import useDayJs from '@/hooks/useDayJs';
 import { useMobile } from '@/utils';
-import { formatTimezone, getTransResult } from '@/utils/public';
+import { formatTimezone, getTransResult, sortTimeArray } from '@/utils/public';
 import { Carousel, Col, Empty, Row, Space, Typography } from 'antd';
 import type { Dayjs } from 'dayjs';
 import React, { useEffect, useState } from 'react';
@@ -130,7 +130,8 @@ const PublicCalendar: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
-              {newEventData?.data?.map((item) => {
+              {}
+              {sortTimeArray(newEventData?.data, 'startDateTime')?.map((item) => {
                 return (
                   <div key={item?.id} className={styles.eventCard}>
                     <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>
