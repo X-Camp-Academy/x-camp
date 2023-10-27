@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 const ColorfulCard = dynamic(() => import('@/components/common/colorful-card'));
 const XCollapse = dynamic(() => import('@/components/common/collapse'));
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
   const { data } = useGetNewEvent({
@@ -57,9 +57,10 @@ const UpcomingEvents: React.FC = () => {
                           </Title>
                           <Descriptions column={1} className={styles.descriptions}>
                             <Descriptions.Item label={<ClockCircleOutlined />}>
-                              {`${startTime.format('dddd, MMMM DD, YYYY hh:mm A')} - ${endTime.format('dddd, MMMM DD, YYYY hh:mm A')} ${endTimeZone}`}
+                              <Paragraph ellipsis={{ rows: 3, tooltip: `${startTime.format('dddd, MMMM DD, YYYY hh:mm A')} - ${endTime.format('dddd, MMMM DD, YYYY hh:mm A')} ${endTimeZone}` }}>
+                                {`${startTime.format('dddd, MMMM DD, YYYY hh:mm A')} - ${endTime.format('dddd, MMMM DD, YYYY hh:mm A')} ${endTimeZone}`}
+                              </Paragraph>
                             </Descriptions.Item>
-
                             <Descriptions.Item label={<UserOutlined />}>{`Organizer ${item?.attributes?.organizer ? '| ' + item?.attributes?.organizer : ''} `}</Descriptions.Item>
 
                             <Descriptions.Item label={<GlobalOutlined />}>{item?.attributes?.eventLanguage === EventLanguage.Chinese ? 'Chinese' : 'English'}</Descriptions.Item>

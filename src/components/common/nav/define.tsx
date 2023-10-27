@@ -182,11 +182,11 @@ export const useMenuItems = () => {
         {
           label: <Link href="/about-us/contact-us">{t('ContactUs')}</Link>,
           key: '/about-us/contact-us/'
-        },
-        {
-          label: <Link href="/about-us/x-alumni">{t('XAlumni')}</Link>,
-          key: '/about-us/x-alumni/'
         }
+        // {
+        //   label: <Link href="/about-us/x-alumni">{t('XAlumni')}</Link>,
+        //   key: '/about-us/x-alumni/'
+        // }
       ]
     },
     {
