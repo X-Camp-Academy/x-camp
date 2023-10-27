@@ -12,7 +12,6 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('WeeklyOpenHouse.Banner.Desc1')}
-      <br />
       {t('WeeklyOpenHouse.Banner.Desc2')}
     </>
   );
@@ -22,10 +21,14 @@ const Banner: React.FC = () => {
         image={'/image/resources/weekly-open-house-banner.png'}
         title={t('WeeklyOpenHouse1')}
         paragraph={paragraph}
+        paragraphFontSize={23}
+        paragraphStyle={{
+          marginTop: 10
+        }}
         time={
           <>
             {t('Home.Banner1.Date1')}
-            {<br />}
+            <br />
             {t('Home.Banner1.Date1')}
           </>
         }

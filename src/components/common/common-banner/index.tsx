@@ -16,9 +16,10 @@ interface CommonBannerProps {
   titleStyle?: React.CSSProperties;
   paragraphStyle?: React.CSSProperties;
   time?: React.ReactNode;
+  paragraphFontSize?: number;
 }
 
-const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleClassName, paragraphClassName, barColor, backgroundColor, titleStyle, paragraphStyle, time }) => {
+const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleClassName, paragraphClassName, barColor, backgroundColor, titleStyle, paragraphStyle, time, paragraphFontSize }) => {
   const isMobile = useMobile();
   return (
     <>
@@ -35,7 +36,6 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
             <Title className={`${titleClassName || styles.title}`} style={titleStyle}>
               {title}
             </Title>
-            {time && <div className={styles.time}>{time}</div>}
             <Paragraph className={`${paragraphClassName || styles.paragraph}`} style={paragraphStyle}>
               {paragraph}
             </Paragraph>
@@ -48,7 +48,14 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
             <Space direction="vertical" size={16} className={styles.leftSpace} style={{ backgroundColor }}>
               <Title className={`${titleClassName || styles.title}`}>{title}</Title>
               {time && <div className={styles.time}>{time}</div>}
-              <Paragraph className={`${paragraphClassName || styles.paragraph}`}>{paragraph}</Paragraph>
+              <Paragraph
+                className={`${paragraphClassName || styles.paragraph}`}
+                style={{
+                  fontSize: paragraphFontSize ? paragraphFontSize : '24px'
+                }}
+              >
+                {paragraph}
+              </Paragraph>
             </Space>
             <div className={styles.background} style={{ backgroundColor: barColor }} />
           </Col>

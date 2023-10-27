@@ -14,7 +14,15 @@ const Banner: React.FC = () => {
       {t('USACOLiveSolutions.Banner.Desc3')}
     </>
   );
-  return <CommonBanner image={'/image/resources/usaco-live-solutions-banner.png'} title={t('USACOLiveSolution')} paragraph={paragraph} paragraphClassName={isMobile ? undefined : styles.paragraph} />;
+  return (
+    <CommonBanner
+      image={'/image/resources/usaco-live-solutions-banner.png'}
+      title={t('USACOLiveSolution')}
+      paragraph={paragraph}
+      paragraphClassName={isMobile ? undefined : styles.paragraph}
+      paragraphFontSize={23}
+    />
+  );
 };
 
 export default Banner;
