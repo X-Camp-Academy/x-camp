@@ -1,5 +1,5 @@
 'use client';
-import { NewEventCategory } from '@/apis/strapi-client/define';
+import { GetNewEvent, NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import ActivityCalendar from '@/components/common/activity-calendar';
 import { useLang } from '@/hoc/with-intl/define';
@@ -8,7 +8,7 @@ import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult, sortTimeArray } from '@/utils/public';
 import { Carousel, Col, Empty, Row, Space, Typography } from 'antd';
 import type { Dayjs } from 'dayjs';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -33,6 +33,7 @@ const PublicCalendar: React.FC = () => {
 
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
   const [filterDateEventList, setFilterDateEventList] = useState<IFilterDataEvent[]>([]);
+  const [sortedDateEventList, setSortedDateEventList] = useState<GetNewEvent[]>([]);
 
   const [eventDate, setEventDate] = useState<
     {
@@ -45,7 +46,8 @@ const PublicCalendar: React.FC = () => {
   const { data: newEventData } = useGetNewEvent({
     tag: NewEventCategory.Events,
     current,
-    pageSize
+    pageSize,
+    sortField: ['startDateTime']
   });
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
@@ -118,6 +120,10 @@ const PublicCalendar: React.FC = () => {
     }
   }, [selectDate]);
 
+  const sortDateEvent = useMemo(() => {
+    if (newEventData) return sortTimeArray(newEventData?.data, 'startDateTime');
+  }, [newEventData]);
+
   return (
     <div className={styles.publicCalendarContainer}>
       <div className={`${styles.publicCalendar} container`}>
@@ -130,8 +136,7 @@ const PublicCalendar: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
-              {}
-              {sortTimeArray(newEventData?.data, 'startDateTime')?.map((item) => {
+              {newEventData?.data?.map((item) => {
                 return (
                   <div key={item?.id} className={styles.eventCard}>
                     <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>

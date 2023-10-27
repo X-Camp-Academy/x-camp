@@ -1,7 +1,7 @@
 import { GetCourses } from '@/apis/strapi-client/define';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult, getWeeksDays } from '@/utils/public';
-import { Col, Descriptions, Divider, Row, Space, Typography } from 'antd';
+import { Col, Descriptions, Row, Space, Typography } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
 import styles from './index.module.scss';
@@ -52,7 +52,6 @@ const CourseCard: React.FC<GetCourses> = (props) => {
           <Text className={styles.fee}>{getTransResult(lang, `￥${tuitionRMB}`, `$${tuitionUSD}`)}</Text>
         </Col>
       </Row>
-      <Divider style={{ marginTop: 35 }} />
     </>
   );
 };

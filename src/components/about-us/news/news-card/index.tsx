@@ -34,6 +34,10 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
 
   const options: EventOptionsProps[] = [
     {
+      label: t('All'),
+      value: EventCategory.All
+    },
+    {
       label: t('SchoolLifeSharing'),
       value: EventCategory.SchoolLifeSharing
     },
@@ -48,10 +52,6 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
     {
       label: t('Research'),
       value: EventCategory.Research
-    },
-    {
-      label: t('All'),
-      value: EventCategory.All
     }
   ];
 
@@ -69,7 +69,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
   return (
     <div className={styles.content}>
       <div className={'container'}>
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} />
+        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} style={{ width: '100%' }} />
 
         <div className={styles.partner}>
           <Row gutter={[32, 48]} className={styles.row}>

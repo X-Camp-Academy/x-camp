@@ -140,7 +140,7 @@ declare const json: {
   'ReferralProgram.Desc2': '每个成功注册的朋友获得额外';
   'ReferralProgram.Desc3': '学费优惠。';
   ReferralProgramWork: '推荐计划如何运作？';
-  RelocationQuestion: '这个职位位于加利福尼亚州萨拉托加市。您能通勤到办公室吗？或者您愿意搬迁吗？';
+  RelocationQuestion: '当前您在哪个州居住？';
   RequiredFields: '标有 * 的字段为必填项。';
   Resources: '资源';
   ResumeCV: '简历/CV';
@@ -433,8 +433,8 @@ declare const json: {
   'Contests.Banner.Desc3': '我们与知名的大学';
   'Contests.Banner.Desc4': '高中和非政府组织合作';
   'Contests.Banner.Desc5': '为学生提供高质量的竞赛';
-  'USACOLiveSolutions.Banner.Desc1': '首次并且在整个网络中唯一的';
-  'USACOLiveSolutions.Banner.Desc2': '最全面的实时问题解决直播';
+  'USACOLiveSolutions.Banner.Desc1': '作为USACO赛后全网首发、';
+  'USACOLiveSolutions.Banner.Desc2': '最全面的赛题直播答疑';
   'USACOLiveSolutions.Banner.Desc3': '只在X-Camp';
   'WeeklyOpenHouse.Banner.Desc1': '在回答您的问题时';
   'WeeklyOpenHouse.Banner.Desc2': '您可以一窥我们的课程、教学方法和教学内容';
@@ -472,8 +472,8 @@ declare const json: {
   FullTime: '全职';
   PartTime: '兼职';
   XTutor: '私教';
-  'USACO.Banner.Desc1': '全网最快、最全面的 USACO 真题讲解';
-  'USACO.Banner.Desc2': '仅在X-Camp';
+  'USACO.Banner.Desc1': '这是我们专门针对美国信息学奥林匹克竞赛准备的综合资源中心，';
+  'USACO.Banner.Desc2': '助你了解USACO';
   'USACO.Intro.Title': '美国信息学奥林匹克竞赛介绍';
   'USACO.Intro.Progression.Path': 'USACO 上升路径';
   'USACO.Intro.Desc1': '铜 ➡️ 银 ➡️ 金 ➡️ 铂金 ➡️ 美国国家集训队 ➡️ 美国国家队';

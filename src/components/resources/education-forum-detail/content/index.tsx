@@ -24,6 +24,9 @@ const ArticleContent = ({ props }: Props) => {
   const monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const formatDate = (date: string) => {
+    if (!date) {
+      return;
+    }
     const dayjsDate = dayjs(date);
     const formatStringZh = 'YYYY年MM月DD日 HH:mm';
     const formatStringEn = ' DD, YYYY HH:mm';
@@ -50,7 +53,7 @@ const ArticleContent = ({ props }: Props) => {
       <Space className={styles.time}>
         <ClockCircleOutlined className={styles.icon} />
         <div className={styles.videoDate}>
-          {formatDate(props?.attributes?.startDateTime || '')} ~ {formatDate(props?.attributes.endDateTime || '')}
+          {formatDate(props?.attributes?.startDateTime || '')} {props?.attributes.endDateTime ? '~' : ''} {formatDate(props?.attributes.endDateTime || '')}
         </div>
       </Space>
       <XStarMdViewer className={styles.viewer} value={props?.attributes?.detailContent} plugins={[viewerVideoPlugin()]} />

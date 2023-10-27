@@ -73,7 +73,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
   return (
     <Space className={styles.abstract} size={24}>
       <div className={styles.left}>
-        <div className={styles.title}>{courseCode}:</div>
+        {/* <div className={styles.title}>{courseCode}:</div> */}
         <div className={styles.title}>{t('Description')}</div>
         <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
           {getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn)}

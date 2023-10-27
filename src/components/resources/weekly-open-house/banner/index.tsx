@@ -18,7 +18,18 @@ const Banner: React.FC = () => {
   );
   return (
     <div className={styles.banner}>
-      <CommonBanner image={'/image/resources/weekly-open-house-banner.png'} title={t('WeeklyOpenHouse1')} paragraph={paragraph} />
+      <CommonBanner
+        image={'/image/resources/weekly-open-house-banner.png'}
+        title={t('WeeklyOpenHouse1')}
+        paragraph={paragraph}
+        time={
+          <>
+            {t('Home.Banner1.Date1')}
+            {<br />}
+            {t('Home.Banner1.Date1')}
+          </>
+        }
+      />
       <div className={styles.bottomInfo}>
         <Button
           size="large"
@@ -30,7 +41,6 @@ const Banner: React.FC = () => {
           <span>{t('ZoomLink')}</span>
           <LaptopOutlined />
         </Button>
-        <div className={styles.dateTime}>{t('JoinWay.Time')}</div>
       </div>
     </div>
   );

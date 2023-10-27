@@ -12,14 +12,16 @@ interface CommonBannerProps {
   paragraphClassName?: string;
   barColor?: string;
   backgroundColor?: string;
+  time?: React.ReactNode;
 }
 
-const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleClassName, paragraphClassName, barColor, backgroundColor }) => {
+const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleClassName, paragraphClassName, barColor, backgroundColor, time }) => {
   return (
     <Row className={styles.row}>
       <Col xs={24} sm={24} md={24} lg={24} xl={10}>
         <Space direction="vertical" className={styles.leftSpace} style={{ backgroundColor }} size={24}>
           <Title className={`${titleClassName || styles.title}`}>{title}</Title>
+          {time && <div className={styles.dateTime}>{time}</div>}
           <Paragraph className={`${paragraphClassName || styles.paragraph}`}>{paragraph}</Paragraph>
         </Space>
         <div className={styles.background} style={{ backgroundColor: barColor }} />

@@ -22,7 +22,11 @@ const RecentActivities: React.FC = () => {
   });
 
   const RecentActivities = newEventData?.data?.filter((item) => {
-    return item?.attributes?.startDateTime && new Date(item?.attributes?.startDateTime).getTime() - new Date().getTime() > 0;
+    if (item?.attributes?.endDateTime) {
+      return new Date(item?.attributes?.endDateTime).getTime() < new Date().getTime();
+    } else {
+      return new Date(item?.attributes?.startDateTime).getTime() < new Date().getTime();
+    }
   });
 
   return (
