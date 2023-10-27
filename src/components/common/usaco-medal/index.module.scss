@@ -8,6 +8,13 @@
   width: 100%;
   flex-direction: column;
   background-color: #efefef;
+
+  @media (width <= 768px) {
+    padding-top: 16px;
+    padding-bottom: 20px;
+  }
+
+  box-shadow: 0 6px 14px -2px rgb(216 216 216 / 30%);
 }
 
 .usacoBgContainer {
@@ -20,6 +27,10 @@
   background-size: contain;
   flex-direction: column;
   background-color: #efefef;
+
+  @media (width <= 768px) {
+    padding: 0;
+  }
 }
 
 .titleContainer {
@@ -35,6 +46,10 @@
     &:hover {
       text-decoration: underline;
       text-decoration-color: $primary-color;
+    }
+
+    @media (width <= 768px) {
+      @include title('mobile');
     }
   }
 
@@ -57,14 +72,6 @@
     padding: 0;
   }
 
-  .logo {
-    height: 338px;
-
-    @media (width <= 768px) {
-      display: none;
-    }
-  }
-
   .col {
     @include flex(center);
   }
@@ -76,6 +83,8 @@
     background-size: 192px 80px !important;
 
     @media (width <= 768px) {
+      margin-top: 10px;
+      margin-bottom: 10px;
       width: 96px;
       background-size: 80px 48px !important;
     }
@@ -88,7 +97,10 @@
 
       @media (width <= 768px) {
         font-size: 26px;
+        font-weight: 600;
+        color: #050260;
         line-height: 42px;
+        text-shadow: 1px 1px 0 #eeca92;
       }
     }
 
@@ -100,8 +112,12 @@
       font-weight: 500;
 
       @media (width <= 768px) {
+        width: 64px;
         font-size: 10px;
-        line-height: 10px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 11px;
+        text-shadow: 1px 1px 0 #d4ac6d;
       }
     }
   }

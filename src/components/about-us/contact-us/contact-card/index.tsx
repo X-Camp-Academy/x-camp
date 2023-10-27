@@ -38,11 +38,11 @@ const ContactCard: React.FC = () => {
                 <Space direction="vertical">
                   <Space align="center">
                     <div className={styles.icon}> {item.icon}</div>
-                    <Title level={5} style={{ margin: 0 }} className={styles.title}>
+                    <Title style={{ margin: 0 }} className={styles.title}>
                       {item.title}
                     </Title>
                   </Space>
-                  <Paragraph type="secondary" style={{ fontSize: 18 }}>
+                  <Paragraph type="secondary" className={styles.paragraph}>
                     {item.description}
                   </Paragraph>
                 </Space>

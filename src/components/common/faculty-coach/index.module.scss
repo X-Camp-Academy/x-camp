@@ -7,7 +7,7 @@
 
   @media (width <= 768px) {
     margin-top: 40px;
-    margin-bottom: 52px;
+    margin-bottom: 48px;
   }
 
   .title {
@@ -28,6 +28,7 @@
 
     @media (width <= 768px) {
       @include margin(0);
+      @include mobile-text;
     }
   }
 
@@ -70,6 +71,10 @@
     .col {
       margin-bottom: 48px;
 
+      @media (width <= 768px) {
+        margin-bottom: 24px;
+      }
+
       .avatar {
         margin-top: 24px;
       }
@@ -80,8 +85,7 @@
         line-height: 54px;
 
         @media (width <= 768px) {
-          font-size: 24px;
-          line-height: 32px;
+          @include title('mobile');
         }
       }
 
@@ -93,6 +97,10 @@
         text-align: left;
         color: #666;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

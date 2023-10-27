@@ -1,5 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
@@ -7,7 +8,7 @@ import styles from './index.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
 const Partners: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
 
   const topImages = [
     {
@@ -48,7 +49,7 @@ const Partners: React.FC = () => {
     <div className={styles.partners}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>{t('Partners')}</Title>
-        <Text className={styles.titleBg} />
+        <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
         <Paragraph className={styles.paragraph}>{t('Partners.Desc')}</Paragraph>
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>

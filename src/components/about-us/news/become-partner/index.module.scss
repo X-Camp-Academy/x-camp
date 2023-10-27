@@ -24,6 +24,10 @@
         @include title('bold');
 
         line-height: 64px;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
       }
 
       .description {
@@ -31,6 +35,10 @@
         font-weight: 500;
         color: #172142;
         line-height: 34px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
 
       .contactBtn {
@@ -42,6 +50,10 @@
         font-weight: 500;
         color: #172142;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

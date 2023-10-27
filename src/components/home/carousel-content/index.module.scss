@@ -8,7 +8,7 @@
 
   .carouselDots {
     position: absolute;
-    top: 270px;
+    top: 288px;
     right: 80px;
     z-index: 1;
     transform: translateY(-50%);
@@ -21,7 +21,7 @@
 
     .li {
       margin-bottom: 30px;
-      width: 42px;
+      width: 32px;
       text-align: right;
       cursor: pointer;
 
@@ -47,7 +47,8 @@
     height: 540px;
 
     @media (width <= 768px) {
-      height: 368px;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -57,7 +58,8 @@
     height: 540px;
 
     @media (width <= 768px) {
-      height: 368px;
+      width: 100%;
+      height: 100%;
     }
 
     .info {
@@ -85,8 +87,8 @@
         font-weight: 800;
 
         @media (width <= 768px) {
-          font-size: 20px;
-          line-height: 28px;
+          font-size: 32px;
+          color: #fff;
         }
       }
 
@@ -97,12 +99,8 @@
         font-weight: 600;
 
         @media (width <= 768px) {
-          @include text(12px, 18px);
+          @include text(14px, 18px);
         }
-      }
-
-      .mb8 {
-        margin-bottom: 8px;
       }
 
       .button {
@@ -130,9 +128,28 @@
         font-weight: 500;
 
         @media (width <= 768px) {
-          @include text(10px, 12px, #fff);
+          @include text(10px, 12px, #666);
         }
       }
     }
+
+    .mbButton {
+      position: absolute;
+      bottom: 72px;
+      left: 32px;
+      z-index: 999;
+      padding: 6px 10px;
+      border: 1px solid #ffad11;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      background: $primary-color;
+      line-height: 16px;
+    }
+  }
+
+  :global(.ant-carousel .slick-dots) {
+    bottom: 0;
   }
 }

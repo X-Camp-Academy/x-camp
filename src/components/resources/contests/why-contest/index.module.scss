@@ -4,12 +4,22 @@
   padding: 128px 32px;
   width: 100%;
 
+  @media (width <= 768px) {
+    padding: 64px 16px;
+  }
+
   .top,
   .bottom {
     .title {
       @include title('bold');
 
       margin-bottom: 48px;
+
+      @media (width <= 768px) {
+        margin-bottom: 24px;
+
+        @include title('mobile');
+      }
     }
 
     .description {
@@ -18,6 +28,10 @@
       font-weight: 500;
       color: #172142;
       line-height: 40px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
     }
   }
 
@@ -40,6 +54,10 @@
         background: #ffad11;
         content: '';
       }
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .description {
@@ -49,6 +67,10 @@
       font-weight: 500;
       color: #172142;
       line-height: 40px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
     }
   }
 }

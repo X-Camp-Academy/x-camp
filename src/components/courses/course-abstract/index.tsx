@@ -2,9 +2,8 @@ import { ClassMode, GetClasses } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
-import { Button, Descriptions, Modal, Space, Typography } from 'antd';
-import dayjs from 'dayjs';
-import React, { useState } from 'react';
+import { Button, Descriptions, Space, Typography } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Paragraph } = Typography;
@@ -26,22 +25,8 @@ interface CourseAbstractProps {
   isBilingual?: boolean;
 }
 
-const CourseAbstract: React.FC<CourseAbstractProps> = ({
-  courseCode,
-  classMode,
-  courseLongDescriptionEn,
-  courseLongDescriptionZh,
-  tuitionUSD,
-  tuitionRMB,
-  classes,
-  startDate,
-  registerLink,
-  isBundle,
-  bundleRegisterLink,
-  isBilingual
-}) => {
+const CourseAbstract: React.FC<CourseAbstractProps> = ({ courseCode, classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual }) => {
   const { format: t, lang } = useLang();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const classesData = classes?.data?.map((classItem) => {
     const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } = classItem?.attributes;
@@ -55,21 +40,6 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
       location
     };
   });
-
-  const judgeInWeek = (openDate: string) => {
-    const currentDate = dayjs();
-    const diff = currentDate.diff(openDate, 'day');
-    return diff <= 7;
-  };
-
-  const handlerSighUp = (startDate: string) => {
-    if (judgeInWeek(startDate) && registerLink) {
-      isBundle ? window.open(bundleRegisterLink) : window.open(registerLink);
-    } else {
-      setIsModalOpen(true);
-    }
-  };
-
   return (
     <Space className={styles.abstract} size={24}>
       <div className={styles.left}>
@@ -95,15 +65,10 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
       <div className={styles.right}>
         <div className={styles.title}>{t('One-TimePayment')}</div>
         <div className={styles.price}>{isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</div>
-        <Button type="primary" className={styles.btn} onClick={() => handlerSighUp(startDate || '')}>
+        <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
           {t('SignUpNow')}
         </Button>
-        <Modal open={isModalOpen} onOk={() => setIsModalOpen(false)} onCancel={() => setIsModalOpen(false)}>
-          <img src="/image/qr-code/whats-app.png" alt="whatsAppAssistance" width={'50%'} height={'100%'} />
-          <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'50%'} height={'100%'} />
-        </Modal>
         {classMode !== ClassMode.InPerson && <div className={styles.tip}>{t('Discount')}</div>}
-        {isBundle && <div className={styles.continuity}>CONTINUITY</div>}
         {isBilingual && <div className={styles.bilingual}>BILINGUAL</div>}
       </div>
     </Space>

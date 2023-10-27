@@ -1,6 +1,7 @@
 import { GetResourcesLiveSolution, LiveSolutionCategory } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult, swapArrayElements } from '@/utils/public';
 import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
 import { Collapse, Space, Typography } from 'antd';
@@ -23,6 +24,8 @@ interface sortDataProps {
 const UsacoIntro = ({ data }: Props) => {
   const { format: t, lang } = useLang();
   const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
+
+  const isMobile = useMobile();
   const getVideoByLang = (attributes: GetResourcesLiveSolution) => {
     const { video, videoZh, videoEn } = attributes;
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
@@ -57,7 +60,7 @@ const UsacoIntro = ({ data }: Props) => {
         </div>
         {sortData?.map((v, index) => {
           return (
-            <div key={'video' + index} style={{ marginBottom: 92 }}>
+            <div key={'video' + index} style={{ marginBottom: isMobile ? 40 : 88 }}>
               <Collapse
                 ghost
                 defaultActiveKey={index}

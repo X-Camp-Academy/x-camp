@@ -1,16 +1,14 @@
 'use client';
-import { ClassMode, GetCourses } from '@/apis/strapi-client/define';
+import { ClassMode, CourseQuarter, GetCourses } from '@/apis/strapi-client/define';
 import { useGetCourseLevelType, useGetCourses, useGetReviews } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import Reviews from '@/components/common/reviews';
 import { useLang } from '@/hoc/with-intl/define';
-import useDayJs from '@/hooks/useDayJs';
 import { useMobile } from '@/utils';
 import { getLangResult, getTransResult, getWeeksDays, scrollIntoView } from '@/utils/public';
 import { CaretRightOutlined } from '@ant-design/icons';
-import { Affix, Collapse, DatePicker, Form, Layout, Radio, RadioChangeEvent, Segmented, Space } from 'antd';
+import { Affix, Button, Col, Collapse, Form, Layout, Radio, RadioChangeEvent, Row, Segmented, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
-import type { Dayjs } from 'dayjs';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import ClassCard from '../common/class-card';
@@ -20,7 +18,6 @@ import styles from './index.module.scss';
 
 const { Panel } = Collapse;
 const { Content } = Layout;
-const { RangePicker } = DatePicker;
 
 interface SegmentedCoursesProps {
   primaryTitle: string;
@@ -46,8 +43,6 @@ const Courses: React.FC = () => {
   const { data: courses } = useGetCourses({});
   const COURSE_TYPES = Object.values(CourseTypes);
 
-  const { dayjs } = useDayJs(lang);
-
   //获取师生评价数据
   const { data: reviewsData } = useGetReviews({
     ready: true,
@@ -60,6 +55,14 @@ const Courses: React.FC = () => {
   const categoryOptions = courseLevelTypeData?.map((item) => {
     return {
       label: item,
+      value: item
+    };
+  });
+  // 筛选季节的options
+
+  const quarterOptions = Object.values(CourseQuarter)?.map((item) => {
+    return {
+      label: t(item),
       value: item
     };
   });
@@ -188,68 +191,18 @@ const Courses: React.FC = () => {
   }, [hash, segmentedData]);
 
   /**
-   * 判断输入的课程是否在对应的开始结束时间内
-   * @param startDateTime 选择的开始时间
-   * @param endDateTime 选择的结束时间
-   * @param course 课程数据
-   * @returns
-   */
-  const searchDate = (startDateTime: Dayjs, endDateTime: Dayjs, course: StrapiResponseDataItem<GetCourses>) => {
-    return dayjs(course?.attributes?.startDateTime)?.isBetween(startDateTime, endDateTime) && dayjs(course?.attributes?.endDateTime)?.isBetween(startDateTime, endDateTime);
-  };
-
-  /**
-   * 判断输入的课程是否包含输入的关键词
-   * @param inputValue 输入的关键词
-   * @param course 要匹配的课程
-   * @returns
-   */
-  const searchInput = (inputValue: string, course: StrapiResponseDataItem<GetCourses>) => {
-    const { classLang, classMode, spokenLang, courseCode, courseTitleZh, courseTitleEn, courseShortDescriptionZh, courseShortDescriptionEn, courseLongDescriptionZh, courseLongDescriptionEn } =
-      course?.attributes;
-
-    const searchFields = [
-      classLang,
-      classMode,
-      spokenLang,
-      courseCode,
-      courseTitleZh,
-      courseTitleEn,
-      courseShortDescriptionZh,
-      courseShortDescriptionEn,
-      courseLongDescriptionZh,
-      courseLongDescriptionEn
-    ];
-
-    return searchFields?.some((field) => {
-      if (field) {
-        if (Array.isArray(field)) {
-          return field?.some((fieldItem) => {
-            if (fieldItem) {
-              return (fieldItem as string)?.toLowerCase()?.indexOf(inputValue?.toLowerCase()) > -1;
-            }
-          });
-        } else {
-          return (field as string)?.toLowerCase()?.indexOf(inputValue?.toLowerCase()) > -1;
-        }
-      }
-    });
-  };
-
-  /**
    * 筛选当前选中的segmented课程数据
    * @param values 筛选的参数
    */
-  const onFinish = (values: { category: string; rangeDate: [Dayjs, Dayjs]; search: string }) => {
-    const { category, rangeDate, search } = values;
+  const onFinish = (values: { category: string; quarter: string }) => {
+    const { category, quarter } = values;
     let result;
-    if (!category && !rangeDate && !search) {
+    if (!category && !quarter) {
       result = copySegmentedData;
     }
     if (copySegmentedData) {
       const primaryData = copySegmentedData[0];
-      if (category && rangeDate && search) {
-        const [start, end] = rangeDate;
+      if (category && quarter) {
         result = [
           {
             primaryTitle: primaryData?.primaryTitle,
@@ -257,48 +210,8 @@ const Courses: React.FC = () => {
               ?.filter((item) => item?.secondaryTitle === category)
               ?.map((item) => ({
                 secondaryTitle: item?.secondaryTitle,
-                children: item?.children?.filter((course) => {
-                  return searchDate(dayjs(start), dayjs(end), course) && searchInput(search, course);
-                })
+                children: item?.children?.filter((course) => course?.attributes?.schoolQuarter === quarter)
               }))
-          }
-        ];
-      } else if (category && rangeDate) {
-        const [start, end] = rangeDate;
-        result = [
-          {
-            primaryTitle: primaryData?.primaryTitle,
-            children: primaryData?.children
-              ?.filter((item) => item?.secondaryTitle === category)
-              .map((item) => ({
-                secondaryTitle: item?.secondaryTitle,
-                children: item?.children?.filter((course) => searchDate(dayjs(start), dayjs(end), course))
-              }))
-          }
-        ];
-      } else if (category && search) {
-        result = [
-          {
-            primaryTitle: primaryData?.primaryTitle,
-            children: primaryData?.children
-              ?.filter((item) => item?.secondaryTitle === category)
-              .map((item) => ({
-                secondaryTitle: item?.secondaryTitle,
-                children: item?.children?.filter((course) => searchInput(search, course))
-              }))
-          }
-        ];
-      } else if (rangeDate && search) {
-        const [start, end] = rangeDate;
-        result = [
-          {
-            primaryTitle: primaryData?.primaryTitle,
-            children: primaryData?.children?.map((item) => ({
-              secondaryTitle: item?.secondaryTitle,
-              children: item?.children?.filter((course) => {
-                return searchDate(dayjs(start), dayjs(end), course) && searchInput(search, course);
-              })
-            }))
           }
         ];
       } else if (category) {
@@ -308,24 +221,13 @@ const Courses: React.FC = () => {
             children: primaryData?.children?.filter((item) => item?.secondaryTitle === category)
           }
         ];
-      } else if (rangeDate) {
-        const [start, end] = rangeDate;
+      } else if (quarter) {
         result = [
           {
             primaryTitle: primaryData?.primaryTitle,
             children: primaryData?.children?.map((item) => ({
               secondaryTitle: item?.secondaryTitle,
-              children: item?.children?.filter((course) => searchDate(dayjs(start), dayjs(end), course))
-            }))
-          }
-        ];
-      } else if (search) {
-        result = [
-          {
-            primaryTitle: primaryData?.primaryTitle,
-            children: primaryData?.children?.map((item) => ({
-              secondaryTitle: item?.secondaryTitle,
-              children: item?.children?.filter((course) => searchInput(search, course))
+              children: item?.children?.filter((course) => course?.attributes?.schoolQuarter === quarter)
             }))
           }
         ];
@@ -368,27 +270,22 @@ const Courses: React.FC = () => {
           </Affix>
 
           <div className={styles.form} />
-          {/* 下一版更新 */}
-          {/* <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
+
+          <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
             <Row gutter={[32, 8]}>
-              <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 4 }}>
+              <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 3 }}>
                 <Form.Item name="category">
-                  <Select style={isMobile ? { width: '100%' } : { width: 216 }} placeholder={'Category'} options={categoryOptions} allowClear />
+                  <Select style={isMobile ? { width: '100%' } : { width: 240 }} placeholder={'Category'} options={categoryOptions} allowClear />
                 </Form.Item>
               </Col>
-              {!isMobile && (
-                <Col xs={24} sm={24} md={24} lg={6}>
-                  <Form.Item name="rangeDate">
-                    <RangePicker />
-                  </Form.Item>
-                </Col>
-              )}
-              <Col xs={24} sm={24} md={24} lg={6}>
-                <Form.Item name="search">
-                  <Input suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />} allowClear style={isMobile ? { width: '100%' } : {}} />
+
+              <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 3 }}>
+                <Form.Item name="quarter">
+                  <Select style={isMobile ? { width: '100%' } : { width: 240 }} placeholder={'Quarter'} options={quarterOptions} allowClear />
                 </Form.Item>
               </Col>
-              <Col xs={24} sm={24} md={24} lg={2}>
+
+              <Col xs={24} sm={24} md={24} lg={{ span: 3, offset: 3 }}>
                 <Form.Item>
                   <Button type={'primary'} className={styles.button} style={isMobile ? { width: '100%' } : {}} htmlType="submit">
                     {t('Search')}
@@ -396,7 +293,7 @@ const Courses: React.FC = () => {
                 </Form.Item>
               </Col>
             </Row>
-          </Form> */}
+          </Form>
 
           {segmentedData?.map((item) => {
             return (
@@ -428,7 +325,6 @@ const Courses: React.FC = () => {
                                   time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
                                   href={`/courses/${segmented === CourseTypes.CampsClasses ? 'camps' : 'detail'}/${g?.id}`}
                                   bilingual={g?.attributes?.isBilingual}
-                                  continuity={g?.attributes?.isBundle}
                                 />
                               );
                             })}

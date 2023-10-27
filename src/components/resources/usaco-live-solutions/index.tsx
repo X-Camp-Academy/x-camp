@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import Banner from './banner';
 import styles from './index.module.scss';
-import UsacoIntro from './introduction';
+import Introduction from './introduction';
 import RelateResources from './relate-resources';
 
 const { Content } = Layout;
@@ -24,7 +24,7 @@ const UsacoLiveSolutions: React.FC = () => {
     <Layout className={styles.usacoLiveSolutions}>
       <Content>
         <Banner />
-        <UsacoIntro data={resourcesLiveSolution} />
+        <Introduction data={resourcesLiveSolution} />
         <RelateResources />
         <Reviews className={styles.comments} reviewsData={reviewsData} />
       </Content>

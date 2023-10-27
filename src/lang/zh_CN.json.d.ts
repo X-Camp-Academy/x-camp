@@ -364,8 +364,8 @@ declare const json: {
   'Home.Banner3.title': '7位X-Camp同学在2022/2023赛季入选USACO美国国家集训队';
   'Home.Banner3.desc': '12名学生入选2020-2023年美国夏令营';
   'Home.Banner3.buttonText': '更多成绩';
-  'Home.Banner3.title.color': '7名X-Camp学生';
-  'Home.Banner3.title.color2': 'USACO US Camp';
+  'Home.Banner3.title.color': '7位X-Camp同学在';
+  'Home.Banner3.title.color2': 'USACO美国国家集训队';
   'Home.WhyXCamp.title1': '系统化教材';
   'Home.WhyXCamp.Desc1': '超过20门课程，内容覆盖入门级到USACO/IOI竞赛级';
   'Home.WhyXCamp.title2': '最顶级师资';
@@ -496,7 +496,6 @@ declare const json: {
   'AMA.Title': 'USACO AMA';
   'AMA.desc': '我们很荣幸地邀请到美国信息学奥林匹克竞赛（USACO）主任Brian Dean博士参与一年一度的问答环节。我们的内部团队将为所有人举办一个开放式问答活动。';
   'USACO.Pain.Points': 'USACO 常见问题点';
-
   'USACO.Pain.Points1': '不确定从何处开始或应该专注于什么？';
   'USACO.Pain.Points2': '概念似乎可以理解，但在测试中执行出现问题？';
   'USACO.Pain.Points3': '已涵盖相关主题，但在USACO级别进展中遇到困难？';
@@ -506,6 +505,10 @@ declare const json: {
   'USACO.Pain.Points7': '对你目前的状况和未来的USACO竞赛季度有什么期望感到不确定？';
   'USACO.Pain.Points.Desc': '如果这些问题与您共鸣，请毫不犹豫地联系X-Camp！我们专业的教学团队将在这里帮助您充分利用学习之旅。';
   TuesdayOpenHouse: '周二开放日';
+  Spring: '春季';
+  Summer: '夏季';
+  Fall: '秋季';
+  Winter: '冬季';
 };
 
 export default json;

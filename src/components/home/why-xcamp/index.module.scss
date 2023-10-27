@@ -5,7 +5,7 @@
   width: 100%;
 
   @media (width <= 768px) {
-    padding: 50px 0;
+    padding: 32px 0;
   }
 
   .aboutXCamp {
@@ -43,6 +43,7 @@
         width: 160px;
 
         @media (width <= 768px) {
+          display: none;
           margin-left: -80px;
           width: 120px !important;
         }
@@ -54,8 +55,9 @@
         width: 112px;
 
         @media (width <= 768px) {
+          display: none;
           margin-left: -80px;
-          width: 80px !important;
+          width: 68px !important;
         }
       }
 
@@ -91,6 +93,10 @@
           min-height: 192px;
         }
 
+        @media (width <= 768px) {
+          margin-top: 24px;
+        }
+
         &:hover {
           box-shadow: 0 4px 10px -2px #d8d8d8;
         }
@@ -117,7 +123,7 @@
           font-weight: 600;
 
           @media (width <= 768px) {
-            @include title('mobile');
+            @include title('middle');
           }
         }
 
@@ -128,6 +134,8 @@
           @include text(16px, 28px);
 
           @media (width <= 768px) {
+            margin-top: -8px;
+
             @include mobile-text;
           }
         }

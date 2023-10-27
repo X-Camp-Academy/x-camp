@@ -36,12 +36,20 @@
     text-align: center;
 
     @include title;
+
+    @media (width <= 768px) {
+      padding-bottom: 16px;
+    }
   }
 
   .content {
     padding: 30px 0 0;
     width: 80%;
     height: calc(100% - 80px);
+
+    @media (width <= 768px) {
+      padding: 15px 0 0;
+    }
 
     .item {
       padding: 11px 20px;
@@ -64,6 +72,10 @@
         @include title('thin');
 
         transition: all 0.3s;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
       }
 
       .description {
@@ -75,6 +87,10 @@
         word-break: break-all;
         word-wrap: break-word;
         hyphens: auto;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
 
       .bottom {
@@ -135,6 +151,10 @@
       font-weight: 500;
       color: #172142;
       line-height: 36px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .time {
@@ -143,6 +163,12 @@
         font-weight: 400;
         color: #b9b9b9;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          color: #b9b9b9;
+        }
       }
     }
   }

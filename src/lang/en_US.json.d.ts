@@ -191,7 +191,7 @@ declare const json: {
   ViewCalendar: 'View Calendar';
   Website: 'Website';
   WeeklyOpenHouse: 'Weekly Open House';
-  'WeeklyOpenHouse.color': 'X-Camp Online Open House';
+  'WeeklyOpenHouse.color': 'Open';
   WeeklyOpenHouse1: 'Weekly Open House';
   weeklyOpenHouseOpen: 'Tue night 6:30-7:30 on Zoom (Pacific Time)';
   weeklyOpenHouseDesc1: "Evaluate student's programming level";
@@ -507,6 +507,10 @@ declare const json: {
   'USACO.Pain.Points7': 'Uncertain about your current standing and what to expect for upcoming USACO seasons?';
   'USACO.Pain.Points.Desc': "If these resonate with you, don't hesitate to reach out to X-Camp! Our dedicated teaching team is here to help you make the most of your learning journey.";
   TuesdayOpenHouse: 'Tuesday Open House';
+  Spring: 'Spring';
+  Summer: 'Summer';
+  Fall: 'Fall';
+  Winter: 'Winter';
 };
 
 export default json;

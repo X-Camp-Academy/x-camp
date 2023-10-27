@@ -1,9 +1,15 @@
+@import '@/styles/variables';
+
 .amaContainer {
   .title {
     font-size: 36px;
     font-weight: 600;
     color: #172142;
     line-height: 48px;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .paragraph {
@@ -11,6 +17,10 @@
     font-weight: 500;
     color: #172142;
     line-height: 34px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
   }
 
   .spaceContainer {
@@ -23,7 +33,7 @@
         border-radius: 4px;
 
         @media (width <= 768px) {
-          width: 360px;
+          width: 100%;
         }
       }
 
@@ -32,6 +42,10 @@
         font-weight: 600;
         color: #172142;
         line-height: 28px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
 
       .date {
@@ -39,6 +53,10 @@
         font-weight: 400;
         color: #666;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

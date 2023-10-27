@@ -2,6 +2,7 @@
 import { FacultyLevelCategory, GetFaculty } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Avatar, Card, Col, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
@@ -19,7 +20,7 @@ const FacultyCoach: React.FC<{
   const [facultyData, setFacultyData] = useState<StrapiResponseDataItem<GetFaculty>[]>();
   const { format: t, lang } = useLang();
   const { hash } = window.location;
-
+  const isMobile = useMobile();
   const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
 
   const options: FacultyOptionsProps[] = [
@@ -73,7 +74,7 @@ const FacultyCoach: React.FC<{
           {facultyData?.map((item, index) => (
             <Col key={item?.id} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }} className={styles.col}>
               <ColorfulCard border="bottom" split={4} index={index}>
-                <Card bodyStyle={{ padding: 0, height: 360 }}>
+                <Card bodyStyle={{ padding: 0, height: isMobile ? 300 : 360 }}>
                   <Space direction="vertical">
                     <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
                     <Text className={styles.name}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
