@@ -26,7 +26,7 @@ const CourseBanner: React.FC = () => {
   const courseCodeTitle = `${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)} (${lessonNum} ${getWeeksDays(frequency)})`;
 
   const formatDate = (dateTime?: string) => {
-    return formatTimezone(dateTime)?.utcTime?.format('DD/MM/YYYY');
+    return formatTimezone(dateTime)?.utcTime?.format('MM/DD/YYYY');
   };
   const fullPath = window.location.href;
   const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatDate(startDateTime)} ~ ${formatDate(
@@ -190,7 +190,7 @@ const CourseBanner: React.FC = () => {
                 </div>
 
                 <Space direction="vertical" size={16} align="end" className={styles.rightBottom}>
-                  <Text className={styles.rightBottomText}> * Get $75 off for each/ Get up to $150 off!</Text>
+                  <Text className={styles.rightBottomText}> * Earn $75 for you and $75 for your friend through our referral system.</Text>
                   <CopyRightIcons />
                 </Space>
               </div>

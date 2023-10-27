@@ -7,6 +7,7 @@
   padding-bottom: 40px;
   width: 100%;
   flex-direction: column;
+  background-color: #efefef;
 
   @media (width <= 768px) {
     padding-top: 16px;
@@ -20,11 +21,12 @@
   @include flex('center');
 
   padding-top: 32px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
   width: 100%;
   background: url('/image/common/x-camp-logo.png') no-repeat;
   background-size: contain;
   flex-direction: column;
+  background-color: #efefef;
 
   @media (width <= 768px) {
     padding: 0;

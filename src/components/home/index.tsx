@@ -14,7 +14,6 @@ const PublicCalendar = dynamic(() => import('./public-calendar'));
 const StudentProjects = dynamic(() => import('./student-projects'));
 const Community = dynamic(() => import('./community'));
 const Reviews = dynamic(() => import('@/components/common/reviews'));
-const FixedButtons = dynamic(() => import('@/components/common/fixed-buttons'));
 
 const { Content } = Layout;
 
@@ -38,7 +37,6 @@ const Home: React.FC = () => {
         <StudentProjects />
         <Community />
         <Reviews reviewsData={reviewsData} />
-        <FixedButtons />
         {/*<Partners />*/}
       </Content>
     </Layout>

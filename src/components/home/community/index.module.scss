@@ -24,7 +24,6 @@
       @include title;
 
       margin: 0;
-      color: $primary-color;
 
       @media (width <= 768px) {
         @include title('mobile');
@@ -33,11 +32,12 @@
 
     .titleBg {
       display: block;
+      margin-left: 150px;
       width: 240px;
       height: 26px;
-      background-image: url('/image/home/home-title-bg-1.png');
       background-repeat: no-repeat;
       background-size: cover;
+      background-image: url('/image/home/home-title-bg-1.png');
 
       @media (width <= 768px) {
         width: 144px !important;

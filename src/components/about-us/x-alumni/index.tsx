@@ -23,7 +23,7 @@ const XAlumni = () => {
     <Layout className={styles.xalumniContainer}>
       <Content>
         <Banner />
-        {/* <Map /> */}
+        <Map />
         <Stories />
         <UpcomingEvents />
         <Reviews reviewsData={reviewsData} />

@@ -6,6 +6,18 @@
   width: 100%;
   background-color: #f5f5f5;
 
+  .courseCardContainer {
+    border-radius: 15px;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .courseCardContainer:hover {
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 / 10%);
+    transition: all 0.3s ease-in-out;
+  }
+
   .form {
     margin-bottom: 10px;
 

@@ -14,11 +14,7 @@
     }
 
     .title {
-      @include title('bold');
-
-      @media (width <= 768px) {
-        @include title('mobile');
-      }
+      @include title('default');
     }
 
     .intro {
@@ -108,8 +104,10 @@
       position: absolute;
       top: 50%;
       left: 10px;
-      color: #fff;
-      background-color: #ffad11;
+      border: 2px solid #ffad11;
+      color: #ffad11;
+      background-color: #fff;
+      transition: all 0.3s ease;
       transform: translateY(-50%);
     }
 
@@ -117,9 +115,17 @@
       position: absolute;
       top: 50%;
       right: 10px;
+      border: 2px solid #ffad11;
+      color: #ffad11;
+      background-color: #fff;
+      transition: all 0.3s ease;
+      transform: translateY(-50%);
+    }
+
+    .prev:hover,
+    .next:hover {
       color: #fff;
       background-color: #ffad11;
-      transform: translateY(-50%);
     }
   }
 }

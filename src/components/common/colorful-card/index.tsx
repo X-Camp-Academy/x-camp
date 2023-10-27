@@ -17,7 +17,7 @@ export interface ColorfulCardProps {
 
 const ColorfulCard: React.FC<ColorfulCardProps> = ({ border = 'top', index = 0, children = null, split = 3, reverse = false, animate = true, className = '', collapse = false }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const threeColors = ['#D46B14', '#FFAD11', '#FFD600'];
+  const threeColors = ['#FFD600', '#FFAD11', '#D46B14'];
   const fourColors = ['#00A0E9', ...threeColors];
   const computedStyle = (border: 'top' | 'bottom', index: number, reverse: boolean) => {
     const defaultStyle = {

@@ -103,10 +103,19 @@
         position: relative;
         display: flex;
         overflow: hidden;
-        width: 100%;
+        width: 85%;
         height: 100%;
         border-radius: 12px;
         text-align: left;
+
+        :global(.ant-image) {
+          width: 100% !important;
+        }
+
+        @media (width <= 1402px) {
+          width: 100%;
+          height: 100%;
+        }
 
         .image {
           width: 100%;

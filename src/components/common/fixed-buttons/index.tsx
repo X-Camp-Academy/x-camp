@@ -1,11 +1,13 @@
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
+import { useModelVisible } from '@/hoc/WithModelVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
-import { CloseOutlined, MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
-import { Button, Card, Checkbox, Form, Input } from 'antd';
+import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import { Button, Card } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { RefObject, useEffect, useRef, useState } from 'react';
+import CardForm from './CardForm';
 import FixedButton from './FixedButton';
 import styles from './index.module.scss';
 
@@ -23,105 +25,21 @@ const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
+  const [open, setOpen] = useState(false);
+  const { modelVisible, setModelVisible } = useModelVisible();
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
-    setOpen(false);
+    setModelVisible(false);
   };
+  const { hash } = window.location;
 
-  const [open, setOpen] = useState(false);
   const labels: string[] = [t('weeklyOpenHouseDesc1'), t('weeklyOpenHouseDesc2'), t('weeklyOpenHouseDesc3')];
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
-      state: [open, setOpen],
+      state: [modelVisible, setModelVisible as React.Dispatch<React.SetStateAction<boolean>>],
       text: isMobile ? 'consult' : t('FreeConsultation'),
-      label: (
-        <div className={`${styles.cardFrom} ${styles.autoSize}`}>
-          <Card
-            title={t('FreeConsultation')}
-            headStyle={{
-              color: '#172142',
-              fontSize: 24,
-              fontWeight: 'bold',
-              height: 36,
-              lineHeight: '36px',
-              textAlign: 'center',
-              borderBottom: 'none'
-            }}
-            bodyStyle={{
-              paddingBottom: 16
-            }}
-            className={styles.card}
-            extra={
-              <a onClick={() => setOpen(false)} style={{ color: '#172142' }}>
-                {<CloseOutlined />}
-              </a>
-            }
-          >
-            <div className={styles.cardTitle}>{t('SIGH_UP_USACO_TOOLKIT')}</div>
-            <Form name="carouselContent" onFinish={onFinish} className={styles.form}>
-              <Form.Item
-                name="name"
-                rules={[
-                  {
-                    required: true,
-                    message: t('Name.Required')
-                  }
-                ]}
-              >
-                <Input placeholder={t('Nickname')} />
-              </Form.Item>
-
-              <Form.Item
-                name="grade"
-                rules={[
-                  {
-                    required: true,
-                    message: t('Grade.Required')
-                  }
-                ]}
-              >
-                <Input placeholder={t('Grade')} />
-              </Form.Item>
-
-              <Form.Item
-                name="email"
-                rules={[
-                  { type: 'email' },
-                  {
-                    required: true,
-                    message: t('Email.Required')
-                  }
-                ]}
-              >
-                <Input type="email" placeholder="E-mail*" />
-              </Form.Item>
-
-              <Form.Item
-                name="phone"
-                rules={[
-                  {
-                    required: true,
-                    message: t('Phone/Wechat.Required')
-                  }
-                ]}
-              >
-                <Input placeholder={t('Phone/Wechat')} />
-              </Form.Item>
-
-              <Form.Item name="subscribe">
-                <Checkbox>{t('FreeProgrammingPack')}</Checkbox>
-              </Form.Item>
-
-              <Form.Item>
-                <Button type="primary" htmlType="submit" className={styles.submit}>
-                  {t('Submit')}
-                </Button>
-              </Form.Item>
-            </Form>
-          </Card>
-        </div>
-      ),
+      label: <CardForm setOpen={setModelVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
       key: '0',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
@@ -158,7 +76,14 @@ const FixedButtons: React.FC = () => {
                 {t('ZoomLink')}
               </Button>
 
-              <Button type="primary" className={styles.button} onClick={() => router.push('/resources/weekly-open-house')}>
+              <Button
+                type="primary"
+                className={styles.button}
+                onClick={() => {
+                  router.push('/resources/weekly-open-house');
+                  setOpen(true);
+                }}
+              >
                 1 On 1{' '}
               </Button>
             </div>
@@ -181,6 +106,13 @@ const FixedButtons: React.FC = () => {
       clearTimeout(timeoutId);
     };
   }, []);
+
+  useEffect(() => {
+    if (hash === '#appointment') {
+      setOpen(true);
+    }
+  }, [hash]);
+
   return (
     <div className={styles.buttonContainer}>
       {menu.map((item) => (

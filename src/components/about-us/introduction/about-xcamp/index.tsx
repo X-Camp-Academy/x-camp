@@ -24,7 +24,6 @@ const AboutXCamp: React.FC = () => {
         <Space direction="vertical" size={isMobile ? 16 : 32} className={styles.rightSpace}>
           <Title className={styles.rightTitle}>{t('AboutXCamp.SubTitle')}</Title>
           <Paragraph className={styles.rightParagraph}>{t('AboutXCamp.Desc2')}</Paragraph>
-
           <UsacoMedal showLogo={false} showTitle={false} rowStyle={{ padding: 0 }} />
         </Space>
       </Space>

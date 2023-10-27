@@ -43,6 +43,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
 
         <List
           dataSource={listData}
+          className={styles.list}
           split={false}
           renderItem={(item) => (
             <List.Item className={styles.timeListItem}>
@@ -71,8 +72,19 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                 renderItem={(g) => (
                   <List.Item>
                     <Card className={styles.videoItem}>
-                      <iframe src={g?.attributes?.url?.data?.attributes?.url} width="100%" height={240} sandbox="" />
-                      <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
+                      <iframe src={g?.attributes?.url?.data?.attributes?.url} width="100%" height={240} sandbox="" style={{ border: 'none' }} />
+                      <Title
+                        className={styles.videoTitle}
+                        ellipsis={{
+                          rows: 1,
+                          tooltip: {
+                            title: getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn),
+                            placement: 'bottom'
+                          }
+                        }}
+                      >
+                        {getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}
+                      </Title>
                     </Card>
                   </List.Item>
                 )}

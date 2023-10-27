@@ -9,7 +9,6 @@ import styles from './index.module.scss';
 const Banner = dynamic(() => import('./banner'));
 const CalendarContent = dynamic(() => import('./calendar-content'));
 const RecentActivities = dynamic(() => import('@/components/resources/education-forum/recent-activities'));
-
 const { Content } = Layout;
 
 const Calendar: React.FC = () => {

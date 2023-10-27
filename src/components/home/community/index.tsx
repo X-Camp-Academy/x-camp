@@ -1,6 +1,7 @@
 'use client';
 import { useGetCommunity } from '@/apis/strapi-client/strapi';
 import MaskCard from '@/components/common/mask-card';
+import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { Carousel, Image, Space, Typography } from 'antd';
@@ -42,9 +43,16 @@ const Community: React.FC = () => {
     <div className={styles.communityContainer} id="community">
       <div className={`${styles.community} container`}>
         <div className={styles.info}>
-          <Title className={styles.title}>
-            <span>{t('Home.Community.Title')}</span>
-          </Title>
+          <TitleColor
+            title={t('Home.Community.Title')}
+            config={[
+              {
+                text: t('Home.Community.Title.Color'),
+                color: '#FFAD11'
+              }
+            ]}
+            className={styles.title}
+          />
           <Text className={styles.titleBg} />
           <Paragraph className={styles.paragraph}>{t('Home.Community.Desc1')}</Paragraph>
           <Paragraph className={styles.paragraph}>{t('Home.Community.Desc2')}</Paragraph>

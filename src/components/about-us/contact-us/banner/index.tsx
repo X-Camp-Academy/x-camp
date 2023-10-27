@@ -8,11 +8,8 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('ContactUs.Banner.Desc1')}
-      <br />
       {t('ContactUs.Banner.Desc2')}
-      <br />
       {t('ContactUs.Banner.Desc3')}
-      {lang === 'en' && <br />}
       {t('ContactUs.Banner.Desc4')}
     </>
   );
