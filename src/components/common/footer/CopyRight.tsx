@@ -74,7 +74,7 @@ const CopyRight: React.FC = () => {
               <div>
                 <Title className={styles.text}>{t('Activity')}</Title>
                 <Space direction="vertical">
-                  <Link href={'/resources/weekly-open-house'}>{t('WeeklyOpenHouse')}</Link>
+                  <Link href={'/courses/weekly-open-house'}>{t('WeeklyOpenHouse')}</Link>
                   <Link href={'/resources/education-forum'}>{t('EventCalendar')}</Link>
                   <a href={'/resources/usaco-live-solutions'}>{t('USACOLiveSolution')}</a>
                 </Space>

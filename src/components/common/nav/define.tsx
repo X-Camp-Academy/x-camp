@@ -63,12 +63,12 @@ export const useMenuItems = () => {
           key: 'Java/APCS Classes'
         },
         {
-          label: <Link href="/about-us/student-recommend">{t('ReferralProgram')}</Link>,
-          key: '/about-us/student-recommend/'
+          label: <Link href="/courses/student-recommend">{t('ReferralProgram')}</Link>,
+          key: '/courses/student-recommend/'
         },
         {
-          label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
-          key: '/resources/weekly-open-house/'
+          label: <Link href="/courses/weekly-open-house">{t('OpenHouse')}</Link>,
+          key: '/courses/weekly-open-house/'
         }
         // {
         //   label: (
