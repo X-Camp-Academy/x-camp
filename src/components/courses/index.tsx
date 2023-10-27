@@ -146,7 +146,6 @@ const Courses: React.FC = () => {
     const result = removeEmptyChildren(segmentedData);
     // 将最后一个元素放到第四个位置 Gold 移到 Silver 后面
     if (result) {
-      console.log(result[0].children);
       let lastItem = result[0].children?.pop();
       result[0].children?.splice(3, 0, lastItem as any);
     }
