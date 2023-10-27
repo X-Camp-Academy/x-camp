@@ -126,7 +126,7 @@ declare const json: {
   'Home.Banner1.Date2': '*Every Wednesday 9:30 AM- 10:30 AM Beijing Time';
   'Partner.Desc1': 'We strive to cultivate a nurturing and welcoming';
   'Partner.Desc2': 'coding community alongside our committed partners.';
-  'Partner.Desc3': 'Feel free to reach out with your inquiries via email.';
+  'Partner.Desc3': ' Feel free to reach out with your inquiries via email.';
   Partners: 'Partners';
   'Partners.Desc': ' Thank you to our partners! Our partnerships ensure that X-Camp can provide high-quality learning opportunities and foster a vibrant community for all of our students.';
   Phone: 'Phone';
@@ -426,7 +426,7 @@ declare const json: {
   'News.Banner.Desc1': 'Stay informed about new program launches';
   'News.Banner.Desc2': 'events, and exciting achievements of our';
   'News.Banner.Desc3': 'students and partners.';
-  'XAlumni.Banner.Desc1': 'Since its inception, X - Camp has had over 1,000 students';
+  'XAlumni.Banner.Desc1': 'Since its inception, X - Camp has had over 1,000 students ';
   'XAlumni.Banner.Desc2': 'and is currently enrolling over 500 + students in 250 +';
   'XAlumni.Banner.Desc3': 'schools around the world.';
   'Contests.Banner.Desc1': 'X-Camp will organize students to join different';

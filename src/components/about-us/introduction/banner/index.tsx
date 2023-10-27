@@ -13,7 +13,7 @@ const Banner: React.FC = () => {
       {t('Introduction.Banner.Desc5')}
     </>
   );
-  return <CommonBanner title={'X-Camp Academy'} paragraph={paragraph} image={'/image/about-us/introduction-banner.png'} />;
+  return <CommonBanner title={'X-Camp Academy'} paragraph={paragraph} image={'/image/about-us/introduction-banner.png'} paragraphFontSize={16} />;
 };
 
 export default Banner;
