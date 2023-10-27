@@ -29,6 +29,7 @@
     background-image: url('/image/home/home-title-bg-1.png');
 
     @media (width <= 768px) {
+      margin-top: -8px;
       margin-left: 88px;
       width: 96px;
       background-size: contain;
@@ -45,6 +46,7 @@
     background-image: url('/image/home/home-title-bg-1.png');
 
     @media (width <= 768px) {
+      margin-top: -8px;
       margin-left: 48px;
       width: 64px;
       background-size: contain;
