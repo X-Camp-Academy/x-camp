@@ -9,13 +9,9 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('EducationForum.Banner.Desc1')}
-      <br />
       {t('EducationForum.Banner.Desc2')}
-      <br />
       {t('EducationForum.Banner.Desc3')}
-      <br />
       {t('EducationForum.Banner.Desc4')}
-      <br />
       {t('EducationForum.Banner.Desc5')}
     </>
   );

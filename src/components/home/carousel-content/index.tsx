@@ -2,7 +2,7 @@
 import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { Carousel, Col, Image, Row, Space, Typography } from 'antd';
+import { Carousel, Col, Row, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import React, { CSSProperties, useRef, useState } from 'react';
@@ -17,6 +17,7 @@ interface IItem {
   title: string;
   desc: string[];
   banner: string;
+  mbBanner: string;
   onClick: () => void;
   date: string[];
   buttonText: string;
@@ -53,6 +54,7 @@ const CarouselContent: React.FC = () => {
       },
       date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
       banner: '/image/home/banner-pc-1.png',
+      mbBanner: '/image/home/banner-mb-1.png',
       buttonText: t('ZoomLink')
     },
     {
@@ -69,6 +71,7 @@ const CarouselContent: React.FC = () => {
       },
       date: [t('Home.Banner2.Date')],
       banner: '/image/home/banner-pc-2.png',
+      mbBanner: '/image/home/banner-mb-2.png',
       buttonText: t('VideoRecap')
     },
     {
@@ -89,6 +92,7 @@ const CarouselContent: React.FC = () => {
       },
       date: [''],
       banner: '/image/home/banner-pc-3.png',
+      mbBanner: '/image/home/banner-pc-3.png',
       buttonText: t('Home.Banner3.buttonText')
     }
   ];
@@ -126,7 +130,15 @@ const CarouselContent: React.FC = () => {
       <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: IItem) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
-            <Image alt="" preview={false} className={styles.background} src={item?.banner} width={'100%'} />
+            {/* <Image alt="" preview={false} className={styles.background} src={item?.banner} width={'100%'} /> */}
+            <div
+              className={styles.background}
+              style={{
+                background: `url('${item?.mbBanner}') no-repeat`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center'
+              }}
+            />
             <div className={`container ${styles.info}`}>
               <Row>
                 <Col xs={24} sm={24} md={24} lg={12}>

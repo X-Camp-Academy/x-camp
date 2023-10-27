@@ -1,5 +1,6 @@
 import { useGetFaculty } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Col, Image, Row, Space, Typography } from 'antd';
 import { useRouter } from 'next/navigation';
@@ -14,11 +15,12 @@ const JoinUsFaculty: React.FC = () => {
   const { data: imgUrlList } = useGetFaculty({
     pageName: ['/about-us/join-us/']
   });
+  const isMobile = useMobile();
   return (
     <div className={styles.joinUsFacultyContainer}>
       <Row className={`${styles.joinUsFaculty} container`}>
         <Col className={styles.xCampIntro} lg={12} md={24} xs={24}>
-          <Space direction="vertical" size="large">
+          <Space direction="vertical" size={isMobile ? 8 : 16}>
             <Image alt="image" src="/logo/logo.png" preview={false} className={styles.logo} />
             <Paragraph className={styles.introText}>{t('XCampFaculty.Desc')}</Paragraph>
             <Button

@@ -33,7 +33,8 @@
 
         @media (width <= 768px) {
           margin: 20px auto;
-          font-size: 20px;
+
+          @include title('middle');
         }
       }
 
@@ -48,7 +49,7 @@
       margin-top: 50px;
 
       @media (width <= 768px) {
-        margin-top: 25px;
+        margin-top: 20px;
       }
 
       .collapseCard {

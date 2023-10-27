@@ -7,13 +7,25 @@
   background-size: cover;
   background-image: url('/image/home/carousel-bg.png');
 
+  @media (width <= 768px) {
+    padding-bottom: 32px;
+  }
+
   .content {
     padding-top: 85px;
+
+    @media (width <= 768px) {
+      padding-top: 40px;
+    }
 
     .title {
       @include title('bold');
 
       line-height: 58px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .paragraph {
@@ -21,10 +33,18 @@
       font-weight: 500;
       color: #172142;
       line-height: 42px;
+
+      @media (width <= 768px) {
+        @include title('middle');
+      }
     }
 
     .paragraph:nth-child(2) {
       margin-bottom: 36px;
+
+      @media (width <= 768px) {
+        margin-bottom: 24px;
+      }
     }
 
     .contact {
@@ -34,12 +54,18 @@
         text-decoration: underline;
         color: #d46b14;
         line-height: 46px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          color: #d46b14;
+        }
       }
     }
 
     .rightCol {
       @media (width <= 768px) {
-        margin-top: 48px;
+        margin-top: 32px;
       }
 
       .button {
@@ -54,6 +80,17 @@
         color: #d46b14;
         background-color: #fff;
         line-height: 40px;
+
+        @media (width <= 768px) {
+          padding-left: 16px;
+          width: 240px;
+          height: 64px;
+          border-color: #d46b14;
+          font-size: 18px;
+          color: #d46b14;
+          background-color: #fff;
+          line-height: 32px;
+        }
       }
     }
   }

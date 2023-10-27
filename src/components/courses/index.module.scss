@@ -1,3 +1,5 @@
+@import '@/styles/variables';
+
 .courses {
   position: relative;
   top: 72px;
@@ -6,6 +8,10 @@
 
   .classContainer {
     padding-top: 50px;
+
+    @media (width <= 768px) {
+      padding-top: 20px;
+    }
 
     :global(.ant-collapse) {
       border-block-start: none;
@@ -44,6 +50,10 @@
       margin-top: 64px;
       padding-right: 12px;
       padding-left: 12px;
+
+      @media (width <= 768px) {
+        margin-top: 32px;
+      }
     }
 
     .title {
@@ -55,7 +65,10 @@
       line-height: 56px;
 
       @media (width <= 1200px) {
-        margin-top: 48px;
+        margin-top: 20px;
+        margin-bottom: 24px;
+
+        @include title('mobile');
       }
     }
 
@@ -92,7 +105,7 @@
         color: #172a88;
 
         @media (width <= 768px) {
-          font-size: 24px;
+          @include title('middle');
         }
       }
 
@@ -101,6 +114,10 @@
         font-weight: 500;
         color: #6a6a6a;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

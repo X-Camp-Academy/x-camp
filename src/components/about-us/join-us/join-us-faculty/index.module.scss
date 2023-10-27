@@ -4,8 +4,9 @@
   margin-bottom: 100px;
 
   @media (width <= 768px) {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     padding: 20px;
+    padding-top: 0;
   }
 
   .joinUsFaculty {

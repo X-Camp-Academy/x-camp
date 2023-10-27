@@ -26,7 +26,7 @@
       @media (width <= 768px) {
         @include title('mobile');
 
-        margin-bottom: 20px;
+        margin-bottom: 0;
       }
     }
 
@@ -36,8 +36,10 @@
       font-weight: bold;
 
       @media (width <= 768px) {
-        @include text(20px, 24px);
+        @include title('middle');
 
+        display: inline-block;
+        padding: 8px 0;
         font-weight: 500;
       }
     }
