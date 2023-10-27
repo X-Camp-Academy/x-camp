@@ -22,6 +22,10 @@
 
       @include flex(center);
     }
+
+    @media (width <= 768px) {
+      display: none;
+    }
   }
 
   .dateTime {
@@ -36,5 +40,9 @@
     position: absolute;
     top: 280px;
     left: 100px;
+
+    @media (width <= 768px) {
+      left: 48px;
+    }
   }
 }

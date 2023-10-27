@@ -1,6 +1,7 @@
 'use client';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
 import Reviews from '@/components/common/reviews';
+import { useMobile } from '@/utils';
 import { Layout, Space } from 'antd';
 import { usePathname } from 'next/navigation';
 import AppointmentCard from './appointment-card';
@@ -16,12 +17,12 @@ const WeeklyOpenHouse = () => {
     ready: true,
     pageName: [pathname]
   });
-
+  const isMobile = useMobile();
   return (
     <Layout className={styles.main}>
       <Content>
         <Banner />
-        <Space direction="vertical" size={100} className={styles.content}>
+        <Space direction="vertical" size={isMobile ? 32 : 100} className={styles.content}>
           {/* <JoinWay /> */}
           <Introduction />
           <AppointmentCard />

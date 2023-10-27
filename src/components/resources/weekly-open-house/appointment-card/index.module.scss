@@ -9,6 +9,7 @@
   background: #fff;
 
   @media (width <= 992px) {
+    padding: 40px 32px;
     flex-direction: column;
   }
 
@@ -19,6 +20,10 @@
 
     .title {
       @include title;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .description {
@@ -26,6 +31,12 @@
 
       margin: 20px 0 24px;
       font-weight: 500;
+
+      @media (width <= 768px) {
+        margin: 10px 0 12px;
+
+        @include mobile-text;
+      }
     }
 
     .btn {
@@ -39,7 +50,9 @@
       @include text(16px, 24px);
 
       @media (width <= 992px) {
+        width: 160px;
         width: 100%;
+        height: 40px;
       }
 
       &:hover {
@@ -67,19 +80,24 @@
         width: 200px;
         height: 250px;
         transform: rotate(-15deg);
-      }
 
-      &::after {
-        position: absolute;
-        top: -20px;
-        left: 20px;
-        display: inline-block;
-        width: 200px;
-        height: 180px;
-        border-radius: 4px;
-        background-color: #cce1f1;
-        content: '';
-        transform: rotate(10deg);
+        &::after {
+          position: absolute;
+          top: -20px;
+          left: 20px;
+          display: inline-block;
+          width: 200px;
+          height: 180px;
+          border-radius: 4px;
+          background-color: #cce1f1;
+          content: '';
+          transform: rotate(10deg);
+        }
+
+        @media (width <= 768px) {
+          margin-top: 40px;
+          margin-left: 150px;
+        }
       }
     }
   }

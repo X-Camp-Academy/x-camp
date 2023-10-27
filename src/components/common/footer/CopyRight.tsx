@@ -18,7 +18,7 @@ const CopyRight: React.FC = () => {
       <div className={`${styles.copyRight} container`}>
         <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={24} lg={12} order={isMobile ? 2 : 1}>
-            <Space direction="vertical" className={styles.spaceLeft} size={48}>
+            <Space direction="vertical" className={styles.spaceLeft} size={isMobile ? 16 : 48}>
               {isMobile ? (
                 <>
                   <div className={styles.bar} />
