@@ -76,9 +76,10 @@
         @media (width <= 768px) {
           margin-left: 8px;
           width: 100%;
-          color: #fff;
 
           @include mobile-text;
+
+          color: #fff;
         }
       }
     }

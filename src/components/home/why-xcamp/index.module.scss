@@ -43,9 +43,10 @@
         width: 160px;
 
         @media (width <= 768px) {
-          display: none;
+          margin-top: -8px;
           margin-left: -80px;
-          width: 120px !important;
+          width: 112px !important;
+          background-size: contain;
         }
       }
 
@@ -55,9 +56,10 @@
         width: 112px;
 
         @media (width <= 768px) {
-          display: none;
+          margin-top: -8px;
           margin-left: -80px;
-          width: 68px !important;
+          width: 64px !important;
+          background-size: contain;
         }
       }
 

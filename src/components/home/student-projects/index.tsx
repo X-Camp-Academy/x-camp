@@ -39,13 +39,16 @@ const StudentProjects: React.FC = () => {
       <div className={`${styles.studentProjects} container`} id="stu_project">
         <Space direction="vertical" align="center">
           {lang === 'zh' ? (
-            <Title className={styles.title}>学生课程</Title>
+            <>
+              <Title className={styles.title}>学生课程</Title>
+              <Text className={styles.titleZhBg} />
+            </>
           ) : (
             <>
               <Title className={styles.title}>
                 Student <span>Projects</span>
               </Title>
-              <Text className={styles.titleBg} />
+              <Text className={styles.titleEnBg} />
             </>
           )}
           <Paragraph className={styles.paragraph}>{t('Home.StudentProjects.Desc')}</Paragraph>

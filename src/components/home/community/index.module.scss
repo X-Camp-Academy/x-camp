@@ -40,9 +40,8 @@
       background-size: cover;
 
       @media (width <= 768px) {
-        display: none;
-        margin-top: 10px;
         width: 144px !important;
+        background-size: contain;
       }
     }
 

@@ -62,6 +62,7 @@ const WithLang: React.FC<{
 interface WithIntlIProps {
   children: React.ReactNode;
 }
+// 根据浏览器当前的语言环境来设置第一次使用的语言
 const WithIntl: React.FC<WithIntlIProps> = ({ children }) => {
   const [lang, setLang] = useState<LangType>((cookie.load('lang') || window.navigator.language.slice(0, 2)) === LANG_ZH_CN ? LANG_ZH_CN : LANG_EN_US);
 

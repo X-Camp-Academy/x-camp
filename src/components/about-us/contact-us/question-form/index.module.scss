@@ -3,6 +3,10 @@
 .qaContent {
   padding-bottom: 6.25rem;
 
+  @media (width <= 768px) {
+    margin-bottom: 0;
+  }
+
   .row {
     @media (width <= 768px) {
       margin-right: 0 !important;
@@ -32,6 +36,10 @@
     :global(.ant-input) {
       padding: 10px;
       border: 1px solid #ffad11;
+    }
+
+    @media (width <= 768px) {
+      margin-top: 0;
     }
 
     .formTitle {

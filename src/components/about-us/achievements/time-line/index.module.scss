@@ -4,8 +4,8 @@
   margin-top: 100px;
 
   @media (width <= 768px) {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 24px;
+    margin-bottom: 32px;
   }
 
   .timeLine {
@@ -23,7 +23,7 @@
       background-position: right bottom;
 
       @media (width <= 768px) {
-        padding: 20px;
+        padding: 0 16px;
       }
 
       .timeListItem {
@@ -37,10 +37,9 @@
           left: -20px;
 
           @media (width <= 768px) {
-            left: 0;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 24px;
+            left: 16px;
+
+            @include title('middle');
           }
         }
 
@@ -55,6 +54,10 @@
           border-radius: 50%;
           background-color: #ffad11;
           content: '';
+
+          @media (width <= 768px) {
+            left: -10px;
+          }
         }
       }
 
@@ -121,7 +124,7 @@
           line-height: 100px;
 
           @media (width <= 768px) {
-            @include title('mobile');
+            @include title('middle');
           }
         }
 
