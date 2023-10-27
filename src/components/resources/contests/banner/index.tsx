@@ -8,11 +8,11 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      {t('Contests.Banner.Desc1')}&nbsp;
-      {t('Contests.Banner.Desc2')}&nbsp;
-      {t('Contests.Banner.Desc3')}&nbsp;
-      {t('Contests.Banner.Desc4')}&nbsp;
-      {t('Contests.Banner.Desc5')}&nbsp;
+      {t('Contests.Banner.Desc1')}
+      {t('Contests.Banner.Desc2')}
+      {t('Contests.Banner.Desc3')}
+      {t('Contests.Banner.Desc4')}
+      {t('Contests.Banner.Desc5')}
     </>
   );
   return <CommonBanner image={'/image/resources/contest-banner.png'} title={t('Contests')} paragraph={paragraph} paragraphFontSize={16} />;

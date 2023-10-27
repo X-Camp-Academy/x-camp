@@ -5,6 +5,7 @@ import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Divider, Dropdown, MenuProps, Space, theme } from 'antd';
 import React from 'react';
 import RealNameAvatar from '../avatar';
+import styles from './index.module.scss';
 
 type UserMenuProps = {
   user: UserInfo | null;
@@ -56,6 +57,10 @@ const DropdownUserMenu = ({ user, logout }: UserMenuProps) => {
   return (
     <Dropdown
       menu={{ items: items, onClick: onClickMenu }}
+      className={styles.dropdown}
+      overlayStyle={{
+        paddingTop: 10
+      }}
       dropdownRender={(menu) => (
         <div style={contentStyle}>
           <Space split={<Divider style={{ margin: 0 }} type="vertical" />} style={{ padding: '4px 10px' }}>
