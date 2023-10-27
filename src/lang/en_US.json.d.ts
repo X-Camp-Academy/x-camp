@@ -191,7 +191,7 @@ declare const json: {
   ViewCalendar: 'View Calendar';
   Website: 'Website';
   WeeklyOpenHouse: 'Weekly Open House';
-  'WeeklyOpenHouse.color': 'X-Camp Online Open House';
+  'WeeklyOpenHouse.color': 'Open';
   WeeklyOpenHouse1: 'Weekly Open House';
   weeklyOpenHouseOpen: 'Tue night 6:30-7:30 on Zoom (Pacific Time)';
   weeklyOpenHouseDesc1: "Evaluate student's programming level";

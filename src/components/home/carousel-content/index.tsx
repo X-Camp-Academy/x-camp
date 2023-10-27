@@ -2,6 +2,7 @@
 import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
+import { getTransResult } from '@/utils/public';
 import { Carousel, Col, Image, Row, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
@@ -16,8 +17,7 @@ const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
 interface IItem {
   title: string;
   desc: string[];
-  pcBanner: string;
-  mbBanner: string;
+  banner: string;
   onClick: () => void;
   date: string[];
   buttonText: string;
@@ -26,7 +26,7 @@ interface IItem {
 }
 
 const CarouselContent: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const router = useRouter();
   const sliderRef: any = useRef(null);
   const [current, setCurrent] = useState(0);
@@ -41,7 +41,7 @@ const CarouselContent: React.FC = () => {
       title: t('WeeklyOpenHouse'),
       titleConfig: [
         {
-          text: t('WeeklyOpenHouse'),
+          text: t('WeeklyOpenHouse.color'),
           color: '#FFAD11'
         }
       ],
@@ -53,8 +53,7 @@ const CarouselContent: React.FC = () => {
         window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09');
       },
       date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
-      pcBanner: '/image/home/banner-pc-1.png',
-      mbBanner: '/image/home/banner-mb-1.png',
+      banner: '/image/home/banner-pc-1.png',
       buttonText: t('ZoomLink')
     },
     {
@@ -70,8 +69,7 @@ const CarouselContent: React.FC = () => {
         window.open('https://tinyurl.com/XCamp23-24FallUSACO');
       },
       date: [t('Home.Banner2.Date')],
-      pcBanner: '/image/home/banner-pc-2.png',
-      mbBanner: '/image/home/banner-mb-2.png',
+      banner: '/image/home/banner-pc-zh-2.png',
       buttonText: t('VideoRecap')
     },
     {
@@ -91,8 +89,34 @@ const CarouselContent: React.FC = () => {
         router.push('/about-us/achievements');
       },
       date: [''],
-      pcBanner: '/image/home/banner-pc-3.png',
-      mbBanner: '/image/home/banner-mb-3.png',
+      banner: '/image/home/banner-pc-3.png',
+      buttonText: t('Home.Banner3.buttonText')
+    }
+  ];
+
+  const mobileItems = [
+    {
+      mbZhBanner: '/image/home/banner-mb-zh-1.png',
+      mbEnBanner: '/image/home/banner-mb-en-1.png',
+      onClick: () => {
+        window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09');
+      },
+      buttonText: t('ZoomLink')
+    },
+    {
+      mbZhBanner: '/image/home/banner-mb-zh-2.png',
+      mbEnBanner: '/image/home/banner-mb-en-2.png',
+      onClick: () => {
+        window.open('https://tinyurl.com/XCamp23-24FallUSACO');
+      },
+      buttonText: t('VideoRecap')
+    },
+    {
+      mbZhBanner: '/image/home/banner-mb-zh-3.png',
+      mbEnBanner: '/image/home/banner-mb-en-3.png',
+      onClick: () => {
+        router.push('/about-us/achievements');
+      },
       buttonText: t('Home.Banner3.buttonText')
     }
   ];
@@ -100,45 +124,59 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={3} current={current} />}
-      <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
-        {carouselItems.map((item: IItem) => (
-          <div className={styles.content} key={item?.title} onClick={item?.onClick}>
-            <Image alt="" preview={false} className={styles.background} src={isMobile ? item?.mbBanner : item?.pcBanner} width={'100%'} />
-            <div className={`container ${styles.info}`}>
-              <Row>
-                <Col xs={24} sm={24} md={24} lg={12}>
-                  <Space direction="vertical" className={styles.space} size={20}>
-                    <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                    <Space direction="vertical">
-                      {item?.desc?.map((desc, index) => {
-                        return index === 0 ? (
-                          <Text className={styles.description} key={desc} style={item?.descStyle}>
-                            {desc}
-                          </Text>
-                        ) : (
-                          <Text className={styles.description} key={desc} style={item?.descStyle}>
-                            &quot;{desc}&quot;
-                          </Text>
-                        );
-                      })}
-                    </Space>
-                    <button className={styles.button} onClick={item?.onClick}>
-                      {item?.buttonText}
-                    </button>
-                    <Space direction="vertical">
-                      {item?.date?.map((date) => (
-                        <Text className={styles.date} key={date} style={item?.descStyle}>
-                          {date}
-                        </Text>
-                      ))}
-                    </Space>
-                  </Space>
-                </Col>
-              </Row>
+      {isMobile ? (
+        <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+          {mobileItems?.map((item) => (
+            <div className={styles.content} key={item?.mbEnBanner}>
+              <button className={styles.mbButton} onClick={item?.onClick}>
+                {item?.buttonText}
+              </button>
+              <Image alt="" preview={false} className={styles.background} src={getTransResult(lang, item?.mbZhBanner, item?.mbEnBanner)} width={'100%'} />
             </div>
-          </div>
-        ))}
-      </Carousel>
+          ))}
+        </Carousel>
+      ) : (
+        <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+          {carouselItems.map((item: IItem) => (
+            <div className={styles.content} key={item?.title} onClick={item?.onClick}>
+              <Image alt="" preview={false} className={styles.background} src={item?.banner} width={'100%'} />
+              <div className={`container ${styles.info}`}>
+                <Row>
+                  <Col xs={24} sm={24} md={24} lg={12}>
+                    <Space direction="vertical" className={styles.space} size={20}>
+                      <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
+                      <Space direction="vertical">
+                        {item?.desc?.map((desc, index) => {
+                          return index === 0 ? (
+                            <Text className={styles.description} key={desc} style={item?.descStyle}>
+                              {desc}
+                            </Text>
+                          ) : (
+                            <Text className={styles.description} key={desc} style={item?.descStyle}>
+                              &quot;{desc}&quot;
+                            </Text>
+                          );
+                        })}
+                      </Space>
+                      <button className={styles.button} onClick={item?.onClick}>
+                        {item?.buttonText}
+                      </button>
+                      <Space direction="vertical">
+                        {item?.date?.map((date) => (
+                          <Text className={styles.date} key={date} style={item?.descStyle}>
+                            {date}
+                          </Text>
+                        ))}
+                      </Space>
+                    </Space>
+                  </Col>
+                </Row>
+              </div>
+            </div>
+          ))}
+        </Carousel>
+      )}
+
       <UsacoMedal showTitle={false} />
     </div>
   );

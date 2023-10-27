@@ -5,7 +5,7 @@
   width: 100%;
 
   @media (width <= 768px) {
-    padding: 48px 0;
+    padding: 32px 0;
   }
 
   .aboutXCamp {
@@ -43,6 +43,7 @@
         width: 160px;
 
         @media (width <= 768px) {
+          display: none;
           margin-left: -80px;
           width: 120px !important;
         }
@@ -54,6 +55,7 @@
         width: 112px;
 
         @media (width <= 768px) {
+          display: none;
           margin-left: -80px;
           width: 68px !important;
         }

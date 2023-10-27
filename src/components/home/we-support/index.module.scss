@@ -5,7 +5,7 @@
   background-color: #efefef;
 
   @media (width <= 768px) {
-    padding: 40px 15px;
+    padding: 32px 15px;
   }
 
   .title {
@@ -28,6 +28,7 @@
     background-image: url('/image/home/home-title-bg-1.png');
 
     @media (width <= 768px) {
+      display: none;
       margin-left: 32px;
       width: 112px;
     }
