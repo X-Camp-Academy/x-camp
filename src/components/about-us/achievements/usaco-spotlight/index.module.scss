@@ -8,8 +8,9 @@
     padding-top: 56px;
 
     @media (width <= 768px) {
-      padding-right: 30px;
-      padding-left: 30px;
+      padding-top: 24px;
+      padding-right: 15px;
+      padding-left: 15px;
     }
 
     .title {
@@ -34,6 +35,8 @@
       @media (width <= 768px) {
         margin-right: 0 !important;
         margin-left: 0 !important;
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
       }
 
       .cardContainer {
@@ -65,6 +68,13 @@
             border-radius: 12px;
             background-color: #fff;
 
+            @media (width <= 768px) {
+              bottom: 10px;
+              margin: 0 20px;
+              padding: 8px 0;
+              width: calc(100% - 40px);
+            }
+
             .cardTitle {
               @include title;
 
@@ -72,7 +82,7 @@
               margin: 0;
 
               @media (width <= 768px) {
-                @include title('mobile');
+                @include title('middle');
               }
             }
 

@@ -1,3 +1,4 @@
+import { useMobile } from '@/utils';
 import { Col, Row, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
@@ -12,24 +13,48 @@ interface CommonBannerProps {
   paragraphClassName?: string;
   barColor?: string;
   backgroundColor?: string;
-  time?: React.ReactNode;
+  titleStyle?: React.CSSProperties;
+  paragraphStyle?: React.CSSProperties;
 }
 
-const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleClassName, paragraphClassName, barColor, backgroundColor, time }) => {
+const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleClassName, paragraphClassName, barColor, backgroundColor, titleStyle, paragraphStyle }) => {
+  const isMobile = useMobile();
   return (
-    <Row className={styles.row}>
-      <Col xs={24} sm={24} md={24} lg={24} xl={10}>
-        <Space direction="vertical" className={styles.leftSpace} style={{ backgroundColor }} size={24}>
-          <Title className={`${titleClassName || styles.title}`}>{title}</Title>
-          {time && <div className={styles.dateTime}>{time}</div>}
-          <Paragraph className={`${paragraphClassName || styles.paragraph}`}>{paragraph}</Paragraph>
-        </Space>
-        <div className={styles.background} style={{ backgroundColor: barColor }} />
-      </Col>
-      <Col xs={24} sm={24} md={24} lg={24} xl={14}>
-        <img alt="img" src={image} className={styles.image} />
-      </Col>
-    </Row>
+    <>
+      {isMobile ? (
+        <div
+          className={styles.mbContainer}
+          style={{
+            background: `url('${image}') no-repeat`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center'
+          }}
+        >
+          <Space direction="vertical" className={styles.space} style={{ backgroundColor }}>
+            <Title className={`${titleClassName || styles.title}`} style={titleStyle}>
+              {title}
+            </Title>
+            <Paragraph className={`${paragraphClassName || styles.paragraph}`} style={paragraphStyle}>
+              {paragraph}
+            </Paragraph>
+          </Space>
+          <div className={styles.background} style={{ backgroundColor: barColor }} />
+        </div>
+      ) : (
+        <Row className={styles.row}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={8}>
+            <Space direction="vertical" size={16} className={styles.leftSpace} style={{ backgroundColor }}>
+              <Title className={`${titleClassName || styles.title}`}>{title}</Title>
+              <Paragraph className={`${paragraphClassName || styles.paragraph}`}>{paragraph}</Paragraph>
+            </Space>
+            <div className={styles.background} style={{ backgroundColor: barColor }} />
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={24} xl={16}>
+            <img alt="img" src={image} className={styles.image} />
+          </Col>
+        </Row>
+      )}
+    </>
   );
 };
 

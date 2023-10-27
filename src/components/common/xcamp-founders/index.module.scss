@@ -5,8 +5,8 @@
   margin-top: 120px;
 
   @media (width <= 768px) {
-    margin-top: 48px;
-    padding-bottom: 48px;
+    margin-top: 32px;
+    padding-bottom: 16px;
   }
 
   .title {
@@ -128,7 +128,7 @@
       line-height: 54px;
 
       @media (width <= 768px) {
-        @include title('mobile');
+        @include title('middle');
       }
     }
 
@@ -166,6 +166,12 @@
       text-align: center;
       line-height: 36px;
       color: #ffad11;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+
+        color: #ffad11;
+      }
     }
   }
 }

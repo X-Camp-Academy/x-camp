@@ -48,7 +48,7 @@
 
     @media (width <= 768px) {
       width: 100%;
-      height: 100%;
+      height: 368px;
     }
   }
 
@@ -59,7 +59,7 @@
 
     @media (width <= 768px) {
       width: 100%;
-      height: 100%;
+      height: 368px;
     }
 
     .info {
@@ -87,8 +87,9 @@
         font-weight: 800;
 
         @media (width <= 768px) {
-          font-size: 32px;
-          color: #fff;
+          @include title('middle');
+
+          font-weight: 800;
         }
       }
 
@@ -131,21 +132,6 @@
           @include text(10px, 12px, #666);
         }
       }
-    }
-
-    .mbButton {
-      position: absolute;
-      bottom: 72px;
-      left: 32px;
-      z-index: 999;
-      padding: 6px 10px;
-      border: 1px solid #ffad11;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 500;
-      color: #fff;
-      background: $primary-color;
-      line-height: 16px;
     }
   }
 

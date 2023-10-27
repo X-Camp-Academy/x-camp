@@ -19,7 +19,7 @@
     }
   }
 
-  .titleBg {
+  .titleEnBg {
     display: block;
     margin-left: 144px;
     width: 160px;
@@ -29,9 +29,27 @@
     background-image: url('/image/home/home-title-bg-1.png');
 
     @media (width <= 768px) {
-      display: none;
+      margin-top: -8px;
       margin-left: 88px;
       width: 96px;
+      background-size: contain;
+    }
+  }
+
+  .titleZhBg {
+    display: block;
+    margin-left: 144px;
+    width: 160px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/image/home/home-title-bg-1.png');
+
+    @media (width <= 768px) {
+      margin-top: -8px;
+      margin-left: 48px;
+      width: 64px;
+      background-size: contain;
     }
   }
 

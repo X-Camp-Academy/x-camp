@@ -272,7 +272,7 @@ const Courses: React.FC = () => {
           <div className={styles.form} />
 
           <Form layout="inline" form={form} className={styles.form} onFinish={onFinish}>
-            <Row gutter={[32, 8]}>
+            <Row gutter={[32, 8]} className={styles.row}>
               <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 3 }}>
                 <Form.Item name="category">
                   <Select style={isMobile ? { width: '100%' } : { width: 240 }} placeholder={'Category'} options={categoryOptions} allowClear />
@@ -338,6 +338,7 @@ const Courses: React.FC = () => {
             );
           })}
         </div>
+
         <Reviews reviewsData={reviewsData} />
       </Content>
     </Layout>

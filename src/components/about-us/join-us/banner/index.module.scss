@@ -3,12 +3,6 @@
 .bannerContainer {
   width: 100%;
 
-  .paragraph {
-    @media (width <= 768px) {
-      padding-bottom: 48px;
-    }
-  }
-
   .contactBtn {
     @include button('nav');
     @include flex(center);
@@ -27,10 +21,11 @@
     }
 
     @media (width <= 768px) {
-      top: 150px;
-      left: 192px;
-      padding: 8px 10px;
-      height: 40px;
+      // top: 150px;
+      // left: 192px;
+      // padding: 8px 10px;
+      // height: 40px;
+      display: none;
     }
   }
 }

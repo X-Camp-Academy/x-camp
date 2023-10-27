@@ -3,7 +3,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import React from 'react';
 
 const Banner: React.FC = () => {
-  const { format: t, lang } = useLang();
+  const { format: t } = useLang();
   const paragraph = (
     <>
       {t('Introduction.Banner.Desc1')},&nbsp;

@@ -21,7 +21,7 @@ const XCampFounder: React.FC = () => {
           </Text>
         </Title>
 
-        <Row gutter={isMobile ? [16, 48] : [32, 124]} className={styles.row}>
+        <Row gutter={isMobile ? [16, 32] : [32, 124]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
             <div className={styles.charlieImgBackground} />
             <Image src={'/image/home/charlie.png'} alt="image" preview={false} className={styles.charlieImg} />
@@ -52,7 +52,7 @@ const XCampFounder: React.FC = () => {
           </Col>
         </Row>
 
-        <Row gutter={isMobile ? [16, 48] : [32, 124]} style={{ marginTop: isMobile ? 48 : 120 }} className={styles.row}>
+        <Row gutter={isMobile ? [16, 32] : [32, 124]} style={{ marginTop: isMobile ? 32 : 120 }} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.founderDescription}>
             <Space direction="vertical">
               <Title className={styles.founderName}>{t('Yuan')}</Title>

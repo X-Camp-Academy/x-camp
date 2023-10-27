@@ -37,10 +37,6 @@
     height: 16px;
     background: url('/image/home/home-title-bg-1.png') no-repeat;
     background-size: cover;
-
-    @media (width <= 768px) {
-      display: none;
-    }
   }
 
   .zhTitleBg {
@@ -51,6 +47,8 @@
 
     @media (width <= 768px) {
       left: 64px;
+      width: 72px;
+      background-size: contain;
     }
   }
 
@@ -62,9 +60,8 @@
 
     @media (width <= 768px) {
       left: 80px;
-      display: none;
-      margin-top: 10px;
-      width: 120px;
+      width: 96px;
+      background-size: contain;
     }
   }
 
@@ -123,7 +120,7 @@
         height: 354px;
 
         @media (width <= 768px) {
-          height: 240px;
+          height: 320px;
         }
       }
 

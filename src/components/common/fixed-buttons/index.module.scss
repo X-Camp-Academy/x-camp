@@ -9,7 +9,8 @@
   flex-direction: column;
 
   @media (width <= 768px) {
-    right: 24px;
+    top: 70%;
+    right: 8px;
   }
 
   .buttonItem {
@@ -46,19 +47,16 @@
   .mobileIcon {
     display: block;
     margin-bottom: 8px;
-    padding-top: 16px;
-    width: 80px;
-    height: 80px;
+    padding-top: 8px;
+    width: 64px;
+    height: 64px;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 500;
     text-align: center;
     color: #ffad11;
     background-color: #fff;
-
-    @media (width <= 768px) {
-      font-size: 10px;
-    }
+    box-shadow: 0 9px 25px -4px #d8d8d8;
   }
 
   .title {
@@ -99,7 +97,7 @@
 
   @media (width <= 768px) {
     position: static;
-    width: 100%;
+    width: 100% !important;
   }
 
   .card {
@@ -167,10 +165,6 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
-
-        &:hover {
-          @extend .hoverButton;
-        }
       }
     }
   }

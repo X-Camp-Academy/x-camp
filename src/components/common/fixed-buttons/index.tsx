@@ -41,7 +41,7 @@ const FixedButtons: React.FC = () => {
       text: isMobile ? 'consult' : t('FreeConsultation'),
       label: <CardForm setOpen={setModelVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
       key: '0',
-      mobileIcon: <MessageOutlined style={{ fontSize: 36, marginBottom: 8 }} />,
+      mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
     },
     {
@@ -92,7 +92,7 @@ const FixedButtons: React.FC = () => {
         </div>
       ),
       key: '1',
-      mobileIcon: <UsergroupAddOutlined style={{ fontSize: 36, marginBottom: 8 }} />,
+      mobileIcon: <UsergroupAddOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
     }
   ];

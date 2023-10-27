@@ -4,6 +4,11 @@
   margin-top: 6.25rem;
   padding-bottom: 3.25rem;
 
+  @media (width <= 768px) {
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+  }
+
   .row {
     @media (width <= 768px) {
       margin-right: 0 !important;
