@@ -7,10 +7,8 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('Camp.Des')}
-      <br />
-      <span>{t('SummerCamp')}</span>
-      <br />
-      <span>{t('WinterCamp')}</span>
+      {t('SummerCamp')}
+      {t('WinterCamp')}
     </>
   );
 

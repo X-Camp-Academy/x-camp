@@ -1,5 +1,6 @@
 import CopyRightIcons from '@/components/common/copy-right-icons';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult, getWeeksDays } from '@/utils/public';
 import { ShareAltOutlined } from '@ant-design/icons';
 import { Breadcrumb, Button, Carousel, Descriptions, Divider, Image, Modal, Space, Typography, message } from 'antd';
@@ -13,6 +14,7 @@ const { Title, Text } = Typography;
 
 const CourseBanner: React.FC = () => {
   const { format: t, lang } = useLang();
+  const isMobile = useMobile();
   const ref = useRef<CarouselRef>(null);
   message.config({
     top: 100
@@ -189,8 +191,8 @@ const CourseBanner: React.FC = () => {
                   </Modal>
                 </div>
 
-                <Space direction="vertical" size={16} align="end" className={styles.rightBottom}>
-                  <Text className={styles.rightBottomText}> * Earn $75 for you and $75 for your friend through our referral system.</Text>
+                <Space direction="vertical" size={isMobile ? 8 : 16} align="end" className={styles.rightBottom}>
+                  <Text className={styles.rightBottomText}> * Get $75 off for each/ Get up to $150 off!</Text>
                   <CopyRightIcons />
                 </Space>
               </div>

@@ -1,4 +1,5 @@
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getLangResult } from '@/utils/public';
 import { Space, Typography } from 'antd';
 import React, { useContext } from 'react';
@@ -8,6 +9,7 @@ import styles from './index.module.scss';
 const { Title, Text } = Typography;
 
 const CourseSyllabus: React.FC = () => {
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
   const courseData = useContext(CourseClassesContext);
   const courseSyllabus = getLangResult(lang, courseData?.attributes?.courseSyllabusZh, courseData?.attributes?.courseSyllabusEn);

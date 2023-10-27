@@ -1,3 +1,5 @@
+@import '@/styles/variables';
+
 .collapse {
   margin: 24px 0;
   padding: 0 0 0 6px;
@@ -20,6 +22,10 @@
     :global(.ant-collapse-content) {
       border-top: 2px solid #ffad11;
     }
+
+    @media (width <= 768px) {
+      @include title('middle');
+    }
   }
 
   .questionAndAnswerIcon {
@@ -30,6 +36,10 @@
     height: 40px;
     border-radius: 8px;
     font-size: 21px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
   }
 
   .question {
@@ -40,5 +50,12 @@
   .answer {
     color: #00a0e9;
     background-color: #009fe933;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      color: #00a0e9;
+      background-color: #009fe933;
+    }
   }
 }

@@ -2,6 +2,7 @@ import { CourseQuarter, GetCourses } from '@/apis/strapi-client/define';
 import { useGetCourses } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { SearchOutlined } from '@ant-design/icons';
 import { useSize } from 'ahooks';
 import { Button, Col, Divider, Form, Input, Pagination, Row, Select } from 'antd';
@@ -19,6 +20,7 @@ const ScheduleTable: React.FC = () => {
   const [pagination, setPagination] = useState(defaultPagination);
   const [filters, setFilters] = useState<{ [key: string]: string | { $eq: string } } | { [key: string]: string | { type: { $eq: string } } } | any>({});
 
+  const isMobile = useMobile();
   const selectItems = [
     {
       name: 'classMode',
@@ -161,7 +163,7 @@ const ScheduleTable: React.FC = () => {
           </Row>
         </Form>
 
-        <div style={{ marginTop: 35 }}>
+        <div style={{ marginTop: isMobile ? 16 : 35 }}>
           {courses?.data?.map((item) => {
             return (
               <>
