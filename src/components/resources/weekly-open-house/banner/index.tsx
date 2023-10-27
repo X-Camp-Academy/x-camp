@@ -12,7 +12,6 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('WeeklyOpenHouse.Banner.Desc1')}
-      <br />
       {t('WeeklyOpenHouse.Banner.Desc2')}
     </>
   );
