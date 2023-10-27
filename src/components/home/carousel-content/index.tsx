@@ -2,7 +2,6 @@
 import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult } from '@/utils/public';
 import { Carousel, Col, Image, Row, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
@@ -69,7 +68,7 @@ const CarouselContent: React.FC = () => {
         window.open('https://tinyurl.com/XCamp23-24FallUSACO');
       },
       date: [t('Home.Banner2.Date')],
-      banner: '/image/home/banner-pc-zh-2.png',
+      banner: '/image/home/banner-pc-2.png',
       buttonText: t('VideoRecap')
     },
     {
@@ -124,59 +123,45 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={3} current={current} />}
-      {isMobile ? (
-        <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
-          {mobileItems?.map((item) => (
-            <div className={styles.content} key={item?.mbEnBanner}>
-              <button className={styles.mbButton} onClick={item?.onClick}>
-                {item?.buttonText}
-              </button>
-              <Image alt="" preview={false} className={styles.background} src={getTransResult(lang, item?.mbZhBanner, item?.mbEnBanner)} width={'100%'} />
-            </div>
-          ))}
-        </Carousel>
-      ) : (
-        <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
-          {carouselItems.map((item: IItem) => (
-            <div className={styles.content} key={item?.title} onClick={item?.onClick}>
-              <Image alt="" preview={false} className={styles.background} src={item?.banner} width={'100%'} />
-              <div className={`container ${styles.info}`}>
-                <Row>
-                  <Col xs={24} sm={24} md={24} lg={12}>
-                    <Space direction="vertical" className={styles.space} size={20}>
-                      <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                      <Space direction="vertical">
-                        {item?.desc?.map((desc, index) => {
-                          return index === 0 ? (
-                            <Text className={styles.description} key={desc} style={item?.descStyle}>
-                              {desc}
-                            </Text>
-                          ) : (
-                            <Text className={styles.description} key={desc} style={item?.descStyle}>
-                              &quot;{desc}&quot;
-                            </Text>
-                          );
-                        })}
-                      </Space>
-                      <button className={styles.button} onClick={item?.onClick}>
-                        {item?.buttonText}
-                      </button>
-                      <Space direction="vertical">
-                        {item?.date?.map((date) => (
-                          <Text className={styles.date} key={date} style={item?.descStyle}>
-                            {date}
+      <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+        {carouselItems.map((item: IItem) => (
+          <div className={styles.content} key={item?.title} onClick={item?.onClick}>
+            <Image alt="" preview={false} className={styles.background} src={item?.banner} width={'100%'} />
+            <div className={`container ${styles.info}`}>
+              <Row>
+                <Col xs={24} sm={24} md={24} lg={12}>
+                  <Space direction="vertical" className={styles.space} size={20}>
+                    <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
+                    <Space direction="vertical">
+                      {item?.desc?.map((desc, index) => {
+                        return index === 0 ? (
+                          <Text className={styles.description} key={desc} style={item?.descStyle}>
+                            {desc}
                           </Text>
-                        ))}
-                      </Space>
+                        ) : (
+                          <Text className={styles.description} key={desc} style={item?.descStyle}>
+                            &quot;{desc}&quot;
+                          </Text>
+                        );
+                      })}
                     </Space>
-                  </Col>
-                </Row>
-              </div>
+                    <button className={styles.button} onClick={item?.onClick}>
+                      {item?.buttonText}
+                    </button>
+                    <Space direction="vertical">
+                      {item?.date?.map((date) => (
+                        <Text className={styles.date} key={date} style={item?.descStyle}>
+                          {date}
+                        </Text>
+                      ))}
+                    </Space>
+                  </Space>
+                </Col>
+              </Row>
             </div>
-          ))}
-        </Carousel>
-      )}
-
+          </div>
+        ))}
+      </Carousel>
       <UsacoMedal showTitle={false} />
     </div>
   );
