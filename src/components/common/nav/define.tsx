@@ -112,7 +112,7 @@ export const useMenuItems = () => {
         },
         {
           label: <a href="/about-us/achievements#art-of-programming-results">{t('InternalContests')}</a>,
-          key: 'Internal Contests'
+          key: '/resources/internal-contests/'
         },
         {
           label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
