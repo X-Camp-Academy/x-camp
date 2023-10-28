@@ -36,7 +36,7 @@ const Introduction: React.FC = () => {
   return (
     <div className={styles.content}>
       {data?.map((items, index) => (
-        <div key={index} style={{ background: getBackgroundFromIndex(index), padding: isMobile ? 32 : 80 }}>
+        <div key={index} style={{ background: getBackgroundFromIndex(index) }} className={styles.partnerContainer}>
           <div className={`${styles.partner} container`}>
             <div className={styles.title}>{getTransByCategory(items?.[0]?.attributes?.category)}</div>
             <Space direction="vertical" style={{ width: '100%' }} size={60}>
