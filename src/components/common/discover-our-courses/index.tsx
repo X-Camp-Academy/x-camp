@@ -1,6 +1,7 @@
 'use client';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Col, Row, Space, Typography } from 'antd';
 import MaskCard from '../mask-card';
@@ -14,6 +15,7 @@ interface DiscoverCoursesProps {
 }
 const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = true }: DiscoverCoursesProps) => {
   const { format: t, lang } = useLang();
+  const isMobile = useMobile();
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
       <Space

@@ -30,6 +30,8 @@
 
       @media (width <= 768px) {
         @include title('mobile');
+
+        margin-left: -8px;
       }
     }
 
@@ -100,6 +102,8 @@
           margin-top: 30px;
 
           @include title('mobile');
+
+          margin-left: -16px;
         }
       }
 
@@ -109,7 +113,7 @@
         line-height: 48px;
 
         @media (width <= 768px) {
-          margin-left: 5px;
+          margin-left: 0;
           font-size: 20px;
           line-height: 20px;
         }
@@ -132,6 +136,7 @@
         margin-bottom: 30px;
 
         .videoItem {
+          width: 100%;
           background-color: #fff;
 
           @media (width <= 768px) {

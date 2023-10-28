@@ -1,6 +1,7 @@
 import { GetProjectsDemo } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Card, List, Typography } from 'antd';
 import React, { useEffect } from 'react';
@@ -14,7 +15,7 @@ interface Props {
 const ArtOfProgrammingResults = ({ data }: Props) => {
   const { hash } = window.location;
   const { lang, format: t } = useLang();
-
+  const isMobile = useMobile();
   const listData = [
     {
       title: t('Art.Contestants'),
@@ -59,7 +60,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
               <Title className={styles.subTitle}>{getTransResult(lang, v?.[0]?.attributes?.categoryZh, v?.[0]?.attributes?.categoryEn)}</Title>
               <List
                 grid={{
-                  gutter: 16,
+                  gutter: isMobile ? 0 : 16,
                   xs: 1,
                   sm: 1,
                   md: 1,

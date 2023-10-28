@@ -32,10 +32,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url('/image/home/home-title-bg-1.png');
-
-    @media (width <= 768px) {
-      display: none;
-    }
   }
 
   .zhTitleBg {
@@ -80,9 +76,16 @@
     }
   }
 
-  .space {
-    display: flex;
-    justify-content: space-between;
+  .row {
+    @media (width <= 768px) {
+      padding-right: 8px;
+      padding-left: 8px;
+    }
+
+    .space {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .topLeftImage {
