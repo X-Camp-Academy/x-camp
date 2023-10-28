@@ -82,7 +82,8 @@
             margin-top: 7px;
           }
 
-          .ant-descriptions-item-content {
+          .ant-descriptions-item-content,
+          .ant-typography {
             justify-content: space-between;
             align-items: end;
             font-size: 18px;
@@ -91,6 +92,10 @@
             @media (width <= 768px) {
               @include mobile-text;
             }
+          }
+
+          .ant-typography {
+            margin-bottom: 0;
           }
         }
       }
