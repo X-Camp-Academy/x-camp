@@ -8,7 +8,7 @@ import { Avatar, Card, Col, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React, { useEffect, useState } from 'react';
 import ColorfulCard from '../colorful-card';
-import SegmentedRadioGroup, { FacultyOptionsProps } from '../segmented-radio-group';
+import SegmentedRadioGroup, { useEventOptions } from '../segmented-radio-group';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -23,21 +23,6 @@ const FacultyCoach: React.FC<{
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
   const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-
-  const options: FacultyOptionsProps[] = [
-    {
-      label: t('Basic'),
-      value: FacultyLevelCategory.Basic
-    },
-    {
-      label: t('Intermediate'),
-      value: FacultyLevelCategory.Intermediate
-    },
-    {
-      label: t('Grandmaster'),
-      value: FacultyLevelCategory.Grandmaster
-    }
-  ];
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
@@ -69,7 +54,7 @@ const FacultyCoach: React.FC<{
           <Paragraph className={styles.titleParagraph}>{t('Faculty.Desc')}</Paragraph>
         </Space>
 
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} />
+        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={useEventOptions('faculty')} />
 
         <Row justify="center" align="middle" gutter={isiPad ? 24 : 48} className={styles.row}>
           {facultyData?.map((item, index) => (
