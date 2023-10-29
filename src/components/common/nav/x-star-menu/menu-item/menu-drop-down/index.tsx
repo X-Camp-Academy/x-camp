@@ -1,3 +1,4 @@
+import { useMobile } from '@/utils';
 import { useScroll } from 'ahooks';
 import { Col, Row, Space } from 'antd';
 import classNames from 'classnames/bind';
@@ -15,10 +16,11 @@ interface Props {
 }
 
 const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => {
+  const isiPad = useMobile('xl');
   const scroll = useScroll(document);
-  const divideLength = (items?.length || 0) >= 8 ? 2 : 3;
+  const divideLength = (items?.length || 0) >= 8 || isiPad ? 2 : 3;
   const dividedItems = useMemo(() => {
-    // 分为若干列，大于6项则3列，否则2列
+    // 分为若干列，大于等于8项则2列，否则3列
     const result: React.ReactNode[][] =
       items?.reduce((pre: React.ReactNode[][], cur, index) => {
         const rowIndex = Math.floor(index / divideLength);
@@ -38,7 +40,10 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
         boxShadow: scroll?.top === 0 ? '0px 9px 20px -4px #D8D8D8' : '0px 9px 20px -4px #D8D8D8, 0px 9px 25px -4px #D8D8D8'
       }}
     >
-      <Space className={cx('container', styles.dropdownContainer)} style={dropdown?.left?.key === '/courses' ? { paddingLeft: 100, paddingRight: 100 } : {}}>
+      <Space
+        className={cx('container', styles.dropdownContainer)}
+        style={isiPad ? { paddingLeft: 16, paddingRight: 16 } : dropdown?.left?.key === '/courses' ? { paddingLeft: 96, paddingRight: 96 } : {}}
+      >
         {dropdown?.left && (
           <Space direction="vertical" className={styles.left} size={'middle'}>
             <div className={styles.title}>{dropdown?.left?.title}</div>

@@ -89,6 +89,12 @@
       background-size: 80px 48px !important;
     }
 
+    @media (width <= 1200px) {
+      margin-top: 10px;
+      width: 160px;
+      background-size: 144px 72px !important;
+    }
+
     .medalCount {
       width: 100%;
       font-size: 48px;
@@ -118,6 +124,10 @@
         color: #172142;
         line-height: 11px;
         text-shadow: 1px 1px 0 #d4ac6d;
+      }
+
+      @media (width <= 1200px) {
+        width: 112px;
       }
     }
   }

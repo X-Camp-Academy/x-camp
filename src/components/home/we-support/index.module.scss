@@ -24,7 +24,7 @@
     width: 160px;
     height: 20px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-image: url('/image/home/home-title-bg-1.png');
 
     @media (width <= 768px) {
@@ -36,13 +36,12 @@
   .zhTitleBg {
     @extend .baseTitleBg;
 
-    margin-left: 40px;
-    width: 120px;
+    margin-left: 64px;
+    width: 88px;
 
     @media (width <= 768px) {
       margin-left: 40px;
       width: 64px;
-      background-size: contain;
     }
   }
 
@@ -55,7 +54,6 @@
     @media (width <= 768px) {
       margin-left: 128px;
       width: 120px;
-      background-size: contain;
     }
   }
 

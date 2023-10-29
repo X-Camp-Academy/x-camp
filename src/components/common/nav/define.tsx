@@ -132,18 +132,6 @@ export const useMenuItems = () => {
           title: t('AboutUs'),
           description: t('AboutUs.Description'),
           showBtn: false
-          // btn: (
-          //   <>
-          //     <span
-          //       onClick={() => {
-          //         router.push('/about-us/introduction');
-          //       }}
-          //     >
-          //       {t('LearnMore')}
-          //     </span>
-          //     <RightOutlined />
-          //   </>
-          // )
         }
       },
       children: [

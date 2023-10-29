@@ -21,6 +21,7 @@ const FacultyCoach: React.FC<{
   const { format: t, lang } = useLang();
   const { hash } = window.location;
   const isMobile = useMobile();
+  const isiPad = useMobile('xl');
   const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
 
   const options: FacultyOptionsProps[] = [
@@ -70,7 +71,7 @@ const FacultyCoach: React.FC<{
 
         <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} />
 
-        <Row justify="center" align="middle" gutter={48} className={styles.row}>
+        <Row justify="center" align="middle" gutter={isiPad ? 24 : 48} className={styles.row}>
           {facultyData?.map((item, index) => (
             <Col key={item?.id} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }} className={styles.col}>
               <ColorfulCard border="bottom" split={4} index={index}>
