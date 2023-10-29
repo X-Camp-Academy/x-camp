@@ -11,13 +11,6 @@
   .partner {
     margin-top: 48px;
 
-    .row {
-      @media (width <= 768px) {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-      }
-    }
-
     .card {
       padding-bottom: 24px;
       width: 100%;
@@ -36,14 +29,13 @@
       .title {
         padding-right: 24px;
         padding-left: 24px;
-        height: 60px;
         font-size: 20px;
         font-weight: 600;
         color: #172142;
         line-height: 30px;
 
         @media (width <= 768px) {
-          @include title('mobile');
+          @include title('middle');
         }
       }
 
@@ -65,6 +57,10 @@
       .btn {
         font-size: 18px;
         color: #ffad11;
+
+        @media (width <= 768px) {
+          font-size: 14px;
+        }
       }
     }
   }

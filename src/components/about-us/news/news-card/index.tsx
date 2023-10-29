@@ -72,7 +72,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
         <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} style={{ width: '100%' }} />
 
         <div className={styles.partner}>
-          <Row gutter={[32, 48]} className={styles.row}>
+          <Row gutter={[32, 48]}>
             {data?.map((item, index) => {
               const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
               return (

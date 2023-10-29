@@ -40,7 +40,6 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
               {paragraph}
             </Paragraph>
           </Space>
-          <div className={styles.background} style={{ backgroundColor: barColor }} />
         </div>
       ) : (
         <Row className={styles.row}>

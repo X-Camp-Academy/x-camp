@@ -63,11 +63,6 @@
   .row {
     text-align: center;
 
-    @media (width <= 768px) {
-      margin-right: 0 !important;
-      margin-left: 0 !important;
-    }
-
     .col {
       margin-bottom: 48px;
 

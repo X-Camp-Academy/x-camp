@@ -53,7 +53,7 @@ const Community: React.FC = () => {
             ]}
             className={styles.title}
           />
-          <Text className={styles.titleBg} />
+          <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
           <Paragraph className={styles.paragraph}>{t('Home.Community.Desc1')}</Paragraph>
           <Paragraph className={styles.paragraph}>{t('Home.Community.Desc2')}</Paragraph>
         </div>
@@ -64,7 +64,7 @@ const Community: React.FC = () => {
             slidesToScroll={1}
             swipeToSlide
             infinite
-            autoplay
+            autoplay={false}
             dots={false}
             responsive={[
               {
@@ -93,7 +93,8 @@ const Community: React.FC = () => {
                   <MaskCard
                     className={styles.maskCard}
                     bodyStyle={{
-                      padding: 0
+                      padding: 0,
+                      borderRadius: 8
                     }}
                     maskChildren={generateMaskChildren(
                       getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn),

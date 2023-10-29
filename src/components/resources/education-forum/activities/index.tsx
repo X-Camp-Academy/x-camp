@@ -106,7 +106,7 @@ const Activities: React.FC = () => {
           </div>
         </Space>
 
-        <Row gutter={[32, 32]} className={styles.row}>
+        <Row gutter={[32, 32]}>
           {newEventData?.map((v, index) => (
             <Col key={v?.id} xs={24} sm={24} md={12} lg={8}>
               <ColorfulCard border={'bottom'} animate={false} index={index}>

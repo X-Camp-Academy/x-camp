@@ -8,6 +8,14 @@
     padding: 40px 0;
   }
 
+  :global(.ant-collapse-header) {
+    padding: 12px 0 !important;
+  }
+
+  :global(.ant-collapse-content-box) {
+    padding: 16px 0 !important;
+  }
+
   .cards {
     .card {
       padding: 48px 36px;
@@ -43,8 +51,6 @@
         margin: 24px 0;
         text-overflow: ellipsis;
         -webkit-line-clamp: 3;
-
-        /* 行数 */
         -webkit-box-orient: vertical;
 
         @media (width <= 768px) {

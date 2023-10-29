@@ -6,7 +6,7 @@
 
   @media (width <= 768px) {
     margin-top: 24px;
-    margin-bottom: 32px;
+    padding-bottom: 48px;
   }
 
   .timeLine {
@@ -24,7 +24,7 @@
       background-position: right bottom;
 
       @media (width <= 768px) {
-        padding: 0 16px;
+        padding: 0;
       }
 
       .timeListItem {
@@ -38,7 +38,7 @@
           left: -20px;
 
           @media (width <= 768px) {
-            left: 16px;
+            left: 8px;
 
             @include title('middle');
           }
@@ -86,6 +86,8 @@
       line-height: 40px;
 
       @media (width <= 768px) {
+        margin-top: 20px;
+
         @include mobile-text;
       }
     }
@@ -120,7 +122,7 @@
       .cardItem {
         margin-top: 64px;
         padding-bottom: 6px;
-        border-radius: 10px;
+        border-radius: 8px;
         text-align: center;
 
         .title {

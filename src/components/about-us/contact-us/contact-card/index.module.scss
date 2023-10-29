@@ -9,13 +9,6 @@
     padding-bottom: 1.5rem;
   }
 
-  .row {
-    @media (width <= 768px) {
-      margin-right: 0 !important;
-      margin-left: 0 !important;
-    }
-  }
-
   .card {
     padding: 24px 40px;
     width: 100%;
