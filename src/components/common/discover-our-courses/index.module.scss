@@ -36,7 +36,7 @@
     margin: 0 auto;
     height: 16px;
     background: url('/image/home/home-title-bg-1.png') no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 
   .zhTitleBg {
@@ -48,20 +48,18 @@
     @media (width <= 768px) {
       left: 64px;
       width: 72px;
-      background-size: contain;
     }
   }
 
   .enTitleBg {
     @extend .baseTitleBg;
 
-    left: 128px;
+    left: 120px;
     width: 144px;
 
     @media (width <= 768px) {
       left: 80px;
       width: 96px;
-      background-size: contain;
     }
   }
 
