@@ -511,6 +511,7 @@ declare const json: {
   Summer: 'Summer';
   Fall: 'Fall';
   Winter: 'Winter';
+  NoContest: 'No Contest';
 };
 
 export default json;

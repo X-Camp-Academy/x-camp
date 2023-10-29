@@ -7,12 +7,15 @@
     padding: 48px 0;
   }
 
+  @media (width >= 768px) and (width <= 1200px) {
+    padding: 32px 0;
+  }
+
   .months {
     position: relative;
     display: flex !important;
     justify-content: space-between;
     padding-top: 30px;
-    height: 588px !important;
     border: 1px solid #d8d8d8;
 
     &:nth-child(1) {
@@ -23,10 +26,6 @@
     &:nth-child(2) {
       border-bottom-left-radius: 12px;
       border-bottom-right-radius: 12px;
-    }
-
-    @media (width <= 768px) {
-      height: 320px !important;
     }
   }
 }

@@ -6,6 +6,8 @@
   }
 
   .left {
+    width: 100%;
+
     .title {
       @include title;
 
@@ -73,7 +75,8 @@
     background: #ffeddf;
     flex-direction: column;
 
-    @media (width <= 576px) {
+    @media (width <= 768px) {
+      padding: 15px 20px;
       width: 100%;
     }
 
