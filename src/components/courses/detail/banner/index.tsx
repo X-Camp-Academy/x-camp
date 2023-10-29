@@ -21,7 +21,7 @@ const CourseBanner: React.FC = () => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const courseData = useContext(CourseClassesContext);
-
+  const defaultMedia = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
   const { courseCode, classMode, classLang, spokenLang, startDateTime, endDateTime, media, courseTitleZh, courseTitleEn, lessonNum, frequency, courseFormat, additionalInfo } =
     courseData?.attributes ?? {};
 
@@ -117,20 +117,29 @@ const CourseBanner: React.FC = () => {
 
               <div className={styles.right}>
                 <Carousel dots={false} ref={ref}>
-                  {media?.data?.map((mediaItem) => {
-                    return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
-                      <div key={mediaItem?.id} className={styles.videoBox}>
-                        <Image alt="" preview={false} src={mediaItem?.attributes?.url} width="100%" height="100%" />
-                      </div>
-                    ) : (
-                      <div key={mediaItem?.id} className={styles.videoBox}>
-                        <video controls>
-                          <source src={mediaItem?.attributes?.url} type="video/mp4" />
-                          {t('VideoProblem')}
-                        </video>
-                      </div>
-                    );
-                  })}
+                  {media?.data && media?.data?.length > 0 ? (
+                    media?.data?.map((mediaItem) => {
+                      return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
+                        <div key={mediaItem?.id} className={styles.videoBox}>
+                          <Image alt="" preview={false} src={mediaItem?.attributes?.url} width="100%" height="100%" />
+                        </div>
+                      ) : (
+                        <div key={mediaItem?.id} className={styles.videoBox}>
+                          <video controls>
+                            <source src={mediaItem?.attributes?.url} type="video/mp4" />
+                            {t('VideoProblem')}
+                          </video>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div className={styles.videoBox}>
+                      <video controls>
+                        <source src={defaultMedia} type="video/mp4" />
+                        {t('VideoProblem')}
+                      </video>
+                    </div>
+                  )}
                 </Carousel>
 
                 <div className={styles.mediaChoice}>
