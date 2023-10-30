@@ -50,11 +50,7 @@ const UsacoIntro = ({ data }: Props) => {
       <div className={'container'}>
         <div className={styles.description}>
           {t('USACOSolution.Intro1')}
-          <br />
-          <br />
           {t('USACOSolution.Intro2')}
-          <br />
-          <br />
           {t('USACOSolution.Intro3')}
         </div>
         {sortData?.map((v, index) => {

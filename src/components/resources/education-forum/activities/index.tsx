@@ -67,7 +67,7 @@ const Activities: React.FC = () => {
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{segmented}</div>
           <div className={styles.pageTotal}>
-            {data?.data?.length} {t('EducationForum')}
+            {data?.data?.length} {'forums'}
           </div>
         </Space>
 
