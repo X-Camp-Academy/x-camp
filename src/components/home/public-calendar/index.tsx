@@ -1,14 +1,14 @@
 'use client';
-import { GetNewEvent, NewEventCategory } from '@/apis/strapi-client/define';
+import { NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import ActivityCalendar from '@/components/common/activity-calendar';
 import { useLang } from '@/hoc/with-intl/define';
 import useDayJs from '@/hooks/useDayJs';
 import { useMobile } from '@/utils';
-import { formatTimezone, getTransResult, sortTimeArray } from '@/utils/public';
+import { formatTimezone, getTransResult } from '@/utils/public';
 import { Carousel, Col, Empty, Row, Space, Typography } from 'antd';
 import type { Dayjs } from 'dayjs';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -33,7 +33,6 @@ const PublicCalendar: React.FC = () => {
 
   const [selectDate, setSelectDate] = useState<string>(dayjs().toString());
   const [filterDateEventList, setFilterDateEventList] = useState<IFilterDataEvent[]>([]);
-  const [sortedDateEventList, setSortedDateEventList] = useState<GetNewEvent[]>([]);
 
   const [eventDate, setEventDate] = useState<
     {
@@ -109,9 +108,28 @@ const PublicCalendar: React.FC = () => {
     }
   }, [selectDate]);
 
-  const sortDateEvent = useMemo(() => {
-    if (newEventData) return sortTimeArray(newEventData?.data, 'startDateTime');
-  }, [newEventData]);
+  const sortData = newEventData?.data?.sort((a, b) => {
+    const currentDate = new Date();
+
+    const getMonthString = (date: Date) => {
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      return `${year}-${month.toString().padStart(2, '0')}`;
+    };
+
+    const monthA = getMonthString(new Date(a?.attributes?.startDateTime));
+    const monthB = getMonthString(new Date(b?.attributes?.startDateTime));
+
+    if (monthA === monthB) {
+      return 0;
+    } else if (monthA === getMonthString(currentDate)) {
+      return -1;
+    } else if (monthB === getMonthString(currentDate)) {
+      return 1;
+    } else {
+      return monthB.localeCompare(monthA);
+    }
+  });
 
   return (
     <div className={styles.publicCalendarContainer}>
@@ -125,7 +143,7 @@ const PublicCalendar: React.FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
-              {newEventData?.data?.map((item) => {
+              {sortData?.map((item) => {
                 return (
                   <div key={item?.id} className={styles.eventCard}>
                     <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>

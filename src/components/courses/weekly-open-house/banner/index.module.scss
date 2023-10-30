@@ -29,14 +29,6 @@
     }
   }
 
-  .dateTime {
-    margin-top: 20px;
-
-    @include text(16px, 24px, #172142);
-
-    font-weight: 600;
-  }
-
   .bottomInfo {
     position: absolute;
     top: 280px;
