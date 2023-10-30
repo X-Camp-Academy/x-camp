@@ -92,17 +92,6 @@ const PublicCalendar: React.FC = () => {
     return `${isSame ? sameStr : diffStr} ${formatTimezone(item?.startDateTime).timezone}`;
   };
 
-  // useEffect(() => {
-  //   run({
-  //     populate: '*',
-  //     sort: ['order:desc'],
-  //     pagination: {
-  //       page: current,
-  //       pageSize
-  //     }
-  //   });
-  // }, []);
-
   useEffect(() => {
     if (newEventData) {
       const updatedEventDate = newEventData.data?.map((item) => ({
