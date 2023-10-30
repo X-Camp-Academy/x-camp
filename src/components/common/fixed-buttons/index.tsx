@@ -81,7 +81,7 @@ const FixedButtons: React.FC = () => {
                 className={styles.button}
                 onClick={() => {
                   router.push('/resources/weekly-open-house');
-                  setOpen(true);
+                  setModelVisible(true);
                 }}
               >
                 1 On 1{' '}
@@ -100,18 +100,12 @@ const FixedButtons: React.FC = () => {
   useEffect(() => {
     const delay = 40000;
     const timeoutId = setTimeout(() => {
-      setOpen(true);
+      setModelVisible(true);
     }, delay);
     return () => {
       clearTimeout(timeoutId);
     };
   }, []);
-
-  useEffect(() => {
-    if (hash === '#appointment') {
-      setOpen(true);
-    }
-  }, [hash]);
 
   return (
     <div className={styles.buttonContainer}>

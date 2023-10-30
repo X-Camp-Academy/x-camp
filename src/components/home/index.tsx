@@ -1,8 +1,9 @@
 'use client';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
+import { useModelVisible } from '@/hoc/WithModelVisible';
 import { Layout } from 'antd';
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const CarouselContent = dynamic(() => import('./carousel-content'));
@@ -18,11 +19,20 @@ const Reviews = dynamic(() => import('@/components/common/reviews'));
 const { Content } = Layout;
 
 const Home: React.FC = () => {
+  const { hash } = window.location;
+  const { setModelVisible } = useModelVisible();
   const { data } = useGetReviews({
     ready: true
   });
 
+  useEffect(() => {
+    if (hash === '#appointment') {
+      setModelVisible(true);
+    }
+  }, [hash]);
+
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
   return (
     <Layout className={styles.homeContainer}>
       <Content>
