@@ -5,7 +5,7 @@ import React from 'react';
 const CommonBanner = dynamic(() => import('@/components/common/common-banner'));
 
 const Banner: React.FC = () => {
-  const { format: t, lang } = useLang();
+  const { format: t } = useLang();
   const paragraph = (
     <>
       {t('Contests.Banner.Desc1')}

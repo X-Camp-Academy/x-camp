@@ -15,6 +15,12 @@
       margin: 90px 0;
       text-align: center;
       line-height: 54px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        margin: 32px 0;
+      }
     }
 
     :global {
@@ -44,6 +50,10 @@
         font-size: 24px;
         color: red;
         content: '*';
+
+        @media (width <= 768px) {
+          font-size: 16px;
+        }
       }
     }
 
@@ -54,6 +64,10 @@
         font-size: 24px;
         opacity: 0;
         content: '*';
+
+        @media (width <= 768px) {
+          font-size: 16px;
+        }
       }
     }
 

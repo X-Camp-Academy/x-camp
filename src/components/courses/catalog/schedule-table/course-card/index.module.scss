@@ -15,6 +15,13 @@
 
     .title {
       @include title('thin');
+
+      @media (width <= 768px) {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include title('mobile');
+      }
     }
 
     .fee {
@@ -22,8 +29,10 @@
 
       color: #d46b14;
 
-      @media (width <= 992px) {
-        margin-top: 35px;
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        color: #d46b14;
       }
     }
 
@@ -36,18 +45,6 @@
       text-align: center;
       color: #fff;
       background: #ffad11;
-      line-height: 28px;
-    }
-
-    .continuity {
-      width: 80px;
-      height: 28px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 500;
-      text-align: center;
-      color: #fff;
-      background: #00a0e9;
       line-height: 28px;
     }
   }

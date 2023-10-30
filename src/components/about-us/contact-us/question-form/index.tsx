@@ -32,13 +32,13 @@ const QAPart: React.FC = () => {
   return (
     <div className={`${styles.qaContent} container`}>
       <Title className={styles.title}>{t('Questions')}</Title>
-      <Row gutter={[32, 32]} className={styles.row}>
+      <Row gutter={[32, 32]}>
         <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
           {faq
             ?.slice(0, 4)
             ?.map((item, index) => (
               <QACard
-                key={'referral' + index}
+                key={item?.id}
                 question={getTransResult(lang, item?.attributes?.questionZh, item?.attributes?.questionEn) || ''}
                 answer={getTransResult(lang, item?.attributes?.answerZh, item?.attributes?.answerEn) || ''}
                 index={index}

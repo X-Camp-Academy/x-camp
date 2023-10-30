@@ -63,12 +63,12 @@ export const useMenuItems = () => {
           key: 'Java/APCS Classes'
         },
         {
-          label: <Link href="/about-us/student-recommend">{t('ReferralProgram')}</Link>,
-          key: '/about-us/student-recommend/'
+          label: <Link href="/courses/student-recommend">{t('ReferralProgram')}</Link>,
+          key: '/courses/student-recommend/'
         },
         {
-          label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
-          key: '/resources/weekly-open-house/'
+          label: <Link href="/courses/weekly-open-house">{t('OpenHouse')}</Link>,
+          key: '/courses/weekly-open-house/'
         }
         // {
         //   label: (
@@ -112,7 +112,7 @@ export const useMenuItems = () => {
         },
         {
           label: <a href="/about-us/achievements#art-of-programming-results">{t('InternalContests')}</a>,
-          key: 'Internal Contests'
+          key: '/resources/internal-contests/'
         },
         {
           label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
@@ -132,18 +132,6 @@ export const useMenuItems = () => {
           title: t('AboutUs'),
           description: t('AboutUs.Description'),
           showBtn: false
-          // btn: (
-          //   <>
-          //     <span
-          //       onClick={() => {
-          //         router.push('/about-us/introduction');
-          //       }}
-          //     >
-          //       {t('LearnMore')}
-          //     </span>
-          //     <RightOutlined />
-          //   </>
-          // )
         }
       },
       children: [

@@ -41,12 +41,17 @@
     .leftImage {
       width: 500px;
       height: 332px;
-      border-radius: 12px;
+      border-radius: 8px;
       background: #d8d8d8;
 
       @media (width <= 768px) {
         width: 100%;
         height: 320px;
+      }
+
+      @media (width >= 768px) and (width <= 1200px) {
+        width: 100%;
+        height: 100%;
       }
     }
 
@@ -54,7 +59,7 @@
       .rightTitle {
         @include title('default');
 
-        @media (width <= 768px) {
+        @media (width <= 1200px) {
           @include title('middle');
         }
       }
@@ -65,7 +70,7 @@
         color: #172142;
         line-height: 36px;
 
-        @media (width <= 768px) {
+        @media (width <= 1200px) {
           @include mobile-text;
 
           margin-bottom: 0;

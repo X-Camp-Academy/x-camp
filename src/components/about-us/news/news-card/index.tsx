@@ -1,7 +1,7 @@
 import { EventCategory, GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
-import SegmentedRadioGroup, { EventOptionsProps } from '@/components/common/segmented-radio-group';
+import SegmentedRadioGroup, { useEventOptions } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { RightCircleOutlined } from '@ant-design/icons';
@@ -32,29 +32,6 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
     });
   };
 
-  const options: EventOptionsProps[] = [
-    {
-      label: t('All'),
-      value: EventCategory.All
-    },
-    {
-      label: t('SchoolLifeSharing'),
-      value: EventCategory.SchoolLifeSharing
-    },
-    {
-      label: t('CodingEducation'),
-      value: EventCategory.CodingEducation
-    },
-    {
-      label: t('CareerPath'),
-      value: EventCategory.CareerPath
-    },
-    {
-      label: t('Research'),
-      value: EventCategory.Research
-    }
-  ];
-
   useEffect(() => {
     if (segmented === EventCategory.All) {
       const compareData = handleLocaleCompare(newEventData);
@@ -69,10 +46,10 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
   return (
     <div className={styles.content}>
       <div className={'container'}>
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={options} style={{ width: '100%' }} />
+        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={useEventOptions()} style={{ width: '100%' }} />
 
         <div className={styles.partner}>
-          <Row gutter={[32, 48]} className={styles.row}>
+          <Row gutter={[32, 48]}>
             {data?.map((item, index) => {
               const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
               return (

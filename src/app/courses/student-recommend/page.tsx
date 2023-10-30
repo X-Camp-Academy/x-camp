@@ -1,14 +1,14 @@
 import { PageTitle, generateMetadata } from '@/app/metadata';
 import dynamic from 'next/dynamic';
 
-const WeeklyOpenHouse = dynamic(() => import('@/components/resources/weekly-open-house'));
+const StudentRecommend = dynamic(() => import('@/components/courses/student-recommend'));
 
 export const metadata = {
-  ...generateMetadata(PageTitle.WeeklyOpenHouse)
+  ...generateMetadata(PageTitle.StudentRecommend)
 };
 
 const Page: React.FC = () => {
-  return <WeeklyOpenHouse />;
+  return <StudentRecommend />;
 };
 
 export default Page;

@@ -7,9 +7,7 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('HelpCenter.Banner.Desc1')}
-      <br />
       {t('HelpCenter.Banner.Desc2')}
-      <br />
       {t('HelpCenter.Banner.Desc3')}
     </>
   );

@@ -14,6 +14,10 @@
     line-height: 72px;
     background-color: #fff;
 
+    @media (width <= 768px) {
+      box-shadow: 0 9px 25px -4px #d8d8d8;
+    }
+
     .space {
       position: relative;
       display: flex;
@@ -57,6 +61,10 @@
       width: 100%;
       background-color: #fff;
 
+      @media (width <= 768px) {
+        // box-shadow: 0 9px 25px -4px #d8d8d8;
+      }
+
       .menu-reset {
         margin: 0;
         width: 100%;
@@ -69,9 +77,25 @@
           font-size: 16px;
           font-weight: 500;
           color: $text-color;
+        }
+      }
 
-          @media (width <= 768px) {
-            font-size: 18px;
+      :global(.ant-menu-submenu-open) {
+        ul {
+          a {
+            &::before {
+              position: relative;
+              left: 0;
+              display: inline-block;
+              margin-right: 6px;
+              width: 6px;
+              height: 6px;
+              border: 1px solid #ffd600;
+              border-radius: 50%;
+              background: #ffad11;
+              content: '';
+              vertical-align: middle;
+            }
           }
         }
       }

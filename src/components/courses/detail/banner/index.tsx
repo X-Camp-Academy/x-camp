@@ -1,5 +1,6 @@
 import CopyRightIcons from '@/components/common/copy-right-icons';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult, getWeeksDays } from '@/utils/public';
 import { ShareAltOutlined } from '@ant-design/icons';
 import { Breadcrumb, Button, Carousel, Descriptions, Divider, Image, Modal, Space, Typography, message } from 'antd';
@@ -13,13 +14,14 @@ const { Title, Text } = Typography;
 
 const CourseBanner: React.FC = () => {
   const { format: t, lang } = useLang();
+  const isMobile = useMobile();
   const ref = useRef<CarouselRef>(null);
   message.config({
     top: 100
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const courseData = useContext(CourseClassesContext);
-
+  const defaultMedia = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
   const { courseCode, classMode, classLang, spokenLang, startDateTime, endDateTime, media, courseTitleZh, courseTitleEn, lessonNum, frequency, courseFormat, additionalInfo } =
     courseData?.attributes ?? {};
 
@@ -115,20 +117,29 @@ const CourseBanner: React.FC = () => {
 
               <div className={styles.right}>
                 <Carousel dots={false} ref={ref}>
-                  {media?.data?.map((mediaItem) => {
-                    return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
-                      <div key={mediaItem?.id} className={styles.videoBox}>
-                        <Image alt="" preview={false} src={mediaItem?.attributes?.url} width="100%" height="100%" />
-                      </div>
-                    ) : (
-                      <div key={mediaItem?.id} className={styles.videoBox}>
-                        <video controls>
-                          <source src={mediaItem?.attributes?.url} type="video/mp4" />
-                          {t('VideoProblem')}
-                        </video>
-                      </div>
-                    );
-                  })}
+                  {media?.data && media?.data?.length > 0 ? (
+                    media?.data?.map((mediaItem) => {
+                      return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
+                        <div key={mediaItem?.id} className={styles.videoBox}>
+                          <Image alt="" preview={false} src={mediaItem?.attributes?.url} width="100%" height="100%" />
+                        </div>
+                      ) : (
+                        <div key={mediaItem?.id} className={styles.videoBox}>
+                          <video controls>
+                            <source src={mediaItem?.attributes?.url} type="video/mp4" />
+                            {t('VideoProblem')}
+                          </video>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div className={styles.videoBox}>
+                      <video controls>
+                        <source src={defaultMedia} type="video/mp4" />
+                        {t('VideoProblem')}
+                      </video>
+                    </div>
+                  )}
                 </Carousel>
 
                 <div className={styles.mediaChoice}>
@@ -189,8 +200,8 @@ const CourseBanner: React.FC = () => {
                   </Modal>
                 </div>
 
-                <Space direction="vertical" size={16} align="end" className={styles.rightBottom}>
-                  <Text className={styles.rightBottomText}> * Earn $75 for you and $75 for your friend through our referral system.</Text>
+                <Space direction="vertical" size={isMobile ? 8 : 16} align="end" className={styles.rightBottom}>
+                  <Text className={styles.rightBottomText}> * Get $75 off for each/ Get up to $150 off!</Text>
                   <CopyRightIcons />
                 </Space>
               </div>

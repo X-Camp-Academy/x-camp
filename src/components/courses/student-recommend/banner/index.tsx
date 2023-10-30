@@ -7,9 +7,7 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('ReferralProgram.Banner.Desc1')}
-
       {t('ReferralProgram.Banner.Desc2')}
-
       {t('ReferralProgram.Banner.Desc3')}
     </>
   );

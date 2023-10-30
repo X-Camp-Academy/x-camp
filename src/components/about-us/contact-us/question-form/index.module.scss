@@ -7,13 +7,6 @@
     margin-bottom: 0;
   }
 
-  .row {
-    @media (width <= 768px) {
-      margin-right: 0 !important;
-      margin-left: 0 !important;
-    }
-  }
-
   .title {
     text-align: center;
 

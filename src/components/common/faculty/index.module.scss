@@ -5,7 +5,7 @@
   text-align: center;
 
   @media (width <= 768px) {
-    padding: 32px 15px;
+    padding: 32px 22px;
   }
 
   .title {
@@ -22,33 +22,33 @@
     display: block;
     height: 20px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-image: url('/image/home/home-title-bg-1.png');
-
-    @media (width <= 768px) {
-      display: none;
-    }
   }
 
   .zhTitleBg {
     @extend .baseTitleBg;
 
+    margin-top: -10px;
     margin-left: -160px;
     width: 128px !important;
 
     @media (width <= 768px) {
+      margin-top: -10px;
       margin-left: -108px;
-      width: 108px !important;
+      width: 88px !important;
     }
   }
 
   .enTitleBg {
     @extend .baseTitleBg;
 
+    margin-top: -10px;
     margin-left: -175px;
     width: 180px;
 
     @media (width <= 768px) {
+      margin-top: -10px;
       margin-left: -108px;
       width: 112px;
     }

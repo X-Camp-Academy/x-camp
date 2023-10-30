@@ -80,7 +80,7 @@ const FixedButtons: React.FC = () => {
                 type="primary"
                 className={styles.button}
                 onClick={() => {
-                  router.push('/resources/weekly-open-house');
+                  router.push('/courses/weekly-open-house');
                   setModelVisible(true);
                 }}
               >

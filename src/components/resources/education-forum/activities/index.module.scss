@@ -6,46 +6,8 @@
   width: 100%;
 
   @media (width <= 768px) {
-    margin-bottom: 50px;
-  }
-
-  .toolBar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    min-height: 65px;
-    border-radius: 12px;
-    background-color: #fff;
-    flex-wrap: wrap;
-
-    .toolBarItem {
-      padding: 14px 48px;
-      border-radius: 4px;
-      font-size: 18px;
-      font-weight: 600;
-      text-align: center;
-      color: #6a6a6a;
-      line-height: 24px;
-      cursor: pointer;
-
-      @media (width <= 768px) {
-        display: block;
-        width: 100%;
-        font-size: 14px;
-      }
-
-      &:hover {
-        @extend .selectedToolBarItem;
-      }
-    }
-
-    .selectedToolBarItem {
-      color: #fff;
-      background-color: #ffad11;
-      box-shadow: 0 2px 3px 0 rgb(125 125 125 / 20%);
-    }
+    margin-top: 16px;
+    margin-bottom: 48px;
   }
 
   .titleContain {
@@ -76,77 +38,70 @@
     }
   }
 
-  .row {
-    @media (width <= 768px) {
-      margin-right: 0 !important;
-      margin-left: 0 !important;
+  .card {
+    border-radius: 8px 8px 12px 12px;
+    background: #fff;
+
+    .imgContainer {
+      overflow: hidden;
+      height: 283px;
+
+      img {
+        width: 100%;
+      }
     }
 
-    .card {
-      border-radius: 8px 8px 12px 12px;
-      background: #fff;
+    .cardContent {
+      padding: 36px;
+      padding-top: 0;
+      width: 100%;
 
-      .imgContainer {
+      @media (width <= 768px) {
+        padding: 24px;
+        padding-top: 0;
+      }
+
+      .title {
+        @include title('thin');
+
+        display: -webkit-box;
         overflow: hidden;
-        height: 283px;
+        width: 100%;
+        text-overflow: ellipsis;
+        line-height: 32px;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
 
-        img {
-          width: 100%;
+        @media (width <= 768px) {
+          @include title('mobile');
         }
       }
 
-      .cardContent {
-        padding: 36px;
-        padding-top: 0;
-        width: 100%;
+      .description {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 400;
+        color: #666;
+        line-height: 28px;
 
         @media (width <= 768px) {
-          padding: 24px;
-          padding-top: 0;
+          @include mobile-text;
         }
 
-        .title {
-          @include title('thin');
-
-          display: -webkit-box;
-          overflow: hidden;
-          width: 100%;
-          text-overflow: ellipsis;
-          line-height: 32px;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
+        .btn {
+          font-size: 18px;
+          color: #ffad11;
 
           @media (width <= 768px) {
-            @include title('mobile');
+            font-size: 16px;
           }
         }
 
-        .description {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-size: 16px;
-          font-weight: 400;
-          color: #666;
-          line-height: 28px;
-
-          @media (width <= 768px) {
-            @include mobile-text;
-          }
-
-          .btn {
-            font-size: 18px;
-            color: #ffad11;
-
-            @media (width <= 768px) {
-              font-size: 16px;
-            }
-          }
-
-          .icon {
-            margin-right: 4px;
-            font-size: 14px;
-          }
+        .icon {
+          margin-right: 4px;
+          font-size: 14px;
         }
       }
     }

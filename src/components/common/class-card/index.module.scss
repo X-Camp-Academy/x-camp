@@ -5,8 +5,7 @@
   width: 380px;
 
   @media (width <= 768px) {
-    width: 320px;
-    width: 100%;
+    width: 280px;
   }
 
   .card {
@@ -24,8 +23,7 @@
       @media (width <= 768px) {
         padding-top: 16px;
         padding-right: 18px;
-        width: 100%;
-        height: 320px;
+        height: 336px;
       }
     }
 
@@ -35,7 +33,7 @@
       margin-bottom: 0;
 
       @media (width <= 768px) {
-        @include title('mobile');
+        @include title('middle');
       }
     }
 
@@ -54,6 +52,10 @@
         border-radius: 50%;
         background-color: #172142;
         content: '';
+      }
+
+      @media (width <= 768px) {
+        font-size: 16px;
       }
     }
 

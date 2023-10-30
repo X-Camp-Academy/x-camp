@@ -3,8 +3,8 @@
 .title {
   @include title('about');
 
-  @media (width <= 992px) {
-    font-size: 30px;
+  @media (width <= 768px) {
+    @include title('mobile');
   }
 }
 
@@ -14,18 +14,28 @@
   font-weight: 500;
   color: #172142;
   line-height: 34px;
+
+  @media (width <= 768px) {
+    @include mobile-text;
+
+    margin-bottom: 32px;
+  }
 }
 
 .images {
   justify-content: space-between;
   width: 100%;
 
-  @media (width <= 992px) {
+  @media (width <= 768px) {
     justify-content: center;
   }
 
   img {
     width: 366px;
     height: 248px;
+
+    @media (width <= 768px) {
+      width: 100%;
+    }
   }
 }

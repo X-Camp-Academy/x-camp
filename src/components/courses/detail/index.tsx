@@ -12,7 +12,6 @@ import React from 'react';
 import CourseClassesContext from '../CourseClassesContext';
 import Banner from './banner';
 import styles from './index.module.scss';
-//import ProgressionClasses from './progression-classes';
 import Syllabus from './syllabus';
 
 const { Content } = Layout;

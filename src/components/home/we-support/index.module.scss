@@ -5,7 +5,7 @@
   background-color: #efefef;
 
   @media (width <= 768px) {
-    padding: 32px 15px;
+    padding: 32px 22px;
   }
 
   .title {
@@ -20,42 +20,33 @@
 
   .baseTitleBg {
     display: block;
-    margin-left: 60px;
-    width: 160px;
     height: 20px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-image: url('/image/home/home-title-bg-1.png');
-
-    @media (width <= 768px) {
-      margin-left: 32px;
-      width: 112px;
-    }
   }
 
   .zhTitleBg {
     @extend .baseTitleBg;
 
-    margin-left: 40px;
-    width: 120px;
+    margin-left: 64px;
+    width: 88px;
 
     @media (width <= 768px) {
       margin-left: 40px;
       width: 64px;
-      background-size: contain;
     }
   }
 
   .enTitleBg {
     @extend .baseTitleBg;
 
-    margin-left: 200px;
-    width: 160px;
+    margin-left: 192px;
+    width: 192px;
 
     @media (width <= 768px) {
-      margin-left: 40px;
-      width: 96px;
-      background-size: contain;
+      margin-left: 128px;
+      width: 120px;
     }
   }
 

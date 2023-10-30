@@ -11,9 +11,7 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('JoinUs.Banner.Desc1')}
-      <br />
       {t('JoinUs.Banner.Desc2')}
-      <br />
     </>
   );
   return (

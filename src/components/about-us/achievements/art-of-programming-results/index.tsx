@@ -1,12 +1,14 @@
 import { GetProjectsDemo } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Card, List, Typography } from 'antd';
 import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
+
 interface Props {
   data: StrapiResponseDataItem<GetProjectsDemo>[][] | undefined;
 }
@@ -14,7 +16,7 @@ interface Props {
 const ArtOfProgrammingResults = ({ data }: Props) => {
   const { hash } = window.location;
   const { lang, format: t } = useLang();
-
+  const isMobile = useMobile();
   const listData = [
     {
       title: t('Art.Contestants'),
@@ -38,28 +40,29 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
   return (
     <div className={styles.ArtOfProgrammingResultsContainer} id="art-of-programming-results">
       <div className={`${styles.ArtOfProgrammingResults} container`}>
-        <Title className={styles.firstTitle}>{t('ArtProgrammingResults')}</Title>
-        <Text className={styles.intro}>{t('ArtProgrammingResults.Desc')}</Text>
+        <Title className={styles.title}>{t('ArtProgrammingResults')}</Title>
+        <Text className={styles.introduction}>{t('ArtProgrammingResults.Desc')}</Text>
 
-        <List
-          dataSource={listData}
-          className={styles.list}
-          split={false}
-          renderItem={(item) => (
-            <List.Item className={styles.timeListItem}>
-              <List.Item.Meta title={<Text className={styles.timeListTitle}>{item.title}</Text>} description={<Paragraph className={styles.timeListDetail}>{item.content}</Paragraph>} />
-            </List.Item>
-          )}
-        />
+        <div className={styles.listContainer}>
+          <List
+            dataSource={listData}
+            split={false}
+            renderItem={(item) => (
+              <List.Item className={styles.listItem}>
+                <List.Item.Meta title={<Text className={styles.itemTitle}>{item.title}</Text>} description={<Paragraph className={styles.itemDetail}>{item.content}</Paragraph>} />
+              </List.Item>
+            )}
+          />
+        </div>
 
-        <div className={styles.projectDemo}>
+        <div className={styles.projectsDemo}>
           <Title className={styles.title}>{t('ProjectsDemo')}</Title>
           {data?.map((v, index) => (
             <React.Fragment key={index}>
               <Title className={styles.subTitle}>{getTransResult(lang, v?.[0]?.attributes?.categoryZh, v?.[0]?.attributes?.categoryEn)}</Title>
               <List
                 grid={{
-                  gutter: 16,
+                  gutter: isMobile ? 0 : 16,
                   xs: 1,
                   sm: 1,
                   md: 1,

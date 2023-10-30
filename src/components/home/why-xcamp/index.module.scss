@@ -30,36 +30,37 @@
 
       .baseTitleBg {
         display: block;
-        margin-left: -128px;
         height: 16px;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         background-image: url('/image/home/home-title-bg-1.png');
       }
 
       .zhTitleBg {
         @extend .baseTitleBg;
 
+        margin-top: -8px;
+        margin-left: -112px;
         width: 160px;
 
         @media (width <= 768px) {
           margin-top: -8px;
-          margin-left: -80px;
+          margin-left: -88px;
           width: 112px !important;
-          background-size: contain;
         }
       }
 
       .enTitleBg {
         @extend .baseTitleBg;
 
-        width: 112px;
+        margin-top: -8px;
+        margin-left: -112px;
+        width: 96px;
 
         @media (width <= 768px) {
           margin-top: -8px;
           margin-left: -80px;
           width: 64px !important;
-          background-size: contain;
         }
       }
 

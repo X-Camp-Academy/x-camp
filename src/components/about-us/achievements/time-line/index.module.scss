@@ -6,7 +6,7 @@
 
   @media (width <= 768px) {
     margin-top: 24px;
-    margin-bottom: 32px;
+    padding-bottom: 48px;
   }
 
   .timeLine {
@@ -24,13 +24,13 @@
       background-position: right bottom;
 
       @media (width <= 768px) {
-        padding: 0 16px;
+        padding: 0;
       }
 
-      .timeListItem {
+      .listItem {
         position: relative;
 
-        .timeListTitle {
+        .itemTitle {
           @include title('thin');
 
           line-height: 48px;
@@ -38,13 +38,13 @@
           left: -20px;
 
           @media (width <= 768px) {
-            left: 16px;
+            left: 8px;
 
             @include title('middle');
           }
         }
 
-        .timeListTitle::before {
+        .itemTitle::before {
           position: relative;
           left: -20px;
           display: inline-block;
@@ -62,7 +62,7 @@
         }
       }
 
-      .timeListDetail {
+      .itemDetail {
         border: none;
         font-size: 21px;
         color: #172142;
@@ -78,7 +78,7 @@
       }
     }
 
-    .intro {
+    .introduction {
       margin-top: 30px;
       font-size: 21px;
       font-weight: 500;
@@ -86,6 +86,8 @@
       line-height: 40px;
 
       @media (width <= 768px) {
+        margin-top: 20px;
+
         @include mobile-text;
       }
     }
@@ -120,7 +122,7 @@
       .cardItem {
         margin-top: 64px;
         padding-bottom: 6px;
-        border-radius: 10px;
+        border-radius: 8px;
         text-align: center;
 
         .title {

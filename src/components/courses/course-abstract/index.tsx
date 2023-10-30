@@ -9,7 +9,6 @@ import styles from './index.module.scss';
 const { Paragraph } = Typography;
 
 interface CourseAbstractProps {
-  courseCode?: string;
   classMode?: ClassMode;
   courseLongDescriptionEn?: string;
   courseLongDescriptionZh?: string;
@@ -18,14 +17,11 @@ interface CourseAbstractProps {
   classes?: {
     data: StrapiResponseDataItem<GetClasses>[];
   };
-  startDate?: string;
   registerLink?: string;
-  isBundle?: boolean;
-  bundleRegisterLink?: string;
   isBilingual?: boolean;
 }
 
-const CourseAbstract: React.FC<CourseAbstractProps> = ({ courseCode, classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual }) => {
+const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual }) => {
   const { format: t, lang } = useLang();
 
   const classesData = classes?.data?.map((classItem) => {
@@ -43,7 +39,6 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ courseCode, classMode, 
   return (
     <Space className={styles.abstract} size={24}>
       <div className={styles.left}>
-        {/* <div className={styles.title}>{courseCode}:</div> */}
         <div className={styles.title}>{t('Description')}</div>
         <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
           {getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn)}

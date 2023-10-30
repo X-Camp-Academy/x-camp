@@ -9,14 +9,14 @@ import { ContestsByMonthInterface } from '../../define';
 import styles from './index.module.scss';
 
 const cx = classNames.bind(styles);
-const { Paragraph } = Typography;
+const { Title, Paragraph } = Typography;
 
 interface Props {
   data: ContestsByMonthInterface;
 }
 
 const ContestCard = ({ data }: Props) => {
-  const { lang } = useLang();
+  const { format: t, lang } = useLang();
   const isMobile = useMobile();
   return (
     <div className={styles.card}>
@@ -59,7 +59,7 @@ const ContestCard = ({ data }: Props) => {
               }
               arrow={false}
               placement="right"
-              key={index}
+              key={v?.id}
             >
               <div
                 className={cx(styles.item, index % 2 === 1 && styles.itemEven)}
@@ -73,7 +73,9 @@ const ContestCard = ({ data }: Props) => {
                   });
                 }}
               >
-                <div className={styles.title}>{getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}</div>
+                <Title ellipsis={{ rows: 1 }} className={styles.title}>
+                  {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
+                </Title>
                 <div className={styles.description}>{getTransResult(lang, v?.attributes?.contestTitleExplanationZh, v?.attributes?.contestTitleExplanationEn)}</div>
                 <div className={styles.bottom}>
                   <div className={styles.time}>
@@ -90,6 +92,12 @@ const ContestCard = ({ data }: Props) => {
             </Popover>
           );
         })}
+
+        {data?.contests?.length === 0 && (
+          <div className={cx(styles.item)}>
+            <Title className={styles.noContest}>{t('NoContest')}</Title>
+          </div>
+        )}
       </Space>
     </div>
   );
