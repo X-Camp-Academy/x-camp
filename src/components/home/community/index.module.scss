@@ -41,12 +41,12 @@
     .zhTitleBg {
       @extend .baseTitleBg;
 
-      margin-left: 120px;
-      width: 96px;
+      margin-left: 112px;
+      width: 88px;
 
       @media (width <= 768px) {
         margin-left: 72px;
-        width: 64px;
+        width: 56px;
       }
     }
 

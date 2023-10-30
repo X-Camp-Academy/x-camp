@@ -20,6 +20,7 @@
 
   .baseTitleBg {
     display: block;
+    margin-top: -10px;
     height: 20px;
     background-repeat: no-repeat;
     background-size: contain;
@@ -29,27 +30,25 @@
   .zhTitleBg {
     @extend .baseTitleBg;
 
-    margin-top: -10px;
     margin-left: -160px;
-    width: 128px !important;
+    width: 120px;
 
     @media (width <= 768px) {
-      margin-top: -10px;
-      margin-left: -108px;
-      width: 88px !important;
+      margin-top: -8px;
+      margin-left: -104px;
+      width: 80px;
     }
   }
 
   .enTitleBg {
     @extend .baseTitleBg;
 
-    margin-top: -10px;
-    margin-left: -175px;
-    width: 180px;
+    margin-left: -168px;
+    width: 160px;
 
     @media (width <= 768px) {
       margin-top: -10px;
-      margin-left: -108px;
+      margin-left: -112px;
       width: 112px;
     }
   }
