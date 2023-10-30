@@ -31,7 +31,6 @@ const FixedButtons: React.FC = () => {
     await sendMailToUser(values);
     setModelVisible(false);
   };
-  const { hash } = window.location;
 
   const labels: string[] = [t('weeklyOpenHouseDesc1'), t('weeklyOpenHouseDesc2'), t('weeklyOpenHouseDesc3')];
   const menu: IMenuItem[] = [

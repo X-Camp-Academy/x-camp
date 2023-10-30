@@ -107,13 +107,11 @@ const isDaylightTime = (date: Dayjs): boolean => {
   if (date.month() < 2 || date.month() > 10) {
     return false;
   }
-
   // 判断是否是第二个星期日到第一个星期日之间
-  const secondSunday = date.startOf('month').add(1, 'week').day(0).date();
-  const firstSunday = date.endOf('month').subtract(1, 'week').day(0).date();
+  const marchSecondSunday = dayjs().month(2).startOf('month').add(2, 'week').day(0).date();
+  const novemberFirstSunday = dayjs().month(10).startOf('month').add(1, 'week').day(0).date();
   const currentDay = date.date();
-
-  return currentDay >= secondSunday && currentDay <= firstSunday;
+  return currentDay >= marchSecondSunday && currentDay <= novemberFirstSunday;
 };
 
 /**
