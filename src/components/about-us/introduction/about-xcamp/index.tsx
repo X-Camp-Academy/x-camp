@@ -11,6 +11,7 @@ const { Title, Paragraph } = Typography;
 
 const AboutXCamp: React.FC = () => {
   const isMobile = useMobile();
+  const isiPad = useMobile('xl');
   const { format: t } = useLang();
   return (
     <div className={`${styles.aboutXcamp} container`}>
@@ -19,7 +20,7 @@ const AboutXCamp: React.FC = () => {
       </Title>
       <Paragraph className={styles.paragraph}>{t('AboutXCamp.Desc1')}</Paragraph>
 
-      <Space direction={isMobile ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 48} className={styles.space}>
+      <Space direction={isiPad ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 48} className={styles.space}>
         <Image preview={false} alt="" src={'/image/courses/camps-3.png'} className={styles.leftImage} />
         <Space direction="vertical" size={isMobile ? 16 : 32} className={styles.rightSpace}>
           <Title className={styles.rightTitle}>{t('AboutXCamp.SubTitle')}</Title>

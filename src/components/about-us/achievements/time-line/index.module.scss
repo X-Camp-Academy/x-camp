@@ -27,10 +27,10 @@
         padding: 0;
       }
 
-      .timeListItem {
+      .listItem {
         position: relative;
 
-        .timeListTitle {
+        .itemTitle {
           @include title('thin');
 
           line-height: 48px;
@@ -44,7 +44,7 @@
           }
         }
 
-        .timeListTitle::before {
+        .itemTitle::before {
           position: relative;
           left: -20px;
           display: inline-block;
@@ -62,7 +62,7 @@
         }
       }
 
-      .timeListDetail {
+      .itemDetail {
         border: none;
         font-size: 21px;
         color: #172142;
@@ -78,7 +78,7 @@
       }
     }
 
-    .intro {
+    .introduction {
       margin-top: 30px;
       font-size: 21px;
       font-weight: 500;

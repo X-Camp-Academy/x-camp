@@ -42,7 +42,6 @@ const Nav: React.FC = () => {
   }, [showMenu]);
 
   const mobileMenuItems: MenuProps['items'] = useMemo(() => {
-    // 手机端则去除dropdown
     const loginSignUp = [
       {
         label: <a href="/login">{t('Nav.Login')}</a>,

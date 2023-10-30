@@ -40,7 +40,9 @@ const StudentProjects: React.FC = () => {
         <Space direction="vertical" align="center">
           {lang === 'zh' ? (
             <>
-              <Title className={styles.title}>学生课程</Title>
+              <Title className={styles.title}>
+                学生<span>课程</span>
+              </Title>
               <Text className={styles.titleZhBg} />
             </>
           ) : (

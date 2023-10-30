@@ -42,17 +42,17 @@ const TimeLine: React.FC = () => {
             dataSource={timeLine}
             split={false}
             renderItem={(item) => (
-              <List.Item className={styles.timeListItem}>
+              <List.Item className={styles.listItem}>
                 <List.Item.Meta
-                  title={<Text className={styles.timeListTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>}
-                  description={<XStarMdViewer className={styles.timeListDetail} value={getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)} />}
+                  title={<Text className={styles.itemTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>}
+                  description={<XStarMdViewer className={styles.itemDetail} value={getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)} />}
                 />
               </List.Item>
             )}
           />
         </div>
 
-        <Text className={styles.intro}>{t('Timeline.Desc')}</Text>
+        <Text className={styles.introduction}>{t('Timeline.Desc')}</Text>
 
         {/* <div
           className={styles.download}

@@ -10,83 +10,81 @@
   .ArtOfProgrammingResults {
     padding-bottom: 100px;
 
-    .list {
-      margin-top: 20px;
-    }
-
-    @media (width <= 768px) {
-      padding-bottom: 32px;
-    }
-
-    @media (width <= 768px) {
-      padding: 30px;
-    }
-
-    .firstTitle {
+    .title {
       @include title('default');
-
-      margin-top: 0;
-      margin-bottom: 30px;
 
       @media (width <= 768px) {
         @include title('mobile');
-
-        margin-left: -8px;
       }
     }
 
-    .intro {
-      font-size: 18px;
-      font-weight: 400;
+    .introduction {
+      margin-top: 30px;
+      font-size: 21px;
+      font-weight: 500;
       color: #172142;
-      line-height: 34px;
+      line-height: 40px;
 
       @media (width <= 768px) {
+        margin-top: 20px;
+
         @include mobile-text;
       }
     }
 
-    .timeListItem {
-      padding-right: 40px;
-      padding-left: 40px;
+    .listContainer {
+      margin-right: 0;
+      padding: 0 40px 40px;
+      background-position: right bottom;
 
       @media (width <= 768px) {
-        padding-right: 20px;
-        padding-left: 20px;
-        font-size: 20px;
+        padding: 0;
       }
 
-      .timeListTitle {
-        @include title('thin');
-
-        line-height: 48px;
+      .listItem {
         position: relative;
-        left: -20px;
 
-        @media (width <= 768px) {
-          left: -10px;
-          font-size: 20px;
-          line-height: 20px;
+        .itemTitle {
+          @include title('thin');
+
+          line-height: 48px;
+          position: relative;
+          left: -20px;
+
+          @media (width <= 768px) {
+            left: 8px;
+
+            @include title('middle');
+          }
+        }
+
+        .itemTitle::before {
+          position: relative;
+          left: -20px;
+          display: inline-block;
+          margin-right: 5px;
+          width: 15px;
+          height: 15px;
+          border: 3px solid #ffd600;
+          border-radius: 50%;
+          background-color: #ffad11;
+          content: '';
+
+          @media (width <= 768px) {
+            left: -10px;
+          }
         }
       }
 
-      .timeListTitle::before {
-        position: relative;
-        left: -20px;
-        display: inline-block;
-        width: 15px;
-        height: 15px;
-        border: 3px solid #ffd600;
-        border-radius: 50%;
-        background-color: #ffad11;
-        content: '';
-      }
-
-      .timeListDetail {
-        font-size: 18px;
-        font-weight: 500;
+      .itemDetail {
+        border: none;
+        font-size: 21px;
         color: #172142;
         line-height: 48px;
+
+        p {
+          margin-top: 0;
+        }
 
         @media (width <= 768px) {
           @include mobile-text;
@@ -94,16 +92,14 @@
       }
     }
 
-    .projectDemo {
+    .projectsDemo {
       .title {
         @include title;
 
         @media (width <= 768px) {
-          margin-top: 30px;
+          margin-top: 16px;
 
           @include title('mobile');
-
-          margin-left: -16px;
         }
       }
 

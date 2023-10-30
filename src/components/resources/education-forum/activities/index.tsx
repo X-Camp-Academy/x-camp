@@ -2,11 +2,12 @@ import { EventCategory, GetNewEvent, GetNewEventRequest, NewEventCategory } from
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { AndOrFilters, FilterFields } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
-import { EventOptionsProps } from '@/components/common/segmented-radio-group';
+import SegmentedRadioGroup, { useEventOptions } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
+import { SegmentedValue } from 'antd/es/segmented';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
@@ -24,7 +25,7 @@ const Activities: React.FC = () => {
     pageSize: 12,
     manual: true
   });
-  const [selectedItem, setSelectedItem] = useState<EventCategory>(EventCategory.SchoolLifeSharing);
+  const [segmented, setSegmented] = useState<EventCategory | SegmentedValue>(EventCategory.SchoolLifeSharing);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
       populate: '*',
@@ -39,11 +40,11 @@ const Activities: React.FC = () => {
         $eq: tag
       }
     };
-    if (selectedItem !== EventCategory.All) {
+    if (segmented !== EventCategory.All) {
       filters = {
         ...filters,
         eventCategory: {
-          $eq: selectedItem
+          $eq: segmented as EventCategory
         }
       };
     }
@@ -51,30 +52,7 @@ const Activities: React.FC = () => {
       ...commonParams,
       filters
     });
-  }, [tag, selectedItem, current]);
-
-  const items: EventOptionsProps[] = [
-    {
-      label: t('SchoolLifeSharing'),
-      value: EventCategory.SchoolLifeSharing
-    },
-    {
-      label: t('CodingEducation'),
-      value: EventCategory.CodingEducation
-    },
-    {
-      label: t('CareerPath'),
-      value: EventCategory.CareerPath
-    },
-    {
-      label: t('Research'),
-      value: EventCategory.Research
-    },
-    {
-      label: t('All'),
-      value: EventCategory.All
-    }
-  ];
+  }, [tag, segmented, current]);
 
   const newEventData = data?.data?.sort((a, b) => {
     const dateA = new Date(a?.attributes?.startDateTime);
@@ -84,23 +62,10 @@ const Activities: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <div className={styles.toolBar}>
-          {items?.map((item) => {
-            return (
-              <div
-                className={`${styles.toolBarItem} ${item?.value === selectedItem ? styles.selectedToolBarItem : ''}`}
-                key={item?.value}
-                onClick={() => {
-                  setSelectedItem(item?.value);
-                }}
-              >
-                {item?.label}
-              </div>
-            );
-          })}
-        </div>
+        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={useEventOptions()} style={{ width: '100%' }} />
+
         <Space className={styles.titleContain}>
-          <div className={styles.activityTitle}>{selectedItem}</div>
+          <div className={styles.activityTitle}>{segmented}</div>
           <div className={styles.pageTotal}>
             {data?.data?.length} {t('EducationForum')}
           </div>

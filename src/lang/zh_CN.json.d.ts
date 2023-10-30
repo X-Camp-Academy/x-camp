@@ -509,6 +509,7 @@ declare const json: {
   Summer: '夏季';
   Fall: '秋季';
   Winter: '冬季';
+  NoContest: '没有比赛';
 };
 
 export default json;

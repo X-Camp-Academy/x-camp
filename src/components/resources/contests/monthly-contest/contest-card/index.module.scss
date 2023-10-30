@@ -37,8 +37,8 @@
 
     @include title;
 
-    @media (width <= 768px) {
-      padding-bottom: 16px;
+    @media (width <= 1200px) {
+      @include title('middle');
     }
   }
 
@@ -47,8 +47,8 @@
     width: 80%;
     height: calc(100% - 80px);
 
-    @media (width <= 768px) {
-      padding: 15px 0 0;
+    @media (width <= 1200px) {
+      padding: 20px 0 0;
     }
 
     .item {
@@ -73,8 +73,19 @@
 
         transition: all 0.3s;
 
-        @media (width <= 768px) {
-          @include title('mobile');
+        @media (width <= 1200px) {
+          @include title('middle');
+        }
+      }
+
+      .noContest {
+        @include title('thin');
+
+        text-align: center;
+        transition: all 0.3s;
+
+        @media (width <= 1200px) {
+          @include title('middle');
         }
       }
 
@@ -88,7 +99,7 @@
         word-wrap: break-word;
         hyphens: auto;
 
-        @media (width <= 768px) {
+        @media (width <= 1200px) {
           @include mobile-text;
         }
       }
@@ -152,8 +163,8 @@
       color: #172142;
       line-height: 36px;
 
-      @media (width <= 768px) {
-        @include title('mobile');
+      @media (width <= 1200px) {
+        @include title('middle');
       }
     }
 
@@ -164,7 +175,7 @@
         color: #b9b9b9;
         line-height: 24px;
 
-        @media (width <= 768px) {
+        @media (width <= 1200px) {
           @include mobile-text;
 
           color: #b9b9b9;

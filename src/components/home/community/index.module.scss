@@ -32,7 +32,7 @@
 
     .baseTitleBg {
       display: block;
-      height: 26px;
+      height: 20px;
       background-repeat: no-repeat;
       background-size: contain;
       background-image: url('/image/home/home-title-bg-1.png');
@@ -53,8 +53,8 @@
     .enTitleBg {
       @extend .baseTitleBg;
 
-      margin-left: 176px;
-      width: 224px;
+      margin-left: 144px;
+      width: 192px;
 
       @media (width <= 768px) {
         margin-left: 96px;
