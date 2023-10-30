@@ -21,6 +21,7 @@
 
   .baseTitleBg {
     display: block;
+    margin-top: -8px;
     height: 20px;
     background-repeat: no-repeat;
     background-size: contain;
@@ -30,7 +31,6 @@
   .titleEnBg {
     @extend .baseTitleBg;
 
-    margin-top: -8px;
     margin-left: 144px;
     width: 160px;
 
@@ -43,8 +43,7 @@
   .titleZhBg {
     @extend .baseTitleBg;
 
-    margin-top: -8px;
-    margin-left: 80px;
+    margin-left: 72px;
     width: 80px;
 
     @media (width <= 768px) {

@@ -8,7 +8,6 @@ import React from 'react';
 import styles from './index.module.scss';
 
 const { Text, Title } = Typography;
-
 const CourseCard: React.FC<GetCourses> = (props) => {
   const {
     courseCode,

@@ -35,7 +35,7 @@ const Banner: React.FC = () => {
           <>
             {t('Home.Banner1.Date1')}
             <br />
-            {t('Home.Banner1.Date1')}
+            {t('Home.Banner1.Date2')}
           </>
         }
       />

@@ -30,7 +30,7 @@
 
       .baseTitleBg {
         display: block;
-        height: 16px;
+        margin-top: -8px;
         background-repeat: no-repeat;
         background-size: contain;
         background-image: url('/image/home/home-title-bg-1.png');
@@ -39,28 +39,26 @@
       .zhTitleBg {
         @extend .baseTitleBg;
 
-        margin-top: -8px;
-        margin-left: -112px;
-        width: 160px;
+        margin-left: -128px;
+        width: 192px;
+        height: 20px;
 
         @media (width <= 768px) {
-          margin-top: -8px;
-          margin-left: -88px;
-          width: 112px !important;
+          margin-left: -96px;
+          width: 112px;
         }
       }
 
       .enTitleBg {
         @extend .baseTitleBg;
 
-        margin-top: -8px;
         margin-left: -112px;
-        width: 96px;
+        width: 80px;
+        height: 16px;
 
         @media (width <= 768px) {
-          margin-top: -8px;
           margin-left: -80px;
-          width: 64px !important;
+          width: 64px;
         }
       }
 

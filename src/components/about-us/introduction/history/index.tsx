@@ -83,11 +83,12 @@ const History: React.FC = () => {
               <MaskCard
                 className={styles.maskCard}
                 bodyStyle={{
-                  padding: 0
+                  padding: 0,
+                  borderRadius: 8
                 }}
                 maskChildren={generateMaskChildren(item?.title, item?.desc)}
                 maskBackGroundColor={'rgb(23 33 66 / 80%)'}
-                maskBorderRadius={12}
+                maskBorderRadius={8}
               >
                 <Image src={item?.url} alt="image" preview={false} className={styles.image} />
                 <Title className={styles.cardTitle}>{item?.title}</Title>
@@ -101,11 +102,12 @@ const History: React.FC = () => {
               <MaskCard
                 className={styles.maskCard}
                 bodyStyle={{
-                  padding: 0
+                  padding: 0,
+                  borderRadius: 8
                 }}
                 maskChildren={generateMaskChildren(item?.title, item?.desc)}
                 maskBackGroundColor={'rgb(23 33 66 / 80%)'}
-                maskBorderRadius={12}
+                maskBorderRadius={8}
               >
                 <Image src={item?.url} alt="image" preview={false} className={styles.image} />
                 <Title className={styles.cardTitle}>{item?.title}</Title>

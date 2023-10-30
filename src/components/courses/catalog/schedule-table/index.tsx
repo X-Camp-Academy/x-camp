@@ -5,7 +5,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { SearchOutlined } from '@ant-design/icons';
 import { useSize } from 'ahooks';
-import { Button, Col, Divider, Form, Input, Pagination, Row, Select } from 'antd';
+import { Button, Col, Form, Input, Pagination, Row, Select } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import CourseCard from './course-card';
 import styles from './index.module.scss';
@@ -176,7 +176,6 @@ const ScheduleTable: React.FC = () => {
                 >
                   <CourseCard {...handleObject(item)} />
                 </div>
-                <Divider style={{ marginTop: 35 }} />
               </>
             );
           })}

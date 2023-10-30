@@ -24,7 +24,7 @@
       margin-bottom: 42px;
 
       @media (width <= 768px) {
-        @include title('mobile');
+        @include title('middle');
 
         margin-bottom: 0;
       }
