@@ -313,12 +313,3 @@ export const swapArrayElements = <T>(arr: T[], index1: number, index2: number): 
   arr[index2] = temp;
   return arr;
 };
-
-export const sortTimeArray = (timeArray: any[] | undefined, sortKey: string): any[] => {
-  if (!timeArray || timeArray.length === 0) return [];
-  return timeArray.sort((a, b) => {
-    const dateA = dayjs(a[sortKey]);
-    const dateB = dayjs(b[sortKey]);
-    return dateA.isBefore(dateB) ? -1 : 1;
-  });
-};

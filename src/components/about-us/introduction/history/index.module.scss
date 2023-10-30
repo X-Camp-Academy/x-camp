@@ -101,30 +101,15 @@
 
       .maskCard {
         position: relative;
-        display: flex;
         overflow: hidden;
-        width: 85%;
+        width: 288px;
         height: 100%;
-        border-radius: 12px;
+        border-radius: 8px !important;
         text-align: left;
-
-        :global(.ant-image) {
-          width: 100% !important;
-        }
-
-        @media (width <= 768px) {
-          width: 100%;
-          height: 100%;
-        }
 
         .image {
           width: 100%;
-          height: 320px;
-
-          @media (width <= 768px) {
-            width: 100%;
-            height: 100%;
-          }
+          height: 100%;
         }
 
         .cardTitle {
@@ -144,9 +129,8 @@
 
           color: #fff;
 
-          @media (width <= 768px) {
-            @include title('middle');
-
+          @media (width >= 768px) and (width <= 1200px) {
+            font-size: 16px;
             color: #fff;
           }
         }
@@ -158,7 +142,7 @@
           color: #fff;
           line-height: 26px;
 
-          @media (width <= 768px) {
+          @media (width <= 1200px) {
             @include mobile-text;
 
             color: #fff;

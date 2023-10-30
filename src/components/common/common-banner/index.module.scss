@@ -27,9 +27,14 @@
     }
 
     .time {
-      font-size: 14px;
+      font-size: 24px;
+      font-weight: 500;
       color: #172142;
-      line-height: 30px;
+      line-height: 34px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .paragraph {

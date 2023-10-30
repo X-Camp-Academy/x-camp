@@ -18,9 +18,9 @@ interface Props {
 const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => {
   const isiPad = useMobile('xl');
   const scroll = useScroll(document);
-  const divideLength = (items?.length || 0) >= 8 || isiPad ? 2 : 3;
+  const divideLength = (items?.length || 0) <= 4 || isiPad ? 2 : 3;
   const dividedItems = useMemo(() => {
-    // 分为若干列，大于等于8项则2列，否则3列
+    // 分为若干列，小于等于4项则2列，否则3列
     const result: React.ReactNode[][] =
       items?.reduce((pre: React.ReactNode[][], cur, index) => {
         const rowIndex = Math.floor(index / divideLength);
@@ -31,7 +31,7 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
         return pre;
       }, []) || [];
     return result;
-  }, [items]);
+  }, [items, isiPad]);
 
   return (
     <div

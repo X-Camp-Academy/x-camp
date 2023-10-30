@@ -29,7 +29,7 @@ const QACard: React.FC<QACardProps> = ({ question, answer, index, className = ''
   return (
     <Collapse
       expandIconPosition="end"
-      expandIcon={({ isActive }) => <DownCircleOutlined rotate={isActive ? 180 : 0} style={{ color: '#FFAD11', fontSize: 24 }} />}
+      expandIcon={({ isActive }) => <DownCircleOutlined rotate={isActive ? 180 : 0} style={{ color: '#FFAD11', fontSize: isMobile ? 16 : 24 }} />}
       className={`${styles.collapse} ${className}`}
       style={computedStyle(index)}
     >
@@ -46,7 +46,7 @@ const QACard: React.FC<QACardProps> = ({ question, answer, index, className = ''
       >
         <Space size={12} align="start">
           <div className={`${styles.questionAndAnswerIcon} ${styles.answer}`}>A</div>
-          {answer}
+          <span className={styles.answerContent}>{answer}</span>
         </Space>
       </Panel>
     </Collapse>

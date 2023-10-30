@@ -1,7 +1,6 @@
 'use client';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
-import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Col, Row, Space, Typography } from 'antd';
 import MaskCard from '../mask-card';
@@ -15,7 +14,6 @@ interface DiscoverCoursesProps {
 }
 const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = true }: DiscoverCoursesProps) => {
   const { format: t, lang } = useLang();
-  const isMobile = useMobile();
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
       <Space
@@ -63,7 +61,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
       url: '/image/home/course-3.png',
       bgc: '#FFAD11',
       maskBgc: 'rgb(255 173 17 / 40%)',
-      maskChildren: generateMaskChildren(t('USACO.Grandmaster.Title'), t('USACO.Grandmaster.Mask.Desc'), '/courses/#classify3')
+      maskChildren: generateMaskChildren(t('USACO.Grandmaster.Title'), t('USACO.Grandmaster.Mask.Desc'), '/courses/#classify4')
     },
     {
       title: 'Java & APCS',

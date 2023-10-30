@@ -101,7 +101,7 @@ const Community: React.FC = () => {
                       getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
                     )}
                     maskBackGroundColor={'rgb(23 33 66 / 80%)'}
-                    maskBorderRadius={12}
+                    maskBorderRadius={8}
                   >
                     <Image src={item?.attributes?.img?.data?.attributes?.url} alt="image" preview={false} className={styles.image} />
                     <Title className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Title>

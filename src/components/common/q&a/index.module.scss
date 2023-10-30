@@ -38,6 +38,9 @@
     font-size: 21px;
 
     @media (width <= 768px) {
+      width: 24px;
+      height: 24px;
+
       @include mobile-text;
     }
   }
@@ -56,6 +59,12 @@
 
       color: #00a0e9;
       background-color: #009fe933;
+    }
+  }
+
+  .answerContent {
+    @media (width <= 768px) {
+      @include mobile-text;
     }
   }
 }

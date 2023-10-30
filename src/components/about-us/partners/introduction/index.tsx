@@ -1,7 +1,6 @@
 import { PartnerCategory } from '@/apis/strapi-client/define';
 import { useGetPartner } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
-import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Space, Typography } from 'antd';
@@ -17,8 +16,6 @@ const getBackgroundFromIndex = (index: number) => {
 const Introduction: React.FC = () => {
   const { lang, format: t } = useLang();
   const { data } = useGetPartner();
-  const isMobile = useMobile();
-
   const getTransByCategory = (category: PartnerCategory) => {
     switch (category) {
       case PartnerCategory.ChinaPartners:

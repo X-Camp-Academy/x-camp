@@ -41,8 +41,8 @@ export const useMenuItems = () => {
           key: '/courses/#online'
         },
         {
-          label: <a href="/courses/#classify3">{t('USACO.Grandmaster')}</a>,
-          key: 'USACO Grandmaster'
+          label: <a href="/courses/#classify4">{t('USACO.Grandmaster')}</a>,
+          key: 'usaco-grandmaster'
         },
         // {
         //   label: (
@@ -56,11 +56,11 @@ export const useMenuItems = () => {
         },
         {
           label: <a href="/courses#mock-test-classes">{t('MockTestClasses')}</a>,
-          key: 'Mock Test Classes'
+          key: 'mock-test-classes'
         },
         {
           label: <a href="/courses#apcs">{t('Java/APCS.Classes')}</a>,
-          key: 'Java/APCS Classes'
+          key: 'java-apcs-classes'
         },
         {
           label: <Link href="/courses/student-recommend">{t('ReferralProgram')}</Link>,

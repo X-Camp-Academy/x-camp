@@ -55,9 +55,9 @@ const Activities: React.FC = () => {
   }, [tag, segmented, current]);
 
   const newEventData = data?.data?.sort((a, b) => {
-    const dateA = new Date(a?.attributes?.startDateTime);
-    const dateB = new Date(b?.attributes?.startDateTime);
-    return dateB.getTime() - dateA.getTime();
+    const dateA = new Date(a?.attributes?.startDateTime).toISOString();
+    const dateB = new Date(b?.attributes?.startDateTime).toISOString();
+    return dateB.localeCompare(dateA);
   });
   return (
     <div className={styles.content}>
