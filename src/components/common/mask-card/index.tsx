@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './index.module.scss';
 
 interface MaskCardProps extends CardProps {
-  ref?: React.RefObject<any>;
   maskChildren?: React.ReactNode;
   maskBackGroundColor?: string;
   maskBorderRadius?: number;
