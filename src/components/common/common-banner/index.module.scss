@@ -1,81 +1,90 @@
 @import '@/styles/variables';
 
-.row {
+.bannerContainer {
   position: relative;
+  height: 495px;
+  background-color: #efefef;
 
-  .leftSpace {
-    padding-top: 128px;
-    padding-right: 40px;
-    padding-left: 96px;
+  .row {
+    display: flex;
     width: 100%;
-    height: 512px;
-    background-color: #efefef;
 
-    .title {
-      position: absolute;
-      top: 32px;
-      top: 12%;
-      z-index: 999;
-      font-size: 34px;
-      font-weight: bold;
-      color: #172142;
-      line-height: 48px;
-
-      @media (width <= 768px) {
-        @include title('mobile');
-      }
-    }
-
-    .time {
-      font-size: 24px;
-      font-weight: 500;
-      color: #172142;
-      line-height: 34px;
-
-      @media (width <= 768px) {
-        @include title('mobile');
-      }
-    }
-
-    .paragraph {
-      font-size: 24px;
-      font-weight: 500;
-      color: #172142;
-      line-height: 34px;
-
-      @media (width <= 768px) {
-        font-size: 12px;
-        line-height: 20px;
-      }
-    }
-
-    .dateTime {
-      @include text(16px, 24px, #172142);
-
-      font-weight: 600;
-    }
-  }
-
-  .background {
-    position: absolute;
-    top: 102px;
-    top: 20%;
-    width: 100%;
-    height: 20px;
-    background-color: #ffad11;
-
-    @media (width <= 768px) {
-      display: none;
-    }
-  }
-
-  .image {
-    width: 100%;
-    height: 512px;
-
-    @media (width <= 768px) {
-      z-index: 9999;
+    .leftSpace {
+      padding-top: 128px;
+      padding-right: 40px;
+      width: 40%;
       height: 100%;
+
+      .title {
+        position: absolute;
+        top: 32px;
+        top: 12%;
+        z-index: 999;
+        font-size: 34px;
+        font-weight: bold;
+        color: #172142;
+        line-height: 48px;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
+      }
+
+      .time {
+        font-size: 24px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 34px;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
+      }
+
+      .paragraph {
+        font-size: 24px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 34px;
+
+        @media (width <= 768px) {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+
+      .dateTime {
+        @include text(16px, 24px, #172142);
+
+        font-weight: 600;
+      }
+    }
+
+    .imgContainer {
+      width: 512px;
+      height: 512px;
+    }
+
+    .background {
+      position: absolute;
+      top: 102px;
+      width: 40%;
+      height: 20px;
+      background-color: #ffad11;
+
+      @media (width <= 768px) {
+        display: none;
+      }
+    }
+
+    .image {
+      width: 100%;
+      height: 512px;
+
+      @media (width <= 768px) {
+        z-index: 9999;
+        height: 100%;
+      }
     }
   }
 }
