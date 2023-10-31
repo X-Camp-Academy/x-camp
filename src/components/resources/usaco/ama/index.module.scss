@@ -9,6 +9,9 @@
 
     @media (width <= 768px) {
       @include title('mobile');
+
+      margin-top: 24px;
+      margin-bottom: 16px;
     }
   }
 
@@ -45,6 +48,8 @@
 
         @media (width <= 768px) {
           @include mobile-text;
+
+          margin-bottom: 0;
         }
       }
 
