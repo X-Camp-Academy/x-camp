@@ -1,10 +1,6 @@
 .segmentedRadioGroup {
   margin: 0 auto;
-  width: 50%;
-
-  @media (width <= 1200px) {
-    width: 100%;
-  }
+  width: 100%;
 
   :global(.ant-segmented-group) {
     padding: 8px 36px;

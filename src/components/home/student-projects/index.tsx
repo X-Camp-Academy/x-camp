@@ -55,13 +55,13 @@ const StudentProjects: React.FC = () => {
           )}
           <Paragraph className={styles.paragraph}>{t('Home.StudentProjects.Desc')}</Paragraph>
 
-          <Row gutter={16} className={styles.row}>
+          <Row gutter={[16, 16]} className={styles.row}>
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
-              {studentProjectsData && <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" sandbox="" />}
+              {studentProjectsData && <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
-              <Row gutter={16}>
+              <Row gutter={[16, 16]}>
                 {studentProjectsData &&
                   studentProjectsData.slice(1).map((item) => (
                     <Col xs={24} sm={24} md={24} lg={24} xl={12} key={item?.id}>
@@ -72,7 +72,7 @@ const StudentProjects: React.FC = () => {
                           overflow: 'hidden',
                           padding: 16
                         }}
-                        cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" sandbox="" />}
+                        cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
                       >
                         <Space direction="vertical" size={24}>
                           <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>

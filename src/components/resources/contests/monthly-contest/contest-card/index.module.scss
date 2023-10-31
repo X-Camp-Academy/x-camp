@@ -1,8 +1,11 @@
 @import '@/styles/variables';
 
 .popoverContent {
-  width: 328px;
+  width: 320px;
 
+  // @media (max-width: 768px) {
+  //   width: 100%;
+  // }
   .divider {
     margin: 16px 0;
   }
@@ -33,9 +36,11 @@
     padding-bottom: 33px;
     width: 100%;
     border-bottom: #d8d8d8 1px solid;
+    font-size: 24px;
+    font-weight: 600;
     text-align: center;
-
-    @include title;
+    color: #172142;
+    line-height: 36px;
 
     @media (width <= 1200px) {
       @include title('middle');
@@ -69,8 +74,10 @@
       }
 
       .title {
-        @include title('thin');
-
+        font-size: 18px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 24px;
         transition: all 0.3s;
 
         @media (width <= 1200px) {
@@ -79,13 +86,14 @@
       }
 
       .noContest {
-        @include title('thin');
-
+        font-size: 20px;
+        font-weight: 600;
         text-align: center;
-        transition: all 0.3s;
+        color: #172142;
+        line-height: 36px;
 
         @media (width <= 1200px) {
-          @include title('middle');
+          font-size: 16px;
         }
       }
 
@@ -125,8 +133,8 @@
           height: 23px;
 
           img {
-            width: 14px;
-            height: 14px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
           }
         }
@@ -168,6 +176,13 @@
       }
     }
 
+    .description {
+      font-size: 16px;
+      font-weight: 400;
+      color: #172142;
+      line-height: 24px;
+    }
+
     .time {
       span {
         font-size: 16px;
@@ -193,8 +208,8 @@
     height: 47px;
 
     img {
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       border: #d8d8d8 1px solid;
       border-radius: 50%;
     }

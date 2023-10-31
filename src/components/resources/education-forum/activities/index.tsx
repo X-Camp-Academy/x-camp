@@ -4,6 +4,7 @@ import { AndOrFilters, FilterFields } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
 import SegmentedRadioGroup, { useEventOptions } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
@@ -14,8 +15,8 @@ import styles from './index.module.scss';
 
 const { Title } = Typography;
 const Activities: React.FC = () => {
+  const isiPad = useMobile('xl');
   const router = useRouter();
-  const { format: t } = useLang();
   const { lang } = useLang();
   const [current, setCurrent] = useState<number>(1);
   const tag = NewEventCategory.Events;
@@ -62,12 +63,12 @@ const Activities: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={useEventOptions()} style={{ width: '100%' }} />
+        <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions()} />
 
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{segmented}</div>
           <div className={styles.pageTotal}>
-            {data?.data?.length} {t('EducationForum')}
+            {data?.data?.length} {'forums'}
           </div>
         </Space>
 

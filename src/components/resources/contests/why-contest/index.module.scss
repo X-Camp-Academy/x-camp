@@ -1,7 +1,7 @@
 @import '@/styles/variables';
 
 .content {
-  padding: 128px 32px;
+  padding: 100px 32px;
   width: 100%;
 
   @media (width <= 768px) {
@@ -11,9 +11,11 @@
   .top,
   .bottom {
     .title {
-      @include title('bold');
-
       margin-bottom: 48px;
+      font-size: 48px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 48px;
 
       @media (width <= 768px) {
         margin-bottom: 24px;

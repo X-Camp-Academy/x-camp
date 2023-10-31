@@ -10,12 +10,13 @@ import styles from './index.module.scss';
 const { Title, Text } = Typography;
 
 interface USACOMedalProps {
+  showContainerEffect?: boolean;
   showLogo?: boolean;
   showTitle?: boolean;
   rowStyle?: React.CSSProperties;
 }
 
-const USACOMedal: React.FC<USACOMedalProps> = ({ showLogo = true, showTitle = true, rowStyle }) => {
+const USACOMedal: React.FC<USACOMedalProps> = ({ showContainerEffect = true, showLogo = true, showTitle = true, rowStyle }) => {
   const router = useRouter();
   const { format: t } = useLang();
   const isMobile = useMobile();
@@ -50,7 +51,10 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showLogo = true, showTitle = tr
   ];
 
   return (
-    <div className={showLogo ? `${styles.usacoBgContainer}` : `${styles.usacoContainer}`}>
+    <div
+      className={showLogo ? `${styles.usacoBgContainer}` : `${styles.usacoContainer}`}
+      style={showContainerEffect ? { backgroundColor: '#efefef', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' } : {}}
+    >
       {showTitle && (
         <Col span={24} className={styles.titleContainer}>
           <Title className={styles.title} onClick={() => router.push('/about-us/achievements')}>

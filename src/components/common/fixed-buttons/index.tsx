@@ -80,8 +80,7 @@ const FixedButtons: React.FC = () => {
                 type="primary"
                 className={styles.button}
                 onClick={() => {
-                  router.push('/courses/weekly-open-house');
-                  setOpen(true);
+                  router.push('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ');
                 }}
               >
                 1 On 1{' '}

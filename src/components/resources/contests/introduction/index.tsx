@@ -32,32 +32,27 @@ const Introduction = ({ data }: Props) => {
   useEffect(() => {
     handleScroll();
   }, [handleScroll]);
-
   return (
     <div className={styles.content}>
       <div className="container">
         {data?.map((v) => (
           <div key={v?.id} id={`contest-${v?.id}`}>
             <div>
-              {!v?.attributes?.isContestEvent && (
-                <>
-                  <div className={styles.contest}>
-                    <div className={styles.title}>{getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}</div>
-                    <div className={styles.intro}>
-                      <div className={styles.left}>
-                        <div className={styles.description}>{getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}</div>
-                        <a href={v?.attributes?.link} className={styles.link}>
-                          {v?.attributes?.link}
-                        </a>
-                      </div>
-                      <div className={styles.right}>
-                        <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
-                      </div>
-                    </div>
+              <div className={styles.contest}>
+                <div className={styles.title}>{getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}</div>
+                <div className={styles.intro}>
+                  <div className={styles.left}>
+                    <div className={styles.description}>{getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}</div>
+                    <a href={v?.attributes?.link} className={styles.link}>
+                      {v?.attributes?.link}
+                    </a>
                   </div>
-                  <Divider className={styles.divider} />
-                </>
-              )}
+                  <div className={styles.right}>
+                    <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
+                  </div>
+                </div>
+              </div>
+              <Divider className={styles.divider} />
             </div>
           </div>
         ))}

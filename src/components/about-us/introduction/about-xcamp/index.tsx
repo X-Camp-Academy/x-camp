@@ -22,10 +22,10 @@ const AboutXCamp: React.FC = () => {
 
       <Space direction={isiPad ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 48} className={styles.space}>
         <Image preview={false} alt="" src={'/image/courses/camps-3.png'} className={styles.leftImage} />
-        <Space direction="vertical" size={isMobile ? 16 : 32} className={styles.rightSpace}>
+        <Space direction="vertical" size={16} className={styles.rightSpace}>
           <Title className={styles.rightTitle}>{t('AboutXCamp.SubTitle')}</Title>
           <Paragraph className={styles.rightParagraph}>{t('AboutXCamp.Desc2')}</Paragraph>
-          <UsacoMedal showLogo={false} showTitle={false} rowStyle={{ padding: 0 }} />
+          <UsacoMedal showContainerEffect={false} showLogo={false} showTitle={false} rowStyle={{ padding: 0 }} />
         </Space>
       </Space>
     </div>
