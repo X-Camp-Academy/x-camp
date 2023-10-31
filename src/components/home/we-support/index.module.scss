@@ -59,12 +59,15 @@
 
     @media (width <= 768px) {
       @include mobile-text;
+
+      margin-top: 4px;
     }
   }
 
   .imageContainer {
     @media (width <= 992px) {
-      margin-bottom: 16px;
+      margin-top: 14px;
+      margin-bottom: 28px;
       border-radius: 8px;
       background: #e7e7e7;
     }

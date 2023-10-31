@@ -70,8 +70,7 @@
     width: 100%;
 
     @media (width <= 768px) {
-      margin-right: 0 !important;
-      margin-left: 0 !important;
+      margin: 0;
     }
 
     .card {
@@ -82,7 +81,7 @@
       border-radius: 8px;
 
       @media (width <= 768px) {
-        margin-top: 20px;
+        margin-top: 12px;
       }
 
       :hover {
