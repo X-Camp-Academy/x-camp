@@ -7,14 +7,11 @@
   padding-bottom: 40px;
   width: 100%;
   flex-direction: column;
-  background-color: #efefef;
 
   @media (width <= 768px) {
     padding-top: 16px;
     padding-bottom: 20px;
   }
-
-  box-shadow: 0 6px 14px -2px rgb(216 216 216 / 30%);
 }
 
 .usacoBgContainer {
@@ -72,22 +69,14 @@
   }
 
   .baseMedalContainer {
-    margin-top: 20px;
     width: 100%;
     text-align: center;
-    background-size: 192px 80px !important;
+    background-size: 120px 88px !important;
 
     @media (width <= 768px) {
-      margin-top: 10px;
       margin-bottom: 10px;
       width: 64px;
       background-size: 64px 32px !important;
-    }
-
-    @media (width >= 768px) and (width <= 1200px) {
-      margin-top: 10px;
-      width: 160px;
-      background-size: 160px 64px !important;
     }
 
     .medalCount {
@@ -111,6 +100,7 @@
 
     .medalTitle {
       display: block;
+      width: 100px;
 
       @include text(16px, 24px, #172142);
 
@@ -126,7 +116,7 @@
       }
 
       @media (width >= 768px) and (width <= 1200px) {
-        width: 112px;
+        width: 104px;
       }
     }
   }
