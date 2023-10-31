@@ -79,29 +79,20 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
                     <img alt="img" src={image} className={styles.image} />
                   </Col>
                 </Row> */
-        <div
-          className={styles.bannerContainer}
-          style={{
-            background: `url('${image}') no-repeat`,
-            // eslint-disable-next-line quotes
-            backgroundPosition: `top 0 right ${bgImgRight}`
-          }}
-        >
+        <div className={styles.bannerContainer}>
           <div className={`${styles.row} container`}>
-            <Space direction="vertical" size={16} className={styles.leftSpace} style={{ backgroundColor }}>
-              <Title className={`${titleClassName || styles.title}`}>{title}</Title>
-              {time && <div className={styles.time}>{time}</div>}
-              <Paragraph
-                className={`${paragraphClassName || styles.paragraph}`}
-                style={{
-                  fontSize: paragraphFontSize ? paragraphFontSize : '24px'
-                }}
-              >
-                {paragraph}
-              </Paragraph>
-            </Space>
+            <Title className={`${titleClassName || styles.title}`}>{title}</Title>
+            {time && <div className={styles.time}>{time}</div>}
+            <Paragraph
+              className={`${paragraphClassName || styles.paragraph}`}
+              style={{
+                fontSize: paragraphFontSize ? paragraphFontSize : '24px'
+              }}
+            >
+              {paragraph}
+            </Paragraph>
           </div>
-          {/* <div className={styles.background} style={{ backgroundColor: barColor }} /> */}
+          <div className={styles.background} style={{ backgroundImage: `url('${image}')` }} />
         </div>
       )}
     </>

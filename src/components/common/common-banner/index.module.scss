@@ -1,57 +1,101 @@
 @import '@/styles/variables';
 
+.paddingLeft {
+  @media (width >= 576px) {
+    padding-left: calc((100vw - 540px + 15px) / 2);
+  }
+
+  @media (width >= 768px) {
+    padding-left: calc((100vw - 720px + 15px) / 2);
+  }
+
+  @media (width >= 992px) {
+    padding-left: calc((100vw - 960px + 15px) / 2);
+  }
+
+  @media (width >= 1200px) {
+    padding-left: calc((100vw - 1140px + 15px) / 2);
+  }
+
+  @media (width >= 1400px) {
+    padding-left: calc((100vw - 1320px + 15px) / 2);
+  }
+}
+
 .bannerContainer {
   position: relative;
+  display: flex;
+  justify-content: flex-start;
   height: 495px;
   background-color: #efefef;
 
+  .background {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 1;
+  }
+
   .row {
-    display: flex;
-    width: 100%;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: 40%;
+
+    @extend .paddingLeft;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 1.25rem;
+      background: #ffad11;
+      content: '';
+      transform: translateY(150px);
+    }
+
+    .title {
+      z-index: 999;
+      margin-top: 120px;
+      font-size: 34px;
+      font-weight: bold;
+      color: #172142;
+      line-height: 48px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
+    }
+
+    .time {
+      font-size: 24px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 34px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
+    }
+
+    .paragraph {
+      font-size: 24px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 34px;
+
+      @media (width <= 768px) {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
 
     .leftSpace {
       padding-top: 128px;
       padding-right: 40px;
       width: 40%;
       height: 100%;
-
-      .title {
-        position: absolute;
-        top: 32px;
-        top: 12%;
-        z-index: 999;
-        font-size: 34px;
-        font-weight: bold;
-        color: #172142;
-        line-height: 48px;
-
-        @media (width <= 768px) {
-          @include title('mobile');
-        }
-      }
-
-      .time {
-        font-size: 24px;
-        font-weight: 500;
-        color: #172142;
-        line-height: 34px;
-
-        @media (width <= 768px) {
-          @include title('mobile');
-        }
-      }
-
-      .paragraph {
-        font-size: 24px;
-        font-weight: 500;
-        color: #172142;
-        line-height: 34px;
-
-        @media (width <= 768px) {
-          font-size: 12px;
-          line-height: 20px;
-        }
-      }
 
       .dateTime {
         @include text(16px, 24px, #172142);
@@ -66,9 +110,9 @@
     }
 
     .background {
-      position: absolute;
-      top: 102px;
-      width: 40%;
+      // position: absolute;
+      // top: 102px;
+      // width: 40%;
       height: 20px;
       background-color: #ffad11;
 
@@ -78,7 +122,7 @@
     }
 
     .image {
-      width: 100%;
+      // width: 100%;
       height: 512px;
 
       @media (width <= 768px) {
