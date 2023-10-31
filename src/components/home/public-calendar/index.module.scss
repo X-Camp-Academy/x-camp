@@ -80,6 +80,11 @@
         border-left: #ffad11 solid 10px;
         background-color: #fff;
 
+        @media (width <= 768px) {
+          height: 90%;
+          border-left: #ffad11 solid 6px;
+        }
+
         .contentLeft {
           margin-right: 40px;
           margin-left: 40px;

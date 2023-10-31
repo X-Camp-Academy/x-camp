@@ -11,6 +11,7 @@
   }
 
   .title {
+    margin-top: 0;
     font-size: 36px;
     font-weight: 600;
     color: #172142;
@@ -33,10 +34,10 @@
   }
 
   .subParagraph {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: #172142;
-    line-height: 48px;
+    line-height: 40px;
 
     @media (width <= 768px) {
       @include mobile-text;
@@ -56,6 +57,8 @@
   }
 
   .chartTitle {
+    margin-top: 48px;
+    margin-bottom: 0;
     font-size: 36px;
     font-weight: 600;
     color: #172142;

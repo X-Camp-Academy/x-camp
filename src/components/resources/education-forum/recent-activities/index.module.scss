@@ -1,7 +1,7 @@
 @import '@/styles/variables';
 
 .content {
-  padding-bottom: 100px;
+  padding-bottom: 80px;
   width: 100%;
 
   @media (width <= 768px) {
@@ -38,9 +38,10 @@
       }
 
       .title {
-        @include title('thin');
-
-        line-height: 32px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 30px;
 
         @media (width <= 768px) {
           @include title('mobile');

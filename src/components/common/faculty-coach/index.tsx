@@ -54,7 +54,7 @@ const FacultyCoach: React.FC<{
           <Paragraph className={styles.titleParagraph}>{t('Faculty.Desc')}</Paragraph>
         </Space>
 
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={useEventOptions('faculty')} />
+        <SegmentedRadioGroup value={segmented} setValue={setSegmented} options={useEventOptions('faculty')} />
 
         <Row justify="center" align="middle" gutter={isiPad ? 24 : 48} className={styles.row}>
           {facultyData?.map((item, index) => (

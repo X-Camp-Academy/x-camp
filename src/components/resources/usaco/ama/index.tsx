@@ -11,17 +11,17 @@ const Banner: React.FC = () => {
   const data = [
     {
       src: '/image/resources/usaco-ama-1.png',
-      title: 'USACO 2023 Feb Gold Problem 3 Live Solution1',
+      title: 'USACO AMA by Dr. Brian Dean 2022',
       date: '2023-04-10'
     },
     {
       src: '/image/resources/usaco-ama-2.png',
-      title: 'USACO 2023 Feb Gold Problem 3 Live Solution2',
+      title: 'USACO AMA by X-Camp Teaching Lead ',
       date: '2023-04-10'
     },
     {
       src: '/image/resources/usaco-ama-3.png',
-      title: 'USACO 2023 Feb Gold Problem 3 Live Solution3',
+      title: 'USACO AMA by Dr. Brian Dean 2023',
       date: '2023-04-10'
     }
   ];

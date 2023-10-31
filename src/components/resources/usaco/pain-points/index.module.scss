@@ -13,7 +13,7 @@
     width: 100%;
 
     .space {
-      padding: 32px;
+      padding: 48px;
       padding-top: 0;
       width: 100%;
       border-radius: 10px;
@@ -21,6 +21,7 @@
     }
 
     .title {
+      margin-top: 48px;
       font-size: 36px;
       font-weight: 600;
       color: #172142;
@@ -40,10 +41,10 @@
       }
 
       .text {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 600;
         color: #172142;
-        line-height: 48px;
+        line-height: 40px;
 
         @media (width <= 768px) {
           @include mobile-text;
@@ -54,7 +55,6 @@
     .paragraph {
       margin-top: 24px;
       font-size: 21px;
-      font-weight: 600;
       color: #172142;
       line-height: 40px;
 
