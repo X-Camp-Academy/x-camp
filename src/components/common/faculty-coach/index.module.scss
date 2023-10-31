@@ -8,6 +8,8 @@
   @media (width <= 768px) {
     margin-top: 32px;
     margin-bottom: 32px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
 
   .title {
@@ -29,6 +31,8 @@
     @media (width <= 768px) {
       @include margin(0);
       @include mobile-text;
+
+      margin-bottom: 0;
     }
   }
 
@@ -72,6 +76,10 @@
 
       .avatar {
         margin-top: 24px;
+
+        @media (width <= 768px) {
+          margin-top: 16px;
+        }
       }
 
       .name {
@@ -95,6 +103,8 @@
 
         @media (width <= 768px) {
           @include mobile-text;
+
+          margin-bottom: 0;
         }
       }
     }

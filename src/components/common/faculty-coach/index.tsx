@@ -33,7 +33,9 @@ const FacultyCoach: React.FC<{
   };
 
   useEffect(() => {
-    scrollIntoView(hash.slice(1));
+    if (hash) {
+      scrollIntoView(hash.slice(1));
+    }
   }, [hash]);
 
   useEffect(() => {
@@ -60,13 +62,13 @@ const FacultyCoach: React.FC<{
           {facultyData?.map((item, index) => (
             <Col key={item?.id} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }} className={styles.col}>
               <ColorfulCard border="bottom" split={4} index={index}>
-                <Card bodyStyle={{ padding: 0, height: isMobile ? 300 : 360 }}>
+                <Card bodyStyle={{ padding: 0, height: isMobile ? 224 : 360 }}>
                   <Space direction="vertical">
                     <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
                     <Text className={styles.name}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
                     <Paragraph
                       ellipsis={{
-                        rows: 6,
+                        rows: 4,
                         tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
                       }}
                       className={styles.description}

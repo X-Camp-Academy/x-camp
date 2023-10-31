@@ -1,6 +1,7 @@
 import { PartnerCategory } from '@/apis/strapi-client/define';
 import { useGetPartner } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Space, Typography } from 'antd';
@@ -16,6 +17,7 @@ const getBackgroundFromIndex = (index: number) => {
 const Introduction: React.FC = () => {
   const { lang, format: t } = useLang();
   const { data } = useGetPartner();
+  const isMobile = useMobile();
   const getTransByCategory = (category: PartnerCategory) => {
     switch (category) {
       case PartnerCategory.ChinaPartners:
@@ -36,7 +38,7 @@ const Introduction: React.FC = () => {
         <div key={index} style={{ background: getBackgroundFromIndex(index) }} className={styles.partnerContainer}>
           <div className={`${styles.partner} container`}>
             <div className={styles.title}>{getTransByCategory(items?.[0]?.attributes?.category)}</div>
-            <Space direction="vertical" style={{ width: '100%' }} size={60}>
+            <Space direction="vertical" style={{ width: '100%' }} size={isMobile ? 24 : 60}>
               {items?.map((card) => (
                 <div className={styles.card} key={card?.id}>
                   <div className={styles.img}>

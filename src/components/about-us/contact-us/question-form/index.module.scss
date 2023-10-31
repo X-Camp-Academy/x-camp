@@ -4,7 +4,8 @@
   padding-bottom: 6.25rem;
 
   @media (width <= 768px) {
-    margin-bottom: 0;
+    padding: 24px;
+    padding-top: 0;
   }
 
   .title {
@@ -14,6 +15,8 @@
 
     @media (width <= 768px) {
       @include title('mobile');
+
+      margin-bottom: 0;
     }
   }
 

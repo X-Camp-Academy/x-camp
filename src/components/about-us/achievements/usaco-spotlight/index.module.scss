@@ -76,7 +76,9 @@
             padding: 16px 0;
             width: calc(100% - 32px);
             border-radius: 8px;
-            background-color: #fff;
+            background-color: #172142;
+            opacity: 0.3;
+            backdrop-filter: blur(2px);
 
             @media (width <= 768px) {
               bottom: 10px;
@@ -90,19 +92,24 @@
 
               line-height: 54px;
               margin: 0;
+              color: #fff;
 
               @media (width <= 768px) {
                 @include title('middle');
+
+                color: #fff;
               }
             }
 
-            .cardParagraph {
+            .cardText {
               font-size: 18px;
-              color: #172142;
               line-height: 24px;
+              color: #fff;
 
               @media (width <= 768px) {
                 @include mobile-text;
+
+                color: #fff;
               }
             }
           }

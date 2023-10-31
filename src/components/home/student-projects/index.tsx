@@ -70,7 +70,7 @@ const StudentProjects: React.FC = () => {
                         className={styles.card}
                         bodyStyle={{
                           overflow: 'hidden',
-                          padding: 16
+                          padding: 24
                         }}
                         cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
                       >

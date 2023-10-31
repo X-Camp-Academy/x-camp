@@ -25,6 +25,8 @@
 
     @media (width <= 768px) {
       @include title('middle');
+
+      padding: 16px 8px;
     }
   }
 
