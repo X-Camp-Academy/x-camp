@@ -4,15 +4,15 @@
   width: 100%;
 
   .paragraph {
-    @include text(21px, 40px, #fff);
+    @include text(21px, 40px, #172142);
 
     font-weight: 500;
   }
 
   .title {
-    @include text(36px, 48px, #fbfbfb);
+    @include text(36px, 48px, #172142);
 
-    margin: 0;
+    margin-top: 85px;
     font-weight: bold;
   }
 

@@ -147,16 +147,7 @@ const ResumeForm: React.FC<{
           </Text>
         </div>
         <Form.Item name="acRelocate" rules={[{ required: true, message: 'please choose the radio' }]}>
-          <Radio.Group>
-            <Space direction="vertical">
-              <Radio value="Yes" className={styles.problem}>
-                {t('Yes')}
-              </Radio>
-              <Radio value="No" className={styles.problem}>
-                {t('No')}
-              </Radio>
-            </Space>
-          </Radio.Group>
+          <Input placeholder={t('InputTheStateYouLiveIn')} className={styles.inputInfo} />
         </Form.Item>
 
         <div style={{ marginBottom: 20 }}>
