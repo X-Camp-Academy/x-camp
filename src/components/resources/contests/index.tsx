@@ -28,7 +28,6 @@ const Contests: React.FC = () => {
     ready: true,
     pageName: [pathname]
   });
-
   return (
     <Layout className={styles.main}>
       <Content>
