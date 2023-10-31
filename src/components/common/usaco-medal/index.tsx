@@ -54,7 +54,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showLogo = true, showTitle = tr
       {showTitle && (
         <Col span={24} className={styles.titleContainer}>
           <Title className={styles.title} onClick={() => router.push('/about-us/achievements')}>
-            {t('Our')}
+            {t('Our')} {' USACO '}
             <Text className={styles.title} style={{ color: '#ffad11' }}>
               {t('Achievements')}
             </Text>
@@ -65,8 +65,8 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showLogo = true, showTitle = tr
         {data?.map((item) => (
           <Col key={item?.title} span={6} className={styles.col}>
             <div className={item?.style}>
-              <Space direction="vertical" align="center" size={isMobile ? 0 : 8}>
-                <CountUp className={styles.medalCount} style={{ color: item?.color }} end={item?.count} duration={10} suffix={item?.suffix ? '+' : undefined} scrollSpyDelay={1000} enableScrollSpy />
+              <Space direction="vertical" align="center" size={isMobile ? 0 : 8} style={{ paddingTop: '25px' }}>
+                <CountUp className={styles.medalCount} style={{ color: item?.color }} end={item?.count} duration={10} suffix={item?.suffix ? '+' : undefined} />
                 <Text className={styles.medalTitle}>{item?.title}</Text>
               </Space>
             </div>

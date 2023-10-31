@@ -131,7 +131,7 @@
       }
 
       .maskTitle {
-        @include title('thin');
+        @include title;
 
         word-wrap: break-word;
 

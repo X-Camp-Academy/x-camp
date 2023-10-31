@@ -44,7 +44,7 @@ const Introduction: React.FC = () => {
                   </div>
                   <div className={styles.cardContent}>
                     <Title className={styles.cardTitle}>{getTransResult(lang, card?.attributes?.titleZh, card?.attributes?.titleEn)}</Title>
-                    <Paragraph className={styles.cardDescription} ellipsis={{ rows: 5 }}>
+                    <Paragraph className={styles.cardDescription} ellipsis={{ rows: 3 }}>
                       {getTransResult(lang, card?.attributes?.titleDescriptionZh, card?.attributes?.titleDescriptionEn)}
                     </Paragraph>
                     <Button className={styles.btn} href={card?.attributes?.link}>

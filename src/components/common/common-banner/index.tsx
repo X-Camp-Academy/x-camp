@@ -1,6 +1,7 @@
 import { useMobile } from '@/utils';
-import { Space, Typography } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { Button, Space, Typography } from 'antd';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
@@ -17,27 +18,31 @@ interface CommonBannerProps {
   paragraphStyle?: React.CSSProperties;
   time?: React.ReactNode;
   paragraphFontSize?: number;
+  showButton?: boolean;
+  buttonText?: string;
+  buttonLink?: string;
+  buttonIcon?: React.ReactNode;
 }
 
-const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleClassName, paragraphClassName, barColor, backgroundColor, titleStyle, paragraphStyle, time, paragraphFontSize }) => {
+const Banner: React.FC<CommonBannerProps> = ({
+  title,
+  paragraph,
+  image,
+  titleClassName,
+  paragraphClassName,
+  barColor,
+  backgroundColor,
+  titleStyle,
+  paragraphStyle,
+  time,
+  paragraphFontSize,
+  showButton,
+  buttonText,
+  buttonLink,
+  buttonIcon
+}) => {
   const isMobile = useMobile();
-  const [bgImgRight, setBgImgRight] = useState('100%');
-
-  useEffect(() => {
-    if (window.innerWidth >= 1400) {
-      setBgImgRight('0');
-    } else if (window.innerWidth >= 1200) {
-      setBgImgRight('-10%');
-    } else if (window.innerWidth >= 992) {
-      setBgImgRight('-15%');
-    } else if (window.innerWidth >= 768) {
-      setBgImgRight('-20%');
-    } else if (window.innerWidth >= 576) {
-      setBgImgRight('-25%');
-    } else {
-      setBgImgRight('-30%');
-    }
-  }, [window.innerWidth]);
+  const router = useRouter();
   return (
     <>
       {isMobile ? (
@@ -59,26 +64,6 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
           </Space>
         </div>
       ) : (
-        /*         <Row className={styles.row}>
-                  <Col xs={24} sm={24} md={24} lg={24} xl={8}>
-                    <Space direction="vertical" size={16} className={styles.leftSpace} style={{ backgroundColor }}>
-                      <Title className={`${titleClassName || styles.title}`}>{title}</Title>
-                      {time && <div className={styles.time}>{time}</div>}
-                      <Paragraph
-                        className={`${paragraphClassName || styles.paragraph}`}
-                        style={{
-                          fontSize: paragraphFontSize ? paragraphFontSize : '24px'
-                        }}
-                      >
-                        {paragraph}
-                      </Paragraph>
-                    </Space>
-                    <div className={styles.background} style={{ backgroundColor: barColor }} />
-                  </Col>
-                  <Col xs={24} sm={24} md={24} lg={24} xl={16}>
-                    <img alt="img" src={image} className={styles.image} />
-                  </Col>
-                </Row> */
         <div className={styles.bannerContainer}>
           <div className={`${styles.row} container`}>
             <Title className={`${titleClassName || styles.title}`}>{title}</Title>
@@ -91,6 +76,20 @@ const Banner: React.FC<CommonBannerProps> = ({ title, paragraph, image, titleCla
             >
               {paragraph}
             </Paragraph>
+            {showButton && (
+              <div className={styles.buttonContainer}>
+                <Button
+                  size="large"
+                  className={styles.contactBtn}
+                  onClick={() => {
+                    window.open(buttonLink);
+                  }}
+                >
+                  <span>{buttonText}</span>
+                  {buttonIcon}
+                </Button>
+              </div>
+            )}
           </div>
           <div className={styles.background} style={{ backgroundImage: `url('${image}')` }} />
         </div>

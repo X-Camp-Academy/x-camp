@@ -2,7 +2,6 @@ import CommonBanner from '@/components/common/common-banner';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { LaptopOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
@@ -23,7 +22,6 @@ const Banner: React.FC = () => {
         image={'/image/resources/weekly-open-house-banner.png'}
         title={t('WeeklyOpenHouse1')}
         paragraph={paragraph}
-        paragraphFontSize={23}
         paragraphStyle={
           isMobile
             ? undefined
@@ -38,8 +36,12 @@ const Banner: React.FC = () => {
             {t('Home.Banner1.Date2')}
           </>
         }
+        showButton
+        buttonText={t('ZoomLink')}
+        buttonLink={'/about-us/contact-us'}
+        buttonIcon={<LaptopOutlined />}
       />
-      <div className={styles.bottomInfo}>
+      {/*       <div className={styles.bottomInfo}>
         <Button
           size="large"
           className={styles.contactBtn}
@@ -50,7 +52,7 @@ const Banner: React.FC = () => {
           <span>{t('ZoomLink')}</span>
           <LaptopOutlined />
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };

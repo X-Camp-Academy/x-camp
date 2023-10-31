@@ -68,6 +68,10 @@
 
       font-weight: 500;
 
+      :global(.ant-typography) {
+        margin-bottom: 0 !important;
+      }
+
       @media (width <= 768px) {
         margin-top: 10px;
 
