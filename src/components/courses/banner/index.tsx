@@ -1,4 +1,3 @@
-import { useModelVisible } from '@/hoc/WithModelVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Button, Col, Row, Space, Typography } from 'antd';
@@ -10,7 +9,6 @@ const { Paragraph } = Typography;
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
-  const { modelVisible, setModelVisible } = useModelVisible();
   return (
     <div className={styles.banner}>
       <div className={`${styles.content} container`}>
@@ -40,9 +38,7 @@ const Banner: React.FC = () => {
                 type={'primary'}
                 className={styles.button}
                 icon={<CaretRightOutlined />}
-                onClick={() => {
-                  setModelVisible(true);
-                }}
+                onClick={() => window.open('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ')}
               >
                 {t('1On1Consultation')}
               </Button>

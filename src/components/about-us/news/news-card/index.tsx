@@ -3,6 +3,7 @@ import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
 import SegmentedRadioGroup, { useEventOptions } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { RightCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
@@ -20,7 +21,8 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, pageSize, total }) => {
-  const { format: t, lang } = useLang();
+  const isiPad = useMobile('xl');
+  const { lang } = useLang();
   const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.SchoolLifeSharing);
   const [data, setData] = useState<StrapiResponseDataItem<GetNewEvent>[]>();
 
@@ -46,7 +48,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
   return (
     <div className={styles.content}>
       <div className={'container'}>
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} options={useEventOptions()} style={{ width: '100%' }} />
+        <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions()} />
 
         <div className={styles.partner}>
           <Row gutter={[32, 48]}>

@@ -65,6 +65,7 @@
   .imageContainer {
     @media (width <= 992px) {
       margin-bottom: 16px;
+      border-radius: 8px;
       background: #e7e7e7;
     }
   }

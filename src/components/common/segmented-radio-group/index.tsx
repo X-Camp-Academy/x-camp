@@ -1,7 +1,6 @@
 'use client';
 import { EventCategory, FacultyLevelCategory } from '@/apis/strapi-client/define';
 import { useLang } from '@/hoc/with-intl/define';
-import { useMobile } from '@/utils';
 import { Radio, RadioChangeEvent, Segmented, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React from 'react';
@@ -18,11 +17,11 @@ export interface FacultyOptionsProps {
 }
 
 export interface SegmentedRadioGroupProps {
-  segmented: SegmentedValue;
-  setSegmented: (value: SegmentedValue) => void;
+  isRadioGroup?: boolean;
+  value: SegmentedValue;
+  setValue: (value: SegmentedValue) => void;
   options: EventOptionsProps[] | FacultyOptionsProps[];
   segmentedDom?: React.Ref<HTMLDivElement>;
-  style?: React.CSSProperties;
 }
 
 export const useEventOptions = (defaultValue?: 'event' | 'faculty') => {
@@ -67,13 +66,12 @@ export const useEventOptions = (defaultValue?: 'event' | 'faculty') => {
   return defaultValue === 'faculty' ? facultyOptions : eventOptions;
 };
 
-const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ segmented = '', setSegmented, options = [], segmentedDom, style }) => {
-  const isiPad = useMobile('xl');
+const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ isRadioGroup = false, value = '', setValue, options = [], segmentedDom }) => {
   return (
-    <div className={styles.segmentedRadioGroup} style={style}>
-      {isiPad ? (
-        <Radio.Group optionType="button" buttonStyle="solid" onChange={(e: RadioChangeEvent) => setSegmented(e?.target?.value as SegmentedValue)} value={segmented} className={styles.radioGroup}>
-          <Space style={{ width: '100%' }} direction={isiPad ? 'vertical' : 'horizontal'}>
+    <div className={styles.segmentedRadioGroup}>
+      {isRadioGroup ? (
+        <Radio.Group optionType="button" buttonStyle="solid" onChange={(e: RadioChangeEvent) => setValue(e?.target?.value as SegmentedValue)} value={value} className={styles.radioGroup}>
+          <Space style={{ width: '100%' }} direction={'vertical'}>
             {options?.map((option) => (
               <Radio style={{ width: '100%' }} key={option?.value} value={option?.value}>
                 {option?.label}
@@ -82,7 +80,7 @@ const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ segmented = '
           </Space>
         </Radio.Group>
       ) : (
-        <Segmented ref={segmentedDom} style={{ backgroundColor: '#fff' }} block value={segmented} options={options} onChange={(value: SegmentedValue) => setSegmented(value)} />
+        <Segmented ref={segmentedDom} style={{ backgroundColor: '#fff' }} block value={value} options={options} onChange={(value: SegmentedValue) => setValue(value)} />
       )}
     </div>
   );

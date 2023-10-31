@@ -99,6 +99,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
                     borderRadius: 8,
                     paddingBottom: 0
                   }}
+                  maskBorderRadius={8}
                   maskChildren={item?.maskChildren}
                   maskBackGroundColor={item?.maskBgc}
                 >

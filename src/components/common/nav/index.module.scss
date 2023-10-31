@@ -62,7 +62,7 @@
       background-color: #fff;
 
       @media (width <= 768px) {
-        // box-shadow: 0 9px 25px -4px #d8d8d8;
+        box-shadow: 0 9px 25px -4px #d8d8d8;
       }
 
       .menu-reset {
@@ -83,6 +83,8 @@
       :global(.ant-menu-submenu-open) {
         ul {
           a {
+            font-size: 14px;
+
             &::before {
               position: relative;
               left: 0;

@@ -111,7 +111,12 @@ const CourseBanner: React.FC = () => {
                     <ShareAltOutlined />
                   </Button>
 
-                  <Button className={styles.consultation}>{t('1On1Consultation')}</Button>
+                  <Button
+                    className={styles.consultation}
+                    onClick={() => window.open('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ')}
+                  >
+                    {t('1On1Consultation')}
+                  </Button>
                 </Space>
               </div>
 
