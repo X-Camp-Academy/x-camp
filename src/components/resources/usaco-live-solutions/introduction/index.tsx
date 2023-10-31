@@ -36,9 +36,10 @@ const UsacoIntro = ({ data }: Props) => {
   useEffect(() => {
     if (data) {
       const sortData = swapArrayElements(data, 1, 2)?.map((item, index) => {
+        const orderData = item?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
         return {
           category: Categories[index],
-          categoryData: item
+          categoryData: orderData
         };
       });
       setSortData(sortData);
@@ -70,7 +71,7 @@ const UsacoIntro = ({ data }: Props) => {
                   <Space className={styles.videoPane}>
                     {v?.categoryData?.map((g) => {
                       return (
-                        <Space direction={'vertical'} className={styles.videoPanel} key={'panel' + g}>
+                        <Space direction={'vertical'} className={styles.videoPanel} key={g?.id}>
                           <video className={styles.videoBox} src={getVideoByLang(g?.attributes)} width="100%" height="100%" controls autoPlay={false} />
                           <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
                           <Space>
