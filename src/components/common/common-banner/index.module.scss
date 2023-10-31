@@ -1,25 +1,76 @@
 @import '@/styles/variables';
 
-.row {
-  position: relative;
+.paddingLeft {
+  @media (width >= 576px) {
+    padding-left: calc((100vw - 540px + 15px) / 2);
+  }
 
-  .leftSpace {
-    padding-top: 128px;
-    padding-right: 40px;
-    padding-left: 96px;
-    width: 100%;
-    height: 512px;
-    background-color: #efefef;
+  @media (width >= 768px) {
+    padding-left: calc((100vw - 720px + 15px) / 2);
+  }
+
+  @media (width >= 992px) {
+    padding-left: calc((100vw - 960px + 15px) / 2);
+  }
+
+  @media (width >= 1200px) {
+    padding-left: calc((100vw - 1140px + 15px) / 2);
+  }
+
+  @media (width >= 1400px) {
+    padding-left: calc((100vw - 1320px + 15px) / 2);
+  }
+}
+
+.bannerContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  height: 495px;
+  background-color: #efefef;
+
+  .background {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 1;
+  }
+
+  .row {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: 40%;
+
+    @extend .paddingLeft;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 1.25rem;
+      background: #ffad11;
+      content: '';
+      transform: translateY(125px);
+
+      @media (width <= 1200px) {
+        transform: translateY(115px);
+      }
+    }
 
     .title {
-      position: absolute;
-      top: 32px;
-      top: 12%;
       z-index: 999;
+      margin-top: 95px;
       font-size: 34px;
       font-weight: bold;
       color: #172142;
       line-height: 48px;
+
+      @media (width <= 1200px) {
+        font-size: 25px !important;
+        line-height: 28px;
+      }
 
       @media (width <= 768px) {
         @include title('mobile');
@@ -27,7 +78,7 @@
     }
 
     .time {
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 500;
       color: #172142;
       line-height: 34px;
@@ -38,10 +89,15 @@
     }
 
     .paragraph {
-      font-size: 24px;
+      font-size: 21px !important;
       font-weight: 500;
       color: #172142;
       line-height: 34px;
+
+      @media (width <= 1200px) {
+        font-size: 16px !important;
+        line-height: 28px;
+      }
 
       @media (width <= 768px) {
         font-size: 12px;
@@ -49,33 +105,68 @@
       }
     }
 
-    .dateTime {
-      @include text(16px, 24px, #172142);
+    .buttonContainer {
+      .contactBtn {
+        @include button('nav');
+        @include flex(center);
+        @include text(16px, 24px);
 
-      font-weight: 600;
+        padding: 10px 15px;
+        width: 160px;
+        height: 50px;
+        border-radius: 12px;
+        font-weight: 500;
+
+        span {
+          font-size: 16px;
+
+          @include flex(center);
+        }
+
+        @media (width <= 768px) {
+          display: none;
+        }
+      }
     }
-  }
 
-  .background {
-    position: absolute;
-    top: 102px;
-    top: 20%;
-    width: 100%;
-    height: 20px;
-    background-color: #ffad11;
-
-    @media (width <= 768px) {
-      display: none;
-    }
-  }
-
-  .image {
-    width: 100%;
-    height: 512px;
-
-    @media (width <= 768px) {
-      z-index: 9999;
+    .leftSpace {
+      padding-top: 128px;
+      padding-right: 40px;
+      width: 40%;
       height: 100%;
+
+      .dateTime {
+        @include text(16px, 24px, #172142);
+
+        font-weight: 600;
+      }
+    }
+
+    .imgContainer {
+      width: 512px;
+      height: 512px;
+    }
+
+    .background {
+      // position: absolute;
+      // top: 102px;
+      // width: 40%;
+      height: 20px;
+      background-color: #ffad11;
+
+      @media (width <= 768px) {
+        display: none;
+      }
+    }
+
+    .image {
+      // width: 100%;
+      height: 512px;
+
+      @media (width <= 768px) {
+        z-index: 9999;
+        height: 100%;
+      }
     }
   }
 }

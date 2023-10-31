@@ -2,7 +2,7 @@
 import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { Carousel, Col, Image, Row, Space, Typography } from 'antd';
+import { Carousel, Col, Row, Space, Typography } from 'antd';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import React, { CSSProperties, useRef, useState } from 'react';
@@ -108,12 +108,19 @@ const CarouselContent: React.FC = () => {
                 className={styles.background}
                 style={{
                   background: `url('${item?.mbBanner}') no-repeat`,
-                  backgroundSize: 'cover',
+                  backgroundSize: 'contain',
                   backgroundPosition: 'center center'
                 }}
               />
             ) : (
-              <Image alt="" preview={false} className={styles.background} src={item?.banner} width={'100%'} />
+              <div
+                className={styles.background}
+                style={{
+                  background: `url('${item?.banner}') no-repeat`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'top 40% center'
+                }}
+              />
             )}
             <div className={`container ${styles.info}`}>
               <Row>

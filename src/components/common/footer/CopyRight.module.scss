@@ -26,7 +26,7 @@
       }
 
       .paragraph {
-        @include text(14px, 24px);
+        @include text(14px, 24px, #172142);
 
         .text {
           margin-left: 10px;
@@ -52,7 +52,7 @@
         margin-bottom: 24px;
         font-weight: 600;
 
-        @include text(18px, 30px);
+        @include text(18px, 30px, #172142);
 
         @media (width <= 768px) {
           @include title('middle');
@@ -62,10 +62,10 @@
       }
 
       a {
-        @include text(14px, 36px);
+        @include text(14px, 36px, #172142);
 
         @media (width <= 768px) {
-          @include text(12px, 24px);
+          @include text(12px, 24px, #172142);
         }
       }
     }
@@ -89,7 +89,7 @@
       }
 
       .bottomTitle {
-        @include text(14px, 26px);
+        @include text(14px, 26px, #172142);
 
         font-weight: 500;
       }

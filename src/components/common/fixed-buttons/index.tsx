@@ -31,7 +31,6 @@ const FixedButtons: React.FC = () => {
     await sendMailToUser(values);
     setModelVisible(false);
   };
-  const { hash } = window.location;
 
   const labels: string[] = [t('weeklyOpenHouseDesc1'), t('weeklyOpenHouseDesc2'), t('weeklyOpenHouseDesc3')];
   const menu: IMenuItem[] = [
@@ -99,18 +98,12 @@ const FixedButtons: React.FC = () => {
   useEffect(() => {
     const delay = 40000;
     const timeoutId = setTimeout(() => {
-      setOpen(true);
+      setModelVisible(true);
     }, delay);
     return () => {
       clearTimeout(timeoutId);
     };
   }, []);
-
-  useEffect(() => {
-    if (hash === '#appointment') {
-      setOpen(true);
-    }
-  }, [hash]);
 
   return (
     <div className={styles.buttonContainer}>

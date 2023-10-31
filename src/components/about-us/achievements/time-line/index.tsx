@@ -44,7 +44,11 @@ const TimeLine: React.FC = () => {
             renderItem={(item) => (
               <List.Item className={styles.listItem}>
                 <List.Item.Meta
-                  title={<Text className={styles.itemTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>}
+                  title={
+                    <Text className={styles.itemTitle} style={{ fontSize: 20 }}>
+                      {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
+                    </Text>
+                  }
                   description={<XStarMdViewer className={styles.itemDetail} value={getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)} />}
                 />
               </List.Item>

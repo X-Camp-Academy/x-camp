@@ -54,7 +54,9 @@ const Community: React.FC = () => {
             className={styles.title}
           />
           <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
-          <Paragraph className={styles.paragraph}>{t('Home.Community.Desc1')}</Paragraph>
+          <Paragraph className={styles.paragraph} style={{ marginBottom: 0, marginTop: 20 }}>
+            {t('Home.Community.Desc1')}
+          </Paragraph>
           <Paragraph className={styles.paragraph}>{t('Home.Community.Desc2')}</Paragraph>
         </div>
 
