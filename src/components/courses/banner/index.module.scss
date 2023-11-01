@@ -21,6 +21,7 @@
     .title {
       @include title('bold');
 
+      font-family: Montserrat, Arial;
       line-height: 58px;
 
       @media (width <= 768px) {
@@ -70,8 +71,8 @@
 
       .button {
         padding-left: 36px;
-        width: 320px;
-        height: 72px;
+        width: 334px;
+        height: 64px;
         border-color: #d46b14;
         border-radius: 12px;
         font-size: 24px;
@@ -79,7 +80,7 @@
         text-align: left;
         color: #d46b14;
         background-color: #fff;
-        line-height: 40px;
+        line-height: 16px;
 
         @media (width <= 768px) {
           padding-left: 16px;

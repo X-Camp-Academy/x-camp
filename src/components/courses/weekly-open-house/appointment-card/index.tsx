@@ -1,12 +1,10 @@
 import { useLang } from '@/hoc/with-intl/define';
 import { CarryOutOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
 
 const AppointmentCard: React.FC = () => {
   const { format: t } = useLang();
-  const router = useRouter();
   return (
     <div className={'container'}>
       <div className={styles.card}>
@@ -20,7 +18,7 @@ const AppointmentCard: React.FC = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.imgContain}>
-            <img src="/image/about-us/camps-1.png" alt="" />
+            <img src="/image/courses/appointmentImg.png" alt="" />
           </div>
         </div>
       </div>
