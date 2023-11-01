@@ -311,7 +311,7 @@ const Courses: React.FC = () => {
                             </div>
                           }
                         >
-                          <Space size={24} style={{ width: '100%', flexWrap: 'wrap' }}>
+                          <Space size={24} className={styles.cardSpace}>
                             {v?.children?.map((g, index) => {
                               return (
                                 <ClassCard

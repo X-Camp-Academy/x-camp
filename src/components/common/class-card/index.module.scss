@@ -2,7 +2,14 @@
 
 .colorfulCard {
   position: relative;
+  top: 0;
+  margin-bottom: 10px;
   width: 380px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    top: -10px;
+  }
 
   @media (width <= 768px) {
     width: 280px;

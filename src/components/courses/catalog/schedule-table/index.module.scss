@@ -77,7 +77,26 @@
           width: 100%;
         }
       }
+
+      .lastInput {
+        @media (width < 1400px) {
+          align-self: flex-end;
+        }
+      }
+
+      .lastButtonCol {
+        padding-right: 0 !important;
+        text-align: end;
+
+        @media (width < 1400px) {
+          align-self: flex-end;
+        }
+      }
     }
+  }
+
+  .courseCardContainer {
+    cursor: pointer;
   }
 
   .pagination {
