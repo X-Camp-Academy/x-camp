@@ -1,8 +1,9 @@
 import { GetResourcesLiveSolution, LiveSolutionCategory } from '@/apis/strapi-client/define';
+import { useGetResourcesLiveSolution } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult, swapArrayElements } from '@/utils/public';
+import { getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
 import { Collapse, Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
@@ -11,18 +12,16 @@ import styles from './index.module.scss';
 const { Panel } = Collapse;
 const { Text } = Typography;
 
-interface Props {
-  data: StrapiResponseDataItem<GetResourcesLiveSolution>[][] | undefined;
-}
-
-interface sortDataProps {
+interface ResultProps {
   category: LiveSolutionCategory;
   categoryData: StrapiResponseDataItem<GetResourcesLiveSolution>[];
 }
 [];
 
-const UsacoIntro = ({ data }: Props) => {
+const UsacoIntro = () => {
   const { format: t, lang } = useLang();
+  const { data } = useGetResourcesLiveSolution();
+
   const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
   const isMobile = useMobile();
@@ -30,20 +29,48 @@ const UsacoIntro = ({ data }: Props) => {
     const { video, videoZh, videoEn } = attributes;
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
-  const Categories = Object.values(LiveSolutionCategory);
-  const [sortData, setSortData] = useState<sortDataProps[]>([]);
+
+  const [result, setResult] = useState<ResultProps[]>();
+
+  const sortData: { category: LiveSolutionCategory; categoryData: StrapiResponseDataItem<GetResourcesLiveSolution>[] }[] = [
+    {
+      category: LiveSolutionCategory.XCampUSACOBronze,
+      categoryData: []
+    },
+    {
+      category: LiveSolutionCategory.XCampUSACOSilver,
+      categoryData: []
+    },
+    {
+      category: LiveSolutionCategory.XCampUSACOGold,
+      categoryData: []
+    }
+  ];
 
   useEffect(() => {
-    if (data) {
-      const sortData = swapArrayElements(data, 1, 2)?.map((item, index) => {
-        const orderData = item?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-        return {
-          category: Categories[index],
-          categoryData: orderData
-        };
-      });
-      setSortData(sortData);
-    }
+    data?.forEach((item) => {
+      switch (item?.attributes?.category) {
+        case LiveSolutionCategory.XCampUSACOBronze:
+          sortData[0]?.categoryData?.push(item);
+          break;
+        case LiveSolutionCategory.XCampUSACOSilver:
+          sortData[1]?.categoryData?.push(item);
+          break;
+        case LiveSolutionCategory.XCampUSACOGold:
+          sortData[2]?.categoryData?.push(item);
+          break;
+        default:
+          break;
+      }
+    });
+
+    const orderData = sortData?.map((item) => {
+      return {
+        category: item?.category,
+        categoryData: item?.categoryData?.sort((a, b) => b?.attributes?.order - a?.attributes?.order)
+      };
+    });
+    setResult(orderData);
   }, [data]);
 
   return (
@@ -54,7 +81,7 @@ const UsacoIntro = ({ data }: Props) => {
           {t('USACOSolution.Intro2')}
           {t('USACOSolution.Intro3')}
         </div>
-        {sortData?.map((v, index) => {
+        {result?.map((v, index) => {
           return (
             <div key={'video' + index} style={{ marginBottom: isMobile ? 0 : 88 }}>
               <Collapse
