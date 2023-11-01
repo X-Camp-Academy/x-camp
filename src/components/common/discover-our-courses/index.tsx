@@ -88,7 +88,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
         {showSubTitle && <div className={styles.subTitle}>{t('RecentPopularEvents')}</div>}
         {showBg && <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />}
 
-        <Row className={styles.row} gutter={16} align="middle">
+        <Row className={styles.row} gutter={[16, 14]} align="middle">
           {courseCards?.map((item) => {
             return (
               <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>

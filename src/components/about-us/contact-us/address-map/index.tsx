@@ -17,6 +17,7 @@ const AddressMap: React.FC = () => {
             src="https://www.google.com/maps/d/embed?mid=1kV6Z3Mv3d8Z-1rtLqP9rXmX3QPh_ivth&ehbc=2E312F"
             width={'100%'}
             height={isMobile ? 400 : 480}
+            style={{ border: 'none' }}
           />
         </Col>
       </Row>

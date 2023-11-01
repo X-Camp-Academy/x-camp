@@ -15,6 +15,7 @@ import styles from './index.module.scss';
 
 const { Title } = Typography;
 const Activities: React.FC = () => {
+  const isMobile = useMobile();
   const isiPad = useMobile('xl');
   const router = useRouter();
   const { lang } = useLang();
@@ -72,7 +73,7 @@ const Activities: React.FC = () => {
           </div>
         </Space>
 
-        <Row gutter={[32, 32]}>
+        <Row gutter={isMobile ? [32, 24] : [32, 32]}>
           {newEventData?.map((v, index) => (
             <Col key={v?.id} xs={24} sm={24} md={12} lg={8}>
               <ColorfulCard border={'bottom'} animate={false} index={index}>

@@ -187,6 +187,7 @@ const ScheduleTable: React.FC = () => {
           total={courses?.meta?.pagination?.total}
           showSizeChanger
           style={{ textAlign: 'center', marginTop: '56px' }}
+          className={styles.pagination}
         />
       </div>
     </div>

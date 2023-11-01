@@ -26,7 +26,6 @@ const SubscribeNewsletter: React.FC = () => {
 
           <Paragraph className={styles.paragraph}>
             {t('SubscribeNewsletter.Desc1')}
-            <br />
             {t('SubscribeNewsletter.Desc2')}
           </Paragraph>
 

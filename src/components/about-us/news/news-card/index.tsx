@@ -63,7 +63,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
                         {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
                       </Title>
 
-                      <Space align="center">
+                      <Space align="center" className={styles.space}>
                         <Text className={styles.date}>
                           {item?.attributes?.editor}
                           {startTime.format('YYYY-MM-DD')}

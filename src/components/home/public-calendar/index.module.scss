@@ -19,7 +19,7 @@
       @media (width <= 768px) {
         @include title('mobile');
 
-        margin-bottom: 32px;
+        margin-bottom: 28px;
       }
     }
 
@@ -205,7 +205,7 @@
       }
 
       @media (width <= 768px) {
-        margin-top: 64px;
+        margin-top: 16px;
       }
     }
 

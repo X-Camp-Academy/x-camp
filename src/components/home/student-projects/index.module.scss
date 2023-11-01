@@ -21,7 +21,6 @@
 
   .baseTitleBg {
     display: block;
-    margin-top: -8px;
     height: 20px;
     background-repeat: no-repeat;
     background-size: contain;
@@ -31,11 +30,11 @@
   .titleEnBg {
     @extend .baseTitleBg;
 
-    margin-left: 144px;
+    margin-left: 136px;
     width: 160px;
 
     @media (width <= 768px) {
-      margin-left: 88px;
+      margin-left: 92px;
       width: 96px;
     }
   }
@@ -43,11 +42,11 @@
   .titleZhBg {
     @extend .baseTitleBg;
 
-    margin-left: 72px;
+    margin-left: 64px;
     width: 80px;
 
     @media (width <= 768px) {
-      margin-left: 48px;
+      margin-left: 40px;
       width: 64px;
     }
   }
@@ -71,8 +70,7 @@
     color: #172142;
 
     @media (width <= 768px) {
-      margin: auto;
-      margin-bottom: 32px;
+      margin-bottom: 18px;
       padding: 0;
 
       @include margin(0);
@@ -115,7 +113,7 @@
       .cardMore {
         position: absolute;
         bottom: 16px;
-        left: 16px;
+        left: 24px;
         color: #172142;
 
         @media (width <= 768px) {

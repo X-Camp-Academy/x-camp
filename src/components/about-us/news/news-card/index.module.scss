@@ -39,29 +39,40 @@
         }
       }
 
-      .date {
-        padding-right: 24px;
-        padding-left: 24px;
-        font-size: 16px;
-        font-weight: 400;
-        color: #666;
-        line-height: 28px;
+      .space {
+        display: flex;
+        justify-content: space-between;
 
-        @media (width <= 768px) {
-          @include mobile-text;
-
+        .date {
+          padding-right: 24px;
+          padding-left: 24px;
+          font-size: 16px;
+          font-weight: 400;
           color: #666;
+          line-height: 28px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+
+            color: #666;
+          }
         }
-      }
 
-      .btn {
-        font-size: 16px;
-        color: #ffad11;
-
-        @media (width <= 768px) {
-          @include mobile-text;
-
+        .btn {
+          margin-right: 32px;
+          font-size: 16px;
           color: #ffad11;
+
+          @media (width >= 768px) and (width <= 1200px) {
+            margin-right: 24px;
+          }
+
+          @media (width <= 768px) {
+            @include mobile-text;
+
+            margin-right: 16px;
+            color: #ffad11;
+          }
         }
       }
     }
