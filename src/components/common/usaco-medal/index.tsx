@@ -16,7 +16,7 @@ interface USACOMedalProps {
   rowStyle?: React.CSSProperties;
 }
 
-const USACOMedal: React.FC<USACOMedalProps> = ({ showContainerEffect = true, showLogo = true, showTitle = true, rowStyle }) => {
+const USACOMedal: React.FC<USACOMedalProps> = ({ showContainerEffect = false, showLogo = true, showTitle = true, rowStyle }) => {
   const router = useRouter();
   const { format: t } = useLang();
   const isMobile = useMobile();
@@ -53,7 +53,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ showContainerEffect = true, sho
   return (
     <div
       className={showLogo ? `${styles.usacoBgContainer}` : `${styles.usacoContainer}`}
-      style={showContainerEffect ? { backgroundColor: '#efefef', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' } : {}}
+      style={showContainerEffect ? { backgroundColor: '#fff', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' } : {}}
     >
       {showTitle && (
         <Col span={24} className={styles.titleContainer}>

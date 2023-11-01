@@ -5,7 +5,7 @@
   width: 100%;
 
   @media (width <= 768px) {
-    padding: 16px 0;
+    padding: 4px 10px 8px;
   }
 
   .mainTitle {
@@ -15,6 +15,8 @@
 
     @media (width <= 768px) {
       @include title('mobile');
+
+      margin-bottom: 8px;
     }
   }
 
@@ -24,6 +26,10 @@
 
   :global(.ant-collapse-content-box) {
     padding: 16px 0 !important;
+
+    @media (width <= 768px) {
+      padding: 0 !important;
+    }
   }
 
   .cards {
@@ -42,10 +48,6 @@
         font-weight: 600;
         color: #172142;
         line-height: 30px;
-
-        @media (width <= 768px) {
-          @include title('mobile');
-        }
       }
 
       .description {

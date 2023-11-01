@@ -23,7 +23,7 @@
   background: url('/image/common/x-camp-logo.png') no-repeat;
   background-size: contain;
   flex-direction: column;
-  background-color: #efefef;
+  background-color: #fff;
 
   @media (width <= 768px) {
     padding: 0;
@@ -74,9 +74,10 @@
     background-size: 120px 88px !important;
 
     @media (width <= 768px) {
+      margin-top: 10px;
       margin-bottom: 10px;
       width: 64px;
-      background-size: 64px 32px !important;
+      background-size: 48px 36px !important;
     }
 
     .medalCount {
@@ -89,7 +90,7 @@
         font-size: 26px;
         font-weight: 600;
         color: #050260;
-        line-height: 42px;
+        line-height: 32px;
         text-shadow: 1px 1px 0 #eeca92;
       }
 

@@ -59,13 +59,13 @@ const Intro: React.FC = () => {
           </Paragraph>
         </Space>
 
-        <Space direction={isMobile ? 'vertical' : 'horizontal'} size={0} className={styles.space}>
+        <Space direction={'horizontal'} size={0} className={styles.space}>
           {images?.map((item) => <Image key={item} alt="" src={item} preview={false} className={styles.image} />)}
         </Space>
 
         <Title className={styles.chartTitle}>{t('USACO.PreCollege.Title')}</Title>
 
-        <Space direction={isMobile ? 'vertical' : 'horizontal'} size={48} className={styles.chart}>
+        <Space direction={isMobile ? 'vertical' : 'horizontal'} size={isMobile ? 16 : 48} className={styles.chart}>
           <Image alt="" preview={false} src={'/image/resources/bar-chart.png'} className={styles.barChart} />
 
           <Space direction="vertical" className={styles.chartRight}>

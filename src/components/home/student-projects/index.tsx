@@ -39,29 +39,29 @@ const StudentProjects: React.FC = () => {
       <div className={`${styles.studentProjects} container`} id="stu_project">
         <Space direction="vertical" align="center">
           {lang === 'zh' ? (
-            <>
+            <div>
               <Title className={styles.title}>
                 学生<span>课程</span>
               </Title>
               <Text className={styles.titleZhBg} />
-            </>
+            </div>
           ) : (
-            <>
+            <div>
               <Title className={styles.title}>
                 Student <span>Projects</span>
               </Title>
               <Text className={styles.titleEnBg} />
-            </>
+            </div>
           )}
           <Paragraph className={styles.paragraph}>{t('Home.StudentProjects.Desc')}</Paragraph>
 
-          <Row gutter={[16, 16]} className={styles.row}>
+          <Row gutter={[16, 28]} className={styles.row}>
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
               {studentProjectsData && <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
-              <Row gutter={[16, 16]}>
+              <Row gutter={[16, 28]}>
                 {studentProjectsData &&
                   studentProjectsData.slice(1).map((item) => (
                     <Col xs={24} sm={24} md={24} lg={24} xl={12} key={item?.id}>
@@ -70,7 +70,7 @@ const StudentProjects: React.FC = () => {
                         className={styles.card}
                         bodyStyle={{
                           overflow: 'hidden',
-                          padding: 16
+                          padding: 24
                         }}
                         cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
                       >

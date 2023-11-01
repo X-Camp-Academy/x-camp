@@ -16,6 +16,8 @@
 
     @media (width <= 768px) {
       @include mobile-text;
+
+      margin-bottom: 24px;
     }
   }
 
@@ -35,6 +37,7 @@
   }
 
   :global(.ant-collapse-expand-icon) {
+    align-items: start;
     height: 60px !important;
     color: #d46b14;
   }
@@ -89,6 +92,7 @@
       width: 400px;
 
       @media (width <= 768px) {
+        margin-bottom: 24px;
         width: 100%;
       }
 

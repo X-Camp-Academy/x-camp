@@ -5,6 +5,8 @@
 
   @media (width <= 768px) {
     margin-top: 50px;
+    padding-right: 18px;
+    padding-left: 18px;
   }
 
   .title {
@@ -35,7 +37,9 @@
     margin-top: 64px;
 
     @media (width <= 768px) {
-      margin-top: 32px;
+      margin-top: 12px;
+      padding-right: 6px;
+      padding-left: 6px;
     }
 
     .leftImage {
