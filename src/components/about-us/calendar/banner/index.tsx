@@ -8,9 +8,9 @@ const Banner: React.FC = () => {
   const paragraph = (
     <>
       {t('Calendar.Banner.Desc1')}
-      {t('Calendar.Banner.Desc2')}
+      {/* {t('Calendar.Banner.Desc2')}
       {t('Calendar.Banner.Desc3')}
-      {t('Calendar.Banner.Desc4')}
+      {t('Calendar.Banner.Desc4')} */}
     </>
   );
 
