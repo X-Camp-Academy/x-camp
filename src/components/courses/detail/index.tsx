@@ -46,7 +46,7 @@ const CourseDetail: React.FC = () => {
           {/* <ProgressionClasses /> */}
         </CourseClassesContext.Provider>
 
-        <UsacoMedal />
+        <UsacoMedal backgroundColor="#EFEFEF" showShadow={false} />
         <Faculty />
         <Faqs title={t('CoursesFAQS')} data={faqData} />
         <Reviews reviewsData={reviewsData} />
