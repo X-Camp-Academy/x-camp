@@ -1,10 +1,12 @@
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { CarryOutOutlined } from '@ant-design/icons';
 import React from 'react';
 import styles from './index.module.scss';
 
 const AppointmentCard: React.FC = () => {
   const { format: t } = useLang();
+  const isMobile = useMobile();
   return (
     <div className={'container'}>
       <div className={styles.card}>
@@ -16,11 +18,13 @@ const AppointmentCard: React.FC = () => {
             <CarryOutOutlined />
           </a>
         </div>
-        <div className={styles.right}>
-          <div className={styles.imgContain}>
-            <img src="/image/courses/appointmentImg.png" alt="" />
+        {!isMobile && (
+          <div className={styles.right}>
+            <div className={styles.imgContain}>
+              <img src="/image/about-us/camps-1.png" alt="" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

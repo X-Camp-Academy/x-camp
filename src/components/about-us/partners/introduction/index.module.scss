@@ -27,46 +27,34 @@
 
       .card {
         display: flex;
-        padding: 45px 48px;
-        padding-bottom: 0;
+        align-items: center;
+        padding: 48px;
         width: 100%;
-        height: 448px;
         border-radius: 8px;
         background: #fff;
 
         @media (width <= 768px) {
           padding: 24px;
-          height: 288px;
           flex-direction: column;
         }
 
-        .img {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 310px;
-          border-radius: 12px;
-          background: #fff;
-
-          img {
-            height: 33%;
-          }
-
-          @media (width <= 768px) {
-            display: none;
-          }
+        .logo {
+          width: 248px;
+          height: 100px;
         }
 
-        .cardContent {
+        .partnerContent {
           position: relative;
-          padding-left: 40px;
+          padding-bottom: 64px;
+          padding-left: 48px;
 
           @media (width <= 768px) {
-            padding-left: 0;
+            padding-bottom: 24px;
+            padding-left: 24px;
           }
 
-          .cardTitle {
-            margin: 0 0 20px;
+          .partnerTitle {
+            margin: 20px 0;
             font-size: 28px;
             font-weight: 600;
             color: #172142;
@@ -79,7 +67,7 @@
             }
           }
 
-          .cardDescription {
+          .partnerDescription {
             font-size: 18px;
             font-weight: 500;
             color: #172142;
@@ -89,28 +77,24 @@
               @include mobile-text;
             }
           }
+        }
 
-          .btn {
-            position: absolute;
-            top: 270px;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 170px;
-            height: 48px;
-            border: 2px solid #172142;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 500;
-            color: #172142;
-            background: #fff;
-            line-height: 24px;
+        .button {
+          position: absolute;
+          right: 0;
+          margin-top: 20px;
+          width: 158px;
+          height: 48px;
+          border: 2px solid #172142;
+          border-radius: 12px;
+          font-size: 18px;
+          font-weight: 500;
+          color: #172142;
+          background: #fff;
+          line-height: 36px;
 
-            @media (width <= 768px) {
-              position: static;
-            }
+          @media (width <= 768px) {
+            position: static;
           }
         }
       }

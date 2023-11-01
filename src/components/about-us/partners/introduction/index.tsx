@@ -4,7 +4,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
-import { Button, Space, Typography } from 'antd';
+import { Button, Image, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
@@ -41,15 +41,13 @@ const Introduction: React.FC = () => {
             <Space direction="vertical" style={{ width: '100%' }} size={isMobile ? 24 : 60}>
               {items?.map((card) => (
                 <div className={styles.card} key={card?.id}>
-                  <div className={styles.img}>
-                    <img src={card?.attributes?.logo?.data?.attributes?.url} alt="" />
-                  </div>
-                  <div className={styles.cardContent}>
-                    <Title className={styles.cardTitle}>{getTransResult(lang, card?.attributes?.titleZh, card?.attributes?.titleEn)}</Title>
-                    <Paragraph className={styles.cardDescription} ellipsis={{ rows: 3 }}>
+                  <Image className={styles.logo} preview={false} src={card?.attributes?.logo?.data?.attributes?.url} alt="" />
+                  <div className={styles.partnerContent}>
+                    <Title className={styles.partnerTitle}>{getTransResult(lang, card?.attributes?.titleZh, card?.attributes?.titleEn)}</Title>
+                    <Paragraph className={styles.partnerDescription} ellipsis={{ rows: 3 }}>
                       {getTransResult(lang, card?.attributes?.titleDescriptionZh, card?.attributes?.titleDescriptionEn)}
                     </Paragraph>
-                    <Button className={styles.btn} href={card?.attributes?.link}>
+                    <Button className={styles.button} href={card?.attributes?.link}>
                       {t('LearnMore')}
                       <RightOutlined style={{ color: '#333333' }} />
                     </Button>

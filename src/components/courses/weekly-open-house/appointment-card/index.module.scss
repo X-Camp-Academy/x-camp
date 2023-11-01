@@ -3,15 +3,10 @@
 .card {
   display: flex;
   justify-content: space-around;
+  padding: 80px;
   width: 100%;
-  min-height: 184px;
-  border-radius: 12px;
+  border-radius: 8px;
   background: #fff;
-
-  @media (width <= 992px) {
-    padding: 40px 32px;
-    flex-direction: column;
-  }
 
   .left {
     display: flex;
@@ -46,7 +41,7 @@
       width: 250px;
       height: 48px;
       border: 2px solid #172142;
-      border-radius: 12px;
+      border-radius: 8px;
       font-weight: 500;
       opacity: 0.5;
 
@@ -65,7 +60,6 @@
   }
 
   .right {
-    right: 400px;
     display: flex;
     justify-content: center;
 
@@ -76,13 +70,26 @@
 
     .imgContain {
       position: relative;
+      margin-right: 48px;
 
       img {
-        margin-top: 10px;
+        position: relative;
+        z-index: 2;
+        width: 200px;
+        height: 250px;
+        transform: rotate(-15deg);
 
-        @media (width <= 768px) {
-          margin-top: 40px;
-          margin-left: 150px;
+        &::after {
+          position: absolute;
+          top: -20px;
+          left: 20px;
+          display: inline-block;
+          width: 200px;
+          height: 180px;
+          border-radius: 4px;
+          background-color: #cce1f1;
+          content: '';
+          transform: rotate(10deg);
         }
       }
     }
