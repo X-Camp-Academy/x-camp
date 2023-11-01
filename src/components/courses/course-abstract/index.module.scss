@@ -105,11 +105,12 @@
       font-weight: 500;
       color: #fff;
       background: #d46b14;
-      transition: opacity 0.5s;
+      transition: all 0.3s ease-in;
       line-height: 36px;
 
       &:hover {
-        opacity: 0.8;
+        background: #d46b14;
+        box-shadow: 0 8px 12px -4px rgb(#d76100, 70%);
       }
     }
 
