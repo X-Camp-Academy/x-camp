@@ -45,6 +45,8 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
     }
   }, [segmented, newEventData]);
 
+  console.log(data);
+
   return (
     <div className={styles.content}>
       <div className={'container'}>
@@ -59,7 +61,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
                   <ColorfulCard border={'bottom'} index={index} animate={false}>
                     <Space direction={'vertical'} className={styles.card}>
                       <img alt="" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
-                      <Title className={styles.title} ellipsis={{ rows: 2 }}>
+                      <Title className={styles.title} ellipsis={{ rows: 1 }}>
                         {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
                       </Title>
 
