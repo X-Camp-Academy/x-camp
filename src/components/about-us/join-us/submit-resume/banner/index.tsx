@@ -1,13 +1,11 @@
 import CommonBanner from '@/components/common/common-banner';
 import { useLang } from '@/hoc/with-intl/define';
 import { CommentOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
-  const router = useRouter();
   const paragraph = (
     <>
       {t('JoinUs.Banner.Desc1')}
@@ -17,7 +15,7 @@ const Banner: React.FC = () => {
   return (
     <div className={styles.topBannerContainer}>
       <CommonBanner
-        image={'/image/about-us/banner-joinUs.png'}
+        image={'/image/about-us/banner-submit-resume.png'}
         title={t('Careers')}
         titleClassName={styles.title}
         paragraphClassName={styles.paragraph}
