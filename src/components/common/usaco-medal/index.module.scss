@@ -102,10 +102,10 @@
     .medalTitle {
       display: block;
       width: 100px;
+      font-weight: 500;
+      text-shadow: 1px 1px 0 #d4ac6d;
 
       @include text(16px, 24px, #172142);
-
-      font-weight: 500;
 
       @media (width <= 768px) {
         width: 64px;

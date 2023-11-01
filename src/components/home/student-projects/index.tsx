@@ -76,7 +76,7 @@ const StudentProjects: React.FC = () => {
                       >
                         <Space direction="vertical" size={24}>
                           <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
-                          <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
+                          <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph} style={{ marginTop: '-20px' }}>
                             {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
                           </Paragraph>
                           <a href={getTransResult(lang, item?.attributes?.videoZh, item?.attributes?.videoEn)} className={styles.cardMore}>

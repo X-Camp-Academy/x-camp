@@ -56,7 +56,7 @@ const UsacoIntro = ({ data }: Props) => {
         </div>
         {sortData?.map((v, index) => {
           return (
-            <div key={'video' + index} style={{ marginBottom: isMobile ? 40 : 88 }}>
+            <div key={'video' + index} style={{ marginBottom: isMobile ? 0 : 88 }}>
               <Collapse
                 ghost
                 defaultActiveKey={index}
