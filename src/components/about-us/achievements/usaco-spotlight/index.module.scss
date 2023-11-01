@@ -76,8 +76,7 @@
             padding: 16px 0;
             width: calc(100% - 32px);
             border-radius: 8px;
-            background-color: #172142;
-            opacity: 0.3;
+            background: rgba(#172142, 0.3);
             backdrop-filter: blur(2px);
 
             @media (width <= 768px) {

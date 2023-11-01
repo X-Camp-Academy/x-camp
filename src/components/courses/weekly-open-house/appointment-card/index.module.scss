@@ -2,16 +2,11 @@
 
 .card {
   display: flex;
-  padding: 80px 64px;
+  justify-content: space-between;
+  padding: 80px;
   width: 100%;
-  min-height: 436px;
-  border-radius: 12px;
+  border-radius: 8px;
   background: #fff;
-
-  @media (width <= 992px) {
-    padding: 40px 32px;
-    flex-direction: column;
-  }
 
   .left {
     display: flex;
@@ -43,7 +38,7 @@
       width: 250px;
       height: 48px;
       border: 2px solid #172142;
-      border-radius: 12px;
+      border-radius: 8px;
       font-weight: 500;
       opacity: 0.5;
 
@@ -62,17 +57,12 @@
   }
 
   .right {
-    right: 400px;
     display: flex;
     justify-content: center;
 
-    @media (width <= 7682px) {
-      margin-top: 20px;
-      width: 50%;
-    }
-
     .imgContain {
       position: relative;
+      margin-right: 48px;
 
       img {
         position: relative;
@@ -92,11 +82,6 @@
           background-color: #cce1f1;
           content: '';
           transform: rotate(10deg);
-        }
-
-        @media (width <= 768px) {
-          margin-top: 40px;
-          margin-left: 150px;
         }
       }
     }
