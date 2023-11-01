@@ -296,18 +296,3 @@ export const getLangResult = (lang: 'zh' | 'en', zhData?: string[], enData?: str
 export const getWeeksDays = (frequency?: string) => {
   return frequency === 'Daily' ? 'days' : 'weeks';
 };
-
-export const swapArrayElements = <T>(arr: T[], index1: number, index2: number): T[] => {
-  if (!arr) {
-    return [];
-  }
-  if (index1 < 0 || index1 >= arr.length || index2 < 0 || index2 >= arr.length) {
-    // 索引越界，返回原数组
-    return arr;
-  }
-
-  const temp = arr[index1];
-  arr[index1] = arr[index2];
-  arr[index2] = temp;
-  return arr;
-};

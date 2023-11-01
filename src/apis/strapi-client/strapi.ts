@@ -477,7 +477,7 @@ export const useGetResourcesLiveSolution = () => {
   return useRequest(
     async (params: GetResourcesLiveSolutionRequest) => {
       const res = await client.getResourcesLiveSolution(params);
-      return isArray(res?.data) ? classifyByAttribution(res.data, 'category') : [];
+      return isArray(res?.data) ? res.data : [];
     },
     {
       defaultParams: [
