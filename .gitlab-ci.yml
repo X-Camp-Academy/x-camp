@@ -62,4 +62,3 @@ build-image:
   only:
     - main
     - tags
-    - dev
