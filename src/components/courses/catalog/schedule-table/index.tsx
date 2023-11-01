@@ -147,14 +147,14 @@ const ScheduleTable: React.FC = () => {
               </Col>
             ))}
 
-            <Col xs={24} sm={24} md={24} lg={4}>
+            <Col xs={24} sm={24} md={22} lg={4} className={styles.lastInput}>
               <Form.Item name="search">
                 <Input suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />} allowClear />
               </Form.Item>
             </Col>
 
-            <Col xs={24} sm={24} md={24} lg={2}>
-              <Form.Item>
+            <Col xs={24} sm={24} md={2} lg={2} className={styles.lastButtonCol}>
+              <Form.Item style={{ marginInlineEnd: 0 }}>
                 <Button type={'primary'} className={styles.button} htmlType="submit">
                   {t('Search')}
                 </Button>
@@ -163,7 +163,7 @@ const ScheduleTable: React.FC = () => {
           </Row>
         </Form>
 
-        <div style={{ marginTop: isMobile ? 16 : 35 }}>
+        <div style={{ marginTop: isMobile ? 16 : 35, paddingRight: '7px' }}>
           {courses?.data?.map((item) => {
             return (
               <>

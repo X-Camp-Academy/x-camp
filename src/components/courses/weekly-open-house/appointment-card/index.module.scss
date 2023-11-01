@@ -2,7 +2,7 @@
 
 .card {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 80px;
   width: 100%;
   border-radius: 8px;
@@ -62,6 +62,11 @@
   .right {
     display: flex;
     justify-content: center;
+
+    @media (width <= 768px) {
+      margin-top: 20px;
+      width: 50%;
+    }
 
     .imgContain {
       position: relative;

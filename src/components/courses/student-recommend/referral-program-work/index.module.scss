@@ -24,22 +24,27 @@
       }
     }
 
-    .description {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      font-size: 18px;
-      font-weight: 500;
-      text-align: left;
-      color: #172142;
-      line-height: 34px;
+    .list {
+      padding-left: 20px;
 
-      @media (width <= 768px) {
-        @include mobile-text;
-      }
+      .description {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 3px 0;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: left;
+        color: #172142;
+        line-height: 34px;
 
-      span {
-        margin-right: 8px;
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
+
+        span {
+          margin-right: 8px;
+        }
       }
     }
 
@@ -53,5 +58,9 @@
         padding: 20px;
       }
     }
+  }
+
+  :global(.ant-list-item:last-child) {
+    margin-top: 10px !important;
   }
 }

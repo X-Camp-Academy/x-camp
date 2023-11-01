@@ -47,7 +47,7 @@
     .form {
       display: flex;
       justify-content: end;
-      margin-top: 64px;
+      margin-top: 30px;
       padding-right: 12px;
       padding-left: 12px;
 
@@ -59,7 +59,7 @@
     .title {
       margin-top: -48px;
       margin-bottom: 56px;
-      font-size: 42px;
+      font-size: 36px;
       font-weight: 600;
       color: #172142;
       line-height: 56px;
@@ -69,6 +69,33 @@
         margin-bottom: 8px;
 
         @include title('mobile');
+      }
+    }
+
+    .cardSpace {
+      display: grid;
+      justify-content: space-between;
+      width: 100%;
+      grid-template-columns: 1fr 1fr 1fr;
+      flex-wrap: wrap;
+
+      @media (width >= 1400px) {
+        :global(.ant-space-item:nth-child(3n)) {
+          .colorfulCard {
+            margin-left: auto;
+          }
+        }
+
+        :global(.ant-space-item:nth-child(3n + 2)) {
+          .colorfulCard {
+            margin: 0 auto;
+          }
+        }
+      }
+
+      @media (width < 1400px) {
+        display: flex;
+        justify-content: unset;
       }
     }
 
@@ -100,9 +127,9 @@
       justify-content: space-between;
 
       .panelTitle {
-        font-size: 36px;
+        font-size: 30px;
         font-weight: 600;
-        color: #172a88;
+        color: #172142;
 
         @media (width <= 768px) {
           @include title('middle');

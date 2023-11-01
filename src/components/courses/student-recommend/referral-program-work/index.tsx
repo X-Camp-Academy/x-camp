@@ -18,6 +18,7 @@ const ReferralProgramWork: React.FC = () => {
               <Title className={styles.title}>{t('ReferralProgramWork')}</Title>
               <List
                 dataSource={listData}
+                className={styles.list}
                 bordered={false}
                 split={false}
                 renderItem={(item, index) => {

@@ -21,6 +21,10 @@
 
     :global(.ant-collapse-content) {
       border-top: 2px solid #ffad11;
+
+      .ant-collapse-content {
+        width: 100% !important;
+      }
     }
 
     @media (width <= 768px) {
