@@ -25,14 +25,14 @@ const UsacoIntro = () => {
   const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
   const isMobile = useMobile();
-
-  const [result, setResult] = useState<ResultProps[]>();
   const getVideoByLang = (attributes: GetResourcesLiveSolution) => {
     const { video, videoZh, videoEn } = attributes;
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
 
-  const sortData: { category: LiveSolutionCategory; categoryData: any[] }[] = [
+  const [result, setResult] = useState<ResultProps[]>();
+
+  const sortData: { category: LiveSolutionCategory; categoryData: StrapiResponseDataItem<GetResourcesLiveSolution>[] }[] = [
     {
       category: LiveSolutionCategory.XCampUSACOBronze,
       categoryData: []
