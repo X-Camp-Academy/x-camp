@@ -70,12 +70,12 @@
       }
 
       .button {
-        padding-left: 36px;
-        width: 334px;
-        height: 64px;
+        padding-left: 28px;
+        width: 272px;
+        height: 56px;
         border-color: #d46b14;
         border-radius: 12px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 600;
         text-align: left;
         color: #d46b14;
@@ -83,9 +83,9 @@
         line-height: 16px;
 
         @media (width <= 768px) {
-          padding-left: 16px;
-          width: 240px;
-          height: 64px;
+          padding-left: 12px;
+          width: 224px;
+          height: 56px;
           border-color: #d46b14;
           font-size: 18px;
           color: #d46b14;

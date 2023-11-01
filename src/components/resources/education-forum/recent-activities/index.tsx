@@ -29,6 +29,8 @@ const RecentActivities: React.FC = () => {
     }
   });
 
+  console.log(RecentActivities);
+
   return (
     <>
       {RecentActivities && RecentActivities.length > 0 && (

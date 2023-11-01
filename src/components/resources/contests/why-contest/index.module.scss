@@ -58,7 +58,8 @@
       }
 
       @media (width <= 768px) {
-        @include title('mobile');
+        font-size: 20px;
+        line-height: 32px;
       }
     }
 

@@ -51,7 +51,7 @@ const Partners: React.FC = () => {
         <Title className={styles.title}>{t('Partners')}</Title>
         <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
         <Paragraph className={styles.paragraph}>{t('Partners.Desc')}</Paragraph>
-        <Row className={styles.row}>
+        <Row gutter={[16, 16]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space className={styles.space}>
               {topImages?.map((item) => (
@@ -61,7 +61,7 @@ const Partners: React.FC = () => {
               ))}
             </Space>
           </Col>
-          <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
+          <Col xs={24} sm={24} md={24} lg={12}>
             <Space className={styles.space}>
               {bottomImages?.map((item) => (
                 <a href={item?.link} key={item?.src}>

@@ -24,6 +24,18 @@
     padding: 12px 0 !important;
   }
 
+  :global(.ant-collapse-arrow) {
+    margin-top: -88px;
+
+    @media (width <= 992px) {
+      margin-top: -120px;
+    }
+
+    @media (width <= 768px) {
+      margin-top: -88px;
+    }
+  }
+
   :global(.ant-collapse-content-box) {
     padding: 16px 0 !important;
 
