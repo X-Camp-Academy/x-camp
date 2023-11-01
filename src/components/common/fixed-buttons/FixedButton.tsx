@@ -16,7 +16,7 @@ const FixedButton: React.FC<IProps> = ({ menu, icon, children, state, mobileIcon
   const [open, setOpen] = state ? state : [selfOpen, setSelfOpen];
   const dropdownRender = () => menu;
   return (
-    <Dropdown open={open} onOpenChange={(v) => setOpen(v)} dropdownRender={dropdownRender} trigger={['click']}>
+    <Dropdown open={open} onOpenChange={(v) => setOpen(v)} dropdownRender={dropdownRender} trigger={['click']} overlayStyle={{ height: '100%' }}>
       {isMobile ? (
         <Space direction="vertical" className={styles.mobileIcon}>
           {mobileIcon}

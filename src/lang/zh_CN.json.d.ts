@@ -412,7 +412,7 @@ declare const json: {
   'Partner.Desc1': '我们致力于与我们的合作伙伴一道打造丰富且开放的编程社区。';
   'Partner.Desc2': '如有任何问题';
   'Partner.Desc3': '请随时通过邮件联系我们。';
-  'Calendar.Banner.Desc1': '自成立以来，X-Camp与USACO合作';
+  'Calendar.Banner.Desc1': '关于学校所有重要事件、注册和放假时间的日程安排。';
   'Calendar.Banner.Desc2': '已经在培养学生的问题解决能力方面取得了很大的成就';
   'Calendar.Banner.Desc3': '我们努力教授学生不仅仅是为了在学习旅程中取得出色的成果';
   'Calendar.Banner.Desc4': '而且还注重他们的个人项目';
