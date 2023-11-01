@@ -35,6 +35,9 @@
     }
 
     .btn {
+      @include flex(center);
+
+      justify-content: space-evenly;
       width: 250px;
       height: 48px;
       border: 2px solid #172142;
