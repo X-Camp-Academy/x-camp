@@ -102,6 +102,7 @@
         @media (width <= 768px) {
           @include title('middle');
 
+          margin-top: 0;
           color: #fff;
         }
       }
@@ -136,7 +137,9 @@
         word-wrap: break-word;
 
         @media (width <= 768px) {
-          @include title('mobile');
+          @include title('middle');
+
+          margin-top: 0;
         }
       }
 
