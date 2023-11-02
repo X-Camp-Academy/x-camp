@@ -91,7 +91,7 @@ const Nav: React.FC = () => {
         <Space align="center" className={styles.space}>
           <Space>
             <Link href="/">
-              <Image src="/logo/logo.svg" alt="logo" preview={false} className={styles.image} />
+              <Image src="/assets/logo.svg" alt="logo" preview={false} className={styles.image} />
             </Link>
             {!isMobile && ( // 缓存原因需要强制销毁重建组件
               <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />

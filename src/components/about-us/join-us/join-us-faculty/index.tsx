@@ -21,7 +21,7 @@ const JoinUsFaculty: React.FC = () => {
       <Row className={`${styles.joinUsFaculty} container`}>
         <Col className={styles.xCampIntro} lg={12} md={24} xs={24}>
           <Space direction="vertical" size={isMobile ? 8 : 16}>
-            <Image alt="image" src="/logo/logo.png" preview={false} className={styles.logo} />
+            <Image alt="image" src="/assets/logo.png" preview={false} className={styles.logo} />
             <Paragraph className={styles.introText}>{t('XCampFaculty.Desc')}</Paragraph>
             <Button
               className={styles.introBtn}
