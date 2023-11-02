@@ -27,7 +27,7 @@ const Activities: React.FC = () => {
     pageSize: 12,
     manual: true
   });
-  const [segmented, setSegmented] = useState<EventCategory | SegmentedValue>(EventCategory.SchoolLifeSharing);
+  const [segmented, setSegmented] = useState<EventCategory | SegmentedValue>(EventCategory.All);
   useEffect(() => {
     const commonParams: GetNewEventRequest = {
       populate: '*',

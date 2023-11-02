@@ -141,7 +141,7 @@ const PublicCalendar: React.FC = () => {
       </div>
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
+          <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay={false} autoplaySpeed={2000}>
             {sortData?.map((item) => {
               return (
                 <div key={item?.id} className={styles.eventCard}>
