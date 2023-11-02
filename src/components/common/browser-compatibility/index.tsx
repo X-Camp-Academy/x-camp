@@ -37,8 +37,8 @@ const BrowserCompatibilityPage = () => {
       <div className={styles.planets} />
       <div className={styles.content}>
         <div className={styles.logo}>
-          <img alt="" style={{ height: 40, marginRight: 30 }} src="/logo/x_camp_logo_white.png" />
-          <img alt="" style={{ height: 40 }} src="/logo/xyd_logo_white.png" />
+          <img alt="" style={{ height: 40, marginRight: 30 }} src="/assets/x_camp_logo_white.png" />
+          <img alt="" style={{ height: 40 }} src="/assets/xyd_logo_white.png" />
         </div>
         <div className={styles.reason}>{t('COMPATIBILITY_TIP')}</div>
         <div className={styles.cards}>

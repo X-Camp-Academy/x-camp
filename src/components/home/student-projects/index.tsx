@@ -2,6 +2,7 @@
 import { GetHomeStudentProjects } from '@/apis/strapi-client/define';
 import { useGetHomeStudentProjects } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
 import { Card, Col, Row, Space, Typography } from 'antd';
@@ -11,6 +12,7 @@ import styles from './index.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
 const StudentProjects: React.FC = () => {
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
   const { hash } = window.location;
   const { data } = useGetHomeStudentProjects();
@@ -55,13 +57,13 @@ const StudentProjects: React.FC = () => {
           )}
           <Paragraph className={styles.paragraph}>{t('Home.StudentProjects.Desc')}</Paragraph>
 
-          <Row gutter={[16, 28]} className={styles.row}>
+          <Row gutter={isMobile ? [0, 24] : [16, 28]} className={styles.row}>
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
               {studentProjectsData && <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
-              <Row gutter={[16, 28]}>
+              <Row gutter={[16, 24]}>
                 {studentProjectsData &&
                   studentProjectsData.slice(1).map((item) => (
                     <Col xs={24} sm={24} md={24} lg={24} xl={12} key={item?.id}>

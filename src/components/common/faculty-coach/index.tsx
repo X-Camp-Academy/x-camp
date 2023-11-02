@@ -44,7 +44,7 @@ const FacultyCoach: React.FC<{
   }, [segmented, sortData]);
   return (
     <div className={`${styles.facultyCoach} container`} id="faculty">
-      <Space direction="vertical" size={48}>
+      <Space direction="vertical" size={isMobile ? 24 : 48}>
         <Space direction="vertical">
           <Title className={styles.title}>
             <Text className={styles.title} style={{ color: '#FFAD11' }}>

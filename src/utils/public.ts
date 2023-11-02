@@ -104,13 +104,13 @@ export enum DaylightTimeZone {
  */
 const isDaylightTime = (date: Dayjs): boolean => {
   // 判断月份是否在3月到11月之间
-  if (date.month() < 2 || date.month() > 10) {
+  if (date.month() < 3 || date.month() > 11) {
     return false;
   }
   // 判断是否是第二个星期日到第一个星期日之间
-  const marchSecondSunday = dayjs().month(2).startOf('month').add(2, 'week').day(0).date();
-  const novemberFirstSunday = dayjs().month(10).startOf('month').add(1, 'week').day(0).date();
-  const currentDay = date.date();
+  const marchSecondSunday = dayjs().month(2).startOf('month').add(2, 'week').day(0).valueOf();
+  const novemberFirstSunday = dayjs().month(10).startOf('month').add(1, 'week').day(0).valueOf();
+  const currentDay = date.valueOf();
   return currentDay >= marchSecondSunday && currentDay <= novemberFirstSunday;
 };
 
@@ -131,7 +131,7 @@ export const formatTimezone = (original: string | undefined) => {
   const utcTime = dayjs.utc(original).utcOffset(utcOffset);
   //特殊时区转化描述
   const convertTimeZone = () => {
-    if (isDaylightTime(utcTime)) {
+    if (isDaylightTime(dayjs())) {
       // 夏令时
       switch (utcOffset) {
         case DaylightTimeZone.HawaiiDaylightTime:

@@ -107,10 +107,10 @@ const FixedButtons: React.FC = () => {
 
   return (
     <div className={styles.buttonContainer}>
-      {menu.map((item) => (
-        <div className={styles.buttonItem} key={item.key} ref={item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
-          <FixedButton menu={item.label} icon={item.icon} state={item.state} mobileIcon={item?.mobileIcon}>
-            <span>{item.text}</span>
+      {menu?.map((item) => (
+        <div className={styles.buttonItem} key={item.key} ref={isMobile ? null : item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
+          <FixedButton menu={item?.label} icon={item?.icon} state={item?.state} mobileIcon={item?.mobileIcon}>
+            <span>{item?.text}</span>
           </FixedButton>
         </div>
       ))}

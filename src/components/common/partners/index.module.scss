@@ -3,12 +3,12 @@
 .partners {
   padding-top: 88px;
   padding-bottom: 88px;
+  width: 100%;
   text-align: center;
   background-color: #fdf6f1;
 
   @media (width <= 768px) {
-    padding-top: 24px;
-    padding-bottom: 32px;
+    padding: 24px;
   }
 
   .title {
@@ -78,8 +78,8 @@
 
   .row {
     @media (width <= 768px) {
-      padding-right: 8px;
-      padding-left: 8px;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
     }
 
     .space {
