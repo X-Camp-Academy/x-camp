@@ -1,6 +1,7 @@
 'use client';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Col, Row, Space, Typography } from 'antd';
 import MaskCard from '../mask-card';
@@ -13,6 +14,7 @@ interface DiscoverCoursesProps {
   showBg?: boolean;
 }
 const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = true }: DiscoverCoursesProps) => {
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
@@ -88,10 +90,10 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
         {showSubTitle && <div className={styles.subTitle}>{t('RecentPopularEvents')}</div>}
         {showBg && <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />}
 
-        <Row className={styles.row} gutter={[16, 14]} align="middle">
+        <Row className={styles.row} gutter={isMobile ? [0, 14] : [16, 14]}>
           {courseCards?.map((item) => {
             return (
-              <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6}>
+              <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6} style={{ width: '100%' }}>
                 <MaskCard
                   className={styles.card}
                   bodyStyle={{

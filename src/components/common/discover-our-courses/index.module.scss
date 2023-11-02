@@ -57,7 +57,7 @@
     left: 120px;
     margin-top: -8px;
     width: 144px;
-    height: 20px;
+    height: 16px;
 
     @media (width <= 768px) {
       left: 80px;
@@ -67,7 +67,7 @@
   }
 
   .row {
-    width: 100%;
+    width: 100% !important;
 
     @media (width <= 768px) {
       margin: 0;

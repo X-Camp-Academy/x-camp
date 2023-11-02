@@ -132,102 +132,100 @@ const PublicCalendar: React.FC = () => {
   });
 
   return (
-    <div className={styles.publicCalendarContainer}>
-      <div className={`${styles.publicCalendar} container`}>
-        <Title className={styles.title}>
-          X-Camp {t('Public')} <span>{t('Calendar')}</span>
-        </Title>
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
-        </div>
-        <Row>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
-              {sortData?.map((item) => {
-                return (
-                  <div key={item?.id} className={styles.eventCard}>
-                    <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>
-                      <Space direction="vertical" className={styles.contentLeft}>
-                        <Text className={styles.weekMonth}>{getWeekDay(item?.attributes?.startDateTime || '')}</Text>
-                        <Text className={styles.day}>{getDate(item?.attributes?.startDateTime)}</Text>
-                        <Text className={styles.weekMonth}>{getMonth(item?.attributes?.startDateTime)?.slice(0, 3)}</Text>
-                      </Space>
-                      <Space direction="vertical" className={styles.contentRight}>
-                        <Title
+    <div className={`${styles.publicCalendar} container`}>
+      <Title className={styles.title}>
+        X-Camp {t('Public')} <span>{t('Calendar')}</span>
+      </Title>
+      <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+        <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
+      </div>
+      <Row>
+        <Col xs={24} sm={24} md={24} lg={12}>
+          <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
+            {sortData?.map((item) => {
+              return (
+                <div key={item?.id} className={styles.eventCard}>
+                  <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>
+                    <Space direction="vertical" className={styles.contentLeft}>
+                      <Text className={styles.weekMonth}>{getWeekDay(item?.attributes?.startDateTime || '')}</Text>
+                      <Text className={styles.day}>{getDate(item?.attributes?.startDateTime)}</Text>
+                      <Text className={styles.weekMonth}>{getMonth(item?.attributes?.startDateTime)?.slice(0, 3)}</Text>
+                    </Space>
+                    <Space direction="vertical" className={styles.contentRight}>
+                      <Title
+                        ellipsis={{
+                          rows: 1,
+                          tooltip: getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)
+                        }}
+                        className={styles.titleParagraph}
+                      >
+                        {getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}
+                      </Title>
+                      {!isMobile && (
+                        <Paragraph
+                          className={styles.titleParagraph}
                           ellipsis={{
                             rows: 1,
-                            tooltip: getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)
-                          }}
-                          className={styles.titleParagraph}
-                        >
-                          {getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}
-                        </Title>
-                        {!isMobile && (
-                          <Paragraph
-                            className={styles.titleParagraph}
-                            ellipsis={{
-                              rows: 1,
-                              tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
-                            }}
-                          >
-                            {`- ${getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}`}
-                          </Paragraph>
-                        )}
-                        <Text
-                          className={styles.date}
-                          ellipsis={{
-                            tooltip: getCourseDateStr(item)
+                            tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
                           }}
                         >
-                          {getCourseDateStr(item)}
-                        </Text>
-                      </Space>
+                          {`- ${getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}`}
+                        </Paragraph>
+                      )}
+                      <Text
+                        className={styles.date}
+                        ellipsis={{
+                          tooltip: getCourseDateStr(item)
+                        }}
+                      >
+                        {getCourseDateStr(item)}
+                      </Text>
                     </Space>
-                  </div>
-                );
-              })}
-            </Carousel>
-          </Col>
-
-          <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
-            <Space size={30} direction="vertical" className={styles.rightSpace}>
-              <ActivityCalendar
-                eventDate={eventDate}
-                headerClassName={styles.calenderHeader}
-                onSelectDate={(date) => {
-                  setSelectDate(date.toString());
-                }}
-              />
-              <Space direction="vertical" className={styles.calendarSpace}>
-                <Space className={styles.spaceDate}>
-                  <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
-                  <div className={styles.line} />
-                </Space>
-                <div style={{ height: isMobile ? 125 : 250, overflow: 'auto', paddingRight: 16 }}>
-                  {!!filterDateEventList.length ? (
-                    filterDateEventList.map((item, index) => {
-                      if (item?.startDateTime)
-                        return (
-                          <Space key={index} direction="vertical" className={styles.calendarItem}>
-                            <Text className={styles.itemDate}>{getCourseDateStrInCalendar(item)}</Text>
-                            <Paragraph className={styles.itemParagraph}>
-                              {`${getTransResult(lang, item.titleZh, item.titleEn)} - ${getTransResult(lang, item.descriptionZh, item.descriptionEn)}`}
-                            </Paragraph>
-                            <div className={styles.itemLine} />
-                          </Space>
-                        );
-                    })
-                  ) : (
-                    <div style={{ padding: '25px 0' }}>
-                      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={t('NoEventToday')} />
-                    </div>
-                  )}
+                  </Space>
                 </div>
+              );
+            })}
+          </Carousel>
+        </Col>
+
+        <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
+          <Space size={30} direction="vertical" className={styles.rightSpace}>
+            <ActivityCalendar
+              eventDate={eventDate}
+              headerClassName={styles.calenderHeader}
+              onSelectDate={(date) => {
+                setSelectDate(date.toString());
+              }}
+            />
+            <Space direction="vertical" className={styles.calendarSpace}>
+              <Space className={styles.spaceDate}>
+                <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
+                <div className={styles.line} />
               </Space>
+              <div style={{ height: isMobile ? 125 : 250, overflow: 'auto', paddingRight: 16 }}>
+                {!!filterDateEventList.length ? (
+                  filterDateEventList.map((item, index) => {
+                    if (item?.startDateTime)
+                      return (
+                        <Space key={index} direction="vertical" className={styles.calendarItem}>
+                          <Text className={styles.itemDate}>{getCourseDateStrInCalendar(item)}</Text>
+                          <Paragraph className={styles.itemParagraph}>
+                            {`${getTransResult(lang, item.titleZh, item.titleEn)} - ${getTransResult(lang, item.descriptionZh, item.descriptionEn)}`}
+                          </Paragraph>
+                          <div className={styles.itemLine} />
+                        </Space>
+                      );
+                  })
+                ) : (
+                  <div style={{ padding: '25px 0' }}>
+                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={t('NoEventToday')} />
+                  </div>
+                )}
+              </div>
             </Space>
-          </Col>
-        </Row>
-      </div>
+          </Space>
+        </Col>
+      </Row>
     </div>
   );
 };
