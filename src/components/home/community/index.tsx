@@ -3,20 +3,20 @@ import { useGetCommunity } from '@/apis/strapi-client/strapi';
 import MaskCard from '@/components/common/mask-card';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Carousel, Image, Space, Typography } from 'antd';
-import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 
 const Community: React.FC = () => {
+  const isMobile = useMobile();
   const { lang, format: t } = useLang();
   const { hash } = window.location;
   const { data } = useGetCommunity();
   const community = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-  const router = useRouter();
   const generateMaskChildren = (title?: string, description?: string) => {
     return (
       <Space direction="vertical">
@@ -54,7 +54,7 @@ const Community: React.FC = () => {
             className={styles.title}
           />
           <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
-          <Paragraph className={styles.paragraph} style={{ marginBottom: 0, marginTop: 20 }}>
+          <Paragraph className={styles.paragraph} style={{ marginBottom: 0, marginTop: isMobile ? 4 : 20 }}>
             {t('Home.Community.Desc1')}
           </Paragraph>
           <Paragraph className={styles.paragraph}>{t('Home.Community.Desc2')}</Paragraph>
