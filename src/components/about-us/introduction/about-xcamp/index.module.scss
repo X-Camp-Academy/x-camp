@@ -70,7 +70,7 @@
         @media (width <= 1200px) {
           @include title('middle');
 
-          margin-top: 6px;
+          margin-top: 0;
         }
       }
 
@@ -83,7 +83,7 @@
         @media (width <= 1200px) {
           @include mobile-text;
 
-          margin-bottom: 0;
+          margin-bottom: -16px;
         }
       }
     }

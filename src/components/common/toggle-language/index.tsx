@@ -45,7 +45,7 @@ const ToggleLanguage: React.FC<IProps> = ({ className }) => {
 
   return (
     <div onClick={toggle} className={`${styles.intl} ${className}`}>
-      <span style={{ lineHeight: 1, display: 'inline-block' }} className={className}>
+      <span style={{ lineHeight: 1, display: 'inline-block', margin: '0 auto' }} className={className}>
         <Icon component={EarthSvg} />
       </span>
 

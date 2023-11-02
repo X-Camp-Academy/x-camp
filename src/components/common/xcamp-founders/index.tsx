@@ -53,7 +53,7 @@ const XCampFounder: React.FC = () => {
         </Row>
 
         <Row gutter={isMobile ? [16, 24] : [32, 124]} style={{ marginTop: isMobile ? 24 : 120 }} className={styles.row}>
-          <Col xs={{ span: 24, order: 2 }} sm={{ span: 24, order: 2 }} md={{ span: 24, order: 2 }} lg={12} className={styles.founderDescription}>
+          <Col xs={{ span: 24, order: 2 }} sm={{ span: 24, order: 2 }} md={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }} className={styles.founderDescription}>
             <Space direction="vertical">
               <Title className={styles.founderName}>{t('Yuan')}</Title>
               <Paragraph className={styles.founderTag}>
@@ -78,7 +78,7 @@ const XCampFounder: React.FC = () => {
             </Space>
           </Col>
 
-          <Col xs={{ span: 24, order: 1 }} sm={{ span: 24, order: 1 }} md={{ span: 24, order: 1 }} lg={12} className={styles.yuanImgCol}>
+          <Col xs={{ span: 24, order: 1 }} sm={{ span: 24, order: 1 }} md={{ span: 24, order: 1 }} lg={{ span: 12, order: 2 }} className={styles.yuanImgCol}>
             <div className={styles.yuanImgBackground} />
             <Image src={'/image/home/yuan.png'} alt="image" preview={false} className={styles.yuanImg} />
           </Col>

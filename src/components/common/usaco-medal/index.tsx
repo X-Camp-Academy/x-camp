@@ -14,10 +14,11 @@ interface USACOMedalProps {
   showShadow?: boolean;
   showLogo?: boolean;
   showTitle?: boolean;
+  spacePaddingTop?: number;
   rowStyle?: React.CSSProperties;
 }
 
-const USACOMedal: React.FC<USACOMedalProps> = ({ backgroundColor = '#FFFFFF', showShadow = true, showLogo = true, showTitle = true, rowStyle }) => {
+const USACOMedal: React.FC<USACOMedalProps> = ({ backgroundColor = '#FFFFFF', showShadow = true, showLogo = true, showTitle = true, spacePaddingTop = 25, rowStyle }) => {
   const router = useRouter();
   const { format: t } = useLang();
   const isMobile = useMobile();
@@ -67,7 +68,7 @@ const USACOMedal: React.FC<USACOMedalProps> = ({ backgroundColor = '#FFFFFF', sh
         {data?.map((item) => (
           <Col key={item?.title} span={6} className={styles.col}>
             <div className={item?.style}>
-              <Space direction="vertical" align="center" size={isMobile ? 0 : 8} style={{ paddingTop: '25px' }}>
+              <Space direction="vertical" align="center" size={isMobile ? 0 : 8} style={{ paddingTop: spacePaddingTop }}>
                 <CountUp className={styles.medalCount} style={{ color: item?.color }} end={item?.count} duration={10} suffix={item?.suffix ? '+' : undefined} />
                 <Text className={styles.medalTitle}>{item?.title}</Text>
               </Space>
