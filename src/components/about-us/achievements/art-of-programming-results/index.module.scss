@@ -21,6 +21,8 @@
 
       @media (width <= 768px) {
         @include title('mobile');
+
+        margin-bottom: 24px;
       }
     }
 
@@ -45,6 +47,7 @@
 
       @media (width <= 768px) {
         padding: 0;
+        padding-top: 8px;
       }
 
       .listItem {
@@ -90,12 +93,10 @@
         color: #172142;
         line-height: 48px;
 
-        p {
-          margin-top: 0;
-        }
-
         @media (width <= 768px) {
           @include mobile-text;
+
+          margin-bottom: 24px;
         }
       }
 
@@ -111,6 +112,12 @@
     }
 
     .projectsDemo {
+      :global(.ant-list-item) {
+        @media (width <= 768px) {
+          margin-bottom: 24px;
+        }
+      }
+
       .title {
         @include title;
 

@@ -26,7 +26,7 @@ const CopyRight: React.FC = () => {
                 </>
               ) : (
                 <Space direction="vertical">
-                  <Image alt="logo" src="/logo/logo.png" preview={false} className={styles.image} />
+                  <Image alt="logo" src="/assets/logo.png" preview={false} className={styles.image} />
                   <Image alt="slogan" preview={false} src="/image/home/footer-slogan.png" width={220} height={24} />
                 </Space>
               )}
