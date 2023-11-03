@@ -11,13 +11,19 @@
     margin: 0;
 
     @media (width <= 768px) {
-      @include title('mobile');
+      @include title('middle');
+
+      margin-bottom: 12px;
     }
   }
 
   .expandBtn {
     border: none;
     color: #ffad11;
+
+    @media (width <= 768px) {
+      margin-top: -8px;
+    }
   }
 
   .jobCardDescription {
@@ -43,11 +49,17 @@
 
     @media (width <= 768px) {
       display: block;
-      padding: 16px 0;
+      padding: 12px 0 16px;
     }
 
     .iconBox {
       display: flex;
+
+      @media (width <= 768px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
       .iconText {
         margin-left: 10px;
@@ -76,13 +88,12 @@
       line-height: 24px;
 
       @media (width <= 768px) {
-        margin: 20px auto;
-        margin-bottom: 0;
-        padding: 10px 18px;
+        display: block;
+        padding: 8px;
+        width: 88px;
+        color: #fff;
 
         @include mobile-text;
-
-        color: #fff;
       }
     }
   }
