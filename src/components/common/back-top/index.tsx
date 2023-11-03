@@ -13,7 +13,7 @@ const BackTop: React.FC = () => {
     rootElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  return (scroll && scroll?.top > 500) || !isMobile ? (
+  return scroll && scroll?.top > 500 && !isMobile ? (
     <div className={styles.backTop} onClick={scrollToTop}>
       <VerticalAlignTopOutlined className={styles.icon} />
     </div>

@@ -29,7 +29,7 @@
 
         @media (width <= 768px) {
           align-items: left;
-          margin: 20px auto;
+          margin: 20px auto 0;
           padding: 20px 16px;
           border: 1px solid #d8d8d8;
           font-size: 16px;
@@ -47,7 +47,7 @@
       margin-top: 50px;
 
       @media (width <= 768px) {
-        margin-top: 20px;
+        margin-top: 24px;
       }
 
       .collapseCard {

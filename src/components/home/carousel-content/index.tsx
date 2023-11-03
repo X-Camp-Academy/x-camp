@@ -100,7 +100,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={3} current={current} />}
-      <Carousel autoplay={false} dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel autoplay dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: IItem) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (
@@ -151,7 +151,7 @@ const CarouselContent: React.FC = () => {
           </div>
         ))}
       </Carousel>
-      <UsacoMedal style={{ backgroundColor: '#FFFFFF', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' }} showTitle={false} />
+      <UsacoMedal style={{ backgroundColor: '#FFFFFF', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' }} spacePaddingTop={0} showTitle={false} />
     </div>
   );
 };

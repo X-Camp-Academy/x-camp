@@ -66,7 +66,7 @@ const Community: React.FC = () => {
             slidesToScroll={1}
             swipeToSlide
             infinite
-            autoplay={false}
+            autoplay
             dots={false}
             responsive={[
               {

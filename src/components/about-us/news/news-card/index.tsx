@@ -21,9 +21,10 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, pageSize, total }) => {
+  const isMobile = useMobile();
   const isiPad = useMobile('xl');
   const { lang } = useLang();
-  const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.SchoolLifeSharing);
+  const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.All);
   const [data, setData] = useState<StrapiResponseDataItem<GetNewEvent>[]>();
 
   const handleLocaleCompare = (data: StrapiResponseDataItem<GetNewEvent>[] | undefined) => {
@@ -48,43 +49,41 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
   console.log(data);
 
   return (
-    <div className={styles.content}>
-      <div className={'container'}>
-        <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions()} />
+    <div className={`${styles.content} container`}>
+      <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions()} />
 
-        <div className={styles.partner}>
-          <Row gutter={[32, 48]}>
-            {data?.map((item, index) => {
-              const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
-              return (
-                <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
-                  <ColorfulCard border={'bottom'} index={index} animate={false}>
-                    <Space direction={'vertical'} className={styles.card}>
-                      <img alt="" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
-                      <Title className={styles.title} ellipsis={{ rows: 1 }}>
-                        {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
-                      </Title>
+      <div className={styles.newsCard}>
+        <Row gutter={isMobile ? [24, 24] : [32, 48]}>
+          {data?.map((item, index) => {
+            const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
+            return (
+              <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
+                <ColorfulCard border={'bottom'} index={index} animate={false}>
+                  <Space direction={'vertical'} className={styles.card}>
+                    <img alt="" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
+                    <Title className={styles.title} ellipsis={{ rows: 1 }}>
+                      {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
+                    </Title>
 
-                      <Space align="center" className={styles.space}>
-                        <Text className={styles.date}>
-                          {item?.attributes?.editor}
-                          {startTime.format('YYYY-MM-DD')}
-                        </Text>
+                    <Space align="center" className={styles.space}>
+                      <Text className={styles.date}>
+                        {item?.attributes?.editor}
+                        {startTime.format('YYYY-MM-DD')}
+                      </Text>
 
-                        <a href={`/resources/education-forum/${item?.id}`}>
-                          <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
-                        </a>
-                      </Space>
+                      <a href={`/resources/education-forum/${item?.id}`}>
+                        <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
+                      </a>
                     </Space>
-                  </ColorfulCard>
-                </Col>
-              );
-            })}
-          </Row>
-        </div>
-
-        <Pagination total={total} className={styles.pagination} pageSize={pageSize} current={current} onChange={(page) => setCurrent(page)} />
+                  </Space>
+                </ColorfulCard>
+              </Col>
+            );
+          })}
+        </Row>
       </div>
+
+      <Pagination total={total} className={styles.pagination} pageSize={pageSize} current={current} onChange={(page) => setCurrent(page)} />
     </div>
   );
 };

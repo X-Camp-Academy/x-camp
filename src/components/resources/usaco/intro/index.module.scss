@@ -6,8 +6,9 @@
   background-color: #fff;
 
   @media (width <= 768px) {
-    margin-top: 50px;
+    margin-top: 0;
     padding: 24px;
+    padding-top: 48px;
   }
 
   .title {

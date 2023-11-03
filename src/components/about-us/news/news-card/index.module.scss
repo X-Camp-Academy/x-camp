@@ -5,11 +5,15 @@
   width: 100%;
 
   @media (width <= 768px) {
-    padding: 48px 0 50px;
+    padding: 48px 24px 24px;
   }
 
-  .partner {
+  .newsCard {
     margin-top: 48px;
+
+    @media (width <= 768px) {
+      margin-top: 24px;
+    }
 
     .card {
       padding-bottom: 24px;
@@ -81,6 +85,10 @@
   .pagination {
     margin-top: 50px;
     text-align: center;
+
+    @media (width <= 768px) {
+      margin-top: 24px;
+    }
 
     :global(.ant-pagination-item) {
       border: 1px solid rgb(102 102 102 / 40%);
