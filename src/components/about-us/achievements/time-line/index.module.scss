@@ -59,7 +59,7 @@
           content: '';
 
           @media (width <= 768px) {
-            left: -10px;
+            left: -8px;
           }
         }
       }
@@ -81,6 +81,7 @@
       }
 
       :global(.ant-list-item) {
+        padding-top: 6px;
         padding-bottom: 0;
       }
     }
