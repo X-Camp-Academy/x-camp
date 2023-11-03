@@ -65,6 +65,8 @@
     }
 
     .rightCol {
+      align-self: center;
+
       @media (width <= 768px) {
         margin-top: 32px;
       }

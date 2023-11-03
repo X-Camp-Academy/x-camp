@@ -61,7 +61,7 @@ declare const json: {
   'Courses.Btn': 'Find My Class';
   'Courses.LeftDescription': 'X-Camp offers programming classes to students in grades 5-12 from beginner to IOI levels with a structured, individual-focused curriculum.';
   'Courses.RightDescription': 'List of all courses in X-Camp 2023';
-  CourseSchedule: ' Course Schedule';
+  CourseSchedule: ' Course';
   'CourseSchedule.Question': 'If you have any questions, please contact us';
   CoursesFAQS: 'Courses FAQS';
   CourseStyle: 'Course Style';
@@ -200,7 +200,7 @@ declare const json: {
   weeklyOpenHouseTips: 'Time conflict? Schedule 1 on 1';
   WeSupport: 'Supported Languages';
   WeSupport_Color: 'Languages';
-  'WeSupport.Desc': "X-Camp's programming courses support the three most mainstream and popular programming languages, including Intro to Python, Intro to Java (APCS), Beginner / Intermediate / Advanced level C++, for students in grades 5-12th.";
+  'WeSupport.Desc': 'At X-Camp, students from grades 5-12 can master the most sought-after programming languages. Our curriculum includes introductory Python, Java (APCS), and multi-level C++ courses, tailored to engage learners at beginner, intermediate, and advanced stages.';
   WhyWorkWithUs: 'Why Work With Us';
   'WhyWorkWithUs.Desc1': 'X-Camp strives to cultivate an inclusive and dynamic environment by attracting top students from diverse backgrounds. We highly value and respect the contributions of all individuals.';
   'WhyWorkWithUs.Desc2': 'As part of our commitment to excellence, if a candidate is recommended by parents of X-Camp students and subsequently offered a position, the referring student will receive a one-time $500 tuition waiver.';
@@ -316,9 +316,9 @@ declare const json: {
   COMPATIBILITY_TIP: 'Your browser does not support modern CSS Selectors and has compatibility problems. Please use a modern browser (such as Chrome or Firefox) to access your friend team.';
   AdditionalInfo: 'Additional Info';
   TopicsCovered: 'Topics Covered';
-  ZoomLink: 'Zoom Link';
+  ZoomLink: 'Join Open House Zoom';
   '1On1Consultation': '1 on 1 consultation';
-  WhatWeProvide: 'What We Provide';
+  WhatWeProvide: 'Assessment';
   'Evaluation.topBanner.description': 'X-Camp offer different ways to help kids find the best-fit classes. Including self-assessment, coding-based placement test, and 1 on 1 consultation.';
   'Evaluation.form.title': 'Quick assessment to match your kid to the right class';
   'Evaluation.form.stuName': "Student's Name";
@@ -379,20 +379,20 @@ declare const json: {
   'Home.Banner2.Date': '* 06/19/2023 (Mon) 6:00 PM - 7:00 PM PDT';
   'Home.WhyXCamp.Desc': 'The Best Competitive Coding Program in the World!';
   'Home.WhyXCamp.title1': 'Comprehensive Curriculum';
-  'Home.WhyXCamp.Desc1': '20+ courses offering content from Beginner to USACO US Camp/ IOI  levels.';
+  'Home.WhyXCamp.Desc1': 'Over 20 courses from beginner to USACO Camp/IOI level training.';
   'Home.WhyXCamp.title2': 'Top-notch Staff and Coaches';
-  'Home.WhyXCamp.Desc2': 'Instructors from leading CS institutions, tech experts, and contest medalists.';
+  'Home.WhyXCamp.Desc2': 'Elite instructors: CS academia leaders, tech industry pros, and award-winning competition veterans.';
   'Home.WhyXCamp.title3': 'Sense of Community';
-  'Home.WhyXCamp.Desc3': 'Supportive, inclusive environment for students on their valuable coding journey.';
+  'Home.WhyXCamp.Desc3': "Fostering Community: A nurturing and inclusive space supporting students' coding journeys.";
   'Home.WhyXCamp.title4': 'Customized Learning Tracks';
   'Home.WhyXCamp.Desc4': 'Track progress with weekly assignments and a 24/7 online forum for learning.';
-  'Home.StudentProjects.Desc': 'At X-Camp, we host the Art of Python Programming contest, engaging game design projects, and the coveted 4.0 Awards every quarter, all aimed at igniting inspiration among our students. Explore the impressive displays of learning from our talented students!';
+  'Home.StudentProjects.Desc': 'X-Camp celebrates student creativity through our quarterly Python Programming Contest, innovative game design challenges, and the prestigious 4.0 Awards. Join us and be inspired by the remarkable talents and achievements of our students!';
   'Home.Community.Title': 'X-Camp Community';
   'Home.Community.Title.Color': 'Community';
-  'Home.Community.Desc1': 'Since our establishment, X-Camp has welcomed more than 2,000 students and presently serves a thriving community of 600+ students across 250+ schools worldwide. ';
+  'Home.Community.Desc1': "Welcome to the X-Camp Family! Since opening our digital doors, we've had the pleasure of guiding over 2,000 students in their coding journeys. Today, our vibrant community spans over 600 current learners from more than 250 schools around the globe. Are you eager to rekindle connections with your X-Camp peers? We're here to facilitate that reunion. Reach out today!";
   'Home.Community.Desc2': "Looking to reconnect with your fellow classmates? Don't hesitate to get in touch with us!";
-  'CourseSchedule.Banner.Desc1': 'With four quarters per year, our approach extends beyond traditional lectures, offering office hours and access to 24/7 online forums. ';
-  'CourseSchedule.Banner.Desc2': 'Our course content spans from establishing programming fundamentals to delivering intensive competition-oriented preparation.';
+  'CourseSchedule.Banner.Desc1': 'X-Camp Academy offers an innovative learning schedule divided into four quarters annually, transcending the usual lecture format. ';
+  'CourseSchedule.Banner.Desc2': 'We provide extensive office hours and continuous access to our 24/7 online forums for an immersive educational experience. Our curriculum begins with the essentials of programming and advances to intensive, competition-level instruction.';
   'EducationForum.Banner.Desc1': 'Welcome to the Education Forum, a space designed for students, parents';
   'EducationForum.Banner.Desc2': 'and friends of X-Camp to come together, connect, and exchange ideas. Here ';
   'EducationForum.Banner.Desc3': 'we engage in periodic discussions covering a wide array of topics, ';
@@ -514,6 +514,8 @@ declare const json: {
   Winter: 'Winter';
   NoContest: 'No Contest';
   InputTheStateYouLiveIn: 'Input the state you live in';
+  ParentEmail: "Parent's Email";
+  SendEmailSuccess: 'Thank you for Free Consultation Sign Up, we will contact you with 24 hours.';
 };
 
 export default json;

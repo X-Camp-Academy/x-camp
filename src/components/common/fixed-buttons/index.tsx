@@ -6,7 +6,7 @@ import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Card } from 'antd';
 import { useRouter } from 'next/navigation';
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, { RefObject, useEffect, useRef } from 'react';
 import CardForm from './CardForm';
 import FixedButton from './FixedButton';
 import styles from './index.module.scss';
@@ -25,7 +25,6 @@ const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
-  const [open, setOpen] = useState(false);
   const { modelVisible, setModelVisible } = useModelVisible();
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
@@ -82,7 +81,7 @@ const FixedButtons: React.FC = () => {
                   router.push('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ');
                 }}
               >
-                1 On 1{' '}
+                Schedule 1 on 1{' '}
               </Button>
             </div>
             <div className={styles.tips}>*{t('weeklyOpenHouseTips')}</div>

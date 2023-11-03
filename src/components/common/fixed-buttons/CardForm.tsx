@@ -78,7 +78,7 @@ const CardForm: React.FC<IProps> = ({ setOpen, onFinish, style, className }) => 
               }
             ]}
           >
-            <Input type="email" placeholder="E-mail*" />
+            <Input type="email" placeholder={t('ParentEmail')} />
           </Form.Item>
 
           <Form.Item
@@ -94,7 +94,7 @@ const CardForm: React.FC<IProps> = ({ setOpen, onFinish, style, className }) => 
           </Form.Item>
 
           <Form.Item name="subscribe">
-            <Checkbox>{t('FreeProgrammingPack')}</Checkbox>
+            <Checkbox defaultChecked>{t('FreeProgrammingPack')}</Checkbox>
           </Form.Item>
 
           <Form.Item>
