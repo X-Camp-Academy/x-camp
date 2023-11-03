@@ -17,9 +17,12 @@ export const useSendOpenClassEmail = () => {
     {
       manual: true,
       onSuccess: () => {
+        message.config({
+          top: 100
+        });
         message.success({
           key: 'sendEmailSuccessfully',
-          content: t('sendOpenClassEmail.Success')
+          content: t('SendEmailSuccess')
         });
       },
       onError: handleError

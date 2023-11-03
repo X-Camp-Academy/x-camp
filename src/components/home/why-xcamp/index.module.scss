@@ -119,6 +119,8 @@
         }
 
         .cardTitle {
+          min-height: 56px;
+
           @include text(22px, 28px);
 
           font-weight: 600;

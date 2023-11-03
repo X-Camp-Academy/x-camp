@@ -93,8 +93,12 @@
 
         @include title('thin');
 
+        /*         @media (width <= 992px) {
+          min-height: 72px;
+        } */
         @media (width <= 768px) {
           margin-top: 0;
+          min-height: unset;
 
           @include title('middle');
         }
@@ -107,7 +111,13 @@
         color: #666;
         line-height: 24px;
 
+        @media (width <= 992px) {
+          display: none;
+        }
+
         @media (width <= 768px) {
+          display: initial;
+
           @include mobile-text;
         }
       }

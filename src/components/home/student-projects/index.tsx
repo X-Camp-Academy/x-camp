@@ -58,21 +58,22 @@ const StudentProjects: React.FC = () => {
           <Paragraph className={styles.paragraph}>{t('Home.StudentProjects.Desc')}</Paragraph>
 
           <Row gutter={isMobile ? [0, 24] : [16, 28]} className={styles.row}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+            <Col xs={24} sm={24} md={10} lg={12} xl={12}>
               {studentProjectsData && <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
             </Col>
 
-            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+            <Col xs={24} sm={24} md={14} lg={12} xl={12}>
               <Row gutter={[16, 24]}>
                 {studentProjectsData &&
                   studentProjectsData.slice(1).map((item) => (
-                    <Col xs={24} sm={24} md={24} lg={24} xl={12} key={item?.id}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12} key={item?.id}>
                       <Card
                         key={item?.id}
                         className={styles.card}
                         bodyStyle={{
                           overflow: 'hidden',
-                          padding: 24
+                          padding: window.innerWidth < 992 && window.innerWidth > 768 ? 10 : 24,
+                          paddingLeft: 24
                         }}
                         cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
                       >

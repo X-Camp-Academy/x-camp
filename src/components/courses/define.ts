@@ -1,9 +1,10 @@
 // 前三个需要二次分类
 export enum CourseTypes {
-  OnlineClasses = 'Online Classes',
+  WeeklyClasses = 'Weekly Classes',
   // InPersonClasses = "In-person Classes",
-  CampsClasses = 'Camps Classes',
+  InPersonCamps = 'In-person Camps',
   MockTestClasses = 'Mock Test Classes',
-  JavaAPCSClasses = 'Java & APCS Classes'
+  JavaAPCSClasses = 'Java & APCS Classes',
+  AllClasses = 'All Classes'
   // XTutors = "X-Tutors",
 }
