@@ -1,5 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
@@ -8,6 +9,7 @@ import styles from './index.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
 const Partners: React.FC = () => {
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
 
   const topImages = [
@@ -51,7 +53,7 @@ const Partners: React.FC = () => {
         <Title className={styles.title}>{t('Partners')}</Title>
         <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
         <Paragraph className={styles.paragraph}>{t('Partners.Desc')}</Paragraph>
-        <Row gutter={[16, 16]} className={styles.row}>
+        <Row gutter={isMobile ? [16, 0] : [16, 16]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Space className={styles.space}>
               {topImages?.map((item) => (

@@ -1,94 +1,55 @@
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
-import { useModelVisible } from '@/hoc/WithModelVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
-import { Button, Card } from 'antd';
-import { useRouter } from 'next/navigation';
-import React, { RefObject, useEffect, useRef } from 'react';
-import CardForm from './CardForm';
-import FixedButton from './FixedButton';
+import { Button, Dropdown, Space } from 'antd';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
+import ConsultCardForm from './ConsultCardForm';
+import OpenHouseCardForm from './OpenHouseCardForm';
 import styles from './index.module.scss';
 
 interface IMenuItem {
   icon: string;
   label: React.ReactElement;
-  state?: [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined;
   key: string;
   text: string;
+  state: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   mobileIcon: React.ReactNode;
   ref: RefObject<HTMLDivElement>;
 }
 const FixedButtons: React.FC = () => {
-  const router = useRouter();
   const { format: t } = useLang();
   const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
-  const { modelVisible, setModelVisible } = useModelVisible();
+
+  const [consultVisible, setConsultVisible] = useState(false);
+  const [openHouseVisible, setOpenHouseVisible] = useState(false);
+
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
-    setModelVisible(false);
+    setConsultVisible(false);
   };
 
-  const labels: string[] = [t('weeklyOpenHouseDesc1'), t('weeklyOpenHouseDesc2'), t('weeklyOpenHouseDesc3')];
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
-      state: [modelVisible, setModelVisible as React.Dispatch<React.SetStateAction<boolean>>],
-      text: isMobile ? 'consult' : t('FreeConsultation'),
-      label: <CardForm setOpen={setModelVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
-      key: '0',
+      text: isMobile ? 'Consult' : t('FreeConsultation'),
+      state: consultVisible,
+      setOpen: setConsultVisible,
+      label: <ConsultCardForm setOpen={setConsultVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
+      key: 'consult',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
     },
     {
       icon: '/image/home/turtle-2.png',
       text: isMobile ? 'Open House' : t('WeeklyOpenHouse'),
-      label: (
-        <div className={styles.cardFrom}>
-          <Card
-            title={t('WeeklyOpenHouse')}
-            headStyle={{
-              color: '#172142',
-              fontSize: 24,
-              fontWeight: 'bold',
-              height: 36,
-              lineHeight: '36px',
-              textAlign: 'center',
-              borderBottom: 'none'
-            }}
-            bodyStyle={{
-              paddingBottom: 16
-            }}
-            className={styles.card}
-          >
-            <div className={styles.cardTitle}>{t('weeklyOpenHouseOpen')}</div>
-            <ul className={styles.desc}>
-              {labels.map((str) => (
-                <li key={str}>{str}</li>
-              ))}
-            </ul>
-            <div className={styles.buttonList}>
-              <Button type="primary" className={styles.button} onClick={() => router.push('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09')}>
-                {t('ZoomLink')}
-              </Button>
-
-              <Button
-                type="primary"
-                className={styles.button}
-                onClick={() => {
-                  router.push('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ');
-                }}
-              >
-                Schedule 1 on 1{' '}
-              </Button>
-            </div>
-            <div className={styles.tips}>*{t('weeklyOpenHouseTips')}</div>
-          </Card>
-        </div>
-      ),
-      key: '1',
+      state: openHouseVisible,
+      setOpen: setOpenHouseVisible,
+      label: <OpenHouseCardForm setOpen={setOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>} />,
+      key: 'open-house',
       mobileIcon: <UsergroupAddOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
     }
@@ -97,7 +58,7 @@ const FixedButtons: React.FC = () => {
   useEffect(() => {
     const delay = 40000;
     const timeoutId = setTimeout(() => {
-      setModelVisible(true);
+      setConsultVisible(true);
     }, delay);
     return () => {
       clearTimeout(timeoutId);
@@ -108,9 +69,19 @@ const FixedButtons: React.FC = () => {
     <div className={styles.buttonContainer}>
       {menu?.map((item) => (
         <div className={styles.buttonItem} key={item.key} ref={isMobile ? null : item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
-          <FixedButton menu={item?.label} icon={item?.icon} state={item?.state} mobileIcon={item?.mobileIcon}>
-            <span>{item?.text}</span>
-          </FixedButton>
+          <Dropdown open={item?.state} onOpenChange={(value) => item?.setOpen(value)} dropdownRender={() => item?.label} trigger={['click']} overlayStyle={{ height: '100%' }}>
+            {isMobile ? (
+              <Space direction="vertical" className={styles.mobileIcon}>
+                {item?.mobileIcon}
+                <span>{item?.text}</span>
+              </Space>
+            ) : (
+              <Button shape={'round'} className={styles.fixedButton}>
+                <span>{item?.text}</span>
+                <img src={`${item?.icon}`} alt="" />
+              </Button>
+            )}
+          </Dropdown>
         </div>
       ))}
     </div>

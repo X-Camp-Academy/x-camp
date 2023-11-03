@@ -151,7 +151,7 @@ const CarouselContent: React.FC = () => {
           </div>
         ))}
       </Carousel>
-      <UsacoMedal showTitle={false} />
+      <UsacoMedal style={{ backgroundColor: '#FFFFFF', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' }} showTitle={false} />
     </div>
   );
 };
