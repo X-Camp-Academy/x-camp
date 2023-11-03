@@ -97,6 +97,11 @@
         display: flex;
         justify-content: unset;
       }
+
+      @media (width < 1400px) {
+        display: flex;
+        justify-content: center;
+      }
     }
 
     .radioGroup {

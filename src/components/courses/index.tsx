@@ -311,7 +311,7 @@ const Courses: React.FC = () => {
                             </div>
                           }
                         >
-                          <Space size={24} className={styles.cardSpace}>
+                          <Space size={isMobile ? 24 : 44} className={styles.cardSpace}>
                             {v?.children?.map((g, index) => {
                               return (
                                 <ClassCard

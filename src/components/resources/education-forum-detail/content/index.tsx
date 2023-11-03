@@ -56,7 +56,7 @@ const ArticleContent = ({ props }: Props) => {
           {formatDate(props?.attributes?.startDateTime || '')} {props?.attributes.endDateTime ? '~' : ''} {formatDate(props?.attributes.endDateTime || '')}
         </div>
       </Space>
-      <XStarMdViewer className={styles.viewer} value={props?.attributes?.detailContent} plugins={[viewerVideoPlugin()]} />
+      <XStarMdViewer className={styles.viewer} value={getTransResult(lang, props?.attributes?.detailContentZh, props?.attributes?.detailContentEn)} plugins={[viewerVideoPlugin()]} />
       <Space className={styles.note}>
         <ReadOutlined className={styles.icon} />
         <span>{t('ArticleContent.Desc')}</span>

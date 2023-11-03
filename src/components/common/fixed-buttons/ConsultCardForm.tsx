@@ -7,15 +7,12 @@ import styles from './index.module.scss';
 interface IProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onFinish: (values: any) => void;
-  style?: React.CSSProperties;
-  className?: string;
 }
 
-const CardForm: React.FC<IProps> = ({ setOpen, onFinish, style, className }) => {
+const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
   const { format: t } = useLang();
-  const selfRef = React.useRef<HTMLDivElement>(null);
   return (
-    <div className={`${styles.cardFrom} ${styles.autoSize} ${className}`} style={style} ref={selfRef}>
+    <div className={`${styles.cardFrom} ${styles.autoSize}`}>
       <Card
         title={t('FreeConsultation')}
         headStyle={{
@@ -108,4 +105,4 @@ const CardForm: React.FC<IProps> = ({ setOpen, onFinish, style, className }) => 
   );
 };
 
-export default CardForm;
+export default ConsultCardForm;

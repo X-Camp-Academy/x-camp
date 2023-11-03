@@ -17,7 +17,7 @@ const History: React.FC = () => {
     return (
       <Space direction="vertical" align="start">
         <Title className={styles.maskCardTitle}>{title}</Title>
-        <Paragraph className={styles.maskCardParagraph} ellipsis={{ rows: 3, tooltip: description }}>
+        <Paragraph className={styles.maskCardParagraph} ellipsis={{ rows: isMobile ? 8 : 3, tooltip: description }}>
           {description}
         </Paragraph>
       </Space>
