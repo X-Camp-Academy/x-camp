@@ -35,6 +35,9 @@
         line-height: 34px;
 
         @media (width <= 768px) {
+          margin-top: 20px;
+          margin-bottom: 16px;
+
           @include mobile-text;
         }
       }
@@ -60,7 +63,7 @@
       width: 100%;
 
       @media (width <= 768px) {
-        padding: 30px;
+        padding: 24px;
       }
     }
   }
