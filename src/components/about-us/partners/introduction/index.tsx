@@ -1,5 +1,6 @@
-import { PartnerCategory } from '@/apis/strapi-client/define';
+import { GetPartner, PartnerCategory } from '@/apis/strapi-client/define';
 import { useGetPartner } from '@/apis/strapi-client/strapi';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
@@ -32,6 +33,9 @@ const Introduction: React.FC = () => {
         return t('ChinaPartners');
     }
   };
+  const handleMobileJump = (card: StrapiResponseDataItem<GetPartner>) => {
+    isMobile && window.open(card?.attributes?.link);
+  };
   return (
     <div className={styles.content}>
       {data?.map((items, index) => (
@@ -40,17 +44,19 @@ const Introduction: React.FC = () => {
             <div className={styles.title}>{getTransByCategory(items?.[0]?.attributes?.category)}</div>
             <Space direction="vertical" style={{ width: '100%' }} size={isMobile ? 24 : 60}>
               {items?.map((card) => (
-                <div className={styles.card} key={card?.id}>
+                <div className={styles.card} key={card?.id} onClick={() => handleMobileJump(card)}>
                   <Image className={styles.logo} preview={false} src={card?.attributes?.logo?.data?.attributes?.url} alt="" />
                   <div className={styles.partnerContent}>
                     <Title className={styles.partnerTitle}>{getTransResult(lang, card?.attributes?.titleZh, card?.attributes?.titleEn)}</Title>
                     <Paragraph className={styles.partnerDescription} ellipsis={{ rows: 3 }}>
                       {getTransResult(lang, card?.attributes?.titleDescriptionZh, card?.attributes?.titleDescriptionEn)}
                     </Paragraph>
-                    <Button className={styles.button} href={card?.attributes?.link}>
-                      {t('LearnMore')}
-                      <RightOutlined style={{ color: '#333333' }} />
-                    </Button>
+                    {!isMobile && (
+                      <Button className={styles.button} href={card?.attributes?.link}>
+                        {t('LearnMore')}
+                        <RightOutlined style={{ color: '#333333' }} />
+                      </Button>
+                    )}
                   </div>
                 </div>
               ))}

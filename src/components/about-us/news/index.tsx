@@ -10,8 +10,6 @@ import styles from './index.module.scss';
 import SubscribeNewsletter from './subscribe-news-letter';
 
 const Banner = dynamic(() => import('./banner'));
-// const Partners = dynamic(() => import('@/components/common/partners'));
-// const BecomePartner = dynamic(() => import('./BecomePartner'));
 const NewsCard = dynamic(() => import('./news-card'));
 
 const { Content } = Layout;
@@ -64,10 +62,6 @@ const NewsPage = () => {
       <Content>
         <Banner />
         <NewsCard newEventData={newEventData?.data} current={current} setCurrent={setCurrent} pageSize={PAGE_SIZE} total={total} />
-
-        {/* <Partners />
-        <BecomePartner /> */}
-
         <SubscribeNewsletter />
       </Content>
     </Layout>

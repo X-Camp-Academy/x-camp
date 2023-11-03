@@ -24,7 +24,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
   const { lang } = useLang();
-  const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.SchoolLifeSharing);
+  const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.All);
   const [data, setData] = useState<StrapiResponseDataItem<GetNewEvent>[]>();
 
   const handleLocaleCompare = (data: StrapiResponseDataItem<GetNewEvent>[] | undefined) => {
