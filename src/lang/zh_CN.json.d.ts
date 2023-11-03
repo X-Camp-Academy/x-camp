@@ -298,7 +298,7 @@ declare const json: {
   EDGE_BROWSER: 'Edge 浏览器';
   EDGE_BROWSER_DESC: 'Microsoft Edge 采用与 Chrome 相同的技术，可增强您的浏览体验，并提供一流的性能和速度。';
   COMPATIBILITY_TIP: '您的浏览器不支持现代CSS Selector，存在兼容性问题，请使用现代浏览器（如Chrome，Firefox等）访问X-Camp。';
-  WhatWeProvide: '我们提供';
+  WhatWeProvide: '评估';
   'Evaluation.topBanner.description': '课程顾问将评估学生的编程水平，并提供个性化的学习计划，为不同学习需求提供对应的课程和资源。';
   'Evaluation.form.title': '快速评估以匹配适合您的孩子的班级';
   'Evaluation.form.stuName': '学生姓名';
@@ -341,7 +341,7 @@ declare const json: {
   '1On1Consultation': '一对一咨询';
   AdditionalInfo: '附加信息';
   TopicsCovered: '课程大纲';
-  ZoomLink: 'Zoom链接';
+  ZoomLink: '加入Zoom';
   'Evaluation.form.success': '提交成功';
   'Evaluation.form.fail': '提交失败';
   'USACO.enhancement.register': 'USACO总监BrianDean博士的分享来了！';
@@ -512,6 +512,8 @@ declare const json: {
   Winter: '冬季';
   NoContest: '没有比赛';
   InputTheStateYouLiveIn: '输入您所在的州';
+  ParentEmail: '家长邮箱';
+  SendEmailSuccess: '感谢您的免费咨询注册，我们将在24小时内与您联系。';
 };
 
 export default json;

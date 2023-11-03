@@ -28,10 +28,10 @@ const Banner: React.FC = () => {
             </Space>
           </Col>
           <Col xs={24} sm={24} md={{ span: 8, offset: 2 }} className={styles.rightCol}>
-            <Space direction={'vertical'} size={32}>
+            <Space direction={'vertical'} size={48}>
               <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
                 <Link href="/evaluation" target="_blank">
-                  {t('PlacementTest')}
+                  {t('WhatWeProvide')}
                 </Link>
               </Button>
               <Button

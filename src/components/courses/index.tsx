@@ -36,7 +36,7 @@ const Courses: React.FC = () => {
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
   const segmentedDom = useRef<HTMLDivElement>(null);
-  const [segmented, setSegmented] = useState<SegmentedValue>('Online Classes');
+  const [segmented, setSegmented] = useState<SegmentedValue>('All Classes');
   const [segmentedData, setSegmentedData] = useState<SegmentedCoursesProps[]>();
   const [copySegmentedData, setCopySegmentedData] = useState<SegmentedCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
@@ -75,13 +75,13 @@ const Courses: React.FC = () => {
    */
   const getOnlineInPersonIsCamp = (type: string) => {
     switch (type) {
-      case CourseTypes.OnlineClasses:
+      case CourseTypes.WeeklyClasses:
         return courses?.data?.filter((item) => item?.attributes?.classMode === ClassMode.OnlineLive);
       // case CourseTypes.InPersonClasses:
       //   return courses?.data?.filter(
       //     (item) => item?.attributes?.classMode === ClassMode.InPerson
       //   );
-      case CourseTypes.CampsClasses:
+      case CourseTypes.InPersonCamps:
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
         return courses?.data;
@@ -142,7 +142,6 @@ const Courses: React.FC = () => {
    */
   const getCourseBySegmented = (segmented: SegmentedValue) => {
     const segmentedData = allCourses?.filter((item) => item?.primaryTitle === segmented);
-
     const result = removeEmptyChildren(segmentedData);
     // 将最后一个元素放到第四个位置 Gold 移到 Silver 后面
     if (result) {
@@ -171,8 +170,8 @@ const Courses: React.FC = () => {
    * hash key要与nav跳转的href对应
    */
   const hashSegmentedMap = new Map([
-    ['#online', CourseTypes.OnlineClasses],
-    ['#camps', CourseTypes.CampsClasses],
+    ['#online', CourseTypes.WeeklyClasses],
+    ['#camps', CourseTypes.InPersonCamps],
     ['#mock-test-classes', CourseTypes.MockTestClasses],
     ['#apcs', CourseTypes.JavaAPCSClasses]
   ]);
@@ -322,7 +321,7 @@ const Courses: React.FC = () => {
                                   title={`${g?.attributes?.courseCode}: ${getTransResult(lang, g?.attributes?.courseTitleZh, g?.attributes?.courseTitleEn)}`}
                                   list={getLangResult(lang, g?.attributes?.courseShortDescriptionZh, g?.attributes?.courseShortDescriptionEn) as string[]}
                                   time={`${g?.attributes?.lessonNum} ${getWeeksDays(g?.attributes?.frequency)}`}
-                                  href={`/courses/${segmented === CourseTypes.CampsClasses ? 'camps' : 'detail'}/${g?.id}`}
+                                  href={`/courses/${segmented === CourseTypes.InPersonCamps ? 'camps' : 'detail'}/${g?.id}`}
                                   bilingual={g?.attributes?.isBilingual}
                                 />
                               );
