@@ -21,7 +21,7 @@ const Achievements: React.FC = () => {
         <Banner />
         <USACOSpotlight />
         <TimeLine />
-        <UsacoMedal backgroundColor="#EFEFEF" spacePaddingTop={0} />
+        <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} spacePaddingTop={0} />
         <ArtOfProgrammingResults data={projectsDemo} />
       </Content>
     </Layout>

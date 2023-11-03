@@ -25,7 +25,7 @@ const AboutXCamp: React.FC = () => {
         <Space direction="vertical" size={16} className={styles.rightSpace}>
           <Title className={styles.rightTitle}>{t('AboutXCamp.SubTitle')}</Title>
           <Paragraph className={styles.rightParagraph}>{t('AboutXCamp.Desc2')}</Paragraph>
-          <UsacoMedal backgroundColor="#F5F5F5" showShadow={false} showLogo={false} showTitle={false} spacePaddingTop={0} rowStyle={{ padding: 0 }} />
+          <UsacoMedal style={{ backgroundColor: '#F5F5F5' }} showLogo={false} showTitle={false} spacePaddingTop={0} rowStyle={{ padding: 0 }} />
         </Space>
       </Space>
     </div>
