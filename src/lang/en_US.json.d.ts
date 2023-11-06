@@ -44,7 +44,6 @@ declare const json: {
   'Charlie.years': ' 10 years ';
   ClassesTime: 'Class Times';
   ClassMode: 'Class Mode';
-  ClassRoadMap: 'Class Road Map';
   ClassroomLanguage: 'Spoken Language(s)';
   'Co-Founder-Charlie': 'Co-founder and CEO of X-Camp';
   'Co-Founder-Yuan': 'Co-founder and President of X-Camp';
@@ -58,7 +57,6 @@ declare const json: {
   CourseCatalog: 'Course Catalog';
   CourseFormat: 'Course Format';
   Courses: 'Courses';
-  'Courses.Btn': 'Find My Class';
   'Courses.LeftDescription': 'X-Camp offers programming classes to students in grades 5-12 from beginner to IOI levels with a structured, individual-focused curriculum.';
   'Courses.RightDescription': 'List of all courses in X-Camp 2023';
   CourseSchedule: ' Course';
@@ -117,7 +115,7 @@ declare const json: {
   NoEventToday: 'No Event Today';
   NUMBER_OF_ALUMNI: 'Number of alumni';
   'One-TimePayment': 'One-Time Payment';
-  OnlineClasses: 'Weekly Classes';
+  WeeklyClasses: 'Weekly Classes';
   OpenHouse: 'Open House';
   'Home.Banner1.Desc1': "Assessing student's programming proficiency";
   'Home.Banner1.Desc2': 'Tailoring a personalized learning path';
@@ -516,6 +514,7 @@ declare const json: {
   InputTheStateYouLiveIn: 'Input the state you live in';
   ParentEmail: "Parent's Email";
   SendEmailSuccess: 'Thank you for Free Consultation Sign Up, we will contact you with 24 hours.';
+  AllCourses: 'All Courses';
 };
 
 export default json;
