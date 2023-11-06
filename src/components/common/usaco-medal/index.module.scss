@@ -18,7 +18,7 @@
   @include flex('center');
 
   padding-top: 32px;
-  padding-bottom: 80px;
+  padding-bottom: 60px;
   width: 100%;
   background: url('/image/common/x-camp-logo.png') no-repeat;
   background-size: contain;
@@ -127,23 +127,27 @@
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-bronze.png') no-repeat center;
+    text-shadow: 1px 1px 0 #eeca92;
   }
 
   .silverMedal {
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-silver.png') no-repeat center;
+    text-shadow: 1px 1px 0 #eeca92;
   }
 
   .goldMedal {
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-gold.png') no-repeat center;
+    text-shadow: 1px 1px 0 rgb(5 2 96 / 30%);
   }
 
   .platinumMedal {
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-platinum.png') no-repeat center;
+    text-shadow: 1px 1px 0 rgb(5 2 96 / 30%);
   }
 }

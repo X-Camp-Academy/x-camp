@@ -21,7 +21,7 @@ const AppointmentCard: React.FC = () => {
         {!isMobile && (
           <div className={styles.right}>
             <div className={styles.imgContain}>
-              <img src="/image/about-us/camps-1.png" alt="" />
+              <img src="/image/courses/appointmentImg.png" alt="" />
             </div>
           </div>
         )}
