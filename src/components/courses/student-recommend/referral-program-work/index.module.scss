@@ -1,62 +1,56 @@
 @import '@/styles/variables';
 
-.referralProgramWorkContainer {
+.referralProgramWork {
   margin-bottom: 100px;
+  padding: 50px 15px;
 
   @media (width <= 768px) {
     margin-bottom: 0;
+    padding: 16px 24px;
   }
 
-  .referralProgramWork {
-    padding: 50px;
+  .title {
+    @include title('default');
+
+    line-height: 48px;
 
     @media (width <= 768px) {
-      padding: 16px;
+      @include title('mobile');
     }
+  }
 
-    .title {
-      @include title('default');
+  .list {
+    padding-left: 20px;
 
-      line-height: 48px;
-
-      @media (width <= 768px) {
-        @include title('mobile');
-      }
-    }
-
-    .list {
-      padding-left: 20px;
-
-      .description {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 3px 0;
-        font-size: 18px;
-        font-weight: 500;
-        text-align: left;
-        color: #172142;
-        line-height: 34px;
-
-        @media (width <= 768px) {
-          @include mobile-text;
-        }
-
-        span {
-          margin-right: 8px;
-        }
-      }
-    }
-
-    .imgCol {
+    .description {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 3px 0;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: left;
+      color: #172142;
+      line-height: 34px;
 
       @media (width <= 768px) {
-        padding: 20px;
+        @include mobile-text;
       }
+
+      span {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .imgCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+
+    @media (width <= 768px) {
+      padding: 20px;
     }
   }
 
