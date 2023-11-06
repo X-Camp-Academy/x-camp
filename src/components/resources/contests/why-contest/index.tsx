@@ -1,9 +1,11 @@
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { Space } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
 const WhyContest: React.FC = () => {
+  const isMobile = useMobile();
   const { format: t } = useLang();
   const items = [
     {
@@ -29,21 +31,19 @@ const WhyContest: React.FC = () => {
   ];
 
   return (
-    <div className="container">
-      <div className={styles.content}>
-        <div className={styles.top}>
-          <div className={styles.title}>{t('WhyContest')}</div>
-          <div className={styles.description}>{t('WhyContest.Desc')}</div>
-        </div>
-        <Space direction="vertical" className={styles.intro}>
-          {items?.map((v, index) => (
-            <div key={index}>
-              <div className={styles.title}>{v?.title}</div>
-              <div className={styles.description}>{v?.description}</div>
-            </div>
-          ))}
-        </Space>
+    <div className={`${styles.content} container`}>
+      <div className={styles.top}>
+        <div className={styles.title}>{t('WhyContest')}</div>
+        <div className={styles.description}>{t('WhyContest.Desc')}</div>
       </div>
+      <Space direction="vertical" size={isMobile ? 0 : 8} className={styles.intro}>
+        {items?.map((v, index) => (
+          <div key={index}>
+            <div className={styles.title}>{v?.title}</div>
+            <div className={styles.description}>{v?.description}</div>
+          </div>
+        ))}
+      </Space>
     </div>
   );
 };

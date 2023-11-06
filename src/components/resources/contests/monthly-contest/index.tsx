@@ -8,18 +8,16 @@ interface Props {
 
 const MonthlyContest = ({ data }: Props) => {
   return (
-    <div className={styles.content}>
-      <div className="container">
-        {data?.map((items, i) => {
-          return (
-            <div key={i} className={styles.months}>
-              {items?.map((item, j) => {
-                return <ContestCard data={item} key={j} />;
-              })}
-            </div>
-          );
-        })}
-      </div>
+    <div className={`${styles.content} container`}>
+      {data?.map((items, i) => {
+        return (
+          <div key={i} className={styles.months}>
+            {items?.map((item, j) => {
+              return <ContestCard data={item} key={j} />;
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 };
