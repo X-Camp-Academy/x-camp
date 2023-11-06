@@ -67,13 +67,16 @@ const Courses: React.FC = () => {
     };
   });
 
+  console.log(courses);
+
   /**
    * 第一次分类
-   * 将所有的课程根据online或者in-person或者isCamp来划分三大类课程
-   * @param type online/in-person/isCamp
-   * @returns 返回online或者in-person或者camp的课程集合
+   * 将所有的课程根据weekly或者in-person或者isCamp来划分三大类课程
+   * weekly === online
+   * @param type weekly/in-person/isCamp
+   * @returns 返回weekly或者in-person或者camp的课程集合
    */
-  const getOnlineInPersonIsCamp = (type: string) => {
+  const getWeeklyInPersonIsCamp = (type: string) => {
     switch (type) {
       case CourseTypes.WeeklyClasses:
         return courses?.data?.filter((item) => item?.attributes?.classMode === ClassMode.OnlineLive);
@@ -89,13 +92,13 @@ const Courses: React.FC = () => {
   };
 
   /**
-   * 生成online或者in-person或者camps或者其他类别的所有一级二级课程数据
+   * 生成weekly或者in-person或者camps或者其他类别的所有一级二级课程数据
    * @param courseType 本地要展示在页面的一级分类
    * @param primaryData strapi上的二级分类
    * @returns 分类好的课程数据
    */
   const generateCourses = (courseType: string, primaryData: string[] | undefined) => {
-    const filteredCourses = getOnlineInPersonIsCamp(courseType);
+    const filteredCourses = getWeeklyInPersonIsCamp(courseType);
     const sortFilteredCourses = filteredCourses?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
     return {
       primaryTitle: courseType,
@@ -109,7 +112,7 @@ const Courses: React.FC = () => {
   };
 
   /**
-   * online和in-person和camps的课程需要一级嵌套二级展示所有课程数据
+   * weekly和in-person和camps的课程需要一级嵌套二级展示所有课程数据
    * 除了上面三个都是只展示二级课程数据
    */
   const allCourses = COURSE_TYPES?.map((courseType, index) => {
@@ -119,6 +122,8 @@ const Courses: React.FC = () => {
       return generateCourses(courseType, [courseType]);
     }
   });
+
+  console.log(allCourses);
 
   /**
    * 去除二级课程为空的数据
@@ -141,6 +146,8 @@ const Courses: React.FC = () => {
    * @param segmented 选中的segmented
    */
   const getCourseBySegmented = (segmented: SegmentedValue) => {
+    console.log(segmented);
+
     const segmentedData = allCourses?.filter((item) => item?.primaryTitle === segmented);
     const result = removeEmptyChildren(segmentedData);
     // 将最后一个元素放到第四个位置 Gold 移到 Silver 后面
@@ -170,7 +177,7 @@ const Courses: React.FC = () => {
    * hash key要与nav跳转的href对应
    */
   const hashSegmentedMap = new Map([
-    ['#online', CourseTypes.WeeklyClasses],
+    ['#weekly', CourseTypes.WeeklyClasses],
     ['#camps', CourseTypes.InPersonCamps],
     ['#mock-test-classes', CourseTypes.MockTestClasses],
     ['#apcs', CourseTypes.JavaAPCSClasses]

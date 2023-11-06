@@ -1,95 +1,105 @@
 @import '@/styles/variables';
 
-.card {
-  display: flex;
-  justify-content: space-around;
-  padding: 80px;
-  width: 100%;
-  border-radius: 8px;
-  background: #fff;
-
-  .left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .title {
-      @include title;
-
-      @media (width <= 768px) {
-        @include title('mobile');
-      }
-    }
-
-    .description {
-      @include text(18px, 34px);
-
-      margin: 20px 0 24px;
-      font-weight: 500;
-
-      @media (width <= 768px) {
-        margin: 10px 0 12px;
-
-        @include mobile-text;
-      }
-    }
-
-    .btn {
-      @include flex(center);
-
-      justify-content: space-evenly;
-      width: 250px;
-      height: 48px;
-      border: 2px solid #172142;
-      border-radius: 8px;
-      font-weight: 500;
-      opacity: 0.5;
-
-      @include text(16px, 24px);
-
-      @media (width <= 992px) {
-        width: 160px;
-        width: 100%;
-        height: 40px;
-      }
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
+.appointment {
+  @media (width <= 768px) {
+    padding-right: 24px;
+    padding-left: 24px;
   }
 
-  .right {
+  .card {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 80px;
+    border-radius: 8px;
+    background: #fff;
 
     @media (width <= 768px) {
-      margin-top: 20px;
-      width: 50%;
+      padding: 24px;
     }
 
-    .imgContain {
-      position: relative;
-      margin-right: 48px;
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-      img {
+      .title {
+        @include title;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+        }
+      }
+
+      .description {
+        @include text(18px, 34px);
+
+        margin: 20px 0 24px;
+        font-weight: 500;
+
+        @media (width <= 768px) {
+          margin: 24px 0;
+
+          @include mobile-text;
+        }
+      }
+
+      .btn {
+        @include flex(center);
+
+        justify-content: space-evenly;
+        width: 250px;
+        height: 48px;
+        border: 2px solid #172142;
+        border-radius: 8px;
+        font-weight: 500;
+        opacity: 0.5;
+
+        @include text(16px, 24px);
+
+        @media (width <= 992px) {
+          width: 160px;
+          width: 100%;
+          height: 40px;
+        }
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: center;
+
+      @media (width <= 768px) {
+        margin-top: 20px;
+        width: 50%;
+      }
+
+      .imgContain {
         position: relative;
-        z-index: 2;
-        width: 200px;
-        height: 250px;
-        transform: rotate(-15deg);
+        margin-right: 48px;
 
-        &::after {
-          position: absolute;
-          top: -20px;
-          left: 20px;
-          display: inline-block;
+        img {
+          position: relative;
+          z-index: 2;
           width: 200px;
-          height: 180px;
-          border-radius: 4px;
-          background-color: #cce1f1;
-          content: '';
-          transform: rotate(10deg);
+          height: 250px;
+          transform: rotate(-15deg);
+
+          &::after {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            display: inline-block;
+            width: 200px;
+            height: 180px;
+            border-radius: 4px;
+            background-color: #cce1f1;
+            content: '';
+            transform: rotate(10deg);
+          }
         }
       }
     }

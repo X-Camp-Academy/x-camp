@@ -74,53 +74,51 @@ const UsacoIntro = () => {
   }, [data]);
 
   return (
-    <div className={styles.introduction}>
-      <div className={'container'}>
-        <div className={styles.description}>
-          {t('USACOSolution.Intro1')}
-          {t('USACOSolution.Intro2')}
-          {t('USACOSolution.Intro3')}
-        </div>
-        {result?.map((v, index) => {
-          return (
-            <div key={'video' + index} style={{ marginBottom: isMobile ? 0 : 88 }}>
-              <Collapse
-                ghost
-                defaultActiveKey={index}
-                expandIconPosition={'end'}
-                expandIcon={({ isActive }) => (
-                  <div className={styles.changeBtn}>
-                    <DownOutlined rotate={isActive ? 0 : 180} className={styles.icon} />
-                  </div>
-                )}
-              >
-                <Panel key={index} header={<div className={styles.title}>{v?.category}</div>}>
-                  <Space className={styles.videoPane}>
-                    {v?.categoryData?.map((g) => {
-                      return (
-                        <Space direction={'vertical'} className={styles.videoPanel} key={g?.id}>
-                          <video className={styles.videoBox} src={getVideoByLang(g?.attributes)} width="100%" height="100%" controls autoPlay={false} />
-                          <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
-                          <Space>
-                            <ClockCircleOutlined className={styles.icon} />
-                            <div className={styles.videoDate}>{g?.attributes?.date}</div>
-                          </Space>
+    <div className={`${styles.introduction} container`}>
+      <div className={styles.description}>
+        {t('USACOSolution.Intro1')}
+        {t('USACOSolution.Intro2')}
+        {t('USACOSolution.Intro3')}
+      </div>
+      {result?.map((v, index) => {
+        return (
+          <div key={'video' + index} style={{ marginBottom: isMobile ? 0 : 88 }}>
+            <Collapse
+              ghost
+              defaultActiveKey={index}
+              expandIconPosition={'end'}
+              expandIcon={({ isActive }) => (
+                <div className={styles.changeBtn}>
+                  <DownOutlined rotate={isActive ? 0 : 180} className={styles.icon} />
+                </div>
+              )}
+            >
+              <Panel key={index} header={<div className={styles.title}>{v?.category}</div>}>
+                <Space className={styles.videoPane} size={isMobile ? 16 : 8}>
+                  {v?.categoryData?.map((g) => {
+                    return (
+                      <Space direction={'vertical'} className={styles.videoPanel} key={g?.id}>
+                        <video className={styles.videoBox} src={getVideoByLang(g?.attributes)} width="100%" height="100%" controls autoPlay={false} />
+                        <div className={styles.videoTitle}>{getTransResult(lang, g?.attributes?.titleZh, g?.attributes?.titleEn)}</div>
+                        <Space>
+                          <ClockCircleOutlined className={styles.icon} />
+                          <div className={styles.videoDate}>{g?.attributes?.date}</div>
                         </Space>
-                      );
-                    })}
-                  </Space>
-                </Panel>
-              </Collapse>
-            </div>
-          );
-        })}
-        <div className={styles.MoreUSACO}>
-          <a href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT" target={'_blank'} rel="noreferrer">
-            <Text underline className={styles.title}>
-              {t('MoreUSACOSolution')}
-            </Text>
-          </a>
-        </div>
+                      </Space>
+                    );
+                  })}
+                </Space>
+              </Panel>
+            </Collapse>
+          </div>
+        );
+      })}
+      <div className={styles.MoreUSACO}>
+        <a href="https://www.youtube.com/playlist?list=PLaGrjYdzFQBtJBaopC8QW9G3Sv39eeifT" target={'_blank'} rel="noreferrer">
+          <Text underline className={styles.title}>
+            {t('MoreUSACOSolution')}
+          </Text>
+        </a>
       </div>
     </div>
   );

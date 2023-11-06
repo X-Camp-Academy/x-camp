@@ -1,5 +1,5 @@
 import { useLang } from '@/hoc/with-intl/define';
-import { CalendarOutlined, UserAddOutlined } from '@ant-design/icons';
+import { CalendarOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { XStarMenuItemType } from './x-star-menu';
@@ -18,31 +18,25 @@ export const useMenuItems = () => {
       key: '/courses',
       dropdown: {
         left: {
-          title: t('ClassRoadMap'),
+          title: t('Courses'),
           description: t('Courses.LeftDescription'),
-          btn: (
-            <>
-              <span onClick={() => router.push('/courses')}>{t('Courses.Btn')}</span>
-              <UserAddOutlined />
-            </>
-          ),
-          key: '/courses'
-        },
-        right: {
-          title: t('CourseCatalog'),
-          description: t('Courses.RightDescription'),
-          action: () => router.push('/courses/catalog'),
-          key: '/courses'
+          showBtn: false
         }
+        // right: {
+        //   title: t('CourseCatalog'),
+        //   description: t('Courses.RightDescription'),
+        //   action: () => router.push('/courses/catalog'),
+        //   key: '/courses'
+        // }
       },
       children: [
         {
-          label: <a href="/courses#online">{t('OnlineClasses')}</a>,
-          key: '/courses/#online'
+          label: <a href="/courses#weekly">{t('AllCourses')}</a>,
+          key: '/courses/catalog'
         },
         {
-          label: <a href="/courses/#classify4">{t('USACO.Grandmaster')}</a>,
-          key: 'usaco-grandmaster'
+          label: <a href="/courses#weekly">{t('WeeklyClasses')}</a>,
+          key: '/courses/#weekly'
         },
         // {
         //   label: (
@@ -163,10 +157,6 @@ export const useMenuItems = () => {
           label: <Link href="/about-us/partners">{t('Partners')}</Link>,
           key: '/about-us/partners/'
         },
-        // {
-        //   label: <Link href="/about-us/calendar">{t("SchoolCalendar")}</Link>,
-        //   key: "/about-us/calendar/",
-        // },
         {
           label: <Link href="/about-us/contact-us">{t('ContactUs')}</Link>,
           key: '/about-us/contact-us/'

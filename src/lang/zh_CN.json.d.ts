@@ -44,7 +44,6 @@ declare const json: {
   'Charlie.years': ' 10年 ';
   ClassesTime: '课程时间';
   ClassMode: '课程模式';
-  ClassRoadMap: '课程路线图';
   ClassroomLanguage: '授课语言';
   'Co-Founder-Charlie': 'X-Camp Academy创始人';
   'Co-Founder-Yuan': 'X-Camp Academy创始人';
@@ -57,7 +56,6 @@ declare const json: {
   CourseCatalog: '课程目录';
   CourseFormat: '课程形式';
   Courses: '课程';
-  'Courses.Btn': '找到我的课程';
   'Courses.LeftDescription': 'X-Camp提供结构化、自主设计的初学者到国际信息学奥林匹克竞赛IOI级别的编程课程';
   'Courses.RightDescription': 'X-Camp 2023的所有课程列表';
   CourseSchedule: '课程安排';
@@ -118,7 +116,7 @@ declare const json: {
   NoEventToday: '今天没有活动';
   NUMBER_OF_ALUMNI: '校友人数';
   'One-TimePayment': '一次性支付';
-  OnlineClasses: '在线课程';
+  WeeklyClasses: '在线课程';
   OpenHouse: '校园开放日';
   Partners: '合作伙伴';
   'Partners.Desc': '感谢合作伙伴！伙伴关系确保X-Camp能够为所有学生提供高质量的学习机会，并培养一个充满活力的社区。';
@@ -514,6 +512,7 @@ declare const json: {
   InputTheStateYouLiveIn: '输入您所在的州';
   ParentEmail: '家长邮箱';
   SendEmailSuccess: '感谢您的免费咨询注册，我们将在24小时内与您联系。';
+  AllCourses: '所有课程';
 };
 
 export default json;

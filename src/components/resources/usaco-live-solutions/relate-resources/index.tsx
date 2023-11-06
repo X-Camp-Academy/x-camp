@@ -27,26 +27,24 @@ const RelateResources: React.FC = () => {
   ];
 
   return (
-    <div className={styles.relateResources}>
-      <div className={'container'}>
-        <ColorfulCard border={'bottom'} index={1} animate={false}>
-          <Card className={styles.card}>
-            <div className={styles.title}>{t('MoreUSACORelatedResources')}</div>
-            {QAData.map((item) => {
-              return (
-                <div key={item.title}>
-                  <Text className={styles.question} underline>
-                    <a href={item.url} style={{ color: 'inherit' }}>
-                      {item.title}
-                    </a>
-                  </Text>
-                  <div className={styles.answer}>{item.description}</div>
-                </div>
-              );
-            })}
-          </Card>
-        </ColorfulCard>
-      </div>
+    <div className={`${styles.relateResources} container`}>
+      <ColorfulCard border={'bottom'} index={1} animate={false}>
+        <Card className={styles.card}>
+          <div className={styles.title}>{t('MoreUSACORelatedResources')}</div>
+          {QAData.map((item) => {
+            return (
+              <div key={item.title}>
+                <Text className={styles.question} underline>
+                  <a href={item.url} style={{ color: 'inherit' }}>
+                    {item.title}
+                  </a>
+                </Text>
+                <div className={styles.answer}>{item.description}</div>
+              </div>
+            );
+          })}
+        </Card>
+      </ColorfulCard>
     </div>
   );
 };

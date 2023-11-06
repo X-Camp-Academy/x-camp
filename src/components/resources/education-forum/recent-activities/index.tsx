@@ -1,6 +1,7 @@
 import { NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { AlignRightOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Col, Row, Space, Typography } from 'antd';
@@ -14,6 +15,7 @@ const XCollapse = dynamic(() => import('@/components/common/collapse'));
 const { Title, Text } = Typography;
 
 const RecentActivities: React.FC = () => {
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
   const { data: newEventData } = useGetNewEvent({
     tag: NewEventCategory.Events,
@@ -28,9 +30,6 @@ const RecentActivities: React.FC = () => {
       return new Date(item?.attributes?.startDateTime).getTime() < new Date().getTime();
     }
   });
-
-  console.log(RecentActivities);
-
   return (
     <>
       {RecentActivities && RecentActivities.length > 0 && (
@@ -42,7 +41,7 @@ const RecentActivities: React.FC = () => {
                 description: t('RecentPopularEvents.Desc')
               }}
             >
-              <Row className={styles.cards} gutter={[32, 32]}>
+              <Row className={styles.cards} gutter={isMobile ? [32, 24] : [32, 32]}>
                 {RecentActivities?.slice(0, 3)?.map((item, index) => (
                   <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
                     <ColorfulCard border={'bottom'} animate={false} index={index}>

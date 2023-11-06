@@ -1,6 +1,7 @@
 import { ClassMode, GetClasses } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { Button, Descriptions, Space, Typography } from 'antd';
 import React from 'react';
@@ -22,6 +23,7 @@ interface CourseAbstractProps {
 }
 
 const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual }) => {
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
 
   const classesData = classes?.data?.map((classItem) => {
@@ -37,7 +39,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
     };
   });
   return (
-    <Space className={styles.abstract} size={24}>
+    <Space className={styles.abstract} size={isMobile ? 8 : 24}>
       <div className={styles.left}>
         <div className={styles.title}>{t('Description')}</div>
         <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
@@ -57,6 +59,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
           </Descriptions.Item>
         </Descriptions>
       </div>
+
       <div className={styles.right}>
         <div className={styles.title}>{t('One-TimePayment')}</div>
         <div className={styles.price}>{isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</div>
