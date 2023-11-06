@@ -88,7 +88,7 @@
 
 .cardFrom {
   position: relative;
-  top: 55%;
+  top: 60%;
   right: 64px;
   z-index: 100;
   margin-top: 10px;
@@ -96,7 +96,7 @@
 
   @media (width <= 768px) {
     position: static;
-    width: 100% !important;
+    width: 100%;
   }
 
   .card {
@@ -105,6 +105,8 @@
 
     @media (width <= 768px) {
       top: 272px;
+      margin-right: 24px;
+      margin-left: 24px;
     }
 
     :global(.ant-card-body) {
@@ -121,13 +123,20 @@
     .desc {
       margin: 24px 0;
       padding: 12px;
-      height: 128px;
       border: 1px solid $primary-color;
 
       @include text(16px, 34px);
 
+      @media (width <= 768px) {
+        @include text(14px, 28px);
+      }
+
       li {
         margin-left: 24px;
+
+        @media (width <= 768px) {
+          margin-left: 8px;
+        }
       }
     }
 
