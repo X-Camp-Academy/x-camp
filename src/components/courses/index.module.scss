@@ -11,6 +11,8 @@
 
     @media (width <= 768px) {
       padding-top: 20px;
+      padding-right: 24px;
+      padding-left: 24px;
     }
 
     :global(.ant-collapse) {

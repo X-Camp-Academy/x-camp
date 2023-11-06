@@ -105,8 +105,8 @@ const CourseBanner: React.FC = () => {
                   )}
                 </Descriptions>
 
-                <Space direction="vertical" size={32}>
-                  <Button id="copyButton" className={styles.btn} onClick={() => setIsModalOpen(true)}>
+                <Space direction={isMobile ? 'horizontal' : 'vertical'} size={32}>
+                  <Button id="copyButton" className={styles.shareLessons} onClick={() => setIsModalOpen(true)}>
                     {t('ShareLessons')}
                     <ShareAltOutlined />
                   </Button>

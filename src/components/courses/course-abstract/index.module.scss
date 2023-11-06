@@ -15,7 +15,7 @@
 
       @media (width <= 1140px) {
         font-size: 24px;
-        line-height: 40px;
+        line-height: 24px;
       }
     }
 
@@ -26,7 +26,8 @@
       color: #172142;
       line-height: 36px;
 
-      @media (width <= 1140px) {
+      @media (width <= 1200px) {
+        margin-top: 16px;
         font-size: 16px;
         line-height: 30px;
       }
@@ -41,6 +42,10 @@
       font-weight: 600;
       color: #d46b14;
       line-height: 36px;
+
+      @media (width <= 768px) {
+        line-height: 20px;
+      }
 
       &::before {
         margin-right: 10px;
@@ -60,6 +65,13 @@
       font-size: 18px;
       color: #172142;
       line-height: 40px;
+
+      @media (width <= 768px) {
+        padding-left: 0;
+        line-height: 24px;
+
+        @include mobile-text;
+      }
     }
   }
 
@@ -76,8 +88,8 @@
     flex-direction: column;
 
     @media (width <= 768px) {
-      padding: 15px 20px;
       width: 100%;
+      height: 100%;
     }
 
     .title {
@@ -92,6 +104,11 @@
       font-weight: 600;
       color: #d46b14;
       line-height: 70px;
+
+      @media (width <= 768px) {
+        font-size: 40px;
+        line-height: 64px;
+      }
     }
 
     .btn {
@@ -108,6 +125,12 @@
       transition: all 0.3s ease-in;
       line-height: 36px;
 
+      @media (width <= 768px) {
+        width: 192px;
+        height: 48px;
+        font-size: 20px;
+      }
+
       &:hover {
         background: #d46b14;
         box-shadow: 0 8px 12px -4px rgb(#d76100, 70%);
@@ -119,6 +142,10 @@
       font-weight: 400;
       color: #d46b14;
       line-height: 21px;
+
+      @media (width <= 768px) {
+        margin-top: 16px;
+      }
     }
 
     .bilingual {
