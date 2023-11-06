@@ -27,11 +27,11 @@ const Banner: React.FC = () => {
   ];
   return (
     <div className={`${styles.amaContainer} container`}>
-      <Space direction="vertical">
+      <Space direction="vertical" size={isMobile ? 24 : 8}>
         <Title className={styles.title}>{t('AMA.Title')}</Title>
         <Paragraph className={styles.paragraph}>{t('AMA.desc')}</Paragraph>
 
-        <Space direction={isMobile ? 'vertical' : 'horizontal'} size={16} className={styles.spaceContainer}>
+        <Space direction={isMobile ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 16} className={styles.spaceContainer}>
           {data?.map((item) => (
             <Space direction="vertical" key={item?.title} className={styles.spaceBox}>
               <Image key={item?.title} alt="" src={item?.src} preview={false} className={styles.image} />

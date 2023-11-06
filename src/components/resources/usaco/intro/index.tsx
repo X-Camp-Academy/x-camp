@@ -34,7 +34,7 @@ const Intro: React.FC = () => {
   ];
   return (
     <div className={`${styles.introContainer} container`}>
-      <Space direction="vertical">
+      <Space direction="vertical" size={isMobile ? 24 : 8}>
         <Title className={styles.title}>{t('USACO.Intro.Title')}</Title>
 
         <Space direction="vertical">
@@ -67,7 +67,6 @@ const Intro: React.FC = () => {
 
         <Space direction={isMobile ? 'vertical' : 'horizontal'} size={isMobile ? 16 : 48} className={styles.chart}>
           <Image alt="" preview={false} src={'/image/resources/bar-chart.png'} className={styles.barChart} />
-
           <Space direction="vertical" className={styles.chartRight}>
             <Title className={styles.subTitle}>{t('USACO.Chart.Title')}</Title>
             {levels?.map((item) => (
