@@ -393,7 +393,7 @@ declare const json: {
   'Home.Community.Desc2': "Looking to reconnect with your fellow classmates? Don't hesitate to get in touch with us!";
   'CourseSchedule.Banner.Desc1': 'X-Camp Academy offers an innovative learning schedule divided into four quarters annually, transcending the usual lecture format. ';
   'CourseSchedule.Banner.Desc2': 'We provide extensive office hours and continuous access to our 24/7 online forums for an immersive educational experience. Our curriculum begins with the essentials of programming and advances to intensive, competition-level instruction.';
-  'EducationForum.Banner.Desc1': 'Welcome to the Education Forum, a space designed for students, parents';
+  'EducationForum.Banner.Desc1': 'Welcome to X-Camp Education Forum, a space designed for students, parents ';
   'EducationForum.Banner.Desc2': 'and friends of X-Camp to come together, connect, and exchange ideas. Here ';
   'EducationForum.Banner.Desc3': 'we engage in periodic discussions covering a wide array of topics, ';
   'EducationForum.Banner.Desc4': 'ranging from programming studies and competition tips to campus life ';

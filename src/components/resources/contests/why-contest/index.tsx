@@ -38,7 +38,7 @@ const WhyContest: React.FC = () => {
         <Space direction="vertical" className={styles.intro}>
           {items?.map((v, index) => (
             <div key={index}>
-              <div className={styles.title}>{v?.title}</div>
+              <div className={styles.title}>{v?.title}:</div>
               <div className={styles.description}>{v?.description}</div>
             </div>
           ))}

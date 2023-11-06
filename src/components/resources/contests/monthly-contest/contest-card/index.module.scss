@@ -3,9 +3,6 @@
 .popoverContent {
   width: 320px;
 
-  // @media (max-width: 768px) {
-  //   width: 100%;
-  // }
   .divider {
     margin: 16px 0;
   }
@@ -50,7 +47,6 @@
   .content {
     padding: 30px 0 0;
     width: 80%;
-    height: calc(100% - 80px);
 
     @media (width <= 1200px) {
       padding: 20px 0 0;
@@ -153,10 +149,21 @@
   .contentCenter {
     justify-content: center;
     padding-right: 10%;
+    padding-bottom: 30px;
     padding-left: 10%;
     width: 100%;
+    height: calc(100% - 70px);
     border-right: #d8d8d8 1px solid;
-    border-left: #d8d8d8 1px solid;
+
+    @media (width <= 1200px) {
+      height: calc(100% - 58px);
+    }
+  }
+
+  &:last-child {
+    .contentCenter {
+      border-right: none;
+    }
   }
 }
 

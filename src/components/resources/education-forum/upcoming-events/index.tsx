@@ -23,6 +23,7 @@ const UpcomingEvents: React.FC = () => {
   const newEventData = data?.data?.filter((item) => {
     return item?.attributes?.startDateTime && new Date(item?.attributes?.startDateTime).getTime() - new Date().getTime() > 0;
   });
+
   const upComingEvent = newEventData?.sort((a, b) => {
     const dateA = new Date(a?.attributes?.startDateTime).toISOString();
     const dateB = new Date(b?.attributes?.startDateTime).toISOString();

@@ -145,9 +145,9 @@ export const useMenuItems = () => {
         },
         {
           label: (
-            <Link href="/about-us/introduction#faculty">
-              {t('Faculty')}&{t('Coach')}
-            </Link>
+            <a href="/about-us/introduction#faculty">
+              {t('Faculty')} & {t('Coach')}
+            </a>
           ),
           key: '/about-us/introduction#faculty'
         },

@@ -9,127 +9,143 @@
     padding: 32px 24px;
   }
 
-  .title {
-    margin: 0;
-
-    @include title;
-
-    @media (width <= 768px) {
-      @include title('mobile');
-    }
-  }
-
-  .baseTitleBg {
-    display: block;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url('/image/home/home-title-bg-1.png');
-  }
-
-  .titleEnBg {
-    @extend .baseTitleBg;
-
-    margin-left: 136px;
-    width: 160px;
-
-    @media (width <= 768px) {
-      margin-left: 92px;
-      width: 96px;
-    }
-  }
-
-  .titleZhBg {
-    @extend .baseTitleBg;
-
-    margin-left: 64px;
-    width: 80px;
-
-    @media (width <= 768px) {
-      margin-left: 40px;
-      width: 64px;
-    }
-  }
-
-  .paragraphText {
-    @include text(18px, 34px, $primary-color);
-
-    font-weight: 500;
-
-    @media (width <= 768px) {
-      @include mobile-text;
-    }
-  }
-
-  .paragraph {
-    @extend .paragraphText;
-    @include margin;
-
-    margin-bottom: 50px;
-    text-align: center;
-    color: #172142;
-
-    @media (width <= 768px) {
-      margin-bottom: 16px;
-      padding: 0;
-
-      @include margin(0);
-      @include mobile-text;
-    }
-  }
-
-  .row {
-    width: 100%;
-
-    .card {
-      position: relative;
+  .space {
+    :global(.ant-space-item:last-child) {
       width: 100%;
-      border-radius: 0;
+    }
 
-      .cardTitle {
-        display: block;
-        margin-top: 12px;
-        line-height: 40px;
+    .title {
+      margin: 0;
 
-        @include title('thin');
+      @include title;
 
-        /*         @media (width <= 992px) {
-          min-height: 72px;
-        } */
-        @media (width <= 768px) {
-          margin-top: 0;
-          min-height: unset;
-
-          @include title('middle');
-        }
+      @media (width <= 768px) {
+        @include title('mobile');
       }
+    }
 
-      .cardParagraph {
-        font-size: 14px;
-        font-weight: 400;
-        text-align: left;
-        color: #666;
-        line-height: 24px;
+    .baseTitleBg {
+      display: block;
+      height: 20px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url('/image/home/home-title-bg-1.png');
+    }
 
-        @media (width <= 992px) {
-          display: none;
-        }
+    .titleEnBg {
+      @extend .baseTitleBg;
 
-        @media (width <= 768px) {
-          display: initial;
+      margin-left: 136px;
+      width: 160px;
 
-          @include mobile-text;
-        }
+      @media (width <= 768px) {
+        margin-left: 92px;
+        width: 96px;
       }
+    }
 
-      .cardMore {
-        position: absolute;
-        bottom: 16px;
-        left: 24px;
-        color: #172142;
+    .titleZhBg {
+      @extend .baseTitleBg;
 
-        @media (width <= 768px) {
-          @include mobile-text;
+      margin-left: 64px;
+      width: 80px;
+
+      @media (width <= 768px) {
+        margin-left: 40px;
+        width: 64px;
+      }
+    }
+
+    .paragraphText {
+      @include text(18px, 34px, $primary-color);
+
+      font-weight: 500;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
+    }
+
+    .paragraph {
+      @extend .paragraphText;
+      @include margin;
+
+      margin-bottom: 50px;
+      text-align: center;
+      color: #172142;
+
+      @media (width <= 768px) {
+        margin-bottom: 16px;
+        padding: 0;
+
+        @include margin(0);
+        @include mobile-text;
+      }
+    }
+
+    .row {
+      width: 100%;
+
+      .card {
+        position: relative;
+        width: 100%;
+        border-radius: 0;
+
+        :global(.ant-space) {
+          @media (width <= 992px) {
+            gap: 12px !important;
+          }
+
+          .ant-space-item {
+            width: 100% !important;
+          }
+        }
+
+        :global(.ant-card-body) {
+          @media (width <= 992px) {
+            padding: 10px !important;
+          }
+        }
+
+        .cardTitle {
+          display: block;
+          margin-top: 12px;
+          line-height: 40px;
+
+          @include title('thin');
+
+          @media (width <= 992px) {
+            font-size: 16px;
+
+            @include title('middle');
+          }
+
+          @media (width <= 768px) {
+            margin-top: 0;
+            min-height: unset;
+
+            @include title('middle');
+          }
+        }
+
+        .cardParagraph {
+          font-size: 14px;
+          font-weight: 400;
+          text-align: left;
+          color: #666;
+          line-height: 24px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
+        }
+
+        .cardMore {
+          color: #172142;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
         }
       }
     }

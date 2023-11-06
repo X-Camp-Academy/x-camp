@@ -6,7 +6,7 @@ import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
 import { Card, Col, Row, Space, Typography } from 'antd';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -16,6 +16,7 @@ const StudentProjects: React.FC = () => {
   const { format: t, lang } = useLang();
   const { hash } = window.location;
   const { data } = useGetHomeStudentProjects();
+  const [inPadSize, setInPadSize] = useState<boolean>(false);
   const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
   const studentProjectsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
@@ -31,6 +32,14 @@ const StudentProjects: React.FC = () => {
     scrollIntoView(hash.slice(1));
   }, [hash]);
 
+  useEffect(() => {
+    if (window.innerWidth < 1200 && window.innerWidth > 768) {
+      setInPadSize(true);
+    } else {
+      setInPadSize(false);
+    }
+  }, [window.innerWidth]);
+
   const getVideoByLang = (attributes: GetHomeStudentProjects) => {
     const { video, videoZh, videoEn } = attributes;
 
@@ -39,7 +48,7 @@ const StudentProjects: React.FC = () => {
   return (
     <div style={{ background: '#FDF6F1' }}>
       <div className={`${styles.studentProjects} container`} id="stu_project">
-        <Space direction="vertical" align="center">
+        <Space direction="vertical" align="center" className={styles.space}>
           {lang === 'zh' ? (
             <div>
               <Title className={styles.title}>
@@ -58,11 +67,33 @@ const StudentProjects: React.FC = () => {
           <Paragraph className={styles.paragraph}>{t('Home.StudentProjects.Desc')}</Paragraph>
 
           <Row gutter={isMobile ? [0, 24] : [16, 28]} className={styles.row}>
-            <Col xs={24} sm={24} md={10} lg={12} xl={12}>
-              {studentProjectsData && <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
+            <Col xs={24} sm={24} md={8} lg={8} xl={12}>
+              {studentProjectsData &&
+                (!inPadSize ? (
+                  <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />
+                ) : (
+                  <Card
+                    className={styles.card}
+                    bodyStyle={{
+                      overflow: 'hidden',
+                      padding: 24
+                    }}
+                    cover={<iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
+                  >
+                    <Space direction="vertical" size={24}>
+                      <Text className={styles.cardTitle}>{getTransResult(lang, studentProjectsData[0]?.attributes?.titleZh, studentProjectsData[0]?.attributes?.titleEn)}</Text>
+                      <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
+                        {getTransResult(lang, studentProjectsData[0]?.attributes?.descriptionZh, studentProjectsData[0]?.attributes?.descriptionEn)}
+                      </Paragraph>
+                      <a href={getTransResult(lang, studentProjectsData[0]?.attributes?.videoZh, studentProjectsData[0]?.attributes?.videoEn)} className={styles.cardMore}>
+                        {'More'} <RightOutlined />
+                      </a>
+                    </Space>
+                  </Card>
+                ))}
             </Col>
 
-            <Col xs={24} sm={24} md={14} lg={12} xl={12}>
+            <Col xs={24} sm={24} md={16} lg={16} xl={12}>
               <Row gutter={[16, 24]}>
                 {studentProjectsData &&
                   studentProjectsData.slice(1).map((item) => (
@@ -72,14 +103,13 @@ const StudentProjects: React.FC = () => {
                         className={styles.card}
                         bodyStyle={{
                           overflow: 'hidden',
-                          padding: window.innerWidth < 992 && window.innerWidth > 768 ? 10 : 24,
-                          paddingLeft: 24
+                          padding: 24
                         }}
                         cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
                       >
                         <Space direction="vertical" size={24}>
                           <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
-                          <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph} style={{ marginTop: '-20px' }}>
+                          <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
                             {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
                           </Paragraph>
                           <a href={getTransResult(lang, item?.attributes?.videoZh, item?.attributes?.videoEn)} className={styles.cardMore}>
