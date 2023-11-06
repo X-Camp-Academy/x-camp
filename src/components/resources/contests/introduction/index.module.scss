@@ -1,7 +1,10 @@
 @import '@/styles/variables';
 
 .content {
-  width: 100%;
+  @media (width <= 768px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
 
   .divider {
     margin: 0;

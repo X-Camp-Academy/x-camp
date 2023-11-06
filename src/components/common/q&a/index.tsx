@@ -35,7 +35,7 @@ const QACard: React.FC<QACardProps> = ({ question, answer, index, className = ''
     >
       <Panel
         header={
-          <Space size={12} direction={isMobile ? 'vertical' : 'horizontal'}>
+          <Space size={12} direction={'horizontal'}>
             <div className={`${styles.questionAndAnswerIcon} ${styles.question}`}>Q</div>
             <strong style={{ color: '#172142' }}>{question}</strong>
           </Space>

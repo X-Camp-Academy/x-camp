@@ -83,7 +83,7 @@ const Activities: React.FC = () => {
                     <div className={styles.imgContainer}>
                       <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
                     </div>
-                    <Space direction="vertical" className={styles.cardContent}>
+                    <Space direction="vertical" size={isMobile ? 16 : 8} className={styles.cardContent}>
                       <Title className={styles.title} ellipsis={{ rows: 1 }}>
                         {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
                       </Title>
@@ -92,8 +92,20 @@ const Activities: React.FC = () => {
                           <ClockCircleOutlined className={styles.icon} />
                           {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
                         </div>
-                        <Button type="link" className={styles.btn} icon={<RightCircleOutlined className={styles.arrow} />} />
+                        <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
                       </div>
+                      <Space direction="vertical" className={styles.cardContent}>
+                        <Title className={styles.title} ellipsis={{ rows: 1 }}>
+                          {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
+                        </Title>
+                        <div className={styles.description}>
+                          <div>
+                            <ClockCircleOutlined className={styles.icon} />
+                            {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
+                          </div>
+                          <Button type="link" className={styles.btn} icon={<RightCircleOutlined className={styles.arrow} />} />
+                        </div>
+                      </Space>
                     </Space>
                   </div>
                 </ColorfulCard>

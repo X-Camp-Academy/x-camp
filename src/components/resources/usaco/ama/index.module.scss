@@ -1,6 +1,11 @@
 @import '@/styles/variables';
 
 .amaContainer {
+  @media (width <= 768px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
   .title {
     font-size: 36px;
     font-weight: 600;
@@ -11,7 +16,7 @@
       @include title('mobile');
 
       margin-top: 24px;
-      margin-bottom: 16px;
+      margin-bottom: 0;
     }
   }
 
@@ -23,6 +28,8 @@
 
     @media (width <= 768px) {
       @include mobile-text;
+
+      margin-bottom: 0;
     }
   }
 
@@ -47,8 +54,9 @@
         line-height: 28px;
 
         @media (width <= 768px) {
-          @include mobile-text;
+          @include title('middle');
 
+          margin-top: 0;
           margin-bottom: 0;
         }
       }

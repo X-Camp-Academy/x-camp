@@ -8,7 +8,7 @@ const AppointmentCard: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   return (
-    <div className={'container'}>
+    <div className={`${styles.appointment} container`}>
       <div className={styles.card}>
         <div className={styles.left}>
           <div className={styles.title}>{t('OpenHouse.Conflict')}</div>

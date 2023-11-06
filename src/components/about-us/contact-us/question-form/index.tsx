@@ -91,7 +91,7 @@ const QAPart: React.FC = () => {
                 <TextArea placeholder={t('YourMessageHere')} className={styles.formTextArea} autoSize={{ minRows: 6, maxRows: 6 }} />
               </Form.Item>
 
-              <Form.Item>
+              <Form.Item style={isMobile ? { marginBottom: 0 } : {}}>
                 <Button className={styles.formButton} htmlType="submit">
                   {t('Submit')}
                 </Button>

@@ -22,7 +22,7 @@ const WeeklyOpenHouse = () => {
     <Layout className={styles.main}>
       <Content>
         <Banner />
-        <Space direction="vertical" size={isMobile ? 32 : 100} className={styles.content}>
+        <Space direction="vertical" size={isMobile ? 24 : 100} className={styles.content}>
           {/* <JoinWay /> */}
           <Introduction />
           <AppointmentCard />
