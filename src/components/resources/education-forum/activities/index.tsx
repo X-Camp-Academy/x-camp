@@ -94,18 +94,6 @@ const Activities: React.FC = () => {
                         </div>
                         <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
                       </div>
-                      <Space direction="vertical" className={styles.cardContent}>
-                        <Title className={styles.title} ellipsis={{ rows: 1 }}>
-                          {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
-                        </Title>
-                        <div className={styles.description}>
-                          <div>
-                            <ClockCircleOutlined className={styles.icon} />
-                            {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
-                          </div>
-                          <Button type="link" className={styles.btn} icon={<RightCircleOutlined className={styles.arrow} />} />
-                        </div>
-                      </Space>
                     </Space>
                   </div>
                 </ColorfulCard>
