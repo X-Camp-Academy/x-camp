@@ -117,11 +117,11 @@ declare const json: {
   'One-TimePayment': 'One-Time Payment';
   WeeklyClasses: 'Weekly Classes';
   OpenHouse: 'Open House';
-  'Home.Banner1.Desc1': "Assessing student's programming proficiency";
-  'Home.Banner1.Desc2': 'Tailoring a personalized learning path';
+  'Home.Banner1.Desc1': 'From Bronze to Platinum Free Live Solutions and Final Report';
+  'Home.Banner1.Desc2': "Your Best USACO Journey's partner";
   'Home.Banner1.Desc3': "Exploring the specifics of X-Camp's diverse classes";
-  'Home.Banner1.Date1': '*Every Tuesday 6:30pm-7:30pm Pacific Time';
-  'Home.Banner1.Date2': '*Every Wednesday 9:30 AM- 10:30 AM Beijing Time';
+  'Home.Banner1.Date1': '* 12/9/2023 4PM-8PM PST';
+  'Home.Banner1.Date2': '* Beijing Time 12/10/2023, Sun, 7AM - 11AM';
   'Partner.Desc1': 'We strive to cultivate a nurturing and welcoming ';
   'Partner.Desc2': 'coding community alongside our committed partners.';
   'Partner.Desc3': ' Feel free to reach out with your inquiries via email.';
@@ -512,6 +512,9 @@ declare const json: {
   ParentEmail: "Parent's Email";
   SendEmailSuccess: 'Thank you for Free Consultation Sign Up, we will contact you with 24 hours.';
   AllCourses: 'All Courses';
+  USACOFreePublicMockTestComes: 'USACO FREE Public Mock Test Comes on Dec!';
+  ReserveNow: 'Reserve Now';
+  NoEventThisWeek: 'No Event This Week';
 };
 
 export default json;

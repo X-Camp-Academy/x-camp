@@ -61,118 +61,134 @@
     }
   }
 
-  .eventCard {
-    padding-left: 12px;
-    height: 200px;
+  .eventListContainer {
+    overflow: hidden scroll;
+    height: 800px;
 
     @media (width <= 768px) {
-      padding: 0;
-      height: 128px;
+      height: 256px;
     }
 
-    .eventContent {
-      padding-top: 24px;
-      padding-right: 24px;
-      padding-bottom: 24px;
-      width: 100%;
-      height: 95%;
-      border-left: #ffad11 solid 10px;
-      background-color: #fff;
+    .eventCard {
+      padding-left: 12px;
+      height: 200px;
 
       @media (width <= 768px) {
-        height: 90%;
-        border-left: #ffad11 solid 6px;
+        padding: 0;
+        height: 128px;
       }
 
-      .contentLeft {
-        margin-right: 40px;
-        margin-left: 40px;
+      .eventContent {
+        padding-top: 24px;
+        padding-right: 24px;
+        padding-bottom: 24px;
         width: 100%;
-        vertical-align: middle;
+        height: 95%;
+        border-left: #ffad11 solid 10px;
+        background-color: #fff;
 
         @media (width <= 768px) {
-          margin-left: 20px;
+          height: 90%;
+          border-left: #ffad11 solid 6px;
         }
 
-        .weekMonth {
-          font-size: 18px;
-          font-weight: 500;
-          color: #6a6a6a;
-          line-height: 28px;
-
-          @media (width <= 768px) {
-            @include mobile-text;
-          }
-        }
-
-        .day {
-          font-size: 36px;
-          font-weight: 600;
-          color: #172142;
-          line-height: 48px;
-
-          @media (width <= 768px) {
-            @include title('middle');
-          }
-        }
-      }
-
-      .contentRight {
-        width: 480px;
-
-        @media (width <= 768px) {
-          width: 320px;
-        }
-
-        .titleParagraph {
-          padding-right: 30px;
-          width: 90%;
-          font-size: 18px;
-          font-weight: bold;
-          color: #172142;
-          line-height: 32px;
-
-          @media (width <= 1400px) {
-            width: 70%;
-          }
-
-          @media (width <= 1200px) {
-            width: 50%;
-          }
-
-          @media (width <= 992px) {
-            width: 90%;
-          }
-
-          @media (width <= 768px) {
-            @include title('middle');
-          }
-        }
-
-        .date {
-          width: 90%;
-          font-size: 16px;
-          font-weight: 400;
-          color: #6a6a6a;
-          line-height: 32px;
-
-          @media (width <= 1400px) {
-            width: 70%;
-          }
-
-          @media (width <= 1200px) {
-            width: 50%;
-          }
-
-          @media (width <= 992px) {
-            width: 90%;
-          }
-        }
-
-        :global(.ant-space-item) {
+        .contentLeft {
+          margin-right: 40px;
+          margin-left: 40px;
           width: 100%;
+          vertical-align: middle;
+
+          @media (width <= 768px) {
+            margin-left: 20px;
+          }
+
+          .weekMonth {
+            font-size: 18px;
+            font-weight: 500;
+            color: #6a6a6a;
+            line-height: 28px;
+
+            @media (width <= 768px) {
+              @include mobile-text;
+            }
+          }
+
+          .day {
+            font-size: 36px;
+            font-weight: 600;
+            color: #172142;
+            line-height: 48px;
+
+            @media (width <= 768px) {
+              @include title('middle');
+            }
+          }
+        }
+
+        .contentRight {
+          width: 480px;
+
+          @media (width <= 768px) {
+            width: 320px;
+          }
+
+          .titleParagraph {
+            padding-right: 30px;
+            width: 90%;
+            font-size: 18px;
+            font-weight: bold;
+            color: #172142;
+            line-height: 32px;
+
+            @media (width <= 1400px) {
+              width: 70%;
+            }
+
+            @media (width <= 1200px) {
+              width: 50%;
+            }
+
+            @media (width <= 992px) {
+              width: 90%;
+            }
+
+            @media (width <= 768px) {
+              @include title('middle');
+            }
+          }
+
+          .date {
+            width: 90%;
+            font-size: 16px;
+            font-weight: 400;
+            color: #6a6a6a;
+            line-height: 32px;
+
+            @media (width <= 1400px) {
+              width: 70%;
+            }
+
+            @media (width <= 1200px) {
+              width: 50%;
+            }
+
+            @media (width <= 992px) {
+              width: 90%;
+            }
+          }
+
+          :global(.ant-space-item) {
+            width: 100%;
+          }
         }
       }
+    }
+
+    .empty {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 
