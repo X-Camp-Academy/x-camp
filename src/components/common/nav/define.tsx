@@ -15,7 +15,7 @@ export const useMenuItems = () => {
     },
     {
       label: <Link href="/courses">{t('Courses')}</Link>,
-      key: '/courses',
+      key: 'courses',
       dropdown: {
         left: {
           title: t('Courses'),
@@ -31,12 +31,12 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <a href="/courses#weekly">{t('AllCourses')}</a>,
-          key: '/courses/catalog'
+          label: <a href="/courses/catalog">{t('AllCourses')}</a>,
+          key: 'catalog'
         },
         {
           label: <a href="/courses#weekly">{t('WeeklyClasses')}</a>,
-          key: '/courses/#weekly'
+          key: 'courses#weekly'
         },
         // {
         //   label: (
@@ -46,23 +46,23 @@ export const useMenuItems = () => {
         // },
         {
           label: <a href="/courses#camps">{t('In-personCamps')}</a>,
-          key: '/courses/#camps'
+          key: 'courses#camps'
         },
         {
           label: <a href="/courses#mock-test-classes">{t('MockTestClasses')}</a>,
-          key: 'mock-test-classes'
+          key: 'courses#mock-test-classes'
         },
         {
           label: <a href="/courses#apcs">{t('Java/APCS.Classes')}</a>,
-          key: 'java-apcs-classes'
+          key: 'courses#apcs'
         },
         {
           label: <Link href="/courses/student-recommend">{t('ReferralProgram')}</Link>,
-          key: '/courses/student-recommend/'
+          key: 'student-recommend'
         },
         {
           label: <Link href="/courses/weekly-open-house">{t('OpenHouse')}</Link>,
-          key: '/courses/weekly-open-house/'
+          key: 'weekly-open-house'
         }
         // {
         //   label: (
@@ -98,23 +98,23 @@ export const useMenuItems = () => {
       children: [
         {
           label: <Link href="/resources/education-forum">{t('EducationForum')}</Link>,
-          key: '/resources/education-forum/'
+          key: 'education-forum'
         },
         {
-          label: <a href="/resources/usaco/">USACO</a>,
-          key: '/resources/usaco/'
+          label: <a href="/resources/usaco">USACO</a>,
+          key: 'usaco'
         },
         {
           label: <a href="/about-us/achievements#art-of-programming-results">{t('InternalContests')}</a>,
-          key: '/resources/internal-contests/'
+          key: 'achievements#art-of-programming-results'
         },
         {
           label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
-          key: '/resources/usaco-live-solution/'
+          key: 'usaco-live-solution'
         },
         {
           label: <Link href="/resources/contests">{t('ExternalContests')}</Link>,
-          key: '/resources/contests/'
+          key: 'contests'
         }
       ]
     },
@@ -131,11 +131,11 @@ export const useMenuItems = () => {
       children: [
         {
           label: <Link href="/about-us/introduction">{t('Introduction')}</Link>,
-          key: '/about-us/introduction/'
+          key: 'introduction'
         },
         {
           label: <Link href="/about-us/achievements">{t('Achievements')}</Link>,
-          key: '/about-us/achievements/'
+          key: 'achievements'
         },
         {
           label: (
@@ -143,23 +143,23 @@ export const useMenuItems = () => {
               {t('Faculty')} & {t('Coach')}
             </a>
           ),
-          key: '/about-us/introduction#faculty'
+          key: 'introduction#faculty'
         },
         {
           label: <Link href="/about-us/join-us">{t('JoinUs')}</Link>,
-          key: '/about-us/join-us/'
+          key: 'join-us'
         },
         {
           label: <Link href="/about-us/news">{t('News')}</Link>,
-          key: '/about-us/news/'
+          key: 'news'
         },
         {
           label: <Link href="/about-us/partners">{t('Partners')}</Link>,
-          key: '/about-us/partners/'
+          key: 'partners'
         },
         {
           label: <Link href="/about-us/contact-us">{t('ContactUs')}</Link>,
-          key: '/about-us/contact-us/'
+          key: 'contact-us'
         }
         // {
         //   label: <Link href="/about-us/x-alumni">{t('XAlumni')}</Link>,

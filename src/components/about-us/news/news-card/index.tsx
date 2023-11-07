@@ -48,7 +48,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
 
   return (
     <div className={`${styles.content} container`}>
-      <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions()} />
+      <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions('event')} />
 
       <div className={styles.newsCard}>
         <Row gutter={isMobile ? [24, 24] : [32, 48]}>

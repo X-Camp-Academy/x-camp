@@ -19,31 +19,8 @@
       border-block-start: none;
     }
 
-    :global(.ant-segmented-group) {
-      padding: 8px 36px;
-
-      @media (width <= 768px) {
-        padding: 0;
-      }
-    }
-
     :global(.ant-affix) {
       z-index: 1000;
-    }
-
-    :global(.ant-segmented-item-label) {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 36px;
-
-      @media (width <= 768px) {
-        font-size: 14px;
-      }
-    }
-
-    :global(.ant-segmented-item-selected) {
-      color: #fff;
-      background-color: #ffad11;
     }
 
     .form {
