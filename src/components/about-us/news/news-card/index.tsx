@@ -46,8 +46,6 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
     }
   }, [segmented, newEventData]);
 
-  console.log(data);
-
   return (
     <div className={`${styles.content} container`}>
       <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions()} />

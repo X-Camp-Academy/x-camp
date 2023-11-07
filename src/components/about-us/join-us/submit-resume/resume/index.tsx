@@ -27,8 +27,8 @@ const Resume: React.FC = () => {
   }, [params?.id]);
 
   return (
-    <div className="container">
-      <Card className={styles.cardContainer} bodyStyle={{ padding: '36px' }}>
+    <div className={`${styles.resumeContainer} container`}>
+      <Card className={styles.card}>
         <JobCardHeader showExpandBtn={false} data={aboutUsJoinUs?.[0]} />
         <JobCardDetail data={aboutUsJoinUs?.[0]} />
         <ResumeForm job={aboutUsJoinUs?.[0].attributes.titleEn} department={aboutUsJoinUs?.[0].attributes.descriptionEn} />

@@ -8,6 +8,16 @@
     padding: 32px 24px;
   }
 
+  .rightCol {
+    @media (width <= 1399px) {
+      padding-left: 65px;
+    }
+
+    @media (width <= 1200px) {
+      padding-left: 0;
+    }
+  }
+
   .title {
     @include title('default');
 
@@ -53,6 +63,7 @@
   .videoIframe {
     width: 640px;
     height: 360px;
+    border: none;
 
     @media (width>=768px) and (width<=1200px) {
       width: 480px;

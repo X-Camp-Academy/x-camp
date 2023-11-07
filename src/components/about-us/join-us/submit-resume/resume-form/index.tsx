@@ -172,7 +172,7 @@ const ResumeForm: React.FC<{
         <Text className={styles.title}>{t('ApplicationConsent')}</Text>
         <Paragraph className={styles.acceptText}>
           {t('ApplicationConsent.Desc1')}{' '}
-          <Link style={{ color: '#FFAD11' }} href="/about-us/privacy-policy">
+          <Link style={{ color: '#FFAD11' }} href="/about-us/join-us/privacy-policy">
             our privacy policy
           </Link>
           {t('ApplicationConsent.Desc2')}

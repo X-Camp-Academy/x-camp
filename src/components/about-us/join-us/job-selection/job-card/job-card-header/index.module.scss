@@ -1,9 +1,13 @@
 @import '@/styles/variables';
 
 .cardContainer {
-  padding: 20px 20px 0;
+  padding: 35px 35px 0;
   border: none;
   background-color: #fff;
+
+  @media (width <= 768px) {
+    padding: 20px 20px 0;
+  }
 
   .jobCardTitle {
     @include text(24px, 36px);

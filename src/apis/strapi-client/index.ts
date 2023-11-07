@@ -5,8 +5,6 @@ import {
   GetAboutUsAchievementsAwardResponse,
   GetAboutUsAlumniMapRequest,
   GetAboutUsAlumniMapResponse,
-  GetAboutUsIntroArticleRequest,
-  GetAboutUsIntroArticleResponse,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
   GetAchievementsTimeLineRequest,
@@ -115,11 +113,6 @@ export class StrapiClient extends BaseAxiosClient {
 
   async getAboutUsAlumniMap(params: GetAboutUsAlumniMapRequest): Promise<GetAboutUsAlumniMapResponse> {
     const res = await this.get('/xc-about-us-alumni-map' + getParamsStringify(params), {});
-    return res;
-  }
-
-  async getAboutUsIntroArticle(params: GetAboutUsIntroArticleRequest): Promise<GetAboutUsIntroArticleResponse> {
-    const res = await this.get('/xc-about-us-introduction-articles' + getParamsStringify(params), {});
     return res;
   }
 

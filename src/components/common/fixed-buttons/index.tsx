@@ -1,5 +1,6 @@
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
+import { useModelVisible } from '@/hoc/WithModelVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
@@ -23,22 +24,21 @@ const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
-
-  const [consultVisible, setConsultVisible] = useState(false);
+  const { modelVisible, setModelVisible } = useModelVisible();
   const [openHouseVisible, setOpenHouseVisible] = useState(false);
 
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
-    setConsultVisible(false);
+    setModelVisible(false);
   };
 
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
       text: isMobile ? 'Consult' : t('FreeConsultation'),
-      state: consultVisible,
-      setOpen: setConsultVisible,
-      label: <ConsultCardForm setOpen={setConsultVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
+      state: modelVisible,
+      setOpen: setModelVisible as React.Dispatch<React.SetStateAction<boolean>>,
+      label: <ConsultCardForm setOpen={setModelVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
       key: 'consult',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
@@ -58,7 +58,7 @@ const FixedButtons: React.FC = () => {
   useEffect(() => {
     const delay = 40000;
     const timeoutId = setTimeout(() => {
-      setConsultVisible(true);
+      setModelVisible(true);
     }, delay);
     return () => {
       clearTimeout(timeoutId);
