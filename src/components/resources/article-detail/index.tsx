@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 const Article: React.FC = () => {
   const articleId = useParams()?.articleId;
 
-  const { data: newEventData, run } = useGetNewEvent({
+  const { data: articleData, run } = useGetNewEvent({
     current: 1,
     pageSize: 1
   });
@@ -29,22 +29,22 @@ const Article: React.FC = () => {
 
   return (
     <Layout className={styles.main}>
-      <div className="container">
-        <Layout.Content className={styles.content}>
-          {newEventData?.data?.[0] ? (
+      <Layout.Content>
+        <div className={`${styles.articleDetail} container`}>
+          {articleData?.data?.[0] ? (
             <Row>
-              <Col lg={17} md={24}>
-                <Content props={newEventData?.data?.[0]} />
+              <Col xs={24} sm={24} md={24} lg={16} xl={17}>
+                <Content props={articleData?.data?.[0]} />
               </Col>
-              <Col lg={7} md={24}>
-                <Aside eventCategory={newEventData?.data?.[0]?.attributes?.eventCategory} articleId={+newEventData?.data?.[0]?.id!} />
+              <Col xs={24} sm={24} md={24} lg={8} xl={7}>
+                <Aside eventCategory={articleData?.data?.[0]?.attributes?.eventCategory} articleId={+articleData?.data?.[0]?.id!} />
               </Col>
             </Row>
           ) : (
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
           )}
-        </Layout.Content>
-      </div>
+        </div>
+      </Layout.Content>
     </Layout>
   );
 };

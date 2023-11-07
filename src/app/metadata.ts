@@ -28,7 +28,7 @@ export enum PageTitle {
 
   Contests = 'Contests',
   EducationForum = 'Education Forum',
-  EducationForumDetail = 'Education Forum Detail',
+  ArticleDetail = 'Article Detail',
   UsacoLiveSolutions = 'USACO Live Solutions',
   WeeklyOpenHouse = 'Weekly Open House',
   USACO = 'USACO',

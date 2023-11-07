@@ -69,7 +69,6 @@ export interface GetNewEvent extends strapiPublicFields {
 
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
-  detailContent?: string;
   detailContentZh?: string;
   detailContentEn?: string;
 

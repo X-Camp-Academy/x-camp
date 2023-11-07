@@ -5,13 +5,18 @@
   flex-direction: column;
   padding: 24px 24px 24px 0;
 
+  @media (width <= 768px) {
+    padding: 0;
+    padding-top: 24px;
+  }
+
   .title {
     @include title('default');
 
     margin: 24px 0;
 
-    @media (width <= 992px) {
-      font-size: 24px;
+    @media (width <= 768px) {
+      @include title('mobile');
     }
   }
 
@@ -154,6 +159,11 @@
     border-radius: 4px;
     font-size: 14px;
     background: #d8d8d8;
+
+    @media (width <= 768px) {
+      margin-top: 8px;
+      padding: 0 24px;
+    }
 
     .icon,
     span {

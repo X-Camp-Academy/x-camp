@@ -91,9 +91,10 @@
         display: block;
         padding: 8px;
         width: 88px;
-        color: #fff;
 
         @include mobile-text;
+
+        color: #fff;
       }
     }
   }
