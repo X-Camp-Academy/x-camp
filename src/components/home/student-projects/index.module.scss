@@ -9,103 +9,138 @@
     padding: 32px 24px;
   }
 
-  .space {
-    :global(.ant-space-item:last-child) {
-      width: 100%;
+  :global(.ant-space-item:last-child) {
+    width: 100%;
+  }
+
+  .title {
+    margin: 0;
+
+    @include title;
+
+    @media (width <= 768px) {
+      @include title('mobile');
     }
+  }
 
-    .title {
-      margin: 0;
+  .baseTitleBg {
+    display: block;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('/image/home/home-title-bg-1.png');
+  }
 
-      @include title;
+  .titleEnBg {
+    @extend .baseTitleBg;
+
+    margin-left: 136px;
+    width: 160px;
+
+    @media (width <= 768px) {
+      margin-left: 92px;
+      width: 96px;
+    }
+  }
+
+  .titleZhBg {
+    @extend .baseTitleBg;
+
+    margin-left: 64px;
+    width: 80px;
+
+    @media (width <= 768px) {
+      margin-left: 40px;
+      width: 64px;
+    }
+  }
+
+  .paragraphText {
+    @include text(18px, 34px, $primary-color);
+
+    font-weight: 500;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
+  }
+
+  .paragraph {
+    @extend .paragraphText;
+    @include margin;
+
+    margin-bottom: 50px;
+    text-align: center;
+    color: #172142;
+
+    @media (width <= 768px) {
+      margin-bottom: 16px;
+      padding: 0;
+
+      @include margin(0);
+      @include mobile-text;
+    }
+  }
+
+  .row {
+    width: 100%;
+
+    .bigIframe {
+      width: 604px;
+      height: 340px;
+
+      @media (width <= 1399px) {
+        width: 543px;
+        height: 306px;
+      }
 
       @media (width <= 768px) {
-        @include title('mobile');
+        width: 100%;
       }
     }
 
-    .baseTitleBg {
-      display: block;
-      height: 20px;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-image: url('/image/home/home-title-bg-1.png');
-    }
+    .smallIframe {
+      width: 306px;
+      height: 172px;
 
-    .titleEnBg {
-      @extend .baseTitleBg;
+      @media (width <= 1399px) {
+        width: 260px;
+        height: 146px;
+      }
 
-      margin-left: 136px;
-      width: 160px;
+      @media (width <= 1200px) {
+        width: 293px;
+        height: 164px;
+      }
+
+      @media (width <= 992px) {
+        width: 213px;
+        height: 120px;
+      }
 
       @media (width <= 768px) {
-        margin-left: 92px;
-        width: 96px;
+        width: 100%;
       }
     }
 
-    .titleZhBg {
-      @extend .baseTitleBg;
-
-      margin-left: 64px;
-      width: 80px;
-
-      @media (width <= 768px) {
-        margin-left: 40px;
-        width: 64px;
-      }
-    }
-
-    .paragraphText {
-      @include text(18px, 34px, $primary-color);
-
-      font-weight: 500;
-
-      @media (width <= 768px) {
-        @include mobile-text;
-      }
-    }
-
-    .paragraph {
-      @extend .paragraphText;
-      @include margin;
-
-      margin-bottom: 50px;
-      text-align: center;
-      color: #172142;
-
-      @media (width <= 768px) {
-        margin-bottom: 16px;
-        padding: 0;
-
-        @include margin(0);
-        @include mobile-text;
-      }
-    }
-
-    .row {
-      width: 100%;
-
-      .videoIframe {
-        width: 640px;
-        height: 360px;
-        border: none;
-
-        @media (width>=768px) and (width<=1200px) {
-          width: 480px;
-          height: 270px;
-        }
-
-        @media (width <= 768px) {
-          width: 320px;
-          height: 180px;
-        }
-      }
-
-      .card {
+    .card {
+      .space {
         position: relative;
+        padding-bottom: 15px;
         width: 100%;
         border-radius: 0;
+
+        @media (width <= 768px) {
+          padding-top: 20px;
+        }
+
+        :global(.ant-space-item) {
+          padding-left: 20px;
+
+          @media (width <= 992px) {
+            padding-left: 5px;
+          }
+        }
 
         :global(.ant-space) {
           @media (width <= 992px) {
@@ -151,7 +186,13 @@
           color: #666;
           line-height: 24px;
 
+          @media (width <= 992px) {
+            min-height: 72px;
+          }
+
           @media (width <= 768px) {
+            min-height: unset;
+
             @include mobile-text;
           }
         }
