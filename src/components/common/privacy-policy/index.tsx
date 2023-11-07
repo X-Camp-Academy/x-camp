@@ -1,5 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
 import { List, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
@@ -252,7 +253,7 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <div className={styles.privacyPolicyContainer}>
       <div className={`${styles.privacyPolicy} container`}>
-        <Title className={styles.title}>Applicant and Candidate Privacy Policy</Title>
+        <Title className={styles.title}>{getTransResult(lang, '应聘者和职位候选人隐私权政策', 'Applicant and Candidate Privacy Policy')}</Title>
         <Space direction="vertical" style={{ marginTop: 30 }}>
           <Text className={styles.policyExplains}>This policy explains:</Text>
           <Paragraph className={styles.policyExplainsList}>

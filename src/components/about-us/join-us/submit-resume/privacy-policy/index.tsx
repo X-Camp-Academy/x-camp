@@ -2,6 +2,7 @@
 import { useLang } from '@/hoc/with-intl/define';
 import { Layout, List, Space, Typography } from 'antd';
 import React from 'react';
+import { getTransResult } from 'x-star-utils';
 import styles from './index.module.scss';
 
 const { Content } = Layout;
@@ -158,105 +159,214 @@ const PrivacyPolicy: React.FC = () => {
     }
   };
 
-  const categoriesOfInformationWeCollect = [
-    {
-      head: 'Identifiers and similar information',
-      content: ', such as your name, phone number, and address; username and password; and unique identifiers tied to the browser, application, or device you’re using.'
-    },
-    {
-      head: 'Demographic information',
-      content:
-        ', such as your age, gender, and language(s) spoken. If you choose, you may also provide additional information, like your racial or ethnic origin, religious or philosophical beliefs, trade union membership, sexual orientation, or gender identity.'
-    },
-    {
-      head: 'Financial information',
-      content: ', such as your current and/or desired salary and other terms relating to compensation and benefits packages.'
-    },
-    {
-      head: 'Geolocation data',
-      content: ', including as determined by IP address, depending in part on your device and account settings.'
-    },
-    {
-      head: 'Audio, electronic, visual, and similar information',
-      content: ', such as information transmitted in connection with interviews or phone-screenings you may have, if any.'
-    },
-    {
-      head: 'Communications data',
-      content: ', such as emails that you may send or receive in connection with the application or recruitment process.'
-    },
-    {
-      head: 'Health information',
-      content: ', if you choose to provide it, in connection with the application or recruitment process, such as data you may provide in connection with an accommodations request.'
-    },
-    {
-      head: 'Professional, employment, and education information',
-      content:
-        ', such as information you provide in connection with the application and recruitment process, as well as information X-Camp Academy may otherwise collect through reference checks, criminal and financial background checks (where applicable) and information from publicly available sources, including online, that may be relevant.'
-    },
-    {
-      head: 'Other information you create or provide',
-      content: ', such as the content you create, upload, or otherwise provide in connection with the application and recruitment process.'
-    }
-  ];
+  const categoriesOfInformationWeCollect = {
+    zh: [
+      {
+        head: '标识符和类似信息',
+        content: '，例如您的姓名、电话号码和地址；用户名和密码；以及您当前使用的 浏览器、应用或设备所绑定的唯一标识符。'
+      },
+      {
+        head: '人口统计特征信息',
+        content: '，例如您的年龄、性别和所用语言。您还可以选择提供更多信息， 例如您的种族或族裔、宗教或哲学信仰、工会成员身份、性取向或性别认同。'
+      },
+      {
+        head: '财务信息',
+        content: '，例如当前和/或期望的薪资水平以及其他方面 （关于薪酬福利待遇）的详情。'
+      },
+      {
+        head: '互联网、网络和其他活动信息',
+        content:
+          '（与您使用 X-Camp Academy 帐号、系统和服务相关），例如您的搜索字词；内容的浏览次数和互动次数；以及您的应用、 浏览器和设备与 X-Camp Academy 服务进行互动的相关信息（例如 IP 地址、崩溃报告和系统活动）。'
+      },
+      {
+        head: '地理定位数据',
+        content: '，包括根据 IP 地址确定的位置数据，在一定程度上取决于您的设备和帐号设置。'
+      },
+      {
+        head: '音频、电子、影像信息及类似信息',
+        content: '例如您可能进行过的面试或 电话面试（如果有）的相关信息。'
+      },
+      {
+        head: '通信数据',
+        content: '，例如您在求职或招聘流程中可能发送或接收的电子邮件。'
+      },
+      {
+        head: '健康信息',
+        content: ', 如果您选择在求职 或招聘流程中 提供此类信息，例如您可能提供的与住宿要求 相关的信息。'
+      },
+      {
+        head: '职业信息、工作信息和教育信息',
+        content: '，例如您在求职招聘流程中提供的信息，以及 X-Camp Academy 可能会通过推荐人调查、犯罪和财务背景调查（如适用）另行收集的信息和来自公开来源（包括线上来源）的可能相关的信息。'
+      },
+      {
+        head: '您创建或提供的其他信息',
+        content: '，例如您创建、上传 或以其他方式提供的与求职招聘流程 相关的内容。'
+      }
+    ],
+    en: [
+      {
+        head: 'Identifiers and similar information',
+        content: ', such as your name, phone number, and address; username and password; and unique identifiers tied to the browser, application, or device you’re using.'
+      },
+      {
+        head: 'Demographic information',
+        content:
+          ', such as your age, gender, and language(s) spoken. If you choose, you may also provide additional information, like your racial or ethnic origin, religious or philosophical beliefs, trade union membership, sexual orientation, or gender identity.'
+      },
+      {
+        head: 'Financial information',
+        content: ', such as your current and/or desired salary and other terms relating to compensation and benefits packages.'
+      },
+      {
+        head: 'Internet, network, and other activity information',
+        content:
+          'in connection with your use of X-Camp Academy accounts, systems, and services, such as your search terms; views and interactions with content; and information about the interaction of your apps, browsers, and devices with X-Camp Academy services (like IP address, crash reports, and system activity).'
+      },
+      {
+        head: 'Geolocation data',
+        content: ', including as determined by IP address, depending in part on your device and account settings.'
+      },
+      {
+        head: 'Audio, electronic, visual, and similar information',
+        content: ', such as information transmitted in connection with interviews or phone-screenings you may have, if any.'
+      },
+      {
+        head: 'Communications data',
+        content: ', such as emails that you may send or receive in connection with the application or recruitment process.'
+      },
+      {
+        head: 'Health information',
+        content: ', if you choose to provide it, in connection with the application or recruitment process, such as data you may provide in connection with an accommodations request.'
+      },
+      {
+        head: 'Professional, employment, and education information',
+        content:
+          ', such as information you provide in connection with the application and recruitment process, as well as information X-Camp Academy may otherwise collect through reference checks, criminal and financial background checks (where applicable) and information from publicly available sources, including online, that may be relevant.'
+      },
+      {
+        head: 'Other information you create or provide',
+        content: ', such as the content you create, upload, or otherwise provide in connection with the application and recruitment process.'
+      }
+    ]
+  };
 
-  const businessPurposes = [
-    {
-      head: 'Administrative purposes',
-      content:
-        ': X-Camp Academy uses and may disclose information for purposes related to carrying out its application and recruitment process, including for assessing candidates; verifying information and conducting reference checks and criminal and financial background checks (where applicable); communicating with you; responding to requests for assistance with obtaining an immigration visa or work permit (where required); diversity, equity, inclusion and belonging; and other related activities.'
-    },
-    {
-      head: 'Protecting against security threats, abuse, illegal activity, and violations',
-      content:
-        ': X-Camp Academy uses and may disclose information to detect, prevent and respond to security incidents, and for protecting against other malicious, deceptive, fraudulent, or illegal activity. '
-    },
-    {
-      head: 'Maintaining our services',
-      content: ', : X-Camp Academy uses information to ensure our accounts systems and services are working as intended, such as tracking outages or troubleshooting bugs and other issues.'
-    },
-    {
-      head: 'Research and development',
-      content: ': X-Camp Academy uses information to improve our application and recruitment process, including improving diversity in recruitment practices.'
-    },
-    {
-      head: 'Use of service providers',
-      content:
-        ': X-Camp Academy shares information with service providers to perform services on our behalf, in compliance with this privacy policy and other appropriate confidentiality and security measures. For example, we may rely on service providers to help perform criminal and financial background checks (where applicable).'
-    },
-    {
-      head: 'Legal reasons',
-      content:
-        ': X-Camp Academy also uses information to satisfy applicable laws or regulations, and discloses information in response to legal process or enforceable government requests, including to law enforcement.'
-    }
-  ];
+  const businessPurposes = {
+    zh: [
+      {
+        head: '行政目的',
+        content:
+          ': X-Camp Academy 会利用并可能 披露与执行求职招聘流程相关的 信息， 包括评估职位候选人；核实信息 并进行推荐人调查以及 犯罪和财务 背景调查（如适用）；与您进行沟通；回应帮助您取得移民签证或工作许可证的请求（必要时）；多元化、公平性、包容性和归属感；以及其他相关活动。'
+      },
+      {
+        head: '防范安全威胁、滥用行为、非法活动和违规行为',
+        content:
+          ': X-Camp Academy 会利用（且可能会通过披露信息）来检测、预防和响应安全事件，以及防范其他恶意、欺骗性、 欺诈性或非法的活动。例如，为了保护我们的服务，X-Camp Academy 可能会 接收或披露 与恶意行为者 入侵的 IP 地址有关的信息。'
+      },
+      {
+        head: '审核和衡量',
+        content: ': X-Camp Academy 会利用信息进行分析和衡量，以了解 X-Camp Academy 帐号、 系统和服务的使用情况。'
+      },
+      {
+        head: '维护我们的服务',
+        content: ': X-Camp Academy 会利用信息来确保 X-Camp Academy 设备、帐号、系统和服务正常运行，例如跟踪中断情况或排查错误和其他问题。'
+      },
+      {
+        head: '研究和开发',
+        content: ': X-Camp Academy 会利用信息来改进我们的求职招聘流程，包括增加招聘方式的多样性。'
+      },
+      {
+        head: '使用服务提供商',
+        content:
+          ': X-Camp Academy 会遵照本隐私权政策的规定以及其他相关的机密性和安全措施，将您的信息分享给服务提供商，以供其代表 X-Camp Academy 提供相关服务。例如，我们可能需要服务提供商帮助进行犯罪和 财务背景调查（如适用）。'
+      },
+      {
+        head: '法律原因',
+        content: ': X-Camp Academy 也会为了满足相关法律或法规的要求而使用信息， 以及为了配合司法程序或强制执行的政府要求（包括配合执法部门的 要求）而披露 信息。'
+      }
+    ],
+    en: [
+      {
+        head: 'Administrative purposes',
+        content:
+          ': X-Camp Academy uses and may disclose information for purposes related to carrying out its application and recruitment process, including for assessing candidates; verifying information and conducting reference checks and criminal and financial background checks (where applicable); communicating with you; responding to requests for assistance with obtaining an immigration visa or work permit (where required); diversity, equity, inclusion and belonging; and other related activities.'
+      },
+      {
+        head: 'Protecting against security threats, abuse, illegal activity, and violations',
+        content:
+          ': X-Camp Academy uses and may disclose information to detect, prevent and respond to security incidents, and for protecting against other malicious, deceptive, fraudulent, or illegal activity. '
+      },
+      {
+        head: 'Auditing and measurement',
+        content: ': X-Camp Academy uses information for analytics and measurement to understand use of X-Camp Academy accounts, systems, and services.'
+      },
+      {
+        head: 'Maintaining our services',
+        content: ', : X-Camp Academy uses information to ensure our accounts systems and services are working as intended, such as tracking outages or troubleshooting bugs and other issues.'
+      },
+      {
+        head: 'Research and development',
+        content: ': X-Camp Academy uses information to improve our application and recruitment process, including improving diversity in recruitment practices.'
+      },
+      {
+        head: 'Use of service providers',
+        content:
+          ': X-Camp Academy shares information with service providers to perform services on our behalf, in compliance with this privacy policy and other appropriate confidentiality and security measures. For example, we may rely on service providers to help perform criminal and financial background checks (where applicable).'
+      },
+      {
+        head: 'Legal reasons',
+        content:
+          ': X-Camp Academy also uses information to satisfy applicable laws or regulations, and discloses information in response to legal process or enforceable government requests, including to law enforcement.'
+      }
+    ]
+  };
 
-  const partiesWithInformation = [
-    {
-      head: 'Other people with whom you choose to share your information',
-      content: ', such as the content you create, upload, or otherwise provide in connection with the application and recruitment process.'
-    },
-    {
-      head: 'Third parties with your consent',
-      content: ', for example if you have given us permission to contact your references.'
-    },
-    {
-      head: 'Service providers',
-      content:
-        ', trusted businesses or persons that process information on X-Camp’s behalf, based on our instructions and in compliance with this privacy policy and any other appropriate confidentiality and security measures.'
-    },
-    {
-      head: 'Law enforcement or other third parties',
-      content: ', in response to legal process or enforceable government requests, and as necessary to identify, report on and investigate violations of applicable laws and regulations.'
-    }
-  ];
+  const partiesWithInformation = {
+    zh: [
+      {
+        head: '您选择与之分享信息的他人',
+        content: '，例如您与之分享您创建、上传或以其他方式提供的与求职招聘流程 相关的内容的人。'
+      },
+      {
+        head: '您同意与之分享信息的第三方',
+        content: '，例如，您允许我们联系的推荐人。'
+      },
+      {
+        head: '服务提供商、可信商家或个人（代表 X-Camp Academy 处理信息）',
+        content: '：他们会根据我们的说明、 遵照本隐私权政策的规定以及其他相关的机密性 和安全措施来处理信息。'
+      },
+      {
+        head: '执法部门或其他第三方',
+        content: '：为了发现、举报和调查 违反适用法律法规的行为，以及配合司法程序或强制性政府要求，我们会与相关部门/相关方分享必要的信息。'
+      }
+    ],
+    en: [
+      {
+        head: 'Other people with whom you choose to share your information',
+        content: ', such as the content you create, upload, or otherwise provide in connection with the application and recruitment process.'
+      },
+      {
+        head: 'Third parties with your consent',
+        content: ', for example if you have given us permission to contact your references.'
+      },
+      {
+        head: 'Service providers',
+        content:
+          ', trusted businesses or persons that process information on X-Camp’s behalf, based on our instructions and in compliance with this privacy policy and any other appropriate confidentiality and security measures.'
+      },
+      {
+        head: 'Law enforcement or other third parties',
+        content: ', in response to legal process or enforceable government requests, and as necessary to identify, report on and investigate violations of applicable laws and regulations.'
+      }
+    ]
+  };
 
   return (
     <Layout className={styles.privacyPolicyContainer}>
       <Content>
         <div className={`${styles.privacyPolicy} container`}>
-          <Title className={styles.title}>Applicant and Candidate Privacy Policy</Title>
+          <Title className={styles.title}>{getTransResult(lang, '应聘者和职位候选人隐私权政策', 'Applicant and Candidate Privacy Policy')}</Title>
           <Space direction="vertical" style={{ marginTop: 30 }}>
-            <Text className={styles.policyExplains}>This policy explains:</Text>
+            <Text className={styles.policyExplains}>{getTransResult(lang, '本政策阐明以下内容：', 'This policy explains:')}</Text>
             <Paragraph className={styles.policyExplainsList}>
               {policyExplains[lang].map((explain, index) => (
                 <li key={index}>
@@ -302,24 +412,38 @@ const PrivacyPolicy: React.FC = () => {
 
           <div className={styles.singleParagraph}>
             <Paragraph className={styles.text}>
-              We will also use your information to protect the rights and property of X-Camp Academy,applicants, candidates, employees or the public as required or permitted by law.
+              {getTransResult(
+                lang,
+                '我们还会在法律要求或允许的范围内，使用您的信息保护 X-Camp Academy、X-Camp Academy 用户、应聘者、职位候选人、员工或公众的权利和财产免遭侵犯。',
+                'We will also use your information to protect the rights and property of X-Camp Academy,applicants, candidates, employees or the public as required or permitted by law.'
+              )}
             </Paragraph>
           </div>
 
           <div className={styles.employment}>
             <Title className={styles.subTitle}>
-              If you are offered and accept employment with X-Camp Academy, the information collected during the application and recruitment process will become part of your employment record.
+              {getTransResult(
+                lang,
+                '如果您接受 X-Camp Academy 提供的职位，那么我们在求职招聘流程中所收集的信息将成为您的工作履历的一部分。',
+                'If you are offered and accept employment with X-Camp Academy, the information collected during the application and recruitment process will become part of your employment record.'
+              )}
             </Title>
             <Paragraph className={styles.singleParagraph}>
               <Text className={styles.text}>
-                We collect and process your information where it is necessary in order to take steps, at your request, prior to our potentially entering into a contract of employment with you.
+                {getTransResult(
+                  lang,
+                  '我们会在以下情况下收集和处理您的信息：为采取相应措施而有必要这么做时、当您要求我们这么做时，以及在我们有意与您签订雇佣合同之前。',
+                  'We collect and process your information where it is necessary in order to take steps, at your request, prior to our potentially entering into a contract of employment with you.'
+                )}
               </Text>
             </Paragraph>
             <Paragraph className={styles.singleParagraph}>
               <Text className={styles.text}>
-                We may also seek your consent to process your personal information in specific circumstances, or process it where necessary to comply with a legal obligation or for purposes connected
-                to legal claims. If we use your information to improve our application or recruitment process, we do so on the basis that it is in our legitimate interests to ensure we recruit the
-                best possible candidates.
+                {getTransResult(
+                  lang,
+                  '我们可能还会于特定情况下在处理您的个人信息前征得您的同意，或是为了履行相关法律义务或应对与依法索赔要求有关的事宜而处理您的个人信息。如果我们使用您的信息来完善我们的求职或招聘流程，这样做是为了确保能够招聘到最合适的职位候选人， 而且这一做法符合我们的合法权益。',
+                  'We may also seek your consent to process your personal information in specific circumstances, or process it where necessary to comply with a legal obligation or for purposes connected to legal claims. If we use your information to improve our application or recruitment process, we do so on the basis that it is in our legitimate interests to ensure we recruit the best possible candidates.'
+                )}
               </Text>
             </Paragraph>
           </div>
@@ -344,79 +468,126 @@ const PrivacyPolicy: React.FC = () => {
                 ))}
               </ul>
               <Paragraph className={styles.text}>
-                X-Camp Academy takes appropriate steps to protect information about you that is collected, processed, and stored as part of the application and recruitment process.
+                {getTransResult(
+                  lang,
+                  'X-Camp Academy 会采取适当的措施来保护在求职招聘流程中收集、处理和存储的与您相关的信息。',
+                  'X-Camp Academy takes appropriate steps to protect information about you that is collected, processed, and stored as part of the application and recruitment process.'
+                )}
               </Paragraph>
             </div>
           </div>
 
           <div style={{ marginTop: 25 }}>
-            <Title className={styles.subTitle}>Our retention of your information</Title>
+            <Title className={styles.subTitle}>{getTransResult(lang, '我们如何保留您的信息', 'Our retention of your information')}</Title>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {
+              {getTransResult(
+                lang,
+                '如果您应聘 X-Camp Academy 的某一职位但未被录用（或者您中途退出了应聘流程或谢绝了我们的录用），X-Camp Academy 会在您的应聘流程结束后，将您的信息保留一段时间。我们会出于各种原因保留此类信息，包括：为了防止由于招聘决定而导致我们面临法律上的质疑；为了将您作为 X-Camp Academy 当前或日后其他职位的备选人员；或为了帮助我们更好地了解、分析和完善招聘流程。',
                 'If you apply for a job at X-Camp Academy and your application is unsuccessful (or you withdraw from the process or decline our offer), X-Camp Academy will retain your information for a period after your application. We retain this information for various reasons, including in case we face a legal challenge in respect of a recruitment decision, to consider you for other current or future jobs at X-Camp Academy and to help us better understand, analyze and improve our recruitment processes.'
-              }
+              )}
             </Paragraph>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              If you do not want us to retain your information for consideration for other roles, or want us to update it, please contact&nbsp;
+              {getTransResult(
+                lang,
+                '如果您不希望我们保留您的信息以将您作为其他职位的备选人员，或者希望我们更新您的信息，请发送电子邮件至',
+                'If you do not want us to retain your information for consideration for other roles, or want us to update it, please contact'
+              )}
+              &nbsp;
               <a href="mailto:hr@x-camp.academy" className={styles.link}>
                 hr@x-camp.academy
               </a>
-              . Please note, however, that we may retain some information if required by law or as necessary to protect ourselves from legal claims.
+              {getTransResult(
+                lang,
+                '。不过，请注意，我们可能会因法律规定或为了免遭依法索赔要求而保留您的部分信息。',
+                '. Please note, however, that we may retain some information if required by law or as necessary to protect ourselves from legal claims.'
+              )}
             </Paragraph>
           </div>
 
           <div style={{ marginTop: 25 }}>
-            <Title className={styles.subTitle}>Your rights in respect of your information</Title>
+            <Title className={styles.subTitle}>{getTransResult(lang, '您在个人信息方面所享有的权利', 'Your rights in respect of your information')}</Title>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {
+              {getTransResult(
+                lang,
+                '某些国家/地区的数据保护法可能会赋予您特定的权利。这些权利可能包括要求访问、更新或审核您的信息，要求删除或匿名处理您的信息，或者拒绝或限制 X-Camp Academy 将您的信息用于特定目的。',
                 'In certain countries, you may have certain rights under data protection law. This may include the right to request access or to update or review your information, request that it be deleted or anonymized, or object to or restrict X-Camp Academy using it for certain purposes.'
-              }
+              )}
             </Paragraph>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {'If you wish to exercise a right of access please contact'}&nbsp;
+              {getTransResult(lang, '如果您希望行使访问权，请发送电子邮件至', 'If you wish to exercise a right of access please contact')}&nbsp;
               <a href="mailto:hr@x-camp.academy" className={styles.link}>
                 hr@x-camp.academy
               </a>
-              {'. We will respond to any requests in accordance with applicable law, and so there may be circumstances where we are not able to comply with your request.'}
+              {getTransResult(
+                lang,
+                '与我们联系。我们会根据适用法律回复您的请求，因此在某些情形下，我们可能无法满足您的请求。',
+                '. We will respond to any requests in accordance with applicable law, and so there may be circumstances where we are not able to comply with your request.'
+              )}
             </Paragraph>
           </div>
 
           <div style={{ marginTop: 25 }}>
-            <Title className={styles.subTitle}>Changes to this Policy</Title>
+            <Title className={styles.subTitle}>{getTransResult(lang, '本政策的修订', 'Changes to this Policy')}</Title>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {'We may change this policy from time to time. We will post any changes to this policy on this page.'}
+              {getTransResult(
+                lang,
+                '我们可能会不时修订此政策，并且会在此页面上发布对此政策进行的任何修订。本页面顶部按版本生效日期列出了此政策的各个版本。',
+                'We may change this policy from time to time. We will post any changes to this policy on this page.'
+              )}
             </Paragraph>
           </div>
 
           <div style={{ marginTop: 25 }}>
-            <Title className={styles.subTitle}>{'U.S. state law requirements'}</Title>
+            <Title className={styles.subTitle}>{getTransResult(lang, '美国州法律的要求', 'U.S. state law requirements')}</Title>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {'Some U.S. state privacy laws, such as the California Consumer Privacy Act (CCPA), require specific disclosures for state residents.'}
+              {getTransResult(
+                lang,
+                '根据美国《加州消费者隐私法案》(CCPA) 等某些州级隐私保护法律的规定，我们必须向相应州的居民披露特定信息。',
+                'Some U.S. state privacy laws, such as the California Consumer Privacy Act (CCPA), require specific disclosures for state residents.'
+              )}
             </Paragraph>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {
+              {getTransResult(
+                lang,
+                '本政策旨在帮助您了解 X-Camp Academy 会如何处理您的信息。上文的几个部分对以下内容分别进行了说明：(1) X-Camp Academy 会收集哪些类别的信息，以及这些信息的来源；(2) X-Camp Academy 使用信息的方式；(3) X-Camp Academy 可能会披露信息的情形；以及 (4) X-Camp Academy 会如何保留信息。X-Camp Academy 不会出售您的个人信息，也不会分享这类信息（此“分享”与《CCPA》中的“share”一词同义）。',
                 'This policy is designed to help you understand how X-Camp Academy handles your information. In the sections above, we explain: (1) the categories of information X-Camp Academy collects and the sources of that information; (2) how X-Camp Academy uses information; (3) when X-Camp Academy may disclose information; and (4) how X-Camp Academy retains information. X-Camp Academy does not sell your personal information. X-Camp Academy also does not “share” your personal information as that term is defined in the CCPA.'
-              }
+              )}
             </Paragraph>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {
+              {getTransResult(
+                lang,
+                '根据《CCPA》等州法律的规定，您还有权要求我们说明 X-Camp Academy 会如何收集、使用和披露您的个人信息，也有权访问和更正这些信息以及要求 X-Camp Academy 删除这些信息。最后，《CCPA》可保障您不会因行使这些隐私权而遭受不平等的待遇。',
                 'State laws like the CCPA also provide the right to request information about how X-Camp Academy collects, uses, and discloses your information. And they may give you the right to access and correct your information, and to request that X-Camp Academy delete that information. Finally, the CCPA provides the right to not be discriminated against for exercising these privacy rights.'
-              }
+              )}
             </Paragraph>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {
-                'If you have questions or concerns related to your rights under CCPA, or would like to exercise your rights, you (or your authorized agent) can contact X-Camp Academy at hr@x-camp.academy. We’ll validate your request by verifying your interactions with X-Camp Academy, and may require that you provide us with additional information, such as any names, phone numbers or email addresses you have used when communicating with us.'
-              }
+              {getTransResult(
+                lang,
+                '如果您在《CCPA》规定的相关权利方面有疑问或顾虑，或者想行使自己的权利，您（或您的授权代理人）可以发送电子邮件至',
+                'If you have questions or concerns related to your rights under CCPA, or would like to exercise your rights, you (or your authorized agent) can contact X-Camp Academy at'
+              )}
+              <a href="mailto:hr@x-camp.academy" className={styles.link}>
+                hr@x-camp.academy
+              </a>
+              {getTransResult(
+                lang,
+                ' 与 X-Camp Academy 联系。我们将通过确认您与 X-Camp Academy 之间的互动来验证您的请求，并可能要求您向我们提供其他信息，例如您在与我们沟通时使用的任何姓名、电话号码或电子邮件地址。',
+                '. We’ll validate your request by verifying your interactions with X-Camp Academy, and may require that you provide us with additional information, such as any names, phone numbers or email addresses you have used when communicating with us.'
+              )}
             </Paragraph>
             <Paragraph className={styles.text} style={{ marginTop: 35 }}>
-              {'The CCPA also requires a description of data practices using specific categories. This table uses these categories to organize the information in this policy.'}
+              {getTransResult(
+                lang,
+                '《CCPA》还规定必须使用特定类别来说明数据方面的做法。下表使用这些类别梳理了本政策中涵盖的相关信息。',
+                'The CCPA also requires a description of data practices using specific categories. This table uses these categories to organize the information in this policy.'
+              )}
             </Paragraph>
           </div>
 
           <div className={styles.textBorder}>
-            <Title className={styles.subTitle}>{'Categories of information we collect'}</Title>
+            <Title className={styles.subTitle}>{getTransResult(lang, '我们收集的信息的类别', 'Categories of information we collect')}</Title>
             <ul>
-              {categoriesOfInformationWeCollect.map((item, index) => (
+              {categoriesOfInformationWeCollect[lang].map((item, index) => (
                 <li key={index} style={{ marginTop: 25 }}>
                   <Paragraph className={styles.text}>
                     <Text className={styles.boldText}>{item.head}</Text>
@@ -428,9 +599,9 @@ const PrivacyPolicy: React.FC = () => {
           </div>
 
           <div className={styles.textBorder}>
-            <Title className={styles.subTitle}>{'Business purposes for which information may be used or disclosed'}</Title>
+            <Title className={styles.subTitle}>{getTransResult(lang, '可出于哪些业务目的使用或披露信息', 'Business purposes for which information may be used or disclosed')}</Title>
             <ul>
-              {businessPurposes.map((item, index) => (
+              {businessPurposes[lang].map((item, index) => (
                 <li key={index} style={{ marginTop: 25 }}>
                   <Paragraph className={styles.text}>
                     <Text className={styles.boldText}>{item.head}</Text>
@@ -442,9 +613,9 @@ const PrivacyPolicy: React.FC = () => {
           </div>
 
           <div className={styles.textBorder}>
-            <Title className={styles.subTitle}>{'Parties with whom information may be disclosed'}</Title>
+            <Title className={styles.subTitle}>{getTransResult(lang, '可能的信息披露对象', 'Parties with whom information may be disclosed')}</Title>
             <ul>
-              {partiesWithInformation.map((item, index) => (
+              {partiesWithInformation[lang].map((item, index) => (
                 <li key={index} style={{ marginTop: 25 }}>
                   <Paragraph className={styles.text}>
                     <Text className={styles.boldText}>{item.head}</Text>
@@ -456,7 +627,7 @@ const PrivacyPolicy: React.FC = () => {
           </div>
 
           <div className={styles.text} style={{ padding: '30px 0' }}>
-            Last updated: July 27, 2023
+            {getTransResult(lang, '最后更新时间: 2023年4月24日', 'Last updated: July 27, 2023')}
           </div>
         </div>
       </Content>
