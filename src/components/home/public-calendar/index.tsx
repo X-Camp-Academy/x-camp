@@ -6,9 +6,9 @@ import { useLang } from '@/hoc/with-intl/define';
 import useDayJs from '@/hooks/useDayJs';
 import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
-import { Carousel, Col, Empty, Row, Space, Typography } from 'antd';
+import { Col, Empty, Row, Space, Typography } from 'antd';
 import type { Dayjs } from 'dayjs';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -108,28 +108,39 @@ const PublicCalendar: React.FC = () => {
     }
   }, [selectDate]);
 
-  const sortData = newEventData?.data?.sort((a, b) => {
-    const currentDate = new Date();
+  /*   const sortData = newEventData?.data?.sort((a, b) => {
+      const currentDate = new Date();
+  
+      const getMonthString = (date: Date) => {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        return `${year}-${month.toString().padStart(2, '0')}`;
+      };
+  
+      const monthA = getMonthString(new Date(a?.attributes?.startDateTime));
+      const monthB = getMonthString(new Date(b?.attributes?.startDateTime));
+  
+      if (monthA === monthB) {
+        return 0;
+      } else if (monthA === getMonthString(currentDate)) {
+        return -1;
+      } else if (monthB === getMonthString(currentDate)) {
+        return 1;
+      } else {
+        return monthB.localeCompare(monthA);
+      }
+    }); */
 
-    const getMonthString = (date: Date) => {
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      return `${year}-${month.toString().padStart(2, '0')}`;
-    };
+  // 显示当前周
+  const sortData = useMemo(() => {
+    const startOfWeek = dayjs().startOf('week');
+    const endOfWeek = dayjs().endOf('week');
 
-    const monthA = getMonthString(new Date(a?.attributes?.startDateTime));
-    const monthB = getMonthString(new Date(b?.attributes?.startDateTime));
-
-    if (monthA === monthB) {
-      return 0;
-    } else if (monthA === getMonthString(currentDate)) {
-      return -1;
-    } else if (monthB === getMonthString(currentDate)) {
-      return 1;
-    } else {
-      return monthB.localeCompare(monthA);
-    }
-  });
+    return newEventData?.data?.filter((item) => {
+      const startDateTime = dayjs(item?.attributes?.startDateTime);
+      return startDateTime.isBetween(startOfWeek, endOfWeek, 'day', '[]');
+    });
+  }, [newEventData]);
 
   return (
     <div className={`${styles.publicCalendar} container`}>
@@ -141,51 +152,57 @@ const PublicCalendar: React.FC = () => {
       </div>
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay={false} autoplaySpeed={2000}>
-            {sortData?.map((item) => {
-              return (
-                <div key={item?.id} className={styles.eventCard}>
-                  <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>
-                    <Space direction="vertical" className={styles.contentLeft}>
-                      <Text className={styles.weekMonth}>{getWeekDay(item?.attributes?.startDateTime || '')}</Text>
-                      <Text className={styles.day}>{getDate(item?.attributes?.startDateTime)}</Text>
-                      <Text className={styles.weekMonth}>{getMonth(item?.attributes?.startDateTime)?.slice(0, 3)}</Text>
-                    </Space>
-                    <Space direction="vertical" className={styles.contentRight}>
-                      <Title
-                        ellipsis={{
-                          rows: 1,
-                          tooltip: getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)
-                        }}
-                        className={styles.titleParagraph}
-                      >
-                        {getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}
-                      </Title>
-                      {!isMobile && (
-                        <Paragraph
-                          className={styles.titleParagraph}
+          {/* <Carousel dots={false} infinite slidesToShow={sortData && sortData?.length > 4 ? 4 : sortData?.length} slidesToScroll={1} vertical verticalSwiping autoplay={false} autoplaySpeed={2000}> */}
+          <div className={styles.eventListContainer}>
+            {sortData?.length !== 0 ? (
+              sortData?.map((item) => {
+                return (
+                  <div key={item?.id} className={styles.eventCard}>
+                    <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>
+                      <Space direction="vertical" className={styles.contentLeft}>
+                        <Text className={styles.weekMonth}>{getWeekDay(item?.attributes?.startDateTime || '')}</Text>
+                        <Text className={styles.day}>{getDate(item?.attributes?.startDateTime)}</Text>
+                        <Text className={styles.weekMonth}>{getMonth(item?.attributes?.startDateTime)?.slice(0, 3)}</Text>
+                      </Space>
+                      <Space direction="vertical" className={styles.contentRight}>
+                        <Title
                           ellipsis={{
                             rows: 1,
-                            tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
+                            tooltip: getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)
+                          }}
+                          className={styles.titleParagraph}
+                        >
+                          {getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}
+                        </Title>
+                        {!isMobile && (
+                          <Paragraph
+                            className={styles.titleParagraph}
+                            ellipsis={{
+                              rows: 1,
+                              tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
+                            }}
+                          >
+                            {`- ${getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}`}
+                          </Paragraph>
+                        )}
+                        <Text
+                          className={styles.date}
+                          ellipsis={{
+                            tooltip: getCourseDateStr(item)
                           }}
                         >
-                          {`- ${getTransResult(lang, item.attributes.descriptionZh, item.attributes.descriptionEn)}`}
-                        </Paragraph>
-                      )}
-                      <Text
-                        className={styles.date}
-                        ellipsis={{
-                          tooltip: getCourseDateStr(item)
-                        }}
-                      >
-                        {getCourseDateStr(item)}
-                      </Text>
+                          {getCourseDateStr(item)}
+                        </Text>
+                      </Space>
                     </Space>
-                  </Space>
-                </div>
-              );
-            })}
-          </Carousel>
+                  </div>
+                );
+              })
+            ) : (
+              <Empty description={t('NoEventThisWeek')} className={styles.empty} />
+            )}
+          </div>
+          {/* </Carousel> */}
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
