@@ -67,8 +67,6 @@ const Courses: React.FC = () => {
     };
   });
 
-  console.log(courses);
-
   // 第一次分类
   // weekly === online
   const firstClassify = (type: CourseTypes) => {
@@ -111,8 +109,6 @@ const Courses: React.FC = () => {
     }
   });
 
-  console.log(allCourses);
-
   /**
    * 去除二级课程为空的数据
    * @param data 选中的segmented的课程数据
@@ -134,8 +130,6 @@ const Courses: React.FC = () => {
    * @param segmented 选中的segmented
    */
   const getCourseBySegmented = (segmented: SegmentedValue) => {
-    console.log(segmented);
-
     const segmentedData = allCourses?.filter((item) => item?.primaryTitle === segmented);
     const result = removeEmptyChildren(segmentedData);
     // 将最后一个元素放到第四个位置 Gold 移到 Silver 后面
