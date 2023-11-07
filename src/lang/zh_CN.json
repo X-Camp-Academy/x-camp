@@ -351,11 +351,11 @@
   "Exit_Successfully": "退出成功",
   "Exit_Failed": "退出失败",
   "Loading": "加载中",
-  "Home.Banner1.Desc1": "评估学生编程水平",
-  "Home.Banner1.Desc2": "量身定制学习规划",
+  "Home.Banner1.Desc1": "从铜到白金，全级别覆盖",
+  "Home.Banner1.Desc2": "考后免费讲解，还有个人分析报告！",
   "Home.Banner1.Desc3": "探索X-Camp的多元化课程",
-  "Home.Banner1.Date1": "*太平洋时间每周二下午6:30至7:30",
-  "Home.Banner1.Date2": "*北京时间每周三上午9:30-10:30",
+  "Home.Banner1.Date1": "* 美西（冬令时） 12/9/2023 周六 3 PM - 7 PM",
+  "Home.Banner1.Date2": "* 北京时间 12/10/2023 周日 7 AM - 11 AM",
   "Home.Banner2.Desc1": "发掘USACO最新竞赛趋势和新赛季规则",
   "Home.Banner2.Desc2": "竞赛难度有明显提升，但我们会尽力控制题目变难的加速趋势",
   "Home.Banner2.Desc3": "所有白金级别的参赛者均有同样的五小时竞赛时间窗口",
@@ -512,5 +512,8 @@
   "InputTheStateYouLiveIn": "输入您所在的州",
   "ParentEmail": "家长邮箱",
   "SendEmailSuccess": "感谢您的免费咨询注册，我们将在24小时内与您联系。",
-  "AllCourses": "所有课程"
+  "AllCourses": "所有课程",
+  "USACOFreePublicMockTestComes":"2023/2024 USACO新赛季免费模考来袭！",
+  "ReserveNow":"立刻加入",
+  "NoEventThisWeek":"本周没有活动"
 }

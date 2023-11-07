@@ -38,24 +38,24 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: IItem[] = [
     {
-      title: t('WeeklyOpenHouse'),
+      title: t('USACOFreePublicMockTestComes'),
       titleConfig: [
         {
-          text: t('WeeklyOpenHouse.color'),
+          text: t('USACOFreePublicMockTestComes'),
           color: '#FFAD11'
         }
       ],
-      desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2'), t('Home.Banner1.Desc3')],
+      desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2')],
       descStyle: {
         color: '#FFF'
       },
       onClick: () => {
-        window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09');
+        window.open('https://www.eventbrite.com/e/202324-usa-computing-olympiad-usaco-public-mock-test-tickets-744548052267');
       },
       date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
       banner: '/image/home/banner-pc-1.png',
       mbBanner: '/image/home/banner-mb-1.png',
-      buttonText: t('ZoomLink')
+      buttonText: t('ReserveNow')
     },
     {
       title: t('USACO.enhancement.register'),
