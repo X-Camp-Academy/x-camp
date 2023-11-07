@@ -12,17 +12,17 @@ const Banner: React.FC = () => {
     {
       src: '/image/resources/usaco-ama-1.png',
       title: 'USACO AMA by Dr. Brian Dean 2022',
-      date: '2023-04-10'
+      date: '2022-06-10'
     },
     {
       src: '/image/resources/usaco-ama-2.png',
       title: 'USACO AMA by X-Camp Teaching Lead ',
-      date: '2023-04-10'
+      date: '2022-09-20'
     },
     {
       src: '/image/resources/usaco-ama-3.png',
       title: 'USACO AMA by Dr. Brian Dean 2023',
-      date: '2023-04-10'
+      date: '2023-06-19'
     }
   ];
   return (

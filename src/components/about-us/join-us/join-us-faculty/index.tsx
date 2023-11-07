@@ -2,7 +2,7 @@ import { useGetFaculty } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { UsergroupAddOutlined } from '@ant-design/icons';
-import { Button, Col, Image, Row, Space, Typography } from 'antd';
+import { Col, Image, Row, Space, Typography } from 'antd';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
@@ -23,15 +23,10 @@ const JoinUsFaculty: React.FC = () => {
           <Space direction="vertical" size={isMobile ? 8 : 16}>
             <Image alt="image" src="/assets/logo.png" preview={false} className={styles.logo} />
             <Paragraph className={styles.introText}>{t('XCampFaculty.Desc')}</Paragraph>
-            <Button
-              className={styles.introBtn}
-              onClick={() => {
-                router.push('/about-us/introduction#faculty');
-              }}
-            >
-              {t('XCampFaculty')}
+            <a href="/about-us/introduction#faculty" className={styles.introBtn}>
+              {t('XCampFaculty')}&nbsp;&nbsp;
               <UsergroupAddOutlined />
-            </Button>
+            </a>
           </Space>
         </Col>
         <Col className={styles.facultyImgs} lg={12} md={24} xs={24}>

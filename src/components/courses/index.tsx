@@ -10,7 +10,7 @@ import { CaretRightOutlined } from '@ant-design/icons';
 import { Affix, Button, Col, Collapse, Form, Layout, Radio, RadioChangeEvent, Row, Segmented, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ClassCard from '../common/class-card';
 import Banner from './banner';
 import { CourseTypes } from './define';
@@ -35,7 +35,6 @@ const Courses: React.FC = () => {
   const [form] = Form.useForm();
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
-  const segmentedDom = useRef<HTMLDivElement>(null);
   const [segmented, setSegmented] = useState<SegmentedValue>('All Classes');
   const [segmentedData, setSegmentedData] = useState<SegmentedCoursesProps[]>();
   const [copySegmentedData, setCopySegmentedData] = useState<SegmentedCoursesProps[]>();
@@ -239,12 +238,13 @@ const Courses: React.FC = () => {
 
         <div className={`${styles.classContainer} container`}>
           <Affix
-            offsetTop={100}
+            offsetTop={72}
             onChange={(isAffix) => {
-              if (isAffix && segmentedDom.current) {
-                segmentedDom.current.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
-              } else if (segmentedDom.current) {
-                segmentedDom.current.style.boxShadow = 'initial';
+              const segmentedDom = document.getElementById('segmentedDom');
+              if (isAffix && segmentedDom) {
+                segmentedDom.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+              } else if (segmentedDom) {
+                segmentedDom.style.boxShadow = 'initial';
               }
             }}
           >
@@ -259,7 +259,7 @@ const Courses: React.FC = () => {
                 </Space>
               </Radio.Group>
             ) : (
-              <Segmented ref={segmentedDom} style={{ backgroundColor: '#fff' }} block value={segmented} options={COURSE_TYPES} onChange={onSegmentedChange} />
+              <Segmented id="segmentedDom" style={{ backgroundColor: '#fff' }} block value={segmented} options={COURSE_TYPES} onChange={onSegmentedChange} />
             )}
           </Affix>
 

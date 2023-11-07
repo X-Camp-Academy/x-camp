@@ -31,9 +31,8 @@ const USACOSpotlight: React.FC = () => {
             onClick={() => {
               carouselEL?.current?.prev();
             }}
-          >
-            <LeftOutlined />
-          </Button>
+            icon={<LeftOutlined />}
+          />
           <Carousel
             ref={carouselEL}
             dots={false}
@@ -88,9 +87,8 @@ const USACOSpotlight: React.FC = () => {
             onClick={() => {
               carouselEL?.current?.next();
             }}
-          >
-            <RightOutlined />
-          </Button>
+            icon={<RightOutlined />}
+          />
         </div>
       </div>
     </div>
