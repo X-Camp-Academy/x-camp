@@ -86,9 +86,7 @@
     margin-top: 20px;
 
     .card {
-      @media (width <= 768px) {
-        margin-bottom: 24px;
-      }
+      margin-bottom: 24px;
 
       :global(.ant-image) {
         display: block;
