@@ -132,7 +132,7 @@
       }
 
       .maskTitle {
-        @include title;
+        @include text(24px, 36px);
 
         word-wrap: break-word;
 
