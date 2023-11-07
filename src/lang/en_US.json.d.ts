@@ -201,9 +201,6 @@ declare const json: {
   WeSupport: 'Supported Languages';
   WeSupport_Color: 'Languages';
   'WeSupport.Desc': 'At X-Camp, students from grades 5-12 can master the most sought-after programming languages. Our curriculum includes introductory Python, Java (APCS), and multi-level C++ courses, tailored to engage learners at beginner, intermediate, and advanced stages.';
-  WhyWorkWithUs: 'Why Work With Us';
-  'WhyWorkWithUs.Desc1': 'X-Camp strives to cultivate an inclusive and dynamic environment by attracting top students from diverse backgrounds. We highly value and respect the contributions of all individuals.';
-  'WhyWorkWithUs.Desc2': 'As part of our commitment to excellence, if a candidate is recommended by parents of X-Camp students and subsequently offered a position, the referring student will receive a one-time $500 tuition waiver.';
   WinterCamp: 'Winter On-Site Camps';
   X_ALUMNI_INTRODUCTION: 'Since its inception, X-Camp has successfully enrolled over 1,000 students and currently serves more than 500 students from over 250 schools worldwide. If you would like to reconnect with your fellow classmates, please contact us!';
   'X-CampAcademyPrincipal': 'X-Camp Academy Principal';

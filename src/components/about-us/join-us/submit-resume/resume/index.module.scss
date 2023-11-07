@@ -1,12 +1,18 @@
-.cardContainer {
-  margin-top: 80px;
-  margin-bottom: 60px;
-  border-radius: 12px;
-  background: #fff;
+.resumeContainer {
+  @media (width <= 768px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
 
-  :global(.ant-card-body) {
+  .card {
+    margin-top: 80px;
+    margin-bottom: 60px;
+    border-radius: 8px;
+    background-color: #fff;
+
     @media (width <= 768px) {
-      padding: 24px 0;
+      margin-top: 48px;
+      margin-bottom: 32px;
     }
   }
 }

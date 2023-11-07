@@ -7,7 +7,6 @@ import styles from './index.module.scss';
 const Banner = dynamic(() => import('./banner'));
 const Resume = dynamic(() => import('./resume'));
 const JoinUsFaculty = dynamic(() => import('../join-us-faculty'));
-// const WhyWorkWithUs = dynamic(() => import("../why-work-with-us"));
 
 const { Content } = Layout;
 
@@ -18,7 +17,6 @@ const SubmitResume: React.FC = () => {
         <Banner />
         <Resume />
         <JoinUsFaculty />
-        {/* <WhyWorkWithUs /> */}
       </Content>
     </Layout>
   );
