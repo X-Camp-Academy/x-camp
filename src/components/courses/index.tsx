@@ -7,11 +7,12 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getLangResult, getTransResult, getWeeksDays, scrollIntoView } from '@/utils/public';
 import { CaretRightOutlined } from '@ant-design/icons';
-import { Affix, Button, Col, Collapse, Form, Layout, Radio, RadioChangeEvent, Row, Segmented, Select, Space } from 'antd';
+import { Affix, Button, Col, Collapse, Form, Layout, RadioChangeEvent, Row, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import ClassCard from '../common/class-card';
+import SegmentedRadioGroup, { useEventOptions } from '../common/segmented-radio-group';
 import Banner from './banner';
 import { CourseTypes } from './define';
 import styles from './index.module.scss';
@@ -35,7 +36,8 @@ const Courses: React.FC = () => {
   const [form] = Form.useForm();
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
-  const [segmented, setSegmented] = useState<SegmentedValue>('All Classes');
+  const isiPad = useMobile('xl');
+  const [segmented, setSegmented] = useState<SegmentedValue>(CourseTypes.WeeklyClasses);
   const [segmentedData, setSegmentedData] = useState<SegmentedCoursesProps[]>();
   const [copySegmentedData, setCopySegmentedData] = useState<SegmentedCoursesProps[]>();
   const { data: courseLevelType } = useGetCourseLevelType();
@@ -52,26 +54,23 @@ const Courses: React.FC = () => {
   const courseLevelTypeData = courseLevelType?.map((item) => item?.attributes?.type);
 
   // course level options
-  const categoryOptions = courseLevelTypeData?.map((item) => {
+  const courseLevelOptions = courseLevelTypeData?.map((item) => {
     return {
       label: item,
       value: item
     };
   });
 
-  // quarter options
-  const quarterOptions = Object.values(CourseQuarter)?.map((item) => {
+  // course quarter options
+  const courseQuarterOptions = Object.values(CourseQuarter)?.map((item) => {
     return {
       label: t(item),
       value: item
     };
   });
 
-  console.log(courses);
-
-  // 第一次分类
   // weekly === online
-  const firstClassify = (type: CourseTypes) => {
+  const classifyCourses = (type: CourseTypes) => {
     switch (type) {
       case CourseTypes.AllClasses:
         return courses?.data;
@@ -84,40 +83,31 @@ const Courses: React.FC = () => {
     }
   };
 
-  // 二次分类
-  const generateCourses = (courseType: CourseTypes, primaryData: string[] | undefined) => {
-    const filteredCourses = firstClassify(courseType);
-    const sortFilteredCourses = filteredCourses?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+  // reclassify
+  const reclassifyCourses = (courseType: CourseTypes, primaryData: string[] | undefined) => {
+    const classifiedCourses = classifyCourses(courseType);
+    const sortClassifiedCourses = classifiedCourses?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
     return {
       primaryTitle: courseType,
       children: primaryData?.map((levelType) => {
         return {
           secondaryTitle: levelType,
-          children: sortFilteredCourses?.filter((filteredCourse) => filteredCourse?.attributes?.courseLevelType?.data?.attributes?.type === levelType)
+          children: sortClassifiedCourses?.filter((filteredCourse) => filteredCourse?.attributes?.courseLevelType?.data?.attributes?.type === levelType)
         };
       })
     };
   };
 
-  /**
-   * weekly和in-person和camps的课程需要一级嵌套二级展示所有课程数据
-   * 除了上面三个都是只展示二级课程数据
-   */
-  const allCourses = COURSE_TYPES?.map((courseType, index) => {
-    if (index < 3) {
-      return generateCourses(courseType, courseLevelTypeData);
+  // all weekly in person需要所有的levels，其余的只需要自己作为一二级level
+  const reclassifiedCourses = COURSE_TYPES?.map((courseType) => {
+    if ([CourseTypes.AllClasses, CourseTypes.WeeklyClasses, CourseTypes.InPersonCamps].includes(courseType)) {
+      return reclassifyCourses(courseType, courseLevelTypeData);
     } else {
-      return generateCourses(courseType, [courseType]);
+      return reclassifyCourses(courseType, [courseType]);
     }
   });
 
-  console.log(allCourses);
-
-  /**
-   * 去除二级课程为空的数据
-   * @param data 选中的segmented的课程数据
-   * @returns
-   */
+  // 去除再次分类二级课程为空的数据
   const removeEmptyChildren = (data: SegmentedCoursesProps[]) => {
     if (data) {
       return [
@@ -129,51 +119,35 @@ const Courses: React.FC = () => {
     }
   };
 
-  /**
-   * 根据segmented获取当前选中的课程数据
-   * @param segmented 选中的segmented
-   */
-  const getCourseBySegmented = (segmented: SegmentedValue) => {
-    console.log(segmented);
-
-    const segmentedData = allCourses?.filter((item) => item?.primaryTitle === segmented);
+  useEffect(() => {
+    const segmentedData = reclassifiedCourses?.filter((item) => item?.primaryTitle === segmented);
     const result = removeEmptyChildren(segmentedData);
     // 将最后一个元素放到第四个位置 Gold 移到 Silver 后面
+    // ! TODO 后面通过nodejs来批量更新course level type
     if (result) {
       let lastItem = result[0].children?.pop();
       result[0].children?.splice(3, 0, lastItem as any);
     }
     setSegmentedData(result);
     setCopySegmentedData(result);
-  };
+  }, [segmented, courses, courseLevelType]);
 
-  /**
-   * hash跳转，清空筛选的表单
-   * @param value 选中的segmented
-   */
+  // hash跳转，清空筛选的表单
   const onSegmentedChange = (value: SegmentedValue | RadioChangeEvent) => {
     history.replaceState(null, '', pathname);
     form.resetFields();
+    console.log(value);
+
     setSegmented(typeof value === 'object' ? value.target.value : value);
   };
 
-  useEffect(() => {
-    getCourseBySegmented(segmented);
-  }, [segmented, courses, courseLevelType]);
-
-  /**
-   * hash key要与nav跳转的href对应
-   */
+  // 监听从link跳转过来的hash值
   const hashSegmentedMap = new Map([
     ['#weekly', CourseTypes.WeeklyClasses],
     ['#camps', CourseTypes.InPersonCamps],
     ['#mock-test-classes', CourseTypes.MockTestClasses],
     ['#apcs', CourseTypes.JavaAPCSClasses]
   ]);
-
-  /**
-   * 监听从link跳转过来的hash值
-   */
   useEffect(() => {
     if (hashSegmentedMap.get(hash)) {
       const hashValue = hashSegmentedMap.get(hash);
@@ -235,7 +209,6 @@ const Courses: React.FC = () => {
     <Layout className={styles.courses}>
       <Content>
         <Banner />
-
         <div className={`${styles.classContainer} container`}>
           <Affix
             offsetTop={72}
@@ -248,40 +221,28 @@ const Courses: React.FC = () => {
               }
             }}
           >
-            {isMobile ? (
-              <Radio.Group optionType="button" buttonStyle="solid" onChange={onSegmentedChange} value={segmented} className={styles.radioGroup}>
-                <Space size={0} style={{ width: '100%' }} direction={isMobile ? 'vertical' : 'horizontal'}>
-                  {COURSE_TYPES?.map((courseType) => (
-                    <Radio style={{ width: '100%' }} key={courseType} value={courseType}>
-                      {courseType}
-                    </Radio>
-                  ))}
-                </Space>
-              </Radio.Group>
-            ) : (
-              <Segmented id="segmentedDom" style={{ backgroundColor: '#fff' }} block value={segmented} options={COURSE_TYPES} onChange={onSegmentedChange} />
-            )}
+            <SegmentedRadioGroup value={segmented} setValue={onSegmentedChange} isRadioGroup={isiPad} options={useEventOptions('course')} id="segmentedDom" />
           </Affix>
 
           <div className={styles.form} />
 
-          <Form layout="inline" form={form} initialValues={{ quarter: 'Winter' }} className={styles.form} onFinish={onFinish}>
-            <Row gutter={[32, 8]} className={styles.row}>
-              <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 3 }}>
+          <Form layout="inline" form={form} initialValues={{ quarter: 'Winter' }} className={styles.form} onFinish={onFinish} style={isiPad ? { justifyContent: 'center' } : {}}>
+            <Row gutter={[32, 8]} style={isiPad ? { width: '100%' } : {}}>
+              <Col xs={24} sm={24} md={24} lg={24} xl={{ span: 6, offset: 3 }}>
                 <Form.Item name="category">
-                  <Select style={isMobile ? { width: '100%' } : { width: 240 }} placeholder={'Category'} options={categoryOptions} allowClear />
+                  <Select style={isiPad ? { width: '100%' } : { width: 240 }} placeholder={'Category'} options={courseLevelOptions} allowClear />
                 </Form.Item>
               </Col>
 
-              <Col xs={24} sm={24} md={24} lg={{ span: 6, offset: 3 }}>
+              <Col xs={24} sm={24} md={24} lg={24} xl={{ span: 6, offset: 3 }}>
                 <Form.Item name="quarter">
-                  <Select style={isMobile ? { width: '100%' } : { width: 240 }} placeholder={'Quarter'} options={quarterOptions} allowClear />
+                  <Select style={isiPad ? { width: '100%' } : { width: 240 }} placeholder={'Quarter'} options={courseQuarterOptions} allowClear />
                 </Form.Item>
               </Col>
 
-              <Col xs={24} sm={24} md={24} lg={{ span: 3, offset: 3 }}>
+              <Col xs={24} sm={24} md={24} lg={24} xl={{ span: 3, offset: 3 }}>
                 <Form.Item>
-                  <Button type={'primary'} className={styles.button} style={isMobile ? { width: '100%' } : {}} htmlType="submit">
+                  <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
                     {t('Search')}
                   </Button>
                 </Form.Item>
