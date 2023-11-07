@@ -127,6 +127,8 @@
 
           @media (width <= 768px) {
             @include title('middle');
+
+            min-height: 32px;
           }
         }
 

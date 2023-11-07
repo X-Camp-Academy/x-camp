@@ -1,5 +1,6 @@
 'use client';
 import { EventCategory, FacultyLevelCategory } from '@/apis/strapi-client/define';
+import { CourseTypes } from '@/components/courses/define';
 import { useLang } from '@/hoc/with-intl/define';
 import { Radio, RadioChangeEvent, Segmented, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
@@ -16,15 +17,20 @@ export interface FacultyOptionsProps {
   value: FacultyLevelCategory;
 }
 
+export interface CourseOptionsProps {
+  label: CourseTypes;
+  value: CourseTypes;
+}
+
 export interface SegmentedRadioGroupProps {
   isRadioGroup?: boolean;
   value: SegmentedValue;
   setValue: (value: SegmentedValue) => void;
-  options: EventOptionsProps[] | FacultyOptionsProps[];
-  segmentedDom?: React.Ref<HTMLDivElement>;
+  options: EventOptionsProps[] | FacultyOptionsProps[] | CourseOptionsProps[];
+  id?: string;
 }
 
-export const useEventOptions = (defaultValue?: 'event' | 'faculty') => {
+export const useEventOptions = (defaultValue: 'event' | 'faculty' | 'course') => {
   const { format: t } = useLang();
   const eventOptions: EventOptionsProps[] = [
     {
@@ -63,12 +69,25 @@ export const useEventOptions = (defaultValue?: 'event' | 'faculty') => {
       value: FacultyLevelCategory.Grandmaster
     }
   ];
-  return defaultValue === 'faculty' ? facultyOptions : eventOptions;
+
+  const courseOptions: CourseOptionsProps[] = Object.values(CourseTypes).map((item) => {
+    return {
+      label: item,
+      value: item
+    };
+  });
+
+  const optionsMap = {
+    event: eventOptions,
+    faculty: facultyOptions,
+    course: courseOptions
+  };
+  return optionsMap[defaultValue];
 };
 
-const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ isRadioGroup = false, value = '', setValue, options = [], segmentedDom }) => {
+const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ isRadioGroup = false, value = '', setValue, options = [], id }) => {
   return (
-    <div className={styles.segmentedRadioGroup}>
+    <div className={styles.radioGroupContainer}>
       {isRadioGroup ? (
         <Radio.Group optionType="button" buttonStyle="solid" onChange={(e: RadioChangeEvent) => setValue(e?.target?.value as SegmentedValue)} value={value} className={styles.radioGroup}>
           <Space style={{ width: '100%' }} direction={'vertical'}>
@@ -80,7 +99,7 @@ const SegmentedRadioGroup: React.FC<SegmentedRadioGroupProps> = ({ isRadioGroup 
           </Space>
         </Radio.Group>
       ) : (
-        <Segmented ref={segmentedDom} style={{ backgroundColor: '#fff' }} block value={value} options={options} onChange={(value: SegmentedValue) => setValue(value)} />
+        <Segmented id={id} style={{ backgroundColor: '#fff' }} block value={value} options={options} onChange={(value: SegmentedValue) => setValue(value)} />
       )}
     </div>
   );

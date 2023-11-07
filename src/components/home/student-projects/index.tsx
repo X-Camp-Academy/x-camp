@@ -70,7 +70,7 @@ const StudentProjects: React.FC = () => {
             <Col xs={24} sm={24} md={8} lg={8} xl={12}>
               {studentProjectsData &&
                 (!inPadSize ? (
-                  <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />
+                  <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="640" height="360" style={{ border: 'none' }} className={styles.videoIframe} sandbox="" />
                 ) : (
                   <Card
                     className={styles.card}
@@ -78,7 +78,7 @@ const StudentProjects: React.FC = () => {
                       overflow: 'hidden',
                       padding: 24
                     }}
-                    cover={<iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
+                    cover={<iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="640" height="360" style={{ border: 'none' }} className={styles.videoIframe} sandbox="" />}
                   >
                     <Space direction="vertical" size={24}>
                       <Text className={styles.cardTitle}>{getTransResult(lang, studentProjectsData[0]?.attributes?.titleZh, studentProjectsData[0]?.attributes?.titleEn)}</Text>

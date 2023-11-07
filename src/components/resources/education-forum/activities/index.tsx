@@ -65,7 +65,7 @@ const Activities: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions()} />
+        <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions('event')} />
 
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{segmented}</div>
