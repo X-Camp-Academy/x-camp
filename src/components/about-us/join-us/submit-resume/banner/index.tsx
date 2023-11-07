@@ -17,8 +17,6 @@ const Banner: React.FC = () => {
       <CommonBanner
         image={'/image/about-us/banner-submit-resume.png'}
         title={t('Careers')}
-        titleClassName={styles.title}
-        paragraphClassName={styles.paragraph}
         paragraph={paragraph}
         showButton
         buttonIcon={<CommentOutlined />}

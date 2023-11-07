@@ -57,6 +57,16 @@
     .image {
       height: 252px;
 
+      @media (width <= 1200px) {
+        width: 100%;
+        height: 200px;
+      }
+
+      @media (width <= 992px) {
+        width: 100%;
+        height: 150px;
+      }
+
       @media (width <= 768px) {
         width: 100%;
         height: 100%;
@@ -81,6 +91,10 @@
   }
 
   .chart {
+    @media (width <= 992px) {
+      flex-direction: column;
+    }
+
     .barChart {
       width: 100%;
       height: 448px;

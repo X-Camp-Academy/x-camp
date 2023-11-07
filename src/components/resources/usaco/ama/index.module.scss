@@ -42,6 +42,16 @@
         height: 252px;
         border-radius: 4px;
 
+        @media (width <= 1200px) {
+          width: 100%;
+          height: 200px;
+        }
+
+        @media (width <= 992px) {
+          width: 100%;
+          height: 152px;
+        }
+
         @media (width <= 768px) {
           width: 100%;
         }
