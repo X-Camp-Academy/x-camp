@@ -90,7 +90,7 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
             <Input placeholder={t('Phone/Wechat')} />
           </Form.Item>
 
-          <Form.Item name="subscribe">
+          <Form.Item name="subscribe" valuePropName="checked">
             <Checkbox defaultChecked>{t('FreeProgrammingPack')}</Checkbox>
           </Form.Item>
 
