@@ -48,18 +48,19 @@ const Courses: React.FC = () => {
     ready: true,
     pageName: [pathname]
   });
-  // 获取所有的courseLevelType分类
+
+  // 获取所有的courseLevelType分类数据
   const courseLevelTypeData = courseLevelType?.map((item) => item?.attributes?.type);
 
-  // 筛选类别的options
+  // course level options
   const categoryOptions = courseLevelTypeData?.map((item) => {
     return {
       label: item,
       value: item
     };
   });
-  // 筛选季节的options
 
+  // quarter options
   const quarterOptions = Object.values(CourseQuarter)?.map((item) => {
     return {
       label: t(item),
@@ -69,21 +70,14 @@ const Courses: React.FC = () => {
 
   console.log(courses);
 
-  /**
-   * 第一次分类
-   * 将所有的课程根据weekly或者in-person或者isCamp来划分三大类课程
-   * weekly === online
-   * @param type weekly/in-person/isCamp
-   * @returns 返回weekly或者in-person或者camp的课程集合
-   */
-  const getWeeklyInPersonIsCamp = (type: string) => {
+  // 第一次分类
+  // weekly === online
+  const firstClassify = (type: CourseTypes) => {
     switch (type) {
+      case CourseTypes.AllClasses:
+        return courses?.data;
       case CourseTypes.WeeklyClasses:
         return courses?.data?.filter((item) => item?.attributes?.classMode === ClassMode.OnlineLive);
-      // case CourseTypes.InPersonClasses:
-      //   return courses?.data?.filter(
-      //     (item) => item?.attributes?.classMode === ClassMode.InPerson
-      //   );
       case CourseTypes.InPersonCamps:
         return courses?.data?.filter((item) => item?.attributes?.isCamp);
       default:
@@ -91,14 +85,9 @@ const Courses: React.FC = () => {
     }
   };
 
-  /**
-   * 生成weekly或者in-person或者camps或者其他类别的所有一级二级课程数据
-   * @param courseType 本地要展示在页面的一级分类
-   * @param primaryData strapi上的二级分类
-   * @returns 分类好的课程数据
-   */
-  const generateCourses = (courseType: string, primaryData: string[] | undefined) => {
-    const filteredCourses = getWeeklyInPersonIsCamp(courseType);
+  // 二次分类
+  const generateCourses = (courseType: CourseTypes, primaryData: string[] | undefined) => {
+    const filteredCourses = firstClassify(courseType);
     const sortFilteredCourses = filteredCourses?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
     return {
       primaryTitle: courseType,
@@ -116,7 +105,7 @@ const Courses: React.FC = () => {
    * 除了上面三个都是只展示二级课程数据
    */
   const allCourses = COURSE_TYPES?.map((courseType, index) => {
-    if (index < 2) {
+    if (index < 3) {
       return generateCourses(courseType, courseLevelTypeData);
     } else {
       return generateCourses(courseType, [courseType]);

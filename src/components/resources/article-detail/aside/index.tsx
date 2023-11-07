@@ -126,9 +126,10 @@ const ArticleSider: React.FC<{
             <Text className={styles.text}>{selectedDate && formatDate(selectedDate)}</Text>
             <div className={styles.line} />
           </Space>
-          <div style={{ maxHeight: 400, overflow: 'scroll' }}>
-            {filterDateEventList.length !== 0 &&
-              filterDateEventList?.map(
+
+          {filterDateEventList.length !== 0 && (
+            <div style={{ maxHeight: 400, overflow: 'scroll' }}>
+              {filterDateEventList?.map(
                 (item) =>
                   item?.startDateTime && (
                     <Space key={item?.titleZh} direction="vertical" className={styles.calendarItem}>
@@ -157,7 +158,8 @@ const ArticleSider: React.FC<{
                     </Space>
                   )
               )}
-          </div>
+            </div>
+          )}
         </Space>
       </div>
 
@@ -167,19 +169,20 @@ const ArticleSider: React.FC<{
             <ColorfulCard border={'bottom'} animate={false} index={index} className={styles.card} key={index}>
               <Card>
                 <Space direction="vertical" style={{ width: '100%' }}>
-                  <Image src={getTranslateImg(v?.attributes?.imgZh, v?.attributes?.imgEn)} alt="image" preview={false} />
+                  <Image src={getTranslateImg(v?.attributes?.imgZh, v?.attributes?.imgEn)} alt="image" preview={false} className={styles.image} />
 
-                  <Row>
-                    <Title className={styles.title}>{v?.attributes?.titleZh}</Title>
-                  </Row>
+                  <Title ellipsis={{ rows: 1 }} className={styles.title}>
+                    {v?.attributes?.titleZh}
+                  </Title>
                   <Row
                     style={{
                       display: 'flex',
                       justifyContent: 'space-between',
-                      alignItems: 'center'
+                      alignItems: 'center',
+                      overflow: 'hidden'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <AlignRightOutlined style={{ fontSize: 16 }} />
                       <Paragraph
                         className={styles.description}

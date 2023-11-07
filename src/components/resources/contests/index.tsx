@@ -7,7 +7,7 @@ import { Layout } from 'antd';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import Banner from './banner';
-import { formatContestsByQuarter } from './define';
+import { filterContest, formatContestsByQuarter } from './define';
 import styles from './index.module.scss';
 import Introduction from './introduction';
 import MonthlyContest from './monthly-contest';
@@ -33,7 +33,7 @@ const Contests: React.FC = () => {
       <Content>
         <Banner />
         <MonthlyContest data={formatContestsByQuarter(resourcesContest?.data!, Number(size?.width) >= 992 ? 6 : 1)} />
-        <Introduction data={resourcesContest?.data} />
+        <Introduction data={filterContest(resourcesContest?.data)} />
         <WhyContest />
         <Reviews reviewsData={reviewsData} />
       </Content>
