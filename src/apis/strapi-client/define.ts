@@ -283,19 +283,6 @@ export interface GetAchievementsTimeLine extends strapiPublicFields {
 export type GetAchievementsTimeLineRequest = StrapiRequest<GetAchievementsTimeLine>;
 export type GetAchievementsTimeLineResponse = StrapiResponse<GetAchievementsTimeLine>;
 
-export interface GetAboutUsIntroArticle extends strapiPublicFields {
-  titleZh: string;
-  titleEn: string;
-  descriptionZh: string;
-  descriptionEn: string;
-  order: number;
-  img1: StrapiMedia;
-  img2: StrapiMedia;
-  img3: StrapiMedia;
-}
-export type GetAboutUsIntroArticleRequest = StrapiRequest<GetAboutUsIntroArticle>;
-export type GetAboutUsIntroArticleResponse = StrapiResponse<GetAboutUsIntroArticle>;
-
 export enum LiveSolutionCategory {
   XCampUSACOBronze = 'X-Camp USACO Bronze',
   XCampUSACOSilver = 'X-Camp USACO Silver',

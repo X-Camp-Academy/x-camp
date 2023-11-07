@@ -21,15 +21,9 @@ const Introduction: React.FC = () => {
       <Content>
         <Banner />
         <AboutXCamp />
-
         <History />
         <XCampFounders />
-
-        {/* ! TODO */}
-        {/* <Results /> */}
-
         <FacultyCoach data={facultyData} />
-
         <Partners />
       </Content>
     </Layout>

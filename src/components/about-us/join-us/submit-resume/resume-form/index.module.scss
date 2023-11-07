@@ -1,3 +1,5 @@
+@import '@/styles/variables';
+
 .formContainer {
   .basicInfoContainer {
     margin-top: 30px;
@@ -8,6 +10,10 @@
     font-weight: 600;
     color: #172142;
     line-height: 30px;
+
+    @media (width <= 768px) {
+      @include title('middle');
+    }
   }
 
   .description {
@@ -15,6 +21,10 @@
     font-size: 18px;
     font-weight: 400;
     color: #172142;
+
+    @media (width <= 768px) {
+      font-size: 16px;
+    }
   }
 
   .inputInfo {
@@ -34,6 +44,10 @@
     color: #fcfcfc;
     background: #ffad11;
     line-height: 24px;
+
+    @media (width <= 768px) {
+      padding: 20px 24px;
+    }
   }
 
   .problem {
@@ -41,6 +55,11 @@
     font-weight: 600;
     color: #172142;
     line-height: 36px;
+
+    @media (width <= 768px) {
+      font-size: 16px;
+      line-height: 28px;
+    }
   }
 
   .acceptText {
@@ -49,5 +68,10 @@
     font-weight: 400;
     color: #172142;
     line-height: 34px;
+
+    @media (width <= 768px) {
+      font-size: 16px;
+      line-height: 28px;
+    }
   }
 }

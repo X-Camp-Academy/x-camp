@@ -9,7 +9,6 @@ import {
   FaqCategory,
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAlumniMapRequest,
-  GetAboutUsIntroArticleRequest,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
   GetAchievementsTimeLineRequest,
@@ -435,31 +434,6 @@ export const useGetAchievementsTimeLine = () => {
       defaultParams: [
         {
           populate: '*'
-        }
-      ],
-      onError: handleError
-    }
-  );
-};
-
-/**
- * !暂时保留
- * 获取AboutUs Intro Article
- * @returns
- */
-export const useGetAboutUsIntroArticle = () => {
-  const client = useStrapiClient();
-  const handleError = useHandleError();
-  return useRequest(
-    async (params: GetAboutUsIntroArticleRequest) => {
-      const res = await client.getAboutUsIntroArticle(params);
-      return isArray(res?.data) ? res.data : [];
-    },
-    {
-      defaultParams: [
-        {
-          populate: '*',
-          sort: ['order:desc']
         }
       ],
       onError: handleError
