@@ -1,10 +1,10 @@
 import { PageTitle, generateMetadata } from '@/app/metadata';
 import dynamic from 'next/dynamic';
 
-const Article = dynamic(() => import('@/components/resources/education-forum-detail'));
+const Article = dynamic(() => import('@/components/resources/article-detail'));
 
 export const metadata = {
-  ...generateMetadata(PageTitle.EducationForumDetail)
+  ...generateMetadata(PageTitle.ArticleDetail)
 };
 
 const Page: React.FC = () => {
