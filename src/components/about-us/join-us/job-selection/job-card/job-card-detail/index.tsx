@@ -4,13 +4,9 @@ import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { viewerVideoPlugin } from '@/utils/x-star-editor/plugins/viewer-video';
 import { Divider } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
+import { XStarMdViewer } from 'x-star-editor';
 import styles from './index.module.scss';
-
-const XStarMdViewer = dynamic(() => import('x-star-editor').then((v) => v.XStarMdViewer), {
-  ssr: false
-});
 
 interface JobCardDetailProps {
   data: StrapiResponseDataItem<GetAboutUsJoinUs> | undefined;

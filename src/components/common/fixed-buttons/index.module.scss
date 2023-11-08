@@ -2,7 +2,7 @@
 
 .buttonContainer {
   position: fixed;
-  top: 60%;
+  top: 70%;
   right: 64px;
   z-index: 10;
   display: flex;
@@ -88,14 +88,16 @@
 
 .cardFrom {
   position: relative;
-  top: 60%;
+  top: 45%;
   right: 64px;
   z-index: 100;
   margin-top: 10px;
   width: 420px;
 
   @media (width <= 768px) {
-    position: static;
+    position: relative;
+    top: 20%;
+    right: -1%;
     width: 100%;
   }
 
