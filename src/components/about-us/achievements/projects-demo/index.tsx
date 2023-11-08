@@ -7,7 +7,7 @@ import { Card, List, Typography } from 'antd';
 import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
-const { Title, Paragraph, Text } = Typography;
+const { Title } = Typography;
 
 interface Props {
   data: StrapiResponseDataItem<GetProjectsDemo>[][] | undefined;
@@ -17,16 +17,6 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
   const { hash } = window.location;
   const { lang, format: t } = useLang();
   const isMobile = useMobile();
-  const listData = [
-    {
-      title: t('Art.Contestants'),
-      content: t('Art.Contestants.Desc')
-    },
-    {
-      title: t('Art.Rules'),
-      content: t('Art.Rules.Desc')
-    }
-  ];
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
