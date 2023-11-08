@@ -87,7 +87,7 @@ declare const json: {
   FAQs: '常见问题';
   FirstName: '名字';
   FreeConsultation: '免费咨询';
-  FreeProgrammingPack: '订阅新闻简报，免费获得编程科普礼包！';
+  FreeProgrammingPack: '订阅邮件,免费获取最新USACO资讯!';
   Grade: '学生的年级*';
   'Grade.Required': '请填写孩子的年级！';
   HelpCenter: '帮助中心';

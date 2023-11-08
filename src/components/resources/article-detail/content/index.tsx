@@ -3,6 +3,7 @@ import { GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
+import { iframePlugin } from '@/utils/x-star-editor/plugins/viewer-iframe';
 import { viewerVideoPlugin } from '@/utils/x-star-editor/plugins/viewer-video';
 import { ClockCircleOutlined, ReadOutlined } from '@ant-design/icons';
 import { Breadcrumb, Space, Typography } from 'antd';
@@ -56,7 +57,9 @@ const ArticleContent = ({ props }: Props) => {
           {formatDate(props?.attributes?.startDateTime || '')} {props?.attributes.endDateTime ? '~' : ''} {formatDate(props?.attributes.endDateTime || '')}
         </div>
       </Space>
-      <XStarMdViewer className={styles.viewer} value={getTransResult(lang, props?.attributes?.detailContentZh, props?.attributes?.detailContentEn)} plugins={[viewerVideoPlugin()]} />
+      <div id="markdownContent">
+        <XStarMdViewer className={styles.viewer} value={getTransResult(lang, props?.attributes?.detailContentZh, props?.attributes?.detailContentEn)} plugins={[viewerVideoPlugin(), iframePlugin()]} />
+      </div>
       <Space className={styles.note}>
         <ReadOutlined className={styles.icon} />
         <span>{t('ArticleContent.Desc')}</span>

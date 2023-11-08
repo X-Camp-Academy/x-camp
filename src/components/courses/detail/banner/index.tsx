@@ -206,7 +206,7 @@ const CourseBanner: React.FC = () => {
                 </div>
 
                 <Space direction="vertical" size={isMobile ? 8 : 16} align="end" className={styles.rightBottom}>
-                  <Text className={styles.rightBottomText}> * Get $75 off for each/ Get up to $150 off!</Text>
+                  <Text className={styles.rightBottomText}> * Enjoy a $75 Discount with a Referral from a Current Student</Text>
                   <CopyRightIcons />
                 </Space>
               </div>

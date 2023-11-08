@@ -39,7 +39,7 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
           </a>
         }
       >
-        <div className={styles.cardTitle}>{t('SIGH_UP_USACO_TOOLKIT')}</div>
+        {/* <div className={styles.cardTitle}>{t('SIGH_UP_USACO_TOOLKIT')}</div> */}
         <Form name="carouselContent" onFinish={onFinish} className={styles.form}>
           <Form.Item
             name="name"

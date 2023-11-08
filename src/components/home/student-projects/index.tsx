@@ -76,7 +76,7 @@ const StudentProjects: React.FC = () => {
                     className={styles.card}
                     bodyStyle={{
                       overflow: 'hidden',
-                      padding: '0 0 0 20px'
+                      padding: '0 20px 0 20px'
                     }}
                     cover={<iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" className={styles.smallIframe} />}
                   >
