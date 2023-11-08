@@ -27,7 +27,7 @@ const Banner: React.FC = () => {
   ];
   return (
     <div className={`${styles.amaContainer} container`}>
-      <Space direction="vertical" size={isMobile ? 24 : 8}>
+      <Space direction="vertical" size={isMobile ? 24 : 8} style={{ width: '100%' }}>
         <Title className={styles.title}>{t('AMA.Title')}</Title>
         <Paragraph className={styles.paragraph}>{t('AMA.desc')}</Paragraph>
 
