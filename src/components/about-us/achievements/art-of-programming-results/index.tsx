@@ -75,7 +75,7 @@ const ArtOfProgrammingResults = ({ data }: Props) => {
                 renderItem={(g) => (
                   <List.Item>
                     <Card className={styles.videoItem}>
-                      <iframe src={g?.attributes?.url?.data?.attributes?.url} width="100%" height={240} sandbox="" style={{ border: 'none' }} />
+                      <iframe src={g?.attributes?.url?.data?.attributes?.url} width="100%" height={240} sandbox="" style={{ border: 'none' }} allowFullScreen />
                       <Title
                         className={styles.videoTitle}
                         ellipsis={{

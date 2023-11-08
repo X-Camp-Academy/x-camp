@@ -20,6 +20,7 @@ export const iframePlugin = (): XStarMdViewerPlugin => (ctx) => {
           width: parentWidth! * 0.9,
           height: (parentWidth! * 0.9) / zoom
         }}
+        allowFullScreen
       />
     );
   });

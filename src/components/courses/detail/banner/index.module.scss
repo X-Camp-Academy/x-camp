@@ -68,7 +68,7 @@
           align-items: flex-start;
           width: 100%;
 
-          @media (width <= 768px) {
+          @media (width <= 1200px) {
             flex-direction: column;
             align-items: center;
           }
@@ -137,39 +137,47 @@
               }
             }
 
-            .shareLessons {
-              width: 202px;
-              height: 48px;
-              border-radius: 8px;
-              font-size: 16px;
-              font-weight: 500;
-              color: #172142;
-              background: #fff;
-              line-height: 24px;
-
-              @media (width <= 768px) {
-                margin-top: 8px;
-                width: 128px;
-                height: 40px;
-                font-size: 12px;
+            .btnSpace {
+              @media (width <= 1200px) {
+                justify-content: space-evenly;
+                width: 100%;
+                flex-direction: row;
               }
-            }
 
-            .consultation {
-              width: 202px;
-              height: 48px;
-              border-radius: 8px;
-              font-size: 16px;
-              font-weight: 500;
-              color: #fff;
-              background: #ffad11;
-              line-height: 24px;
+              .shareLessons {
+                width: 202px;
+                height: 48px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 500;
+                color: #172142;
+                background: #fff;
+                line-height: 24px;
 
-              @media (width <= 768px) {
-                margin-top: 8px;
-                width: 128px;
-                height: 40px;
-                font-size: 12px;
+                @media (width <= 768px) {
+                  margin-top: 8px;
+                  width: 128px;
+                  height: 40px;
+                  font-size: 12px;
+                }
+              }
+
+              .consultation {
+                width: 202px;
+                height: 48px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 500;
+                color: #fff;
+                background: #ffad11;
+                line-height: 24px;
+
+                @media (width <= 768px) {
+                  margin-top: 8px;
+                  width: 128px;
+                  height: 40px;
+                  font-size: 12px;
+                }
               }
             }
           }
@@ -180,8 +188,9 @@
             width: 550px;
 
             @media (width>=768px) and (width <= 1200px) {
+              margin-top: 30px;
               padding: 0;
-              width: 368px;
+              width: 100%;
             }
 
             @media (width <= 768px) {

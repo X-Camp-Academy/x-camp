@@ -94,7 +94,7 @@ const CourseBanner: React.FC = () => {
 
             <Space className={styles.description}>
               <div className={styles.left}>
-                <Descriptions column={1}>
+                <Descriptions column={1} layout={isMobile ? 'vertical' : 'horizontal'}>
                   {DescriptionsItems?.map(
                     (item) =>
                       item?.value && (
@@ -105,7 +105,7 @@ const CourseBanner: React.FC = () => {
                   )}
                 </Descriptions>
 
-                <Space direction={isMobile ? 'horizontal' : 'vertical'} size={32}>
+                <Space direction={isMobile ? 'horizontal' : 'vertical'} size={32} className={styles.btnSpace}>
                   <Button id="copyButton" className={styles.shareLessons} onClick={() => setIsModalOpen(true)}>
                     {t('ShareLessons')}
                     <ShareAltOutlined />
