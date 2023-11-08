@@ -11,8 +11,12 @@
     top: -10px;
   }
 
+  @media (width >= 768px) and (width <= 1200px) {
+    width: 320px;
+  }
+
   @media (width <= 768px) {
-    width: 288px;
+    width: 272px;
   }
 
   .card {
