@@ -143,8 +143,6 @@ const Courses: React.FC = () => {
   const onSegmentedChange = (value: SegmentedValue | RadioChangeEvent) => {
     history.replaceState(null, '', pathname);
     form.resetFields();
-    console.log(value);
-
     setSegmented(typeof value === 'object' ? value.target.value : value);
   };
 
