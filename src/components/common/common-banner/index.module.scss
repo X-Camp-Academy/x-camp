@@ -147,9 +147,6 @@
     }
 
     .background {
-      // position: absolute;
-      // top: 102px;
-      // width: 40%;
       height: 20px;
       background-color: #ffad11;
 
@@ -159,7 +156,6 @@
     }
 
     .image {
-      // width: 100%;
       height: 512px;
 
       @media (width <= 768px) {
@@ -171,8 +167,21 @@
 }
 
 .mbContainer {
+  position: relative;
   width: 100%;
   height: 368px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #172142;
+    opacity: 0.5;
+    pointer-events: none;
+  }
 
   .space {
     padding: 24px 15px;
@@ -200,12 +209,12 @@
     }
 
     .paragraph {
-      margin-top: 96px;
-
       @include mobile-text;
 
+      position: relative;
+      z-index: 9999;
+      margin-top: 96px;
       color: #fff;
-      text-shadow: 0 1px 5px #fff;
     }
   }
 }

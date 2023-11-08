@@ -60,22 +60,6 @@
     }
   }
 
-  .videoIframe {
-    width: 640px;
-    height: 360px;
-    border: none;
-
-    @media (width>=768px) and (width<=1200px) {
-      width: 480px;
-      height: 270px;
-    }
-
-    @media (width <= 768px) {
-      width: 320px;
-      height: 180px;
-    }
-  }
-
   .paragraph {
     margin-top: 10px;
 
