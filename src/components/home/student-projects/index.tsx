@@ -70,17 +70,27 @@ const StudentProjects: React.FC = () => {
             <Col xs={24} sm={24} md={8} lg={8} xl={12}>
               {studentProjectsData &&
                 (!inPadSize ? (
-                  <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="640" height="360" style={{ border: 'none' }} className={styles.videoIframe} sandbox="" />
+                  <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" className={styles.bigIframe} allowFullScreen />
                 ) : (
                   <Card
                     className={styles.card}
                     bodyStyle={{
                       overflow: 'hidden',
-                      padding: 24
+                      padding: '0 20px 0 20px'
                     }}
-                    cover={<iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="640" height="360" style={{ border: 'none' }} className={styles.videoIframe} sandbox="" />}
+                    cover={
+                      <iframe
+                        src={getVideoByLang(studentProjectsData[0]?.attributes)}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 'none' }}
+                        sandbox=""
+                        className={styles.smallIframe}
+                        allowFullScreen
+                      />
+                    }
                   >
-                    <Space direction="vertical" size={24}>
+                    <Space direction="vertical" size={12} className={styles.space}>
                       <Text className={styles.cardTitle}>{getTransResult(lang, studentProjectsData[0]?.attributes?.titleZh, studentProjectsData[0]?.attributes?.titleEn)}</Text>
                       <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
                         {getTransResult(lang, studentProjectsData[0]?.attributes?.descriptionZh, studentProjectsData[0]?.attributes?.descriptionEn)}
@@ -103,11 +113,11 @@ const StudentProjects: React.FC = () => {
                         className={styles.card}
                         bodyStyle={{
                           overflow: 'hidden',
-                          padding: 24
+                          padding: '0 0 0 8px'
                         }}
-                        cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" />}
+                        cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" className={styles.smallIframe} allowFullScreen />}
                       >
-                        <Space direction="vertical" size={24}>
+                        <Space direction="vertical" size={12} className={styles.space}>
                           <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
                           <Paragraph ellipsis={{ rows: 3 }} className={styles.cardParagraph}>
                             {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
