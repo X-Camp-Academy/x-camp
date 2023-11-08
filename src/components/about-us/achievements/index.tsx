@@ -10,10 +10,10 @@ const Banner = dynamic(() => import('@/components/about-us/achievements/banner')
 const USACOSpotlight = dynamic(() => import('@/components/about-us/achievements/usaco-spotlight'));
 const TimeLine = dynamic(() => import('@/components/about-us/achievements/time-line'));
 const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
-const ArtOfProgrammingResults = dynamic(() => import('@/components/about-us/achievements/art-of-programming-results'));
+const ProjectsDemo = dynamic(() => import('@/components/about-us/achievements/projects-demo'));
 
 const Achievements: React.FC = () => {
-  const { data: projectsDemo } = useGetProjectsDemo();
+  const { data } = useGetProjectsDemo();
 
   return (
     <Layout className={styles.introductionContainer}>
@@ -22,7 +22,7 @@ const Achievements: React.FC = () => {
         <USACOSpotlight />
         <TimeLine />
         <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} spacePaddingTop={0} />
-        <ArtOfProgrammingResults data={projectsDemo} />
+        <ProjectsDemo data={data} />
       </Content>
     </Layout>
   );

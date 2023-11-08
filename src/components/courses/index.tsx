@@ -44,13 +44,13 @@ const Courses: React.FC = () => {
   const { data: courses } = useGetCourses({});
   const COURSE_TYPES = Object.values(CourseTypes);
 
-  //获取师生评价数据
+  // get reviews
   const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname]
   });
 
-  // 获取所有的courseLevelType分类数据
+  // get all course level types as data
   const courseLevelTypeData = courseLevelType?.map((item) => item?.attributes?.type);
 
   // course level options
@@ -92,7 +92,14 @@ const Courses: React.FC = () => {
       children: primaryData?.map((levelType) => {
         return {
           secondaryTitle: levelType,
-          children: sortClassifiedCourses?.filter((filteredCourse) => filteredCourse?.attributes?.courseLevelType?.data?.attributes?.type === levelType)
+          children: sortClassifiedCourses?.filter((filteredCourse) => {
+            // weekly课程下不显示 Java & APCS Classes和Mock Test Classes
+            if (courseType === CourseTypes.WeeklyClasses && ['Java & APCS Classes', 'Mock Test Classes'].includes(levelType)) {
+              return false;
+            } else {
+              return filteredCourse?.attributes?.courseLevelType?.data?.attributes?.type === levelType;
+            }
+          })
         };
       })
     };
@@ -136,8 +143,6 @@ const Courses: React.FC = () => {
   const onSegmentedChange = (value: SegmentedValue | RadioChangeEvent) => {
     history.replaceState(null, '', pathname);
     form.resetFields();
-    console.log(value);
-
     setSegmented(typeof value === 'object' ? value.target.value : value);
   };
 
@@ -157,10 +162,7 @@ const Courses: React.FC = () => {
     }
   }, [hash, segmentedData]);
 
-  /**
-   * 筛选当前选中的segmented课程数据
-   * @param values 筛选的参数
-   */
+  // filter data by segmented
   const onFinish = (values: { category: string; quarter: string }) => {
     const { category, quarter } = values;
     let result;

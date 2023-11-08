@@ -6,6 +6,7 @@ import { useSize } from 'ahooks';
 import { Layout } from 'antd';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+import ArtOfProgrammingResults from './art-of-programming-results';
 import Banner from './banner';
 import { filterContest, formatContestsByQuarter } from './define';
 import styles from './index.module.scss';
@@ -32,6 +33,7 @@ const Contests: React.FC = () => {
     <Layout className={styles.main}>
       <Content>
         <Banner />
+        <ArtOfProgrammingResults />
         <MonthlyContest data={formatContestsByQuarter(resourcesContest?.data!, Number(size?.width) >= 992 ? 6 : 1)} />
         <Introduction data={filterContest(resourcesContest?.data)} />
         <WhyContest />
