@@ -67,11 +67,12 @@
   .enTitleBg {
     @extend .baseTitleBg;
 
-    margin-left: 192px;
+    margin-top: 3px;
+    margin-left: 227px;
     width: 192px;
 
     @media (width <= 768px) {
-      margin-left: 128px;
+      margin-left: 150px;
       width: 120px;
     }
   }
