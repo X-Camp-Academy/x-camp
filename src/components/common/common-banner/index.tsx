@@ -1,6 +1,5 @@
 import { useMobile } from '@/utils';
 import { Button, Space, Typography } from 'antd';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
 
@@ -12,7 +11,6 @@ interface CommonBannerProps {
   image: string;
   titleClassName?: string;
   paragraphClassName?: string;
-  barColor?: string;
   backgroundColor?: string;
   titleStyle?: React.CSSProperties;
   paragraphStyle?: React.CSSProperties;
@@ -30,7 +28,6 @@ const Banner: React.FC<CommonBannerProps> = ({
   image,
   titleClassName,
   paragraphClassName,
-  barColor,
   backgroundColor,
   titleStyle,
   paragraphStyle,
@@ -42,7 +39,6 @@ const Banner: React.FC<CommonBannerProps> = ({
   buttonIcon
 }) => {
   const isMobile = useMobile();
-  const router = useRouter();
   return (
     <>
       {isMobile ? (

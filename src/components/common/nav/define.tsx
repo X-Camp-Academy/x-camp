@@ -55,14 +55,6 @@ export const useMenuItems = () => {
         {
           label: <a href="/courses#apcs">{t('Java/APCS.Classes')}</a>,
           key: 'courses#apcs'
-        },
-        {
-          label: <Link href="/courses/student-recommend">{t('ReferralProgram')}</Link>,
-          key: 'student-recommend'
-        },
-        {
-          label: <Link href="/courses/weekly-open-house">{t('OpenHouse')}</Link>,
-          key: 'weekly-open-house'
         }
         // {
         //   label: (
