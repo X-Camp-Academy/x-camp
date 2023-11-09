@@ -194,7 +194,7 @@ const ArticleSider: React.FC<{
                         {getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}
                       </Paragraph>
                     </div>
-                    <a href={`/resources/${v.id}`}>
+                    <a href={`/resources/education-forum/${v.id}`}>
                       <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} style={{ color: '#FFAD11', fontSize: 24 }} />
                     </a>
                   </Row>
