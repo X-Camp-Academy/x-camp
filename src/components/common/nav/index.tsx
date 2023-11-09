@@ -111,7 +111,7 @@ const Nav: React.FC = () => {
                     </Button>
                   </Space>
                 ) : (
-                  <Button type="primary" href="/login">
+                  <Button className={styles.study} type="primary" href="/login">
                     {t('Nav.Login')}
                   </Button>
                 )}

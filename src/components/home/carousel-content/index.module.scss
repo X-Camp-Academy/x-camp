@@ -114,6 +114,8 @@
         color: #fff;
         background: $primary-color;
         line-height: 24px;
+        transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        cursor: pointer;
 
         &:hover {
           @extend .hoverButton;
