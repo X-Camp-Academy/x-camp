@@ -1,5 +1,4 @@
 import { CaretUpOutlined } from '@ant-design/icons';
-import classNames from 'classnames/bind';
 import React from 'react';
 import { XStarMenuItemType } from '..';
 import styles from './index.module.scss';
@@ -11,8 +10,6 @@ interface Props {
   selected: boolean;
   children?: React.ReactNode[];
 }
-
-const cx = classNames.bind(styles);
 
 const XStarMenuItem = ({ menuItem, onClick, selected, children }: Props) => {
   return (
