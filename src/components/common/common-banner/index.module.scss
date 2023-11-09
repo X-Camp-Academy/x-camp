@@ -62,10 +62,8 @@
     .title {
       z-index: 999;
       margin-top: 95px;
-      font-size: 34px;
-      font-weight: bold;
-      color: #172142;
-      line-height: 48px;
+
+      @include title('default');
 
       @media (width <= 1200px) {
         font-size: 25px !important;
