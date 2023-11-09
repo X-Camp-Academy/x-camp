@@ -7,7 +7,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getLangResult, getTransResult, getWeeksDays, scrollIntoView } from '@/utils/public';
 import { CaretRightOutlined } from '@ant-design/icons';
-import { Affix, Button, Col, Collapse, Form, Layout, RadioChangeEvent, Row, Select, Space } from 'antd';
+import { Affix, Button, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -228,28 +228,25 @@ const Courses: React.FC = () => {
 
           <div className={styles.form} />
 
-          <Form layout="inline" form={form} initialValues={{ quarter: 'Winter' }} className={styles.form} onFinish={onFinish} style={isiPad ? { justifyContent: 'center' } : {}}>
-            <Row gutter={[32, 8]} style={isiPad ? { width: '100%' } : {}}>
-              <Col xs={24} sm={24} md={24} lg={24} xl={{ span: 6, offset: 3 }}>
-                <Form.Item name="category">
-                  <Select style={isiPad ? { width: '100%' } : { width: 240 }} placeholder={'Category'} options={courseLevelOptions} allowClear />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} sm={24} md={24} lg={24} xl={{ span: 6, offset: 3 }}>
-                <Form.Item name="quarter">
-                  <Select style={isiPad ? { width: '100%' } : { width: 240 }} placeholder={'Quarter'} options={courseQuarterOptions} allowClear />
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} sm={24} md={24} lg={24} xl={{ span: 3, offset: 3 }}>
-                <Form.Item>
-                  <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
-                    {t('Search')}
-                  </Button>
-                </Form.Item>
-              </Col>
-            </Row>
+          <Form
+            layout="inline"
+            form={form}
+            initialValues={{ quarter: 'Winter' }}
+            className={styles.form}
+            onFinish={onFinish}
+            style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
+          >
+            <Form.Item name="category">
+              <Select style={{ width: 240 }} placeholder={'Category'} options={courseLevelOptions} allowClear />
+            </Form.Item>
+            <Form.Item name="quarter">
+              <Select style={{ width: 240 }} placeholder={'Quarter'} options={courseQuarterOptions} allowClear />
+            </Form.Item>
+            <Form.Item style={{ marginInlineEnd: 0 }}>
+              <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
+                {t('Search')}
+              </Button>
+            </Form.Item>
           </Form>
 
           {segmentedData?.map((item) => {

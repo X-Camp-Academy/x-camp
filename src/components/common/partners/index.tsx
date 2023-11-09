@@ -49,7 +49,7 @@ const Partners: React.FC = () => {
 
   return (
     <div className={styles.partners}>
-      <Space direction="vertical" align="center">
+      <Space direction="vertical" align="center" className="container">
         <Title className={styles.title}>{t('Partners')}</Title>
         <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
         <Paragraph className={styles.paragraph}>{t('Partners.Desc')}</Paragraph>

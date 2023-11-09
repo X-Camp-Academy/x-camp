@@ -41,7 +41,7 @@ declare const json: {
   'Charlie.Desc3': 'published in international journals and more than 10 patents granted.';
   'Charlie.Desc4': ' Dr. Guo is also a founding partner of the H Founders Angel Fund. His investment areas include big data, artificial intelligence, and augmented reality.';
   'Charlie.paper': ' 20 papers ';
-  'Charlie.years': ' 10 years ';
+  'Charlie.years': ' 10 years. ';
   ClassesTime: 'Class Times';
   ClassMode: 'Class Mode';
   ClassroomLanguage: 'Spoken Language(s)';
