@@ -107,16 +107,19 @@
 
       .button {
         padding: 10px 36px;
-        border: 1px solid #ffad11;
+        border: 2px solid #ffad11;
         border-radius: 12px;
         font-size: 18px;
         font-weight: 600;
         color: #fff;
         background: $primary-color;
         line-height: 24px;
+        transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        cursor: pointer;
 
         &:hover {
-          @extend .hoverButton;
+          color: #ffad11;
+          background-color: #fff;
         }
 
         @media (width <= 768px) {

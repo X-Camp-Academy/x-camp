@@ -7,7 +7,7 @@ declare const json: {
   '602': '请只订阅一次';
   AboutUs: '关于我们';
   'AboutUs.Description': 'X-Camp Academy是位于硅谷的一家机构，为中学和高中学生提供编程课程。';
-  'AboutX-Camp': '为什么选择X-Camp';
+  'AboutX-Camp': '为什么选择 X-Camp';
   'AboutX-Camp_Color': '为什么选择';
   Achievements: '成就';
   AlphabetEmployeeQuestion: '您目前或曾经是X-Camp的员工、承包商或实习生吗？';
