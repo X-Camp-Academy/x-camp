@@ -154,7 +154,7 @@ const PublicCalendar: React.FC = () => {
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
           {/* <Carousel dots={false} infinite slidesToShow={sortData && sortData?.length > 4 ? 4 : sortData?.length} slidesToScroll={1} vertical verticalSwiping autoplay={false} autoplaySpeed={2000}> */}
-          <div className={styles.eventListContainer}>
+          <div className={styles.eventListContainer} style={isMobile && sortData?.length !== 0 ? { height: '256px' } : {}}>
             {sortData?.length !== 0 ? (
               sortData?.map((item) => {
                 return (
@@ -199,8 +199,10 @@ const PublicCalendar: React.FC = () => {
                   </div>
                 );
               })
-            ) : (
+            ) : !isMobile ? (
               <Empty description={t('NoEventThisWeek')} className={styles.empty} />
+            ) : (
+              <></>
             )}
           </div>
           {/* </Carousel> */}
