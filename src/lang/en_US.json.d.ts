@@ -136,7 +136,7 @@ declare const json: {
   Potential: 'Potential';
   ProgressionClasses: 'Progression Classes';
   ProjectsDemo: 'Projects Demo';
-  Public: 'Public';
+  Public: ' Public ';
   'Python.Grade': '5th+ Grades';
   'Python.Title': 'Python Beginner';
   FAQ: 'FAQ';
