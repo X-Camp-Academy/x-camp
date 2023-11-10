@@ -145,7 +145,8 @@ const PublicCalendar: React.FC = () => {
   return (
     <div className={`${styles.publicCalendar} container`}>
       <Title className={styles.title}>
-        X-Camp {t('Public')} <span>{t('Calendar')}</span>
+        X-Camp{t('Public')}
+        <span>{t('Calendar')}</span>
       </Title>
       <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
         <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
