@@ -8,6 +8,22 @@
     padding: 32px 24px;
   }
 
+  .videoIframe {
+    width: 640px;
+    height: 360px;
+    border: none;
+
+    @media (width <= 1200px) {
+      width: 485px;
+      height: 273px;
+    }
+
+    @media (width <= 768px) {
+      width: 320px;
+      height: 180px;
+    }
+  }
+
   .rightCol {
     @media (width <= 1399px) {
       padding-left: 65px;
@@ -51,11 +67,12 @@
   .enTitleBg {
     @extend .baseTitleBg;
 
-    margin-left: 192px;
+    margin-top: 3px;
+    margin-left: 227px;
     width: 192px;
 
     @media (width <= 768px) {
-      margin-left: 128px;
+      margin-left: 150px;
       width: 120px;
     }
   }

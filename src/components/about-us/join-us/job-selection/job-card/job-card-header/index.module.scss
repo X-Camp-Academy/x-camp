@@ -82,14 +82,21 @@
 
     .applyBtn {
       display: flex;
+      justify-content: center;
       align-items: center;
       padding: 8px 36px;
+      border: 1px solid #ffad11;
       border-radius: 12px;
       font-size: 16px;
       font-weight: 500;
       color: #fff;
       background: #ffad11;
+      transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
       line-height: 24px;
+
+      &:hover {
+        @extend .hoverButton;
+      }
 
       @media (width <= 768px) {
         display: block;

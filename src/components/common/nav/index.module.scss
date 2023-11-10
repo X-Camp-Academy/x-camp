@@ -49,6 +49,10 @@
 
       .study {
         width: 100%;
+
+        &:hover {
+          @extend .hoverButton;
+        }
       }
 
       .langDropDown {

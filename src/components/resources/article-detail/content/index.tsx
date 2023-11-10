@@ -60,6 +60,7 @@ const ArticleContent = ({ props }: Props) => {
       <div id="markdownContent">
         <XStarMdViewer className={styles.viewer} value={getTransResult(lang, props?.attributes?.detailContentZh, props?.attributes?.detailContentEn)} plugins={[viewerVideoPlugin(), iframePlugin()]} />
       </div>
+
       <Space className={styles.note}>
         <ReadOutlined className={styles.icon} />
         <span>{t('ArticleContent.Desc')}</span>

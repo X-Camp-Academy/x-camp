@@ -6,10 +6,8 @@ import { XStarMdViewerPlugin } from 'x-star-editor';
  * @returns
  */
 export const iframePlugin = (): XStarMdViewerPlugin => (ctx) => {
-  console.log(ctx);
-  return (ctx.customHTMLElements.iframe = (props) => {
+  ctx.customHTMLElements.iframe = (props) => {
     //获取父元素宽度
-    console.log('props', props);
     const parentWidth = document?.getElementById('markdownContent')?.offsetWidth;
     const zoom = +props.width! / +props.height! || 1.78;
     return (
@@ -17,11 +15,14 @@ export const iframePlugin = (): XStarMdViewerPlugin => (ctx) => {
         {...props}
         style={{
           alignSelf: 'center',
-          width: parentWidth! * 0.9,
-          height: (parentWidth! * 0.9) / zoom
+          width: parentWidth,
+          height: parentWidth! / zoom,
+          border: 'none',
+          margin: '20px 0'
         }}
         allowFullScreen
       />
     );
-  });
+  };
+  ctx.customSchema = { ...ctx.customSchema, tagNames: [...(ctx.customSchema.tagNames ?? []), 'iframe'], attributes: { ...ctx.customSchema.attributes, iframe: ['src'] } };
 };

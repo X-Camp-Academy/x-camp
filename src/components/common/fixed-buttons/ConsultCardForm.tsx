@@ -22,9 +22,11 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
           height: 36,
           lineHeight: '36px',
           textAlign: 'center',
-          borderBottom: 'none'
+          borderBottom: 'none',
+          paddingTop: 32
         }}
         bodyStyle={{
+          paddingTop: 24,
           paddingBottom: 16
         }}
         className={styles.card}

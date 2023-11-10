@@ -33,7 +33,7 @@
   .zhTitleBg {
     @extend .baseTitleBg;
 
-    margin-left: 232px;
+    margin-left: 242px;
     width: 88px;
     height: 20px;
 
@@ -48,15 +48,15 @@
   .enTitleBg {
     @extend .baseTitleBg;
 
-    margin-top: -8px;
-    margin-left: 260px;
+    margin-top: -3px;
+    margin-left: 290px;
     width: 160px;
     height: 20px;
 
     @media (width <= 768px) {
-      margin-top: -28px;
+      margin-top: -24px;
       margin-bottom: 16px;
-      margin-left: 168px;
+      margin-left: 190px;
       width: 96px;
     }
   }
