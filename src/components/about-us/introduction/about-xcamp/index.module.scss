@@ -61,9 +61,7 @@
 
     .rightSpace {
       .rightTitle {
-        font-size: 30px;
-        font-weight: 600;
-        line-height: 40px;
+        @include title('default');
 
         @media (width <= 1200px) {
           @include title('middle');

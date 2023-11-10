@@ -443,6 +443,7 @@ declare const json: {
   Activity: 'Activity';
   EventCalendar: 'Event Calendar';
   'HistoryOfXCamp.Title': 'History of X-Camp';
+  'HistoryOfXCamp.Title.Color': 'History';
   'HistoryOfXCamp.Desc': "With nearly 2,000 students trained in just six years, X-Camp's impact on their coding journeys remains unparalleled.";
   Our: 'Our ';
   'SubscribeNewsletter.Desc1': 'Stay in the loop with our newsletter for exclusive updates';

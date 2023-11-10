@@ -1,4 +1,5 @@
 import MaskCard from '@/components/common/mask-card';
+import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Col, Image, Row, Space, Typography } from 'antd';
@@ -64,7 +65,16 @@ const History: React.FC = () => {
   return (
     <div className={styles.historyContainer}>
       <div className="container">
-        <Title className={styles.title}>{t('HistoryOfXCamp.Title')}</Title>
+        <TitleColor
+          title={t('HistoryOfXCamp.Title')}
+          config={[
+            {
+              text: t('HistoryOfXCamp.Title.Color'),
+              color: '#FFAD11'
+            }
+          ]}
+          className={styles.title}
+        />
         <Paragraph className={styles.paragraph}>{t('HistoryOfXCamp.Desc')}</Paragraph>
         {/* 
         <div className={styles.timeline}>
