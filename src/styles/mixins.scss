@@ -7,18 +7,18 @@
     line-height: 42px;
   } @else if $type == 'default' {
     font-size: 36px;
-    font-family: Montserrat, Arial;
+    font-family: MontserratAlternates-Bold, Arial;
     font-weight: 600;
     line-height: 48px;
     color: $text-color;
 
     span {
-      font-family: Montserrat, Arial;
+      font-family: MontserratAlternates-Bold, Arial;
       color: $primary-color;
     }
   } @else if $type == 'bold' {
     font-size: 48px;
-    font-family: Montserrat, Arial;
+    font-family: MontserratAlternates-Bold, Arial;
     font-weight: 600;
     line-height: 48px;
     color: $text-color;
@@ -29,7 +29,7 @@
     color: $text-color;
   } @else if $type == 'about' {
     font-size: 36px;
-    font-family: Montserrat, Arial;
+    font-family: MontserratAlternates-Bold, Arial;
     font-weight: 600;
     line-height: 48px;
     color: $text-color;
