@@ -15,9 +15,8 @@
 }
 
 @font-face {
-  font-family: Montserrat;
-  src: url('/fonts/Montserrat-Black.ttf');
-  font-weight: bold;
+  font-family: MontserratAlternates-Bold;
+  src: url('/fonts/MontserratAlternates-Bold.ttf');
   font-style: normal;
   font-variant: small-caps;
   font-stretch: expanded;
@@ -27,7 +26,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Montserrat-Black, Montserrat, Arial;
+  font-family: MontserratAlternates-SemiBold, Arial;
   background-color: #fff;
 }
 

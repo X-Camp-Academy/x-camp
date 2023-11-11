@@ -100,7 +100,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={3} current={current} />}
-      <Carousel autoplay dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: IItem) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (

@@ -136,7 +136,7 @@
   "Potential": "Potential",
   "ProgressionClasses": "Progression Classes",
   "ProjectsDemo": "Projects Demo",
-  "Public": "Public",
+  "Public": " Public ",
   "Python.Grade": "5th+ Grades",
   "Python.Title": "Python Beginner",
   "FAQ": "FAQ",
@@ -443,6 +443,7 @@
   "Activity": "Activity",
   "EventCalendar": "Event Calendar",
   "HistoryOfXCamp.Title": "History of X-Camp",
+  "HistoryOfXCamp.Title.Color":"History",
   "HistoryOfXCamp.Desc": "With nearly 2,000 students trained in just six years, X-Camp's impact on their coding journeys remains unparalleled.",
   "Our": "Our ",
   "SubscribeNewsletter.Desc1": "Stay in the loop with our newsletter for exclusive updates",
@@ -514,7 +515,7 @@
   "ParentEmail": "Parent's Email",
   "SendEmailSuccess": "Thank you for Free Consultation Sign Up, we will contact you with 24 hours.",
   "AllCourses": "All Courses",
-  "USACOFreePublicMockTestComes":"USACO FREE Public Mock Test Comes on Dec!",
-  "ReserveNow":"Reserve Now",
-  "NoEventThisWeek":"No Event This Week"
+  "USACOFreePublicMockTestComes": "USACO FREE Public Mock Test Comes on Dec!",
+  "ReserveNow": "Reserve Now",
+  "NoEventThisWeek": "No Event This Week"
 }
