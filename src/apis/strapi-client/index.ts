@@ -25,8 +25,8 @@ import {
   GetNewEventResponse,
   GetPartnerRequest,
   GetPartnerResponse,
-  GetProjectsDemoRequest,
-  GetProjectsDemoResponse,
+  GetProjectDemosRequest,
+  GetProjectDemosResponse,
   GetResourcesLiveSolutionRequest,
   GetResourcesLiveSolutionResponse,
   GetReviewsRequest,
@@ -116,7 +116,7 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getProjectsDemo(params: GetProjectsDemoRequest): Promise<GetProjectsDemoResponse> {
+  async getProjectDemos(params: GetProjectDemosRequest): Promise<GetProjectDemosResponse> {
     const res = await this.get('/xc-about-us-achievements-projects-demos' + getParamsStringify(params), {});
     return res;
   }

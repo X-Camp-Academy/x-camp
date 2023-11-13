@@ -27,7 +27,7 @@ const CopyRight: React.FC = () => {
               ) : (
                 <Space direction="vertical">
                   <Image alt="logo" src="/assets/logo.png" preview={false} className={styles.image} />
-                  <Image alt="slogan" preview={false} src="/image/home/footer-slogan.png" width={307} height={24} style={{ marginTop: 15 }} />
+                  <Image alt="slogan" preview={false} src="/image/home/footer-slogan.svg" style={{ marginTop: 15 }} />
                 </Space>
               )}
 
@@ -75,7 +75,7 @@ const CopyRight: React.FC = () => {
                 <Title className={styles.text}>{t('Activity')}</Title>
                 <Space direction="vertical">
                   <Link href={'/courses/weekly-open-house'}>{t('WeeklyOpenHouse')}</Link>
-                  <Link href={'/resources/education-forum'}>{t('EventCalendar')}</Link>
+                  <Link href={'/resources/education-forum'}>{t('EducationForum')}</Link>
                   <a href={'/courses/student-recommend'}>{t('ReferralProgram')}</a>
                 </Space>
               </div>

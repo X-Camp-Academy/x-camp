@@ -6,9 +6,9 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      {t('Camp.Des')}
-      {t('SummerCamp')}
-      {t('WinterCamp')}
+      {t('Courses.Camps.Banner.Desc1')}
+      {t('Courses.Camps.Banner.Desc2')}
+      {t('Courses.Camps.Banner.Desc3')}
     </>
   );
 

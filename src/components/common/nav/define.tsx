@@ -132,7 +132,7 @@ export const useMenuItems = () => {
         {
           label: (
             <a href="/about-us/introduction#faculty">
-              {t('Faculty')} & {t('Coach')}
+              {t('Faculty')} & {t('Coaches')}
             </a>
           ),
           key: 'introduction#faculty'

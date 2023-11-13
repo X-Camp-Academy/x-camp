@@ -28,7 +28,7 @@ declare const json: {
   'Camp.Answer1': 'X-Camp每年夏季和冬季向学生提供线下夏令营，从初学者级别到USACO级别不等。通过提供密集的培训，以最大限度地发挥学生的潜力，使他们能够迅速有效地提高编程能力。';
   'Camp.Answer2': '在过去的5年里，X-Camp的学生在美国编程奥赛中取得了令人瞩目的成绩：超过200名X-Camp学生已经进入USACO银级及以上的组别。其中包括30名白金级别的学生和12名入选美国国家集训队的学生，其中7名来自2023年最新赛季。其中1名X-Camp学生还入选美国EGOI团队。';
   'Camp.Answer3': '自2021年以来，X-Camp成功举办了硅谷线下夏令营和冬令营，并获得了学生和家长们的高度评价。欢迎观看我们的夏令营短片，了解更多信息：';
-  'Camp.Des': 'X-Camp每年举办两次线下集训营';
+  'Courses.Camps.Banner.Desc1': 'X-Camp每年举办两次线下集训营';
   'Camp.Problem1': '我们的夏令营提供什么？';
   'Camp.Problem2': 'USACO成就';
   'Camp.Problem3': '夏令营简介';
@@ -83,7 +83,7 @@ declare const json: {
   Evaluation: '评估';
   Faculty: '教职员工';
   'Faculty.Desc': '我们的世界级教职员工由来自领先科技公司的高级工程师、知名大学计算机科学专业的优秀学生以及在包括IOI、ICPC和USACO等竞技编程比赛中获奖者和顶级选手组成。';
-  Coach: '教练';
+  Coaches: '教练';
   FAQs: '常见问题';
   FirstName: '名字';
   FreeConsultation: '免费咨询';
@@ -126,7 +126,7 @@ declare const json: {
   PlacementTest: '入学测试';
   Potential: '潜力';
   ProgressionClasses: '进阶课程';
-  ProjectsDemo: '项目演示';
+  ProjectDemos: '项目演示';
   Public: '公开';
   'Python.Grade': '5年级以上';
   'Python.Title': 'Python初学者';
@@ -155,7 +155,7 @@ declare const json: {
   SubmitOpenHouse: '提交，还可获得最新USACO科普礼包！';
   SubscribeNewsletter: '订阅';
   'subscribeNewsLetter.Success': '订阅成功！请查看您的电子邮件获取最新X-Camp信息。';
-  SummerCamp: '夏令营';
+  'Courses.Camps.Banner.Desc2': '夏令营';
   Tel: '电话：';
   Text: '传真：';
   Timeline: '时间表';
@@ -192,7 +192,7 @@ declare const json: {
   WeSupport: '支持语言';
   WeSupport_Color: '语言';
   'WeSupport.Desc': 'X-Camp的编程课为5至12年级学生量身定制，并支持三种主流编程语言：Python、Java和C++。我们的Python课程是对初学者友好的文本编程入门课，而Java系列适应美国APCS A考试。我们C++课程包括初级、中级和高级水平，对应USACO不同级别知识水平。';
-  WinterCamp: '冬令营';
+  'Courses.Camps.Banner.Desc3': '冬令营';
   X_ALUMNI_INTRODUCTION: '自成立以来，X-Camp已成功招收了1000多名学生，目前为全球300多所学校的500多名学生提供服务。如果您想重新找回您的校友，请与我们联系！';
   Founders: '创始人';
   'X-Tutors': '1对1私教';
@@ -333,6 +333,7 @@ declare const json: {
   'Evaluation.form.AboutXCamp.Other': '其他';
   'Evaluation.form.AboutXCamp.Xiaohongshu': '小红书';
   '1On1Consultation': '一对一咨询';
+  Schedule1On1Consultation: '一对一咨询';
   AdditionalInfo: '附加信息';
   TopicsCovered: '课程大纲';
   ZoomLink: '加入Zoom';
@@ -446,7 +447,7 @@ declare const json: {
   Our: '我们的';
   'SubscribeNewsletter.Desc1': '订阅我们的新闻以获得独家更新';
   'SubscribeNewsletter.Desc2': '知识分享和特别优惠活动！';
-  Basic: '基础';
+  Beginner: '基础';
   Intermediate: '中级';
   Grandmaster: '大师';
   About: '关于';

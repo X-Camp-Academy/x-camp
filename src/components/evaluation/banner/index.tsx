@@ -27,7 +27,7 @@ const Banner: React.FC = () => {
             <Space direction={'vertical'} size={32} className={styles.btnGroup}>
               <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
                 <Link href="https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ" target="_blank">
-                  {t('1On1Consultation')}
+                  {t('Schedule1On1Consultation')}
                 </Link>
               </Button>
             </Space>

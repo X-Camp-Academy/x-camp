@@ -57,8 +57,8 @@ export const useEventOptions = (defaultValue: 'event' | 'faculty' | 'course') =>
 
   const facultyOptions: FacultyOptionsProps[] = [
     {
-      label: t('Basic'),
-      value: FacultyLevelCategory.Basic
+      label: t('Beginner'),
+      value: FacultyLevelCategory.Beginner
     },
     {
       label: t('Intermediate'),

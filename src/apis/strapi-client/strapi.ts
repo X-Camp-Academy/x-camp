@@ -26,7 +26,7 @@ import {
   GetNewEventRequest,
   GetNewEventResponse,
   GetPartnerRequest,
-  GetProjectsDemoRequest,
+  GetProjectDemosRequest,
   GetResourcesLiveSolutionRequest,
   GetReviewsRequest,
   GetUserSearchRequest,
@@ -394,16 +394,16 @@ export const useGetAboutUsAlumniMap = () => {
 };
 
 /**
- * 获取关于我们目录下的achievements的Projects Demo
+ * 获取关于我们目录下的achievements的Project Demos
  * @returns
  */
-export const useGetProjectsDemo = () => {
+export const useGetProjectDemos = () => {
   const client = useStrapiClient();
   const { lang } = useLang();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetProjectsDemoRequest) => {
-      const res = await client.getProjectsDemo(params);
+    async (params: GetProjectDemosRequest) => {
+      const res = await client.getProjectDemos(params);
       return isArray(res?.data) ? classifyByAttribution(res.data, lang === 'zh' ? 'categoryZh' : 'categoryEn') : [];
     },
     {

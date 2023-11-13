@@ -48,16 +48,14 @@ const CourseCamps: React.FC = () => {
     <Layout className={styles.courseCamps}>
       <Content>
         <Banner />
-        <Introduction />
-        <div className={styles.courseCard}>
-          <div className="container">
-            <ColorfulCard border={'bottom'} index={1} animate={false}>
-              <div className={styles.cardContent}>
-                <CourseAbstract {...coursesData?.data[0]?.attributes} />
-              </div>
-            </ColorfulCard>
-          </div>
+        <div className={`${styles.courseCard} container`}>
+          <ColorfulCard border={'bottom'} index={1} animate={false}>
+            <div className={styles.cardContent}>
+              <CourseAbstract {...coursesData?.data[0]?.attributes} />
+            </div>
+          </ColorfulCard>
         </div>
+        <Introduction />
         <Faqs title={t('CampsFAQs')} data={faq} />
         <Reviews reviewsData={reviewsData} />
       </Content>
