@@ -287,7 +287,6 @@ declare const json: {
   CHROME_BROWSER: 'Chrome 浏览器';
   CHROME_BROWSER_DESC: 'Google Chrome 是一款快速、安全且免费的网络浏览器，能很好地满足新型网站对浏览器的要求。';
   DOWNLOAD_LINK: '下载链接';
-  SIGH_UP_USACO_TOOLKIT: '提交并可获得免费的USACO科普礼包！';
   FIREFOX_BROWSER: 'Firefox 浏览器';
   FIREFOX_BROWSER_DESC: '没有晦涩难懂的隐私保护政策，更不向第三方预留后门，纯粹是一款闪电般快、不会出卖您的浏览器。';
   EDGE_BROWSER: 'Edge 浏览器';

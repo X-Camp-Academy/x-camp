@@ -102,7 +102,7 @@ const CopyRight: React.FC = () => {
           </>
         )}
       </div>
-      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2023 X-Camp</div>}
+      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2017-2023 X-Camp</div>}
     </div>
   );
 };

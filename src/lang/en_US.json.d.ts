@@ -59,7 +59,7 @@ declare const json: {
   Courses: 'Courses';
   'Courses.LeftDescription': 'X-Camp offers programming classes to students in grades 5-12 from beginner to IOI levels with a structured, individual-focused curriculum.';
   'Courses.RightDescription': 'List of all courses in X-Camp 2023';
-  CourseSchedule: ' Course';
+  CourseSchedule: ' Courses';
   'CourseSchedule.Question': 'If you have any questions, please contact us.';
   CoursesFAQS: 'Courses FAQS';
   CourseStyle: 'Course Style';
@@ -305,7 +305,6 @@ declare const json: {
   CHROME_BROWSER: 'Chrome Browser';
   CHROME_BROWSER_DESC: 'Google Chrome is a fast, secure, and free web browser that works well for new web browsers.';
   DOWNLOAD_LINK: 'Download link';
-  SIGH_UP_USACO_TOOLKIT: 'Sign up and a free USACO Toolkit!';
   FIREFOX_BROWSER: 'Firefox browser';
   FIREFOX_BROWSER_DESC: 'No arcane privacy policies, no backdoors for third parties, just a lightning-fast browser.';
   EDGE_BROWSER: 'Edge Browser';
@@ -414,7 +413,7 @@ declare const json: {
   'Calendar.Banner.Desc2': 'problem-solving skills of our students. We strive to teach not only';
   'Calendar.Banner.Desc3': 'remarkable results as our students&apos; side project on';
   'Calendar.Banner.Desc4': 'their learning journey.';
-  'ContactUs.Banner.Desc1': 'X-Camp Academy focuses on improving the coding abilities and';
+  'ContactUs.Banner.Desc1': 'X-Camp Academy focuses on improving the coding abilities and ';
   'ContactUs.Banner.Desc2': 'problem-solving skills of our students. We strive to teach not only ';
   'ContactUs.Banner.Desc3': 'persistence in analytical thought, but also genuine curiosity whilst ';
   'ContactUs.Banner.Desc4': 'facing new challenges.';

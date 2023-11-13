@@ -59,7 +59,7 @@ const OpenHouseCardForm: React.FC<IProps> = ({ setOpen }) => {
               router.push('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ');
             }}
           >
-            1 On 1{' '}
+            Schedule 1 on 1
           </Button>
         </div>
         <div className={styles.tips}>*{t('weeklyOpenHouseTips')}</div>
