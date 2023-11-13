@@ -10,9 +10,9 @@ const RelateResources: React.FC = () => {
   const { format: t } = useLang();
   const QAData = [
     {
-      title: t('USACOPublicMockTest.Title'),
+      title: t('USACOMockTest.Title'),
       url: 'https://tinyurl.com/23-24USACOFreeMockTest',
-      description: t('USACOPublicMockTest.Desc')
+      description: t('USACOMockTest.Desc')
     },
     {
       title: t('USACOMockTestClass.Title'),

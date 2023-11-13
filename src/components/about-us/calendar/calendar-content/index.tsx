@@ -13,6 +13,11 @@ import styles from './index.module.scss';
 
 const { Title } = Typography;
 
+interface Item {
+  label: string;
+  children: Item[] | string;
+}
+
 const CalendarContent: React.FC = () => {
   const { lang, format: t } = useLang();
   dayjs.extend(isSameOrAfter);
@@ -37,11 +42,6 @@ const CalendarContent: React.FC = () => {
       }
     });
   }, []);
-
-  interface Item {
-    label: string;
-    children: Item[] | string;
-  }
 
   const formatCalendar = (data: StrapiResponseDataItem<GetNewEvent>[] | undefined): Item[] => {
     const currentMonth = dayjs().month();

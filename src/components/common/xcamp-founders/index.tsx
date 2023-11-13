@@ -41,9 +41,9 @@ const XCampFounder: React.FC = () => {
               <Space direction="vertical">
                 <Paragraph className={styles.founderParagraph}>
                   {t('Charlie.Desc1')}
-                  <Text className={styles.keyText}>{t('Charlie.years')}</Text>
+                  {t('Charlie.years')}
                   {t('Charlie.Desc2')}
-                  <Text className={styles.keyText}>{t('Charlie.paper')}</Text>
+                  {t('Charlie.paper')}
                   {t('Charlie.Desc3')}
                 </Paragraph>
                 <Paragraph className={styles.founderParagraph}>{t('Charlie.Desc4')}</Paragraph>
@@ -67,11 +67,11 @@ const XCampFounder: React.FC = () => {
                 <Paragraph className={styles.founderParagraph}>{t('Yuan.Desc1')}</Paragraph>
                 <Paragraph className={styles.founderParagraph}>
                   {t('Yuan.Desc2')}
-                  <Text className={styles.keyText}> {t('Yuan.Student')} </Text>
-                  {t('Yuan.Desc3')}
-                  <Text className={styles.keyText}> {t('Yuan.Desc4')} </Text>
-                  {t('Yuan.Desc5')}
-                  <Text className={styles.keyText}> 25-27 </Text>
+                  {t('Yuan.Student')}&nbsp;
+                  {t('Yuan.Desc3')}&nbsp;
+                  {t('Yuan.Desc4')}&nbsp;
+                  {t('Yuan.Desc5')}&nbsp;
+                  {'25 - 27'}&nbsp;
                   {t('Yuan.Desc6')}
                 </Paragraph>
               </Space>

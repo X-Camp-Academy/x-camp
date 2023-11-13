@@ -7,9 +7,14 @@
   width: 100%;
 
   .courseCard {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 50px;
     width: 100%;
+
+    @media (width <= 992px) {
+      padding: 24px;
+      padding-top: 50px;
+    }
 
     .cardContent {
       padding: 56px;

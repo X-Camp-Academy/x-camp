@@ -1,7 +1,7 @@
 import { StrapiMedia, StrapiMedias, StrapiRequest, StrapiResponse, StrapiResponseDataItem, StrapiResponseSingleDataItem, strapiPublicFields } from './strapiDefine';
 
 export enum FacultyLevelCategory {
-  Basic = 'Basic',
+  Beginner = 'Beginner',
   Intermediate = 'Intermediate',
   Grandmaster = 'Grandmaster'
 }
@@ -260,7 +260,7 @@ export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
 export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
 export type GetAboutUsAlumniMapResponse = StrapiResponseSingleDataItem<GetAboutUsAlumniMap>;
-export interface GetProjectsDemo extends strapiPublicFields {
+export interface GetProjectDemos extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   categoryZh: string;
@@ -269,8 +269,8 @@ export interface GetProjectsDemo extends strapiPublicFields {
   order: number;
 }
 
-export type GetProjectsDemoRequest = StrapiRequest<GetProjectsDemo>;
-export type GetProjectsDemoResponse = StrapiResponse<GetProjectsDemo>;
+export type GetProjectDemosRequest = StrapiRequest<GetProjectDemos>;
+export type GetProjectDemosResponse = StrapiResponse<GetProjectDemos>;
 
 export interface GetAchievementsTimeLine extends strapiPublicFields {
   titleZh: string;

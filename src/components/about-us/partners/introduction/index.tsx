@@ -52,7 +52,7 @@ const Introduction: React.FC = () => {
                       {getTransResult(lang, card?.attributes?.titleDescriptionZh, card?.attributes?.titleDescriptionEn)}
                     </Paragraph>
                     {!isMobile && (
-                      <Button className={styles.button} href={card?.attributes?.link}>
+                      <Button className={styles.button} href={card?.attributes?.link} target="_blank">
                         {t('LearnMore')}
                         <RightOutlined style={{ color: '#333333' }} />
                       </Button>

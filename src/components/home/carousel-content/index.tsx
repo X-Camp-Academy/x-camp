@@ -57,23 +57,23 @@ const CarouselContent: React.FC = () => {
       mbBanner: '/image/home/banner-mb-1.png',
       buttonText: t('ReserveNow')
     },
-    {
-      title: t('USACO.enhancement.register'),
-      titleConfig: [
-        {
-          text: t('USACO.enhancement.register.color'),
-          color: '#FFAD11'
-        }
-      ],
-      desc: [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2'), t('Home.Banner2.Desc3')],
-      onClick: () => {
-        window.open('https://tinyurl.com/XCamp23-24FallUSACO');
-      },
-      date: [t('Home.Banner2.Date')],
-      banner: '/image/home/banner-pc-2.png',
-      mbBanner: '/image/home/banner-mb-2.png',
-      buttonText: t('VideoRecap')
-    },
+    // {
+    //   title: t('USACO.enhancement.register'),
+    //   titleConfig: [
+    //     {
+    //       text: t('USACO.enhancement.register.color'),
+    //       color: '#FFAD11'
+    //     }
+    //   ],
+    //   desc: [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2'), t('Home.Banner2.Desc3')],
+    //   onClick: () => {
+    //     window.open('https://tinyurl.com/XCamp23-24FallUSACO');
+    //   },
+    //   date: [t('Home.Banner2.Date')],
+    //   banner: '/image/home/banner-pc-2.png',
+    //   mbBanner: '/image/home/banner-mb-2.png',
+    //   buttonText: t('VideoRecap')
+    // },
     {
       title: t('Home.Banner3.title'),
       desc: [t('Home.Banner3.desc')],
@@ -99,8 +99,8 @@ const CarouselContent: React.FC = () => {
 
   return (
     <div className={styles.bannerContainer}>
-      {!isMobile && <CarouselDots goTo={goTo} dots={3} current={current} />}
-      <Carousel dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
+      <Carousel autoplay dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: IItem) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (

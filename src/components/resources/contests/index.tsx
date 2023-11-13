@@ -33,8 +33,8 @@ const Contests: React.FC = () => {
     <Layout className={styles.main}>
       <Content>
         <Banner />
-        <ArtOfProgrammingResults />
         <MonthlyContest data={formatContestsByQuarter(resourcesContest?.data!, Number(size?.width) >= 992 ? 6 : 1)} />
+        <ArtOfProgrammingResults />
         <Introduction data={filterContest(resourcesContest?.data)} />
         <WhyContest />
         <Reviews reviewsData={reviewsData} />
