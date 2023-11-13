@@ -18,7 +18,7 @@ declare const json: {
   'ApplicationConsent.Desc2': '中描述的方式收集和使用您的信息。我同意根据该政策使用我的信息，包括在有限情况下与可信第三方共享以协助某些招聘过程的特定方面（例如进行背景调查）。';
   ApplyNow: '立即申请';
   ArtOfProgramming: '入门编程大赛';
-  ArtProgrammingResults: '入门编程大赛';
+  ArtProgrammingResults: "X-Camp's入门编程大赛";
   'ArtProgrammingResults.Desc': '每个季度，X-Camp举办自己的Python入门编程比赛。这是学生展示他们在课堂上所学内容的绝佳机会，他们可以通过创建有趣的项目并得到奖励来展示他们的努力！';
   BecomeOurPartner: '成为我们的合作伙伴';
   'BecomeOurPartner.Desc': '订阅我们的新闻以获得独家更新、知识分享和特别优惠活动！';
@@ -385,8 +385,8 @@ declare const json: {
   'EducationForum.Banner.Desc3': '在这里，我们有丰富的主题进行定期讨论，';
   'EducationForum.Banner.Desc4': '包括但不限于编程学习、竞赛技巧、校园生活、';
   'EducationForum.Banner.Desc5': '大学入学指导等等。';
-  'USACOPublicMockTest.Title': 'USACO 年度公开模考';
-  'USACOPublicMockTest.Desc': '自USACO 2021/2022赛季起，X-Camp教研团队会在官方竞赛开始前独家提供USACO真题模考。想要参与其中吗？即刻与我们联系！';
+  'USACOMockTest.Title': 'USACO 年度模考';
+  'USACOMockTest.Desc': '自USACO 2021/2022赛季起，X-Camp教研团队会在官方竞赛开始前独家提供USACO真题模考。想要参与其中吗？即刻与我们联系！';
   'USACOMockTestClass.Title': 'USACO竞赛模考班';
   'USACOMockTestClass.Desc': 'USACO竞赛模考班每年10月至来年3月开班，涵盖全部四个参赛级别以及美国国家集训队级别。学生们每周都会在模拟真实竞赛环境中进行模考，考后会有X-Camp讲师的实时讲解。';
   'USACOSharingSession.Title': 'USACO分享会';
@@ -516,6 +516,7 @@ declare const json: {
   USACOFreePublicMockTestComes: '2023/2024 USACO新赛季免费模考来袭！';
   ReserveNow: '立刻加入';
   NoEventThisWeek: '本周没有活动';
+  'ContestCalendar.Title': '赛事日历';
 };
 
 export default json;

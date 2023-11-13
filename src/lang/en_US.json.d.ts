@@ -18,7 +18,7 @@ declare const json: {
   'ApplicationConsent.Desc2': '. I consent to the usage of my information as described in that policy including, in limited circumstances, my information being shared with trusted third parties to assist in certain aspects of the hiring process (such as conducting background checks).';
   ApplyNow: 'Apply Now';
   ArtOfProgramming: 'Art of Programming';
-  ArtProgrammingResults: 'Art of Programming Results';
+  ArtProgrammingResults: "X-Camp's Art of Programming Results";
   'ArtProgrammingResults.Desc': 'Every quarter, X-camp hosts its own Art of Python Programming contest. This event is a great opportunity for students to showcase what they have learned from class by creating fun projects and getting rewarded for their efforts!';
   BecomeOurPartner: 'Become our Partner';
   'BecomeOurPartner.Desc': 'Stay in the loop with our newsletter for exclusive updates, insightful content, and special offers delivered straight to your inbox!';
@@ -250,9 +250,9 @@ declare const json: {
   MoreUSACOSolution: 'X-Camp More USACO Solutions';
   'MoreUSACOSolution.YoutubePlayList': 'Youtube Playlist';
   MoreUSACORelatedResources: 'Additional USACO Resources';
-  'USACOPublicMockTest.Title': 'USACO Public Mock Test';
-  'USACOPublicMockTest.Desc': "Starting from the 21/22 USACO Season, X-Camp's teaching research team is offering exclusive access to authentic USACO mock tests ahead of the official contest. Want to get in on action? Contact us now to stay in the loop!";
-  'USACOMockTestClass.Title': 'USACO Enhancement Class';
+  'USACOMockTest.Title': 'USACO Mock Test Classes';
+  'USACOMockTest.Desc': "Starting from the 21/22 USACO Season, X-Camp's teaching research team is offering exclusive access to authentic USACO mock tests ahead of the official contest. Want to get in on action? Contact us now to stay in the loop!";
+  'USACOMockTestClass.Title': 'Free USACO Public Mock Test';
   'USACOMockTestClass.Desc': 'USACO Mock Test Class is available from October to March, catering to all four levels, including US Camp. Each week, students will convene to complete a mock test under authentic competition time constraints. Following the mock tests, our instructors will provide live solutions.';
   'USACOSharingSession.Title': 'USACO Sharing Session';
   'USACOSharingSession.Desc': 'X-Camp teaching team is honored to host distinguished speakers such as USACO Director Dr. Brian Dean, our esteemed alumni, and current students to discuss various USACO-related topics. Stay updated by following our YouTube channel @xcampacademy.';
@@ -400,11 +400,11 @@ declare const json: {
   'Introduction.Banner.Desc3': 'Through six years of meticulous refinement and development ';
   'Introduction.Banner.Desc4': 'it has transformed into a unique curriculum that seamlessly blends the';
   'Introduction.Banner.Desc5': 'distinct attributes of programming education in the United States.';
-  'Achievements.Banner.Desc1': 'Since X-Camp was established, our students have achieved remarkable ';
-  'Achievements.Banner.Desc2': 'results in USACO as a side project on their learning journey.';
-  'Achievements.Banner.Desc3': ' ';
-  'Achievements.Banner.Desc4': 'We take great';
-  'Achievements.Banner.Desc5': 'pride in the remarkable progress our students have made in their learning journey.';
+  'Achievements.Banner.Desc1': 'Since its inception, X-Camp students have excelled in the USACO ';
+  'Achievements.Banner.Desc2': 'showcasing remarkable results and a deep commitment to coding. ';
+  'Achievements.Banner.Desc3': 'We take great pride in their significant progress ';
+  'Achievements.Banner.Desc4': ' ';
+  'Achievements.Banner.Desc5': 'which not only highlights their skill development but also mirrors the effectiveness of our teaching approach at X-Camp.';
   'JoinUs.Banner.Desc1': 'X - Camp offers a wide range of career opportunities within ';
   'JoinUs.Banner.Desc2': 'our company. All openings are in hybrid mode.';
   'ReferralProgram.Banner.Desc1': "Invite your friend's children as well as your ";
@@ -518,6 +518,7 @@ declare const json: {
   USACOFreePublicMockTestComes: 'USACO FREE Public Mock Test Comes on Dec!';
   ReserveNow: 'Reserve Now';
   NoEventThisWeek: 'No Event This Week';
+  'ContestCalendar.Title': 'Contest Calendar';
 };
 
 export default json;

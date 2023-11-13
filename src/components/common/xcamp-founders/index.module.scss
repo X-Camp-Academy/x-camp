@@ -176,19 +176,5 @@
         @include mobile-text;
       }
     }
-
-    .keyText {
-      font-size: 18px;
-      font-weight: 400;
-      text-align: center;
-      line-height: 36px;
-      color: #ffad11;
-
-      @media (width <= 768px) {
-        @include mobile-text;
-
-        color: #ffad11;
-      }
-    }
   }
 }
