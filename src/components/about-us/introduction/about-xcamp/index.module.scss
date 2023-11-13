@@ -24,6 +24,7 @@
   .paragraph {
     font-size: 18px;
     font-weight: 36px;
+    font-weight: 600;
     text-align: center;
     color: #172142;
 
@@ -61,9 +62,7 @@
 
     .rightSpace {
       .rightTitle {
-        font-size: 30px;
-        font-weight: 600;
-        line-height: 40px;
+        @include title('default');
 
         @media (width <= 1200px) {
           @include title('middle');

@@ -13,11 +13,7 @@
   }
 
   .title {
-    margin-top: 0;
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
-    line-height: 48px;
+    @include title('default');
 
     @media (width <= 768px) {
       @include title('mobile');
@@ -76,12 +72,7 @@
   }
 
   .chartTitle {
-    margin-top: 48px;
-    margin-bottom: 0;
-    font-size: 36px;
-    font-weight: 600;
-    color: #172142;
-    line-height: 48px;
+    @include title('default');
 
     @media (width <= 768px) {
       @include title('mobile');
