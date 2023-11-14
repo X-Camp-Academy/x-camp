@@ -82,8 +82,6 @@
         flex-direction: column;
 
         .button {
-          padding-left: 36px;
-          width: 320px;
           height: 72px;
           border-color: #d46b14;
           border-radius: 12px;
@@ -93,6 +91,12 @@
           color: #d46b14;
           background-color: #fff;
           line-height: 40px;
+
+          @media (width <= 1200px) {
+            padding-left: 16px;
+            height: 56px;
+            font-size: 18px;
+          }
 
           @media (width <= 768px) {
             margin: 16px 0;
