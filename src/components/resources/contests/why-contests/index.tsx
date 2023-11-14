@@ -4,7 +4,7 @@ import { Space } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
-const WhyContest: React.FC = () => {
+const WhyContests: React.FC = () => {
   const isMobile = useMobile();
   const { format: t } = useLang();
   const items = [
@@ -48,4 +48,4 @@ const WhyContest: React.FC = () => {
   );
 };
 
-export default WhyContest;
+export default WhyContests;

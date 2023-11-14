@@ -107,7 +107,7 @@ const Nav: React.FC = () => {
                   <Space size={12}>
                     <DropdownUserMenu user={user} logout={logout} />
                     <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
-                      {t('ToStudy')}
+                      {t('LearningCenter')}
                     </Button>
                   </Space>
                 ) : (
