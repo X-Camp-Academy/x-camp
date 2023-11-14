@@ -143,6 +143,12 @@ export enum CourseQuarter {
   Winter = 'Winter'
 }
 
+export enum FrequencyCategory {
+  Weekly = 'Weekly',
+  Daily = 'Daily',
+  Once = 'Once'
+}
+
 export interface GetCourses extends strapiPublicFields {
   classMode: ClassMode;
   classLang: string;
@@ -174,7 +180,7 @@ export interface GetCourses extends strapiPublicFields {
   recommendedUpperGrade: number;
   tuitionRMB: number;
   tuitionUSD: number;
-  frequency: string;
+  frequency: FrequencyCategory;
   schoolYear: string;
   schoolQuarter: CourseQuarter;
   registerLink: string;

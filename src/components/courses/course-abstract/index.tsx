@@ -1,4 +1,4 @@
-import { ClassMode, GetClasses } from '@/apis/strapi-client/define';
+import { ClassMode, FrequencyCategory, GetClasses } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -20,9 +20,10 @@ interface CourseAbstractProps {
   };
   registerLink?: string;
   isBilingual?: boolean;
+  frequency?: FrequencyCategory;
 }
 
-const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual }) => {
+const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual, frequency }) => {
   const isMobile = useMobile();
   const { format: t, lang } = useLang();
 
@@ -62,11 +63,11 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
 
       <div className={styles.right}>
         <div className={styles.title}>{t('One-TimePayment')}</div>
-        <div className={styles.price}>{isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</div>
+        <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</div>
         <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
           {t('SignUpNow')}
         </Button>
-        {classMode !== ClassMode.InPerson && <div className={styles.tip}>{t('Discount')}</div>}
+        {classMode !== ClassMode.InPerson && frequency !== FrequencyCategory.Once && <div className={styles.tip}>{t('Discount')}</div>}
         {isBilingual && <div className={styles.bilingual}>BILINGUAL</div>}
       </div>
     </Space>

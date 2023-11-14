@@ -25,6 +25,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
           justifyContent: 'space-between',
           width: '100%'
         }}
+        onClick={() => window.location.replace(link)}
       >
         <Space direction={'vertical'} style={{ width: '100%' }}>
           <Title className={styles.maskTitle}>{title}</Title>

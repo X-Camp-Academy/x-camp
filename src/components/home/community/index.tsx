@@ -39,6 +39,7 @@ const Community: React.FC = () => {
   useEffect(() => {
     scrollIntoView(hash.slice(1));
   }, [hash]);
+
   return (
     <div className={styles.communityContainer} id="community">
       <div className={`${styles.community} container`}>
@@ -56,8 +57,13 @@ const Community: React.FC = () => {
           <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
           <Paragraph className={styles.paragraph} style={{ marginBottom: 0, marginTop: isMobile ? 4 : 20 }}>
             {t('Home.Community.Desc1')}
+            {lang === 'en' && <br />}
+            {t('Home.Community.Desc2')}
+            {lang === 'en' && <br />}
+            {t('Home.Community.Desc3')}
+            {lang === 'en' && <br />}
           </Paragraph>
-          <Paragraph className={styles.paragraph}>{t('Home.Community.Desc2')}</Paragraph>
+          <Paragraph className={styles.paragraph}>{t('Home.Community.Desc4')}</Paragraph>
         </div>
 
         <div className={styles.carouselContainer}>

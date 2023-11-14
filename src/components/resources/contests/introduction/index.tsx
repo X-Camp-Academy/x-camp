@@ -46,7 +46,7 @@ const Introduction = ({ data }: Props) => {
                     {v?.attributes?.link}
                   </a>
                 </div>
-                <div className={styles.right}>
+                <div className={styles.right} onClick={() => window.open(v?.attributes?.link)}>
                   <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
                 </div>
               </div>

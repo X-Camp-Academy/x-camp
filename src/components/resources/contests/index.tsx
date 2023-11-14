@@ -6,13 +6,12 @@ import { useSize } from 'ahooks';
 import { Layout } from 'antd';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import ArtOfProgrammingResults from './art-of-programming-results';
 import Banner from './banner';
 import { filterContest, formatContestsByQuarter } from './define';
 import styles from './index.module.scss';
 import Introduction from './introduction';
 import MonthlyContest from './monthly-contest';
-import WhyContest from './why-contest';
+import WhyContests from './why-contests';
 
 const { Content } = Layout;
 
@@ -34,9 +33,8 @@ const Contests: React.FC = () => {
       <Content>
         <Banner />
         <MonthlyContest data={formatContestsByQuarter(resourcesContest?.data!, Number(size?.width) >= 992 ? 6 : 1)} />
-        <ArtOfProgrammingResults />
         <Introduction data={filterContest(resourcesContest?.data)} />
-        <WhyContest />
+        <WhyContests />
         <Reviews reviewsData={reviewsData} />
       </Content>
     </Layout>

@@ -2,14 +2,12 @@ import CommonBanner from '@/components/common/common-banner';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { LaptopOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
-  const router = useRouter();
   const paragraph = (
     <>
       {t('WeeklyOpenHouse.Banner.Desc1')}
@@ -38,21 +36,9 @@ const Banner: React.FC = () => {
         }
         showButton
         buttonText={t('ZoomLink')}
-        buttonLink={'/about-us/contact-us'}
+        buttonLink={'https://app.zoom.us/wc/89284761432/start?from='}
         buttonIcon={<LaptopOutlined />}
       />
-      {/*       <div className={styles.bottomInfo}>
-        <Button
-          size="large"
-          className={styles.contactBtn}
-          onClick={() => {
-            router.push('/about-us/contact-us');
-          }}
-        >
-          <span>{t('ZoomLink')}</span>
-          <LaptopOutlined />
-        </Button>
-      </div> */}
     </div>
   );
 };

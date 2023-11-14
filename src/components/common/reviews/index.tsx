@@ -52,6 +52,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
               slidesToShow={3}
               slidesToScroll={1}
               swipeToSlide
+              autoplay
               infinite
               responsive={[
                 {
