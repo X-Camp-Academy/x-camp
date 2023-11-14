@@ -28,7 +28,10 @@ const QAPart: React.FC = () => {
       data: values
     });
     form.resetFields();
-    message.success({ key: 'success', content: t('SUCCESSFULLY_SUBMITTED') });
+    message.config({
+      top: 90
+    });
+    message.success({ key: 'success', content: t('feedBackSuccess') });
   };
 
   return (

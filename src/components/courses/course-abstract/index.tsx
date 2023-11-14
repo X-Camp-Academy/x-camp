@@ -2,7 +2,7 @@ import { ClassMode, GetClasses } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { formatTimezone, getTransResult } from '@/utils/public';
+import { formatFinance, formatTimezone, getTransResult } from '@/utils/public';
 import { Button, Descriptions, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
@@ -62,7 +62,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
 
       <div className={styles.right}>
         <div className={styles.title}>{t('One-TimePayment')}</div>
-        <div className={styles.price}>{isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</div>
+        <div className={styles.price}>{isBilingual ? `￥${formatFinance(tuitionRMB)}` : `$${formatFinance(tuitionUSD)}`}</div>
         <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
           {t('SignUpNow')}
         </Button>

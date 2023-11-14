@@ -77,6 +77,14 @@
       @media (width <= 768px) {
         display: none;
       }
+
+      img {
+        width: 100%;
+
+        @media (width <= 1400px) {
+          width: 95%;
+        }
+      }
     }
   }
 }

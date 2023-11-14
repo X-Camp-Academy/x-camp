@@ -355,7 +355,7 @@ declare const json: {
   'Evaluation.form.AboutXCamp.Friend': 'Word of mouth/Friends';
   'Evaluation.form.AboutXCamp.Other': 'Other';
   'Evaluation.form.AboutXCamp.Xiaohongshu': 'Xiaohongshu';
-  'Evaluation.form.success': 'Successfully submitted';
+  'Evaluation.form.success': 'Thanks for your interest, our teaching counselor will contact you within 48 hours.';
   'Evaluation.form.fail': 'Failed to submit';
   'USACO.enhancement.register': "USACO Director Dr. BrianDean's annual sharing comes!";
   'Home.Banner3.title': '7 X-Camp students Selected for USACO US Camp in 2022/2023 Season';
@@ -519,6 +519,7 @@ declare const json: {
   ReserveNow: 'Reserve Now';
   NoEventThisWeek: 'No Event This Week';
   'ContestCalendar.Title': 'Contest Calendar';
+  feedBackSuccess: 'Your question has been received. We will contact you through email within 24 hours.';
 };
 
 export default json;

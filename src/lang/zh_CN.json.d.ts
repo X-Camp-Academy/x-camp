@@ -337,7 +337,7 @@ declare const json: {
   AdditionalInfo: '附加信息';
   TopicsCovered: '课程大纲';
   ZoomLink: '加入Zoom';
-  'Evaluation.form.success': '提交成功';
+  'Evaluation.form.success': '感谢您的关注，我们的助教将在48小时内与您联系。';
   'Evaluation.form.fail': '提交失败';
   'USACO.enhancement.register': 'USACO总监BrianDean博士的分享来了！';
   'USACO.enhancement.register.color': 'BrianDean博士';
@@ -517,6 +517,7 @@ declare const json: {
   ReserveNow: '立刻加入';
   NoEventThisWeek: '本周没有活动';
   'ContestCalendar.Title': '赛事日历';
+  feedBackSuccess: '您的问题已收到，我们将在 24 小时内通过电子邮件与您联系。';
 };
 
 export default json;
