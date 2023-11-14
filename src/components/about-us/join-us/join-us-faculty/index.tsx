@@ -3,7 +3,6 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { UsergroupAddOutlined } from '@ant-design/icons';
 import { Col, Image, Row, Space, Typography } from 'antd';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
 
@@ -11,7 +10,6 @@ const { Paragraph } = Typography;
 
 const JoinUsFaculty: React.FC = () => {
   const { format: t } = useLang();
-  const router = useRouter();
   const { data: imgUrlList } = useGetFaculty({
     pageName: ['/about-us/join-us/']
   });

@@ -13,7 +13,7 @@ const { Text } = Typography;
 
 const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
 
-interface IItem {
+interface CarouselItemsProps {
   title: string;
   desc: string[];
   banner: string;
@@ -21,12 +21,13 @@ interface IItem {
   onClick: () => void;
   date: string[];
   buttonText: string;
+  buttonStyle?: CSSProperties;
   titleConfig?: IConfig[];
   descStyle?: CSSProperties;
 }
 
 const CarouselContent: React.FC = () => {
-  const { format: t, lang } = useLang();
+  const { format: t } = useLang();
   const router = useRouter();
   const sliderRef: any = useRef(null);
   const [current, setCurrent] = useState(0);
@@ -36,7 +37,31 @@ const CarouselContent: React.FC = () => {
     sliderRef.current?.goTo(index);
   };
 
-  const carouselItems: IItem[] = [
+  const carouselItems: CarouselItemsProps[] = [
+    {
+      title: t('Home.Banner2.Title1'),
+      titleConfig: [
+        {
+          text: t('Home.Banner2.Title1.Color'),
+          color: '#FFF'
+        }
+      ],
+      desc: [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2')],
+      descStyle: {
+        color: '#FFF'
+      },
+      onClick: () => {
+        window.open('https://tinyurl.com/XCamp23-24FallUSACO');
+      },
+      date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
+      banner: '/image/home/banner-pc-2.png',
+      mbBanner: '/image/home/banner-mb-2.png',
+      buttonText: t('ReserveNow'),
+      buttonStyle: {
+        backgroundColor: '#FFF',
+        color: '#172A88'
+      }
+    },
     {
       title: t('USACOFreePublicMockTestComes'),
       titleConfig: [
@@ -57,23 +82,6 @@ const CarouselContent: React.FC = () => {
       mbBanner: '/image/home/banner-mb-1.png',
       buttonText: t('ReserveNow')
     },
-    // {
-    //   title: t('USACO.enhancement.register'),
-    //   titleConfig: [
-    //     {
-    //       text: t('USACO.enhancement.register.color'),
-    //       color: '#FFAD11'
-    //     }
-    //   ],
-    //   desc: [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2'), t('Home.Banner2.Desc3')],
-    //   onClick: () => {
-    //     window.open('https://tinyurl.com/XCamp23-24FallUSACO');
-    //   },
-    //   date: [t('Home.Banner2.Date')],
-    //   banner: '/image/home/banner-pc-2.png',
-    //   mbBanner: '/image/home/banner-mb-2.png',
-    //   buttonText: t('VideoRecap')
-    // },
     {
       title: t('Home.Banner3.title'),
       desc: [t('Home.Banner3.desc')],
@@ -101,7 +109,7 @@ const CarouselContent: React.FC = () => {
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
       <Carousel autoplay dots={isMobile} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
-        {carouselItems.map((item: IItem) => (
+        {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (
               <div
@@ -134,7 +142,7 @@ const CarouselContent: React.FC = () => {
                         </Text>
                       ))}
                     </Space>
-                    <button className={styles.button} onClick={item?.onClick}>
+                    <button className={styles.button} style={item?.buttonStyle} onClick={item?.onClick}>
                       {item?.buttonText}
                     </button>
                     <Space direction="vertical">

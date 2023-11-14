@@ -1,4 +1,5 @@
 'use client';
+import { FrequencyCategory } from '@/apis/strapi-client/define';
 import dayjs, { Dayjs } from 'dayjs';
 
 /**
@@ -276,7 +277,7 @@ export const scrollIntoView = (id: string) => {
   const dom = document.getElementById(id);
   dom?.scrollIntoView({
     behavior: 'smooth',
-    block: 'center'
+    block: 'start'
   });
 };
 
@@ -293,8 +294,17 @@ export const getLangResult = (lang: 'zh' | 'en', zhData?: string[], enData?: str
   }
 };
 
-export const getWeeksDays = (frequency?: string) => {
-  return frequency === 'Daily' ? 'days' : 'weeks';
+export const getWeeksDays = (frequency?: FrequencyCategory) => {
+  switch (frequency) {
+    case FrequencyCategory.Daily:
+      return 'days';
+    case FrequencyCategory.Weekly:
+      return 'weeks';
+    case FrequencyCategory.Once:
+      return 'once';
+    default:
+      return 'days';
+  }
 };
 
 /**
