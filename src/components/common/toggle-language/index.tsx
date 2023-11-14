@@ -49,7 +49,7 @@ const ToggleLanguage: React.FC<IProps> = ({ className }) => {
         <Icon component={EarthSvg} />
       </span>
 
-      <span className={styles.text}>{getTransResult(lang, 'English', '中文')}</span>
+      <span className={styles.text}>{getTransResult(lang, '英文', 'Chinese')}</span>
     </div>
   );
 };
