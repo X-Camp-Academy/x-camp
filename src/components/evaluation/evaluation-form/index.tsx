@@ -13,8 +13,11 @@ const EvaluationForm: React.FC = () => {
 
   const submitEmailValue = async (value: submitEvaluationRequest) => {
     const result = await sendEmail(value);
+    message.config({
+      top: 90
+    });
     if (result.msg === 'ok') {
-      message.success(t('Evaluation.form.success'));
+      message.success(t('Evaluation.form.success'), 4);
       form.resetFields();
     } else {
       message.error(t('Evaluation.form.fail'));

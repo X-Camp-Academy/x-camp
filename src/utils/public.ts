@@ -335,3 +335,12 @@ export const getWeeksDays = (frequency?: FrequencyCategory) => {
       return 'days';
   }
 };
+
+/**
+ * @param number 传入的金额
+ * @returns 格式化后的金额
+ */
+export const formatFinance = (number?: number | string) => {
+  if (number === undefined) return;
+  return number?.toString()?.replace(/\B(?=(\d{3})+$)/g, ',');
+};

@@ -349,7 +349,7 @@
   "Evaluation.form.AboutXCamp.Friend": "Word of mouth/Friends",
   "Evaluation.form.AboutXCamp.Other": "Other",
   "Evaluation.form.AboutXCamp.Xiaohongshu": "Xiaohongshu",
-  "Evaluation.form.success": "Successfully submitted",
+  "Evaluation.form.success": "Thanks for your interest, our teaching counselor will contact you within 48 hours.",
   "Evaluation.form.fail": "Failed to submit",
   "Home.Banner3.title": "7 X-Camp students Selected for USACO US Camp in 2022/2023 Season",
   "Home.Banner3.desc": "12 students selected for US Camp between 2020-2023",
@@ -511,6 +511,7 @@
   "ReserveNow": "Reserve Now",
   "NoEventThisWeek": "No Event This Week",
   "ContestCalendar.Title": "Contest Calendar",
+  "feedBackSuccess": "Your question has been received. We will contact you through email within 24 hours.",
   "Home.Banner2.Title1": "Python Trial Class, Only",
   "Home.Banner2.Title1.Color": "Python Trial Class, Only"
 }
