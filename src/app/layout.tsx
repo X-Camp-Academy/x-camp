@@ -1,6 +1,6 @@
 'use client';
 import { WithClient } from '@/apis/BaseAxiosClient';
-import WithModelVisible from '@/hoc/WithModelVisible';
+import WithModalVisible from '@/hoc/WithModalVisible';
 import { WithAuth } from '@/hoc/with-auth';
 import { useMobile } from '@/utils';
 import { LocalStateProvider } from '@/utils/local-state';
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <WithIntl>
             <WithAuth>
               <WithClient>
-                <WithModelVisible>
+                <WithModalVisible>
                   <WithAntdConfig>
                     <Nav />
                     <WithLayout>{children}</WithLayout>
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <BackTop />
                     <FixedButtons />
                   </WithAntdConfig>
-                </WithModelVisible>
+                </WithModalVisible>
               </WithClient>
             </WithAuth>
           </WithIntl>

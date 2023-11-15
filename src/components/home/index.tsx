@@ -2,9 +2,8 @@
 import { useGetReviews } from '@/apis/strapi-client/strapi';
 import Faculty from '@/components/common/faculty';
 import Reviews from '@/components/common/reviews';
-import { useModelVisible } from '@/hoc/WithModelVisible';
 import { Layout } from 'antd';
-import React, { useEffect } from 'react';
+import React from 'react';
 import CarouselContent from './carousel-content';
 import Community from './community';
 import DiscoverOurCourses from './discover-our-courses';
@@ -17,17 +16,9 @@ import WhyXCamp from './why-xcamp';
 const { Content } = Layout;
 
 const Home: React.FC = () => {
-  const { hash } = window.location;
-  const { setModelVisible } = useModelVisible();
   const { data } = useGetReviews({
     ready: true
   });
-
-  useEffect(() => {
-    if (hash === '#appointment') {
-      setModelVisible(true);
-    }
-  }, [hash]);
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
 
