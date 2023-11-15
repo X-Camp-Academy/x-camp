@@ -31,6 +31,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
     const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } = classItem?.attributes;
     const { utcTime: utcStartDateTime } = formatTimezone(startDateTime);
     const { utcTime: utcEndDateTime, timezone } = formatTimezone(endDateTime);
+
     return {
       classCode,
       isFull,
@@ -43,7 +44,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
     <Space className={styles.abstract} size={isMobile ? 8 : 24}>
       <div className={styles.left}>
         <div className={styles.title}>{t('Description')}</div>
-        <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
+        <Paragraph className={styles.abstract} ellipsis={{ rows: 3, tooltip: getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn) }}>
           {getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn)}
         </Paragraph>
         <Descriptions column={1} layout="vertical">

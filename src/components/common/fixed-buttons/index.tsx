@@ -1,11 +1,11 @@
 import { openClassEmailRequest } from '@/apis/send-email-client/define';
 import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
-import { useModelVisible } from '@/hoc/WithModelVisible';
+import { useModalVisible } from '@/hoc/WithModalVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, { RefObject, useRef } from 'react';
 import ConsultCardForm from './ConsultCardForm';
 import OpenHouseCardForm from './OpenHouseCardForm';
 import styles from './index.module.scss';
@@ -24,21 +24,20 @@ const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
-  const { modelVisible, setModelVisible } = useModelVisible();
-  const [openHouseVisible, setOpenHouseVisible] = useState(false);
+  const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useModalVisible();
 
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
-    setModelVisible(false);
+    setFreeConsultationVisible(false);
   };
 
   const menu: IMenuItem[] = [
     {
       icon: '/image/about-us/join-us-banner.png',
       text: isMobile ? 'Consult' : t('FreeConsultation'),
-      state: modelVisible,
-      setOpen: setModelVisible as React.Dispatch<React.SetStateAction<boolean>>,
-      label: <ConsultCardForm setOpen={setModelVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
+      state: freeConsultationVisible,
+      setOpen: setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>,
+      label: <ConsultCardForm setOpen={setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
       key: 'consult',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
@@ -46,24 +45,14 @@ const FixedButtons: React.FC = () => {
     {
       icon: '/image/home/turtle-2.png',
       text: isMobile ? 'Open House' : t('WeeklyOpenHouse'),
-      state: openHouseVisible,
-      setOpen: setOpenHouseVisible,
-      label: <OpenHouseCardForm setOpen={setOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>} />,
+      state: weeklyOpenHouseVisible,
+      setOpen: setWeeklyOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>,
+      label: <OpenHouseCardForm setOpen={setWeeklyOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>} />,
       key: 'open-house',
       mobileIcon: <UsergroupAddOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null)
     }
   ];
-
-  useEffect(() => {
-    const delay = 40000;
-    const timeoutId = setTimeout(() => {
-      setModelVisible(true);
-    }, delay);
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   return (
     <div className={styles.buttonContainer}>

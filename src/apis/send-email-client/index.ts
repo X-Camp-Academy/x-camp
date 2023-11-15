@@ -2,8 +2,8 @@ import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
 import {
   openClassEmailRequest,
   openClassEmailResponse,
-  submitEvaluationRequest,
-  submitEvaluationResponse,
+  submitAssessmentRequest,
+  submitAssessmentResponse,
   submitResumeResponse,
   subscribeNewsletterRequest,
   subscribeNewsletterResponse
@@ -25,7 +25,7 @@ export class SendEmailClient extends BaseAxiosClient {
     return data;
   }
 
-  async submitEvaluation(req: submitEvaluationRequest): Promise<submitEvaluationResponse> {
+  async submitAssessment(req: submitAssessmentRequest): Promise<submitAssessmentResponse> {
     const data = await this.post('/evaluation', req, this.jsonHeaders);
     return data;
   }

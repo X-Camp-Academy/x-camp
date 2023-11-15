@@ -6,12 +6,12 @@ import React from 'react';
 import styles from './index.module.scss';
 
 const Banner = dynamic(() => import('./banner'));
-const EvaluationForm = dynamic(() => import('./evaluation-form'));
+const AssessmentForm = dynamic(() => import('./assessment-form'));
 const Reviews = dynamic(() => import('../common/reviews'));
 
 const { Content } = Layout;
 
-const Evaluation: React.FC = () => {
+const Assessment: React.FC = () => {
   const { data } = useGetReviews({
     ready: true,
     pageName: ['/home/']
@@ -20,14 +20,14 @@ const Evaluation: React.FC = () => {
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
 
   return (
-    <Layout className={styles.evaluationFormContainer}>
+    <Layout className={styles.assessmentFormContainer}>
       <Content>
         <Banner />
-        <EvaluationForm />
+        <AssessmentForm />
         <Reviews reviewsData={reviewsData} />
       </Content>
     </Layout>
   );
 };
 
-export default Evaluation;
+export default Assessment;

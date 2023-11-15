@@ -1,5 +1,4 @@
 import { useLang } from '@/hoc/with-intl/define';
-import { useMobile } from '@/utils';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Button, Col, Row, Space, Typography } from 'antd';
 import Link from 'next/link';
@@ -10,7 +9,6 @@ const { Paragraph } = Typography;
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
-  const isMobile = useMobile();
   return (
     <div className={styles.banner}>
       <div className={`${styles.content} container`}>
@@ -19,7 +17,7 @@ const Banner: React.FC = () => {
             <Space direction={'vertical'}>
               <div className={styles.title}>{t('WhatWeProvide')}</div>
               <div>
-                <Paragraph className={styles.paragraph}>{t('Evaluation.topBanner.description')}</Paragraph>
+                <Paragraph className={styles.paragraph}>{t('Assessment.Banner.Description')}</Paragraph>
               </div>
             </Space>
           </Col>

@@ -5,6 +5,7 @@ import { formatTimezone, getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, GlobalOutlined, LaptopOutlined, RightCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Col, Descriptions, Row, Typography } from 'antd';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
 
@@ -14,10 +15,12 @@ const XCollapse = dynamic(() => import('@/components/common/collapse'));
 const { Title, Paragraph } = Typography;
 const UpcomingEvents: React.FC = () => {
   const { lang, format: t } = useLang();
+  const pathname = usePathname();
   const { data } = useGetNewEvent({
     tag: NewEventCategory.Events,
     current: 1,
-    pageSize: 25
+    pageSize: 25,
+    pageName: [pathname]
   });
 
   const newEventData = data?.data?.filter((item) => {

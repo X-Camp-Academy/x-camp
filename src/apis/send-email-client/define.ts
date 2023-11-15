@@ -24,7 +24,7 @@ export interface submitResumeResponse {
   msg: string;
 }
 
-export interface submitEvaluationRequest {
+export interface submitAssessmentRequest {
   stuName: string;
   email: string;
   phoneNumber: string;
@@ -35,7 +35,7 @@ export interface submitEvaluationRequest {
   aboutXcamp: string;
 }
 
-export interface submitEvaluationResponse {
+export interface submitAssessmentResponse {
   code: number;
   msg: string;
 }

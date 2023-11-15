@@ -33,7 +33,7 @@ export enum PageTitle {
   WeeklyOpenHouse = 'Weekly Open House',
   USACO = 'USACO',
 
-  Evaluation = 'Evaluation',
+  Assessment = 'Assessment',
   Login = 'Login'
 }
 export const generateMetadata = (title: string) => {

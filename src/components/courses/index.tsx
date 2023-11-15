@@ -236,13 +236,13 @@ const Courses: React.FC = () => {
             onFinish={onFinish}
             style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
           >
-            <Form.Item name="category">
-              <Select style={{ width: 240 }} placeholder={'Category'} options={courseLevelOptions} allowClear />
+            <Form.Item name="category" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
+              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Category'} options={courseLevelOptions} allowClear />
             </Form.Item>
-            <Form.Item name="quarter">
-              <Select style={{ width: 240 }} placeholder={'Quarter'} options={courseQuarterOptions} allowClear />
+            <Form.Item name="quarter" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
+              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Quarter'} options={courseQuarterOptions} allowClear />
             </Form.Item>
-            <Form.Item style={{ marginInlineEnd: 0 }}>
+            <Form.Item style={isMobile ? { width: '100%', marginTop: 8 } : { marginInlineEnd: 0 }}>
               <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
                 {t('Search')}
               </Button>
