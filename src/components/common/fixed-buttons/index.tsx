@@ -5,7 +5,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, { RefObject, useRef, useState } from 'react';
 import ConsultCardForm from './ConsultCardForm';
 import OpenHouseCardForm from './OpenHouseCardForm';
 import styles from './index.module.scss';
@@ -54,16 +54,6 @@ const FixedButtons: React.FC = () => {
       ref: useRef<HTMLDivElement>(null)
     }
   ];
-
-  useEffect(() => {
-    const delay = 40000;
-    const timeoutId = setTimeout(() => {
-      setModelVisible(true);
-    }, delay);
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   return (
     <div className={styles.buttonContainer}>

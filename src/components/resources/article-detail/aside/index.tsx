@@ -114,6 +114,8 @@ const ArticleSider: React.FC<{
     return getTransResult(lang, imgZh.data?.attributes.url, imgEn.data?.attributes.url);
   };
 
+  console.log(eventThreeCard);
+
   return (
     <div className={styles.content}>
       <div className={styles.calendarContainer}>
@@ -172,7 +174,7 @@ const ArticleSider: React.FC<{
                   <Image src={getTranslateImg(v?.attributes?.imgZh, v?.attributes?.imgEn)} alt="image" preview={false} className={styles.image} />
 
                   <Title ellipsis={{ rows: 1 }} className={styles.title}>
-                    {v?.attributes?.titleZh}
+                    {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
                   </Title>
                   <Row
                     style={{
