@@ -9,6 +9,7 @@ import { AlignRightOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Image, Row, Space, Typography } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 dayjs.extend(isBetween);
@@ -20,7 +21,7 @@ const ArticleSider: React.FC<{
   articleId: number;
 }> = ({ eventCategory: EventCategory, articleId }) => {
   const { lang } = useLang();
-
+  const router = useRouter();
   const monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const [selectedDate, setSelectedDate] = useState<string>(dayjs().toString());
@@ -169,7 +170,7 @@ const ArticleSider: React.FC<{
         {eventThreeCard?.map((v, index) => {
           return (
             <ColorfulCard border={'bottom'} animate={false} index={index} className={styles.card} key={index}>
-              <Card>
+              <Card style={{ cursor: 'pointer' }} onClick={() => router.push(`/resources/education-forum/${v.id}`)}>
                 <Space direction="vertical" style={{ width: '100%' }}>
                   <Image src={getTranslateImg(v?.attributes?.imgZh, v?.attributes?.imgEn)} alt="image" preview={false} className={styles.image} />
 

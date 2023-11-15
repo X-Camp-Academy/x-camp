@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic';
 import { PageTitle, generateMetadata } from '../metadata';
 
-const Evaluation = dynamic(() => import('@/components/evaluation'));
+const Assessment = dynamic(() => import('@/components/assessment'));
 
 export const metadata = {
-  ...generateMetadata(PageTitle.Evaluation)
+  ...generateMetadata(PageTitle.Assessment)
 };
 
 export default function Page() {
-  return <Evaluation />;
+  return <Assessment />;
 }

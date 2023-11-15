@@ -6,7 +6,7 @@ import { Button, Col, Form, Input, Row, Select, message } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
-const EvaluationForm: React.FC = () => {
+const AssessmentForm: React.FC = () => {
   const { format: t } = useLang();
   const [form] = Form.useForm();
   const { runAsync: sendEmail } = useSubmitEvaluation();
@@ -263,4 +263,4 @@ const EvaluationForm: React.FC = () => {
   );
 };
 
-export default EvaluationForm;
+export default AssessmentForm;
