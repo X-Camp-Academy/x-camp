@@ -37,7 +37,7 @@ const WhyXCamp: React.FC = () => {
       icon: '/image/home/icon-why-track.png',
       title: t('Home.WhyXCamp.title4'),
       desc: t('Home.WhyXCamp.Desc4'),
-      url: '/courses',
+      url: '/',
       ref: useRef<HTMLDivElement>(null)
     }
   ];

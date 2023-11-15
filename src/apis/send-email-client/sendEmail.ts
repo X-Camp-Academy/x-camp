@@ -3,7 +3,7 @@ import { useHandleError } from '@/utils/error';
 import { useRequest } from 'ahooks';
 import { message } from 'antd';
 import { useSendEmailClient } from '.';
-import { openClassEmailRequest, submitEvaluationRequest, subscribeNewsletterRequest } from './define';
+import { openClassEmailRequest, submitAssessmentRequest, subscribeNewsletterRequest } from './define';
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
@@ -84,13 +84,12 @@ export const useSubmitResume = () => {
  * @param Client
  * @returns
  */
-export const useSubmitEvaluation = () => {
+export const useSubmitAssessment = () => {
   const handleError = useHandleError();
   const client = useSendEmailClient();
-  const { format: t } = useLang();
   return useRequest(
-    async (params: submitEvaluationRequest) => {
-      const resp = await client.submitEvaluation(params);
+    async (params: submitAssessmentRequest) => {
+      const resp = await client.submitAssessment(params);
       return resp;
     },
     {

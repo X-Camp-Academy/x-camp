@@ -1,6 +1,6 @@
 'use client';
-import { submitEvaluationRequest } from '@/apis/send-email-client/define';
-import { useSubmitEvaluation } from '@/apis/send-email-client/sendEmail';
+import { submitAssessmentRequest } from '@/apis/send-email-client/define';
+import { useSubmitAssessment } from '@/apis/send-email-client/sendEmail';
 import { useLang } from '@/hoc/with-intl/define';
 import { Button, Col, Form, Input, Row, Select, message } from 'antd';
 import React from 'react';
@@ -9,28 +9,28 @@ import styles from './index.module.scss';
 const AssessmentForm: React.FC = () => {
   const { format: t } = useLang();
   const [form] = Form.useForm();
-  const { runAsync: sendEmail } = useSubmitEvaluation();
+  const { runAsync: sendEmail } = useSubmitAssessment();
 
-  const submitEmailValue = async (value: submitEvaluationRequest) => {
+  const submitEmailValue = async (value: submitAssessmentRequest) => {
     const result = await sendEmail(value);
     message.config({
       top: 90
     });
     if (result.msg === 'ok') {
-      message.success(t('Evaluation.form.success'), 4);
+      message.success(t('Assessment.form.success'), 4);
       form.resetFields();
     } else {
-      message.error(t('Evaluation.form.fail'));
+      message.error(t('Assessment.form.fail'));
     }
   };
 
   return (
-    <div className={styles.evaluationFormContainer}>
-      <div className={`${styles.evaluationForm} container`}>
-        <div className={styles.title}>{t('Evaluation.form.title')}</div>
+    <div className={styles.assessmentFormContainer}>
+      <div className={`${styles.assessmentForm} container`}>
+        <div className={styles.title}>{t('Assessment.form.title')}</div>
         <Row gutter={24}>
           <Col lg={12} md={24}>
-            <Form form={form} name="EvaluationForm" size="large" autoComplete="off" colon={false} onFinish={submitEmailValue}>
+            <Form form={form} name="AssessmentForm" size="large" autoComplete="off" colon={false} onFinish={submitEmailValue}>
               <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item
@@ -39,11 +39,11 @@ const AssessmentForm: React.FC = () => {
                     rules={[
                       {
                         required: true,
-                        message: t('Evaluation.form.stuName.required')
+                        message: t('Assessment.form.stuName.required')
                       }
                     ]}
                   >
-                    <Input placeholder={t('Evaluation.form.stuName')} />
+                    <Input placeholder={t('Assessment.form.stuName')} />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
@@ -53,15 +53,15 @@ const AssessmentForm: React.FC = () => {
                     rules={[
                       {
                         required: true,
-                        message: t('Evaluation.form.Email.required')
+                        message: t('Assessment.form.Email.required')
                       },
                       {
                         type: 'email',
-                        message: t('Evaluation.form.Email.format')
+                        message: t('Assessment.form.Email.format')
                       }
                     ]}
                   >
-                    <Input placeholder={t('Evaluation.form.Email')} />
+                    <Input placeholder={t('Assessment.form.Email')} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -74,11 +74,11 @@ const AssessmentForm: React.FC = () => {
                     rules={[
                       {
                         required: true,
-                        message: t('Evaluation.form.Phone.required')
+                        message: t('Assessment.form.Phone.required')
                       }
                     ]}
                   >
-                    <Input placeholder={t('Evaluation.form.Phone')} />
+                    <Input placeholder={t('Assessment.form.Phone')} />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
@@ -88,12 +88,12 @@ const AssessmentForm: React.FC = () => {
                     rules={[
                       {
                         required: true,
-                        message: t('Evaluation.form.Grade.required')
+                        message: t('Assessment.form.Grade.required')
                       }
                     ]}
                   >
                     <Select
-                      placeholder={t('Evaluation.form.Grade')}
+                      placeholder={t('Assessment.form.Grade')}
                       options={[
                         { value: '5', label: '5' },
                         { value: '6', label: '6' },
@@ -115,32 +115,32 @@ const AssessmentForm: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Evaluation.form.CodingBackground.required')
+                    message: t('Assessment.form.CodingBackground.required')
                   }
                 ]}
               >
                 <Select
-                  placeholder={t('Evaluation.form.CodingBackground')}
+                  placeholder={t('Assessment.form.CodingBackground')}
                   options={[
                     {
                       value: 'No coding experiences',
-                      label: t('Evaluation.form.CodingBackground.NoCodingExperience')
+                      label: t('Assessment.form.CodingBackground.NoCodingExperience')
                     },
                     {
                       value: '< half year coding experience',
-                      label: t('Evaluation.form.CodingBackground.LessThanHalfYear')
+                      label: t('Assessment.form.CodingBackground.LessThanHalfYear')
                     },
                     {
                       value: '< 1 year coding experiences',
-                      label: t('Evaluation.form.CodingBackground.LessThanOneYear')
+                      label: t('Assessment.form.CodingBackground.LessThanOneYear')
                     },
                     {
                       value: '> 1 year coding experiences',
-                      label: t('Evaluation.form.CodingBackground.MoreThanOneYear')
+                      label: t('Assessment.form.CodingBackground.MoreThanOneYear')
                     },
                     {
                       value: '> 2 year coding experiences',
-                      label: t('Evaluation.form.CodingBackground.MoreThanTwoYear')
+                      label: t('Assessment.form.CodingBackground.MoreThanTwoYear')
                     }
                   ]}
                 />
@@ -151,34 +151,34 @@ const AssessmentForm: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Evaluation.form.CodingLanguage.required')
+                    message: t('Assessment.form.CodingLanguage.required')
                   }
                 ]}
               >
                 <Select
-                  placeholder={t('Evaluation.form.CodingLanguage')}
+                  placeholder={t('Assessment.form.CodingLanguage')}
                   options={[
                     {
                       value: 'No coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.NoCodingExperience')
+                      label: t('Assessment.form.CodingLanguage.NoCodingExperience')
                     },
                     {
                       value: 'Java coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.Java')
+                      label: t('Assessment.form.CodingLanguage.Java')
                     },
                     {
                       value: 'Python coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.Python')
+                      label: t('Assessment.form.CodingLanguage.Python')
                     },
                     {
                       value: 'C++ coding experiences',
-                      label: t('Evaluation.form.CodingLanguage.C++')
+                      label: t('Assessment.form.CodingLanguage.C++')
                     }
                   ]}
                 />
               </Form.Item>
               <Form.Item name="programmingExp" className={styles.unRequired}>
-                <Input placeholder={t('Evaluation.form.ContestExperience')} />
+                <Input placeholder={t('Assessment.form.ContestExperience')} />
               </Form.Item>
               <Form.Item
                 name="aboutXcamp"
@@ -186,60 +186,60 @@ const AssessmentForm: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: t('Evaluation.form.AboutXCamp.required')
+                    message: t('Assessment.form.AboutXCamp.required')
                   }
                 ]}
               >
                 <Select
-                  placeholder={t('Evaluation.form.AboutXCamp')}
+                  placeholder={t('Assessment.form.AboutXCamp')}
                   options={[
                     {
                       value: 'X-Camp Consultant',
-                      label: t('Evaluation.form.AboutXCamp.Consultant')
+                      label: t('Assessment.form.AboutXCamp.Consultant')
                     },
                     {
                       value: 'X-Camp WeChat Official Account',
-                      label: t('Evaluation.form.AboutXCamp.OfficialAccount')
+                      label: t('Assessment.form.AboutXCamp.OfficialAccount')
                     },
                     {
                       value: 'X-Camp Events',
-                      label: t('Evaluation.form.AboutXCamp.Events')
+                      label: t('Assessment.form.AboutXCamp.Events')
                     },
                     {
                       value: 'X-Camp Social Media (FB, Linkedin, Twitter)',
-                      label: t('Evaluation.form.AboutXCamp.SocialMedia')
+                      label: t('Assessment.form.AboutXCamp.SocialMedia')
                     },
                     {
                       value: 'Contest (HPI, Turing Cup)',
-                      label: t('Evaluation.form.AboutXCamp.Contest')
+                      label: t('Assessment.form.AboutXCamp.Contest')
                     },
                     {
                       value: 'usaco.org',
-                      label: t('Evaluation.form.AboutXCamp.USACO')
+                      label: t('Assessment.form.AboutXCamp.USACO')
                     },
                     {
                       value: 'Discord (Teamscode, CinT, LiT)',
-                      label: t('Evaluation.form.AboutXCamp.Discord')
+                      label: t('Assessment.form.AboutXCamp.Discord')
                     },
                     {
                       value: 'Google Search',
-                      label: t('Evaluation.form.AboutXCamp.GoogleSearch')
+                      label: t('Assessment.form.AboutXCamp.GoogleSearch')
                     },
                     {
                       value: 'Wechat Moments',
-                      label: t('Evaluation.form.AboutXCamp.WeChatMoments')
+                      label: t('Assessment.form.AboutXCamp.WeChatMoments')
                     },
                     {
                       value: 'Word of mouth/Friends',
-                      label: t('Evaluation.form.AboutXCamp.Friend')
+                      label: t('Assessment.form.AboutXCamp.Friend')
                     },
                     {
                       value: 'Xiaohongshu(小红书)',
-                      label: t('Evaluation.form.AboutXCamp.Xiaohongshu')
+                      label: t('Assessment.form.AboutXCamp.Xiaohongshu')
                     },
                     {
                       value: 'Others',
-                      label: t('Evaluation.form.AboutXCamp.Other')
+                      label: t('Assessment.form.AboutXCamp.Other')
                     }
                   ]}
                 />
