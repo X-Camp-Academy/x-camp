@@ -66,7 +66,7 @@ const UpcomingEvents: React.FC = () => {
                             <div className={styles.month}>{startTime.format('MMMM')}</div>
                             <div className={styles.day}>{startTime.format('DD')}</div>
                           </div>
-                          <Title className={styles.title} ellipsis={{ rows: 2 }}>
+                          <Title className={styles.title} ellipsis={{ rows: 1, tooltip: getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn) }}>
                             {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
                           </Title>
                           <Descriptions column={1} className={styles.descriptions}>
