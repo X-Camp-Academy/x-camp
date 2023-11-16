@@ -507,7 +507,7 @@ declare const json: {
   AllCourses: '所有课程';
   USACOFreePublicMockTestComes: '2023/2024 USACO新赛季免费模考来袭！';
   ReserveNow: '立刻报名';
-  NoEventThisWeek: '本周没有活动';
+  NoEvent: '暂无活动';
   'ContestCalendar.Title': '赛事日历';
   feedBackSuccess: '您的问题已收到，我们将在 24 小时内通过电子邮件与您联系。';
   'Home.Banner2.Title1': 'X-Camp 巨龙试用班，仅';

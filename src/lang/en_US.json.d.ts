@@ -509,7 +509,7 @@ declare const json: {
   AllCourses: 'All Courses';
   USACOFreePublicMockTestComes: 'USACO FREE Public Mock Test Coming in Dec!';
   ReserveNow: 'Reserve Now';
-  NoEventThisWeek: 'No Event This Week';
+  NoEvent: 'No Events Yet';
   'ContestCalendar.Title': 'Contest Calendar';
   feedBackSuccess: 'Your question has been received. We will contact you through email within 24 hours.';
   'Home.Banner2.Title1': 'Python Trial Class, Only';

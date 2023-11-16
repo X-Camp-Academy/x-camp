@@ -112,39 +112,15 @@ const PublicCalendar: React.FC = () => {
 
   /**
    * @returns
-   * 1.当前周有活动，显示当前周的活动
-   * 2.当前周没有活动，显示当前月的活动
-   * 3.当前月没有活动，显示前一个月到下一个月的活动
+   * 筛选未来四个活动
    */
   const sortData = useMemo(() => {
-    const startOfWeek = dayjs().startOf('week');
-    const endOfWeek = dayjs().endOf('week');
-    let result = newEventData?.data?.filter((item) => {
-      const startDateTime = dayjs(item?.attributes?.startDateTime);
-      return startDateTime.isBetween(startOfWeek, endOfWeek, 'day', '[]');
-    });
-    if (result?.length !== 0) {
-      return result;
-    } else {
-      //筛选当前月
-      const startOfMonth = dayjs().startOf('month');
-      const endOfMonth = dayjs().endOf('month');
-      result = newEventData?.data?.filter((item) => {
-        const startDateTime = dayjs(item?.attributes?.startDateTime);
-        return startDateTime.isBetween(startOfMonth, endOfMonth, 'day', '[]');
-      });
-      if (result?.length !== 0) {
-        return result;
-      } else {
-        //当前月没有活动，显示前一个月到下一个月的活动
-        const startOfPreMonth = dayjs().subtract(1, 'month').startOf('month');
-        const endOfNextMonth = dayjs().add(1, 'month').endOf('month');
-        result = newEventData?.data?.filter((item) => {
-          const startDateTime = dayjs(item?.attributes?.startDateTime);
-          return startDateTime.isBetween(startOfPreMonth, endOfNextMonth, 'day', '[]');
-        });
-        return result;
-      }
+    if (newEventData) {
+      return newEventData.data
+        ?.filter((item) => {
+          return dayjs(item?.attributes?.startDateTime).isAfter(dayjs());
+        })
+        .slice(0, 4);
     }
   }, [newEventData]);
 
@@ -206,7 +182,7 @@ const PublicCalendar: React.FC = () => {
                 );
               })
             ) : !isMobile ? (
-              <Empty description={t('NoEventThisWeek')} className={styles.empty} />
+              <Empty description={t('NoEvent')} className={styles.empty} />
             ) : (
               <></>
             )}
