@@ -31,12 +31,9 @@ const Home: React.FC = () => {
         <Faculty />
         <WeSupport />
         <PublicCalendar />
-
-        {/*<XCampFounders />*/}
         <StudentProjects />
         <Community />
         <Reviews reviewsData={reviewsData} />
-        {/*<Partners />*/}
       </Content>
     </Layout>
   );
