@@ -89,6 +89,7 @@
     .bigIframe {
       width: 604px;
       height: 340px;
+      border: none;
 
       @media (width <= 1399px) {
         width: 543px;
@@ -96,13 +97,15 @@
       }
 
       @media (width <= 768px) {
-        width: 100%;
+        width: 90vw;
+        height: 50.625vw; // 16:9
       }
     }
 
     .smallIframe {
       width: 306px;
       height: 172px;
+      border: none;
 
       @media (width <= 1399px) {
         width: 260px;
@@ -120,7 +123,8 @@
       }
 
       @media (width <= 768px) {
-        width: 100%;
+        width: 90vw;
+        height: 50.625vw; // 16:9
       }
     }
 

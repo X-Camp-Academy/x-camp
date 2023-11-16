@@ -9,7 +9,7 @@ export const iframePlugin = (): XStarMdViewerPlugin => (ctx) => {
   ctx.customHTMLElements.iframe = (props) => {
     //获取父元素宽度
     const parentWidth = document?.getElementById('markdownContent')?.offsetWidth;
-    const zoom = +props.width! / +props.height! || 1.78;
+    const zoom = 16 / 9;
     return (
       <iframe
         {...props}
