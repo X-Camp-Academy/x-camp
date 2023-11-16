@@ -50,12 +50,6 @@
       .title {
         @include title('thin');
 
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-
         @media (width <= 768px) {
           margin: 12px 0;
           font-size: 20px;
