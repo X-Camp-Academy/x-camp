@@ -8,7 +8,6 @@ import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { Col, Empty, Row, Space, Typography } from 'antd';
 import type { Dayjs } from 'dayjs';
-import { usePathname } from 'next/navigation';
 import React, { useEffect, useMemo, useState } from 'react';
 import styles from './index.module.scss';
 
@@ -42,13 +41,13 @@ const PublicCalendar: React.FC = () => {
     }[]
   >([]);
   const [current, setCurrent] = useState<number>(1);
-  const pathname = usePathname();
+
   const { data: newEventData } = useGetNewEvent({
     tag: NewEventCategory.Events,
     current,
     pageSize,
     sortField: ['startDateTime'],
-    pageName: [pathname]
+    pageName: ['/home/']
   });
 
   const judgeDate = (selectDate: Dayjs, startDateTime: string, endDateTime: string) => {
@@ -119,10 +118,15 @@ const PublicCalendar: React.FC = () => {
   const sortData = useMemo(() => {
     const startOfWeek = dayjs().startOf('week');
     const endOfWeek = dayjs().endOf('week');
+
     let result = newEventData?.data?.filter((item) => {
       const startDateTime = dayjs(item?.attributes?.startDateTime);
+      console.log(item, startDateTime);
+
       return startDateTime.isBetween(startOfWeek, endOfWeek, 'day', '[]');
     });
+    console.log(result);
+
     if (result?.length !== 0) {
       return result;
     } else {
