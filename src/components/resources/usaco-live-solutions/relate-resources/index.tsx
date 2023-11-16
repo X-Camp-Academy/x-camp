@@ -10,12 +10,12 @@ const RelateResources: React.FC = () => {
   const { format: t } = useLang();
   const QAData = [
     {
-      title: t('USACOMockTest.Title'),
+      title: t('USACOMockTestClass.Title'),
       url: 'https://tinyurl.com/23-24USACOFreeMockTest',
       description: t('USACOMockTest.Desc')
     },
     {
-      title: t('USACOMockTestClass.Title'),
+      title: t('USACOMockTest.Title'),
       url: '/courses/#mock-test-classes',
       description: t('USACOMockTestClass.Desc')
     },

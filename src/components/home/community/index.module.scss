@@ -117,8 +117,9 @@
           line-height: 48px;
 
           @media (width <= 768px) {
-            @include mobile-text;
+            @include title('middle');
 
+            bottom: 80px;
             color: #fff;
           }
         }
@@ -130,7 +131,7 @@
           color: #fff;
 
           @media (width <= 768px) {
-            @include title('mobile');
+            @include title('middle');
 
             color: #fff;
           }
