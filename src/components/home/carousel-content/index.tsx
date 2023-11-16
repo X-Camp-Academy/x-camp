@@ -15,6 +15,7 @@ const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
 
 interface CarouselItemsProps {
   title: string;
+  titleSubImg?: string;
   desc: string[];
   banner: string;
   mbBanner: string;
@@ -60,7 +61,8 @@ const CarouselContent: React.FC = () => {
       buttonStyle: {
         backgroundColor: '#FFF',
         color: '#172A88'
-      }
+      },
+      titleSubImg: '/image/home/price.png'
     },
     {
       title: t('USACOFreePublicMockTestComes'),
@@ -108,7 +110,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
-      <Carousel autoplay dots={isMobile} speed={1000} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} speed={1000} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (
@@ -134,7 +136,10 @@ const CarouselContent: React.FC = () => {
               <Row>
                 <Col xs={24} sm={24} md={24} lg={12}>
                   <Space direction="vertical" className={styles.space} size={20}>
-                    <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
+                    <div className={styles.titleWithImg}>
+                      <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
+                      {item.titleSubImg && <img src={item.titleSubImg} className={styles.img} alt="price" />}
+                    </div>
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
                         <Text className={styles.description} key={desc} style={item?.descStyle}>
