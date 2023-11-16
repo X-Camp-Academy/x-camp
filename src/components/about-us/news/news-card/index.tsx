@@ -8,6 +8,7 @@ import { formatTimezone, getTransResult } from '@/utils/public';
 import { RightCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 
@@ -23,6 +24,7 @@ interface NewsCardProps {
 const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, pageSize, total }) => {
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
+  const router = useRouter();
   const { lang } = useLang();
   const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.All);
   const [data, setData] = useState<StrapiResponseDataItem<GetNewEvent>[]>();
@@ -57,7 +59,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
             return (
               <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
                 <ColorfulCard border={'bottom'} index={index} animate={false}>
-                  <Space direction={'vertical'} className={styles.card}>
+                  <Space direction={'vertical'} className={styles.card} onClick={() => router.push(`/resources/education-forum/${item?.id}`)}>
                     <img alt="" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
                     <Title className={styles.title} ellipsis={{ rows: 1 }}>
                       {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}

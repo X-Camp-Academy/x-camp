@@ -3,7 +3,6 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { CommentOutlined, HistoryOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Col, Image, Row, Space, Typography } from 'antd';
-import Link from 'next/link';
 import React from 'react';
 import CopyRightIcons from '../copy-right-icons';
 import styles from './CopyRight.module.scss';
@@ -65,17 +64,17 @@ const CopyRight: React.FC = () => {
               <div>
                 <Title className={styles.text}>X-Camp Academy</Title>
                 <Space direction="vertical">
-                  <Link href={'/about-us/calendar'}>{t('SchoolCalendar')}</Link>
-                  <Link href={'/courses#classify0'}>{t('WeeklyClasses')}</Link>
-                  <Link href={'/courses#camps'}>{t('In-personCamps')}</Link>
+                  <a href={'/about-us/calendar'}>{t('SchoolCalendar')}</a>
+                  <a href={'/courses#weekly'}>{t('WeeklyClasses')}</a>
+                  <a href={'/courses#camps'}>{t('In-personCamps')}</a>
                 </Space>
               </div>
 
               <div>
                 <Title className={styles.text}>{t('Activity')}</Title>
                 <Space direction="vertical">
-                  <Link href={'/courses/weekly-open-house'}>{t('WeeklyOpenHouse')}</Link>
-                  <Link href={'/resources/education-forum'}>{t('EducationForum')}</Link>
+                  <a href={'/courses/weekly-open-house'}>{t('WeeklyOpenHouse')}</a>
+                  <a href={'/resources/education-forum'}>{t('EducationForum')}</a>
                   <a href={'/courses/student-recommend'}>{t('ReferralProgram')}</a>
                 </Space>
               </div>
@@ -83,9 +82,9 @@ const CopyRight: React.FC = () => {
               <div>
                 <Title className={styles.text}>{t('HelpCenter')}</Title>
                 <Space direction="vertical">
-                  <Link href={'/about-us/contact-us'}>{t('ContactUs')}</Link>
-                  <Link href={'/about-us/join-us'}>{t('JoinUs')}</Link>
-                  <Link href={'/about-us/help-center'}>{t('FAQs')}</Link>
+                  <a href={'/about-us/contact-us'}>{t('ContactUs')}</a>
+                  <a href={'/about-us/join-us'}>{t('JoinUs')}</a>
+                  <a href={'/about-us/help-center'}>{t('FAQs')}</a>
                 </Space>
               </div>
             </Space>

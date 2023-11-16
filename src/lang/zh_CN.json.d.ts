@@ -384,7 +384,7 @@ declare const json: {
   'USACOMockTestClass.Title': 'USACO竞赛模考班';
   'USACOMockTestClass.Desc': 'USACO竞赛模考班每年10月至来年3月开班，涵盖全部四个参赛级别以及美国国家集训队级别。学生们每周都会在模拟真实竞赛环境中进行模考，考后会有X-Camp讲师的实时讲解。';
   'USACOSharingSession.Title': 'USACO分享会';
-  'USACOSharingSession.Desc': 'X-Camp十分荣幸邀请到包括Brian Dean博士、X-Camp知名校友和优秀在校生在内的嘉宾来参与USACO相关话题的讨论。请关注我们的YouTube频道@xcampacademy 随时了解最新动态。';
+  'USACOSharingSession.Desc': 'X-Camp十分荣幸邀请到包括Brian Dean博士、X-Camp知名校友和优秀在校生在内的嘉宾来参与USACO相关话题的讨论。请关注我们的YouTube频道随时了解最新动态';
   'Introduction.Banner.Desc1': 'X-Camp的教学体系和框架传承自中国国际信息学竞赛钻石级教练';
   'Introduction.Banner.Desc2': '徐先友老师。';
   'Introduction.Banner.Desc3': '经过六年精心打磨和发展，';
