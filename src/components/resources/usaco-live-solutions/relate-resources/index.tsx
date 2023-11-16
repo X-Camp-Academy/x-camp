@@ -1,6 +1,7 @@
 import ColorfulCard from '@/components/common/colorful-card';
 import { useLang } from '@/hoc/with-intl/define';
 import { Card, Typography } from 'antd';
+import Link from 'next/link';
 import React from 'react';
 import styles from './index.module.scss';
 
@@ -22,7 +23,14 @@ const RelateResources: React.FC = () => {
     {
       title: t('USACOSharingSession.Title'),
       url: 'https://www.youtube.com/watch?v=K2PWgYHZWbw&t=3s',
-      description: t('USACOSharingSession.Desc')
+      description: (
+        <>
+          {t('USACOSharingSession.Desc')}
+          <Link href="https://www.youtube.com/@xcampacademy" style={{ color: '#ffad11' }}>
+            @xcampacademy
+          </Link>
+        </>
+      )
     }
   ];
 

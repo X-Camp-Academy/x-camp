@@ -12,17 +12,20 @@ const Banner: React.FC = () => {
     {
       src: '/image/resources/usaco-ama-1.png',
       title: 'USACO AMA by Dr. Brian Dean 2022',
-      date: '2022-06-10'
+      date: '2022-06-10',
+      link: 'https://www.youtube.com/watch?v=O_E7TkZYjAg&t=321s'
     },
     {
       src: '/image/resources/usaco-ama-2.png',
       title: 'USACO AMA by X-Camp Teaching Lead ',
-      date: '2022-09-20'
+      date: '2022-09-20',
+      link: 'https://www.youtube.com/watch?v=vuzgrKManpc&t=2s'
     },
     {
       src: '/image/resources/usaco-ama-3.png',
       title: 'USACO AMA by Dr. Brian Dean 2023',
-      date: '2023-06-19'
+      date: '2023-06-19',
+      link: 'https://www.youtube.com/watch?v=K2PWgYHZWbw'
     }
   ];
   return (
@@ -33,7 +36,7 @@ const Banner: React.FC = () => {
 
         <Space direction={isMobile ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 16} className={styles.spaceContainer}>
           {data?.map((item) => (
-            <Space direction="vertical" key={item?.title} className={styles.spaceBox}>
+            <Space direction="vertical" key={item?.title} className={styles.spaceBox} onClick={() => window.open(item?.link, '_blank')}>
               <Image key={item?.title} alt="" src={item?.src} preview={false} className={styles.image} />
               <Title className={styles.title}>{item?.title}</Title>
               <Text className={styles.date}>{item?.date}</Text>
