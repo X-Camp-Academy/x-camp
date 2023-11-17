@@ -1,6 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult } from '@/utils/public';
+import { getTransResult, monthNameEn, monthNameZH } from '@/utils/public';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Button, Calendar, Col, Row, theme } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
@@ -16,10 +16,6 @@ interface Props {
     endDateTime?: string;
   }[];
 }
-
-const monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-const monthNameZH = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 const ActivityCalendar: React.FC<Props> = ({ className = '', onSelectDate, eventDate, headerClassName }) => {
   const { lang } = useLang();

@@ -2,6 +2,10 @@
 import { FrequencyCategory } from '@/apis/strapi-client/define';
 import dayjs, { Dayjs } from 'dayjs';
 
+export const monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+export const monthNameZH = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+
 /**
  * 选择语言
  * @param lang 语言

@@ -15,7 +15,6 @@ interface CommonBannerProps {
   titleStyle?: React.CSSProperties;
   paragraphStyle?: React.CSSProperties;
   time?: React.ReactNode;
-  paragraphFontSize?: number;
   showButton?: boolean;
   buttonText?: string;
   buttonLink?: string;
@@ -32,7 +31,6 @@ const Banner: React.FC<CommonBannerProps> = ({
   titleStyle,
   paragraphStyle,
   time,
-  paragraphFontSize,
   showButton,
   buttonText,
   buttonLink,
@@ -64,14 +62,7 @@ const Banner: React.FC<CommonBannerProps> = ({
           <div className={`${styles.row} container`}>
             <Title className={`${titleClassName || styles.title}`}>{title}</Title>
             {time && <div className={styles.time}>{time}</div>}
-            <Paragraph
-              className={`${paragraphClassName || styles.paragraph}`}
-              style={{
-                fontSize: paragraphFontSize ? paragraphFontSize : '24px'
-              }}
-            >
-              {paragraph}
-            </Paragraph>
+            <Paragraph className={`${paragraphClassName || styles.paragraph}`}>{paragraph}</Paragraph>
             {showButton && (
               <div className={styles.buttonContainer}>
                 <Button
