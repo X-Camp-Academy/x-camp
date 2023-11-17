@@ -347,7 +347,7 @@
   "Home.Banner1.Desc3": "探索X-Camp的多元化课程",
   "Home.Banner1.Date1": "* 美西（冬令时） 12/9/2023 周六 3 PM - 7 PM",
   "Home.Banner1.Date2": "* 北京时间 12/10/2023 周日 7 AM - 11 AM",
-  "Home.Banner2.Desc1": "ChatGPT行业来临，我们的下一代是否需要学习编程？",
+  "Home.Banner2.Desc1": "ChatGPT时代来临，我们的下一代是否需要学习编程？",
   "Home.Banner2.Desc2": "在人工智能流行的编程语言Python的帮助下，进入人工智能驱动的世界！",
   "Home.Banner2.Date1": "* 太平洋时间：2023年11月26日，下午5点-7点",
   "Home.Banner2.Date2": "* 北京时间：2023年11月27日，上午9点-11点",
@@ -510,6 +510,6 @@
   "NoEvent": "暂无活动",
   "ContestCalendar.Title": "赛事日历",
   "feedBackSuccess": "您的问题已收到，我们将在 24 小时内通过电子邮件与您联系。",
-  "Home.Banner2.Title1": "X-Camp 巨龙试用班，仅",
-  "Home.Banner2.Title1.Color": "X-Camp 巨龙试用班，仅"
+  "Home.Banner2.Title1": "X-Camp Python体验课仅",
+  "Home.Banner2.Title1.Color": "X-Camp Python体验课仅"
 }
