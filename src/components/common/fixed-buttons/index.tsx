@@ -4,7 +4,7 @@ import { useModalVisible } from '@/hoc/WithModalVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Space } from 'antd';
+import { Button, Dropdown, Space, message } from 'antd';
 import React, { RefObject, useRef } from 'react';
 import ConsultCardForm from './ConsultCardForm';
 import OpenHouseCardForm from './OpenHouseCardForm';
@@ -28,6 +28,14 @@ const FixedButtons: React.FC = () => {
 
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
+    message.config({
+      top: 100
+    });
+    message.success({
+      key: 'sendEmailSuccessfully',
+      content: t('SendEmailSuccess'),
+      className: styles.message
+    });
     setFreeConsultationVisible(false);
   };
 

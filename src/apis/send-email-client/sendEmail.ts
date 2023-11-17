@@ -8,7 +8,6 @@ import { openClassEmailRequest, submitAssessmentRequest, subscribeNewsletterRequ
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
   const client = useSendEmailClient();
-  const { format: t } = useLang();
   return useRequest(
     async (params: openClassEmailRequest) => {
       const resp = await client.sendOpenClassEmail(params);
@@ -16,15 +15,6 @@ export const useSendOpenClassEmail = () => {
     },
     {
       manual: true,
-      onSuccess: () => {
-        message.config({
-          top: 100
-        });
-        message.success({
-          key: 'sendEmailSuccessfully',
-          content: t('SendEmailSuccess')
-        });
-      },
       onError: handleError
     }
   );
