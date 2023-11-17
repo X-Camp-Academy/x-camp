@@ -52,7 +52,7 @@ const CarouselContent: React.FC = () => {
         color: '#FFF'
       },
       onClick: () => {
-        window.open('https://tinyurl.com/XCamp23-24FallUSACO');
+        window.open('https://bit.ly/xcfte-p');
       },
       date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
       banner: '/image/home/banner-pc-2.png',
