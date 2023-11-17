@@ -37,7 +37,6 @@ const WhyXCamp: React.FC = () => {
       icon: '/image/home/icon-why-track.png',
       title: t('Home.WhyXCamp.title4'),
       desc: t('Home.WhyXCamp.Desc4'),
-      url: '/',
       ref: useRef<HTMLDivElement>(null)
     }
   ];
@@ -62,7 +61,19 @@ const WhyXCamp: React.FC = () => {
                   onMouseEnter={() => addAnimate(item?.ref)}
                   onMouseLeave={() => removeAnimate(item?.ref)}
                 >
-                  <a href={item?.url}>
+                  {item?.url ? (
+                    <a href={item?.url}>
+                      <Space direction="vertical">
+                        <Image src={item?.icon} alt="icon" preview={false} className={styles.cardIcon} />
+                        <Paragraph ellipsis={{ rows: 2 }} className={styles.cardTitle}>
+                          {item?.title}
+                        </Paragraph>
+                        <Paragraph ellipsis={{ rows: 3, tooltip: item?.desc }} className={styles.cardParagraph}>
+                          {item?.desc}
+                        </Paragraph>
+                      </Space>
+                    </a>
+                  ) : (
                     <Space direction="vertical">
                       <Image src={item?.icon} alt="icon" preview={false} className={styles.cardIcon} />
                       <Paragraph ellipsis={{ rows: 2 }} className={styles.cardTitle}>
@@ -72,7 +83,7 @@ const WhyXCamp: React.FC = () => {
                         {item?.desc}
                       </Paragraph>
                     </Space>
-                  </a>
+                  )}
                 </Card>
               </Col>
             );
