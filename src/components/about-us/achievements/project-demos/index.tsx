@@ -2,9 +2,8 @@ import { GetProjectDemos } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult } from '@/utils/public';
-import { Card, List, Typography } from 'antd';
-import React, { useEffect } from 'react';
+import { Typography } from 'antd';
+import { useEffect } from 'react';
 import styles from './index.module.scss';
 
 const { Title } = Typography;
@@ -29,7 +28,7 @@ const ProjectDemos = ({ data }: Props) => {
   }, [hash]);
   return (
     <div className={`${styles.projectDemosContainer} container`}>
-      <div className={styles.projectDemos}>
+      {/* <div className={styles.projectDemos}>
         <Title className={styles.title}>{t('ProjectDemos')}</Title>
         {data?.map((v, index) => (
           <React.Fragment key={index}>
@@ -68,7 +67,7 @@ const ProjectDemos = ({ data }: Props) => {
             />
           </React.Fragment>
         ))}
-      </div>
+      </div> */}
 
       {/* ! TDOO: 先隐藏 */}
       {/* <div className={styles.projectDemo}>
