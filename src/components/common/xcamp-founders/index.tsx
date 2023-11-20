@@ -67,11 +67,11 @@ const XCampFounder: React.FC = () => {
                 <Paragraph className={styles.founderParagraph}>{t('Yuan.Desc1')}</Paragraph>
                 <Paragraph className={styles.founderParagraph}>
                   {t('Yuan.Desc2')}
-                  {t('Yuan.Student')}&nbsp;
-                  {t('Yuan.Desc3')}&nbsp;
-                  {t('Yuan.Desc4')}&nbsp;
-                  {t('Yuan.Desc5')}&nbsp;
-                  {'25 - 27'}&nbsp;
+                  {t('Yuan.Student')}
+                  {t('Yuan.Desc3')}
+                  {t('Yuan.Desc4')}
+                  {t('Yuan.Desc5')}
+                  {'25 - 27'}
                   {t('Yuan.Desc6')}
                 </Paragraph>
               </Space>

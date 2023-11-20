@@ -225,9 +225,7 @@ const Courses: React.FC = () => {
           >
             <SegmentedRadioGroup value={segmented} setValue={onSegmentedChange} isRadioGroup={isMobile} options={useEventOptions('course')} id="segmentedDom" />
           </Affix>
-
-          <div className={styles.form} />
-
+          {!isMobile && <div className={styles.form} />}
           <Form
             layout="inline"
             form={form}

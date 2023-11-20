@@ -18,12 +18,13 @@ const AboutXCamp: React.FC = () => {
       <Title className={styles.title}>
         {t('About')} <span>{t('XCamp')}</span>
       </Title>
-      <Paragraph className={styles.paragraph}>{t('AboutXCamp.Desc1')}</Paragraph>
+      <Paragraph className={styles.paragraph}>
+        {t('AboutXCamp.Desc1')} {t('AboutXCamp.SubTitle')}
+      </Paragraph>
 
       <Space direction={isiPad ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 48} className={styles.space}>
         <Image preview={false} alt="" src={'/image/courses/camps-3.png'} className={styles.leftImage} />
         <Space direction="vertical" size={16} className={styles.rightSpace}>
-          <Title className={styles.rightTitle}>{t('AboutXCamp.SubTitle')}</Title>
           <Paragraph className={styles.rightParagraph}>{t('AboutXCamp.Desc2')}</Paragraph>
           <UsacoMedal style={{ backgroundColor: '#F5F5F5', paddingTop: isMobile ? 8 : 16 }} showLogo={false} showTitle={false} spacePaddingTop={0} rowStyle={{ padding: 0 }} />
         </Space>

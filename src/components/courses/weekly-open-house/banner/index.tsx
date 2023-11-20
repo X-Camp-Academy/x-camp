@@ -29,9 +29,9 @@ const Banner: React.FC = () => {
         }
         time={
           <>
-            {t('Home.Banner1.Date1')}
+            {t('WeeklyOpenHouse.Banner.Date1')}
             <br />
-            {t('Home.Banner1.Date2')}
+            {t('WeeklyOpenHouse.Banner.Date2')}
           </>
         }
         showButton
