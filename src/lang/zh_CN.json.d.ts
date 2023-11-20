@@ -345,8 +345,8 @@ declare const json: {
   'Home.Banner2.mbDesc1': '免费USACO模拟测试';
   'Home.Banner2.mbDesc2': '从铜到白金，全级别覆盖';
   'Home.Banner2.Desc3': '探索X-Camp的多元化课程';
-  'Home.Banner2.Date1': '* 太平洋时间：2023年11月9日，周六，下午3点至7点';
-  'Home.Banner2.Date2': '* 北京时间：2023年11月10日，周日，上午7点至11点';
+  'Home.Banner2.Date1': '* 太平洋时间：2023年12月9日，周六，下午3点至7点';
+  'Home.Banner2.Date2': '* 北京时间：2023年12月10日，周日，上午7点至11点';
   'Home.Banner1.Desc1': 'ChatGPT时代来临，我们的下一代是否需要学习编程？';
   'Home.Banner1.Desc2': '在人工智能流行的编程语言Python的帮助下，进入人工智能驱动的世界！';
   'Home.Banner1.Date1': '* 太平洋时间：2023年11月26日，下午5点-7点';
@@ -428,9 +428,8 @@ declare const json: {
   'USACOLiveSolutions.Banner.Desc1': '作为USACO赛后全网首发、';
   'USACOLiveSolutions.Banner.Desc2': '最全面的赛题直播答疑';
   'USACOLiveSolutions.Banner.Desc3': '只在X-Camp';
-  'WeeklyOpenHouse.Banner.Date1': '在回答您的问题时';
-  'WeeklyOpenHouse.Banner.Date2': '在回答您的问题时';
-
+  'WeeklyOpenHouse.Banner.Date1': '* 美西时间，每周二晚，6:30 PM - 7:30 PM';
+  'WeeklyOpenHouse.Banner.Date2': '* 北京时间，每周三早，10:30 AM - 11:30 AM';
   'WeeklyOpenHouse.Banner.Desc1': '在回答您的问题时';
   'WeeklyOpenHouse.Banner.Desc2': '您可以一窥我们的课程、教学方法和教学内容';
   MockTestClasses: 'USACO模考班';

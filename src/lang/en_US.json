@@ -120,8 +120,8 @@
   "Home.Banner2.mbDesc1": "Free USACO Mock Test",
   "Home.Banner2.mbDesc2": "From Bronze to Platinum",
   "Home.Banner2.Desc3": "Exploring the specifics of X-Camp's diverse classes",
-  "Home.Banner2.Date1": "* Every Tuesday, 6:30 PM - 7:30 PM, Pacific Time",
-  "Home.Banner2.Date2": "* Every Wednesday, 10:30 AM - 11:30 AM, Beijing Time",
+  "Home.Banner2.Date1": "* Pacific Time, 12/09/2023, Sat, 4 PM - 8 PM",
+  "Home.Banner2.Date2": "* Beijing Time, 12/10/2023, Sun, 7 AM - 11 AM",
   "Partner.Desc1": "We strive to cultivate a nurturing and welcoming ",
   "Partner.Desc2": "coding community alongside our committed partners.",
   "Partner.Desc3": " Feel free to reach out with your inquiries via email.",
@@ -429,10 +429,8 @@
   "USACOLiveSolutions.Banner.Desc1": "The first-ever, and most comprehensive live ",
   "USACOLiveSolutions.Banner.Desc2": "problem-solving broadcast on the entire web ",
   "USACOLiveSolutions.Banner.Desc3": "only in X-Camp.",
-
-  "WeeklyOpenHouse.Banner.Date1": "Get a glimpse into our programs, curriculum, and",
-  "WeeklyOpenHouse.Banner.Date2": "Get a glimpse into our programs, curriculum, and",
-
+  "WeeklyOpenHouse.Banner.Date1": "* Every Tuesday, 6:30 PM - 7:30 PM, Pacific Time",
+  "WeeklyOpenHouse.Banner.Date2": "* Every Wednesday, 10:30 AM - 11:30 AM, Beijing Time",
   "WeeklyOpenHouse.Banner.Desc1": "Get a glimpse into our programs, curriculum, and",
   "WeeklyOpenHouse.Banner.Desc2": "teaching approach as we answer your questions.",
   "MockTestClasses": "Mock Test Classes",
