@@ -37,6 +37,8 @@
   }
 
   .space {
+    margin-top: 24px;
+
     @media (width <= 768px) {
       margin-top: 12px;
       padding-right: 6px;
@@ -61,19 +63,6 @@
     }
 
     .rightSpace {
-      .rightTitle {
-        font-size: 24px;
-        font-weight: 600;
-        color: #172142;
-        line-height: 36px;
-
-        @media (width <= 1200px) {
-          @include title('middle');
-
-          margin-top: 0;
-        }
-      }
-
       .rightParagraph {
         font-size: 18px;
         font-weight: 500;

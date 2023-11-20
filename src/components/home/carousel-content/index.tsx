@@ -10,7 +10,6 @@ import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
 
 const { Text } = Typography;
-
 const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
 
 interface CarouselItemsProps {
@@ -40,21 +39,21 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: CarouselItemsProps[] = [
     {
-      title: t('Home.Banner2.Title1'),
+      title: t('Home.Banner1.Title1'),
       titleConfig: [
         {
-          text: t('Home.Banner2.Title1.Color'),
+          text: t('Home.Banner1.Title1'),
           color: '#FFF'
         }
       ],
-      desc: [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2')],
+      desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2')],
       descStyle: {
         color: '#FFF'
       },
       onClick: () => {
         window.open('https://bit.ly/xcfte-p');
       },
-      date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
+      date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
       banner: '/image/home/banner-pc-2.png',
       mbBanner: '/image/home/banner-mb-2.png',
       buttonText: t('ReserveNow'),
@@ -65,21 +64,21 @@ const CarouselContent: React.FC = () => {
       titleSubImg: '/image/home/price.png'
     },
     {
-      title: t('USACOFreePublicMockTestComes'),
+      title: t('Home.Banner2.Title1'),
       titleConfig: [
         {
-          text: t('USACOFreePublicMockTestComes'),
+          text: t('Home.Banner2.Title1'),
           color: '#FFAD11'
         }
       ],
-      desc: isMobile ? [t('Home.Banner1.mbDesc1'), t('Home.Banner1.mbDesc2')] : [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2')],
+      desc: isMobile ? [t('Home.Banner2.mbDesc1'), t('Home.Banner2.mbDesc2')] : [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2')],
       descStyle: {
         color: '#FFF'
       },
       onClick: () => {
         window.open('https://www.eventbrite.com/e/202324-usa-computing-olympiad-usaco-public-mock-test-tickets-744548052267');
       },
-      date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
+      date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
       banner: '/image/home/banner-pc-1.png',
       mbBanner: '/image/home/banner-mb-1.png',
       buttonText: t('ReserveNow')
@@ -110,7 +109,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
-      <Carousel dots={isMobile} speed={1000} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} speed={1000} autoplay ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (

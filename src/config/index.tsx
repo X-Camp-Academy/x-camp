@@ -6,6 +6,7 @@ export type ApiConfig = {
   strapiServer: string;
   xydApi: string;
   idBackendApi: string;
+  assessment: string;
 };
 
 export const apiConfig: ApiConfig = {
@@ -15,5 +16,6 @@ export const apiConfig: ApiConfig = {
   idBackendApi: process.env.NEXT_PUBLIC_ID_BACKEND_API || 'https://id-api.turingstar.com.cn',
   clientId: process.env.NEXT_PUBLIC_CLIENT_ID || 'xcamp-service-dev',
   strapiServer: process.env.NEXT_PUBLIC_STRAPI_SERVER || 'https://strapi.turingstar.com.cn',
-  xydApi: process.env.NEXT_PUBLIC_XYD || 'https://www.xinyoudui.com'
+  xydApi: process.env.NEXT_PUBLIC_XYD || 'https://www.xinyoudui.com',
+  assessment: process.env.NEXT_PUBLIC_ASSESSMENT || 'https://assessment.turingstar.com.cn/'
 };

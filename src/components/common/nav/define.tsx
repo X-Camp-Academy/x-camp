@@ -1,8 +1,11 @@
+import { apiConfig } from '@/config';
 import { useLang } from '@/hoc/with-intl/define';
 import { CalendarOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { XStarMenuItemType } from './x-star-menu';
+
+const { assessment } = apiConfig;
 
 export const useMenuItems = () => {
   const router = useRouter();
@@ -160,7 +163,11 @@ export const useMenuItems = () => {
       ]
     },
     {
-      label: <Link href="/assessment">{t('WhatWeProvide')}</Link>,
+      label: (
+        <a href={assessment} target="_blank" rel="noreferrer">
+          {t('WhatWeProvide')}
+        </a>
+      ),
       key: 'assessment'
     }
   ];

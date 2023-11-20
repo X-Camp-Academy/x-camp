@@ -52,7 +52,7 @@ const StudentProjects: React.FC = () => {
           {lang === 'zh' ? (
             <div>
               <Title className={styles.title}>
-                学生<span>课程</span>
+                学生<span>作品</span>
               </Title>
               <Text className={styles.titleZhBg} />
             </div>
