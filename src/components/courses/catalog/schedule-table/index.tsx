@@ -4,7 +4,6 @@ import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { SearchOutlined } from '@ant-design/icons';
-import { useSize } from 'ahooks';
 import { Button, Col, Form, Input, Pagination, Row, Select } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import CourseCard from './course-card';
@@ -12,7 +11,6 @@ import styles from './index.module.scss';
 
 const ScheduleTable: React.FC = () => {
   const ref = useRef(null);
-  const size = useSize(ref);
   const { format: t } = useLang();
   const [form] = Form.useForm();
   const { data: courses, runAsync } = useGetCourses({});
@@ -21,6 +19,7 @@ const ScheduleTable: React.FC = () => {
   const [filters, setFilters] = useState<{ [key: string]: string | { $eq: string } } | { [key: string]: string | { type: { $eq: string } } } | any>({});
 
   const isMobile = useMobile();
+  const isiPad = useMobile('xl');
   const selectItems = [
     {
       name: 'classMode',
@@ -136,23 +135,23 @@ const ScheduleTable: React.FC = () => {
   };
   return (
     <div className={`${styles.scheduleTable} container`} ref={ref}>
-      <Form layout={size && size?.width < 1400 ? 'vertical' : 'inline'} form={form} className={styles.form} onFinish={onFinish}>
+      <Form layout={isiPad ? 'vertical' : 'inline'} form={form} className={styles.form} onFinish={onFinish}>
         <Row gutter={isMobile ? [16, 0] : [16, 8]} className={styles.row}>
           {selectItems?.map((selectItem, index) => (
-            <Col key={index} xs={24} sm={24} md={24} lg={6}>
+            <Col key={index} xs={24} sm={24} md={24} lg={6} xl={6}>
               <Form.Item name={selectItem?.name} label={selectItem?.text}>
                 <Select placeholder={'Show All'} options={selectItem?.options} className={styles.select} allowClear />
               </Form.Item>
             </Col>
           ))}
 
-          <Col xs={24} sm={24} md={22} lg={4} className={styles.lastInput}>
+          <Col xs={24} sm={24} md={24} lg={4} xl={4} className={styles.lastInput}>
             <Form.Item name="search">
               <Input suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />} allowClear />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={2} lg={2} className={styles.lastButtonCol}>
+          <Col xs={24} sm={24} md={24} lg={2} xl={2} className={styles.lastButtonCol}>
             <Form.Item style={{ marginInlineEnd: 0 }}>
               <Button type={'primary'} className={styles.button} htmlType="submit">
                 {t('Search')}
