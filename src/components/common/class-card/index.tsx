@@ -1,7 +1,6 @@
 import { useMobile } from '@/utils';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Space, Typography } from 'antd';
-import { useRouter } from 'next/navigation';
 import ColorfulCard, { ColorfulCardProps } from '../colorful-card';
 import styles from './index.module.scss';
 
@@ -18,7 +17,6 @@ type ClassCardProps = Omit<ColorfulCardProps, 'children'> & {
 
 const ClassCard = ({ index, title, href, list, time, bilingual }: ClassCardProps) => {
   const isMobile = useMobile();
-  const router = useRouter();
   return (
     <ColorfulCard border={'bottom'} index={index} animate={false} className={styles.colorfulCard}>
       <Card className={styles.card} onClick={() => window.location.replace(href)}>
