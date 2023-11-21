@@ -5,7 +5,7 @@ import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
-import { Carousel, Image, Space, Typography } from 'antd';
+import { Carousel, Space, Typography } from 'antd';
 import React, { useEffect } from 'react';
 import styles from './index.module.scss';
 
@@ -72,7 +72,7 @@ const Community: React.FC = () => {
             slidesToScroll={1}
             swipeToSlide
             infinite
-            autoplay
+            autoplay={false}
             dots={false}
             responsive={[
               {
@@ -102,7 +102,8 @@ const Community: React.FC = () => {
                     className={styles.maskCard}
                     bodyStyle={{
                       padding: 0,
-                      borderRadius: 8
+                      borderRadius: 8,
+                      height: '100%'
                     }}
                     maskChildren={generateMaskChildren(
                       getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn),
@@ -111,7 +112,7 @@ const Community: React.FC = () => {
                     maskBackGroundColor={'rgb(23 33 66 / 80%)'}
                     maskBorderRadius={8}
                   >
-                    <Image src={item?.attributes?.img?.data?.attributes?.url} alt="image" preview={false} className={styles.image} />
+                    <img src={item?.attributes?.img?.data?.attributes?.url} alt="image" className={styles.image} />
                     <Title className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Title>
                   </MaskCard>
                 </div>
