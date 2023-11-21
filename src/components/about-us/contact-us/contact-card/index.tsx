@@ -16,7 +16,14 @@ const ContactCard: React.FC = () => {
     {
       icon: <MailOutlined />,
       title: t('Contact.Email'),
-      description: t('Contact.Email.info')
+      description: (
+        <>
+          {t('Contact.Email.info')}
+          <a href="mailto:info@x-camp.academy" style={{ color: '#ffad11' }}>
+            info@x-camp.academy
+          </a>
+        </>
+      )
     },
     {
       icon: <PhoneOutlined rotate={180} />,
@@ -41,7 +48,7 @@ const ContactCard: React.FC = () => {
                   <Space align="center">
                     <div className={styles.icon}> {item.icon}</div>
                     <Title style={{ margin: 0 }} className={styles.title}>
-                      {item.title}
+                      {item?.title}
                     </Title>
                   </Space>
                   <Paragraph type="secondary" className={styles.paragraph}>

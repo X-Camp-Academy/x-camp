@@ -1,7 +1,7 @@
-import { GetCourses } from '@/apis/strapi-client/define';
+import { FrequencyCategory, GetCourses } from '@/apis/strapi-client/define';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult, getWeeksDays } from '@/utils/public';
+import { formatFinance, getTransResult, getWeeksDays } from '@/utils/public';
 import { Col, Descriptions, Divider, Row, Space, Typography } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
@@ -62,7 +62,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
             </Descriptions>
           </Col>
           <Col lg={12} className={styles.col} style={{ justifyContent: 'flex-end' }}>
-            <Text className={styles.fee}>{isBilingual ? `￥${tuitionRMB}` : `$${tuitionUSD}`}</Text>
+            <Text className={styles.fee}>{frequency === FrequencyCategory.Once ? 'Free' : isBilingual ? `￥${formatFinance(tuitionRMB)}` : `$${formatFinance(tuitionUSD)}`}</Text>
           </Col>
         </Row>
         <Divider style={{ marginTop: isMobile ? 16 : 35 }} />

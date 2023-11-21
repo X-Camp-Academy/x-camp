@@ -53,7 +53,7 @@ const CopyRight: React.FC = () => {
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <HistoryOutlined />
-                  <Text className={styles.text}>Tue - Sun 12 Noon - 9PM Pacific Time</Text>
+                  <Text className={styles.text}>9:00 AM - 8:00 PM PT (Monday Off)</Text>
                 </Paragraph>
               </Space>
             </Space>

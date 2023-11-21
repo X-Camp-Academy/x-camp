@@ -135,61 +135,59 @@ const ScheduleTable: React.FC = () => {
     };
   };
   return (
-    <div className={styles.scheduleTable} ref={ref}>
-      <div className={'container'}>
-        <Form layout={size && size?.width < 1400 ? 'vertical' : 'inline'} form={form} className={styles.form} onFinish={onFinish}>
-          <Row gutter={[16, 8]} className={styles.row}>
-            {selectItems?.map((selectItem, index) => (
-              <Col key={index} xs={24} sm={24} md={24} lg={6}>
-                <Form.Item name={selectItem?.name} label={selectItem?.text}>
-                  <Select placeholder={'Show All'} options={selectItem?.options} className={styles.select} allowClear />
-                </Form.Item>
-              </Col>
-            ))}
-
-            <Col xs={24} sm={24} md={22} lg={4} className={styles.lastInput}>
-              <Form.Item name="search">
-                <Input suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />} allowClear />
+    <div className={`${styles.scheduleTable} container`} ref={ref}>
+      <Form layout={size && size?.width < 1400 ? 'vertical' : 'inline'} form={form} className={styles.form} onFinish={onFinish}>
+        <Row gutter={isMobile ? [16, 0] : [16, 8]} className={styles.row}>
+          {selectItems?.map((selectItem, index) => (
+            <Col key={index} xs={24} sm={24} md={24} lg={6}>
+              <Form.Item name={selectItem?.name} label={selectItem?.text}>
+                <Select placeholder={'Show All'} options={selectItem?.options} className={styles.select} allowClear />
               </Form.Item>
             </Col>
+          ))}
 
-            <Col xs={24} sm={24} md={2} lg={2} className={styles.lastButtonCol}>
-              <Form.Item style={{ marginInlineEnd: 0 }}>
-                <Button type={'primary'} className={styles.button} htmlType="submit">
-                  {t('Search')}
-                </Button>
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
+          <Col xs={24} sm={24} md={22} lg={4} className={styles.lastInput}>
+            <Form.Item name="search">
+              <Input suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />} allowClear />
+            </Form.Item>
+          </Col>
 
-        <div style={{ marginTop: isMobile ? 16 : 35, paddingRight: '7px' }}>
-          {courses?.data?.map((item) => {
-            return (
-              <>
-                <div
-                  className={styles.courseCardContainer}
-                  key={item?.id}
-                  onClick={() => {
-                    window.location.href = `/courses/detail/${item?.id}`;
-                  }}
-                >
-                  <CourseCard {...handleObject(item)} />
-                </div>
-              </>
-            );
-          })}
-        </div>
-        <Pagination
-          onChange={onPaginationChange}
-          current={pagination?.page}
-          pageSize={pagination?.pageSize}
-          total={courses?.meta?.pagination?.total}
-          showSizeChanger
-          style={{ textAlign: 'center', marginTop: '56px' }}
-          className={styles.pagination}
-        />
+          <Col xs={24} sm={24} md={2} lg={2} className={styles.lastButtonCol}>
+            <Form.Item style={{ marginInlineEnd: 0 }}>
+              <Button type={'primary'} className={styles.button} htmlType="submit">
+                {t('Search')}
+              </Button>
+            </Form.Item>
+          </Col>
+        </Row>
+      </Form>
+
+      <div style={{ marginTop: isMobile ? 16 : 35, paddingRight: '7px' }}>
+        {courses?.data?.map((item) => {
+          return (
+            <>
+              <div
+                className={styles.courseCardContainer}
+                key={item?.id}
+                onClick={() => {
+                  window.location.href = `/courses/detail/${item?.id}`;
+                }}
+              >
+                <CourseCard {...handleObject(item)} />
+              </div>
+            </>
+          );
+        })}
       </div>
+      <Pagination
+        onChange={onPaginationChange}
+        current={pagination?.page}
+        pageSize={pagination?.pageSize}
+        total={courses?.meta?.pagination?.total}
+        showSizeChanger
+        style={{ textAlign: 'center', marginTop: '56px' }}
+        className={styles.pagination}
+      />
     </div>
   );
 };
