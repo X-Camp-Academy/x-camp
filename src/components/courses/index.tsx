@@ -56,6 +56,9 @@ const Courses: React.FC = () => {
   // get all course level types as data
   const levelTypeData = levelTypeOptions?.map((item) => item?.value);
 
+  // get quarter options
+  const quarterOptions = useCourseOptions('quarter');
+
   // weekly === online
   const classifyCourses = (type: CourseTypes) => {
     switch (type) {
@@ -118,7 +121,7 @@ const Courses: React.FC = () => {
     const result = removeEmptyChildren(segmentedData);
     setSegmentedData(result);
     setCopySegmentedData(result);
-  }, [segmented, courses, levelTypeOptions]);
+  }, [segmented, courses]);
 
   // hash跳转，清空筛选的表单
   const onSegmentedChange = (value: SegmentedValue | RadioChangeEvent) => {
@@ -219,7 +222,7 @@ const Courses: React.FC = () => {
               <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Category'} options={levelTypeOptions} allowClear />
             </Form.Item>
             <Form.Item name="quarter" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Quarter'} options={useCourseOptions('quarter')} allowClear />
+              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Quarter'} options={quarterOptions} allowClear />
             </Form.Item>
             <Form.Item style={isMobile ? { width: '100%', marginTop: 8 } : { marginInlineEnd: 0 }}>
               <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
