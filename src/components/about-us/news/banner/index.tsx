@@ -12,19 +12,7 @@ const Banner: React.FC = () => {
     </>
   );
 
-  return (
-    <CommonBanner
-      image={'/image/about-us/news-banner.png'}
-      title={t('News')}
-      titleStyle={{
-        color: '#172142'
-      }}
-      paragraph={paragraph}
-      paragraphStyle={{
-        marginTop: 120
-      }}
-    />
-  );
+  return <CommonBanner image={'/image/about-us/news-banner.png'} title={t('News')} paragraph={paragraph} />;
 };
 
 export default Banner;

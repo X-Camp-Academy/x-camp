@@ -13,16 +13,7 @@ const Banner: React.FC = () => {
       {t('ContactUs.Banner.Desc4')}
     </>
   );
-  return (
-    <CommonBanner
-      title={t('ContactXCamp')}
-      titleStyle={{
-        color: '#172142'
-      }}
-      paragraph={paragraph}
-      image={'/image/about-us/contact-us-banner.png'}
-    />
-  );
+  return <CommonBanner title={t('ContactXCamp')} paragraph={paragraph} image={'/image/about-us/contact-us-banner.png'} />;
 };
 
 export default Banner;

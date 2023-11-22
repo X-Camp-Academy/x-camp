@@ -8,7 +8,7 @@ import Content from './content';
 import styles from './index.module.scss';
 
 const Article: React.FC = () => {
-  const articleId = useParams()?.articleId;
+  const { articleId } = useParams();
 
   const { data: articleData, run } = useGetNewEvent({
     current: 1,

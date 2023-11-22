@@ -18,13 +18,6 @@ const Banner: React.FC = () => {
       image={'/image/resources/weekly-open-house-banner.png'}
       title={t('WeeklyOpenHouse1')}
       paragraph={paragraph}
-      paragraphStyle={
-        isMobile
-          ? undefined
-          : {
-            marginTop: 10
-          }
-      }
       time={
         <>
           {t('WeeklyOpenHouse.Banner.Date1')}
