@@ -9,11 +9,6 @@ interface CommonBannerProps {
   title: string;
   paragraph: React.ReactNode;
   image: string;
-  titleClassName?: string;
-  paragraphClassName?: string;
-  backgroundColor?: string;
-  titleStyle?: React.CSSProperties;
-  paragraphStyle?: React.CSSProperties;
   time?: React.ReactNode;
   showButton?: boolean;
   buttonText?: string;
@@ -21,21 +16,7 @@ interface CommonBannerProps {
   buttonIcon?: React.ReactNode;
 }
 
-const Banner: React.FC<CommonBannerProps> = ({
-  title,
-  paragraph,
-  image,
-  titleClassName,
-  paragraphClassName,
-  backgroundColor,
-  titleStyle,
-  paragraphStyle,
-  time,
-  showButton,
-  buttonText,
-  buttonLink,
-  buttonIcon
-}) => {
+const CommonBanner: React.FC<CommonBannerProps> = ({ title, paragraph, image, time, showButton, buttonText, buttonLink, buttonIcon }) => {
   const isMobile = useMobile();
   return (
     <>
@@ -48,21 +29,17 @@ const Banner: React.FC<CommonBannerProps> = ({
             backgroundPosition: 'center center'
           }}
         >
-          <Space direction="vertical" className={styles.space} style={{ backgroundColor }}>
-            <Title className={`${titleClassName || styles.title}`} style={titleStyle}>
-              {title}
-            </Title>
-            <Paragraph className={`${paragraphClassName || styles.paragraph}`} style={paragraphStyle}>
-              {paragraph}
-            </Paragraph>
+          <Space direction="vertical" className={styles.space}>
+            <Title className={`${styles.title}`}>{title}</Title>
+            <Paragraph className={`${styles.paragraph}`}>{paragraph}</Paragraph>
           </Space>
         </div>
       ) : (
         <div className={styles.bannerContainer}>
           <div className={`${styles.row} container`}>
-            <Title className={`${titleClassName || styles.title}`}>{title}</Title>
+            <Title className={`${styles.title}`}>{title}</Title>
             {time && <div className={styles.time}>{time}</div>}
-            <Paragraph className={`${paragraphClassName || styles.paragraph}`}>{paragraph}</Paragraph>
+            <Paragraph className={`${styles.paragraph}`}>{paragraph}</Paragraph>
             {showButton && (
               <div className={styles.buttonContainer}>
                 <Button
@@ -85,4 +62,4 @@ const Banner: React.FC<CommonBannerProps> = ({
   );
 };
 
-export default Banner;
+export default CommonBanner;

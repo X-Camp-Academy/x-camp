@@ -1,3 +1,4 @@
+import { apiConfig } from '@/config';
 import { useModalVisible } from '@/hoc/WithModalVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -7,6 +8,7 @@ import Link from 'next/link';
 import React from 'react';
 import styles from './index.module.scss';
 
+const { assessment } = apiConfig;
 const { Paragraph } = Typography;
 
 const Banner: React.FC = () => {
@@ -37,9 +39,9 @@ const Banner: React.FC = () => {
             <Col xs={24} sm={24} md={24} xl={{ span: 8, offset: 2 }} className={styles.rightCol}>
               <Space direction={'vertical'} size={48}>
                 <Button type={'primary'} className={styles.button} icon={<CaretRightOutlined />}>
-                  <Link href="/assessment" target="_blank">
+                  <a href={assessment} target="_blank" rel="noreferrer">
                     {t('WhatWeProvide')}
-                  </Link>
+                  </a>
                 </Button>
                 <Button
                   type={'primary'}

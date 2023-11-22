@@ -3,7 +3,6 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { LaptopOutlined } from '@ant-design/icons';
 import React from 'react';
-import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
@@ -15,31 +14,22 @@ const Banner: React.FC = () => {
     </>
   );
   return (
-    <div className={styles.banner}>
-      <CommonBanner
-        image={'/image/resources/weekly-open-house-banner.png'}
-        title={t('WeeklyOpenHouse1')}
-        paragraph={paragraph}
-        paragraphStyle={
-          isMobile
-            ? undefined
-            : {
-              marginTop: 10
-            }
-        }
-        time={
-          <>
-            {t('WeeklyOpenHouse.Banner.Date1')}
-            <br />
-            {t('WeeklyOpenHouse.Banner.Date2')}
-          </>
-        }
-        showButton
-        buttonText={t('ZoomLink')}
-        buttonLink={'https://app.zoom.us/wc/89284761432/start?from='}
-        buttonIcon={<LaptopOutlined />}
-      />
-    </div>
+    <CommonBanner
+      image={'/image/resources/weekly-open-house-banner.png'}
+      title={t('WeeklyOpenHouse1')}
+      paragraph={paragraph}
+      time={
+        <>
+          {t('WeeklyOpenHouse.Banner.Date1')}
+          <br />
+          {t('WeeklyOpenHouse.Banner.Date2')}
+        </>
+      }
+      showButton
+      buttonText={t('ZoomLink')}
+      buttonLink={'https://app.zoom.us/wc/89284761432/start?from='}
+      buttonIcon={<LaptopOutlined />}
+    />
   );
 };
 

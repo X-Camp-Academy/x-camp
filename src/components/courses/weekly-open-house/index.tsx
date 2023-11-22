@@ -6,8 +6,8 @@ import { Layout, Space } from 'antd';
 import { usePathname } from 'next/navigation';
 import AppointmentCard from './appointment-card';
 import Banner from './banner';
+import DeepDiveClasses from './deep-dive-classes';
 import styles from './index.module.scss';
-import Introduction from './introduction';
 
 const { Content } = Layout;
 
@@ -23,7 +23,7 @@ const WeeklyOpenHouse = () => {
       <Content>
         <Banner />
         <Space direction="vertical" size={isMobile ? 24 : 100} className={styles.content}>
-          <Introduction />
+          <DeepDiveClasses />
           <AppointmentCard />
         </Space>
         <Reviews reviewsData={reviewsData} />
