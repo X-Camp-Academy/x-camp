@@ -6,7 +6,6 @@ import { useLang } from '@/hoc/with-intl/define';
 export const useCourseOptions = (defaultValue: 'mode' | 'quarter' | 'levelType') => {
   const { format: t } = useLang();
   const { data } = useGetCourseLevelType();
-  console.log('refresh............');
 
   const classModeOptions = Object.values(ClassMode)?.map((item) => {
     return {

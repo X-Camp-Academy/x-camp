@@ -19,7 +19,7 @@ const Faqs: React.FC<FaqsProps> = ({ title, data }) => {
       <div className={styles.cardContent}>
         {data?.map((item, index) => (
           <QACard
-            key={'referral' + index}
+            key={item?.id}
             question={getTransResult(lang, item?.attributes.questionZh, item?.attributes.questionEn)!}
             answer={getTransResult(lang, item?.attributes.answerZh, item?.attributes.answerEn)!}
             index={index}

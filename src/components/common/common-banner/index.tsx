@@ -21,7 +21,7 @@ interface CommonBannerProps {
   buttonIcon?: React.ReactNode;
 }
 
-const Banner: React.FC<CommonBannerProps> = ({
+const CommonBanner: React.FC<CommonBannerProps> = ({
   title,
   paragraph,
   image,
@@ -85,4 +85,4 @@ const Banner: React.FC<CommonBannerProps> = ({
   );
 };
 
-export default Banner;
+export default CommonBanner;

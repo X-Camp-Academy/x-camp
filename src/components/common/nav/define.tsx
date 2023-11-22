@@ -99,10 +99,6 @@ export const useMenuItems = () => {
           label: <a href="/resources/usaco">USACO</a>,
           key: 'usaco'
         },
-        // {
-        //   label: <a href="/about-us/achievements#art-of-programming-results">{t('InternalContests')}</a>,
-        //   key: 'achievements#art-of-programming-results'
-        // },
         {
           label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
           key: 'usaco-live-solution'
