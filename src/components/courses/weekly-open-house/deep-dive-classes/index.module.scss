@@ -1,6 +1,6 @@
 @import '@/styles/variables';
 
-.introduction {
+.deepDiveClasses {
   @media (width <= 768px) {
     padding-right: 24px;
     padding-left: 24px;
@@ -38,8 +38,8 @@
     }
 
     img {
-      width: 413px;
-      height: 280px;
+      width: 416px;
+      height: 272px;
 
       @media (width <= 768px) {
         width: 100%;

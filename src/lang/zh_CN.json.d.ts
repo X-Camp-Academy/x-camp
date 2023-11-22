@@ -498,10 +498,10 @@ declare const json: {
   'USACO.Pain.Points7': '对你目前的状况和未来的USACO竞赛季度有什么期望感到不确定？';
   'USACO.Pain.Points.Desc': '如果这些问题与您共鸣，请毫不犹豫地联系X-Camp！我们专业的教学团队将在这里帮助您充分利用学习之旅。';
   TuesdayOpenHouse: '周二开放日';
-  Spring: '春季';
-  Summer: '夏季';
-  Fall: '秋季';
-  Winter: '冬季';
+  Spring: '24春季';
+  Summer: '24夏季';
+  Fall: '23秋季';
+  Winter: '23冬季';
   NoContest: '没有比赛';
   InputTheStateYouLiveIn: '输入您所在的州';
   ParentEmail: '家长邮箱';

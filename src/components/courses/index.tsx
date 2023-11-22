@@ -1,6 +1,6 @@
 'use client';
-import { ClassMode, CourseQuarter, GetCourses } from '@/apis/strapi-client/define';
-import { useGetCourseLevelType, useGetCourses, useGetReviews } from '@/apis/strapi-client/strapi';
+import { ClassMode, GetCourses } from '@/apis/strapi-client/define';
+import { useGetCourses, useGetReviews } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import Reviews from '@/components/common/reviews';
 import { useLang } from '@/hoc/with-intl/define';
@@ -16,6 +16,7 @@ import SegmentedRadioGroup, { useEventOptions } from '../common/segmented-radio-
 import Banner from './banner';
 import { CourseTypes } from './define';
 import styles from './index.module.scss';
+import { useCourseOptions } from './public';
 
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -40,7 +41,6 @@ const Courses: React.FC = () => {
   const [segmented, setSegmented] = useState<SegmentedValue>(CourseTypes.WeeklyClasses);
   const [segmentedData, setSegmentedData] = useState<SegmentedCoursesProps[]>();
   const [copySegmentedData, setCopySegmentedData] = useState<SegmentedCoursesProps[]>();
-  const { data: courseLevelType } = useGetCourseLevelType();
   const { data: courses } = useGetCourses({});
   const COURSE_TYPES = Object.values(CourseTypes);
 
@@ -50,24 +50,11 @@ const Courses: React.FC = () => {
     pageName: [pathname]
   });
 
+  // course level type options
+  const levelTypeOptions = useCourseOptions('levelType');
+
   // get all course level types as data
-  const courseLevelTypeData = courseLevelType?.map((item) => item?.attributes?.type);
-
-  // course level options
-  const courseLevelOptions = courseLevelTypeData?.map((item) => {
-    return {
-      label: item,
-      value: item
-    };
-  });
-
-  // course quarter options
-  const courseQuarterOptions = Object.values(CourseQuarter)?.map((item) => {
-    return {
-      label: t(item),
-      value: item
-    };
-  });
+  const levelTypeData = levelTypeOptions?.map((item) => item?.value);
 
   // weekly === online
   const classifyCourses = (type: CourseTypes) => {
@@ -108,7 +95,7 @@ const Courses: React.FC = () => {
   // all weekly in person需要所有的levels，其余的只需要自己作为一二级level
   const reclassifiedCourses = COURSE_TYPES?.map((courseType) => {
     if ([CourseTypes.AllClasses, CourseTypes.WeeklyClasses, CourseTypes.InPersonCamps].includes(courseType)) {
-      return reclassifyCourses(courseType, courseLevelTypeData);
+      return reclassifyCourses(courseType, levelTypeData);
     } else {
       return reclassifyCourses(courseType, [courseType]);
     }
@@ -129,15 +116,9 @@ const Courses: React.FC = () => {
   useEffect(() => {
     const segmentedData = reclassifiedCourses?.filter((item) => item?.primaryTitle === segmented);
     const result = removeEmptyChildren(segmentedData);
-    // 将最后一个元素放到第四个位置 Gold 移到 Silver 后面
-    // ! TODO 后面通过nodejs来批量更新course level type
-    if (result) {
-      let lastItem = result[0].children?.pop();
-      result[0].children?.splice(3, 0, lastItem as any);
-    }
     setSegmentedData(result);
     setCopySegmentedData(result);
-  }, [segmented, courses, courseLevelType]);
+  }, [segmented, courses, levelTypeOptions]);
 
   // hash跳转，清空筛选的表单
   const onSegmentedChange = (value: SegmentedValue | RadioChangeEvent) => {
@@ -235,10 +216,10 @@ const Courses: React.FC = () => {
             style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
           >
             <Form.Item name="category" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Category'} options={courseLevelOptions} allowClear />
+              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Category'} options={levelTypeOptions} allowClear />
             </Form.Item>
             <Form.Item name="quarter" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Quarter'} options={courseQuarterOptions} allowClear />
+              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={'Quarter'} options={useCourseOptions('quarter')} allowClear />
             </Form.Item>
             <Form.Item style={isMobile ? { width: '100%', marginTop: 8 } : { marginInlineEnd: 0 }}>
               <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
