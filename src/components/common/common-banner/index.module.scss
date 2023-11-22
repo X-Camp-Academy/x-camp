@@ -2,23 +2,23 @@
 
 .paddingLeft {
   @media (width >= 576px) {
-    padding-left: calc((100vw - 540px + 15px) / 2);
+    padding-left: calc((100vw - 540px) / 2 + 15px);
   }
 
   @media (width >= 768px) {
-    padding-left: calc((100vw - 720px + 15px) / 2);
+    padding-left: calc((100vw - 720px) / 2 + 15px);
   }
 
   @media (width >= 992px) {
-    padding-left: calc((100vw - 960px + 15px) / 2);
+    padding-left: calc((100vw - 960px) / 2 + 15px);
   }
 
   @media (width >= 1200px) {
-    padding-left: calc((100vw - 1140px + 15px) / 2);
+    padding-left: calc((100vw - 1140px) / 2 + 15px);
   }
 
   @media (width >= 1400px) {
-    padding-left: calc((100vw - 1320px + 15px) / 2);
+    padding-left: calc((100vw - 1320px) / 2 + 15px);
   }
 }
 
@@ -26,7 +26,7 @@
   position: relative;
   display: flex;
   justify-content: flex-start;
-  height: 495px;
+  height: 496px;
   background-color: #efefef;
 
   .background {
