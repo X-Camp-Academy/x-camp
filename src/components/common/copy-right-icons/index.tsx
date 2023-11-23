@@ -50,7 +50,7 @@ const CopyRightIcons: React.FC = () => {
             <Image alt="" src={imageSrc[index]} preview={false} width={28} height={28} onMouseOver={() => onMouseOver(index)} onMouseLeave={onMouseLeave} />
           </a>
         ) : (
-          <Popover content={<img src={QRcodeImg[index - 3]} alt="" style={{ width: '100px', height: '100px' }} />} key={index}>
+          <Popover content={<img src={QRcodeImg[index - 3]} alt="" style={{ width: '100px', height: '100px' }} />} key={item?.src}>
             <Image alt="" src={imageSrc[index]} preview={false} width={28} height={28} onMouseOver={() => onMouseOver(index)} onMouseLeave={onMouseLeave} />
           </Popover>
         )

@@ -41,7 +41,7 @@ declare const json: {
   'Charlie.paper': ' 20篇论文 ';
   'Charlie.years': ' 10年。';
   ClassesTime: '课程时间';
-  ClassMode: '课程模式';
+  ClassMode: '课程模式：';
   ClassroomLanguage: '授课语言';
   'Co-Founder-Charlie': 'X-Camp Academy创始人';
   'Co-Founder-Yuan': 'X-Camp Academy创始人';
