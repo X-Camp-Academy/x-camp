@@ -37,15 +37,13 @@
       }
 
       .select {
-        width: 200px;
+        width: 100%;
         font-size: 16px;
         font-weight: 400;
         color: #6a6a6a;
         line-height: 24px;
 
-        @media (width <= 768px) {
-          width: 100%;
-
+        @media (width <= 992px) {
           @include mobile-text;
 
           color: #6a6a6a;
@@ -53,15 +51,13 @@
       }
 
       .search {
-        width: 200px;
+        width: 100%;
         font-size: 16px;
         font-weight: 400;
         color: #6a6a6a;
         line-height: 24px;
 
         @media (width <= 768px) {
-          width: 100%;
-
           @include mobile-text;
 
           color: #6a6a6a;
@@ -72,7 +68,7 @@
         border-radius: 4px;
         background: #ffad11;
 
-        @media (width <= 768px) {
+        @media (width <= 992px) {
           width: 100%;
         }
       }
