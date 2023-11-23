@@ -25,18 +25,18 @@
       text-align: right;
       cursor: pointer;
 
-      @include text(14px, 24px, rgba(23, 33, 66, 0.5));
+      @include text(14px, 24px, rgba(23, 42, 136, 0.3));
 
       .divider {
         margin: 0;
-        border-block-color: rgb(23 33 66 / 50%);
+        border-block-color: rgb(23 42 136 / 30%);
       }
 
       &.active {
-        color: $primary-color;
+        color: #172a88;
 
         .divider {
-          border-block-color: $primary-color;
+          border-block-color: #172a88;
         }
       }
     }

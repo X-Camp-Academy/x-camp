@@ -15,9 +15,9 @@ const MonthlyContest = ({ data }: Props) => {
       <Title className={styles.title}>{t('ContestCalendar.Title')}</Title>
       {data?.map((items, i) => {
         return (
-          <div key={i} className={styles.months}>
-            {items?.map((item, j) => {
-              return <ContestCard data={item} key={j} />;
+          <div key={items[i]?.month} className={styles.months}>
+            {items?.map((item) => {
+              return <ContestCard data={item} key={item?.month} />;
             })}
           </div>
         );

@@ -82,7 +82,7 @@ const UsacoIntro = () => {
       </div>
       {result?.map((v, index) => {
         return (
-          <div key={'video' + index} style={{ marginBottom: isMobile ? 0 : 88 }}>
+          <div key={v?.category} style={{ marginBottom: isMobile ? 0 : 88 }}>
             <Collapse
               ghost
               defaultActiveKey={index}
@@ -93,7 +93,7 @@ const UsacoIntro = () => {
                 </div>
               )}
             >
-              <Panel key={index} header={<div className={styles.title}>{v?.category}</div>}>
+              <Panel key={v?.category} header={<div className={styles.title}>{v?.category}</div>}>
                 <Space className={styles.videoPane} size={isMobile ? 16 : 8}>
                   {v?.categoryData?.map((g) => {
                     return (

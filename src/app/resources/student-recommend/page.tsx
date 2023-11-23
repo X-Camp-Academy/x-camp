@@ -1,7 +1,7 @@
 import { PageTitle, generateMetadata } from '@/app/metadata';
 import dynamic from 'next/dynamic';
 
-const StudentRecommend = dynamic(() => import('@/components/courses/student-recommend'));
+const StudentRecommend = dynamic(() => import('@/components/resources/student-recommend'));
 
 export const metadata = {
   ...generateMetadata(PageTitle.StudentRecommend)

@@ -44,7 +44,7 @@ const Stories: React.FC = () => {
 
         <Row gutter={32} className={styles.row}>
           {newEventData?.data?.map((item, index) => (
-            <Col key={index} xs={24} sm={24} md={8}>
+            <Col key={item?.id} xs={24} sm={24} md={8}>
               <ColorfulCard border="bottom" index={index} className={styles.colorfulCard}>
                 <Card
                   className={styles.card}
