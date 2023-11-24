@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 const USACO = dynamic(() => import('@/components/resources/usaco'));
 
 export const metadata = {
-  ...generateMetadata(PageTitle.EducationForum)
+  ...generateMetadata(PageTitle.USACO)
 };
 
 const Page: React.FC = () => {
