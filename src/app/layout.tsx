@@ -1,11 +1,11 @@
 'use client';
-import { WithClient } from '@/apis/BaseAxiosClient';
 import WithModalVisible from '@/hoc/WithModalVisible';
 import { WithAuth } from '@/hoc/with-auth';
 import { useMobile } from '@/utils';
 import { LocalStateProvider } from '@/utils/local-state';
 import dynamic from 'next/dynamic';
 import './globals.scss';
+
 const WithLayout = dynamic(() => import('@/hoc/WithLayout'), { ssr: false });
 const WithAntdConfig = dynamic(() => import('@/hoc/WithAntdConfig'), {
   ssr: false
@@ -33,17 +33,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LocalStateProvider>
           <WithIntl>
             <WithAuth>
-              <WithClient>
-                <WithModalVisible>
-                  <WithAntdConfig>
-                    <Nav />
-                    <WithLayout>{children}</WithLayout>
-                    <Footer />
-                    <BackTop />
-                    <FixedButtons />
-                  </WithAntdConfig>
-                </WithModalVisible>
-              </WithClient>
+              <WithModalVisible>
+                <WithAntdConfig>
+                  <Nav />
+                  <WithLayout>{children}</WithLayout>
+                  <Footer />
+                  <BackTop />
+                  <FixedButtons />
+                </WithAntdConfig>
+              </WithModalVisible>
             </WithAuth>
           </WithIntl>
         </LocalStateProvider>
