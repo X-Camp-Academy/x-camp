@@ -1,3 +1,4 @@
+import { useGetUSACO } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Image, Space, Typography } from 'antd';
@@ -6,28 +7,10 @@ import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 const Banner: React.FC = () => {
+  const { data } = useGetUSACO();
   const { format: t } = useLang();
   const isMobile = useMobile();
-  const data = [
-    {
-      src: '/image/resources/usaco-ama-1.png',
-      title: 'USACO AMA by Dr. Brian Dean 2022',
-      date: '2022-06-10',
-      link: 'https://www.youtube.com/watch?v=O_E7TkZYjAg&t=321s'
-    },
-    {
-      src: '/image/resources/usaco-ama-2.png',
-      title: 'USACO AMA by X-Camp Teaching Lead ',
-      date: '2022-09-20',
-      link: 'https://www.youtube.com/watch?v=vuzgrKManpc&t=2s'
-    },
-    {
-      src: '/image/resources/usaco-ama-3.png',
-      title: 'USACO AMA by Dr. Brian Dean 2023',
-      date: '2023-06-19',
-      link: 'https://www.youtube.com/watch?v=K2PWgYHZWbw'
-    }
-  ];
+
   return (
     <div className={`${styles.amaContainer} container`}>
       <Space direction="vertical" size={isMobile ? 24 : 8} style={{ width: '100%' }}>
@@ -36,10 +19,10 @@ const Banner: React.FC = () => {
 
         <Space direction={isMobile ? 'vertical' : 'horizontal'} size={isMobile ? 24 : 16} className={styles.spaceContainer}>
           {data?.map((item) => (
-            <Space direction="vertical" key={item?.title} className={styles.spaceBox} onClick={() => window.open(item?.link, '_blank')}>
-              <Image key={item?.title} alt="" src={item?.src} preview={false} className={styles.image} />
-              <Title className={styles.title}>{item?.title}</Title>
-              <Text className={styles.date}>{item?.date}</Text>
+            <Space direction="vertical" key={item?.attributes?.title} className={styles.spaceBox} onClick={() => window.open(item?.attributes?.link, '_blank')}>
+              <Image key={item?.attributes?.title} alt="" src={item?.attributes?.img?.data?.attributes?.url} preview={false} className={styles.image} />
+              <Title className={styles.title}>{item?.attributes?.title}</Title>
+              <Text className={styles.date}>{item?.attributes?.date}</Text>
             </Space>
           ))}
         </Space>

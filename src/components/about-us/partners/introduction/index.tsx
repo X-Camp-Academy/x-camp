@@ -36,10 +36,11 @@ const Introduction: React.FC = () => {
   const handleMobileJump = (card: StrapiResponseDataItem<GetPartner>) => {
     isMobile && window.open(card?.attributes?.link);
   };
+
   return (
     <div className={styles.content}>
       {data?.map((items, index) => (
-        <div key={index} style={{ background: getBackgroundFromIndex(index) }} className={styles.partnerContainer}>
+        <div key={items[0]?.id} style={{ background: getBackgroundFromIndex(index) }} className={styles.partnerContainer}>
           <div className={`${styles.partner} container`}>
             <div className={styles.title}>{getTransByCategory(items?.[0]?.attributes?.category)}</div>
             <Space direction="vertical" style={{ width: '100%' }} size={isMobile ? 24 : 60}>

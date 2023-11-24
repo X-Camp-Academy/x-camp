@@ -19,18 +19,20 @@ import {
   GetFacultyResponse,
   GetFaqRequest,
   GetFaqResponse,
-  GetHomeStudentProjectsRequest,
-  GetHomeStudentProjectsResponse,
   GetNewEventRequest,
   GetNewEventResponse,
   GetPartnerRequest,
   GetPartnerResponse,
   GetProjectDemosRequest,
   GetProjectDemosResponse,
-  GetResourcesLiveSolutionRequest,
-  GetResourcesLiveSolutionResponse,
   GetReviewsRequest,
   GetReviewsResponse,
+  GetStudentProjectsRequest,
+  GetStudentProjectsResponse,
+  GetUSACOLiveSolutionRequest,
+  GetUSACOLiveSolutionResponse,
+  GetUSACORequest,
+  GetUSACOResponse,
   GetUserSearchRequest,
   GetUserSearchResponse,
   SubmitUserInfoRequest,
@@ -76,8 +78,8 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getHomeStudentProjects(params: GetHomeStudentProjectsRequest): Promise<GetHomeStudentProjectsResponse> {
-    const res: GetHomeStudentProjectsResponse = await this.get('/xc-home-student-projects' + getParamsStringify(params), {});
+  async getStudentProjects(params: GetStudentProjectsRequest): Promise<GetStudentProjectsResponse> {
+    const res: GetStudentProjectsResponse = await this.get('/xc-student-projects' + getParamsStringify(params), {});
     return res;
   }
 
@@ -126,8 +128,8 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getResourcesLiveSolution(params: GetResourcesLiveSolutionRequest): Promise<GetResourcesLiveSolutionResponse> {
-    const res = await this.get('/xc-resources-live-solutions' + getParamsStringify(params), {});
+  async getUSACOLiveSolution(params: GetUSACOLiveSolutionRequest): Promise<GetUSACOLiveSolutionResponse> {
+    const res = await this.get('/xc-usaco-live-solutions' + getParamsStringify(params), {});
     return res;
   }
 
@@ -140,10 +142,17 @@ export class StrapiClient extends BaseAxiosClient {
     const res = await this.get('/xc-partners' + getParamsStringify(params), {});
     return res;
   }
+
   async getUserSearchMap(params: GetUserSearchRequest): Promise<GetUserSearchResponse> {
     const res = await this.get('/xc-user-search' + getParamsStringify(params), {});
     return res;
   }
+
+  async getUSACO(params: GetUSACORequest): Promise<GetUSACOResponse> {
+    const res = await this.get('/xc-usacos' + getParamsStringify(params), {});
+    return res;
+  }
+
   async submitQuestionForm(params: SubmitUserInfoRequest): Promise<SubmitUserInfoResponse> {
     const res = await this.post('/xc-feed-backs', params, this.jsonHeaders);
     return res;

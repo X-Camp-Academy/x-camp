@@ -1,5 +1,5 @@
-import { GetResourcesLiveSolution, LiveSolutionCategory } from '@/apis/strapi-client/define';
-import { useGetResourcesLiveSolution } from '@/apis/strapi-client/strapi';
+import { GetUSACOLiveSolution, USACOLiveSolutionCategory } from '@/apis/strapi-client/define';
+import { useGetUSACOLiveSolution } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -13,36 +13,36 @@ const { Panel } = Collapse;
 const { Text } = Typography;
 
 interface ResultProps {
-  category: LiveSolutionCategory;
-  categoryData: StrapiResponseDataItem<GetResourcesLiveSolution>[];
+  category: USACOLiveSolutionCategory;
+  categoryData: StrapiResponseDataItem<GetUSACOLiveSolution>[];
 }
 [];
 
 const UsacoIntro = () => {
   const { format: t, lang } = useLang();
-  const { data } = useGetResourcesLiveSolution();
+  const { data } = useGetUSACOLiveSolution();
 
   const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
   const isMobile = useMobile();
-  const getVideoByLang = (attributes: GetResourcesLiveSolution) => {
+  const getVideoByLang = (attributes: GetUSACOLiveSolution) => {
     const { video, videoZh, videoEn } = attributes;
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
 
   const [result, setResult] = useState<ResultProps[]>();
 
-  const sortData: { category: LiveSolutionCategory; categoryData: StrapiResponseDataItem<GetResourcesLiveSolution>[] }[] = [
+  const sortData: { category: USACOLiveSolutionCategory; categoryData: StrapiResponseDataItem<GetUSACOLiveSolution>[] }[] = [
     {
-      category: LiveSolutionCategory.XCampUSACOBronze,
+      category: USACOLiveSolutionCategory.XCampUSACOBronze,
       categoryData: []
     },
     {
-      category: LiveSolutionCategory.XCampUSACOSilver,
+      category: USACOLiveSolutionCategory.XCampUSACOSilver,
       categoryData: []
     },
     {
-      category: LiveSolutionCategory.XCampUSACOGold,
+      category: USACOLiveSolutionCategory.XCampUSACOGold,
       categoryData: []
     }
   ];
@@ -50,13 +50,13 @@ const UsacoIntro = () => {
   useEffect(() => {
     data?.forEach((item) => {
       switch (item?.attributes?.category) {
-        case LiveSolutionCategory.XCampUSACOBronze:
+        case USACOLiveSolutionCategory.XCampUSACOBronze:
           sortData[0]?.categoryData?.push(item);
           break;
-        case LiveSolutionCategory.XCampUSACOSilver:
+        case USACOLiveSolutionCategory.XCampUSACOSilver:
           sortData[1]?.categoryData?.push(item);
           break;
-        case LiveSolutionCategory.XCampUSACOGold:
+        case USACOLiveSolutionCategory.XCampUSACOGold:
           sortData[2]?.categoryData?.push(item);
           break;
         default:

@@ -56,8 +56,10 @@ const MenuDropdown = ({ className, items, dropdown, showBtn = true }: Props) => 
         )}
         <Space direction="vertical" className={styles.items}>
           {dividedItems?.map((row, rowIndex) => (
+            // eslint-disable-next-line react/no-array-index-key
             <Row key={rowIndex} gutter={divideLength * 16}>
               {row?.map((item, colIndex) => (
+                // eslint-disable-next-line react/no-array-index-key
                 <Col key={colIndex} span={24 / divideLength} className={styles.item}>
                   {item}
                 </Col>

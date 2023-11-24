@@ -31,8 +31,8 @@ const CarouselDots: React.FC<IProps> = ({ dots, goTo, current }) => {
   return (
     <>
       <ul className={styles.carouselDots}>
-        {dotsArr.map((dots: any, index: number) => (
-          <li key={index} onClick={() => onClick(index)}>
+        {dotsArr.map((dots, index) => (
+          <li key={dots} onClick={() => onClick(index)}>
             <Space direction={'vertical'} className={`${styles.li} ${activeIndex === index && styles.active}`} size={2}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <Divider className={styles.divider} />

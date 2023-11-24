@@ -50,9 +50,9 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
         <Descriptions column={1} layout="vertical">
           <Descriptions.Item label={t('ClassesTime')}>
             <Space direction="vertical">
-              {classesData?.map((item, index) => {
+              {classesData?.map((item) => {
                 return (
-                  <div key={index} className={item?.isFull ? `${styles.full}` : ''}>
+                  <div key={item?.classCode} className={item?.isFull ? `${styles.full}` : ''}>
                     {`${item?.classCode}: ${item?.startTime}-${item?.endTime}`} {item?.isFull ? '(Full)' : ''}
                   </div>
                 );

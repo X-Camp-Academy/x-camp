@@ -21,14 +21,15 @@ import {
   GetFacultyResponse,
   GetFaq,
   GetFaqRequest,
-  GetHomeStudentProjectsRequest,
   GetNewEvent,
   GetNewEventRequest,
   GetNewEventResponse,
   GetPartnerRequest,
   GetProjectDemosRequest,
-  GetResourcesLiveSolutionRequest,
   GetReviewsRequest,
+  GetStudentProjectsRequest,
+  GetUSACOLiveSolutionRequest,
+  GetUSACORequest,
   GetUserSearchRequest,
   NewEventCategory,
   SubmitUserInfoRequest
@@ -142,11 +143,7 @@ export const useGetNewEvent = ({
           populate: '*',
           sort: sortField ? (sortField as Array<keyof GetNewEvent> | Array<keyof sortDesc<GetNewEvent>>) : ['order:desc'],
           filters: {
-            tags: tag
-              ? {
-                $eq: tag
-              }
-              : {}
+            tags: tag ? { $eq: tag } : {}
           },
           pagination: {
             page: current,
@@ -291,12 +288,12 @@ export const useGetReviews = ({
  * 获取首页 Student Projects
  * @returns
  */
-export const useGetHomeStudentProjects = () => {
+export const useGetStudentProjects = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetHomeStudentProjectsRequest) => {
-      const res = await client.getHomeStudentProjects(params);
+    async (params: GetStudentProjectsRequest) => {
+      const res = await client.getStudentProjects(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -441,16 +438,12 @@ export const useGetAchievementsTimeLine = () => {
   );
 };
 
-/**
- * 获取Resources目录下的Live Solution
- * @returns
- */
-export const useGetResourcesLiveSolution = () => {
+export const useGetUSACOLiveSolution = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetResourcesLiveSolutionRequest) => {
-      const res = await client.getResourcesLiveSolution(params);
+    async (params: GetUSACOLiveSolutionRequest) => {
+      const res = await client.getUSACOLiveSolution(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -518,11 +511,7 @@ export const useGetFaq = <T extends boolean = false, R = T extends true ? Strapi
           populate: '*',
           sort: ['order:desc'],
           filters: {
-            category: category
-              ? {
-                $eq: category
-              }
-              : {}
+            category: category ? { $eq: category } : {}
           }
         }
       ],
@@ -593,6 +582,26 @@ export const useSubmitQuestionForm = () => {
     },
     {
       manual: true,
+      onError: handleError
+    }
+  );
+};
+
+export const useGetUSACO = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetUSACORequest) => {
+      const res = await client.getUSACO(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*',
+          sort: ['order:desc']
+        }
+      ],
       onError: handleError
     }
   );

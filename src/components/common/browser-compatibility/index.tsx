@@ -42,7 +42,7 @@ const BrowserCompatibilityPage = () => {
         <div className={styles.reason}>{t('COMPATIBILITY_TIP')}</div>
         <div className={styles.cards}>
           {cardLink.map((item, i) => (
-            <div key={i} className={styles.card}>
+            <div key={item?.softWinDownLink} className={styles.card}>
               <div className={styles.cardBody}>
                 <div className={styles.title}>{item.softDownTitle}</div>
                 <div className={styles.description}>{item.SoftDownDesc}</div>
