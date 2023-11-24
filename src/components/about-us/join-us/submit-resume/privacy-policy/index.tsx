@@ -368,8 +368,8 @@ const PrivacyPolicy: React.FC = () => {
           <Space direction="vertical" style={{ marginTop: 30 }}>
             <Text className={styles.policyExplains}>{getTransResult(lang, '本政策阐明以下内容：', 'This policy explains:')}</Text>
             <Paragraph className={styles.policyExplainsList}>
-              {policyExplains[lang].map((explain, index) => (
-                <li key={index}>
+              {policyExplains[lang].map((explain) => (
+                <li key={explain}>
                   <Text className={styles.policyExplains}>
                     {explain}
                     <br />
@@ -452,13 +452,13 @@ const PrivacyPolicy: React.FC = () => {
             <Text className={styles.subTitle}>{whoMayHaveAccessToYourInformation[lang].subTitle}</Text>
             <div className={styles.text}>
               <ul>
-                {whoMayHaveAccessToYourInformation[lang].list.map((item, index) => (
-                  <li key={index} style={{ padding: '5px 0' }}>
+                {whoMayHaveAccessToYourInformation[lang]?.list?.map((item) => (
+                  <li key={item?.description} style={{ padding: '5px 0' }}>
                     <Text className={styles.text}>{item.description}</Text>
                     {item.children.length > 0 && (
                       <ul style={{ marginTop: 20 }}>
-                        {item.children.map((child, index) => (
-                          <li key={index} style={{ padding: '5px 0' }}>
+                        {item.children.map((child) => (
+                          <li key={child} style={{ padding: '5px 0' }}>
                             <Text className={styles.text}>{child}</Text>
                           </li>
                         ))}
@@ -587,8 +587,8 @@ const PrivacyPolicy: React.FC = () => {
           <div className={styles.textBorder}>
             <Title className={styles.subTitle}>{getTransResult(lang, '我们收集的信息的类别', 'Categories of information we collect')}</Title>
             <ul>
-              {categoriesOfInformationWeCollect[lang].map((item, index) => (
-                <li key={index} style={{ marginTop: 25 }}>
+              {categoriesOfInformationWeCollect[lang].map((item) => (
+                <li key={item?.head} style={{ marginTop: 25 }}>
                   <Paragraph className={styles.text}>
                     <Text className={styles.boldText}>{item.head}</Text>
                     <Text className={styles.text}>{item.content}</Text>
@@ -601,8 +601,8 @@ const PrivacyPolicy: React.FC = () => {
           <div className={styles.textBorder}>
             <Title className={styles.subTitle}>{getTransResult(lang, '可出于哪些业务目的使用或披露信息', 'Business purposes for which information may be used or disclosed')}</Title>
             <ul>
-              {businessPurposes[lang].map((item, index) => (
-                <li key={index} style={{ marginTop: 25 }}>
+              {businessPurposes[lang].map((item) => (
+                <li key={item?.head} style={{ marginTop: 25 }}>
                   <Paragraph className={styles.text}>
                     <Text className={styles.boldText}>{item.head}</Text>
                     <Text className={styles.text}>{item.content}</Text>
@@ -615,8 +615,8 @@ const PrivacyPolicy: React.FC = () => {
           <div className={styles.textBorder}>
             <Title className={styles.subTitle}>{getTransResult(lang, '可能的信息披露对象', 'Parties with whom information may be disclosed')}</Title>
             <ul>
-              {partiesWithInformation[lang].map((item, index) => (
-                <li key={index} style={{ marginTop: 25 }}>
+              {partiesWithInformation[lang].map((item) => (
+                <li key={item?.head} style={{ marginTop: 25 }}>
                   <Paragraph className={styles.text}>
                     <Text className={styles.boldText}>{item.head}</Text>
                     <Text className={styles.text}>{item.content}</Text>

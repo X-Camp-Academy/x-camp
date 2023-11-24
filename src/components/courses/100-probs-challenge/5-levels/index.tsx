@@ -30,8 +30,8 @@ const Levels = () => {
       <div className={styles.content}>
         <div className={styles.title}>100-Probs-Challenge Divided into 5 levels</div>
         <Space size={36} wrap className={styles.cards}>
-          {levels?.map((v, index) => (
-            <div key={index} className={styles.card}>
+          {levels?.map((v) => (
+            <div key={v?.level} className={styles.card}>
               <div className={styles.level}>{v?.level}</div>
               <div className={styles.description}>{v?.description}</div>
             </div>

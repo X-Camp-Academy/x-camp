@@ -122,20 +122,19 @@ const ScheduleTable: React.FC = () => {
       <div style={{ marginTop: isMobile ? 16 : 35, paddingRight: '7px' }}>
         {courses?.data?.map((item) => {
           return (
-            <>
-              <div
-                className={styles.courseCardContainer}
-                key={item?.id}
-                onClick={() => {
-                  window.location.href = `/courses/detail/${item?.id}`;
-                }}
-              >
-                <CourseCard {...handleObject(item)} />
-              </div>
-            </>
+            <div
+              className={styles.courseCardContainer}
+              key={item?.id}
+              onClick={() => {
+                window.location.href = `/courses/detail/${item?.id}`;
+              }}
+            >
+              <CourseCard {...handleObject(item)} />
+            </div>
           );
         })}
       </div>
+
       <Pagination
         onChange={onPaginationChange}
         current={pagination?.page}

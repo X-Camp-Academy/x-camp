@@ -169,7 +169,7 @@ const ArticleSider: React.FC<{
       <div className={styles.activityCardContainer}>
         {eventThreeCard?.map((v, index) => {
           return (
-            <ColorfulCard border={'bottom'} animate={false} index={index} className={styles.card} key={index}>
+            <ColorfulCard border={'bottom'} animate={false} index={index} className={styles.card} key={v?.id}>
               <Card style={{ cursor: 'pointer' }} onClick={() => router.push(`/resources/education-forum/${v.id}`)}>
                 <Space direction="vertical" style={{ width: '100%' }}>
                   <Image src={getTranslateImg(v?.attributes?.imgZh, v?.attributes?.imgEn)} alt="image" preview={false} className={styles.image} />

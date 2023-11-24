@@ -205,10 +205,10 @@ const PublicCalendar: React.FC = () => {
               </Space>
               <div style={{ height: isMobile ? 125 : 250, overflow: 'auto', paddingRight: 16 }}>
                 {!!filterDateEventList.length ? (
-                  filterDateEventList.map((item, index) => {
+                  filterDateEventList?.map((item) => {
                     if (item?.startDateTime)
                       return (
-                        <Space key={index} direction="vertical" className={styles.calendarItem}>
+                        <Space key={item?.titleZh ?? '' + item?.titleEn} direction="vertical" className={styles.calendarItem}>
                           <Text className={styles.itemDate}>{getCourseDateStrInCalendar(item)}</Text>
                           <Paragraph className={styles.itemParagraph}>
                             {`${getTransResult(lang, item.titleZh, item.titleEn)} - ${getTransResult(lang, item.descriptionZh, item.descriptionEn)}`}
