@@ -1,18 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config) {
-    config.plugins.push(require("unplugin-json-dts/webpack")());
+    config.plugins.push(require('unplugin-json-dts/webpack')());
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
+      use: ['@svgr/webpack']
     });
     return config;
   },
   trailingSlash: true,
   experimental: {
-    typedRoutes: true,
+    typedRoutes: true
   },
-  swcMinify: true,
+  swcMinify: true
 };
 
 module.exports = nextConfig;
