@@ -1,6 +1,6 @@
 'use client';
-import { GetHomeStudentProjects } from '@/apis/strapi-client/define';
-import { useGetHomeStudentProjects } from '@/apis/strapi-client/strapi';
+import { GetStudentProjects } from '@/apis/strapi-client/define';
+import { useGetStudentProjects } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
@@ -15,11 +15,13 @@ const StudentProjects: React.FC = () => {
   const isMobile = useMobile();
   const { format: t, lang } = useLang();
   const { hash } = window.location;
-  const { data } = useGetHomeStudentProjects();
+  const { data } = useGetStudentProjects();
   const [inPadSize, setInPadSize] = useState<boolean>(false);
   const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
   const studentProjectsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
+  console.log(data);
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
@@ -40,7 +42,7 @@ const StudentProjects: React.FC = () => {
     }
   }, [window.innerWidth]);
 
-  const getVideoByLang = (attributes: GetHomeStudentProjects) => {
+  const getVideoByLang = (attributes: GetStudentProjects) => {
     const { video, videoZh, videoEn } = attributes;
 
     return video?.data ? `${video?.data?.attributes?.url}?autoplay=0` : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
