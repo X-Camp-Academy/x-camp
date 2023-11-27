@@ -3,8 +3,6 @@ import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
 import {
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAchievementsAwardResponse,
-  GetAboutUsJoinUsRequest,
-  GetAboutUsJoinUsResponse,
   GetAchievementsTimeLineRequest,
   GetAchievementsTimeLineResponse,
   GetAlumniMapRequest,
@@ -19,6 +17,8 @@ import {
   GetFacultyResponse,
   GetFaqRequest,
   GetFaqResponse,
+  GetJoinUsRequest,
+  GetJoinUsResponse,
   GetNewEventRequest,
   GetNewEventResponse,
   GetPartnerRequest,
@@ -103,8 +103,8 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getAboutUsJoinUs(params: GetAboutUsJoinUsRequest): Promise<GetAboutUsJoinUsResponse> {
-    const res: GetAboutUsJoinUsResponse = await this.get('/xc-about-us-join-uses' + getParamsStringify(params), {});
+  async getJoinUs(params: GetJoinUsRequest): Promise<GetJoinUsResponse> {
+    const res: GetJoinUsResponse = await this.get('/xc-join-uses' + getParamsStringify(params), {});
     return res;
   }
 

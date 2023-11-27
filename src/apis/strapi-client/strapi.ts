@@ -5,11 +5,8 @@ import { useRequest } from 'ahooks';
 import { isArray } from 'lodash';
 import { useStrapiClient } from '.';
 import {
-  AboutUsJoinUsCategory,
   FaqCategory,
   GetAboutUsAchievementsAwardRequest,
-  GetAboutUsJoinUsRequest,
-  GetAboutUsJoinUsResponse,
   GetAchievementsTimeLineRequest,
   GetAlumniMapRequest,
   GetCommunityRequest,
@@ -21,6 +18,8 @@ import {
   GetFacultyResponse,
   GetFaq,
   GetFaqRequest,
+  GetJoinUsRequest,
+  GetJoinUsResponse,
   GetNewEvent,
   GetNewEventRequest,
   GetNewEventResponse,
@@ -31,6 +30,7 @@ import {
   GetUSACOLiveSolutionRequest,
   GetUSACORequest,
   GetUserSearchRequest,
+  JoinUsCategory,
   NewEventCategory,
   SubmitQuestionRequest
 } from './define';
@@ -188,12 +188,12 @@ export const useGetCommunity = () => {
   );
 };
 
-export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
+export const useGetJoinUs = (category?: JoinUsCategory) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetAboutUsJoinUsRequest) => {
-      const res: GetAboutUsJoinUsResponse = await client.getAboutUsJoinUs(params);
+    async (params: GetJoinUsRequest) => {
+      const res: GetJoinUsResponse = await client.getJoinUs(params);
       return isArray(res?.data) ? res.data : [];
     },
     {

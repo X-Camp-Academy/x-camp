@@ -220,43 +220,43 @@ export interface GetResourcesContest extends strapiPublicFields {
 export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
-export enum AboutUsJoinUsCategory {
+export enum JoinUsCategory {
   PartTime = 'Part Time',
   FullTime = 'Full Time',
   XTutor = 'X-Tutor'
 }
 
-export enum AboutUsJoinUsPlace {
+export enum JoinUsPlace {
   Remote = 'Remote',
   OnSite = 'On Site'
 }
 
-export interface GetAboutUsJoinUs extends strapiPublicFields {
+export interface GetJoinUs extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  category: AboutUsJoinUsCategory;
-  place: AboutUsJoinUsPlace;
+  category: JoinUsCategory;
+  place: JoinUsPlace;
   contentZh: string;
   contentEn: string;
   order: number;
 }
-interface MapProps {
+interface AlumniMapProps {
   data: {
     name: string;
     value: string;
   }[];
 }
 
-export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
-export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
+export type GetJoinUsRequest = StrapiRequest<GetJoinUs>;
+export type GetJoinUsResponse = StrapiResponse<GetJoinUs>;
 
 export type GetReviewsRequest = StrapiRequest<GetReviews>;
 export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
 export interface GetAlumniMap extends strapiPublicFields {
-  world: MapProps;
+  world: AlumniMapProps;
 }
 
 export type GetAlumniMapRequest = StrapiRequest<GetAlumniMap>;

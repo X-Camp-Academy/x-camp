@@ -1,4 +1,4 @@
-import { GetAboutUsJoinUs } from '@/apis/strapi-client/define';
+import { GetJoinUs } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
 import { Collapse } from 'antd';
@@ -10,7 +10,7 @@ const { Panel } = Collapse;
 
 interface JobCardProps {
   index: number;
-  data: StrapiResponseDataItem<GetAboutUsJoinUs>;
+  data: StrapiResponseDataItem<GetJoinUs>;
 }
 
 const JobCard: React.FC<JobCardProps> = ({ index, data }) => {
