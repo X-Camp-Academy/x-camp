@@ -20,7 +20,7 @@ const StudentRecommend: React.FC = () => {
   const { data: faq } = useGetFaq({
     ready: true,
     category: FaqCategory.ReferralQA,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
   const { data: reviewsData } = useGetReviews({
     ready: true,

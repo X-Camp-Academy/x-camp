@@ -5,7 +5,6 @@ export enum FacultyLevelCategory {
   Intermediate = 'Intermediate',
   Grandmaster = 'Grandmaster'
 }
-
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -36,7 +35,6 @@ export enum EventCategory {
   Research = 'Research',
   All = 'All'
 }
-
 export enum EventLanguage {
   English = 'English',
   Chinese = 'Chinese'
@@ -66,12 +64,10 @@ export interface GetNewEvent extends strapiPublicFields {
   contestLogo?: StrapiMedia;
   contestTitleExplanationZh?: string;
   contestTitleExplanationEn?: string;
-
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
   detailContentZh?: string;
   detailContentEn?: string;
-
   eventLanguage?: EventLanguage;
   isContestEvent?: Boolean;
 }
@@ -253,19 +249,18 @@ interface MapProps {
   }[];
 }
 
-export interface GetAboutUsAlumniMap extends strapiPublicFields {
-  world: MapProps;
-  usa: MapProps;
-}
-
 export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
 export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
 
 export type GetReviewsRequest = StrapiRequest<GetReviews>;
 export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
-export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
-export type GetAboutUsAlumniMapResponse = StrapiResponseSingleDataItem<GetAboutUsAlumniMap>;
+export interface GetAlumniMap extends strapiPublicFields {
+  world: MapProps;
+}
+
+export type GetAlumniMapRequest = StrapiRequest<GetAlumniMap>;
+export type GetAlumniMapResponse = StrapiResponseSingleDataItem<GetAlumniMap>;
 export interface GetProjectDemos extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -368,14 +363,14 @@ export interface GetUSACO extends strapiPublicFields {
 export type GetUSACORequest = StrapiRequest<GetUSACO>;
 export type GetUSACOResponse = StrapiResponse<GetUSACO>;
 
-export interface UserInfo extends strapiPublicFields {
+export interface SubmitQuestion extends strapiPublicFields {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   message: string;
 }
-export type SubmitUserInfoRequest = {
-  data: UserInfo;
+export type SubmitQuestionRequest = {
+  data: SubmitQuestion;
 };
-export type SubmitUserInfoResponse = StrapiResponseSingleDataItem<UserInfo>;
+export type SubmitQuestionResponse = StrapiResponseSingleDataItem<SubmitQuestion>;

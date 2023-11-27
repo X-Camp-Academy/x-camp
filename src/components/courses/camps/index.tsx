@@ -36,7 +36,7 @@ const CourseCamps: React.FC = () => {
   const { data: faq } = useGetFaq({
     ready: Boolean(campsCourse),
     category: FaqCategory.CampsQA,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
   const { data: reviewsData } = useGetReviews({
     ready: Boolean(campsCourse),

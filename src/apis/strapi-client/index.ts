@@ -3,12 +3,12 @@ import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
 import {
   GetAboutUsAchievementsAwardRequest,
   GetAboutUsAchievementsAwardResponse,
-  GetAboutUsAlumniMapRequest,
-  GetAboutUsAlumniMapResponse,
   GetAboutUsJoinUsRequest,
   GetAboutUsJoinUsResponse,
   GetAchievementsTimeLineRequest,
   GetAchievementsTimeLineResponse,
+  GetAlumniMapRequest,
+  GetAlumniMapResponse,
   GetCommunityRequest,
   GetCommunityResponse,
   GetCourseLevelTypeRequest,
@@ -35,8 +35,8 @@ import {
   GetUSACOResponse,
   GetUserSearchRequest,
   GetUserSearchResponse,
-  SubmitUserInfoRequest,
-  SubmitUserInfoResponse
+  SubmitQuestionRequest,
+  SubmitQuestionResponse
 } from './define';
 
 const { strapiServer } = apiConfig;
@@ -113,8 +113,8 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getAboutUsAlumniMap(params: GetAboutUsAlumniMapRequest): Promise<GetAboutUsAlumniMapResponse> {
-    const res = await this.get('/xc-about-us-alumni-map' + getParamsStringify(params), {});
+  async getAlumniMap(params: GetAlumniMapRequest): Promise<GetAlumniMapResponse> {
+    const res = await this.get('/xc-alumni-map' + getParamsStringify(params), {});
     return res;
   }
 
@@ -153,7 +153,7 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async submitQuestionForm(params: SubmitUserInfoRequest): Promise<SubmitUserInfoResponse> {
+  async submitQuestion(params: SubmitQuestionRequest): Promise<SubmitQuestionResponse> {
     const res = await this.post('/xc-feed-backs', params, this.jsonHeaders);
     return res;
   }

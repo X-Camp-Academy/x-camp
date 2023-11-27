@@ -21,8 +21,6 @@ const StudentProjects: React.FC = () => {
 
   const studentProjectsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
 
-  console.log(data);
-
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
     dom?.scrollIntoView({
