@@ -1,4 +1,4 @@
-import { PageTitle, generateMetadata } from '@/utils/public';
+import { PageTitle, generateMetadata } from '@/utils/metadata';
 
 export const metadata = {
   ...generateMetadata(PageTitle.Forbidden)
