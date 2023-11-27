@@ -1,4 +1,4 @@
-import { GetAboutUsJoinUs } from '@/apis/strapi-client/define';
+import { GetJoinUs } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -12,7 +12,7 @@ import styles from './index.module.scss';
 const { Title, Text } = Typography;
 
 interface JobCardHeaderProps {
-  data: StrapiResponseDataItem<GetAboutUsJoinUs> | undefined;
+  data: StrapiResponseDataItem<GetJoinUs> | undefined;
   showExpandBtn?: boolean;
 }
 

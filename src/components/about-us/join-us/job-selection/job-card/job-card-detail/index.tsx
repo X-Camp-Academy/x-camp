@@ -1,4 +1,4 @@
-import { GetAboutUsJoinUs } from '@/apis/strapi-client/define';
+import { GetJoinUs } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
@@ -9,7 +9,7 @@ import { XStarMdViewer } from 'x-star-editor';
 import styles from './index.module.scss';
 
 interface JobCardDetailProps {
-  data: StrapiResponseDataItem<GetAboutUsJoinUs> | undefined;
+  data: StrapiResponseDataItem<GetJoinUs> | undefined;
 }
 
 const JobCardDetail: React.FC<JobCardDetailProps> = ({ data }) => {

@@ -2,7 +2,7 @@
 import { GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult } from '@/utils/public';
+import { getTransResult, monthNameEn } from '@/utils/public';
 import { iframePlugin } from '@/utils/x-star-editor/plugins/viewer-iframe';
 import { viewerVideoPlugin } from '@/utils/x-star-editor/plugins/viewer-video';
 import { ClockCircleOutlined, ReadOutlined } from '@ant-design/icons';
@@ -21,8 +21,6 @@ interface Props {
 
 const ArticleContent = ({ props }: Props) => {
   const { format: t, lang } = useLang();
-
-  const monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const formatDate = (date: string) => {
     if (!date) {

@@ -5,7 +5,6 @@ export enum FacultyLevelCategory {
   Intermediate = 'Intermediate',
   Grandmaster = 'Grandmaster'
 }
-
 export interface GetFaculty extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -36,7 +35,6 @@ export enum EventCategory {
   Research = 'Research',
   All = 'All'
 }
-
 export enum EventLanguage {
   English = 'English',
   Chinese = 'Chinese'
@@ -66,12 +64,10 @@ export interface GetNewEvent extends strapiPublicFields {
   contestLogo?: StrapiMedia;
   contestTitleExplanationZh?: string;
   contestTitleExplanationEn?: string;
-
   imgEn: StrapiMedia;
   imgZh: StrapiMedia;
   detailContentZh?: string;
   detailContentEn?: string;
-
   eventLanguage?: EventLanguage;
   isContestEvent?: Boolean;
 }
@@ -224,48 +220,47 @@ export interface GetResourcesContest extends strapiPublicFields {
 export type GetResourcesContestRequest = StrapiRequest<GetResourcesContest>;
 export type GetResourcesContestResponse = StrapiResponse<GetResourcesContest>;
 
-export enum AboutUsJoinUsCategory {
+export enum JoinUsCategory {
   PartTime = 'Part Time',
   FullTime = 'Full Time',
   XTutor = 'X-Tutor'
 }
 
-export enum AboutUsJoinUsPlace {
+export enum JoinUsPlace {
   Remote = 'Remote',
   OnSite = 'On Site'
 }
 
-export interface GetAboutUsJoinUs extends strapiPublicFields {
+export interface GetJoinUs extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
-  category: AboutUsJoinUsCategory;
-  place: AboutUsJoinUsPlace;
+  category: JoinUsCategory;
+  place: JoinUsPlace;
   contentZh: string;
   contentEn: string;
   order: number;
 }
-interface MapProps {
+interface AlumniMapProps {
   data: {
     name: string;
     value: string;
   }[];
 }
 
-export interface GetAboutUsAlumniMap extends strapiPublicFields {
-  world: MapProps;
-  usa: MapProps;
-}
-
-export type GetAboutUsJoinUsRequest = StrapiRequest<GetAboutUsJoinUs>;
-export type GetAboutUsJoinUsResponse = StrapiResponse<GetAboutUsJoinUs>;
+export type GetJoinUsRequest = StrapiRequest<GetJoinUs>;
+export type GetJoinUsResponse = StrapiResponse<GetJoinUs>;
 
 export type GetReviewsRequest = StrapiRequest<GetReviews>;
 export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
-export type GetAboutUsAlumniMapRequest = StrapiRequest<GetAboutUsAlumniMap>;
-export type GetAboutUsAlumniMapResponse = StrapiResponseSingleDataItem<GetAboutUsAlumniMap>;
+export interface GetAlumniMap extends strapiPublicFields {
+  world: AlumniMapProps;
+}
+
+export type GetAlumniMapRequest = StrapiRequest<GetAlumniMap>;
+export type GetAlumniMapResponse = StrapiResponseSingleDataItem<GetAlumniMap>;
 export interface GetProjectDemos extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -368,14 +363,14 @@ export interface GetUSACO extends strapiPublicFields {
 export type GetUSACORequest = StrapiRequest<GetUSACO>;
 export type GetUSACOResponse = StrapiResponse<GetUSACO>;
 
-export interface UserInfo extends strapiPublicFields {
+export interface SubmitQuestion extends strapiPublicFields {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   message: string;
 }
-export type SubmitUserInfoRequest = {
-  data: UserInfo;
+export type SubmitQuestionRequest = {
+  data: SubmitQuestion;
 };
-export type SubmitUserInfoResponse = StrapiResponseSingleDataItem<UserInfo>;
+export type SubmitQuestionResponse = StrapiResponseSingleDataItem<SubmitQuestion>;

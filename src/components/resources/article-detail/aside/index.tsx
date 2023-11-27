@@ -4,7 +4,7 @@ import { StrapiMedia, StrapiResponseDataItem } from '@/apis/strapi-client/strapi
 import ActivityCalendar from '@/components/common/activity-calendar';
 import ColorfulCard from '@/components/common/colorful-card';
 import { useLang } from '@/hoc/with-intl/define';
-import { formatTimezone, getTransResult } from '@/utils/public';
+import { formatTimezone, getTransResult, monthNameEn } from '@/utils/public';
 import { AlignRightOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Image, Row, Space, Typography } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
@@ -22,7 +22,6 @@ const ArticleSider: React.FC<{
 }> = ({ eventCategory: EventCategory, articleId }) => {
   const { lang } = useLang();
   const router = useRouter();
-  const monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const [selectedDate, setSelectedDate] = useState<string>(dayjs().toString());
   const [eventThreeCard, setEventThreeCard] = useState<StrapiResponseDataItem<GetNewEvent>[]>([]); //日历下面三张卡片

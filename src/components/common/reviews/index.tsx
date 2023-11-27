@@ -70,7 +70,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
                 {
                   breakpoint: 576,
                   settings: {
-                    slidesToShow: 2
+                    slidesToShow: 1
                   }
                 }
               ]}

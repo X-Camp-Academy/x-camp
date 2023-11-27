@@ -3,7 +3,7 @@ import AnimateBox from '@/components/common/animate-box';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult } from '@/utils/public';
+import { defaultVideoUrl, getTransResult } from '@/utils/public';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
@@ -20,7 +20,7 @@ const WeSupport: React.FC = () => {
       <div className={`${styles.weSupport} container`}>
         <Row>
           <Col xs={{ span: 24, order: 2 }} sm={{ span: 24, order: 2 }} md={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }}>
-            <iframe src="https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0" className={styles.videoIframe} allowFullScreen sandbox="" />
+            <iframe src={defaultVideoUrl} className={styles.videoIframe} allowFullScreen sandbox="" />
           </Col>
           <Col xs={{ span: 24, order: 1 }} sm={{ span: 24, order: 1 }} md={{ span: 24, order: 1 }} lg={{ span: 11, order: 2, offset: 1 }} className={styles.rightCol}>
             <Row>

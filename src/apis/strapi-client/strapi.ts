@@ -5,13 +5,10 @@ import { useRequest } from 'ahooks';
 import { isArray } from 'lodash';
 import { useStrapiClient } from '.';
 import {
-  AboutUsJoinUsCategory,
   FaqCategory,
   GetAboutUsAchievementsAwardRequest,
-  GetAboutUsAlumniMapRequest,
-  GetAboutUsJoinUsRequest,
-  GetAboutUsJoinUsResponse,
   GetAchievementsTimeLineRequest,
+  GetAlumniMapRequest,
   GetCommunityRequest,
   GetCommunityResponse,
   GetCourseLevelTypeRequest,
@@ -21,6 +18,8 @@ import {
   GetFacultyResponse,
   GetFaq,
   GetFaqRequest,
+  GetJoinUsRequest,
+  GetJoinUsResponse,
   GetNewEvent,
   GetNewEventRequest,
   GetNewEventResponse,
@@ -31,8 +30,9 @@ import {
   GetUSACOLiveSolutionRequest,
   GetUSACORequest,
   GetUserSearchRequest,
+  JoinUsCategory,
   NewEventCategory,
-  SubmitUserInfoRequest
+  SubmitQuestionRequest
 } from './define';
 import { AndOrFilters, FilterFields, StrapiResponseDataItem, sortDesc } from './strapiDefine';
 
@@ -46,10 +46,6 @@ interface Props {
   eventId?: string[];
 }
 
-/**
- * 获取Faculty
- * @returns
- */
 export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -87,10 +83,6 @@ export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
   );
 };
 
-/**
- * 获取News，Event
- * @returns
- */
 export const useGetNewEvent = ({
   tag,
   current = 1,
@@ -156,10 +148,6 @@ export const useGetNewEvent = ({
   );
 };
 
-/**
- * 获取AboutUs Achievements Usaco Medal
- * @returns
- */
 export const useGetAboutUsAchievementsAward = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -180,10 +168,6 @@ export const useGetAboutUsAchievementsAward = () => {
   );
 };
 
-/**
- * 获取首页Community
- * @returns
- */
 export const useGetCommunity = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -204,16 +188,12 @@ export const useGetCommunity = () => {
   );
 };
 
-/**
- * 获取关于我们目录下的Join Us
- * @returns
- */
-export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
+export const useGetJoinUs = (category?: JoinUsCategory) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetAboutUsJoinUsRequest) => {
-      const res: GetAboutUsJoinUsResponse = await client.getAboutUsJoinUs(params);
+    async (params: GetJoinUsRequest) => {
+      const res: GetJoinUsResponse = await client.getJoinUs(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -234,10 +214,6 @@ export const useGetAboutUsJoinUs = (category?: AboutUsJoinUsCategory) => {
   );
 };
 
-/**
- * 获取评价
- * @returns
- */
 export const useGetReviews = ({
   ready,
   courseId,
@@ -284,10 +260,6 @@ export const useGetReviews = ({
   );
 };
 
-/**
- * 获取首页 Student Projects
- * @returns
- */
 export const useGetStudentProjects = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -307,10 +279,6 @@ export const useGetStudentProjects = () => {
   );
 };
 
-/**
- * 获取Course Level Type
- * @returns
- */
 export const useGetCourseLevelType = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -330,10 +298,6 @@ export const useGetCourseLevelType = () => {
   );
 };
 
-/**
- * 获取所有的课程数据
- * @returns
- */
 export const useGetCourses = ({
   filters,
   pagination,
@@ -366,17 +330,13 @@ export const useGetCourses = ({
   );
 };
 
-/**
- * !暂时保留
- * 获取关于我们毕业生地图数据
- * @returns
- */
-export const useGetAboutUsAlumniMap = () => {
+// !暂时保留
+export const useGetAlumniMap = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetAboutUsAlumniMapRequest) => {
-      const res = await client.getAboutUsAlumniMap(params);
+    async (params: GetAlumniMapRequest) => {
+      const res = await client.getAlumniMap(params);
       return res?.data?.attributes;
     },
     {
@@ -390,10 +350,6 @@ export const useGetAboutUsAlumniMap = () => {
   );
 };
 
-/**
- * 获取关于我们目录下的achievements的Project Demos
- * @returns
- */
 export const useGetProjectDemos = () => {
   const client = useStrapiClient();
   const { lang } = useLang();
@@ -415,10 +371,6 @@ export const useGetProjectDemos = () => {
   );
 };
 
-/**
- * 获取关于我们目录下的achievements的Time Line
- * @returns
- */
 export const useGetAchievementsTimeLine = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -458,10 +410,6 @@ export const useGetUSACOLiveSolution = () => {
   );
 };
 
-/**
- * 获取Faq
- * @returns
- */
 export const useGetFaq = <T extends boolean = false, R = T extends true ? StrapiResponseDataItem<GetFaq>[][] : StrapiResponseDataItem<GetFaq>[]>({
   ready,
   isClassify,
@@ -521,10 +469,6 @@ export const useGetFaq = <T extends boolean = false, R = T extends true ? Strapi
   );
 };
 
-/**
- * 获取about us目录下的Partner
- * @returns
- */
 export const useGetPartner = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -545,10 +489,6 @@ export const useGetPartner = () => {
   );
 };
 
-/**
- * 获取用户可搜索的关键词以及对应链接
- * @returns
- */
 export const useGetUserSearchMap = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -568,16 +508,12 @@ export const useGetUserSearchMap = () => {
   );
 };
 
-/**
- * 提交用户问题表单
- * @returns
- */
-export const useSubmitQuestionForm = () => {
+export const useSubmitQuestion = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: SubmitUserInfoRequest) => {
-      const res = await client.submitQuestionForm(params);
+    async (params: SubmitQuestionRequest) => {
+      const res = await client.submitQuestion(params);
       return res;
     },
     {

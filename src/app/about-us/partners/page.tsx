@@ -1,4 +1,4 @@
-import { PageTitle, generateMetadata } from '@/app/metadata';
+import { PageTitle, generateMetadata } from '@/utils/metadata';
 import dynamic from 'next/dynamic';
 
 const Partners = dynamic(() => import('@/components/about-us/partners'));

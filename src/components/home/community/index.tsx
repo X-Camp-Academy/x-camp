@@ -4,7 +4,7 @@ import MaskCard from '@/components/common/mask-card';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult } from '@/utils/public';
+import { getTransResult, scrollIntoView } from '@/utils/public';
 import { Carousel, Space, Typography } from 'antd';
 import React, { useEffect } from 'react';
 import styles from './index.module.scss';
@@ -26,14 +26,6 @@ const Community: React.FC = () => {
         </Paragraph>
       </Space>
     );
-  };
-
-  const scrollIntoView = (id: string) => {
-    const dom = document.getElementById(id);
-    dom?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
   };
 
   useEffect(() => {

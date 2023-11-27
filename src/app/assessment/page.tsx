@@ -1,5 +1,5 @@
+import { PageTitle, generateMetadata } from '@/utils/metadata';
 import dynamic from 'next/dynamic';
-import { PageTitle, generateMetadata } from '../metadata';
 
 const Assessment = dynamic(() => import('@/components/assessment'));
 

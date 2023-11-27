@@ -1,3 +1,4 @@
+import { monthNameEn } from '@/utils/public';
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import 'dayjs/locale/zh-cn';
@@ -6,8 +7,6 @@ import { useEffect } from 'react';
 
 const WEEKDAY_EN = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
 const WEEKDAY_ZH = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-
-const MONTH_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 enum ILocal {
   zh = 'zh-cn',
@@ -35,7 +34,7 @@ const useDayJs = (lang?: string) => {
   const getMonth = (date: string) => {
     if (!date) return '';
     const month = dayjs(date).month();
-    return lang === 'zh' ? `${month + 1}月` : MONTH_EN[month];
+    return lang === 'zh' ? `${month + 1}月` : monthNameEn[month];
   };
 
   /**
@@ -68,7 +67,7 @@ const useDayJs = (lang?: string) => {
    * @param date
    */
   const formatYMDTime = (date: string | undefined) => {
-    return lang === 'zh' ? dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_ZH) : `${MONTH_EN[dayjs(date).month()]}${dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_EN)}`;
+    return lang === 'zh' ? dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_ZH) : `${monthNameEn[dayjs(date).month()]}${dayjs(date).format(FORMAT_YYYY_MM_DD_H_m_EN)}`;
   };
 
   /**
@@ -78,7 +77,7 @@ const useDayJs = (lang?: string) => {
   const formatDate = (date: string) => {
     const dateInfo = dayjs(date);
     const month = dateInfo.month();
-    return lang === 'zh' ? dateInfo.format(FORMAT_MM_DD) : `${MONTH_EN[month]} ${dateInfo.date()}`;
+    return lang === 'zh' ? dateInfo.format(FORMAT_MM_DD) : `${monthNameEn[month]} ${dateInfo.date()}`;
   };
 
   return {

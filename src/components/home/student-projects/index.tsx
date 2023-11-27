@@ -3,7 +3,7 @@ import { GetStudentProjects } from '@/apis/strapi-client/define';
 import { useGetStudentProjects } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult } from '@/utils/public';
+import { defaultVideoUrl, getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
 import { Card, Col, Row, Space, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
@@ -17,11 +17,8 @@ const StudentProjects: React.FC = () => {
   const { hash } = window.location;
   const { data } = useGetStudentProjects();
   const [inPadSize, setInPadSize] = useState<boolean>(false);
-  const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 
   const studentProjectsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-
-  console.log(data);
 
   const scrollIntoView = (id: string) => {
     const dom = document.getElementById(id);
