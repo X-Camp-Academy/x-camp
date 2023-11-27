@@ -148,6 +148,8 @@ const Courses: React.FC = () => {
 
   // filter data by segmented
   // ! TODO through net request api get data
+  // course level types
+  // all classes/weekly classes/in-person camps/mock test classes / java & apcs classes
   const onFinish = (values: { category: string; quarter: string }) => {
     const { category, quarter } = values;
     let result;
