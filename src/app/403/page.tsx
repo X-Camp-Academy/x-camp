@@ -1,6 +1,7 @@
+import { PageTitle, generateMetadata } from '@/utils/public';
+
 export const metadata = {
-  title: 'X-Camp Academy',
-  description: 'X-Camp Academy | Programming and Education news from X-Camp'
+  ...generateMetadata(PageTitle.Forbidden)
 };
 
 const Page: React.FC = () => {

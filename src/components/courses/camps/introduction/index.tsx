@@ -6,17 +6,30 @@ const Introduction = () => {
   const { format: t } = useLang();
 
   const images = ['/image/courses/camps-1.png', '/image/courses/camps-2.png', '/image/courses/camps-3.png'];
+  const data = [
+    {
+      question: t('Camp.Problem1'),
+      answer: t('Camp.Answer1')
+    },
+    {
+      question: t('Camp.Problem2'),
+      answer: t('Camp.Answer2')
+    },
+    {
+      question: t('Camp.Problem3'),
+      answer: t('Camp.Answer3')
+    }
+  ];
   return (
     <div className={`${styles.introduction} container`}>
       <div className={styles.title}>{t('Camp.Title')}</div>
       <div className={styles.content}>
-        <div className={styles.question}>{t('Camp.Problem1')}</div>
-        <div className={styles.answer}>{t('Camp.Answer1')}</div>
-        <div className={styles.question}>{t('Camp.Problem2')}</div>
-        <div className={styles.answer}>{t('Camp.Answer2')}</div>
-        <div className={styles.question}>{t('Camp.Problem3')}</div>
-        <div className={styles.answer}>{t('Camp.Answer3')}</div>
-
+        {data?.map((item) => (
+          <div key={item?.question}>
+            <div className={styles.question}>{item?.question}</div>
+            <div className={styles.answer}>{item?.answer}</div>
+          </div>
+        ))}
         <Row gutter={16} style={{ marginTop: 100 }}>
           <Col xs={24} sm={24} md={24} lg={24} xl={18}>
             <video controls className={styles.videoBox}>

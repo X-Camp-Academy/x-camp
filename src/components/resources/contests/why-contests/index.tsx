@@ -37,7 +37,7 @@ const WhyContests: React.FC = () => {
         <div className={styles.description}>{t('WhyContest.Desc')}</div>
       </div>
       <Space direction="vertical" size={isMobile ? 0 : 8} className={styles.intro}>
-        {items?.map((v, index) => (
+        {items?.map((v) => (
           <div key={v?.title}>
             <div className={styles.title}>{v?.title}:</div>
             <div className={styles.description}>{v?.description}</div>

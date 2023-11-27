@@ -147,6 +147,7 @@ const Courses: React.FC = () => {
   }, [hash, segmentedData]);
 
   // filter data by segmented
+  // ! TODO through net request api get data
   const onFinish = (values: { category: string; quarter: string }) => {
     const { category, quarter } = values;
     let result;

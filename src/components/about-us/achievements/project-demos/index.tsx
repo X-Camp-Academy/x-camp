@@ -2,6 +2,7 @@ import { GetProjectDemos } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
+import { scrollIntoView } from '@/utils/public';
 import { Typography } from 'antd';
 import { useEffect } from 'react';
 import styles from './index.module.scss';
@@ -16,13 +17,7 @@ const ProjectDemos = ({ data }: Props) => {
   const { hash } = window.location;
   const { lang, format: t } = useLang();
   const isMobile = useMobile();
-  const scrollIntoView = (id: string) => {
-    const dom = document.getElementById(id);
-    dom?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  };
+
   useEffect(() => {
     scrollIntoView(hash.slice(1));
   }, [hash]);

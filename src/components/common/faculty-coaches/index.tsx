@@ -3,7 +3,7 @@ import { FacultyLevelCategory, GetFaculty } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult } from '@/utils/public';
+import { getTransResult, scrollIntoView } from '@/utils/public';
 import { Avatar, Card, Col, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React, { useEffect, useState } from 'react';
@@ -23,14 +23,6 @@ const FacultyCoaches: React.FC<{
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
   const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
-
-  const scrollIntoView = (id: string) => {
-    const dom = document.getElementById(id);
-    dom?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  };
 
   useEffect(() => {
     if (hash) {

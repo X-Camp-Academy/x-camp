@@ -2,8 +2,8 @@
 import { FrequencyCategory } from '@/apis/strapi-client/define';
 import dayjs, { Dayjs } from 'dayjs';
 
+export const defaultVideoUrl = 'https://media.strapi.turingstar.com.cn/production/2023/7/20230726_162259_bac67c1a78.mp4?autoplay=0';
 export const monthNameEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 export const monthNameZH = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 /**
@@ -17,6 +17,25 @@ export const getTransResult = (lang: 'zh' | 'en', zhText: string | undefined, en
   if (zhText === undefined && enText === undefined) return '';
   if (lang === 'zh') return zhText ? zhText : enText;
   else return enText ? enText : zhText;
+};
+
+/**
+ * 选择语言
+ * @param lang 语言
+ * @param zhText 中文数据
+ * @param enText 英文数据
+ * @returns string[]
+ */
+export const getLangResult = (lang: 'zh' | 'en', zhData?: string[], enData?: string[]) => {
+  if (zhData === null && enData === null) {
+    return [];
+  } else {
+    if (lang === 'zh') {
+      return zhData ? zhData : enData;
+    } else {
+      return enData ? enData : zhData;
+    }
+  }
 };
 
 /**
@@ -65,13 +84,7 @@ export const filterByAttribution = <T extends { attributes: any }>(data: T[], at
  * @param array
  * @returns 数组去重，重复的判定标准是每个对象的id属性
  */
-export const deduplicateArray = <
-  T extends {
-    id: number;
-  }
->(
-    array: T[]
-  ): T[] => {
+export const deduplicateArray = <T extends { id: number }>(array: T[]): T[] => {
   const deduplicatedArray: T[] = [];
   const idSet = new Set<number>();
   for (const item of array) {
@@ -82,6 +95,83 @@ export const deduplicateArray = <
   }
 
   return deduplicatedArray;
+};
+
+export const scrollIntoView = (id: string) => {
+  const dom = document.getElementById(id);
+  dom?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+};
+
+export const getWeeksDays = (frequency?: FrequencyCategory) => {
+  switch (frequency) {
+    case FrequencyCategory.Daily:
+      return 'days';
+    case FrequencyCategory.Weekly:
+      return 'weeks';
+    case FrequencyCategory.Once:
+      return 'once';
+    default:
+      return 'days';
+  }
+};
+
+export const formatFinance = (number?: number | string) => {
+  if (number === undefined) return;
+  return number?.toString()?.replace(/\B(?=(\d{3})+$)/g, ',');
+};
+
+export enum PageTitle {
+  Home = 'Home',
+
+  Achievements = 'Achievements',
+  Calendar = 'Calendar',
+  ContactUs = 'Contact Us',
+  HelpCenter = 'Help Center',
+  Introduction = 'Introduction',
+  JoinUs = 'Join Us',
+  SubmitResume = 'Submit Resume',
+  News = 'News',
+  Partners = 'Partners',
+  PrivacyPolicy = 'Privacy Policy',
+  StudentRecommend = 'Student Recommend',
+  XAlumni = 'XAlumni',
+
+  Courses = 'Courses',
+  CoursesCatalog = 'Courses Catalog',
+  CourseDetail = 'Course Detail',
+  CourseCamps = 'Course Camps',
+
+  Contests = 'Contests',
+  EducationForum = 'Education Forum',
+  Detail = 'Detail',
+  UsacoLiveSolutions = 'USACO Live Solutions',
+  WeeklyOpenHouse = 'Weekly Open House',
+  USACO = 'USACO',
+
+  Assessment = 'Assessment',
+  Login = 'Login',
+  Forbidden = '403'
+}
+
+export const generateMetadata = (title: string) => {
+  const defaultMetaData = {
+    title: 'X-Camp Academy | Coding Classes for All',
+    description: [
+      'X-Camp Academy a silicon valley based institute offers coding classes for middle and high school students to achieve success at contests like USACO and beyond. With a curriculum developed by programming competition veteran Xianyou Xu, students have won four International Olympiad in Informatics (IOI) gold medals and one IOI silver medal.',
+      'From beginner level Python to classic C++, X-Camp offers 18 courses with incremental levels of difficulty for students between grades 6-12 with divergent coding backgrounds.'
+    ],
+    keywords: 'USACO, X-Camp, XCamp, X Camp, IOI, International Olympiad in Informatics, Bay Area, Coding School, C++, Python, Coding Contest'
+  };
+  if (!title) {
+    return defaultMetaData;
+  }
+  return {
+    ...defaultMetaData,
+    title: `${title} | X-Camp Academy | Coding Classes for All`
+  };
 };
 
 export enum StandardTimeZone {
@@ -165,7 +255,6 @@ export const formatTimezone = (original: string | undefined) => {
   //特殊时区转化描述
   const convertTimeZone = () => {
     if (isSummerTime(dayjs())) {
-      console.log('进入夏令时');
       // 夏令时
       switch (utcOffset) {
         case DaylightTimeZone.HawaiiDaylightTime:
@@ -206,145 +295,4 @@ export const formatTimezone = (original: string | undefined) => {
     timezone: convertTimeZone(),
     utcTime
   } as const;
-};
-
-/**
- * @param version1 版本号1
- * @param version2 版本号2
- * @returns 1 0 -1, 1为前面版本号更新，0为一样，-1为后面的新
- * compareVersion('1.2.4', '1.1.5') // 1
- * compareVersion('1.2', '1.10.5') // -1
- * compareVersion('1.00.03', '1.0.03') // 0
- */
-export const compareVersion = (version1: string, version2: string): 1 | 0 | -1 => {
-  const arr1 = version1?.split('.');
-  const arr2 = version2?.split('.');
-  const length1 = arr1?.length;
-  const length2 = arr2?.length;
-  const minlength = Math.min(length1, length2);
-  let i = 0;
-  for (i; i < minlength; i++) {
-    const a = parseInt(arr1[i]);
-    const b = parseInt(arr2[i]);
-    if (a > b) {
-      return 1;
-    } else if (a < b) {
-      return -1;
-    }
-  }
-  if (length1 > length2) {
-    for (let j = i; j < length1; j++) {
-      if (parseInt(arr1[j]) !== 0) {
-        return 1;
-      }
-    }
-    return 0;
-  } else if (length1 < length2) {
-    for (let j = i; j < length2; j++) {
-      if (parseInt(arr2[j]) !== 0) {
-        return -1;
-      }
-    }
-    return 0;
-  }
-  return 0;
-};
-
-interface SysInterface {
-  ie?: string;
-  firefox?: string;
-  chrome?: string;
-  opera?: string;
-  safari?: string;
-}
-
-/**
- *
- * @returns 浏览器类别对象数组
- */
-export const judgeSystem = (): SysInterface => {
-  const ua = navigator?.userAgent?.toLowerCase();
-  const systemMatch = {
-    ie: /msie ([d.]+)/,
-    firefox: /firefox\/([\d.]+)/,
-    chrome: /chrome\/([\d.]+)/,
-    opera: /opera.([\d.]+)/,
-    safari: /version\/([\d.]+).*safari/
-  };
-  const Sys: SysInterface = Object?.keys(systemMatch)?.reduce((pre, item) => {
-    return {
-      ...pre,
-      [item]: ua.match(systemMatch[item as keyof SysInterface])?.[1]
-    };
-  }, {});
-  return Sys;
-};
-
-/**
- *
- * @returns 浏览器是否兼容
- */
-export const getBrowserCompatibility = (): boolean => {
-  const system = judgeSystem();
-  const minBrowserVersion = {
-    ie: '9999.0',
-    firefox: '80.0',
-    chrome: '88.0',
-    opera: '80.0',
-    safari: '14.1'
-  };
-  const browsers = Object?.keys(minBrowserVersion);
-  for (const item of browsers) {
-    if (system?.[item as keyof SysInterface] && compareVersion(system?.[item as keyof SysInterface]!, minBrowserVersion[item as keyof SysInterface]) === 1) {
-      return true;
-    }
-  }
-  return false;
-};
-
-/**
- *
- * @returns 滚动到指定的id容器
- */
-export const scrollIntoView = (id: string) => {
-  const dom = document.getElementById(id);
-  dom?.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
-};
-
-// 获取非空数据
-export const getLangResult = (lang: 'zh' | 'en', zhData?: string[], enData?: string[]) => {
-  if (zhData === null && enData === null) {
-    return [];
-  } else {
-    if (lang === 'zh') {
-      return zhData ? zhData : enData;
-    } else {
-      return enData ? enData : zhData;
-    }
-  }
-};
-
-export const getWeeksDays = (frequency?: FrequencyCategory) => {
-  switch (frequency) {
-    case FrequencyCategory.Daily:
-      return 'days';
-    case FrequencyCategory.Weekly:
-      return 'weeks';
-    case FrequencyCategory.Once:
-      return 'once';
-    default:
-      return 'days';
-  }
-};
-
-/**
- * @param number 传入的金额
- * @returns 格式化后的金额
- */
-export const formatFinance = (number?: number | string) => {
-  if (number === undefined) return;
-  return number?.toString()?.replace(/\B(?=(\d{3})+$)/g, ',');
 };

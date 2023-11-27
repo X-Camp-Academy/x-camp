@@ -64,7 +64,6 @@ const ContestCard = ({ data }: Props) => {
               <div
                 className={cx(styles.item, index % 2 === 1 && styles.itemEven)}
                 onClick={() => {
-                  // 滚动到对应的比赛
                   const element = document.getElementById(`contest-${v?.id}`);
                   element?.scrollIntoView({
                     behavior: 'smooth',
