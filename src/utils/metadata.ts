@@ -27,7 +27,8 @@ export enum PageTitle {
   USACO = 'USACO',
 
   Assessment = 'Assessment',
-  Login = 'Login'
+  Login = 'Login',
+  Forbidden = '403'
 }
 
 export const generateMetadata = (title: string) => {
