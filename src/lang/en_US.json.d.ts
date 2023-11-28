@@ -499,10 +499,10 @@ declare const json: {
   'USACO.Pain.Points7': 'Uncertain about your current standing and what to expect for upcoming USACO seasons?';
   'USACO.Pain.Points.Desc': "If these resonate with you, don't hesitate to reach out to X-Camp! Our dedicated teaching team is here to help you make the most of your learning journey.";
   TuesdayOpenHouse: 'Tuesday Open House';
-  Spring: '2024Spring(4/6-6/9)';
-  Summer: '2024Summer';
-  Fall: '2023Fall';
-  Winter: '2023Winter(1/6-3/10)';
+  Spring: '2024Q2';
+  Summer: '2024Q3';
+  Fall: '2024Q4';
+  Winter: '2024Q1';
   NoContest: 'No Contest';
   InputTheStateYouLiveIn: 'Input the state you live in';
   ParentEmail: "Parent's Email";
