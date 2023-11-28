@@ -88,58 +88,8 @@
     }
   }
 
-  .topLeftImage {
-    width: 160px;
-    height: 64px;
-
-    @media (width <= 768px) {
-      width: 100%;
-      height: 48px;
-    }
-  }
-
-  .topCenterImage {
-    width: 160px;
-    height: 64px;
-
-    @media (width <= 768px) {
-      width: 100%;
-      height: 48px;
-    }
-  }
-
-  .topRightImage {
-    width: 80px;
-    height: 64px;
-
-    @media (width <= 768px) {
-      width: 100%;
-      height: 48px;
-    }
-  }
-
-  .bottomLeftImage {
-    width: 80px;
-    height: 64px;
-
-    @media (width <= 768px) {
-      width: 100%;
-      height: 48px;
-    }
-  }
-
-  .bottomCenterImage {
-    width: 160px;
-    height: 64px;
-
-    @media (width <= 768px) {
-      width: 100%;
-      height: 48px;
-    }
-  }
-
-  .bottomRightImage {
-    width: 160px;
+  .logo {
+    width: 100%;
     height: 64px;
 
     @media (width <= 768px) {
