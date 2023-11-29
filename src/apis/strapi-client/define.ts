@@ -127,9 +127,21 @@ export interface GetClasses extends strapiPublicFields {
   location: string;
   order: number;
 }
+
 export enum ClassMode {
   OnlineLive = 'Online Live',
   InPerson = 'In-person'
+}
+
+export enum LevelType {
+  PythonForBeginners = 'Python for Beginners',
+  USACOBronzeKnowledge = 'USACO Bronze Knowledge',
+  USACOSilverKnowledge = 'USACO Silver Knowledge',
+  USACOGoldKnowledge = 'USACO Gold Knowledge',
+  USACOGrandmasterClasses = 'USACO Grandmaster Classes',
+  MockTestClasses = 'Mock Test Classes',
+  JavaAPCSClasses = 'Java & APCS Classes',
+  FreeUSACOPublicMockTest = 'Free USACO Public Mock Test'
 }
 
 export enum CourseQuarter {

@@ -1,5 +1,5 @@
 'use client';
-import { ClassMode, GetCourses } from '@/apis/strapi-client/define';
+import { ClassMode, GetCourses, LevelType } from '@/apis/strapi-client/define';
 import { useGetCourses, useGetReviews } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import Reviews from '@/components/common/reviews';
@@ -41,7 +41,8 @@ const Courses: React.FC = () => {
   const [segmented, setSegmented] = useState<SegmentedValue>(CourseTypes.WeeklyClasses);
   const [segmentedData, setSegmentedData] = useState<SegmentedCoursesProps[]>();
   const [copySegmentedData, setCopySegmentedData] = useState<SegmentedCoursesProps[]>();
-  const { data: courses } = useGetCourses({});
+  const { data: courses, runAsync } = useGetCourses({});
+  const [filters, setFilters] = useState<{ [key: string]: string | { $eq: string } } | { [key: string]: string | { type: { $eq: string } } } | any>({});
   const COURSE_TYPES = Object.values(CourseTypes);
 
   // get reviews
@@ -50,14 +51,21 @@ const Courses: React.FC = () => {
     pageName: [pathname]
   });
 
-  // course level type options
-  const levelTypeOptions = useCourseOptions('levelType');
-
-  // get all course level types as data
-  const levelTypeData = levelTypeOptions?.map((item) => item?.value);
-
-  // get quarter options
+  const levelTypeOptions = Object.values(LevelType).map((item) => {
+    return {
+      label: item,
+      value: item
+    };
+  });
   const quarterOptions = useCourseOptions('quarter');
+
+  useEffect(() => {
+    runAsync({
+      populate: '*',
+      sort: ['order:desc'],
+      filters: { ...filters }
+    });
+  }, [filters]);
 
   // weekly === online
   const classifyCourses = (type: CourseTypes) => {
@@ -98,7 +106,7 @@ const Courses: React.FC = () => {
   // all weekly in person需要所有的levels，其余的只需要自己作为一二级level
   const reclassifiedCourses = COURSE_TYPES?.map((courseType) => {
     if ([CourseTypes.AllClasses, CourseTypes.WeeklyClasses, CourseTypes.InPersonCamps].includes(courseType)) {
-      return reclassifyCourses(courseType, levelTypeData);
+      return reclassifyCourses(courseType, []);
     } else {
       return reclassifyCourses(courseType, [courseType]);
     }
