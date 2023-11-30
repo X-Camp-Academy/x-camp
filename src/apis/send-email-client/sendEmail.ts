@@ -3,7 +3,7 @@ import { useHandleError } from '@/utils/error';
 import { useRequest } from 'ahooks';
 import { message } from 'antd';
 import { useSendEmailClient } from '.';
-import { openClassEmailRequest, submitAssessmentRequest, subscribeNewsletterRequest } from './define';
+import { openClassEmailRequest, subscribeNewsletterRequest } from './define';
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
@@ -62,32 +62,6 @@ export const useSubmitResume = () => {
         message.success({
           key: 'sendEmailSuccessfully',
           content: t('sendResume.Success')
-        });
-      },
-      onError: handleError
-    }
-  );
-};
-
-/**
- * 上传用户评测
- * @param Client
- * @returns
- */
-export const useSubmitAssessment = () => {
-  const handleError = useHandleError();
-  const client = useSendEmailClient();
-  return useRequest(
-    async (params: submitAssessmentRequest) => {
-      const resp = await client.submitAssessment(params);
-      return resp;
-    },
-    {
-      manual: true,
-      onSuccess: () => {
-        message.success({
-          key: 'sendEmailSuccessfully',
-          content: '提交成功'
         });
       },
       onError: handleError

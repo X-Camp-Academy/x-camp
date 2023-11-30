@@ -23,19 +23,3 @@ export interface submitResumeResponse {
   code: number;
   msg: string;
 }
-
-export interface submitAssessmentRequest {
-  stuName: string;
-  email: string;
-  phoneNumber: string;
-  grade: string;
-  codingBackground: string;
-  codingLanguage: string;
-  programmingExp: string;
-  aboutXcamp: string;
-}
-
-export interface submitAssessmentResponse {
-  code: number;
-  msg: string;
-}

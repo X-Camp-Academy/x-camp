@@ -144,7 +144,7 @@ export enum LevelType {
   FreeUSACOPublicMockTest = 'Free USACO Public Mock Test'
 }
 
-export enum CourseQuarter {
+export enum SchoolQuarter {
   Spring = 'Spring',
   Summer = 'Summer',
   Fall = 'Fall',
@@ -190,13 +190,14 @@ export interface GetCourses extends strapiPublicFields {
   tuitionUSD: number;
   frequency: FrequencyCategory;
   schoolYear: string;
-  schoolQuarter: CourseQuarter;
+  schoolQuarter: SchoolQuarter;
   registerLink: string;
   startDateTime: string;
   endDateTime: string;
   courseFormat: string;
   additionalInfo: string;
   isBilingual: boolean;
+  levelType: LevelType;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

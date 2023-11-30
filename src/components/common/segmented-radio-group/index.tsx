@@ -1,38 +1,29 @@
 'use client';
 import { EventCategory, FacultyLevelCategory } from '@/apis/strapi-client/define';
-import { CourseTypes } from '@/components/courses/define';
+import { CourseType } from '@/components/courses/define';
+import { CourseOptionsProps } from '@/components/courses/public';
 import { useLang } from '@/hoc/with-intl/define';
 import { Radio, RadioChangeEvent, Segmented, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React from 'react';
 import styles from './index.module.scss';
 
-export interface EventOptionsProps {
+export interface EventFacultyOptions<T> {
   label: React.ReactNode;
-  value: EventCategory;
-}
-
-export interface FacultyOptionsProps {
-  label: React.ReactNode;
-  value: FacultyLevelCategory;
-}
-
-export interface CourseOptionsProps {
-  label: CourseTypes;
-  value: CourseTypes;
+  value: T;
 }
 
 export interface SegmentedRadioGroupProps {
   isRadioGroup?: boolean;
   value: SegmentedValue;
   setValue: (value: SegmentedValue) => void;
-  options: EventOptionsProps[] | FacultyOptionsProps[] | CourseOptionsProps[];
+  options: EventFacultyOptions<EventCategory>[] | EventFacultyOptions<FacultyLevelCategory>[] | CourseOptionsProps<CourseType>[];
   id?: string;
 }
 
-export const useEventOptions = (defaultValue: 'event' | 'faculty' | 'course') => {
+export const useEventFacultyOptions = (defaultValue: 'event' | 'faculty') => {
   const { format: t } = useLang();
-  const eventOptions: EventOptionsProps[] = [
+  const eventOptions: EventFacultyOptions<EventCategory>[] = [
     {
       label: t('All'),
       value: EventCategory.All
@@ -55,7 +46,7 @@ export const useEventOptions = (defaultValue: 'event' | 'faculty' | 'course') =>
     }
   ];
 
-  const facultyOptions: FacultyOptionsProps[] = [
+  const facultyOptions: EventFacultyOptions<FacultyLevelCategory>[] = [
     {
       label: t('Beginner'),
       value: FacultyLevelCategory.Beginner
@@ -70,17 +61,9 @@ export const useEventOptions = (defaultValue: 'event' | 'faculty' | 'course') =>
     }
   ];
 
-  const courseOptions: CourseOptionsProps[] = Object.values(CourseTypes).map((item) => {
-    return {
-      label: item,
-      value: item
-    };
-  });
-
   const optionsMap = {
     event: eventOptions,
-    faculty: facultyOptions,
-    course: courseOptions
+    faculty: facultyOptions
   };
   return optionsMap[defaultValue];
 };
