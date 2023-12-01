@@ -127,12 +127,24 @@ export interface GetClasses extends strapiPublicFields {
   location: string;
   order: number;
 }
+
 export enum ClassMode {
   OnlineLive = 'Online Live',
   InPerson = 'In-person'
 }
 
-export enum CourseQuarter {
+export enum LevelType {
+  PythonForBeginners = 'Python for Beginners',
+  USACOBronzeKnowledge = 'USACO Bronze Knowledge',
+  USACOSilverKnowledge = 'USACO Silver Knowledge',
+  USACOGoldKnowledge = 'USACO Gold Knowledge',
+  USACOGrandmasterClasses = 'USACO Grandmaster Classes',
+  MockTestClasses = 'Mock Test Classes',
+  JavaAPCSClasses = 'Java & APCS Classes',
+  FreeUSACOPublicMockTest = 'Free USACO Public Mock Test'
+}
+
+export enum SchoolQuarter {
   Spring = 'Spring',
   Summer = 'Summer',
   Fall = 'Fall',
@@ -178,13 +190,14 @@ export interface GetCourses extends strapiPublicFields {
   tuitionUSD: number;
   frequency: FrequencyCategory;
   schoolYear: string;
-  schoolQuarter: CourseQuarter;
+  schoolQuarter: SchoolQuarter;
   registerLink: string;
   startDateTime: string;
   endDateTime: string;
   courseFormat: string;
   additionalInfo: string;
   isBilingual: boolean;
+  levelType: LevelType;
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

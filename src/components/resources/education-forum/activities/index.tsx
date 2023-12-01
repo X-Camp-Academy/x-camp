@@ -2,7 +2,7 @@ import { EventCategory, GetNewEvent, GetNewEventRequest, NewEventCategory } from
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { AndOrFilters, FilterFields } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
-import SegmentedRadioGroup, { useEventOptions } from '@/components/common/segmented-radio-group';
+import SegmentedRadioGroup, { useEventFacultyOptions } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
@@ -64,7 +64,7 @@ const Activities: React.FC = () => {
   return (
     <div className={styles.content}>
       <div className="container">
-        <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions('event')} />
+        <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventFacultyOptions('event')} />
 
         <Space className={styles.titleContain}>
           <div className={styles.activityTitle}>{segmented}</div>

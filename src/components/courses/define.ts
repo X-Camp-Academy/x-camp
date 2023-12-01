@@ -1,5 +1,4 @@
-// 前三个需要二次分类
-export enum CourseTypes {
+export enum CourseType {
   AllClasses = 'All Classes',
   WeeklyClasses = 'Weekly Classes',
   InPersonCamps = 'In-person Camps',

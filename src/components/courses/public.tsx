@@ -1,38 +1,51 @@
 'use client';
-import { ClassMode, CourseQuarter } from '@/apis/strapi-client/define';
-import { useGetCourseLevelType } from '@/apis/strapi-client/strapi';
+import { ClassMode, LevelType, SchoolQuarter } from '@/apis/strapi-client/define';
 import { useLang } from '@/hoc/with-intl/define';
+import { CourseType } from './define';
 
-export const useCourseOptions = (defaultValue: 'mode' | 'quarter' | 'levelType') => {
+export type defaultValueProps = 'courseType' | 'classMode' | 'levelType' | 'schoolQuarter';
+
+export interface CourseOptionsProps<T> {
+  label: T | string;
+  value: T;
+}
+
+export const useCourseOptions = (defaultValue: defaultValueProps) => {
   const { format: t } = useLang();
-  const { data } = useGetCourseLevelType();
 
-  const classModeOptions = Object.values(ClassMode)?.map((item) => {
+  const courseTypeOptions: CourseOptionsProps<CourseType>[] = Object.values(CourseType)?.map((item) => {
     return {
       label: item,
       value: item
     };
   });
 
-  const courseQuarterOptions = Object.values(CourseQuarter)?.map((item) => {
+  const classModeOptions: CourseOptionsProps<ClassMode>[] = Object.values(ClassMode)?.map((item) => {
+    return {
+      label: item,
+      value: item
+    };
+  });
+
+  const courseLevelTypeOptions: CourseOptionsProps<LevelType>[] = Object.values(LevelType)?.map((item) => {
+    return {
+      label: item,
+      value: item
+    };
+  });
+
+  const SchoolQuarterOptions: CourseOptionsProps<SchoolQuarter>[] = Object.values(SchoolQuarter)?.map((item) => {
     return {
       label: t(item),
       value: item
     };
   });
 
-  const courseLevelTypeOptions = data?.map((item) => {
-    const { type } = item?.attributes;
-    return {
-      label: type,
-      value: type
-    };
-  });
-
   const optionsMap = {
-    mode: classModeOptions,
-    quarter: courseQuarterOptions,
-    levelType: courseLevelTypeOptions
+    courseType: courseTypeOptions,
+    classMode: classModeOptions,
+    levelType: courseLevelTypeOptions,
+    schoolQuarter: SchoolQuarterOptions
   };
 
   return optionsMap[defaultValue];

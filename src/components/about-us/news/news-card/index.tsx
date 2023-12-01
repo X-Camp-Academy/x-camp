@@ -1,7 +1,7 @@
 import { EventCategory, GetNewEvent } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
-import SegmentedRadioGroup, { useEventOptions } from '@/components/common/segmented-radio-group';
+import SegmentedRadioGroup, { useEventFacultyOptions } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
@@ -50,7 +50,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
 
   return (
     <div className={`${styles.content} container`}>
-      <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventOptions('event')} />
+      <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventFacultyOptions('event')} />
 
       <div className={styles.newsCard}>
         <Row gutter={isMobile ? [24, 24] : [32, 48]}>
