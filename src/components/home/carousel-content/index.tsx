@@ -38,31 +38,31 @@ const CarouselContent: React.FC = () => {
   };
 
   const carouselItems: CarouselItemsProps[] = [
-    {
-      title: t('Home.Banner1.Title1'),
-      titleConfig: [
-        {
-          text: t('Home.Banner1.Title1'),
-          color: '#FFF'
-        }
-      ],
-      desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2')],
-      descStyle: {
-        color: '#FFF'
-      },
-      onClick: () => {
-        window.open('https://bit.ly/xcfte-p');
-      },
-      date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
-      banner: '/image/home/banner-pc-2.png',
-      mbBanner: '/image/home/banner-mb-2.png',
-      buttonText: t('ReserveNow'),
-      buttonStyle: {
-        backgroundColor: '#FFF',
-        color: '#172A88'
-      },
-      titleSubImg: '/image/home/price.png'
-    },
+    // {
+    //   title: t('Home.Banner1.Title1'),
+    //   titleConfig: [
+    //     {
+    //       text: t('Home.Banner1.Title1'),
+    //       color: '#FFF'
+    //     }
+    //   ],
+    //   desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2')],
+    //   descStyle: {
+    //     color: '#FFF'
+    //   },
+    //   onClick: () => {
+    //     window.open('https://bit.ly/xcfte-p');
+    //   },
+    //   date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
+    //   banner: '/image/home/banner-pc-2.png',
+    //   mbBanner: '/image/home/banner-mb-2.png',
+    //   buttonText: t('ReserveNow'),
+    //   buttonStyle: {
+    //     backgroundColor: '#FFF',
+    //     color: '#172A88'
+    //   },
+    //   titleSubImg: '/image/home/price.png'
+    // },
     {
       title: t('Home.Banner2.Title1'),
       titleConfig: [

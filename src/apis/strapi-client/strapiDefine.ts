@@ -19,11 +19,14 @@ export interface FilterType<T> {
   $notContainsi?: T;
   $null?: boolean;
   $notNull?: boolean;
-  $between?: T; // 不知 该用什么类型
-  $startsWith?: T; // 不知 该用什么类型
-  // $endsWith?: T; // 不知 该用什么类型
+  $between?: T;
+  $startsWith?: T;
+  $startsWithi?: T;
+  $endsWith?: T;
+  $endsWithi?: T;
   // $or	Joins the filters in an "or" expression
   // $and	Joins the filters in an "and" expression
+  // $not	Joins the filters in an "not" expression
 }
 
 //  strapi 请求 公用  Filters 类型
@@ -37,15 +40,6 @@ export type FilterFields<TableFields> = {
   [p in keyof TableFields]: FilterType<TableFields[p]>;
 };
 
-// strapi 请求 Paganition 类型
-export interface Pagination {
-  page?: number;
-  pageSize?: number;
-  start?: number;
-  limit?: number;
-  withCount?: boolean;
-}
-
 // Strapi 公有字段
 export interface strapiPublicFields {
   createdAt?: string;
@@ -58,10 +52,18 @@ export type sortDesc<Fields> = {
   [p in keyof Fields as `${string & p}:desc`]: Fields[p];
 };
 
+export interface Pagination {
+  page?: number;
+  pageSize?: number;
+  start?: number;
+  limit?: number;
+  withCount?: boolean;
+}
+
 // strapi 公共 请求
 export interface StrapiRequest<Fields extends strapiPublicFields> {
-  populate?: Array<keyof Fields> | '*'; // 可请求 资源
-  fields?: Array<keyof Fields>; // 结果显示的字段
+  populate?: Array<keyof Fields> | '*';
+  fields?: Array<keyof Fields>;
   filters?: Partial<FilterFields<Fields>> | AndOrFilters<FilterFields<Fields>>; // 请求筛选
   sort?: Array<keyof Fields> | Array<keyof sortDesc<Fields>>; // 按照字段排序  'key:desc' 降序   'key:asc' or 'key'  升序
   pagination?: Pagination;
@@ -86,10 +88,7 @@ export interface StrapiResponse<Fields extends strapiPublicFields> {
 
 // 单个记录的响应
 export interface StrapiResponseSingleDataItem<T> {
-  data: {
-    attributes: T;
-    id: number;
-  };
+  data: StrapiResponseDataItem<T>;
 }
 
 export interface StrapiMediaAttributes {
