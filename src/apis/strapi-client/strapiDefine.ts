@@ -45,6 +45,7 @@ export interface strapiPublicFields {
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
+  id?: number;
 }
 
 // 将 Fields 的key 转换成  "key:desc"
