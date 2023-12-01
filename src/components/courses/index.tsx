@@ -49,7 +49,7 @@ const Courses: React.FC = () => {
   });
 
   const levelTypes = Object.values(LevelType);
-  const courseTypeOptions = useCourseOptions('levelType');
+  const courseTypeOptions = useCourseOptions('courseType');
   const levelTypeOptions = useCourseOptions('levelType');
   const quarterOptions = useCourseOptions('schoolQuarter');
 

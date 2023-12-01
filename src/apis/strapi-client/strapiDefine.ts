@@ -51,7 +51,6 @@ export interface strapiPublicFields {
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  id?: number;
 }
 
 // 将 Fields 的key 转换成  "key:desc"
@@ -62,12 +61,12 @@ export type sortDesc<Fields> = {
 // strapi 公共 请求
 export interface StrapiRequest<Fields extends strapiPublicFields> {
   populate?: Array<keyof Fields> | '*'; // 可请求 资源
-  filters?: Partial<FilterFields<Fields>> | AndOrFilters<FilterFields<Fields>>; // 请求筛选
   fields?: Array<keyof Fields>; // 结果显示的字段
+  filters?: Partial<FilterFields<Fields>> | AndOrFilters<FilterFields<Fields>>; // 请求筛选
   sort?: Array<keyof Fields> | Array<keyof sortDesc<Fields>>; // 按照字段排序  'key:desc' 降序   'key:asc' or 'key'  升序
-  // sort  目前需要通过继承的方式手动 继承
-  pagination?: Pagination; // 分页
+  pagination?: Pagination;
 }
+
 export interface StrapiResponseDataItem<T> {
   attributes: T;
   id: number;
