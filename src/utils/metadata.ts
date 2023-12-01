@@ -26,7 +26,6 @@ export enum PageTitle {
   WeeklyOpenHouse = 'Weekly Open House',
   USACO = 'USACO',
 
-  Assessment = 'Assessment',
   Login = 'Login',
   Forbidden = '403'
 }

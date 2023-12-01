@@ -8,7 +8,7 @@ import { Avatar, Card, Col, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React, { useEffect, useState } from 'react';
 import ColorfulCard from '../colorful-card';
-import SegmentedRadioGroup, { useEventOptions } from '../segmented-radio-group';
+import SegmentedRadioGroup, { useEventFacultyOptions } from '../segmented-radio-group';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -48,7 +48,7 @@ const FacultyCoaches: React.FC<{
           <Paragraph className={styles.titleParagraph}>{t('Faculty.Desc')}</Paragraph>
         </Space>
 
-        <SegmentedRadioGroup value={segmented} setValue={setSegmented} options={useEventOptions('faculty')} />
+        <SegmentedRadioGroup value={segmented} setValue={setSegmented} options={useEventFacultyOptions('faculty')} />
 
         <Row justify="center" align="middle" gutter={isiPad ? 24 : 48} className={styles.row}>
           {facultyData?.map((item, index) => (

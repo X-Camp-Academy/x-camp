@@ -377,7 +377,7 @@ export const useGetAchievementsTimeLine = () => {
   return useRequest(
     async (params: GetAchievementsTimeLineRequest) => {
       const res = await client.getAchievementsTimeLine(params);
-      return isArray(res?.data) ? res.data : [];
+      return isArray(res?.data) ? res?.data : [];
     },
     {
       defaultParams: [
