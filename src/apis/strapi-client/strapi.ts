@@ -11,7 +11,6 @@ import {
   GetAlumniMapRequest,
   GetCommunityRequest,
   GetCommunityResponse,
-  GetCourseLevelTypeRequest,
   GetCourses,
   GetCoursesRequest,
   GetFacultyRequest,
@@ -266,25 +265,6 @@ export const useGetStudentProjects = () => {
   return useRequest(
     async (params: GetStudentProjectsRequest) => {
       const res = await client.getStudentProjects(params);
-      return isArray(res?.data) ? res.data : [];
-    },
-    {
-      defaultParams: [
-        {
-          populate: '*'
-        }
-      ],
-      onError: handleError
-    }
-  );
-};
-
-export const useGetCourseLevelType = () => {
-  const client = useStrapiClient();
-  const handleError = useHandleError();
-  return useRequest(
-    async (params: GetCourseLevelTypeRequest) => {
-      const res = await client.getCourseLevelType(params);
       return isArray(res?.data) ? res.data : [];
     },
     {

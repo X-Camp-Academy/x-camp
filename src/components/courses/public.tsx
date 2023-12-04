@@ -27,14 +27,14 @@ export const useCourseOptions = (defaultValue: defaultValueProps) => {
     };
   });
 
-  const courseLevelTypeOptions: CourseOptionsProps<LevelType>[] = Object.values(LevelType)?.map((item) => {
+  const levelTypeOptions: CourseOptionsProps<LevelType>[] = Object.values(LevelType)?.map((item) => {
     return {
       label: item,
       value: item
     };
   });
 
-  const SchoolQuarterOptions: CourseOptionsProps<SchoolQuarter>[] = Object.values(SchoolQuarter)?.map((item) => {
+  const schoolQuarterOptions: CourseOptionsProps<SchoolQuarter>[] = Object.values(SchoolQuarter)?.map((item) => {
     return {
       label: t(item),
       value: item
@@ -44,8 +44,8 @@ export const useCourseOptions = (defaultValue: defaultValueProps) => {
   const optionsMap = {
     courseType: courseTypeOptions,
     classMode: classModeOptions,
-    levelType: courseLevelTypeOptions,
-    schoolQuarter: SchoolQuarterOptions
+    levelType: levelTypeOptions,
+    schoolQuarter: schoolQuarterOptions
   };
 
   return optionsMap[defaultValue];
