@@ -473,7 +473,7 @@ declare const json: {
   'ContestCalendar.Title': 'Contest Calendar';
   feedBackSuccess: 'Your question has been received. We will contact you through email within 24 hours.';
   'Home.Banner1.Title1': 'Python Trial Class, Only';
-  CourseLevelType: 'Course Level Type';
+  LevelType: 'Course Level Type';
   SchoolQuarter: 'School Quarter';
 };
 

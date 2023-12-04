@@ -9,8 +9,6 @@ import {
   GetAlumniMapResponse,
   GetCommunityRequest,
   GetCommunityResponse,
-  GetCourseLevelTypeRequest,
-  GetCourseLevelTypeResponse,
   GetCoursesRequest,
   GetCoursesResponse,
   GetFacultyRequest,
@@ -85,11 +83,6 @@ export class StrapiClient extends BaseAxiosClient {
 
   async getAboutUsAchievementsAward(params: GetAboutUsAchievementsAwardRequest): Promise<GetAboutUsAchievementsAwardResponse> {
     const res = await this.get('/xc-about-us-achievements-awards' + getParamsStringify(params), {});
-    return res;
-  }
-
-  async getCourseLevelType(params: GetCourseLevelTypeRequest): Promise<GetCourseLevelTypeResponse> {
-    const res: GetCourseLevelTypeResponse = await this.get('/xc-course-level-types' + getParamsStringify(params), {});
     return res;
   }
 

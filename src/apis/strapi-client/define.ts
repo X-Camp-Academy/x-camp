@@ -112,12 +112,6 @@ export interface GetReviews extends strapiPublicFields {
 export type GetAboutUsAchievementsAwardRequest = StrapiRequest<GetAboutUsAchievementsAward>;
 export type GetAboutUsAchievementsAwardResponse = StrapiResponse<GetAboutUsAchievementsAward>;
 
-export interface GetCourseLevelType extends strapiPublicFields {
-  type: string;
-}
-export type GetCourseLevelTypeRequest = StrapiRequest<GetCourseLevelType>;
-export type GetCourseLevelTypeResponse = StrapiResponse<GetCourseLevelType>;
-
 export interface GetClasses extends strapiPublicFields {
   classCode: string;
   startDateTime: string;
@@ -165,7 +159,6 @@ export interface GetCourses extends strapiPublicFields {
   classes: {
     data: StrapiResponseDataItem<GetClasses>[];
   };
-  courseLevelType: StrapiResponseSingleDataItem<GetCourseLevelType>;
   courseLongDescriptionEn: string;
   courseLongDescriptionZh: string;
   courseShortDescriptionEn: string[];
