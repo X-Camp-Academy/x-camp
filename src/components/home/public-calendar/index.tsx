@@ -121,7 +121,6 @@ const PublicCalendar: React.FC = () => {
         })
         .slice(0, 4);
     }
-    console.log(newEventData);
   }, [newEventData]);
 
   return (

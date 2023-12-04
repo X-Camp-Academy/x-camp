@@ -1,5 +1,6 @@
 import { ClassMode, FrequencyCategory, GetClasses } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import GoogleTracking from '@/components/common/google-tracking';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { formatFinance, formatTimezone, getTransResult } from '@/utils/public';
@@ -42,6 +43,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
   });
   return (
     <Space className={styles.abstract} size={isMobile ? 8 : 24}>
+      <GoogleTracking />
       <div className={styles.left}>
         <div className={styles.title}>{t('Description')}</div>
         <Paragraph className={styles.abstract} ellipsis={{ rows: 3, tooltip: getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn) }}>

@@ -22,7 +22,7 @@ const { Panel } = Collapse;
 const { Content } = Layout;
 
 interface CoursesDataProps {
-  levelType: CourseType | LevelType;
+  courseLevelType: CourseType | LevelType;
   children: StrapiResponseDataItem<GetCourses>[] | undefined;
 }
 
@@ -79,7 +79,7 @@ const Courses: React.FC = () => {
     const newLevelTypes = [CourseType.MockTestClasses, CourseType.JavaAPCSClasses].includes(segmentedValue) ? [segmentedValue] : levelTypes;
     const data = newLevelTypes?.map((levelType) => {
       return {
-        levelType,
+        courseLevelType: levelType,
         children: courses?.data?.filter((course) => {
           // weekly课程下不显示 Java & APCS Classes和Mock Test Classes
           if (CourseType.WeeklyClasses === segmentedValue && [LevelType.MockTestClasses, LevelType.JavaAPCSClasses].includes(levelType as LevelType)) {
@@ -160,7 +160,7 @@ const Courses: React.FC = () => {
             style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
           >
             <Form.Item name="levelType" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('CourseLevelType')} options={levelTypeOptions as CourseOptionsProps<LevelType>[]} allowClear />
+              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('LevelType')} options={levelTypeOptions as CourseOptionsProps<LevelType>[]} allowClear />
             </Form.Item>
             <Form.Item name="schoolQuarter" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
               <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('SchoolQuarter')} options={quarterOptions as CourseOptionsProps<SchoolQuarter>[]} allowClear />
@@ -175,13 +175,13 @@ const Courses: React.FC = () => {
           <div className={styles.title}>{segmentedValue}</div>
           {coursesData?.map((courses, i) => {
             return (
-              <div key={courses?.levelType} id={'#classify' + i}>
-                <Collapse defaultActiveKey={courses?.levelType} ghost style={{ marginBottom: 30 }} expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}>
+              <div key={courses?.courseLevelType} id={'#classify' + i}>
+                <Collapse defaultActiveKey={courses?.courseLevelType} ghost style={{ marginBottom: 30 }} expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}>
                   <Panel
-                    key={courses?.levelType}
+                    key={courses?.courseLevelType}
                     header={
                       <div className={styles.paneBox}>
-                        <div className={styles.panelTitle}>{courses?.levelType}</div>
+                        <div className={styles.panelTitle}>{courses?.courseLevelType}</div>
                         <span className={styles.courseNum}>{courses?.children?.length} courses</span>
                       </div>
                     }

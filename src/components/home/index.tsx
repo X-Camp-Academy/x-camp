@@ -1,6 +1,7 @@
 'use client';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
 import Faculty from '@/components/common/faculty';
+import GoogleTracking from '@/components/common/google-tracking';
 import Reviews from '@/components/common/reviews';
 import { Layout } from 'antd';
 import React from 'react';
@@ -25,6 +26,7 @@ const Home: React.FC = () => {
   return (
     <Layout className={styles.homeContainer}>
       <Content>
+        <GoogleTracking />
         <CarouselContent />
         <WhyXCamp />
         <DiscoverOurCourses />
