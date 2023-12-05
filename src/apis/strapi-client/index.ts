@@ -82,7 +82,7 @@ export class StrapiClient extends BaseAxiosClient {
   }
 
   async getAboutUsAchievementsAward(params: GetAboutUsAchievementsAwardRequest): Promise<GetAboutUsAchievementsAwardResponse> {
-    const res = await this.get('/xc-about-us-achievements-awards' + getParamsStringify(params), {});
+    const res = await this.get('/xc-achievements-awards' + getParamsStringify(params), {});
     return res;
   }
 
@@ -112,12 +112,12 @@ export class StrapiClient extends BaseAxiosClient {
   }
 
   async getProjectDemos(params: GetProjectDemosRequest): Promise<GetProjectDemosResponse> {
-    const res = await this.get('/xc-about-us-achievements-projects-demos' + getParamsStringify(params), {});
+    const res = await this.get('/xc-achievements-projects-demos' + getParamsStringify(params), {});
     return res;
   }
 
   async getAchievementsTimeLine(params: GetAchievementsTimeLineRequest): Promise<GetAchievementsTimeLineResponse> {
-    const res = await this.get('/xc-about-us-achievements-time-lines' + getParamsStringify(params), {});
+    const res = await this.get('/xc-achievements-time-lines' + getParamsStringify(params), {});
     return res;
   }
 
