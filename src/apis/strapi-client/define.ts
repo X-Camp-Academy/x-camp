@@ -74,6 +74,41 @@ export interface GetNewEvent extends strapiPublicFields {
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
 
+export interface GetSchoolCalendars extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  startDate: string;
+}
+export type GetSchoolCalendarsRequest = StrapiRequest<GetSchoolCalendars>;
+export type GetSchoolCalendarsResponse = StrapiResponse<GetSchoolCalendars>;
+
+export interface GetContests extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  contestLogo: StrapiMedia;
+  startDateTime: string;
+  endDateTime: string;
+  contestLink: string;
+  order: number;
+}
+export type GetContestsRequest = StrapiRequest<GetContests>;
+export type GetContestsResponse = StrapiResponse<GetContests>;
+
+export interface GetXAlumniStories extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  img: StrapiMedia;
+  order: number;
+}
+export type GetXAlumniStoriesRequest = StrapiRequest<GetXAlumniStories>;
+export type GetXAlumniStoriesResponse = StrapiResponse<GetXAlumniStories>;
+
 export interface GetStudentProjects extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -108,7 +143,6 @@ export interface GetReviews extends strapiPublicFields {
   eventId: string;
   datetime: string;
 }
-
 export type GetAboutUsAchievementsAwardRequest = StrapiRequest<GetAboutUsAchievementsAward>;
 export type GetAboutUsAchievementsAwardResponse = StrapiResponse<GetAboutUsAchievementsAward>;
 

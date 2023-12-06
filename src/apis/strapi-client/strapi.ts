@@ -11,6 +11,7 @@ import {
   GetAlumniMapRequest,
   GetCommunityRequest,
   GetCommunityResponse,
+  GetContestsRequest,
   GetCourses,
   GetCoursesRequest,
   GetFacultyRequest,
@@ -25,6 +26,7 @@ import {
   GetPartnerRequest,
   GetProjectDemosRequest,
   GetReviewsRequest,
+  GetSchoolCalendarsRequest,
   GetStudentProjectsRequest,
   GetUSACOLiveSolutionRequest,
   GetUSACORequest,
@@ -153,6 +155,45 @@ export const useGetAboutUsAchievementsAward = () => {
   return useRequest(
     async (params: GetAboutUsAchievementsAwardRequest) => {
       const res = await client.getAboutUsAchievementsAward(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*',
+          sort: ['order:desc']
+        }
+      ],
+      onError: handleError
+    }
+  );
+};
+
+export const useGetSchoolCalendars = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetSchoolCalendarsRequest) => {
+      const res = await client.getSchoolCalendar(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*'
+        }
+      ],
+      onError: handleError
+    }
+  );
+};
+
+export const useGetContests = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetContestsRequest) => {
+      const res = await client.getContest(params);
       return isArray(res?.data) ? res.data : [];
     },
     {

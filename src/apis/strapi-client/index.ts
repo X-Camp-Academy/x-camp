@@ -9,6 +9,8 @@ import {
   GetAlumniMapResponse,
   GetCommunityRequest,
   GetCommunityResponse,
+  GetContestsRequest,
+  GetContestsResponse,
   GetCoursesRequest,
   GetCoursesResponse,
   GetFacultyRequest,
@@ -25,6 +27,8 @@ import {
   GetProjectDemosResponse,
   GetReviewsRequest,
   GetReviewsResponse,
+  GetSchoolCalendarsRequest,
+  GetSchoolCalendarsResponse,
   GetStudentProjectsRequest,
   GetStudentProjectsResponse,
   GetUSACOLiveSolutionRequest,
@@ -33,6 +37,8 @@ import {
   GetUSACOResponse,
   GetUserSearchRequest,
   GetUserSearchResponse,
+  GetXAlumniStoriesRequest,
+  GetXAlumniStoriesResponse,
   SubmitQuestionRequest,
   SubmitQuestionResponse
 } from './define';
@@ -73,6 +79,21 @@ export class StrapiClient extends BaseAxiosClient {
 
   async getNewEvent(params: GetNewEventRequest): Promise<GetNewEventResponse> {
     const res: GetNewEventResponse = await this.get('/xc-new-events' + getParamsStringify(params), {});
+    return res;
+  }
+
+  async getSchoolCalendar(params: GetSchoolCalendarsRequest): Promise<GetSchoolCalendarsResponse> {
+    const res: GetSchoolCalendarsResponse = await this.get('/xc-school-calendars' + getParamsStringify(params), {});
+    return res;
+  }
+
+  async getContest(params: GetContestsRequest): Promise<GetContestsResponse> {
+    const res: GetContestsResponse = await this.get('/xc-contests' + getParamsStringify(params), {});
+    return res;
+  }
+
+  async getXAlumniStory(params: GetXAlumniStoriesRequest): Promise<GetXAlumniStoriesResponse> {
+    const res: GetXAlumniStoriesResponse = await this.get('/xc-contests' + getParamsStringify(params), {});
     return res;
   }
 
