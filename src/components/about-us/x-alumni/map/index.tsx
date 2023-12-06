@@ -1,5 +1,5 @@
 'use client';
-import { useGetAlumniMap } from '@/apis/strapi-client/strapi';
+import { useGetXAlumniMap } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { Typography } from 'antd';
 import * as echarts from 'echarts';
@@ -11,7 +11,7 @@ const { Title, Text } = Typography;
 
 const Map: React.FC = () => {
   const { format: t } = useLang();
-  const { data } = useGetAlumniMap();
+  const { data } = useGetXAlumniMap();
   const worldDOM = useRef<HTMLDivElement>();
 
   useEffect(() => {

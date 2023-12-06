@@ -1,12 +1,6 @@
 import { apiConfig } from '@/config/index';
 import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
 import {
-  GetAboutUsAchievementsAwardRequest,
-  GetAboutUsAchievementsAwardResponse,
-  GetAchievementsTimeLineRequest,
-  GetAchievementsTimeLineResponse,
-  GetAlumniMapRequest,
-  GetAlumniMapResponse,
   GetCommunityRequest,
   GetCommunityResponse,
   GetContestsRequest,
@@ -31,12 +25,18 @@ import {
   GetSchoolCalendarsResponse,
   GetStudentProjectsRequest,
   GetStudentProjectsResponse,
+  GetTimeLineRequest,
+  GetTimeLineResponse,
+  GetUSACOAMARequest,
+  GetUSACOAMAResponse,
   GetUSACOLiveSolutionRequest,
   GetUSACOLiveSolutionResponse,
-  GetUSACORequest,
-  GetUSACOResponse,
+  GetUSACOSpotlightRequest,
+  GetUSACOSpotlightResponse,
   GetUserSearchRequest,
   GetUserSearchResponse,
+  GetXAlumniMapRequest,
+  GetXAlumniMapResponse,
   GetXAlumniStoriesRequest,
   GetXAlumniStoriesResponse,
   SubmitQuestionRequest,
@@ -102,8 +102,8 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getAboutUsAchievementsAward(params: GetAboutUsAchievementsAwardRequest): Promise<GetAboutUsAchievementsAwardResponse> {
-    const res = await this.get('/xc-achievements-awards' + getParamsStringify(params), {});
+  async getUSACOSpotlight(params: GetUSACOSpotlightRequest): Promise<GetUSACOSpotlightResponse> {
+    const res = await this.get('/xc-usaco-spotlights' + getParamsStringify(params), {});
     return res;
   }
 
@@ -127,18 +127,18 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getAlumniMap(params: GetAlumniMapRequest): Promise<GetAlumniMapResponse> {
-    const res = await this.get('/xc-alumni-map' + getParamsStringify(params), {});
+  async getXAlumniMap(params: GetXAlumniMapRequest): Promise<GetXAlumniMapResponse> {
+    const res = await this.get('/xc-x-alumni-maps' + getParamsStringify(params), {});
     return res;
   }
 
   async getProjectDemos(params: GetProjectDemosRequest): Promise<GetProjectDemosResponse> {
-    const res = await this.get('/xc-achievements-projects-demos' + getParamsStringify(params), {});
+    const res = await this.get('/xc-project-demos' + getParamsStringify(params), {});
     return res;
   }
 
-  async getAchievementsTimeLine(params: GetAchievementsTimeLineRequest): Promise<GetAchievementsTimeLineResponse> {
-    const res = await this.get('/xc-achievements-time-lines' + getParamsStringify(params), {});
+  async getTimeLine(params: GetTimeLineRequest): Promise<GetTimeLineResponse> {
+    const res = await this.get('/xc-time-lines' + getParamsStringify(params), {});
     return res;
   }
 
@@ -162,13 +162,13 @@ export class StrapiClient extends BaseAxiosClient {
     return res;
   }
 
-  async getUSACO(params: GetUSACORequest): Promise<GetUSACOResponse> {
-    const res = await this.get('/xc-usacos' + getParamsStringify(params), {});
+  async getUSACOAMA(params: GetUSACOAMARequest): Promise<GetUSACOAMAResponse> {
+    const res = await this.get('/xc-usaco-amas' + getParamsStringify(params), {});
     return res;
   }
 
   async submitQuestion(params: SubmitQuestionRequest): Promise<SubmitQuestionResponse> {
-    const res = await this.post('/xc-feed-backs', params, this.jsonHeaders);
+    const res = await this.post('/xc-submit-questions', params, this.jsonHeaders);
     return res;
   }
 }

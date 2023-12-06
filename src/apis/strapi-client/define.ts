@@ -121,16 +121,6 @@ export interface GetStudentProjects extends strapiPublicFields {
 }
 export type GetStudentProjectsRequest = StrapiRequest<GetStudentProjects>;
 export type GetStudentProjectsResponse = StrapiResponse<GetStudentProjects>;
-
-export interface GetAboutUsAchievementsAward extends strapiPublicFields {
-  titleZh: string;
-  titleEn: string;
-  descriptionZh: string;
-  descriptionEn: string;
-  avatar: StrapiMedia;
-  order: number;
-}
-
 export interface GetReviews extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -143,8 +133,17 @@ export interface GetReviews extends strapiPublicFields {
   eventId: string;
   datetime: string;
 }
-export type GetAboutUsAchievementsAwardRequest = StrapiRequest<GetAboutUsAchievementsAward>;
-export type GetAboutUsAchievementsAwardResponse = StrapiResponse<GetAboutUsAchievementsAward>;
+
+export interface GetUSACOSpotlight extends strapiPublicFields {
+  titleZh: string;
+  titleEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  avatar: StrapiMedia;
+  order: number;
+}
+export type GetUSACOSpotlightRequest = StrapiRequest<GetUSACOSpotlight>;
+export type GetUSACOSpotlightResponse = StrapiResponse<GetUSACOSpotlight>;
 
 export interface GetClasses extends strapiPublicFields {
   classCode: string;
@@ -282,7 +281,7 @@ export interface GetJoinUs extends strapiPublicFields {
   contentEn: string;
   order: number;
 }
-interface AlumniMapProps {
+interface XAlumniMapProps {
   data: {
     name: string;
     value: string;
@@ -295,12 +294,12 @@ export type GetJoinUsResponse = StrapiResponse<GetJoinUs>;
 export type GetReviewsRequest = StrapiRequest<GetReviews>;
 export type GetReviewsResponse = StrapiResponse<GetReviews>;
 
-export interface GetAlumniMap extends strapiPublicFields {
-  world: AlumniMapProps;
+export interface GetXAlumniMap extends strapiPublicFields {
+  world: XAlumniMapProps;
 }
 
-export type GetAlumniMapRequest = StrapiRequest<GetAlumniMap>;
-export type GetAlumniMapResponse = StrapiResponseSingleDataItem<GetAlumniMap>;
+export type GetXAlumniMapRequest = StrapiRequest<GetXAlumniMap>;
+export type GetXAlumniMapResponse = StrapiResponseSingleDataItem<GetXAlumniMap>;
 export interface GetProjectDemos extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
@@ -313,7 +312,7 @@ export interface GetProjectDemos extends strapiPublicFields {
 export type GetProjectDemosRequest = StrapiRequest<GetProjectDemos>;
 export type GetProjectDemosResponse = StrapiResponse<GetProjectDemos>;
 
-export interface GetAchievementsTimeLine extends strapiPublicFields {
+export interface GetTimeLine extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
@@ -321,8 +320,8 @@ export interface GetAchievementsTimeLine extends strapiPublicFields {
   order: number;
 }
 
-export type GetAchievementsTimeLineRequest = StrapiRequest<GetAchievementsTimeLine>;
-export type GetAchievementsTimeLineResponse = StrapiResponse<GetAchievementsTimeLine>;
+export type GetTimeLineRequest = StrapiRequest<GetTimeLine>;
+export type GetTimeLineResponse = StrapiResponse<GetTimeLine>;
 
 export enum USACOLiveSolutionCategory {
   XCampUSACOBronze = 'X-Camp USACO Bronze',
@@ -392,7 +391,7 @@ export interface UserSearch extends strapiPublicFields {
 export type GetUserSearchRequest = StrapiRequest<UserSearch>;
 export type GetUserSearchResponse = StrapiResponseSingleDataItem<UserSearch>;
 
-export interface GetUSACO extends strapiPublicFields {
+export interface GetUSACOAMA extends strapiPublicFields {
   title: string;
   img: StrapiMedia;
   date: string;
@@ -400,8 +399,8 @@ export interface GetUSACO extends strapiPublicFields {
   order: number;
 }
 
-export type GetUSACORequest = StrapiRequest<GetUSACO>;
-export type GetUSACOResponse = StrapiResponse<GetUSACO>;
+export type GetUSACOAMARequest = StrapiRequest<GetUSACOAMA>;
+export type GetUSACOAMAResponse = StrapiResponse<GetUSACOAMA>;
 
 export interface SubmitQuestion extends strapiPublicFields {
   firstName: string;
