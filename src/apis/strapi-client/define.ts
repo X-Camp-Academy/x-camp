@@ -74,15 +74,15 @@ export interface GetNewEvent extends strapiPublicFields {
 export type GetNewEventRequest = StrapiRequest<GetNewEvent>;
 export type GetNewEventResponse = StrapiResponse<GetNewEvent>;
 
-export interface GetSchoolCalendars extends strapiPublicFields {
+export interface GetSchoolCalendar extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
   descriptionEn: string;
   startDate: string;
 }
-export type GetSchoolCalendarsRequest = StrapiRequest<GetSchoolCalendars>;
-export type GetSchoolCalendarsResponse = StrapiResponse<GetSchoolCalendars>;
+export type GetSchoolCalendarRequest = StrapiRequest<GetSchoolCalendar>;
+export type GetSchoolCalendarResponse = StrapiResponse<GetSchoolCalendar>;
 
 export interface GetContests extends strapiPublicFields {
   titleZh: string;
@@ -93,12 +93,13 @@ export interface GetContests extends strapiPublicFields {
   startDateTime: string;
   endDateTime: string;
   contestLink: string;
+  isContestEvent: boolean;
   order: number;
 }
 export type GetContestsRequest = StrapiRequest<GetContests>;
 export type GetContestsResponse = StrapiResponse<GetContests>;
 
-export interface GetXAlumniStories extends strapiPublicFields {
+export interface GetXAlumniStory extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   descriptionZh: string;
@@ -106,8 +107,8 @@ export interface GetXAlumniStories extends strapiPublicFields {
   img: StrapiMedia;
   order: number;
 }
-export type GetXAlumniStoriesRequest = StrapiRequest<GetXAlumniStories>;
-export type GetXAlumniStoriesResponse = StrapiResponse<GetXAlumniStories>;
+export type GetXAlumniStoryRequest = StrapiRequest<GetXAlumniStory>;
+export type GetXAlumniStoryResponse = StrapiResponse<GetXAlumniStory>;
 
 export interface GetStudentProjects extends strapiPublicFields {
   titleZh: string;
@@ -323,25 +324,25 @@ export interface GetTimeLine extends strapiPublicFields {
 export type GetTimeLineRequest = StrapiRequest<GetTimeLine>;
 export type GetTimeLineResponse = StrapiResponse<GetTimeLine>;
 
-export enum USACOLiveSolutionCategory {
+export enum USACOMedalVideoCategory {
   XCampUSACOBronze = 'X-Camp USACO Bronze',
   XCampUSACOSilver = 'X-Camp USACO Silver',
   XCampUSACOGold = 'X-Camp USACO Gold'
 }
 
-export interface GetUSACOLiveSolution extends strapiPublicFields {
+export interface GetUSACOMedalVideo extends strapiPublicFields {
   titleZh: string;
   titleEn: string;
   date: string;
-  category: USACOLiveSolutionCategory;
+  category: USACOMedalVideoCategory;
   video: StrapiMedia;
   order: number;
   videoZh: string;
   videoEn: string;
 }
 
-export type GetUSACOLiveSolutionRequest = StrapiRequest<GetUSACOLiveSolution>;
-export type GetUSACOLiveSolutionResponse = StrapiResponse<GetUSACOLiveSolution>;
+export type GetUSACOMedalVideoRequest = StrapiRequest<GetUSACOMedalVideo>;
+export type GetUSACOMedalVideoResponse = StrapiResponse<GetUSACOMedalVideo>;
 
 export enum FaqCategory {
   ReferralQA = 'Referral QA',

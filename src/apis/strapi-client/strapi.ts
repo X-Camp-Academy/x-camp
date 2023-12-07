@@ -23,14 +23,15 @@ import {
   GetPartnerRequest,
   GetProjectDemosRequest,
   GetReviewsRequest,
-  GetSchoolCalendarsRequest,
+  GetSchoolCalendarRequest,
   GetStudentProjectsRequest,
   GetTimeLineRequest,
   GetUSACOAMARequest,
-  GetUSACOLiveSolutionRequest,
+  GetUSACOMedalVideoRequest,
   GetUSACOSpotlightRequest,
   GetUserSearchRequest,
   GetXAlumniMapRequest,
+  GetXAlumniStoryRequest,
   JoinUsCategory,
   NewEventCategory,
   SubmitQuestionRequest
@@ -169,11 +170,11 @@ export const useGetUSACOSpotlight = () => {
   );
 };
 
-export const useGetSchoolCalendars = () => {
+export const useGetSchoolCalendar = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetSchoolCalendarsRequest) => {
+    async (params: GetSchoolCalendarRequest) => {
       const res = await client.getSchoolCalendar(params);
       return isArray(res?.data) ? res.data : [];
     },
@@ -193,7 +194,27 @@ export const useGetContests = () => {
   const handleError = useHandleError();
   return useRequest(
     async (params: GetContestsRequest) => {
-      const res = await client.getContest(params);
+      const res = await client.getContests(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*',
+          sort: ['order:desc']
+        }
+      ],
+      onError: handleError
+    }
+  );
+};
+
+export const useGetXAlumniStory = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetXAlumniStoryRequest) => {
+      const res = await client.getXAlumniStory(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -411,12 +432,12 @@ export const useGetTimeLine = () => {
   );
 };
 
-export const useGetUSACOLiveSolution = () => {
+export const useGetUSACOVideoMedal = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetUSACOLiveSolutionRequest) => {
-      const res = await client.getUSACOLiveSolution(params);
+    async (params: GetUSACOMedalVideoRequest) => {
+      const res = await client.getUSACOMedalVideo(params);
       return isArray(res?.data) ? res.data : [];
     },
     {

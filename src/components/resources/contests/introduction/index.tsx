@@ -1,4 +1,4 @@
-import { GetNewEvent } from '@/apis/strapi-client/define';
+import { GetContests } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import styles from './index.module.scss';
 
 interface Props {
-  data: StrapiResponseDataItem<GetNewEvent>[] | undefined;
+  data: StrapiResponseDataItem<GetContests>[] | undefined;
 }
 
 const Introduction = ({ data }: Props) => {
@@ -42,11 +42,11 @@ const Introduction = ({ data }: Props) => {
               <div className={styles.intro}>
                 <div className={styles.left}>
                   <div className={styles.description}>{getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}</div>
-                  <a href={v?.attributes?.link} className={styles.link}>
-                    {v?.attributes?.link}
+                  <a href={v?.attributes?.contestLink} className={styles.link}>
+                    {v?.attributes?.contestLink}
                   </a>
                 </div>
-                <div className={styles.right} onClick={() => window.open(v?.attributes?.link)}>
+                <div className={styles.right} onClick={() => window.open(v?.attributes?.contestLink)}>
                   <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
                 </div>
               </div>
