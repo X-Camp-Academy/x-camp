@@ -6,9 +6,6 @@ import { isArray } from 'lodash';
 import { useStrapiClient } from '.';
 import {
   FaqCategory,
-  GetAboutUsAchievementsAwardRequest,
-  GetAchievementsTimeLineRequest,
-  GetAlumniMapRequest,
   GetCommunityRequest,
   GetCommunityResponse,
   GetContestsRequest,
@@ -26,11 +23,15 @@ import {
   GetPartnerRequest,
   GetProjectDemosRequest,
   GetReviewsRequest,
-  GetSchoolCalendarsRequest,
+  GetSchoolCalendarRequest,
   GetStudentProjectsRequest,
-  GetUSACOLiveSolutionRequest,
-  GetUSACORequest,
+  GetTimeLineRequest,
+  GetUSACOAMARequest,
+  GetUSACOMedalVideoRequest,
+  GetUSACOSpotlightRequest,
   GetUserSearchRequest,
+  GetXAlumniMapRequest,
+  GetXAlumniStoryRequest,
   JoinUsCategory,
   NewEventCategory,
   SubmitQuestionRequest
@@ -149,12 +150,12 @@ export const useGetNewEvent = ({
   );
 };
 
-export const useGetAboutUsAchievementsAward = () => {
+export const useGetUSACOSpotlight = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetAboutUsAchievementsAwardRequest) => {
-      const res = await client.getAboutUsAchievementsAward(params);
+    async (params: GetUSACOSpotlightRequest) => {
+      const res = await client.getUSACOSpotlight(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -169,11 +170,11 @@ export const useGetAboutUsAchievementsAward = () => {
   );
 };
 
-export const useGetSchoolCalendars = () => {
+export const useGetSchoolCalendar = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetSchoolCalendarsRequest) => {
+    async (params: GetSchoolCalendarRequest) => {
       const res = await client.getSchoolCalendar(params);
       return isArray(res?.data) ? res.data : [];
     },
@@ -193,7 +194,7 @@ export const useGetContests = () => {
   const handleError = useHandleError();
   return useRequest(
     async (params: GetContestsRequest) => {
-      const res = await client.getContest(params);
+      const res = await client.getContests(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -201,6 +202,45 @@ export const useGetContests = () => {
         {
           populate: '*',
           sort: ['order:desc']
+        }
+      ],
+      onError: handleError
+    }
+  );
+};
+
+export const useGetXAlumniStory = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetXAlumniStoryRequest) => {
+      const res = await client.getXAlumniStory(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*',
+          sort: ['order:desc']
+        }
+      ],
+      onError: handleError
+    }
+  );
+};
+
+export const useGetSchoolCalendars = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetSchoolCalendarRequest) => {
+      const res = await client.getSchoolCalendar(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*'
         }
       ],
       onError: handleError
@@ -352,12 +392,12 @@ export const useGetCourses = ({
 };
 
 // !暂时保留
-export const useGetAlumniMap = () => {
+export const useGetXAlumniMap = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetAlumniMapRequest) => {
-      const res = await client.getAlumniMap(params);
+    async (params: GetXAlumniMapRequest) => {
+      const res = await client.getXAlumniMap(params);
       return res?.data?.attributes;
     },
     {
@@ -392,12 +432,12 @@ export const useGetProjectDemos = () => {
   );
 };
 
-export const useGetAchievementsTimeLine = () => {
+export const useGetTimeLine = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetAchievementsTimeLineRequest) => {
-      const res = await client.getAchievementsTimeLine(params);
+    async (params: GetTimeLineRequest) => {
+      const res = await client.getTimeLine(params);
       return isArray(res?.data) ? res?.data : [];
     },
     {
@@ -411,12 +451,12 @@ export const useGetAchievementsTimeLine = () => {
   );
 };
 
-export const useGetUSACOLiveSolution = () => {
+export const useGetUSACOVideoMedal = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetUSACOLiveSolutionRequest) => {
-      const res = await client.getUSACOLiveSolution(params);
+    async (params: GetUSACOMedalVideoRequest) => {
+      const res = await client.getUSACOMedalVideo(params);
       return isArray(res?.data) ? res.data : [];
     },
     {
@@ -544,12 +584,12 @@ export const useSubmitQuestion = () => {
   );
 };
 
-export const useGetUSACO = () => {
+export const useGetUSACOAMA = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
-    async (params: GetUSACORequest) => {
-      const res = await client.getUSACO(params);
+    async (params: GetUSACOAMARequest) => {
+      const res = await client.getUSACOAMA(params);
       return isArray(res?.data) ? res.data : [];
     },
     {

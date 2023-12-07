@@ -1,6 +1,5 @@
 'use client';
-import { NewEventCategory } from '@/apis/strapi-client/define';
-import { useGetNewEvent, useGetReviews } from '@/apis/strapi-client/strapi';
+import { useGetContests, useGetReviews } from '@/apis/strapi-client/strapi';
 import Reviews from '@/components/common/reviews';
 import { useSize } from 'ahooks';
 import { Layout } from 'antd';
@@ -18,11 +17,7 @@ const { Content } = Layout;
 const Contests: React.FC = () => {
   const pathname = usePathname();
   const size = useSize(document.querySelector('body'));
-  const { data: resourcesContest } = useGetNewEvent({
-    tag: NewEventCategory.EventContest,
-    current: 1,
-    pageSize: 9999
-  });
+  const { data: resourcesContest } = useGetContests();
 
   const { data: reviewsData } = useGetReviews({
     ready: true,
@@ -32,8 +27,8 @@ const Contests: React.FC = () => {
     <Layout className={styles.main}>
       <Content>
         <Banner />
-        <MonthlyContest data={formatContestsByQuarter(resourcesContest?.data!, Number(size?.width) >= 992 ? 6 : 1)} />
-        <Introduction data={filterContest(resourcesContest?.data)} />
+        <MonthlyContest data={formatContestsByQuarter(resourcesContest!, Number(size?.width) >= 992 ? 6 : 1)} />
+        <Introduction data={filterContest(resourcesContest!)} />
         <WhyContests />
         <Reviews reviewsData={reviewsData} />
       </Content>

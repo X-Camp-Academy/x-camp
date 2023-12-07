@@ -1,4 +1,4 @@
-import { useGetUSACO } from '@/apis/strapi-client/strapi';
+import { useGetUSACOAMA } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Image, Space, Typography } from 'antd';
@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
 const Banner: React.FC = () => {
-  const { data } = useGetUSACO();
+  const { data } = useGetUSACOAMA();
   const { format: t } = useLang();
   const isMobile = useMobile();
 
