@@ -68,6 +68,7 @@ const ProjectDemos = ({ data }: Props) => {
       <div className={styles.projectDemo}>
         <Title className={styles.title}>{'Game Design'}</Title>
         {data?.map((v, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
             <Title className={styles.subTitle}>{getTransResult(lang, v?.[0]?.attributes?.categoryZh, v?.[0]?.attributes?.categoryEn)}</Title>
             <List
