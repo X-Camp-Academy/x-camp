@@ -229,6 +229,25 @@ export const useGetXAlumniStory = () => {
   );
 };
 
+export const useGetSchoolCalendars = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async (params: GetSchoolCalendarRequest) => {
+      const res = await client.getSchoolCalendar(params);
+      return isArray(res?.data) ? res.data : [];
+    },
+    {
+      defaultParams: [
+        {
+          populate: '*'
+        }
+      ],
+      onError: handleError
+    }
+  );
+};
+
 export const useGetCommunity = () => {
   const client = useStrapiClient();
   const handleError = useHandleError();
