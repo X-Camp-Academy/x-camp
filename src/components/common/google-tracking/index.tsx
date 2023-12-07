@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/next-script-for-ga */
+/* eslint-disable @next/next/no-head-element */
 
 const GoogleTracking = () => {
   return (
     <>
-      {/* <Head>
+      <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11428221684" />
         <script
           dangerouslySetInnerHTML={{
@@ -15,7 +16,7 @@ const GoogleTracking = () => {
             `
           }}
         />
-      </Head> */}
+      </head>
     </>
   );
 };
