@@ -22,7 +22,7 @@ const Achievements: React.FC = () => {
         <USACOSpotlight />
         <TimeLine />
         <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} spacePaddingTop={0} />
-        <ProjectDemos data={data} />
+        {/* <ProjectDemos data={data} /> */}
       </Content>
     </Layout>
   );

@@ -1,5 +1,5 @@
-import { GetUSACOLiveSolution, USACOLiveSolutionCategory } from '@/apis/strapi-client/define';
-import { useGetUSACOLiveSolution } from '@/apis/strapi-client/strapi';
+import { GetUSACOMedalVideo, USACOMedalVideoCategory } from '@/apis/strapi-client/define';
+import { useGetUSACOVideoMedal } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -13,34 +13,34 @@ const { Panel } = Collapse;
 const { Text } = Typography;
 
 interface ResultProps {
-  category: USACOLiveSolutionCategory;
-  categoryData: StrapiResponseDataItem<GetUSACOLiveSolution>[];
+  category: USACOMedalVideoCategory;
+  categoryData: StrapiResponseDataItem<GetUSACOMedalVideo>[];
 }
 [];
 
-const UsacoIntro = () => {
+const Introduction = () => {
   const { format: t, lang } = useLang();
-  const { data } = useGetUSACOLiveSolution();
+  const { data } = useGetUSACOVideoMedal();
   const isMobile = useMobile();
 
-  const getVideoByLang = (attributes: GetUSACOLiveSolution) => {
+  const getVideoByLang = (attributes: GetUSACOMedalVideo) => {
     const { video, videoZh, videoEn } = attributes;
     return video?.data ? video?.data?.attributes?.url : videoZh || videoEn ? getTransResult(lang, videoZh, videoEn) : defaultVideoUrl;
   };
 
   const [result, setResult] = useState<ResultProps[]>();
 
-  const sortData: { category: USACOLiveSolutionCategory; categoryData: StrapiResponseDataItem<GetUSACOLiveSolution>[] }[] = [
+  const sortData: { category: USACOMedalVideoCategory; categoryData: StrapiResponseDataItem<GetUSACOMedalVideo>[] }[] = [
     {
-      category: USACOLiveSolutionCategory.XCampUSACOBronze,
+      category: USACOMedalVideoCategory.XCampUSACOBronze,
       categoryData: []
     },
     {
-      category: USACOLiveSolutionCategory.XCampUSACOSilver,
+      category: USACOMedalVideoCategory.XCampUSACOSilver,
       categoryData: []
     },
     {
-      category: USACOLiveSolutionCategory.XCampUSACOGold,
+      category: USACOMedalVideoCategory.XCampUSACOGold,
       categoryData: []
     }
   ];
@@ -48,13 +48,13 @@ const UsacoIntro = () => {
   useEffect(() => {
     data?.forEach((item) => {
       switch (item?.attributes?.category) {
-        case USACOLiveSolutionCategory.XCampUSACOBronze:
+        case USACOMedalVideoCategory.XCampUSACOBronze:
           sortData[0]?.categoryData?.push(item);
           break;
-        case USACOLiveSolutionCategory.XCampUSACOSilver:
+        case USACOMedalVideoCategory.XCampUSACOSilver:
           sortData[1]?.categoryData?.push(item);
           break;
-        case USACOLiveSolutionCategory.XCampUSACOGold:
+        case USACOMedalVideoCategory.XCampUSACOGold:
           sortData[2]?.categoryData?.push(item);
           break;
         default:
@@ -122,4 +122,4 @@ const UsacoIntro = () => {
   );
 };
 
-export default UsacoIntro;
+export default Introduction;

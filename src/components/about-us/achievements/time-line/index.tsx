@@ -1,4 +1,4 @@
-import { useGetAchievementsTimeLine } from '@/apis/strapi-client/strapi';
+import { useGetTimeLine } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { setTwoToneColor } from '@ant-design/icons';
@@ -11,7 +11,7 @@ const { Title, Text } = Typography;
 const TimeLine: React.FC = () => {
   const { lang, format: t } = useLang();
   setTwoToneColor('#D46B14');
-  const { data: timeLine } = useGetAchievementsTimeLine();
+  const { data: timeLine } = useGetTimeLine();
 
   const downloadUSACOPackage = () => {
     fetch('https://media.strapi.turingstar.com.cn/production/2023/9/USACO_ced1822e5c.pdf?updated_at=2023-09-29T06:38:53.858Z')

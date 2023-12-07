@@ -1,7 +1,5 @@
 'use client';
-import { NewEventCategory } from '@/apis/strapi-client/define';
-import { useGetNewEvent } from '@/apis/strapi-client/strapi';
-import { StrapiMedia } from '@/apis/strapi-client/strapiDefine';
+import { useGetXAlumniStory } from '@/apis/strapi-client/strapi';
 import ColorfulCard from '@/components/common/colorful-card';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -17,16 +15,7 @@ const { Title, Paragraph } = Typography;
 const Stories: React.FC = () => {
   const isMobile = useMobile();
   const { lang, format: t } = useLang();
-
-  const { data: newEventData } = useGetNewEvent({
-    tag: NewEventCategory.XAlumni,
-    current: 1,
-    pageSize: 3
-  });
-
-  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
-    return getTransResult(lang, imgZh.data?.attributes.url, imgEn.data?.attributes.url);
-  };
+  const { data } = useGetXAlumniStory();
 
   return (
     <div className={styles.storiesContainer}>
@@ -43,7 +32,7 @@ const Stories: React.FC = () => {
         </Space>
 
         <Row gutter={32} className={styles.row}>
-          {newEventData?.data?.map((item, index) => (
+          {data?.map((item, index) => (
             <Col key={item?.id} xs={24} sm={24} md={8}>
               <ColorfulCard border="bottom" index={index} className={styles.colorfulCard}>
                 <Card
@@ -53,7 +42,7 @@ const Stories: React.FC = () => {
                   }}
                 >
                   <Space direction="vertical" size={5}>
-                    <Image alt="" preview={false} src={getTranslateImg(item.attributes.imgZh, item.attributes.imgEn)} className={styles.cardImage} />
+                    <Image alt="" preview={false} src={item?.attributes?.img?.data?.attributes?.url} className={styles.cardImage} />
 
                     <Title ellipsis={{ rows: 2 }} className={styles.cardTitle}>
                       {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}

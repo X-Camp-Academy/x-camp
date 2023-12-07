@@ -1,4 +1,4 @@
-import { useGetAboutUsAchievementsAward } from '@/apis/strapi-client/strapi';
+import { useGetUSACOSpotlight } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { LeftOutlined, RightOutlined, setTwoToneColor } from '@ant-design/icons';
@@ -13,7 +13,7 @@ const USACOSpotlight: React.FC = () => {
   const { lang, format: t } = useLang();
   const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor('#D46B14');
-  const { data: awards } = useGetAboutUsAchievementsAward();
+  const { data: awards } = useGetUSACOSpotlight();
 
   return (
     <div className={styles.USACOSpotlightContainer}>
