@@ -75,7 +75,6 @@ const ContestCard = ({ data }: Props) => {
                 <Title ellipsis={{ rows: 1 }} className={styles.title}>
                   {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
                 </Title>
-                <div className={styles.description}>{getTransResult(lang, v?.attributes?.contestTitleExplanationZh, v?.attributes?.contestTitleExplanationEn)}</div>
                 <div className={styles.bottom}>
                   <div className={styles.time}>
                     {noInvalid(startDateTime) && dayjs(startDateTime).format('MMM DD')}
