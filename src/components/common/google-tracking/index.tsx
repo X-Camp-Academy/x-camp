@@ -5,14 +5,14 @@ const GoogleTracking = () => {
   return (
     <>
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11428221684" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD9N7XKE9Q" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'AW-11428221684');
+              gtag('config', 'G-DD9N7XKE9Q');
             `
           }}
         />

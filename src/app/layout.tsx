@@ -1,10 +1,10 @@
 'use client';
+import GoogleTracking from '@/components/common/google-tracking';
 import WithModalVisible from '@/hoc/WithModalVisible';
 import { WithAuth } from '@/hoc/with-auth';
 import { useMobile } from '@/utils';
 import { LocalStateProvider } from '@/utils/local-state';
 import dynamic from 'next/dynamic';
-import { usePathname } from 'next/navigation';
 import './globals.scss';
 
 const WithLayout = dynamic(() => import('@/hoc/WithLayout'), { ssr: false });
@@ -27,8 +27,6 @@ const FixedButtons = dynamic(() => import('@/components/common/fixed-buttons'), 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const isMobile = useMobile();
-  const pathname = usePathname();
-  const isTracking = pathname === '/' || /^\/courses\/detail/.test(pathname) || /^\/courses\/camps/.test(pathname);
   return (
     <html lang="en" className={isMobile ? 'mobile' : 'pc'}>
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />
@@ -38,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <WithAuth>
               <WithModalVisible>
                 <WithAntdConfig>
+                  <GoogleTracking />
                   <Nav />
                   <WithLayout>{children}</WithLayout>
                   <Footer />
