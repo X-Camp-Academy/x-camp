@@ -1,3 +1,4 @@
+import GoogleTracking from '@/components/common/google-tracking';
 import { PageTitle, generateMetadata } from '@/utils/metadata';
 import dynamic from 'next/dynamic';
 
@@ -8,5 +9,10 @@ export const metadata = {
 };
 
 const Page: React.FC = () => {
-  return <CourseDetail />;
+  return (
+    <>
+      <GoogleTracking />
+      <CourseDetail />
+    </>
+  );
 };
