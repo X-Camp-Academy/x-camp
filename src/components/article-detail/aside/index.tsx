@@ -114,8 +114,6 @@ const ArticleSider: React.FC<{
     return getTransResult(lang, imgZh.data?.attributes.url, imgEn.data?.attributes.url);
   };
 
-  console.log(eventThreeCard);
-
   return (
     <div className={styles.content}>
       <div className={styles.calendarContainer}>
