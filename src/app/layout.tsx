@@ -30,13 +30,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={isMobile ? 'mobile' : 'pc'}>
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+      <GoogleTracking />
       <body>
         <LocalStateProvider>
           <WithIntl>
             <WithAuth>
               <WithModalVisible>
                 <WithAntdConfig>
-                  <GoogleTracking />
                   <Nav />
                   <WithLayout>{children}</WithLayout>
                   <Footer />
