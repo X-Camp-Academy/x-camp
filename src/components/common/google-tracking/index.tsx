@@ -3,21 +3,19 @@
 
 const GoogleTracking = () => {
   return (
-    <>
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD9N7XKE9Q" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+    <head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD9N7XKE9Q" />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-DD9N7XKE9Q');
             `
-          }}
-        />
-      </head>
-    </>
+        }}
+      />
+    </head>
   );
 };
 
