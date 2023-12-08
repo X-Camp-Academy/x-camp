@@ -46,7 +46,11 @@ const Introduction = ({ data }: Props) => {
                     {v?.attributes?.contestLink}
                   </a>
                 </div>
-                <div className={styles.right} onClick={() => window.open(v?.attributes?.contestLink)}>
+                <div
+                  className={styles.right}
+                  style={v?.attributes?.contestLink ? {} : { cursor: 'auto' }}
+                  onClick={() => v?.attributes?.contestLink ? window.open(v?.attributes?.contestLink) : null}
+                >
                   <img src={v?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
                 </div>
               </div>

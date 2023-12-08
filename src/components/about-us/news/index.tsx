@@ -15,7 +15,7 @@ const NewsCard = dynamic(() => import('./news-card'));
 const { Content } = Layout;
 
 const NewsPage = () => {
-  const [year, setYear] = useState('2023');
+  const year = dayjs().format('YYYY');
   const [current, setCurrent] = useState(1);
 
   const pathname = usePathname();
