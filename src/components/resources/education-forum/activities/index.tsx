@@ -77,7 +77,7 @@ const Activities: React.FC = () => {
           {newEventData?.map((v, index) => (
             <Col key={v?.id} xs={24} sm={24} md={12} lg={8}>
               <ColorfulCard border={'bottom'} animate={false} index={index}>
-                <div className={styles.card} onClick={() => router.push(`/resources/education-forum/${v?.id}`)}>
+                <div className={styles.card} onClick={() => router.push(`/article-detail/${v?.id}`)}>
                   <div className={styles.imgContainer}>
                     <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
                   </div>
@@ -90,7 +90,7 @@ const Activities: React.FC = () => {
                         <ClockCircleOutlined className={styles.icon} />
                         {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
                       </div>
-                      <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} href={`/resources/education-forum/${v?.id}`} />
+                      <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} href={`/article-detail/${v?.id}`} />
                     </div>
                   </Space>
                 </div>

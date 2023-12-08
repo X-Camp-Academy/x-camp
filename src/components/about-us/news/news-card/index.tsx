@@ -59,7 +59,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
             return (
               <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
                 <ColorfulCard border={'bottom'} index={index} animate={false}>
-                  <Space direction={'vertical'} className={styles.card} onClick={() => router.push(`/resources/education-forum/${item?.id}`)}>
+                  <Space direction={'vertical'} className={styles.card} onClick={() => router.push(`/article-detail/${item?.id}`)}>
                     <img alt="" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
                     <Title className={styles.title} ellipsis={{ rows: 1 }}>
                       {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}

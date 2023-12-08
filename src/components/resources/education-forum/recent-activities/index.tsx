@@ -45,7 +45,7 @@ const RecentActivities: React.FC = () => {
               <Row className={styles.cards} gutter={isMobile ? [32, 24] : [32, 32]}>
                 {RecentActivities?.slice(0, 3)?.map((item, index) => (
                   <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
-                    <Link href={`/resources/education-forum/${item?.id}`}>
+                    <Link href={`/article-detail/${item?.id}`}>
                       <ColorfulCard border={'bottom'} animate={false} index={index}>
                         <Space direction="vertical" className={styles.card}>
                           <img alt="img" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
