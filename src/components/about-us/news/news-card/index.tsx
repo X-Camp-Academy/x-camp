@@ -71,7 +71,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
                         {startTime.format('YYYY-MM-DD')}
                       </Text>
 
-                      <a href={`/resources/education-forum/${item?.id}`}>
+                      <a href={`/article-detail/${item?.id}`}>
                         <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
                       </a>
                     </Space>

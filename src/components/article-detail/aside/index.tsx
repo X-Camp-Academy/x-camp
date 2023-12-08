@@ -139,8 +139,8 @@ const ArticleSider: React.FC<{
                         {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
                         {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
-                            ? `${formatHourMinute(item?.startDateTime || '')} - ${formatHourMinute(item?.endDateTime || '')} `
-                            : `${formatYMDTime(item?.startDateTime || '')} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
+                          ? `${formatHourMinute(item?.startDateTime || '')} - ${formatHourMinute(item?.endDateTime || '')} `
+                          : `${formatYMDTime(item?.startDateTime || '')} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
                           } 
                             ${formatTimezone(item?.startDateTime).timezone} 
                           `}
@@ -195,7 +195,7 @@ const ArticleSider: React.FC<{
                         {getTransResult(lang, v?.attributes?.descriptionZh, v?.attributes?.descriptionEn)}
                       </Paragraph>
                     </div>
-                    <a href={`/resources/education-forum/${v.id}`}>
+                    <a href={`/article-detail/${v.id}`}>
                       <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} style={{ color: '#FFAD11', fontSize: 24 }} />
                     </a>
                   </Row>
