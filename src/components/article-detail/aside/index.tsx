@@ -138,11 +138,10 @@ const ArticleSider: React.FC<{
                       <Text className={styles.itemDate}>
                         {/* 当活动跨天显示完整的年月日时间，否则仅显示时间 */}
 
-                        {`${
-                          dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
+                        {`${dayjs(item?.startDateTime).isSame(dayjs(item?.endDateTime), 'day')
                             ? `${formatHourMinute(item?.startDateTime || '')} - ${formatHourMinute(item?.endDateTime || '')} `
                             : `${formatYMDTime(item?.startDateTime || '')} ${item?.endDateTime ? '-' + formatYMDTime(item?.endDateTime) : ''}`
-                        } 
+                          } 
                             ${formatTimezone(item?.startDateTime).timezone} 
                           `}
                       </Text>
@@ -169,7 +168,7 @@ const ArticleSider: React.FC<{
         {eventThreeCard?.map((v, index) => {
           return (
             <ColorfulCard border={'bottom'} animate={false} index={index} className={styles.card} key={v?.id}>
-              <Card style={{ cursor: 'pointer' }} onClick={() => router.push(`/resources/education-forum/${v.id}`)}>
+              <Card style={{ cursor: 'pointer' }} onClick={() => router.push(`/article-detail/${v.id}`)}>
                 <Space direction="vertical" style={{ width: '100%' }}>
                   <Image src={getTranslateImg(v?.attributes?.imgZh, v?.attributes?.imgEn)} alt="image" preview={false} className={styles.image} />
 
