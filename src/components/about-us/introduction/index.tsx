@@ -1,16 +1,15 @@
 'use client';
 import { useGetFaculty } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
+import Banner from './banner';
+import AboutXCamp from './about-xcamp';
+import History from './history';
+import XCampFounders from '@/components/common/xcamp-founders';
+import FacultyCoaches from '@/components/common/faculty-coaches';
+import Partners from '@/components/common/partners';
 
-const Banner = dynamic(() => import('./banner'));
-const AboutXCamp = dynamic(() => import('./about-xcamp'));
-const History = dynamic(() => import('./history'));
-const XCampFounders = dynamic(() => import('@/components/common/xcamp-founders'));
-const FacultyCoaches = dynamic(() => import('@/components/common/faculty-coaches'));
-const Partners = dynamic(() => import('@/components/common/partners'));
 const { Content } = Layout;
 
 const Introduction: React.FC = () => {

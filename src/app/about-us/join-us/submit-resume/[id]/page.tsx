@@ -1,7 +1,5 @@
 import { PageTitle, generateMetadata } from '@/utils/metadata';
-import dynamic from 'next/dynamic';
-
-const SubmitResume = dynamic(() => import('@/components/about-us/join-us/submit-resume'));
+import SubmitResume from '@/components/about-us/join-us/submit-resume';
 
 export const metadata = {
   ...generateMetadata(PageTitle.SubmitResume)

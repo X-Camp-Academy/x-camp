@@ -23,9 +23,6 @@ export type GetFacultyResponse = StrapiResponse<GetFaculty>;
 export enum NewEventCategory {
   News = 'News',
   Events = 'Events',
-  SchoolCalendar = 'School Calendar',
-  EventContest = 'Event Contest',
-  XAlumni = 'X-Alumni',
   All = 'All'
 }
 export enum EventCategory {

@@ -1,7 +1,5 @@
 import { PageTitle, generateMetadata } from '@/utils/metadata';
-import dynamic from 'next/dynamic';
-
-const ContactUsContent = dynamic(() => import('@/components/about-us/contact-us'), { ssr: false });
+import ContactUsContent from '@/components/about-us/contact-us';
 
 export const metadata = {
   ...generateMetadata(PageTitle.ContactUs)

@@ -1,14 +1,12 @@
 import { PageTitle, generateMetadata } from '@/utils/metadata';
-import dynamic from 'next/dynamic';
-
-const Article = dynamic(() => import('@/components/article-detail'));
+import ArticleDetail from '@/components/article-detail';
 
 export const metadata = {
   ...generateMetadata(PageTitle.ArticleDetail)
 };
 
 const Page: React.FC = () => {
-  return <Article />;
+  return <ArticleDetail />;
 };
 
 export default Page;

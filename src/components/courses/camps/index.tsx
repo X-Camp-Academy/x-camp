@@ -40,7 +40,6 @@ const CourseCamps: React.FC = () => {
   });
   const { data: reviewsData } = useGetReviews({
     ready: Boolean(campsCourse),
-    courseId: campsCourse?.data?.map((v) => String(v?.id)),
     pageName: [pathname]
   });
 

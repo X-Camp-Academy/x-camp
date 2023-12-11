@@ -3,14 +3,12 @@ import { NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
 import dayjs from 'dayjs';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import SubscribeNewsletter from './subscribe-news-letter';
-
-const Banner = dynamic(() => import('./banner'));
-const NewsCard = dynamic(() => import('./news-card'));
+import Banner from './banner';
+import NewsCard from './news-card';
 
 const { Content } = Layout;
 

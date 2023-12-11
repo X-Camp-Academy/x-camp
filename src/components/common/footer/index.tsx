@@ -1,10 +1,9 @@
 'use client';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
+import CopyRight from './CopyRight';
 
-const CopyRight = dynamic(() => import('./CopyRight'));
 const { Content } = Layout;
 
 const Footer: React.FC = () => {

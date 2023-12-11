@@ -9,15 +9,11 @@ interface Props {
 }
 
 const WithAntdConfig = ({ children }: Props) => {
-  // ! TODO fontFamily需要替换
   return (
     <ConfigProvider
       theme={{
         token: {
           colorPrimary: '#FFAD11',
-          fontFamily: `Poppins, Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI,
-          Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif,
-          Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;`
         }
       }}
     >

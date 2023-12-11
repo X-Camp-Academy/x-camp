@@ -1,8 +1,6 @@
-import { useLang } from '@/hoc/with-intl/define';
-import dynamic from 'next/dynamic';
 import React from 'react';
-
-const CommonBanner = dynamic(() => import('@/components/common/common-banner'));
+import { useLang } from '@/hoc/with-intl/define';
+import CommonBanner from '@/components/common/common-banner';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();

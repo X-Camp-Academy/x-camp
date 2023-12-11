@@ -2,10 +2,9 @@
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Image, Space, Typography } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
-const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
+import UsacoMedal from '@/components/common/usaco-medal';
 
 const { Title, Paragraph } = Typography;
 
