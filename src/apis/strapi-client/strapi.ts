@@ -38,39 +38,19 @@ import {
 } from './define';
 import { AndOrFilters, FilterFields, StrapiResponseDataItem, sortDesc } from './strapiDefine';
 
-// 被用在哪些course 以英文逗号连接的字符串
-// 被用在哪些page 以英文逗号连接的字符串
-// 被用在哪些event 以英文逗号连接的字符串
-
-interface Props {
-  courseId?: string[];
-  pageName?: string[];
-  eventId?: string[];
-}
-
-export const useGetFaculty = ({ courseId, pageName, eventId }: Props) => {
+export const useGetFaculty = ({ pageName }: { pageName?: string[] }) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
     async (params: GetFacultyRequest) => {
       const res: GetFacultyResponse = await client.getFaculty(params);
       let data = [];
-      if (!courseId && !pageName && !eventId) {
-        // 如果三个选项都没填则取所有的
+      if (!pageName) {
         data = res?.data;
       } else {
-        // 根据courseId, pageName, eventId做筛选，根据category做分类
-        if (courseId) {
-          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
-        }
-        if (pageName) {
-          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
-        }
-        if (eventId) {
-          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
-        }
+        data.push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
-      data = deduplicateArray(data); // 去重
+      data = deduplicateArray(data);
       return data;
     },
     {
@@ -90,18 +70,14 @@ export const useGetNewEvent = ({
   current = 1,
   pageSize = 999,
   manual = false,
-  courseId,
   pageName,
-  eventId,
   sortField
 }: {
   tag?: NewEventCategory;
   current?: number;
   pageSize?: number;
   manual?: boolean;
-  courseId?: string[];
   pageName?: string[];
-  eventId?: string[];
   sortField?: string[];
 }) => {
   const client = useStrapiClient();
@@ -112,20 +88,10 @@ export const useGetNewEvent = ({
       const res: GetNewEventResponse = await client.getNewEvent(params);
 
       let result: GetNewEventResponse = { ...res, data: [] };
-      if (!courseId && !pageName && !eventId) {
-        // 如果三个选项都没填则取所有的
+      if (!pageName) {
         result['data'] = res.data;
       } else {
-        // 根据courseId, pageName, eventId做筛选，根据category做分类
-        if (courseId) {
-          result['data'].push(...filterByAttribution(res?.data, 'courseId', courseId));
-        }
-        if (pageName) {
-          result['data'].push(...filterByAttribution(res?.data, 'pageName', pageName));
-        }
-        if (eventId) {
-          result['data'].push(...filterByAttribution(res?.data, 'eventId', eventId));
-        }
+        result['data'].push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
       result['data'] = deduplicateArray(result?.data);
       return result || {};
@@ -294,39 +260,19 @@ export const useGetJoinUs = (category?: JoinUsCategory) => {
   );
 };
 
-export const useGetReviews = ({
-  ready,
-  courseId,
-  pageName,
-  eventId
-}: {
-  ready: boolean; // 是否发请求，用于等待其他请求
-  courseId?: string[]; // 被用在哪些course 以英文逗号连接的字符串
-  pageName?: string[]; // 被用在哪些page 以英文逗号连接的字符串
-  eventId?: string[]; // 被用在哪些event 以英文逗号连接的字符串
-}) => {
+export const useGetReviews = ({ ready, pageName }: { ready: boolean; pageName?: string[] }) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
   return useRequest(
     async (params: GetReviewsRequest) => {
       const res = await client.getReviews(params);
       let data = [];
-      if (!courseId && !pageName && !eventId) {
-        // 如果三个选项都没填则取所有的
+      if (!pageName) {
         data = res?.data;
       } else {
-        // 根据courseId, pageName, eventId做筛选，根据category做分类
-        if (courseId) {
-          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
-        }
-        if (pageName) {
-          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
-        }
-        if (eventId) {
-          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
-        }
+        data.push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
-      return deduplicateArray(data); // 去重
+      return deduplicateArray(data);
     },
     {
       defaultParams: [
@@ -475,16 +421,12 @@ export const useGetFaq = <T extends boolean = false, R = T extends true ? Strapi
   ready,
   isClassify,
   category,
-  courseId,
-  pageName,
-  eventId
+  pageName
 }: {
-  ready: boolean; // 是否发请求，用于等待其他请求
-  isClassify?: T; // 是否分组
-  category?: FaqCategory; // 类别
-  courseId?: string[]; // 被用在哪些course 以英文逗号连接的字符串
-  pageName?: string[]; // 被用在哪些page 以英文逗号连接的字符串
-  eventId?: string[]; // 被用在哪些event 以英文逗号连接的字符串
+  ready: boolean;
+  isClassify?: T;
+  category?: FaqCategory;
+  pageName?: string[];
 }) => {
   const client = useStrapiClient();
   const handleError = useHandleError();
@@ -492,22 +434,12 @@ export const useGetFaq = <T extends boolean = false, R = T extends true ? Strapi
     async (params) => {
       const res = await client.getFaq(params);
       let data = [];
-      if (!courseId && !pageName && !eventId) {
-        // 如果三个选项都没填则取所有的
+      if (!pageName) {
         data = res?.data;
       } else {
-        // 根据courseId, pageName, eventId做筛选，根据category做分类
-        if (courseId) {
-          data.push(...filterByAttribution(res?.data, 'courseId', courseId));
-        }
-        if (pageName) {
-          data.push(...filterByAttribution(res?.data, 'pageName', pageName));
-        }
-        if (eventId) {
-          data.push(...filterByAttribution(res?.data, 'eventId', eventId));
-        }
+        data.push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
-      data = deduplicateArray(data); // 去重
+      data = deduplicateArray(data);
       if (isClassify) {
         return classifyByAttribution(res?.data, 'category') as R;
       } else {
