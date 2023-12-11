@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-head-element */
 /* eslint-disable react/style-prop-object */
 /* eslint-disable @next/next/next-script-for-ga */
 
