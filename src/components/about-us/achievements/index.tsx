@@ -1,17 +1,15 @@
 'use client';
 import { useGetProjectDemos } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
+import Banner from '@/components/about-us/achievements/banner';
+import USACOSpotlight from '@/components/about-us/achievements/usaco-spotlight';
+import TimeLine from '@/components/about-us/achievements/time-line';
+import UsacoMedal from '@/components/common/usaco-medal';
+// import ProjectDemos from '@/components/about-us/achievements/project-demos';
 
 const { Content } = Layout;
-const Banner = dynamic(() => import('@/components/about-us/achievements/banner'));
-const USACOSpotlight = dynamic(() => import('@/components/about-us/achievements/usaco-spotlight'));
-const TimeLine = dynamic(() => import('@/components/about-us/achievements/time-line'));
-const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
-const ProjectDemos = dynamic(() => import('@/components/about-us/achievements/project-demos'));
-
 const Achievements: React.FC = () => {
   const { data } = useGetProjectDemos();
 

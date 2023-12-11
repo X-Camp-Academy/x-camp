@@ -40,7 +40,7 @@ const ContactCard: React.FC = () => {
   return (
     <div className={`${styles.contactCardContent} container`}>
       <Row gutter={isMobile ? [32, 24] : [32, 32]}>
-        {contactInfo.map((item, index) => (
+        {contactInfo?.map((item, index) => (
           <Col key={item?.title} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }} xl={{ span: 8 }}>
             <ColorfulCard border={'top'} index={contactInfo.length - index - 1} animate={false}>
               <Card className={styles.card}>

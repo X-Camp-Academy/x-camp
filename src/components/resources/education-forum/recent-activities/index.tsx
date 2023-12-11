@@ -5,13 +5,12 @@ import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { AlignRightOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Col, Row, Space, Typography } from 'antd';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
 import styles from './index.module.scss';
+import ColorfulCard from '@/components/common/colorful-card';
+import XCollapse from '@/components/common/collapse';
 
-const ColorfulCard = dynamic(() => import('@/components/common/colorful-card'));
-const XCollapse = dynamic(() => import('@/components/common/collapse'));
 const { Title, Text } = Typography;
 
 const RecentActivities: React.FC = () => {

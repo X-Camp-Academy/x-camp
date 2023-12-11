@@ -4,13 +4,11 @@ import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { ClockCircleOutlined, GlobalOutlined, LaptopOutlined, RightCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Col, Descriptions, Row, Typography } from 'antd';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
-
-const ColorfulCard = dynamic(() => import('@/components/common/colorful-card'));
-const XCollapse = dynamic(() => import('@/components/common/collapse'));
+import ColorfulCard from '@/components/common/colorful-card';
+import XCollapse from '@/components/common/collapse';
 
 const { Title, Paragraph } = Typography;
 const UpcomingEvents: React.FC = () => {

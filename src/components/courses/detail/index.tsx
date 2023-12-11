@@ -22,7 +22,6 @@ const CourseDetail: React.FC = () => {
 
   const { data: reviewsData } = useGetReviews({
     ready: true,
-    courseId: [params?.courseId as string]
   });
 
   const { data: coursesData } = useGetCourses({
@@ -34,7 +33,6 @@ const CourseDetail: React.FC = () => {
   const { data: faqData } = useGetFaq({
     ready: true,
     category: FaqCategory.CoursesQA,
-    courseId: [params?.courseId as string]
   });
 
   return (

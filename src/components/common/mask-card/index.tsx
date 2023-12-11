@@ -7,6 +7,7 @@ interface MaskCardProps extends CardProps {
   maskBackGroundColor?: string;
   maskBorderRadius?: number;
 }
+
 const MaskCard = ({ maskChildren, children, maskBackGroundColor, maskBorderRadius = 8, ...props }: MaskCardProps) => {
   return (
     <Card {...props} className={`${styles.maskCard} ${props.className}`}>

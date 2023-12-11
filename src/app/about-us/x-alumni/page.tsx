@@ -1,7 +1,5 @@
 import { PageTitle, generateMetadata } from '@/utils/metadata';
-import dynamic from 'next/dynamic';
-
-const XAlumni = dynamic(() => import('@/components/about-us/x-alumni'));
+import XAlumni from '@/components/about-us/x-alumni';
 
 export const metadata = {
   ...generateMetadata(PageTitle.XAlumni)

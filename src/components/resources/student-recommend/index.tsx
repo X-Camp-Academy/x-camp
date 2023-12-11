@@ -2,18 +2,16 @@
 import { FaqCategory } from '@/apis/strapi-client/define';
 import { useGetFaq, useGetReviews } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
+import Banner from './banner';
+import ReferralAndEarn from './referral-and-earn';
+import GetCredit from './referral-program-work';
+import Faq from '@/components/common/faqs';
+import Reviews from '@/components/common/reviews';
 
 const { Content } = Layout;
-
-const Banner = dynamic(() => import('./banner'));
-const ReferralAndEarn = dynamic(() => import('./referral-and-earn'));
-const GetCredit = dynamic(() => import('./referral-program-work'));
-const Faq = dynamic(() => import('@/components/common/faqs'));
-const Reviews = dynamic(() => import('@/components/common/reviews'));
 
 const StudentRecommend: React.FC = () => {
   const pathname = usePathname();

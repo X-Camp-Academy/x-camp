@@ -3,14 +3,13 @@ import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Carousel, Col, Row, Space, Typography } from 'antd';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import React, { CSSProperties, useRef, useState } from 'react';
 import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
+import UsacoMedal from '@/components/common/usaco-medal';
 
 const { Text } = Typography;
-const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
 
 interface CarouselItemsProps {
   title: string;

@@ -8,7 +8,6 @@ type LangType = 'zh' | 'en';
 const LANG_ZH_CN: LangType = 'zh';
 export type LangKey = keyof typeof zh_CN & keyof typeof en_US;
 
-// format 定义
 export type format = <T extends LangKey>(id: T) => (typeof zh_CN | typeof en_US)[T];
 
 type LangInfo = {

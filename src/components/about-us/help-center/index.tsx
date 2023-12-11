@@ -1,15 +1,13 @@
 'use client';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import styles from './index.module.scss';
-
-const TopBanner = dynamic(() => import('./banner'));
-const Reviews = dynamic(() => import('@/components/common/reviews'));
-const QAPart = dynamic(() => import('./qa-part'));
-const ContactUs = dynamic(() => import('./contact-us'));
+import Banner from './banner';
+import Reviews from '@/components/common/reviews';
+import QAPart from './qa-part';
+import ContactUs from './contact-us';
 
 const { Content } = Layout;
 
@@ -23,7 +21,7 @@ const HelpCenter: React.FC = () => {
   return (
     <Layout className={styles.QAContainer}>
       <Content>
-        <TopBanner />
+        <Banner />
         <QAPart />
         <ContactUs />
         <Reviews reviewsData={reviewsData} />
