@@ -7,8 +7,12 @@
   }
 
   .title {
-    @include title('about');
-
+    font-size: 36px;
+    font-family: MontserratAlternates-Bold, Arial;
+    font-weight: 600;
+    line-height: 48px;
+    color: $text-color;
+    margin-top: 0;
     @media (width <= 768px) {
       @include title('mobile');
     }

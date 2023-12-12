@@ -11,8 +11,12 @@
   }
 
   :global(.ant-timeline-item-head) {
-    @include arrow;
-
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-color: transparent;
+    border-radius: 0;
+    border-top-color: $text-color;
     margin-top: 10px;
     margin-left: -3px;
     background: transparent;
