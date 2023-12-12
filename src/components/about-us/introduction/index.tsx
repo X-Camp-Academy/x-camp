@@ -14,7 +14,6 @@ const { Content } = Layout;
 
 const Introduction: React.FC = () => {
   const { data: facultyData } = useGetFaculty({});
-
   return (
     <Layout className={styles.introductionContainer}>
       <Content>

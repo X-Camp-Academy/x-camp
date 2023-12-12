@@ -1,6 +1,6 @@
 import { useLang } from '@/hoc/with-intl/define';
 import { useHandleError } from '@/utils/error';
-import { classifyByAttribution, deduplicateArray, filterByAttribution } from '@/utils/public';
+import { classifyByAttribution, filterByAttribution } from '@/utils/public';
 import { useRequest } from 'ahooks';
 import { isArray } from 'lodash';
 import { useStrapiClient } from '.';
@@ -50,7 +50,6 @@ export const useGetFaculty = ({ pageName }: { pageName?: string[] }) => {
       } else {
         data.push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
-      data = deduplicateArray(data);
       return data;
     },
     {
@@ -93,7 +92,7 @@ export const useGetNewEvent = ({
       } else {
         result['data'].push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
-      result['data'] = deduplicateArray(result?.data);
+      result['data'] = result?.data;
       return result || {};
     },
     {
@@ -272,7 +271,7 @@ export const useGetReviews = ({ ready, pageName }: { ready: boolean; pageName?: 
       } else {
         data.push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
-      return deduplicateArray(data);
+      return data;
     },
     {
       defaultParams: [
@@ -439,7 +438,6 @@ export const useGetFaq = <T extends boolean = false, R = T extends true ? Strapi
       } else {
         data.push(...filterByAttribution(res?.data, 'pageName', pageName));
       }
-      data = deduplicateArray(data);
       if (isClassify) {
         return classifyByAttribution(res?.data, 'category') as R;
       } else {

@@ -33,7 +33,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
 
   return (
     <div className={cx(className, styles.reviewsContainer)}>
-      {reviewsData && reviewsData?.length > 0 && (
+      {reviewsData && reviewsData?.length >= 3 && (
         <div className={cx(styles.reviews, 'container')}>
           <div className={styles.reviewsBox}>
             {!isMobile && (

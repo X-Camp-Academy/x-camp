@@ -105,7 +105,23 @@
 
     .buttonContainer {
       .contactBtn {
-        @include button('nav');
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 15px;
+        cursor: pointer;
+        border: 2px solid #172142;
+        border-radius: 4px;
+        span {
+          @include text;
+        }
+        span {
+          line-height: 20px;
+          svg {
+            margin-left: 4px;
+          }
+        }
+
         @include flex(center);
         @include text(16px, 24px);
 
