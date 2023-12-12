@@ -222,6 +222,9 @@ export interface GetCourses extends strapiPublicFields {
   additionalInfo: string;
   isBilingual: boolean;
   levelType: LevelType;
+  reviews: {
+    data: StrapiResponseDataItem<GetReviews>[];
+  };
 }
 export type GetCoursesRequest = StrapiRequest<GetCourses>;
 export type GetCoursesResponse = StrapiResponse<GetCourses>;

@@ -1,112 +1,97 @@
-$ip: 'https://media.strapi.turingstar.com.cn/production/2023/3/_31e3aca7f2.png?updated_at=2023-03-06T06:33:20.724Z';
-$planets: 'https://media.strapi.turingstar.com.cn/production/2023/3/background_right_6ff67955bc.png?updated_at=2023-03-06T06:42:07.160Z';
-$hello: 'https://media.strapi.turingstar.com.cn/production/2023/3/hello_0dd8b00bbf.png?updated_at=2023-03-06T06:54:19.121Z';
+@import '@/styles/variables';
 
-.page {
-  position: relative;
-  width: 100vw;
+.browserCompatibilityContainer {
+  background-color: $primary-color;
   height: 100vh;
-  background-color: #3872e6;
-
-  .hello {
-    position: absolute;
-    bottom: 240px;
-    left: 100px;
-    width: 204px;
-    height: 96px;
-    background: url($hello) 100% no-repeat;
-    background-size: 100% 100%;
+  @media (max-width: 768px) {
+    height: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
-  .ip {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 240px;
-    height: 280px;
-    background: url($ip) 100% no-repeat;
-    background-size: 100% 100%;
-  }
-
-  .planets {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 240px;
-    height: 280px;
-    background: url($planets) 100% no-repeat;
-    background-size: 100% 100%;
-  }
-
-  .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 50vw;
-    height: 70vh;
-    max-height: 500px;
-    color: #fff;
-    transform: translate(-50%, -50%);
-    flex-direction: column;
-
-    .reason {
-      font-size: 18px;
-      font-weight: bold;
-      text-align: center;
-      line-height: 40px;
+  .browserCompatibility {
+    padding-top: 72px;
+    padding-bottom: 72px;
+    @media (max-width: 768px) {
+      height: 100%;
+      padding-left: 0;
+      padding-right: 0;
     }
-
-    .cards {
-      display: flex;
-      justify-content: space-between;
-
-      .card {
-        width: 30%;
-        border: 1px solid #f0f0f0;
-        border-radius: 8px;
-        font-size: 14px;
-        color: rgb(0 0 0 / 88%);
-        background: #fff;
-        list-style: none;
-        box-sizing: border-box;
-        line-height: 1.5;
-
-        .cardBody {
-          padding: 24px;
-
-          .title {
-            overflow: hidden;
-            margin-bottom: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-
-          .description {
-            color: rgb(0 0 0 / 45%);
-          }
+    .space {
+      width: 100%;
+      height: 100%;
+      .logo {
+        margin: 0 auto;
+        width: 320px;
+        height: 128px;
+        @media (max-width: 768px) {
+          width: 100%;
+          height: 100%;
         }
+      }
+      .reason {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 40px;
+        margin-top: 72px;
+        margin-bottom: 72px;
+        @media (max-width: 768px) {
+          margin-top: 24px;
+          margin-bottom: 24px;
+        }
+      }
 
-        .actions {
-          display: flex;
-          justify-content: center;
-          padding: 12px 0;
-          border-top: 1px solid #f0f0f0;
-          border-radius: 0 0 8px 8px;
+      .cards {
+        margin: 0 auto;
+        .card {
+          width: 100%;
+          border: 1px solid #f0f0f0;
+          border-radius: 8px;
+          font-size: 14px;
+          color: rgb(0 0 0 / 88%);
           background: #fff;
+          list-style: none;
+          box-sizing: border-box;
+          line-height: 1.5;
 
-          .link {
-            padding: 0 20px;
-            text-decoration: none;
-            color: rgb(0 0 0 / 45%);
-            transition: color 0.2s;
+          .cardBody {
+            padding: 48px;
 
-            &:hover {
-              color: #167fff;
+            @media (max-width: 768px) {
+              padding: 24px;
+            }
+            .title {
+              overflow: hidden;
+              margin-bottom: 8px;
+              font-size: 16px;
+              font-weight: bold;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            .description {
+              color: rgb(0 0 0 / 45%);
+            }
+          }
+
+          .actions {
+            display: flex;
+            justify-content: center;
+            padding: 12px 0;
+            border-top: 1px solid #f0f0f0;
+            border-radius: 0 0 8px 8px;
+            background: #fff;
+
+            .link {
+              padding: 0 20px;
+              text-decoration: none;
+              color: rgb(0 0 0 / 45%);
+              transition: color 0.2s;
+
+              &:hover {
+                color: #167fff;
+              }
             }
           }
         }

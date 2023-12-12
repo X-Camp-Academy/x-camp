@@ -43,7 +43,6 @@ export const getLangResult = (lang: 'zh' | 'en', zhData?: string[], enData?: str
  */
 export const classifyByAttribution = <T extends { attributes: any }>(data: T[], field: string): T[][] => {
   const groupedData: T[][] = [];
-
   data.forEach((item) => {
     const fieldValue = item?.attributes?.[field];
     const index = groupedData?.findIndex((group) => group[0]?.attributes?.[field] === fieldValue);
@@ -54,7 +53,6 @@ export const classifyByAttribution = <T extends { attributes: any }>(data: T[], 
       groupedData[index].push(item);
     }
   });
-
   return groupedData;
 };
 
@@ -77,24 +75,6 @@ export const filterByAttribution = <T extends { attributes: any }>(data: T[], at
     return false;
   });
   return filteredData;
-};
-
-/**
- *
- * @param array
- * @returns 数组去重，重复的判定标准是每个对象的id属性
- */
-export const deduplicateArray = <T extends { id: number }>(array: T[]): T[] => {
-  const deduplicatedArray: T[] = [];
-  const idSet = new Set<number>();
-  for (const item of array) {
-    if (!idSet.has(item?.id)) {
-      deduplicatedArray.push(item);
-      idSet.add(item?.id);
-    }
-  }
-
-  return deduplicatedArray;
 };
 
 export const scrollIntoView = (id: string) => {
