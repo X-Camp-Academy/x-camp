@@ -130,7 +130,7 @@ const Nav: React.FC = () => {
             <div className={styles.mobileIntl}>
               {/* ! 下一版更新 */}
               {/* <SelectPage /> */}
-              {/* <ToggleLanguage className={styles.toggleMargin} /> */}
+              <ToggleLanguage className={styles.toggleMargin} />
             </div>
             <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
           </Space>
