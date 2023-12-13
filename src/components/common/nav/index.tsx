@@ -13,6 +13,7 @@ import DropdownUserMenu from '../dropdown-user-menu';
 import { removeDropdown, useMenuItems } from './define';
 import styles from './index.module.scss';
 import XStarMenu from './x-star-menu';
+import ToggleLanguage from '../toggle-language';
 
 const { Header } = Layout;
 
@@ -114,7 +115,7 @@ const Nav: React.FC = () => {
                     {t('Nav.Login')}
                   </Button>
                 )}
-                {/* <ToggleLanguage /> */}
+                <ToggleLanguage />
               </>
             ) : (
               <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
