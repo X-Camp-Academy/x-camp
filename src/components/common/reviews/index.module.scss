@@ -7,10 +7,6 @@
   flex-direction: column;
   background-color: #fff5e8;
 
-  @media (width <= 768px) {
-    display: none;
-  }
-
   .reviews {
     position: relative;
     padding: 80px 120px;
