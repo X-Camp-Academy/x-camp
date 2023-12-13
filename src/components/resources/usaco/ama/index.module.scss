@@ -1,0 +1,88 @@
+@import '@/styles/variables';
+
+.amaContainer {
+  margin-top: 80px;
+
+  @media (width <= 768px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .title {
+    @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+  }
+
+  .paragraph {
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 34px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      margin-bottom: 0;
+    }
+  }
+
+  .spaceContainer {
+    justify-content: space-between;
+    width: 100%;
+
+    .spaceBox {
+      cursor: pointer;
+
+      .image {
+        width: 100%;
+        height: 252px;
+        border-radius: 4px;
+
+        @media (width <= 1200px) {
+          width: 100%;
+          height: 200px;
+        }
+
+        @media (width <= 992px) {
+          width: 100%;
+          height: 152px;
+        }
+
+        @media (width <= 768px) {
+          width: 100%;
+        }
+      }
+
+      .title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 28px;
+
+        @media (width <= 768px) {
+          @include title('middle');
+
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      .date {
+        font-size: 18px;
+        font-weight: 400;
+        color: #666;
+        line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
+      }
+    }
+  }
+}

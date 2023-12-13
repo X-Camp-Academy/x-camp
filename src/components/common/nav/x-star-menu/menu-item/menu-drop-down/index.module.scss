@@ -46,17 +46,26 @@
   }
 
   .dropdownContainer {
-    @media (width <= 992px) and (width >= 768px) {
+    display: flex;
+    justify-content: center;
+
+    @media (width <= 1200px) and (width >= 768px) {
       max-width: 100%;
     }
 
     .left {
-      @media (width <= 992px) and (width >= 768px) {
-        width: 210px;
+      @media (width <= 1400px) and (width >= 768px) {
+        width: 160px;
       }
 
       .title {
-        @include title('normal');
+        width: 304px;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 42px;
+        @media (width <= 1400px) and (width >= 768px) {
+          font-size: 20px;
+        }
       }
 
       :global(.ant-space-item) {
@@ -64,7 +73,24 @@
       }
 
       .btn {
-        @include button('nav');
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 15px;
+        cursor: pointer;
+        border: 2px solid #172142;
+        border-radius: 4px;
+        span {
+          span {
+            @include text;
+          }
+          span {
+            line-height: 20px;
+            svg {
+              margin-left: 4px;
+            }
+          }
+        }
       }
     }
 
@@ -122,7 +148,7 @@
       background: #fff4ed;
       cursor: pointer;
 
-      @media (width <= 992px) and (width >= 768px) {
+      @media (width <= 1200px) and (width >= 768px) {
         padding: 20px 10px;
       }
 

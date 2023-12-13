@@ -25,7 +25,6 @@ const CourseCamps: React.FC = () => {
     }
   });
 
-  // 请求类别为CoursesQA, courseId为isCamp课程, pageName 为"/courses/camps/"的Faq
   const { data: campsCourse } = useGetCourses({
     filters: {
       isCamp: {
@@ -37,12 +36,10 @@ const CourseCamps: React.FC = () => {
   const { data: faq } = useGetFaq({
     ready: Boolean(campsCourse),
     category: FaqCategory.CampsQA,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
-  // 请求courseId为isCamp课程, pageName 为"/courses/camps/"的评论
   const { data: reviewsData } = useGetReviews({
     ready: Boolean(campsCourse),
-    courseId: campsCourse?.data?.map((v) => String(v?.id)),
     pageName: [pathname]
   });
 
@@ -50,16 +47,14 @@ const CourseCamps: React.FC = () => {
     <Layout className={styles.courseCamps}>
       <Content>
         <Banner />
-        <Introduction />
-        <div className={styles.courseCard}>
-          <div className="container">
-            <ColorfulCard border={'bottom'} index={1} animate={false}>
-              <div className={styles.cardContent}>
-                <CourseAbstract {...coursesData?.data[0]?.attributes} />
-              </div>
-            </ColorfulCard>
-          </div>
+        <div className={`${styles.courseCard} container`}>
+          <ColorfulCard border={'bottom'} index={1} animate={false}>
+            <div className={styles.cardContent}>
+              <CourseAbstract {...coursesData?.data[0]?.attributes} />
+            </div>
+          </ColorfulCard>
         </div>
+        <Introduction />
         <Faqs title={t('CampsFAQs')} data={faq} />
         <Reviews reviewsData={reviewsData} />
       </Content>

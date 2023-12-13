@@ -1,4 +1,7 @@
-.segmentedRadioGroup {
+.radioGroupContainer {
+  margin: 0 auto;
+  width: 100%;
+
   :global(.ant-segmented-group) {
     padding: 8px 36px;
 
@@ -13,7 +16,7 @@
     line-height: 36px;
 
     @media (width <= 768px) {
-      font-size: 14px;
+      font-size: 12px !important;
     }
   }
 

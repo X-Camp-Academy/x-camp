@@ -1,0 +1,53 @@
+@import '@/styles/variables';
+
+.deepDiveClasses {
+  @media (width <= 768px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .title {
+    font-size: 36px;
+    font-family: MontserratAlternates-Bold, Arial;
+    font-weight: 600;
+    line-height: 48px;
+    color: $text-color;
+    margin-top: 0;
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
+  }
+
+  .description {
+    margin-bottom: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+    line-height: 34px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .images {
+    justify-content: space-between;
+    width: 100%;
+
+    @media (width <= 768px) {
+      justify-content: center;
+    }
+
+    img {
+      width: 416px;
+      height: 272px;
+
+      @media (width <= 768px) {
+        width: 100%;
+      }
+    }
+  }
+}

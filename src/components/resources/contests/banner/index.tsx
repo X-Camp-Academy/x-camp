@@ -1,25 +1,19 @@
-import { useLang } from '@/hoc/with-intl/define';
-import classNames from 'classnames/bind';
 import React from 'react';
-import styles from './index.module.scss';
-
-const cx = classNames.bind(styles);
+import { useLang } from '@/hoc/with-intl/define';
+import CommonBanner from '@/components/common/common-banner';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
-  return (
-    <div className={styles.banner}>
-      <div className={cx('container', styles.content)}>
-        <div className={styles.left}>
-          <div className={styles.title}>{t('Contests')}</div>
-          <div className={styles.description}>{t('Contest.Desc')}</div>
-        </div>
-        <div className={styles.right}>
-          <img src="/image/resources/contests-banner.png" alt="" />
-        </div>
-      </div>
-    </div>
+  const paragraph = (
+    <>
+      {t('Contests.Banner.Desc1')}
+      {t('Contests.Banner.Desc2')}
+      {t('Contests.Banner.Desc3')}
+      {t('Contests.Banner.Desc4')}
+      {t('Contests.Banner.Desc5')}
+    </>
   );
+  return <CommonBanner image={'/image/resources/contest-banner.png'} title={t('Contests')} paragraph={paragraph} />;
 };
 
 export default Banner;

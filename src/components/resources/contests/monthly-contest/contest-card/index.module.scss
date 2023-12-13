@@ -1,7 +1,7 @@
 @import '@/styles/variables';
 
 .popoverContent {
-  width: 328px;
+  width: 320px;
 
   .divider {
     margin: 16px 0;
@@ -33,15 +33,24 @@
     padding-bottom: 33px;
     width: 100%;
     border-bottom: #d8d8d8 1px solid;
+    font-size: 24px;
+    font-weight: 600;
     text-align: center;
+    color: #172142;
+    line-height: 36px;
 
-    @include title;
+    @media (width <= 1200px) {
+      @include title('middle');
+    }
   }
 
   .content {
     padding: 30px 0 0;
     width: 80%;
-    height: calc(100% - 80px);
+
+    @media (width <= 1200px) {
+      padding: 20px 0 0;
+    }
 
     .item {
       padding: 11px 20px;
@@ -61,9 +70,27 @@
       }
 
       .title {
-        @include title('thin');
-
+        font-size: 18px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 24px;
         transition: all 0.3s;
+
+        @media (width <= 1200px) {
+          @include title('middle');
+        }
+      }
+
+      .noContest {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        color: #172142;
+        line-height: 36px;
+
+        @media (width <= 1200px) {
+          font-size: 16px;
+        }
       }
 
       .description {
@@ -75,6 +102,10 @@
         word-break: break-all;
         word-wrap: break-word;
         hyphens: auto;
+
+        @media (width <= 1200px) {
+          @include mobile-text;
+        }
       }
 
       .bottom {
@@ -98,8 +129,8 @@
           height: 23px;
 
           img {
-            width: 14px;
-            height: 14px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
           }
         }
@@ -118,10 +149,21 @@
   .contentCenter {
     justify-content: center;
     padding-right: 10%;
+    padding-bottom: 30px;
     padding-left: 10%;
     width: 100%;
+    height: calc(100% - 70px);
     border-right: #d8d8d8 1px solid;
-    border-left: #d8d8d8 1px solid;
+
+    @media (width <= 1200px) {
+      height: calc(100% - 58px);
+    }
+  }
+
+  &:last-child {
+    .contentCenter {
+      border-right: none;
+    }
   }
 }
 
@@ -135,6 +177,17 @@
       font-weight: 500;
       color: #172142;
       line-height: 36px;
+
+      @media (width <= 1200px) {
+        @include title('middle');
+      }
+    }
+
+    .description {
+      font-size: 16px;
+      font-weight: 400;
+      color: #172142;
+      line-height: 24px;
     }
 
     .time {
@@ -143,6 +196,12 @@
         font-weight: 400;
         color: #b9b9b9;
         line-height: 24px;
+
+        @media (width <= 1200px) {
+          @include mobile-text;
+
+          color: #b9b9b9;
+        }
       }
     }
   }
@@ -156,8 +215,8 @@
     height: 47px;
 
     img {
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       border: #d8d8d8 1px solid;
       border-radius: 50%;
     }

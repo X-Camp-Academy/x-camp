@@ -4,11 +4,19 @@
   padding: 100px 0 0;
   width: 100%;
 
+  @media (width <= 768px) {
+    padding: 50px 0 0;
+  }
+
   .calendarContainer {
-    padding: 0 30px;
+    padding: 0 24px;
 
     .title {
       @include title;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .listContainer {
@@ -16,6 +24,11 @@
       margin-right: 0;
       padding: 40px;
       background-position: right bottom;
+
+      @media (width <= 768px) {
+        margin-bottom: -80px;
+        padding: 0;
+      }
 
       .bookButton {
         position: absolute;
@@ -28,6 +41,11 @@
 
         @include text(48px, 1, $primary-color);
         @include flex(center);
+
+        @media (width <= 768px) {
+          width: 48px;
+          height: 48px;
+        }
       }
     }
   }

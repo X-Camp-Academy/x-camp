@@ -3,17 +3,22 @@
 .qaContent {
   padding-bottom: 6.25rem;
 
-  .row {
-    @media (width <= 768px) {
-      margin-right: 0 !important;
-      margin-left: 0 !important;
-    }
+  @media (width <= 768px) {
+    padding: 24px;
+    padding-top: 0;
   }
 
   .title {
     text-align: center;
 
     @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
   }
 
   .card {
@@ -27,13 +32,22 @@
 
     :global(.ant-input) {
       padding: 10px;
-      border: 1px solid #ffad11;
+    }
+
+    @media (width <= 768px) {
+      margin-top: 0;
     }
 
     .formTitle {
       margin-top: 12px;
 
       @include title('default');
+
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        margin-top: 0;
+      }
     }
 
     .formTextArea {
@@ -54,6 +68,14 @@
 
       &:hover {
         @extend .hoverButton;
+      }
+
+      @media (width <= 768px) {
+        height: 48px;
+
+        @include mobile-text;
+
+        color: #fff;
       }
     }
   }

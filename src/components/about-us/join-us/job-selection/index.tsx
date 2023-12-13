@@ -1,5 +1,5 @@
-import { AboutUsJoinUsCategory } from '@/apis/strapi-client/define';
-import { useGetAboutUsJoinUs } from '@/apis/strapi-client/strapi';
+import { JoinUsCategory } from '@/apis/strapi-client/define';
+import { useGetJoinUs } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { Button, Empty } from 'antd';
@@ -8,12 +8,12 @@ import styles from './index.module.scss';
 import JobCard from './job-card';
 
 const JobSelection: React.FC = () => {
-  const { lang } = useLang();
-  const [category, setCategory] = useState<AboutUsJoinUsCategory>(AboutUsJoinUsCategory.PartTime);
-  const { data: aboutUsJoinUs, runAsync: getAboutUsJoinUs } = useGetAboutUsJoinUs(category);
+  const { format: t, lang } = useLang();
+  const [category, setCategory] = useState<JoinUsCategory>(JoinUsCategory.PartTime);
+  const { data, runAsync: getJoinUs } = useGetJoinUs(category);
 
   useEffect(() => {
-    getAboutUsJoinUs({
+    getJoinUs({
       populate: '*',
       sort: ['order:desc'],
       filters: {
@@ -23,20 +23,35 @@ const JobSelection: React.FC = () => {
       }
     });
   }, [category]);
+
+  const categoryOptions = [
+    {
+      label: t('FullTime'),
+      value: JoinUsCategory.FullTime
+    },
+    {
+      label: t('PartTime'),
+      value: JoinUsCategory.PartTime
+    },
+    {
+      label: t('XTutor'),
+      value: JoinUsCategory.XTutor
+    }
+  ];
   return (
     <div className={styles.jobSelectionContainer}>
       <div className={`${styles.jobSelection} container`}>
         <div className={styles.btnContainer}>
-          {[AboutUsJoinUsCategory.PartTime, AboutUsJoinUsCategory.FullTime, AboutUsJoinUsCategory.XTutor]?.map((v) => (
-            <Button key={v} className={`${styles.choiceBtn} ${category === v ? styles.selectedBtn : ''}`} onClick={() => setCategory(v)}>
-              {v}
+          {categoryOptions?.map((item) => (
+            <Button key={item?.value} className={`${styles.choiceBtn} ${category === item?.value ? styles.selectedBtn : ''}`} onClick={() => setCategory(item?.value)}>
+              {item?.label}
             </Button>
           ))}
         </div>
 
         <div className={styles.jobCardContainer}>
-          {aboutUsJoinUs?.length !== 0 ? (
-            aboutUsJoinUs?.map((v, index) => <JobCard key={v?.id} index={index} data={v} />)
+          {data?.length !== 0 ? (
+            data?.map((v, index) => <JobCard key={v?.id} index={index} data={v} />)
           ) : (
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={getTransResult(lang, '目前暂无职位', 'There are currently no positions')} />
           )}

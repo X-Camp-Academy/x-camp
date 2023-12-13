@@ -1,0 +1,178 @@
+@import '@/styles/variables';
+
+.discoverOurCourses {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 15px;
+  width: 100%;
+  background-color: #fff5e8;
+  flex-direction: column;
+
+  @media (width <= 768px) {
+    padding: 32px 8px;
+  }
+
+  .title {
+    position: relative;
+    text-align: center;
+
+    @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
+  }
+
+  .subTitle {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #172142;
+  }
+
+  .baseTitleBg {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    background: url('/image/home/home-title-bg-1.png') no-repeat;
+    background-size: contain;
+  }
+
+  .zhTitleBg {
+    @extend .baseTitleBg;
+
+    left: 90px;
+    width: 80px;
+    height: 16px;
+
+    @media (width <= 768px) {
+      left: 64px;
+      width: 64px;
+    }
+  }
+
+  .enTitleBg {
+    @extend .baseTitleBg;
+
+    left: 130px;
+    margin-top: -0;
+    width: 144px;
+    height: 16px;
+
+    @media (width <= 768px) {
+      left: 87px;
+      margin-top: 0;
+      width: 96px;
+    }
+  }
+
+  .row {
+    width: 100% !important;
+
+    @media (width <= 768px) {
+      margin: 0;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      margin-top: 45px;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+
+      @media (width <= 768px) {
+        margin-top: 12px;
+      }
+
+      :hover {
+        .cardTitle {
+          opacity: 0;
+        }
+
+        .cardParagraph {
+          opacity: 0;
+        }
+      }
+
+      .cardTitle {
+        @include text(24px, 36px, #fff);
+
+        font-weight: 600;
+
+        @media (width <= 768px) {
+          @include title('middle');
+
+          margin-top: 0;
+          color: #fff;
+        }
+      }
+
+      .cardParagraph {
+        @include text(18px, 24px, #fff);
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          color: #fff;
+        }
+      }
+
+      .infoContainer {
+        height: 354px;
+
+        @media (width <= 768px) {
+          height: 320px;
+        }
+      }
+
+      .info {
+        position: absolute;
+        top: 32px;
+        left: 24px;
+      }
+
+      .maskTitle {
+        @include text(24px, 36px);
+
+        word-wrap: break-word;
+
+        @media (width <= 768px) {
+          @include title('middle');
+
+          margin-top: 8px;
+        }
+      }
+
+      .maskDesc {
+        font-size: 18px;
+        font-weight: 500;
+        color: #172142;
+        line-height: 26px;
+        word-wrap: break-word;
+        hyphens: auto;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
+      }
+
+      .maskContent {
+        background: #2b91af;
+      }
+
+      .more {
+        a {
+          font-size: 14px;
+          font-weight: 500;
+          color: #172142;
+          line-height: 16px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
+        }
+      }
+    }
+  }
+}

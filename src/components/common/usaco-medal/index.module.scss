@@ -3,11 +3,31 @@
 .usacoContainer {
   @include flex('center');
 
-  padding: 50px 0;
+  padding-top: 32px;
+  padding-bottom: 40px;
+  width: 100%;
+  flex-direction: column;
+
+  @media (width <= 768px) {
+    padding-top: 16px;
+    padding-bottom: 20px;
+  }
+}
+
+.usacoBgContainer {
+  @include flex('center');
+
+  padding-top: 32px;
+  padding-bottom: 60px;
   width: 100%;
   background: url('/image/common/x-camp-logo.png') no-repeat;
   background-size: contain;
   flex-direction: column;
+  background-color: #fff;
+
+  @media (width <= 768px) {
+    padding: 0;
+  }
 }
 
 .titleContainer {
@@ -24,10 +44,15 @@
       text-decoration: underline;
       text-decoration-color: $primary-color;
     }
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   @media (width <= 768px) {
     position: relative;
+    margin-bottom: 0;
   }
 }
 
@@ -36,21 +61,8 @@
   padding: 0 160px;
   width: 100%;
 
-  @media (width <= 768px) {
-    padding: 0;
-    max-width: 100%;
-  }
-
   @media (width <= 992px) {
     padding: 0;
-  }
-
-  .logo {
-    height: 338px;
-
-    @media (width <= 768px) {
-      display: none;
-    }
   }
 
   .col {
@@ -58,14 +70,15 @@
   }
 
   .baseMedalContainer {
-    margin-top: 20px;
-    width: 288px;
+    width: 100%;
     text-align: center;
-    background-size: 160px 96px !important;
+    background-size: 120px 88px !important;
 
     @media (width <= 768px) {
-      width: 96px;
-      background-size: 80px 48px !important;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 64px;
+      background-size: 48px 36px !important;
     }
 
     .medalCount {
@@ -75,17 +88,38 @@
       line-height: 48px;
 
       @media (width <= 768px) {
-        font-size: 32px;
+        font-size: 26px;
+        font-weight: 600;
+        color: #050260;
         line-height: 32px;
+        text-shadow: 1px 1px 0 #eeca92;
+      }
+
+      @media (width >= 768px) and (width <= 1200px) {
+        font-size: 24px;
       }
     }
 
     .medalTitle {
       display: block;
-
-      @include text(16px, 24px, #666);
-
+      width: 100px;
       font-weight: 500;
+      text-shadow: 1px 1px 0 #d4ac6d;
+
+      @include text(16px, 24px, #172142);
+
+      @media (width <= 768px) {
+        width: 64px;
+        font-size: 10px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 11px;
+        text-shadow: 1px 1px 0 #d4ac6d;
+      }
+
+      @media (width >= 768px) and (width <= 1200px) {
+        width: 104px;
+      }
     }
   }
 
@@ -93,23 +127,27 @@
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-bronze.png') no-repeat center;
+    text-shadow: 1px 1px 0 #eeca92;
   }
 
   .silverMedal {
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-silver.png') no-repeat center;
+    text-shadow: 1px 1px 0 #eeca92;
   }
 
   .goldMedal {
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-gold.png') no-repeat center;
+    text-shadow: 1px 1px 0 rgb(5 2 96 / 30%);
   }
 
   .platinumMedal {
     @extend .baseMedalContainer;
 
     background: url('/image/common/usaco-platinum.png') no-repeat center;
+    text-shadow: 1px 1px 0 rgb(5 2 96 / 30%);
   }
 }

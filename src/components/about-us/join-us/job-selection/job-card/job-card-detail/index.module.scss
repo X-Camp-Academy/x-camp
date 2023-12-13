@@ -12,10 +12,14 @@
   .divider {
     margin-bottom: 42px;
     width: 100%;
+
+    @media (width <= 768px) {
+      margin-bottom: 20px;
+    }
   }
 
   @media (width <= 768px) {
-    padding: 35px 20px;
+    padding: 8px 20px 24px;
   }
 
   .viewer {
@@ -31,6 +35,12 @@
     h2,
     h3 {
       padding-left: 20px;
+    }
+
+    h2 {
+      @media (width <= 768px) {
+        @include title('middle');
+      }
     }
 
     li {
@@ -70,6 +80,10 @@
 
         @media (width <= 768px) {
           vertical-align: text-top;
+
+          @include mobile-text;
+
+          color: #666;
         }
       }
     }

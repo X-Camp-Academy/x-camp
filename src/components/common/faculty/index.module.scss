@@ -1,35 +1,81 @@
 @import '@/styles/variables';
 
 .faculty {
-  padding: 100px 15px;
+  padding: 80px 15px;
   text-align: center;
+
+  @media (width <= 768px) {
+    padding: 32px 24px;
+  }
 
   .title {
     margin: 0;
 
     @include title;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
-  .titleBg {
+  .baseTitleBg {
     display: block;
-    margin-left: -175px;
-    width: 180px;
+    margin-top: -10px;
     height: 20px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-image: url('/image/home/home-title-bg-1.png');
+  }
+
+  .zhTitleBg {
+    @extend .baseTitleBg;
+
+    margin-left: -160px;
+    width: 120px;
+
+    @media (width <= 768px) {
+      margin-top: -5px;
+      margin-left: -100px;
+      width: 80px;
+    }
+  }
+
+  .enTitleBg {
+    @extend .baseTitleBg;
+
+    margin-left: -180px;
+    width: 160px;
+
+    @media (width <= 768px) {
+      margin-top: -10px;
+      margin-left: -120px;
+      width: 112px;
+    }
   }
 
   .paragraph {
     margin-top: 10px;
     padding: 0;
 
+    @include margin;
     @include text(18px, 34px);
+
+    @media (width <= 768px) {
+      margin-top: 0;
+      margin-bottom: 10px;
+      padding: 0;
+
+      @include mobile-text;
+    }
   }
 
   .carouselContainer {
     position: relative;
     margin-top: 32px;
+
+    @media (width <= 768px) {
+      margin-top: 0;
+    }
 
     .prev {
       position: absolute;
@@ -50,9 +96,16 @@
     }
 
     .mobile.cardContainer {
-      &:first-of-type,
+      &:first-of-type {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+      }
+
       &:last-of-type {
-        margin: 0;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 0;
       }
     }
 
@@ -61,23 +114,36 @@
       margin: 15px;
       text-align: left;
 
+      @media (width <= 768px) {
+        @include mobile-text;
+
+        margin: 15px 12px;
+      }
+
       .name {
         @include text(24px, 36px);
 
         font-weight: bold;
+
+        @media (width <= 768px) {
+          @include title('middle');
+        }
       }
 
       .description {
         @include text(18px, 26px, #666);
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
 
       .more {
         @include text(14px, 16px);
-      }
 
-      .cardImage {
-        width: 150px;
-        height: 168px;
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import { useGetAboutUsJoinUs } from '@/apis/strapi-client/strapi';
+import { useGetJoinUs } from '@/apis/strapi-client/strapi';
 import { Card } from 'antd';
 import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react';
@@ -10,11 +10,11 @@ import styles from './index.module.scss';
 const Resume: React.FC = () => {
   const params = useParams();
 
-  const { data: aboutUsJoinUs, runAsync: getAboutUsJoinUs } = useGetAboutUsJoinUs();
+  const { data, runAsync: getJoinUs } = useGetJoinUs();
 
   useEffect(() => {
     if (params?.id) {
-      getAboutUsJoinUs({
+      getJoinUs({
         populate: '*',
         sort: ['order:desc'],
         filters: {
@@ -27,11 +27,11 @@ const Resume: React.FC = () => {
   }, [params?.id]);
 
   return (
-    <div className="container">
-      <Card className={styles.cardContainer} bodyStyle={{ padding: '36px' }}>
-        <JobCardHeader showExpandBtn={false} data={aboutUsJoinUs?.[0]} />
-        <JobCardDetail data={aboutUsJoinUs?.[0]} />
-        <ResumeForm job={aboutUsJoinUs?.[0].attributes.titleEn} department={aboutUsJoinUs?.[0].attributes.descriptionEn} />
+    <div className={`${styles.resumeContainer} container`}>
+      <Card className={styles.card}>
+        <JobCardHeader showExpandBtn={false} data={data?.[0]} />
+        <JobCardDetail data={data?.[0]} />
+        <ResumeForm job={data?.[0].attributes.titleEn} department={data?.[0].attributes.descriptionEn} />
       </Card>
     </div>
   );

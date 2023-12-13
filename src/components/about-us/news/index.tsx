@@ -3,21 +3,17 @@ import { NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
 import dayjs from 'dayjs';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import SubscribeNewsletter from './subscribe-news-letter';
-
-const Banner = dynamic(() => import('./banner'));
-// const Partners = dynamic(() => import('@/components/common/partners'));
-// const BecomePartner = dynamic(() => import('./BecomePartner'));
-const NewsCard = dynamic(() => import('./news-card'));
+import Banner from './banner';
+import NewsCard from './news-card';
 
 const { Content } = Layout;
 
 const NewsPage = () => {
-  const [year, setYear] = useState('2023');
+  const year = dayjs().format('YYYY');
   const [current, setCurrent] = useState(1);
 
   const pathname = usePathname();
@@ -26,7 +22,7 @@ const NewsPage = () => {
     current,
     pageSize: PAGE_SIZE,
     manual: true,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
 
   const total = newEventData?.meta?.pagination?.total;
@@ -64,10 +60,6 @@ const NewsPage = () => {
       <Content>
         <Banner />
         <NewsCard newEventData={newEventData?.data} current={current} setCurrent={setCurrent} pageSize={PAGE_SIZE} total={total} />
-
-        {/* <Partners />
-        <BecomePartner /> */}
-
         <SubscribeNewsletter />
       </Content>
     </Layout>

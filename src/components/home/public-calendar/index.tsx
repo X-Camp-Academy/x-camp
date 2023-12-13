@@ -1,13 +1,14 @@
 'use client';
+import { NewEventCategory } from '@/apis/strapi-client/define';
 import { useGetNewEvent } from '@/apis/strapi-client/strapi';
 import ActivityCalendar from '@/components/common/activity-calendar';
 import { useLang } from '@/hoc/with-intl/define';
 import useDayJs from '@/hooks/useDayJs';
 import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
-import { Carousel, Col, Empty, Row, Space, Typography } from 'antd';
+import { Col, Empty, Row, Space, Typography } from 'antd';
 import type { Dayjs } from 'dayjs';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -41,9 +42,11 @@ const PublicCalendar: React.FC = () => {
   >([]);
   const [current, setCurrent] = useState<number>(1);
 
-  const { data: newEventData, run } = useGetNewEvent({
+  const { data: newEventData } = useGetNewEvent({
+    tag: NewEventCategory.Events,
     current,
     pageSize,
+    sortField: ['startDateTime'],
     pageName: ['/home/']
   });
 
@@ -90,17 +93,6 @@ const PublicCalendar: React.FC = () => {
   };
 
   useEffect(() => {
-    run({
-      populate: '*',
-      sort: ['order:desc'],
-      pagination: {
-        page: current,
-        pageSize
-      }
-    });
-  }, []);
-
-  useEffect(() => {
     if (newEventData) {
       const updatedEventDate = newEventData.data?.map((item) => ({
         startDateTime: item.attributes?.startDateTime,
@@ -117,19 +109,35 @@ const PublicCalendar: React.FC = () => {
     }
   }, [selectDate]);
 
+  /**
+   * @returns
+   * 筛选未来四个活动
+   */
+  const sortData = useMemo(() => {
+    if (newEventData) {
+      return newEventData.data
+        ?.filter((item) => {
+          return dayjs(item?.attributes?.startDateTime).isAfter(dayjs());
+        })
+        .slice(0, 4);
+    }
+  }, [newEventData]);
+
   return (
-    <div className={styles.publicCalendarContainer}>
-      <div className={`${styles.publicCalendar} container`}>
-        <Title className={styles.title}>
-          X-Camp {t('Public')} <span>{t('Calendar')}</span>
-        </Title>
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <Text className={styles.titleBg} />
-        </div>
-        <Row>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Carousel dots={false} infinite slidesToShow={4} slidesToScroll={1} vertical verticalSwiping autoplay autoplaySpeed={2000}>
-              {newEventData?.data?.map((item) => {
+    <div className={`${styles.publicCalendar} container`}>
+      <Title className={styles.title}>
+        X-Camp{t('Public')}
+        <span>{t('Calendar')}</span>
+      </Title>
+      <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+        <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
+      </div>
+      <Row>
+        <Col xs={24} sm={24} md={24} lg={12}>
+          {/* <Carousel dots={false} infinite slidesToShow={sortData && sortData?.length > 4 ? 4 : sortData?.length} slidesToScroll={1} vertical verticalSwiping autoplay={false} autoplaySpeed={2000}> */}
+          <div className={styles.eventListContainer} style={isMobile && sortData?.length !== 0 ? { height: '256px' } : {}}>
+            {sortData?.length !== 0 ? (
+              sortData?.map((item) => {
                 return (
                   <div key={item?.id} className={styles.eventCard}>
                     <Space size={isMobile ? 8 : 60} align="center" className={styles.eventContent}>
@@ -171,49 +179,54 @@ const PublicCalendar: React.FC = () => {
                     </Space>
                   </div>
                 );
-              })}
-            </Carousel>
-          </Col>
+              })
+            ) : !isMobile ? (
+              <Empty description={t('NoEvent')} className={styles.empty} />
+            ) : (
+              <></>
+            )}
+          </div>
+          {/* </Carousel> */}
+        </Col>
 
-          <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
-            <Space size={30} direction="vertical" className={styles.rightSpace}>
-              <ActivityCalendar
-                eventDate={eventDate}
-                headerClassName={styles.calenderHeader}
-                onSelectDate={(date) => {
-                  setSelectDate(date.toString());
-                }}
-              />
-              <Space direction="vertical" className={styles.calendarSpace}>
-                <Space className={styles.spaceDate}>
-                  <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
-                  <div className={styles.line} />
-                </Space>
-                <div style={{ height: 250, overflow: 'scroll' }}>
-                  {!!filterDateEventList.length ? (
-                    filterDateEventList.map((item, index) => {
-                      if (item?.startDateTime)
-                        return (
-                          <Space key={index} direction="vertical" className={styles.calendarItem}>
-                            <Text className={styles.itemDate}>{getCourseDateStrInCalendar(item)}</Text>
-                            <Paragraph className={styles.itemParagraph}>
-                              {`${getTransResult(lang, item.titleZh, item.titleEn)} - ${getTransResult(lang, item.descriptionZh, item.descriptionEn)}`}
-                            </Paragraph>
-                            <div className={styles.itemLine} />
-                          </Space>
-                        );
-                    })
-                  ) : (
-                    <div style={{ padding: '25px 0' }}>
-                      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={t('NoEventToday')} />
-                    </div>
-                  )}
-                </div>
+        <Col xs={24} sm={24} md={24} lg={{ span: 10, offset: 2 }}>
+          <Space size={30} direction="vertical" className={styles.rightSpace}>
+            <ActivityCalendar
+              eventDate={eventDate}
+              headerClassName={styles.calenderHeader}
+              onSelectDate={(date) => {
+                setSelectDate(date.toString());
+              }}
+            />
+            <Space direction="vertical" className={styles.calendarSpace}>
+              <Space className={styles.spaceDate}>
+                <Text className={styles.text}>{selectDate && formatDate(selectDate)}</Text>
+                <div className={styles.line} />
               </Space>
+              <div style={{ height: isMobile ? 125 : 250, overflow: 'auto', paddingRight: 16 }}>
+                {!!filterDateEventList.length ? (
+                  filterDateEventList?.map((item) => {
+                    if (item?.startDateTime)
+                      return (
+                        <Space key={item?.titleZh ?? '' + item?.titleEn} direction="vertical" className={styles.calendarItem}>
+                          <Text className={styles.itemDate}>{getCourseDateStrInCalendar(item)}</Text>
+                          <Paragraph className={styles.itemParagraph}>
+                            {`${getTransResult(lang, item.titleZh, item.titleEn)} - ${getTransResult(lang, item.descriptionZh, item.descriptionEn)}`}
+                          </Paragraph>
+                          <div className={styles.itemLine} />
+                        </Space>
+                      );
+                  })
+                ) : (
+                  <div style={{ padding: '25px 0' }}>
+                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={t('NoEventToday')} />
+                  </div>
+                )}
+              </div>
             </Space>
-          </Col>
-        </Row>
-      </div>
+          </Space>
+        </Col>
+      </Row>
     </div>
   );
 };

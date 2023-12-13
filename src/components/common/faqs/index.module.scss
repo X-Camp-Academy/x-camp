@@ -2,14 +2,22 @@
 
 .campFAQS {
   margin-bottom: 50px;
-  padding: 50px 0;
-  width: 100%;
+  padding: 50px 15px;
+
+  @media (width <= 768px) {
+    margin-bottom: 16px;
+    padding: 16px 24px;
+  }
 
   .title {
     @include title('bold');
 
     line-height: 64px;
     text-align: center;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .cardContent {
@@ -18,9 +26,13 @@
     margin-top: 50px;
     flex-direction: column;
 
+    @media (width <= 768px) {
+      margin-top: 16px;
+    }
+
     .qaCard {
       margin: 10px 0;
-      width: 50%;
+      width: 100%;
 
       @media (width <= 768px) {
         width: 100%;

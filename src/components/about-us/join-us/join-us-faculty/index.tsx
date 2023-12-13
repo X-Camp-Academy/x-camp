@@ -1,8 +1,8 @@
 import { useGetFaculty } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { UsergroupAddOutlined } from '@ant-design/icons';
-import { Button, Col, Image, Row, Space, Typography } from 'antd';
-import { useRouter } from 'next/navigation';
+import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
@@ -10,26 +10,21 @@ const { Paragraph } = Typography;
 
 const JoinUsFaculty: React.FC = () => {
   const { format: t } = useLang();
-  const router = useRouter();
   const { data: imgUrlList } = useGetFaculty({
     pageName: ['/about-us/join-us/']
   });
+  const isMobile = useMobile();
   return (
     <div className={styles.joinUsFacultyContainer}>
       <Row className={`${styles.joinUsFaculty} container`}>
         <Col className={styles.xCampIntro} lg={12} md={24} xs={24}>
-          <Space direction="vertical" size="large">
-            <Image alt="image" src="/logo/logo.png" preview={false} className={styles.logo} />
+          <Space direction="vertical" size={isMobile ? 8 : 16}>
+            <Image alt="image" src="/assets/logo.png" preview={false} className={styles.logo} />
             <Paragraph className={styles.introText}>{t('XCampFaculty.Desc')}</Paragraph>
-            <Button
-              className={styles.introBtn}
-              onClick={() => {
-                router.push('/about-us/join-us');
-              }}
-            >
-              {t('XCampFaculty')}
+            <a href="/about-us/introduction#faculty" className={styles.introBtn}>
+              {t('XCampFaculty')}&nbsp;&nbsp;
               <UsergroupAddOutlined />
-            </Button>
+            </a>
           </Space>
         </Col>
         <Col className={styles.facultyImgs} lg={12} md={24} xs={24}>

@@ -9,10 +9,18 @@
   background-color: #fff !important;
   box-shadow: 0 9px 25px -4px #d8d8d8;
 
+  @media (width <= 768px) {
+    box-shadow: 0 17px 48px -8px rgb(216 216 216 / 50%);
+  }
+
   .header {
     height: 72px;
     line-height: 72px;
     background-color: #fff;
+
+    @media (width <= 768px) {
+      box-shadow: 0 17px 48px -8px rgb(216 216 216 / 50%);
+    }
 
     .space {
       position: relative;
@@ -22,6 +30,7 @@
       height: 100%;
 
       .image {
+        margin-right: 32px;
         width: 105px;
         height: 32px;
       }
@@ -39,7 +48,11 @@
       }
 
       .study {
-        width: 85px;
+        width: 100%;
+
+        &:hover {
+          @extend .hoverButton;
+        }
       }
 
       .langDropDown {
@@ -56,6 +69,10 @@
       width: 100%;
       background-color: #fff;
 
+      @media (width <= 768px) {
+        box-shadow: 0 9px 25px -4px #d8d8d8;
+      }
+
       .menu-reset {
         margin: 0;
         width: 100%;
@@ -68,6 +85,28 @@
           font-size: 16px;
           font-weight: 500;
           color: $text-color;
+        }
+      }
+
+      :global(.ant-menu-submenu-open) {
+        ul {
+          a {
+            font-size: 14px;
+
+            &::before {
+              position: relative;
+              left: 0;
+              display: inline-block;
+              margin-right: 6px;
+              width: 6px;
+              height: 6px;
+              border: 1px solid #ffd600;
+              border-radius: 50%;
+              background: #ffad11;
+              content: '';
+              vertical-align: middle;
+            }
+          }
         }
       }
 
@@ -89,14 +128,28 @@
 
       :global(.ant-menu-submenu-title) {
         @extend .menu-reset;
+
+        @media (width <= 768px) {
+          padding-left: 15px !important;
+          height: 56px;
+          line-height: 56px;
+        }
       }
 
       :global(.ant-menu-inline) {
         border: none;
       }
 
+      :global(.ant-menu-inline > .ant-menu-item) {
+        @media (width <= 768px) {
+          padding-left: 15px !important;
+          height: 56px;
+          line-height: 56px;
+        }
+      }
+
       .mobileIntl {
-        @include flex(space-around);
+        @include flex(flex-end);
 
         padding: 10px 30px;
 

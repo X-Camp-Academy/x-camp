@@ -5,6 +5,7 @@ import CardListMobile from '@/components/common/faculty/CardListMobile';
 import CarouselWithButton from '@/components/common/faculty/CarouselWithButton';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
+import { getTransResult } from '@/utils/public';
 import { Space, Typography } from 'antd';
 import React, { useMemo } from 'react';
 import styles from './index.module.scss';
@@ -12,7 +13,7 @@ import styles from './index.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
 const Faculty: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const isMobile = useMobile();
   const { data } = useGetFaculty({});
 
@@ -35,7 +36,7 @@ const Faculty: React.FC = () => {
           {' '}
           <span>{t('Founders')}</span> & {t('Faculty')}
         </Title>
-        <Text className={styles.titleBg} />
+        <Text className={getTransResult(lang, styles.zhTitleBg, styles.enTitleBg)} />
         <Paragraph className={styles.paragraph}>{t('Faculty.Desc')}</Paragraph>
       </Space>
 

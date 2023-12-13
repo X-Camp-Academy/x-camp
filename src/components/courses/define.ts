@@ -1,15 +1,7 @@
-// 前三个需要二次分类
-export enum CourseTypes {
-  OnlineClasses = 'Online Classes',
-  // InPersonClasses = "In-person Classes",
-  CampsClasses = 'Camps Classes',
+export enum CourseType {
+  AllClasses = 'All Classes',
+  WeeklyClasses = 'Weekly Classes',
+  InPersonCamps = 'In-person Camps',
   MockTestClasses = 'Mock Test Classes',
   JavaAPCSClasses = 'Java & APCS Classes'
-  // XTutors = "X-Tutors",
-}
-
-// 上课的形式
-export enum CourseMode {
-  OnlineLive = 'Online Live',
-  InPerson = 'In-person'
 }

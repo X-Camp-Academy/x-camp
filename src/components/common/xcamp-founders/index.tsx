@@ -1,5 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { StarOutlined } from '@ant-design/icons';
 import { Button, Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
@@ -9,6 +10,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const XCampFounder: React.FC = () => {
   const { format: t } = useLang();
+  const isMobile = useMobile();
   return (
     <div className={`${styles.XCampFounder} container`}>
       <Space direction="vertical" align="center">
@@ -19,11 +21,7 @@ const XCampFounder: React.FC = () => {
           </Text>
         </Title>
 
-        <Paragraph className={styles.paragraph}>
-          Founded on August 22, 2017, 4 students currently trained have entered the US National Training Team, with more than 500 students currently studying in 300+ schools around the world.
-        </Paragraph>
-
-        <Row gutter={[32, 124]} className={styles.row}>
+        <Row gutter={isMobile ? [16, 24] : [32, 124]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={12} className={styles.charlieImgCol}>
             <div className={styles.charlieImgBackground} />
             <Image src={'/image/home/charlie.png'} alt="image" preview={false} className={styles.charlieImg} />
@@ -43,9 +41,9 @@ const XCampFounder: React.FC = () => {
               <Space direction="vertical">
                 <Paragraph className={styles.founderParagraph}>
                   {t('Charlie.Desc1')}
-                  <Text className={styles.keyText}>{t('Charlie.years')}</Text>
+                  {t('Charlie.years')}
                   {t('Charlie.Desc2')}
-                  <Text className={styles.keyText}>{t('Charlie.paper')}</Text>
+                  {t('Charlie.paper')}
                   {t('Charlie.Desc3')}
                 </Paragraph>
                 <Paragraph className={styles.founderParagraph}>{t('Charlie.Desc4')}</Paragraph>
@@ -54,8 +52,8 @@ const XCampFounder: React.FC = () => {
           </Col>
         </Row>
 
-        <Row gutter={[32, 124]} style={{ marginTop: 120 }} className={styles.row}>
-          <Col xs={24} sm={24} md={24} lg={12} className={styles.founderDescription}>
+        <Row gutter={isMobile ? [16, 24] : [32, 124]} style={{ marginTop: isMobile ? 24 : 120 }} className={styles.row}>
+          <Col xs={{ span: 24, order: 2 }} sm={{ span: 24, order: 2 }} md={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }} className={styles.founderDescription}>
             <Space direction="vertical">
               <Title className={styles.founderName}>{t('Yuan')}</Title>
               <Paragraph className={styles.founderTag}>
@@ -69,18 +67,18 @@ const XCampFounder: React.FC = () => {
                 <Paragraph className={styles.founderParagraph}>{t('Yuan.Desc1')}</Paragraph>
                 <Paragraph className={styles.founderParagraph}>
                   {t('Yuan.Desc2')}
-                  <Text className={styles.keyText}> {t('Yuan.Student')} </Text>
+                  {t('Yuan.Student')}
                   {t('Yuan.Desc3')}
-                  <Text className={styles.keyText}> {t('Yuan.Desc4')} </Text>
+                  {t('Yuan.Desc4')}
                   {t('Yuan.Desc5')}
-                  <Text className={styles.keyText}> 25-27 </Text>
+                  {'25 - 27'}
                   {t('Yuan.Desc6')}
                 </Paragraph>
               </Space>
             </Space>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={12} className={styles.yuanImgCol}>
+          <Col xs={{ span: 24, order: 1 }} sm={{ span: 24, order: 1 }} md={{ span: 24, order: 1 }} lg={{ span: 12, order: 2 }} className={styles.yuanImgCol}>
             <div className={styles.yuanImgBackground} />
             <Image src={'/image/home/yuan.png'} alt="image" preview={false} className={styles.yuanImg} />
           </Col>

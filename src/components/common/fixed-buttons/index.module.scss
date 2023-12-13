@@ -2,14 +2,19 @@
 
 .buttonContainer {
   position: fixed;
-  top: 73%;
+  top: 70%;
   right: 64px;
   z-index: 10;
   display: flex;
   flex-direction: column;
 
   @media (width <= 768px) {
-    right: 24px;
+    top: 70%;
+    right: 0;
+  }
+
+  .buttonItem {
+    @include flex(flex-end);
   }
 
   .fixedButton {
@@ -17,8 +22,10 @@
     margin-bottom: 40px;
     padding: 0;
     height: 32px;
+    border: none;
     font-weight: bold;
     background-color: $primary-color;
+    outline: none !important;
 
     @include flex(flex-end);
     @include text(14px, 20px);
@@ -29,13 +36,28 @@
 
     img {
       align-self: flex-end;
-      width: 3.6rem;
-      height: 3.6rem;
+      width: 48px;
+      height: 48px;
     }
 
     &:hover {
-      color: $text-color;
+      color: #fff !important;
     }
+  }
+
+  .mobileIcon {
+    display: block;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    color: #ffad11;
+    background-color: #fff;
+    box-shadow: 0 9px 25px -4px #d8d8d8;
   }
 
   .title {
@@ -60,30 +82,31 @@
 
 .autoSize {
   @media (device-width <= 600px) {
-    height: 80vh;
+    height: 73vh;
   }
 }
 
 .cardFrom {
-  overflow: auto;
+  position: relative;
+  top: 45%;
+  right: 64px;
+  z-index: 100;
   margin-top: 10px;
   width: 420px;
 
   @media (width <= 768px) {
     position: static;
-    padding-right: 15px;
-    padding-left: 15px;
+    margin-top: 288px;
     width: 100%;
-    transform: translateX(0);
   }
 
   .card {
-    width: 100%;
     border: none !important;
-    box-shadow: 0 9px 25px -4px rgb(216 216 216 / 100%);
+    box-shadow: 0 9px 25px -4px rgb(216 216 216 / 100%) !important;
 
     @media (width <= 768px) {
-      margin-top: 64px;
+      margin-right: 24px;
+      margin-left: 24px;
     }
 
     :global(.ant-card-body) {
@@ -100,14 +123,20 @@
     .desc {
       margin: 24px 0;
       padding: 12px;
-      height: 128px;
       border: 1px solid $primary-color;
-      box-sizing: border-box;
 
       @include text(16px, 34px);
 
+      @media (width <= 768px) {
+        @include text(14px, 28px);
+      }
+
       li {
         margin-left: 24px;
+
+        @media (width <= 768px) {
+          margin-left: 8px;
+        }
       }
     }
 
@@ -142,11 +171,13 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
-
-        &:hover {
-          @extend .hoverButton;
-        }
       }
     }
+  }
+}
+
+.message {
+  :global(.ant-message-notice-content) {
+    padding: 10px 15px !important;
   }
 }

@@ -1,5 +1,6 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
+import { getTransResult } from '@/utils/public';
 import { List, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
@@ -252,12 +253,12 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <div className={styles.privacyPolicyContainer}>
       <div className={`${styles.privacyPolicy} container`}>
-        <Title className={styles.title}>Applicant and Candidate Privacy Policy</Title>
+        <Title className={styles.title}>{getTransResult(lang, '应聘者和职位候选人隐私权政策', 'Applicant and Candidate Privacy Policy')}</Title>
         <Space direction="vertical" style={{ marginTop: 30 }}>
           <Text className={styles.policyExplains}>This policy explains:</Text>
           <Paragraph className={styles.policyExplainsList}>
-            {policyExplains[lang].map((explain, index) => (
-              <li key={index}>
+            {policyExplains[lang].map((explain) => (
+              <li key={explain}>
                 <Text className={styles.policyExplains}>
                   {explain}
                   <br />
@@ -326,13 +327,13 @@ const PrivacyPolicy: React.FC = () => {
           <Text className={styles.subTitle}>{whoMayHaveAccessToYourInformation[lang].subTitle}</Text>
           <div className={styles.text}>
             <ul>
-              {whoMayHaveAccessToYourInformation[lang].list.map((item, index) => (
-                <li key={index} style={{ padding: '5px 0' }}>
+              {whoMayHaveAccessToYourInformation[lang].list.map((item) => (
+                <li key={item?.description} style={{ padding: '5px 0' }}>
                   <Text className={styles.text}>{item.description}</Text>
                   {item.children.length > 0 && (
                     <ul style={{ marginTop: 20 }}>
-                      {item.children.map((child, index) => (
-                        <li key={index} style={{ padding: '5px 0' }}>
+                      {item.children.map((child) => (
+                        <li key={child} style={{ padding: '5px 0' }}>
                           <Text className={styles.text}>{child}</Text>
                         </li>
                       ))}
@@ -414,8 +415,8 @@ const PrivacyPolicy: React.FC = () => {
         <div className={styles.textBorder}>
           <Title className={styles.subTitle}>{'Categories of information we collect'}</Title>
           <ul>
-            {categoriesOfInformationWeCollect.map((item, index) => (
-              <li key={index} style={{ marginTop: 25 }}>
+            {categoriesOfInformationWeCollect.map((item) => (
+              <li key={item?.head} style={{ marginTop: 25 }}>
                 <Paragraph className={styles.text}>
                   <Text className={styles.boldText}>{item.head}</Text>
                   <Text className={styles.text}>{item.content}</Text>
@@ -428,8 +429,8 @@ const PrivacyPolicy: React.FC = () => {
         <div className={styles.textBorder}>
           <Title className={styles.subTitle}>{'Business purposes for which information may be used or disclosed'}</Title>
           <ul>
-            {businessPurposes.map((item, index) => (
-              <li key={index} style={{ marginTop: 25 }}>
+            {businessPurposes.map((item) => (
+              <li key={item?.head} style={{ marginTop: 25 }}>
                 <Paragraph className={styles.text}>
                   <Text className={styles.boldText}>{item.head}</Text>
                   <Text className={styles.text}>{item.content}</Text>
@@ -442,8 +443,8 @@ const PrivacyPolicy: React.FC = () => {
         <div className={styles.textBorder}>
           <Title className={styles.subTitle}>{'Parties with whom information may be disclosed'}</Title>
           <ul>
-            {partiesWithInformation.map((item, index) => (
-              <li key={index} style={{ marginTop: 25 }}>
+            {partiesWithInformation.map((item) => (
+              <li key={item?.head} style={{ marginTop: 25 }}>
                 <Paragraph className={styles.text}>
                   <Text className={styles.boldText}>{item.head}</Text>
                   <Text className={styles.text}>{item.content}</Text>

@@ -36,10 +36,10 @@
     "dayjs": "^1.11.8",
     "echarts": "^5.4.2",
     "eslint": "8.41.0",
-    "eslint-config-next": "13.4.19",
+    "eslint-config-next": "^13.5.3",
     "hover.css": "^2.3.2",
     "lodash": "^4.17.21",
-    "next": "13.4.19",
+    "next": "^13.5.3",
     "randomcolor": "^0.6.2",
     "react": "18.2.0",
     "react-cookies": "^0.1.1",
@@ -51,7 +51,8 @@
     "sass": "1.62.1",
     "typescript": "5.0.4",
     "unified": "^10.1.2",
-    "x-star-editor": "0.3.2"
+    "x-star-editor": "^0.1.2",
+    "x-star-utils": "^0.0.5"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

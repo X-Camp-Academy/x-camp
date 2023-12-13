@@ -1,7 +1,5 @@
-import { PageTitle, generateMetadata } from '@/app/metadata';
-import dynamic from 'next/dynamic';
-
-const Contests = dynamic(() => import('@/components/resources/contests'));
+import { PageTitle, generateMetadata } from '@/utils/metadata';
+import Contests from '@/components/resources/contests';
 
 export const metadata = {
   ...generateMetadata(PageTitle.Contests)

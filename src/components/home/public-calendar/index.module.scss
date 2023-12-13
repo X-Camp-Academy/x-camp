@@ -1,31 +1,77 @@
 @import '@/styles/variables';
 
-.publicCalendarContainer {
-  padding: 100px 0;
-  width: 100%;
+.publicCalendar {
+  padding-top: 80px;
+  padding-bottom: 45px;
 
-  .publicCalendar {
-    .title {
-      margin: 0;
+  @media (width <= 768px) {
+    padding: 32px 24px;
+  }
 
-      @include title('default');
+  .title {
+    margin: 0;
 
-      text-align: center;
+    @include title('default');
+
+    text-align: center;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+
+      margin-bottom: 24px;
+      font-size: 23px;
+    }
+  }
+
+  .baseTitleBg {
+    display: block;
+    margin-bottom: 48px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('/image/home/home-title-bg-1.png');
+  }
+
+  .zhTitleBg {
+    @extend .baseTitleBg;
+
+    margin-left: 242px;
+    width: 88px;
+    height: 20px;
+
+    @media (width <= 768px) {
+      margin-top: -24px;
+      margin-bottom: 16px;
+      margin-left: 152px;
+      width: 64px;
+    }
+  }
+
+  .enTitleBg {
+    @extend .baseTitleBg;
+
+    margin-top: -3px;
+    margin-left: 290px;
+    width: 160px;
+    height: 20px;
+
+    @media (width <= 768px) {
+      margin-top: -24px;
+      margin-bottom: 16px;
+      margin-left: 190px;
+      width: 96px;
+    }
+  }
+
+  .eventListContainer {
+    overflow: hidden scroll;
+    height: 800px;
+
+    @media (width <= 992px) {
+      height: 512px;
     }
 
-    .titleBg {
-      display: block;
-      margin-bottom: 45px;
-      margin-left: 260px;
-      width: 160px;
-      height: 20px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-image: url('/image/home/home-title-bg-1.png');
-
-      @media (width <= 768px) {
-        margin: 0 auto 45px;
-      }
+    @media (width <= 768px) {
+      height: unset;
     }
 
     .eventCard {
@@ -34,6 +80,7 @@
 
       @media (width <= 768px) {
         padding: 0;
+        height: 128px;
       }
 
       .eventContent {
@@ -44,6 +91,11 @@
         height: 95%;
         border-left: #ffad11 solid 10px;
         background-color: #fff;
+
+        @media (width <= 768px) {
+          height: 90%;
+          border-left: #ffad11 solid 6px;
+        }
 
         .contentLeft {
           margin-right: 40px;
@@ -60,6 +112,10 @@
             font-weight: 500;
             color: #6a6a6a;
             line-height: 28px;
+
+            @media (width <= 768px) {
+              @include mobile-text;
+            }
           }
 
           .day {
@@ -67,6 +123,10 @@
             font-weight: 600;
             color: #172142;
             line-height: 48px;
+
+            @media (width <= 768px) {
+              @include title('middle');
+            }
           }
         }
 
@@ -95,6 +155,10 @@
 
             @media (width <= 992px) {
               width: 90%;
+            }
+
+            @media (width <= 768px) {
+              @include title('middle');
             }
           }
 
@@ -125,87 +189,105 @@
       }
     }
 
-    .rightSpace {
-      .calenderHeader {
-        padding: 20px;
-      }
+    .empty {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 
-      :global(.ant-picker-body) {
-        padding: 20px 0;
-      }
+  .rightSpace {
+    .calenderHeader {
+      padding: 20px;
+    }
 
-      :global(.ant-picker-content thead) {
-        height: 48px;
-      }
+    :global(.ant-picker-body) {
+      padding: 20px 0;
+    }
 
-      :global(.ant-picker-cell .ant-picker-cell-inner) {
-        @include flex(center);
+    :global(.ant-picker-content thead) {
+      height: 48px;
+    }
 
-        display: inline-flex;
-        width: 48px;
-        height: 48px;
+    :global(.ant-picker-cell .ant-picker-cell-inner) {
+      @include flex(center);
+
+      display: inline-flex;
+      width: 48px;
+      height: 48px;
+      border-radius: 24px;
+      flex-direction: column;
+
+      &::before {
         border-radius: 24px;
-        flex-direction: column;
-
-        &::before {
-          border-radius: 24px;
-        }
-      }
-
-      @media (width <= 768px) {
-        margin-top: 64px;
       }
     }
 
-    .calendarSpace {
+    @media (width <= 768px) {
+      margin-top: 16px;
+    }
+  }
+
+  .calendarSpace {
+    width: 100%;
+
+    .spaceDate {
       width: 100%;
 
-      .spaceDate {
-        width: 100%;
+      .text {
+        font-size: 18px;
+        font-weight: 400;
+        white-space: nowrap;
+        color: #000;
+        line-height: 25px;
 
-        .text {
-          font-size: 18px;
-          font-weight: 400;
-          white-space: nowrap;
-          color: #000;
-          line-height: 25px;
-        }
-
-        :global(.ant-space-item:nth-child(2)) {
-          width: 100%;
-        }
-
-        .line {
-          width: 100%;
-          height: 2px;
-          border: 1px solid #ffad11;
+        @media (width <= 768px) {
+          @include mobile-text;
         }
       }
 
-      .calendarItem {
-        margin-top: 24px;
+      :global(.ant-space-item:nth-child(2)) {
         width: 100%;
-
-        .itemDate {
-          font-size: 14px;
-          font-weight: 400;
-          color: rgb(0 0 0 / 45%);
-          line-height: 20px;
-        }
-
-        .itemParagraph {
-          width: 100%;
-          font-weight: 600;
-          color: rgb(0 0 0 / 88%);
-          line-height: 26px;
-        }
-
-        .itemLine {
-          width: 100%;
-          height: 2px;
-          border: 1px solid #ffad11;
-        }
       }
+
+      .line {
+        width: 100%;
+        height: 2px;
+        border: 1px solid #ffad11;
+      }
+    }
+
+    .calendarItem {
+      margin-top: 24px;
+      width: 100%;
+
+      .itemDate {
+        font-size: 14px;
+        font-weight: 400;
+        color: rgb(0 0 0 / 45%);
+        line-height: 20px;
+      }
+
+      .itemParagraph {
+        width: 100%;
+        font-weight: 600;
+        color: rgb(0 0 0 / 88%);
+        line-height: 26px;
+      }
+
+      .itemLine {
+        width: 100%;
+        height: 2px;
+        border: 1px solid #ffad11;
+      }
+    }
+  }
+
+  :global(.ant-picker-calendar-date-content) {
+    div {
+      width: 6px !important;
+      height: 6px !important;
     }
   }
 }

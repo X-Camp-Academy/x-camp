@@ -1,14 +1,15 @@
-import { GetNewEvent } from '@/apis/strapi-client/define';
-import { StrapiMedia, StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
+import { EventCategory, GetNewEvent } from '@/apis/strapi-client/define';
+import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import ColorfulCard from '@/components/common/colorful-card';
-import SegmentedRadioGroup from '@/components/common/segmented-radio-group';
+import SegmentedRadioGroup, { useEventFacultyOptions } from '@/components/common/segmented-radio-group';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { formatTimezone, getTransResult } from '@/utils/public';
 import { RightCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Pagination, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { NEWS_TYPES } from '../define';
 import styles from './index.module.scss';
 
 const { Title, Text } = Typography;
@@ -21,54 +22,68 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, pageSize, total }) => {
+  const isMobile = useMobile();
+  const isiPad = useMobile('xl');
+  const router = useRouter();
   const { lang } = useLang();
-  const [segmented, setSegmented] = useState<SegmentedValue>('School Experience');
+  const [segmented, setSegmented] = useState<SegmentedValue>(EventCategory.All);
+  const [data, setData] = useState<StrapiResponseDataItem<GetNewEvent>[]>();
 
-  const getTranslateImg = (imgZh: StrapiMedia, imgEn: StrapiMedia) => {
-    return getTransResult(lang, imgZh.data?.attributes.url, imgEn.data?.attributes.url);
+  const handleLocaleCompare = (data: StrapiResponseDataItem<GetNewEvent>[] | undefined) => {
+    return data?.sort((a, b) => {
+      const dateA = new Date(a?.attributes?.startDateTime).toISOString();
+      const dateB = new Date(b?.attributes?.startDateTime).toISOString();
+      return dateB.localeCompare(dateA);
+    });
   };
 
   useEffect(() => {
-    console.log(segmented);
-  }, [segmented]);
+    if (segmented === EventCategory.All) {
+      const compareData = handleLocaleCompare(newEventData);
+      setData(compareData);
+    } else {
+      const filteredData = newEventData?.filter((item) => item?.attributes?.eventCategory === segmented);
+      const compareData = handleLocaleCompare(filteredData);
+      setData(compareData);
+    }
+  }, [segmented, newEventData]);
+
   return (
-    <div className={styles.content}>
-      <div className={'container'}>
-        <SegmentedRadioGroup segmented={segmented} setSegmented={setSegmented} data={NEWS_TYPES} />
+    <div className={`${styles.content} container`}>
+      <SegmentedRadioGroup value={segmented} setValue={setSegmented} isRadioGroup={isiPad} options={useEventFacultyOptions('event')} />
 
-        <div className={styles.partner}>
-          <Row gutter={[32, 48]} className={styles.row}>
-            {newEventData?.map((item, index) => {
-              const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
-              return (
-                <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
-                  <ColorfulCard border={'bottom'} index={index} animate={false}>
-                    <Space direction={'vertical'} className={styles.card}>
-                      <img alt="" src={getTranslateImg(item.attributes?.imgZh, item.attributes?.imgEn)} />
-                      <Title className={styles.title} ellipsis={{ rows: 2 }}>
-                        {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
-                      </Title>
+      <div className={styles.newsCard}>
+        <Row gutter={isMobile ? [24, 24] : [32, 48]}>
+          {data?.map((item, index) => {
+            const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
+            return (
+              <Col key={item?.id} xs={24} sm={24} md={24} lg={8}>
+                <ColorfulCard border={'bottom'} index={index} animate={false}>
+                  <Space direction={'vertical'} className={styles.card} onClick={() => router.push(`/article-detail/${item?.id}`)}>
+                    <img alt="" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
+                    <Title className={styles.title} ellipsis={{ rows: 1 }}>
+                      {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
+                    </Title>
 
-                      <Space align="center">
-                        <Text className={styles.date}>
-                          {item?.attributes?.editor}
-                          {startTime.format('YYYY-MM-DD')}
-                        </Text>
+                    <Space align="center" className={styles.space}>
+                      <Text className={styles.date}>
+                        {item?.attributes?.editor}
+                        {startTime.format('YYYY-MM-DD')}
+                      </Text>
 
-                        <a href={`/resources/${item?.id}`}>
-                          <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
-                        </a>
-                      </Space>
+                      <a href={`/article-detail/${item?.id}`}>
+                        <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} />
+                      </a>
                     </Space>
-                  </ColorfulCard>
-                </Col>
-              );
-            })}
-          </Row>
-        </div>
-
-        <Pagination total={total} className={styles.pagination} pageSize={pageSize} current={current} onChange={(page) => setCurrent(page)} />
+                  </Space>
+                </ColorfulCard>
+              </Col>
+            );
+          })}
+        </Row>
       </div>
+
+      <Pagination total={total} className={styles.pagination} pageSize={pageSize} current={current} onChange={(page) => setCurrent(page)} />
     </div>
   );
 };

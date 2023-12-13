@@ -1,57 +1,86 @@
 @import '@/styles/variables';
 
-.row {
-  width: 100%;
+.cardContainer {
+  .row {
+    width: 100%;
 
-  .feeCol {
-    @media (width >= 992px) {
-      justify-content: flex-end;
-    }
-  }
-
-  .col {
-    display: flex;
-    align-items: center;
-
-    .title {
-      @include title('thin');
-    }
-
-    .fee {
-      @include title;
-
-      @media (width <= 992px) {
-        margin-top: 35px;
+    .feeCol {
+      @media (width >= 992px) {
+        justify-content: flex-end;
       }
     }
-  }
 
-  :global(.ant-descriptions .ant-descriptions-item-label) {
-    font-size: 18px;
-    font-weight: 500;
-    color: #172142;
-    line-height: 36px;
+    .col {
+      display: flex;
+      align-items: center;
 
-    &::before {
-      margin-right: 10px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid #ffd600;
-      border-radius: 50%;
-      background: #ffad11;
-      content: '';
-      box-sizing: border-box;
+      .title {
+        @include title('thin');
+
+        @media (width <= 768px) {
+          margin-top: 0;
+          margin-bottom: 0;
+
+          @include title('mobile');
+        }
+      }
+
+      .fee {
+        @include title;
+
+        color: #d46b14;
+
+        @media (width <= 768px) {
+          @include title('mobile');
+
+          color: #d46b14;
+        }
+      }
+
+      .bilingual {
+        width: 80px;
+        height: 28px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+        color: #fff;
+        background: #ffad11;
+        line-height: 28px;
+      }
+    }
+
+    :global(.ant-descriptions .ant-descriptions-item-label) {
+      font-size: 18px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 36px;
+
+      &::before {
+        margin-right: 10px;
+        width: 12px;
+        height: 12px;
+        border: 2px solid #ffd600;
+        border-radius: 50%;
+        background: #ffad11;
+        content: '';
+        box-sizing: border-box;
+      }
+    }
+
+    :global(.ant-descriptions .ant-descriptions-row > td) {
+      padding-bottom: 0;
+    }
+
+    :global(.ant-descriptions .ant-descriptions-item-content) {
+      font-size: 18px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 36px;
     }
   }
 
-  :global(.ant-descriptions .ant-descriptions-row > td) {
-    padding-bottom: 0;
-  }
-
-  :global(.ant-descriptions .ant-descriptions-item-content) {
-    font-size: 18px;
-    font-weight: 500;
-    color: #172142;
-    line-height: 36px;
+  &:hover .title {
+    text-decoration: underline;
   }
 }

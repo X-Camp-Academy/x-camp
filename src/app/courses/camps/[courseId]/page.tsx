@@ -1,7 +1,5 @@
-import { PageTitle, generateMetadata } from '@/app/metadata';
-import dynamic from 'next/dynamic';
-
-const CourseCamps = dynamic(() => import('@/components/courses/camps'));
+import { PageTitle, generateMetadata } from '@/utils/metadata';
+import CourseCamps from '@/components/courses/camps';
 
 export const metadata = {
   ...generateMetadata(PageTitle.CourseCamps)

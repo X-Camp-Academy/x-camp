@@ -2,13 +2,26 @@
 
 .content {
   margin-top: 150px;
-  width: 100%;
+  margin-bottom: 48px;
+
+  @media (width <= 768px) {
+    margin-top: 48px;
+    margin-bottom: 32px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
 
   .title {
     @include title('default');
 
     line-height: 48px;
     text-align: center;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+
+      margin-bottom: 24px;
+    }
   }
 
   .paragraph {
@@ -16,6 +29,12 @@
     font-weight: 600;
     color: #172142;
     line-height: 36px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      font-size: 16px;
+    }
   }
 
   .text {
@@ -30,5 +49,12 @@
     color: #172142;
     background-color: #fff;
     line-height: 24px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      color: #172142;
+      background-color: #fff;
+    }
   }
 }

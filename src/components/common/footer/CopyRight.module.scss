@@ -7,9 +7,18 @@
   .copyRight {
     padding: 30px;
 
+    @media (width <= 768px) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
     .spaceLeft {
       margin-top: 48px;
       width: 100%;
+
+      @media (width <= 768px) {
+        margin-top: 16px;
+      }
 
       .image {
         width: 156px;
@@ -17,10 +26,14 @@
       }
 
       .paragraph {
-        @include text(14px, 24px);
+        @include text(14px, 24px, #172142);
 
         .text {
           margin-left: 10px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+          }
         }
       }
     }
@@ -31,15 +44,29 @@
       margin-top: 48px;
       width: 100%;
 
+      @media (width <= 768px) {
+        margin-top: 16px;
+      }
+
       .text {
         margin-bottom: 24px;
         font-weight: 600;
 
-        @include text(18px, 30px);
+        @include text(18px, 30px, #172142);
+
+        @media (width <= 768px) {
+          @include title('middle');
+
+          margin-bottom: 16px;
+        }
       }
 
       a {
-        @include text(14px, 36px);
+        @include text(14px, 36px, #172142);
+
+        @media (width <= 768px) {
+          @include text(12px, 24px, #172142);
+        }
       }
     }
 
@@ -62,7 +89,7 @@
       }
 
       .bottomTitle {
-        @include text(14px, 26px);
+        @include text(14px, 26px, #172142);
 
         font-weight: 500;
       }
@@ -78,5 +105,12 @@
     color: #172142;
     background-color: #ffad11;
     line-height: 64px;
+
+    @media (width <= 768px) {
+      padding-top: 16px;
+      height: 56px;
+
+      @include mobile-text;
+    }
   }
 }

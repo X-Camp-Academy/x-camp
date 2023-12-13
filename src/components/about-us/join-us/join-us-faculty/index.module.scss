@@ -4,7 +4,9 @@
   margin-bottom: 100px;
 
   @media (width <= 768px) {
-    padding: 20px;
+    margin-bottom: 16px;
+    padding: 20px 10px;
+    padding-top: 0;
   }
 
   .joinUsFaculty {
@@ -31,6 +33,13 @@
         font-weight: 500;
         color: #172142;
         line-height: 34px;
+
+        @media (width <= 768px) {
+          margin-top: 20px;
+          margin-bottom: 16px;
+
+          @include mobile-text;
+        }
       }
 
       .introBtn {
@@ -42,6 +51,10 @@
         font-weight: 500;
         color: #172142;
         line-height: 24px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
       }
     }
 
@@ -50,7 +63,7 @@
       width: 100%;
 
       @media (width <= 768px) {
-        padding: 30px;
+        padding: 24px;
       }
     }
   }

@@ -13,11 +13,11 @@ interface Props {
 
 const TimelineComponent: React.FC<Props> = ({ items }) => {
   const renderTimelineItems = (items: Item[]) => {
-    return items?.map((item, index) => (
-      <Timeline.Item key={index} className={styles.timelineItem}>
+    return items?.map((item) => (
+      <Timeline.Item key={item?.label} className={styles.timelineItem}>
         <div className={styles.month}>{item?.label}</div>
-        {(item?.children as Item[])?.map((childrenEvent, index) => (
-          <div key={index}>
+        {(item?.children as Item[])?.map((childrenEvent) => (
+          <div key={childrenEvent?.label}>
             <Space>
               <div>
                 <div className={styles.line} />

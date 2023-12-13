@@ -1,16 +1,13 @@
 'use client';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import styles from './index.module.scss';
-
-const Banner = dynamic(() => import('./banner'));
-const Map = dynamic(() => import('./map'));
-const Flag = dynamic(() => import('./flag'));
-const Stories = dynamic(() => import('./stories'));
-const UpcomingEvents = dynamic(() => import('./upcoming-events'));
-const Reviews = dynamic(() => import('@/components/common/reviews'));
+import Banner from './banner';
+import Map from './map';
+import Story from './story';
+import UpcomingEvents from './upcoming-events';
+import Reviews from '@/components/common/reviews';
 const { Content } = Layout;
 
 const XAlumni = () => {
@@ -24,9 +21,8 @@ const XAlumni = () => {
     <Layout className={styles.xalumniContainer}>
       <Content>
         <Banner />
-        {/* <Map /> */}
-        <Flag />
-        <Stories />
+        <Map />
+        <Story />
         <UpcomingEvents />
         <Reviews reviewsData={reviewsData} />
       </Content>

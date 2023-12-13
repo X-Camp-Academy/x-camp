@@ -7,16 +7,13 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      X-Camp Academy focuses on improving the coding abilities and
-      <br />
-      problem-solving skills of our students. We strive to teach not only
-      <br />
-      persistence in analytical thought, but also genuine curiosity whilst
-      <br />
-      facing new challenges.
+      {t('ContactUs.Banner.Desc1')}
+      {t('ContactUs.Banner.Desc2')}
+      {t('ContactUs.Banner.Desc3')}
+      {t('ContactUs.Banner.Desc4')}
     </>
   );
-  return <CommonBanner image={'/image/about-us/achievements-banner.png'} title={t('ContactXCamp')} paragraph={paragraph} />;
+  return <CommonBanner title={t('ContactXCamp')} paragraph={paragraph} image={'/image/about-us/contact-us-banner.png'} />;
 };
 
 export default Banner;

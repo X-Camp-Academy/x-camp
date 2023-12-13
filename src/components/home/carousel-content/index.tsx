@@ -1,70 +1,86 @@
 'use client';
 import TitleColor, { IConfig } from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { Carousel, Col, Row, Space, Typography } from 'antd';
-import dynamic from 'next/dynamic';
-import React, { CSSProperties, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { CSSProperties, useRef, useState } from 'react';
 import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
+import UsacoMedal from '@/components/common/usaco-medal';
 
-const { Paragraph, Text } = Typography;
+const { Text } = Typography;
 
-const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
-
-interface IItem {
+interface CarouselItemsProps {
   title: string;
+  titleSubImg?: string;
   desc: string[];
-  backgroundUrl: string;
+  banner: string;
+  mbBanner: string;
   onClick: () => void;
-  date: string;
+  date: string[];
   buttonText: string;
+  buttonStyle?: CSSProperties;
   titleConfig?: IConfig[];
   descStyle?: CSSProperties;
 }
 
 const CarouselContent: React.FC = () => {
   const { format: t } = useLang();
+  const router = useRouter();
   const sliderRef: any = useRef(null);
+  const [current, setCurrent] = useState(0);
+  const isMobile = useMobile();
 
   const goTo = (index: number) => {
     sliderRef.current?.goTo(index);
   };
 
-  const carouselItems: IItem[] = [
+  const carouselItems: CarouselItemsProps[] = [
+    // {
+    //   title: t('Home.Banner1.Title1'),
+    //   titleConfig: [
+    //     {
+    //       text: t('Home.Banner1.Title1'),
+    //       color: '#FFF'
+    //     }
+    //   ],
+    //   desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2')],
+    //   descStyle: {
+    //     color: '#FFF'
+    //   },
+    //   onClick: () => {
+    //     window.open('https://bit.ly/xcfte-p');
+    //   },
+    //   date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
+    //   banner: '/image/home/banner-pc-2.png',
+    //   mbBanner: '/image/home/banner-mb-2.png',
+    //   buttonText: t('ReserveNow'),
+    //   buttonStyle: {
+    //     backgroundColor: '#FFF',
+    //     color: '#172A88'
+    //   },
+    //   titleSubImg: '/image/home/price.png'
+    // },
     {
-      title: t('WeeklyOpenHouse'),
+      title: t('Home.Banner2.Title1'),
       titleConfig: [
         {
-          text: t('WeeklyOpenHouse'),
+          text: t('Home.Banner2.Title1'),
           color: '#FFAD11'
         }
       ],
-      desc: [t('OpenHouse.Dec1'), t('OpenHouse.Dec2')],
+      desc: isMobile ? [t('Home.Banner2.mbDesc1'), t('Home.Banner2.mbDesc2')] : [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2')],
       descStyle: {
         color: '#FFF'
       },
       onClick: () => {
-        window.open('https://us02web.zoom.us/j/89284761432?pwd=VXJvQjRPN3I4TXhlUk9SdXM0KzJqQT09');
+        window.open('https://www.eventbrite.com/e/202324-usa-computing-olympiad-usaco-public-mock-test-tickets-744548052267');
       },
-      date: t('OpenTime'),
-      backgroundUrl: '/image/about-us/banner-joinUs.png',
-      buttonText: t('ZoomLink')
-    },
-    {
-      title: t('USACO.enhancement.register'),
-      titleConfig: [
-        {
-          text: t('USACO.enhancement.register.color'),
-          color: '#FFAD11'
-        }
-      ],
-      desc: [t('USACO.mock.test'), t('USACO.live.lecture')],
-      onClick: () => {
-        window.open('https://tinyurl.com/XCamp23-24FallUSACO');
-      },
-      date: t('USACO.no.class'),
-      backgroundUrl: '/image/home/banner-2.png',
-      buttonText: t('VideoRecap')
+      date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
+      banner: '/image/home/banner-pc-1.png',
+      mbBanner: '/image/home/banner-mb-1.png',
+      buttonText: t('ReserveNow')
     },
     {
       title: t('Home.Banner3.title'),
@@ -80,45 +96,65 @@ const CarouselContent: React.FC = () => {
         }
       ],
       onClick: () => {
-        window.open('https://docs.google.com/forms/d/e/1FAIpQLScNm1Mf4lgvdXUObuJu3wl-_wEcYU9N8ao6PGv8RnANNGE_xw/viewform?usp=sf_link');
+        router.push('/about-us/achievements');
       },
-      date: '',
-      backgroundUrl: '/image/home/banner-3.png',
+      date: [''],
+      banner: '/image/home/banner-pc-3.png',
+      mbBanner: '/image/home/banner-mb-3.png',
       buttonText: t('Home.Banner3.buttonText')
     }
   ];
 
   return (
     <div className={styles.bannerContainer}>
-      <CarouselDots goTo={goTo} dots={3} />
-      <Carousel autoplay={false} dots={false} ref={sliderRef}>
-        {carouselItems.map((item: IItem) => (
-          <div className={styles.content} key={item?.title}>
-            <div
-              className={styles.background}
-              style={{
-                background: `url("${item?.backgroundUrl}") center no-repeat`,
-                backgroundSize: 'cover'
-              }}
-            />
+      {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
+      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+        {carouselItems.map((item: CarouselItemsProps) => (
+          <div className={styles.content} key={item?.title} onClick={item?.onClick}>
+            {isMobile ? (
+              <div
+                className={styles.background}
+                style={{
+                  background: `url('${item?.mbBanner}') no-repeat`,
+                  backgroundSize: 'contain',
+                  backgroundPosition: 'center center'
+                }}
+              />
+            ) : (
+              <div
+                className={styles.background}
+                style={{
+                  background: `url('${item?.banner}') no-repeat`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'top 40% center'
+                }}
+              />
+            )}
             <div className={`container ${styles.info}`}>
               <Row>
                 <Col xs={24} sm={24} md={24} lg={12}>
                   <Space direction="vertical" className={styles.space} size={20}>
-                    <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                    <div>
-                      {item?.desc?.map((desc) => (
-                        <Paragraph className={styles.paragraph} key={desc} style={item?.descStyle}>
-                          {desc}
-                        </Paragraph>
-                      ))}
+                    <div className={styles.titleWithImg}>
+                      <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
+                      {item.titleSubImg && <img src={item.titleSubImg} className={styles.img} alt="price" />}
                     </div>
-                    <button className={styles.button} onClick={item?.onClick}>
+                    <Space direction="vertical" size={0}>
+                      {item?.desc?.map((desc) => (
+                        <Text className={styles.description} key={desc} style={item?.descStyle}>
+                          {desc}
+                        </Text>
+                      ))}
+                    </Space>
+                    <button className={styles.button} style={item?.buttonStyle} onClick={item?.onClick}>
                       {item?.buttonText}
                     </button>
-                    <Text className={styles.date} style={item?.descStyle}>
-                      {item?.date}
-                    </Text>
+                    <Space direction="vertical">
+                      {item?.date?.map((date) => (
+                        <Text className={styles.date} key={date} style={item?.descStyle}>
+                          {date}
+                        </Text>
+                      ))}
+                    </Space>
                   </Space>
                 </Col>
               </Row>
@@ -126,7 +162,7 @@ const CarouselContent: React.FC = () => {
           </div>
         ))}
       </Carousel>
-      <UsacoMedal showTitle={false} />
+      <UsacoMedal style={{ backgroundColor: '#FFFFFF', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' }} spacePaddingTop={0} showTitle={false} />
     </div>
   );
 };

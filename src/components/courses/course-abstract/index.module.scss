@@ -6,6 +6,8 @@
   }
 
   .left {
+    width: 100%;
+
     .title {
       @include title;
 
@@ -13,7 +15,7 @@
 
       @media (width <= 1140px) {
         font-size: 24px;
-        line-height: 40px;
+        line-height: 24px;
       }
     }
 
@@ -24,7 +26,8 @@
       color: #172142;
       line-height: 36px;
 
-      @media (width <= 1140px) {
+      @media (width <= 1200px) {
+        margin-top: 16px;
         font-size: 16px;
         line-height: 30px;
       }
@@ -39,6 +42,10 @@
       font-weight: 600;
       color: #d46b14;
       line-height: 36px;
+
+      @media (width <= 768px) {
+        line-height: 20px;
+      }
 
       &::before {
         margin-right: 10px;
@@ -58,10 +65,18 @@
       font-size: 18px;
       color: #172142;
       line-height: 40px;
+
+      @media (width <= 768px) {
+        padding-left: 0;
+        line-height: 24px;
+
+        @include mobile-text;
+      }
     }
   }
 
   .right {
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -72,8 +87,9 @@
     background: #ffeddf;
     flex-direction: column;
 
-    @media (width <= 576px) {
+    @media (width <= 768px) {
       width: 100%;
+      height: 100%;
     }
 
     .title {
@@ -88,6 +104,11 @@
       font-weight: 600;
       color: #d46b14;
       line-height: 70px;
+
+      @media (width <= 768px) {
+        font-size: 40px;
+        line-height: 64px;
+      }
     }
 
     .btn {
@@ -101,11 +122,18 @@
       font-weight: 500;
       color: #fff;
       background: #d46b14;
-      transition: opacity 0.5s;
+      transition: all 0.3s ease-in;
       line-height: 36px;
 
+      @media (width <= 768px) {
+        width: 192px;
+        height: 48px;
+        font-size: 20px;
+      }
+
       &:hover {
-        opacity: 0.8;
+        background: #d46b14;
+        box-shadow: 0 8px 12px -4px rgb(#d76100, 70%);
       }
     }
 
@@ -114,6 +142,28 @@
       font-weight: 400;
       color: #d46b14;
       line-height: 21px;
+
+      @media (width <= 768px) {
+        margin-top: 16px;
+      }
+    }
+
+    .bilingual {
+      position: absolute;
+      top: 0;
+      right: -46px;
+      width: 156px;
+      height: 32px;
+      border-top: 32px solid transparent;
+      border-right: 32px solid transparent;
+      border-bottom: 32px solid #ffad11;
+      border-left: 32px solid transparent;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      color: #fff;
+      transform: rotate(45deg);
+      line-height: 32px;
     }
   }
 }

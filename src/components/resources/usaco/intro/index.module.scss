@@ -1,0 +1,137 @@
+@import '@/styles/variables';
+
+.introContainer {
+  margin-top: 100px;
+  padding: 48px;
+  border-radius: 12px;
+  background-color: #fff;
+
+  @media (width <= 768px) {
+    margin-top: 0;
+    padding: 24px;
+    padding-top: 48px;
+  }
+
+  .title {
+    @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+
+      margin-bottom: 0;
+    }
+  }
+
+  .subTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 48px;
+
+    @media (width <= 768px) {
+      margin: 0;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  .subParagraph {
+    font-size: 18px;
+    font-weight: 400;
+    color: #172142;
+    line-height: 40px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      margin-bottom: 0;
+    }
+  }
+
+  .space {
+    width: 100%;
+
+    .image {
+      height: 252px;
+
+      @media (width <= 1200px) {
+        width: 100%;
+        height: 200px;
+      }
+
+      @media (width <= 992px) {
+        width: 100%;
+        height: 150px;
+      }
+
+      @media (width <= 768px) {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .chartTitle {
+    @include title('default');
+
+    @media (width <= 768px) {
+      @include title('mobile');
+
+      margin-top: 0;
+      margin-bottom: -28px;
+    }
+  }
+
+  .chart {
+    @media (width <= 992px) {
+      flex-direction: column;
+    }
+
+    .barChart {
+      width: 100%;
+      height: 448px;
+
+      @media (width <= 768px) {
+        height: 320px;
+      }
+    }
+
+    .chartRight {
+      width: 100%;
+
+      .subTitle {
+        font-size: 24px;
+        font-weight: 600;
+        color: #172142;
+        line-height: 64px;
+
+        @media (width <= 768px) {
+          @include title('middle');
+        }
+      }
+
+      .spaceItem {
+        display: flex;
+        justify-content: space-between;
+
+        .circle {
+          width: 8px;
+          height: 8px;
+          border-radius: 8px;
+          background: #ffad11;
+        }
+
+        .text {
+          font-size: 21px;
+          font-weight: 600;
+          color: #172142;
+          line-height: 40px;
+
+          @media (width <= 1200px) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

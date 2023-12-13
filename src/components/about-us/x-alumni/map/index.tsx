@@ -1,20 +1,18 @@
 'use client';
-import { useGetAboutUsAlumniMap } from '@/apis/strapi-client/strapi';
+import { useGetXAlumniMap } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { Typography } from 'antd';
 import * as echarts from 'echarts';
 import React, { LegacyRef, useEffect, useRef } from 'react';
 import styles from './index.module.scss';
-import usaJson from './usa.json';
 import worldJson from './world.json';
 
 const { Title, Text } = Typography;
 
 const Map: React.FC = () => {
   const { format: t } = useLang();
-  const { data } = useGetAboutUsAlumniMap();
+  const { data } = useGetXAlumniMap();
   const worldDOM = useRef<HTMLDivElement>();
-  const usaDOM = useRef<HTMLDivElement>();
 
   useEffect(() => {
     if (worldDOM.current) {
@@ -56,62 +54,6 @@ const Map: React.FC = () => {
       mapChart.setOption(options);
     }
   }, [data]);
-  useEffect(() => {
-    if (usaDOM.current) {
-      const mapChart = echarts.init(usaDOM.current);
-
-      echarts.registerMap('USA', JSON.stringify(usaJson), {
-        Alaska: {
-          left: -131,
-          top: 25,
-          width: 15
-        },
-        Hawaii: {
-          left: -110,
-          top: 28,
-          width: 5
-        },
-        'Puerto Rico': {
-          left: -76,
-          top: 26,
-          width: 2
-        }
-      });
-
-      const options = {
-        tooltip: {
-          trigger: 'item',
-          showDelay: 0,
-          transitionDuration: 0.2
-        },
-        visualMap: {
-          left: 'right',
-          min: 500000,
-          max: 38000000,
-          inRange: {
-            color: ['#D46B14', '#FFAD11', '#FFD600']
-          },
-          text: ['High', 'Low'],
-          calculable: true
-        },
-        series: [
-          {
-            name: t('USAPopEstimates'),
-            type: 'map',
-            roam: true,
-            map: 'USA',
-            emphasis: {
-              label: {
-                show: true
-              }
-            },
-            data: data?.usa || []
-          }
-        ]
-      };
-      mapChart.setOption(options);
-    }
-  }, [data]);
 
   return (
     <div className={`${styles.map} container`}>
@@ -119,7 +61,6 @@ const Map: React.FC = () => {
       <Text className={styles.text}>{t('JoinBigFamily')}</Text>
 
       <div ref={worldDOM as LegacyRef<HTMLDivElement>} className={styles.mapContainer} />
-      <div ref={usaDOM as LegacyRef<HTMLDivElement>} className={styles.mapContainer} />
     </div>
   );
 };

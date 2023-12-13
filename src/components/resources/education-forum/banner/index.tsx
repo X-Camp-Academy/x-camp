@@ -1,20 +1,20 @@
-import dynamic from 'next/dynamic';
 import React from 'react';
-
-const CommonBanner = dynamic(() => import('@/components/common/common-banner'));
+import { useLang } from '@/hoc/with-intl/define';
+import CommonBanner from '@/components/common/common-banner';
 
 const Banner: React.FC = () => {
+  const { format: t } = useLang();
   const paragraph = (
     <>
-      Provide support to the community of teenagers and
-      <br />
-      parents who love programming education.
-      <br />
-      Invite experienced speakers to share in our community.
+      {t('EducationForum.Banner.Desc1')}
+      {t('EducationForum.Banner.Desc2')}
+      {t('EducationForum.Banner.Desc3')}
+      {t('EducationForum.Banner.Desc4')}
+      {t('EducationForum.Banner.Desc5')}
     </>
   );
 
-  return <CommonBanner image={'/image/about-us/student-recommend-banner.png'} title="Education Forum" paragraph={paragraph} />;
+  return <CommonBanner image={'/image/resources/education-forum-banner.png'} title={t('EducationForum')} paragraph={paragraph} />;
 };
 
 export default Banner;

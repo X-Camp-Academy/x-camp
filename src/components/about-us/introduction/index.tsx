@@ -1,34 +1,27 @@
 'use client';
 import { useGetFaculty } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
+import Banner from './banner';
+import AboutXCamp from './about-xcamp';
+import History from './history';
+import XCampFounders from '@/components/common/xcamp-founders';
+import FacultyCoaches from '@/components/common/faculty-coaches';
+import Partners from '@/components/common/partners';
 
-const Banner = dynamic(() => import('./banner'));
-const History = dynamic(() => import('./history'));
-const XCampFounders = dynamic(() => import('@/components/common/xcamp-founders'));
-const UsacoMedal = dynamic(() => import('@/components/common/usaco-medal'));
-const FacultyCoach = dynamic(() => import('@/components/common/faculty-coach'));
-const Partners = dynamic(() => import('@/components/common/partners'));
 const { Content } = Layout;
 
 const Introduction: React.FC = () => {
   const { data: facultyData } = useGetFaculty({});
-
   return (
     <Layout className={styles.introductionContainer}>
       <Content>
         <Banner />
+        <AboutXCamp />
         <History />
         <XCampFounders />
-        <UsacoMedal />
-
-        {/* ! TODO */}
-        {/* <Results /> */}
-
-        <FacultyCoach data={facultyData} />
-
+        <FacultyCoaches data={facultyData} />
         <Partners />
       </Content>
     </Layout>

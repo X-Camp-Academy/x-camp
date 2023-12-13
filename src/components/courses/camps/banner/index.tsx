@@ -6,15 +6,13 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      {t('Camp.Des')}
-      <br />
-      <span>{t('SummerCamp')}</span>
-      <br />
-      <span>{t('WinterCamp')}</span>
+      {t('Courses.Camps.Banner.Desc1')}
+      {t('Courses.Camps.Banner.Desc2')}
+      {t('Courses.Camps.Banner.Desc3')}
     </>
   );
 
-  return <CommonBanner image={'/image/about-us/achievements-banner.png'} title={t('In-personCamps')} paragraph={paragraph} />;
+  return <CommonBanner image={'/image/courses/camps-banner.png'} title={t('In-personCamps')} paragraph={paragraph} />;
 };
 
 export default Banner;

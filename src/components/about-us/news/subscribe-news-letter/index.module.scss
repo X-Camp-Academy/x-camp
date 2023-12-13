@@ -4,6 +4,12 @@
   margin-bottom: 100px;
   text-align: center;
 
+  @media (width <= 768px) {
+    margin-bottom: 48px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
   .space {
     padding-top: 50px;
     padding-bottom: 80px;
@@ -11,10 +17,20 @@
     border-radius: 10px;
     background-color: #fff;
 
+    @media (width <= 768px) {
+      padding: 20px 16px 32px;
+    }
+
     .title {
       @include title('default');
 
       line-height: 56px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        margin-bottom: 16px;
+      }
     }
 
     .paragraph {
@@ -22,14 +38,34 @@
       font-weight: 500;
       color: #172142;
       line-height: 34px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+
+        margin-bottom: 16px;
+      }
     }
 
     .form {
       display: flex;
       justify-content: center;
 
+      @media (width <= 768px) {
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+
       .formSelect {
+        width: 100%;
         height: 42px;
+
+        @media (width <= 768px) {
+          width: 100%;
+
+          @include mobile-text;
+
+          color: #fff;
+        }
       }
 
       .submit {
@@ -41,6 +77,15 @@
         color: #fff;
         background-color: #ffad11;
         line-height: 27px;
+
+        @media (width <= 768px) {
+          margin-left: 8px;
+          width: 100%;
+
+          @include mobile-text;
+
+          color: #fff;
+        }
       }
     }
   }

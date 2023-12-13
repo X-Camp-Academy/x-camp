@@ -1,0 +1,78 @@
+@import '@/styles/variables';
+
+.content {
+  padding: 100px 32px;
+  width: 100%;
+
+  @media (width <= 768px) {
+    padding: 64px 24px;
+  }
+
+  .top,
+  .bottom {
+    .title {
+      margin-bottom: 36px;
+      font-size: 48px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 48px;
+
+      @media (width <= 768px) {
+        margin-bottom: 24px;
+
+        @include title('mobile');
+      }
+    }
+
+    .description {
+      margin-bottom: 24px;
+      font-size: 21px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 40px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
+    }
+  }
+
+  .intro {
+    .title {
+      @include title('thin');
+
+      line-height: 48px;
+      margin-bottom: 10px;
+
+      &::before {
+        position: relative;
+        top: -1.5px;
+        display: inline-block;
+        margin-right: 10px;
+        width: 8px;
+        height: 8px;
+        border: 2px solid #ffd600;
+        border-radius: 50%;
+        background: #ffad11;
+        content: '';
+      }
+
+      @media (width <= 768px) {
+        font-size: 20px;
+        line-height: 32px;
+      }
+    }
+
+    .description {
+      margin-bottom: 16px;
+      margin-left: 24px;
+      font-size: 21px;
+      color: #172142;
+      line-height: 40px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
+    }
+  }
+}

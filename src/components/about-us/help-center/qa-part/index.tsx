@@ -19,7 +19,7 @@ const QAPart: React.FC = () => {
   return (
     <div className={`${styles.qaContent} container`}>
       {faq?.map((v, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={v[index]?.id}>
           <Title className={styles.title}>{v?.[0]?.attributes?.category}</Title>
           {v?.map((g, index) => (
             <QACard

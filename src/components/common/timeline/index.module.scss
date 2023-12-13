@@ -11,8 +11,12 @@
   }
 
   :global(.ant-timeline-item-head) {
-    @include arrow;
-
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-color: transparent;
+    border-radius: 0;
+    border-top-color: $text-color;
     margin-top: 10px;
     margin-left: -3px;
     background: transparent;
@@ -24,8 +28,11 @@
     margin-bottom: 30px;
     height: 48px;
     font-size: 36px;
-    font-family: Poppins-SemiBold, Poppins, Arial;
     line-height: 40px;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+    }
   }
 
   .line {
@@ -50,6 +57,10 @@
 
     margin-left: 15px;
     font-weight: 600;
+
+    @media (width <= 768px) {
+      @include text(18px, 32px);
+    }
   }
 
   .subContent {
@@ -57,5 +68,9 @@
 
     margin-bottom: 30px;
     margin-left: 56px;
+
+    @media (width <= 768px) {
+      @include text(18px, 32px);
+    }
   }
 }

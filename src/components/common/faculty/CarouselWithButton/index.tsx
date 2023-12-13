@@ -29,6 +29,7 @@ const CarouselWithButton: React.FC<IProps> = ({ children }: IProps) => {
         slidesToScroll={1}
         swipeToSlide
         infinite
+        autoplay
         responsive={[
           {
             breakpoint: 1200,

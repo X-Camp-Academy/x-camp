@@ -4,8 +4,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { RightOutlined } from '@ant-design/icons';
-import { Card, Image, Space, Typography } from 'antd';
-import Link from 'next/link';
+import { Avatar, Card, Space, Typography } from 'antd';
 import React from 'react';
 
 const { Paragraph } = Typography;
@@ -31,7 +30,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
   return (
-    <ColorfulCard key={item?.id} border={'bottom'} index={index} className={`${styles.cardContainer} ${isMobile ? styles.mobile : ''}`}>
+    <ColorfulCard key={item?.id} border={'bottom'} reverse index={index} className={`${styles.cardContainer} ${isMobile ? styles.mobile : ''}`}>
       <Card bodyStyle={isMobile ? { width: 265 } : undefined}>
         <Space align="center">
           <Space direction="vertical">
@@ -41,11 +40,11 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
             <Paragraph ellipsis={{ rows: 3 }} className={styles.description}>
               {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
             </Paragraph>
-            <Link href="/" className={styles.more}>
+            <a href="/about-us/introduction/#faculty" className={styles.more}>
               {t('More')} <RightOutlined />
-            </Link>
+            </a>
           </Space>
-          <Image src={item?.attributes?.imgUrl} alt="avatar" preview={false} className={styles.cardImage} />
+          <Avatar src={item?.attributes?.imgUrl} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} />
         </Space>
       </Card>
     </ColorfulCard>

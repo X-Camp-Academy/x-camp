@@ -1,7 +1,5 @@
-import { PageTitle, generateMetadata } from '@/app/metadata';
-import dynamic from 'next/dynamic';
-
-const EducationForum = dynamic(() => import('@/components/resources/education-forum'));
+import { PageTitle, generateMetadata } from '@/utils/metadata';
+import EducationForum from '@/components/resources/education-forum';
 
 export const metadata = {
   ...generateMetadata(PageTitle.EducationForum)

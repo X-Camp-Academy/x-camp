@@ -1,38 +1,33 @@
 import CommonBanner from '@/components/common/common-banner';
 import { useLang } from '@/hoc/with-intl/define';
 import { LaptopOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import { useRouter } from 'next/navigation';
 import React from 'react';
-import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
-  const router = useRouter();
   const paragraph = (
     <>
-      Get a glimpse into our programs, curriculum, and
-      <br />
-      teaching approach as we answer your questions.
+      {t('WeeklyOpenHouse.Banner.Desc1')}
+      {t('WeeklyOpenHouse.Banner.Desc2')}
     </>
   );
   return (
-    <div className={styles.banner}>
-      <CommonBanner image={'/image/about-us/banner-joinUs.png'} title={t('WeeklyOpenHouse1')} titleClassName={styles.title} paragraphClassName={styles.paragraph} paragraph={paragraph} />
-      <div className={styles.bottomInfo}>
-        <Button
-          size="large"
-          className={styles.contactBtn}
-          onClick={() => {
-            router.push('/about-us/contact-us');
-          }}
-        >
-          <span>{t('ZoomLink')}</span>
-          <LaptopOutlined />
-        </Button>
-        <div className={styles.dateTime}>{t('JoinWay.Time')}</div>
-      </div>
-    </div>
+    <CommonBanner
+      image={'/image/resources/weekly-open-house-banner.png'}
+      title={t('WeeklyOpenHouse1')}
+      paragraph={paragraph}
+      time={
+        <>
+          {t('WeeklyOpenHouse.Banner.Date1')}
+          <br />
+          {t('WeeklyOpenHouse.Banner.Date2')}
+        </>
+      }
+      showButton
+      buttonText={t('ZoomLink')}
+      buttonLink={'https://app.zoom.us/wc/89284761432/start?from='}
+      buttonIcon={<LaptopOutlined />}
+    />
   );
 };
 

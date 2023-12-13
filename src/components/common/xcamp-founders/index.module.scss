@@ -3,10 +3,22 @@
 .XCampFounder {
   position: relative;
   margin-top: 120px;
-  padding-bottom: 120px;
+
+  @media (width <= 768px) {
+    margin-top: 32px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+  }
 
   .title {
     @include title;
+
+    @media (width <= 768px) {
+      @include title('mobile');
+
+      margin-bottom: 0;
+    }
   }
 
   .paragraph {
@@ -15,10 +27,20 @@
     text-align: center;
     color: #172142;
     line-height: 36px;
+
+    @include margin;
+
+    @media (width <= 768px) {
+      @include margin(0);
+      @include mobile-text;
+    }
   }
 
   .row {
+    margin-top: 48px;
+
     @media (width <= 768px) {
+      margin-top: 16px;
       margin-right: 0 !important;
       margin-left: 0 !important;
     }
@@ -27,13 +49,18 @@
   .baseImgCol {
     display: flex;
     justify-content: center;
+
+    @media (width <= 768px) {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
   }
 
   .baseImgBackground {
     position: relative;
     width: 368px;
     height: 416px;
-    border-radius: 12px;
+    border-radius: 8px;
 
     @media (width <= 768px) {
       display: none;
@@ -44,6 +71,11 @@
     position: absolute;
     width: 384px;
     height: 480px;
+
+    @media (width <= 768px) {
+      width: 100%;
+      height: 416px;
+    }
   }
 
   .charlieImgCol {
@@ -73,6 +105,11 @@
     @extend .baseImgCol;
 
     align-items: end;
+    padding-left: 130px !important;
+
+    @media (width <= 768px) {
+      padding-left: 0 !important;
+    }
 
     .yuanImgBackground {
       @extend .baseImgBackground;
@@ -94,21 +131,38 @@
   }
 
   .founderDescription {
+    @media (width <= 768px) {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
     .founderName {
       @include title;
 
+      font-size: 28px;
       line-height: 54px;
+
+      @media (width <= 768px) {
+        @include title('middle');
+
+        margin-top: 0;
+      }
     }
 
     .founderTag {
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 600;
       color: #172142;
       line-height: 36px;
 
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
+
       .founderTagButton {
         margin-right: 16px;
         cursor: default;
+        vertical-align: middle;
       }
     }
 
@@ -117,12 +171,10 @@
       font-weight: 500;
       color: #172142;
       line-height: 33px;
-    }
 
-    .keyText {
-      @extend .paragraph;
-
-      color: #ffad11;
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
     }
   }
 }

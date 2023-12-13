@@ -1,5 +1,7 @@
+import CopyRightIcons from '@/components/common/copy-right-icons';
 import { useLang } from '@/hoc/with-intl/define';
-import { formatTimezone, getTransResult, getWeeksDays } from '@/utils/public';
+import { useMobile } from '@/utils';
+import { defaultVideoUrl, formatTimezone, getTransResult, getWeeksDays } from '@/utils/public';
 import { ShareAltOutlined } from '@ant-design/icons';
 import { Breadcrumb, Button, Carousel, Descriptions, Divider, Image, Modal, Space, Typography, message } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
@@ -8,24 +10,24 @@ import CourseClassesContext from '../../CourseClassesContext';
 import CourseAbstract from '../../course-abstract';
 import styles from './index.module.scss';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const CourseBanner: React.FC = () => {
   const { format: t, lang } = useLang();
+  const isMobile = useMobile();
   const ref = useRef<CarouselRef>(null);
   message.config({
     top: 100
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const courseData = useContext(CourseClassesContext);
-
   const { courseCode, classMode, classLang, spokenLang, startDateTime, endDateTime, media, courseTitleZh, courseTitleEn, lessonNum, frequency, courseFormat, additionalInfo } =
     courseData?.attributes ?? {};
 
   const courseCodeTitle = `${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)} (${lessonNum} ${getWeeksDays(frequency)})`;
 
   const formatDate = (dateTime?: string) => {
-    return formatTimezone(dateTime)?.utcTime?.format('DD/MM/YYYY');
+    return formatTimezone(dateTime)?.utcTime?.format('MM/DD/YYYY');
   };
   const fullPath = window.location.href;
   const clipTextZh = `课程名称：${courseTitleZh}\n课程代码：${courseCode}\n编程语言：${classLang}\n授课语言：${spokenLang}\n开始结束时间：${formatDate(startDateTime)} ~ ${formatDate(
@@ -64,6 +66,7 @@ const CourseBanner: React.FC = () => {
     { key: t('CourseFormat'), value: courseFormat },
     { key: t('AdditionalInfo'), value: additionalInfo }
   ];
+
   return (
     <div className={styles.banner}>
       <div className={`${styles.content} container`} style={{ height: '100%' }}>
@@ -90,7 +93,7 @@ const CourseBanner: React.FC = () => {
 
             <Space className={styles.description}>
               <div className={styles.left}>
-                <Descriptions column={1}>
+                <Descriptions column={1} layout={isMobile ? 'vertical' : 'horizontal'}>
                   {DescriptionsItems?.map(
                     (item) =>
                       item?.value && (
@@ -100,28 +103,47 @@ const CourseBanner: React.FC = () => {
                       )
                   )}
                 </Descriptions>
-                <Button id="copyButton" className={styles.btn} onClick={() => setIsModalOpen(true)}>
-                  {t('ShareLessons')}
-                  <ShareAltOutlined />
-                </Button>
+
+                <Space direction={isMobile ? 'horizontal' : 'vertical'} size={32} className={styles.btnSpace}>
+                  <Button id="copyButton" className={styles.shareLessons} onClick={() => setIsModalOpen(true)}>
+                    {t('ShareLessons')}
+                    <ShareAltOutlined />
+                  </Button>
+
+                  <Button
+                    className={styles.consultation}
+                    onClick={() => window.open('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ')}
+                  >
+                    {t('1On1Consultation')}
+                  </Button>
+                </Space>
               </div>
 
               <div className={styles.right}>
                 <Carousel dots={false} ref={ref}>
-                  {media?.data?.map((mediaItem) => {
-                    return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
-                      <div key={mediaItem?.id} className={styles.videoBox}>
-                        <Image alt="" preview={false} src={mediaItem?.attributes?.url} width="100%" height="100%" />
-                      </div>
-                    ) : (
-                      <div key={mediaItem?.id} className={styles.videoBox}>
-                        <video controls>
-                          <source src={mediaItem?.attributes?.url} type="video/mp4" />
-                          {t('VideoProblem')}
-                        </video>
-                      </div>
-                    );
-                  })}
+                  {media?.data && media?.data?.length > 0 ? (
+                    media?.data?.map((mediaItem) => {
+                      return imageMimes?.includes(mediaItem?.attributes?.mime) ? (
+                        <div key={mediaItem?.id} className={styles.videoBox}>
+                          <Image alt="" preview={false} src={mediaItem?.attributes?.url} width="100%" height="100%" />
+                        </div>
+                      ) : (
+                        <div key={mediaItem?.id} className={styles.videoBox}>
+                          <video controls>
+                            <source src={mediaItem?.attributes?.url} type="video/mp4" />
+                            {t('VideoProblem')}
+                          </video>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div className={styles.videoBox}>
+                      <video controls>
+                        <source src={defaultVideoUrl} type="video/mp4" />
+                        {t('VideoProblem')}
+                      </video>
+                    </div>
+                  )}
                 </Carousel>
 
                 <div className={styles.mediaChoice}>
@@ -181,6 +203,11 @@ const CourseBanner: React.FC = () => {
                     <div style={{ whiteSpace: 'pre-line' }}>{getTransResult(lang, clipTextZh, clipTextEn)}</div>
                   </Modal>
                 </div>
+
+                <Space direction="vertical" size={isMobile ? 8 : 16} align="end" className={styles.rightBottom}>
+                  <Text className={styles.rightBottomText}> * Enjoy a $75 Discount with a Referral from a Current Student</Text>
+                  <CopyRightIcons />
+                </Space>
               </div>
             </Space>
           </Space>

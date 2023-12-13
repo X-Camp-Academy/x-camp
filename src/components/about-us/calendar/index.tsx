@@ -2,13 +2,11 @@
 import { useGetReviews } from '@/apis/strapi-client/strapi';
 import Reviews from '@/components/common/reviews';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
 import styles from './index.module.scss';
-
-const Banner = dynamic(() => import('./banner'));
-const CalendarContent = dynamic(() => import('./calendar-content'));
-const RecentActivities = dynamic(() => import('@/components/resources/education-forum/recent-activities'));
+import Banner from './banner';
+import CalendarContent from './calendar-content';
+import RecentActivities from '@/components/resources/education-forum/recent-activities';
 
 const { Content } = Layout;
 

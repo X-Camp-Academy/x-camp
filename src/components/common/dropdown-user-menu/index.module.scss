@@ -1,0 +1,5 @@
+.dropdown {
+  :global(.ant-dropdown-open) {
+    z-index: 1000;
+  }
+}

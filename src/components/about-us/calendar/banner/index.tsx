@@ -7,19 +7,16 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      Since X-Camp was established, USACO has achieved
-      <br />
-      problem-solving skills of our students. We strive to teach not only
-      <br />
-      remarkable results as our students&apos; side project on
-      <br />
-      their learning journey.
+      {t('Calendar.Banner.Desc1')}
+      {/* {t('Calendar.Banner.Desc2')}
+      {t('Calendar.Banner.Desc3')}
+      {t('Calendar.Banner.Desc4')} */}
     </>
   );
 
   return (
     <div className={styles.bannerContainer}>
-      <CommonBanner image={'/image/about-us/banner-joinUs.png'} title={t('SchoolCalendar')} titleClassName={styles.title} paragraphClassName={styles.paragraph} paragraph={paragraph} />
+      <CommonBanner title={t('SchoolCalendar')} paragraph={paragraph} image={'/image/about-us/calendar-banner.png'} />
     </div>
   );
 };

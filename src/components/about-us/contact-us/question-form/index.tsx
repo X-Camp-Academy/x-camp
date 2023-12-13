@@ -1,8 +1,9 @@
 'use client';
-import { UserInfo } from '@/apis/strapi-client/define';
-import { useGetFaq, useSubmitQuestionForm } from '@/apis/strapi-client/strapi';
+import { SubmitQuestion } from '@/apis/strapi-client/define';
+import { useGetFaq, useSubmitQuestion } from '@/apis/strapi-client/strapi';
 import QACard from '@/components/common/q&a';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
 import { Button, Card, Col, Form, Input, Row, Typography, message } from 'antd';
 import { usePathname } from 'next/navigation';
@@ -14,31 +15,35 @@ const { TextArea } = Input;
 
 const QAPart: React.FC = () => {
   const { format: t, lang } = useLang();
+  const isMobile = useMobile();
   const [form] = Form.useForm();
   const pathname = usePathname();
   const { data: faq } = useGetFaq({
     ready: true,
-    pageName: [pathname as string]
+    pageName: [pathname]
   });
-  const { runAsync: submitQuestionForm } = useSubmitQuestionForm();
-  const onFinish = async (values: UserInfo) => {
-    await submitQuestionForm({
+  const { runAsync: submitQuestion } = useSubmitQuestion();
+  const onFinish = async (values: SubmitQuestion) => {
+    await submitQuestion({
       data: values
     });
     form.resetFields();
-    message.success({ key: 'success', content: t('SUCCESSFULLY_SUBMITTED') });
+    message.config({
+      top: 90
+    });
+    message.success({ key: 'success', content: t('feedBackSuccess') });
   };
 
   return (
     <div className={`${styles.qaContent} container`}>
       <Title className={styles.title}>{t('Questions')}</Title>
-      <Row gutter={[32, 32]} className={styles.row}>
+      <Row gutter={isMobile ? [32, 0] : [32, 32]}>
         <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 12 }}>
           {faq
             ?.slice(0, 4)
             ?.map((item, index) => (
               <QACard
-                key={'referral' + index}
+                key={item?.id}
                 question={getTransResult(lang, item?.attributes?.questionZh, item?.attributes?.questionEn) || ''}
                 answer={getTransResult(lang, item?.attributes?.answerZh, item?.attributes?.answerEn) || ''}
                 index={index}
@@ -89,7 +94,7 @@ const QAPart: React.FC = () => {
                 <TextArea placeholder={t('YourMessageHere')} className={styles.formTextArea} autoSize={{ minRows: 6, maxRows: 6 }} />
               </Form.Item>
 
-              <Form.Item>
+              <Form.Item style={isMobile ? { marginBottom: 0 } : {}}>
                 <Button className={styles.formButton} htmlType="submit">
                   {t('Submit')}
                 </Button>

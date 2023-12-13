@@ -1,46 +1,45 @@
+import { apiConfig } from '@/config';
 import { useLang } from '@/hoc/with-intl/define';
-import { CalendarOutlined, RightOutlined, UserAddOutlined } from '@ant-design/icons';
+import { CalendarOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { XStarMenuItemType } from './x-star-menu';
 
+const { assessment } = apiConfig;
+
 export const useMenuItems = () => {
   const router = useRouter();
   const { format: t } = useLang();
-  // TODO children label 国际化待提供
+
   const menuItems: XStarMenuItemType[] = [
     {
       label: <Link href="/">{t('Home')}</Link>,
       key: '/'
     },
     {
-      label: <a>{t('Courses')}</a>,
-      key: '/courses/',
+      label: <Link href="/courses">{t('Courses')}</Link>,
+      key: 'courses',
       dropdown: {
         left: {
-          title: t('ClassRoadMap'),
+          title: t('Courses'),
           description: t('Courses.LeftDescription'),
-          btn: (
-            <>
-              <span onClick={() => router.push('/courses')}>{t('Courses.Btn')}</span>
-              <UserAddOutlined />
-            </>
-          )
-        },
-        right: {
-          title: t('CourseCatalog'),
-          description: t('Courses.RightDescription'),
-          action: () => router.push('/courses/catalog')
+          showBtn: false
         }
+        // right: {
+        //   title: t('CourseCatalog'),
+        //   description: t('Courses.RightDescription'),
+        //   action: () => router.push('/courses/catalog'),
+        //   key: '/courses'
+        // }
       },
       children: [
         {
-          label: <a href="/courses#online">{t('OnlineClasses')}</a>,
-          key: '/courses/#online'
+          label: <a href="/courses/catalog">{t('AllCourses')}</a>,
+          key: 'catalog'
         },
         {
-          label: <a href="">{'USACO Grandmaster'}</a>,
-          key: 'USACO Grandmaster'
+          label: <a href="/courses#weekly">{t('WeeklyClasses')}</a>,
+          key: 'courses#weekly'
         },
         // {
         //   label: (
@@ -50,38 +49,28 @@ export const useMenuItems = () => {
         // },
         {
           label: <a href="/courses#camps">{t('In-personCamps')}</a>,
-          key: '/courses/#camps'
+          key: 'courses#camps'
         },
         {
-          label: <a href="/courses#mock-test-classes">{'Mock Test Classes'}</a>,
-          key: 'Mock Test Classes'
+          label: <a href="/courses#mock-test-classes">{t('MockTestClasses')}</a>,
+          key: 'courses#mock-test-classes'
         },
         {
-          label: <a href="/courses#apcs">{'Java/APCS Classes'}</a>,
-          key: 'Java/APCS Classes'
-        },
-        // {
-        //   label: <a href="/courses#apcs">{t("APCSClasses")}</a>,
-        //   key: "/courses/#apcs",
-        // },
+          label: <a href="/courses#apcs">{t('Java/APCS.Classes')}</a>,
+          key: 'courses#apcs'
+        }
         // {
         //   label: (
-        //     <a href="/courses#enhancement">{t("EnhancementClasses")}</a>
+        //     <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
+        //       {t('X-Tutors')}
+        //     </a>
         //   ),
-        //   key: "/courses/#enhancement",
-        // },
-        {
-          label: (
-            <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
-              {t('X-Tutors')}
-            </a>
-          ),
-          key: 'x-tutors'
-        }
+        //   key: 'x-tutors'
+        // }
       ]
     },
     {
-      label: <Link href="/">{t('Resources')}</Link>,
+      label: <Link href="/resources/education-forum">{t('Resources')}</Link>,
       key: 'resources',
       dropdown: {
         left: {
@@ -103,63 +92,20 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <Link href="/resources/education-forum">{t('EducationalForum')}</Link>,
-          key: '/resources/education-forum/'
-        },
-        // {
-        //   label: <Link href="/resources/contests#contest-31">{t("TuringCup")}</Link>,
-        //   key: "/resources/contests#contest-31",
-        // },
-        {
-          label: <a href="http://usaco.org/ ">USACO</a>,
-          key: '/resources/usaco/'
+          label: <Link href="/resources/education-forum">{t('EducationForum')}</Link>,
+          key: 'education-forum'
         },
         {
-          label: <a href="http://usaco.org/ ">Internal Contests</a>,
-          key: 'Internal Contests'
+          label: <a href="/resources/usaco">USACO</a>,
+          key: 'usaco'
         },
-        {
-          label: <Link href="/resources/weekly-open-house">{t('OpenHouse')}</Link>,
-          key: '/resources/weekly-open-house/'
-        },
-        /*         {
-                  label: <Link href="/">{t("X-Cup")}</Link>,
-                  key: "/resources/x-cup/",
-                },
-                {
-                  label: <Link href="/">ACSL</Link>,
-                  key: "/resources/acsl/",
-                }, */
-
-        // {
-        //   label: <a href="https://calico.cs.berkeley.edu/">Calico</a>,
-        //   key: "calico",
-        // },
-        // {
-        //   label: <a href="https://www.stanfordacm.org/proco">ProCo</a>,
-        //   key: "proco",
-        // },
-
         {
           label: <Link href="/resources/usaco-live-solutions">{t('USACOLiveSolution')}</Link>,
-          key: '/resources/usaco-live-solution/'
+          key: 'usaco-live-solution'
         },
-        //
-        // {
-        //   label: <a href="https://www.teamscode.org/">Teamscode</a>,
-        //   key: "teamscode",
-        // },
-        // {
-        //   label: <a href="/#stu_project">{t("ArtOfProgramming")}</a>,
-        //   key: "/#stu_project",
-        // },
-        // {
-        //   label: <Link href="/resources/contests">{t("Contests")}</Link>,
-        //   key: "/resources/contests/",
-        // },
         {
-          label: <Link href="/resources/contests">External Contests</Link>,
-          key: '/resources/contests/'
+          label: <Link href="/resources/contests">{t('Contests')}</Link>,
+          key: 'contests'
         }
       ]
     },
@@ -170,75 +116,55 @@ export const useMenuItems = () => {
         left: {
           title: t('AboutUs'),
           description: t('AboutUs.Description'),
-          btn: (
-            <>
-              <span
-                onClick={() => {
-                  router.push('/about-us/introduction');
-                }}
-              >
-                {t('LearnMore')}
-              </span>
-              <RightOutlined />
-            </>
-          )
+          showBtn: false
         }
       },
       children: [
-        // {
-        //   label: <Link href="/about-us/introduction">{t("Introduction")}</Link>,
-        //   key: "/about-us/introduction/",
-        // },
-        // {
-        //   label: <Link href="/about-us/calendar">{t("SchoolCalendar")}</Link>,
-        //   key: "/about-us/calendar/",
-        // },
-        // {
-        //   label: <Link href="/about-us/contact-us">{t("ContactUs")}</Link>,
-        //   key: "/about-us/contact-us/",
-        // },
+        {
+          label: <Link href="/about-us/introduction">{t('Introduction')}</Link>,
+          key: 'introduction'
+        },
         {
           label: <Link href="/about-us/achievements">{t('Achievements')}</Link>,
-          key: '/about-us/achievements/'
+          key: 'achievements'
         },
         {
           label: (
-            <Link href="/about-us/introduction#faculty">
-              {t('Faculty')}&{t('Coach')}
-            </Link>
+            <a href="/about-us/introduction#faculty">
+              {t('Faculty')} & {t('Coaches')}
+            </a>
           ),
-          key: '/about-us/introduction#faculty'
+          key: 'introduction#faculty'
         },
         {
           label: <Link href="/about-us/join-us">{t('JoinUs')}</Link>,
-          key: '/about-us/join-us/'
+          key: 'join-us'
         },
-
         {
           label: <Link href="/about-us/news">{t('News')}</Link>,
-          key: '/about-us/news/'
-        },
-        // {
-        //   label: <Link href="/about-us/help-center">{t("FAQ")}</Link>,
-        //   key: "/about-us/help-center/",
-        // },
-        {
-          label: <Link href="/about-us/student-recommend">{t('ReferralProgram')}</Link>,
-          key: '/about-us/student-recommend/'
+          key: 'news'
         },
         {
           label: <Link href="/about-us/partners">{t('Partners')}</Link>,
-          key: '/about-us/partners/'
+          key: 'partners'
+        },
+        {
+          label: <Link href="/about-us/contact-us">{t('ContactUs')}</Link>,
+          key: 'contact-us'
         }
         // {
-        //   label: <Link href="/about-us/x-alumni">{t("X_ALUMNI")}</Link>,
-        //   key: "/about-us/x-alumni/",
-        // },
+        //   label: <Link href="/about-us/x-alumni">{t('XAlumni')}</Link>,
+        //   key: '/about-us/x-alumni/'
+        // }
       ]
     },
     {
-      label: <Link href="/evaluation">{t('Evaluation')}</Link>,
-      key: 'evaluation'
+      label: (
+        <a href={assessment} target="_blank" rel="noreferrer">
+          {t('WhatWeProvide')}
+        </a>
+      ),
+      key: 'assessment'
     }
   ];
   return menuItems;

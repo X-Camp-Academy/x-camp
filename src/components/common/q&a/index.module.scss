@@ -1,10 +1,12 @@
+@import '@/styles/variables';
+
 .collapse {
   margin: 24px 0;
   padding: 0 0 0 6px;
   border: none;
 
   .panel {
-    padding: 20px 40px;
+    padding: 0 16px;
     border: none;
     font-size: 18px;
     background: white;
@@ -19,6 +21,16 @@
 
     :global(.ant-collapse-content) {
       border-top: 2px solid #ffad11;
+
+      .ant-collapse-content {
+        width: 100% !important;
+      }
+    }
+
+    @media (width <= 768px) {
+      @include title('middle');
+
+      padding: 16px 8px;
     }
   }
 
@@ -30,6 +42,13 @@
     height: 40px;
     border-radius: 8px;
     font-size: 21px;
+
+    @media (width <= 768px) {
+      width: 24px;
+      height: 24px;
+
+      @include mobile-text;
+    }
   }
 
   .question {
@@ -40,5 +59,18 @@
   .answer {
     color: #00a0e9;
     background-color: #009fe933;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      color: #00a0e9;
+      background-color: #009fe933;
+    }
+  }
+
+  .answerContent {
+    @media (width <= 768px) {
+      @include mobile-text;
+    }
   }
 }

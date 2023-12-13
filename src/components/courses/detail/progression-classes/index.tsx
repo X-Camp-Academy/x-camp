@@ -1,6 +1,6 @@
 import ClassCard from '@/components/common/class-card';
 import { useLang } from '@/hoc/with-intl/define';
-import { getLangResult, getTransResult } from '@/utils/public';
+import { getLangResult, getTransResult, getWeeksDays } from '@/utils/public';
 import { Empty, Space, Typography } from 'antd';
 import React, { useContext } from 'react';
 import CourseClassesContext from '../../CourseClassesContext';
@@ -32,7 +32,7 @@ const ProgressionClasses: React.FC = () => {
                     animate={false}
                     title={`${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)}`}
                     list={getLangResult(lang, courseShortDescriptionZh, courseShortDescriptionEn) as Array<string>}
-                    time={`${lessonNum} ${frequency === 'Weekly' ? 'weeks' : 'days'}`}
+                    time={`${lessonNum} ${getWeeksDays(frequency)}`}
                     href={`/courses/detail/${v?.id}`}
                   />
                 );

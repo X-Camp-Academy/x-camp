@@ -8,12 +8,17 @@
     padding-top: 56px;
 
     @media (width <= 768px) {
-      padding-right: 30px;
-      padding-left: 30px;
+      padding-top: 32px;
+      padding-right: 24px;
+      padding-left: 24px;
     }
 
     .title {
-      @include title('bold');
+      @include title('default');
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
     .intro {
@@ -21,6 +26,10 @@
       font-weight: 400;
       color: #172142;
       line-height: 34px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+      }
     }
 
     .medalIntro {
@@ -30,39 +39,86 @@
       @media (width <= 768px) {
         margin-right: 0 !important;
         margin-left: 0 !important;
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
       }
 
-      .colCard {
-        position: relative;
-        margin-bottom: 20px;
-        padding: 40px;
-        width: 95%;
-        height: 484px;
-        text-align: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+      .cardContainer {
+        padding-right: 8px;
+        padding-left: 8px;
 
-        .infoContainer {
-          position: absolute;
-          bottom: 20px;
-          left: 0;
-          margin: 0 16px;
-          padding: 16px 0;
-          width: calc(100% - 32px);
-          border-radius: 12px;
-          background-color: #fff;
+        @media (width <= 768px) {
+          padding-right: 0;
+          padding-left: 0;
+        }
 
-          .cardTitle {
-            @include title;
+        .colCard {
+          position: relative;
+          margin-bottom: 20px;
+          padding: 40px;
+          width: 100%;
+          height: 370px;
+          border-radius: 8px;
+          text-align: center;
+          background-repeat: no-repeat;
+          background-size: cover;
 
-            line-height: 54px;
-            margin: 0;
+          @media (width <= 768px) {
+            margin-bottom: 10px;
+            height: 320px;
           }
 
-          .cardParagraph {
-            font-size: 18px;
-            color: #172142;
-            line-height: 24px;
+          .infoContainer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            margin: 0 16px;
+            padding: 16px 0;
+            width: calc(100% - 32px);
+            border-radius: 8px;
+            background: rgba(#172142, 0.3);
+            backdrop-filter: blur(2px);
+
+            @media (width <= 768px) {
+              bottom: 10px;
+              margin: 0 20px;
+              padding: 8px 0;
+              width: calc(100% - 40px);
+            }
+
+            .cardTitle {
+              @include title;
+
+              margin: 0;
+              font-size: 24px;
+              color: rgba($color: #fff, $alpha: 90%);
+              opacity: 1;
+              line-height: 24px;
+
+              @media (width <= 768px) {
+                @include title('middle');
+
+                color: #fff;
+              }
+            }
+
+            .cardText {
+              @include text(16px, 10px, #fff);
+
+              font-weight: 400;
+            }
+
+            .cardParagraph {
+              font-size: 18px;
+              line-height: 24px;
+              color: #fff;
+
+              @media (width <= 768px) {
+                @include mobile-text;
+
+                color: #fff;
+              }
+            }
           }
         }
       }
@@ -72,18 +128,38 @@
       position: absolute;
       top: 50%;
       left: 10px;
-      color: #fff;
-      background-color: #ffad11;
+      border: 2px solid #ffad11;
+      color: #ffad11;
+      background-color: #fdf6f1;
+      transition: all 0.3s ease;
       transform: translateY(-50%);
+
+      @media (width <= 768px) {
+        left: 0;
+        border: 1px solid #ffad11;
+      }
     }
 
     .next {
       position: absolute;
       top: 50%;
       right: 10px;
+      border: 2px solid #ffad11;
+      color: #ffad11;
+      background-color: #fdf6f1;
+      transition: all 0.3s ease;
+      transform: translateY(-50%);
+
+      @media (width <= 768px) {
+        right: 0;
+        border: 1px solid #ffad11;
+      }
+    }
+
+    .prev:hover,
+    .next:hover {
       color: #fff;
       background-color: #ffad11;
-      transform: translateY(-50%);
     }
   }
 }

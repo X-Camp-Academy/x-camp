@@ -1,7 +1,5 @@
-import { PageTitle, generateMetadata } from '@/app/metadata';
-import dynamic from 'next/dynamic';
-
-const UsacoLiveSolutions = dynamic(() => import('@/components/resources/usaco-live-solutions'));
+import { PageTitle, generateMetadata } from '@/utils/metadata';
+import UsacoLiveSolutions from '@/components/resources/usaco-live-solutions';
 
 export const metadata = {
   ...generateMetadata(PageTitle.UsacoLiveSolutions)

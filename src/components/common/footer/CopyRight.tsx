@@ -3,7 +3,6 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { CommentOutlined, HistoryOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Col, Image, Row, Space, Typography } from 'antd';
-import Link from 'next/link';
 import React from 'react';
 import CopyRightIcons from '../copy-right-icons';
 import styles from './CopyRight.module.scss';
@@ -18,7 +17,7 @@ const CopyRight: React.FC = () => {
       <div className={`${styles.copyRight} container`}>
         <Row justify="space-between" align="middle">
           <Col xs={24} sm={24} md={24} lg={12} order={isMobile ? 2 : 1}>
-            <Space direction="vertical" className={styles.spaceLeft} size={48}>
+            <Space direction="vertical" className={styles.spaceLeft} size={isMobile ? 16 : 48}>
               {isMobile ? (
                 <>
                   <div className={styles.bar} />
@@ -26,14 +25,14 @@ const CopyRight: React.FC = () => {
                 </>
               ) : (
                 <Space direction="vertical">
-                  <Image alt="logo" src="/logo/logo.png" preview={false} className={styles.image} />
-                  <Image alt="slogan" preview={false} src="/image/home/footer-slogan.png" width={220} height={24} />
+                  <Image alt="logo" src="/assets/logo.png" preview={false} className={styles.image} />
+                  <Image alt="slogan" preview={false} src="/image/home/footer-slogan.svg" style={{ marginTop: 15 }} />
                 </Space>
               )}
 
               <Space direction="vertical">
                 <Paragraph className={styles.paragraph}>
-                  <PhoneOutlined />
+                  <PhoneOutlined rotate={90} />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
                     {t('Tel')}+1 - 510-708-8390
                   </Text>
@@ -41,7 +40,7 @@ const CopyRight: React.FC = () => {
                 <Paragraph className={styles.paragraph}>
                   <CommentOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
-                    {t('Text')}408-634-0218
+                    {t('Text')}+1 - 408-634-0218
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
@@ -54,7 +53,7 @@ const CopyRight: React.FC = () => {
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <HistoryOutlined />
-                  <Text className={styles.text}>Office Hour: Tue - Sun (Monday Off)</Text>
+                  <Text className={styles.text}>9:00 AM - 8:00 PM PT (Monday Off)</Text>
                 </Paragraph>
               </Space>
             </Space>
@@ -65,27 +64,27 @@ const CopyRight: React.FC = () => {
               <div>
                 <Title className={styles.text}>X-Camp Academy</Title>
                 <Space direction="vertical">
-                  <Link href={'/about-us/calendar'}>{t('SchoolCalendar')}</Link>
-                  <Link href={'/courses#classify0'}>{'Online Courses'}</Link>
-                  <Link href={'/courses#camps'}>{t('In-personCamps')}</Link>
+                  <a href={'/about-us/calendar'}>{t('SchoolCalendar')}</a>
+                  <a href={'/courses#weekly'}>{t('WeeklyClasses')}</a>
+                  <a href={'/courses#camps'}>{t('In-personCamps')}</a>
                 </Space>
               </div>
 
               <div>
-                <Title className={styles.text}>Activity</Title>
+                <Title className={styles.text}>{t('Activity')}</Title>
                 <Space direction="vertical">
-                  <Link href={'/resources/weekly-open-house'}>{t('WeeklyOpenHouse')}</Link>
-                  <Link href={'/resources/education-forum'}>{'Event Calendar'}</Link>
-                  <a href={'/resources/usaco-live-solutions'}>{'USACO Live Solution'}</a>
+                  <a href={'/resources/weekly-open-house'}>{t('WeeklyOpenHouse')}</a>
+                  <a href={'/resources/education-forum'}>{t('EducationForum')}</a>
+                  <a href={'/resources/student-recommend'}>{t('ReferralProgram')}</a>
                 </Space>
               </div>
 
               <div>
-                <Title className={styles.text}>{'Help Center'}</Title>
+                <Title className={styles.text}>{t('HelpCenter')}</Title>
                 <Space direction="vertical">
-                  <Link href={'/about-us/contact-us'}>{'Contact Us'}</Link>
-                  <Link href={'/about-us/contact-us'}>{'Join Us'}</Link>
-                  <Link href={'/about-us/help-center'}>{'FAQ'}</Link>
+                  <a href={'/about-us/contact-us'}>{t('ContactUs')}</a>
+                  <a href={'/about-us/join-us'}>{t('JoinUs')}</a>
+                  <a href={'/about-us/help-center'}>{t('FAQs')}</a>
                 </Space>
               </div>
             </Space>
@@ -102,7 +101,7 @@ const CopyRight: React.FC = () => {
           </>
         )}
       </div>
-      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2023 X-Camp</div>}
+      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2017-2023 X-Camp</div>}
     </div>
   );
 };

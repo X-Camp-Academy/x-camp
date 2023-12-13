@@ -1,4 +1,4 @@
-import { useGetAboutUsAchievementsAward } from '@/apis/strapi-client/strapi';
+import { useGetUSACOSpotlight } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { LeftOutlined, RightOutlined, setTwoToneColor } from '@ant-design/icons';
@@ -13,14 +13,14 @@ const USACOSpotlight: React.FC = () => {
   const { lang, format: t } = useLang();
   const carouselEL = useRef<CarouselRef>(null);
   setTwoToneColor('#D46B14');
-  const { data: awards } = useGetAboutUsAchievementsAward();
+  const { data: awards } = useGetUSACOSpotlight();
 
   return (
     <div className={styles.USACOSpotlightContainer}>
       <div className={`${styles.USACOSpotlight} container`}>
         <Space direction="vertical" align="start">
           <Title className={styles.title}>{t('USACOSpotlight')}</Title>
-          <Text className={styles.intro}>{t('USACOMedal.Desc')}</Text>
+          <Text className={styles.intro}>{t('USACOSpotlight.Desc')}</Text>
         </Space>
 
         <div className={styles.medalIntro}>
@@ -31,17 +31,22 @@ const USACOSpotlight: React.FC = () => {
             onClick={() => {
               carouselEL?.current?.prev();
             }}
-          >
-            <LeftOutlined />
-          </Button>
+            icon={<LeftOutlined />}
+          />
           <Carousel
             ref={carouselEL}
             dots={false}
-            slidesToShow={3}
+            slidesToShow={4}
             slidesToScroll={1}
             swipeToSlide
             infinite
             responsive={[
+              {
+                breakpoint: 1200,
+                settings: {
+                  slidesToShow: 3
+                }
+              },
               {
                 breakpoint: 992,
                 settings: {
@@ -58,7 +63,7 @@ const USACOSpotlight: React.FC = () => {
           >
             {awards?.map((item) => {
               return (
-                <div key={item?.id}>
+                <div key={item?.id} className={styles.cardContainer}>
                   <Card
                     style={{
                       backgroundImage: `url(${item?.attributes?.avatar?.data?.attributes?.url})`
@@ -82,9 +87,8 @@ const USACOSpotlight: React.FC = () => {
             onClick={() => {
               carouselEL?.current?.next();
             }}
-          >
-            <RightOutlined />
-          </Button>
+            icon={<RightOutlined />}
+          />
         </div>
       </div>
     </div>

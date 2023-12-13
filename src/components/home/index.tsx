@@ -1,20 +1,17 @@
 'use client';
 import { useGetReviews } from '@/apis/strapi-client/strapi';
+import Faculty from '@/components/common/faculty';
+import Reviews from '@/components/common/reviews';
 import { Layout } from 'antd';
-import dynamic from 'next/dynamic';
 import React from 'react';
+import CarouselContent from './carousel-content';
+import Community from './community';
+import DiscoverOurCourses from './discover-our-courses';
 import styles from './index.module.scss';
-
-const CarouselContent = dynamic(() => import('./carousel-content'));
-const DiscoverCourses = dynamic(() => import('@/components/common/discover-courses'));
-const WhyXCamp = dynamic(() => import('./why-xcamp'));
-const WeSupport = dynamic(() => import('./we-support'));
-const Faculty = dynamic(() => import('@/components/common/faculty'));
-const PublicCalendar = dynamic(() => import('./public-calendar'));
-const StudentProjects = dynamic(() => import('./student-projects'));
-const Community = dynamic(() => import('./community'));
-const Reviews = dynamic(() => import('@/components/common/reviews'));
-const FixedButtons = dynamic(() => import('@/components/common/fixed-buttons'));
+import PublicCalendar from './public-calendar';
+import StudentProjects from './student-projects';
+import WeSupport from './we-support';
+import WhyXCamp from './why-xcamp';
 
 const { Content } = Layout;
 
@@ -24,22 +21,19 @@ const Home: React.FC = () => {
   });
 
   const reviewsData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
   return (
     <Layout className={styles.homeContainer}>
       <Content>
         <CarouselContent />
         <WhyXCamp />
-        <DiscoverCourses />
+        <DiscoverOurCourses />
         <Faculty />
         <WeSupport />
         <PublicCalendar />
-
-        {/*<XCampFounders />*/}
         <StudentProjects />
         <Community />
         <Reviews reviewsData={reviewsData} />
-        <FixedButtons />
-        {/*<Partners />*/}
       </Content>
     </Layout>
   );

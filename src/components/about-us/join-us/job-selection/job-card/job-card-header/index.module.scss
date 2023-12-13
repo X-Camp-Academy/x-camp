@@ -1,19 +1,33 @@
 @import '@/styles/variables';
 
 .cardContainer {
-  padding: 20px 36px 0;
+  padding: 35px 35px 0;
   border: none;
   background-color: #fff;
+
+  @media (width <= 768px) {
+    padding: 20px 20px 0;
+  }
 
   .jobCardTitle {
     @include text(24px, 36px);
 
     margin: 0;
+
+    @media (width <= 768px) {
+      @include title('middle');
+
+      margin-bottom: 12px;
+    }
   }
 
   .expandBtn {
     border: none;
     color: #ffad11;
+
+    @media (width <= 768px) {
+      margin-top: -8px;
+    }
   }
 
   .jobCardDescription {
@@ -22,6 +36,13 @@
     text-align: left;
     color: #666;
     line-height: 28px;
+
+    @media (width <= 768px) {
+      @include mobile-text;
+
+      margin-top: 8px;
+      color: #666;
+    }
   }
 
   .iconsButtonRow {
@@ -32,10 +53,17 @@
 
     @media (width <= 768px) {
       display: block;
+      padding: 12px 0 16px;
     }
 
     .iconBox {
       display: flex;
+
+      @media (width <= 768px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
       .iconText {
         margin-left: 10px;
@@ -43,23 +71,41 @@
         font-weight: 400;
         color: #666;
         line-height: 28px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+
+          color: #666;
+        }
       }
     }
 
     .applyBtn {
       display: flex;
+      justify-content: center;
       align-items: center;
-      padding: 12px 36px;
+      padding: 8px 36px;
+      border: 1px solid #ffad11;
       border-radius: 12px;
       font-size: 16px;
       font-weight: 500;
       color: #fff;
       background: #ffad11;
+      transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
       line-height: 24px;
 
+      &:hover {
+        @extend .hoverButton;
+      }
+
       @media (width <= 768px) {
-        margin: 20px auto;
-        margin-bottom: 0;
+        display: block;
+        padding: 8px;
+        width: 88px;
+
+        @include mobile-text;
+
+        color: #fff;
       }
     }
   }

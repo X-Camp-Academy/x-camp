@@ -1,21 +1,30 @@
-import { useGetAchievementsTimeLine } from '@/apis/strapi-client/strapi';
+import { useGetTimeLine } from '@/apis/strapi-client/strapi';
 import { useLang } from '@/hoc/with-intl/define';
 import { getTransResult } from '@/utils/public';
 import { setTwoToneColor } from '@ant-design/icons';
-import { Image, List, Space, Typography, message } from 'antd';
-import dynamic from 'next/dynamic';
+import { List, Space, Typography } from 'antd';
 import React from 'react';
+import { XStarMdViewer } from 'x-star-editor';
 import styles from './index.module.scss';
-
-const XStarMdViewer = dynamic(() => import('x-star-editor').then((v) => v.XStarMdViewer), {
-  ssr: false
-});
 const { Title, Text } = Typography;
 
 const TimeLine: React.FC = () => {
   const { lang, format: t } = useLang();
   setTwoToneColor('#D46B14');
-  const { data: timeLine } = useGetAchievementsTimeLine();
+  const { data: timeLine } = useGetTimeLine();
+
+  const downloadUSACOPackage = () => {
+    fetch('https://media.strapi.turingstar.com.cn/production/2023/9/USACO_ced1822e5c.pdf?updated_at=2023-09-29T06:38:53.858Z')
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'USACO 学习礼包.pdf';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
+  };
 
   return (
     <div className={`${styles.timeLineContainer} container`}>
@@ -29,19 +38,23 @@ const TimeLine: React.FC = () => {
             dataSource={timeLine}
             split={false}
             renderItem={(item) => (
-              <List.Item className={styles.timeListItem}>
+              <List.Item className={styles.listItem}>
                 <List.Item.Meta
-                  title={<Text className={styles.timeListTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>}
-                  description={<XStarMdViewer className={styles.timeListDetail} value={getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)} />}
+                  title={
+                    <Text className={styles.itemTitle} style={{ fontSize: 20 }}>
+                      {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
+                    </Text>
+                  }
+                  description={<XStarMdViewer className={styles.itemDetail} value={getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)} />}
                 />
               </List.Item>
             )}
           />
         </div>
 
-        <Text className={styles.intro}>{t('Timeline.Desc')}</Text>
+        <Text className={styles.introduction}>{t('Timeline.Desc')}</Text>
 
-        <div
+        {/* <div
           className={styles.download}
           onClick={() => {
             message.info(
@@ -54,10 +67,10 @@ const TimeLine: React.FC = () => {
           }}
         >
           <Image alt="download" src="/image/about-us/download-outlined.png" preview={false} />
-          <Text className={styles.downloadText} underline>
+          <Text className={styles.downloadText} underline onClick={downloadUSACOPackage}>
             {t('USACO.DownloadPackage')}
           </Text>
-        </div>
+        </div> */}
       </div>
     </div>
   );

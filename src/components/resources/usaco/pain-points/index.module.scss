@@ -1,0 +1,72 @@
+@import '@/styles/variables';
+
+.painPointsContainer {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  @media (width <= 768px) {
+    margin-top: 48px;
+    margin-bottom: 48px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .colorfulCard {
+    width: 100%;
+
+    .space {
+      padding: 48px;
+      padding-top: 20px;
+      width: 100%;
+      border-radius: 10px;
+      background-color: #fff;
+
+      @media (width <= 768px) {
+        padding: 24px;
+      }
+    }
+
+    .title {
+      @include title('default');
+
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        margin-top: 0;
+      }
+    }
+
+    .list {
+      .circle {
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #ffad11;
+      }
+
+      .text {
+        font-size: 20px;
+        color: #172142;
+        line-height: 40px;
+
+        @media (width <= 768px) {
+          @include mobile-text;
+        }
+      }
+    }
+
+    .paragraph {
+      margin-top: 24px;
+      font-size: 21px;
+      color: #172142;
+      line-height: 40px;
+
+      @media (width <= 768px) {
+        @include mobile-text;
+
+        margin-top: 12px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

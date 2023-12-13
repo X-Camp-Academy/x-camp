@@ -1,24 +1,17 @@
-import CommonBanner from '@/components/common/common-banner';
-import { useLang } from '@/hoc/with-intl/define';
 import React from 'react';
-import styles from './index.module.scss';
+import { useLang } from '@/hoc/with-intl/define';
+import CommonBanner from '@/components/common/common-banner';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      The first-ever, and most comprehensive live
-      <br />
-      problem-solving broadcast on the entire web,
-      <br />
-      only in X-Camp.
+      {t('USACOLiveSolutions.Banner.Desc1')}
+      {t('USACOLiveSolutions.Banner.Desc2')}
+      {t('USACOLiveSolutions.Banner.Desc3')}
     </>
   );
-  return (
-    <div className={styles.bannerContainer}>
-      <CommonBanner image={'/image/about-us/achievements-banner.png'} title={t('USACOLiveSolution')} paragraph={paragraph} />
-    </div>
-  );
+  return <CommonBanner image={'/image/resources/usaco-live-solutions-banner.png'} title={t('USACOLiveSolution')} paragraph={paragraph} />;
 };
 
 export default Banner;

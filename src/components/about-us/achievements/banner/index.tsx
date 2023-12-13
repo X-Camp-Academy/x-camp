@@ -1,18 +1,19 @@
 import CommonBanner from '@/components/common/common-banner';
+import { useLang } from '@/hoc/with-intl/define';
 import React from 'react';
 
 const Banner: React.FC = () => {
+  const { format: t } = useLang();
   const paragraph = (
     <>
-      Since X-Camp was established, our students have
-      <br />
-      achieved remarkable results in USACO as a side project
-      <br />
-      on their learning journey.
+      {t('Achievements.Banner.Desc1')}
+      {t('Achievements.Banner.Desc2')}
+      {t('Achievements.Banner.Desc3')}
+      {t('Achievements.Banner.Desc4')}
+      {t('Achievements.Banner.Desc5')}
     </>
   );
-
-  return <CommonBanner image={'/image/about-us/achievements-banner.png'} title="Achievements" paragraph={paragraph} />;
+  return <CommonBanner title={t('Achievements')} paragraph={paragraph} image={'/image/about-us/achievements-banner.png'} />;
 };
 
 export default Banner;

@@ -1,5 +1,4 @@
 'use client';
-import ToggleLanguage from '@/components/common/toggle-language';
 import { apiConfig } from '@/config/index';
 import { useAuth } from '@/hoc/with-auth/define';
 import { useLang } from '@/hoc/with-intl/define';
@@ -11,7 +10,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import DropdownUserMenu from '../dropdown-user-menu';
-import SelectPage from './SelectPage';
 import { removeDropdown, useMenuItems } from './define';
 import styles from './index.module.scss';
 import XStarMenu from './x-star-menu';
@@ -43,7 +41,6 @@ const Nav: React.FC = () => {
   }, [showMenu]);
 
   const mobileMenuItems: MenuProps['items'] = useMemo(() => {
-    // 手机端则去除dropdown
     const loginSignUp = [
       {
         label: <a href="/login">{t('Nav.Login')}</a>,
@@ -93,40 +90,46 @@ const Nav: React.FC = () => {
         <Space align="center" className={styles.space}>
           <Space>
             <Link href="/">
-              <Image src="/logo/logo.svg" alt="logo" preview={false} className={styles.image} />
+              <Image src="/assets/logo.svg" alt="logo" preview={false} className={styles.image} />
             </Link>
             {!isMobile && ( // 缓存原因需要强制销毁重建组件
               <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
             )}
           </Space>
+
           <Space size={'middle'}>
             {!isMobile ? (
               <>
-                <SelectPage />
+                {/* ! 下一版更新 */}
+                {/* <SelectPage /> */}
                 {user ? (
                   <Space size={12}>
                     <DropdownUserMenu user={user} logout={logout} />
                     <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
-                      {t('ToStudy')}
+                      {t('LearningCenter')}
                     </Button>
                   </Space>
                 ) : (
-                  <Button type="primary" href="/login">
+                  <Button className={styles.study} type="primary" href="/login">
                     {t('Nav.Login')}
                   </Button>
                 )}
-                <ToggleLanguage />
+                {/* <ToggleLanguage /> */}
               </>
             ) : (
-              <span onClick={onChangeShowMenu}>{!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}</span>
+              <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
+                {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
+              </span>
             )}
           </Space>
         </Space>
+
         {isMobile && showMenu && (
           <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
             <div className={styles.mobileIntl}>
-              <SelectPage />
-              <ToggleLanguage className={styles.toggleMargin} />
+              {/* ! 下一版更新 */}
+              {/* <SelectPage /> */}
+              {/* <ToggleLanguage className={styles.toggleMargin} /> */}
             </div>
             <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
           </Space>

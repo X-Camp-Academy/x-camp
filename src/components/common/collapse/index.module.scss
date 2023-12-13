@@ -12,8 +12,7 @@
     margin-bottom: 10px;
 
     @media (width <= 768px) {
-      font-size: 32px;
-      line-height: 48px;
+      @include title('mobile');
     }
   }
 
@@ -25,8 +24,7 @@
     line-height: 34px;
 
     @media (width <= 768px) {
-      font-size: 16px;
-      line-height: 24px;
+      @include mobile-text;
     }
   }
 
@@ -34,23 +32,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border-radius: 4px;
     background: #ffad11;
-
-    @media (width <= 768px) {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-    }
 
     .icon {
       font-size: 20px;
       color: #fff;
 
       @media (width <= 768px) {
-        font-size: 18px;
+        font-size: 16px;
       }
     }
   }

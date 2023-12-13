@@ -1,10 +1,14 @@
 @import '@/styles/variables';
 
-.xalumniContainer {
-  padding: 100px 15px;
+.communityContainer {
+  padding: 80px 15px;
   width: 100%;
 
-  .xalumni {
+  @media (width <= 768px) {
+    padding: 32px 8px;
+  }
+
+  .community {
     padding-right: 15px;
     padding-left: 15px;
     text-align: center;
@@ -20,37 +24,80 @@
       @include title;
 
       margin: 0;
-      color: $primary-color;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+      }
     }
 
-    .titleBg {
+    .baseTitleBg {
       display: block;
-      width: 240px;
-      height: 26px;
-      background-image: url('/image/home/home-title-bg-1.png');
+      height: 20px;
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
+      background-image: url('/image/home/home-title-bg-1.png');
+    }
+
+    .zhTitleBg {
+      @extend .baseTitleBg;
+
+      margin-left: 112px;
+      width: 88px;
+
+      @media (width <= 768px) {
+        margin-left: 72px;
+        width: 56px;
+      }
+    }
+
+    .enTitleBg {
+      @extend .baseTitleBg;
+
+      margin-left: 144px;
+      width: 192px;
+
+      @media (width <= 768px) {
+        margin-left: 96px;
+        width: 144px;
+      }
     }
 
     .paragraph {
       @include text(18px, 34px);
+      @include margin;
 
       font-weight: 500;
+
+      :global(.ant-typography) {
+        margin-bottom: 0 !important;
+      }
+
+      @media (width <= 768px) {
+        margin-top: 8px;
+
+        @include margin(0);
+        @include mobile-text;
+      }
     }
 
     .carouselContainer {
       margin-top: 56px;
 
+      @media (width <= 768px) {
+        margin-top: 10px;
+      }
+
       .maskCard {
         position: relative;
         overflow: hidden;
+        margin: 0 auto;
         width: 288px;
         height: 320px;
-        border-radius: 12px;
+        border: none;
+        border-radius: 8px !important;
 
         @media (width <= 768px) {
-          left: 50%;
-          transform: translateX(-50%);
+          width: 100%;
         }
 
         .image {
@@ -60,13 +107,20 @@
 
         .cardTitle {
           position: absolute;
-          bottom: 0;
+          bottom: 16px;
           left: 24px;
-          font-size: 24px;
+          font-size: 16px;
           font-weight: 600;
+          text-align: left;
           color: #fff;
           text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
           line-height: 48px;
+
+          @media (width <= 768px) {
+            @include title('middle');
+
+            color: #fff;
+          }
         }
 
         .maskCardTitle {
@@ -74,6 +128,12 @@
 
           text-align: left;
           color: #fff;
+
+          @media (width <= 768px) {
+            @include title('middle');
+
+            color: #fff;
+          }
         }
 
         .maskCardParagraph {
@@ -82,6 +142,12 @@
           text-align: left;
           color: #fff;
           line-height: 26px;
+
+          @media (width <= 768px) {
+            @include mobile-text;
+
+            color: #fff;
+          }
         }
       }
     }
@@ -94,11 +160,16 @@
       font-size: 18px;
       font-weight: 500;
       color: #172142;
-      line-height: 24px;
+      line-height: 16px;
       cursor: pointer;
 
       .icon {
         margin-left: 16px;
+      }
+
+      @media (width <= 768px) {
+        font-size: 14px;
+        line-height: 14px;
       }
     }
   }

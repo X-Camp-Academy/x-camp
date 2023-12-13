@@ -1,17 +1,31 @@
-import { GetCourses } from '@/apis/strapi-client/define';
+import { FrequencyCategory, GetCourses } from '@/apis/strapi-client/define';
 import { useLang } from '@/hoc/with-intl/define';
-import { getTransResult, getWeeksDays } from '@/utils/public';
-import { Col, Descriptions, Divider, Row, Typography } from 'antd';
+import { useMobile } from '@/utils';
+import { formatFinance, getTransResult, getWeeksDays } from '@/utils/public';
+import { Col, Descriptions, Divider, Row, Space, Typography } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
 import styles from './index.module.scss';
 
 const { Text, Title } = Typography;
-
 const CourseCard: React.FC<GetCourses> = (props) => {
-  const { courseCode, courseTitleEn, courseTitleZh, classMode, recommendedLowerGrade, recommendedUpperGrade, classLang, startDateTime, endDateTime, lessonNum, frequency, tuitionRMB, tuitionUSD } =
-    props;
-
+  const {
+    courseCode,
+    courseTitleEn,
+    courseTitleZh,
+    classMode,
+    recommendedLowerGrade,
+    recommendedUpperGrade,
+    classLang,
+    startDateTime,
+    endDateTime,
+    lessonNum,
+    frequency,
+    tuitionRMB,
+    tuitionUSD,
+    isBilingual
+  } = props;
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
   const recommendedGradeLevel = (recommendedLowerGrade: number, recommendedUpperGrade: number) => {
     let result = '';
@@ -24,7 +38,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
     return result + ' Grade';
   };
   return (
-    <>
+    <div className={styles.cardContainer}>
       <Row className={styles.row}>
         <Col sm={24} lg={12} className={styles.col}>
           <Title className={styles.title}>
@@ -32,10 +46,12 @@ const CourseCard: React.FC<GetCourses> = (props) => {
           </Title>
         </Col>
         <Col sm={24} lg={12} className={`${styles.col} ${styles.feeCol}`} style={{}}>
-          <Title className={styles.title}>{`${lessonNum} ${getWeeksDays(frequency)}`}</Title>
+          <Space direction="vertical" align="end">
+            <Title className={styles.title}>{`${lessonNum} ${getWeeksDays(frequency)}`}</Title>
+          </Space>
         </Col>
       </Row>
-      <Row style={{ marginTop: 20 }} className={styles.row}>
+      <Row style={{ marginTop: isMobile ? 0 : 20 }} className={styles.row}>
         <Col lg={12} className={styles.col}>
           <Descriptions column={1}>
             <Descriptions.Item label={t('CourseStyle')}>{classMode}</Descriptions.Item>
@@ -45,11 +61,11 @@ const CourseCard: React.FC<GetCourses> = (props) => {
           </Descriptions>
         </Col>
         <Col lg={12} className={styles.col} style={{ justifyContent: 'flex-end' }}>
-          <Text className={styles.fee}>{getTransResult(lang, `￥${tuitionRMB}`, `$${tuitionUSD}`)}</Text>
+          <Text className={styles.fee}>{frequency === FrequencyCategory.Once ? 'Free' : isBilingual ? `￥${formatFinance(tuitionRMB)}` : `$${formatFinance(tuitionUSD)}`}</Text>
         </Col>
       </Row>
-      <Divider style={{ marginTop: 35 }} />
-    </>
+      <Divider style={{ marginTop: isMobile ? 16 : 35 }} />
+    </div>
   );
 };
 

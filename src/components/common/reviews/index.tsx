@@ -33,7 +33,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
 
   return (
     <div className={cx(className, styles.reviewsContainer)}>
-      {reviewsData && reviewsData?.length > 0 && (
+      {reviewsData && reviewsData?.length >= 3 && (
         <div className={cx(styles.reviews, 'container')}>
           <div className={styles.reviewsBox}>
             {!isMobile && (
@@ -52,6 +52,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
               slidesToShow={3}
               slidesToScroll={1}
               swipeToSlide
+              autoplay
               infinite
               responsive={[
                 {
@@ -69,7 +70,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
                 {
                   breakpoint: 576,
                   settings: {
-                    slidesToShow: 2
+                    slidesToShow: 1
                   }
                 }
               ]}

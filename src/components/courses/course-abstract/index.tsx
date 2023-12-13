@@ -1,46 +1,37 @@
-import { GetClasses } from '@/apis/strapi-client/define';
+import { ClassMode, FrequencyCategory, GetClasses } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
-import { formatTimezone, getTransResult } from '@/utils/public';
-import { Button, Descriptions, Modal, Space, Typography } from 'antd';
-import dayjs from 'dayjs';
-import React, { useState } from 'react';
+import { useMobile } from '@/utils';
+import { formatFinance, formatTimezone, getTransResult } from '@/utils/public';
+import { Button, Descriptions, Space, Typography } from 'antd';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Paragraph } = Typography;
 
 interface CourseAbstractProps {
-  courseCode?: string;
+  classMode?: ClassMode;
   courseLongDescriptionEn?: string;
   courseLongDescriptionZh?: string;
   tuitionUSD?: number;
+  tuitionRMB?: number;
   classes?: {
     data: StrapiResponseDataItem<GetClasses>[];
   };
-  startDate?: string;
   registerLink?: string;
-  isBundle?: boolean;
-  bundleRegisterLink?: string;
+  isBilingual?: boolean;
+  frequency?: FrequencyCategory;
 }
 
-const CourseAbstract: React.FC<CourseAbstractProps> = ({
-  courseCode,
-  courseLongDescriptionEn,
-  courseLongDescriptionZh,
-  tuitionUSD,
-  classes,
-  startDate,
-  registerLink,
-  isBundle,
-  bundleRegisterLink
-}) => {
+const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual, frequency }) => {
+  const isMobile = useMobile();
   const { format: t, lang } = useLang();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const classesData = classes?.data?.map((classItem) => {
     const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } = classItem?.attributes;
     const { utcTime: utcStartDateTime } = formatTimezone(startDateTime);
     const { utcTime: utcEndDateTime, timezone } = formatTimezone(endDateTime);
+
     return {
       classCode,
       isFull,
@@ -49,35 +40,19 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
       location
     };
   });
-
-  const judgeInWeek = (openDate: string) => {
-    const currentDate = dayjs();
-    const diff = currentDate.diff(openDate, 'day');
-    return diff <= 7;
-  };
-
-  const handlerSighUp = (startDate: string) => {
-    if (judgeInWeek(startDate) && registerLink) {
-      isBundle ? window.open(bundleRegisterLink) : window.open(registerLink);
-    } else {
-      setIsModalOpen(true);
-    }
-  };
-
   return (
-    <Space className={styles.abstract} size={24}>
+    <Space className={styles.abstract} size={isMobile ? 8 : 24}>
       <div className={styles.left}>
-        <div className={styles.title}>{courseCode}:</div>
         <div className={styles.title}>{t('Description')}</div>
-        <Paragraph className={styles.abstract} ellipsis={{ rows: 3 }}>
+        <Paragraph className={styles.abstract} ellipsis={{ rows: 3, tooltip: getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn) }}>
           {getTransResult(lang, courseLongDescriptionZh, courseLongDescriptionEn)}
         </Paragraph>
         <Descriptions column={1} layout="vertical">
           <Descriptions.Item label={t('ClassesTime')}>
             <Space direction="vertical">
-              {classesData?.map((item, index) => {
+              {classesData?.map((item) => {
                 return (
-                  <div key={index} className={item?.isFull ? `${styles.full}` : ''}>
+                  <div key={item?.classCode} className={item?.isFull ? `${styles.full}` : ''}>
                     {`${item?.classCode}: ${item?.startTime}-${item?.endTime}`} {item?.isFull ? '(Full)' : ''}
                   </div>
                 );
@@ -86,16 +61,15 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({
           </Descriptions.Item>
         </Descriptions>
       </div>
+
       <div className={styles.right}>
         <div className={styles.title}>{t('One-TimePayment')}</div>
-        <div className={styles.price}>{`$${tuitionUSD}`}</div>
-        <Button type="primary" className={styles.btn} onClick={() => handlerSighUp(startDate || '')}>
+        <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : isBilingual ? `￥${formatFinance(tuitionRMB)}` : `$${formatFinance(tuitionUSD)}`}</div>
+        <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
           {t('SignUpNow')}
         </Button>
-        <Modal open={isModalOpen} onOk={() => setIsModalOpen(false)} onCancel={() => setIsModalOpen(false)}>
-          <img src="/image/qr-code/we-chat-assistance.jpg" alt="weChatAssistance" width={'100%'} height={'100%'} />
-        </Modal>
-        <div className={styles.tip}>{t('Discount')}</div>
+        {classMode !== ClassMode.InPerson && frequency !== FrequencyCategory.Once && <div className={styles.tip}>{t('Discount')}</div>}
+        {isBilingual && <div className={styles.bilingual}>BILINGUAL</div>}
       </div>
     </Space>
   );

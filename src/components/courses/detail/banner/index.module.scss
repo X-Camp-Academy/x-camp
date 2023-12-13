@@ -9,8 +9,17 @@
   .content {
     position: relative;
 
+    @media (width <= 768px) {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+
     .breadcrumb {
       padding-top: 36px;
+
+      @media (width <= 1200px) {
+        padding-top: 24px;
+      }
     }
 
     .title {
@@ -18,22 +27,22 @@
 
       line-height: 48px;
 
-      @media (width <= 1140px) {
-        font-size: 24px;
-      }
-
       @media (width <= 768px) {
-        font-size: 20px;
-        line-height: 32px;
+        @include title('mobile');
+
+        margin-top: 24px;
+        margin-bottom: 24px;
       }
     }
 
     .courseCard {
+      width: 100%;
+
       .cardContent {
         padding: 56px;
         width: 100%;
         height: 100%;
-        border-radius: 12px;
+        border-radius: 8px;
         background-color: #fff;
 
         @media (width <= 992px) {
@@ -41,7 +50,7 @@
         }
 
         @media (width <= 768px) {
-          padding: 20px;
+          padding: 24px;
         }
 
         .divider {
@@ -51,7 +60,7 @@
           background-color: $primary-color;
 
           @media (width <= 992px) {
-            margin: 40px 0;
+            margin: 16px 0;
           }
         }
 
@@ -65,11 +74,11 @@
           }
 
           .left {
-            @media (width <= 1200px) {
-              margin-top: 30px;
-            }
-
             margin-left: 50px;
+
+            @media (width <= 768px) {
+              margin-left: 0;
+            }
 
             :global(.ant-descriptions-item-label) {
               font-size: 18px;
@@ -87,12 +96,23 @@
                 content: '';
                 box-sizing: border-box;
               }
+
+              @media (width <= 768px) {
+                @include title('middle');
+              }
             }
 
             :global(.ant-descriptions-item-content) {
               font-size: 18px;
               color: #172142;
               line-height: 40px;
+
+              @media (width <= 768px) {
+                @include title('middle');
+
+                font-size: 16px;
+                color: #555;
+              }
             }
 
             .full {
@@ -109,6 +129,56 @@
               color: #172142;
               background: #fff;
               line-height: 24px;
+
+              @media (width <= 768px) {
+                width: 160px;
+                height: 48px;
+                font-size: 16px;
+              }
+            }
+
+            .btnSpace {
+              @media (width <= 1200px) {
+                justify-content: space-evenly;
+                width: 100%;
+                flex-direction: row;
+              }
+
+              .shareLessons {
+                width: 202px;
+                height: 48px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 500;
+                color: #172142;
+                background: #fff;
+                line-height: 24px;
+
+                @media (width <= 768px) {
+                  margin-top: 8px;
+                  width: 128px;
+                  height: 40px;
+                  font-size: 12px;
+                }
+              }
+
+              .consultation {
+                width: 202px;
+                height: 48px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 500;
+                color: #fff;
+                background: #ffad11;
+                line-height: 24px;
+
+                @media (width <= 768px) {
+                  margin-top: 8px;
+                  width: 128px;
+                  height: 40px;
+                  font-size: 12px;
+                }
+              }
             }
           }
 
@@ -117,9 +187,16 @@
             padding-left: 30px;
             width: 550px;
 
-            @media (width <= 1140px) {
-              margin-top: 50px;
-              width: 368px;
+            @media (width>=768px) and (width <= 1200px) {
+              margin-top: 30px;
+              padding: 0;
+              width: 100%;
+            }
+
+            @media (width <= 768px) {
+              margin-top: 12px;
+              padding: 0;
+              width: 100%;
             }
 
             .dots {
@@ -133,21 +210,22 @@
             }
 
             .videoBox {
-              overflow: hidden;
-              width: 100%;
-              height: 380px;
-              border-radius: 8px;
+              width: 640px;
+              height: 360px;
 
-              @media (width <= 992px) {
-                padding: 0 50px;
-                width: 100%;
-                height: 100%;
+              @media (width>=768px) and (width<=1200px) {
+                width: 480px;
+                height: 270px;
+              }
+
+              @media (width <= 768px) {
+                width: 320px;
+                height: 180px;
               }
 
               video {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
               }
             }
 
@@ -157,6 +235,22 @@
               .mediaChoiceBox {
                 width: 100px;
                 height: 100px;
+              }
+            }
+
+            .rightBottom {
+              margin-top: 32px;
+              width: 100%;
+
+              @media (width <= 768px) {
+                margin-top: 0;
+              }
+
+              .rightBottomText {
+                font-size: 18px;
+                font-weight: 400;
+                color: #d46b14;
+                line-height: 24px;
               }
             }
           }
