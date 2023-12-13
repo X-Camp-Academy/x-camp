@@ -78,12 +78,12 @@ const Introduction = () => {
         {t('USACOSolution.Intro2')}
         {t('USACOSolution.Intro3')}
       </div>
-      {result?.map((v, index) => {
+      {result?.map((v) => {
         return (
           <div key={v?.category} style={{ marginBottom: isMobile ? 0 : 88 }}>
             <Collapse
               ghost
-              defaultActiveKey={index}
+              defaultActiveKey={v?.category}
               expandIconPosition={'end'}
               expandIcon={({ isActive }) => (
                 <div className={styles.changeBtn}>
