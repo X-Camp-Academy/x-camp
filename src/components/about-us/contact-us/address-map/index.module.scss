@@ -2,7 +2,7 @@
   margin-top: 3.25rem;
   padding-bottom: 6.25rem;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     margin-top: 0;
     padding-right: 24px;
     padding-bottom: 3rem;

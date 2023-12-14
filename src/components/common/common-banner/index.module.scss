@@ -1,23 +1,23 @@
 @import '@/styles/variables';
 
 .paddingLeft {
-  @media (width >= 576px) {
+  @media (min-width: 576px) {
     padding-left: calc((100vw - 540px) / 2 + 15px);
   }
 
-  @media (width >= 768px) {
+  @media (min-width: 768px) {
     padding-left: calc((100vw - 720px) / 2 + 15px);
   }
 
-  @media (width >= 992px) {
+  @media (min-width: 992px) {
     padding-left: calc((100vw - 960px) / 2 + 15px);
   }
 
-  @media (width >= 1200px) {
+  @media (min-width: 1200px) {
     padding-left: calc((100vw - 1140px) / 2 + 15px);
   }
 
-  @media (width >= 1400px) {
+  @media (min-width: 1400px) {
     padding-left: calc((100vw - 1320px) / 2 + 15px);
   }
 }
@@ -54,7 +54,7 @@
       content: '';
       transform: translateY(125px);
 
-      @media (width <= 1200px) {
+      @media (max-width: 1200px) {
         transform: translateY(115px);
       }
     }
@@ -65,12 +65,12 @@
 
       @include title('default');
 
-      @media (width <= 1200px) {
+      @media (max-width: 1200px) {
         font-size: 25px !important;
         line-height: 28px;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
       }
     }
@@ -81,7 +81,7 @@
       color: #172142;
       line-height: 34px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
       }
     }
@@ -92,12 +92,12 @@
       color: #172142;
       line-height: 34px;
 
-      @media (width <= 1200px) {
+      @media (max-width: 1200px) {
         font-size: 16px !important;
         line-height: 28px;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         font-size: 12px;
         line-height: 20px;
       }
@@ -136,7 +136,7 @@
           @include flex(center);
         }
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           display: none;
         }
       }
@@ -164,7 +164,7 @@
       height: 20px;
       background-color: #ffad11;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         display: none;
       }
     }
@@ -172,7 +172,7 @@
     .image {
       height: 512px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         z-index: 9999;
         height: 100%;
       }

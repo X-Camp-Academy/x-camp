@@ -9,7 +9,7 @@
   .classContainer {
     padding-top: 50px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding-top: 8px;
       padding-right: 24px;
       padding-left: 24px;
@@ -30,7 +30,7 @@
       padding-right: 12px;
       padding-left: 12px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 32px;
       }
     }
@@ -41,7 +41,7 @@
 
       @include title('default');
 
-      @media (width <= 1200px) {
+      @media (max-width: 1200px) {
         margin-top: 20px;
         margin-bottom: 8px;
 
@@ -56,7 +56,7 @@
       grid-template-columns: 1fr 1fr 1fr;
       flex-wrap: wrap;
 
-      @media (width >= 1400px) {
+      @media (min-width: 1400px) {
         :global(.ant-space-item:nth-child(3n)) {
           .colorfulCard {
             margin-left: auto;
@@ -108,7 +108,7 @@
         font-weight: 600;
         color: #172142;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('middle');
         }
       }
@@ -119,7 +119,7 @@
         color: #6a6a6a;
         line-height: 24px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include mobile-text;
         }
       }

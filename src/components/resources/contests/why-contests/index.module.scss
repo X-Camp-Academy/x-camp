@@ -4,7 +4,7 @@
   padding: 100px 32px;
   width: 100%;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 64px 24px;
   }
 
@@ -17,7 +17,7 @@
       color: #172142;
       line-height: 48px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-bottom: 24px;
 
         @include title('mobile');
@@ -31,7 +31,7 @@
       color: #172142;
       line-height: 40px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include mobile-text;
       }
     }
@@ -57,7 +57,7 @@
         content: '';
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         font-size: 20px;
         line-height: 32px;
       }
@@ -70,7 +70,7 @@
       color: #172142;
       line-height: 40px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include mobile-text;
       }
     }

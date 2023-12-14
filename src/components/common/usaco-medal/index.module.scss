@@ -108,7 +108,7 @@
 
       @include text(16px, 24px, #172142);
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         width: 64px;
         font-size: 10px;
         font-weight: 600;

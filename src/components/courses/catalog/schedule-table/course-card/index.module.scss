@@ -5,7 +5,7 @@
     width: 100%;
 
     .feeCol {
-      @media (width >= 992px) {
+      @media (min-width: 992px) {
         justify-content: flex-end;
       }
     }
@@ -17,7 +17,7 @@
       .title {
         @include title('thin');
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           margin-top: 0;
           margin-bottom: 0;
 
@@ -30,7 +30,7 @@
 
         color: #d46b14;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('mobile');
 
           color: #d46b14;

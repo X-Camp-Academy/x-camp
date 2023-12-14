@@ -1,7 +1,7 @@
 @import '@/styles/variables';
 
 .content {
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding-right: 24px;
     padding-left: 24px;
   }
@@ -15,11 +15,11 @@
   .contest {
     padding: 48px 0 32px;
 
-    @media (width >= 768px) and (width <= 1200px) {
+    @media (min-width: 768px) and (max-width: 1200px) {
       padding: 48px 0 32px;
     }
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding: 20px 0 16px;
     }
 
@@ -28,7 +28,7 @@
 
       line-height: 64px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
       }
     }
@@ -37,7 +37,7 @@
       display: flex;
       justify-content: space-between;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         flex-direction: column;
       }
 
@@ -52,7 +52,7 @@
           word-wrap: break-word;
           hyphens: auto;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             margin: 16px 0 12px;
 
             @include mobile-text;
@@ -65,7 +65,7 @@
           color: #d46b14;
           line-height: 34px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include mobile-text;
 
             color: #d46b14;
@@ -81,7 +81,7 @@
         padding-left: 36px;
         cursor: pointer;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           margin: 0 auto;
           padding-top: 20px;
           padding-left: 0;
@@ -93,7 +93,7 @@
           border-radius: 12px;
           background: #ffeddf;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             width: 256px;
             height: 160px;
           }

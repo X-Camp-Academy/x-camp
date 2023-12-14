@@ -7,7 +7,7 @@
   .USACOSpotlight {
     padding-top: 56px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding-top: 32px;
       padding-right: 24px;
       padding-left: 24px;
@@ -16,7 +16,7 @@
     .title {
       @include title('default');
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
       }
     }
@@ -27,7 +27,7 @@
       color: #172142;
       line-height: 34px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include mobile-text;
       }
     }
@@ -36,7 +36,7 @@
       position: relative;
       padding: 50px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-right: 0 !important;
         margin-left: 0 !important;
         padding-top: 24px !important;
@@ -47,7 +47,7 @@
         padding-right: 8px;
         padding-left: 8px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           padding-right: 0;
           padding-left: 0;
         }
@@ -63,7 +63,7 @@
           background-repeat: no-repeat;
           background-size: cover;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             margin-bottom: 10px;
             height: 320px;
           }
@@ -79,7 +79,7 @@
             background: rgba(#172142, 0.3);
             backdrop-filter: blur(2px);
 
-            @media (width <= 768px) {
+            @media (max-width: 768px) {
               bottom: 10px;
               margin: 0 20px;
               padding: 8px 0;
@@ -95,7 +95,7 @@
               opacity: 1;
               line-height: 24px;
 
-              @media (width <= 768px) {
+              @media (max-width: 768px) {
                 @include title('middle');
 
                 color: #fff;
@@ -113,7 +113,7 @@
               line-height: 24px;
               color: #fff;
 
-              @media (width <= 768px) {
+              @media (max-width: 768px) {
                 @include mobile-text;
 
                 color: #fff;
@@ -134,7 +134,7 @@
       transition: all 0.3s ease;
       transform: translateY(-50%);
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         left: 0;
         border: 1px solid #ffad11;
       }
@@ -150,7 +150,7 @@
       transition: all 0.3s ease;
       transform: translateY(-50%);
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         right: 0;
         border: 1px solid #ffad11;
       }

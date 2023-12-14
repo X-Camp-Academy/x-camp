@@ -12,16 +12,9 @@ import Footer from '@/components/common/footer';
 import BackTop from '@/components/common/back-top';
 import WithIntl from '@/hoc/with-intl';
 import FixedButtons from '@/components/common/fixed-buttons';
-import { useEffect } from 'react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const isMobile = useMobile();
-  useEffect(() => {
-    if (process.browser) {
-      const eruda = require('eruda');
-      eruda.init();
-    }
-  }, []);
   return (
     <html lang="en" className={isMobile ? 'mobile' : 'pc'}>
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />

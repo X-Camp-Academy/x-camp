@@ -4,7 +4,7 @@
   padding: 80px 15px;
   width: 100%;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 32px 8px;
   }
 
@@ -25,7 +25,7 @@
 
       margin: 0;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
       }
     }
@@ -44,7 +44,7 @@
       margin-left: 112px;
       width: 88px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-left: 72px;
         width: 56px;
       }
@@ -56,7 +56,7 @@
       margin-left: 144px;
       width: 192px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-left: 96px;
         width: 144px;
       }
@@ -72,7 +72,7 @@
         margin-bottom: 0 !important;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 8px;
 
         @include margin(0);
@@ -83,7 +83,7 @@
     .carouselContainer {
       margin-top: 56px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 10px;
       }
 
@@ -96,7 +96,7 @@
         border: none;
         border-radius: 8px !important;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           width: 100%;
         }
 
@@ -116,7 +116,7 @@
           text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
           line-height: 48px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include title('middle');
 
             color: #fff;
@@ -129,7 +129,7 @@
           text-align: left;
           color: #fff;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include title('middle');
 
             color: #fff;
@@ -143,7 +143,7 @@
           color: #fff;
           line-height: 26px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include mobile-text;
 
             color: #fff;
@@ -167,7 +167,7 @@
         margin-left: 16px;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         font-size: 14px;
         line-height: 14px;
       }

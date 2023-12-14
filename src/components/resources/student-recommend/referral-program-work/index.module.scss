@@ -4,7 +4,7 @@
   margin-bottom: 100px;
   padding: 50px 15px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     margin-bottom: 0;
     padding: 16px 24px;
   }
@@ -14,7 +14,7 @@
 
     line-height: 48px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
     }
   }
@@ -33,7 +33,7 @@
       color: #172142;
       line-height: 34px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include mobile-text;
       }
 
@@ -49,7 +49,7 @@
     align-items: center;
     padding: 40px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding: 20px;
     }
   }
