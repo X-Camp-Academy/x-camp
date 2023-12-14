@@ -69,23 +69,29 @@ const StudentProjects: React.FC = () => {
             <Col xs={24} sm={24} md={8} lg={8} xl={12}>
               {studentProjectsData &&
                 (!inPadSize ? (
-                  <iframe src={getVideoByLang(studentProjectsData[0]?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" className={styles.bigIframe} allowFullScreen />
+                  <video
+                    src={getVideoByLang(studentProjectsData[0]?.attributes)}
+                    className={styles.bigIframe}
+                    width="100%"
+                    height="100%"
+                    controls
+                    autoPlay={false}
+                  />
                 ) : (
                   <Card
                     className={styles.card}
                     bodyStyle={{
                       overflow: 'hidden',
-                      padding: '0 20px 0 20px'
+                      padding: '0 20px 0 20px',
                     }}
                     cover={
-                      <iframe
+                      <video
                         src={getVideoByLang(studentProjectsData[0]?.attributes)}
+                        className={styles.smallIframe}
                         width="100%"
                         height="100%"
-                        style={{ border: 'none' }}
-                        sandbox=""
-                        className={styles.smallIframe}
-                        allowFullScreen
+                        controls
+                        autoPlay={false}
                       />
                     }
                   >
@@ -112,9 +118,18 @@ const StudentProjects: React.FC = () => {
                         className={styles.card}
                         bodyStyle={{
                           overflow: 'hidden',
-                          padding: '0 0 0 8px'
+                          padding: '0 0 0 8px',
                         }}
-                        cover={<iframe src={getVideoByLang(item?.attributes)} width="100%" height="100%" style={{ border: 'none' }} sandbox="" className={styles.smallIframe} allowFullScreen />}
+                        cover={
+                          <video
+                            src={getVideoByLang(item?.attributes)}
+                            className={styles.smallIframe}
+                            width="100%"
+                            height="100%"
+                            controls
+                            autoPlay={false}
+                          />
+                        }
                       >
                         <Space direction="vertical" size={12} className={styles.space}>
                           <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
