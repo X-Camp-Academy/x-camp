@@ -29,6 +29,9 @@ dependencies:
   echarts:
     specifier: ^5.4.2
     version: 5.4.3
+  eruda:
+    specifier: ^3.0.1
+    version: 3.0.1
   eslint:
     specifier: 8.41.0
     version: 8.41.0
@@ -3072,6 +3075,10 @@ packages:
     dependencies:
       is-arrayish: 0.2.1
     dev: true
+
+  /eruda@3.0.1:
+    resolution: {integrity: sha512-6q1Xdwga4JTr1mKSW4mzuWSSbmXgqpm/8Wa1QGFGfCWRjC0bCQjbS4u06M1te1moucIS3hBLlbSTPWYH2W0qbQ==}
+    dev: false
 
   /es-abstract@1.22.3:
     resolution: {integrity: sha512-eiiY8HQeYfYH2Con2berK+To6GrK2RxbPawDkGq4UiCQQfZHb6wX9qQqkbpPqaxQFcl8d9QzZqo0tGE0VcrdwA==}
