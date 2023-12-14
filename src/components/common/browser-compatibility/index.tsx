@@ -4,7 +4,7 @@ import { useMobile } from '@/utils';
 import { Image, Space } from 'antd';
 import { useEffect } from 'react';
 
-const BrowserCompatibilityPage = () => {
+const BrowserCompatibility = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   useEffect(() => {
@@ -72,4 +72,4 @@ const BrowserCompatibilityPage = () => {
   );
 };
 
-export default BrowserCompatibilityPage;
+export default BrowserCompatibility;
