@@ -4,7 +4,7 @@
   margin-top: 50px;
   margin-bottom: 50px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     margin-top: 0;
     margin-bottom: 0;
     padding: 24px;
@@ -13,14 +13,14 @@
   .form {
     margin-bottom: 10px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-bottom: 0;
     }
 
     .row {
       width: 100%;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         padding-right: 0 !important;
         padding-left: 0 !important;
       }
@@ -31,7 +31,7 @@
         color: #172142;
         line-height: 24px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include mobile-text;
         }
       }
@@ -43,7 +43,7 @@
         color: #6a6a6a;
         line-height: 24px;
 
-        @media (width <= 992px) {
+        @media (max-width: 992px) {
           @include mobile-text;
 
           color: #6a6a6a;
@@ -57,7 +57,7 @@
         color: #6a6a6a;
         line-height: 24px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include mobile-text;
 
           color: #6a6a6a;
@@ -68,7 +68,7 @@
         border-radius: 4px;
         background: #ffad11;
 
-        @media (width <= 992px) {
+        @media (max-width: 992px) {
           width: 100%;
         }
       }

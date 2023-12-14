@@ -27,7 +27,7 @@
       }
     }
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('middle');
 
       padding: 16px 8px;
@@ -43,7 +43,7 @@
     border-radius: 8px;
     font-size: 21px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       width: 24px;
       height: 24px;
 
@@ -60,7 +60,7 @@
     color: #00a0e9;
     background-color: #009fe933;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       color: #00a0e9;
@@ -69,7 +69,7 @@
   }
 
   .answerContent {
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
     }
   }

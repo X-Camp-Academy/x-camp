@@ -8,7 +8,7 @@
     padding: 96px 0;
     width: 100%;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding: 32px 0;
     }
   }

@@ -8,7 +8,7 @@
   width: 100%;
   flex-direction: column;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding-top: 16px;
     padding-bottom: 20px;
   }
@@ -25,7 +25,7 @@
   flex-direction: column;
   background-color: #fff;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 0;
   }
 }
@@ -45,12 +45,12 @@
       text-decoration-color: $primary-color;
     }
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
     }
   }
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     position: relative;
     margin-bottom: 0;
   }
@@ -61,7 +61,7 @@
   padding: 0 160px;
   width: 100%;
 
-  @media (width <= 992px) {
+  @media (max-width: 992px) {
     padding: 0;
   }
 
@@ -74,7 +74,7 @@
     text-align: center;
     background-size: 120px 88px !important;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-top: 10px;
       margin-bottom: 10px;
       width: 64px;
@@ -87,7 +87,7 @@
       font-weight: 600;
       line-height: 48px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         font-size: 26px;
         font-weight: 600;
         color: #050260;
@@ -95,7 +95,7 @@
         text-shadow: 1px 1px 0 #eeca92;
       }
 
-      @media (width >= 768px) and (width <= 1200px) {
+      @media (min-width: 768px) and (max-width: 1200px) {
         font-size: 24px;
       }
     }
@@ -108,7 +108,7 @@
 
       @include text(16px, 24px, #172142);
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         width: 64px;
         font-size: 10px;
         font-weight: 600;
@@ -117,7 +117,7 @@
         text-shadow: 1px 1px 0 #d4ac6d;
       }
 
-      @media (width >= 768px) and (width <= 1200px) {
+      @media (min-width: 768px) and (max-width: 1200px) {
         width: 104px;
       }
     }

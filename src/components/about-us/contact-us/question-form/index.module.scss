@@ -3,7 +3,7 @@
 .qaContent {
   padding-bottom: 6.25rem;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 24px;
     padding-top: 0;
   }
@@ -13,7 +13,7 @@
 
     @include title('default');
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
 
       margin-top: 24px;
@@ -34,7 +34,7 @@
       padding: 10px;
     }
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-top: 0;
     }
 
@@ -43,7 +43,7 @@
 
       @include title('default');
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
 
         margin-top: 0;
@@ -70,7 +70,7 @@
         @extend .hoverButton;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         height: 48px;
 
         @include mobile-text;
