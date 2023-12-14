@@ -6,7 +6,7 @@
   border-radius: 12px;
   background-color: #fff;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     margin-top: 0;
     padding: 24px;
     padding-top: 48px;
@@ -15,7 +15,7 @@
   .title {
     @include title('default');
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
 
       margin-bottom: 0;
@@ -28,7 +28,7 @@
     color: #172142;
     line-height: 48px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin: 0;
       font-size: 20px;
       line-height: 24px;
@@ -41,7 +41,7 @@
     color: #172142;
     line-height: 40px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       margin-bottom: 0;
@@ -54,17 +54,17 @@
     .image {
       height: 252px;
 
-      @media (width <= 1200px) {
+      @media (max-width: 1200px) {
         width: 100%;
         height: 200px;
       }
 
-      @media (width <= 992px) {
+      @media (max-width: 992px) {
         width: 100%;
         height: 150px;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         width: 100%;
         height: 100%;
       }
@@ -74,7 +74,7 @@
   .chartTitle {
     @include title('default');
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
 
       margin-top: 0;
@@ -83,7 +83,7 @@
   }
 
   .chart {
-    @media (width <= 992px) {
+    @media (max-width: 992px) {
       flex-direction: column;
     }
 
@@ -91,7 +91,7 @@
       width: 100%;
       height: 448px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         height: 320px;
       }
     }
@@ -105,7 +105,7 @@
         color: #172142;
         line-height: 64px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('middle');
         }
       }
@@ -127,7 +127,7 @@
           color: #172142;
           line-height: 40px;
 
-          @media (width <= 1200px) {
+          @media (max-width: 1200px) {
             font-size: 16px;
           }
         }

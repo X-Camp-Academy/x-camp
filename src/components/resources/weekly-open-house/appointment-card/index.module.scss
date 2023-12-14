@@ -1,7 +1,7 @@
 @import '@/styles/variables';
 
 .appointment {
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding-right: 24px;
     padding-left: 24px;
   }
@@ -13,7 +13,7 @@
     border-radius: 8px;
     background: #fff;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding: 24px;
     }
 
@@ -25,7 +25,7 @@
       .title {
         @include title;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('mobile');
         }
       }
@@ -36,7 +36,7 @@
         margin: 20px 0 24px;
         font-weight: 500;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           margin: 24px 0;
 
           @include mobile-text;
@@ -56,7 +56,7 @@
 
         @include text(16px, 24px);
 
-        @media (width <= 992px) {
+        @media (max-width: 992px) {
           width: 160px;
           width: 100%;
           height: 40px;
@@ -72,7 +72,7 @@
       display: flex;
       justify-content: center;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 20px;
         width: 50%;
       }

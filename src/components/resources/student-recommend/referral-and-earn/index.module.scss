@@ -3,14 +3,14 @@
 .referralAndEarn {
   padding: 50px 15px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 16px 24px;
   }
 
   .giveAndGetCard {
     padding: 30px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding: 0;
     }
 
@@ -19,7 +19,7 @@
 
       line-height: 48px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
 
         margin-bottom: 24px;
@@ -32,7 +32,7 @@
       color: #172142;
       line-height: 34px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include mobile-text;
       }
     }
@@ -44,7 +44,7 @@
       color: #172142;
       line-height: 36px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('middle');
 
         margin-bottom: 24px;
@@ -53,7 +53,7 @@
       span {
         color: #d46b14;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('middle');
 
           color: #d46b14;

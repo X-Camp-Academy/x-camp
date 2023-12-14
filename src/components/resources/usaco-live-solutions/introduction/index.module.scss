@@ -3,7 +3,7 @@
 .introduction {
   padding-top: 80px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding-top: 48px;
     padding-right: 24px;
     padding-left: 24px;
@@ -15,7 +15,7 @@
     margin-bottom: 100px;
     font-weight: 500;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       margin-bottom: 24px;
@@ -40,11 +40,11 @@
   :global(.ant-collapse-arrow) {
     margin-top: 0;
 
-    @media (width >= 768px) and (width <= 992px) {
+    @media (min-width: 768px) and (max-width: 992px) {
       margin-top: -16px;
     }
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-top: -32px;
     }
   }
@@ -63,7 +63,7 @@
   :global(.ant-collapse-content-box) {
     padding: 12px 0 !important;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding: 0 !important;
     }
   }
@@ -81,12 +81,12 @@
       font-size: 24px;
       color: #fff;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         font-size: 16px;
       }
     }
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       width: 24px;
       height: 24px;
     }
@@ -95,7 +95,7 @@
   .title {
     @include title;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
     }
   }
@@ -108,7 +108,7 @@
     .videoPanel {
       width: 400px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 0;
         margin-bottom: 24px;
         width: 100%;
@@ -127,7 +127,7 @@
         color: #172142;
         line-height: 24px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include mobile-text;
         }
       }
@@ -140,7 +140,7 @@
         font-size: 18px;
         color: #666;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include mobile-text;
 
           color: #666;
@@ -155,7 +155,7 @@
     color: #d46b14;
     line-height: 100px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       color: #d46b14;

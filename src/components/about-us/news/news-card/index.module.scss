@@ -4,14 +4,14 @@
   padding: 96px 0 100px;
   width: 100%;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 48px 24px 24px;
   }
 
   .newsCard {
     margin-top: 48px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-top: 24px;
     }
 
@@ -26,7 +26,7 @@
         height: 288px;
         border-radius: 4px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           height: 240px;
         }
       }
@@ -39,7 +39,7 @@
         color: #172142;
         line-height: 30px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('middle');
         }
       }
@@ -56,7 +56,7 @@
           color: #666;
           line-height: 28px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include mobile-text;
 
             color: #666;
@@ -68,11 +68,11 @@
           font-size: 16px;
           color: #ffad11;
 
-          @media (width >= 768px) and (width <= 1200px) {
+          @media (min-width: 768px) and (max-width: 1200px) {
             margin-right: 24px;
           }
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include mobile-text;
 
             margin-right: 16px;
@@ -87,7 +87,7 @@
     margin-top: 50px;
     text-align: center;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-top: 24px;
     }
 

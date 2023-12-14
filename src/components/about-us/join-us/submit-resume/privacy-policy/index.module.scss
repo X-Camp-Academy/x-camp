@@ -14,7 +14,7 @@
   .privacyPolicy {
     padding-top: 50px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       padding: 24px;
     }
 
@@ -24,7 +24,7 @@
       line-height: 48px;
       text-align: center;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 0;
 
         @include title('mobile');

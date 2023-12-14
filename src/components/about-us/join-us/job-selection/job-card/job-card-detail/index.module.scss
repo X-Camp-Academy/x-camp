@@ -13,12 +13,12 @@
     margin-bottom: 42px;
     width: 100%;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-bottom: 20px;
     }
   }
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 8px 20px 24px;
   }
 
@@ -38,7 +38,7 @@
     }
 
     h2 {
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('middle');
       }
     }
@@ -78,7 +78,7 @@
         color: #666;
         line-height: 30px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           vertical-align: text-top;
 
           @include mobile-text;

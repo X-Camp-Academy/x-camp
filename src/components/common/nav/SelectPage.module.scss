@@ -2,7 +2,7 @@
   width: 20vw;
   max-width: 200px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     width: 100%;
     max-width: 100%;
   }

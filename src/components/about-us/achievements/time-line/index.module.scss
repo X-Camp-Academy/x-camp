@@ -4,7 +4,7 @@
   margin-top: 80px;
   padding-bottom: 80px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 24px;
   }
 
@@ -12,7 +12,7 @@
     .title {
       @include title('default');
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         @include title('mobile');
       }
     }
@@ -22,7 +22,7 @@
       padding: 0 40px 40px;
       background-position: right bottom;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         padding: 0;
       }
 
@@ -36,7 +36,7 @@
           position: relative;
           left: -20px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             left: 8px;
 
             @include title('middle');
@@ -55,7 +55,7 @@
           background-color: #ffad11;
           content: '';
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             left: -8px;
           }
         }
@@ -71,7 +71,7 @@
           margin-top: 0;
           font-size: 18px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include mobile-text;
           }
         }
@@ -90,7 +90,7 @@
       color: #172142;
       line-height: 40px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 20px;
 
         @include mobile-text;
@@ -114,7 +114,7 @@
     }
 
     .row {
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         padding-right: 0 !important;
         padding-left: 0 !important;
       }
@@ -135,7 +135,7 @@
           font-weight: 600;
           line-height: 100px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include title('middle');
           }
         }
@@ -146,7 +146,7 @@
           color: #172142;
           line-height: 32px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include mobile-text;
           }
         }

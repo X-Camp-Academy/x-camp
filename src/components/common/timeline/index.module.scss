@@ -30,7 +30,7 @@
     font-size: 36px;
     line-height: 40px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
     }
   }
@@ -58,7 +58,7 @@
     margin-left: 15px;
     font-weight: 600;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include text(18px, 32px);
     }
   }
@@ -69,7 +69,7 @@
     margin-bottom: 30px;
     margin-left: 56px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include text(18px, 32px);
     }
   }
