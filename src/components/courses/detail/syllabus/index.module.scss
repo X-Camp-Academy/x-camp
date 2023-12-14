@@ -4,7 +4,7 @@
   margin-top: 150px;
   margin-bottom: 48px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     margin-top: 48px;
     margin-bottom: 32px;
     padding-right: 24px;
@@ -17,7 +17,7 @@
     line-height: 48px;
     text-align: center;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
 
       margin-bottom: 24px;
@@ -30,7 +30,7 @@
     color: #172142;
     line-height: 36px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       font-size: 16px;
@@ -50,7 +50,7 @@
     background-color: #fff;
     line-height: 24px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       color: #172142;

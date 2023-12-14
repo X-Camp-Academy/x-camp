@@ -1,7 +1,7 @@
 @import '@/styles/variables';
 
 .deepDiveClasses {
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding-right: 24px;
     padding-left: 24px;
   }
@@ -13,7 +13,7 @@
     line-height: 48px;
     color: $text-color;
     margin-top: 0;
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
     }
   }
@@ -25,7 +25,7 @@
     color: #172142;
     line-height: 34px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       margin-top: 24px;
@@ -37,7 +37,7 @@
     justify-content: space-between;
     width: 100%;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       justify-content: center;
     }
 
@@ -45,7 +45,7 @@
       width: 416px;
       height: 272px;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         width: 100%;
       }
     }

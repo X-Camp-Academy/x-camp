@@ -11,7 +11,7 @@
     padding-bottom: 50px;
     width: 100%;
 
-    @media (width <= 992px) {
+    @media (max-width: 992px) {
       padding: 24px;
       padding-top: 50px;
     }
@@ -23,11 +23,11 @@
       border-radius: 10px;
       background-color: #fff;
 
-      @media (width <= 992px) {
+      @media (max-width: 992px) {
         padding: 40px;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         padding: 20px;
       }
     }

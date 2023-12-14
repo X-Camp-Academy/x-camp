@@ -3,7 +3,7 @@
 .aboutXcamp {
   margin-top: 100px;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     margin-top: 50px;
     padding-right: 18px;
     padding-left: 18px;
@@ -14,7 +14,7 @@
 
     @include title('default');
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
 
       margin-bottom: 24px;
@@ -30,7 +30,7 @@
 
     @include margin;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include margin(0);
       @include mobile-text;
     }
@@ -39,7 +39,7 @@
   .space {
     margin-top: 24px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-top: 12px;
       padding-right: 6px;
       padding-left: 6px;
@@ -51,12 +51,12 @@
       border-radius: 8px;
       background: #d8d8d8;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         width: 100%;
         height: 280px;
       }
 
-      @media (width >= 768px) and (width <= 1200px) {
+      @media (min-width: 768px) and (max-width: 1200px) {
         width: 100%;
         height: 100%;
       }
@@ -69,7 +69,7 @@
         color: #172142;
         line-height: 36px;
 
-        @media (width <= 1200px) {
+        @media (max-width: 1200px) {
           @include mobile-text;
 
           margin-bottom: -16px;

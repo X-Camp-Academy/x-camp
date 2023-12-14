@@ -20,7 +20,14 @@ const WeSupport: React.FC = () => {
       <div className={`${styles.weSupport} container`}>
         <Row>
           <Col xs={{ span: 24, order: 2 }} sm={{ span: 24, order: 2 }} md={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }}>
-            <iframe src={defaultVideoUrl} className={styles.videoIframe} allowFullScreen sandbox="" />
+            <video
+              src={defaultVideoUrl}
+              className={styles.videoIframe}
+              width="100%"
+              height="100%"
+              controls
+              autoPlay={false}
+            />
           </Col>
           <Col xs={{ span: 24, order: 1 }} sm={{ span: 24, order: 1 }} md={{ span: 24, order: 1 }} lg={{ span: 11, order: 2, offset: 1 }} className={styles.rightCol}>
             <Row>

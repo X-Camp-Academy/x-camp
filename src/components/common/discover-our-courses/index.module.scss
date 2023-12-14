@@ -8,7 +8,7 @@
   background-color: #fff5e8;
   flex-direction: column;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     padding: 32px 8px;
   }
 
@@ -18,7 +18,7 @@
 
     @include title('default');
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
     }
   }
@@ -45,7 +45,7 @@
     width: 80px;
     height: 16px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       left: 64px;
       width: 64px;
     }
@@ -59,7 +59,7 @@
     width: 144px;
     height: 16px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       left: 87px;
       margin-top: 0;
       width: 96px;
@@ -69,7 +69,7 @@
   .row {
     width: 100% !important;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin: 0;
     }
 
@@ -81,7 +81,7 @@
       border-radius: 8px;
       cursor: pointer;
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-top: 12px;
       }
 
@@ -100,7 +100,7 @@
 
         font-weight: 600;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('middle');
 
           margin-top: 0;
@@ -111,7 +111,7 @@
       .cardParagraph {
         @include text(18px, 24px, #fff);
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include mobile-text;
 
           color: #fff;
@@ -121,7 +121,7 @@
       .infoContainer {
         height: 354px;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           height: 320px;
         }
       }
@@ -137,7 +137,7 @@
 
         word-wrap: break-word;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include title('middle');
 
           margin-top: 8px;
@@ -152,7 +152,7 @@
         word-wrap: break-word;
         hyphens: auto;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           @include mobile-text;
         }
       }
@@ -168,7 +168,7 @@
           color: #172142;
           line-height: 16px;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             @include mobile-text;
           }
         }

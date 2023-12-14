@@ -5,7 +5,7 @@
   margin-bottom: 20px;
   text-align: center;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     margin-top: 32px;
     margin-bottom: 10px;
     padding-right: 9px;
@@ -15,7 +15,7 @@
   .title {
     @include title('default');
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include title('mobile');
 
       margin-bottom: 24px;
@@ -29,7 +29,7 @@
     color: #172142;
     line-height: 36px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       @include mobile-text;
 
       margin-bottom: 0;
@@ -51,12 +51,12 @@
       border-radius: 50%;
       background-color: #ababab;
 
-      @media (width <= 992px) {
+      @media (max-width: 992px) {
         margin-right: 32px;
         margin-left: 32px;
       }
 
-      @media (width <= 768px) {
+      @media (max-width: 768px) {
         margin-right: 16px;
         margin-left: 16px;
       }
@@ -97,7 +97,7 @@
   .timeImage {
     margin-top: 56px;
 
-    @media (width <= 768px) {
+    @media (max-width: 768px) {
       margin-top: 24px;
       margin-right: 0 !important;
       margin-left: 0 !important;
@@ -115,7 +115,7 @@
         border-radius: 8px !important;
         text-align: left;
 
-        @media (width <= 768px) {
+        @media (max-width: 768px) {
           width: 100%;
           height: 100%;
         }
@@ -142,12 +142,12 @@
 
           color: #fff;
 
-          @media (width <= 768px) {
+          @media (max-width: 768px) {
             margin-top: 8px;
             font-size: 16px;
           }
 
-          @media (width >= 768px) and (width <= 1200px) {
+          @media (min-width: 768px) and (max-width: 1200px) {
             font-size: 16px;
             color: #fff;
           }
@@ -160,7 +160,7 @@
           color: #fff;
           line-height: 26px;
 
-          @media (width <= 1200px) {
+          @media (max-width: 1200px) {
             font-size: 14px;
             color: #fff;
           }

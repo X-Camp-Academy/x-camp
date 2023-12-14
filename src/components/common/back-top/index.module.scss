@@ -11,7 +11,7 @@
   line-height: 40px;
   cursor: pointer;
 
-  @media (width <= 768px) {
+  @media (max-width: 768px) {
     right: 24px;
   }
 
