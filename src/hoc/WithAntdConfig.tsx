@@ -2,7 +2,6 @@
 import BrowserCompatibilityPage from '@/components/common/browser-compatibility';
 import { ConfigProvider } from 'antd';
 import { ReactNode } from 'react';
-import { isBrowserCompatibility } from 'x-star-utils';
 
 interface Props {
   children: ReactNode;
@@ -17,7 +16,7 @@ const WithAntdConfig = ({ children }: Props) => {
         }
       }}
     >
-      {isBrowserCompatibility() ? children : <BrowserCompatibilityPage />}
+      {false ? children : <BrowserCompatibilityPage />}
     </ConfigProvider>
   );
 };

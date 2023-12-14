@@ -303,7 +303,7 @@ declare const json: {
   "FIREFOX_BROWSER_DESC": "No arcane privacy policies, no backdoors for third parties, just a lightning-fast browser.",
   "EDGE_BROWSER": "Edge Browser",
   "EDGE_BROWSER_DESC": "Microsoft Edge uses the same technology as Chrome to enhance your browsing experience.",
-  "COMPATIBILITY_TIP": "Your browser does not support modern CSS Selectors and has compatibility problems. Please use a modern browser (such as Chrome or Firefox) to access your friend team.",
+  "COMPATIBILITY_TIP": "Your browser does not support modern CSS Selectors and has compatibility problems. Please use a modern browser (such as Chrome or Firefox) to access X-Camp.",
   "AdditionalInfo": "Additional Info",
   "TopicsCovered": "Topics Covered",
   "ZoomLink": "Join Open House Zoom",
