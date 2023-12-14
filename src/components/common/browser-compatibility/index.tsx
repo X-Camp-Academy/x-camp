@@ -2,17 +2,11 @@ import { useLang } from '@/hoc/with-intl/define';
 import styles from './index.module.scss';
 import { useMobile } from '@/utils';
 import { Image, Space } from 'antd';
-import { useEffect } from 'react';
 
 const BrowserCompatibility = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
-  useEffect(() => {
-    if (process.browser) {
-      const eruda = require('eruda');
-      eruda.init();
-    }
-  }, []);
+
   const cards = [
     // Chrome 浏览器
     {

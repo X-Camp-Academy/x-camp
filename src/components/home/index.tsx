@@ -9,8 +9,6 @@ import Community from './community';
 import DiscoverOurCourses from './discover-our-courses';
 import styles from './index.module.scss';
 import PublicCalendar from './public-calendar';
-import StudentProjects from './student-projects';
-import WeSupport from './we-support';
 import WhyXCamp from './why-xcamp';
 
 const { Content } = Layout;
@@ -29,9 +27,9 @@ const Home: React.FC = () => {
         <WhyXCamp />
         <DiscoverOurCourses />
         <Faculty />
-        <WeSupport />
+        {/* <WeSupport /> */}
         <PublicCalendar />
-        <StudentProjects />
+        {/* <StudentProjects /> */}
         <Community />
         <Reviews reviewsData={reviewsData} />
       </Content>
