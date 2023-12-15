@@ -52,7 +52,7 @@
     "typescript": "5.0.4",
     "unified": "^10.1.2",
     "x-star-editor": "^0.1.2",
-    "x-star-utils": "^0.0.5"
+    "x-star-utils": "^0.0.10"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
