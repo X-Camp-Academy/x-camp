@@ -84,8 +84,8 @@ dependencies:
     specifier: ^0.1.2
     version: 0.1.2(react-dom@18.2.0)(react@18.2.0)
   x-star-utils:
-    specifier: ^0.0.5
-    version: 0.0.5(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.0.10
+    version: 0.0.10(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@svgr/webpack':
@@ -114,7 +114,7 @@ devDependencies:
     version: 14.0.1
   postcss-pxtorem:
     specifier: ^6.0.0
-    version: 6.0.0(postcss@8.4.31)
+    version: 6.0.0(postcss@8.4.32)
   pre-commit:
     specifier: ^1.2.2
     version: 1.2.2
@@ -129,7 +129,7 @@ devDependencies:
     version: 15.11.0(typescript@5.0.4)
   stylelint-config-standard-scss:
     specifier: ^11.0.0
-    version: 11.1.0(postcss@8.4.31)(stylelint@15.11.0)
+    version: 11.1.0(postcss@8.4.32)(stylelint@15.11.0)
   stylelint-order:
     specifier: ^6.0.3
     version: 6.0.3(stylelint@15.11.0)
@@ -5352,12 +5352,12 @@ packages:
     resolution: {integrity: sha512-3sOlxmbKcSHMjlUXQZKQ06jOswE7oVkXPxmZdoB1r5l0q6gTFTQSHxNxOrCccElbW7dxNytifNEo8qidX2Vsig==}
     dev: true
 
-  /postcss-pxtorem@6.0.0(postcss@8.4.31):
+  /postcss-pxtorem@6.0.0(postcss@8.4.32):
     resolution: {integrity: sha512-ZRXrD7MLLjLk2RNGV6UA4f5Y7gy+a/j1EqjAfp9NdcNYVjUMvg5HTYduTjSkKBkRkfqbg/iKrjMO70V4g1LZeg==}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.32
     dev: true
 
   /postcss-resolve-nested-selector@0.1.1:
@@ -5373,13 +5373,13 @@ packages:
       postcss: 8.4.31
     dev: true
 
-  /postcss-scss@4.0.9(postcss@8.4.31):
+  /postcss-scss@4.0.9(postcss@8.4.32):
     resolution: {integrity: sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.4.29
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.32
     dev: true
 
   /postcss-selector-parser@6.0.13:
@@ -5409,6 +5409,15 @@ packages:
       nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.0.2
+
+  /postcss@8.4.32:
+    resolution: {integrity: sha512-D/kj5JNu6oo2EIy+XL/26JEDTlIbB8hw85G8StOE6L74RQAVVP5rej6wxCNqyMbR4RkPfqvezVbPw81Ngd6Kcw==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.7
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: true
 
   /pre-commit@1.2.2:
     resolution: {integrity: sha512-qokTiqxD6GjODy5ETAIgzsRgnBWWQHQH2ghy86PU7mIn/wuWeTwF3otyNQZxWBwVn8XNr8Tdzj/QfUXpH+gRZA==}
@@ -6762,7 +6771,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /stylelint-config-recommended-scss@13.1.0(postcss@8.4.31)(stylelint@15.11.0):
+  /stylelint-config-recommended-scss@13.1.0(postcss@8.4.32)(stylelint@15.11.0):
     resolution: {integrity: sha512-8L5nDfd+YH6AOoBGKmhH8pLWF1dpfY816JtGMePcBqqSsLU+Ysawx44fQSlMOJ2xTfI9yTGpup5JU77c17w1Ww==}
     peerDependencies:
       postcss: ^8.3.3
@@ -6771,8 +6780,8 @@ packages:
       postcss:
         optional: true
     dependencies:
-      postcss: 8.4.31
-      postcss-scss: 4.0.9(postcss@8.4.31)
+      postcss: 8.4.32
+      postcss-scss: 4.0.9(postcss@8.4.32)
       stylelint: 15.11.0(typescript@5.0.4)
       stylelint-config-recommended: 13.0.0(stylelint@15.11.0)
       stylelint-scss: 5.3.1(stylelint@15.11.0)
@@ -6787,7 +6796,7 @@ packages:
       stylelint: 15.11.0(typescript@5.0.4)
     dev: true
 
-  /stylelint-config-standard-scss@11.1.0(postcss@8.4.31)(stylelint@15.11.0):
+  /stylelint-config-standard-scss@11.1.0(postcss@8.4.32)(stylelint@15.11.0):
     resolution: {integrity: sha512-5gnBgeNTgRVdchMwiFQPuBOtj9QefYtfXiddrOMJA2pI22zxt6ddI2s+e5Oh7/6QYl7QLJujGnaUR5YyGq72ow==}
     peerDependencies:
       postcss: ^8.3.3
@@ -6796,9 +6805,9 @@ packages:
       postcss:
         optional: true
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.32
       stylelint: 15.11.0(typescript@5.0.4)
-      stylelint-config-recommended-scss: 13.1.0(postcss@8.4.31)(stylelint@15.11.0)
+      stylelint-config-recommended-scss: 13.1.0(postcss@8.4.32)(stylelint@15.11.0)
       stylelint-config-standard: 34.0.0(stylelint@15.11.0)
     dev: true
 
@@ -7402,8 +7411,8 @@ packages:
       - supports-color
     dev: false
 
-  /x-star-utils@0.0.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-KJVBzRb8GXYZ7CD61HsqaXIDHCDDBA0Mb1CDFO7NFXrAeHlGhernZICTGZh9IGY1nwHQGr5iLKefyvWzt9Kc4A==}
+  /x-star-utils@0.0.10(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ABnkU/VjayuY+YX6N82BdKRwizAA8aJJrbuaZ598z0PRPPOsYf+Ms5YBfoaCrmFhdpZ4anQOUdtQh9FmOKqUDg==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'

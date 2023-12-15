@@ -1,7 +1,7 @@
 'use client';
 import BrowserCompatibility from '@/components/common/browser-compatibility';
 import { ConfigProvider } from 'antd';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { isBrowserCompatibility } from 'x-star-utils';
 
 interface Props {
@@ -9,15 +9,12 @@ interface Props {
 }
 
 const WithAntdConfig = ({ children }: Props) => {
-  const browserVersion = {
-    ie: '9999.0',
-    firefox: '80.0',
-    chrome: '88.0',
-    crios: '88.0',
-    fxios: '80.0',
-    opera: '80.0',
-    safari: '12.0',
-  };
+  useEffect(() => {
+    if (process.browser) {
+      const eruda = require('eruda');
+      eruda.init();
+    }
+  }, []);
   return (
     <ConfigProvider
       theme={{
@@ -26,7 +23,7 @@ const WithAntdConfig = ({ children }: Props) => {
         }
       }}
     >
-      {isBrowserCompatibility(browserVersion) ? children : <BrowserCompatibility />}
+      {isBrowserCompatibility({ safari: '12.1' }) ? children : <BrowserCompatibility />}
     </ConfigProvider>
   );
 };
