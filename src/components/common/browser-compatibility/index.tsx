@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import { useMobile } from '@/utils';
 import { Image, Space } from 'antd';
 
-const BrowserCompatibilityPage = () => {
+const BrowserCompatibility = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const cards = [
@@ -65,4 +65,4 @@ const BrowserCompatibilityPage = () => {
   );
 };
 
-export default BrowserCompatibilityPage;
+export default BrowserCompatibility;

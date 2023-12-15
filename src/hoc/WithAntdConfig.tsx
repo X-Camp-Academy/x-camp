@@ -1,5 +1,5 @@
 'use client';
-import BrowserCompatibilityPage from '@/components/common/browser-compatibility';
+import BrowserCompatibility from '@/components/common/browser-compatibility';
 import { ConfigProvider } from 'antd';
 import { ReactNode } from 'react';
 import { isBrowserCompatibility } from 'x-star-utils';
@@ -17,7 +17,7 @@ const WithAntdConfig = ({ children }: Props) => {
         }
       }}
     >
-      {isBrowserCompatibility() ? children : <BrowserCompatibilityPage />}
+      {isBrowserCompatibility() ? children : <BrowserCompatibility />}
     </ConfigProvider>
   );
 };
