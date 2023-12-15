@@ -17,7 +17,7 @@ const WithAntdConfig = ({ children }: Props) => {
         }
       }}
     >
-      {isBrowserCompatibility() ? children : <BrowserCompatibility />}
+      {isBrowserCompatibility({ safari: '12.1' }) ? children : <BrowserCompatibility />}
     </ConfigProvider>
   );
 };
