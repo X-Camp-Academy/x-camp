@@ -9,6 +9,15 @@ interface Props {
 }
 
 const WithAntdConfig = ({ children }: Props) => {
+  const browserVersion = {
+    ie: '9999.0',
+    firefox: '80.0',
+    chrome: '88.0',
+    crios: '88.0',
+    fxios: '80.0',
+    opera: '80.0',
+    safari: '12.0',
+  };
   return (
     <ConfigProvider
       theme={{
@@ -17,7 +26,7 @@ const WithAntdConfig = ({ children }: Props) => {
         }
       }}
     >
-      {isBrowserCompatibility() ? children : <BrowserCompatibility />}
+      {isBrowserCompatibility(browserVersion) ? children : <BrowserCompatibility />}
     </ConfigProvider>
   );
 };
