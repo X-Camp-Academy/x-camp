@@ -29,6 +29,7 @@
     @include margin;
 
     @media (max-width: 768px) {
+      @include margin(0);
       @include mobile-text;
       padding: 0;
       margin-bottom: 0;
