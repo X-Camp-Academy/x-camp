@@ -9,9 +9,9 @@ import Community from './community';
 import DiscoverOurCourses from './discover-our-courses';
 import styles from './index.module.scss';
 import PublicCalendar from './public-calendar';
-import StudentProjects from './student-projects';
-import WeSupport from './we-support';
 import WhyXCamp from './why-xcamp';
+import WeSupport from './we-support';
+import StudentProjects from './student-projects';
 
 const { Content } = Layout;
 

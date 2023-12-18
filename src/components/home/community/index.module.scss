@@ -64,7 +64,7 @@
 
     .paragraph {
       @include text(18px, 34px);
-      @include margin;
+      @include padding;
 
       font-weight: 500;
 
@@ -75,7 +75,7 @@
       @media (max-width: 768px) {
         margin-top: 8px;
 
-        @include margin(0);
+        @include padding(0);
         @include mobile-text;
       }
     }

@@ -91,7 +91,7 @@
           line-height: 48px;
           font-weight: 800;
           color: $text-color;
-          @media (width <=1400px) and (min-width: 992px) {
+          @media (max-width: 1400px) and (min-width: 992px) {
             text-wrap: nowrap;
           }
 

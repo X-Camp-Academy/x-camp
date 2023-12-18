@@ -17,7 +17,13 @@ interface USACOMedalProps {
   rowStyle?: React.CSSProperties;
 }
 
-const USACOMedal: React.FC<USACOMedalProps> = ({ style, showLogo = true, showTitle = true, spacePaddingTop = 25, rowStyle }) => {
+const USACOMedal: React.FC<USACOMedalProps> = ({
+  style,
+  showLogo = true,
+  showTitle = true,
+  spacePaddingTop = 25,
+  rowStyle
+}) => {
   const router = useRouter();
   const { format: t } = useLang();
   const isMobile = useMobile();
