@@ -52,7 +52,7 @@
   align-items: $alignItems;
 }
 
-@mixin margin($width: 160px) {
+@mixin padding($width: 160px) {
   padding-right: $width;
   padding-left: $width;
 }

@@ -68,7 +68,7 @@
 
   .paragraph {
     @extend .paragraphText;
-    @include margin;
+    @include padding;
 
     margin-bottom: 50px;
     text-align: center;
@@ -78,7 +78,7 @@
       margin-bottom: 16px;
       padding: 0;
 
-      @include margin(0);
+      @include padding(0);
       @include mobile-text;
     }
   }
@@ -91,7 +91,7 @@
       height: 340px;
       border: none;
 
-      @media (max-width: 1399px) {
+      @media (max-width: 1400px) {
         width: 543px;
         height: 306px;
       }
@@ -107,7 +107,7 @@
       height: 172px;
       border: none;
 
-      @media (max-width: 1399px) {
+      @media (max-width: 1400px) {
         width: 260px;
         height: 146px;
       }

@@ -13,7 +13,6 @@ import DropdownUserMenu from '../dropdown-user-menu';
 import { removeDropdown, useMenuItems } from './define';
 import styles from './index.module.scss';
 import XStarMenu from './x-star-menu';
-import ToggleLanguage from '../toggle-language';
 
 const { Header } = Layout;
 
@@ -115,7 +114,7 @@ const Nav: React.FC = () => {
                     {t('Nav.Login')}
                   </Button>
                 )}
-                <ToggleLanguage />
+                {/* <ToggleLanguage /> */}
               </>
             ) : (
               <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
@@ -130,7 +129,7 @@ const Nav: React.FC = () => {
             <div className={styles.mobileIntl}>
               {/* ! 下一版更新 */}
               {/* <SelectPage /> */}
-              <ToggleLanguage className={styles.toggleMargin} />
+              {/* <ToggleLanguage className={styles.toggleMargin} /> */}
             </div>
             <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
           </Space>
