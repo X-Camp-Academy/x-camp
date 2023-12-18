@@ -28,10 +28,10 @@
     text-align: center;
     color: #172142;
 
-    @include margin;
+    @include padding;
 
     @media (max-width: 768px) {
-      @include margin(0);
+      @include padding(0);
       @include mobile-text;
     }
   }
