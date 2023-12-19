@@ -8,12 +8,14 @@ import React, { CSSProperties, useRef, useState } from 'react';
 import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
 import UsacoMedal from '@/components/common/usaco-medal';
+import { apiConfig } from '@/config';
 
 const { Text } = Typography;
+const { assessment } = apiConfig;
 
 interface CarouselItemsProps {
   title: string;
-  titleSubImg?: string;
+  titleBar?: boolean;
   desc: string[];
   banner: string;
   mbBanner: string;
@@ -37,31 +39,32 @@ const CarouselContent: React.FC = () => {
   };
 
   const carouselItems: CarouselItemsProps[] = [
-    // {
-    //   title: t('Home.Banner1.Title1'),
-    //   titleConfig: [
-    //     {
-    //       text: t('Home.Banner1.Title1'),
-    //       color: '#FFF'
-    //     }
-    //   ],
-    //   desc: [t('Home.Banner1.Desc1'), t('Home.Banner1.Desc2')],
-    //   descStyle: {
-    //     color: '#FFF'
-    //   },
-    //   onClick: () => {
-    //     window.open('https://bit.ly/xcfte-p');
-    //   },
-    //   date: [t('Home.Banner1.Date1'), t('Home.Banner1.Date2')],
-    //   banner: '/image/home/banner-pc-2.png',
-    //   mbBanner: '/image/home/banner-mb-2.png',
-    //   buttonText: t('ReserveNow'),
-    //   buttonStyle: {
-    //     backgroundColor: '#FFF',
-    //     color: '#172A88'
-    //   },
-    //   titleSubImg: '/image/home/price.png'
-    // },
+    {
+      title: 'FREE Placement Test, Open to ALL！',
+      titleConfig: [
+        {
+          text: 'FREE Placement Test, Open to ALL！',
+          color: '#EB7411'
+        }
+      ],
+      desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
+      descStyle: {
+        color: '#EB7411',
+        fontSize: 16
+      },
+      onClick: () => {
+        window.open(assessment);
+      },
+      date: [''],
+      banner: '/image/home/banner-pc-2.png',
+      mbBanner: '/image/home/banner-mb-2.png',
+      buttonText: 'Test Now',
+      buttonStyle: {
+        backgroundColor: '#EB7411',
+        color: '#FFF'
+      },
+      titleBar: true,
+    },
     {
       title: t('Home.Banner2.Title1'),
       titleConfig: [
@@ -136,13 +139,16 @@ const CarouselContent: React.FC = () => {
                   <Space direction="vertical" className={styles.space} size={20}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                      {item.titleSubImg && <img src={item.titleSubImg} className={styles.img} alt="price" />}
+                      {item?.titleBar && <div className={styles.titleBar}><span className={styles.left} /><span className={styles.right} /></div>}
                     </div>
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
-                        <Text className={styles.description} key={desc} style={item?.descStyle}>
-                          {desc}
-                        </Text>
+                        <div key={desc} className={styles.desc}>
+                          {item?.titleBar && <span className={styles.dot} />}
+                          <Text className={styles.description} style={item?.descStyle}>
+                            {desc}
+                          </Text>
+                        </div>
                       ))}
                     </Space>
                     <button className={styles.button} style={item?.buttonStyle} onClick={item?.onClick}>
