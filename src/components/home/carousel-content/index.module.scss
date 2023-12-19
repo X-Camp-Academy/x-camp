@@ -83,8 +83,6 @@
       }
 
       .titleWithImg {
-        @include flex;
-
         .title {
           margin: 0;
           font-size: 36px;
@@ -102,25 +100,43 @@
           }
         }
 
-        .img {
-          @media (max-width: 992px) {
-            width: 160px;
-            height: 80px;
-          }
-
+        .titleBar {
+          display: flex;
+          width: 280px;
+          height: 4px;
+          margin-top: 16px;
           @media (max-width: 768px) {
-            width: 80px;
-            height: 40px;
+            display: none;
+          }
+          .left {
+            flex: 1;
+            height: 100%;
+            background-color: #eb7411;
+          }
+          .right {
+            flex: 2;
+            height: 100%;
+            background-color: #ffad11;
           }
         }
       }
 
+      .desc {
+        display: flex;
+        align-items: center;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        background: #eb7411;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
       .description {
         @include text(21px, 32px);
-
         margin: 0;
         font-weight: 600;
-
         @media (max-width: 768px) {
           @include text(14px, 18px);
         }
