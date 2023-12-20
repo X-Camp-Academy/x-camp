@@ -1,4 +1,4 @@
-FROM node:16.14.0-alpine3.14 AS builder
+FROM node:18.19.0-alpine3.18 AS builder
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -20,7 +20,7 @@ COPY . .
 RUN pnpm build
 RUN pnpm install --prod
 
-FROM node:16.14.0
+FROM node:18.19.0
 
 WORKDIR /app
 
