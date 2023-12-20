@@ -1,4 +1,4 @@
-image: node:16.14
+image: node:18.19
 
 stages:
   - install
@@ -61,4 +61,4 @@ build-image:
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
   only:
     - main
-    - tags
+    - dev
