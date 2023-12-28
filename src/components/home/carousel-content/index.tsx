@@ -40,6 +40,17 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: CarouselItemsProps[] = [
     {
+      title: '',
+      desc: [],
+      onClick: () => {
+        window.open(assessment);
+      },
+      date: [''],
+      banner: '/image/home/banner-pc-4.jpg',
+      mbBanner: '/image/home/banner-mb-4.png',
+      buttonText: '',
+    },
+    {
       title: 'FREE Placement Test, Open to ALL！',
       titleConfig: [
         {
@@ -151,9 +162,12 @@ const CarouselContent: React.FC = () => {
                         </div>
                       ))}
                     </Space>
-                    <button className={styles.button} style={item?.buttonStyle} onClick={item?.onClick}>
-                      {item?.buttonText}
-                    </button>
+                    {
+                      item?.buttonText &&
+                      <button className={styles.button} style={item?.buttonStyle} onClick={item?.onClick}>
+                        {item?.buttonText}
+                      </button>
+                    }
                     <Space direction="vertical">
                       {item?.date?.map((date) => (
                         <Text className={styles.date} key={date} style={item?.descStyle}>
