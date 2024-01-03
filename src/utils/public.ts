@@ -149,7 +149,13 @@ const isWinterTime = (date: Dayjs): boolean => {
   const currentYear = date.year();
   const currentDay = date.valueOf();
   // 判断是否是第二个星期日到第一个星期日之间
-  const novemberFirstSunday = dayjs().year(currentYear).month(10).startOf('month').add(1, 'week').day(0).valueOf();
+  const novemberFirstSunday = dayjs()
+    .year(currentYear - 1)
+    .month(10)
+    .startOf('month')
+    .add(1, 'week')
+    .day(0)
+    .valueOf();
   // console.log('novemberFirstSunday', novemberFirstSunday);
 
   const marchSecondSunday = dayjs()
@@ -181,10 +187,8 @@ export const formatTimezone = (original: string | undefined) => {
   const utcOffset = dayjs().utcOffset() / 60;
   const utcTime = dayjs.utc(original).utcOffset(utcOffset);
 
-  //特殊时区转化描述
   const convertTimeZone = () => {
     if (isSummerTime(dayjs())) {
-      // 夏令时
       switch (utcOffset) {
         case DaylightTimeZone.HawaiiDaylightTime:
           return 'HDT';
@@ -220,6 +224,7 @@ export const formatTimezone = (original: string | undefined) => {
       }
     }
   };
+
   return {
     timezone: convertTimeZone(),
     utcTime

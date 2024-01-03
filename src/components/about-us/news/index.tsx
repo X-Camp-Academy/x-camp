@@ -43,7 +43,7 @@ const NewsPage = () => {
             $eq: NewEventCategory.News
           },
           startDateTime: {
-            $gte: String(dayjs(year).valueOf()),
+            $gte: String(dayjs(String(+year - 1)).valueOf()),
             $lte: String(dayjs(String(+year + 1)).valueOf())
           }
         },
