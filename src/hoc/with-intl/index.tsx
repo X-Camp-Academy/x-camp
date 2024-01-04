@@ -63,8 +63,12 @@ interface WithIntlIProps {
 }
 
 const WithIntl: React.FC<WithIntlIProps> = ({ children }) => {
-  const [lang, setLang] = useState<LangType>((cookie.load('lang') || window.navigator.language.slice(0, 2)) === LANG_ZH_CN ? LANG_ZH_CN : LANG_EN_US);
+  const [lang, setLang] = useState<LangType>(cookie.load('lang') || LANG_ZH_CN);
 
+  useEffect(() => {
+    const browserLang = window.navigator.language.slice(0, 2) === LANG_ZH_CN ? LANG_ZH_CN : LANG_EN_US;
+    setLang(browserLang);
+  }, []);
   useEffect(() => {
     dayjs.locale(lang === LANG_ZH_CN ? 'zh-cn' : 'en');
   }, [lang]);
