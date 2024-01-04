@@ -15,6 +15,7 @@ const Banner: React.FC = () => {
   const isMobile = useMobile();
   const { format: t } = useLang();
   const { setWeeklyOpenHouseVisible } = useModalVisible();
+
   return (
     <div className={styles.banner}>
       <div className={`${styles.content} container`}>
