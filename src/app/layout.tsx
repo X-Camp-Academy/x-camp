@@ -10,7 +10,8 @@ import WithAntdConfig from '@/hoc/WithAntdConfig';
 import Nav from '@/components/common/nav';
 import Footer from '@/components/common/footer';
 import BackTop from '@/components/common/back-top';
-import WithIntl from '@/hoc/with-intl';
+import dynamic from 'next/dynamic';
+const WithIntl = dynamic(() => import('@/hoc/with-intl'), { ssr: false });
 import FixedButtons from '@/components/common/fixed-buttons';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
