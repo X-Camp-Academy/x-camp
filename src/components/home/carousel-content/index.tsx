@@ -76,26 +76,26 @@ const CarouselContent: React.FC = () => {
       },
       titleBar: true,
     },
-    {
-      title: t('Home.Banner2.Title1'),
-      titleConfig: [
-        {
-          text: t('Home.Banner2.Title1'),
-          color: '#FFAD11'
-        }
-      ],
-      desc: isMobile ? [t('Home.Banner2.mbDesc1'), t('Home.Banner2.mbDesc2')] : [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2')],
-      descStyle: {
-        color: '#FFF'
-      },
-      onClick: () => {
-        window.open('https://www.eventbrite.com/e/202324-usa-computing-olympiad-usaco-public-mock-test-tickets-744548052267');
-      },
-      date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
-      banner: '/image/home/banner-pc-1.png',
-      mbBanner: '/image/home/banner-mb-1.png',
-      buttonText: t('ReserveNow')
-    },
+    // {
+    //   title: t('Home.Banner2.Title1'),
+    //   titleConfig: [
+    //     {
+    //       text: t('Home.Banner2.Title1'),
+    //       color: '#FFAD11'
+    //     }
+    //   ],
+    //   desc: isMobile ? [t('Home.Banner2.mbDesc1'), t('Home.Banner2.mbDesc2')] : [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2')],
+    //   descStyle: {
+    //     color: '#FFF'
+    //   },
+    //   onClick: () => {
+    //     window.open('https://www.eventbrite.com/e/202324-usa-computing-olympiad-usaco-public-mock-test-tickets-744548052267');
+    //   },
+    //   date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
+    //   banner: '/image/home/banner-pc-1.png',
+    //   mbBanner: '/image/home/banner-mb-1.png',
+    //   buttonText: t('ReserveNow')
+    // },
     {
       title: t('Home.Banner3.title'),
       desc: [t('Home.Banner3.desc')],
