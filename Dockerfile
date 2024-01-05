@@ -20,7 +20,7 @@ COPY . .
 RUN pnpm build
 RUN pnpm install --prod
 
-FROM node:18.19.0
+FROM node:18.19.0-alpine3.18 AS runner
 
 WORKDIR /app
 
