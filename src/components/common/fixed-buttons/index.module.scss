@@ -178,6 +178,16 @@
 
 .message {
   :global(.ant-message-notice-content) {
-    padding: 10px 15px !important;
+    padding: 16px 20px !important;
+  }
+
+  :global(.ant-message-notice-content) span:nth-child(1) {
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  :global(.ant-message-notice-content) span:nth-child(2) {
+    font-size: 24px;
   }
 }
