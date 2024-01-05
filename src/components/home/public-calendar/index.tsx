@@ -153,12 +153,14 @@ const PublicCalendar: React.FC = () => {
                             tooltip: getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)
                           }}
                           className={styles.titleParagraph}
+                          onClick={() => window.open(item?.attributes?.link ?? '/')}
                         >
                           {getTransResult(lang, item.attributes.titleZh, item.attributes.titleEn)}
                         </Title>
                         {!isMobile && (
                           <Paragraph
                             className={styles.titleParagraph}
+                            style={{ cursor: 'auto' }}
                             ellipsis={{
                               rows: 1,
                               tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)

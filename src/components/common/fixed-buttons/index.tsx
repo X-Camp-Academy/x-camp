@@ -29,12 +29,13 @@ const FixedButtons: React.FC = () => {
   const onFinish = async (values: openClassEmailRequest) => {
     await sendMailToUser(values);
     message.config({
-      top: 100
+      top: 160
     });
     message.success({
       key: 'sendEmailSuccessfully',
       content: t('SendEmailSuccess'),
-      className: styles.message
+      className: styles.message,
+      duration: 10
     });
     setFreeConsultationVisible(false);
   };

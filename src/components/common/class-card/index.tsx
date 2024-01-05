@@ -29,7 +29,7 @@ const ClassCard = ({ index, title, href, list, time, bilingual }: ClassCardProps
           }}
         >
           <Title className={styles.cardTitle}>{title}</Title>
-          <Paragraph ellipsis={{ rows: 4 }}>
+          <Paragraph ellipsis={{ rows: 3 }}>
             {list?.map((v) => (
               <div key={v} className={styles.list}>
                 {v}
