@@ -123,8 +123,6 @@ const PublicCalendar: React.FC = () => {
     }
   }, [newEventData]);
 
-  console.log(sortData);
-
   return (
     <div className={`${styles.publicCalendar} container`}>
       <Title className={styles.title}>
