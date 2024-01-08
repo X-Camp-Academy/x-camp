@@ -175,8 +175,13 @@ const Courses: React.FC = () => {
           <div className={styles.title}>{segmentedValue}</div>
           {coursesData?.map((courses, i) => {
             return (
-              <div key={courses?.courseLevelType} id={'#classify' + i}>
-                <Collapse defaultActiveKey={courses?.courseLevelType} ghost style={{ marginBottom: 30 }} expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}>
+              <div key={courses?.courseLevelType} id={'#classify' + i} className={styles.collapseBox}>
+                <Collapse
+                  defaultActiveKey={courses?.courseLevelType}
+                  ghost
+                  style={{ marginBottom: 30 }}
+                  expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+                >
                   <Panel
                     key={courses?.courseLevelType}
                     header={
