@@ -23,8 +23,7 @@ const ReferralProgramWork: React.FC = () => {
               renderItem={(item, index) => {
                 return (
                   <List.Item className={styles.description}>
-                    {index !== listData.length - 1 && <span>{index + 1}. </span>}
-                    {item}
+                    {index !== listData.length - 1 && <span>{index + 1}. {item}</span>}
                   </List.Item>
                 );
               }}

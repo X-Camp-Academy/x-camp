@@ -64,7 +64,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
 
       <div className={styles.right}>
         <div className={styles.title}>{t('One-TimePayment')}</div>
-        <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : isBilingual ? `￥${formatFinance(tuitionRMB)}` : `$${formatFinance(tuitionUSD)}`}</div>
+        <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</div>
         <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
           {t('SignUpNow')}
         </Button>
