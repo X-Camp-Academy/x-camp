@@ -3,7 +3,7 @@ import { FacultyLevelCategory, GetFaculty } from '@/apis/strapi-client/define';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult, scrollIntoView } from '@/utils/public';
+import { getTransResult } from '@/utils/public';
 import { Avatar, Card, Col, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React, { useEffect, useState } from 'react';
@@ -25,17 +25,23 @@ const FacultyCoaches: React.FC<{
   const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
 
   useEffect(() => {
-    if (hash) {
-      scrollIntoView(hash.slice(1));
+    const element = document.getElementById(hash);
+    if (element) {
+      const top = isMobile ? element?.offsetTop + 1000 : element?.offsetTop + 1000;
+      window.scrollTo({
+        top,
+        behavior: 'smooth',
+      });
     }
   }, [hash]);
+
 
   useEffect(() => {
     const filteredData = sortData?.filter((item) => item?.attributes?.level === segmented);
     setFacultyData(filteredData);
   }, [segmented, sortData]);
   return (
-    <div className={`${styles.facultyCoaches} container`} id="faculty">
+    <div className={`${styles.facultyCoaches} container`} id="#faculty">
       <Space direction="vertical" size={isMobile ? 24 : 48}>
         <Space direction="vertical">
           <Title className={styles.title}>

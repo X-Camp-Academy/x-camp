@@ -40,6 +40,20 @@ const WhyXCamp: React.FC = () => {
       ref: useRef<HTMLDivElement>(null)
     }
   ];
+
+  const onClick = (url: string) => {
+    if (url === '/#community') {
+      const element = document.getElementById('#community');
+      if (element) {
+        window.scrollTo({
+          top: element?.offsetTop,
+          behavior: 'smooth',
+        });
+      }
+    } else {
+      window.location.replace(url);
+    }
+  };
   return (
     <div className={styles.aboutXCampContainer}>
       <div className={`${styles.aboutXCamp} container`}>
@@ -61,29 +75,15 @@ const WhyXCamp: React.FC = () => {
                   onMouseEnter={() => addAnimate(item?.ref)}
                   onMouseLeave={() => removeAnimate(item?.ref)}
                 >
-                  {item?.url ? (
-                    <a href={item?.url}>
-                      <Space direction="vertical">
-                        <Image src={item?.icon} alt="icon" preview={false} className={styles.cardIcon} />
-                        <Paragraph ellipsis={{ rows: 2 }} className={styles.cardTitle}>
-                          {item?.title}
-                        </Paragraph>
-                        <Paragraph ellipsis={{ rows: 3, tooltip: item?.desc }} className={styles.cardParagraph}>
-                          {item?.desc}
-                        </Paragraph>
-                      </Space>
-                    </a>
-                  ) : (
-                    <Space direction="vertical">
-                      <Image src={item?.icon} alt="icon" preview={false} className={styles.cardIcon} />
-                      <Paragraph ellipsis={{ rows: 2 }} className={styles.cardTitle}>
-                        {item?.title}
-                      </Paragraph>
-                      <Paragraph ellipsis={{ rows: 3, tooltip: item?.desc }} className={styles.cardParagraph}>
-                        {item?.desc}
-                      </Paragraph>
-                    </Space>
-                  )}
+                  <Space direction="vertical" onClick={item?.url ? () => onClick(item?.url) : () => { }}>
+                    <Image src={item?.icon} alt="icon" preview={false} className={styles.cardIcon} />
+                    <Paragraph ellipsis={{ rows: 2 }} className={styles.cardTitle}>
+                      {item?.title}
+                    </Paragraph>
+                    <Paragraph ellipsis={{ rows: 3, tooltip: item?.desc }} className={styles.cardParagraph}>
+                      {item?.desc}
+                    </Paragraph>
+                  </Space>
                 </Card>
               </Col>
             );

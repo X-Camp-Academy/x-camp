@@ -79,8 +79,6 @@ export const filterByAttribution = <T extends { attributes: any }>(data: T[], at
 
 export const scrollIntoView = (id: string) => {
   const dom = document.getElementById(id);
-  console.log(dom);
-  
   dom?.scrollIntoView({
     behavior: 'smooth',
     block: 'start'

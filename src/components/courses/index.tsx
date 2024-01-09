@@ -5,7 +5,7 @@ import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import Reviews from '@/components/common/reviews';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getLangResult, getTransResult, getWeeksDays, scrollIntoView } from '@/utils/public';
+import { getLangResult, getTransResult, getWeeksDays } from '@/utils/public';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Affix, Button, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
@@ -127,12 +127,14 @@ const Courses: React.FC = () => {
       const hashValue = segmentedHashMap.get(hash);
       setSegmentedValue(hashValue as CourseType);
     } else {
-      scrollIntoView(hash);
-      setTimeout(() => {
-        console.log(999);
-        
-        window.scrollBy(0, -96);
-      }, 500);
+      const element = document.getElementById(hash);
+      if (element) {
+        const top = isMobile ? element?.offsetTop - 176 : element?.offsetTop - 96;
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        });
+      }
     }
   }, [hash, coursesData]);
   return (
