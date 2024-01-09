@@ -5,18 +5,18 @@ import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import Reviews from '@/components/common/reviews';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getLangResult, getTransResult, getWeeksDays, scrollIntoView } from '@/utils/public';
+import { getLangResult, getTransResult, getWeeksDays } from '@/utils/public';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { Affix, Button, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import ClassCard from '../common/class-card';
-import SegmentedRadioGroup from '../common/segmented-radio-group';
 import Banner from './banner';
 import { CourseType } from './define';
 import styles from './index.module.scss';
 import { CourseOptionsProps, useCourseOptions } from './public';
+import SegmentedRadioGroup from '../common/segmented-radio-group';
 
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -127,7 +127,14 @@ const Courses: React.FC = () => {
       const hashValue = segmentedHashMap.get(hash);
       setSegmentedValue(hashValue as CourseType);
     } else {
-      scrollIntoView(hash);
+      const element = document.getElementById(hash);
+      if (element) {
+        const top = isMobile ? element?.offsetTop - 176 : element?.offsetTop - 96;
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        });
+      }
     }
   }, [hash, coursesData]);
   return (
@@ -149,8 +156,6 @@ const Courses: React.FC = () => {
             <SegmentedRadioGroup value={segmentedValue} setValue={onSegmentedChange} isRadioGroup={isMobile} options={courseTypeOptions as CourseOptionsProps<CourseType>[]} id="segmentedDom" />
           </Affix>
 
-          {!isMobile && <div className={styles.form} />}
-
           <Form
             layout="inline"
             form={form}
@@ -159,6 +164,9 @@ const Courses: React.FC = () => {
             onFinish={onFinish}
             style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
           >
+            <Form.Item style={isMobile ? { width: '100%' } : {}}>
+              <div className={styles.title}>{segmentedValue}</div>
+            </Form.Item>
             <Form.Item name="levelType" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
               <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('LevelType')} options={levelTypeOptions as CourseOptionsProps<LevelType>[]} allowClear />
             </Form.Item>
@@ -172,7 +180,6 @@ const Courses: React.FC = () => {
             </Form.Item>
           </Form>
 
-          <div className={styles.title}>{segmentedValue}</div>
           {coursesData?.map((courses, i) => {
             return (
               <div key={courses?.courseLevelType} id={'#classify' + i} className={styles.collapseBox}>

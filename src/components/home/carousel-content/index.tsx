@@ -154,7 +154,7 @@ const CarouselContent: React.FC = () => {
                     </div>
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
-                        <div key={desc} className={styles.desc}>
+                        <div key={desc} className={styles.descriptionBox}>
                           {item?.titleBar && <span className={styles.dot} />}
                           <Text className={styles.description} style={item?.descStyle}>
                             {desc}

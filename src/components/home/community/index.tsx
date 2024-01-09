@@ -4,9 +4,9 @@ import MaskCard from '@/components/common/mask-card';
 import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getTransResult, scrollIntoView } from '@/utils/public';
+import { getTransResult } from '@/utils/public';
 import { Carousel, Space, Typography } from 'antd';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -14,7 +14,6 @@ const { Title, Paragraph, Text } = Typography;
 const Community: React.FC = () => {
   const isMobile = useMobile();
   const { lang, format: t } = useLang();
-  const { hash } = window.location;
   const { data } = useGetCommunity();
   const community = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
   const generateMaskChildren = (title?: string, description?: string) => {
@@ -28,12 +27,8 @@ const Community: React.FC = () => {
     );
   };
 
-  useEffect(() => {
-    scrollIntoView(hash.slice(1));
-  }, [hash]);
-
   return (
-    <div className={styles.communityContainer} id="community">
+    <div className={styles.communityContainer} id="#community">
       <div className={`${styles.community} container`}>
         <div className={styles.info}>
           <TitleColor
