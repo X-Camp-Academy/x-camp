@@ -25,36 +25,27 @@
 
     .form {
       display: flex;
-      justify-content: end;
-      margin-top: 30px;
-      padding-right: 12px;
-      padding-left: 12px;
-
-      @media (max-width: 768px) {
-        margin-top: 32px;
-      }
+      justify-content: space-between;
+      margin-top: 48px;
+      margin-bottom: 32px;
     }
 
     .title {
-      margin-top: -48px;
-      margin-bottom: 56px;
-
+      margin-top: -8px;
       @include title('default');
-
       @media (max-width: 1200px) {
         margin-top: 20px;
         margin-bottom: 8px;
-
         @include title('mobile');
       }
     }
 
-    .collapseBox {
-      padding-top: 160px !important;
-      @media (max-width: 768px) {
-        padding-top: 240px !important;
-      }
-    }
+    // .collapseBox {
+    //   padding-top: 120px !important;
+    //   @media (max-width: 768px) {
+    //     padding-top: 240px !important;
+    //   }
+    // }
 
     .cardSpace {
       display: grid;

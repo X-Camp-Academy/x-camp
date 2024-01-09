@@ -121,24 +121,31 @@
         }
       }
 
-      .desc {
+      .descriptionBox {
         display: flex;
         align-items: center;
-      }
-      .dot {
-        width: 8px;
-        height: 8px;
-        background: #eb7411;
-        border-radius: 50%;
-        margin-right: 8px;
-      }
-
-      .description {
-        @include text(21px, 32px);
-        margin: 0;
-        font-weight: 600;
-        @media (max-width: 768px) {
-          @include text(14px, 18px);
+        .dot {
+          width: 8px;
+          height: 8px;
+          background: #eb7411;
+          border-radius: 50%;
+          margin-right: 32px;
+          flex: 1;
+          @media (max-width: 768px) {
+            @include text(14px, 18px);
+            flex: 1;
+            margin-right: 8px;
+          }
+        }
+        .description {
+          flex: 49;
+          @include text(24px, 32px);
+          margin: 0;
+          font-weight: 600;
+          @media (max-width: 768px) {
+            @include text(14px, 18px);
+            flex: 39;
+          }
         }
       }
 
