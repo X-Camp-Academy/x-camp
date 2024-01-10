@@ -1,6 +1,6 @@
 'use client';
 import { FaqCategory } from '@/apis/strapi-client/define';
-import { useGetCourses, useGetFaculty, useGetFaq } from '@/apis/strapi-client/strapi';
+import { useGetCourses, useGetFaq } from '@/apis/strapi-client/strapi';
 import Faqs from '@/components/common/faqs';
 import Reviews from '@/components/common/reviews';
 import UsacoMedal from '@/components/common/usaco-medal';
@@ -26,8 +26,6 @@ const CourseDetail: React.FC = () => {
     }
   });
 
-  const { data: facultyData } = useGetFaculty({});
-
   const { data: faqData } = useGetFaq({
     ready: true,
     category: FaqCategory.CoursesQA,
@@ -42,7 +40,7 @@ const CourseDetail: React.FC = () => {
         </CourseClassesContext.Provider>
 
         <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />
-        <FacultyCoaches data={facultyData} />
+        <FacultyCoaches />
         <Faqs title={t('CoursesFAQS')} data={faqData} />
         <Reviews reviewsData={coursesData?.data[0]?.attributes?.reviews?.data} />
       </Content>
