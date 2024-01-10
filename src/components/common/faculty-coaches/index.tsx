@@ -27,11 +27,13 @@ const FacultyCoaches: React.FC = () => {
   useEffect(() => {
     const element = document.getElementById(hash);
     if (element) {
-      const top = isMobile ? element?.offsetTop + 800 : element?.offsetTop + 1000;
-      window.scrollTo({
-        top,
-        behavior: 'smooth',
-      });
+      setTimeout(() => {
+        const top = isMobile ? element?.offsetTop : element?.offsetTop + 1000;
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        });
+      }, 1000);
     }
   }, [hash]);
 
