@@ -115,6 +115,17 @@ const Courses: React.FC = () => {
     setFilters(newFilters);
   };
 
+  const scrollToElement = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const top = isMobile ? element?.offsetTop - 176 : element?.offsetTop - 96;
+      window.scrollTo({
+        top,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   // set hash
   const segmentedHashMap = new Map([
     ['#weekly', CourseType.WeeklyClasses],
@@ -126,15 +137,11 @@ const Courses: React.FC = () => {
     if (segmentedHashMap.get(hash)) {
       const hashValue = segmentedHashMap.get(hash);
       setSegmentedValue(hashValue as CourseType);
-    } else {
-      const element = document.getElementById(hash);
-      if (element) {
-        const top = isMobile ? element?.offsetTop - 176 : element?.offsetTop - 96;
-        window.scrollTo({
-          top,
-          behavior: 'smooth',
-        });
+      if (segmentedHashMap.get(hash) === CourseType.JavaAPCSClasses) {
+        scrollToElement('#classify0');
       }
+    } else {
+      scrollToElement(hash);
     }
   }, [hash, coursesData]);
   return (

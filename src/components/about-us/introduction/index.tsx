@@ -1,5 +1,4 @@
 'use client';
-import { useGetFaculty } from '@/apis/strapi-client/strapi';
 import { Layout } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
@@ -13,7 +12,6 @@ import Partners from '@/components/common/partners';
 const { Content } = Layout;
 
 const Introduction: React.FC = () => {
-  const { data: facultyData } = useGetFaculty({});
   return (
     <Layout className={styles.introductionContainer}>
       <Content>
@@ -21,7 +19,7 @@ const Introduction: React.FC = () => {
         <AboutXCamp />
         <History />
         <XCampFounders />
-        <FacultyCoaches data={facultyData} />
+        <FacultyCoaches />
         <Partners />
       </Content>
     </Layout>

@@ -10,36 +10,39 @@ import React, { useEffect, useState } from 'react';
 import ColorfulCard from '../colorful-card';
 import SegmentedRadioGroup, { useEventFacultyOptions } from '../segmented-radio-group';
 import styles from './index.module.scss';
+import { useGetFaculty } from '@/apis/strapi-client/strapi';
 
 const { Title, Paragraph, Text } = Typography;
 
-const FacultyCoaches: React.FC<{
-  data: StrapiResponseDataItem<GetFaculty>[] | undefined;
-}> = ({ data }) => {
+const FacultyCoaches: React.FC = () => {
   const [segmented, setSegmented] = useState<SegmentedValue>(FacultyLevelCategory.Beginner);
+  const { data } = useGetFaculty({});
   const [facultyData, setFacultyData] = useState<StrapiResponseDataItem<GetFaculty>[]>();
   const { format: t, lang } = useLang();
   const { hash } = window.location;
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
-  const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
 
   useEffect(() => {
     const element = document.getElementById(hash);
     if (element) {
-      const top = isMobile ? element?.offsetTop + 1000 : element?.offsetTop + 1000;
-      window.scrollTo({
-        top,
-        behavior: 'smooth',
-      });
+      setTimeout(() => {
+        const top = isMobile ? element?.offsetTop : element?.offsetTop + 1000;
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        });
+      }, 1000);
     }
   }, [hash]);
 
-
   useEffect(() => {
+    const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
     const filteredData = sortData?.filter((item) => item?.attributes?.level === segmented);
+
     setFacultyData(filteredData);
-  }, [segmented, sortData]);
+  }, [segmented, data]);
   return (
     <div className={`${styles.facultyCoaches} container`} id="#faculty">
       <Space direction="vertical" size={isMobile ? 24 : 48}>
