@@ -93,7 +93,7 @@ const CourseBanner: React.FC = () => {
 
             <Space className={styles.description}>
               <div className={styles.left}>
-                <Descriptions column={1} layout={isMobile ? 'vertical' : 'horizontal'}>
+                <Descriptions column={1} layout="horizontal">
                   {DescriptionsItems?.map(
                     (item) =>
                       item?.value && (

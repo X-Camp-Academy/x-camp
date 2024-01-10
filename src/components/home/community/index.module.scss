@@ -80,6 +80,39 @@
       }
     }
 
+    .circle {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      @media (max-width: 768px) {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    .number {
+      font-size: 50px;
+      font-weight: 600;
+      color: #050260;
+      line-height: 60px;
+      text-shadow: 2px 2px 0px #eeca92;
+      @media (max-width: 768px) {
+        font-size: 36px;
+      }
+    }
+
+    .numberText {
+      font-size: 20px;
+      font-weight: 600;
+      color: #172142;
+      line-height: 22px;
+      text-shadow: 1px 1px 0px #d4ac6d;
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+
     .carouselContainer {
       margin-top: 56px;
 

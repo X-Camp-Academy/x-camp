@@ -41,7 +41,7 @@ declare const json: {
   "Charlie.paper": " 20 papers ",
   "Charlie.years": " 10 years. ",
   "ClassesTime": "Class Times",
-  "ClassMode": "Class Mode:",
+  "ClassMode": "Class Mode",
   "ClassroomLanguage": "Spoken Language(s)",
   "Co-Founder-Charlie": "Co-founder and CEO of X-Camp",
   "Co-Founder-Yuan": "Co-founder and President of X-Camp",
