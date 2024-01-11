@@ -12,6 +12,7 @@ import { SegmentedValue } from 'antd/es/segmented';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
+import Link from 'next/link';
 
 const { Title } = Typography;
 const Activities: React.FC = () => {
@@ -76,25 +77,27 @@ const Activities: React.FC = () => {
         <Row gutter={isMobile ? [32, 24] : [32, 32]}>
           {newEventData?.map((v, index) => (
             <Col key={v?.id} xs={24} sm={24} md={12} lg={8}>
-              <ColorfulCard border={'bottom'} animate={false} index={index}>
-                <div className={styles.card} onClick={() => router.push(`/article-detail/${v?.id}`)}>
-                  <div className={styles.imgContainer}>
-                    <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
-                  </div>
-                  <Space direction="vertical" size={isMobile ? 16 : 8} className={styles.cardContent}>
-                    <Title className={styles.title} ellipsis={{ rows: 1 }}>
-                      {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
-                    </Title>
-                    <div className={styles.description}>
-                      <div>
-                        <ClockCircleOutlined className={styles.icon} />
-                        {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
-                      </div>
-                      <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} href={`/article-detail/${v?.id}`} />
+              <Link href={`/article-detail/${v?.id}`}>
+                <ColorfulCard border={'bottom'} animate={false} index={index}>
+                  <div className={styles.card} onClick={() => router.push(`/article-detail/${v?.id}`)}>
+                    <div className={styles.imgContainer}>
+                      <img src={getTransResult(lang, v?.attributes?.imgZh?.data?.attributes?.url, v?.attributes?.imgEn?.data?.attributes?.url)} alt="" />
                     </div>
-                  </Space>
-                </div>
-              </ColorfulCard>
+                    <Space direction="vertical" size={isMobile ? 16 : 8} className={styles.cardContent}>
+                      <Title className={styles.title} ellipsis={{ rows: 1 }}>
+                        {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
+                      </Title>
+                      <div className={styles.description}>
+                        <div>
+                          <ClockCircleOutlined className={styles.icon} />
+                          {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
+                        </div>
+                        <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} href={`/article-detail/${v?.id}`} />
+                      </div>
+                    </Space>
+                  </div>
+                </ColorfulCard>
+              </Link>
             </Col>
           ))}
         </Row>
