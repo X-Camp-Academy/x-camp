@@ -49,7 +49,9 @@ const RecentActivities: React.FC = () => {
                     <Link href={`/article-detail/${item?.id}`}>
                       <ColorfulCard border={'bottom'} animate={false} index={index}>
                         <Space direction="vertical" className={styles.card}>
-                          <img alt="img" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
+                          <div className={styles.imgContainer}>
+                            <img alt="img" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
+                          </div>
                           <Title className={styles.title} ellipsis={{ rows: 1 }}>
                             {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
                           </Title>
