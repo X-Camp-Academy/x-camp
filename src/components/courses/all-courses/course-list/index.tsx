@@ -7,7 +7,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Pagination, Row, Select } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import { CourseOptionsProps, useCourseOptions } from '../../public';
-import CourseCard from './course-card';
+import CourseItem from './course-item';
 import styles from './index.module.scss';
 
 interface FiltersProps {
@@ -126,10 +126,10 @@ const ScheduleTable: React.FC = () => {
               className={styles.courseCardContainer}
               key={item?.id}
               onClick={() => {
-                window.location.href = `/courses/detail/${item?.id}`;
+                window.location.href = `/courses/course-detail/${item?.id}`;
               }}
             >
-              <CourseCard {...handleObject(item)} />
+              <CourseItem {...handleObject(item)} />
             </div>
           );
         })}
