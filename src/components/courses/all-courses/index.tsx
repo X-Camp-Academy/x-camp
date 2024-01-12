@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import Banner from '../banner';
 import styles from './index.module.scss';
-import ScheduleTable from './schedule-table';
+import CourseList from './course-list';
 
 const { Content } = Layout;
 
-const CourseCatalog: React.FC = () => {
+const AllCourses: React.FC = () => {
   const pathname = usePathname();
   const { data: reviewsData } = useGetReviews({
     ready: true,
@@ -21,11 +21,11 @@ const CourseCatalog: React.FC = () => {
     <Layout className={styles.courseCatalog}>
       <Content>
         <Banner />
-        <ScheduleTable />
+        <CourseList />
         <Reviews reviewsData={reviewsData} />
       </Content>
     </Layout>
   );
 };
 
-export default CourseCatalog;
+export default AllCourses;

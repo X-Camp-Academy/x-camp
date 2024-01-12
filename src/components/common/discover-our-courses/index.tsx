@@ -48,7 +48,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
       url: '/image/home/course-1.png',
       bgc: '#D8D8D8',
       maskBgc: 'rgb(216 216 216 / 40%)',
-      maskChildren: generateMaskChildren(t('Python.Title'), t('Python.Mask.Desc'), '/courses/#classify0')
+      maskChildren: generateMaskChildren(t('Python.Title'), t('Python.Mask.Desc'), '/courses/all-classes/#classify0')
     },
     {
       title: t('USACO.Knowledge.Title'),
@@ -56,7 +56,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
       url: '/image/home/course-2.png',
       bgc: '#FFAD11',
       maskBgc: 'rgb(255 173 17 / 40%)',
-      maskChildren: generateMaskChildren(t('USACO.Knowledge.Title'), t('USACO.Knowledge.Mask.Desc'), '/courses/#classify1')
+      maskChildren: generateMaskChildren(t('USACO.Knowledge.Title'), t('USACO.Knowledge.Mask.Desc'), '/courses/all-classes/#classify1')
     },
     {
       title: t('USACO.Grandmaster.Title'),
@@ -64,7 +64,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
       url: '/image/home/course-3.png',
       bgc: '#FFAD11',
       maskBgc: 'rgb(255 173 17 / 40%)',
-      maskChildren: generateMaskChildren(t('USACO.Grandmaster.Title'), t('USACO.Grandmaster.Mask.Desc'), '/courses/#classify4')
+      maskChildren: generateMaskChildren(t('USACO.Grandmaster.Title'), t('USACO.Grandmaster.Mask.Desc'), '/courses/all-classes/#classify4')
     },
     {
       title: 'Java & APCS',
@@ -72,7 +72,7 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
       url: '/image/home/course-4.png',
       bgc: '#D46B14',
       maskBgc: 'rgb(212 107 20 / 40%)',
-      maskChildren: generateMaskChildren('APCS', t('APCS.Mask.Desc'), '/courses/#apcs')
+      maskChildren: generateMaskChildren('APCS', t('APCS.Mask.Desc'), '/courses/all-classes/#apcs')
     }
   ];
   return (
