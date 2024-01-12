@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import { Button, Cascader, Form, Input, InputNumber, Layout, Select } from 'antd';
 import { useMobile } from '@/utils';
@@ -51,7 +51,7 @@ const levelOptions = [
     value: 'Platinum'
   },
 ];
-const testCases = [
+const testCasesData = [
   {
     name: 'problemA',
     label: 'Problem A'
@@ -260,11 +260,26 @@ const USACOReport: React.FC = () => {
   const isMobile = useMobile();
   const { lang } = useLang();
   const [form] = Form.useForm();
+  const [testCases, setTestCases] = useState(testCasesData);
   const displayRender = (labels: string[]) => labels[labels.length - 1];
+  const contest = Form.useWatch('contest', form);
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
 
+  useEffect(() => {
+    if (contest === '2024 March US Open') {
+      setTestCases(prevTestCases => [
+        ...prevTestCases,
+        {
+          name: 'problemD',
+          label: 'Problem D'
+        },
+      ]);
+    } else {
+      setTestCases(testCasesData);
+    }
+  }, [contest]);
   return (
     <Layout className={styles.usacoReportContainer}>
       <Content>
