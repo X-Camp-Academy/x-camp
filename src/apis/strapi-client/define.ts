@@ -43,7 +43,7 @@ export interface GetNewEvent extends strapiPublicFields {
   descriptionEn: string;
   tags: NewEventCategory;
   eventCategory?: EventCategory;
-  order?: number;
+  order: number;
   editor?: string;
   organizer?: string;
   geographicallyAddress?: string;
