@@ -22,7 +22,7 @@ const RecentActivities: React.FC = () => {
     pageSize: 25
   });
 
-  const RecentActivities = newEventData?.data?.filter((item) => {
+  const recentActivities = newEventData?.data?.filter((item) => {
     if (item?.attributes?.endDateTime) {
       return new Date(item?.attributes?.endDateTime).getTime() < new Date().getTime();
     } else {
@@ -30,9 +30,11 @@ const RecentActivities: React.FC = () => {
     }
   });
 
+  const sortRecentActivities = recentActivities?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
+
   return (
     <>
-      {RecentActivities && RecentActivities.length > 0 && (
+      {sortRecentActivities && sortRecentActivities.length > 0 && (
         <div className={styles.content}>
           <div className="container">
             <XCollapse
@@ -42,12 +44,14 @@ const RecentActivities: React.FC = () => {
               }}
             >
               <Row className={styles.cards} gutter={isMobile ? [32, 24] : [32, 32]}>
-                {RecentActivities?.slice(0, 3)?.map((item, index) => (
+                {sortRecentActivities?.slice(0, 3)?.map((item, index) => (
                   <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
                     <Link href={`/article-detail/${item?.id}`}>
                       <ColorfulCard border={'bottom'} animate={false} index={index}>
                         <Space direction="vertical" className={styles.card}>
-                          <img alt="img" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
+                          <div className={styles.imgContainer}>
+                            <img alt="img" src={getTransResult(lang, item.attributes?.imgZh?.data?.attributes?.url, item.attributes?.imgEn?.data?.attributes?.url)} />
+                          </div>
                           <Title className={styles.title} ellipsis={{ rows: 1 }}>
                             {getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}
                           </Title>
