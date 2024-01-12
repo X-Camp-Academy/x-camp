@@ -1,0 +1,36 @@
+@import '@/styles/variables';
+
+.usacoReportContainer {
+  position: relative;
+  top: 72px;
+  margin: 0 auto;
+  width: 100%;
+  .usacoReport {
+    padding: 80px 15px;
+    @media (max-width: 768px) {
+      padding: 32px 24px;
+    }
+    .title {
+      text-align: center;
+      @include title('bold');
+      @media (max-width: 768px) {
+        font-size: 32px;
+      }
+    }
+    .form {
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 48px;
+      .button {
+        @media (max-width: 768px) {
+          width: 100%;
+        }
+      }
+    }
+    :global(.ant-input-number) {
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+}
