@@ -137,9 +137,7 @@ const AllClasses: React.FC = () => {
     if (segmentedHashMap.get(hash)) {
       const hashValue = segmentedHashMap.get(hash);
       setSegmentedValue(hashValue as CourseType);
-      if (segmentedHashMap.get(hash) === CourseType.JavaAPCSClasses) {
-        scrollToElement('#classify0');
-      }
+      scrollToElement('#classify0');
     } else {
       scrollToElement(hash);
     }
