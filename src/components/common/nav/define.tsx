@@ -34,7 +34,7 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <a href="/courses/all-courses">{t('AllCourses')}</a>,
+          label: <Link href="/courses/all-courses">{t('AllCourses')}</Link>,
           key: 'all-courses'
         },
         {
@@ -96,7 +96,7 @@ export const useMenuItems = () => {
           key: 'education-forum'
         },
         {
-          label: <a href="/resources/usaco">USACO</a>,
+          label: <Link href="/resources/usaco">USACO</Link>,
           key: 'usaco'
         },
         {
