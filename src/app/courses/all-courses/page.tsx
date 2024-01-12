@@ -1,12 +1,12 @@
 import { PageTitle, generateMetadata } from '@/utils/metadata';
-import CourseCamps from '@/components/courses/camps';
+import AllCourses from '@/components/courses/all-courses';
 
 export const metadata = {
-  ...generateMetadata(PageTitle.CourseCamps)
+  ...generateMetadata(PageTitle.AllCourses)
 };
 
 const Page: React.FC = () => {
-  return <CourseCamps />;
+  return <AllCourses />;
 };
 
 export default Page;

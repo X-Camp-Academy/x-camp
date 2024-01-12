@@ -11,12 +11,12 @@ import { Affix, Button, Collapse, Form, Layout, RadioChangeEvent, Select, Space 
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import ClassCard from '../common/class-card';
-import Banner from './banner';
-import { CourseType } from './define';
+import ClassCard from './class-card';
+import Banner from '../banner';
+import { CourseType } from '../define';
 import styles from './index.module.scss';
-import { CourseOptionsProps, useCourseOptions } from './public';
-import SegmentedRadioGroup from '../common/segmented-radio-group';
+import { CourseOptionsProps, useCourseOptions } from '../public';
+import SegmentedRadioGroup from '../../common/segmented-radio-group';
 
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -32,7 +32,7 @@ interface FiltersProps {
   schoolQuarter?: { $eq: SchoolQuarter };
 }
 
-const Courses: React.FC = () => {
+const AllClasses: React.FC = () => {
   const { hash } = window.location;
   const pathname = usePathname();
   const [form] = Form.useForm();
@@ -216,7 +216,7 @@ const Courses: React.FC = () => {
                             title={`${course?.attributes?.courseCode}: ${getTransResult(lang, course?.attributes?.courseTitleZh, course?.attributes?.courseTitleEn)}`}
                             list={getLangResult(lang, course?.attributes?.courseShortDescriptionZh, course?.attributes?.courseShortDescriptionEn) as string[]}
                             time={`${course?.attributes?.lessonNum} ${getWeeksDays(course?.attributes?.frequency)}`}
-                            href={`/courses/${segmentedValue === CourseType.InPersonCamps ? 'camps' : 'detail'}/${course?.id}`}
+                            href={`/courses/${segmentedValue === CourseType.InPersonCamps ? 'camps-detail' : 'course-detail'}/${course?.id}`}
                             bilingual={course?.attributes?.isBilingual}
                           />
                         );
@@ -235,4 +235,4 @@ const Courses: React.FC = () => {
   );
 };
 
-export default Courses;
+export default AllClasses;
