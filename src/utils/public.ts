@@ -26,7 +26,7 @@ export const getTransResult = (lang: 'zh' | 'en', zhText: string | undefined, en
  * @param enText 英文数据
  * @returns string[]
  */
-export const getLangResult = <T>(lang: 'zh' | 'en', zhData?: string[], enData?: string[]) => {
+export const getLangResult = <T>(lang: 'zh' | 'en', zhData?: T, enData?: T) => {
   if (zhData === null && enData === null) {
     return [];
   } else {
