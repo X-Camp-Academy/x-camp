@@ -331,6 +331,7 @@ export const useGetCourses = ({
           pagination: pagination ?? {}
         }
       ],
+      debounceWait: 300,
       onError: handleError
     }
   );

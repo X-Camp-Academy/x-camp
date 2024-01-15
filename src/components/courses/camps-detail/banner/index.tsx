@@ -8,11 +8,14 @@ const Banner: React.FC = () => {
     <>
       {t('Courses.Camps.Banner.Desc1')}
       {t('Courses.Camps.Banner.Desc2')}
-      {t('Courses.Camps.Banner.Desc3')}
     </>
   );
 
-  return <CommonBanner image={'/image/courses/camps-banner.png'} title={t('In-personCamps')} paragraph={paragraph} />;
+  return <CommonBanner
+    image={'/image/courses/camps-banner.png'}
+    title={t('In-personCamps')}
+    paragraph={paragraph}
+  />;
 };
 
 export default Banner;
