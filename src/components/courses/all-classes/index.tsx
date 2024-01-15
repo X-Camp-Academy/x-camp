@@ -7,7 +7,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getLangResult, getTransResult, getWeeksDays } from '@/utils/public';
 import { CaretRightOutlined } from '@ant-design/icons';
-import { Affix, Button, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from 'antd';
+import { Affix, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -142,6 +142,10 @@ const AllClasses: React.FC = () => {
       scrollToElement(hash);
     }
   }, [hash, coursesData]);
+
+  const onValuesChange = () => {
+    form.submit();
+  };
   return (
     <Layout className={styles.courses}>
       <Content>
@@ -158,7 +162,13 @@ const AllClasses: React.FC = () => {
               }
             }}
           >
-            <SegmentedRadioGroup value={segmentedValue} setValue={onSegmentedChange} isRadioGroup={isMobile} options={courseTypeOptions as CourseOptionsProps<CourseType>[]} id="segmentedDom" />
+            <SegmentedRadioGroup
+              value={segmentedValue}
+              setValue={onSegmentedChange}
+              isRadioGroup={isMobile}
+              options={courseTypeOptions as CourseOptionsProps<CourseType>[]}
+              id="segmentedDom"
+            />
           </Affix>
 
           <Form
@@ -168,20 +178,26 @@ const AllClasses: React.FC = () => {
             className={styles.form}
             onFinish={onFinish}
             style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
+            onValuesChange={onValuesChange}
           >
             <Form.Item style={isMobile ? { width: '100%' } : {}}>
               <div className={styles.title}>{segmentedValue}</div>
             </Form.Item>
             <Form.Item name="levelType" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('LevelType')} options={levelTypeOptions as CourseOptionsProps<LevelType>[]} allowClear />
+              <Select
+                style={{ width: isMobile ? '100%' : 240 }}
+                placeholder={t('LevelType')}
+                options={levelTypeOptions as CourseOptionsProps<LevelType>[]}
+                allowClear
+              />
             </Form.Item>
             <Form.Item name="schoolQuarter" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('SchoolQuarter')} options={quarterOptions as CourseOptionsProps<SchoolQuarter>[]} allowClear />
-            </Form.Item>
-            <Form.Item style={isMobile ? { width: '100%', marginTop: 8 } : { marginInlineEnd: 0 }}>
-              <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
-                {t('Search')}
-              </Button>
+              <Select
+                style={{ width: isMobile ? '100%' : 240 }}
+                placeholder={t('SchoolQuarter')}
+                options={quarterOptions as CourseOptionsProps<SchoolQuarter>[]}
+                allowClear
+              />
             </Form.Item>
           </Form>
 
