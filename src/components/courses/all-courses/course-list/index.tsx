@@ -16,8 +16,9 @@ interface FiltersProps {
   levelType?: { $eq: LevelType };
   $or?: Array<{ [key: string]: { $containsi: string } }>;
 }
-const ScheduleTable: React.FC = () => {
+const CourseList: React.FC = () => {
   const ref = useRef(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
   const { format: t } = useLang();
@@ -81,37 +82,69 @@ const ScheduleTable: React.FC = () => {
     };
   };
 
+  const onValuesChange = () => {
+    buttonRef.current?.click();
+  };
   return (
-    <div className={`${styles.scheduleTable} container`} ref={ref}>
-      <Form layout={isiPad ? 'vertical' : 'inline'} form={form} className={styles.form} onFinish={onFinish}>
+    <div className={`${styles.courseList} container`} ref={ref}>
+      <Form
+        layout={isiPad ? 'vertical' : 'inline'}
+        form={form}
+        className={styles.form}
+        onFinish={onFinish}
+        onValuesChange={onValuesChange}
+      >
         <Row gutter={isMobile ? [16, 0] : [16, 8]} className={styles.row}>
           <Col xs={24} sm={24} md={24} lg={6} xl={6}>
             <Form.Item name={'classMode'} label={t('ClassMode')}>
-              <Select placeholder={'Show All'} options={useCourseOptions('classMode') as CourseOptionsProps<ClassMode>[]} className={styles.select} allowClear />
+              <Select
+                placeholder={'Show All'}
+                options={useCourseOptions('classMode') as CourseOptionsProps<ClassMode>[]}
+                className={styles.select}
+                allowClear
+              />
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={6} xl={6}>
             <Form.Item name={'levelType'} label={t('CourseLevel')}>
-              <Select placeholder={'Show All'} options={useCourseOptions('levelType') as CourseOptionsProps<LevelType>[]} className={styles.select} allowClear />
+              <Select
+                placeholder={'Show All'}
+                options={useCourseOptions('levelType') as CourseOptionsProps<LevelType>[]}
+                className={styles.select}
+                allowClear
+              />
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={6} xl={6}>
             <Form.Item name={'schoolQuarter'} label={t('Quarter')}>
-              <Select placeholder={'Show All'} options={useCourseOptions('schoolQuarter') as CourseOptionsProps<SchoolQuarter>[]} className={styles.select} allowClear />
+              <Select
+                placeholder={'Show All'}
+                options={useCourseOptions('schoolQuarter') as CourseOptionsProps<SchoolQuarter>[]}
+                className={styles.select}
+                allowClear
+              />
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={4} xl={4} className={styles.lastInput}>
             <Form.Item name="search">
-              <Input suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />} allowClear />
+              <Input
+                suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />}
+                allowClear
+              />
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={2} xl={2} className={styles.lastButtonCol}>
             <Form.Item style={{ marginInlineEnd: 0 }}>
-              <Button type={'primary'} className={styles.button} htmlType="submit">
+              <Button
+                type={'primary'}
+                className={styles.button}
+                htmlType="submit"
+                ref={buttonRef}
+              >
                 {t('Search')}
               </Button>
             </Form.Item>
@@ -148,4 +181,4 @@ const ScheduleTable: React.FC = () => {
   );
 };
 
-export default ScheduleTable;
+export default CourseList;
