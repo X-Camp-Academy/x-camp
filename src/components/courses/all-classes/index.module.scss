@@ -33,9 +33,7 @@
     .title {
       margin-top: -8px;
       @include title('default');
-      @media (max-width: 1200px) {
-        margin-top: 20px;
-        margin-bottom: 8px;
+      @media (max-width: 768px) {
         @include title('mobile');
       }
     }

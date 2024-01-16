@@ -24,7 +24,7 @@ const Nav: React.FC = () => {
   const hash = url.hash;
   const [current, setCurrent] = useState(pathname + hash);
   const [showMenu, setShowMenu] = useState(false);
-  const isMobile = useMobile();
+  const isiPad = useMobile('lg');
   const menuItems = useMenuItems();
   const { xydApi } = apiConfig;
 
@@ -48,8 +48,8 @@ const Nav: React.FC = () => {
         key: '/login'
       }
     ];
-    return isMobile ? removeDropdown(menuItems)?.concat(loginSignUp) : menuItems;
-  }, [menuItems, isMobile]);
+    return isiPad ? removeDropdown(menuItems)?.concat(loginSignUp) : menuItems;
+  }, [menuItems, isiPad]);
 
   const [openKeys, setOpenKeys] = useState(['']);
 
@@ -89,50 +89,47 @@ const Nav: React.FC = () => {
     <Layout className={styles.headerContainer}>
       <Header className={`${styles.header} container`}>
         <Space align="center" className={styles.space}>
-          <Space>
-            <Link href="/">
-              <Image src="/assets/logo.svg" alt="logo" preview={false} className={styles.image} />
-            </Link>
-            {!isMobile && ( // 缓存原因需要强制销毁重建组件
+          <Link href="/">
+            <Image src="/assets/logo.svg" alt="logo" preview={false} className={styles.logo} />
+          </Link>
+          {isiPad ? (
+            <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
+              {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
+            </span>
+          ) : (
+            <>
               <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
-            )}
-          </Space>
-
-          <Space size={'middle'}>
-            {!isMobile ? (
-              <>
-                {/* ! 下一版更新 */}
-                {/* <SelectPage /> */}
-                {user ? (
-                  <Space size={12}>
-                    <DropdownUserMenu user={user} logout={logout} />
-                    <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
-                      {t('LearningCenter')}
-                    </Button>
-                  </Space>
-                ) : (
-                  <Button className={styles.study} type="primary" href="/login">
-                    {t('Nav.Login')}
+              {user ? (
+                <Space size={12}>
+                  <DropdownUserMenu user={user} logout={logout} />
+                  <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
+                    {t('LearningCenter')}
                   </Button>
-                )}
-                <ToggleLanguage />
-              </>
-            ) : (
-              <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
-                {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
-              </span>
-            )}
-          </Space>
+                </Space>
+              ) : (
+                <Button className={styles.study} type="primary" href="/login">
+                  {t('Nav.Login')}
+                </Button>
+              )}
+            </>
+          )}
         </Space>
 
-        {isMobile && showMenu && (
+        {isiPad && showMenu && (
           <Space ref={ref} direction="vertical" className={styles.showMenu} size={0}>
             <div className={styles.mobileIntl}>
               {/* ! 下一版更新 */}
               {/* <SelectPage /> */}
               <ToggleLanguage className={styles.toggleMargin} />
             </div>
-            <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
+            <Menu
+              mode="inline"
+              openKeys={openKeys}
+              selectedKeys={[current]}
+              onOpenChange={onOpenMobileMenuChange}
+              items={mobileMenuItems}
+              onClick={({ key }) => setCurrentKey(key)}
+            />
           </Space>
         )}
       </Header>

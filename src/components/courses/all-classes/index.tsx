@@ -38,7 +38,7 @@ const AllClasses: React.FC = () => {
   const [form] = Form.useForm();
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
-  const isiPad = useMobile('xl');
+  const isiPad = useMobile('lg');
   const [segmentedValue, setSegmentedValue] = useState<CourseType>(CourseType.WeeklyClasses);
   const [filters, setFilters] = useState<FiltersProps>({ schoolQuarter: { $eq: SchoolQuarter.Winter } });
   const [coursesData, setCoursesData] = useState<CoursesDataProps[]>();
@@ -165,7 +165,7 @@ const AllClasses: React.FC = () => {
             <SegmentedRadioGroup
               value={segmentedValue}
               setValue={onSegmentedChange}
-              isRadioGroup={isMobile}
+              isRadioGroup={isiPad}
               options={courseTypeOptions as CourseOptionsProps<CourseType>[]}
               id="segmentedDom"
             />
@@ -177,23 +177,22 @@ const AllClasses: React.FC = () => {
             initialValues={{ schoolQuarter: 'Winter' }}
             className={styles.form}
             onFinish={onFinish}
-            style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
             onValuesChange={onValuesChange}
           >
             <Form.Item style={isMobile ? { width: '100%' } : {}}>
               <div className={styles.title}>{segmentedValue}</div>
             </Form.Item>
-            <Form.Item name="levelType" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
+            <Form.Item name="levelType" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
               <Select
-                style={{ width: isMobile ? '100%' : 240 }}
+                style={{ width: isiPad ? '100%' : 240 }}
                 placeholder={t('LevelType')}
                 options={levelTypeOptions as CourseOptionsProps<LevelType>[]}
                 allowClear
               />
             </Form.Item>
-            <Form.Item name="schoolQuarter" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
+            <Form.Item name="schoolQuarter" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
               <Select
-                style={{ width: isMobile ? '100%' : 240 }}
+                style={{ width: isiPad ? '100%' : 240 }}
                 placeholder={t('SchoolQuarter')}
                 options={quarterOptions as CourseOptionsProps<SchoolQuarter>[]}
                 allowClear
