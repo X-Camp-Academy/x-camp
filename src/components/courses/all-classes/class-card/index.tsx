@@ -29,7 +29,7 @@ const ClassCard = ({ index, title, href, list, time, bilingual }: ClassCardProps
               justifyContent: 'space-between'
             }}
           >
-            <Title className={styles.cardTitle}>{title}</Title>
+            <Title ellipsis={{ rows: 3 }} className={styles.cardTitle}>{title}</Title>
             <Paragraph ellipsis={{ rows: 3 }}>
               {list?.map((v) => (
                 <div key={v} className={styles.list}>

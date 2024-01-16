@@ -12,7 +12,7 @@ import NewsCard from './news-card';
 
 const { Content } = Layout;
 
-const NewsPage = () => {
+const News = () => {
   const year = dayjs().format('YYYY');
   const [current, setCurrent] = useState(1);
 
@@ -59,11 +59,17 @@ const NewsPage = () => {
     <Layout className={styles.QAContainer}>
       <Content>
         <Banner />
-        <NewsCard newEventData={newEventData?.data} current={current} setCurrent={setCurrent} pageSize={PAGE_SIZE} total={total} />
+        <NewsCard
+          newEventData={newEventData?.data}
+          current={current}
+          setCurrent={setCurrent}
+          pageSize={PAGE_SIZE}
+          total={total}
+        />
         <SubscribeNewsletter />
       </Content>
     </Layout>
   );
 };
 
-export default NewsPage;
+export default News;

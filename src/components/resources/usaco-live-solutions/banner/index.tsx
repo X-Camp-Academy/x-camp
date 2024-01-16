@@ -11,7 +11,11 @@ const Banner: React.FC = () => {
       {t('USACOLiveSolutions.Banner.Desc3')}
     </>
   );
-  return <CommonBanner image={'/image/resources/usaco-live-solutions-banner.png'} title={t('USACOLiveSolution')} paragraph={paragraph} />;
+  return <CommonBanner
+    image={'/image/resources/usaco-live-solutions-banner.png'}
+    title={t('USACOLiveSolution')}
+    paragraph={paragraph}
+  />;
 };
 
 export default Banner;

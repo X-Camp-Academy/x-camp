@@ -52,7 +52,11 @@
       font-size: 18px;
       font-weight: 400;
       color: #172142;
-
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
       &::before {
         position: relative;
         top: -3px;
