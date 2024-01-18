@@ -61,16 +61,11 @@
 
     .title {
       z-index: 999;
-      margin-top: 95px;
+      margin-top: 96px;
 
       @include title('default');
 
-      @media (max-width: 1200px) {
-        font-size: 25px !important;
-        line-height: 28px;
-      }
-
-      @media (max-width: 768px) {
+      @media (max-width: 992px) {
         @include title('mobile');
       }
     }

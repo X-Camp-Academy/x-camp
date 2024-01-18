@@ -7,16 +7,16 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getLangResult, getTransResult, getWeeksDays } from '@/utils/public';
 import { CaretRightOutlined } from '@ant-design/icons';
-import { Affix, Button, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from 'antd';
+import { Affix, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import ClassCard from '../common/class-card';
-import Banner from './banner';
-import { CourseType } from './define';
+import ClassCard from './class-card';
+import Banner from '../banner';
+import { CourseType } from '../define';
 import styles from './index.module.scss';
-import { CourseOptionsProps, useCourseOptions } from './public';
-import SegmentedRadioGroup from '../common/segmented-radio-group';
+import { CourseOptionsProps, useCourseOptions } from '../public';
+import SegmentedRadioGroup from '../../common/segmented-radio-group';
 
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -32,13 +32,13 @@ interface FiltersProps {
   schoolQuarter?: { $eq: SchoolQuarter };
 }
 
-const Courses: React.FC = () => {
+const AllClasses: React.FC = () => {
   const { hash } = window.location;
   const pathname = usePathname();
   const [form] = Form.useForm();
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
-  const isiPad = useMobile('xl');
+  const isiPad = useMobile('lg');
   const [segmentedValue, setSegmentedValue] = useState<CourseType>(CourseType.WeeklyClasses);
   const [filters, setFilters] = useState<FiltersProps>({ schoolQuarter: { $eq: SchoolQuarter.Winter } });
   const [coursesData, setCoursesData] = useState<CoursesDataProps[]>();
@@ -137,13 +137,15 @@ const Courses: React.FC = () => {
     if (segmentedHashMap.get(hash)) {
       const hashValue = segmentedHashMap.get(hash);
       setSegmentedValue(hashValue as CourseType);
-      if (segmentedHashMap.get(hash) === CourseType.JavaAPCSClasses) {
-        scrollToElement('#classify0');
-      }
+      scrollToElement('#classify0');
     } else {
       scrollToElement(hash);
     }
   }, [hash, coursesData]);
+
+  const onValuesChange = () => {
+    form.submit();
+  };
   return (
     <Layout className={styles.courses}>
       <Content>
@@ -160,7 +162,13 @@ const Courses: React.FC = () => {
               }
             }}
           >
-            <SegmentedRadioGroup value={segmentedValue} setValue={onSegmentedChange} isRadioGroup={isMobile} options={courseTypeOptions as CourseOptionsProps<CourseType>[]} id="segmentedDom" />
+            <SegmentedRadioGroup
+              value={segmentedValue}
+              setValue={onSegmentedChange}
+              isRadioGroup={isiPad}
+              options={courseTypeOptions as CourseOptionsProps<CourseType>[]}
+              id="segmentedDom"
+            />
           </Affix>
 
           <Form
@@ -169,21 +177,26 @@ const Courses: React.FC = () => {
             initialValues={{ schoolQuarter: 'Winter' }}
             className={styles.form}
             onFinish={onFinish}
-            style={isiPad ? { justifyContent: 'center', paddingRight: 0 } : { paddingRight: 0 }}
+            onValuesChange={onValuesChange}
           >
             <Form.Item style={isMobile ? { width: '100%' } : {}}>
               <div className={styles.title}>{segmentedValue}</div>
             </Form.Item>
-            <Form.Item name="levelType" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('LevelType')} options={levelTypeOptions as CourseOptionsProps<LevelType>[]} allowClear />
+            <Form.Item name="levelType" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
+              <Select
+                style={{ width: isiPad ? '100%' : 240 }}
+                placeholder={t('LevelType')}
+                options={levelTypeOptions as CourseOptionsProps<LevelType>[]}
+                allowClear
+              />
             </Form.Item>
-            <Form.Item name="schoolQuarter" style={isMobile ? { width: '100%', marginTop: 8 } : {}}>
-              <Select style={{ width: isMobile ? '100%' : 240 }} placeholder={t('SchoolQuarter')} options={quarterOptions as CourseOptionsProps<SchoolQuarter>[]} allowClear />
-            </Form.Item>
-            <Form.Item style={isMobile ? { width: '100%', marginTop: 8 } : { marginInlineEnd: 0 }}>
-              <Button type={'primary'} className={styles.button} style={isiPad ? { width: '100%' } : {}} htmlType="submit">
-                {t('Search')}
-              </Button>
+            <Form.Item name="schoolQuarter" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
+              <Select
+                style={{ width: isiPad ? '100%' : 240 }}
+                placeholder={t('SchoolQuarter')}
+                options={quarterOptions as CourseOptionsProps<SchoolQuarter>[]}
+                allowClear
+              />
             </Form.Item>
           </Form>
 
@@ -216,7 +229,7 @@ const Courses: React.FC = () => {
                             title={`${course?.attributes?.courseCode}: ${getTransResult(lang, course?.attributes?.courseTitleZh, course?.attributes?.courseTitleEn)}`}
                             list={getLangResult(lang, course?.attributes?.courseShortDescriptionZh, course?.attributes?.courseShortDescriptionEn) as string[]}
                             time={`${course?.attributes?.lessonNum} ${getWeeksDays(course?.attributes?.frequency)}`}
-                            href={`/courses/${segmentedValue === CourseType.InPersonCamps ? 'camps' : 'detail'}/${course?.id}`}
+                            href={`/courses/${segmentedValue === CourseType.InPersonCamps ? 'camps-detail' : 'course-detail'}/${course?.id}`}
                             bilingual={course?.attributes?.isBilingual}
                           />
                         );
@@ -235,4 +248,4 @@ const Courses: React.FC = () => {
   );
 };
 
-export default Courses;
+export default AllClasses;

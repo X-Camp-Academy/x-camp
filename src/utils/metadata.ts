@@ -14,10 +14,10 @@ export enum PageTitle {
   StudentRecommend = 'Student Recommend',
   XAlumni = 'XAlumni',
 
-  Courses = 'Courses',
-  CoursesCatalog = 'Courses Catalog',
+  AllCourses = 'All Courses',
+  AllClasses = 'All Classes',
   CourseDetail = 'Course Detail',
-  CourseCamps = 'Course Camps',
+  CampsDetail = 'Camps Detail',
 
   Contests = 'Contests',
   EducationForum = 'Education Forum',

@@ -33,7 +33,7 @@ const ProgressionClasses: React.FC = () => {
                     title={`${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)}`}
                     list={getLangResult(lang, courseShortDescriptionZh, courseShortDescriptionEn) as Array<string>}
                     time={`${lessonNum} ${getWeeksDays(frequency)}`}
-                    href={`/courses/detail/${v?.id}`}
+                    href={`/courses-classes/detail/${v?.id}`}
                   />
                 );
               })}

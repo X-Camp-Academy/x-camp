@@ -17,7 +17,7 @@ export const useMenuItems = () => {
       key: '/'
     },
     {
-      label: <Link href="/courses">{t('Courses')}</Link>,
+      label: <Link href="/courses/all-classes">{t('Courses')}</Link>,
       key: 'courses',
       dropdown: {
         left: {
@@ -34,12 +34,12 @@ export const useMenuItems = () => {
       },
       children: [
         {
-          label: <a href="/courses/catalog">{t('AllCourses')}</a>,
-          key: 'catalog'
+          label: <Link href="/courses/all-courses">{t('AllCourses')}</Link>,
+          key: 'all-courses'
         },
         {
-          label: <a href="/courses#weekly">{t('WeeklyClasses')}</a>,
-          key: 'courses#weekly'
+          label: <a href="/courses/all-classes#weekly">{t('WeeklyClasses')}</a>,
+          key: 'all-classes#weekly'
         },
         // {
         //   label: (
@@ -48,17 +48,21 @@ export const useMenuItems = () => {
         //   key: "/courses/100-prob-challenge",
         // },
         {
-          label: <a href="/courses#camps">{t('In-personCamps')}</a>,
-          key: 'courses#camps'
+          label: <a href="/courses/all-classes#camps">{t('In-personCamps')}</a>,
+          key: 'all-classes#camps'
         },
         {
-          label: <a href="/courses#mock-test-classes">{t('MockTestClasses')}</a>,
-          key: 'courses#mock-test-classes'
+          label: <a href="/courses/all-classes#mock-test-classes">{t('MockTestClasses')}</a>,
+          key: 'all-classes#mock-test-classes'
         },
         {
-          label: <a href="/courses#apcs">{t('Java/APCS.Classes')}</a>,
-          key: 'courses#apcs'
-        }
+          label: <a href="/courses/all-classes#apcs">{t('Java/APCS.Classes')}</a>,
+          key: 'all-classes#apcs'
+        },
+        // {
+        //   label: <a href="/about-us/help-center">{t('FAQs')}</a>,
+        //   key: 'help-center'
+        // }
         // {
         //   label: (
         //     <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">
@@ -96,7 +100,7 @@ export const useMenuItems = () => {
           key: 'education-forum'
         },
         {
-          label: <a href="/resources/usaco">USACO</a>,
+          label: <Link href="/resources/usaco">USACO</Link>,
           key: 'usaco'
         },
         {

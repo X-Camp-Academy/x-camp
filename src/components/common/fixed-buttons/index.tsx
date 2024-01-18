@@ -1,5 +1,5 @@
 import { openClassEmailRequest } from '@/apis/common-client/define';
-import { useSendOpenClassEmail } from '@/apis/common-client/sendEmail';
+import { useSendOpenClassEmail, useSubscribeNewsletter } from '@/apis/common-client/sendEmail';
 import { useModalVisible } from '@/hoc/WithModalVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
@@ -26,8 +26,14 @@ const FixedButtons: React.FC = () => {
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useModalVisible();
 
+  const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
+
   const onFinish = async (values: openClassEmailRequest) => {
+    const { email, subscribe } = values;
     await sendMailToUser(values);
+    if (subscribe) {
+      await subscribeNewsletterRun({ email });
+    }
     message.config({
       top: 160
     });
