@@ -106,18 +106,25 @@ const Nav: React.FC = () => {
                 </Link>
                 <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
               </div>
-              {user ? (
-                <Space size={12}>
-                  <DropdownUserMenu user={user} logout={logout} />
-                  <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
-                    {t('LearningCenter')}
+              <Space>
+                {user ? (
+                  <Space size={12}>
+                    <DropdownUserMenu user={user} logout={logout} />
+                    <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
+                      {t('LearningCenter')}
+                    </Button>
+                  </Space>
+                ) : (
+                  <Button className={styles.study} type="primary" href="/login">
+                    {t('Nav.Login')}
                   </Button>
-                </Space>
-              ) : (
-                <Button className={styles.study} type="primary" href="/login">
-                  {t('Nav.Login')}
-                </Button>
-              )}
+                )}
+                <div style={{ marginLeft: 30 }}>
+                  {/* ! 下一版更新 */}
+                  {/* <SelectPage /> */}
+                  <ToggleLanguage />
+                </div>
+              </Space>
             </>
           )}
         </Space>
