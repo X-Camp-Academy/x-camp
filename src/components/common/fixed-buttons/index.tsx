@@ -1,5 +1,5 @@
-import { openClassEmailRequest } from '@/apis/send-email-client/define';
-import { useSendOpenClassEmail } from '@/apis/send-email-client/sendEmail';
+import { openClassEmailRequest } from '@/apis/common-client/define';
+import { useSendOpenClassEmail } from '@/apis/common-client/sendEmail';
 import { useModalVisible } from '@/hoc/WithModalVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';

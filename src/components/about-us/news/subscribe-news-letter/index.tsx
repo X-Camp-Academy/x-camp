@@ -1,6 +1,6 @@
 'use client';
-import { subscribeNewsletterRequest } from '@/apis/send-email-client/define';
-import { useSubscribeNewsletter } from '@/apis/send-email-client/sendEmail';
+import { subscribeNewsletterRequest } from '@/apis/common-client/define';
+import { useSubscribeNewsletter } from '@/apis/common-client/sendEmail';
 import ColorfulCard from '@/components/common/colorful-card';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
