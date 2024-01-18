@@ -1,7 +1,15 @@
 import { BaseAxiosClient, useClient } from '../BaseAxiosClient';
-import { openClassEmailRequest, openClassEmailResponse, submitResumeResponse, subscribeNewsletterRequest, subscribeNewsletterResponse } from './define';
+import {
+  estimatingScoresRequest,
+  estimatingScoresResponse,
+  openClassEmailRequest,
+  openClassEmailResponse,
+  submitResumeResponse,
+  subscribeNewsletterRequest,
+  subscribeNewsletterResponse
+} from './define';
 
-export class SendEmailClient extends BaseAxiosClient {
+export class CommonClient extends BaseAxiosClient {
   async sendOpenClassEmail(req: openClassEmailRequest): Promise<openClassEmailResponse> {
     const data: openClassEmailResponse = await this.post('/openClassEmail', req, this.jsonHeaders);
     return data;
@@ -16,6 +24,11 @@ export class SendEmailClient extends BaseAxiosClient {
     const data = await this.post('/submitResume', req, this.dataHeaders);
     return data;
   }
+
+  async estimatingScores(req: estimatingScoresRequest): Promise<estimatingScoresResponse> {
+    const data = await this.post('/estimatingScores', req, this.jsonHeaders);
+    return data;
+  }
 }
 
-export const useSendEmailClient = () => useClient('sendEmail', SendEmailClient, '/v1');
+export const useCommonClient = () => useClient('common', CommonClient, '/v1');

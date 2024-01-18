@@ -2,12 +2,12 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useHandleError } from '@/utils/error';
 import { useRequest } from 'ahooks';
 import { message } from 'antd';
-import { useSendEmailClient } from '.';
-import { openClassEmailRequest, subscribeNewsletterRequest } from './define';
+import { useCommonClient } from '.';
+import { estimatingScoresRequest, openClassEmailRequest, subscribeNewsletterRequest } from './define';
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
-  const client = useSendEmailClient();
+  const client = useCommonClient();
   return useRequest(
     async (params: openClassEmailRequest) => {
       const resp = await client.sendOpenClassEmail(params);
@@ -22,7 +22,7 @@ export const useSendOpenClassEmail = () => {
 
 export const useSubscribeNewsletter = () => {
   const handleError = useHandleError();
-  const client = useSendEmailClient();
+  const client = useCommonClient();
   const { format: t } = useLang();
   return useRequest(
     async (params: subscribeNewsletterRequest) => {
@@ -49,7 +49,7 @@ export const useSubscribeNewsletter = () => {
  */
 export const useSubmitResume = () => {
   const handleError = useHandleError();
-  const client = useSendEmailClient();
+  const client = useCommonClient();
   const { format: t } = useLang();
   return useRequest(
     async (params: FormData) => {
@@ -61,6 +61,33 @@ export const useSubmitResume = () => {
       onSuccess: () => {
         message.success({
           key: 'sendEmailSuccessfully',
+          content: t('sendResume.Success')
+        });
+      },
+      onError: handleError
+    }
+  );
+};
+
+/**
+ * 提交用户评测信息
+ * @param Client
+ * @returns
+ */
+export const useEstimatingScores = () => {
+  const handleError = useHandleError();
+  const client = useCommonClient();
+  const { format: t } = useLang();
+  return useRequest(
+    async (params: estimatingScoresRequest) => {
+      const resp = await client.estimatingScores(params);
+      return resp;
+    },
+    {
+      manual: true,
+      onSuccess: () => {
+        message.success({
+          key: 'estimatingScoresSuccessfully',
           content: t('sendResume.Success')
         });
       },

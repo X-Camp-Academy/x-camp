@@ -5,12 +5,26 @@ import { Button, Cascader, Form, Input, InputNumber, Layout, Select } from 'antd
 import { useMobile } from '@/utils';
 import { useLang } from '@/hoc/with-intl/define';
 import { getLangResult } from '@/utils/public';
+import { useEstimatingScores } from '@/apis/common-client/sendEmail';
 
 
 interface Options {
   value: string;
   label: string;
   children?: Options[];
+}
+
+interface FormValuesProps {
+  stuName: string;
+  email: string;
+  level: string;
+  grade: string;
+  contest: string;
+  xcampId: string;
+  problemA: number;
+  problemB: number;
+  problemC: number;
+  problemD?: number;
 }
 
 const { Content } = Layout;
@@ -262,9 +276,22 @@ const USACOReport: React.FC = () => {
   const [form] = Form.useForm();
   const [testCases, setTestCases] = useState(testCasesData);
   const displayRender = (labels: string[]) => labels[labels.length - 1];
+  const { runAsync } = useEstimatingScores();
   const contest = Form.useWatch('contest', form);
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+  const onFinish = (values: FormValuesProps) => {
+    const { stuName, email, level, grade, contest, xcampId, problemA, problemB, problemC, problemD } = values;
+    const params = {
+      stuName,
+      email,
+      level,
+      grade,
+      contest,
+      xcampId,
+      passCases: problemD ? [problemA, problemB, problemC, problemD] : [problemA, problemB, problemC]
+    };
+    console.log(params);
+
+    runAsync(params);
   };
 
   useEffect(() => {
@@ -341,7 +368,7 @@ const USACOReport: React.FC = () => {
             }
 
             <Form.Item
-              name="name"
+              name="stuName"
               label="First Name"
               rules={[{ required: true }]}
             >
@@ -374,7 +401,7 @@ const USACOReport: React.FC = () => {
             </Form.Item>
 
             <Form.Item
-              name="currentId"
+              name="xcampId"
               label="Current X-Camp ID"
             >
               <Input />
