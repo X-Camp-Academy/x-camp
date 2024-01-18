@@ -61,7 +61,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
           </Descriptions>
         </Col>
         <Col lg={12} className={styles.col} style={{ justifyContent: 'flex-end' }}>
-          <Text className={styles.fee}>{frequency === FrequencyCategory.Once ? 'Free' : isBilingual ? `￥${formatFinance(tuitionRMB)}` : `$${formatFinance(tuitionUSD)}`}</Text>
+          <Text className={styles.fee}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</Text>
         </Col>
       </Row>
       <Divider style={{ marginTop: isMobile ? 16 : 35 }} />
