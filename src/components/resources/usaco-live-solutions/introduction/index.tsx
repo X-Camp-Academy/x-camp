@@ -95,7 +95,7 @@ const Introduction = () => {
                 <Space className={styles.videoPane} size={isMobile ? 16 : 8}>
                   {v?.categoryData?.map((g) => {
                     return (
-                      <Space direction={'vertical'} className={styles.videoPanel} key={g?.id}>
+                      <Space direction={'vertical'} className={styles.videoContainer} key={g?.id}>
                         <video
                           className={styles.videoBox}
                           src={getVideoByLang(g?.attributes)}

@@ -33,12 +33,13 @@
   }
 
   .spaceContainer {
+    display: flex;
     justify-content: space-between;
     width: 100%;
 
     .spaceBox {
       cursor: pointer;
-
+      flex: 1;
       .image {
         width: 100%;
         height: 252px;

@@ -4,7 +4,7 @@ import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { SearchOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Pagination, Row, Select } from 'antd';
+import { Col, Form, Input, Pagination, Row, Select } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import { CourseOptionsProps, useCourseOptions } from '../../public';
 import CourseItem from './course-item';
@@ -83,7 +83,7 @@ const CourseList: React.FC = () => {
   };
 
   const onValuesChange = () => {
-    buttonRef.current?.click();
+    form.submit();
   };
   return (
     <div className={`${styles.courseList} container`} ref={ref}>
@@ -106,7 +106,7 @@ const CourseList: React.FC = () => {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={6} xl={6}>
+          <Col xs={24} sm={24} md={24} lg={7} xl={7}>
             <Form.Item name={'levelType'} label={t('CourseLevel')}>
               <Select
                 placeholder={'Show All'}
@@ -128,25 +128,12 @@ const CourseList: React.FC = () => {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={4} xl={4} className={styles.lastInput}>
+          <Col xs={24} sm={24} md={24} lg={5} xl={5}>
             <Form.Item name="search">
               <Input
                 suffix={<SearchOutlined style={{ color: '#d9d9d9' }} />}
                 allowClear
               />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} sm={24} md={24} lg={2} xl={2} className={styles.lastButtonCol}>
-            <Form.Item style={{ marginInlineEnd: 0 }}>
-              <Button
-                type={'primary'}
-                className={styles.button}
-                htmlType="submit"
-                ref={buttonRef}
-              >
-                {t('Search')}
-              </Button>
             </Form.Item>
           </Col>
         </Row>

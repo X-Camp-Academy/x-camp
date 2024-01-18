@@ -12,6 +12,7 @@ const { Title, Paragraph } = Typography;
 const History: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
+  const isiPad = useMobile('lg');
   const years = [2023, 2022, 2021, 2020, 2019, 2018, 2017];
   const currentYear = dayjs().year();
   const generateMaskChildren = (title?: number, description?: string) => {
@@ -62,6 +63,10 @@ const History: React.FC = () => {
       url: '/image/about-us/2017@2x.png'
     }
   ];
+
+  const sliceData = () => {
+    return isiPad ? historyCards : historyCards?.slice(0, 3);
+  };
   return (
     <div className={styles.historyContainer}>
       <div className="container">
@@ -88,8 +93,8 @@ const History: React.FC = () => {
         </div> */}
 
         <Row gutter={isMobile ? [0, 24] : [48, 24]} className={styles.timeImage} style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {historyCards?.slice(0, 3)?.map((item) => (
-            <Col xs={24} sm={24} md={24} lg={6} key={item?.title} className={styles.col}>
+          {sliceData()?.map((item) => (
+            <Col xs={24} sm={24} md={12} lg={6} key={item?.title} className={styles.col}>
               <MaskCard
                 className={styles.maskCard}
                 bodyStyle={{
@@ -106,25 +111,31 @@ const History: React.FC = () => {
             </Col>
           ))}
         </Row>
-        <Row gutter={isMobile ? [0, 24] : [48, 24]} className={styles.timeImage}>
-          {historyCards?.slice(3)?.map((item) => (
-            <Col xs={24} sm={24} md={24} lg={6} key={item?.title} className={styles.col}>
-              <MaskCard
-                className={styles.maskCard}
-                bodyStyle={{
-                  padding: 0,
-                  borderRadius: 8
-                }}
-                maskChildren={generateMaskChildren(item?.title, item?.desc)}
-                maskBackGroundColor={'rgb(23 33 66 / 80%)'}
-                maskBorderRadius={8}
-              >
-                <Image src={item?.url} alt="image" preview={false} className={styles.image} />
-                <Title className={styles.cardTitle}>{item?.title}</Title>
-              </MaskCard>
-            </Col>
-          ))}
-        </Row>
+
+        {
+          isiPad ?
+            <></>
+            :
+            <Row gutter={isMobile ? [0, 24] : [48, 24]} className={styles.timeImage}>
+              {historyCards?.slice(3)?.map((item) => (
+                <Col xs={24} sm={24} md={12} lg={6} key={item?.title} className={styles.col}>
+                  <MaskCard
+                    className={styles.maskCard}
+                    bodyStyle={{
+                      padding: 0,
+                      borderRadius: 8
+                    }}
+                    maskChildren={generateMaskChildren(item?.title, item?.desc)}
+                    maskBackGroundColor={'rgb(23 33 66 / 80%)'}
+                    maskBorderRadius={8}
+                  >
+                    <Image src={item?.url} alt="image" preview={false} className={styles.image} />
+                    <Title className={styles.cardTitle}>{item?.title}</Title>
+                  </MaskCard>
+                </Col>
+              ))}
+            </Row>
+        }
       </div>
     </div>
   );
