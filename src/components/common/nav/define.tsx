@@ -58,7 +58,11 @@ export const useMenuItems = () => {
         {
           label: <a href="/courses/all-classes#apcs">{t('Java/APCS.Classes')}</a>,
           key: 'all-classes#apcs'
-        }
+        },
+        // {
+        //   label: <a href="/about-us/help-center">{t('FAQs')}</a>,
+        //   key: 'help-center'
+        // }
         // {
         //   label: (
         //     <a href="https://x-tutors.org/" target="_blank" rel="noreferrer">

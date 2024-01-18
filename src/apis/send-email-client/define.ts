@@ -2,7 +2,8 @@ export interface openClassEmailRequest {
   name: string;
   email: string;
   grade: string;
-  phone: string; //手机或wechatID
+  phone: string;
+  subscribe: boolean;
 }
 
 export interface openClassEmailResponse {

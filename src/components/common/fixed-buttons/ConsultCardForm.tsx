@@ -41,7 +41,12 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
           </a>
         }
       >
-        <Form name="carouselContent" onFinish={onFinish} className={styles.form}>
+        <Form
+          name="freeConsultation"
+          onFinish={onFinish}
+          initialValues={{ subscribe: true }}
+          className={styles.form}
+        >
           <Form.Item
             name="name"
             rules={[
@@ -92,7 +97,7 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
           </Form.Item>
 
           <Form.Item name="subscribe" valuePropName="checked">
-            <Checkbox defaultChecked>{t('FreeProgrammingPack')}</Checkbox>
+            <Checkbox>{t('FreeProgrammingPack')}</Checkbox>
           </Form.Item>
 
           <Form.Item>
