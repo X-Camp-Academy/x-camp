@@ -89,16 +89,23 @@ const Nav: React.FC = () => {
     <Layout className={styles.headerContainer}>
       <Header className={`${styles.header} container`}>
         <Space align="center" className={styles.space}>
-          <Link href="/">
-            <Image src="/assets/logo.svg" alt="logo" preview={false} className={styles.logo} />
-          </Link>
           {isiPad ? (
-            <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
-              {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
-            </span>
+            <>
+              <Link href="/">
+                <Image src="/assets/logo.svg" alt="logo" preview={false} className={styles.logo} />
+              </Link>
+              <span onClick={onChangeShowMenu} style={{ fontSize: 24, paddingTop: 12, display: 'inline-block' }}>
+                {!showMenu ? <AlignRightOutlined /> : <CloseOutlined />}
+              </span>
+            </>
           ) : (
             <>
-              <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
+              <div>
+                <Link href="/">
+                  <Image src="/assets/logo.svg" alt="logo" preview={false} className={styles.logo} />
+                </Link>
+                <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
+              </div>
               {user ? (
                 <Space size={12}>
                   <DropdownUserMenu user={user} logout={logout} />
