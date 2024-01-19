@@ -65,8 +65,8 @@ const CopyRight: React.FC = () => {
                 <Title className={styles.text}>X-Camp Academy</Title>
                 <Space direction="vertical">
                   <a href={'/about-us/calendar'}>{t('SchoolCalendar')}</a>
-                  <a href={'/courses#weekly'}>{t('WeeklyClasses')}</a>
-                  <a href={'/courses#camps'}>{t('In-personCamps')}</a>
+                  <a href={'/courses/all-classes#weekly'}>{t('WeeklyClasses')}</a>
+                  <a href={'/courses/all-classes#camps'}>{t('In-personCamps')}</a>
                 </Space>
               </div>
 

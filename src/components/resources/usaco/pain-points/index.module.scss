@@ -69,11 +69,14 @@
       }
     }
 
-    .inPerson {
+    .inPersonCamps {
       font-size: 24px;
       font-weight: 600;
       color: #ffad11;
       font-family: MontserratAlternates-Bold, Arial;
+      cursor: pointer;
+      padding: 16px;
+      border: 1px dashed #ffad11;
     }
   }
 }
