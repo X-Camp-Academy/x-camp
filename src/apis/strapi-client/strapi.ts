@@ -534,3 +534,17 @@ export const useGetUSACOAMA = () => {
     }
   );
 };
+
+export const useGetHomeButtons = () => {
+  const client = useStrapiClient();
+  const handleError = useHandleError();
+  return useRequest(
+    async () => {
+      const res = await client.getHomeButtons();
+      return res?.data?.attributes;
+    },
+    {
+      onError: handleError
+    }
+  );
+};
