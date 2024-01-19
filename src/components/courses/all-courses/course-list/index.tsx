@@ -142,15 +142,9 @@ const CourseList: React.FC = () => {
       <div style={{ marginTop: isMobile ? 16 : 35, paddingRight: '7px' }}>
         {courses?.data?.map((item) => {
           return (
-            <div
-              className={styles.courseCardContainer}
-              key={item?.id}
-              onClick={() => {
-                window.location.href = `/courses/course-detail/${item?.id}`;
-              }}
-            >
+            <a key={item?.id} href={`/courses/course-detail/${item?.id}`}>
               <CourseItem {...handleObject(item)} />
-            </div>
+            </a>
           );
         })}
       </div>

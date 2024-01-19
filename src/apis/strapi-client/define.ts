@@ -413,4 +413,13 @@ export interface SubmitQuestion extends strapiPublicFields {
 export type SubmitQuestionRequest = {
   data: SubmitQuestion;
 };
+
+export interface GetHomeButtons extends strapiPublicFields {
+  showFreeConsultation: boolean;
+  showFreeConsultationMobile: boolean;
+  showWeeklyOpenHouse: boolean;
+  showWeeklyOpenHouseMobile: boolean;
+}
+export type GetHomeButtonsResponse = StrapiResponseSingleDataItem<GetHomeButtons>;
+
 export type SubmitQuestionResponse = StrapiResponseSingleDataItem<SubmitQuestion>;

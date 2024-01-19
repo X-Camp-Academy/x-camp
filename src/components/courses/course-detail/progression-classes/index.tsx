@@ -1,4 +1,4 @@
-import ClassCard from '@/components/common/class-card';
+import ClassCard from '../../class-card';
 import { useLang } from '@/hoc/with-intl/define';
 import { getLangResult, getTransResult, getWeeksDays } from '@/utils/public';
 import { Empty, Space, Typography } from 'antd';

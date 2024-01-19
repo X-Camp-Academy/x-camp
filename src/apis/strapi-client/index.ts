@@ -11,6 +11,7 @@ import {
   GetFacultyResponse,
   GetFaqRequest,
   GetFaqResponse,
+  GetHomeButtonsResponse,
   GetJoinUsRequest,
   GetJoinUsResponse,
   GetNewEventRequest,
@@ -169,6 +170,11 @@ export class StrapiClient extends BaseAxiosClient {
 
   async submitQuestion(params: SubmitQuestionRequest): Promise<SubmitQuestionResponse> {
     const res = await this.post('/xc-submit-questions', params, this.jsonHeaders);
+    return res;
+  }
+
+  async getHomeButtons(): Promise<GetHomeButtonsResponse> {
+    const res = await this.get('/xc-home-button', {});
     return res;
   }
 }

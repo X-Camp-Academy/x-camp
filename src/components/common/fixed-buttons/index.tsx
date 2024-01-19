@@ -9,6 +9,7 @@ import React, { RefObject, useRef } from 'react';
 import ConsultCardForm from './ConsultCardForm';
 import OpenHouseCardForm from './OpenHouseCardForm';
 import styles from './index.module.scss';
+import { useGetHomeButtons } from '@/apis/strapi-client/strapi';
 
 interface IMenuItem {
   icon: string;
@@ -19,14 +20,16 @@ interface IMenuItem {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   mobileIcon: React.ReactNode;
   ref: RefObject<HTMLDivElement>;
+  show: boolean | undefined;
+  showMobile: boolean | undefined;
 }
 const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useModalVisible();
-
   const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
+  const { data } = useGetHomeButtons();
 
   const onFinish = async (values: openClassEmailRequest) => {
     const { email, subscribe } = values;
@@ -55,7 +58,9 @@ const FixedButtons: React.FC = () => {
       label: <ConsultCardForm setOpen={setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
       key: 'consult',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
-      ref: useRef<HTMLDivElement>(null)
+      ref: useRef<HTMLDivElement>(null),
+      show: data?.showFreeConsultation,
+      showMobile: data?.showFreeConsultationMobile
     },
     {
       icon: '/image/home/turtle-2.png',
@@ -65,29 +70,73 @@ const FixedButtons: React.FC = () => {
       label: <OpenHouseCardForm setOpen={setWeeklyOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>} />,
       key: 'open-house',
       mobileIcon: <UsergroupAddOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
-      ref: useRef<HTMLDivElement>(null)
+      ref: useRef<HTMLDivElement>(null),
+      show: data?.showWeeklyOpenHouse,
+      showMobile: data?.showWeeklyOpenHouseMobile
     }
   ];
 
   return (
     <div className={styles.buttonContainer}>
-      {menu?.map((item) => (
-        <div className={styles.buttonItem} key={item.key} ref={isMobile ? null : item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
-          <Dropdown open={item?.state} onOpenChange={(value) => item?.setOpen(value)} dropdownRender={() => item?.label} trigger={['click']} overlayStyle={{ height: '100%' }}>
-            {isMobile ? (
-              <Space direction="vertical" className={styles.mobileIcon}>
-                {item?.mobileIcon}
-                <span>{item?.text}</span>
-              </Space>
-            ) : (
-              <Button shape={'round'} className={styles.fixedButton}>
-                <span>{item?.text}</span>
-                <img src={`${item?.icon}`} alt="" />
-              </Button>
-            )}
-          </Dropdown>
-        </div>
-      ))}
+      {menu?.map((item) => {
+        return (
+          <>
+            {
+              !isMobile && item?.show ?
+                <div
+                  className={styles.buttonItem}
+                  key={item.key}
+                  ref={isMobile ? null : item?.ref}
+                  onMouseEnter={() => addAnimate(item?.ref)}
+                  onMouseLeave={() => removeAnimate(item?.ref)}
+                >
+                  <Dropdown
+                    open={item?.state}
+                    onOpenChange={(value) => item?.setOpen(value)}
+                    dropdownRender={() => item?.label}
+                    trigger={['click']}
+                    overlayStyle={{ height: '100%' }}
+                  >
+                    <Button
+                      shape={'round'}
+                      className={styles.fixedButton}
+                    >
+                      <span>{item?.text}</span>
+                      <img src={`${item?.icon}`} alt="" />
+                    </Button>
+                  </Dropdown>
+                </div>
+                :
+                isMobile && item?.showMobile ?
+                  <div
+                    className={styles.buttonItem}
+                    key={item.key}
+                    ref={isMobile ? null : item?.ref}
+                    onMouseEnter={() => addAnimate(item?.ref)}
+                    onMouseLeave={() => removeAnimate(item?.ref)}
+                  >
+                    <Dropdown
+                      open={item?.state}
+                      onOpenChange={(value) => item?.setOpen(value)}
+                      dropdownRender={() => item?.label}
+                      trigger={['click']}
+                      overlayStyle={{ height: '100%' }}
+                    >
+
+                      <Space
+                        direction="vertical"
+                        className={styles.mobileIcon}
+                      >
+                        {item?.mobileIcon}
+                        <span>{item?.text}</span>
+                      </Space>
+                    </Dropdown>
+                  </div>
+                  : null
+            }
+          </>
+        );
+      })}
     </div>
   );
 };
