@@ -1,7 +1,7 @@
 import { useMobile } from '@/utils';
 import { ClockCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Space, Typography } from 'antd';
-import ColorfulCard, { ColorfulCardProps } from '../../../common/colorful-card';
+import ColorfulCard, { ColorfulCardProps } from '@/components/common/colorful-card';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
