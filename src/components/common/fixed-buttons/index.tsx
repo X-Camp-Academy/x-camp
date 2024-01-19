@@ -19,6 +19,8 @@ interface IMenuItem {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   mobileIcon: React.ReactNode;
   ref: RefObject<HTMLDivElement>;
+  show: boolean;
+  showMobile: boolean;
 }
 const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
@@ -55,7 +57,9 @@ const FixedButtons: React.FC = () => {
       label: <ConsultCardForm setOpen={setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
       key: 'consult',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
-      ref: useRef<HTMLDivElement>(null)
+      ref: useRef<HTMLDivElement>(null),
+      show: true,
+      showMobile: true
     },
     {
       icon: '/image/home/turtle-2.png',
@@ -65,22 +69,42 @@ const FixedButtons: React.FC = () => {
       label: <OpenHouseCardForm setOpen={setWeeklyOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>} />,
       key: 'open-house',
       mobileIcon: <UsergroupAddOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
-      ref: useRef<HTMLDivElement>(null)
+      ref: useRef<HTMLDivElement>(null),
+      show: true,
+      showMobile: true
     }
   ];
 
   return (
     <div className={styles.buttonContainer}>
       {menu?.map((item) => (
-        <div className={styles.buttonItem} key={item.key} ref={isMobile ? null : item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
-          <Dropdown open={item?.state} onOpenChange={(value) => item?.setOpen(value)} dropdownRender={() => item?.label} trigger={['click']} overlayStyle={{ height: '100%' }}>
+        <div
+          className={styles.buttonItem}
+          key={item.key}
+          ref={isMobile ? null : item?.ref}
+          onMouseEnter={() => addAnimate(item?.ref)}
+          onMouseLeave={() => removeAnimate(item?.ref)}
+        >
+          <Dropdown
+            open={item?.state}
+            onOpenChange={(value) => item?.setOpen(value)}
+            dropdownRender={() => item?.label}
+            trigger={['click']}
+            overlayStyle={{ height: '100%' }}
+          >
             {isMobile ? (
-              <Space direction="vertical" className={styles.mobileIcon}>
+              <Space
+                direction="vertical"
+                className={styles.mobileIcon}
+              >
                 {item?.mobileIcon}
                 <span>{item?.text}</span>
               </Space>
             ) : (
-              <Button shape={'round'} className={styles.fixedButton}>
+              <Button
+                shape={'round'}
+                className={styles.fixedButton}
+              >
                 <span>{item?.text}</span>
                 <img src={`${item?.icon}`} alt="" />
               </Button>
