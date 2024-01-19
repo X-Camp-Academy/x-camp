@@ -43,7 +43,7 @@ const CarouselContent: React.FC = () => {
       title: '',
       desc: [],
       onClick: () => {
-        window.open('https://mp.weixin.qq.com/s/AektgJkhaTuDhKr4NVbW2A');
+        router.push('/article-detail/144');
       },
       date: [''],
       banner: '/image/home/banner-pc-4.jpg',
