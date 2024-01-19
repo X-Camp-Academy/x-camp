@@ -11,7 +11,7 @@ import { Affix, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from '
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import ClassCard from './class-card';
+import ClassCard from '../class-card';
 import Banner from '../banner';
 import { CourseType } from '../define';
 import styles from './index.module.scss';
