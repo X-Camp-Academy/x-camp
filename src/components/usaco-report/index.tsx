@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import { Button, Cascader, Form, Input, InputNumber, Layout, Select } from 'antd';
+import { Button, Cascader, Form, Input, InputNumber, Layout, Select, message } from 'antd';
 import { useMobile } from '@/utils';
 import { useLang } from '@/hoc/with-intl/define';
 import { getLangResult } from '@/utils/public';
@@ -60,10 +60,10 @@ const levelOptions = [
     label: 'Gold',
     value: 'Gold'
   },
-  // {
-  //   label: 'Platinum',
-  //   value: 'Platinum'
-  // },
+  {
+    label: 'Platinum',
+    value: 'Platinum'
+  },
 ];
 const testCasesData = [
   {
@@ -278,6 +278,7 @@ const USACOReport: React.FC = () => {
   const displayRender = (labels: string[]) => labels[labels.length - 1];
   const { runAsync } = useEstimatingScores();
   const contest = Form.useWatch('contest', form);
+  const level = Form.useWatch('level', form);
   const onFinish = (values: FormValuesProps) => {
     const { stuName, email, level, grade, contest, xcampId, problemA, problemB, problemC, problemD } = values;
     const params = {
@@ -286,11 +287,9 @@ const USACOReport: React.FC = () => {
       level,
       grade,
       contest,
-      xcampId,
+      xcampId: xcampId ?? '',
       passCases: problemD ? [problemA, problemB, problemC, problemD] : [problemA, problemB, problemC]
     };
-    console.log(params);
-
     runAsync(params);
   };
 
@@ -307,6 +306,14 @@ const USACOReport: React.FC = () => {
       setTestCases(testCasesData);
     }
   }, [contest]);
+  useEffect(() => {
+    if (level === 'Platinum') {
+      message.config({
+        top: 90
+      });
+      message.success({ key: 'success', content: 'Feel free to leave your contest info and comments, we will contact you.' });
+    }
+  }, [level]);
   return (
     <Layout className={styles.usacoReportContainer}>
       <Content>
