@@ -330,6 +330,7 @@ const USACOReport: React.FC = () => {
               name="contest"
               label="Which contest did you take"
               rules={[{ required: true, message: 'Please select contest!' }]}
+              className={styles.bold}
             >
               <Select allowClear options={contestOptions} />
             </Form.Item>
@@ -339,12 +340,16 @@ const USACOReport: React.FC = () => {
               name="level"
               label="Which level did you take"
               rules={[{ required: true, message: 'Please select contest level!' }]}
+              className={styles.bold}
             >
               <Select allowClear options={levelOptions} />
             </Form.Item>
 
             {
-              isMobile ? <div style={{ marginBottom: 16 }}>How many test cases did you pass</div> : <Form.Item label="How many test cases did you pass" />
+              isMobile ?
+                <div style={{ marginBottom: 16 }} className={styles.bold}>How many test cases did you pass</div>
+                :
+                <Form.Item className={styles.bold} label="How many test cases did you pass" />
             }
 
             {
@@ -371,6 +376,7 @@ const USACOReport: React.FC = () => {
               name="stuName"
               label="First Name"
               rules={[{ required: true }]}
+              className={styles.bold}
             >
               <Input />
             </Form.Item>
@@ -379,6 +385,7 @@ const USACOReport: React.FC = () => {
               name="email"
               label="Email"
               rules={[{ required: true, type: 'email' }]}
+              className={styles.bold}
             >
               <Input />
             </Form.Item>
@@ -387,6 +394,7 @@ const USACOReport: React.FC = () => {
               name="grade"
               label="Grade"
               rules={[{ required: true, message: 'Please select grade!' }]}
+              className={styles.bold}
             >
               <Cascader
                 options={getLangResult(lang, gradeOptionsZh, gradeOptionsEn)}
@@ -403,6 +411,7 @@ const USACOReport: React.FC = () => {
             <Form.Item
               name="xcampId"
               label="Current X-Camp ID"
+              className={styles.bold}
             >
               <Input />
             </Form.Item>
