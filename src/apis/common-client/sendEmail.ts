@@ -3,11 +3,7 @@ import { useHandleError } from '@/utils/error';
 import { useRequest } from 'ahooks';
 import { message } from 'antd';
 import { useCommonClient } from '.';
-<<<<<<< HEAD:src/apis/common-client/sendEmail.ts
 import { estimatingScoresRequest, openClassEmailRequest, subscribeNewsletterRequest } from './define';
-=======
-import { openClassEmailRequest, subscribeNewsletterRequest } from './define';
->>>>>>> hcc-update-env:src/apis/common/common.ts
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
