@@ -1,5 +1,5 @@
-import { openClassEmailRequest } from '@/apis/common-client/define';
-import { useSendOpenClassEmail, useSubscribeNewsletter } from '@/apis/common-client/sendEmail';
+import { openClassEmailRequest } from '@/apis/common/define';
+import { useSendOpenClassEmail, useSubscribeNewsletter } from '@/apis/common/common';
 import { useModalVisible } from '@/hoc/WithModalVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
@@ -10,6 +10,7 @@ import ConsultCardForm from './ConsultCardForm';
 import OpenHouseCardForm from './OpenHouseCardForm';
 import styles from './index.module.scss';
 import { useGetHomeButtons } from '@/apis/strapi-client/strapi';
+import { useRouter } from 'next/navigation';
 
 interface IMenuItem {
   icon: string;
@@ -26,6 +27,7 @@ interface IMenuItem {
 const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
+  const router = useRouter();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useModalVisible();
   const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
@@ -75,9 +77,24 @@ const FixedButtons: React.FC = () => {
       showMobile: data?.showWeeklyOpenHouseMobile
     }
   ];
-
+  const usacoRef = useRef<HTMLDivElement>(null);
   return (
     <div className={styles.buttonContainer}>
+      <div
+        className={styles.buttonItem}
+        ref={isMobile ? null : usacoRef}
+        onMouseEnter={() => addAnimate(usacoRef)}
+        onMouseLeave={() => removeAnimate(usacoRef)}
+      >
+        <Button
+          shape={'round'}
+          className={styles.fixedButton}
+          onClick={() => router.push('/usaco-report')}
+        >
+          <span>USACO Report</span>
+          <img src={'/image/home/turtle-2.png'} alt="" />
+        </Button>
+      </div>
       {menu?.map((item) => {
         return (
           <>

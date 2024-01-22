@@ -77,7 +77,7 @@ const Banner: React.FC = () => {
               title: t('Home')
             },
             {
-              title: <a href="/courses">{t('Courses')}</a>
+              title: <a href="/courses/all-courses">{t('Courses')}</a>
             },
             {
               title: courseCodeTitle
