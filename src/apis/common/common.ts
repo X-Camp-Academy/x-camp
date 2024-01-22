@@ -2,12 +2,12 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useHandleError } from '@/utils/error';
 import { useRequest } from 'ahooks';
 import { message } from 'antd';
-import { useSendEmailClient } from '.';
+import { useCommonClient } from '.';
 import { openClassEmailRequest, subscribeNewsletterRequest } from './define';
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
-  const client = useSendEmailClient();
+  const client = useCommonClient();
   return useRequest(
     async (params: openClassEmailRequest) => {
       const resp = await client.sendOpenClassEmail(params);
@@ -22,7 +22,7 @@ export const useSendOpenClassEmail = () => {
 
 export const useSubscribeNewsletter = () => {
   const handleError = useHandleError();
-  const client = useSendEmailClient();
+  const client = useCommonClient();
   const { format: t } = useLang();
   return useRequest(
     async (params: subscribeNewsletterRequest) => {
@@ -49,7 +49,7 @@ export const useSubscribeNewsletter = () => {
  */
 export const useSubmitResume = () => {
   const handleError = useHandleError();
-  const client = useSendEmailClient();
+  const client = useCommonClient();
   const { format: t } = useLang();
   return useRequest(
     async (params: FormData) => {
