@@ -1,7 +1,7 @@
 import ColorfulCard from '@/components/common/colorful-card';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { Button, Space, Typography } from 'antd';
+import { Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 import { useRouter } from 'next/navigation';
@@ -28,7 +28,12 @@ const Banner: React.FC = () => {
 
           <Paragraph className={styles.paragraph}>{t('USACO.Pain.Points.Desc')}</Paragraph>
 
-          <Button type="dashed" onClick={() => window.location.replace('/courses/all-classes/#camps')}>In Person Camps</Button>
+          <a
+            href="/courses/all-classes/#camps"
+            className={styles.inPersonCamps}
+          >
+            In Person Camps
+          </a>
         </Space>
       </ColorfulCard>
     </div>

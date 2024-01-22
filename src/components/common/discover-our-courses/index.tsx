@@ -18,26 +18,27 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
   const { format: t, lang } = useLang();
   const generateMaskChildren = (title: string, desc: string, link: string) => {
     return (
-      <Space
-        direction={'vertical'}
-        style={{
-          height: '100%',
-          justifyContent: 'space-between',
-          width: '100%'
-        }}
-        onClick={() => window.location.replace(link)}
-      >
-        <Space direction={'vertical'} style={{ width: '100%' }}>
-          <Title className={styles.maskTitle}>{title}</Title>
-          <Paragraph className={styles.maskDesc} ellipsis={{ rows: 6 }}>
-            {desc}
-          </Paragraph>
-        </Space>
+      <a href={link}>
+        <Space
+          direction={'vertical'}
+          style={{
+            height: '100%',
+            justifyContent: 'space-between',
+            width: '100%'
+          }}
+        >
+          <Space direction={'vertical'} style={{ width: '100%' }}>
+            <Title className={styles.maskTitle}>{title}</Title>
+            <Paragraph className={styles.maskDesc} ellipsis={{ rows: 6 }}>
+              {desc}
+            </Paragraph>
+          </Space>
 
-        <div className={styles.more}>
-          <a href={link}>{t('More>')}</a>
-        </div>
-      </Space>
+          <div className={styles.more}>
+            <a href={link}>{t('More>')}</a>
+          </div>
+        </Space>
+      </a>
     );
   };
 

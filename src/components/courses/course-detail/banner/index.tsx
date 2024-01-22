@@ -12,7 +12,7 @@ import styles from './index.module.scss';
 
 const { Title, Text } = Typography;
 
-const CourseBanner: React.FC = () => {
+const Banner: React.FC = () => {
   const { format: t, lang } = useLang();
   const isMobile = useMobile();
   const ref = useRef<CarouselRef>(null);
@@ -77,7 +77,7 @@ const CourseBanner: React.FC = () => {
               title: t('Home')
             },
             {
-              title: <a href="/courses">{t('Courses')}</a>
+              title: <a href="/courses/all-courses">{t('Courses')}</a>
             },
             {
               title: courseCodeTitle
@@ -217,4 +217,4 @@ const CourseBanner: React.FC = () => {
   );
 };
 
-export default CourseBanner;
+export default Banner;
