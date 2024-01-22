@@ -1,5 +1,5 @@
 'use client';
-import { useSubmitResume } from '@/apis/send-email-client/sendEmail';
+import { useSubmitResume } from '@/apis/common/common';
 import { useLang } from '@/hoc/with-intl/define';
 import { Button, Divider, Form, Input, Radio, Space, Typography, Upload, UploadFile, message } from 'antd';
 import { UploadChangeParam } from 'antd/es/upload';
