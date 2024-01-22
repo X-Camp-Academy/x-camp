@@ -60,10 +60,10 @@ const levelOptions = [
     label: 'Gold',
     value: 'Gold'
   },
-  {
-    label: 'Platinum',
-    value: 'Platinum'
-  },
+  // {
+  //   label: 'Platinum',
+  //   value: 'Platinum'
+  // },
 ];
 const testCasesData = [
   {
