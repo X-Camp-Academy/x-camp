@@ -10,7 +10,7 @@ export type ApiConfig = {
 };
 
 export const apiConfig: ApiConfig = {
-  server: process.env.NEXT_PUBLIC_API_SERVER || 'https://xcamp-service.test.turingstar.com.cn',
+  server: process.env.NEXT_PUBLIC_API_SERVER || 'https://xcamp-service.turingstar.com.cn',
   debug: Boolean(parseInt(process.env.NEXT_PUBLIC_API_DEBUG || '0')),
   idApi: process.env.NEXT_PUBLIC_ID_API || 'https://id.turingstar.com.cn',
   idBackendApi: process.env.NEXT_PUBLIC_ID_BACKEND_API || 'https://id-api.turingstar.com.cn',
