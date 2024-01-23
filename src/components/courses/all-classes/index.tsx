@@ -40,7 +40,7 @@ const AllClasses: React.FC = () => {
   const isMobile = useMobile();
   const isiPad = useMobile('lg');
   const [segmentedValue, setSegmentedValue] = useState<CourseType>(CourseType.WeeklyClasses);
-  const [filters, setFilters] = useState<FiltersProps>({ schoolQuarter: { $eq: SchoolQuarter.Winter } });
+  const [filters, setFilters] = useState<FiltersProps>({ schoolQuarter: { $eq: SchoolQuarter.Spring } });
   const [coursesData, setCoursesData] = useState<CoursesDataProps[]>();
   const { data: courses, runAsync } = useGetCourses({});
   const { data: reviewsData } = useGetReviews({
