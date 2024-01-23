@@ -1,4 +1,5 @@
 'use client';
+import { useWebUpdateNotify } from '@/hooks/useWebUpdateNotify';
 import en_US from '@/lang/en_US.json';
 import zh_CN from '@/lang/zh_CN.json';
 import dayjs from 'dayjs';
@@ -15,6 +16,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import cookie from 'react-cookies';
 import { IntlProvider, useIntl } from 'react-intl';
 import { LangContext } from './define';
+
 dayjs.extend(LocalizedFormat);
 dayjs.extend(calenderPlugin);
 dayjs.extend(localData);
@@ -58,21 +60,25 @@ const WithLang: React.FC<{
     </LangContext.Provider>
   );
 };
+
 interface WithIntlIProps {
   children: React.ReactNode;
 }
 
 const WithIntl: React.FC<WithIntlIProps> = ({ children }) => {
   const [lang, setLang] = useState<LangType>((cookie.load('lang') || window.navigator.language.slice(0, 2)) === LANG_ZH_CN ? LANG_ZH_CN : LANG_EN_US);
+  const { contextHolder: updateContextHolder, setLocale: setNotifyLocale } = useWebUpdateNotify();
 
   useEffect(() => {
     dayjs.locale(lang === LANG_ZH_CN ? 'zh-cn' : 'en');
+    setNotifyLocale(lang === LANG_ZH_CN ? 'zh_CN' : 'en_US');
   }, [lang]);
 
   return (
     <IntlProvider messages={lang === LANG_ZH_CN ? zh_CN : en_US} locale={lang} defaultLocale={LANG_ZH_CN}>
       <WithLang lang={lang} setLang={setLang}>
         {children}
+        {updateContextHolder}
       </WithLang>
     </IntlProvider>
   );
