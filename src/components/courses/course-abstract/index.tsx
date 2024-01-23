@@ -68,7 +68,7 @@ const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDe
         <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
           {t('SignUpNow')}
         </Button>
-        {/* <span className={styles.signUpNowTips}>{'Clicking "Sign Up Now" takes you to Google Form for registration.'}</span> */}
+        <span className={styles.signUpNowTips}>{'Clicking "Sign Up Now" takes you to Google Form for registration'}</span>
         {classMode !== ClassMode.InPerson && frequency !== FrequencyCategory.Once && <div className={styles.tip}>{t('Discount')}</div>}
         {isBilingual && <div className={styles.bilingual}>BILINGUAL</div>}
       </div>
