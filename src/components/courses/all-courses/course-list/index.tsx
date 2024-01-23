@@ -18,7 +18,6 @@ interface FiltersProps {
 }
 const CourseList: React.FC = () => {
   const ref = useRef(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
   const { format: t } = useLang();
