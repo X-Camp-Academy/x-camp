@@ -13,6 +13,11 @@ const nextConfig = {
     typedRoutes: true
   },
   swcMinify: true,
+  compiler: {
+    removeConsole: {
+      exclude: ['error', 'warn']
+    }
+  },
   eslint: {
     ignoreDuringBuilds: true
   }
