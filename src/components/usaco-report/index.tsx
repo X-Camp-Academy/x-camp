@@ -290,12 +290,12 @@ const USACOReport: React.FC = () => {
       xcampId: xcampId ?? '',
       passCases: problemD ? [problemA, problemB, problemC, problemD] : [problemA, problemB, problemC]
     };
-    await runAsync(params);
-
-    api.success({
-      message: 'Notification',
-      description: "Thanks for submitting your request, check your analytic report in your email. If you need more help, don't hesitate to reach out to us!",
-      placement: 'topRight',
+    await runAsync(params).then(() => {
+      api.success({
+        message: 'Notification',
+        description: "Thanks for submitting your request, check your analytic report in your email. If you need more help, don't hesitate to reach out to us!",
+        placement: 'topRight',
+      });
     });
   };
 
