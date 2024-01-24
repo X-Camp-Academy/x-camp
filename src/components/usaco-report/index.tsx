@@ -325,7 +325,6 @@ const USACOReport: React.FC = () => {
       {contextHolder}
       <Layout className={styles.usacoReportContainer}>
         <Content>
-
           <div className={`${styles.usacoReport} container`}>
             <div className={styles.title}>USACO Report Card</div>
             <Form
