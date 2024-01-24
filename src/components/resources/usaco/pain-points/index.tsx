@@ -32,7 +32,7 @@ const Banner: React.FC = () => {
             href="/courses/all-classes/#camps"
             className={styles.inPersonCamps}
           >
-            In Person Camps
+            Check out courses
           </a>
         </Space>
       </ColorfulCard>
