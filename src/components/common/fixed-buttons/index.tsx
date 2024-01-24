@@ -3,7 +3,7 @@ import { useSendOpenClassEmail, useSubscribeNewsletter } from '@/apis/common-cli
 import { useModalVisible } from '@/hoc/WithModalVisible';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
-import { MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import { BookOutlined, MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space, message } from 'antd';
 import React, { RefObject, useRef } from 'react';
 import ConsultCardForm from './ConsultCardForm';
@@ -18,7 +18,7 @@ interface IMenuItem {
   key: string;
   text: string;
   state: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onClick: React.Dispatch<React.SetStateAction<boolean>>;
   mobileIcon: React.ReactNode;
   ref: RefObject<HTMLDivElement>;
   show: boolean | undefined;
@@ -55,10 +55,22 @@ const FixedButtons: React.FC = () => {
 
   const menu: IMenuItem[] = [
     {
+      icon: '/image/home/turtle-1.png',
+      text: isMobile ? 'USACO' : 'USACO Report',
+      state: true,
+      onClick: () => router.push('/usaco-report'),
+      label: <></>,
+      key: 'usaoc-report',
+      mobileIcon: <BookOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
+      ref: useRef<HTMLDivElement>(null),
+      show: data?.showUSACOReport,
+      showMobile: data?.showUSACOReportMobile
+    },
+    {
       icon: '/image/about-us/join-us-banner.png',
       text: isMobile ? 'Consult' : t('FreeConsultation'),
       state: freeConsultationVisible,
-      setOpen: setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>,
+      onClick: setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>,
       label: <ConsultCardForm setOpen={setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
       key: 'consult',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
@@ -70,7 +82,7 @@ const FixedButtons: React.FC = () => {
       icon: '/image/home/turtle-2.png',
       text: isMobile ? 'Open House' : t('WeeklyOpenHouse'),
       state: weeklyOpenHouseVisible,
-      setOpen: setWeeklyOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>,
+      onClick: setWeeklyOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>,
       label: <OpenHouseCardForm setOpen={setWeeklyOpenHouseVisible as React.Dispatch<React.SetStateAction<boolean>>} />,
       key: 'open-house',
       mobileIcon: <UsergroupAddOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
@@ -79,26 +91,10 @@ const FixedButtons: React.FC = () => {
       showMobile: data?.showWeeklyOpenHouseMobile
     }
   ];
-  const usacoRef = useRef<HTMLDivElement>(null);
   return (
     <>
       {contextHolder}
       <div className={styles.buttonContainer}>
-        <div
-          className={styles.buttonItem}
-          ref={isMobile ? null : usacoRef}
-          onMouseEnter={() => addAnimate(usacoRef)}
-          onMouseLeave={() => removeAnimate(usacoRef)}
-        >
-          <Button
-            shape={'round'}
-            className={styles.fixedButton}
-            onClick={() => router.push('/usaco-report')}
-          >
-            <span>USACO Report</span>
-            <img src={'/image/home/turtle-2.png'} alt="" />
-          </Button>
-        </div>
         {menu?.map((item) => {
           return (
             <>
@@ -113,7 +109,7 @@ const FixedButtons: React.FC = () => {
                   >
                     <Dropdown
                       open={item?.state}
-                      onOpenChange={(value) => item?.setOpen(value)}
+                      onOpenChange={(value) => item?.onClick(value)}
                       dropdownRender={() => item?.label}
                       trigger={['click']}
                       overlayStyle={{ height: '100%' }}
@@ -138,7 +134,7 @@ const FixedButtons: React.FC = () => {
                     >
                       <Dropdown
                         open={item?.state}
-                        onOpenChange={(value) => item?.setOpen(value)}
+                        onOpenChange={(value) => item?.onClick(value)}
                         dropdownRender={() => item?.label}
                         trigger={['click']}
                         overlayStyle={{ height: '100%' }}
@@ -158,7 +154,7 @@ const FixedButtons: React.FC = () => {
             </>
           );
         })}
-      </div>
+      </div >
     </>
   );
 };
