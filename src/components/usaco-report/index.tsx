@@ -1,12 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import { Button, Cascader, Form, Input, InputNumber, Layout, Select, message } from 'antd';
+import { Button, Cascader, Form, Input, InputNumber, Layout, Select, message, notification } from 'antd';
 import { useMobile } from '@/utils';
 import { useLang } from '@/hoc/with-intl/define';
 import { getLangResult } from '@/utils/public';
-import { useEstimatingScores } from '@/apis/common-client/sendEmail';
-
+import { useEstimatingScores } from '@/apis/common-client/common';
 
 interface Options {
   value: string;
@@ -279,7 +278,8 @@ const USACOReport: React.FC = () => {
   const { runAsync } = useEstimatingScores();
   const contest = Form.useWatch('contest', form);
   const level = Form.useWatch('level', form);
-  const onFinish = (values: FormValuesProps) => {
+  const [api, contextHolder] = notification.useNotification({ top: 120 });
+  const onFinish = async (values: FormValuesProps) => {
     const { stuName, email, level, grade, contest, xcampId, problemA, problemB, problemC, problemD } = values;
     const params = {
       stuName,
@@ -290,7 +290,13 @@ const USACOReport: React.FC = () => {
       xcampId: xcampId ?? '',
       passCases: problemD ? [problemA, problemB, problemC, problemD] : [problemA, problemB, problemC]
     };
-    runAsync(params);
+    await runAsync(params);
+
+    api.success({
+      message: 'Notification',
+      description: "Thanks for submitting your request, check your analytic report in your email. If you need more help, don't hesitate to reach out to us!",
+      placement: 'topRight',
+    });
   };
 
   useEffect(() => {
@@ -315,123 +321,127 @@ const USACOReport: React.FC = () => {
     }
   }, [level]);
   return (
-    <Layout className={styles.usacoReportContainer}>
-      <Content>
-        <div className={`${styles.usacoReport} container`}>
-          <div className={styles.title}>USACO Report Card</div>
-          <Form
-            form={form}
-            name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            className={styles.form}
-            initialValues={{
-              contest: contestOptions[0].value,
-              level: levelOptions[0].value,
-              currentId: 'none for non X-Camp Students'
-            }}
-            onFinish={onFinish}
-            autoComplete="off"
-          >
-            <Form.Item
-              name="contest"
-              label="Which contest did you take"
-              rules={[{ required: true, message: 'Please select contest!' }]}
-              className={styles.bold}
+    <>
+      {contextHolder}
+      <Layout className={styles.usacoReportContainer}>
+        <Content>
+
+          <div className={`${styles.usacoReport} container`}>
+            <div className={styles.title}>USACO Report Card</div>
+            <Form
+              form={form}
+              name="basic"
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 16 }}
+              className={styles.form}
+              initialValues={{
+                contest: contestOptions[0].value,
+                level: levelOptions[0].value,
+                currentId: 'none for non X-Camp Students'
+              }}
+              onFinish={onFinish}
+              autoComplete="off"
             >
-              <Select allowClear options={contestOptions} />
-            </Form.Item>
+              <Form.Item
+                name="contest"
+                label="Which contest did you take"
+                rules={[{ required: true, message: 'Please select contest!' }]}
+                className={styles.bold}
+              >
+                <Select allowClear options={contestOptions} />
+              </Form.Item>
 
 
-            <Form.Item
-              name="level"
-              label="Which level did you take"
-              rules={[{ required: true, message: 'Please select contest level!' }]}
-              className={styles.bold}
-            >
-              <Select allowClear options={levelOptions} />
-            </Form.Item>
+              <Form.Item
+                name="level"
+                label="Which level did you take"
+                rules={[{ required: true, message: 'Please select contest level!' }]}
+                className={styles.bold}
+              >
+                <Select allowClear options={levelOptions} />
+              </Form.Item>
 
-            {
-              isMobile ?
-                <div style={{ marginBottom: 16 }} className={styles.bold}>How many test cases did you pass</div>
-                :
-                <Form.Item className={styles.bold} label="How many test cases did you pass" />
-            }
+              {
+                isMobile ?
+                  <div style={{ marginBottom: 16 }} className={styles.bold}>How many test cases did you pass</div>
+                  :
+                  <Form.Item className={styles.bold} label="How many test cases did you pass" />
+              }
 
-            {
-              testCases?.map(item => (
-                <Form.Item
-                  key={item?.name}
-                  name={item?.name}
-                  label={item?.label}
-                  rules={[{
-                    required: true,
-                    message: 'Please input the correct number of test cases!',
-                    type: 'number',
-                    min: 0,
-                    max: 99
-                  },
-                  ]}
-                >
-                  <InputNumber />
-                </Form.Item>
-              ))
-            }
+              {
+                testCases?.map(item => (
+                  <Form.Item
+                    key={item?.name}
+                    name={item?.name}
+                    label={item?.label}
+                    rules={[{
+                      required: true,
+                      message: 'Please input the correct number of test cases!',
+                      type: 'number',
+                      min: 0,
+                      max: 99
+                    },
+                    ]}
+                  >
+                    <InputNumber />
+                  </Form.Item>
+                ))
+              }
 
-            <Form.Item
-              name="stuName"
-              label="First Name"
-              rules={[{ required: true }]}
-              className={styles.bold}
-            >
-              <Input />
-            </Form.Item>
+              <Form.Item
+                name="stuName"
+                label="First Name"
+                rules={[{ required: true }]}
+                className={styles.bold}
+              >
+                <Input />
+              </Form.Item>
 
-            <Form.Item
-              name="email"
-              label="Email"
-              rules={[{ required: true, type: 'email' }]}
-              className={styles.bold}
-            >
-              <Input />
-            </Form.Item>
+              <Form.Item
+                name="email"
+                label="Email"
+                rules={[{ required: true, type: 'email' }]}
+                className={styles.bold}
+              >
+                <Input />
+              </Form.Item>
 
-            <Form.Item
-              name="grade"
-              label="Grade"
-              rules={[{ required: true, message: 'Please select grade!' }]}
-              className={styles.bold}
-            >
-              <Cascader
-                options={getLangResult(lang, gradeOptionsZh, gradeOptionsEn)}
-                expandTrigger="hover"
-                allowClear
-                displayRender={displayRender}
-                onChange={(value) => {
-                  const lastValue = value[value?.length - 1];
-                  form.setFieldsValue({ grade: lastValue?.toString() });
-                }}
-              />
-            </Form.Item>
+              <Form.Item
+                name="grade"
+                label="Grade"
+                rules={[{ required: true, message: 'Please select grade!' }]}
+                className={styles.bold}
+              >
+                <Cascader
+                  options={getLangResult(lang, gradeOptionsZh, gradeOptionsEn)}
+                  expandTrigger="hover"
+                  allowClear
+                  displayRender={displayRender}
+                  onChange={(value) => {
+                    const lastValue = value[value?.length - 1];
+                    form.setFieldsValue({ grade: lastValue?.toString() });
+                  }}
+                />
+              </Form.Item>
 
-            <Form.Item
-              name="xcampId"
-              label="Current X-Camp ID"
-              className={styles.bold}
-            >
-              <Input />
-            </Form.Item>
+              <Form.Item
+                name="xcampId"
+                label="Current X-Camp ID"
+                className={styles.bold}
+              >
+                <Input />
+              </Form.Item>
 
-            <Form.Item wrapperCol={isMobile ? {} : { offset: 8, span: 16 }}>
-              <Button type="primary" htmlType="submit" className={styles.button}>
-                Submit to get your analytic report
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
-      </Content>
-    </Layout>
+              <Form.Item wrapperCol={isMobile ? {} : { offset: 8, span: 16 }}>
+                <Button type="primary" htmlType="submit" className={styles.button}>
+                  Submit to get your analytic report
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
+        </Content>
+      </Layout>
+    </>
   );
 };
 
