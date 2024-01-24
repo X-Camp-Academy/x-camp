@@ -75,16 +75,20 @@ const ResumeForm: React.FC<{
     if (formValues.linkedIn) requestData.append('linkIn', formValues.linkedIn);
     if (formValues.website) requestData.append('website', formValues.website);
 
-    await submitResume(requestData).then(() => {
-      messageApi.open({
-        type: 'success',
-        content: t('sendResume.Success')
+    await submitResume(requestData)
+      .then(() => {
+        messageApi.open({
+          type: 'success',
+          content: t('sendResume.Success'),
+          style: {
+            marginTop: '16vh',
+          },
+        });
       });
-    });
   };
-
   return (
     <>
+      {contextHolder}
       <Divider style={{ borderColor: '#FFAD11' }} />
       <Form form={form} layout="vertical" autoComplete="off" size="large" className={styles.formContainer} onFinish={submitResumeOnFinish}>
         <Title className={styles.title}>{t('ApplyNow')}</Title>

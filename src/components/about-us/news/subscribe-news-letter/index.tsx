@@ -8,7 +8,6 @@ import { Button, Form, Input, Space, Typography, message } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
-
 const { Title, Paragraph } = Typography;
 
 const SubscribeNewsletter: React.FC = () => {
@@ -18,13 +17,15 @@ const SubscribeNewsletter: React.FC = () => {
   const isMobile = useMobile();
 
   const onFinish = async (values: subscribeNewsletterRequest) => {
-    await subscribeNewsletterRun(values)
-      .then(() => {
-        messageApi.open({
-          type: 'success',
-          content: t('subscribeNewsLetter.Success'),
-        });
+    await subscribeNewsletterRun(values).then(() => {
+      messageApi.open({
+        type: 'success',
+        content: t('subscribeNewsLetter.Success'),
+        style: {
+          marginTop: '16vh',
+        },
       });
+    });
   };
   return (
     <>
