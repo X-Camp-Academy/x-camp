@@ -58,7 +58,7 @@ const FixedButtons: React.FC = () => {
       icon: '/image/home/turtle-1.png',
       text: isMobile ? 'USACO' : 'USACO Report',
       state: true,
-      onClick: () => router.push('/usaco-report'),
+      onClick: () => { },
       label: <></>,
       key: 'usaoc-report',
       mobileIcon: <BookOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
@@ -107,21 +107,33 @@ const FixedButtons: React.FC = () => {
                     onMouseEnter={() => addAnimate(item?.ref)}
                     onMouseLeave={() => removeAnimate(item?.ref)}
                   >
-                    <Dropdown
-                      open={item?.state}
-                      onOpenChange={(value) => item?.onClick(value)}
-                      dropdownRender={() => item?.label}
-                      trigger={['click']}
-                      overlayStyle={{ height: '100%' }}
-                    >
-                      <Button
-                        shape={'round'}
-                        className={styles.fixedButton}
-                      >
-                        <span>{item?.text}</span>
-                        <img src={`${item?.icon}`} alt="" />
-                      </Button>
-                    </Dropdown>
+                    {
+                      item?.key === 'usaoc-report' ?
+                        <Button
+                          shape={'round'}
+                          className={styles.fixedButton}
+                          onClick={() => router.push('/usaco-report')}
+                        >
+                          <span>{item?.text}</span>
+                          <img src={`${item?.icon}`} alt="" />
+                        </Button>
+                        :
+                        <Dropdown
+                          open={item?.state}
+                          onOpenChange={(value) => item?.onClick(value)}
+                          dropdownRender={() => item?.label}
+                          trigger={['click']}
+                          overlayStyle={{ height: '100%' }}
+                        >
+                          <Button
+                            shape={'round'}
+                            className={styles.fixedButton}
+                          >
+                            <span>{item?.text}</span>
+                            <img src={`${item?.icon}`} alt="" />
+                          </Button>
+                        </Dropdown>
+                    }
                   </div>
                   :
                   isMobile && item?.showMobile ?
@@ -132,22 +144,33 @@ const FixedButtons: React.FC = () => {
                       onMouseEnter={() => addAnimate(item?.ref)}
                       onMouseLeave={() => removeAnimate(item?.ref)}
                     >
-                      <Dropdown
-                        open={item?.state}
-                        onOpenChange={(value) => item?.onClick(value)}
-                        dropdownRender={() => item?.label}
-                        trigger={['click']}
-                        overlayStyle={{ height: '100%' }}
-                      >
-
-                        <Space
-                          direction="vertical"
-                          className={styles.mobileIcon}
-                        >
-                          {item?.mobileIcon}
-                          <span>{item?.text}</span>
-                        </Space>
-                      </Dropdown>
+                      {
+                        item?.key === 'usaoc-report' ?
+                          <Space
+                            direction="vertical"
+                            className={styles.mobileIcon}
+                            onClick={() => router.push('/usaco-report')}
+                          >
+                            {item?.mobileIcon}
+                            <span>{item?.text}</span>
+                          </Space>
+                          :
+                          <Dropdown
+                            open={item?.state}
+                            onOpenChange={(value) => item?.onClick(value)}
+                            dropdownRender={() => item?.label}
+                            trigger={['click']}
+                            overlayStyle={{ height: '100%' }}
+                          >
+                            <Space
+                              direction="vertical"
+                              className={styles.mobileIcon}
+                            >
+                              {item?.mobileIcon}
+                              <span>{item?.text}</span>
+                            </Space>
+                          </Dropdown>
+                      }
                     </div>
                     : null
               }
