@@ -15,6 +15,7 @@ export const useSendOpenClassEmail = () => {
     },
     {
       manual: true,
+      debounceWait: 1000,
       onError: handleError
     }
   );
@@ -37,6 +38,7 @@ export const useSubscribeNewsletter = () => {
           content: t('subscribeNewsLetter.Success')
         });
       },
+      debounceWait: 1000,
       onError: handleError
     }
   );
@@ -64,6 +66,7 @@ export const useSubmitResume = () => {
           content: t('sendResume.Success')
         });
       },
+      debounceWait: 1000,
       onError: handleError
     }
   );
