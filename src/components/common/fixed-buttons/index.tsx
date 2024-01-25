@@ -40,7 +40,6 @@ const FixedButtons: React.FC = () => {
     if (subscribe) {
       await subscribeNewsletterRun({ email });
     }
-
     messageApi.open({
       type: 'success',
       content: t('SendEmailSuccess'),
