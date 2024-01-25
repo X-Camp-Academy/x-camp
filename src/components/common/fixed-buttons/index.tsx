@@ -26,6 +26,7 @@ interface IMenuItem {
 const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
+  const [messageApi, contextHolder] = message.useMessage();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useModalVisible();
   const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
@@ -37,14 +38,14 @@ const FixedButtons: React.FC = () => {
     if (subscribe) {
       await subscribeNewsletterRun({ email });
     }
-    message.config({
-      top: 160
-    });
-    message.success({
-      key: 'sendEmailSuccessfully',
+    messageApi.open({
+      type: 'success',
       content: t('SendEmailSuccess'),
       className: styles.message,
-      duration: 10
+      duration: 10,
+      style: {
+        marginTop: '16vh'
+      }
     });
     setFreeConsultationVisible(false);
   };
@@ -77,37 +78,14 @@ const FixedButtons: React.FC = () => {
   ];
 
   return (
-    <div className={styles.buttonContainer}>
-      {menu?.map((item) => {
-        return (
-          <>
-            {
-              !isMobile && item?.show ?
-                <div
-                  className={styles.buttonItem}
-                  key={item.key}
-                  ref={isMobile ? null : item?.ref}
-                  onMouseEnter={() => addAnimate(item?.ref)}
-                  onMouseLeave={() => removeAnimate(item?.ref)}
-                >
-                  <Dropdown
-                    open={item?.state}
-                    onOpenChange={(value) => item?.setOpen(value)}
-                    dropdownRender={() => item?.label}
-                    trigger={['click']}
-                    overlayStyle={{ height: '100%' }}
-                  >
-                    <Button
-                      shape={'round'}
-                      className={styles.fixedButton}
-                    >
-                      <span>{item?.text}</span>
-                      <img src={`${item?.icon}`} alt="" />
-                    </Button>
-                  </Dropdown>
-                </div>
-                :
-                isMobile && item?.showMobile ?
+    <>
+      {contextHolder}
+      <div className={styles.buttonContainer}>
+        {menu?.map((item) => {
+          return (
+            <>
+              {
+                !isMobile && item?.show ?
                   <div
                     className={styles.buttonItem}
                     key={item.key}
@@ -122,22 +100,48 @@ const FixedButtons: React.FC = () => {
                       trigger={['click']}
                       overlayStyle={{ height: '100%' }}
                     >
-
-                      <Space
-                        direction="vertical"
-                        className={styles.mobileIcon}
+                      <Button
+                        shape={'round'}
+                        className={styles.fixedButton}
                       >
-                        {item?.mobileIcon}
                         <span>{item?.text}</span>
-                      </Space>
+                        <img src={`${item?.icon}`} alt="" />
+                      </Button>
                     </Dropdown>
                   </div>
-                  : null
-            }
-          </>
-        );
-      })}
-    </div>
+                  :
+                  isMobile && item?.showMobile ?
+                    <div
+                      className={styles.buttonItem}
+                      key={item.key}
+                      ref={isMobile ? null : item?.ref}
+                      onMouseEnter={() => addAnimate(item?.ref)}
+                      onMouseLeave={() => removeAnimate(item?.ref)}
+                    >
+                      <Dropdown
+                        open={item?.state}
+                        onOpenChange={(value) => item?.setOpen(value)}
+                        dropdownRender={() => item?.label}
+                        trigger={['click']}
+                        overlayStyle={{ height: '100%' }}
+                      >
+
+                        <Space
+                          direction="vertical"
+                          className={styles.mobileIcon}
+                        >
+                          {item?.mobileIcon}
+                          <span>{item?.text}</span>
+                        </Space>
+                      </Dropdown>
+                    </div>
+                    : null
+              }
+            </>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
