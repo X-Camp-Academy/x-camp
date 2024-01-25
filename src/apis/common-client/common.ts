@@ -13,6 +13,7 @@ export const useSendOpenClassEmail = () => {
     },
     {
       manual: true,
+      debounceWait: 1000,
       onError: handleError
     }
   );
@@ -28,6 +29,7 @@ export const useSubscribeNewsletter = () => {
     },
     {
       manual: true,
+      debounceWait: 1000,
       onError: handleError
     }
   );
@@ -48,6 +50,7 @@ export const useSubmitResume = () => {
     },
     {
       manual: true,
+      debounceWait: 1000,
       onError: handleError
     }
   );
@@ -68,6 +71,7 @@ export const useEstimatingScores = () => {
     },
     {
       manual: true,
+      debounceWait: 1000,
       onError: handleError
     }
   );
