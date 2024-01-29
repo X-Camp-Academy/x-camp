@@ -33,18 +33,18 @@ const contestOptions = [
     label: '2023 December Contest',
     value: '2023 December Contest'
   },
-  {
-    label: '2024 January Contest',
-    value: '2024 January Contest'
-  },
-  {
-    label: '2024 February Contest',
-    value: '2024 February Contest'
-  },
-  {
-    label: '2024 March US Open',
-    value: '2024 March US Open'
-  },
+  // {
+  //   label: '2024 January Contest',
+  //   value: '2024 January Contest'
+  // },
+  // {
+  //   label: '2024 February Contest',
+  //   value: '2024 February Contest'
+  // },
+  // {
+  //   label: '2024 March US Open',
+  //   value: '2024 March US Open'
+  // },
 ];
 const levelOptions = [
   {
