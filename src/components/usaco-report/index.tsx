@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import { Button, Cascader, Form, Input, InputNumber, Layout, Select, message, notification } from 'antd';
+import { Button, Cascader, Form, Input, InputNumber, Layout, Select, Spin, message, notification } from 'antd';
 import { useMobile } from '@/utils';
 import { useLang } from '@/hoc/with-intl/define';
 import { getLangResult } from '@/utils/public';
@@ -29,14 +29,14 @@ interface FormValuesProps {
 const { Content } = Layout;
 
 const contestOptions = [
-  {
-    label: '2023 December Contest',
-    value: '2023 December Contest'
-  },
   // {
-  //   label: '2024 January Contest',
-  //   value: '2024 January Contest'
+  //   label: '2023 December Contest',
+  //   value: '2023 December Contest'
   // },
+  {
+    label: '2024 January Contest',
+    value: '2024 January Contest'
+  },
   // {
   //   label: '2024 February Contest',
   //   value: '2024 February Contest'
@@ -275,7 +275,7 @@ const USACOReport: React.FC = () => {
   const [form] = Form.useForm();
   const [testCases, setTestCases] = useState(testCasesData);
   const displayRender = (labels: string[]) => labels[labels.length - 1];
-  const { runAsync } = useEstimatingScores();
+  const { runAsync, loading } = useEstimatingScores();
   const contest = Form.useWatch('contest', form);
   const level = Form.useWatch('level', form);
   const [api, contextHolder] = notification.useNotification({ top: 120 });
@@ -321,7 +321,7 @@ const USACOReport: React.FC = () => {
     }
   }, [level]);
   return (
-    <>
+    <Spin spinning={loading} size="large">
       {contextHolder}
       <Layout className={styles.usacoReportContainer}>
         <Content>
@@ -440,7 +440,7 @@ const USACOReport: React.FC = () => {
           </div>
         </Content>
       </Layout>
-    </>
+    </Spin>
   );
 };
 
