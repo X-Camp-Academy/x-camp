@@ -419,6 +419,8 @@ export interface GetHomeButtons extends strapiPublicFields {
   showFreeConsultationMobile: boolean;
   showWeeklyOpenHouse: boolean;
   showWeeklyOpenHouseMobile: boolean;
+  showUSACOReport: boolean;
+  showUSACOReportMobile: boolean;
 }
 export type GetHomeButtonsResponse = StrapiResponseSingleDataItem<GetHomeButtons>;
 
