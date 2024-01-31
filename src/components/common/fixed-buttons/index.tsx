@@ -28,11 +28,11 @@ const FixedButtons: React.FC = () => {
   const { format: t } = useLang();
   const isMobile = useMobile();
   const router = useRouter();
+  const [messageApi, contextHolder] = message.useMessage();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
   const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useModalVisible();
   const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
   const { data } = useGetHomeButtons();
-  const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values: openClassEmailRequest) => {
     const { email, subscribe } = values;
@@ -133,7 +133,7 @@ const FixedButtons: React.FC = () => {
                           </Button>
                         </Dropdown>
                     }
-                  </div>
+                  </div >
                   :
                   isMobile && item?.showMobile ?
                     <div
@@ -170,7 +170,7 @@ const FixedButtons: React.FC = () => {
                             </Space>
                           </Dropdown>
                       }
-                    </div>
+                    </div >
                     : null
               }
             </>
