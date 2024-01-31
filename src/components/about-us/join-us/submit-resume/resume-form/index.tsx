@@ -1,5 +1,5 @@
 'use client';
-import { useSubmitResume } from '@/apis/common/common';
+import { useSubmitResume } from '@/apis/common-client/common';
 import { useLang } from '@/hoc/with-intl/define';
 import { Button, Divider, Form, Input, Radio, Space, Typography, Upload, UploadFile, message } from 'antd';
 import { UploadChangeParam } from 'antd/es/upload';
@@ -74,17 +74,18 @@ const ResumeForm: React.FC<{
     if (formValues.letter) requestData.append('letter', formValues.letter[0].originFileObj);
     if (formValues.linkedIn) requestData.append('linkIn', formValues.linkedIn);
     if (formValues.website) requestData.append('website', formValues.website);
-    await submitResume(requestData).then(() => {
-      messageApi.open({
-        type: 'success',
-        content: t('sendResume.Success'),
-        style: {
-          marginTop: '16vh',
-        },
-      });
-    });
-  };
 
+    await submitResume(requestData)
+      .then(() => {
+        messageApi.open({
+          type: 'success',
+          content: t('sendResume.Success'),
+          style: {
+            marginTop: '16vh',
+          },
+        });
+      });
+  };
   return (
     <>
       {contextHolder}

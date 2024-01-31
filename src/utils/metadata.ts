@@ -25,6 +25,7 @@ export enum PageTitle {
   UsacoLiveSolutions = 'USACO Live Solutions',
   WeeklyOpenHouse = 'Weekly Open House',
   USACO = 'USACO',
+  USACOReport = 'USACO Report',
 
   Login = 'Login',
   Forbidden = '403'

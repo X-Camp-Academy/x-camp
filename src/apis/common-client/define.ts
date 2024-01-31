@@ -24,3 +24,18 @@ export interface submitResumeResponse {
   code: number;
   msg: string;
 }
+
+export interface estimatingScoresRequest {
+  stuName: string;
+  email: string;
+  level: string;
+  grade: string;
+  contest: string;
+  xcampId: string;
+  passCases: number[];
+}
+
+export interface estimatingScoresResponse {
+  code: number;
+  msg: string;
+}

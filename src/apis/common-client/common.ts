@@ -1,7 +1,7 @@
 import { useHandleError } from '@/utils/error';
 import { useRequest } from 'ahooks';
 import { useCommonClient } from '.';
-import { openClassEmailRequest, subscribeNewsletterRequest } from './define';
+import { estimatingScoresRequest, openClassEmailRequest, subscribeNewsletterRequest } from './define';
 
 export const useSendOpenClassEmail = () => {
   const handleError = useHandleError();
@@ -46,6 +46,26 @@ export const useSubmitResume = () => {
   return useRequest(
     async (params: FormData) => {
       const resp = await client.submitResume(params);
+      return resp;
+    },
+    {
+      manual: true,
+      onError: handleError
+    }
+  );
+};
+
+/**
+ * 提交用户评测信息
+ * @param Client
+ * @returns
+ */
+export const useEstimatingScores = () => {
+  const handleError = useHandleError();
+  const client = useCommonClient();
+  return useRequest(
+    async (params: estimatingScoresRequest) => {
+      const resp = await client.estimatingScores(params);
       return resp;
     },
     {
