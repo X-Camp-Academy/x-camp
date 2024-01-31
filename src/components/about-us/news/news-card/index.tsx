@@ -55,7 +55,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ current, setCurrent, newEventData, 
       <div className={styles.newsCard}>
         <Row gutter={isMobile ? [24, 24] : [32, 48]}>
           {data?.map((item, index) => {
-            const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
+            const { dayjsTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
             return (
               <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
                 <ColorfulCard border={'bottom'} index={index} animate={false}>

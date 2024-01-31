@@ -43,8 +43,8 @@ const UpcomingEvents: React.FC = () => {
 
         <Row gutter={32} className={styles.row}>
           {upComingEvent?.slice(0, 6)?.map((item, index) => {
-            const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
-            const { utcTime: endTime, timezone: endTimeZone } = formatTimezone(item?.attributes?.endDateTime);
+            const { dayjsTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
+            const { dayjsTime: endTime, timezone: endTimeZone } = formatTimezone(item?.attributes?.endDateTime);
             const isLinked = !item.attributes.geographicallyAddress && item.attributes.link && item.attributes.onlinePlatform;
             return (
               <Col key={item?.id} xs={24} sm={24} md={8} style={{ marginTop: 20 }}>
