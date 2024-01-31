@@ -135,21 +135,21 @@ const isSummerTime = (date: Dayjs): boolean => {
   const marchSecondSunday = dayjs().year(currentYear).month(2).startOf('month').add(2, 'week').day(0).valueOf();
   // console.log('marchSecondSunday', marchSecondSunday);
 
-  // currentDay >= 2023-03-12 00:00:00 && currentDay <= 2023-11-05 00:00:00
+  // currentDay >= 2024-03-10 00:00:00 && currentDay <= 2023-11-03 00:00:00
   return currentDay >= marchSecondSunday && currentDay <= novemberFirstSunday;
 };
 
 /**
  * 时区转换函数
- *
+ * utcOffset 获取传入的时间相对于utc零时的时区偏移量，dayjs会自动处理冬夏令时，自动匹配时区
  * @returns
  */
 export const formatTimezone = (original: string | undefined) => {
   const utcOffset = dayjs(original).utcOffset() / 60;
-  const utcTime = dayjs(original);
+  const dayjsTime = dayjs(original);
 
   const convertTimeZone = () => {
-    if (isSummerTime(dayjs(original))) {
+    if (isSummerTime(dayjsTime)) {
       switch (utcOffset) {
         case DaylightTimeZone.HawaiiDaylightTime:
           return 'HDT';
@@ -188,6 +188,6 @@ export const formatTimezone = (original: string | undefined) => {
 
   return {
     timezone: convertTimeZone(),
-    utcTime
+    dayjsTime
   } as const;
 };
