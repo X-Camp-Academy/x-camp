@@ -8,10 +8,14 @@
     "start": "next start",
     "lint": "next lint --fix && git add . && next lint",
     "lint-staged": "lint-staged",
+    "generate-version": "sh gen.sh && git add public/version.json",
     "prettier": "prettier --write ./src",
     "lint:style": "stylelint \"./src/**/*.{css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .gitignore"
   },
-  "pre-commit": "lint-staged",
+  "pre-commit": [
+    "generate-version",
+    "lint-staged"
+  ],
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",

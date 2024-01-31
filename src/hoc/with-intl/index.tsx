@@ -11,10 +11,12 @@ import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import cookie from 'react-cookies';
-import { IntlProvider, useIntl } from 'react-intl';
-import { LangContext } from './define';
+import {IntlProvider, useIntl} from 'react-intl';
+import {LangContext} from './define';
+import {useWebUpdateNotify} from '@/hooks/useWebUpdateNotify'
+
 dayjs.extend(LocalizedFormat);
 dayjs.extend(calenderPlugin);
 dayjs.extend(localData);
@@ -34,9 +36,9 @@ const WithLang: React.FC<{
   lang: LangType;
   setLang: (lang: LangType) => void;
   children: React.ReactNode;
-}> = ({ lang, setLang, children }) => {
+}> = ({lang, setLang, children}) => {
   const intl = useIntl();
-  const format = useCallback(<T extends LangKey>(id: T) => intl.formatMessage({ id }) as (typeof zh_CN | typeof en_US)[T], [intl]);
+  const format = useCallback(<T extends LangKey>(id: T) => intl.formatMessage({id}) as (typeof zh_CN | typeof en_US)[T], [intl]);
   const toggle = useCallback(() => {
     const newLang: LangType = lang === LANG_ZH_CN ? LANG_EN_US : LANG_ZH_CN;
     cookie.save('lang', newLang, {
@@ -58,22 +60,26 @@ const WithLang: React.FC<{
     </LangContext.Provider>
   );
 };
+
 interface WithIntlIProps {
   children: React.ReactNode;
 }
 
-const WithIntl: React.FC<WithIntlIProps> = ({ children }) => {
+const WithIntl: React.FC<WithIntlIProps> = ({children}) => {
   // const [lang, setLang] = useState<LangType>((cookie.load('lang') || window.navigator.language.slice(0, 2)) === LANG_ZH_CN ? LANG_ZH_CN : LANG_EN_US);
   const [lang, setLang] = useState<LangType>(LANG_EN_US);
+  const {contextHolder: updateContextHolder, setLocale: setNotifyLocale} = useWebUpdateNotify()
 
   useEffect(() => {
     dayjs.locale(lang === LANG_ZH_CN ? 'zh-cn' : 'en');
+    setNotifyLocale(lang === LANG_ZH_CN ? 'zh_CN' : 'en_US')
   }, [lang]);
 
   return (
     <IntlProvider messages={lang === LANG_ZH_CN ? zh_CN : en_US} locale={lang} defaultLocale={LANG_ZH_CN}>
       <WithLang lang={lang} setLang={setLang}>
         {children}
+        {updateContextHolder}
       </WithLang>
     </IntlProvider>
   );
