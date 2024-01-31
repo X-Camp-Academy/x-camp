@@ -32,8 +32,8 @@ const UpcomingEvents: React.FC = () => {
   });
 
   const renderDateText = (startTime: string, endTime: string) => {
-    const { utcTime: startUTCTime } = formatTimezone(startTime);
-    const { utcTime: endUTCTime, timezone: endTimeZone } = formatTimezone(endTime);
+    const { dayjsTime: startUTCTime } = formatTimezone(startTime);
+    const { dayjsTime: endUTCTime, timezone: endTimeZone } = formatTimezone(endTime);
 
     if (!endTime) {
       return `${startUTCTime.format('dddd, MMMM DD, YYYY hh:mm A')} ${endTimeZone}`;
@@ -55,7 +55,7 @@ const UpcomingEvents: React.FC = () => {
             >
               <Row className={styles.cards} gutter={[32, 32]}>
                 {upComingEvent?.slice(0, 3).map((item, index) => {
-                  const { utcTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
+                  const { dayjsTime: startTime } = formatTimezone(item?.attributes?.startDateTime);
                   return (
                     <Col key={item?.id} xs={24} sm={24} md={12} lg={8}>
                       <ColorfulCard border={'bottom'} animate={false} index={index}>

@@ -77,7 +77,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
             >
               {reviewsData?.map((item) => {
                 const reviews = item?.attributes;
-                const { utcTime } = formatTimezone(reviews?.datetime);
+                const { dayjsTime } = formatTimezone(reviews?.datetime);
                 return (
                   <div key={item?.id} className={styles.reviewsContainer}>
                     <Space direction="vertical" style={{ width: '100%' }}>
@@ -91,7 +91,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
                       >
                         {getTransResult(lang, reviews?.descriptionZh, reviews?.descriptionEn)}
                       </Paragraph>
-                      <Text className={styles.reviewsDate}>{dayjs(utcTime).format('YYYY-MM-DD')}</Text>
+                      <Text className={styles.reviewsDate}>{dayjs(dayjsTime).format('YYYY-MM-DD')}</Text>
                     </Space>
                   </div>
                 );

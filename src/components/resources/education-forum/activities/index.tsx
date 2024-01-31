@@ -90,7 +90,7 @@ const Activities: React.FC = () => {
                       <div className={styles.description}>
                         <div>
                           <ClockCircleOutlined className={styles.icon} />
-                          {formatTimezone(v?.attributes?.startDateTime)?.utcTime.format('YYYY-MM-DD')}
+                          {formatTimezone(v?.attributes?.startDateTime)?.dayjsTime.format('YYYY-MM-DD')}
                         </div>
                         <Button type="link" className={styles.btn} icon={<RightCircleOutlined />} href={`/article-detail/${v?.id}`} />
                       </div>

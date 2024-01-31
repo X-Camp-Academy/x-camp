@@ -23,8 +23,8 @@ const ContestCard = ({ data }: Props) => {
       <div className={styles.month}>{data?.month}</div>
       <Space size={'middle'} direction="vertical" className={cx(styles.content, styles.contentCenter)}>
         {data?.contests?.map((v, index) => {
-          const { utcTime: startDateTime } = formatTimezone(v?.attributes?.startDateTime);
-          const { utcTime: endDateTime } = formatTimezone(v?.attributes?.endDateTime);
+          const { dayjsTime: startDateTime } = formatTimezone(v?.attributes?.startDateTime);
+          const { dayjsTime: endDateTime } = formatTimezone(v?.attributes?.endDateTime);
           const noInvalid = (dateTime: Dayjs) => dayjs(dateTime).toString() !== 'Invalid Date';
           return (
             <Popover

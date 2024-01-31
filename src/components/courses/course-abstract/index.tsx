@@ -26,11 +26,10 @@ interface CourseAbstractProps {
 const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual, frequency }) => {
   const isMobile = useMobile();
   const { format: t, lang } = useLang();
-
   const classesData = classes?.data?.map((classItem) => {
     const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } = classItem?.attributes;
-    const { utcTime: utcStartDateTime } = formatTimezone(startDateTime);
-    const { utcTime: utcEndDateTime, timezone } = formatTimezone(endDateTime);
+    const { dayjsTime: utcStartDateTime } = formatTimezone(startDateTime);
+    const { dayjsTime: utcEndDateTime, timezone } = formatTimezone(endDateTime);
 
     return {
       classCode,

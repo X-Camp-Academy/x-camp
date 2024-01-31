@@ -19,17 +19,9 @@ const CourseCamps: React.FC = () => {
   const params = useParams();
   const pathname = usePathname();
   const { format: t } = useLang();
-  const { data: coursesData } = useGetCourses({
-    filters: {
-      id: { $eq: Number(params?.courseId) }
-    }
-  });
-
   const { data: campsCourse } = useGetCourses({
     filters: {
-      isCamp: {
-        $eq: true
-      }
+      id: { $eq: Number(params?.courseId) }
     }
   });
 
@@ -38,6 +30,7 @@ const CourseCamps: React.FC = () => {
     category: FaqCategory.CampsQA,
     pageName: [pathname]
   });
+
   const { data: reviewsData } = useGetReviews({
     ready: Boolean(campsCourse),
     pageName: [pathname]
@@ -50,7 +43,7 @@ const CourseCamps: React.FC = () => {
         <div className={`${styles.courseCard} container`}>
           <ColorfulCard border={'bottom'} index={1} animate={false}>
             <div className={styles.cardContent}>
-              <CourseAbstract {...coursesData?.data[0]?.attributes} />
+              <CourseAbstract {...campsCourse?.data[0]?.attributes} />
             </div>
           </ColorfulCard>
         </div>

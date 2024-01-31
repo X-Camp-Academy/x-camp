@@ -122,7 +122,6 @@ export enum DaylightTimeZone {
 }
 
 /**
- *
  * @param date
  * @returns 判断是否是夏令时，用dayjs判断“每年3月的第二个星期日到11月的第一个星期日期间”
  */
@@ -136,59 +135,21 @@ const isSummerTime = (date: Dayjs): boolean => {
   const marchSecondSunday = dayjs().year(currentYear).month(2).startOf('month').add(2, 'week').day(0).valueOf();
   // console.log('marchSecondSunday', marchSecondSunday);
 
-  // currentDay >= 2023-03-12 00:00:00 && currentDay <= 2023-11-05 00:00:00
+  // currentDay >= 2024-03-10 00:00:00 && currentDay <= 2023-11-03 00:00:00
   return currentDay >= marchSecondSunday && currentDay <= novemberFirstSunday;
 };
 
 /**
- *
- * @param date
- * @returns 判断是否是冬令时，用dayjs判断“当前年11月的第一个星期日到下一年3月的第二个星期日”
- */
-const isWinterTime = (date: Dayjs): boolean => {
-  const currentYear = date.year();
-  const currentDay = date.valueOf();
-  // 判断是否是第二个星期日到第一个星期日之间
-  const novemberFirstSunday = dayjs()
-    .year(currentYear - 1)
-    .month(10)
-    .startOf('month')
-    .add(1, 'week')
-    .day(0)
-    .valueOf();
-  // console.log('novemberFirstSunday', novemberFirstSunday);
-
-  const marchSecondSunday = dayjs()
-    .year(currentYear + 1)
-    .month(2)
-    .startOf('month')
-    .add(2, 'week')
-    .day(0)
-    .valueOf();
-  // console.log('marchSecondSunday', marchSecondSunday);
-
-  // currentDay <= 2024-03-10 00:00:00 && currentDay >= 2023-11-05 00:00:00
-  return currentDay <= marchSecondSunday && currentDay >= novemberFirstSunday;
-};
-
-/**
  * 时区转换函数
- * - 举例1 (夏令时)
-  - 输入本地时间    2023-07-12T16:00:00.000Z  注意Strapi会自动帮你转到零点
-  - 官网显示结果
-    - 太平洋时区 ：  2023-07-12 16:00:00 PDT
-    - 美东时间（夏令时）：2023-07-12 19:00:00 EDT 
-    - 中国时间：2023-07-13 07:00:00 CST
-    - 美国中部时间: 2023-07-12 18:00:00 (UTC-5)
- * @param weekVisible 
- * @returns 
+ * utcOffset 获取传入的时间相对于utc零时的时区偏移量，dayjs会自动处理冬夏令时，自动匹配时区
+ * @returns
  */
 export const formatTimezone = (original: string | undefined) => {
-  const utcOffset = dayjs().utcOffset() / 60;
-  const utcTime = dayjs.utc(original).utcOffset(utcOffset);
+  const utcOffset = dayjs(original).utcOffset() / 60;
+  const dayjsTime = dayjs(original);
 
   const convertTimeZone = () => {
-    if (isSummerTime(dayjs())) {
+    if (isSummerTime(dayjsTime)) {
       switch (utcOffset) {
         case DaylightTimeZone.HawaiiDaylightTime:
           return 'HDT';
@@ -205,7 +166,7 @@ export const formatTimezone = (original: string | undefined) => {
         default:
           return `GMT${utcOffset >= 0 ? `+${utcOffset}` : utcOffset}`;
       }
-    } else if (isWinterTime(dayjs())) {
+    } else {
       switch (utcOffset) {
         case StandardTimeZone.HawaiiStandardTime:
           return 'HST';
@@ -227,6 +188,6 @@ export const formatTimezone = (original: string | undefined) => {
 
   return {
     timezone: convertTimeZone(),
-    utcTime
+    dayjsTime
   } as const;
 };
