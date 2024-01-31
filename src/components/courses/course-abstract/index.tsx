@@ -6,6 +6,7 @@ import { formatFinance, formatTimezone, getTransResult } from '@/utils/public';
 import { Button, Descriptions, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
+import dayjs, { Dayjs } from 'dayjs';
 
 const { Paragraph } = Typography;
 
@@ -23,10 +24,30 @@ interface CourseAbstractProps {
   frequency?: FrequencyCategory;
 }
 
+
+const isSummerTime = (date: Dayjs): boolean => {
+  const currentYear = date.year();
+  const currentDay = date.valueOf();
+  // 判断是否是第二个星期日到第一个星期日之间
+  const novemberFirstSunday = dayjs().year(currentYear).month(10).startOf('month').add(1, 'week').day(0).valueOf();
+  console.log('novemberFirstSunday', novemberFirstSunday);
+
+  const marchSecondSunday = dayjs().year(currentYear).month(2).startOf('month').add(2, 'week').day(0).valueOf();
+  console.log('marchSecondSunday', marchSecondSunday);
+
+  // currentDay >= 2023-03-12 00:00:00 && currentDay <= 2023-11-05 00:00:00
+  return currentDay >= marchSecondSunday && currentDay <= novemberFirstSunday;
+};
+
+
+
 const CourseAbstract: React.FC<CourseAbstractProps> = ({ classMode, courseLongDescriptionEn, courseLongDescriptionZh, tuitionUSD, tuitionRMB, classes, registerLink, isBilingual, frequency }) => {
   const isMobile = useMobile();
   const { format: t, lang } = useLang();
 
+  console.log('dayjs----------', dayjs('2024-07-22T16:00:00.000Z').format('YYYY-MM-DD HH:mm:ss'));
+  console.log('dayjs.utc----------', dayjs.utc('2024-07-22T16:00:00.000Z'));
+  console.log('utcOffset----------', dayjs('2024-07-22T16:00:00.000Z').utcOffset() / 60);
   const classesData = classes?.data?.map((classItem) => {
     const { classCode, isFull, startDateTime, endDateTime, timeSuffix, location } = classItem?.attributes;
     const { utcTime: utcStartDateTime } = formatTimezone(startDateTime);
