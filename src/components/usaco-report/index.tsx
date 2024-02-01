@@ -293,7 +293,7 @@ const USACOReport: React.FC = () => {
     await runAsync(params).then(() => {
       api.success({
         message: 'Notification',
-        description: 'Thanks for submitting, our USACO Report Card will send to your email within 12 hours.',
+        description: "Thanks for submitting your request, check your analytic report in your email. If you need more help, don't hesitate to reach out to us!",
         placement: 'topRight',
       });
     });

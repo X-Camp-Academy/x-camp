@@ -174,7 +174,7 @@ const AllClasses: React.FC = () => {
           <Form
             layout="inline"
             form={form}
-            initialValues={{ schoolQuarter: 'Summer' }}
+            initialValues={{ schoolQuarter: SchoolQuarter.Spring }}
             className={styles.form}
             onFinish={onFinish}
             onValuesChange={onValuesChange}
