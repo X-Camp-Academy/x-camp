@@ -55,7 +55,7 @@ const FixedButtons: React.FC = () => {
   const menu: IMenuItem[] = [
     {
       icon: '/image/home/turtle-1.png',
-      text: isMobile ? 'USACO' : 'USACO Report',
+      text: 'USACO Report',
       state: true,
       onClick: () => { },
       label: <></>,
