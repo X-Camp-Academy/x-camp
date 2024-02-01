@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import { Button, Cascader, Form, Input, InputNumber, Layout, Select, Spin, message, notification } from 'antd';
+import { Button, Cascader, Form, Input, InputNumber, Layout, Select, Spin, notification } from 'antd';
 import { useMobile } from '@/utils';
 import { useLang } from '@/hoc/with-intl/define';
 import { getLangResult } from '@/utils/public';
@@ -59,10 +59,10 @@ const levelOptions = [
     label: 'Gold',
     value: 'Gold'
   },
-  {
-    label: 'Platinum',
-    value: 'Platinum'
-  },
+  // {
+  //   label: 'Platinum',
+  //   value: 'Platinum'
+  // },
 ];
 const testCasesData = [
   {
@@ -293,7 +293,7 @@ const USACOReport: React.FC = () => {
     await runAsync(params).then(() => {
       api.success({
         message: 'Notification',
-        description: 'Thanks for submitting, our USACO Report Card will send to your email within 12 hours.',
+        description: "Thanks for submitting your request, check your analytic report in your email. If you need more help, don't hesitate to reach out to us!",
         placement: 'topRight',
       });
     });
@@ -312,14 +312,14 @@ const USACOReport: React.FC = () => {
       setTestCases(testCasesData);
     }
   }, [contest]);
-  useEffect(() => {
-    if (level === 'Platinum') {
-      message.config({
-        top: 90
-      });
-      message.success({ key: 'success', content: 'Feel free to leave your contest info and comments, we will contact you.' });
-    }
-  }, [level]);
+  // useEffect(() => {
+  //   if (level === 'Platinum') {
+  //     message.config({
+  //       top: 90
+  //     });
+  //     message.success({ key: 'success', content: 'Feel free to leave your contest info and comments, we will contact you.' });
+  //   }
+  // }, [level]);
   return (
     <Spin spinning={loading} size="large">
       {contextHolder}
