@@ -22,7 +22,7 @@ const CourseList: React.FC = () => {
   const isiPad = useMobile('xl');
   const { format: t } = useLang();
   const [form] = Form.useForm();
-  const { data: courses, runAsync } = useGetCourses({});
+  const { data: courses, runAsync } = useGetCourses({ manual: true });
   const defaultPagination = { page: 1, pageSize: 10 };
   const [pagination, setPagination] = useState(defaultPagination);
   const [filters, setFilters] = useState<FiltersProps>({ courseQuarter: { $eq: CourseQuarter.Q2 } });
