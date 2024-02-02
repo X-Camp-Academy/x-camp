@@ -14,9 +14,9 @@ const nextConfig = {
   },
   swcMinify: true,
   compiler: {
-    removeConsole: {
-      exclude: ['error', 'warn']
-    }
+    // removeConsole: {
+    //   exclude: ['error', 'warn', 'info']
+    // }
   },
   eslint: {
     ignoreDuringBuilds: true
