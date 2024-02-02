@@ -14,9 +14,9 @@ const nextConfig = {
   },
   swcMinify: true,
   compiler: {
-    // removeConsole: {
-    //   exclude: ['error', 'warn', 'info']
-    // }
+    removeConsole: process.env.NODE_ENV === 'production' && {
+      exclude: ['error', 'warn']
+    }
   },
   eslint: {
     ignoreDuringBuilds: true
