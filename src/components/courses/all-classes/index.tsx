@@ -42,7 +42,7 @@ const AllClasses: React.FC = () => {
   const [segmentedValue, setSegmentedValue] = useState<CourseType>(CourseType.WeeklyClasses);
   const [filters, setFilters] = useState<FiltersProps>({ courseQuarter: { $eq: CourseQuarter.Q2 } });
   const [coursesData, setCoursesData] = useState<CoursesDataProps[]>();
-  const { data: courses, runAsync } = useGetCourses({});
+  const { data: courses, runAsync } = useGetCourses({ manual: true });
   const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname]
