@@ -1,4 +1,4 @@
-import { ClassMode, GetCourses, LevelType, SchoolQuarter } from '@/apis/strapi-client/define';
+import { ClassMode, CourseQuarter, GetCourses, LevelType } from '@/apis/strapi-client/define';
 import { useGetCourses } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
@@ -12,7 +12,7 @@ import styles from './index.module.scss';
 
 interface FiltersProps {
   classMode?: { $eq: ClassMode };
-  schoolQuarter?: { $eq: SchoolQuarter };
+  courseQuarter?: { $eq: CourseQuarter };
   levelType?: { $eq: LevelType };
   $or?: Array<{ [key: string]: { $containsi: string } }>;
 }
@@ -22,10 +22,10 @@ const CourseList: React.FC = () => {
   const isiPad = useMobile('xl');
   const { format: t } = useLang();
   const [form] = Form.useForm();
-  const { data: courses, runAsync } = useGetCourses({});
+  const { data: courses, runAsync } = useGetCourses({ manual: true });
   const defaultPagination = { page: 1, pageSize: 10 };
   const [pagination, setPagination] = useState(defaultPagination);
-  const [filters, setFilters] = useState<FiltersProps>({});
+  const [filters, setFilters] = useState<FiltersProps>({ courseQuarter: { $eq: CourseQuarter.Q2 } });
 
   useEffect(() => {
     runAsync({
@@ -36,13 +36,13 @@ const CourseList: React.FC = () => {
     });
   }, [pagination, filters]);
 
-  const onFinish = (values: { classMode: ClassMode; levelType: LevelType; schoolQuarter: SchoolQuarter; search: string }) => {
+  const onFinish = (values: { classMode: ClassMode; levelType: LevelType; courseQuarter: CourseQuarter; search: string }) => {
     const newFilters = { ...filters };
-    const { classMode, levelType, schoolQuarter, search } = values;
+    const { classMode, levelType, courseQuarter, search } = values;
 
     classMode ? (newFilters['classMode'] = { $eq: classMode }) : delete newFilters['classMode'];
     levelType ? (newFilters['levelType'] = { $eq: levelType }) : delete newFilters['levelType'];
-    schoolQuarter ? (newFilters['schoolQuarter'] = { $eq: schoolQuarter }) : delete newFilters['schoolQuarter'];
+    courseQuarter ? (newFilters['courseQuarter'] = { $eq: courseQuarter }) : delete newFilters['courseQuarter'];
 
     const searchFields = [
       'classLang',
@@ -84,6 +84,7 @@ const CourseList: React.FC = () => {
   const onValuesChange = () => {
     form.submit();
   };
+
   return (
     <div className={`${styles.courseList} container`} ref={ref}>
       <Form
@@ -91,6 +92,7 @@ const CourseList: React.FC = () => {
         form={form}
         className={styles.form}
         onFinish={onFinish}
+        initialValues={{ courseQuarter: CourseQuarter.Q2 }}
         onValuesChange={onValuesChange}
       >
         <Row gutter={isMobile ? [16, 0] : [16, 8]} className={styles.row}>
@@ -117,10 +119,10 @@ const CourseList: React.FC = () => {
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={6} xl={6}>
-            <Form.Item name={'schoolQuarter'} label={t('Quarter')}>
+            <Form.Item name={'courseQuarter'} label={t('Quarter')}>
               <Select
                 placeholder={'Show All'}
-                options={useCourseOptions('schoolQuarter') as CourseOptionsProps<SchoolQuarter>[]}
+                options={useCourseOptions('courseQuarter') as CourseOptionsProps<CourseQuarter>[]}
                 className={styles.select}
                 allowClear
               />

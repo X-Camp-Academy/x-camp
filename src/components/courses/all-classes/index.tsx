@@ -1,5 +1,5 @@
 'use client';
-import { ClassMode, GetCourses, LevelType, SchoolQuarter } from '@/apis/strapi-client/define';
+import { ClassMode, CourseQuarter, GetCourses, LevelType } from '@/apis/strapi-client/define';
 import { useGetCourses, useGetReviews } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import Reviews from '@/components/common/reviews';
@@ -29,7 +29,7 @@ interface CoursesDataProps {
 interface FiltersProps {
   classMode?: { $eq: ClassMode };
   levelType?: { $eq: LevelType };
-  schoolQuarter?: { $eq: SchoolQuarter };
+  courseQuarter?: { $eq: CourseQuarter };
 }
 
 const AllClasses: React.FC = () => {
@@ -40,9 +40,9 @@ const AllClasses: React.FC = () => {
   const isMobile = useMobile();
   const isiPad = useMobile('lg');
   const [segmentedValue, setSegmentedValue] = useState<CourseType>(CourseType.WeeklyClasses);
-  const [filters, setFilters] = useState<FiltersProps>({ schoolQuarter: { $eq: SchoolQuarter.Spring } });
+  const [filters, setFilters] = useState<FiltersProps>({ courseQuarter: { $eq: CourseQuarter.Q2 } });
   const [coursesData, setCoursesData] = useState<CoursesDataProps[]>();
-  const { data: courses, runAsync } = useGetCourses({});
+  const { data: courses, runAsync } = useGetCourses({ manual: true });
   const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname]
@@ -51,7 +51,7 @@ const AllClasses: React.FC = () => {
   const levelTypes = Object.values(LevelType);
   const courseTypeOptions = useCourseOptions('courseType');
   const levelTypeOptions = useCourseOptions('levelType');
-  const quarterOptions = useCourseOptions('schoolQuarter');
+  const quarterOptions = useCourseOptions('courseQuarter');
 
   // on segmentedValue or filters changed
   useEffect(() => {
@@ -105,12 +105,12 @@ const AllClasses: React.FC = () => {
   };
 
   // on search
-  const onFinish = (values: { levelType: LevelType; schoolQuarter: SchoolQuarter }) => {
-    const { levelType, schoolQuarter } = values;
+  const onFinish = (values: { levelType: LevelType; courseQuarter: CourseQuarter }) => {
+    const { levelType, courseQuarter } = values;
     const newFilters = { ...filters };
 
     levelType ? (newFilters['levelType'] = { $eq: levelType }) : delete newFilters['levelType'];
-    schoolQuarter ? (newFilters['schoolQuarter'] = { $eq: schoolQuarter }) : delete newFilters['schoolQuarter'];
+    courseQuarter ? (newFilters['courseQuarter'] = { $eq: courseQuarter }) : delete newFilters['courseQuarter'];
 
     setFilters(newFilters);
   };
@@ -174,7 +174,7 @@ const AllClasses: React.FC = () => {
           <Form
             layout="inline"
             form={form}
-            initialValues={{ schoolQuarter: SchoolQuarter.Spring }}
+            initialValues={{ courseQuarter: CourseQuarter.Q2 }}
             className={styles.form}
             onFinish={onFinish}
             onValuesChange={onValuesChange}
@@ -190,11 +190,11 @@ const AllClasses: React.FC = () => {
                 allowClear
               />
             </Form.Item>
-            <Form.Item name="schoolQuarter" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
+            <Form.Item name="courseQuarter" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
               <Select
                 style={{ width: isiPad ? '100%' : 240 }}
-                placeholder={t('SchoolQuarter')}
-                options={quarterOptions as CourseOptionsProps<SchoolQuarter>[]}
+                placeholder={t('CourseQuarter')}
+                options={quarterOptions as CourseOptionsProps<CourseQuarter>[]}
                 allowClear
               />
             </Form.Item>

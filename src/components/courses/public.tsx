@@ -1,9 +1,9 @@
 'use client';
-import { ClassMode, LevelType, SchoolQuarter } from '@/apis/strapi-client/define';
-import { useLang } from '@/hoc/with-intl/define';
+import { ClassMode, CourseQuarter, LevelType } from '@/apis/strapi-client/define';
 import { CourseType } from './define';
+import { useLang } from '@/hoc/with-intl/define';
 
-export type defaultValueProps = 'courseType' | 'classMode' | 'levelType' | 'schoolQuarter';
+export type defaultValueProps = 'courseType' | 'classMode' | 'levelType' | 'courseQuarter';
 
 export interface CourseOptionsProps<T> {
   label: T | string;
@@ -12,7 +12,6 @@ export interface CourseOptionsProps<T> {
 
 export const useCourseOptions = (defaultValue: defaultValueProps) => {
   const { format: t } = useLang();
-
   const courseTypeOptions: CourseOptionsProps<CourseType>[] = Object.values(CourseType)?.map((item) => {
     return {
       label: item,
@@ -34,7 +33,7 @@ export const useCourseOptions = (defaultValue: defaultValueProps) => {
     };
   });
 
-  const schoolQuarterOptions: CourseOptionsProps<SchoolQuarter>[] = Object.values(SchoolQuarter)?.map((item) => {
+  const courseQuarterOptions: CourseOptionsProps<CourseQuarter>[] = Object.values(CourseQuarter)?.map((item) => {
     return {
       label: t(item),
       value: item
@@ -45,7 +44,7 @@ export const useCourseOptions = (defaultValue: defaultValueProps) => {
     courseType: courseTypeOptions,
     classMode: classModeOptions,
     levelType: levelTypeOptions,
-    schoolQuarter: schoolQuarterOptions
+    courseQuarter: courseQuarterOptions
   };
 
   return optionsMap[defaultValue];

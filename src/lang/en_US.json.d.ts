@@ -457,10 +457,6 @@ declare const json: {
   "USACO.Pain.Points7": "Uncertain about your current standing and what to expect for upcoming USACO seasons?",
   "USACO.Pain.Points.Desc": "If these resonate with you, don't hesitate to reach out to X-Camp! Our dedicated teaching team is here to help you make the most of your learning journey.",
   "TuesdayOpenHouse": "Friday Open House",
-  "Spring": "Q1 (Jan-Mar)",
-  "Summer": "Q2 (Apr-Jun)",
-  "Fall": "Q3 (Jul-Sept)",
-  "Winter": "Q4 (Oct-Dec)",
   "NoContest": "No Contest",
   "InputTheStateYouLiveIn": "Input the state you live in",
   "ParentEmail": "Parent's Email",
@@ -473,7 +469,11 @@ declare const json: {
   "feedBackSuccess": "Your question has been received. We will contact you through email within 24 hours.",
   "Home.Banner1.Title1": "Python Trial Class, Only",
   "LevelType": "Course Level Type",
-  "SchoolQuarter": "School Quarter"
+  "CourseQuarter": "Course Quarter",
+  "Q1": "Q1 (Jan-Mar)",
+  "Q2": "Q2 (Apr-Jun)",
+  "Q3": "Q3 (Jul-Sept)",
+  "Q4": "Q4 (Oct-Dec)"
 }
 
 export default json;
