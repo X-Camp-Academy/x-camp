@@ -470,7 +470,20 @@ declare const json: {
   "Q2": "Q2 (Apr-Jun)",
   "Q3": "Q3 (Jul-Sept)",
   "Q4": "Q4 (Oct-Dec)",
-  "WorkingHours": "工作时间"
+  "WorkingHours": "工作时间",
+  "All Classes": "全部课程",
+  "Weekly Classes": "每周课程",
+  "In-person Camps": "线下训练营",
+  "Online Live": "线上课程",
+  "In-person": "线下课程",
+  "Python for Beginners": "入门级Python",
+  "USACO Bronze Knowledge": "USACO铜级",
+  "USACO Silver Knowledge": "USACO银级",
+  "USACO Gold Knowledge": "USACO金级",
+  "USACO Grandmaster Classes": "USACO大师级",
+  "Mock Test Classes": "模考班",
+  "Java & APCS Classes": "Java&APCS班",
+  "Free USACO Public Mock Test": "USACO公开模考班"
 }
 
 export default json;

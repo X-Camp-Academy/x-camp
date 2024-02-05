@@ -467,7 +467,20 @@ declare const json: {
   "Q2": "Q2 (Apr-Jun)",
   "Q3": "Q3 (Jul-Sept)",
   "Q4": "Q4 (Oct-Dec)",
-  "WorkingHours": "Working Hours"
+  "WorkingHours": "Working Hours",
+  "All Classes": "All Classes",
+  "Weekly Classes": "Weekly Classes",
+  "In-person Camps": "In-person Camps",
+  "Online Live": "Online Live",
+  "In-person": "In-person",
+  "Python for Beginners": "Python for Beginners",
+  "USACO Bronze Knowledge": "USACO Bronze Knowledge",
+  "USACO Silver Knowledge": "USACO Silver Knowledge",
+  "USACO Gold Knowledge": "USACO Gold Knowledge",
+  "USACO Grandmaster Classes": "USACO Grandmaster Classes",
+  "Mock Test Classes": "Mock Test Classes",
+  "Java & APCS Classes": "Java & APCS Classes",
+  "Free USACO Public Mock Test": "Free USACO Public Mock Test"
 }
 
 export default json;
