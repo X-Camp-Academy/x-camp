@@ -6,11 +6,12 @@ import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
 import CopyRightIcons from '../copy-right-icons';
 import styles from './CopyRight.module.scss';
+import { getTransResult } from '@/utils/public';
 
 const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const isMobile = useMobile();
   return (
     <div className={styles.copyRightContainer}>
@@ -47,13 +48,15 @@ const CopyRight: React.FC = () => {
                   <MailOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
                     <a href="mailto:info@x-camp.academy" style={{ color: 'inherit' }}>
-                      Email: info@x-camp.academy
+                      {t('Email')}: info@x-camp.academy
                     </a>
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <HistoryOutlined />
-                  <Text className={styles.text}>9:00 AM - 8:00 PM PT (Monday Off)</Text>
+                  <Text className={styles.text}>
+                    {t('WorkingHours')}: 9:00 AM - 8:00 PM {getTransResult(lang, '(美西时间)', 'PT (Monday Off)')}
+                  </Text>
                 </Paragraph>
               </Space>
             </Space>
@@ -95,7 +98,7 @@ const CopyRight: React.FC = () => {
           <>
             <div className={styles.bar} />
             <div className={styles.bottomContainer}>
-              <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
+              <Title className={styles.bottomTitle}>Copyright @ 2024 X-Camp</Title>
               <CopyRightIcons />
             </div>
           </>
