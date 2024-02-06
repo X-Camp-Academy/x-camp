@@ -17,6 +17,7 @@
     @media (max-width: 992px) {
       top: 240px;
       right: 40px;
+      color: #172a88;
     }
 
     .li {
@@ -89,9 +90,6 @@
           line-height: 48px;
           font-weight: 800;
           color: $text-color;
-          @media (max-width: 1400px) and (min-width: 992px) {
-            text-wrap: nowrap;
-          }
 
           @media (max-width: 768px) {
             @include title('middle');
@@ -137,6 +135,15 @@
             margin-right: 8px;
           }
         }
+        .triangle {
+          width: 0;
+          height: 0;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 16px solid #ffad11;
+          margin-right: 8px;
+          transform: rotate(45deg);
+        }
         .description {
           flex: 49;
           @include text(24px, 32px);
@@ -168,16 +175,6 @@
 
         @media (max-width: 768px) {
           @include text(10px, 12px, #fff);
-        }
-      }
-
-      .date {
-        @include text(16px, 24px, #666);
-
-        font-weight: 500;
-
-        @media (max-width: 768px) {
-          @include text(10px, 12px, #666);
         }
       }
     }
