@@ -17,6 +17,7 @@
     @media (max-width: 992px) {
       top: 240px;
       right: 40px;
+      color: #172a88;
     }
 
     .li {
@@ -174,16 +175,6 @@
 
         @media (max-width: 768px) {
           @include text(10px, 12px, #fff);
-        }
-      }
-
-      .date {
-        @include text(16px, 24px, #666);
-
-        font-weight: 500;
-
-        @media (max-width: 768px) {
-          @include text(10px, 12px, #666);
         }
       }
     }

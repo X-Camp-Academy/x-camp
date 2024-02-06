@@ -95,13 +95,13 @@ const CopyRight: React.FC = () => {
           <>
             <div className={styles.bar} />
             <div className={styles.bottomContainer}>
-              <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
+              <Title className={styles.bottomTitle}>Copyright @ 2024 X-Camp</Title>
               <CopyRightIcons />
             </div>
           </>
         )}
       </div>
-      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2017-2023 X-Camp</div>}
+      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2017-2024 X-Camp</div>}
     </div>
   );
 };
