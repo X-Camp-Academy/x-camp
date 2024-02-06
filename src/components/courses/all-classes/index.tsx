@@ -56,7 +56,7 @@ const AllClasses: React.FC = () => {
 
 
   console.log(courseTypeOptions);
-  
+
   // on segmentedValue or filters changed
   useEffect(() => {
     const newFilters = { ...filters };
@@ -184,7 +184,7 @@ const AllClasses: React.FC = () => {
             onValuesChange={onValuesChange}
           >
             <Form.Item style={isMobile ? { width: '100%' } : {}}>
-              <div className={styles.title}>{segmentedValue}</div>
+              <div className={styles.title}>{t(segmentedValue)}</div>
             </Form.Item>
             <Form.Item name="levelType" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
               <Select
@@ -217,7 +217,7 @@ const AllClasses: React.FC = () => {
                     key={courses?.courseLevelType}
                     header={
                       <div className={styles.paneBox}>
-                        <div className={styles.panelTitle}>{courses?.courseLevelType}</div>
+                        <div className={styles.panelTitle}>{t(courses?.courseLevelType)}</div>
                         <span className={styles.courseNum}>{courses?.children?.length} courses</span>
                       </div>
                     }
