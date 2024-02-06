@@ -5,10 +5,10 @@ import Reviews from '@/components/common/reviews';
 import { useMobile } from '@/utils';
 import { Layout } from 'antd';
 import { usePathname } from 'next/navigation';
-import Banner from './banner';
-import DividerContent from './divider-content';
 import styles from './index.module.scss';
-import LearningTracks from './learning-tracks';
+import Banner from './pc/banner';
+import DividerContent from './pc/divider-content';
+import LearningTracks from './pc/learning-tracks';
 const CustomizedLearningTracks = () => {
   const isMobile = useMobile();
   const pathname = usePathname();
