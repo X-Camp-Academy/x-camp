@@ -62,9 +62,13 @@ const AllClasses: React.FC = () => {
     const newFilters = { ...filters };
     switch (segmentedValue) {
       case CourseType.WeeklyClasses:
+        form.resetFields();
+        newFilters['courseQuarter'] = { $eq: CourseQuarter.Q2 };
         newFilters['classMode'] = { $eq: ClassMode.OnlineLive };
         break;
       case CourseType.InPersonCamps:
+        form.resetFields();
+        newFilters['courseQuarter'] = { $eq: CourseQuarter.Q3 };
         newFilters['classMode'] = { $eq: ClassMode.InPerson };
         break;
       default: // all/mock/java
@@ -178,7 +182,7 @@ const AllClasses: React.FC = () => {
           <Form
             layout="inline"
             form={form}
-            initialValues={{ courseQuarter: CourseQuarter.Q2 }}
+            initialValues={{ courseQuarter: segmentedValue === CourseType.InPersonCamps ? CourseQuarter.Q3 : CourseQuarter.Q2 }}
             className={styles.form}
             onFinish={onFinish}
             onValuesChange={onValuesChange}
