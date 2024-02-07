@@ -48,14 +48,14 @@ const CarouselContent: React.FC = () => {
           fontSize: isMobile ? '32px' : '48px'
         },
       ],
-      desc: ['Open to 4th+ Graders, limited spot', 'Python & Algorithm Intro, write your first lines of code!'],
+      desc: isMobile ? ['Create animations! ', 'Try Python in 2 hours'] : ['Build games, solve mysteries, create animations!', 'Try Python in 2 hours, the most powerful tool in AI gen!'],
       descStyle: {
-        color: '#4E65D6',
+        color: '#3F62DE',
         fontSize: 16
       },
       buttonText: 'Reserve Now',
       onClick: () => {
-        router.push('/about-us/achievements');
+        window.open('https://www.eventbrite.com/e/try-a-python-class-only-in-499-feb-24th-5-7pm-registration-817404437677?aff=G1');
       },
       banner: '/image/home/banner-pc-5.png',
       mbBanner: '/image/home/banner-mb-5.png',
@@ -121,7 +121,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
-      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (
@@ -145,7 +145,7 @@ const CarouselContent: React.FC = () => {
             )}
             <div className={`container ${styles.info}`}>
               <Row>
-                <Col xs={24} sm={24} md={24} lg={12}>
+                <Col xs={24} sm={24} md={24} lg={16}>
                   <Space direction="vertical" className={styles.space} size={20}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
