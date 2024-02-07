@@ -98,6 +98,13 @@
           }
         }
 
+        .titleImg {
+          height: 160px;
+          @media (max-width: 768px) {
+            height: 112px;
+          }
+        }
+
         .titleBar {
           display: flex;
           width: 280px;
@@ -142,7 +149,7 @@
           border-right: 8px solid transparent;
           border-bottom: 16px solid #ffad11;
           margin-right: 8px;
-          transform: rotate(45deg);
+          transform: rotate(90deg);
         }
         .description {
           flex: 49;
@@ -158,24 +165,23 @@
       }
 
       .button {
-        padding: 16px 40px;
+        padding: 16px 48px;
         border: 2px solid #ffad11;
-        border-radius: 12px;
+        border-radius: 36px;
         font-size: 24px;
         font-weight: 600;
         color: #fff;
-        background: $primary-color;
+        background: linear-gradient(to bottom, #ffad11, #f5821a); /* 渐变色 */
         line-height: 32px;
         transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         cursor: pointer;
-
-        &:hover {
-          color: #ffad11;
-          background-color: #fff;
-        }
-
-        @media (max-width: 768px) {
-          @include text(10px, 12px, #fff);
+      }
+      @media (max-width: 768px) {
+        .button {
+          padding: 16px 40px;
+          font-size: 10px;
+          line-height: 12px;
+          color: #fff;
         }
       }
     }
