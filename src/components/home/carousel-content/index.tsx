@@ -40,18 +40,18 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: CarouselItemsProps[] = [
     {
-      title: 'Python Trial Class, Value $88, only $4.99!',
+      title: 'Spring Trial Class, only $4.99!',
       titleConfig: [
         {
           text: '$4.99!',
           color: '#FFAD11',
-          fontSize: isMobile ? '32px' : '48px'
+          fontSize: isMobile ? '28px' : '48px'
         },
       ],
       desc: isMobile ? ['Create animations! ', 'Try Python in 2 hours'] : ['Build games, solve mysteries, create animations!', 'Try Python in 2 hours, the most powerful tool in AI gen!'],
       descStyle: {
         color: '#3F62DE',
-        fontSize: 16
+        fontSize: isMobile ? 14 : 24
       },
       buttonText: 'Reserve Now',
       onClick: () => {
@@ -76,13 +76,14 @@ const CarouselContent: React.FC = () => {
       titleConfig: [
         {
           text: 'FREE Placement Test, Open to ALL！',
-          color: '#EB7411'
+          color: '#EB7411',
+          fontSize: isMobile ? '20px' : '48px'
         }
       ],
       desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
       descStyle: {
         color: '#EB7411',
-        fontSize: 16
+        fontSize: isMobile ? 14 : 20
       },
       buttonText: 'Test Now',
       buttonStyle: {
@@ -99,14 +100,19 @@ const CarouselContent: React.FC = () => {
     {
       title: t('Home.Banner3.title'),
       desc: [t('Home.Banner3.desc')],
+      descStyle: {
+        fontSize: isMobile ? 14 : 24
+      },
       titleConfig: [
         {
           text: t('Home.Banner3.title.color'),
-          color: '#FFA11'
+          color: '#FFA11',
+          fontSize: isMobile ? '20px' : '48px'
         },
         {
           text: t('Home.Banner3.title.color2'),
-          color: '#FFAD11'
+          color: '#FFAD11',
+          fontSize: isMobile ? '20px' : '48px'
         }
       ],
       buttonText: t('Home.Banner3.buttonText'),
@@ -121,7 +127,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
-      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (
@@ -145,8 +151,8 @@ const CarouselContent: React.FC = () => {
             )}
             <div className={`container ${styles.info}`}>
               <Row>
-                <Col xs={24} sm={24} md={24} lg={16}>
-                  <Space direction="vertical" className={styles.space} size={20}>
+                <Col xs={24} sm={24} md={24} lg={18}>
+                  <Space direction="vertical" className={styles.space} size={isMobile ? 20 : 32}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
                       {item?.titleBar && <div className={styles.titleBar}>
@@ -178,10 +184,11 @@ const CarouselContent: React.FC = () => {
               </Row>
             </div>
           </div>
-        ))}
-      </Carousel>
+        ))
+        }
+      </Carousel >
       <UsacoMedal style={{ backgroundColor: '#FFFFFF', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' }} spacePaddingTop={0} showTitle={false} />
-    </div>
+    </div >
   );
 };
 
