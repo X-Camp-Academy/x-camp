@@ -6,6 +6,9 @@ import { useMobile } from '@/utils';
 import { Layout } from 'antd';
 import { usePathname } from 'next/navigation';
 import styles from './index.module.scss';
+import BannerMobile from './mobile/banner';
+import CommentMobile from './mobile/comment';
+import LearningTracksMobile from './mobile/learning-tracks';
 import Banner from './pc/banner';
 import DividerContent from './pc/divider-content';
 import LearningTracks from './pc/learning-tracks';
@@ -19,20 +22,23 @@ const CustomizedLearningTracks = () => {
   const learnTrackContents = [
     {
       imageUrl: '/image/about-us/learning-tracks/weekly-assign.png',
+      imageUrlMobile: '/image/about-us/learning-tracks/weekly-assign-mobile.png',
       title: 'Weekly Assignment',
-      titleIconUrl: '/image/about-us/learning-tracks/weekly-assgin-icon.png',
+      titleIconUrl: '/image/about-us/learning-tracks/weekly-assign-icon.png',
       content: 'Class lecturing is not enough for coding study, X-Camp will assign students with basic and bonus homework. Our auto-grading system and test case grading system is similar to USACO.',
-      avatarUrl: '/image/about-us/learning-tracks/weekly-aggin-avatar.png',
+      avatarUrl: '/image/about-us/learning-tracks/weekly-assign-avatar.png',
       comment: '”Good and challenging homework problems.”- CS 301B'
     },
     {
       imageUrl: '/image/about-us/learning-tracks/awards.png',
+      imageUrlMobile: '/image/about-us/learning-tracks/awards-mobile.png',
       title: '4.0 Awards',
       titleIconUrl: '/image/about-us/learning-tracks/awards-icon.png',
       content: 'Full score 100% of all the homework and exams (including makeup homework and exams by the end of the quarter) will be eligible for an X-Camp 4.0 award! The more practice, the better!'
     },
     {
       imageUrl: '/image/about-us/learning-tracks/study-forum.png',
+      imageUrlMobile: '/image/about-us/learning-tracks/study-forum-mobile.png',
       title: '24/7 Study Forum',
       titleIconUrl: '/image/about-us/learning-tracks/study-forum-icon.png',
       content: 'A vibrant, interactive, discussion platform called Discourse where students can post questions, insights, and solutions.Our teaching team offering guidance and solutions 24/7.',
@@ -42,6 +48,7 @@ const CustomizedLearningTracks = () => {
     },
     {
       imageUrl: '/image/about-us/learning-tracks/office-hour.png',
+      imageUrlMobile: '/image/about-us/learning-tracks/office-hour-mobile.png',
       title: 'Office Hour & Live Homework Night',
       titleIconUrl: '/image/about-us/learning-tracks/office-hour-icon.png',
       content:
@@ -49,6 +56,7 @@ const CustomizedLearningTracks = () => {
     },
     {
       imageUrl: '/image/about-us/learning-tracks/coach.png',
+      imageUrlMobile: '/image/about-us/learning-tracks/coach-mobile.png',
       title: 'Distinguished Coach-Guided for grandmaster students',
       titleIconUrl: '/image/about-us/learning-tracks/coach-icon.png',
       content:
@@ -61,7 +69,13 @@ const CustomizedLearningTracks = () => {
   return (
     <Layout className={styles.customizedContainer}>
       {isMobile ? (
-        <></>
+        <>
+          <BannerMobile />
+          {learnTrackContents.map((item, index) => (
+            <LearningTracksMobile {...item} key={item.title} defaultOpen={index === 0} />
+          ))}
+          <CommentMobile />
+        </>
       ) : (
         <>
           <Banner />
