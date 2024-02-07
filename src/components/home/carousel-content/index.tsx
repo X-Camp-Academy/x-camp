@@ -17,6 +17,7 @@ interface CarouselItemsProps {
   title: string;
   titleBar?: boolean;
   triangle?: boolean;
+  titleImg?: string;
   desc: string[];
   banner: string;
   mbBanner: string;
@@ -40,14 +41,8 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: CarouselItemsProps[] = [
     {
-      title: 'Spring Trial Class, only $4.99!',
-      titleConfig: [
-        {
-          text: '$4.99!',
-          color: '#FFAD11',
-          fontSize: isMobile ? '28px' : '48px'
-        },
-      ],
+      title: '',
+      titleConfig: [],
       desc: isMobile ? ['Create animations! ', 'Try Python in 2 hours'] : ['Build games, solve mysteries, create animations!', 'Try Python in 2 hours, the most powerful tool in AI gen!'],
       descStyle: {
         color: '#3F62DE',
@@ -60,6 +55,7 @@ const CarouselContent: React.FC = () => {
       banner: '/image/home/banner-pc-5.png',
       mbBanner: '/image/home/banner-mb-5.png',
       triangle: true,
+      titleImg: isMobile ? '/image/home/banner-mb-5-title.png' : '/image/home/banner-pc-5-title.png'
     },
     {
       title: '',
@@ -152,9 +148,10 @@ const CarouselContent: React.FC = () => {
             <div className={`container ${styles.info}`}>
               <Row>
                 <Col xs={24} sm={24} md={24} lg={18}>
-                  <Space direction="vertical" className={styles.space} size={isMobile ? 20 : 32}>
+                  <Space direction="vertical" className={styles.space} size={16}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
+                      {item?.titleImg && <img src={item?.titleImg} alt="" className={styles.titleImg} />}
                       {item?.titleBar && <div className={styles.titleBar}>
                         <span className={styles.left} />
                         <span className={styles.right} />
