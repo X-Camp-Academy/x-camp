@@ -17,6 +17,7 @@
     @media (max-width: 992px) {
       top: 240px;
       right: 40px;
+      color: #172a88;
     }
 
     .li {
@@ -85,18 +86,22 @@
       .titleWithImg {
         .title {
           margin: 0;
-          font-size: 36px;
+          font-size: 44px;
           line-height: 48px;
           font-weight: 800;
           color: $text-color;
-          @media (max-width: 1400px) and (min-width: 992px) {
-            text-wrap: nowrap;
-          }
 
           @media (max-width: 768px) {
             @include title('middle');
 
             font-weight: 800;
+          }
+        }
+
+        .titleImg {
+          height: 160px;
+          @media (max-width: 768px) {
+            height: 112px;
           }
         }
 
@@ -137,11 +142,21 @@
             margin-right: 8px;
           }
         }
+        .triangle {
+          width: 0;
+          height: 0;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 16px solid #ffad11;
+          margin-right: 8px;
+          transform: rotate(90deg);
+        }
         .description {
           flex: 49;
           @include text(24px, 32px);
           margin: 0;
           font-weight: 600;
+          line-height: 48px;
           @media (max-width: 768px) {
             @include text(14px, 18px);
             flex: 39;
@@ -150,34 +165,23 @@
       }
 
       .button {
-        padding: 10px 36px;
+        padding: 16px 48px;
         border: 2px solid #ffad11;
-        border-radius: 12px;
-        font-size: 18px;
+        border-radius: 36px;
+        font-size: 24px;
         font-weight: 600;
         color: #fff;
-        background: $primary-color;
-        line-height: 24px;
+        background: linear-gradient(to bottom, #ffad11, #f5821a); /* 渐变色 */
+        line-height: 32px;
         transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         cursor: pointer;
-
-        &:hover {
-          color: #ffad11;
-          background-color: #fff;
-        }
-
-        @media (max-width: 768px) {
-          @include text(10px, 12px, #fff);
-        }
       }
-
-      .date {
-        @include text(16px, 24px, #666);
-
-        font-weight: 500;
-
-        @media (max-width: 768px) {
-          @include text(10px, 12px, #666);
+      @media (max-width: 768px) {
+        .button {
+          padding: 16px 40px;
+          font-size: 10px;
+          line-height: 12px;
+          color: #fff;
         }
       }
     }
