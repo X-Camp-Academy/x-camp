@@ -37,6 +37,7 @@ const WhyXCamp: React.FC = () => {
       icon: '/image/home/icon-why-track.png',
       title: t('Home.WhyXCamp.title4'),
       desc: t('Home.WhyXCamp.Desc4'),
+      url: '/about-us/customized-learning-tracks',
       ref: useRef<HTMLDivElement>(null)
     }
   ];
@@ -47,7 +48,7 @@ const WhyXCamp: React.FC = () => {
       if (element) {
         window.scrollTo({
           top: element?.offsetTop,
-          behavior: 'smooth',
+          behavior: 'smooth'
         });
       }
     } else {
@@ -75,7 +76,7 @@ const WhyXCamp: React.FC = () => {
                   onMouseEnter={() => addAnimate(item?.ref)}
                   onMouseLeave={() => removeAnimate(item?.ref)}
                 >
-                  <Space direction="vertical" onClick={item?.url ? () => onClick(item?.url) : () => { }}>
+                  <Space direction="vertical" onClick={item?.url ? () => onClick(item?.url) : () => {}}>
                     <Image src={item?.icon} alt="icon" preview={false} className={styles.cardIcon} />
                     <Paragraph ellipsis={{ rows: 2 }} className={styles.cardTitle}>
                       {item?.title}
