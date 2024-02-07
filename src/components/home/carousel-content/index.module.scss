@@ -86,7 +86,7 @@
       .titleWithImg {
         .title {
           margin: 0;
-          font-size: 36px;
+          font-size: 44px;
           line-height: 48px;
           font-weight: 800;
           color: $text-color;
@@ -149,6 +149,7 @@
           @include text(24px, 32px);
           margin: 0;
           font-weight: 600;
+          line-height: 48px;
           @media (max-width: 768px) {
             @include text(14px, 18px);
             flex: 39;
@@ -157,14 +158,14 @@
       }
 
       .button {
-        padding: 10px 36px;
+        padding: 16px 40px;
         border: 2px solid #ffad11;
         border-radius: 12px;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 600;
         color: #fff;
         background: $primary-color;
-        line-height: 24px;
+        line-height: 32px;
         transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         cursor: pointer;
 
