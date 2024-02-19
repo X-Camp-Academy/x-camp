@@ -152,14 +152,14 @@
           transform: rotate(90deg);
         }
         .description {
-          flex: 49;
+          flex: 69;
           @include text(24px, 32px);
           margin: 0;
           font-weight: 600;
           line-height: 48px;
           @media (max-width: 768px) {
             @include text(14px, 18px);
-            flex: 39;
+            flex: 49;
           }
         }
       }
