@@ -53,11 +53,16 @@
     }
 
     .item {
-      padding: 11px 20px;
+      width: 160px;
+      padding: 10px 20px;
       border-radius: 12px;
       background: #ffe1c7;
       transition: all 0.3s;
       cursor: pointer;
+
+      @media (max-width: 992px) {
+        width: 100%;
+      }
 
       &:hover {
         background: #00a0e9;
