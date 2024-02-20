@@ -20,7 +20,10 @@ const MonthlyContest = ({ data }: Props) => {
               item[0].contests?.map(contest => (
                 <div key={contest.id} className={styles.contestItem} onClick={() => window.open(contest?.attributes?.contestLink)}>
                   <img className={styles.contestLogo} src={contest?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
-                  <div className={styles.contestTitle}>{getTransResult(lang, contest?.attributes?.titleZh, contest?.attributes?.titleEn)}</div>
+                  <div className={styles.contestTitle}>
+                    <div>{getTransResult(lang, contest?.attributes?.titleZh, contest?.attributes?.titleEn)}</div>
+                    <span />
+                  </div>
                 </div>
               ))
             }
