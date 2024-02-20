@@ -39,13 +39,14 @@
       flex: 2;
     }
     .contestTitle {
-      font-size: 16px;
+      font-size: 14px;
       font-family: MontserratAlternates, MontserratAlternates;
       font-weight: 600;
       color: #172142;
       line-height: 24px;
       margin-left: 16px;
       flex: 4;
+      flex-direction: column;
     }
   }
 }

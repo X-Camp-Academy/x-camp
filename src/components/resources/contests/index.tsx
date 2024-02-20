@@ -11,14 +11,14 @@ import Introduction from './introduction';
 import MonthlyContestPC from './monthly-contest-pc';
 import MonthlyContestMB from './monthly-contest-mb';
 import WhyContests from './why-contests';
-import { useMobile } from '@/utils';
+import { useSize } from 'ahooks';
 
 const { Content } = Layout;
 
 const Contests: React.FC = () => {
   const pathname = usePathname();
+  const size = useSize(document.querySelector('body'));
   const { data: resourcesContest } = useGetContests();
-  const isMobile = useMobile();
   const { data: reviewsData } = useGetReviews({
     ready: true,
     pageName: [pathname]
@@ -28,7 +28,7 @@ const Contests: React.FC = () => {
       <Content>
         <Banner />
         {
-          isMobile ? <MonthlyContestMB data={formatContestsByQuarter(resourcesContest!, 1)} /> : <MonthlyContestPC data={formatContestsByQuarter(resourcesContest!, 6)} />
+          Number(size?.width) <= 992 ? <MonthlyContestMB data={formatContestsByQuarter(resourcesContest!, 1)} /> : <MonthlyContestPC data={formatContestsByQuarter(resourcesContest!, Number(size?.width) <= 1200 ? 3 : 6)} />
         }
         <Introduction data={filterContest(resourcesContest!)} />
         <WhyContests />
