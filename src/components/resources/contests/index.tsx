@@ -29,11 +29,11 @@ const Contests: React.FC = () => {
         <Banner />
         {
           Number(size?.width) <= 992 ?
-            <MonthlyContestMB data={formatContestsByQuarter(filterContest(resourcesContest!), 1)} />
+            <MonthlyContestMB data={formatContestsByQuarter(filterContest(resourcesContest!, false), 1)} />
             :
-            <MonthlyContestPC data={formatContestsByQuarter(filterContest(resourcesContest!), Number(size?.width) <= 1200 ? 3 : 6)} />
+            <MonthlyContestPC data={formatContestsByQuarter(filterContest(resourcesContest!, false), Number(size?.width) <= 1200 ? 3 : 6)} />
         }
-        <Introduction data={filterContest(resourcesContest!)} />
+        <Introduction data={filterContest(resourcesContest!, true)} />
         <WhyContests />
         <Reviews reviewsData={reviewsData} />
       </Content>

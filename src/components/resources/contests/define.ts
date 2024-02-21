@@ -36,8 +36,8 @@ export const formatContestsByMonth = (data: StrapiResponseDataItem<GetContests>[
   return contestsByMonth;
 };
 
-export const filterContest = (data: StrapiResponseDataItem<GetContests>[]) => {
-  return data?.filter((item) => !item?.attributes?.isContestEvent);
+export const filterContest = (data: StrapiResponseDataItem<GetContests>[], isContestEvent: boolean) => {
+  return isContestEvent ? data?.filter((item) => item?.attributes?.isContestEvent) : data?.filter((item) => !item?.attributes?.isContestEvent);
 };
 
 export const formatContestsByQuarter = (data: StrapiResponseDataItem<GetContests>[], size: number) => {
