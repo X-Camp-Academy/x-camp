@@ -9,6 +9,7 @@ import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
 import UsacoMedal from '@/components/common/usaco-medal';
 import { apiConfig } from '@/config';
+import { useSize } from 'ahooks';
 
 const { Text } = Typography;
 const { assessment } = apiConfig;
@@ -34,6 +35,10 @@ const CarouselContent: React.FC = () => {
   const sliderRef: any = useRef(null);
   const [current, setCurrent] = useState(0);
   const isMobile = useMobile();
+  const size = useSize(document.querySelector('body'));
+
+
+
 
   const goTo = (index: number) => {
     sliderRef.current?.goTo(index);
@@ -79,7 +84,7 @@ const CarouselContent: React.FC = () => {
       desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
       descStyle: {
         color: '#EB7411',
-        fontSize: isMobile ? 14 : 20
+        fontSize: isMobile ? 8 : 18
       },
       buttonText: 'Test Now',
       buttonStyle: {
@@ -123,7 +128,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
-      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (
@@ -161,7 +166,7 @@ const CarouselContent: React.FC = () => {
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
                         <div key={desc} className={styles.descriptionBox}>
-                          {item?.titleBar && <span className={styles.dot} />}
+                          {item?.titleBar && <div className={styles.dot} />}
 
                           {item?.triangle && <div className={styles.triangle} />}
                           <Text className={styles.description} style={item?.descStyle}>
