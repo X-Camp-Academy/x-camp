@@ -12,7 +12,7 @@ const MonthlyContest = ({ data }: Props) => {
   const { lang } = useLang();
   return (
     <div className={`${styles.content} container`}>
-      <div style={{ marginBottom: 24 }}>Contest <span style={{ color: '#FFAD12' }}>Calendar</span></div>
+      <div className={styles.title}>Contest <span style={{ color: '#FFAD12' }}>Calendar</span></div>
       {
         data?.map(item => (
           item[0]?.contests && item[0]?.contests?.length > 0 &&
@@ -29,8 +29,8 @@ const MonthlyContest = ({ data }: Props) => {
                     <div className={styles.contestTitle}>
                       <div>{getTransResult(lang, contest?.attributes?.titleZh, contest?.attributes?.titleEn)}</div>
                       <div className={styles.time}>
-                        {noInvalid(startDateTime) && dayjs(startDateTime).format('MMM DD')}
-                        {noInvalid(endDateTime) && `-${dayjs(endDateTime).format('MMM DD')}`}
+                        {noInvalid(startDateTime) && dayjs(startDateTime).format('ddd, MMM DD')}
+                        {noInvalid(endDateTime) && `-${dayjs(endDateTime).format('ddd, MMM DD')}`}
                       </div>
                     </div>
                   </div>
