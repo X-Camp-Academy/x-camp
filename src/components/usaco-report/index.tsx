@@ -30,6 +30,10 @@ const { Content } = Layout;
 
 const contestOptions = [
   {
+    label: '2023 December Contest',
+    value: '2023 December Contest'
+  },
+  {
     label: '2024 January Contest',
     value: '2024 January Contest'
   },
