@@ -1,0 +1,52 @@
+@import '@/styles/variables';
+
+.content {
+  padding: 48px 24px;
+  background: #f5f5f5;
+  font-size: 24px;
+  font-family: MontserratAlternates, MontserratAlternates;
+  font-weight: 600;
+  color: #172142;
+  line-height: 48px;
+
+  .card {
+    padding: 0 24px 12px;
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    .month {
+      font-size: 20px;
+      font-family: MontserratAlternates, MontserratAlternates;
+      font-weight: 600;
+      color: #888888;
+      line-height: 48px;
+    }
+  }
+
+  .contestItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #172142;
+    overflow: hidden;
+    margin-bottom: 16px;
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    .contestLogo {
+      width: 80px;
+      flex: 2;
+    }
+    .contestTitle {
+      font-size: 14px;
+      font-family: MontserratAlternates, MontserratAlternates;
+      font-weight: 600;
+      color: #172142;
+      line-height: 24px;
+      margin-left: 16px;
+      flex: 4;
+      flex-direction: column;
+    }
+  }
+}

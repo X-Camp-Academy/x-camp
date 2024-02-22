@@ -53,10 +53,6 @@ const AllClasses: React.FC = () => {
   const levelTypeOptions = useCourseOptions('levelType');
   const quarterOptions = useCourseOptions('courseQuarter');
 
-
-
-  console.log(courseTypeOptions);
-
   // on segmentedValue or filters changed
   useEffect(() => {
     const newFilters = { ...filters };
