@@ -483,7 +483,8 @@ declare const json: {
   "USACO Grandmaster Classes": "USACO大师级",
   "Mock Test Classes": "模考班",
   "Java & APCS Classes": "Java&APCS班",
-  "Free USACO Public Mock Test": "USACO公开模考班"
+  "Free USACO Public Mock Test": "USACO公开模考班",
+  "DisclaimerPrivacyPolicy": "免责声明&隐私政策"
 }
 
 export default json;
