@@ -12,7 +12,7 @@ const MonthlyContest = ({ data }: Props) => {
   const { lang } = useLang();
   return (
     <div className={`${styles.content} container`}>
-      <div style={{ marginBottom: 24 }}>Contest <span style={{ color: '#FFAD12' }}>Calendar</span></div>
+      <div className={styles.title}>Contest <span style={{ color: '#FFAD12' }}>Calendar</span></div>
       {
         data?.map(item => (
           item[0]?.contests && item[0]?.contests?.length > 0 &&
@@ -25,12 +25,12 @@ const MonthlyContest = ({ data }: Props) => {
                 const noInvalid = (dateTime: Dayjs) => dayjs(dateTime).toString() !== 'Invalid Date';
                 return (
                   <div key={contest.id} className={styles.contestItem} style={{ backgroundColor: '#EEF2FE' }} onClick={() => window.open(contest?.attributes?.contestLink)}>
-                    <img className={styles.contestLogo} src={contest?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
+                    <img className={styles.contestLogo} src={contest?.attributes?.mobileLogo?.data?.attributes?.url || contest?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
                     <div className={styles.contestTitle}>
                       <div>{getTransResult(lang, contest?.attributes?.titleZh, contest?.attributes?.titleEn)}</div>
                       <div className={styles.time}>
-                        {noInvalid(startDateTime) && dayjs(startDateTime).format('MMM DD')}
-                        {noInvalid(endDateTime) && `-${dayjs(endDateTime).format('MMM DD')}`}
+                        {noInvalid(startDateTime) && dayjs(startDateTime).format('ddd, MMM DD')}
+                        {noInvalid(endDateTime) && `-${dayjs(endDateTime).format('ddd, MMM DD')}`}
                       </div>
                     </div>
                   </div>

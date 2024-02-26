@@ -130,15 +130,16 @@
         display: flex;
         align-items: center;
         .dot {
-          width: 8px;
-          height: 8px;
+          display: block;
+          width: 12px;
+          height: 12px;
           background: #eb7411;
           border-radius: 50%;
           margin-right: 32px;
-          flex: 1;
           @media (max-width: 768px) {
-            @include text(14px, 18px);
-            flex: 1;
+            width: 8px;
+            height: 8px;
+            display: block;
             margin-right: 8px;
           }
         }
@@ -152,14 +153,12 @@
           transform: rotate(90deg);
         }
         .description {
-          flex: 69;
           @include text(24px, 32px);
           margin: 0;
           font-weight: 600;
           line-height: 48px;
           @media (max-width: 768px) {
             @include text(14px, 18px);
-            flex: 49;
           }
         }
       }
