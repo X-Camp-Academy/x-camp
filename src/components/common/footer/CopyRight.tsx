@@ -12,7 +12,7 @@ import { getTransResult } from '@/utils/public';
 const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
-  const { format: t } = useLang();
+  const { lang, format: t } = useLang();
   const { idApi } = apiConfig;
   const isMobile = useMobile();
   return (
