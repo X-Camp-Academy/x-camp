@@ -470,6 +470,7 @@ declare const json: {
   "Q2": "Q2 (Apr-Jun)",
   "Q3": "Q3 (Jul-Sept)",
   "Q4": "Q4 (Oct-Dec)",
+<<<<<<< HEAD
   "WorkingHours": "工作时间",
   "All Classes": "全部课程",
   "Weekly Classes": "每周课程",
@@ -484,6 +485,8 @@ declare const json: {
   "Mock Test Classes": "模考班",
   "Java & APCS Classes": "Java&APCS班",
   "Free USACO Public Mock Test": "USACO公开模考班",
+=======
+>>>>>>> hcc-add-privacy
   "DisclaimerPrivacyPolicy": "免责声明&隐私政策"
 }
 

@@ -467,6 +467,7 @@ declare const json: {
   "Q2": "Q2 (Apr-Jun)",
   "Q3": "Q3 (Jul-Sept)",
   "Q4": "Q4 (Oct-Dec)",
+<<<<<<< HEAD
   "WorkingHours": "Working Hours",
   "All Classes": "All Classes",
   "Weekly Classes": "Weekly Classes",
@@ -481,6 +482,8 @@ declare const json: {
   "Mock Test Classes": "Mock Test Classes",
   "Java & APCS Classes": "Java & APCS Classes",
   "Free USACO Public Mock Test": "Free USACO Public Mock Test",
+=======
+>>>>>>> hcc-add-privacy
   "DisclaimerPrivacyPolicy": "Disclaimer & Privacy Policy"
 }
 
