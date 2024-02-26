@@ -25,7 +25,7 @@ const MonthlyContest = ({ data }: Props) => {
                 const noInvalid = (dateTime: Dayjs) => dayjs(dateTime).toString() !== 'Invalid Date';
                 return (
                   <div key={contest.id} className={styles.contestItem} style={{ backgroundColor: '#EEF2FE' }} onClick={() => window.open(contest?.attributes?.contestLink)}>
-                    <img className={styles.contestLogo} src={contest?.attributes?.mobileLogo?.data?.attributes?.url} alt="" />
+                    <img className={styles.contestLogo} src={contest?.attributes?.mobileLogo?.data?.attributes?.url || contest?.attributes?.contestLogo?.data?.attributes?.url} alt="" />
                     <div className={styles.contestTitle}>
                       <div>{getTransResult(lang, contest?.attributes?.titleZh, contest?.attributes?.titleEn)}</div>
                       <div className={styles.time}>
