@@ -41,10 +41,10 @@ const contestOptions = [
     label: '2024 February Contest',
     value: '2024 February Contest'
   },
-  {
-    label: '2024 March US Open',
-    value: '2024 March US Open'
-  },
+  // {
+  //   label: '2024 March US Open',
+  //   value: '2024 March US Open'
+  // },
 ];
 const levelOptions = [
   {
