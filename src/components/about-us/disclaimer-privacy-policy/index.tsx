@@ -303,7 +303,7 @@ const DisclaimerPrivacyPolicy: React.FC = () => {
     <div className={styles.disclaimerPrivacyPolicyContainer}>
       <div className={`${styles.disclaimerPrivacyPolicy} container`}>
         <Title className={styles.title}>{getTransResult(lang, 'X-Camp Academy免责声明与隐私政策', 'X - Camp Academy Disclaimer & Privacy Policy')}</Title>
-        <Text className={styles.date}>{getTransResult(lang, 'X-Camp Academy免责声明与隐私政策', 'as of February 2024')}</Text>
+        <Text className={styles.date}>{getTransResult(lang, '2024年2月版本', 'as of February 2024')}</Text>
         {
           getLangResult(lang, zhData, enData)?.map((item) => (
             <div key={item?.title}>

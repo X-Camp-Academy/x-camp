@@ -67,6 +67,7 @@ const CopyRight: React.FC = () => {
                   <a href={'/about-us/calendar'}>{t('SchoolCalendar')}</a>
                   <a href={'/courses/all-classes#weekly'}>{t('WeeklyClasses')}</a>
                   <a href={'/courses/all-classes#camps'}>{t('In-personCamps')}</a>
+                  <a href={'/about-us/disclaimer-privacy-policy/'}>{t('DisclaimerPrivacyPolicy')}</a>
                 </Space>
               </div>
 
