@@ -1,7 +1,7 @@
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone } from '@/utils/public';
 import { CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
-import { Button, Descriptions, Modal, message } from 'antd';
+import { Button, Descriptions, Modal, Space, message } from 'antd';
 import { useContext, useState } from 'react';
 import { getTransResult } from 'x-star-utils';
 import CourseClassesContext from '../../CourseClassesContext';
@@ -75,11 +75,12 @@ const Introduction = () => {
               >
                 {t('1On1Consultation')}
               </Button>
-              <div>
+              <Space direction="vertical" style={{ alignItems: 'center' }}>
                 <Button type={'primary'} className={styles.btn} icon={<ShareAltOutlined />} onClick={() => setIsModalOpen(true)}>
                   {t('ShareLessons')}
                 </Button>
-              </div>
+                <span className={styles.off}>{'* Get $75 off on referrals'}</span>
+              </Space>
             </div>
           </div>
         </div>

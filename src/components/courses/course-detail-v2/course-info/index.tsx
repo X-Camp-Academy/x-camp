@@ -24,6 +24,7 @@ const CourseInfo = () => {
       location
     };
   });
+
   return (
     <div className={styles.courseInfo}>
       <div className={`${styles.content} container`} style={{ height: '100%' }}>

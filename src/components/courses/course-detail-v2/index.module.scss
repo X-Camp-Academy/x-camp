@@ -4,10 +4,16 @@
   margin: 0 auto;
   width: 100%;
 
+  * {
+    font-family: Poppins-Black, Arial;
+  }
+
   :global(.tabTitle) {
     position: relative;
-    display: inline;
+    z-index: 0;
+    display: inline-block;
     font-size: 28px;
+    font-family: MontserratAlternates-Bold, Arial;
     font-weight: bold;
     color: #172142;
     line-height: 48px;
@@ -16,6 +22,7 @@
       position: absolute;
       top: 8px;
       right: -8px;
+      z-index: -1;
       width: 18px;
       height: 18px;
       border-radius: 50%;
@@ -23,5 +30,9 @@
       opacity: 0.8;
       content: '';
     }
+  }
+
+  .faqTitle {
+    margin-bottom: 36px;
   }
 }

@@ -44,14 +44,14 @@ const CourseDetail: React.FC = () => {
           <CourseTabs />
           <Introduction />
           <CourseStructure />
-          <Service />
           <CourseSyllabus />
+          <Service />
           {/* <ProgressionClasses /> */}
         </CourseClassesContext.Provider>
 
         <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />
         <FacultyCoaches />
-        <Faqs title={t('CoursesFAQS')} data={faqData} />
+        <Faqs title={t('CoursesFAQS')} data={faqData} titleClassName={`tabTitle ${styles.faqTitle}`} id="faq" />
         <Reviews reviewsData={coursesData?.data[0]?.attributes?.reviews?.data} />
       </Content>
     </Layout>

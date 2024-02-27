@@ -4,7 +4,7 @@
   margin-bottom: 50px;
   padding: 50px 15px;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     margin-bottom: 16px;
     padding: 16px 24px;
   }
@@ -12,29 +12,27 @@
   .title {
     @include title('bold');
 
-    line-height: 64px;
+    margin-bottom: 50px;
     text-align: center;
+    line-height: 64px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       @include title('mobile');
+
+      margin-bottom: 16px;
     }
   }
 
   .cardContent {
     display: flex;
     align-items: center;
-    margin-top: 50px;
     flex-direction: column;
-
-    @media (max-width: 768px) {
-      margin-top: 16px;
-    }
 
     .qaCard {
       margin: 10px 0;
       width: 100%;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         width: 100%;
       }
     }

@@ -7,15 +7,17 @@ import React from 'react';
 import styles from './index.module.scss';
 
 interface FaqsProps {
+  titleClassName?: string;
+  id?: string;
   title: string;
   data: StrapiResponseDataItem<GetFaq>[] | undefined;
 }
 
-const Faqs: React.FC<FaqsProps> = ({ title, data }) => {
+const Faqs: React.FC<FaqsProps> = ({ titleClassName, id, title, data }) => {
   const { lang } = useLang();
   return (
-    <div className={`${styles.campFAQS} container`}>
-      <div className={styles.title}>{title}</div>
+    <div className={`${styles.campFAQS} container`} id={id}>
+      <div className={`${styles.title} ${titleClassName}`}>{title}</div>
       <div className={styles.cardContent}>
         {data?.map((item, index) => (
           <QACard

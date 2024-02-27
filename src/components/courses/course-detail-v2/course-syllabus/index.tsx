@@ -44,20 +44,22 @@ const CourseSyllabus = () => {
           <Title className={'tabTitle'}>{t('TopicsCovered')}</Title>
           <div className={styles.tableBox}>
             <table border={0}>
-              {courseSyllabus?.map((v) => (
-                <tr key={v[0].index}>
-                  {v?.map((u) => (
-                    <td key={u.index}>
-                      {u.value && (
-                        <div className={styles.item}>
-                          <Text className={styles.text}>{u.index + 1}</Text>
-                          <Text className={styles.paragraph}>{u.value}</Text>
-                        </div>
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              <tbody>
+                {courseSyllabus?.map((v) => (
+                  <tr key={v[0].index}>
+                    {v?.map((u) => (
+                      <td key={u.index}>
+                        {u.value && (
+                          <div className={styles.item}>
+                            <Text className={styles.text}>{u.index + 1}</Text>
+                            <Text className={styles.paragraph}>{u.value}</Text>
+                          </div>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>

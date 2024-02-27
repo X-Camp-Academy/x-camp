@@ -1,5 +1,6 @@
 'use client';
 import { apiConfig } from '@/config/index';
+import { useGlobalState } from '@/hoc/WithGlobalState';
 import { useAuth } from '@/hoc/with-auth/define';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -28,6 +29,8 @@ const Nav: React.FC = () => {
   const { xydApi } = apiConfig;
 
   const ref = useRef<HTMLDivElement>(null);
+  const { navVisible } = useGlobalState();
+
   useEffect(() => {
     setCurrent(pathname + hash);
   }, [pathname, hash]);
@@ -84,8 +87,9 @@ const Nav: React.FC = () => {
       }, 1000);
     }
   };
+
   return (
-    <Layout className={styles.headerContainer}>
+    <Layout className={styles.headerContainer} style={navVisible ? {} : { display: 'none' }}>
       <Header className={`${styles.header} container`}>
         <Space align="center" className={styles.space}>
           {isiPad ? (
@@ -135,14 +139,7 @@ const Nav: React.FC = () => {
               {/* <SelectPage /> */}
               {/* <ToggleLanguage className={styles.toggleMargin} /> */}
             </div>
-            <Menu
-              mode="inline"
-              openKeys={openKeys}
-              selectedKeys={[current]}
-              onOpenChange={onOpenMobileMenuChange}
-              items={mobileMenuItems}
-              onClick={({ key }) => setCurrentKey(key)}
-            />
+            <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
           </Space>
         )}
       </Header>
