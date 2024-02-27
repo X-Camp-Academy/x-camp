@@ -1,0 +1,25 @@
+@import '@/styles/variables';
+
+.content {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 100%;
+
+  .title {
+    @include title('default');
+
+    margin-bottom: 50px;
+    text-align: center;
+    line-height: 48px;
+  }
+
+  .betweenCards {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .centerCards {
+    justify-content: center;
+    width: 100%;
+  }
+}

@@ -1,0 +1,36 @@
+.titleTab {
+  display: flex;
+  justify-content: space-between;
+  margin: 42px 0 36px;
+  border-bottom: 1px rgba($color: #172142, $alpha: 30%) solid;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: left;
+  color: #172142;
+  line-height: 36px;
+
+  .contentTitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: -2px;
+    min-width: 10vw;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .contentText {
+    padding: 13px 10px 13px 0;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .titleTab {
+    display: none;
+    font-size: 1.1em;
+  }
+}
