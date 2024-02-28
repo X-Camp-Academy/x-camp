@@ -5,7 +5,7 @@
   margin-bottom: 30px;
   text-align: center;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     margin-top: 32px;
     margin-bottom: 32px;
     padding-right: 24px;
@@ -15,7 +15,7 @@
   .title {
     @include title;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       @include title('mobile');
     }
   }
@@ -28,18 +28,19 @@
 
     @include padding;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       @include padding(0);
       @include mobile-text;
-      padding: 0;
+
       margin-bottom: 0;
+      padding: 0;
     }
   }
 
   :global(.ant-segmented-group) {
     padding: 8px 36px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       padding: 0;
     }
   }
@@ -49,7 +50,7 @@
     font-weight: 500;
     line-height: 36px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       font-size: 14px;
     }
   }
@@ -70,42 +71,8 @@
     .col {
       margin-bottom: 48px;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         margin-bottom: 24px;
-      }
-
-      .avatar {
-        margin-top: 24px;
-
-        @media (max-width: 768px) {
-          margin-top: 16px;
-        }
-      }
-
-      .name {
-        @include title('thin');
-
-        line-height: 54px;
-
-        @media (max-width: 768px) {
-          @include title('mobile');
-        }
-      }
-
-      .description {
-        padding-right: 24px;
-        padding-left: 24px;
-        font-size: 16px;
-        font-weight: 400;
-        text-align: left;
-        color: #666;
-        line-height: 24px;
-
-        @media (max-width: 768px) {
-          @include mobile-text;
-
-          margin-bottom: 0;
-        }
       }
     }
   }

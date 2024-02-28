@@ -1,7 +1,6 @@
 'use client';
 import { FaqCategory } from '@/apis/strapi-client/define';
 import { useGetCourses, useGetFaq } from '@/apis/strapi-client/strapi';
-import FacultyCoaches from '@/components/common/faculty-coaches';
 import Faqs from '@/components/common/faqs';
 import Reviews from '@/components/common/reviews';
 import UsacoMedal from '@/components/common/usaco-medal';
@@ -15,6 +14,7 @@ import CourseInfo from './course-info';
 import CourseStructure from './course-structure';
 import CourseSyllabus from './course-syllabus';
 import CourseTabs from './course-tabs';
+import Faculty from './faculty';
 import styles from './index.module.scss';
 import Introduction from './introduction';
 import Service from './service';
@@ -46,10 +46,9 @@ const CourseDetail: React.FC = () => {
           <CourseStructure />
           <CourseSyllabus />
           <Service />
+          <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />
+          <Faculty />
         </CourseClassesContext.Provider>
-
-        <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />
-        <FacultyCoaches />
         <Faqs title={t('CoursesFAQS')} data={faqData} className="tabContent" titleClassName={`tabTitle ${styles.faqTitle}`} id="faq" />
         <Reviews reviewsData={coursesData?.data[0]?.attributes?.reviews?.data} />
       </Content>
