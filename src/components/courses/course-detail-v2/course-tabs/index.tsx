@@ -1,4 +1,5 @@
 import { FrequencyCategory } from '@/apis/strapi-client/define';
+import NavTools from '@/components/common/nav/nav-tools';
 import { useGlobalState } from '@/hoc/WithGlobalState';
 import { formatFinance } from '@/utils/public';
 import { useInViewport, useMemoizedFn } from 'ahooks';
@@ -75,8 +76,8 @@ const CourseTabs = () => {
       </Head>
 
       <div className={`${navVisible && 'container'}`}>
-        <Affix offsetTop={0} onChange={(affixed) => setNavVisible(!affixed)}>
-          <div className={`${!navVisible && styles.nav}`}>
+        <Affix offsetTop={0} onChange={(affixed) => setNavVisible(!affixed)} className={`${!navVisible && styles.navContainer}`}>
+          <div className={styles.nav}>
             <div className={styles.titleTab}>
               {tabList.map((item) => {
                 return (
@@ -86,7 +87,12 @@ const CourseTabs = () => {
                 );
               })}
             </div>
-            {!navVisible && <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</div>}
+            {!navVisible && (
+              <div className={styles.tools}>
+                <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</div>
+                <NavTools />
+              </div>
+            )}
           </div>
         </Affix>
       </div>

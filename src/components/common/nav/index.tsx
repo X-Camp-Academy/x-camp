@@ -1,18 +1,16 @@
 'use client';
-import { apiConfig } from '@/config/index';
 import { useGlobalState } from '@/hoc/WithGlobalState';
-import { useAuth } from '@/hoc/with-auth/define';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { AlignRightOutlined, CloseOutlined } from '@ant-design/icons';
 import 'animate.css';
-import { Button, Image, Layout, Menu, MenuProps, Space } from 'antd';
+import { Image, Layout, Menu, MenuProps, Space } from 'antd';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import DropdownUserMenu from '../dropdown-user-menu';
 import { removeDropdown, useMenuItems } from './define';
 import styles from './index.module.scss';
+import NavTools from './nav-tools';
 import XStarMenu from './x-star-menu';
 
 const { Header } = Layout;
@@ -26,7 +24,6 @@ const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const isiPad = useMobile('lg');
   const menuItems = useMenuItems();
-  const { xydApi } = apiConfig;
 
   const ref = useRef<HTMLDivElement>(null);
   const { navVisible } = useGlobalState();
@@ -69,8 +66,6 @@ const Nav: React.FC = () => {
     }
   };
 
-  const { user, logout } = useAuth();
-
   const onChangeShowMenu = () => {
     let timer: any = null;
     if (timer) {
@@ -109,25 +104,7 @@ const Nav: React.FC = () => {
                 </Link>
                 <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
               </div>
-              <Space>
-                {user ? (
-                  <Space size={12}>
-                    <DropdownUserMenu user={user} logout={logout} />
-                    <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
-                      {t('LearningCenter')}
-                    </Button>
-                  </Space>
-                ) : (
-                  <Button className={styles.study} type="primary" href="/login">
-                    {t('Nav.Login')}
-                  </Button>
-                )}
-                <div style={{ marginLeft: 30 }}>
-                  {/* ! 下一版更新 */}
-                  {/* <SelectPage /> */}
-                  {/* <ToggleLanguage /> */}
-                </div>
-              </Space>
+              <NavTools />
             </>
           )}
         </Space>

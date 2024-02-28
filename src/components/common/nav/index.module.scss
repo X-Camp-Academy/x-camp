@@ -9,7 +9,7 @@
   background-color: #fff !important;
   box-shadow: 0 9px 25px -4px #d8d8d8;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     box-shadow: 0 17px 48px -8px rgb(216 216 216 / 50%);
   }
 
@@ -17,7 +17,8 @@
     height: 72px;
     line-height: 72px;
     background-color: #fff;
-    @media (max-width: 768px) {
+
+    @media (width <= 768px) {
       box-shadow: 0 17px 48px -8px rgb(216 216 216 / 50%);
     }
 
@@ -45,14 +46,6 @@
         padding-right: 20px;
         width: 100%;
       }
-
-      .study {
-        width: 100%;
-
-        &:hover {
-          @extend .hoverButton;
-        }
-      }
     }
 
     .showMenu {
@@ -62,7 +55,7 @@
       width: 100%;
       background-color: #fff;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         box-shadow: 0 9px 25px -4px #d8d8d8;
       }
 
@@ -122,7 +115,7 @@
       :global(.ant-menu-submenu-title) {
         @extend .menu-reset;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           padding-left: 15px !important;
           height: 56px;
           line-height: 56px;
@@ -134,7 +127,7 @@
       }
 
       :global(.ant-menu-inline > .ant-menu-item) {
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           padding-left: 15px !important;
           height: 56px;
           line-height: 56px;
