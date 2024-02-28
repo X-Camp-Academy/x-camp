@@ -1,6 +1,8 @@
 import { FrequencyCategory } from '@/apis/strapi-client/define';
 import { useGlobalState } from '@/hoc/WithGlobalState';
 import { formatFinance } from '@/utils/public';
+import { useInViewport, useMemoizedFn } from 'ahooks';
+import { BasicTarget } from 'ahooks/lib/utils/domTarget';
 import { Affix } from 'antd';
 import Head from 'next/head';
 import { useContext, useState } from 'react';
@@ -18,8 +20,8 @@ const tabList: Array<tabListIProps> = [
     key: 'introduction'
   },
   {
-    title: 'Topic Covered',
-    key: 'topic-covered'
+    title: 'Topics Covered',
+    key: 'topics-covered'
   },
   {
     title: 'Service',
@@ -46,6 +48,22 @@ const CourseTabs = () => {
   const courseData = useContext(CourseClassesContext);
   const { frequency, tuitionUSD, tuitionRMB } = courseData?.attributes ?? {};
 
+  const callback = useMemoizedFn((entry) => {
+    if (entry.isIntersecting) {
+      const active = entry.target.getAttribute('id') || '';
+      setSelected(active);
+    }
+  });
+
+  const handleMenuClick = (key: string) => {
+    const element = document.getElementById(key);
+    element?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+  };
+
+  useInViewport([...document.getElementsByClassName('tabContent')] as unknown as BasicTarget[], {
+    callback
+  });
+
   return (
     <>
       <Head>
@@ -62,18 +80,7 @@ const CourseTabs = () => {
             <div className={styles.titleTab}>
               {tabList.map((item) => {
                 return (
-                  <div
-                    onClick={() => {
-                      setSelected(item.key);
-                      document.getElementById(item.key)?.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                        inline: 'nearest'
-                      });
-                    }}
-                    className={styles.contentTitle}
-                    key={item.key}
-                  >
+                  <div onClick={() => handleMenuClick(item.key)} className={styles.contentTitle} key={item.key}>
                     <div className={`${styles.contentText} ${item.key === selected && styles.selectedTab}`}>{item.title}</div>
                   </div>
                 );

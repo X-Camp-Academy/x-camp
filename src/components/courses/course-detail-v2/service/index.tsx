@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 const Service = () => {
   return (
-    <div className={styles.service} id="service">
+    <div className={`${styles.service} tabContent`} id="service">
       <div className={`${styles.content} container`}>
         <div className={'tabTitle'}>{'Service'}</div>
         <div className={styles.text}>

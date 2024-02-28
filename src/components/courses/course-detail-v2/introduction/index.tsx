@@ -49,7 +49,7 @@ const Introduction = () => {
 
   return (
     <>
-      <div className={styles.introduction} id="introduction">
+      <div className={`${styles.introduction} tabContent`} id="introduction">
         <div className={`${styles.content} container`}>
           <div className={styles.info}>
             <div className={'tabTitle'}>{'Introduction'}</div>

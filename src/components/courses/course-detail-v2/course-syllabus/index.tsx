@@ -40,7 +40,7 @@ const CourseSyllabus = () => {
   return (
     <>
       {courseSyllabus && courseSyllabus?.length > 0 && (
-        <div className={`${styles.content} container`}>
+        <div className={`${styles.content} container tabContent`} id="topics-covered">
           <Title className={'tabTitle'}>{t('TopicsCovered')}</Title>
           <div className={styles.tableBox}>
             <table border={0}>
