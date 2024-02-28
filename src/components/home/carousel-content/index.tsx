@@ -105,7 +105,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
-      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (
