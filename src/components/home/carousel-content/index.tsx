@@ -16,6 +16,7 @@ const { assessment } = apiConfig;
 interface CarouselItemsProps {
   title: string;
   titleBar?: boolean;
+  triangle?: boolean;
   titleImg?: string;
   desc: string[];
   banner: string;
@@ -41,6 +42,23 @@ const CarouselContent: React.FC = () => {
   const carouselItems: CarouselItemsProps[] = [
     {
       title: '',
+      titleConfig: [],
+      desc: isMobile ? ['Create animations! ', 'Try Python in 2 hours'] : ['Build games, solve mysteries, create animations!', 'Try Python in 2 hours, the most powerful tool in AI gen!'],
+      descStyle: {
+        color: '#3F62DE',
+        fontSize: isMobile ? 14 : 24
+      },
+      buttonText: 'Reserve Now',
+      onClick: () => {
+        window.open('https://www.eventbrite.com/e/try-a-python-class-only-in-499-feb-24th-5-7pm-registration-817404437677?aff=G1');
+      },
+      banner: '/image/home/banner-pc-5.png',
+      mbBanner: '/image/home/banner-mb-5.png',
+      triangle: true,
+      titleImg: isMobile ? '/image/home/banner-mb-5-title.png' : '/image/home/banner-pc-5-title.png'
+    },
+    {
+      title: '',
       desc: [],
       onClick: () => {
         router.push('/article-detail/144');
@@ -61,7 +79,7 @@ const CarouselContent: React.FC = () => {
       desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
       descStyle: {
         color: '#EB7411',
-        fontSize: isMobile ? 8 : 18
+        fontSize: isMobile ? 14 : 20
       },
       buttonText: 'Test Now',
       buttonStyle: {
@@ -143,8 +161,9 @@ const CarouselContent: React.FC = () => {
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
                         <div key={desc} className={styles.descriptionBox}>
-                          {item?.titleBar && <div className={styles.dot} />}
+                          {item?.titleBar && <span className={styles.dot} />}
 
+                          {item?.triangle && <div className={styles.triangle} />}
                           <Text className={styles.description} style={item?.descStyle}>
                             {desc}
                           </Text>
