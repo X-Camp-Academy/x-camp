@@ -16,7 +16,7 @@ const { assessment } = apiConfig;
 interface CarouselItemsProps {
   title: string;
   titleBar?: boolean;
-  titleImg?: string;
+  triangle?: boolean;
   desc: string[];
   banner: string;
   mbBanner: string;
@@ -40,6 +40,27 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: CarouselItemsProps[] = [
     {
+      title: 'Offers a range of courses from beginners to advanced levels like USACO Finalists, IOI',
+      titleConfig: [
+        {
+          text: 'Offers a range of courses from beginners to advanced levels like USACO Finalists, IOI',
+          color: '#172A88',
+        }
+      ],
+      desc: ['Trusted by 2000+ students from 9 countries', 'Jour our dynamic learning community'],
+      descStyle: {
+        color: '#3F62DE',
+        fontSize: isMobile ? 10 : 24
+      },
+      buttonText: 'Discover more',
+      onClick: () => {
+        router.push('/courses/all-courses');
+      },
+      banner: '/image/home/banner-pc-5.png',
+      mbBanner: '/image/home/banner-mb-5.png',
+      triangle: true,
+    },
+    {
       title: '',
       desc: [],
       onClick: () => {
@@ -61,7 +82,7 @@ const CarouselContent: React.FC = () => {
       desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
       descStyle: {
         color: '#EB7411',
-        fontSize: isMobile ? 8 : 18
+        fontSize: isMobile ? 14 : 20
       },
       buttonText: 'Test Now',
       buttonStyle: {
@@ -133,7 +154,6 @@ const CarouselContent: React.FC = () => {
                   <Space direction="vertical" className={styles.space} size={16}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                      {item?.titleImg && <img src={item?.titleImg} alt="" className={styles.titleImg} />}
                       {item?.titleBar && <div className={styles.titleBar}>
                         <span className={styles.left} />
                         <span className={styles.right} />
@@ -143,8 +163,9 @@ const CarouselContent: React.FC = () => {
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
                         <div key={desc} className={styles.descriptionBox}>
-                          {item?.titleBar && <div className={styles.dot} />}
+                          {item?.titleBar && <span className={styles.dot} />}
 
+                          {item?.triangle && <div className={styles.triangle} />}
                           <Text className={styles.description} style={item?.descStyle}>
                             {desc}
                           </Text>

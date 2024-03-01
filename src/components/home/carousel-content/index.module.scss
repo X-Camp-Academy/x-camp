@@ -98,13 +98,6 @@
           }
         }
 
-        .titleImg {
-          height: 160px;
-          @media (max-width: 768px) {
-            height: 112px;
-          }
-        }
-
         .titleBar {
           display: flex;
           width: 280px;
@@ -130,16 +123,15 @@
         display: flex;
         align-items: center;
         .dot {
-          display: block;
-          width: 12px;
-          height: 12px;
+          width: 8px;
+          height: 8px;
           background: #eb7411;
           border-radius: 50%;
           margin-right: 32px;
+          flex: 1;
           @media (max-width: 768px) {
-            width: 8px;
-            height: 8px;
-            display: block;
+            @include text(14px, 18px);
+            flex: 1;
             margin-right: 8px;
           }
         }
@@ -153,12 +145,14 @@
           transform: rotate(90deg);
         }
         .description {
+          flex: 49;
           @include text(24px, 32px);
           margin: 0;
           font-weight: 600;
           line-height: 48px;
           @media (max-width: 768px) {
             @include text(14px, 18px);
+            flex: 39;
           }
         }
       }
