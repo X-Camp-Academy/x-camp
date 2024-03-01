@@ -35,20 +35,31 @@ const CourseDetail: React.FC = () => {
     ready: true,
     category: FaqCategory.CoursesQA
   });
+
+  const courseData = coursesData?.data[0];
+
+  const courseLevel = Number(courseData?.attributes?.courseCode?.slice(0, 3));
+
   return (
     <Layout className={styles.courseDetail}>
       <Content>
-        <CourseClassesContext.Provider value={coursesData ? coursesData?.data[0] : undefined}>
-          <Banner />
-          <CourseInfo />
-          <CourseTabs />
-          <Introduction />
-          <CourseStructure />
-          <CourseSyllabus />
-          <Service />
-          <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />
-          <Faculty />
-        </CourseClassesContext.Provider>
+        {courseData && (
+          <CourseClassesContext.Provider value={{ ...courseData, courseLevel }}>
+            <Banner />
+            <CourseInfo />
+            <CourseTabs />
+            <Introduction />
+            {courseLevel <= 302 && (
+              <>
+                <CourseStructure />
+                <CourseSyllabus />
+              </>
+            )}
+            <Service />
+            <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />
+            <Faculty />
+          </CourseClassesContext.Provider>
+        )}
         <Faqs title={t('CoursesFAQS')} data={faqData} className="tabContent" titleClassName={`tabTitle ${styles.faqTitle}`} id="faq" />
         <Reviews reviewsData={coursesData?.data[0]?.attributes?.reviews?.data} />
       </Content>

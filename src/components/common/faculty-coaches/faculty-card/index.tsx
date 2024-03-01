@@ -11,7 +11,6 @@ const { Paragraph, Text } = Typography;
 const FacultyCard = ({ index, item }: { index: number; item: StrapiResponseDataItem<GetFaculty> }) => {
   const { lang } = useLang();
   const isMobile = useMobile();
-  console.log(item, item?.attributes?.img?.data?.attributes?.url);
 
   return (
     <ColorfulCard border="bottom" split={4} index={index}>
