@@ -141,6 +141,14 @@ export const useMenuItems = () => {
           key: 'introduction#faculty'
         },
         {
+          label: (
+            <a href="/about-us/faculty">
+              {t('Faculty')}
+            </a>
+          ),
+          key: 'faculty'
+        },
+        {
           label: <Link href="/about-us/join-us">{t('JoinUs')}</Link>,
           key: 'join-us'
         },
