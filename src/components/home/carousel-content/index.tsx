@@ -17,7 +17,6 @@ interface CarouselItemsProps {
   title: string;
   titleBar?: boolean;
   triangle?: boolean;
-  titleImg?: string;
   desc: string[];
   banner: string;
   mbBanner: string;
@@ -41,21 +40,25 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: CarouselItemsProps[] = [
     {
-      title: '',
-      titleConfig: [],
-      desc: isMobile ? ['Create animations! ', 'Try Python in 2 hours'] : ['Build games, solve mysteries, create animations!', 'Try Python in 2 hours, the most powerful tool in AI gen!'],
+      title: 'Offers a range of courses from beginners to advanced levels like USACO Finalists, IOI',
+      titleConfig: [
+        {
+          text: 'Offers a range of courses from beginners to advanced levels like USACO Finalists, IOI',
+          color: '#172A88',
+        }
+      ],
+      desc: ['Trusted by 2000+ students from 9 countries', 'Jour our dynamic learning community'],
       descStyle: {
         color: '#3F62DE',
-        fontSize: isMobile ? 14 : 24
+        fontSize: isMobile ? 10 : 24
       },
-      buttonText: 'Reserve Now',
+      buttonText: 'Discover more',
       onClick: () => {
-        window.open('https://www.eventbrite.com/e/try-a-python-class-only-in-499-feb-24th-5-7pm-registration-817404437677?aff=G1');
+        router.push('/courses/all-courses');
       },
       banner: '/image/home/banner-pc-5.png',
       mbBanner: '/image/home/banner-mb-5.png',
       triangle: true,
-      titleImg: isMobile ? '/image/home/banner-mb-5-title.png' : '/image/home/banner-pc-5-title.png'
     },
     {
       title: '',
@@ -151,7 +154,6 @@ const CarouselContent: React.FC = () => {
                   <Space direction="vertical" className={styles.space} size={16}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                      {item?.titleImg && <img src={item?.titleImg} alt="" className={styles.titleImg} />}
                       {item?.titleBar && <div className={styles.titleBar}>
                         <span className={styles.left} />
                         <span className={styles.right} />
