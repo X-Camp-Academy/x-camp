@@ -6,10 +6,10 @@ const Banner: React.FC = () => {
   const { format: t } = useLang();
   const paragraph = (
     <>
-      {t('Faculty.Desc')}
+      {'Our teachers are super cool tech pros who have worked at big companies, smart college students studying computers, and champions in tough coding'}
     </>
   );
-  return <CommonBanner title={'Faculty & Coaches'} paragraph={paragraph} image={'/image/about-us/banner-faculty.png'} />;
+  return <CommonBanner title={'Faculty'} paragraph={paragraph} paddingRight image={'/image/about-us/banner-faculty.png'} />;
 };
 
 export default Banner;
