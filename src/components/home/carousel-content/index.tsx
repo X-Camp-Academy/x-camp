@@ -82,7 +82,7 @@ const CarouselContent: React.FC = () => {
       desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
       descStyle: {
         color: '#EB7411',
-        fontSize: isMobile ? 14 : 20
+        fontSize: isMobile ? 10 : 20
       },
       buttonText: 'Test Now',
       buttonStyle: {
