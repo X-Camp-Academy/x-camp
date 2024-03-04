@@ -53,6 +53,7 @@ const Introduction = () => {
         <div className={`${styles.content} container`}>
           <div className={styles.info}>
             <div className={'tabTitle'}>{'Introduction'}</div>
+            <img src="/image/home/charlie.png" alt="" />
             <div className={styles.descriptions}>
               {DescriptionsItems?.map(
                 (item) =>

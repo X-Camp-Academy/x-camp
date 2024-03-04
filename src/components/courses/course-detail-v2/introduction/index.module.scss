@@ -5,6 +5,10 @@
     gap: 215px;
 
     .info {
+      img {
+        display: none;
+      }
+
       .descriptions {
         margin-top: 12px;
 
@@ -94,8 +98,11 @@
       flex-direction: column-reverse;
 
       .info {
-        :global(.tabTitle) {
-          display: none;
+        img {
+          display: block;
+          width: 100%;
+          height: 293px;
+          object-fit: cover;
         }
 
         .descriptions {
@@ -130,15 +137,7 @@
       }
 
       .side {
-        img {
-          width: 100%;
-          height: 318px;
-          object-fit: cover;
-        }
-
-        .btns {
-          display: none;
-        }
+        display: none;
       }
     }
   }

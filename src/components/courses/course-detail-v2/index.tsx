@@ -61,7 +61,7 @@ const CourseDetail: React.FC = () => {
           </CourseClassesContext.Provider>
         )}
         <Faqs title={t('CoursesFAQS')} data={faqData} className="tabContent" titleClassName={`tabTitle ${styles.faqTitle}`} id="faq" />
-        {!!courseData?.attributes?.reviews?.data.length && <Reviews className="tabContent" reviewsData={courseData?.attributes?.reviews?.data} id="reviews" />}
+        <Reviews className="tabContent" reviewsData={courseData?.attributes?.reviews?.data} id="reviews" />
       </Content>
     </Layout>
   );

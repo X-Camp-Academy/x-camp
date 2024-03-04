@@ -1,4 +1,5 @@
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { getLangResult } from '@/utils/public';
 import { Typography } from 'antd';
 import { useContext } from 'react';
@@ -35,7 +36,11 @@ const CourseSyllabus = () => {
     return result;
   };
 
-  const courseSyllabus = format(getLangResult(lang, courseData?.attributes?.courseSyllabusZh, courseData?.attributes?.courseSyllabusEn) ?? []);
+  const rowData = getLangResult(lang, courseData?.attributes?.courseSyllabusZh, courseData?.attributes?.courseSyllabusEn) ?? [];
+
+  const courseSyllabus = format([...rowData]);
+
+  const isMobile = useMobile();
 
   return (
     <>
@@ -45,20 +50,39 @@ const CourseSyllabus = () => {
           <div className={styles.tableBox}>
             <table border={0}>
               <tbody>
-                {courseSyllabus?.map((v) => (
-                  <tr key={v[0].index}>
-                    {v?.map((u) => (
-                      <td key={u.index}>
-                        {u.value && (
+                {isMobile ? (
+                  <>
+                    {rowData?.map((v, index) => (
+                      <tr key={v}>
+                        <td>
                           <div className={styles.item}>
-                            <Text className={styles.text}>{u.index + 1}</Text>
-                            <Text className={styles.paragraph}>{u.value}</Text>
+                            <Text className={styles.text}>{index + 1}</Text>
+                            <Text className={styles.paragraph} ellipsis>
+                              {v}
+                            </Text>
                           </div>
-                        )}
-                      </td>
+                        </td>
+                      </tr>
                     ))}
-                  </tr>
-                ))}
+                  </>
+                ) : (
+                  <>
+                    {courseSyllabus?.map((v) => (
+                      <tr key={v[0].index}>
+                        {v?.map((u) => (
+                          <td key={u.index}>
+                            {u.value && (
+                              <div className={styles.item}>
+                                <Text className={styles.text}>{u.index + 1}</Text>
+                                <Text className={styles.paragraph}>{u.value}</Text>
+                              </div>
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </>
+                )}
               </tbody>
             </table>
           </div>

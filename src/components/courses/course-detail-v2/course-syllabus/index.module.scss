@@ -1,15 +1,6 @@
-@import '@/styles/variables';
-
 .content {
   margin-top: 72px;
   margin-bottom: 48px;
-
-  @media (width <= 768px) {
-    margin-top: 48px;
-    margin-bottom: 32px;
-    padding-right: 24px;
-    padding-left: 24px;
-  }
 
   .tableBox {
     margin-top: 28px;
@@ -55,13 +46,6 @@
               color: #fff;
               background-color: #ffad11;
               line-height: 24px;
-
-              @media (width <= 768px) {
-                @include mobile-text;
-
-                color: #172142;
-                background-color: #fff;
-              }
             }
 
             .paragraph {
@@ -69,13 +53,25 @@
               font-weight: 600;
               color: #172142;
               line-height: 24px;
-
-              @media (width <= 768px) {
-                @include mobile-text;
-
-                font-size: 16px;
-              }
             }
+          }
+        }
+      }
+    }
+  }
+
+  .tableBox.tableBox.tableBox {
+    @media (width <= 768px) {
+      margin-top: 0;
+      padding: 0 18px;
+
+      table {
+        td {
+          padding-left: 0;
+          height: 48px;
+
+          .paragraph {
+            width: 340px !important;
           }
         }
       }
