@@ -35,29 +35,33 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', id = '', reviewsData 
   return (
     <div className={cx(className, styles.reviewsContainer)} id={id}>
       {reviewsData && reviewsData?.length < 3 ? (
-        <div className={cx(styles.reviews, 'container')} style={{ display: 'flex', flexDirection: 'row' }}>
-          {reviewsData?.map((item) => {
-            const reviews = item?.attributes;
-            const { dayjsTime } = formatTimezone(reviews?.datetime);
-            return (
-              <div key={item?.id} className={styles.reviewsContainer}>
-                <Space direction="vertical" style={{ width: '100%' }}>
-                  <Text className={styles.reviewsTitle}>{getTransResult(lang, reviews?.titleZh, reviews?.titleEn)}</Text>
-                  <Rate disabled defaultValue={reviews?.score} />
-                  <Paragraph
-                    className={styles.reviewsParagraph}
-                    ellipsis={{
-                      rows: 5
-                    }}
-                  >
-                    {getTransResult(lang, reviews?.descriptionZh, reviews?.descriptionEn)}
-                  </Paragraph>
-                  <Text className={styles.reviewsDate}>{dayjs(dayjsTime).format('YYYY-MM-DD')}</Text>
-                </Space>
-              </div>
-            );
-          })}
-        </div>
+        reviewsData?.length === 0 ? (
+          <></>
+        ) : (
+          <div className={cx(styles.reviews, 'container')} style={{ display: 'flex', flexDirection: 'row' }}>
+            {reviewsData?.map((item) => {
+              const reviews = item?.attributes;
+              const { dayjsTime } = formatTimezone(reviews?.datetime);
+              return (
+                <div key={item?.id} className={styles.reviewsContainer}>
+                  <Space direction="vertical" style={{ width: '100%' }}>
+                    <Text className={styles.reviewsTitle}>{getTransResult(lang, reviews?.titleZh, reviews?.titleEn)}</Text>
+                    <Rate disabled defaultValue={reviews?.score} />
+                    <Paragraph
+                      className={styles.reviewsParagraph}
+                      ellipsis={{
+                        rows: 5
+                      }}
+                    >
+                      {getTransResult(lang, reviews?.descriptionZh, reviews?.descriptionEn)}
+                    </Paragraph>
+                    <Text className={styles.reviewsDate}>{dayjs(dayjsTime).format('YYYY-MM-DD')}</Text>
+                  </Space>
+                </div>
+              );
+            })}
+          </div>
+        )
       ) : (
         <div className={cx(styles.reviews, 'container')}>
           <div className={styles.reviewsBox}>
