@@ -67,16 +67,6 @@ const Introduction = () => {
                   )
               )}
             </div>
-            {/* <Descriptions column={1} layout="horizontal" className={styles.descriptions}>
-              {DescriptionsItems?.map(
-                (item) =>
-                  item?.value && (
-                    <Descriptions.Item key={item?.key} label={item?.key}>
-                      {item?.value}
-                    </Descriptions.Item>
-                  )
-              )}
-            </Descriptions> */}
           </div>
           <div className={styles.side}>
             <img src="/image/home/charlie.png" alt="" />
