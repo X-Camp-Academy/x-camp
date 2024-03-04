@@ -1,7 +1,7 @@
 import { useLang } from '@/hoc/with-intl/define';
 import { formatTimezone } from '@/utils/public';
 import { CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
-import { Button, Descriptions, Modal, Space, message } from 'antd';
+import { Button, Modal, Space, message } from 'antd';
 import { useContext, useState } from 'react';
 import { getTransResult } from 'x-star-utils';
 import CourseClassesContext from '../../CourseClassesContext';
@@ -53,7 +53,21 @@ const Introduction = () => {
         <div className={`${styles.content} container`}>
           <div className={styles.info}>
             <div className={'tabTitle'}>{'Introduction'}</div>
-            <Descriptions column={1} layout="horizontal" className={styles.descriptions}>
+            <div className={styles.descriptions}>
+              {DescriptionsItems?.map(
+                (item) =>
+                  item?.value && (
+                    <div key={item?.key} className={styles.descriptionItem}>
+                      <span className={styles.label}>
+                        {item?.key}
+                        {': '}
+                      </span>
+                      <span className={styles.value}>{item?.value}</span>
+                    </div>
+                  )
+              )}
+            </div>
+            {/* <Descriptions column={1} layout="horizontal" className={styles.descriptions}>
               {DescriptionsItems?.map(
                 (item) =>
                   item?.value && (
@@ -62,7 +76,7 @@ const Introduction = () => {
                     </Descriptions.Item>
                   )
               )}
-            </Descriptions>
+            </Descriptions> */}
           </div>
           <div className={styles.side}>
             <img src="/image/home/charlie.png" alt="" />

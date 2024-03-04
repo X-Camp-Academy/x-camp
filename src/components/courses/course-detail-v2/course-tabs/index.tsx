@@ -6,7 +6,7 @@ import { useInViewport, useMemoizedFn } from 'ahooks';
 import { BasicTarget } from 'ahooks/lib/utils/domTarget';
 import { Affix } from 'antd';
 import Head from 'next/head';
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import CourseClassesContext from '../../CourseClassesContext';
 import styles from './index.module.scss';
 
@@ -15,7 +15,7 @@ interface tabListIProps {
   key: string;
 }
 
-const tabList: Array<tabListIProps> = [
+const tabs: Array<tabListIProps> = [
   {
     title: 'Introduction',
     key: 'introduction'
@@ -48,6 +48,14 @@ const CourseTabs = () => {
   const [selected, setSelected] = useState('introduction');
   const courseData = useContext(CourseClassesContext);
   const { frequency, tuitionUSD, tuitionRMB } = courseData?.attributes ?? {};
+
+  const tabList = useMemo(() => {
+    let res = tabs;
+    if (!courseData?.attributes?.reviews?.data?.length) {
+      res = tabs.filter((v) => v.key !== 'reviews');
+    }
+    return res;
+  }, [courseData]);
 
   const callback = useMemoizedFn((entry) => {
     if (entry.isIntersecting) {
