@@ -82,6 +82,9 @@ const CourseStructure = () => {
             </div>
           ))}
         </div>
+        {/* <div className={styles.mobileIntro}>
+          <div className={styles.title}>title</div>
+        </div> */}
       </div>
     </div>
   );

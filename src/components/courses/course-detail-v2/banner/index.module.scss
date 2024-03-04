@@ -15,7 +15,7 @@
     }
 
     .breadcrumb {
-      padding-top: 36px;
+      display: none;
 
       @media (width <= 1200px) {
         padding-top: 24px;
@@ -56,8 +56,21 @@
 
       .item {
         display: flex;
-        gap: 8px;
+        gap: 10px;
         font-size: 16px;
+      }
+
+      @media (width <= 768px) {
+        justify-content: space-between;
+        gap: 4px;
+
+        .item {
+          padding: 6px;
+          border-radius: 6px;
+          font-size: 14px;
+          background: #efefef;
+          gap: 8px;
+        }
       }
     }
   }

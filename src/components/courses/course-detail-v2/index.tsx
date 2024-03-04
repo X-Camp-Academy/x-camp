@@ -5,6 +5,7 @@ import Faqs from '@/components/common/faqs';
 import Reviews from '@/components/common/reviews';
 import UsacoMedal from '@/components/common/usaco-medal';
 import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
 import { Layout } from 'antd';
 import { useParams } from 'next/navigation';
 import React from 'react';
@@ -24,6 +25,8 @@ const { Content } = Layout;
 const CourseDetail: React.FC = () => {
   const params = useParams();
   const { format: t } = useLang();
+
+  const isMobile = useMobile();
 
   const { data: coursesData } = useGetCourses({
     filters: {
@@ -47,6 +50,7 @@ const CourseDetail: React.FC = () => {
           <CourseClassesContext.Provider value={{ ...courseData, courseLevel }}>
             <Banner />
             <CourseInfo />
+            {isMobile && <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />}
             <CourseTabs />
             <Introduction />
             {courseLevel <= 302 && (
@@ -56,7 +60,7 @@ const CourseDetail: React.FC = () => {
               </>
             )}
             <Service />
-            <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />
+            {!isMobile && <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />}
             <Faculty />
           </CourseClassesContext.Provider>
         )}
