@@ -1,0 +1,26 @@
+.banner {
+  position: relative;
+  padding: 28px 25px;
+  width: 100%;
+  height: 191px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/image/about-us/learning-tracks/banner-mobile.png');
+
+  .title {
+    width: 228px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 21px;
+  }
+
+  .content {
+    margin-top: 10px;
+    width: 170px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 18px;
+  }
+}

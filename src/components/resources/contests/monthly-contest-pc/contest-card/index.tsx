@@ -61,17 +61,7 @@ const ContestCard = ({ data }: Props) => {
               placement="right"
               key={v?.id}
             >
-              <div
-                className={cx(styles.item, index % 2 === 1 && styles.itemEven)}
-                onClick={() => {
-                  const element = document.getElementById(`contest-${v?.id}`);
-                  element?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center',
-                    inline: 'nearest'
-                  });
-                }}
-              >
+              <div className={cx(styles.item, index % 2 === 1 && styles.itemEven)} onClick={() => window.open(v?.attributes?.contestLink)}>
                 <Title ellipsis={{ rows: 1 }} className={styles.title}>
                   {getTransResult(lang, v?.attributes?.titleZh, v?.attributes?.titleEn)}
                 </Title>

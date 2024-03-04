@@ -9,34 +9,10 @@ import styles from './index.module.scss';
 
 const { Text, Title } = Typography;
 const CourseCard: React.FC<GetCourses> = (props) => {
-  const {
-    courseCode,
-    courseTitleEn,
-    courseTitleZh,
-    classMode,
-    recommendedLowerGrade,
-    recommendedUpperGrade,
-    classLang,
-    startDateTime,
-    endDateTime,
-    lessonNum,
-    frequency,
-    tuitionRMB,
-    tuitionUSD,
-    isBilingual
-  } = props;
+  const { courseCode, courseTitleEn, courseTitleZh, classMode, recommendedLowerGrade, recommendedUpperGrade, classLang, startDateTime, endDateTime, lessonNum, frequency, tuitionRMB, tuitionUSD } =
+    props;
   const isMobile = useMobile();
   const { format: t, lang } = useLang();
-  const recommendedGradeLevel = (recommendedLowerGrade: number, recommendedUpperGrade: number) => {
-    let result = '';
-    if (recommendedLowerGrade) {
-      result += recommendedLowerGrade;
-    }
-    if (recommendedUpperGrade) {
-      result = result + '-' + recommendedUpperGrade;
-    }
-    return result + ' Grade';
-  };
   return (
     <div className={styles.cardContainer}>
       <Row className={styles.row}>
@@ -55,7 +31,7 @@ const CourseCard: React.FC<GetCourses> = (props) => {
         <Col lg={12} className={styles.col}>
           <Descriptions column={1}>
             <Descriptions.Item label={t('CourseStyle')}>{classMode}</Descriptions.Item>
-            <Descriptions.Item label={t('Level')}>{recommendedGradeLevel(recommendedLowerGrade, recommendedUpperGrade)}</Descriptions.Item>
+            <Descriptions.Item label={t('Level')}>{`${recommendedLowerGrade}+ ${getTransResult(lang, '年级', 'Grade')}`}</Descriptions.Item>
             <Descriptions.Item label={t('Language')}>{classLang}</Descriptions.Item>
             <Descriptions.Item label={t('ClassesTime')}>{`${dayjs(startDateTime)?.format('MM/DD/YYYY')} - ${dayjs(endDateTime)?.format('MM/DD/YYYY')}`}</Descriptions.Item>
           </Descriptions>

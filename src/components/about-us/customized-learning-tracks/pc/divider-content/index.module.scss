@@ -1,0 +1,30 @@
+.dividerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
+  height: 132px;
+  background-color: #fff;
+
+  .symbol {
+    font-size: 120px;
+    font-weight: 400;
+    color: #ffad11;
+    line-height: 180px;
+  }
+
+  .content {
+    font-size: 18px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 24px;
+  }
+
+  .class {
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #d46b14;
+    line-height: 24px;
+  }
+}
