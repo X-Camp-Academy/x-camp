@@ -4,6 +4,7 @@ import { useMobile } from '@/utils';
 import { CommentOutlined, HistoryOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
+import { apiConfig } from '@/config/index';
 import CopyRightIcons from '../copy-right-icons';
 import styles from './CopyRight.module.scss';
 
@@ -11,6 +12,7 @@ const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
   const { format: t } = useLang();
+  const { idApi } = apiConfig;
   const isMobile = useMobile();
   return (
     <div className={styles.copyRightContainer}>
@@ -67,6 +69,7 @@ const CopyRight: React.FC = () => {
                   <a href={'/about-us/calendar'}>{t('SchoolCalendar')}</a>
                   <a href={'/courses/all-classes#weekly'}>{t('WeeklyClasses')}</a>
                   <a href={'/courses/all-classes#camps'}>{t('In-personCamps')}</a>
+                  <span style={{ cursor: 'pointer' }} onClick={() => window.open(`${idApi}/policy?refer=${window.location.href}`)}>{t('DisclaimerPrivacyPolicy')}</span>
                 </Space>
               </div>
 
@@ -95,13 +98,13 @@ const CopyRight: React.FC = () => {
           <>
             <div className={styles.bar} />
             <div className={styles.bottomContainer}>
-              <Title className={styles.bottomTitle}>Copyright @ 2023 X-Camp</Title>
+              <Title className={styles.bottomTitle}>Copyright @ 2024 X-Camp</Title>
               <CopyRightIcons />
             </div>
           </>
         )}
       </div>
-      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2017-2023 X-Camp</div>}
+      {isMobile && <div className={styles.mobileCopyRight}>Copyright @ 2017-2024 X-Camp</div>}
     </div>
   );
 };

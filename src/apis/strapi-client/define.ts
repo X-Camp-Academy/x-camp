@@ -92,6 +92,7 @@ export interface GetContests extends strapiPublicFields {
   contestLink: string;
   isContestEvent: boolean;
   order: number;
+  mobileLogo: StrapiMedia;
 }
 export type GetContestsRequest = StrapiRequest<GetContests>;
 export type GetContestsResponse = StrapiResponse<GetContests>;

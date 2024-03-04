@@ -421,8 +421,8 @@ declare const json: {
   "UniversityPartners": "University Partners",
   "CommunityPartners": "Community Partners",
   "EducationPartners": "Education Partners",
-  "FullTime": "Full Time",
-  "PartTime": "Part Time",
+  "FullTime": "Full-Time",
+  "PartTime": "Part-Time",
   "XTutor": "X-Tutor",
   "USACO.Banner.Desc1": "Dive into our comprehensive resource hub dedicated to ",
   "USACO.Banner.Desc2": "USA Computing Olympiad intro and  preparation.",
@@ -473,7 +473,8 @@ declare const json: {
   "Q1": "Q1 (Jan-Mar)",
   "Q2": "Q2 (Apr-Jun)",
   "Q3": "Q3 (Jul-Sept)",
-  "Q4": "Q4 (Oct-Dec)"
+  "Q4": "Q4 (Oct-Dec)",
+  "DisclaimerPrivacyPolicy": "Disclaimer & Privacy Policy"
 }
 
 export default json;

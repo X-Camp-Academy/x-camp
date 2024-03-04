@@ -475,7 +475,8 @@ declare const json: {
   "Q1": "Q1 (Jan-Mar)",
   "Q2": "Q2 (Apr-Jun)",
   "Q3": "Q3 (Jul-Sept)",
-  "Q4": "Q4 (Oct-Dec)"
+  "Q4": "Q4 (Oct-Dec)",
+  "DisclaimerPrivacyPolicy": "免责声明&隐私政策"
 }
 
 export default json;

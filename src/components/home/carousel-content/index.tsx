@@ -16,11 +16,11 @@ const { assessment } = apiConfig;
 interface CarouselItemsProps {
   title: string;
   titleBar?: boolean;
+  triangle?: boolean;
   desc: string[];
   banner: string;
   mbBanner: string;
   onClick: () => void;
-  date: string[];
   buttonText: string;
   buttonStyle?: CSSProperties;
   titleConfig?: IConfig[];
@@ -40,12 +40,32 @@ const CarouselContent: React.FC = () => {
 
   const carouselItems: CarouselItemsProps[] = [
     {
+      title: 'Offers a range of courses from beginners to advanced levels like USACO Finalists, IOI',
+      titleConfig: [
+        {
+          text: 'Offers a range of courses from beginners to advanced levels like USACO Finalists, IOI',
+          color: '#172A88',
+        }
+      ],
+      desc: ['Trusted by 2000+ students from 9 countries', 'Jour our dynamic learning community'],
+      descStyle: {
+        color: '#3F62DE',
+        fontSize: isMobile ? 10 : 24
+      },
+      buttonText: 'Discover more',
+      onClick: () => {
+        router.push('/courses/all-courses');
+      },
+      banner: '/image/home/banner-pc-5.png',
+      mbBanner: '/image/home/banner-mb-5.png',
+      triangle: true,
+    },
+    {
       title: '',
       desc: [],
       onClick: () => {
         router.push('/article-detail/144');
       },
-      date: [''],
       banner: '/image/home/banner-pc-4.jpg',
       mbBanner: '/image/home/banner-mb-4.png',
       buttonText: '',
@@ -55,67 +75,51 @@ const CarouselContent: React.FC = () => {
       titleConfig: [
         {
           text: 'FREE Placement Test, Open to ALL！',
-          color: '#EB7411'
+          color: '#EB7411',
+          fontSize: isMobile ? '20px' : '48px'
         }
       ],
       desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
       descStyle: {
         color: '#EB7411',
-        fontSize: 16
+        fontSize: isMobile ? 10 : 20
       },
-      onClick: () => {
-        window.open(assessment);
-      },
-      date: [''],
-      banner: '/image/home/banner-pc-2.png',
-      mbBanner: '/image/home/banner-mb-2.png',
       buttonText: 'Test Now',
       buttonStyle: {
         backgroundColor: '#EB7411',
         color: '#FFF'
       },
+      onClick: () => {
+        window.open(assessment);
+      },
+      banner: '/image/home/banner-pc-2.png',
+      mbBanner: '/image/home/banner-mb-2.png',
       titleBar: true,
     },
-    // {
-    //   title: t('Home.Banner2.Title1'),
-    //   titleConfig: [
-    //     {
-    //       text: t('Home.Banner2.Title1'),
-    //       color: '#FFAD11'
-    //     }
-    //   ],
-    //   desc: isMobile ? [t('Home.Banner2.mbDesc1'), t('Home.Banner2.mbDesc2')] : [t('Home.Banner2.Desc1'), t('Home.Banner2.Desc2')],
-    //   descStyle: {
-    //     color: '#FFF'
-    //   },
-    //   onClick: () => {
-    //     window.open('https://www.eventbrite.com/e/202324-usa-computing-olympiad-usaco-public-mock-test-tickets-744548052267');
-    //   },
-    //   date: [t('Home.Banner2.Date1'), t('Home.Banner2.Date2')],
-    //   banner: '/image/home/banner-pc-1.png',
-    //   mbBanner: '/image/home/banner-mb-1.png',
-    //   buttonText: t('ReserveNow')
-    // },
     {
       title: t('Home.Banner3.title'),
       desc: [t('Home.Banner3.desc')],
+      descStyle: {
+        fontSize: isMobile ? 14 : 24
+      },
       titleConfig: [
         {
           text: t('Home.Banner3.title.color'),
-          color: '#FFAD11'
+          color: '#FFA11',
+          fontSize: isMobile ? '20px' : '48px'
         },
         {
           text: t('Home.Banner3.title.color2'),
-          color: '#FFAD11'
+          color: '#FFAD11',
+          fontSize: isMobile ? '20px' : '48px'
         }
       ],
+      buttonText: t('Home.Banner3.buttonText'),
       onClick: () => {
         router.push('/about-us/achievements');
       },
-      date: [''],
       banner: '/image/home/banner-pc-3.png',
       mbBanner: '/image/home/banner-mb-3.png',
-      buttonText: t('Home.Banner3.buttonText')
     }
   ];
 
@@ -146,16 +150,22 @@ const CarouselContent: React.FC = () => {
             )}
             <div className={`container ${styles.info}`}>
               <Row>
-                <Col xs={24} sm={24} md={24} lg={12}>
-                  <Space direction="vertical" className={styles.space} size={20}>
+                <Col xs={24} sm={24} md={24} lg={18}>
+                  <Space direction="vertical" className={styles.space} size={16}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                      {item?.titleBar && <div className={styles.titleBar}><span className={styles.left} /><span className={styles.right} /></div>}
+                      {item?.titleBar && <div className={styles.titleBar}>
+                        <span className={styles.left} />
+                        <span className={styles.right} />
+                      </div>
+                      }
                     </div>
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
                         <div key={desc} className={styles.descriptionBox}>
                           {item?.titleBar && <span className={styles.dot} />}
+
+                          {item?.triangle && <div className={styles.triangle} />}
                           <Text className={styles.description} style={item?.descStyle}>
                             {desc}
                           </Text>
@@ -168,22 +178,16 @@ const CarouselContent: React.FC = () => {
                         {item?.buttonText}
                       </button>
                     }
-                    <Space direction="vertical">
-                      {item?.date?.map((date) => (
-                        <Text className={styles.date} key={date} style={item?.descStyle}>
-                          {date}
-                        </Text>
-                      ))}
-                    </Space>
                   </Space>
                 </Col>
               </Row>
             </div>
           </div>
-        ))}
-      </Carousel>
+        ))
+        }
+      </Carousel >
       <UsacoMedal style={{ backgroundColor: '#FFFFFF', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' }} spacePaddingTop={0} showTitle={false} />
-    </div>
+    </div >
   );
 };
 

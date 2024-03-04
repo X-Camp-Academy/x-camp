@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 export interface IConfig {
   text: string;
   color?: string;
+  fontSize?: string;
 }
 interface IProps {
   title: string;
@@ -10,12 +11,15 @@ interface IProps {
   className: string;
 }
 
+
 const getRegExp = (searchVal: string): RegExp => {
-  searchVal.replace('.', '.');
-  return new RegExp(`(?!<)${searchVal.replace('.', '\\.')}`);
+  // 将 $ 和 . 字符进行转义
+  searchVal = searchVal.replace(/\$/g, '\\$').replace(/\./g, '\\.');
+  return new RegExp(`(?!<)${searchVal}`);
 };
 
-const replaceStrWithColor = (val: string, color: string) => `<span style="color: ${color}">${val}</span>`;
+const replaceStrWithColor = (val: string, color: string, fontSize: string) => `<span style="color: ${color}; font-size: ${fontSize};">${val}</span>`;
+
 /**
  * 将一个字符串赋予不同颜色
  * @param title
@@ -35,7 +39,7 @@ const TitleColor: React.FC<IProps> = ({ title, config, className }: IProps) => {
     }
 
     configArr.forEach((config) => {
-      result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color || '#FFAD11'));
+      result = result.replace(getRegExp(config.text), replaceStrWithColor(config.text, config.color || '#FFAD11', config.fontSize || ''));
     });
     return result;
   }, [title, config]);
