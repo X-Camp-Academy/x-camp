@@ -1,3 +1,4 @@
+import { DownCircleOutlined, UpCircleOutlined } from '@ant-design/icons';
 import { useContext, useState } from 'react';
 import CourseClassesContext from '../../CourseClassesContext';
 import styles from './index.module.scss';
@@ -82,9 +83,25 @@ const CourseStructure = () => {
             </div>
           ))}
         </div>
-        {/* <div className={styles.mobileIntro}>
-          <div className={styles.title}>title</div>
-        </div> */}
+        <div className={styles.mobileIntro}>
+          {courses?.map((v, index) => (
+            <div key={v.level} className={`${styles.course} ${active === v?.level ? styles.active : ''}`} onClick={() => setActive(v?.level)}>
+              <div className={styles.head}>
+                <div className={styles.level}>{v?.level}</div>
+                <div className={styles.titleBox}>
+                  <div className={styles.title}>{v?.title}</div>
+                  <div onClick={() => setActive(v?.level)}>{active === v?.level ? <UpCircleOutlined className={styles.icon} /> : <DownCircleOutlined className={styles.icon} />}</div>
+                </div>
+              </div>
+              {active === v?.level && (
+                <div className={styles.content}>
+                  <div className={styles.short}>{v?.short}</div>
+                  <div className={styles.lv}>{`Lv${index + 1}`}</div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
