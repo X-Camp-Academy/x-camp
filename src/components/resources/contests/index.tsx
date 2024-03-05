@@ -12,6 +12,7 @@ import MonthlyContestPC from './monthly-contest-pc';
 import MonthlyContestMB from './monthly-contest-mb';
 import WhyContests from './why-contests';
 import { useSize } from 'ahooks';
+import dayjs from 'dayjs';
 
 const { Content } = Layout;
 
@@ -23,15 +24,20 @@ const Contests: React.FC = () => {
     ready: true,
     pageName: [pathname]
   });
+  const currentYear = dayjs().year();
+  const currentYearData = resourcesContest?.filter(item => {
+    const startDateTime = dayjs(item.attributes.startDateTime);
+    return startDateTime.year() === currentYear;
+  });
   return (
     <Layout className={styles.main}>
       <Content>
         <Banner />
         {
           Number(size?.width) <= 992 ?
-            <MonthlyContestMB data={formatContestsByQuarter(filterContest(resourcesContest!, false), 1)} />
+            <MonthlyContestMB data={formatContestsByQuarter(filterContest(currentYearData!, false), 1)} />
             :
-            <MonthlyContestPC data={formatContestsByQuarter(filterContest(resourcesContest!, false), Number(size?.width) <= 1200 ? 3 : 6)} />
+            <MonthlyContestPC data={formatContestsByQuarter(filterContest(currentYearData!, false), Number(size?.width) <= 1200 ? 3 : 6)} />
         }
         <Introduction data={filterContest(resourcesContest!, true)} />
         <WhyContests />

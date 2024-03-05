@@ -33,7 +33,24 @@ export const formatContestsByMonth = (data: StrapiResponseDataItem<GetContests>[
       contestsByMonth?.[month]?.contests?.push(contest);
     }
   });
-  return contestsByMonth;
+
+  const handleOrderData = (data: ContestsByMonthInterface) => {
+    return {
+      contests: data?.contests?.sort((a, b) => {
+        const dateA = new Date(a?.attributes?.startDateTime).toISOString();
+        const dateB = new Date(b?.attributes?.startDateTime).toISOString();
+        return dateA.localeCompare(dateB);
+      }),
+      month: data?.month
+    };
+  };
+
+  return contestsByMonth?.map((item) => {
+    if (item?.contests && item?.contests?.length > 0) {
+      return handleOrderData(item);
+    }
+    return item;
+  });
 };
 
 export const filterContest = (data: StrapiResponseDataItem<GetContests>[], isContestEvent: boolean) => {
