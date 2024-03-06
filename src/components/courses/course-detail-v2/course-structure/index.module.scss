@@ -246,7 +246,9 @@ $colors: (
       gap: 32px;
 
       .active {
-        border-radius: 36px 8px 0 36px;
+        .titleBox {
+          border-radius: 36px 8px 0 36px !important;
+        }
       }
 
       .course {
@@ -331,9 +333,9 @@ $colors: (
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-top: -10%;
+          margin-top: -8%;
           margin-left: 1%;
-          padding: calc(10% + 16px) 10px 16px 10px;
+          padding: calc(8% + 16px) 10px 16px 10px;
           width: 99%;
           border-style: solid;
           border-width: 2px;
