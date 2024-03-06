@@ -86,7 +86,7 @@ const ContestCard = ({ data }: Props) => {
 
         {data?.contests?.length === 0 && (
           <div className={cx(styles.item)}>
-            <Title className={styles.noContest}>{t('NoContest')}</Title>
+            <Title className={styles.tbd}>{t('TBD')}</Title>
           </div>
         )}
       </Space>
