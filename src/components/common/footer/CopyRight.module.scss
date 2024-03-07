@@ -30,7 +30,7 @@
 
         .text {
           margin-left: 10px;
-
+          color: #172142;
           @media (max-width: 768px) {
             @include mobile-text;
           }
@@ -51,7 +51,6 @@
       .text {
         margin-bottom: 24px;
         font-weight: 600;
-
         @include text(18px, 30px, #172142);
 
         @media (max-width: 768px) {
