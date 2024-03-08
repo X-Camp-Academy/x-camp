@@ -13,39 +13,37 @@
         margin-top: 12px;
 
         .descriptionItem {
+          position: relative;
+          margin-left: 22px;
+
+          &::before {
+            position: absolute;
+            top: 12px;
+            left: -22px;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            padding-bottom: 10px;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffd600;
+            border-radius: 50%;
+            font-size: 14px;
+            font-family: Verdana;
+            font-weight: 800;
+            background: #ffad11;
+            content: '√';
+            box-sizing: border-box;
+          }
+
           .label {
-            position: relative;
-            margin-left: 21px;
             font-size: 18px;
             font-weight: 600;
             color: #172142;
             line-height: 40px;
-
-            &::before {
-              position: absolute;
-              top: 3px;
-              left: -22px;
-              display: flex;
-              align-items: center;
-              margin-right: 10px;
-              padding-bottom: 10px;
-              width: 16px;
-              height: 16px;
-              border: 2px solid #ffd600;
-              border-radius: 50%;
-              font-size: 14px;
-              font-family: Verdana;
-              font-weight: 800;
-              background: #ffad11;
-              content: '√';
-              box-sizing: border-box;
-            }
           }
 
           .value {
-            position: relative;
-            left: 20px;
-            margin-left: -20px;
             font-size: 16px;
             color: #172142;
             line-height: 40px;
@@ -106,10 +104,7 @@
         }
 
         .descriptions {
-          .label {
-            font-size: 22px;
-            line-height: 48px;
-
+          .descriptionItem {
             &::before {
               display: flex;
               align-items: center;
@@ -128,10 +123,15 @@
             }
           }
 
+          .label {
+            font-size: 18px;
+            line-height: 36px;
+          }
+
           .value {
-            font-size: 22px;
+            font-size: 18px;
             color: #787e91;
-            line-height: 37px;
+            line-height: 36px;
           }
         }
       }

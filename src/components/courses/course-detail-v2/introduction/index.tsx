@@ -61,7 +61,7 @@ const Introduction = () => {
     setIsModalOpen(false);
   };
 
-  const DescriptionsItems = [
+  const descriptionsItems = [
     { key: t('ClassMode'), value: classMode },
     { key: t('Level'), value: recommendedLowerGrade },
     { key: t('CodeLanguage'), value: classLang },
@@ -88,7 +88,7 @@ const Introduction = () => {
             <div className={'tabTitle'}>{'Introduction'}</div>
             <img src="/image/home/charlie.png" alt="" />
             <div className={styles.descriptions}>
-              {DescriptionsItems?.map(
+              {descriptionsItems?.map(
                 (item) =>
                   item?.value && (
                     <div key={item?.key} className={styles.descriptionItem}>
