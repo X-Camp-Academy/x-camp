@@ -1,6 +1,7 @@
 import { FrequencyCategory } from '@/apis/strapi-client/define';
 import NavTools from '@/components/common/nav/nav-tools';
 import { useGlobalState } from '@/hoc/WithGlobalState';
+import { useMobile } from '@/utils';
 import { formatFinance } from '@/utils/public';
 import { useInViewport, useMemoizedFn } from 'ahooks';
 import { BasicTarget } from 'ahooks/lib/utils/domTarget';
@@ -42,14 +43,37 @@ const tabs: Array<tabListIProps> = [
   }
 ];
 
+const enTabs: Array<tabListIProps> = [
+  {
+    title: 'Introduction',
+    key: 'introduction'
+  },
+  {
+    title: 'Topics Covered',
+    key: 'topics-covered'
+  },
+  {
+    title: 'Service',
+    key: 'service'
+  },
+  {
+    title: 'Coaches',
+    key: 'faculty-coaches'
+  }
+];
+
 const CourseTabs = () => {
   const { navVisible, setNavVisible } = useGlobalState();
-
+  const isMobile = useMobile();
   const [selected, setSelected] = useState('introduction');
   const courseData = useContext(CourseClassesContext);
+  const { affix, setAffix } = courseData ?? {};
   const { frequency, tuitionUSD, tuitionRMB } = courseData?.attributes ?? {};
 
   const tabList = useMemo(() => {
+    if (isMobile) {
+      return enTabs;
+    }
     let res = tabs;
     if (!courseData?.attributes?.reviews?.data?.length) {
       res = tabs.filter((v) => v.key !== 'reviews');
@@ -83,8 +107,15 @@ const CourseTabs = () => {
         `}</style>
       </Head>
 
-      <div className={`${navVisible && 'container'}`}>
-        <Affix offsetTop={0} onChange={(affixed) => setNavVisible(!affixed)} className={`${!navVisible && styles.navContainer}`}>
+      <div className={`${navVisible ? 'container' : ''}`}>
+        <Affix
+          offsetTop={0}
+          onChange={(affixed) => {
+            setNavVisible(!affixed);
+            setAffix?.(!!affixed);
+          }}
+          className={`${affix ? styles.navContainer : ''}`}
+        >
           <div className={styles.nav}>
             <div className={styles.titleTab}>
               {tabList.map((item) => {
@@ -95,7 +126,7 @@ const CourseTabs = () => {
                 );
               })}
             </div>
-            {!navVisible && (
+            {affix && (
               <div className={styles.tools}>
                 <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</div>
                 <NavTools />

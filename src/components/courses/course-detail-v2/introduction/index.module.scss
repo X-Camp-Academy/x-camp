@@ -142,3 +142,68 @@
     }
   }
 }
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2050;
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+  background-color: #fff !important;
+  box-shadow: 0 7 19px -3px rgb(216 216 216 / 20%);
+  line-height: 72px;
+
+  @media (width >= 768px) {
+    display: none;
+  }
+
+  .title {
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 72px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}
+
+.navbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2050;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  text-align: center;
+  background-color: #fff !important;
+  box-shadow: 0 7 19px -3px rgb(216 216 216 / 20%);
+
+  @media (width >= 768px) {
+    display: none;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .tools {
+    display: flex;
+    gap: 10px;
+
+    .price {
+      font-size: 32px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 70px;
+    }
+  }
+}

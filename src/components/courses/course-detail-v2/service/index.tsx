@@ -29,24 +29,22 @@ const Service = () => {
             </div>
           ))}
         </div>
-        <div style={{ margin: '24px 0' }}>
+        <div className={styles.payment}>
           <span className={styles.title}>{'Payment Method: '}</span>
-          <span className={styles.title} style={{ fontWeight: 'normal' }}>
-            {'We accept payment through zelle'}
-          </span>
+          <span className={styles.description}>{'We accept payment through zelle'}</span>
         </div>
         <div className={styles.title}>{'Return Refund Policy'}</div>
         <div className={styles.tip}>
           <img src="/image/course-detail/book.png" alt="" />
           <span className={styles.title}>{'Before join the class: '}</span>
-          <span className={styles.title} style={{ fontWeight: 'normal' }}>
+          <span className={styles.description}>
             {'Any time prior to 1 week before class would offer free refund. 1 week before class starts, we will charge a $100 administration fee. And the rest amount of fee could be refunded. '}
           </span>
         </div>
         <div className={styles.tip} style={{ marginTop: 12 }}>
           <img src="/image/course-detail/book.png" alt="" />
           <span className={styles.title}>{'After join the class: '}</span>
-          <span className={styles.title} style={{ fontWeight: 'normal' }}>
+          <span className={styles.description}>
             {'Any time prior to 1 week before class would offer free refund. 1 week before class starts, we will charge a $100 administration fee. And the rest amount of fee could be refunded. '}
           </span>
         </div>

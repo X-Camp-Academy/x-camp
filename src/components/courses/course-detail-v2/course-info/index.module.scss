@@ -22,6 +22,12 @@
       align-content: center;
       gap: 16px;
 
+      @media (width <= 768px) {
+        .tip {
+          display: none;
+        }
+      }
+
       .btn {
         display: flex;
         justify-content: center;

@@ -34,7 +34,7 @@ const CourseInfo = () => {
             <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
               {t('SignUpNow')}
             </Button>
-            <span>{'Click to jump to the registration form'}</span>
+            <span className={styles.tip}>{'Click to jump to the registration form'}</span>
           </div>
         </div>
         <div className={styles.times}>

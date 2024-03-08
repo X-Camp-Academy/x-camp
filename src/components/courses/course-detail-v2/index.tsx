@@ -8,7 +8,7 @@ import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Layout } from 'antd';
 import { useParams } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import CourseClassesContext from '../CourseClassesContext';
 import Banner from './banner';
 import CourseInfo from './course-info';
@@ -25,7 +25,7 @@ const { Content } = Layout;
 const CourseDetail: React.FC = () => {
   const params = useParams();
   const { format: t } = useLang();
-
+  const [affix, setAffix] = useState(false);
   const isMobile = useMobile();
 
   const { data: coursesData } = useGetCourses({
@@ -47,19 +47,15 @@ const CourseDetail: React.FC = () => {
     <Layout className={styles.courseDetail}>
       <Content>
         {courseData && (
-          <CourseClassesContext.Provider value={{ ...courseData, courseLevel }}>
+          <CourseClassesContext.Provider value={{ ...courseData, courseLevel, affix, setAffix }}>
             <Banner />
             <CourseInfo />
-            {isMobile && <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />}
+            {isMobile && <UsacoMedal style={{ backgroundColor: '#EFEFEF', marginTop: 32 }} />}
             <CourseTabs />
             <Introduction />
-            {courseLevel <= 302 && (
-              <>
-                <CourseStructure />
-                <CourseSyllabus />
-              </>
-            )}
+            {courseLevel <= 302 && <CourseSyllabus />}
             <Service />
+            {courseLevel <= 302 && <CourseStructure />}
             {!isMobile && <UsacoMedal style={{ backgroundColor: '#EFEFEF' }} />}
             <Faculty />
           </CourseClassesContext.Provider>

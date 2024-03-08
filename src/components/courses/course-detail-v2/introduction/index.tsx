@@ -1,16 +1,38 @@
+import { FrequencyCategory } from '@/apis/strapi-client/define';
+import NavTools from '@/components/common/nav/nav-tools';
+import { useGlobalState } from '@/hoc/WithGlobalState';
 import { useLang } from '@/hoc/with-intl/define';
-import { formatTimezone } from '@/utils/public';
-import { CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
-import { Button, Modal, Space, message } from 'antd';
-import { useContext, useState } from 'react';
+import { useMobile } from '@/utils';
+import { formatFinance, formatTimezone, getWeeksDays } from '@/utils/public';
+import { CommentOutlined, LeftOutlined, ShareAltOutlined } from '@ant-design/icons';
+import { Button, Modal, Space, Typography, message } from 'antd';
+import { useContext, useEffect, useState } from 'react';
 import { getTransResult } from 'x-star-utils';
 import CourseClassesContext from '../../CourseClassesContext';
 import styles from './index.module.scss';
+const { Text } = Typography;
 
 const Introduction = () => {
   const { format: t, lang } = useLang();
   const courseData = useContext(CourseClassesContext);
-  const { startDateTime, endDateTime, courseTitleEn, classMode, classLang, spokenLang, courseFormat, additionalInfo, courseTitleZh, courseCode, frequency } = courseData?.attributes ?? {};
+  const { affix } = courseData ?? {};
+  const {
+    startDateTime,
+    endDateTime,
+    tuitionUSD,
+    tuitionRMB,
+    lessonNum,
+    courseTitleEn,
+    classMode,
+    classLang,
+    recommendedLowerGrade,
+    spokenLang,
+    courseFormat,
+    additionalInfo,
+    courseTitleZh,
+    courseCode,
+    frequency
+  } = courseData?.attributes ?? {};
   const [isModalOpen, setIsModalOpen] = useState(false);
   const fullPath = window.location.href;
   const formatDate = (dateTime?: string) => {
@@ -41,11 +63,22 @@ const Introduction = () => {
 
   const DescriptionsItems = [
     { key: t('ClassMode'), value: classMode },
+    { key: t('Level'), value: recommendedLowerGrade },
     { key: t('CodeLanguage'), value: classLang },
     { key: t('ClassroomLanguage'), value: spokenLang },
     { key: t('CourseFormat'), value: courseFormat },
     { key: t('AdditionalInfo'), value: additionalInfo }
   ];
+
+  const isMobile = useMobile();
+  const { setNavVisible } = useGlobalState();
+  useEffect(() => {
+    if (isMobile) {
+      setNavVisible(false);
+    }
+  }, [isMobile]);
+
+  const courseCodeTitle = `${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)} (${lessonNum} ${getWeeksDays(frequency)})`;
 
   return (
     <>
@@ -76,7 +109,8 @@ const Introduction = () => {
                 type={'primary'}
                 className={styles.btn}
                 icon={<CommentOutlined />}
-                onClick={() => window.open('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ')}
+                href="https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ"
+                target="_blank"
               >
                 {t('1On1Consultation')}
               </Button>
@@ -90,6 +124,38 @@ const Introduction = () => {
           </div>
         </div>
       </div>
+      <div className={`${styles.nav} container`}>
+        <div>
+          <LeftOutlined className={styles.icon} onClick={() => window.history.back()} />
+        </div>
+        {affix && (
+          <Text className={styles.title} ellipsis>
+            {courseCodeTitle}
+          </Text>
+        )}
+        <Space size={22}>
+          <CommentOutlined
+            className={styles.icon}
+            onClick={() => window.open('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ')}
+          />
+          <ShareAltOutlined className={styles.icon} onClick={() => setIsModalOpen(true)} />
+        </Space>
+      </div>
+      {affix && (
+        <div className={`${styles.navbar} container`}>
+          <Space direction="vertical" size={0}>
+            <CommentOutlined
+              className={styles.icon}
+              onClick={() => window.open('https://calendar.google.com/calendar/u/0/selfsched?sstoken=UURhaXVoUDNzQVlLfGRlZmF1bHR8ZjkwM2I4MzViZjVlNGE1ZGFkMzc1NDQwMDFiOTMzNDQ')}
+            />
+            <span>{'1on1'}</span>
+          </Space>
+          <div className={styles.tools}>
+            <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</div>
+            <NavTools />
+          </div>
+        </div>
+      )}
       <Modal
         title={getTransResult(lang, '分享课程信息', 'Share course information')}
         open={isModalOpen}
