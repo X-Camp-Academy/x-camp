@@ -71,6 +71,11 @@ const AllClasses: React.FC = () => {
         break;
     }
 
+    // 特判一下 apcs的课程跨季度如果选择Q2的话也返回课程
+    if (segmentedValue === CourseType.JavaAPCSClasses && newFilters.courseQuarter?.$eq === CourseQuarter.Q2) {
+      newFilters['courseQuarter'] = { $eq: CourseQuarter.Q1 };
+    }
+
     runAsync({
       populate: '*',
       sort: ['order:desc'],
@@ -150,6 +155,7 @@ const AllClasses: React.FC = () => {
   const onValuesChange = () => {
     form.submit();
   };
+
   return (
     <Layout className={styles.courses}>
       <Content>
