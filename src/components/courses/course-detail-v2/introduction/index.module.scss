@@ -1,0 +1,209 @@
+.introduction {
+  .content {
+    display: flex;
+    justify-content: space-between;
+    gap: 215px;
+
+    .info {
+      img {
+        display: none;
+      }
+
+      .descriptions {
+        margin-top: 12px;
+
+        .descriptionItem {
+          position: relative;
+          margin-left: 22px;
+
+          &::before {
+            position: absolute;
+            top: 12px;
+            left: -22px;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            padding-bottom: 10px;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffd600;
+            border-radius: 50%;
+            font-size: 14px;
+            font-family: Verdana;
+            font-weight: 800;
+            background: #ffad11;
+            content: '√';
+            box-sizing: border-box;
+          }
+
+          .label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #172142;
+            line-height: 40px;
+          }
+
+          .value {
+            font-size: 16px;
+            color: #172142;
+            line-height: 40px;
+          }
+        }
+      }
+    }
+
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      img {
+        width: 100%;
+        height: 252px;
+        object-fit: cover;
+      }
+
+      .btns {
+        display: flex;
+        gap: 20px;
+
+        .btn {
+          width: 230px;
+          height: 48px;
+          border-radius: 6px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #172a88;
+          background: rgba($color: #172a88, $alpha: 12%);
+          line-height: 24px;
+        }
+
+        .off {
+          font-size: 12px;
+          font-family: Poppins-Black;
+          font-weight: 400;
+          text-align: center;
+          color: #172a88;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+
+  .content.content {
+    @media (width <= 768px) {
+      gap: 24px;
+      flex-direction: column-reverse;
+
+      .info {
+        img {
+          display: block;
+          width: 100%;
+          height: 293px;
+          object-fit: cover;
+        }
+
+        .descriptions {
+          .descriptionItem {
+            &::before {
+              display: flex;
+              align-items: center;
+              margin-right: 10px;
+              padding-bottom: 10px;
+              width: 16px;
+              height: 16px;
+              border: 2px solid #ffd600;
+              border-radius: 50%;
+              font-size: 14px;
+              font-family: Verdana;
+              font-weight: 800;
+              background: #ffad11;
+              content: '√';
+              box-sizing: border-box;
+            }
+          }
+
+          .label {
+            font-size: 18px;
+            line-height: 36px;
+          }
+
+          .value {
+            font-size: 18px;
+            color: #787e91;
+            line-height: 36px;
+          }
+        }
+      }
+
+      .side {
+        display: none;
+      }
+    }
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2050;
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+  background-color: #fff !important;
+  box-shadow: 0 7 19px -3px rgb(216 216 216 / 20%);
+  line-height: 72px;
+
+  @media (width >= 768px) {
+    display: none;
+  }
+
+  .title {
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #172142;
+    line-height: 72px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}
+
+.navbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2050;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  text-align: center;
+  background-color: #fff !important;
+  box-shadow: 0 7 19px -3px rgb(216 216 216 / 20%);
+
+  @media (width >= 768px) {
+    display: none;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .tools {
+    display: flex;
+    gap: 10px;
+
+    .price {
+      font-size: 32px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 70px;
+    }
+  }
+}

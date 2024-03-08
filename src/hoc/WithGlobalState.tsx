@@ -5,32 +5,38 @@ interface Props {
   children: ReactNode;
 }
 
-export const ModalVisibleContext = createContext({
+export const GlobalStateContext = createContext({
   freeConsultationVisible: false,
   setFreeConsultationVisible: (visible: boolean) => {},
   weeklyOpenHouseVisible: false,
-  setWeeklyOpenHouseVisible: (visible: boolean) => {}
+  setWeeklyOpenHouseVisible: (visible: boolean) => {},
+  navVisible: true,
+  setNavVisible: (visible: boolean) => {}
 });
 
-export const useModalVisible = () => {
-  return useContext(ModalVisibleContext);
+export const useGlobalState = () => {
+  return useContext(GlobalStateContext);
 };
 
-const WithModalVisible = ({ children }: Props) => {
+const WithGlobalState = ({ children }: Props) => {
   const [freeConsultationVisible, setFreeConsultationVisible] = useState(false);
   const [weeklyOpenHouseVisible, setWeeklyOpenHouseVisible] = useState(false);
+  const [navVisible, setNavVisible] = useState(true);
+
   return (
-    <ModalVisibleContext.Provider
+    <GlobalStateContext.Provider
       value={{
         freeConsultationVisible,
         setFreeConsultationVisible,
         weeklyOpenHouseVisible,
-        setWeeklyOpenHouseVisible
+        setWeeklyOpenHouseVisible,
+        navVisible,
+        setNavVisible
       }}
     >
       {children}
-    </ModalVisibleContext.Provider>
+    </GlobalStateContext.Provider>
   );
 };
 
-export default WithModalVisible;
+export default WithGlobalState;

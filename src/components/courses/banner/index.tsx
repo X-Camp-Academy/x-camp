@@ -1,5 +1,5 @@
 import { apiConfig } from '@/config';
-import { useModalVisible } from '@/hoc/WithModalVisible';
+import { useGlobalState } from '@/hoc/WithGlobalState';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { CaretRightOutlined } from '@ant-design/icons';
@@ -14,8 +14,7 @@ const { Paragraph } = Typography;
 const Banner: React.FC = () => {
   const isMobile = useMobile();
   const { format: t } = useLang();
-  const { setWeeklyOpenHouseVisible } = useModalVisible();
-
+  const { setWeeklyOpenHouseVisible } = useGlobalState();
   return (
     <div className={styles.banner}>
       <div className={`${styles.content} container`}>

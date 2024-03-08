@@ -1,13 +1,13 @@
 'use client';
+import { apiConfig } from '@/config/index';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
+import { getTransResult } from '@/utils/public';
 import { CommentOutlined, HistoryOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
-import { apiConfig } from '@/config/index';
 import CopyRightIcons from '../copy-right-icons';
 import styles from './CopyRight.module.scss';
-import { getTransResult } from '@/utils/public';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -72,7 +72,9 @@ const CopyRight: React.FC = () => {
                   <a href={'/about-us/calendar'}>{t('SchoolCalendar')}</a>
                   <a href={'/courses/all-classes#weekly'}>{t('WeeklyClasses')}</a>
                   <a href={'/courses/all-classes#camps'}>{t('In-personCamps')}</a>
-                  <a onClick={() => window.open(`${idApi}/policy?refer=${window.location.href}`)}>{t('DisclaimerPrivacyPolicy')}</a>
+                  <span style={{ cursor: 'pointer' }} onClick={() => window.open(`${idApi}/policy?refer=${window.location.href}`)}>
+                    {t('DisclaimerPrivacyPolicy')}
+                  </span>
                 </Space>
               </div>
 

@@ -1,18 +1,17 @@
 'use client';
+import BackTop from '@/components/common/back-top';
+import FixedButtons from '@/components/common/fixed-buttons';
+import Footer from '@/components/common/footer';
 import GoogleTracking from '@/components/common/google-tracking';
-import WithModalVisible from '@/hoc/WithModalVisible';
+import Nav from '@/components/common/nav';
+import WithAntdConfig from '@/hoc/WithAntdConfig';
+import WithGlobalState from '@/hoc/WithGlobalState';
+import WithLayout from '@/hoc/WithLayout';
 import { WithAuth } from '@/hoc/with-auth';
+import WithIntl from '@/hoc/with-intl';
 import { useMobile } from '@/utils';
 import { LocalStateProvider } from '@/utils/local-state';
 import './globals.scss';
-import WithLayout from '@/hoc/WithLayout';
-import WithAntdConfig from '@/hoc/WithAntdConfig';
-import Nav from '@/components/common/nav';
-import Footer from '@/components/common/footer';
-import BackTop from '@/components/common/back-top';
-import dynamic from 'next/dynamic';
-const WithIntl = dynamic(() => import('@/hoc/with-intl'), { ssr: false });
-import FixedButtons from '@/components/common/fixed-buttons';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const isMobile = useMobile();
@@ -24,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LocalStateProvider>
           <WithIntl>
             <WithAuth>
-              <WithModalVisible>
+              <WithGlobalState>
                 <WithAntdConfig>
                   <Nav />
                   <WithLayout>{children}</WithLayout>
@@ -32,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <BackTop />
                   <FixedButtons />
                 </WithAntdConfig>
-              </WithModalVisible>
+              </WithGlobalState>
             </WithAuth>
           </WithIntl>
         </LocalStateProvider>

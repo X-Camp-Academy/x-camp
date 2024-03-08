@@ -1,5 +1,7 @@
 'use client';
 import TitleColor, { IConfig } from '@/components/common/title-color';
+import UsacoMedal from '@/components/common/usaco-medal';
+import { apiConfig } from '@/config';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { Carousel, Col, Row, Space, Typography } from 'antd';
@@ -7,8 +9,6 @@ import { useRouter } from 'next/navigation';
 import React, { CSSProperties, useRef, useState } from 'react';
 import CarouselDots from './CarouselDots';
 import styles from './index.module.scss';
-import UsacoMedal from '@/components/common/usaco-medal';
-import { apiConfig } from '@/config';
 
 const { Text } = Typography;
 const { assessment } = apiConfig;
@@ -44,7 +44,7 @@ const CarouselContent: React.FC = () => {
       titleConfig: [
         {
           text: 'Offers a range of courses from beginners to advanced levels like USACO Finalists, IOI',
-          color: '#172A88',
+          color: '#172A88'
         }
       ],
       desc: ['Trusted by 2000+ students from 9 countries', 'Jour our dynamic learning community'],
@@ -58,7 +58,7 @@ const CarouselContent: React.FC = () => {
       },
       banner: '/image/home/banner-pc-5.png',
       mbBanner: '/image/home/banner-mb-5.png',
-      triangle: true,
+      triangle: true
     },
     {
       title: '',
@@ -68,7 +68,7 @@ const CarouselContent: React.FC = () => {
       },
       banner: '/image/home/banner-pc-4.jpg',
       mbBanner: '/image/home/banner-mb-4.png',
-      buttonText: '',
+      buttonText: ''
     },
     {
       title: 'FREE Placement Test, Open to ALL！',
@@ -94,7 +94,7 @@ const CarouselContent: React.FC = () => {
       },
       banner: '/image/home/banner-pc-2.png',
       mbBanner: '/image/home/banner-mb-2.png',
-      titleBar: true,
+      titleBar: true
     },
     {
       title: t('Home.Banner3.title'),
@@ -119,7 +119,7 @@ const CarouselContent: React.FC = () => {
         router.push('/about-us/achievements');
       },
       banner: '/image/home/banner-pc-3.png',
-      mbBanner: '/image/home/banner-mb-3.png',
+      mbBanner: '/image/home/banner-mb-3.png'
     }
   ];
 
@@ -154,11 +154,12 @@ const CarouselContent: React.FC = () => {
                   <Space direction="vertical" className={styles.space} size={16}>
                     <div className={styles.titleWithImg}>
                       <TitleColor className={styles.title} title={item?.title} config={item?.titleConfig || []} />
-                      {item?.titleBar && <div className={styles.titleBar}>
-                        <span className={styles.left} />
-                        <span className={styles.right} />
-                      </div>
-                      }
+                      {item?.titleBar && (
+                        <div className={styles.titleBar}>
+                          <span className={styles.left} />
+                          <span className={styles.right} />
+                        </div>
+                      )}
                     </div>
                     <Space direction="vertical" size={0}>
                       {item?.desc?.map((desc) => (
@@ -172,22 +173,20 @@ const CarouselContent: React.FC = () => {
                         </div>
                       ))}
                     </Space>
-                    {
-                      item?.buttonText &&
+                    {item?.buttonText && (
                       <button className={styles.button} style={item?.buttonStyle} onClick={item?.onClick}>
                         {item?.buttonText}
                       </button>
-                    }
+                    )}
                   </Space>
                 </Col>
               </Row>
             </div>
           </div>
-        ))
-        }
-      </Carousel >
+        ))}
+      </Carousel>
       <UsacoMedal style={{ backgroundColor: '#FFFFFF', boxShadow: '0 6px 14px -2px rgb(216 216 216 / 30%)' }} spacePaddingTop={0} showTitle={false} />
-    </div >
+    </div>
   );
 };
 

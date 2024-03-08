@@ -1,16 +1,16 @@
-import { openClassEmailRequest } from '@/apis/common-client/define';
 import { useSendOpenClassEmail, useSubscribeNewsletter } from '@/apis/common-client/common';
-import { useModalVisible } from '@/hoc/WithModalVisible';
+import { openClassEmailRequest } from '@/apis/common-client/define';
+import { useGetHomeButtons } from '@/apis/strapi-client/strapi';
+import { useGlobalState } from '@/hoc/WithGlobalState';
 import { useLang } from '@/hoc/with-intl/define';
 import { addAnimate, removeAnimate, useMobile } from '@/utils';
 import { BookOutlined, MessageOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space, message } from 'antd';
+import { useRouter } from 'next/navigation';
 import React, { RefObject, useRef } from 'react';
 import ConsultCardForm from './ConsultCardForm';
 import OpenHouseCardForm from './OpenHouseCardForm';
 import styles from './index.module.scss';
-import { useGetHomeButtons } from '@/apis/strapi-client/strapi';
-import { useRouter } from 'next/navigation';
 
 interface IMenuItem {
   icon: string;
@@ -30,7 +30,7 @@ const FixedButtons: React.FC = () => {
   const router = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const { runAsync: sendMailToUser } = useSendOpenClassEmail();
-  const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useModalVisible();
+  const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useGlobalState();
   const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
   const { data } = useGetHomeButtons();
 
@@ -57,7 +57,7 @@ const FixedButtons: React.FC = () => {
       icon: '/image/home/turtle-1.png',
       text: 'USACO Report',
       state: true,
-      onClick: () => { },
+      onClick: () => {},
       label: <></>,
       key: 'usaoc-report',
       mobileIcon: <BookOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
@@ -96,87 +96,44 @@ const FixedButtons: React.FC = () => {
       <div className={styles.buttonContainer}>
         {menu?.map((item) => {
           return (
-            <>
-              {
-                !isMobile && item?.show ?
-                  <div
-                    className={styles.buttonItem}
-                    key={item.key}
-                    ref={isMobile ? null : item?.ref}
-                    onMouseEnter={() => addAnimate(item?.ref)}
-                    onMouseLeave={() => removeAnimate(item?.ref)}
-                  >
-                    {
-                      item?.key === 'usaoc-report' ?
-                        <Button
-                          shape={'round'}
-                          className={styles.fixedButton}
-                          onClick={() => router.push('/usaco-report')}
-                        >
-                          <span>{item?.text}</span>
-                          <img src={`${item?.icon}`} alt="" />
-                        </Button>
-                        :
-                        <Dropdown
-                          open={item?.state}
-                          onOpenChange={(value) => item?.onClick(value)}
-                          dropdownRender={() => item?.label}
-                          trigger={['click']}
-                          overlayStyle={{ height: '100%' }}
-                        >
-                          <Button
-                            shape={'round'}
-                            className={styles.fixedButton}
-                          >
-                            <span>{item?.text}</span>
-                            <img src={`${item?.icon}`} alt="" />
-                          </Button>
-                        </Dropdown>
-                    }
-                  </div >
-                  :
-                  isMobile && item?.showMobile ?
-                    <div
-                      className={styles.buttonItem}
-                      key={item.key}
-                      ref={isMobile ? null : item?.ref}
-                      onMouseEnter={() => addAnimate(item?.ref)}
-                      onMouseLeave={() => removeAnimate(item?.ref)}
-                    >
-                      {
-                        item?.key === 'usaoc-report' ?
-                          <Space
-                            direction="vertical"
-                            className={styles.mobileIcon}
-                            onClick={() => router.push('/usaco-report')}
-                          >
-                            {item?.mobileIcon}
-                            <span>{item?.text}</span>
-                          </Space>
-                          :
-                          <Dropdown
-                            open={item?.state}
-                            onOpenChange={(value) => item?.onClick(value)}
-                            dropdownRender={() => item?.label}
-                            trigger={['click']}
-                            overlayStyle={{ height: '100%' }}
-                          >
-                            <Space
-                              direction="vertical"
-                              className={styles.mobileIcon}
-                            >
-                              {item?.mobileIcon}
-                              <span>{item?.text}</span>
-                            </Space>
-                          </Dropdown>
-                      }
-                    </div >
-                    : null
-              }
-            </>
+            <React.Fragment key={item.key}>
+              {!isMobile && item?.show ? (
+                <div className={styles.buttonItem} key={item.key} ref={isMobile ? null : item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
+                  {item?.key === 'usaoc-report' ? (
+                    <Button shape={'round'} className={styles.fixedButton} onClick={() => router.push('/usaco-report')}>
+                      <span>{item?.text}</span>
+                      <img src={`${item?.icon}`} alt="" />
+                    </Button>
+                  ) : (
+                    <Dropdown open={item?.state} onOpenChange={(value) => item?.onClick(value)} dropdownRender={() => item?.label} trigger={['click']} overlayStyle={{ height: '100%' }}>
+                      <Button shape={'round'} className={styles.fixedButton}>
+                        <span>{item?.text}</span>
+                        <img src={`${item?.icon}`} alt="" />
+                      </Button>
+                    </Dropdown>
+                  )}
+                </div>
+              ) : isMobile && item?.showMobile ? (
+                <div className={styles.buttonItem} key={item.key} ref={isMobile ? null : item?.ref} onMouseEnter={() => addAnimate(item?.ref)} onMouseLeave={() => removeAnimate(item?.ref)}>
+                  {item?.key === 'usaoc-report' ? (
+                    <Space direction="vertical" className={styles.mobileIcon} onClick={() => router.push('/usaco-report')}>
+                      {item?.mobileIcon}
+                      <span>{item?.text}</span>
+                    </Space>
+                  ) : (
+                    <Dropdown open={item?.state} onOpenChange={(value) => item?.onClick(value)} dropdownRender={() => item?.label} trigger={['click']} overlayStyle={{ height: '100%' }}>
+                      <Space direction="vertical" className={styles.mobileIcon}>
+                        {item?.mobileIcon}
+                        <span>{item?.text}</span>
+                      </Space>
+                    </Dropdown>
+                  )}
+                </div>
+              ) : null}
+            </React.Fragment>
           );
         })}
-      </div >
+      </div>
     </>
   );
 };
