@@ -4,7 +4,6 @@ import { useGlobalState } from '@/hoc/WithGlobalState';
 import { useMobile } from '@/utils';
 import { formatFinance } from '@/utils/public';
 import { useInViewport, useMemoizedFn } from 'ahooks';
-import { BasicTarget } from 'ahooks/lib/utils/domTarget';
 import { Affix } from 'antd';
 import Head from 'next/head';
 import { useContext, useMemo, useState } from 'react';
@@ -93,7 +92,7 @@ const CourseTabs = () => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
   };
 
-  useInViewport([...(document.getElementsByClassName('tabContent') as unknown as BasicTarget[])], {
+  (useInViewport as any)([...(document.getElementsByClassName('tabContent'))], {
     callback
   });
 
