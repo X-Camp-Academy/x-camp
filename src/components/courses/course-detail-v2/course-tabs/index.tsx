@@ -63,7 +63,7 @@ const enTabs: Array<tabListIProps> = [
 ];
 
 const CourseTabs = () => {
-  const { navVisible, setNavVisible } = useGlobalState();
+  const { setNavVisible } = useGlobalState();
   const isMobile = useMobile();
   const [selected, setSelected] = useState('introduction');
   const courseData = useContext(CourseClassesContext);
@@ -93,7 +93,7 @@ const CourseTabs = () => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
   };
 
-  useInViewport([...document.getElementsByClassName('tabContent')] as unknown as BasicTarget[], {
+  useInViewport([...(document.getElementsByClassName('tabContent') as unknown as BasicTarget[])], {
     callback
   });
 
@@ -107,10 +107,11 @@ const CourseTabs = () => {
         `}</style>
       </Head>
 
-      <div className={`${navVisible ? 'container' : ''}`}>
+      <div className={`${affix ? '' : 'container'}`}>
         <Affix
           offsetTop={0}
           onChange={(affixed) => {
+            console.log(!affixed);
             setNavVisible(!affixed);
             setAffix?.(!!affixed);
           }}

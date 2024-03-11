@@ -71,11 +71,10 @@ const Introduction = () => {
   ];
 
   const isMobile = useMobile();
+
   const { setNavVisible } = useGlobalState();
   useEffect(() => {
-    if (isMobile) {
-      setNavVisible(false);
-    }
+    setNavVisible(!isMobile);
   }, [isMobile]);
 
   const courseCodeTitle = `${courseCode}: ${getTransResult(lang, courseTitleZh, courseTitleEn)} (${lessonNum} ${getWeeksDays(frequency)})`;

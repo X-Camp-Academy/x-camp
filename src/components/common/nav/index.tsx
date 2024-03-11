@@ -85,7 +85,7 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <Layout className={styles.headerContainer} style={navVisible ? {} : { display: 'none' }}>
+    <Layout className={styles.headerContainer} style={{ display: navVisible ? 'block' : 'none' }}>
       <Header className={`${styles.header} container`}>
         <Space align="center" className={styles.space}>
           {isiPad ? (

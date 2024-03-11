@@ -68,6 +68,9 @@
         gap: 20px;
 
         .btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 230px;
           height: 48px;
           border-radius: 6px;
