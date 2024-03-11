@@ -92,7 +92,7 @@ const CourseTabs = () => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
   };
 
-  (useInViewport as any)([...(document.getElementsByClassName('tabContent'))], {
+  useInViewport([...document.getElementsByClassName('tabContent')], {
     callback
   });
 
