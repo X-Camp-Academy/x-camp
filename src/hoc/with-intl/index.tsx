@@ -1,4 +1,5 @@
 'use client';
+import { useWebUpdateNotify } from '@/hooks/useWebUpdateNotify';
 import en_US from '@/lang/en_US.json';
 import zh_CN from '@/lang/zh_CN.json';
 import dayjs from 'dayjs';
@@ -11,11 +12,10 @@ import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import cookie from 'react-cookies';
-import {IntlProvider, useIntl} from 'react-intl';
-import {LangContext} from './define';
-import {useWebUpdateNotify} from '@/hooks/useWebUpdateNotify'
+import { IntlProvider, useIntl } from 'react-intl';
+import { LangContext } from './define';
 
 dayjs.extend(LocalizedFormat);
 dayjs.extend(calenderPlugin);
@@ -36,9 +36,9 @@ const WithLang: React.FC<{
   lang: LangType;
   setLang: (lang: LangType) => void;
   children: React.ReactNode;
-}> = ({lang, setLang, children}) => {
+}> = ({ lang, setLang, children }) => {
   const intl = useIntl();
-  const format = useCallback(<T extends LangKey>(id: T) => intl.formatMessage({id}) as (typeof zh_CN | typeof en_US)[T], [intl]);
+  const format = useCallback(<T extends LangKey>(id: T) => intl.formatMessage({ id }) as (typeof zh_CN | typeof en_US)[T], [intl]);
   const toggle = useCallback(() => {
     const newLang: LangType = lang === LANG_ZH_CN ? LANG_EN_US : LANG_ZH_CN;
     cookie.save('lang', newLang, {
@@ -65,14 +65,14 @@ interface WithIntlIProps {
   children: React.ReactNode;
 }
 
-const WithIntl: React.FC<WithIntlIProps> = ({children}) => {
-  // const [lang, setLang] = useState<LangType>((cookie.load('lang') || window.navigator.language.slice(0, 2)) === LANG_ZH_CN ? LANG_ZH_CN : LANG_EN_US);
+const WithIntl: React.FC<WithIntlIProps> = ({ children }) => {
+  // const [lang, setLang] = useState<LangType>((cookie.load('lang') || window && window.navigator.language.slice(0, 2)) === LANG_ZH_CN ? LANG_ZH_CN : LANG_EN_US);
   const [lang, setLang] = useState<LangType>(LANG_EN_US);
-  const {contextHolder: updateContextHolder, setLocale: setNotifyLocale} = useWebUpdateNotify()
+  const { contextHolder: updateContextHolder, setLocale: setNotifyLocale } = useWebUpdateNotify();
 
   useEffect(() => {
     dayjs.locale(lang === LANG_ZH_CN ? 'zh-cn' : 'en');
-    setNotifyLocale(lang === LANG_ZH_CN ? 'zh_CN' : 'en_US')
+    setNotifyLocale(lang === LANG_ZH_CN ? 'zh_CN' : 'en_US');
   }, [lang]);
 
   return (
