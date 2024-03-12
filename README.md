@@ -1,9 +1,9 @@
 ### 运行
 
 ```
-  pnpm i
+  yarn i
 
-  pnpm dev
+  yarn dev
 ```
 
 ### 时区转化
