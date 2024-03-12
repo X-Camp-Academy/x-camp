@@ -2,8 +2,8 @@ FROM node:18.19.0-alpine3.18 AS builder
 
 WORKDIR /src
 
-RUN yarn config set disturl https://npmmirror.com/mirrors/node/
 RUN yarn config set registry https://registry.npmmirror.com
+RUN yarn config set disturl https://npmmirror.com/mirrors/node/
 RUN yarn config set sass_binary_site https://npmmirror.com/mirrors/node-sass/
 RUN yarn config set sharp_binary_host https://npmmirror.com/mirrors/sharp
 RUN yarn config set sharp_libvips_binary_host https://npmmirror.com/mirrors/sharp-libvips
@@ -15,7 +15,7 @@ RUN yarn install
 COPY . .
 
 RUN yarn build
-RUN yarn install --prod
+RUN yarn install --production
 
 FROM node:18.19.0-alpine3.18 AS runner
 
