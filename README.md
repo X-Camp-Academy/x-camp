@@ -1,9 +1,9 @@
 ### 运行
 
 ```
-  pnpm i
+  yarn install
 
-  pnpm dev
+  yarn dev
 ```
 
 ### 时区转化

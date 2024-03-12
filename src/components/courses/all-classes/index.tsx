@@ -11,12 +11,12 @@ import { Affix, Collapse, Form, Layout, RadioChangeEvent, Select, Space } from '
 import { SegmentedValue } from 'antd/es/segmented';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import ClassCard from '../class-card';
-import Banner from '../banner';
-import { CourseType } from '../define';
-import styles from './index.module.scss';
-import { CourseOptionsProps, useCourseOptions } from '../public';
 import SegmentedRadioGroup from '../../common/segmented-radio-group';
+import Banner from '../banner';
+import ClassCard from '../class-card';
+import { CourseType } from '../define';
+import { CourseOptionsProps, useCourseOptions } from '../public';
+import styles from './index.module.scss';
 
 const { Panel } = Collapse;
 const { Content } = Layout;
@@ -69,6 +69,11 @@ const AllClasses: React.FC = () => {
         break;
       default: // all/mock/java
         break;
+    }
+
+    // 特判一下 apcs的课程跨季度如果选择Q2的话也返回课程
+    if (segmentedValue === CourseType.JavaAPCSClasses && newFilters.courseQuarter?.$eq === CourseQuarter.Q2) {
+      newFilters['courseQuarter'] = { $eq: CourseQuarter.Q1 };
     }
 
     runAsync({
@@ -125,7 +130,7 @@ const AllClasses: React.FC = () => {
       const top = isMobile ? element?.offsetTop - 176 : element?.offsetTop - 96;
       window.scrollTo({
         top,
-        behavior: 'smooth',
+        behavior: 'smooth'
       });
     }
   };
@@ -150,6 +155,7 @@ const AllClasses: React.FC = () => {
   const onValuesChange = () => {
     form.submit();
   };
+
   return (
     <Layout className={styles.courses}>
       <Content>
@@ -166,13 +172,7 @@ const AllClasses: React.FC = () => {
               }
             }}
           >
-            <SegmentedRadioGroup
-              value={segmentedValue}
-              setValue={onSegmentedChange}
-              isRadioGroup={isiPad}
-              options={courseTypeOptions as CourseOptionsProps<CourseType>[]}
-              id="segmentedDom"
-            />
+            <SegmentedRadioGroup value={segmentedValue} setValue={onSegmentedChange} isRadioGroup={isiPad} options={courseTypeOptions as CourseOptionsProps<CourseType>[]} id="segmentedDom" />
           </Affix>
 
           <Form
@@ -187,32 +187,17 @@ const AllClasses: React.FC = () => {
               <div className={styles.title}>{segmentedValue}</div>
             </Form.Item>
             <Form.Item name="levelType" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
-              <Select
-                style={{ width: isiPad ? '100%' : 240 }}
-                placeholder={t('LevelType')}
-                options={levelTypeOptions as CourseOptionsProps<LevelType>[]}
-                allowClear
-              />
+              <Select style={{ width: isiPad ? '100%' : 240 }} placeholder={t('LevelType')} options={levelTypeOptions as CourseOptionsProps<LevelType>[]} allowClear />
             </Form.Item>
             <Form.Item name="courseQuarter" style={isiPad ? { width: '100%', marginTop: 8 } : {}}>
-              <Select
-                style={{ width: isiPad ? '100%' : 240 }}
-                placeholder={t('CourseQuarter')}
-                options={quarterOptions as CourseOptionsProps<CourseQuarter>[]}
-                allowClear
-              />
+              <Select style={{ width: isiPad ? '100%' : 240 }} placeholder={t('CourseQuarter')} options={quarterOptions as CourseOptionsProps<CourseQuarter>[]} allowClear />
             </Form.Item>
           </Form>
 
           {coursesData?.map((courses, i) => {
             return (
               <div key={courses?.courseLevelType} id={'#classify' + i} className={styles.collapseBox}>
-                <Collapse
-                  defaultActiveKey={courses?.courseLevelType}
-                  ghost
-                  style={{ marginBottom: 30 }}
-                  expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
-                >
+                <Collapse defaultActiveKey={courses?.courseLevelType} ghost style={{ marginBottom: 30 }} expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}>
                   <Panel
                     key={courses?.courseLevelType}
                     header={
