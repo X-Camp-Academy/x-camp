@@ -22,13 +22,34 @@
   }
 }
 
+.paddingRight {
+  @media (min-width: 576px) {
+    padding-right: calc((100vw - 540px) / 2 + 15px);
+  }
+
+  @media (min-width: 768px) {
+    padding-right: calc((100vw - 720px) / 2 + 15px);
+  }
+
+  @media (min-width: 992px) {
+    padding-right: calc((100vw - 960px) / 2 + 15px);
+  }
+
+  @media (min-width: 1200px) {
+    padding-right: calc((100vw - 1140px) / 2 + 15px);
+  }
+
+  @media (min-width: 1400px) {
+    padding-right: calc((100vw - 1320px) / 2 + 15px);
+  }
+}
+
 .bannerContainer {
   position: relative;
   display: flex;
   justify-content: flex-start;
   height: 496px;
   background-color: #efefef;
-
   .background {
     background-position: center;
     background-repeat: no-repeat;

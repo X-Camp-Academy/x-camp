@@ -7,7 +7,7 @@
   .copyRight {
     padding: 30px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       padding-top: 0;
       padding-bottom: 0;
     }
@@ -16,7 +16,7 @@
       margin-top: 48px;
       width: 100%;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         margin-top: 16px;
       }
 
@@ -31,7 +31,8 @@
         .text {
           margin-left: 10px;
           color: #172142;
-          @media (max-width: 768px) {
+
+          @media (width <= 768px) {
             @include mobile-text;
           }
         }
@@ -44,16 +45,17 @@
       margin-top: 48px;
       width: 100%;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         margin-top: 16px;
       }
 
       .text {
         margin-bottom: 24px;
         font-weight: 600;
+
         @include text(18px, 30px, #172142);
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           @include title('middle');
 
           margin-bottom: 16px;
@@ -63,7 +65,7 @@
       a {
         @include text(14px, 36px, #172142);
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           @include text(12px, 24px, #172142);
         }
       }
@@ -76,13 +78,13 @@
       background-color: $primary-color;
       opacity: 0.5;
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         margin: 0;
       }
     }
 
     .bottomContainer {
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         display: flex;
         justify-content: space-between;
       }
@@ -105,7 +107,7 @@
     background-color: #ffad11;
     line-height: 64px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       padding-top: 16px;
       height: 56px;
 
