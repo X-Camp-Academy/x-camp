@@ -5,10 +5,10 @@ import { Layout } from 'antd';
 import dayjs from 'dayjs';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import styles from './index.module.scss';
-import SubscribeNewsletter from './subscribe-news-letter';
 import Banner from './banner';
+import styles from './index.module.scss';
 import NewsCard from './news-card';
+import SubscribeNewsletter from './subscribe-news-letter';
 
 const { Content } = Layout;
 
@@ -17,7 +17,7 @@ const News = () => {
   const [current, setCurrent] = useState(1);
 
   const pathname = usePathname();
-  const PAGE_SIZE = 15;
+  const PAGE_SIZE = 100;
   const { data: newEventData, run: getNewEvent } = useGetNewEvent({
     current,
     pageSize: PAGE_SIZE,
@@ -59,13 +59,7 @@ const News = () => {
     <Layout className={styles.QAContainer}>
       <Content>
         <Banner />
-        <NewsCard
-          newEventData={newEventData?.data}
-          current={current}
-          setCurrent={setCurrent}
-          pageSize={PAGE_SIZE}
-          total={total}
-        />
+        <NewsCard newEventData={newEventData?.data} current={current} setCurrent={setCurrent} pageSize={PAGE_SIZE} total={total} />
         <SubscribeNewsletter />
       </Content>
     </Layout>

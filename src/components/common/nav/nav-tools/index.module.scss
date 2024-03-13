@@ -1,0 +1,23 @@
+@import '@/styles/variables';
+
+.navTools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  .logged {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    .study {
+      width: 100%;
+
+      &:hover {
+        @extend .hoverButton;
+      }
+    }
+  }
+}

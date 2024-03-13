@@ -17,10 +17,11 @@ const { Paragraph, Text } = Typography;
 const cx = classNames.bind(styles);
 interface ReviewsProps {
   className?: string;
+  id?: string;
   reviewsData?: StrapiResponseDataItem<GetReviews>[] | undefined;
 }
 
-const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
+const Reviews: React.FC<ReviewsProps> = ({ className = '', id = '', reviewsData }) => {
   const { lang } = useLang();
   const carouselRef = useRef<CarouselRef>(null);
   const isMobile = useMobile();
@@ -32,7 +33,7 @@ const Reviews: React.FC<ReviewsProps> = ({ className = '', reviewsData }) => {
   };
 
   return (
-    <div className={cx(className, styles.reviewsContainer)}>
+    <div className={cx(className, styles.reviewsContainer)} id={id}>
       {reviewsData && reviewsData?.length < 3 ? (
         reviewsData?.length === 0 ? (
           <></>

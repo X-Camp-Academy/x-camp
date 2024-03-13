@@ -2,6 +2,7 @@
 import { apiConfig } from '@/config/index';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
+import { getTransResult } from '@/utils/public';
 import { CommentOutlined, HistoryOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
@@ -11,7 +12,7 @@ import styles from './CopyRight.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
 const CopyRight: React.FC = () => {
-  const { format: t } = useLang();
+  const { lang, format: t } = useLang();
   const { idApi } = apiConfig;
   const isMobile = useMobile();
   return (
@@ -49,13 +50,15 @@ const CopyRight: React.FC = () => {
                   <MailOutlined />
                   <Text className={styles.text} style={{ textDecoration: 'underline' }}>
                     <a href="mailto:info@x-camp.academy" style={{ color: 'inherit' }}>
-                      Email: info@x-camp.academy
+                      {t('Email')}: info@x-camp.academy
                     </a>
                   </Text>
                 </Paragraph>
                 <Paragraph className={styles.paragraph}>
                   <HistoryOutlined />
-                  <Text className={styles.text}>9:00 AM - 8:00 PM PT (Monday Off)</Text>
+                  <Text className={styles.text}>
+                    {t('WorkingHours')}: 9:00 AM - 8:00 PM {getTransResult(lang, '(美西时间)', 'PT (Monday Off)')}
+                  </Text>
                 </Paragraph>
               </Space>
             </Space>
@@ -69,7 +72,9 @@ const CopyRight: React.FC = () => {
                   <a href={'/about-us/calendar'}>{t('SchoolCalendar')}</a>
                   <a href={'/courses/all-classes#weekly'}>{t('WeeklyClasses')}</a>
                   <a href={'/courses/all-classes#camps'}>{t('In-personCamps')}</a>
-                  <a onClick={() => window.open(`${idApi}/policy?refer=${window.location.href}`)}>{t('DisclaimerPrivacyPolicy')}</a>
+                  <span style={{ cursor: 'pointer' }} onClick={() => window.open(`${idApi}/policy?refer=${window.location.href}`)}>
+                    {t('DisclaimerPrivacyPolicy')}
+                  </span>
                 </Space>
               </div>
 

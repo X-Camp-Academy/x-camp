@@ -50,6 +50,7 @@ export const useSubmitResume = () => {
     },
     {
       manual: true,
+      debounceWait: 1000,
       onError: handleError
     }
   );
