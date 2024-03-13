@@ -1,7 +1,7 @@
 ### 运行
 
 ```
-  yarn i
+  yarn install
 
   yarn dev
 ```
