@@ -3,7 +3,6 @@ import { useAuth } from '@/hoc/with-auth/define';
 import { useLang } from '@/hoc/with-intl/define';
 import { Button } from 'antd';
 import DropdownUserMenu from '../../dropdown-user-menu';
-import ToggleLanguage from '../../toggle-language';
 import styles from './index.module.scss';
 
 const NavTools = () => {
@@ -27,7 +26,7 @@ const NavTools = () => {
       <>
         {/* ! 下一版更新 */}
         {/* <SelectPage /> */}
-        <ToggleLanguage />
+        {/* <ToggleLanguage /> */}
       </>
     </div>
   );

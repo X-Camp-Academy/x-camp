@@ -8,7 +8,6 @@ import { Image, Layout, Menu, MenuProps, Space } from 'antd';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import ToggleLanguage from '../toggle-language';
 import { removeDropdown, useMenuItems } from './define';
 import styles from './index.module.scss';
 import NavTools from './nav-tools';
@@ -115,7 +114,7 @@ const Nav: React.FC = () => {
             <div className={styles.mobileIntl}>
               {/* ! 下一版更新 */}
               {/* <SelectPage /> */}
-              <ToggleLanguage className={styles.toggleMargin} />
+              {/* <ToggleLanguage className={styles.toggleMargin} /> */}
             </div>
             <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
           </Space>
