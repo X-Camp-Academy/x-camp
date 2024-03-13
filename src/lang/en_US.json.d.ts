@@ -199,7 +199,6 @@ declare const json: {
   WeSupport: 'Supported Languages';
   WeSupport_Color: 'Languages';
   'WeSupport.Desc': 'At X-Camp, students from grades 5-12 can master the most sought-after programming languages. Our curriculum includes introductory Python, Java (APCS), and multi-level C++ courses, tailored to engage learners at beginner, intermediate, and advanced stages.';
-  X_ALUMNI_INTRODUCTION: 'Since its inception, X-Camp has successfully enrolled over 1,000 students and currently serves more than 500 students from over 250 schools worldwide. If you would like to reconnect with your fellow classmates, please contact us!';
   'X-CampAcademyPrincipal': 'X-Camp Academy Principal';
   'X-CampFounder': 'X-Camp Founders';
   'X-CampSeniorCodingCoach': 'X-Camp Senior Coding Coach';
@@ -320,10 +319,6 @@ declare const json: {
   Exit_Successfully: 'Exit Successfully';
   Exit_Failed: 'Exit Failed';
   Loading: 'Loading';
-  'Home.Banner1.Desc1': 'ChatGPT industry comes, whether our next generation need to learn coding?';
-  'Home.Banner1.Desc2': "With AI popular coding language Python's help, enter the AI-powered world !";
-  'Home.Banner1.Date1': '* Pacific Time, Nov 26, 2023, 5:00 PM - 7:00 PM';
-  'Home.Banner1.Date2': '* Beijing Time, Nov 27, 2023, 9:00 AM - 11:00 AM';
   'Home.WhyXCamp.Desc': 'The Best Competitive Coding Program in the World!';
   'Home.WhyXCamp.title1': 'Comprehensive Curriculum';
   'Home.WhyXCamp.Desc1': 'Over 20 courses from beginner to USACO Camp/IOI level training.';
@@ -357,8 +352,8 @@ declare const json: {
   'Achievements.Banner.Desc3': 'We take great pride in their significant progress ';
   'Achievements.Banner.Desc4': ' ';
   'Achievements.Banner.Desc5': 'which not only highlights their skill development but also mirrors the effectiveness of our teaching approach at X-Camp.';
-  'JoinUs.Banner.Desc1': 'X - Camp offers a wide range of career opportunities within ';
-  'JoinUs.Banner.Desc2': 'our company. All openings are in hybrid mode.';
+  'JoinUs.Banner.Desc1': 'X-Camp unveils a spectrum of exciting career opportunities - ';
+  'JoinUs.Banner.Desc2': 'Join our dynamic team today!.';
   'ReferralProgram.Banner.Desc1': "Invite your friend's children as well as your ";
   'ReferralProgram.Banner.Desc2': "kid's companions to join our coding program. Earn $75 ";
   'ReferralProgram.Banner.Desc3': 'for yourself and $75 for every friend who enrolls!';
@@ -393,7 +388,6 @@ declare const json: {
   'WeeklyOpenHouse.Banner.Desc2': 'teaching approach as we answer your questions.';
   MockTestClasses: 'Mock Test Classes';
   Activity: 'Activity';
-  EventCalendar: 'Event Calendar';
   'HistoryOfXCamp.Title': 'History of X-Camp';
   'HistoryOfXCamp.Title.Color': 'History';
   'HistoryOfXCamp.Desc': 'With nearly 2,000 students trained in just six years, X-Camp has significantly influenced the coding journeys of its students, offering a unique and impactful learning experience backed by 12 USACO finalists in the US Camps.';
@@ -467,13 +461,26 @@ declare const json: {
   NoEvent: 'No Events Yet';
   'ContestCalendar.Title': 'Contest Calendar';
   feedBackSuccess: 'Your question has been received. We will contact you through email within 24 hours.';
-  'Home.Banner1.Title1': 'Python Trial Class, Only';
   LevelType: 'Course Level Type';
   CourseQuarter: 'Course Quarter';
   Q1: 'Q1 (Jan-Mar)';
   Q2: 'Q2 (Apr-Jun)';
   Q3: 'Q3 (Jul-Sept)';
   Q4: 'Q4 (Oct-Dec)';
+  WorkingHours: 'Working Hours';
+  'All Classes': 'All Classes';
+  'Weekly Classes': 'Weekly Classes';
+  'In-person Camps': 'In-person Camps';
+  'Online Live': 'Online Live';
+  'In-person': 'In-person';
+  'Python for Beginners': 'Python for Beginners';
+  'USACO Bronze Knowledge': 'USACO Bronze Knowledge';
+  'USACO Silver Knowledge': 'USACO Silver Knowledge';
+  'USACO Gold Knowledge': 'USACO Gold Knowledge';
+  'USACO Grandmaster Classes': 'USACO Grandmaster Classes';
+  'Mock Test Classes': 'Mock Test Classes';
+  'Java & APCS Classes': 'Java & APCS Classes';
+  'Free USACO Public Mock Test': 'Free USACO Public Mock Test';
   DisclaimerPrivacyPolicy: 'Disclaimer & Privacy Policy';
 };
 
