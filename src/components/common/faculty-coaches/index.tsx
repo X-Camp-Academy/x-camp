@@ -40,16 +40,16 @@ const FacultyCoaches: React.FC = () => {
               <ColorfulCard border="bottom" split={4} index={index}>
                 <Card bodyStyle={{ padding: 0, height: isMobile ? 224 : 250 }}>
                   <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: isMobile ? 'column' : 'row', paddingLeft: 36, paddingRight: 36 }}>
-                    <Space direction="vertical">
+                    <div>
                       <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
                       <Text className={styles.name}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
-                    </Space>
+                    </div>
                     <Paragraph
                       ellipsis={{
                         rows: 4,
                         tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
                       }}
-                      className={styles.description}
+                      style={{ marginLeft: 16, textAlign: 'left' }}
                     >
                       {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
                     </Paragraph>
