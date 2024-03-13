@@ -1,13 +1,12 @@
 'use client';
+import Partners from '@/components/common/partners';
+import XCampFounders from '@/components/common/xcamp-founders';
 import { Layout } from 'antd';
 import React from 'react';
-import styles from './index.module.scss';
-import Banner from './banner';
 import AboutXCamp from './about-xcamp';
+import Banner from './banner';
 import History from './history';
-import XCampFounders from '@/components/common/xcamp-founders';
-import FacultyCoaches from '@/components/common/faculty-coaches';
-import Partners from '@/components/common/partners';
+import styles from './index.module.scss';
 
 const { Content } = Layout;
 
@@ -19,7 +18,6 @@ const Introduction: React.FC = () => {
         <AboutXCamp />
         <History />
         <XCampFounders />
-        <FacultyCoaches />
         <Partners />
       </Content>
     </Layout>
