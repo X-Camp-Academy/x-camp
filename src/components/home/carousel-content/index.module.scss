@@ -14,7 +14,7 @@
     transform: translateY(-50%);
     list-style-type: none;
 
-    @media (max-width: 992px) {
+    @media (width <= 992px) {
       top: 240px;
       right: 40px;
       color: #172a88;
@@ -47,7 +47,7 @@
     width: 100%;
     height: 540px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       width: 100%;
       height: 368px;
       background-size: cover !important;
@@ -59,7 +59,7 @@
     width: 100%;
     height: 540px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       width: 100%;
       height: 368px;
     }
@@ -78,7 +78,7 @@
       padding-bottom: 64px;
       width: 100%;
 
-      @media (max-width: 992px) {
+      @media (width <= 992px) {
         display: flex;
         justify-content: center;
       }
@@ -91,7 +91,7 @@
           font-weight: 800;
           color: $text-color;
 
-          @media (max-width: 768px) {
+          @media (width <= 768px) {
             @include title('middle');
 
             font-weight: 800;
@@ -100,17 +100,20 @@
 
         .titleBar {
           display: flex;
+          margin-top: 16px;
           width: 280px;
           height: 4px;
-          margin-top: 16px;
-          @media (max-width: 768px) {
+
+          @media (width <= 768px) {
             display: none;
           }
+
           .left {
             flex: 1;
             height: 100%;
             background-color: #eb7411;
           }
+
           .right {
             flex: 2;
             height: 100%;
@@ -122,35 +125,41 @@
       .descriptionBox {
         display: flex;
         align-items: center;
+
         .dot {
           display: block;
+          margin-right: 32px;
           width: 12px;
           height: 12px;
-          background: #eb7411;
           border-radius: 50%;
-          margin-right: 32px;
-          @media (max-width: 768px) {
-            width: 8px;
-            height: 8px;
+          background: #eb7411;
+
+          @media (width <= 768px) {
             display: block;
             margin-right: 8px;
+            width: 8px;
+            height: 8px;
           }
         }
+
         .triangle {
+          margin-right: 8px;
           width: 0;
           height: 0;
-          border-left: 8px solid transparent;
           border-right: 8px solid transparent;
           border-bottom: 16px solid #ffad11;
-          margin-right: 8px;
+          border-left: 8px solid transparent;
           transform: rotate(90deg);
         }
+
         .description {
           @include text(24px, 32px);
+
           margin: 0;
           font-weight: 600;
           line-height: 48px;
-          @media (max-width: 768px) {
+
+          @media (width <= 768px) {
             @include text(14px, 18px);
           }
         }
@@ -168,7 +177,8 @@
         transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         cursor: pointer;
       }
-      @media (max-width: 768px) {
+
+      @media (width <= 768px) {
         .button {
           padding: 16px 40px;
           font-size: 10px;

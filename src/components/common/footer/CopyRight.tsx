@@ -1,10 +1,10 @@
 'use client';
+import { apiConfig } from '@/config/index';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { CommentOutlined, HistoryOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
-import { apiConfig } from '@/config/index';
 import CopyRightIcons from '../copy-right-icons';
 import styles from './CopyRight.module.scss';
 
