@@ -17,8 +17,10 @@ interface FaqsProps {
 const Faqs: React.FC<FaqsProps> = ({ className, titleClassName, id, title, data }) => {
   const { lang } = useLang();
   return (
-    <div className={`${styles.campFAQS} container tabContent`} id={id}>
-      <div className={`${styles.title} ${titleClassName}`}>{title}</div>
+    <div className={`${className} ${styles.campFAQS} container`}>
+      <div className={`${styles.title} ${titleClassName}`} id={id}>
+        {title}
+      </div>
       <div className={styles.cardContent}>
         {data?.map((item, index) => (
           <QACard

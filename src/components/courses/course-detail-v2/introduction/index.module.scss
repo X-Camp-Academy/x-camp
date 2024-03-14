@@ -179,7 +179,7 @@
 .navbar {
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   z-index: 2050;
   display: flex;
@@ -200,13 +200,30 @@
 
   .tools {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 16px;
 
     .price {
       font-size: 32px;
       font-weight: 600;
       color: #d46b14;
       line-height: 70px;
+    }
+
+    .btn {
+      padding-right: 20px;
+      padding-left: 20px;
+      height: 40px;
+      border-radius: 9px;
+      font-weight: 500;
+      color: #fff;
+      background: #d46b14;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        background: #d46b14;
+        box-shadow: 0 8px 12px -4px rgb(#d76100, 70%);
+      }
     }
   }
 }

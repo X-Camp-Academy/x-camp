@@ -1,7 +1,6 @@
 import { useMobile } from '@/utils';
 import { Button, Space, Typography } from 'antd';
 import React from 'react';
-import classNames from 'classnames/bind';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
@@ -15,16 +14,10 @@ interface CommonBannerProps {
   buttonText?: string;
   buttonLink?: string;
   buttonIcon?: React.ReactNode;
-  paddingRight?: boolean;
 }
 
-const cx = classNames.bind(styles);
-
-
-const CommonBanner: React.FC<CommonBannerProps> = ({ title, paragraph, image, time, showButton, buttonText, buttonLink, buttonIcon, paddingRight }) => {
-  const isPhone = useMobile();
-  const isiPad = useMobile('xl');
-  const isMobile = paddingRight ? isiPad : isPhone;
+const CommonBanner: React.FC<CommonBannerProps> = ({ title, paragraph, image, time, showButton, buttonText, buttonLink, buttonIcon }) => {
+  const isMobile = useMobile();
   return (
     <>
       {isMobile ? (
@@ -42,7 +35,7 @@ const CommonBanner: React.FC<CommonBannerProps> = ({ title, paragraph, image, ti
           </Space>
         </div>
       ) : (
-        <div className={cx(styles.bannerContainer, paddingRight ? 'paddingRight' : '')}>
+        <div className={styles.bannerContainer}>
           <div className={`${styles.row} container`}>
             <Title className={`${styles.title}`}>{title}</Title>
             {time && <div className={styles.time}>{time}</div>}

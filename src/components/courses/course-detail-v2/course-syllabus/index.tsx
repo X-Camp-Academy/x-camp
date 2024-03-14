@@ -1,6 +1,6 @@
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { getLangResult } from '@/utils/public';
+import { getTransContent } from '@/utils/public';
 import { Typography } from 'antd';
 import { useContext } from 'react';
 import CourseClassesContext from '../../CourseClassesContext';
@@ -36,7 +36,7 @@ const CourseSyllabus = () => {
     return result;
   };
 
-  const rowData = getLangResult(lang, courseData?.attributes?.courseSyllabusZh, courseData?.attributes?.courseSyllabusEn) ?? [];
+  const rowData = getTransContent(lang, courseData?.attributes?.courseSyllabusZh, courseData?.attributes?.courseSyllabusEn) ?? [];
 
   const courseSyllabus = format([...rowData]);
 
@@ -45,8 +45,10 @@ const CourseSyllabus = () => {
   return (
     <>
       {courseSyllabus && courseSyllabus?.length > 0 && (
-        <div className={`${styles.content} container tabContent`} id="topics-covered">
-          <Title className={'tabTitle'}>{t('TopicsCovered')}</Title>
+        <div className={`${styles.content} container`}>
+          <Title className={'tabTitle'} id="topics-covered">
+            {t('TopicsCovered')}
+          </Title>
           <div className={styles.tableBox}>
             <table border={0}>
               <tbody>
