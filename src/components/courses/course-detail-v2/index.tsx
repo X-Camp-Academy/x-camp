@@ -60,8 +60,8 @@ const CourseDetail: React.FC = () => {
             <Faculty />
           </CourseClassesContext.Provider>
         )}
-        <Faqs title={t('CoursesFAQS')} data={faqData} className="tabContent" titleClassName={`tabTitle ${styles.faqTitle}`} id="faq" />
-        <Reviews className="tabContent" reviewsData={courseData?.attributes?.reviews?.data} id="reviews" />
+        <Faqs title={t('CoursesFAQS')} data={faqData} titleClassName={`tabTitle ${styles.faqTitle}`} id="faqs" />
+        <Reviews reviewsData={courseData?.attributes?.reviews?.data} id="reviews" />
       </Content>
     </Layout>
   );

@@ -30,7 +30,6 @@
 
         .text {
           margin-left: 10px;
-          color: #172142;
 
           @media (width <= 768px) {
             @include mobile-text;

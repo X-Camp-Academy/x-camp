@@ -1,4 +1,4 @@
-import { apiConfig } from '@/config/index';
+import { apiConfig } from '@/config';
 import { useAuth } from '@/hoc/with-auth/define';
 import { useLang } from '@/hoc/with-intl/define';
 import { Button } from 'antd';
@@ -28,6 +28,7 @@ const NavTools = () => {
         {/* ! 下一版更新 */}
         {/* <SelectPage /> */}
         <ToggleLanguage />
+        {/* <ToggleLanguage /> */}
       </>
     </div>
   );

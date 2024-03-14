@@ -1,5 +1,4 @@
 import { FrequencyCategory } from '@/apis/strapi-client/define';
-import NavTools from '@/components/common/nav/nav-tools';
 import { useGlobalState } from '@/hoc/WithGlobalState';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
@@ -31,7 +30,8 @@ const Introduction = () => {
     additionalInfo,
     courseTitleZh,
     courseCode,
-    frequency
+    frequency,
+    registerLink
   } = courseData?.attributes ?? {};
   const [isModalOpen, setIsModalOpen] = useState(false);
   const fullPath = window.location.href;
@@ -81,10 +81,12 @@ const Introduction = () => {
 
   return (
     <>
-      <div className={`${styles.introduction} tabContent`} id="introduction">
+      <div className={`${styles.introduction}`}>
         <div className={`${styles.content} container`}>
           <div className={styles.info}>
-            <div className={'tabTitle'}>{'Introduction'}</div>
+            <div className={'tabTitle'} id="introduction">
+              {'Introduction'}
+            </div>
             <img src="/image/home/charlie.png" alt="" />
             <div className={styles.descriptions}>
               {descriptionsItems?.map(
@@ -151,7 +153,9 @@ const Introduction = () => {
           </Space>
           <div className={styles.tools}>
             <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</div>
-            <NavTools />
+            <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
+              {t('SignUpNow')}
+            </Button>
           </div>
         </div>
       )}
