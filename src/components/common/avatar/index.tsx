@@ -24,7 +24,7 @@ const RealNameAvatar: React.FC<RealNameAvatarProps> = ({ style, user, tooltip = 
 
   return (
     <Tooltip title={name} open={tooltip}>
-      <Avatar style={{ background, userSelect: 'none', ...style }} {...props}>
+      <Avatar style={{ background, userSelect: 'none', flex: 'none', ...style }} {...props}>
         {name[0].toUpperCase()}
       </Avatar>
     </Tooltip>

@@ -1,0 +1,79 @@
+@import '@/styles/variables';
+
+.banner {
+  width: 100%;
+  background-image: url('/image/courses/course-detail-banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .content {
+    position: relative;
+
+    @media (width <= 768px) {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+
+    .breadcrumb {
+      padding-top: 24px;
+
+      @media (width <= 768px) {
+        display: none;
+        padding-top: 0;
+      }
+    }
+
+    .title {
+      @include title('default');
+
+      line-height: 48px;
+
+      @media (width <= 768px) {
+        @include title('mobile');
+
+        margin-top: 0;
+        margin-bottom: 24px;
+        padding-top: 24px;
+      }
+    }
+
+    .abstract {
+      margin: 12px 0 24px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 36px;
+
+      @media (width <= 1200px) {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 30px;
+      }
+    }
+
+    .tags {
+      display: flex;
+      gap: 33px;
+      padding-bottom: 16px;
+
+      .item {
+        display: flex;
+        gap: 10px;
+        font-size: 16px;
+      }
+
+      @media (width <= 768px) {
+        justify-content: space-between;
+        gap: 4px;
+
+        .item {
+          padding: 6px;
+          border-radius: 6px;
+          font-size: 14px;
+          background: #efefef;
+          gap: 8px;
+        }
+      }
+    }
+  }
+}

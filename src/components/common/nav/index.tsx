@@ -1,17 +1,16 @@
 'use client';
-import { apiConfig } from '@/config/index';
-import { useAuth } from '@/hoc/with-auth/define';
+import { useGlobalState } from '@/hoc/WithGlobalState';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { AlignRightOutlined, CloseOutlined } from '@ant-design/icons';
 import 'animate.css';
-import { Button, Image, Layout, Menu, MenuProps, Space } from 'antd';
+import { Image, Layout, Menu, MenuProps, Space } from 'antd';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import DropdownUserMenu from '../dropdown-user-menu';
 import { removeDropdown, useMenuItems } from './define';
 import styles from './index.module.scss';
+import NavTools from './nav-tools';
 import XStarMenu from './x-star-menu';
 
 const { Header } = Layout;
@@ -25,9 +24,10 @@ const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const isiPad = useMobile('lg');
   const menuItems = useMenuItems();
-  const { xydApi } = apiConfig;
 
   const ref = useRef<HTMLDivElement>(null);
+  const { navVisible } = useGlobalState();
+
   useEffect(() => {
     setCurrent(pathname + hash);
   }, [pathname, hash]);
@@ -66,8 +66,6 @@ const Nav: React.FC = () => {
     }
   };
 
-  const { user, logout } = useAuth();
-
   const onChangeShowMenu = () => {
     let timer: any = null;
     if (timer) {
@@ -84,8 +82,9 @@ const Nav: React.FC = () => {
       }, 1000);
     }
   };
+
   return (
-    <Layout className={styles.headerContainer}>
+    <Layout className={styles.headerContainer} style={{ display: navVisible ? 'block' : 'none' }}>
       <Header className={`${styles.header} container`}>
         <Space align="center" className={styles.space}>
           {isiPad ? (
@@ -105,25 +104,7 @@ const Nav: React.FC = () => {
                 </Link>
                 <XStarMenu selectedKey={current} items={menuItems} className={styles.menu} onClick={setCurrentKey} />
               </div>
-              <Space>
-                {user ? (
-                  <Space size={12}>
-                    <DropdownUserMenu user={user} logout={logout} />
-                    <Button className={styles.study} type="primary" onClick={() => window.open(`${xydApi}/courses`)}>
-                      {t('LearningCenter')}
-                    </Button>
-                  </Space>
-                ) : (
-                  <Button className={styles.study} type="primary" href="/login">
-                    {t('Nav.Login')}
-                  </Button>
-                )}
-                <div style={{ marginLeft: 30 }}>
-                  {/* ! 下一版更新 */}
-                  {/* <SelectPage /> */}
-                  {/* <ToggleLanguage /> */}
-                </div>
-              </Space>
+              <NavTools />
             </>
           )}
         </Space>
@@ -135,14 +116,7 @@ const Nav: React.FC = () => {
               {/* <SelectPage /> */}
               {/* <ToggleLanguage className={styles.toggleMargin} /> */}
             </div>
-            <Menu
-              mode="inline"
-              openKeys={openKeys}
-              selectedKeys={[current]}
-              onOpenChange={onOpenMobileMenuChange}
-              items={mobileMenuItems}
-              onClick={({ key }) => setCurrentKey(key)}
-            />
+            <Menu mode="inline" openKeys={openKeys} selectedKeys={[current]} onOpenChange={onOpenMobileMenuChange} items={mobileMenuItems} onClick={({ key }) => setCurrentKey(key)} />
           </Space>
         )}
       </Header>

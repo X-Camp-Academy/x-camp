@@ -58,7 +58,7 @@ export const useMenuItems = () => {
         {
           label: <a href="/courses/all-classes#apcs">{t('Java/APCS.Classes')}</a>,
           key: 'all-classes#apcs'
-        },
+        }
         // {
         //   label: <a href="/about-us/help-center">{t('FAQs')}</a>,
         //   key: 'help-center'
@@ -139,14 +139,6 @@ export const useMenuItems = () => {
             </a>
           ),
           key: 'introduction#faculty'
-        },
-        {
-          label: (
-            <a href="/about-us/faculty">
-              {t('Faculty')}
-            </a>
-          ),
-          key: 'faculty'
         },
         {
           label: <Link href="/about-us/join-us">{t('JoinUs')}</Link>,
