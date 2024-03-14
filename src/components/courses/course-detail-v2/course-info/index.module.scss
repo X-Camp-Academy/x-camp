@@ -1,0 +1,86 @@
+.courseInfo {
+  .pay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .price {
+      font-size: 48px;
+      font-weight: 600;
+      color: #d46b14;
+      line-height: 70px;
+
+      @media (width <= 768px) {
+        font-size: 40px;
+        line-height: 64px;
+      }
+    }
+
+    .register {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      gap: 16px;
+
+      @media (width <= 768px) {
+        .tip {
+          display: none;
+        }
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 258px;
+        height: 72px;
+        border-radius: 12px;
+        font-size: 21px;
+        font-weight: 500;
+        color: #fff;
+        background: #d46b14;
+        transition: all 0.3s ease-in;
+        line-height: 36px;
+
+        @media (width <= 768px) {
+          width: 192px;
+          height: 48px;
+          font-size: 20px;
+        }
+
+        &:hover {
+          background: #d46b14;
+          box-shadow: 0 8px 12px -4px rgb(#d76100, 70%);
+        }
+      }
+
+      > span {
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        color: #d46b14;
+        line-height: 21px;
+      }
+    }
+  }
+
+  .times {
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #172142;
+      line-height: 36px;
+    }
+
+    .item {
+      font-size: 16px;
+      font-weight: 500;
+      color: #172142;
+      line-height: 36px;
+    }
+
+    .full {
+      text-decoration: line-through;
+    }
+  }
+}

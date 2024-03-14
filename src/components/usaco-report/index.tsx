@@ -59,10 +59,6 @@ const levelOptions = [
     label: 'Gold',
     value: 'Gold'
   },
-  // {
-  //   label: 'Platinum',
-  //   value: 'Platinum'
-  // },
 ];
 const testCasesData = [
   {
@@ -277,7 +273,6 @@ const USACOReport: React.FC = () => {
   const displayRender = (labels: string[]) => labels[labels.length - 1];
   const { runAsync, loading } = useEstimatingScores();
   const contest = Form.useWatch('contest', form);
-  const level = Form.useWatch('level', form);
   const [api, contextHolder] = notification.useNotification({ top: 120 });
   const onFinish = async (values: FormValuesProps) => {
     const { stuName, email, level, grade, contest, xcampId, problemA, problemB, problemC, problemD } = values;
@@ -312,14 +307,6 @@ const USACOReport: React.FC = () => {
       setTestCases(testCasesData);
     }
   }, [contest]);
-  // useEffect(() => {
-  //   if (level === 'Platinum') {
-  //     message.config({
-  //       top: 90
-  //     });
-  //     message.success({ key: 'success', content: 'Feel free to leave your contest info and comments, we will contact you.' });
-  //   }
-  // }, [level]);
   return (
     <Spin spinning={loading} size="large">
       {contextHolder}

@@ -1,0 +1,137 @@
+.titleTab {
+  z-index: 99;
+  display: flex;
+  margin: 42px 0 36px;
+  border-bottom: 1px rgba($color: #172142, $alpha: 30%) solid;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: left;
+  color: #172142;
+  line-height: 36px;
+  gap: 72px;
+
+  @media (width <= 768px) {
+    margin: 28px 0 16px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #8a8e9f;
+    gap: 12px;
+    line-height: 24px;
+  }
+
+  .contentTitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .selectedTab {
+    border-bottom: 6px #ffad11 solid;
+    font-weight: 600;
+    color: #ffad11 !important;
+  }
+
+  .contentText {
+    padding: 13px 10px 13px 0;
+  }
+}
+
+.navContainer {
+  :global(.ant-affix) {
+    width: 100% !important;
+    height: 72px !important;
+    background-color: #fff;
+    box-shadow: 0 9px 25px -4px #d8d8d8;
+
+    @media (width <= 768px) {
+      top: 68px !important;
+      height: unset !important;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      padding: 0 15px;
+      max-width: 1320px;
+
+      @media (width <= 1400px) {
+        max-width: 1140px;
+      }
+
+      @media (width <= 1200px) {
+        max-width: 960px;
+      }
+
+      .titleTab {
+        margin: 0 0 20px;
+        border-bottom: none;
+        font-size: 16px;
+        gap: 20px;
+
+        @media (width <= 768px) {
+          gap: 10px;
+        }
+
+        .contentTitle {
+          justify-content: center;
+        }
+
+        .selectedTab {
+          border-bottom: 2px #ffad11 solid;
+
+          @media (width <= 768px) {
+            position: relative;
+            border-bottom: unset;
+
+            &::before {
+              content: '';
+              position: absolute;
+              right: calc(20% + 10px);
+              bottom: -6px;
+              left: 20%;
+              border-bottom: 4px solid #ffad11;
+              border-radius: 2px;
+            }
+          }
+        }
+
+        .contentText {
+          padding-bottom: 0;
+        }
+      }
+
+      .tools {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        gap: 16px;
+        height: 72px;
+
+        @media (width <= 768px) {
+          display: none;
+        }
+
+        * {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+            'Noto Color Emoji' !important;
+        }
+
+        .price {
+          font-size: 32px;
+          font-weight: 600;
+          color: #d46b14;
+          line-height: 70px;
+        }
+      }
+    }
+  }
+}

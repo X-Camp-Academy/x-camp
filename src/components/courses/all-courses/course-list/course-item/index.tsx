@@ -9,21 +9,8 @@ import styles from './index.module.scss';
 
 const { Text, Title } = Typography;
 const CourseCard: React.FC<GetCourses> = (props) => {
-  const {
-    courseCode,
-    courseTitleEn,
-    courseTitleZh,
-    classMode,
-    recommendedLowerGrade,
-    recommendedUpperGrade,
-    classLang,
-    startDateTime,
-    endDateTime,
-    lessonNum,
-    frequency,
-    tuitionRMB,
-    tuitionUSD,
-  } = props;
+  const { courseCode, courseTitleEn, courseTitleZh, classMode, recommendedLowerGrade, recommendedUpperGrade, classLang, startDateTime, endDateTime, lessonNum, frequency, tuitionRMB, tuitionUSD } =
+    props;
   const isMobile = useMobile();
   const { format: t, lang } = useLang();
   return (

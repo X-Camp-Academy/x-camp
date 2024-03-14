@@ -13,7 +13,7 @@ const WithAntdConfig = ({ children }: Props) => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#FFAD11',
+          colorPrimary: '#FFAD11'
         }
       }}
     >

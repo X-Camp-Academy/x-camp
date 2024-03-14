@@ -14,21 +14,21 @@ export const useCourseOptions = (defaultValue: defaultValueProps) => {
   const { format: t } = useLang();
   const courseTypeOptions: CourseOptionsProps<CourseType>[] = Object.values(CourseType)?.map((item) => {
     return {
-      label: item,
+      label: t(item),
       value: item
     };
   });
 
   const classModeOptions: CourseOptionsProps<ClassMode>[] = Object.values(ClassMode)?.map((item) => {
     return {
-      label: item,
+      label: t(item),
       value: item
     };
   });
 
   const levelTypeOptions: CourseOptionsProps<LevelType>[] = Object.values(LevelType)?.map((item) => {
     return {
-      label: item,
+      label: t(item),
       value: item
     };
   });
