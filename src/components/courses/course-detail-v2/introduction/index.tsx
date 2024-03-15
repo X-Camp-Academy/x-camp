@@ -87,7 +87,7 @@ const Introduction = () => {
             <div className={'tabTitle'} id="introduction">
               {'Introduction'}
             </div>
-            <img src="/image/home/charlie.png" alt="" />
+            {/* <img src="/image/home/charlie.png" alt="" /> */}
             <div className={styles.descriptions}>
               {descriptionsItems?.map(
                 (item) =>
@@ -104,7 +104,7 @@ const Introduction = () => {
             </div>
           </div>
           <div className={styles.side}>
-            <img src="/image/home/charlie.png" alt="" />
+            {/* <img src="/image/home/charlie.png" alt="" /> */}
             <div className={styles.btns}>
               <Button
                 type={'primary'}
