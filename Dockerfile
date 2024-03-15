@@ -8,7 +8,7 @@ RUN yarn config set sass_binary_site https://npmmirror.com/mirrors/node-sass/
 RUN yarn config set sharp_binary_host https://npmmirror.com/mirrors/sharp
 RUN yarn config set sharp_libvips_binary_host https://npmmirror.com/mirrors/sharp-libvips
 
-COPY package.json  yarn.lock .npmignore ./
+COPY package.json yarn.lock .npmignore ./
 
 RUN yarn install
 
