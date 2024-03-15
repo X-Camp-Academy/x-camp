@@ -134,11 +134,11 @@ export const useMenuItems = () => {
         },
         {
           label: (
-            <a href="/about-us/faculty">
+            <a href="/about-us/introduction#faculty">
               {t('Faculty')} & {t('Coaches')}
             </a>
           ),
-          key: 'faculty'
+          key: 'introduction#faculty'
         },
         {
           label: <Link href="/about-us/join-us">{t('JoinUs')}</Link>,

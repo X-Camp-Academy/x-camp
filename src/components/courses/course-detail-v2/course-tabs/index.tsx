@@ -1,10 +1,10 @@
 import { FrequencyCategory } from '@/apis/strapi-client/define';
-import NavTools from '@/components/common/nav/nav-tools';
 import { useGlobalState } from '@/hoc/WithGlobalState';
+import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { formatFinance } from '@/utils/public';
 import { useInViewport, useMemoizedFn } from 'ahooks';
-import { Affix } from 'antd';
+import { Affix, Button } from 'antd';
 import Head from 'next/head';
 import { useContext, useMemo, useState } from 'react';
 import CourseClassesContext from '../../CourseClassesContext';
@@ -33,8 +33,8 @@ const tabs: Array<tabListIProps> = [
     key: 'faculty-coaches'
   },
   {
-    title: 'FAQ',
-    key: 'faq'
+    title: 'FAQS',
+    key: 'faqs'
   },
   {
     title: 'Reviews',
@@ -42,7 +42,7 @@ const tabs: Array<tabListIProps> = [
   }
 ];
 
-const enTabs: Array<tabListIProps> = [
+const mobileTabs: Array<tabListIProps> = [
   {
     title: 'Introduction',
     key: 'introduction'
@@ -62,28 +62,29 @@ const enTabs: Array<tabListIProps> = [
 ];
 
 const CourseTabs = () => {
+  const { format: t } = useLang();
   const { setNavVisible } = useGlobalState();
   const isMobile = useMobile();
-  const [selected, setSelected] = useState('introduction');
+  const [selected, setSelected] = useState<string>('');
   const courseData = useContext(CourseClassesContext);
   const { affix, setAffix } = courseData ?? {};
-  const { frequency, tuitionUSD, tuitionRMB } = courseData?.attributes ?? {};
+  const { frequency, tuitionUSD, tuitionRMB, registerLink } = courseData?.attributes ?? {};
 
   const tabList = useMemo(() => {
     if (isMobile) {
-      return enTabs;
+      return mobileTabs;
     }
     let res = tabs;
     if (!courseData?.attributes?.reviews?.data?.length) {
       res = tabs.filter((v) => v.key !== 'reviews');
     }
     return res;
-  }, [courseData]);
+  }, [courseData, isMobile]);
 
   const callback = useMemoizedFn((entry) => {
+    const id = entry.target.getAttribute('id') || '';
     if (entry.isIntersecting) {
-      const active = entry.target.getAttribute('id') || '';
-      setSelected(active);
+      setSelected(id);
     }
   });
 
@@ -92,8 +93,10 @@ const CourseTabs = () => {
     element?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
   };
 
-  useInViewport([...document.getElementsByClassName('tabContent')], {
-    callback
+  (useInViewport as any)([...document.getElementsByClassName('tabTitle')], {
+    callback,
+    rootMargin: '-120px 0px -80px 0px',
+    threshold: 0.5
   });
 
   return (
@@ -110,7 +113,6 @@ const CourseTabs = () => {
         <Affix
           offsetTop={0}
           onChange={(affixed) => {
-            console.log(!affixed);
             setNavVisible(!affixed);
             setAffix?.(!!affixed);
           }}
@@ -121,7 +123,7 @@ const CourseTabs = () => {
               {tabList.map((item) => {
                 return (
                   <div onClick={() => handleMenuClick(item.key)} className={styles.contentTitle} key={item.key}>
-                    <div className={`${styles.contentText} ${item.key === selected && styles.selectedTab}`}>{item.title}</div>
+                    <div className={`${styles.contentText} ${selected === item.key ? styles.selectedTab : ''}`}>{item.title}</div>
                   </div>
                 );
               })}
@@ -129,7 +131,9 @@ const CourseTabs = () => {
             {affix && (
               <div className={styles.tools}>
                 <div className={styles.price}>{frequency === FrequencyCategory.Once ? 'Free' : tuitionUSD ? `$${formatFinance(tuitionUSD)}` : `￥${formatFinance(tuitionRMB)}`}</div>
-                <NavTools />
+                <Button type="primary" className={styles.btn} onClick={() => window.open(registerLink)}>
+                  {t('SignUpNow')}
+                </Button>
               </div>
             )}
           </div>

@@ -39,6 +39,37 @@ export const getLangResult = <T>(lang: 'zh' | 'en', zhData?: T, enData?: T) => {
 };
 
 /**
+ * 根据指定语言获取相应的内容。
+ *
+ * @param lang 指定的语言，只能是'zh'或'en'。
+ * @param zhContent 中文内容，可能为null或undefined。
+ * @param enContent 英文内容，可能为null或undefined。
+ * @returns 返回指定语言的内容，如果指定语言的内容不存在且另一项内容存在，则返回另一项内容；如果两项内容都不存在或语言参数不是'zh'或'en'，则返回null。
+ */
+export function getTransContent<T>(lang: 'zh' | 'en', zhContent: T | null, enContent: T | null): T | null {
+  // 检查内容是否合法
+  const isContentValid = (content: T | null) => {
+    if (content === null || content === undefined) {
+      return false;
+    }
+    if (Array.isArray(content) && content.length === 0) {
+      return false;
+    }
+    return true;
+  };
+
+  // 根据语言返回对应的内容，如果内容不合法则返回另一项
+  if (lang === 'zh') {
+    return isContentValid(zhContent) ? zhContent : enContent;
+  } else if (lang === 'en') {
+    return isContentValid(enContent) ? enContent : zhContent;
+  }
+
+  // 如果语言不是'zh'也不是'en'，则返回null
+  return null;
+}
+
+/**
  * 将扁平化数据根据某个字段分类
  */
 export const classifyByAttribution = <T extends { attributes: any }>(data: T[], field: string): T[][] => {

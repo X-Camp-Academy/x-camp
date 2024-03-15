@@ -17,7 +17,7 @@ const News = () => {
   const [current, setCurrent] = useState(1);
 
   const pathname = usePathname();
-  const PAGE_SIZE = 100;
+  const PAGE_SIZE = 15;
   const { data: newEventData, run: getNewEvent } = useGetNewEvent({
     current,
     pageSize: PAGE_SIZE,

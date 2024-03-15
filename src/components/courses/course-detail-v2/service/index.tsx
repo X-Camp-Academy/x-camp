@@ -14,9 +14,11 @@ const steps = [
 
 const Service = () => {
   return (
-    <div className={`${styles.service} tabContent`} id="service">
+    <div className={`${styles.service}`}>
       <div className={`${styles.content} container`}>
-        <div className={'tabTitle'}>{'Service'}</div>
+        <div className={'tabTitle'} id="service">
+          {'Service'}
+        </div>
         <div className={styles.title}>{'What would be the sign up process be like'}</div>
         <div className={styles.steps}>
           {steps?.map((v, index) => (

@@ -40,7 +40,7 @@
   }
 
   .contentText {
-    padding: 13px 10px 13px 0;
+    padding: 13px 0;
   }
 }
 
@@ -51,8 +51,15 @@
     background-color: #fff;
     box-shadow: 0 9px 25px -4px #d8d8d8;
 
+    @media (width <= 576px) {
+      margin: unset !important;
+      max-width: unset !important;
+    }
+
     @media (width <= 768px) {
       top: 68px !important;
+      margin: 0 calc((100% - 540px) / 2);
+      max-width: 540px;
       height: unset !important;
     }
 
@@ -78,7 +85,7 @@
         gap: 20px;
 
         @media (width <= 768px) {
-          gap: 10px;
+          gap: 16px;
         }
 
         .contentTitle {
@@ -95,7 +102,7 @@
             &::before {
               content: '';
               position: absolute;
-              right: calc(20% + 10px);
+              right: 20%;
               bottom: -6px;
               left: 20%;
               border-bottom: 4px solid #ffad11;
@@ -111,8 +118,8 @@
 
       .tools {
         display: flex;
-        align-self: center;
         justify-content: center;
+        align-items: center;
         gap: 16px;
         height: 72px;
 
@@ -130,6 +137,22 @@
           font-weight: 600;
           color: #d46b14;
           line-height: 70px;
+        }
+
+        .btn {
+          padding-right: 20px;
+          padding-left: 20px;
+          height: 40px;
+          font-size: 16px;
+          font-weight: 500;
+          color: #fff;
+          background: #d46b14;
+          transition: all 0.3s ease-in;
+
+          &:hover {
+            background: #d46b14;
+            box-shadow: 0 8px 12px -4px rgb(#d76100, 70%);
+          }
         }
       }
     }
