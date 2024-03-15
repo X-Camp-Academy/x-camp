@@ -4,36 +4,23 @@ import { useGetFaculty } from '@/apis/strapi-client/strapi';
 import { StrapiResponseDataItem } from '@/apis/strapi-client/strapiDefine';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
-import { Col, Row, Space, Typography } from 'antd';
+import { getTransResult } from '@/utils/public';
+import { Avatar, Card, Col, Row, Space, Typography } from 'antd';
 import { SegmentedValue } from 'antd/es/segmented';
 import React, { useEffect, useState } from 'react';
+import ColorfulCard from '../colorful-card';
 import SegmentedRadioGroup, { useEventFacultyOptions } from '../segmented-radio-group';
-import FacultyCard from './faculty-card';
 import styles from './index.module.scss';
 
-const { Title, Paragraph, Text } = Typography;
+const { Paragraph, Text } = Typography;
 
 const FacultyCoaches: React.FC = () => {
   const [segmented, setSegmented] = useState<SegmentedValue>(FacultyLevelCategory.Beginner);
   const { data } = useGetFaculty({});
   const [facultyData, setFacultyData] = useState<StrapiResponseDataItem<GetFaculty>[]>();
-  const { format: t, lang } = useLang();
-  const { hash } = window.location;
+  const { lang } = useLang();
   const isMobile = useMobile();
   const isiPad = useMobile('xl');
-
-  useEffect(() => {
-    const element = document.getElementById(hash);
-    if (element) {
-      setTimeout(() => {
-        const top = isMobile ? element?.offsetTop : element?.offsetTop + 1000;
-        window.scrollTo({
-          top,
-          behavior: 'smooth'
-        });
-      }, 1000);
-    }
-  }, [hash]);
 
   useEffect(() => {
     const sortData = data?.sort((a, b) => b?.attributes?.order - a?.attributes?.order);
@@ -42,25 +29,33 @@ const FacultyCoaches: React.FC = () => {
     setFacultyData(filteredData);
   }, [segmented, data]);
   return (
-    <div className={`${styles.facultyCoaches} container`} id="#faculty">
+    <div className={`${styles.facultyCoaches} container`}>
       <Space direction="vertical" size={isMobile ? 24 : 48}>
-        <Space direction="vertical">
-          <Title className={styles.title}>
-            <Text className={styles.title} style={{ color: '#FFAD11' }}>
-              {t('Faculty')}
-            </Text>
-            &nbsp;&&nbsp;
-            {t('Coaches')}
-          </Title>
-          <Paragraph className={styles.titleParagraph}>{t('Faculty.Desc')}</Paragraph>
-        </Space>
-
-        <SegmentedRadioGroup value={segmented} setValue={setSegmented} options={useEventFacultyOptions('faculty')} />
-
+        <div style={{ width: isMobile ? '100%' : '60%', margin: '0 auto' }}>
+          <SegmentedRadioGroup value={segmented} setValue={setSegmented} options={useEventFacultyOptions('faculty')} />
+        </div>
         <Row justify="center" align="middle" gutter={isiPad ? 24 : 48} className={styles.row}>
           {facultyData?.map((item, index) => (
-            <Col key={item?.id} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }} className={styles.col}>
-              <FacultyCard index={index} item={item} />
+            <Col key={item?.id} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }} className={styles.col}>
+              <ColorfulCard border="bottom" split={4} index={index}>
+                <Card bodyStyle={{ padding: 0, height: isMobile ? 224 : 250 }}>
+                  <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: isMobile ? 'column' : 'row', paddingLeft: 36, paddingRight: 36 }}>
+                    <div>
+                      <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
+                      <Text className={styles.name}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>
+                    </div>
+                    <Paragraph
+                      ellipsis={{
+                        rows: 4,
+                        tooltip: getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)
+                      }}
+                      style={{ marginLeft: 16, textAlign: 'left' }}
+                    >
+                      {getTransResult(lang, item?.attributes?.descriptionZh, item?.attributes?.descriptionEn)}
+                    </Paragraph>
+                  </div>
+                </Card>
+              </ColorfulCard>
             </Col>
           ))}
         </Row>
