@@ -2,6 +2,7 @@ import { useMobile } from '@/utils';
 import { Button, Space, Typography } from 'antd';
 import classNames from 'classnames/bind';
 import React from 'react';
+import classNames from 'classnames/bind';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
