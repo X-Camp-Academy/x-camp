@@ -1,7 +1,7 @@
 import { useMobile } from '@/utils';
 import { Button, Space, Typography } from 'antd';
-import classNames from 'classnames/bind';
 import React from 'react';
+import classNames from 'classnames/bind';
 import styles from './index.module.scss';
 
 const { Title, Paragraph } = Typography;
@@ -19,6 +19,7 @@ interface CommonBannerProps {
 }
 
 const cx = classNames.bind(styles);
+
 
 const CommonBanner: React.FC<CommonBannerProps> = ({ title, paragraph, image, time, showButton, buttonText, buttonLink, buttonIcon, paddingRight }) => {
   const isPhone = useMobile();
