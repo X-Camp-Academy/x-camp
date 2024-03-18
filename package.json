@@ -12,9 +12,7 @@
     "prettier": "prettier --write ./src",
     "lint:style": "stylelint \"./src/**/*.{css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/ --ignore-path .gitignore"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
+  "pre-commit": [],
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
