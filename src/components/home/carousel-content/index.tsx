@@ -79,7 +79,7 @@ const CarouselContent: React.FC = () => {
           fontSize: isMobile ? '20px' : '48px'
         }
       ],
-      desc: ['Embrace Our Website Launch, Unlock $50 of Value ! ', 'Take Our Placement Test and Discover Your Perfect Strategy for the Coding Journey !'],
+      desc: ['Unlock Your Coding Potential', 'Placement Test Reveals Your Perfect Learning Path'],
       descStyle: {
         color: '#EB7411',
         fontSize: isMobile ? 10 : 20
