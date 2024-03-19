@@ -10,10 +10,10 @@ const notifyLocaleMap: {
   [key in LangType]: any;
 } = {
   [LangType.en_US]: {
-    title: '📢 system update',
-    description: 'System update, please refresh the page',
-    buttonText: 'refresh',
-    dismissButtonText: 'dismiss'
+    title: '📢 System Update',
+    description: 'The latest version of the current Web page found, welcome to check it out.',
+    buttonText: 'Refresh',
+    dismissButtonText: 'Ignore'
   },
   [LangType.zh_CN]: {
     title: '📢 发现新版本',
@@ -35,7 +35,7 @@ const setVersion = (version: any) => {
 };
 
 export const useWebUpdateNotify = () => {
-  const [lang, setLang] = useState<'zh_CN' | 'en_US'>(LangType.zh_CN);
+  const [lang, setLang] = useState<'zh_CN' | 'en_US'>(LangType.en_US);
   const [api, contextHolder] = notification.useNotification();
   const [notifyVisible, setNotifyVisible] = useState(false);
 
