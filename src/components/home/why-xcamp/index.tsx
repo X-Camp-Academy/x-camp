@@ -69,8 +69,10 @@ const WhyXCamp: React.FC = () => {
               <Col key={item?.icon} xs={24} sm={24} md={12} lg={6}>
                 <Card
                   className={styles.card}
-                  bodyStyle={{
-                    borderRadius: 8
+                  styles={{
+                    body: {
+                      borderRadius: 8
+                    }
                   }}
                   ref={item?.ref}
                   onMouseEnter={() => addAnimate(item?.ref)}

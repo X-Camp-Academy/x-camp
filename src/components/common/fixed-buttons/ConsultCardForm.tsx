@@ -15,19 +15,21 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
     <div className={`${styles.cardFrom} ${styles.autoSize}`}>
       <Card
         title={t('FreeConsultation')}
-        headStyle={{
-          color: '#172142',
-          fontSize: 24,
-          fontWeight: 'bold',
-          height: 36,
-          lineHeight: '36px',
-          textAlign: 'center',
-          borderBottom: 'none',
-          paddingTop: 32
-        }}
-        bodyStyle={{
-          paddingTop: 24,
-          paddingBottom: 16
+        styles={{
+          header: {
+            color: '#172142',
+            fontSize: 24,
+            fontWeight: 'bold',
+            height: 36,
+            lineHeight: '36px',
+            textAlign: 'center',
+            borderBottom: 'none',
+            paddingTop: 32
+          },
+          body: {
+            paddingTop: 24,
+            paddingBottom: 16
+          }
         }}
         className={styles.card}
         extra={
@@ -41,12 +43,7 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
           </a>
         }
       >
-        <Form
-          name="freeConsultation"
-          onFinish={onFinish}
-          initialValues={{ subscribe: true }}
-          className={styles.form}
-        >
+        <Form name="freeConsultation" onFinish={onFinish} initialValues={{ subscribe: true }} className={styles.form}>
           <Form.Item
             name="name"
             rules={[

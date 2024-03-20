@@ -17,17 +17,19 @@ const OpenHouseCardForm: React.FC<IProps> = ({ setOpen }) => {
     <div className={styles.cardFrom}>
       <Card
         title={t('WeeklyOpenHouse')}
-        headStyle={{
-          color: '#172142',
-          fontSize: 24,
-          fontWeight: 'bold',
-          height: 36,
-          lineHeight: '36px',
-          textAlign: 'center',
-          borderBottom: 'none'
-        }}
-        bodyStyle={{
-          paddingBottom: 16
+        styles={{
+          header: {
+            color: '#172142',
+            fontSize: 24,
+            fontWeight: 'bold',
+            height: 36,
+            lineHeight: '36px',
+            textAlign: 'center',
+            borderBottom: 'none'
+          },
+          body: {
+            paddingBottom: 16
+          }
         }}
         className={styles.card}
         extra={
