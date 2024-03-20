@@ -69,31 +69,17 @@ const StudentProjects: React.FC = () => {
             <Col xs={24} sm={24} md={8} lg={8} xl={12}>
               {studentProjectsData &&
                 (!inPadSize ? (
-                  <video
-                    src={getVideoByLang(studentProjectsData[0]?.attributes)}
-                    className={styles.bigIframe}
-                    width="100%"
-                    height="100%"
-                    controls
-                    autoPlay={false}
-                  />
+                  <video src={getVideoByLang(studentProjectsData[0]?.attributes)} className={styles.bigIframe} width="100%" height="100%" controls autoPlay={false} />
                 ) : (
                   <Card
                     className={styles.card}
-                    bodyStyle={{
-                      overflow: 'hidden',
-                      padding: '0 20px 0 20px',
+                    styles={{
+                      body: {
+                        overflow: 'hidden',
+                        padding: '0 20px 0 20px'
+                      }
                     }}
-                    cover={
-                      <video
-                        src={getVideoByLang(studentProjectsData[0]?.attributes)}
-                        className={styles.smallIframe}
-                        width="100%"
-                        height="100%"
-                        controls
-                        autoPlay={false}
-                      />
-                    }
+                    cover={<video src={getVideoByLang(studentProjectsData[0]?.attributes)} className={styles.smallIframe} width="100%" height="100%" controls autoPlay={false} />}
                   >
                     <Space direction="vertical" size={12} className={styles.space}>
                       <Text className={styles.cardTitle}>{getTransResult(lang, studentProjectsData[0]?.attributes?.titleZh, studentProjectsData[0]?.attributes?.titleEn)}</Text>
@@ -116,20 +102,13 @@ const StudentProjects: React.FC = () => {
                       <Card
                         key={item?.id}
                         className={styles.card}
-                        bodyStyle={{
-                          overflow: 'hidden',
-                          padding: '0 0 0 8px',
+                        styles={{
+                          body: {
+                            overflow: 'hidden',
+                            padding: '0 0 0 8px'
+                          }
                         }}
-                        cover={
-                          <video
-                            src={getVideoByLang(item?.attributes)}
-                            className={styles.smallIframe}
-                            width="100%"
-                            height="100%"
-                            controls
-                            autoPlay={false}
-                          />
-                        }
+                        cover={<video src={getVideoByLang(item?.attributes)} className={styles.smallIframe} width="100%" height="100%" controls autoPlay={false} />}
                       >
                         <Space direction="vertical" size={12} className={styles.space}>
                           <Text className={styles.cardTitle}>{getTransResult(lang, item?.attributes?.titleZh, item?.attributes?.titleEn)}</Text>

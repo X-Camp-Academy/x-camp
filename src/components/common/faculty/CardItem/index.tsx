@@ -31,7 +31,7 @@ const CardItem: React.FC<IProps> = ({ item, index }: IProps) => {
   const isMobile = useMobile();
   return (
     <ColorfulCard key={item?.id} border={'bottom'} reverse index={index} className={`${styles.cardContainer} ${isMobile ? styles.mobile : ''}`}>
-      <Card bodyStyle={isMobile ? { width: 265 } : undefined}>
+      <Card styles={{ body: isMobile ? { width: 265 } : undefined }}>
         <Space align="center">
           <Space direction="vertical">
             <Paragraph ellipsis={{ rows: 1 }} className={styles.name}>

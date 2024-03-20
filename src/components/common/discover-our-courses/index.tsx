@@ -98,10 +98,12 @@ const DiscoverOurCourses = ({ showSubTitle = false, align = 'center', showBg = t
               <Col key={item?.url} xs={24} sm={24} md={12} lg={12} xl={6} style={{ width: '100%' }}>
                 <MaskCard
                   className={styles.card}
-                  bodyStyle={{
-                    padding: 0,
-                    borderRadius: 8,
-                    paddingBottom: 0
+                  styles={{
+                    body: {
+                      padding: 0,
+                      borderRadius: 8,
+                      paddingBottom: 0
+                    }
                   }}
                   maskBorderRadius={8}
                   maskChildren={item?.maskChildren}

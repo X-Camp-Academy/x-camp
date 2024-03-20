@@ -97,9 +97,11 @@ const History: React.FC = () => {
             <Col xs={24} sm={24} md={12} lg={6} key={item?.title} className={styles.col}>
               <MaskCard
                 className={styles.maskCard}
-                bodyStyle={{
-                  padding: 0,
-                  borderRadius: 8
+                styles={{
+                  body: {
+                    padding: 0,
+                    borderRadius: 8
+                  }
                 }}
                 maskChildren={generateMaskChildren(item?.title, item?.desc)}
                 maskBackGroundColor={'rgb(23 33 66 / 80%)'}
@@ -112,30 +114,29 @@ const History: React.FC = () => {
           ))}
         </Row>
 
-        {
-          isiPad ?
-            <></>
-            :
-            <Row gutter={isMobile ? [0, 24] : [48, 24]} className={styles.timeImage}>
-              {historyCards?.slice(3)?.map((item) => (
-                <Col xs={24} sm={24} md={12} lg={6} key={item?.title} className={styles.col}>
-                  <MaskCard
-                    className={styles.maskCard}
-                    bodyStyle={{
-                      padding: 0,
-                      borderRadius: 8
-                    }}
-                    maskChildren={generateMaskChildren(item?.title, item?.desc)}
-                    maskBackGroundColor={'rgb(23 33 66 / 80%)'}
-                    maskBorderRadius={8}
-                  >
-                    <Image src={item?.url} alt="image" preview={false} className={styles.image} />
-                    <Title className={styles.cardTitle}>{item?.title}</Title>
-                  </MaskCard>
-                </Col>
-              ))}
-            </Row>
-        }
+        {isiPad ? (
+          <></>
+        ) : (
+          <Row gutter={isMobile ? [0, 24] : [48, 24]} className={styles.timeImage}>
+            {historyCards?.slice(3)?.map((item) => (
+              <Col xs={24} sm={24} md={12} lg={6} key={item?.title} className={styles.col}>
+                <MaskCard
+                  className={styles.maskCard}
+                  bodyStyle={{
+                    padding: 0,
+                    borderRadius: 8
+                  }}
+                  maskChildren={generateMaskChildren(item?.title, item?.desc)}
+                  maskBackGroundColor={'rgb(23 33 66 / 80%)'}
+                  maskBorderRadius={8}
+                >
+                  <Image src={item?.url} alt="image" preview={false} className={styles.image} />
+                  <Title className={styles.cardTitle}>{item?.title}</Title>
+                </MaskCard>
+              </Col>
+            ))}
+          </Row>
+        )}
       </div>
     </div>
   );

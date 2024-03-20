@@ -37,8 +37,10 @@ const Stories: React.FC = () => {
               <ColorfulCard border="bottom" index={index} className={styles.colorfulCard}>
                 <Card
                   className={styles.card}
-                  bodyStyle={{
-                    padding: 0
+                  styles={{
+                    body: {
+                      padding: 0
+                    }
                   }}
                 >
                   <Space direction="vertical" size={5}>

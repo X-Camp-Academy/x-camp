@@ -38,7 +38,7 @@ const FacultyCoaches: React.FC = () => {
           {facultyData?.map((item, index) => (
             <Col key={item?.id} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }} className={styles.col}>
               <ColorfulCard border="bottom" split={4} index={index}>
-                <Card bodyStyle={{ padding: 0, height: isMobile ? 224 : 250 }}>
+                <Card styles={{ body: { padding: 0, height: isMobile ? 224 : 250 } }}>
                   <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: isMobile ? 'column' : 'row', paddingLeft: 36, paddingRight: 36 }}>
                     <div>
                       <Avatar src={item?.attributes?.img?.data?.attributes?.url} size={{ xs: 64, sm: 64, md: 64, lg: 64, xl: 80, xxl: 96 }} className={styles.avatar} />
