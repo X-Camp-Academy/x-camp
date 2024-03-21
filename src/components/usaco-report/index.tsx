@@ -1,11 +1,11 @@
 'use client';
+import { useEstimatingScores } from '@/apis/common-client/common';
+import { useLang } from '@/hoc/with-intl/define';
+import { useMobile } from '@/utils';
+import { getLangResult } from '@/utils/public';
+import { Button, Cascader, Form, Input, InputNumber, Layout, Select, Spin, notification } from 'antd';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import { Button, Cascader, Form, Input, InputNumber, Layout, Select, Spin, notification } from 'antd';
-import { useMobile } from '@/utils';
-import { useLang } from '@/hoc/with-intl/define';
-import { getLangResult } from '@/utils/public';
-import { useEstimatingScores } from '@/apis/common-client/common';
 
 interface Options {
   value: string;
@@ -41,10 +41,10 @@ const contestOptions = [
     label: '2024 February Contest',
     value: '2024 February Contest'
   },
-  // {
-  //   label: '2024 March US Open',
-  //   value: '2024 March US Open'
-  // },
+  {
+    label: '2024 March US Open',
+    value: '2024 March US Open'
+  }
 ];
 const levelOptions = [
   {
@@ -58,7 +58,7 @@ const levelOptions = [
   {
     label: 'Gold',
     value: 'Gold'
-  },
+  }
 ];
 const testCasesData = [
   {
@@ -72,196 +72,196 @@ const testCasesData = [
   {
     name: 'problemC',
     label: 'Problem C'
-  },
+  }
 ];
 const gradeOptionsEn: Options[] = [
   {
-    'label': 'Preschool',
-    'value': 'Preschool'
+    label: 'Preschool',
+    value: 'Preschool'
   },
   {
-    'label': 'ElementarySchool',
-    'value': 'ElementarySchool',
-    'children': [
+    label: 'ElementarySchool',
+    value: 'ElementarySchool',
+    children: [
       {
-        'label': '1st Grade',
-        'value': '1st Grade'
+        label: '1st Grade',
+        value: '1st Grade'
       },
       {
-        'label': '2nd Grade',
-        'value': '2nd Grade'
+        label: '2nd Grade',
+        value: '2nd Grade'
       },
       {
-        'label': '3rd Grade',
-        'value': '3rd Grade'
+        label: '3rd Grade',
+        value: '3rd Grade'
       },
       {
-        'label': '4th Grade',
-        'value': '4th Grade'
+        label: '4th Grade',
+        value: '4th Grade'
       },
       {
-        'label': '5th Grade',
-        'value': '5th Grade'
+        label: '5th Grade',
+        value: '5th Grade'
       }
     ]
   },
   {
-    'label': 'MiddleSchool',
-    'value': 'MiddleSchool',
-    'children': [
+    label: 'MiddleSchool',
+    value: 'MiddleSchool',
+    children: [
       {
-        'label': '6th Grade',
-        'value': '6th Grade'
+        label: '6th Grade',
+        value: '6th Grade'
       },
       {
-        'label': '7th Grade',
-        'value': '7th Grade'
+        label: '7th Grade',
+        value: '7th Grade'
       },
       {
-        'label': '8th Grade',
-        'value': '8th Grade'
+        label: '8th Grade',
+        value: '8th Grade'
       }
     ]
   },
   {
-    'label': 'HighSchool',
-    'value': 'HighSchool',
-    'children': [
+    label: 'HighSchool',
+    value: 'HighSchool',
+    children: [
       {
-        'label': '9th Grade /Freshman',
-        'value': '9th Grade /Freshman'
+        label: '9th Grade /Freshman',
+        value: '9th Grade /Freshman'
       },
       {
-        'label': '10th Grade /Sophomore',
-        'value': '10th Grade /Sophomore'
+        label: '10th Grade /Sophomore',
+        value: '10th Grade /Sophomore'
       },
       {
-        'label': '11th Grade /Junior',
-        'value': '11th Grade /Junior'
+        label: '11th Grade /Junior',
+        value: '11th Grade /Junior'
       },
       {
-        'label': '12th Grade /Senior',
-        'value': '12th Grade /Senior'
+        label: '12th Grade /Senior',
+        value: '12th Grade /Senior'
       }
     ]
   },
   {
-    'label': 'University',
-    'value': 'University',
-    'children': [
+    label: 'University',
+    value: 'University',
+    children: [
       {
-        'label': 'Freshman',
-        'value': 'Freshman'
+        label: 'Freshman',
+        value: 'Freshman'
       },
       {
-        'label': 'Sophomore',
-        'value': 'Sophomore'
+        label: 'Sophomore',
+        value: 'Sophomore'
       },
       {
-        'label': 'Junior',
-        'value': 'Junior'
+        label: 'Junior',
+        value: 'Junior'
       },
       {
-        'label': 'Senior',
-        'value': 'Senior'
+        label: 'Senior',
+        value: 'Senior'
       }
     ]
   },
   {
-    'label': 'Out of school',
-    'value': 'Out of school'
+    label: 'Out of school',
+    value: 'Out of school'
   }
 ];
 const gradeOptionsZh: Options[] = [
   {
-    'label': '学前',
-    'value': '学前'
+    label: '学前',
+    value: '学前'
   },
   {
-    'label': '小初',
-    'value': '小初',
-    'children': [
+    label: '小初',
+    value: '小初',
+    children: [
       {
-        'label': '一年级',
-        'value': '一年级'
+        label: '一年级',
+        value: '一年级'
       },
       {
-        'label': '二年级',
-        'value': '二年级'
+        label: '二年级',
+        value: '二年级'
       },
       {
-        'label': '三年级',
-        'value': '三年级'
+        label: '三年级',
+        value: '三年级'
       },
       {
-        'label': '四年级',
-        'value': '四年级'
+        label: '四年级',
+        value: '四年级'
       },
       {
-        'label': '五年级',
-        'value': '五年级'
+        label: '五年级',
+        value: '五年级'
       },
       {
-        'label': '六年级',
-        'value': '六年级'
+        label: '六年级',
+        value: '六年级'
       },
       {
-        'label': '七年级',
-        'value': '七年级'
+        label: '七年级',
+        value: '七年级'
       },
       {
-        'label': '八年级',
-        'value': '八年级'
+        label: '八年级',
+        value: '八年级'
       },
       {
-        'label': '九年级',
-        'value': '九年级'
+        label: '九年级',
+        value: '九年级'
       }
     ]
   },
   {
-    'label': '高中',
-    'value': '高中',
-    'children': [
+    label: '高中',
+    value: '高中',
+    children: [
       {
-        'label': '高一',
-        'value': '高一'
+        label: '高一',
+        value: '高一'
       },
       {
-        'label': '高二',
-        'value': '高二'
+        label: '高二',
+        value: '高二'
       },
       {
-        'label': '高三',
-        'value': '高三'
+        label: '高三',
+        value: '高三'
       }
     ]
   },
   {
-    'label': '大学',
-    'value': '大学',
-    'children': [
+    label: '大学',
+    value: '大学',
+    children: [
       {
-        'label': '大一',
-        'value': '大一'
+        label: '大一',
+        value: '大一'
       },
       {
-        'label': '大二',
-        'value': '大二'
+        label: '大二',
+        value: '大二'
       },
       {
-        'label': '大三',
-        'value': '大三'
+        label: '大三',
+        value: '大三'
       },
       {
-        'label': '大四',
-        'value': '大四'
+        label: '大四',
+        value: '大四'
       }
     ]
   },
   {
-    'label': '非在校',
-    'value': '非在校'
+    label: '非在校',
+    value: '非在校'
   }
 ];
 
@@ -289,19 +289,19 @@ const USACOReport: React.FC = () => {
       api.success({
         message: 'Notification',
         description: "Thanks for submitting your request, check your analytic report in your email. If you need more help, don't hesitate to reach out to us!",
-        placement: 'topRight',
+        placement: 'topRight'
       });
     });
   };
 
   useEffect(() => {
     if (contest === '2024 March US Open') {
-      setTestCases(prevTestCases => [
+      setTestCases((prevTestCases) => [
         ...prevTestCases,
         {
           name: 'problemD',
           label: 'Problem D'
-        },
+        }
       ]);
     } else {
       setTestCases(testCasesData);
@@ -328,76 +328,50 @@ const USACOReport: React.FC = () => {
               onFinish={onFinish}
               autoComplete="off"
             >
-              <Form.Item
-                name="contest"
-                label="Which contest did you take"
-                rules={[{ required: true, message: 'Please select contest!' }]}
-                className={styles.bold}
-              >
+              <Form.Item name="contest" label="Which contest did you take" rules={[{ required: true, message: 'Please select contest!' }]} className={styles.bold}>
                 <Select allowClear options={contestOptions} />
               </Form.Item>
 
-
-              <Form.Item
-                name="level"
-                label="Which level did you take"
-                rules={[{ required: true, message: 'Please select contest level!' }]}
-                className={styles.bold}
-              >
+              <Form.Item name="level" label="Which level did you take" rules={[{ required: true, message: 'Please select contest level!' }]} className={styles.bold}>
                 <Select allowClear options={levelOptions} />
               </Form.Item>
 
-              {
-                isMobile ?
-                  <div style={{ marginBottom: 16 }} className={styles.bold}>How many test cases did you pass</div>
-                  :
-                  <Form.Item className={styles.bold} label="How many test cases did you pass" />
-              }
+              {isMobile ? (
+                <div style={{ marginBottom: 16 }} className={styles.bold}>
+                  How many test cases did you pass
+                </div>
+              ) : (
+                <Form.Item className={styles.bold} label="How many test cases did you pass" />
+              )}
 
-              {
-                testCases?.map(item => (
-                  <Form.Item
-                    key={item?.name}
-                    name={item?.name}
-                    label={item?.label}
-                    rules={[{
+              {testCases?.map((item) => (
+                <Form.Item
+                  key={item?.name}
+                  name={item?.name}
+                  label={item?.label}
+                  rules={[
+                    {
                       required: true,
                       message: 'Please input the correct number of test cases!',
                       type: 'number',
                       min: 0,
                       max: 99
-                    },
-                    ]}
-                  >
-                    <InputNumber />
-                  </Form.Item>
-                ))
-              }
+                    }
+                  ]}
+                >
+                  <InputNumber />
+                </Form.Item>
+              ))}
 
-              <Form.Item
-                name="stuName"
-                label="First Name"
-                rules={[{ required: true }]}
-                className={styles.bold}
-              >
+              <Form.Item name="stuName" label="First Name" rules={[{ required: true }]} className={styles.bold}>
                 <Input />
               </Form.Item>
 
-              <Form.Item
-                name="email"
-                label="Email"
-                rules={[{ required: true, type: 'email' }]}
-                className={styles.bold}
-              >
+              <Form.Item name="email" label="Email" rules={[{ required: true, type: 'email' }]} className={styles.bold}>
                 <Input />
               </Form.Item>
 
-              <Form.Item
-                name="grade"
-                label="Grade"
-                rules={[{ required: true, message: 'Please select grade!' }]}
-                className={styles.bold}
-              >
+              <Form.Item name="grade" label="Grade" rules={[{ required: true, message: 'Please select grade!' }]} className={styles.bold}>
                 <Cascader
                   options={getLangResult(lang, gradeOptionsZh, gradeOptionsEn)}
                   expandTrigger="hover"
@@ -410,11 +384,7 @@ const USACOReport: React.FC = () => {
                 />
               </Form.Item>
 
-              <Form.Item
-                name="xcampId"
-                label="Current X-Camp ID"
-                className={styles.bold}
-              >
+              <Form.Item name="xcampId" label="Current X-Camp ID" className={styles.bold}>
                 <Input />
               </Form.Item>
 
