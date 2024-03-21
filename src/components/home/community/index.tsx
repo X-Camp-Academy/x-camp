@@ -5,14 +5,14 @@ import TitleColor from '@/components/common/title-color';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
 import { getTransResult } from '@/utils/public';
-import { Carousel, Space, Typography, Row, Col } from 'antd';
+import { Carousel, Col, Row, Space, Typography } from 'antd';
 import React from 'react';
 import styles from './index.module.scss';
 
 interface CirclesProps {
-  number: string,
-  numberText: string,
-  backgroundColor: string,
+  number: string;
+  numberText: string;
+  backgroundColor: string;
   style: React.CSSProperties;
 }
 
@@ -54,14 +54,14 @@ const Community: React.FC = () => {
       }
     },
     {
-      number: '250+',
+      number: '300+',
       numberText: 'schools',
       backgroundColor: '#D46B14',
       style: {
         marginBottom: -48,
         marginLeft: -16
       }
-    },
+    }
   ];
   return (
     <div className={styles.communityContainer} id="#community">
@@ -90,17 +90,15 @@ const Community: React.FC = () => {
         </div>
 
         <Row>
-          {
-            circles?.map(item => (
-              <Col key={item?.backgroundColor} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
-                <Space direction="vertical">
-                  <div className={styles.circle} style={{ backgroundColor: item?.backgroundColor, ...item?.style }} />
-                  <div className={styles.number}>{item?.number}</div>
-                  <span className={styles.numberText}>{item?.numberText}</span>
-                </Space>
-              </Col>
-            ))
-          }
+          {circles?.map((item) => (
+            <Col key={item?.backgroundColor} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
+              <Space direction="vertical">
+                <div className={styles.circle} style={{ backgroundColor: item?.backgroundColor, ...item?.style }} />
+                <div className={styles.number}>{item?.number}</div>
+                <span className={styles.numberText}>{item?.numberText}</span>
+              </Space>
+            </Col>
+          ))}
         </Row>
 
         <div className={styles.carouselContainer}>
