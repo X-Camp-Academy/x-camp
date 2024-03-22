@@ -23,7 +23,6 @@ interface FormValuesProps {
   problemA: number;
   problemB: number;
   problemC: number;
-  problemD?: number;
 }
 
 const { Content } = Layout;
@@ -275,7 +274,7 @@ const USACOReport: React.FC = () => {
   const contest = Form.useWatch('contest', form);
   const [api, contextHolder] = notification.useNotification({ top: 120 });
   const onFinish = async (values: FormValuesProps) => {
-    const { stuName, email, level, grade, contest, xcampId, problemA, problemB, problemC, problemD } = values;
+    const { stuName, email, level, grade, contest, xcampId, problemA, problemB, problemC } = values;
     const params = {
       stuName,
       email,
@@ -283,7 +282,7 @@ const USACOReport: React.FC = () => {
       grade,
       contest,
       xcampId: xcampId ?? '',
-      passCases: problemD ? [problemA, problemB, problemC, problemD] : [problemA, problemB, problemC]
+      passCases: [problemA, problemB, problemC]
     };
     await runAsync(params).then(() => {
       api.success({
@@ -295,17 +294,7 @@ const USACOReport: React.FC = () => {
   };
 
   useEffect(() => {
-    if (contest === '2024 March US Open') {
-      setTestCases((prevTestCases) => [
-        ...prevTestCases,
-        {
-          name: 'problemD',
-          label: 'Problem D'
-        }
-      ]);
-    } else {
-      setTestCases(testCasesData);
-    }
+    setTestCases(testCasesData);
   }, [contest]);
   return (
     <Spin spinning={loading} size="large">
