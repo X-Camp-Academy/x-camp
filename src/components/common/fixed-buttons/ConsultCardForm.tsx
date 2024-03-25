@@ -79,7 +79,7 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish, loading }) => {
               }
             ]}
           >
-            <Input type="email" placeholder={t('ParentEmail')} />
+            <Input placeholder={t('ParentEmail')} />
           </Form.Item>
 
           <Form.Item
@@ -99,7 +99,7 @@ const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish, loading }) => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className={styles.submit}>
+            <Button type="primary" htmlType="submit" className={styles.submit} loading={loading}>
               {t('Submit')}
             </Button>
           </Form.Item>
