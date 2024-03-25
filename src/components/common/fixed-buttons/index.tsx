@@ -29,9 +29,9 @@ const FixedButtons: React.FC = () => {
   const isMobile = useMobile();
   const router = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
-  const { runAsync: sendMailToUser } = useSendOpenClassEmail();
+  const { runAsync: sendMailToUser, loading: sendEmailLoading } = useSendOpenClassEmail();
   const { freeConsultationVisible, setFreeConsultationVisible, weeklyOpenHouseVisible, setWeeklyOpenHouseVisible } = useGlobalState();
-  const { runAsync: subscribeNewsletterRun } = useSubscribeNewsletter();
+  const { runAsync: subscribeNewsletterRun, loading: subscribeLoading } = useSubscribeNewsletter();
   const { data } = useGetHomeButtons();
 
   const onFinish = async (values: openClassEmailRequest) => {
@@ -70,7 +70,7 @@ const FixedButtons: React.FC = () => {
       text: isMobile ? 'Consult' : t('FreeConsultation'),
       state: freeConsultationVisible,
       onClick: setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>,
-      label: <ConsultCardForm setOpen={setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} />,
+      label: <ConsultCardForm setOpen={setFreeConsultationVisible as React.Dispatch<React.SetStateAction<boolean>>} onFinish={onFinish} loading={sendEmailLoading || subscribeLoading} />,
       key: 'consult',
       mobileIcon: <MessageOutlined style={{ fontSize: 24, marginBottom: 8 }} />,
       ref: useRef<HTMLDivElement>(null),
