@@ -7,9 +7,10 @@ import styles from './index.module.scss';
 interface IProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onFinish: (values: any) => void;
+  loading: boolean;
 }
 
-const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish }) => {
+const ConsultCardForm: React.FC<IProps> = ({ setOpen, onFinish, loading }) => {
   const { format: t } = useLang();
   return (
     <div className={`${styles.cardFrom} ${styles.autoSize}`}>
