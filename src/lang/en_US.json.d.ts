@@ -138,7 +138,7 @@ declare const json: {
   'Python.Grade': '5th+ Grades';
   'Python.Title': 'Python Beginner';
   FAQ: 'FAQ';
-  RecentPopularEvents: 'Recent Popular Events';
+  RecentPopularEvents: 'Previous Popular Events';
   'RecentPopularEvents.Desc': 'Stay informed about the latest trends, glean insights from experts, and immerse yourself in the vibrant realm of education, extending beyond just coding.';
   ReferralProgram: 'Referral Program';
   'ReferralProgram.Desc1': "Encourage your friends' children AND your childrens’ friends to join our coding program! ";
@@ -206,13 +206,13 @@ declare const json: {
   'X-Tutors': 'X-Tutors';
   XAlumni: 'X-Alumni';
   'XAlumni.Desc': 'Since its inception, X-Camp has successfully enrolled over 1,000 students and currently serves more than 500 students from over 250 schools worldwide. If you would like to reconnect with your fellow classmates, please contact us!';
-  XCampCalendar: 'X-Camp 2023 - 2024 Calendar';
+  XCampCalendar: 'X-Camp 2024 Calendar';
   XCampFaculty: 'X-Camp Faculty';
   'XCampFaculty.Desc': 'X-Camp Academy, a Silicon Valley based coding institute, offers programming classes to 5-12th grade students from beginner to USACO US Camp level.';
   Year: 'Year';
   Yes: 'Yes';
   Yuan: 'Yuan Xu';
-  'Yuan.Desc1': 'Yuan was a Senior Big Data Infrastructure Engineer specializing in building and maintaining robust infrastructures for handling large-scale data at Google. As X-Camp’s President and Head of Teaching, Yuan leads our instructional team to ensure the highest quality of education for our students. As X-Camp’s Head of Teaching, Yuan leads our instructional team to ensure the highest quality of education for our students. ';
+  'Yuan.Desc1': 'Yuan was a Senior Big Data Infrastructure Engineer specializing in building and maintaining robust infrastructures for handling large-scale data at Google. As X-Camp’s President and Head of Teaching, Yuan leads our instructional team to ensure the highest quality of education for our students. ';
   'Yuan.Desc2': "Over the past 6 years, Yuan's teaching team has guided more than ";
   'Yuan.Desc3': 'achieve the level of USACO Silver or higher. This includes an impressive accomplishment of 12 students being selected for the ';
   'Yuan.Desc4': 'USACO USA National Training Team ';
@@ -335,6 +335,9 @@ declare const json: {
   'Home.Community.Desc2': 'Today, our vibrant community spans over 600 current learners from more than 250 schools around the globe.';
   'Home.Community.Desc3': "Are you eager to rekindle connections with your X-Camp peers? We're here to facilitate that reunion. Reach out today!";
   'Home.Community.Desc4': "Looking to reconnect with your fellow classmates? Don't hesitate to get in touch with us!";
+  'Home.Community.Students': 'students';
+  'Home.Community.Current_Learners': 'current learners';
+  'Home.Community.Schools': 'schools';
   'CourseSchedule.Banner.Desc1': 'X-Camp Academy offers an innovative learning schedule divided into four quarters annually, transcending the usual lecture format. ';
   'CourseSchedule.Banner.Desc2': 'We provide extensive homework night, office hours (entry level) and continuous access to our 24/7 online forums for an immersive educational experience. Our curriculum begins with the essentials of programming and advances to intensive, competition-level instruction.';
   'EducationForum.Banner.Desc1': 'Welcome to X-Camp Education Forum, a space designed for students, parents ';
@@ -358,9 +361,6 @@ declare const json: {
   'ReferralProgram.Banner.Desc2': "kid's companions to join our coding program. Earn $75 ";
   'ReferralProgram.Banner.Desc3': 'for yourself and $75 for every friend who enrolls!';
   'Calendar.Banner.Desc1': 'Stay up-to-date with all the important events, activities, registration and breaks happening at our academy.';
-  'Calendar.Banner.Desc2': 'problem-solving skills of our students. We strive to teach not only';
-  'Calendar.Banner.Desc3': 'remarkable results as our students&apos; side project on';
-  'Calendar.Banner.Desc4': 'their learning journey.';
   'ContactUs.Banner.Desc1': 'X-Camp Academy focuses on improving the coding abilities and ';
   'ContactUs.Banner.Desc2': 'problem-solving skills of our students. We strive to teach not only ';
   'ContactUs.Banner.Desc3': 'persistence in analytical thought, but also genuine curiosity whilst ';
@@ -388,8 +388,8 @@ declare const json: {
   'WeeklyOpenHouse.Banner.Desc2': 'teaching approach as we answer your questions.';
   MockTestClasses: 'Mock Test Classes';
   Activity: 'Activity';
-  'HistoryOfXCamp.Title': 'History of X-Camp';
-  'HistoryOfXCamp.Title.Color': 'History';
+  'HistoryOfXCamp.Title': 'Growth of X-Camp';
+  'HistoryOfXCamp.Title.Color': 'Growth';
   'HistoryOfXCamp.Desc': 'With nearly 2,000 students trained in just six years, X-Camp has significantly influenced the coding journeys of its students, offering a unique and impactful learning experience backed by 12 USACO finalists in the US Camps.';
   Our: 'Our ';
   'SubscribeNewsletter.Desc1': 'Stay in the loop with our newsletter for exclusive updates';
@@ -482,6 +482,11 @@ declare const json: {
   'Java & APCS Classes': 'Java & APCS Classes';
   'Free USACO Public Mock Test': 'Free USACO Public Mock Test';
   DisclaimerPrivacyPolicy: 'Disclaimer & Privacy Policy';
+  Free_Test_All_Title: 'FREE Placement Test, Open to ALL！';
+  Free_Test_All_Desc1: 'Unlock Your Coding Potential';
+  Free_Test_All_Desc2: 'Discover your tailored educational pathway with our placement test!';
+  Test_Now: 'Test Now';
+  University_Calendar: 'School Calendar';
 };
 
 export default json;

@@ -5,18 +5,11 @@ import styles from './index.module.scss';
 
 const Banner: React.FC = () => {
   const { format: t } = useLang();
-  const paragraph = (
-    <>
-      {t('Calendar.Banner.Desc1')}
-      {/* {t('Calendar.Banner.Desc2')}
-      {t('Calendar.Banner.Desc3')}
-      {t('Calendar.Banner.Desc4')} */}
-    </>
-  );
+  const paragraph = <>{t('Calendar.Banner.Desc1')}</>;
 
   return (
     <div className={styles.bannerContainer}>
-      <CommonBanner title={t('SchoolCalendar')} paragraph={paragraph} image={'/image/about-us/calendar-banner.png'} />
+      <CommonBanner title={t('University_Calendar')} paragraph={paragraph} image={'/image/about-us/calendar-banner.png'} />
     </div>
   );
 };

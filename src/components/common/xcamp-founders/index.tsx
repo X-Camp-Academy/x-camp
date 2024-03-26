@@ -1,6 +1,7 @@
 'use client';
 import { useLang } from '@/hoc/with-intl/define';
 import { useMobile } from '@/utils';
+import { getLangResult } from '@/utils/public';
 import { StarOutlined } from '@ant-design/icons';
 import { Button, Col, Image, Row, Space, Typography } from 'antd';
 import React from 'react';
@@ -9,16 +10,27 @@ import styles from './index.module.scss';
 const { Title, Paragraph, Text } = Typography;
 
 const XCampFounder: React.FC = () => {
-  const { format: t } = useLang();
+  const { format: t, lang } = useLang();
   const isMobile = useMobile();
   return (
     <div className={`${styles.XCampFounder} container`}>
       <Space direction="vertical" align="center">
         <Title className={styles.title}>
-          X-Camp&nbsp;
-          <Text className={styles.title} style={{ color: '#FFAD11' }}>
-            {t('Founders')}
-          </Text>
+          {getLangResult(
+            lang,
+            <>
+              X-Camp的
+              <Text className={styles.title} style={{ color: '#FFAD11' }}>
+                创始人
+              </Text>
+            </>,
+            <>
+              <Text className={styles.title} style={{ color: '#FFAD11' }}>
+                Founders&nbsp;
+              </Text>
+              Of X-Camp
+            </>
+          )}
         </Title>
 
         <Row gutter={isMobile ? [16, 24] : [32, 124]} className={styles.row}>

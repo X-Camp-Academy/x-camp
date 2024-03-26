@@ -71,20 +71,20 @@ const CarouselContent: React.FC = () => {
       buttonText: ''
     },
     {
-      title: 'FREE Placement Test, Open to ALL！',
+      title: t('Free_Test_All_Title'),
       titleConfig: [
         {
-          text: 'FREE Placement Test, Open to ALL！',
+          text: t('Free_Test_All_Title'),
           color: '#EB7411',
           fontSize: isMobile ? '20px' : '48px'
         }
       ],
-      desc: ['Unlock Your Coding Potential', 'Placement Test Reveals Your Perfect Learning Path'],
+      desc: [t('Free_Test_All_Desc1'), t('Free_Test_All_Desc2')],
       descStyle: {
         color: '#EB7411',
         fontSize: isMobile ? 10 : 20
       },
-      buttonText: 'Test Now',
+      buttonText: t('Test_Now'),
       buttonStyle: {
         backgroundColor: '#EB7411',
         color: '#FFF'
@@ -126,7 +126,7 @@ const CarouselContent: React.FC = () => {
   return (
     <div className={styles.bannerContainer}>
       {!isMobile && <CarouselDots goTo={goTo} dots={carouselItems?.length} current={current} />}
-      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay ref={sliderRef} afterChange={(current) => setCurrent(current)}>
+      <Carousel dots={isMobile} speed={1000} autoplaySpeed={6000} autoplay={false} ref={sliderRef} afterChange={(current) => setCurrent(current)}>
         {carouselItems.map((item: CarouselItemsProps) => (
           <div className={styles.content} key={item?.title} onClick={item?.onClick}>
             {isMobile ? (

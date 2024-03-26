@@ -37,7 +37,7 @@ const Community: React.FC = () => {
   const circles: CirclesProps[] = [
     {
       number: '2000+',
-      numberText: 'students',
+      numberText: t('Home.Community.Students'),
       backgroundColor: '#FFD600',
       style: {
         marginBottom: -48,
@@ -46,7 +46,7 @@ const Community: React.FC = () => {
     },
     {
       number: '600+',
-      numberText: 'current learners',
+      numberText: t('Home.Community.Current_Learners'),
       backgroundColor: '#FFAD11',
       style: {
         marginBottom: -48,
@@ -55,7 +55,7 @@ const Community: React.FC = () => {
     },
     {
       number: '300+',
-      numberText: 'schools',
+      numberText: t('Home.Community.Schools'),
       backgroundColor: '#D46B14',
       style: {
         marginBottom: -48,
