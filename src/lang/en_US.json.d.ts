@@ -244,7 +244,6 @@ declare const json: {
   'USACOSolution.Intro2': 'This event features our esteemed team of top coaches, USACO Grandmaster Class instructors, and ICPC World Finalists. From the USACO Bronze, Silver, and Gold levels, we offer comprehensive explanations that unravel the intricacies of each problem. ';
   'USACOSolution.Intro3': 'This exclusive event provides students with unparalleled insights and in-depth knowledge to enhance their problem-solving skills and excel in USACO competitions.';
   MoreUSACOSolution: 'X-Camp More USACO Solutions';
-  'MoreUSACOSolution.YoutubePlayList': 'Youtube Playlist';
   MoreUSACORelatedResources: 'Additional USACO Resources';
   'USACOMockTest.Title': 'USACO Mock Test Classes';
   'USACOMockTest.Desc': "Starting from the 21/22 USACO Season, X-Camp's teaching research team is offering exclusive access to authentic USACO mock tests ahead of the official contest. Want to get in on action? Contact us now to stay in the loop!";
