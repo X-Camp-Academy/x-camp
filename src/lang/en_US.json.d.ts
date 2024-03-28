@@ -332,7 +332,7 @@ declare const json: {
   'Home.Community.Title': 'X-Camp Community';
   'Home.Community.Title.Color': 'Community';
   'Home.Community.Desc1': "Welcome to the X-Camp Family! Since opening our digital doors, we've had the pleasure of guiding over 2,000 students in their coding journeys.";
-  'Home.Community.Desc2': 'Today, our vibrant community spans over 600 current learners from more than 250 schools around the globe.';
+  'Home.Community.Desc2': 'Today, our vibrant community spans over 600 current learners from more than 300 schools around the globe.';
   'Home.Community.Desc3': "Are you eager to rekindle connections with your X-Camp peers? We're here to facilitate that reunion. Reach out today!";
   'Home.Community.Desc4': "Looking to reconnect with your fellow classmates? Don't hesitate to get in touch with us!";
   'CourseSchedule.Banner.Desc1': 'X-Camp Academy offers an innovative learning schedule divided into four quarters annually, transcending the usual lecture format. ';
